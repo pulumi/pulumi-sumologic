@@ -14,14 +14,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const personalFolder = pulumi.output(sumologic.getPersonalFolder({ async: true }));
  * const lookupTable = new sumologic.LookupTable("lookupTable", {
  *     description: "some description",
  *     fields: [{
  *         fieldName: "FieldName1",
  *         fieldType: "boolean",
  *     }],
- *     parentFolderId: personalFolder.id,
+ *     parentFolderId: "<personal folder id>",
  *     primaryKeys: ["FieldName1"],
  *     sizeLimitAction: "DeleteOldData",
  *     ttl: 100,

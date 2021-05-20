@@ -11,6 +11,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source) or [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source). To start using Traces contact your Sumo account representative to activate.
+//
+// __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewHttpSource(ctx, "httpSource", &sumologic.HttpSourceArgs{
+// 			Category:    pulumi.String("my/source/category"),
+// 			CollectorId: collector.ID(),
+// 			Description: pulumi.String("My description"),
+// 			Filters: sumologic.HttpSourceFilterArray{
+// 				&sumologic.HttpSourceFilterArgs{
+// 					FilterType: pulumi.String("Exclude"),
+// 					Name:       pulumi.String("Test Exclude Debug"),
+// 					Regexp:     pulumi.String(".*DEBUG.*"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewHttpSource(ctx, "httpTracesSource", &sumologic.HttpSourceArgs{
+// 			Category:    pulumi.String("my/source/category"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("Zipkin"),
+// 			Description: pulumi.String("My description"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Argument reference
+//
+// In addition to the common properties, the following arguments are supported:
+//
+// - `messagePerRequest` - (Optional) When set to `true`, will create one log message per HTTP request.
+// - `contentType`        - (Optional) When configuring a HTTP Traces Source, set this property to `Zipkin`. This should only be used when creating a Traces source.
+//
 // ## Import
 //
 // HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

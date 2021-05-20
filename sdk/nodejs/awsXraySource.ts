@@ -6,6 +6,52 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
+ *
+ * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const collector = new sumologic.Collector("collector", {
+ *     description: "Just testing this",
+ * });
+ * const awsXraySource = new sumologic.AwsXraySource("aws_xray_source", {
+ *     authentication: {
+ *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
+ *         type: "AWSRoleBasedAuthentication",
+ *     },
+ *     category: "aws/xray",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "AwsXRay",
+ *     description: "My description",
+ *     path: {
+ *         limitToRegions: ["us-west-2"],
+ *         type: "AwsXRayPath",
+ *     },
+ *     paused: false,
+ *     scanInterval: 300000,
+ * });
+ * ```
+ * ## Argument reference
+ *
+ * In addition to the common properties, the following arguments are supported:
+ *
+ *  - `contentType` - (Required) The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+ *  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+ *  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
+ *  - `authentication` - (Required) Authentication details for making `xray:Get*` calls.
+ *      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+ *      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
+ *      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
+ *      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+ *  - `path` - (Required) The location to scan for new data.
+ *      + `type` - (Required) type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+ *      + `limitToRegions` - (Optional) List of Amazon regions.
+ *
  * ## Import
  *
  * AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

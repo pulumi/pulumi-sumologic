@@ -194,7 +194,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewMonitor(ctx, "tfLogsMonitor2", &sumologic.MonitorArgs{
-// 			Description: pulumi.String("tf logs monitor with webhook"),
+// 			Description: pulumi.String("logs monitor with webhook"),
 // 			Type:        pulumi.String("MonitorsLibraryMonitor"),
 // 			ParentId:    tfMonitorFolder1.ID(),
 // 			IsDisabled:  pulumi.Bool(false),

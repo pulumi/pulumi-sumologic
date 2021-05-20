@@ -11,6 +11,69 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
+//
+// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewAwsXraySource(ctx, "awsXraySource", &sumologic.AwsXraySourceArgs{
+// 			Authentication: &sumologic.AwsXraySourceAuthenticationArgs{
+// 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
+// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
+// 			},
+// 			Category:    pulumi.String("aws/xray"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("AwsXRay"),
+// 			Description: pulumi.String("My description"),
+// 			Path: &sumologic.AwsXraySourcePathArgs{
+// 				LimitToRegions: pulumi.StringArray{
+// 					pulumi.String("us-west-2"),
+// 				},
+// 				Type: pulumi.String("AwsXRayPath"),
+// 			},
+// 			Paused:       pulumi.Bool(false),
+// 			ScanInterval: pulumi.Int(300000),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Argument reference
+//
+// In addition to the common properties, the following arguments are supported:
+//
+//  - `contentType` - (Required) The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+//  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+//  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
+//  - `authentication` - (Required) Authentication details for making `xray:Get*` calls.
+//      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+//      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
+//      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
+//      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+//  - `path` - (Required) The location to scan for new data.
+//      + `type` - (Required) type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+//      + `limitToRegions` - (Optional) List of Amazon regions.
+//
 // ## Import
 //
 // AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import sumologic:index/collector:Collector test my_test_collector
  * ```
  *
- *  [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields [4]https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
+ *  [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
  */
 export class Collector extends pulumi.CustomResource {
     /**

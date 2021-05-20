@@ -28,7 +28,7 @@ namespace Pulumi.SumoLogic
     ///         {
     ///             Description = "Just testing this",
     ///         });
-    ///         var terraformS3Source = new SumoLogic.S3Source("terraformS3Source", new SumoLogic.S3SourceArgs
+    ///         var s3Source = new SumoLogic.S3Source("s3Source", new SumoLogic.S3SourceArgs
     ///         {
     ///             Authentication = new SumoLogic.Inputs.S3SourceAuthenticationArgs
     ///             {

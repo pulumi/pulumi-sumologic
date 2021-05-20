@@ -6,6 +6,105 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Sumologic Kinesis Metrics source. This source is used to ingest data from Cloudwatch Metrics Stream via Kinesis Firehose from AWS.
+ *
+ * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tagfilters = [
+ *     {
+ *         namespace: "All",
+ *         tags: ["k3=v3"],
+ *         type: "TagFilters",
+ *     },
+ *     {
+ *         namespace: "AWS/Route53",
+ *         tags: ["k1=v1"],
+ *         type: "TagFilters",
+ *     },
+ *     {
+ *         namespace: "AWS/S3",
+ *         tags: ["k2=v2"],
+ *         type: "TagFilters",
+ *     },
+ * ];
+ * const collector = new sumologic.Collector("collector", {
+ *     description: "Just testing this",
+ * });
+ * const kinesisMetricsAccessKey = new sumologic.KinesisMetricsSource("kinesis_metrics_access_key", {
+ *     authentication: {
+ *         accessKey: "someKey",
+ *         secretKey: "******",
+ *         type: "S3BucketAuthentication",
+ *     },
+ *     category: "prod/kinesis/metrics",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "KinesisMetric",
+ *     description: "Description for Kinesis Metrics Source",
+ *     path: {
+ *         tagFilters: [
+ *             {
+ *                 namespace: "All",
+ *                 tags: ["k3=v3"],
+ *                 type: "TagFilters",
+ *             },
+ *             {
+ *                 namespace: "AWS/Route53",
+ *                 tags: ["k1=v1"],
+ *                 type: "TagFilters",
+ *             },
+ *         ],
+ *         type: "KinesisMetricPath",
+ *     },
+ * });
+ * const kinesisMetricsRoleArn = new sumologic.KinesisMetricsSource("kinesis_metrics_role_arn", {
+ *     authentication: {
+ *         roleArn: "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+ *         type: "AWSRoleBasedAuthentication",
+ *     },
+ *     category: "prod/kinesis/metrics",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "KinesisMetric",
+ *     description: "Description for Kinesis Metrics Source",
+ *     path: {
+ *         tagFilters: [
+ *             {
+ *                 namespace: "All",
+ *                 tags: ["k3=v3"],
+ *                 type: "TagFilters",
+ *             },
+ *             {
+ *                 namespace: "AWS/Route53",
+ *                 tags: ["k1=v1"],
+ *                 type: "TagFilters",
+ *             },
+ *         ],
+ *         type: "KinesisMetricPath",
+ *     },
+ * });
+ * ```
+ * ## Argument reference
+ *
+ * In addition to the common properties, the following arguments are supported:
+ *
+ *  - `contentType` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+ *  - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
+ *      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+ *      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
+ *      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
+ *      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+ *  - `path` - (Required) The location to scan for new data.
+ *      + `type` - (Required) Must be `KinesisMetricPath`
+ *      + `tagFilters` - (Optional) Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+ *           + `type` - This value has to be set to `TagFilters`
+ *           + `namespace` - Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+ *           + `tags` - List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+ *
  * ## Import
  *
  * Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

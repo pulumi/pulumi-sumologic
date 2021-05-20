@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = sumologic.NewS3Source(ctx, "terraformS3Source", &sumologic.S3SourceArgs{
+// 		_, err = sumologic.NewS3Source(ctx, "s3Source", &sumologic.S3SourceArgs{
 // 			Authentication: &sumologic.S3SourceAuthenticationArgs{
 // 				AccessKey: pulumi.String("someKey"),
 // 				SecretKey: pulumi.String("******"),

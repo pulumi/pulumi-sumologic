@@ -5,6 +5,42 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const thisCollector = pulumi.output(sumologic.getCollector({
+ *     name: "MyCollector",
+ * }, { async: true }));
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const that = pulumi.output(sumologic.getCollector({
+ *     id: 1234567890,
+ * }, { async: true }));
+ * ```
+ *
+ * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+ *
+ * If both `id` and `name` have been specified, `id` takes precedence.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+ * - `name` - The name of the collector.
+ * - `description` - The description of the collector.
+ * - `category` - The default source category for any source attached to this collector.
+ * - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+ */
 export function getCollector(args?: GetCollectorArgs, opts?: pulumi.InvokeOptions): Promise<GetCollectorResult> {
     args = args || {};
     if (!opts) {

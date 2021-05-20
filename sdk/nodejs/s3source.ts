@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const collector = new sumologic.Collector("collector", {
  *     description: "Just testing this",
  * });
- * const terraformS3Source = new sumologic.S3Source("terraform_s3_source", {
+ * const s3Source = new sumologic.S3Source("s3_source", {
  *     authentication: {
  *         accessKey: "someKey",
  *         secretKey: "******",

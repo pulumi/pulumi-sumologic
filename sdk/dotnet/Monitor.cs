@@ -208,7 +208,7 @@ namespace Pulumi.SumoLogic
     ///         });
     ///         var tfLogsMonitor2 = new SumoLogic.Monitor("tfLogsMonitor2", new SumoLogic.MonitorArgs
     ///         {
-    ///             Description = "tf logs monitor with webhook",
+    ///             Description = "logs monitor with webhook",
     ///             Type = "MonitorsLibraryMonitor",
     ///             ParentId = tfMonitorFolder1.Id,
     ///             IsDisabled = false,

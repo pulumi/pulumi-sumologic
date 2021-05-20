@@ -5,6 +5,42 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const thisRole = pulumi.output(sumologic.getRole({
+ *     name: "MyRole",
+ * }, { async: true }));
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const that = pulumi.output(sumologic.getRole({
+ *     id: "1234567890",
+ * }, { async: true }));
+ * ```
+ *
+ * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+ *
+ * If both `id` and `name` have been specified, `id` takes precedence.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The internal ID of the role. This can be used to create users having that role.
+ * - `name` - The name of the role.
+ * - `description` - The description of the role.
+ * - `filterPredicate` - The search filter to restrict access to specific logs.
+ * - `capabilities` - The list of capabilities associated with the role.
+ */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
     if (!opts) {

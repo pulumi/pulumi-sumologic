@@ -6,6 +6,30 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a [Sumo Logic Google Cloud Platform Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const collector = new sumologic.Collector("collector", {
+ *     description: "Just testing this",
+ * });
+ * const gcpSource = new sumologic.GcpSource("gcp_source", {
+ *     authentication: {
+ *         type: "NoAuthentication",
+ *     },
+ *     category: "gcp",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     description: "My description",
+ *     path: {
+ *         type: "NoPathExpression",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

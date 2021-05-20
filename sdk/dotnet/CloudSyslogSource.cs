@@ -10,6 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
+    /// 
+    /// __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var cloudsyslogSource = new SumoLogic.CloudSyslogSource("cloudsyslogSource", new SumoLogic.CloudSyslogSourceArgs
+    ///         {
+    ///             Category = "my/source/category",
+    ///             CollectorId = collector.Id,
+    ///             Description = "My description",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Attributes reference
+    /// 
+    /// The following attributes are exported:
+    /// 
+    /// - `id` - The internal ID of the source.
+    /// - `token` - The token to use for sending data to this source.
+    /// 
     /// ## Import
     /// 
     /// Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

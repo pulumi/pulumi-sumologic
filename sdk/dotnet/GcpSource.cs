@@ -10,6 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// Provides a [Sumo Logic Google Cloud Platform Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var gcpSource = new SumoLogic.GcpSource("gcpSource", new SumoLogic.GcpSourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.GcpSourceAuthenticationArgs
+    ///             {
+    ///                 Type = "NoAuthentication",
+    ///             },
+    ///             Category = "gcp",
+    ///             CollectorId = collector.Id,
+    ///             Description = "My description",
+    ///             Path = new SumoLogic.Inputs.GcpSourcePathArgs
+    ///             {
+    ///                 Type = "NoPathExpression",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

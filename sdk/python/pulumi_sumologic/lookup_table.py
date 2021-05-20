@@ -233,14 +233,13 @@ class LookupTable(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        personal_folder = sumologic.get_personal_folder()
         lookup_table = sumologic.LookupTable("lookupTable",
             description="some description",
             fields=[sumologic.LookupTableFieldArgs(
                 field_name="FieldName1",
                 field_type="boolean",
             )],
-            parent_folder_id=personal_folder.id,
+            parent_folder_id="<personal folder id>",
             primary_keys=["FieldName1"],
             size_limit_action="DeleteOldData",
             ttl=100)
@@ -295,14 +294,13 @@ class LookupTable(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        personal_folder = sumologic.get_personal_folder()
         lookup_table = sumologic.LookupTable("lookupTable",
             description="some description",
             fields=[sumologic.LookupTableFieldArgs(
                 field_name="FieldName1",
                 field_type="boolean",
             )],
-            parent_folder_id=personal_folder.id,
+            parent_folder_id="<personal folder id>",
             primary_keys=["FieldName1"],
             size_limit_action="DeleteOldData",
             ttl=100)

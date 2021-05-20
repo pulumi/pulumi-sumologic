@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const examplePartition = new sumologic.Partition("examplePartition", {
  *     analyticsTier: "continuous",
  *     isCompliant: false,
- *     routingExpression: "_sourcecategory=*&#47;Terraform",
+ *     routingExpression: "_sourcecategory=*&#47;IAC",
  * });
  * ```
  * ## Argument reference

@@ -227,7 +227,7 @@ class Collector(pulumi.CustomResource):
          $ pulumi import sumologic:index/collector:Collector test my_test_collector
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields [4]https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
+         [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -273,7 +273,7 @@ class Collector(pulumi.CustomResource):
          $ pulumi import sumologic:index/collector:Collector test my_test_collector
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields [4]https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
+         [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param CollectorArgs args: The arguments to use to populate this resource's properties.

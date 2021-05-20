@@ -7,6 +7,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "MyRole"
+// 		_, err := sumologic.LookupRole(ctx, &sumologic.LookupRoleArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "1234567890"
+// 		_, err := sumologic.LookupRole(ctx, &sumologic.LookupRoleArgs{
+// 			Id: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+//
+// If both `id` and `name` have been specified, `id` takes precedence.
+// ## Attributes reference
+//
+// The following attributes are exported:
+//
+// - `id` - The internal ID of the role. This can be used to create users having that role.
+// - `name` - The name of the role.
+// - `description` - The description of the role.
+// - `filterPredicate` - The search filter to restrict access to specific logs.
+// - `capabilities` - The list of capabilities associated with the role.
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	var rv LookupRoleResult
 	err := ctx.Invoke("sumologic:index/getRole:getRole", args, &rv, opts...)

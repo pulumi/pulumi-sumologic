@@ -471,6 +471,29 @@ class CloudSyslogSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
+
+        __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        cloudsyslog_source = sumologic.CloudSyslogSource("cloudsyslogSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            description="My description")
+        ```
+        ## Attributes reference
+
+        The following attributes are exported:
+
+        - `id` - The internal ID of the source.
+        - `token` - The token to use for sending data to this source.
+
         ## Import
 
         Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -497,6 +520,29 @@ class CloudSyslogSource(pulumi.CustomResource):
                  args: CloudSyslogSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
+
+        __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        cloudsyslog_source = sumologic.CloudSyslogSource("cloudsyslogSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            description="My description")
+        ```
+        ## Attributes reference
+
+        The following attributes are exported:
+
+        - `id` - The internal ID of the source.
+        - `token` - The token to use for sending data to this source.
+
         ## Import
 
         Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

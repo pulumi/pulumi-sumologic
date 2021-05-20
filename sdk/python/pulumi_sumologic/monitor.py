@@ -696,7 +696,7 @@ class Monitor(pulumi.CustomResource):
         }
         \"\"\")
         tf_logs_monitor2 = sumologic.Monitor("tfLogsMonitor2",
-            description="tf logs monitor with webhook",
+            description="logs monitor with webhook",
             type="MonitorsLibraryMonitor",
             parent_id=tf_monitor_folder1.id,
             is_disabled=False,
@@ -959,7 +959,7 @@ class Monitor(pulumi.CustomResource):
         }
         \"\"\")
         tf_logs_monitor2 = sumologic.Monitor("tfLogsMonitor2",
-            description="tf logs monitor with webhook",
+            description="logs monitor with webhook",
             type="MonitorsLibraryMonitor",
             parent_id=tf_monitor_folder1.id,
             is_disabled=False,

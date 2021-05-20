@@ -11,6 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
+//
+// __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewCloudSyslogSource(ctx, "cloudsyslogSource", &sumologic.CloudSyslogSourceArgs{
+// 			Category:    pulumi.String("my/source/category"),
+// 			CollectorId: collector.ID(),
+// 			Description: pulumi.String("My description"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Attributes reference
+//
+// The following attributes are exported:
+//
+// - `id` - The internal ID of the source.
+// - `token` - The token to use for sending data to this source.
+//
 // ## Import
 //
 // Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

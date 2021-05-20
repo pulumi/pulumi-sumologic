@@ -22,7 +22,6 @@ namespace Pulumi.SumoLogic
     /// {
     ///     public MyStack()
     ///     {
-    ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
     ///         var lookupTable = new SumoLogic.LookupTable("lookupTable", new SumoLogic.LookupTableArgs
     ///         {
     ///             Description = "some description",
@@ -34,7 +33,7 @@ namespace Pulumi.SumoLogic
     ///                     FieldType = "boolean",
     ///                 },
     ///             },
-    ///             ParentFolderId = personalFolder.Apply(personalFolder =&gt; personalFolder.Id),
+    ///             ParentFolderId = "&lt;personal folder id&gt;",
     ///             PrimaryKeys = 
     ///             {
     ///                 "FieldName1",

@@ -581,7 +581,7 @@ class S3Source(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         collector = sumologic.Collector("collector", description="Just testing this")
-        terraform_s3_source = sumologic.S3Source("terraformS3Source",
+        s3_source = sumologic.S3Source("s3Source",
             authentication=sumologic.S3SourceAuthenticationArgs(
                 access_key="someKey",
                 secret_key="******",
@@ -656,7 +656,7 @@ class S3Source(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         collector = sumologic.Collector("collector", description="Just testing this")
-        terraform_s3_source = sumologic.S3Source("terraformS3Source",
+        s3_source = sumologic.S3Source("s3Source",
             authentication=sumologic.S3SourceAuthenticationArgs(
                 access_key="someKey",
                 secret_key="******",

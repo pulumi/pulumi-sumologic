@@ -500,6 +500,39 @@ class HttpSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source) or [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source). To start using Traces contact your Sumo account representative to activate.
+
+        __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        http_source = sumologic.HttpSource("httpSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            description="My description",
+            filters=[sumologic.HttpSourceFilterArgs(
+                filter_type="Exclude",
+                name="Test Exclude Debug",
+                regexp=".*DEBUG.*",
+            )])
+        http_traces_source = sumologic.HttpSource("httpTracesSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            content_type="Zipkin",
+            description="My description")
+        ```
+        ## Argument reference
+
+        In addition to the common properties, the following arguments are supported:
+
+        - `message_per_request` - (Optional) When set to `true`, will create one log message per HTTP request.
+        - `content_type`        - (Optional) When configuring a HTTP Traces Source, set this property to `Zipkin`. This should only be used when creating a Traces source.
+
         ## Import
 
         HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -526,6 +559,39 @@ class HttpSource(pulumi.CustomResource):
                  args: HttpSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source) or [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source). To start using Traces contact your Sumo account representative to activate.
+
+        __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        http_source = sumologic.HttpSource("httpSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            description="My description",
+            filters=[sumologic.HttpSourceFilterArgs(
+                filter_type="Exclude",
+                name="Test Exclude Debug",
+                regexp=".*DEBUG.*",
+            )])
+        http_traces_source = sumologic.HttpSource("httpTracesSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            content_type="Zipkin",
+            description="My description")
+        ```
+        ## Argument reference
+
+        In addition to the common properties, the following arguments are supported:
+
+        - `message_per_request` - (Optional) When set to `true`, will create one log message per HTTP request.
+        - `content_type`        - (Optional) When configuring a HTTP Traces Source, set this property to `Zipkin`. This should only be used when creating a Traces source.
+
         ## Import
 
         HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

@@ -570,6 +570,52 @@ class CloudtrailSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a [Sumologic CloudTrail source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source).
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        cloudtrail_source = sumologic.CloudtrailSource("cloudtrailSource",
+            authentication=sumologic.CloudtrailSourceAuthenticationArgs(
+                access_key="someKey",
+                secret_key="******",
+                type="S3BucketAuthentication",
+            ),
+            category="aws/cloudtrail",
+            collector_id=collector.id,
+            content_type="AwsCloudTrailBucket",
+            description="My description",
+            path=sumologic.CloudtrailSourcePathArgs(
+                bucket_name="Bucket1",
+                path_expression="*",
+                type="S3BucketPathExpression",
+            ),
+            paused=False,
+            scan_interval=300000)
+        ```
+        ## Argument reference
+
+        In addition to the common properties, the following arguments are supported:
+
+         - `content_type` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
+         - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
+             + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+             + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
+             + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
+             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+         - `path` - (Required) The location to scan for new data.
+             + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+             + `bucket_name` - (Required) The name of the bucket.
+             + `path_expression` - (Required) The path to the data.
+
         ## Import
 
         CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -596,6 +642,52 @@ class CloudtrailSource(pulumi.CustomResource):
                  args: CloudtrailSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a [Sumologic CloudTrail source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source).
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        cloudtrail_source = sumologic.CloudtrailSource("cloudtrailSource",
+            authentication=sumologic.CloudtrailSourceAuthenticationArgs(
+                access_key="someKey",
+                secret_key="******",
+                type="S3BucketAuthentication",
+            ),
+            category="aws/cloudtrail",
+            collector_id=collector.id,
+            content_type="AwsCloudTrailBucket",
+            description="My description",
+            path=sumologic.CloudtrailSourcePathArgs(
+                bucket_name="Bucket1",
+                path_expression="*",
+                type="S3BucketPathExpression",
+            ),
+            paused=False,
+            scan_interval=300000)
+        ```
+        ## Argument reference
+
+        In addition to the common properties, the following arguments are supported:
+
+         - `content_type` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
+         - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
+             + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+             + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
+             + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
+             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+         - `path` - (Required) The location to scan for new data.
+             + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+             + `bucket_name` - (Required) The name of the bucket.
+             + `path_expression` - (Required) The path to the data.
+
         ## Import
 
         CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

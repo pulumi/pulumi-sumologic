@@ -550,6 +550,27 @@ class GcpSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a [Sumo Logic Google Cloud Platform Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        gcp_source = sumologic.GcpSource("gcpSource",
+            authentication=sumologic.GcpSourceAuthenticationArgs(
+                type="NoAuthentication",
+            ),
+            category="gcp",
+            collector_id=collector.id,
+            description="My description",
+            path=sumologic.GcpSourcePathArgs(
+                type="NoPathExpression",
+            ))
+        ```
+
         ## Import
 
         Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -576,6 +597,27 @@ class GcpSource(pulumi.CustomResource):
                  args: GcpSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a [Sumo Logic Google Cloud Platform Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        gcp_source = sumologic.GcpSource("gcpSource",
+            authentication=sumologic.GcpSourceAuthenticationArgs(
+                type="NoAuthentication",
+            ),
+            category="gcp",
+            collector_id=collector.id,
+            description="My description",
+            path=sumologic.GcpSourcePathArgs(
+                type="NoPathExpression",
+            ))
+        ```
+
         ## Import
 
         Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

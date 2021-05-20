@@ -11,6 +11,63 @@ namespace Pulumi.SumoLogic
 {
     public static class GetCollector
     {
+        /// <summary>
+        /// Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(SumoLogic.GetCollector.InvokeAsync(new SumoLogic.GetCollectorArgs
+        ///         {
+        ///             Name = "MyCollector",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var that = Output.Create(SumoLogic.GetCollector.InvokeAsync(new SumoLogic.GetCollectorArgs
+        ///         {
+        ///             Id = 1234567890,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+        /// 
+        /// If both `id` and `name` have been specified, `id` takes precedence.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+        /// - `name` - The name of the collector.
+        /// - `description` - The description of the collector.
+        /// - `category` - The default source category for any source attached to this collector.
+        /// - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+        /// </summary>
         public static Task<GetCollectorResult> InvokeAsync(GetCollectorArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCollectorResult>("sumologic:index/getCollector:getCollector", args ?? new GetCollectorArgs(), options.WithVersion());
     }

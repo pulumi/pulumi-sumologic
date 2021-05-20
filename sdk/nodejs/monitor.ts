@@ -146,7 +146,7 @@ import * as utilities from "./utilities";
  * `,
  * });
  * const tfLogsMonitor2 = new sumologic.Monitor("tfLogsMonitor2", {
- *     description: "tf logs monitor with webhook",
+ *     description: "logs monitor with webhook",
  *     type: "MonitorsLibraryMonitor",
  *     parentId: tfMonitorFolder1.id,
  *     isDisabled: false,

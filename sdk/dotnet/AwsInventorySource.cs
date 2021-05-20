@@ -10,6 +10,83 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// Provides a Sumologic AWS Inventory source to collect AWS resource inventory data.
+    /// 
+    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var awsInventorySource = new SumoLogic.AwsInventorySource("awsInventorySource", new SumoLogic.AwsInventorySourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.AwsInventorySourceAuthenticationArgs
+    ///             {
+    ///                 RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
+    ///                 Type = "AWSRoleBasedAuthentication",
+    ///             },
+    ///             Category = "aws/aws_inventory",
+    ///             CollectorId = collector.Id,
+    ///             ContentType = "AwsInventory",
+    ///             Description = "My description",
+    ///             Path = new SumoLogic.Inputs.AwsInventorySourcePathArgs
+    ///             {
+    ///                 LimitToNamespaces = 
+    ///                 {
+    ///                     "AWS/RDS",
+    ///                     "AWS/EC2",
+    ///                 },
+    ///                 LimitToRegions = 
+    ///                 {
+    ///                     "us-west-2",
+    ///                 },
+    ///                 Type = "AwsInventoryPath",
+    ///             },
+    ///             Paused = false,
+    ///             ScanInterval = 300000,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Argument reference
+    /// 
+    /// In addition to the common properties, the following arguments are supported:
+    /// 
+    ///  - `content_type` - (Required) The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+    ///  - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+    ///  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
+    ///  - `authentication` - (Required) Authentication details to access AWS `Describe*` APIs.
+    ///      + `type` - (Required) Must be `AWSRoleBasedAuthentication`
+    ///      + `role_arn` - (Required) Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+    ///  - `path` - (Required) The location to scan for new data.
+    ///      + `type` - (Required) type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+    ///      + `limit_to_regions` - (Optional) List of Amazon regions.
+    ///      + `limit_to_namespaces` - (Optional) List of namespaces. By default all namespaces are selected. You can also choose a subset from
+    ///         + AWS/EC2
+    ///         + AWS/AutoScaling
+    ///         + AWS/EBS
+    ///         + AWS/ELB
+    ///         + AWS/ApplicationELB
+    ///         + AWS/NetworkELB
+    ///         + AWS/Lambda
+    ///         + AWS/RDS
+    ///         + AWS/Dynamodb
+    ///         + AWS/ECS
+    ///         + AWS/Elasticache
+    ///         + AWS/Redshift
+    ///         + AWS/Kinesis
+    /// 
     /// ## Import
     /// 
     /// AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

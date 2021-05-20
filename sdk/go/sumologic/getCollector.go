@@ -7,6 +7,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "MyCollector"
+// 		_, err := sumologic.LookupCollector(ctx, &sumologic.LookupCollectorArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := 1234567890
+// 		_, err := sumologic.LookupCollector(ctx, &sumologic.LookupCollectorArgs{
+// 			Id: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+//
+// If both `id` and `name` have been specified, `id` takes precedence.
+// ## Attributes reference
+//
+// The following attributes are exported:
+//
+// - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+// - `name` - The name of the collector.
+// - `description` - The description of the collector.
+// - `category` - The default source category for any source attached to this collector.
+// - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
 func LookupCollector(ctx *pulumi.Context, args *LookupCollectorArgs, opts ...pulumi.InvokeOption) (*LookupCollectorResult, error) {
 	var rv LookupCollectorResult
 	err := ctx.Invoke("sumologic:index/getCollector:getCollector", args, &rv, opts...)

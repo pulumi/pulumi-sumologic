@@ -25,11 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewLookupTable(ctx, "lookupTable", &sumologic.LookupTableArgs{
+// 		_, err := sumologic.NewLookupTable(ctx, "lookupTable", &sumologic.LookupTableArgs{
 // 			Description: pulumi.String("some description"),
 // 			Fields: sumologic.LookupTableFieldArray{
 // 				&sumologic.LookupTableFieldArgs{
@@ -37,7 +33,7 @@ import (
 // 					FieldType: "boolean",
 // 				},
 // 			},
-// 			ParentFolderId: pulumi.String(personalFolder.Id),
+// 			ParentFolderId: pulumi.String("<personal folder id>"),
 // 			PrimaryKeys: pulumi.StringArray{
 // 				pulumi.String("FieldName1"),
 // 			},

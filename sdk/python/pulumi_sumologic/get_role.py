@@ -79,7 +79,36 @@ def get_role(id: Optional[str] = None,
              name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    this = sumologic.get_role(name="MyRole")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    that = sumologic.get_role(id="1234567890")
+    ```
+
+    A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+
+    If both `id` and `name` have been specified, `id` takes precedence.
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The internal ID of the role. This can be used to create users having that role.
+    - `name` - The name of the role.
+    - `description` - The description of the role.
+    - `filter_predicate` - The search filter to restrict access to specific logs.
+    - `capabilities` - The list of capabilities associated with the role.
     """
     __args__ = dict()
     __args__['id'] = id
