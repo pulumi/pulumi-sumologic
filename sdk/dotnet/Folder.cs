@@ -22,11 +22,10 @@ namespace Pulumi.SumoLogic
     /// {
     ///     public MyStack()
     ///     {
-    ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
     ///         var folder = new SumoLogic.Folder("folder", new SumoLogic.FolderArgs
     ///         {
     ///             Description = "A test folder",
-    ///             ParentId = personalFolder.Apply(personalFolder =&gt; personalFolder.Id),
+    ///             ParentId = "&lt;personal folder id&gt;",
     ///         });
     ///     }
     /// 

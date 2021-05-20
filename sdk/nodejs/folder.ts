@@ -13,10 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const personalFolder = pulumi.output(sumologic.getPersonalFolder({ async: true }));
  * const folder = new sumologic.Folder("folder", {
  *     description: "A test folder",
- *     parentId: personalFolder.id,
+ *     parentId: "<personal folder id>",
  * });
  * ```
  * ## Argument reference

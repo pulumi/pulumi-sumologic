@@ -114,10 +114,9 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        personal_folder = sumologic.get_personal_folder()
         folder = sumologic.Folder("folder",
             description="A test folder",
-            parent_id=personal_folder.id)
+            parent_id="<personal folder id>")
         ```
         ## Argument reference
 
@@ -161,10 +160,9 @@ class Folder(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        personal_folder = sumologic.get_personal_folder()
         folder = sumologic.Folder("folder",
             description="A test folder",
-            parent_id=personal_folder.id)
+            parent_id="<personal folder id>")
         ```
         ## Argument reference
 

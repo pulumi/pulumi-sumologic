@@ -25,13 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewFolder(ctx, "folder", &sumologic.FolderArgs{
+// 		_, err := sumologic.NewFolder(ctx, "folder", &sumologic.FolderArgs{
 // 			Description: pulumi.String("A test folder"),
-// 			ParentId:    pulumi.String(personalFolder.Id),
+// 			ParentId:    pulumi.String("<personal folder id>"),
 // 		})
 // 		if err != nil {
 // 			return err
