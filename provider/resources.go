@@ -12,30 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package xyz
+package sumologic
 
 import (
 	"fmt"
 	"path/filepath"
 	"unicode"
 
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
+	"github.com/SumoLogic/terraform-provider-sumologic/sumologic"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/pulumi/pulumi-sumologic/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-xyz/xyz"
 )
 
 // all of the token components used below.
 const (
 	// packages:
-	mainPkg = "xyz"
+	mainPkg = "sumologic"
 	// modules:
 	mainMod = "index" // the y module
 )
+
+var namespaceMap = map[string]string{
+	mainPkg: "SumoLogic",
+}
 
 // makeMember manufactures a type token for the package and the given module and type.
 func makeMember(mod string, mem string) tokens.ModuleMember {
@@ -63,77 +65,85 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool {
-	return &b
-}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	return ""
-}
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	// Instantiate the Terraform provider
-	p := shimv1.NewProvider(xyz.Provider().(*schema.Provider))
+	p := shimv1.NewProvider(sumologic.Provider().(*schema.Provider))
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:           p,
-		Name:        "xyz",
-		Description: "A Pulumi package for creating and managing xyz cloud resources.",
-		Keywords:    []string{"pulumi", "xyz"},
+		Name:        "sumologic",
+		Description: "A Pulumi package for creating and managing sumologic cloud resources.",
+		Keywords:    []string{"pulumi", "sumologic"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-xyz",
-		Config:      map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: makeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Repository:  "https://github.com/pulumi/pulumi-sumologic",
+		GitHubOrg:   "SumoLogic",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"environment": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"SUMOLOGIC_ENVIRONMENT"},
+				},
+			},
+			"base_url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"SUMOLOGIC_BASE_URL"},
+				},
+			},
 		},
-		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: makeResource(mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: makeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: makeType(mainPkg, "Tags")},
-			// 	},
-			// },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"sumologic_collector":                          {Tok: makeResource(mainMod, "Collector")},
+			"sumologic_http_source":                        {Tok: makeResource(mainMod, "HttpSource")},
+			"sumologic_gcp_source":                         {Tok: makeResource(mainMod, "GcpSource")},
+			"sumologic_polling_source":                     {Tok: makeResource(mainMod, "PollingSource")},
+			"sumologic_s3_source":                          {Tok: makeResource(mainMod, "S3Source")},
+			"sumologic_s3_audit_source":                    {Tok: makeResource(mainMod, "S3AuditSource")},
+			"sumologic_cloudwatch_source":                  {Tok: makeResource(mainMod, "CloudwatchSource")},
+			"sumologic_aws_inventory_source":               {Tok: makeResource(mainMod, "AwsInventorySource")},
+			"sumologic_aws_xray_source":                    {Tok: makeResource(mainMod, "AwsXraySource")},
+			"sumologic_cloudtrail_source":                  {Tok: makeResource(mainMod, "CloudtrailSource")},
+			"sumologic_elb_source":                         {Tok: makeResource(mainMod, "ElbSource")},
+			"sumologic_cloudfront_source":                  {Tok: makeResource(mainMod, "CloudfrontSource")},
+			"sumologic_cloud_to_cloud_source":              {Tok: makeResource(mainMod, "CloudToCloudSource")},
+			"sumologic_metadata_source":                    {Tok: makeResource(mainMod, "MetadataSource")},
+			"sumologic_cloudsyslog_source":                 {Tok: makeResource(mainMod, "CloudSyslogSource")},
+			"sumologic_role":                               {Tok: makeResource(mainMod, "Role")},
+			"sumologic_user":                               {Tok: makeResource(mainMod, "User")},
+			"sumologic_ingest_budget":                      {Tok: makeResource(mainMod, "IngestBudget")},
+			"sumologic_collector_ingest_budget_assignment": {Tok: makeResource(mainMod, "CollectorIngestBudgetAssignment")},
+			"sumologic_folder":                             {Tok: makeResource(mainMod, "Folder")},
+			"sumologic_content":                            {Tok: makeResource(mainMod, "Content")},
+			"sumologic_scheduled_view":                     {Tok: makeResource(mainMod, "ScheduledView")},
+			"sumologic_partition":                          {Tok: makeResource(mainMod, "Partition")},
+			"sumologic_field_extraction_rule":              {Tok: makeResource(mainMod, "FieldExtractionRule")},
+			"sumologic_connection":                         {Tok: makeResource(mainMod, "Connection")},
+			"sumologic_monitor":                            {Tok: makeResource(mainMod, "Monitor")},
+			"sumologic_monitor_folder":                     {Tok: makeResource(mainMod, "MonitorFolder")},
+			"sumologic_ingest_budget_v2":                   {Tok: makeResource(mainMod, "IngestBudgetV2")},
+			"sumologic_field":                              {Tok: makeResource(mainMod, "Field")},
+			"sumologic_lookup_table":                       {Tok: makeResource(mainMod, "LookupTable")},
+			"sumologic_subdomain": {
+				Tok: makeResource(mainMod, "Subdomain"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"subdomain": {
+						CSharpName: "SubdomainName",
+					},
+				},
+			},
+			"sumologic_dashboard":              {Tok: makeResource(mainMod, "Dashboard")},
+			"sumologic_password_policy":        {Tok: makeResource(mainMod, "PasswordPolicy")},
+			"sumologic_saml_configuration":     {Tok: makeResource(mainMod, "SamlConfiguration")},
+			"sumologic_kinesis_metrics_source": {Tok: makeResource(mainMod, "KinesisMetricsSource")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
+			"sumologic_caller_identity": {Tok: makeDataSource(mainMod, "getCallerIdentity")},
+			"sumologic_collector":       {Tok: makeDataSource(mainMod, "getCollector")},
+			"sumologic_http_source":     {Tok: makeDataSource(mainMod, "getHttpSource")},
+			"sumologic_personal_folder": {Tok: makeDataSource(mainMod, "getPersonalFolder")},
+			"sumologic_my_user_id":      {Tok: makeDataSource(mainMod, "getMyUserId")},
+			"sumologic_role":            {Tok: makeDataSource(mainMod, "getRole")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
 			},
@@ -141,13 +151,8 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
@@ -166,6 +171,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
+			Namespaces: namespaceMap,
 		},
 	}
 
