@@ -12,7 +12,7 @@ import (
 func TestAccFolderPy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "folder", "python"),
+			Dir: filepath.Join(getCwd(t), "folder", "py"),
 		})
 
 	integration.ProgramTest(t, &test)
