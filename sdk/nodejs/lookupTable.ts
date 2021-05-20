@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *         fieldName: "FieldName1",
  *         fieldType: "boolean",
  *     }],
- *     parentFolderId: personalFolder.id!,
+ *     parentFolderId: personalFolder.id,
  *     primaryKeys: ["FieldName1"],
  *     sizeLimitAction: "DeleteOldData",
  *     ttl: 100,
