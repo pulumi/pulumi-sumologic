@@ -610,7 +610,8 @@ class CloudtrailSource(pulumi.CustomResource):
              + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
              + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
              + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+             + `region` - (Optional) Your AWS Bucket region.
          - `path` - (Required) The location to scan for new data.
              + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
              + `bucket_name` - (Required) The name of the bucket.
@@ -682,7 +683,8 @@ class CloudtrailSource(pulumi.CustomResource):
              + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
              + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
              + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+             + `region` - (Optional) Your AWS Bucket region.
          - `path` - (Required) The location to scan for new data.
              + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
              + `bucket_name` - (Required) The name of the bucket.

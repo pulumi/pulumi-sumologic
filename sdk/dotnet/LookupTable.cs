@@ -32,6 +32,11 @@ namespace Pulumi.SumoLogic
     ///                     FieldName = "FieldName1",
     ///                     FieldType = "boolean",
     ///                 },
+    ///                 new SumoLogic.Inputs.LookupTableFieldArgs
+    ///                 {
+    ///                     FieldName = "FieldName2",
+    ///                     FieldType = "string",
+    ///                 },
     ///             },
     ///             ParentFolderId = "&lt;personal folder id&gt;",
     ///             PrimaryKeys = 

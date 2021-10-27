@@ -12,6 +12,8 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a [Sumo Logic Google Cloud Platform Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source).
     /// 
+    /// ***Note:*** Google no longer requires a pub/sub domain to be [verified](https://cloud.google.com/pubsub/docs/push). You no longer have to set up domain verification with your GCP Source endpoint.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -28,17 +30,9 @@ namespace Pulumi.SumoLogic
     ///         });
     ///         var gcpSource = new SumoLogic.GcpSource("gcpSource", new SumoLogic.GcpSourceArgs
     ///         {
-    ///             Authentication = new SumoLogic.Inputs.GcpSourceAuthenticationArgs
-    ///             {
-    ///                 Type = "NoAuthentication",
-    ///             },
     ///             Category = "gcp",
     ///             CollectorId = collector.Id,
     ///             Description = "My description",
-    ///             Path = new SumoLogic.Inputs.GcpSourcePathArgs
-    ///             {
-    ///                 Type = "NoPathExpression",
-    ///             },
     ///         });
     ///     }
     /// 
@@ -59,7 +53,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source
+    ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source [3]https://cloud.google.com/pubsub/docs/push
     /// </summary>
     [SumoLogicResourceType("sumologic:index/gcpSource:GcpSource")]
     public partial class GcpSource : Pulumi.CustomResource

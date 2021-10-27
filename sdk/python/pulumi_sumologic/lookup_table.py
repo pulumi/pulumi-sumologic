@@ -235,10 +235,16 @@ class LookupTable(pulumi.CustomResource):
 
         lookup_table = sumologic.LookupTable("lookupTable",
             description="some description",
-            fields=[sumologic.LookupTableFieldArgs(
-                field_name="FieldName1",
-                field_type="boolean",
-            )],
+            fields=[
+                sumologic.LookupTableFieldArgs(
+                    field_name="FieldName1",
+                    field_type="boolean",
+                ),
+                sumologic.LookupTableFieldArgs(
+                    field_name="FieldName2",
+                    field_type="string",
+                ),
+            ],
             parent_folder_id="<personal folder id>",
             primary_keys=["FieldName1"],
             size_limit_action="DeleteOldData",
@@ -296,10 +302,16 @@ class LookupTable(pulumi.CustomResource):
 
         lookup_table = sumologic.LookupTable("lookupTable",
             description="some description",
-            fields=[sumologic.LookupTableFieldArgs(
-                field_name="FieldName1",
-                field_type="boolean",
-            )],
+            fields=[
+                sumologic.LookupTableFieldArgs(
+                    field_name="FieldName1",
+                    field_type="boolean",
+                ),
+                sumologic.LookupTableFieldArgs(
+                    field_name="FieldName2",
+                    field_type="string",
+                ),
+            ],
             parent_folder_id="<personal folder id>",
             primary_keys=["FieldName1"],
             size_limit_action="DeleteOldData",

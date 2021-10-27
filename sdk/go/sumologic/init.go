@@ -42,6 +42,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "sumologic:index/content:Content":
 		r = &Content{}
+	case "sumologic:index/cseAggregationRule:CseAggregationRule":
+		r = &CseAggregationRule{}
+	case "sumologic:index/cseChainRule:CseChainRule":
+		r = &CseChainRule{}
+	case "sumologic:index/cseCustomEntityType:CseCustomEntityType":
+		r = &CseCustomEntityType{}
+	case "sumologic:index/cseCustomInsight:CseCustomInsight":
+		r = &CseCustomInsight{}
+	case "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig":
+		r = &CseEntityCriticalityConfig{}
+	case "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
+		r = &CseInsightsConfiguration{}
+	case "sumologic:index/cseInsightsResolution:CseInsightsResolution":
+		r = &CseInsightsResolution{}
+	case "sumologic:index/cseInsightsStatus:CseInsightsStatus":
+		r = &CseInsightsStatus{}
+	case "sumologic:index/cseLogMapping:CseLogMapping":
+		r = &CseLogMapping{}
+	case "sumologic:index/cseMatchRule:CseMatchRule":
+		r = &CseMatchRule{}
+	case "sumologic:index/cseNetworkBlock:CseNetworkBlock":
+		r = &CseNetworkBlock{}
+	case "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression":
+		r = &CseRuleTuningExpression{}
+	case "sumologic:index/cseThresholdRule:CseThresholdRule":
+		r = &CseThresholdRule{}
 	case "sumologic:index/dashboard:Dashboard":
 		r = &Dashboard{}
 	case "sumologic:index/elbSource:ElbSource":
@@ -54,6 +80,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Folder{}
 	case "sumologic:index/gcpSource:GcpSource":
 		r = &GcpSource{}
+	case "sumologic:index/hierarchy:Hierarchy":
+		r = &Hierarchy{}
 	case "sumologic:index/httpSource:HttpSource":
 		r = &HttpSource{}
 	case "sumologic:index/ingestBudget:IngestBudget":
@@ -74,6 +102,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Partition{}
 	case "sumologic:index/passwordPolicy:PasswordPolicy":
 		r = &PasswordPolicy{}
+	case "sumologic:index/policies:Policies":
+		r = &Policies{}
 	case "sumologic:index/pollingSource:PollingSource":
 		r = &PollingSource{}
 	case "sumologic:index/role:Role":
@@ -88,6 +118,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScheduledView{}
 	case "sumologic:index/subdomain:Subdomain":
 		r = &Subdomain{}
+	case "sumologic:index/token:Token":
+		r = &Token{}
 	case "sumologic:index/user:User":
 		r = &User{}
 	default:
@@ -178,6 +210,71 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/cseAggregationRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseChainRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseCustomEntityType",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseCustomInsight",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseEntityCriticalityConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseInsightsConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseInsightsResolution",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseInsightsStatus",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseLogMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseMatchRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseNetworkBlock",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseRuleTuningExpression",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseThresholdRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/dashboard",
 		&module{version},
 	)
@@ -204,6 +301,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/gcpSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/hierarchy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -258,6 +360,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/policies",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/pollingSource",
 		&module{version},
 	)
@@ -289,6 +396,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/subdomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/token",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

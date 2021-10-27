@@ -51,14 +51,15 @@ import (
 //
 // The following arguments are supported:
 //
-// - `type` - (Required) Type of connection. Only `WebhookDefinition` is implimented right now.
+// - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
 // - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
 // - `description` - (Optional) Description of the connection.
 // - `url` - (Required) URL for the webhook connection.
 // - `headers` - (Optional) Map of access authorization headers.
 // - `customHeaders` - (Optional) Map of custom webhook headers
 // - `defaultPayload` - (Required) Default payload of the webhook.
-// - `webhookType` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, and `MicrosoftTeams`. Default: `Webhook`
+// - `connectionSubtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+// - `webhookType` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
 //
 // Additional data provided in state
 //
@@ -74,14 +75,15 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	CustomHeaders  pulumi.StringMapOutput `pulumi:"customHeaders"`
-	DefaultPayload pulumi.StringOutput    `pulumi:"defaultPayload"`
-	Description    pulumi.StringPtrOutput `pulumi:"description"`
-	Headers        pulumi.StringMapOutput `pulumi:"headers"`
-	Name           pulumi.StringOutput    `pulumi:"name"`
-	Type           pulumi.StringOutput    `pulumi:"type"`
-	Url            pulumi.StringOutput    `pulumi:"url"`
-	WebhookType    pulumi.StringPtrOutput `pulumi:"webhookType"`
+	ConnectionSubtype pulumi.StringPtrOutput `pulumi:"connectionSubtype"`
+	CustomHeaders     pulumi.StringMapOutput `pulumi:"customHeaders"`
+	DefaultPayload    pulumi.StringOutput    `pulumi:"defaultPayload"`
+	Description       pulumi.StringPtrOutput `pulumi:"description"`
+	Headers           pulumi.StringMapOutput `pulumi:"headers"`
+	Name              pulumi.StringOutput    `pulumi:"name"`
+	Type              pulumi.StringOutput    `pulumi:"type"`
+	Url               pulumi.StringOutput    `pulumi:"url"`
+	WebhookType       pulumi.StringPtrOutput `pulumi:"webhookType"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -122,25 +124,27 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	CustomHeaders  map[string]string `pulumi:"customHeaders"`
-	DefaultPayload *string           `pulumi:"defaultPayload"`
-	Description    *string           `pulumi:"description"`
-	Headers        map[string]string `pulumi:"headers"`
-	Name           *string           `pulumi:"name"`
-	Type           *string           `pulumi:"type"`
-	Url            *string           `pulumi:"url"`
-	WebhookType    *string           `pulumi:"webhookType"`
+	ConnectionSubtype *string           `pulumi:"connectionSubtype"`
+	CustomHeaders     map[string]string `pulumi:"customHeaders"`
+	DefaultPayload    *string           `pulumi:"defaultPayload"`
+	Description       *string           `pulumi:"description"`
+	Headers           map[string]string `pulumi:"headers"`
+	Name              *string           `pulumi:"name"`
+	Type              *string           `pulumi:"type"`
+	Url               *string           `pulumi:"url"`
+	WebhookType       *string           `pulumi:"webhookType"`
 }
 
 type ConnectionState struct {
-	CustomHeaders  pulumi.StringMapInput
-	DefaultPayload pulumi.StringPtrInput
-	Description    pulumi.StringPtrInput
-	Headers        pulumi.StringMapInput
-	Name           pulumi.StringPtrInput
-	Type           pulumi.StringPtrInput
-	Url            pulumi.StringPtrInput
-	WebhookType    pulumi.StringPtrInput
+	ConnectionSubtype pulumi.StringPtrInput
+	CustomHeaders     pulumi.StringMapInput
+	DefaultPayload    pulumi.StringPtrInput
+	Description       pulumi.StringPtrInput
+	Headers           pulumi.StringMapInput
+	Name              pulumi.StringPtrInput
+	Type              pulumi.StringPtrInput
+	Url               pulumi.StringPtrInput
+	WebhookType       pulumi.StringPtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -148,26 +152,28 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	CustomHeaders  map[string]string `pulumi:"customHeaders"`
-	DefaultPayload string            `pulumi:"defaultPayload"`
-	Description    *string           `pulumi:"description"`
-	Headers        map[string]string `pulumi:"headers"`
-	Name           *string           `pulumi:"name"`
-	Type           string            `pulumi:"type"`
-	Url            string            `pulumi:"url"`
-	WebhookType    *string           `pulumi:"webhookType"`
+	ConnectionSubtype *string           `pulumi:"connectionSubtype"`
+	CustomHeaders     map[string]string `pulumi:"customHeaders"`
+	DefaultPayload    string            `pulumi:"defaultPayload"`
+	Description       *string           `pulumi:"description"`
+	Headers           map[string]string `pulumi:"headers"`
+	Name              *string           `pulumi:"name"`
+	Type              string            `pulumi:"type"`
+	Url               string            `pulumi:"url"`
+	WebhookType       *string           `pulumi:"webhookType"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	CustomHeaders  pulumi.StringMapInput
-	DefaultPayload pulumi.StringInput
-	Description    pulumi.StringPtrInput
-	Headers        pulumi.StringMapInput
-	Name           pulumi.StringPtrInput
-	Type           pulumi.StringInput
-	Url            pulumi.StringInput
-	WebhookType    pulumi.StringPtrInput
+	ConnectionSubtype pulumi.StringPtrInput
+	CustomHeaders     pulumi.StringMapInput
+	DefaultPayload    pulumi.StringInput
+	Description       pulumi.StringPtrInput
+	Headers           pulumi.StringMapInput
+	Name              pulumi.StringPtrInput
+	Type              pulumi.StringInput
+	Url               pulumi.StringInput
+	WebhookType       pulumi.StringPtrInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {

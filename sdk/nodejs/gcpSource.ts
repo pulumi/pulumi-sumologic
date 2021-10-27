@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumo Logic Google Cloud Platform Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source).
  *
+ * ***Note:*** Google no longer requires a pub/sub domain to be [verified](https://cloud.google.com/pubsub/docs/push). You no longer have to set up domain verification with your GCP Source endpoint.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,15 +20,9 @@ import * as utilities from "./utilities";
  *     description: "Just testing this",
  * });
  * const gcpSource = new sumologic.GcpSource("gcp_source", {
- *     authentication: {
- *         type: "NoAuthentication",
- *     },
  *     category: "gcp",
  *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
  *     description: "My description",
- *     path: {
- *         type: "NoPathExpression",
- *     },
  * });
  * ```
  *
@@ -44,7 +40,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
  * ```
  *
- *  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source
+ *  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source [3]https://cloud.google.com/pubsub/docs/push
  */
 export class GcpSource extends pulumi.CustomResource {
     /**

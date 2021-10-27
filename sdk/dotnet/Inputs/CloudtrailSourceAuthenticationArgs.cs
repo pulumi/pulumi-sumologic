@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

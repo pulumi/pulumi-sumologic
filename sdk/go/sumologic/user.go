@@ -66,8 +66,8 @@ import (
 //
 // - `firstName` - (Required) First name of the user.
 // - `lastName` - (Required) Last name of the user.
-// - `email` - (Required) Last name of the user.
-// - `isActive` - (Required) This has the value true if the user is active and false if they have been deactivated..
+// - `email` - (Required) Email of the user.
+// - `isActive` - (Required) This has the value true if the user is active and false if they have been deactivated.
 // - `roleIds` - (Required) List of roleIds associated with the user.
 // - `transferTo` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
 //

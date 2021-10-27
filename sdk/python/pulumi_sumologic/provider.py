@@ -15,6 +15,7 @@ class ProviderArgs:
     def __init__(__self__, *,
                  access_id: pulumi.Input[str],
                  access_key: pulumi.Input[str],
+                 admin_mode: Optional[pulumi.Input[bool]] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None):
         """
@@ -22,6 +23,8 @@ class ProviderArgs:
         """
         pulumi.set(__self__, "access_id", access_id)
         pulumi.set(__self__, "access_key", access_key)
+        if admin_mode is not None:
+            pulumi.set(__self__, "admin_mode", admin_mode)
         if base_url is None:
             base_url = _utilities.get_env('SUMOLOGIC_BASE_URL')
         if base_url is not None:
@@ -50,6 +53,15 @@ class ProviderArgs:
         pulumi.set(self, "access_key", value)
 
     @property
+    @pulumi.getter(name="adminMode")
+    def admin_mode(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "admin_mode")
+
+    @admin_mode.setter
+    def admin_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "admin_mode", value)
+
+    @property
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "base_url")
@@ -75,6 +87,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_id: Optional[pulumi.Input[str]] = None,
                  access_key: Optional[pulumi.Input[str]] = None,
+                 admin_mode: Optional[pulumi.Input[bool]] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -116,6 +129,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_id: Optional[pulumi.Input[str]] = None,
                  access_key: Optional[pulumi.Input[str]] = None,
+                 admin_mode: Optional[pulumi.Input[bool]] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -136,6 +150,7 @@ class Provider(pulumi.ProviderResource):
             if access_key is None and not opts.urn:
                 raise TypeError("Missing required property 'access_key'")
             __props__.__dict__["access_key"] = access_key
+            __props__.__dict__["admin_mode"] = pulumi.Output.from_input(admin_mode).apply(pulumi.runtime.to_json) if admin_mode is not None else None
             if base_url is None:
                 base_url = _utilities.get_env('SUMOLOGIC_BASE_URL')
             __props__.__dict__["base_url"] = base_url

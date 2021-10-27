@@ -90,6 +90,8 @@ import (
 //
 // - `id` - Unique identifier for the SAML Configuration.
 // - `certificate` - Authentication Request Signing Certificate for the user.
+// - `assertionConsumerUrl` - The URL on Sumo Logic where the IdP will redirect to with its authentication response.
+// - `entityId` - A unique identifier that is the intended audience of the SAML assertion.
 //
 // ## Import
 //
@@ -103,12 +105,14 @@ import (
 type SamlConfiguration struct {
 	pulumi.CustomResourceState
 
+	AssertionConsumerUrl         pulumi.StringOutput                                   `pulumi:"assertionConsumerUrl"`
 	AuthnRequestUrl              pulumi.StringPtrOutput                                `pulumi:"authnRequestUrl"`
 	Certificate                  pulumi.StringOutput                                   `pulumi:"certificate"`
 	ConfigurationName            pulumi.StringOutput                                   `pulumi:"configurationName"`
 	DebugMode                    pulumi.BoolPtrOutput                                  `pulumi:"debugMode"`
 	DisableRequestedAuthnContext pulumi.BoolPtrOutput                                  `pulumi:"disableRequestedAuthnContext"`
 	EmailAttribute               pulumi.StringPtrOutput                                `pulumi:"emailAttribute"`
+	EntityId                     pulumi.StringOutput                                   `pulumi:"entityId"`
 	IsRedirectBinding            pulumi.BoolPtrOutput                                  `pulumi:"isRedirectBinding"`
 	Issuer                       pulumi.StringOutput                                   `pulumi:"issuer"`
 	LogoutEnabled                pulumi.BoolPtrOutput                                  `pulumi:"logoutEnabled"`
@@ -161,12 +165,14 @@ func GetSamlConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SamlConfiguration resources.
 type samlConfigurationState struct {
+	AssertionConsumerUrl         *string                                       `pulumi:"assertionConsumerUrl"`
 	AuthnRequestUrl              *string                                       `pulumi:"authnRequestUrl"`
 	Certificate                  *string                                       `pulumi:"certificate"`
 	ConfigurationName            *string                                       `pulumi:"configurationName"`
 	DebugMode                    *bool                                         `pulumi:"debugMode"`
 	DisableRequestedAuthnContext *bool                                         `pulumi:"disableRequestedAuthnContext"`
 	EmailAttribute               *string                                       `pulumi:"emailAttribute"`
+	EntityId                     *string                                       `pulumi:"entityId"`
 	IsRedirectBinding            *bool                                         `pulumi:"isRedirectBinding"`
 	Issuer                       *string                                       `pulumi:"issuer"`
 	LogoutEnabled                *bool                                         `pulumi:"logoutEnabled"`
@@ -182,12 +188,14 @@ type samlConfigurationState struct {
 }
 
 type SamlConfigurationState struct {
+	AssertionConsumerUrl         pulumi.StringPtrInput
 	AuthnRequestUrl              pulumi.StringPtrInput
 	Certificate                  pulumi.StringPtrInput
 	ConfigurationName            pulumi.StringPtrInput
 	DebugMode                    pulumi.BoolPtrInput
 	DisableRequestedAuthnContext pulumi.BoolPtrInput
 	EmailAttribute               pulumi.StringPtrInput
+	EntityId                     pulumi.StringPtrInput
 	IsRedirectBinding            pulumi.BoolPtrInput
 	Issuer                       pulumi.StringPtrInput
 	LogoutEnabled                pulumi.BoolPtrInput

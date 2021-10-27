@@ -21,7 +21,7 @@ import (
 // - `description` - (Optional) Description of the dashboard.
 // - `folderId` - (Optional) The identifier of the folder to save the dashboard in. By default it is saved in your
 //   personal folder.
-// - `refreshInterval` - (Optional) Interval of time (in seconds) to automatically refresh the dashboard.
+// - `refreshInterval` - (Optional) Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
 // - `theme` - (Optional) Theme of the dashboard.
 // - `topologyLabelMap` - (Block List, Max: 1, Optional) Topology labels for the dashboard. See
 //   topology label map schema

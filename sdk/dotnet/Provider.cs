@@ -51,6 +51,9 @@ namespace Pulumi.SumoLogic
         [Input("accessKey", required: true)]
         public Input<string> AccessKey { get; set; } = null!;
 
+        [Input("adminMode", json: true)]
+        public Input<bool>? AdminMode { get; set; }
+
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 

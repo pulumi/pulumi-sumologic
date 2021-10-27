@@ -12,8 +12,157 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
     /// 
-    /// ## Example Logs Monitor
+    /// ## Monitor Folders
     /// 
+    /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    /// NOTE: Monitor folders are considered a different resource from Library content folders.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new SumoLogic.MonitorFolderArgs
+    ///         {
+    ///             Description = "a folder for monitors",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// =======
+    /// NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
+    /// &gt; &gt; &gt; &gt; &gt; &gt; &gt; v2.11.0
+    /// 
+    /// ## Argument reference
+    /// 
+    /// The following arguments are supported:
+    /// 
+    /// - `type` - (Optional) The type of object model. Valid value:
+    ///   - `MonitorsLibraryMonitor`
+    /// - `name` - (Required) The name of the monitor. The name must be alphanumeric.
+    /// - `description` - (Required) The description of the monitor.
+    /// - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+    /// - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+    /// - `content_type` - (Optional) The type of the content object. Valid value:
+    ///   - `Monitor`
+    /// - `monitor_type` - (Required) The type of monitor. Valid values:
+    ///   - `Logs`: A logs query monitor.
+    ///   - `Metrics`: A metrics query monitor.
+    /// - `queries` - (Required) All queries from the monitor.
+    /// - `trigger_conditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+    /// - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
+    /// - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
+    /// - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+    /// - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+    /// 
+    /// Additional data provided in state:
+    /// 
+    /// - `id` - (Computed) The ID for this monitor.
+    /// - `status` - (Computed) The current status for this monitor. Values are:
+    ///   - `Critical`
+    ///   - `Warning`
+    ///   - `MissingData`
+    ///   - `Normal`
+    ///   - `Disabled`
+    /// 
+    /// ## The `trigger_conditions` block
+    /// 
+    /// A `trigger_conditions` block configures conditions for sending notifications.
+    /// ### Example
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Arguments
+    /// A `trigger_conditions` block contains one or more subblocks of the following types:
+    /// - `logs_static_condition`
+    /// - `metrics_static_condition`
+    /// - `logs_outlier_condition`
+    /// - `metrics_outlier_condition`
+    /// - `logs_missing_data_condition`
+    /// - `metrics_missing_data_condition`
+    /// 
+    /// Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
+    /// 
+    /// Here is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):
+    /// #### logs_static_condition
+    ///   - `field`
+    ///   - `critical`
+    ///     - `time_range` (Required)
+    ///     - `alert` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    ///     - `resolution` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    ///   - `warning`
+    ///     - `time_range` (Required)
+    ///     - `alert` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    ///     - `resolution` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    /// #### metrics_static_condition
+    ///   - `critical`
+    ///     - `time_range` (Required)
+    ///     - `occurrence_type` (Required)
+    ///     - `alert` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    ///     - `resolution` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    ///   - `warning`
+    ///     - `time_range` (Required)
+    ///     - `occurrence_type` (Required)
+    ///     - `alert` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    ///     - `resolution` (Required)
+    ///       - `threshold`
+    ///       - `threshold_type`
+    /// #### logs_outlier_condition
+    ///   - `field`
+    ///   - `direction`
+    ///   - `critical`
+    ///      - `window`
+    ///      - `consecutive`
+    ///      - `threshold`
+    ///   - `warning`
+    ///      - `window`
+    ///      - `consecutive`
+    ///      - `threshold`
+    /// #### metrics_outlier_condition
+    ///   - `direction`
+    ///   - `critical`
+    ///      - `baseline_window`
+    ///      - `threshold`
+    ///   - `warning`
+    ///     - `baseline_window`
+    ///     - `threshold`
+    /// #### logs_missing_data_condition
+    ///   - `time_range` (Required)
+    /// #### metrics_missing_data_condition
+    ///   - `time_range` (Required)
+    ///   - `trigger_source` (Required)
+    /// 
+    /// ## The `triggers` block
+    /// 
+    /// The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
+    /// 
+    /// Here's an example logs monitor that uses `triggers` to specify trigger conditions:
     /// ```csharp
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
@@ -101,250 +250,6 @@ namespace Pulumi.SumoLogic
     /// }
     /// ```
     /// 
-    /// ## Example Metrics Monitor
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SumoLogic = Pulumi.SumoLogic;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var tfMetricsMonitor1 = new SumoLogic.Monitor("tfMetricsMonitor1", new SumoLogic.MonitorArgs
-    ///         {
-    ///             ContentType = "Monitor",
-    ///             Description = "tf metrics monitor",
-    ///             IsDisabled = false,
-    ///             MonitorType = "Metrics",
-    ///             Notifications = 
-    ///             {
-    ///                 new SumoLogic.Inputs.MonitorNotificationArgs
-    ///                 {
-    ///                     Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
-    ///                     {
-    ///                         ConnectionType = "Email",
-    ///                         MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-    ///                         Recipients = 
-    ///                         {
-    ///                             "abc@example.com",
-    ///                         },
-    ///                         Subject = "Triggered {{TriggerType}} Alert on Monitor {{Name}}",
-    ///                         TimeZone = "PST",
-    ///                     },
-    ///                     RunForTriggerTypes = 
-    ///                     {
-    ///                         "Critical",
-    ///                         "ResolvedCritical",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Queries = 
-    ///             {
-    ///                 new SumoLogic.Inputs.MonitorQueryArgs
-    ///                 {
-    ///                     Query = "metric=CPU_Idle _sourceCategory=event-action",
-    ///                     RowId = "A",
-    ///                 },
-    ///             },
-    ///             Triggers = 
-    ///             {
-    ///                 new SumoLogic.Inputs.MonitorTriggerArgs
-    ///                 {
-    ///                     DetectionMethod = "StaticCondition",
-    ///                     OccurrenceType = "AtLeastOnce",
-    ///                     Threshold = 40,
-    ///                     ThresholdType = "GreaterThanOrEqual",
-    ///                     TimeRange = "15m",
-    ///                     TriggerSource = "AnyTimeSeries",
-    ///                     TriggerType = "Critical",
-    ///                 },
-    ///                 new SumoLogic.Inputs.MonitorTriggerArgs
-    ///                 {
-    ///                     DetectionMethod = "StaticCondition",
-    ///                     OccurrenceType = "Always",
-    ///                     Threshold = 40,
-    ///                     ThresholdType = "LessThan",
-    ///                     TimeRange = "15m",
-    ///                     TriggerSource = "AnyTimeSeries",
-    ///                     TriggerType = "ResolvedCritical",
-    ///                 },
-    ///             },
-    ///             Type = "MonitorsLibraryMonitor",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Example Logs Monitor with Webhook Connection and Folder
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SumoLogic = Pulumi.SumoLogic;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new SumoLogic.MonitorFolderArgs
-    ///         {
-    ///             Description = "A folder for Monitors",
-    ///         });
-    ///         var examplePagerdutyConnection = new SumoLogic.Connection("examplePagerdutyConnection", new SumoLogic.ConnectionArgs
-    ///         {
-    ///             Description = "PagerDuty connection for notifications from Monitors",
-    ///             Type = "WebhookConnection",
-    ///             WebhookType = "PagerDuty",
-    ///             Url = "https://events.pagerduty.com/",
-    ///             DefaultPayload = @"{
-    ///   ""service_key"": ""pagerduty_api_integration_key"",
-    ///   ""event_type"": ""trigger"",
-    ///   ""description"": ""PagerDuty connection for notifications"",
-    ///   ""client"": ""Sumo Logic"",
-    ///   ""client_url"": """"
-    /// }
-    /// ",
-    ///         });
-    ///         var tfLogsMonitor2 = new SumoLogic.Monitor("tfLogsMonitor2", new SumoLogic.MonitorArgs
-    ///         {
-    ///             Description = "logs monitor with webhook",
-    ///             Type = "MonitorsLibraryMonitor",
-    ///             ParentId = tfMonitorFolder1.Id,
-    ///             IsDisabled = false,
-    ///             ContentType = "Monitor",
-    ///             MonitorType = "Logs",
-    ///             Queries = 
-    ///             {
-    ///                 new SumoLogic.Inputs.MonitorQueryArgs
-    ///                 {
-    ///                     RowId = "A",
-    ///                     Query = "_sourceCategory=event-action info",
-    ///                 },
-    ///             },
-    ///             Triggers = 
-    ///             {
-    ///                 new SumoLogic.Inputs.MonitorTriggerArgs
-    ///                 {
-    ///                     ThresholdType = "GreaterThan",
-    ///                     Threshold = 40,
-    ///                     TimeRange = "15m",
-    ///                     OccurrenceType = "ResultCount",
-    ///                     TriggerSource = "AllResults",
-    ///                     TriggerType = "Critical",
-    ///                     DetectionMethod = "StaticCondition",
-    ///                 },
-    ///                 new SumoLogic.Inputs.MonitorTriggerArgs
-    ///                 {
-    ///                     ThresholdType = "LessThanOrEqual",
-    ///                     Threshold = 40,
-    ///                     TimeRange = "15m",
-    ///                     OccurrenceType = "ResultCount",
-    ///                     TriggerSource = "AllResults",
-    ///                     TriggerType = "ResolvedCritical",
-    ///                     DetectionMethod = "StaticCondition",
-    ///                 },
-    ///             },
-    ///             Notifications = 
-    ///             {
-    ///                 new SumoLogic.Inputs.MonitorNotificationArgs
-    ///                 {
-    ///                     Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
-    ///                     {
-    ///                         ConnectionType = "Email",
-    ///                         Recipients = 
-    ///                         {
-    ///                             "abc@example.com",
-    ///                         },
-    ///                         Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
-    ///                         TimeZone = "PST",
-    ///                         MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-    ///                     },
-    ///                     RunForTriggerTypes = 
-    ///                     {
-    ///                         "Critical",
-    ///                         "ResolvedCritical",
-    ///                     },
-    ///                 },
-    ///                 new SumoLogic.Inputs.MonitorNotificationArgs
-    ///                 {
-    ///                     Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
-    ///                     {
-    ///                         ConnectionType = "PagerDuty",
-    ///                         ConnectionId = examplePagerdutyConnection.Id,
-    ///                         PayloadOverride = @"{
-    ///   ""service_key"": ""your_pagerduty_api_integration_key"",
-    ///   ""event_type"": ""trigger"",
-    ///   ""description"": ""Alert: Triggered {{TriggerType}} for Monitor {{Name}}"",
-    ///   ""client"": ""Sumo Logic"",
-    ///   ""client_url"": ""{{QueryUrl}}""
-    /// }
-    /// ",
-    ///                     },
-    ///                     RunForTriggerTypes = 
-    ///                     {
-    ///                         "Critical",
-    ///                         "ResolvedCritical",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Example Monitor Folder
-    /// 
-    /// NOTE: Monitor folders are considered a different resource from Library content folders.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SumoLogic = Pulumi.SumoLogic;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new SumoLogic.MonitorFolderArgs
-    ///         {
-    ///             Description = "a folder for monitors",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `type` - (Optional) The type of object model. Valid value:
-    ///   - `MonitorsLibraryMonitor`
-    /// - `name` - (Required) The name of the monitor. The name must be alphanumeric.
-    /// - `description` - (Required) The description of the monitor.
-    /// - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
-    /// - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
-    /// - `content_type` - (Optional) The type of the content object. Valid value:
-    ///   - `Monitor`
-    /// - `monitor_type` - (Required) The type of monitor. Valid values:
-    ///   - `Logs`: A logs query monitor.
-    ///   - `Metrics`: A metrics query monitor.
-    /// - `queries` - (Required) All queries from the monitor.
-    /// - `triggers` - (Required) Defines the conditions of when to send notifications.
-    /// - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
-    /// - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
-    /// 
-    /// Additional data provided in state:
-    /// 
-    /// - `id` - (Computed) The ID for this monitor.
-    /// - `status` - (Computed) The current status for this monitor. Values are:
-    ///   - `Critical`
-    ///   - `Warning`
-    ///   - `MissingData`
-    ///   - `Normal`
-    ///   - `Disabled`
-    /// 
     /// ## Import
     /// 
     /// Monitors can be imported using the monitor ID, such ashcl
@@ -353,7 +258,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/monitor:Monitor test 1234567890
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/?cid=10020
+    ///  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown
     /// </summary>
     [SumoLogicResourceType("sumologic:index/monitor:Monitor")]
     public partial class Monitor : Pulumi.CustomResource
@@ -369,6 +274,9 @@ namespace Pulumi.SumoLogic
 
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        [Output("evaluationDelay")]
+        public Output<string> EvaluationDelay { get; private set; } = null!;
 
         [Output("groupNotifications")]
         public Output<bool?> GroupNotifications { get; private set; } = null!;
@@ -403,6 +311,9 @@ namespace Pulumi.SumoLogic
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
+        [Output("playbook")]
+        public Output<string?> Playbook { get; private set; } = null!;
+
         [Output("postRequestMap")]
         public Output<ImmutableDictionary<string, string>?> PostRequestMap { get; private set; } = null!;
 
@@ -411,6 +322,9 @@ namespace Pulumi.SumoLogic
 
         [Output("statuses")]
         public Output<ImmutableArray<string>> Statuses { get; private set; } = null!;
+
+        [Output("triggerConditions")]
+        public Output<Outputs.MonitorTriggerConditions?> TriggerConditions { get; private set; } = null!;
 
         [Output("triggers")]
         public Output<ImmutableArray<Outputs.MonitorTrigger>> Triggers { get; private set; } = null!;
@@ -479,6 +393,9 @@ namespace Pulumi.SumoLogic
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("evaluationDelay")]
+        public Input<string>? EvaluationDelay { get; set; }
+
         [Input("groupNotifications")]
         public Input<bool>? GroupNotifications { get; set; }
 
@@ -517,6 +434,9 @@ namespace Pulumi.SumoLogic
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
+        [Input("playbook")]
+        public Input<string>? Playbook { get; set; }
+
         [Input("postRequestMap")]
         private InputMap<string>? _postRequestMap;
         public InputMap<string> PostRequestMap
@@ -541,8 +461,12 @@ namespace Pulumi.SumoLogic
             set => _statuses = value;
         }
 
+        [Input("triggerConditions")]
+        public Input<Inputs.MonitorTriggerConditionsArgs>? TriggerConditions { get; set; }
+
         [Input("triggers")]
         private InputList<Inputs.MonitorTriggerArgs>? _triggers;
+        [Obsolete(@"The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.")]
         public InputList<Inputs.MonitorTriggerArgs> Triggers
         {
             get => _triggers ?? (_triggers = new InputList<Inputs.MonitorTriggerArgs>());
@@ -573,6 +497,9 @@ namespace Pulumi.SumoLogic
 
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("evaluationDelay")]
+        public Input<string>? EvaluationDelay { get; set; }
 
         [Input("groupNotifications")]
         public Input<bool>? GroupNotifications { get; set; }
@@ -612,6 +539,9 @@ namespace Pulumi.SumoLogic
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
+        [Input("playbook")]
+        public Input<string>? Playbook { get; set; }
+
         [Input("postRequestMap")]
         private InputMap<string>? _postRequestMap;
         public InputMap<string> PostRequestMap
@@ -636,8 +566,12 @@ namespace Pulumi.SumoLogic
             set => _statuses = value;
         }
 
+        [Input("triggerConditions")]
+        public Input<Inputs.MonitorTriggerConditionsGetArgs>? TriggerConditions { get; set; }
+
         [Input("triggers")]
         private InputList<Inputs.MonitorTriggerGetArgs>? _triggers;
+        [Obsolete(@"The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.")]
         public InputList<Inputs.MonitorTriggerGetArgs> Triggers
         {
             get => _triggers ?? (_triggers = new InputList<Inputs.MonitorTriggerGetArgs>());

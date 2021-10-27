@@ -14,6 +14,9 @@ func GetAccessId(ctx *pulumi.Context) string {
 func GetAccessKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "sumologic:accessKey")
 }
+func GetAdminMode(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "sumologic:adminMode")
+}
 func GetBaseUrl(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "sumologic:baseUrl")
 	if err == nil {

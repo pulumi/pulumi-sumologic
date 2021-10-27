@@ -11,6 +11,7 @@ from .. import _utilities
 __all__ = [
     'access_id',
     'access_key',
+    'admin_mode',
     'base_url',
     'environment',
 ]
@@ -20,6 +21,8 @@ __config__ = pulumi.Config('sumologic')
 access_id = __config__.get('accessId')
 
 access_key = __config__.get('accessKey')
+
+admin_mode = __config__.get('adminMode')
 
 base_url = __config__.get('baseUrl') or _utilities.get_env('SUMOLOGIC_BASE_URL')
 

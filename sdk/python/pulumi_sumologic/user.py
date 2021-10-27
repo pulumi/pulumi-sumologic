@@ -206,8 +206,8 @@ class User(pulumi.CustomResource):
 
         - `first_name` - (Required) First name of the user.
         - `last_name` - (Required) Last name of the user.
-        - `email` - (Required) Last name of the user.
-        - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated..
+        - `email` - (Required) Email of the user.
+        - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
         - `role_ids` - (Required) List of roleIds associated with the user.
         - `transfer_to` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
 
@@ -264,8 +264,8 @@ class User(pulumi.CustomResource):
 
         - `first_name` - (Required) First name of the user.
         - `last_name` - (Required) Last name of the user.
-        - `email` - (Required) Last name of the user.
-        - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated..
+        - `email` - (Required) Email of the user.
+        - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
         - `role_ids` - (Required) List of roleIds associated with the user.
         - `transfer_to` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
 

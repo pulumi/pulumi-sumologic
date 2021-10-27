@@ -32,6 +32,10 @@ import (
 // 					FieldName: "FieldName1",
 // 					FieldType: "boolean",
 // 				},
+// 				&sumologic.LookupTableFieldArgs{
+// 					FieldName: "FieldName2",
+// 					FieldType: "string",
+// 				},
 // 			},
 // 			ParentFolderId: pulumi.String("<personal folder id>"),
 // 			PrimaryKeys: pulumi.StringArray{

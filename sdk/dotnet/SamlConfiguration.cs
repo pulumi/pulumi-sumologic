@@ -87,6 +87,8 @@ namespace Pulumi.SumoLogic
     /// 
     /// - `id` - Unique identifier for the SAML Configuration.
     /// - `certificate` - Authentication Request Signing Certificate for the user.
+    /// - `assertion_consumer_url` - The URL on Sumo Logic where the IdP will redirect to with its authentication response.
+    /// - `entity_id` - A unique identifier that is the intended audience of the SAML assertion.
     /// 
     /// ## Import
     /// 
@@ -101,6 +103,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/samlConfiguration:SamlConfiguration")]
     public partial class SamlConfiguration : Pulumi.CustomResource
     {
+        [Output("assertionConsumerUrl")]
+        public Output<string> AssertionConsumerUrl { get; private set; } = null!;
+
         [Output("authnRequestUrl")]
         public Output<string?> AuthnRequestUrl { get; private set; } = null!;
 
@@ -118,6 +123,9 @@ namespace Pulumi.SumoLogic
 
         [Output("emailAttribute")]
         public Output<string?> EmailAttribute { get; private set; } = null!;
+
+        [Output("entityId")]
+        public Output<string> EntityId { get; private set; } = null!;
 
         [Output("isRedirectBinding")]
         public Output<bool?> IsRedirectBinding { get; private set; } = null!;
@@ -259,6 +267,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class SamlConfigurationState : Pulumi.ResourceArgs
     {
+        [Input("assertionConsumerUrl")]
+        public Input<string>? AssertionConsumerUrl { get; set; }
+
         [Input("authnRequestUrl")]
         public Input<string>? AuthnRequestUrl { get; set; }
 
@@ -276,6 +287,9 @@ namespace Pulumi.SumoLogic
 
         [Input("emailAttribute")]
         public Input<string>? EmailAttribute { get; set; }
+
+        [Input("entityId")]
+        public Input<string>? EntityId { get; set; }
 
         [Input("isRedirectBinding")]
         public Input<bool>? IsRedirectBinding { get; set; }

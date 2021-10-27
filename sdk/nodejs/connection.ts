@@ -39,14 +39,15 @@ import * as utilities from "./utilities";
  *
  * The following arguments are supported:
  *
- * - `type` - (Required) Type of connection. Only `WebhookDefinition` is implimented right now.
+ * - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
  * - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
  * - `description` - (Optional) Description of the connection.
  * - `url` - (Required) URL for the webhook connection.
  * - `headers` - (Optional) Map of access authorization headers.
  * - `customHeaders` - (Optional) Map of custom webhook headers
  * - `defaultPayload` - (Required) Default payload of the webhook.
- * - `webhookType` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, and `MicrosoftTeams`. Default: `Webhook`
+ * - `connectionSubtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+ * - `webhookType` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
  *
  * Additional data provided in state
  *
@@ -88,6 +89,7 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
+    public readonly connectionSubtype!: pulumi.Output<string | undefined>;
     public readonly customHeaders!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly defaultPayload!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
@@ -110,6 +112,7 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            inputs["connectionSubtype"] = state ? state.connectionSubtype : undefined;
             inputs["customHeaders"] = state ? state.customHeaders : undefined;
             inputs["defaultPayload"] = state ? state.defaultPayload : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -129,6 +132,7 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            inputs["connectionSubtype"] = args ? args.connectionSubtype : undefined;
             inputs["customHeaders"] = args ? args.customHeaders : undefined;
             inputs["defaultPayload"] = args ? args.defaultPayload : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -149,6 +153,7 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    readonly connectionSubtype?: pulumi.Input<string>;
     readonly customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly defaultPayload?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
@@ -163,6 +168,7 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
+    readonly connectionSubtype?: pulumi.Input<string>;
     readonly customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly defaultPayload: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;

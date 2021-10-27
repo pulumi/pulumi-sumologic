@@ -45,7 +45,7 @@ import (
 // - `name` - (Required) The name of the role.
 // - `description` - (Optional) The description of the role.
 // - `filterPredicate` - (Optional) A search filter to restrict access to specific logs.
-// - `capabilities` - (Optional) List of capabilities associated with this role.
+// - `capabilities` - (Optional) List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
 //
 // The following attributes are exported:
 //
@@ -59,7 +59,7 @@ import (
 //  $ pulumi import sumologic:index/role:Role role 1234567890
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles
+//  [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles [2]https://api.sumologic.com/docs/#operation/createRole
 type Role struct {
 	pulumi.CustomResourceState
 

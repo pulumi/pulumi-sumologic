@@ -11,6 +11,56 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides the ability to create, read, delete, and update folders for [Monitors](https://help.sumologic.com/?cid=10020).
+//
+// ## Example Monitor Folder
+//
+// NOTE: Monitor folders are considered a different resource from Library content folders.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sumologic.NewMonitorFolder(ctx, "tfMonitorFolder1", &sumologic.MonitorFolderArgs{
+// 			Description: pulumi.String("A folder for monitors managed by terraform."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Argument reference
+//
+// The following arguments are supported:
+//
+// - `type` - (Optional) The type of object model. Valid value:
+//   - `MonitorsLibraryFolder`
+// - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
+// - `description` - (Required) The description of the monitor folder.
+// - `parentId` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+//
+// Additional data provided in state:
+//
+// - `id` - (Computed) The identifier for this monitor folder.
+//
+// ## Import
+//
+// Monitor folders can be imported using the monitor folder identifier, such ashcl
+//
+// ```sh
+//  $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
+// ```
+//
+//  [1]https://help.sumologic.com/?cid=10020
 type MonitorFolder struct {
 	pulumi.CustomResourceState
 
