@@ -45,6 +45,7 @@ export class Provider extends pulumi.ProviderResource {
             }
             inputs["accessId"] = args ? args.accessId : undefined;
             inputs["accessKey"] = args ? args.accessKey : undefined;
+            inputs["adminMode"] = pulumi.output(args ? args.adminMode : undefined).apply(JSON.stringify);
             inputs["baseUrl"] = (args ? args.baseUrl : undefined) ?? utilities.getEnv("SUMOLOGIC_BASE_URL");
             inputs["environment"] = (args ? args.environment : undefined) ?? utilities.getEnv("SUMOLOGIC_ENVIRONMENT");
         }
@@ -61,6 +62,7 @@ export class Provider extends pulumi.ProviderResource {
 export interface ProviderArgs {
     readonly accessId: pulumi.Input<string>;
     readonly accessKey: pulumi.Input<string>;
+    readonly adminMode?: pulumi.Input<boolean>;
     readonly baseUrl?: pulumi.Input<string>;
     readonly environment?: pulumi.Input<string>;
 }

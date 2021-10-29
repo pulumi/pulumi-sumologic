@@ -224,12 +224,14 @@ class SamlConfigurationArgs:
 @pulumi.input_type
 class _SamlConfigurationState:
     def __init__(__self__, *,
+                 assertion_consumer_url: Optional[pulumi.Input[str]] = None,
                  authn_request_url: Optional[pulumi.Input[str]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  configuration_name: Optional[pulumi.Input[str]] = None,
                  debug_mode: Optional[pulumi.Input[bool]] = None,
                  disable_requested_authn_context: Optional[pulumi.Input[bool]] = None,
                  email_attribute: Optional[pulumi.Input[str]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
                  is_redirect_binding: Optional[pulumi.Input[bool]] = None,
                  issuer: Optional[pulumi.Input[str]] = None,
                  logout_enabled: Optional[pulumi.Input[bool]] = None,
@@ -245,6 +247,8 @@ class _SamlConfigurationState:
         """
         Input properties used for looking up and filtering SamlConfiguration resources.
         """
+        if assertion_consumer_url is not None:
+            pulumi.set(__self__, "assertion_consumer_url", assertion_consumer_url)
         if authn_request_url is not None:
             pulumi.set(__self__, "authn_request_url", authn_request_url)
         if certificate is not None:
@@ -257,6 +261,8 @@ class _SamlConfigurationState:
             pulumi.set(__self__, "disable_requested_authn_context", disable_requested_authn_context)
         if email_attribute is not None:
             pulumi.set(__self__, "email_attribute", email_attribute)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
         if is_redirect_binding is not None:
             pulumi.set(__self__, "is_redirect_binding", is_redirect_binding)
         if issuer is not None:
@@ -281,6 +287,15 @@ class _SamlConfigurationState:
             pulumi.set(__self__, "x509cert2", x509cert2)
         if x509cert3 is not None:
             pulumi.set(__self__, "x509cert3", x509cert3)
+
+    @property
+    @pulumi.getter(name="assertionConsumerUrl")
+    def assertion_consumer_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "assertion_consumer_url")
+
+    @assertion_consumer_url.setter
+    def assertion_consumer_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "assertion_consumer_url", value)
 
     @property
     @pulumi.getter(name="authnRequestUrl")
@@ -335,6 +350,15 @@ class _SamlConfigurationState:
     @email_attribute.setter
     def email_attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email_attribute", value)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
 
     @property
     @pulumi.getter(name="isRedirectBinding")
@@ -533,6 +557,8 @@ class SamlConfiguration(pulumi.CustomResource):
 
         - `id` - Unique identifier for the SAML Configuration.
         - `certificate` - Authentication Request Signing Certificate for the user.
+        - `assertion_consumer_url` - The URL on Sumo Logic where the IdP will redirect to with its authentication response.
+        - `entity_id` - A unique identifier that is the intended audience of the SAML assertion.
 
         ## Import
 
@@ -618,6 +644,8 @@ class SamlConfiguration(pulumi.CustomResource):
 
         - `id` - Unique identifier for the SAML Configuration.
         - `certificate` - Authentication Request Signing Certificate for the user.
+        - `assertion_consumer_url` - The URL on Sumo Logic where the IdP will redirect to with its authentication response.
+        - `entity_id` - A unique identifier that is the intended audience of the SAML assertion.
 
         ## Import
 
@@ -696,7 +724,9 @@ class SamlConfiguration(pulumi.CustomResource):
             __props__.__dict__["x509cert1"] = x509cert1
             __props__.__dict__["x509cert2"] = x509cert2
             __props__.__dict__["x509cert3"] = x509cert3
+            __props__.__dict__["assertion_consumer_url"] = None
             __props__.__dict__["certificate"] = None
+            __props__.__dict__["entity_id"] = None
         super(SamlConfiguration, __self__).__init__(
             'sumologic:index/samlConfiguration:SamlConfiguration',
             resource_name,
@@ -707,12 +737,14 @@ class SamlConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            assertion_consumer_url: Optional[pulumi.Input[str]] = None,
             authn_request_url: Optional[pulumi.Input[str]] = None,
             certificate: Optional[pulumi.Input[str]] = None,
             configuration_name: Optional[pulumi.Input[str]] = None,
             debug_mode: Optional[pulumi.Input[bool]] = None,
             disable_requested_authn_context: Optional[pulumi.Input[bool]] = None,
             email_attribute: Optional[pulumi.Input[str]] = None,
+            entity_id: Optional[pulumi.Input[str]] = None,
             is_redirect_binding: Optional[pulumi.Input[bool]] = None,
             issuer: Optional[pulumi.Input[str]] = None,
             logout_enabled: Optional[pulumi.Input[bool]] = None,
@@ -737,12 +769,14 @@ class SamlConfiguration(pulumi.CustomResource):
 
         __props__ = _SamlConfigurationState.__new__(_SamlConfigurationState)
 
+        __props__.__dict__["assertion_consumer_url"] = assertion_consumer_url
         __props__.__dict__["authn_request_url"] = authn_request_url
         __props__.__dict__["certificate"] = certificate
         __props__.__dict__["configuration_name"] = configuration_name
         __props__.__dict__["debug_mode"] = debug_mode
         __props__.__dict__["disable_requested_authn_context"] = disable_requested_authn_context
         __props__.__dict__["email_attribute"] = email_attribute
+        __props__.__dict__["entity_id"] = entity_id
         __props__.__dict__["is_redirect_binding"] = is_redirect_binding
         __props__.__dict__["issuer"] = issuer
         __props__.__dict__["logout_enabled"] = logout_enabled
@@ -756,6 +790,11 @@ class SamlConfiguration(pulumi.CustomResource):
         __props__.__dict__["x509cert2"] = x509cert2
         __props__.__dict__["x509cert3"] = x509cert3
         return SamlConfiguration(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="assertionConsumerUrl")
+    def assertion_consumer_url(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "assertion_consumer_url")
 
     @property
     @pulumi.getter(name="authnRequestUrl")
@@ -786,6 +825,11 @@ class SamlConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="emailAttribute")
     def email_attribute(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "email_attribute")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "entity_id")
 
     @property
     @pulumi.getter(name="isRedirectBinding")

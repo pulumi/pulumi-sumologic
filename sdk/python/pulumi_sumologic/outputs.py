@@ -37,6 +37,20 @@ __all__ = [
     'CloudwatchSourceFilter',
     'CloudwatchSourcePath',
     'CloudwatchSourcePathTagFilter',
+    'CseAggregationRuleAggregationFunction',
+    'CseAggregationRuleEntitySelector',
+    'CseAggregationRuleSeverityMapping',
+    'CseAggregationRuleSeverityMappingMapping',
+    'CseChainRuleEntitySelector',
+    'CseChainRuleExpressionsAndLimit',
+    'CseLogMappingField',
+    'CseLogMappingFieldLookup',
+    'CseLogMappingStructuredInput',
+    'CseLogMappingUnstructuredFields',
+    'CseMatchRuleEntitySelector',
+    'CseMatchRuleSeverityMapping',
+    'CseMatchRuleSeverityMappingMapping',
+    'CseThresholdRuleEntitySelector',
     'DashboardColoringRule',
     'DashboardColoringRuleColorThreshold',
     'DashboardLayout',
@@ -95,6 +109,101 @@ __all__ = [
     'GcpSourceDefaultDateFormat',
     'GcpSourceFilter',
     'GcpSourcePath',
+    'HierarchyFilter',
+    'HierarchyLevel',
+    'HierarchyLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
     'HttpSourceDefaultDateFormat',
     'HttpSourceFilter',
     'KinesisMetricsSourceAuthentication',
@@ -111,6 +220,30 @@ __all__ = [
     'MonitorNotificationNotification',
     'MonitorQuery',
     'MonitorTrigger',
+    'MonitorTriggerConditions',
+    'MonitorTriggerConditionsLogsMissingDataCondition',
+    'MonitorTriggerConditionsLogsOutlierCondition',
+    'MonitorTriggerConditionsLogsOutlierConditionCritical',
+    'MonitorTriggerConditionsLogsOutlierConditionWarning',
+    'MonitorTriggerConditionsLogsStaticCondition',
+    'MonitorTriggerConditionsLogsStaticConditionCritical',
+    'MonitorTriggerConditionsLogsStaticConditionCriticalAlert',
+    'MonitorTriggerConditionsLogsStaticConditionCriticalResolution',
+    'MonitorTriggerConditionsLogsStaticConditionWarning',
+    'MonitorTriggerConditionsLogsStaticConditionWarningAlert',
+    'MonitorTriggerConditionsLogsStaticConditionWarningResolution',
+    'MonitorTriggerConditionsMetricsMissingDataCondition',
+    'MonitorTriggerConditionsMetricsOutlierCondition',
+    'MonitorTriggerConditionsMetricsOutlierConditionCritical',
+    'MonitorTriggerConditionsMetricsOutlierConditionWarning',
+    'MonitorTriggerConditionsMetricsStaticCondition',
+    'MonitorTriggerConditionsMetricsStaticConditionCritical',
+    'MonitorTriggerConditionsMetricsStaticConditionCriticalAlert',
+    'MonitorTriggerConditionsMetricsStaticConditionCriticalResolution',
+    'MonitorTriggerConditionsMetricsStaticConditionWarning',
+    'MonitorTriggerConditionsMetricsStaticConditionWarningAlert',
+    'MonitorTriggerConditionsMetricsStaticConditionWarningResolution',
+    'PoliciesUserConcurrentSessionsLimit',
     'PollingSourceAuthentication',
     'PollingSourceDefaultDateFormat',
     'PollingSourceFilter',
@@ -155,11 +288,14 @@ class AwsInventorySourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -174,6 +310,11 @@ class AwsInventorySourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -389,11 +530,14 @@ class AwsXraySourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -408,6 +552,11 @@ class AwsXraySourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -694,11 +843,14 @@ class CloudfrontSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -713,6 +865,11 @@ class CloudfrontSourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -928,11 +1085,14 @@ class CloudtrailSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -947,6 +1107,11 @@ class CloudtrailSourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -1162,11 +1327,14 @@ class CloudwatchSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -1181,6 +1349,11 @@ class CloudwatchSourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -1368,6 +1541,614 @@ class CloudwatchSourcePathTagFilter(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CseAggregationRuleAggregationFunction(dict):
+    def __init__(__self__, *,
+                 arguments: Sequence[str],
+                 function: str,
+                 name: str):
+        pulumi.set(__self__, "arguments", arguments)
+        pulumi.set(__self__, "function", function)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def arguments(self) -> Sequence[str]:
+        return pulumi.get(self, "arguments")
+
+    @property
+    @pulumi.getter
+    def function(self) -> str:
+        return pulumi.get(self, "function")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class CseAggregationRuleEntitySelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseAggregationRuleEntitySelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseAggregationRuleEntitySelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseAggregationRuleEntitySelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 expression: str):
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class CseAggregationRuleSeverityMapping(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 default: Optional[int] = None,
+                 field: Optional[str] = None,
+                 mappings: Optional[Sequence['outputs.CseAggregationRuleSeverityMappingMapping']] = None):
+        pulumi.set(__self__, "type", type)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if mappings is not None:
+            pulumi.set(__self__, "mappings", mappings)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[int]:
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Optional[Sequence['outputs.CseAggregationRuleSeverityMappingMapping']]:
+        return pulumi.get(self, "mappings")
+
+
+@pulumi.output_type
+class CseAggregationRuleSeverityMappingMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseAggregationRuleSeverityMappingMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseAggregationRuleSeverityMappingMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseAggregationRuleSeverityMappingMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_: str,
+                 to: int,
+                 type: str):
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "to", to)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> str:
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter
+    def to(self) -> int:
+        return pulumi.get(self, "to")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CseChainRuleEntitySelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseChainRuleEntitySelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseChainRuleEntitySelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseChainRuleEntitySelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 expression: str):
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class CseChainRuleExpressionsAndLimit(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 limit: int):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "limit", limit)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> int:
+        return pulumi.get(self, "limit")
+
+
+@pulumi.output_type
+class CseLogMappingField(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateValues":
+            suggest = "alternate_values"
+        elif key == "caseInsensitive":
+            suggest = "case_insensitive"
+        elif key == "defaultValue":
+            suggest = "default_value"
+        elif key == "fieldJoins":
+            suggest = "field_joins"
+        elif key == "formatParameters":
+            suggest = "format_parameters"
+        elif key == "joinDelimiter":
+            suggest = "join_delimiter"
+        elif key == "skippedValues":
+            suggest = "skipped_values"
+        elif key == "splitDelimiter":
+            suggest = "split_delimiter"
+        elif key == "splitIndex":
+            suggest = "split_index"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseLogMappingField. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseLogMappingField.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseLogMappingField.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 alternate_values: Optional[Sequence[str]] = None,
+                 case_insensitive: Optional[bool] = None,
+                 default_value: Optional[str] = None,
+                 field_joins: Optional[Sequence[str]] = None,
+                 format: Optional[str] = None,
+                 format_parameters: Optional[Sequence[str]] = None,
+                 join_delimiter: Optional[str] = None,
+                 lookups: Optional[Sequence['outputs.CseLogMappingFieldLookup']] = None,
+                 skipped_values: Optional[Sequence[str]] = None,
+                 split_delimiter: Optional[str] = None,
+                 split_index: Optional[str] = None,
+                 time_zone: Optional[str] = None,
+                 value: Optional[str] = None,
+                 value_type: Optional[str] = None):
+        pulumi.set(__self__, "name", name)
+        if alternate_values is not None:
+            pulumi.set(__self__, "alternate_values", alternate_values)
+        if case_insensitive is not None:
+            pulumi.set(__self__, "case_insensitive", case_insensitive)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if field_joins is not None:
+            pulumi.set(__self__, "field_joins", field_joins)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if format_parameters is not None:
+            pulumi.set(__self__, "format_parameters", format_parameters)
+        if join_delimiter is not None:
+            pulumi.set(__self__, "join_delimiter", join_delimiter)
+        if lookups is not None:
+            pulumi.set(__self__, "lookups", lookups)
+        if skipped_values is not None:
+            pulumi.set(__self__, "skipped_values", skipped_values)
+        if split_delimiter is not None:
+            pulumi.set(__self__, "split_delimiter", split_delimiter)
+        if split_index is not None:
+            pulumi.set(__self__, "split_index", split_index)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_type is not None:
+            pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="alternateValues")
+    def alternate_values(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "alternate_values")
+
+    @property
+    @pulumi.getter(name="caseInsensitive")
+    def case_insensitive(self) -> Optional[bool]:
+        return pulumi.get(self, "case_insensitive")
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[str]:
+        return pulumi.get(self, "default_value")
+
+    @property
+    @pulumi.getter(name="fieldJoins")
+    def field_joins(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "field_joins")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="formatParameters")
+    def format_parameters(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "format_parameters")
+
+    @property
+    @pulumi.getter(name="joinDelimiter")
+    def join_delimiter(self) -> Optional[str]:
+        return pulumi.get(self, "join_delimiter")
+
+    @property
+    @pulumi.getter
+    def lookups(self) -> Optional[Sequence['outputs.CseLogMappingFieldLookup']]:
+        return pulumi.get(self, "lookups")
+
+    @property
+    @pulumi.getter(name="skippedValues")
+    def skipped_values(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "skipped_values")
+
+    @property
+    @pulumi.getter(name="splitDelimiter")
+    def split_delimiter(self) -> Optional[str]:
+        return pulumi.get(self, "split_delimiter")
+
+    @property
+    @pulumi.getter(name="splitIndex")
+    def split_index(self) -> Optional[str]:
+        return pulumi.get(self, "split_index")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> Optional[str]:
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class CseLogMappingFieldLookup(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CseLogMappingStructuredInput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventIdPattern":
+            suggest = "event_id_pattern"
+        elif key == "logFormat":
+            suggest = "log_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseLogMappingStructuredInput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseLogMappingStructuredInput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseLogMappingStructuredInput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_id_pattern: str,
+                 log_format: str,
+                 product: str,
+                 vendor: str):
+        pulumi.set(__self__, "event_id_pattern", event_id_pattern)
+        pulumi.set(__self__, "log_format", log_format)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @property
+    @pulumi.getter(name="eventIdPattern")
+    def event_id_pattern(self) -> str:
+        return pulumi.get(self, "event_id_pattern")
+
+    @property
+    @pulumi.getter(name="logFormat")
+    def log_format(self) -> str:
+        return pulumi.get(self, "log_format")
+
+    @property
+    @pulumi.getter
+    def product(self) -> str:
+        return pulumi.get(self, "product")
+
+    @property
+    @pulumi.getter
+    def vendor(self) -> str:
+        return pulumi.get(self, "vendor")
+
+
+@pulumi.output_type
+class CseLogMappingUnstructuredFields(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "patternNames":
+            suggest = "pattern_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseLogMappingUnstructuredFields. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseLogMappingUnstructuredFields.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseLogMappingUnstructuredFields.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pattern_names: Sequence[str]):
+        pulumi.set(__self__, "pattern_names", pattern_names)
+
+    @property
+    @pulumi.getter(name="patternNames")
+    def pattern_names(self) -> Sequence[str]:
+        return pulumi.get(self, "pattern_names")
+
+
+@pulumi.output_type
+class CseMatchRuleEntitySelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseMatchRuleEntitySelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseMatchRuleEntitySelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseMatchRuleEntitySelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 expression: str):
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class CseMatchRuleSeverityMapping(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 default: Optional[int] = None,
+                 field: Optional[str] = None,
+                 mappings: Optional[Sequence['outputs.CseMatchRuleSeverityMappingMapping']] = None):
+        pulumi.set(__self__, "type", type)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if mappings is not None:
+            pulumi.set(__self__, "mappings", mappings)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[int]:
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Optional[Sequence['outputs.CseMatchRuleSeverityMappingMapping']]:
+        return pulumi.get(self, "mappings")
+
+
+@pulumi.output_type
+class CseMatchRuleSeverityMappingMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseMatchRuleSeverityMappingMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseMatchRuleSeverityMappingMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseMatchRuleSeverityMappingMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_: str,
+                 to: int,
+                 type: str):
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "to", to)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> str:
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter
+    def to(self) -> int:
+        return pulumi.get(self, "to")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CseThresholdRuleEntitySelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseThresholdRuleEntitySelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseThresholdRuleEntitySelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseThresholdRuleEntitySelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 expression: str):
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
 
 
 @pulumi.output_type
@@ -3252,11 +4033,14 @@ class ElbSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -3271,6 +4055,11 @@ class ElbSourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -3555,6 +4344,4331 @@ class GcpSourcePath(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class HierarchyFilter(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Filtering key.
+        :param str value: Value required for the filtering key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Filtering key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value required for the filtering key.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class HierarchyLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevel":
+            suggest = "next_level"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+                 next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+        :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_level is not None:
+            pulumi.set(__self__, "next_level", next_level)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevel")
+    def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
+        """
+        Next level without a condition.
+        """
+        return pulumi.get(self, "next_level")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
+    def __init__(__self__, *,
+                 condition: str,
+                 level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'):
+        """
+        :param str condition: Condition to be checked against for level.entityType value, for now full string match.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "level", level)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def level(self) -> 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel':
+        return pulumi.get(self, "level")
+
+
+@pulumi.output_type
+class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "nextLevelsWithConditions":
+            suggest = "next_levels_with_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 next_levels_with_conditions: Optional[Sequence[str]] = None):
+        """
+        :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        if next_levels_with_conditions is not None:
+            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter(name="nextLevelsWithConditions")
+    def next_levels_with_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Zero or more next levels with conditions.
+        """
+        return pulumi.get(self, "next_levels_with_conditions")
 
 
 @pulumi.output_type
@@ -4302,6 +9416,934 @@ class MonitorTrigger(dict):
 
 
 @pulumi.output_type
+class MonitorTriggerConditions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logsMissingDataCondition":
+            suggest = "logs_missing_data_condition"
+        elif key == "logsOutlierCondition":
+            suggest = "logs_outlier_condition"
+        elif key == "logsStaticCondition":
+            suggest = "logs_static_condition"
+        elif key == "metricsMissingDataCondition":
+            suggest = "metrics_missing_data_condition"
+        elif key == "metricsOutlierCondition":
+            suggest = "metrics_outlier_condition"
+        elif key == "metricsStaticCondition":
+            suggest = "metrics_static_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 logs_missing_data_condition: Optional['outputs.MonitorTriggerConditionsLogsMissingDataCondition'] = None,
+                 logs_outlier_condition: Optional['outputs.MonitorTriggerConditionsLogsOutlierCondition'] = None,
+                 logs_static_condition: Optional['outputs.MonitorTriggerConditionsLogsStaticCondition'] = None,
+                 metrics_missing_data_condition: Optional['outputs.MonitorTriggerConditionsMetricsMissingDataCondition'] = None,
+                 metrics_outlier_condition: Optional['outputs.MonitorTriggerConditionsMetricsOutlierCondition'] = None,
+                 metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None):
+        if logs_missing_data_condition is not None:
+            pulumi.set(__self__, "logs_missing_data_condition", logs_missing_data_condition)
+        if logs_outlier_condition is not None:
+            pulumi.set(__self__, "logs_outlier_condition", logs_outlier_condition)
+        if logs_static_condition is not None:
+            pulumi.set(__self__, "logs_static_condition", logs_static_condition)
+        if metrics_missing_data_condition is not None:
+            pulumi.set(__self__, "metrics_missing_data_condition", metrics_missing_data_condition)
+        if metrics_outlier_condition is not None:
+            pulumi.set(__self__, "metrics_outlier_condition", metrics_outlier_condition)
+        if metrics_static_condition is not None:
+            pulumi.set(__self__, "metrics_static_condition", metrics_static_condition)
+
+    @property
+    @pulumi.getter(name="logsMissingDataCondition")
+    def logs_missing_data_condition(self) -> Optional['outputs.MonitorTriggerConditionsLogsMissingDataCondition']:
+        return pulumi.get(self, "logs_missing_data_condition")
+
+    @property
+    @pulumi.getter(name="logsOutlierCondition")
+    def logs_outlier_condition(self) -> Optional['outputs.MonitorTriggerConditionsLogsOutlierCondition']:
+        return pulumi.get(self, "logs_outlier_condition")
+
+    @property
+    @pulumi.getter(name="logsStaticCondition")
+    def logs_static_condition(self) -> Optional['outputs.MonitorTriggerConditionsLogsStaticCondition']:
+        return pulumi.get(self, "logs_static_condition")
+
+    @property
+    @pulumi.getter(name="metricsMissingDataCondition")
+    def metrics_missing_data_condition(self) -> Optional['outputs.MonitorTriggerConditionsMetricsMissingDataCondition']:
+        return pulumi.get(self, "metrics_missing_data_condition")
+
+    @property
+    @pulumi.getter(name="metricsOutlierCondition")
+    def metrics_outlier_condition(self) -> Optional['outputs.MonitorTriggerConditionsMetricsOutlierCondition']:
+        return pulumi.get(self, "metrics_outlier_condition")
+
+    @property
+    @pulumi.getter(name="metricsStaticCondition")
+    def metrics_static_condition(self) -> Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition']:
+        return pulumi.get(self, "metrics_static_condition")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsMissingDataCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsMissingDataCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsMissingDataCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsMissingDataCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_range: str):
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsOutlierCondition(dict):
+    def __init__(__self__, *,
+                 critical: Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionCritical'] = None,
+                 direction: Optional[str] = None,
+                 field: Optional[str] = None,
+                 warning: Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionWarning'] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionCritical']:
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionWarning']:
+        return pulumi.get(self, "warning")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsOutlierConditionCritical(dict):
+    def __init__(__self__, *,
+                 consecutive: Optional[int] = None,
+                 threshold: Optional[float] = None,
+                 window: Optional[int] = None):
+        if consecutive is not None:
+            pulumi.set(__self__, "consecutive", consecutive)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if window is not None:
+            pulumi.set(__self__, "window", window)
+
+    @property
+    @pulumi.getter
+    def consecutive(self) -> Optional[int]:
+        return pulumi.get(self, "consecutive")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter
+    def window(self) -> Optional[int]:
+        return pulumi.get(self, "window")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsOutlierConditionWarning(dict):
+    def __init__(__self__, *,
+                 consecutive: Optional[int] = None,
+                 threshold: Optional[float] = None,
+                 window: Optional[int] = None):
+        if consecutive is not None:
+            pulumi.set(__self__, "consecutive", consecutive)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if window is not None:
+            pulumi.set(__self__, "window", window)
+
+    @property
+    @pulumi.getter
+    def consecutive(self) -> Optional[int]:
+        return pulumi.get(self, "consecutive")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter
+    def window(self) -> Optional[int]:
+        return pulumi.get(self, "window")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsStaticCondition(dict):
+    def __init__(__self__, *,
+                 critical: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionCritical'] = None,
+                 field: Optional[str] = None,
+                 warning: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionWarning'] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional['outputs.MonitorTriggerConditionsLogsStaticConditionCritical']:
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional['outputs.MonitorTriggerConditionsLogsStaticConditionWarning']:
+        return pulumi.get(self, "warning")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsStaticConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsStaticConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert',
+                 resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution',
+                 time_range: str):
+        pulumi.set(__self__, "alert", alert)
+        pulumi.set(__self__, "resolution", resolution)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter
+    def alert(self) -> 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert':
+        return pulumi.get(self, "alert")
+
+    @property
+    @pulumi.getter
+    def resolution(self) -> 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution':
+        return pulumi.get(self, "resolution")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsStaticConditionCriticalAlert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsStaticConditionCriticalAlert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionCriticalAlert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionCriticalAlert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsStaticConditionCriticalResolution(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsStaticConditionCriticalResolution. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionCriticalResolution.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionCriticalResolution.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsStaticConditionWarning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsStaticConditionWarning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionWarning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert',
+                 resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution',
+                 time_range: str):
+        pulumi.set(__self__, "alert", alert)
+        pulumi.set(__self__, "resolution", resolution)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter
+    def alert(self) -> 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert':
+        return pulumi.get(self, "alert")
+
+    @property
+    @pulumi.getter
+    def resolution(self) -> 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution':
+        return pulumi.get(self, "resolution")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsStaticConditionWarningAlert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsStaticConditionWarningAlert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionWarningAlert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionWarningAlert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsStaticConditionWarningResolution(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsStaticConditionWarningResolution. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionWarningResolution.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsStaticConditionWarningResolution.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsMissingDataCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeRange":
+            suggest = "time_range"
+        elif key == "triggerSource":
+            suggest = "trigger_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsMissingDataCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsMissingDataCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsMissingDataCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_range: str,
+                 trigger_source: str):
+        pulumi.set(__self__, "time_range", time_range)
+        pulumi.set(__self__, "trigger_source", trigger_source)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter(name="triggerSource")
+    def trigger_source(self) -> str:
+        return pulumi.get(self, "trigger_source")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsOutlierCondition(dict):
+    def __init__(__self__, *,
+                 critical: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionCritical'] = None,
+                 direction: Optional[str] = None,
+                 warning: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionWarning'] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionCritical']:
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionWarning']:
+        return pulumi.get(self, "warning")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsOutlierConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baselineWindow":
+            suggest = "baseline_window"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsOutlierConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsOutlierConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsOutlierConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 baseline_window: Optional[str] = None,
+                 threshold: Optional[float] = None):
+        if baseline_window is not None:
+            pulumi.set(__self__, "baseline_window", baseline_window)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="baselineWindow")
+    def baseline_window(self) -> Optional[str]:
+        return pulumi.get(self, "baseline_window")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsOutlierConditionWarning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baselineWindow":
+            suggest = "baseline_window"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsOutlierConditionWarning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsOutlierConditionWarning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsOutlierConditionWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 baseline_window: Optional[str] = None,
+                 threshold: Optional[float] = None):
+        if baseline_window is not None:
+            pulumi.set(__self__, "baseline_window", baseline_window)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="baselineWindow")
+    def baseline_window(self) -> Optional[str]:
+        return pulumi.get(self, "baseline_window")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsStaticCondition(dict):
+    def __init__(__self__, *,
+                 critical: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionCritical'] = None,
+                 warning: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionWarning'] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionCritical']:
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionWarning']:
+        return pulumi.get(self, "warning")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsStaticConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "occurrenceType":
+            suggest = "occurrence_type"
+        elif key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsStaticConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert: 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalAlert',
+                 occurrence_type: str,
+                 resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution',
+                 time_range: str):
+        pulumi.set(__self__, "alert", alert)
+        pulumi.set(__self__, "occurrence_type", occurrence_type)
+        pulumi.set(__self__, "resolution", resolution)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter
+    def alert(self) -> 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalAlert':
+        return pulumi.get(self, "alert")
+
+    @property
+    @pulumi.getter(name="occurrenceType")
+    def occurrence_type(self) -> str:
+        return pulumi.get(self, "occurrence_type")
+
+    @property
+    @pulumi.getter
+    def resolution(self) -> 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution':
+        return pulumi.get(self, "resolution")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsStaticConditionCriticalAlert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsStaticConditionCriticalAlert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionCriticalAlert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionCriticalAlert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsStaticConditionCriticalResolution. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionCriticalResolution.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionCriticalResolution.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsStaticConditionWarning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "occurrenceType":
+            suggest = "occurrence_type"
+        elif key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsStaticConditionWarning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionWarning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert: 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningAlert',
+                 occurrence_type: str,
+                 resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolution',
+                 time_range: str):
+        pulumi.set(__self__, "alert", alert)
+        pulumi.set(__self__, "occurrence_type", occurrence_type)
+        pulumi.set(__self__, "resolution", resolution)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter
+    def alert(self) -> 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningAlert':
+        return pulumi.get(self, "alert")
+
+    @property
+    @pulumi.getter(name="occurrenceType")
+    def occurrence_type(self) -> str:
+        return pulumi.get(self, "occurrence_type")
+
+    @property
+    @pulumi.getter
+    def resolution(self) -> 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolution':
+        return pulumi.get(self, "resolution")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsStaticConditionWarningAlert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsStaticConditionWarningAlert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionWarningAlert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionWarningAlert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsStaticConditionWarningResolution(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdType":
+            suggest = "threshold_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsStaticConditionWarningResolution. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionWarningResolution.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsStaticConditionWarningResolution.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threshold: Optional[float] = None,
+                 threshold_type: Optional[str] = None):
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[str]:
+        return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class PoliciesUserConcurrentSessionsLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxConcurrentSessions":
+            suggest = "max_concurrent_sessions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PoliciesUserConcurrentSessionsLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PoliciesUserConcurrentSessionsLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PoliciesUserConcurrentSessionsLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 max_concurrent_sessions: Optional[int] = None):
+        pulumi.set(__self__, "enabled", enabled)
+        if max_concurrent_sessions is not None:
+            pulumi.set(__self__, "max_concurrent_sessions", max_concurrent_sessions)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxConcurrentSessions")
+    def max_concurrent_sessions(self) -> Optional[int]:
+        return pulumi.get(self, "max_concurrent_sessions")
+
+
+@pulumi.output_type
 class PollingSourceAuthentication(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4561,11 +10603,14 @@ class S3AuditSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -4580,6 +10625,11 @@ class S3AuditSourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -4795,11 +10845,14 @@ class S3SourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
@@ -4814,6 +10867,11 @@ class S3SourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")

@@ -16,10 +16,16 @@ import * as utilities from "./utilities";
  *
  * const lookupTable = new sumologic.LookupTable("lookupTable", {
  *     description: "some description",
- *     fields: [{
- *         fieldName: "FieldName1",
- *         fieldType: "boolean",
- *     }],
+ *     fields: [
+ *         {
+ *             fieldName: "FieldName1",
+ *             fieldType: "boolean",
+ *         },
+ *         {
+ *             fieldName: "FieldName2",
+ *             fieldType: "string",
+ *         },
+ *     ],
  *     parentFolderId: "<personal folder id>",
  *     primaryKeys: ["FieldName1"],
  *     sizeLimitAction: "DeleteOldData",

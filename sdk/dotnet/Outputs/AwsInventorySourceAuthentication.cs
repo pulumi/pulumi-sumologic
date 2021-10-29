@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class AwsInventorySourceAuthentication
     {
         public readonly string? AccessKey;
+        public readonly string? Region;
         public readonly string? RoleArn;
         public readonly string? SecretKey;
         public readonly string Type;
@@ -22,6 +23,8 @@ namespace Pulumi.SumoLogic.Outputs
         private AwsInventorySourceAuthentication(
             string? accessKey,
 
+            string? region,
+
             string? roleArn,
 
             string? secretKey,
@@ -29,6 +32,7 @@ namespace Pulumi.SumoLogic.Outputs
             string type)
         {
             AccessKey = accessKey;
+            Region = region;
             RoleArn = roleArn;
             SecretKey = secretKey;
             Type = type;

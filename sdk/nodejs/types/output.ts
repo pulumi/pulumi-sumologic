@@ -6,6 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 
 export interface AwsInventorySourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;
@@ -40,6 +41,7 @@ export interface AwsInventorySourcePathTagFilter {
 
 export interface AwsXraySourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;
@@ -86,6 +88,7 @@ export interface CloudSyslogSourceFilter {
 
 export interface CloudfrontSourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;
@@ -120,6 +123,7 @@ export interface CloudfrontSourcePathTagFilter {
 
 export interface CloudtrailSourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;
@@ -154,6 +158,7 @@ export interface CloudtrailSourcePathTagFilter {
 
 export interface CloudwatchSourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;
@@ -184,6 +189,97 @@ export interface CloudwatchSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     type?: string;
+}
+
+export interface CseAggregationRuleAggregationFunction {
+    arguments: string[];
+    function: string;
+    name: string;
+}
+
+export interface CseAggregationRuleEntitySelector {
+    entityType: string;
+    expression: string;
+}
+
+export interface CseAggregationRuleSeverityMapping {
+    default?: number;
+    field?: string;
+    mappings?: outputs.CseAggregationRuleSeverityMappingMapping[];
+    type: string;
+}
+
+export interface CseAggregationRuleSeverityMappingMapping {
+    from: string;
+    to: number;
+    type: string;
+}
+
+export interface CseChainRuleEntitySelector {
+    entityType: string;
+    expression: string;
+}
+
+export interface CseChainRuleExpressionsAndLimit {
+    expression: string;
+    limit: number;
+}
+
+export interface CseLogMappingField {
+    alternateValues?: string[];
+    caseInsensitive?: boolean;
+    defaultValue?: string;
+    fieldJoins?: string[];
+    format?: string;
+    formatParameters?: string[];
+    joinDelimiter?: string;
+    lookups?: outputs.CseLogMappingFieldLookup[];
+    name: string;
+    skippedValues?: string[];
+    splitDelimiter?: string;
+    splitIndex?: string;
+    timeZone?: string;
+    value?: string;
+    valueType?: string;
+}
+
+export interface CseLogMappingFieldLookup {
+    key: string;
+    value: string;
+}
+
+export interface CseLogMappingStructuredInput {
+    eventIdPattern: string;
+    logFormat: string;
+    product: string;
+    vendor: string;
+}
+
+export interface CseLogMappingUnstructuredFields {
+    patternNames: string[];
+}
+
+export interface CseMatchRuleEntitySelector {
+    entityType: string;
+    expression: string;
+}
+
+export interface CseMatchRuleSeverityMapping {
+    default?: number;
+    field?: string;
+    mappings?: outputs.CseMatchRuleSeverityMappingMapping[];
+    type: string;
+}
+
+export interface CseMatchRuleSeverityMappingMapping {
+    from: string;
+    to: number;
+    type: string;
+}
+
+export interface CseThresholdRuleEntitySelector {
+    entityType: string;
+    expression: string;
 }
 
 export interface DashboardColoringRule {
@@ -453,6 +549,7 @@ export interface DashboardVariableSourceDefinitionMetadataVariableSourceDefiniti
 
 export interface ElbSourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;
@@ -503,6 +600,1082 @@ export interface GcpSourceFilter {
 
 export interface GcpSourcePath {
     type?: string;
+}
+
+export interface HierarchyFilter {
+    /**
+     * Filtering key.
+     */
+    key: string;
+    /**
+     * Value required for the filtering key.
+     */
+    value: string;
+}
+
+export interface HierarchyLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: string;
+    level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: string;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: string[];
 }
 
 export interface HttpSourceDefaultDateFormat {
@@ -612,6 +1785,141 @@ export interface MonitorTrigger {
     triggerType?: string;
 }
 
+export interface MonitorTriggerConditions {
+    logsMissingDataCondition?: outputs.MonitorTriggerConditionsLogsMissingDataCondition;
+    logsOutlierCondition?: outputs.MonitorTriggerConditionsLogsOutlierCondition;
+    logsStaticCondition?: outputs.MonitorTriggerConditionsLogsStaticCondition;
+    metricsMissingDataCondition?: outputs.MonitorTriggerConditionsMetricsMissingDataCondition;
+    metricsOutlierCondition?: outputs.MonitorTriggerConditionsMetricsOutlierCondition;
+    metricsStaticCondition?: outputs.MonitorTriggerConditionsMetricsStaticCondition;
+}
+
+export interface MonitorTriggerConditionsLogsMissingDataCondition {
+    timeRange: string;
+}
+
+export interface MonitorTriggerConditionsLogsOutlierCondition {
+    critical?: outputs.MonitorTriggerConditionsLogsOutlierConditionCritical;
+    direction?: string;
+    field?: string;
+    warning?: outputs.MonitorTriggerConditionsLogsOutlierConditionWarning;
+}
+
+export interface MonitorTriggerConditionsLogsOutlierConditionCritical {
+    consecutive?: number;
+    threshold?: number;
+    window?: number;
+}
+
+export interface MonitorTriggerConditionsLogsOutlierConditionWarning {
+    consecutive?: number;
+    threshold?: number;
+    window?: number;
+}
+
+export interface MonitorTriggerConditionsLogsStaticCondition {
+    critical?: outputs.MonitorTriggerConditionsLogsStaticConditionCritical;
+    field?: string;
+    warning?: outputs.MonitorTriggerConditionsLogsStaticConditionWarning;
+}
+
+export interface MonitorTriggerConditionsLogsStaticConditionCritical {
+    alert: outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert;
+    resolution: outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution;
+    timeRange: string;
+}
+
+export interface MonitorTriggerConditionsLogsStaticConditionCriticalAlert {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsLogsStaticConditionWarning {
+    alert: outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert;
+    resolution: outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution;
+    timeRange: string;
+}
+
+export interface MonitorTriggerConditionsLogsStaticConditionWarningAlert {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsLogsStaticConditionWarningResolution {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsMetricsMissingDataCondition {
+    timeRange: string;
+    triggerSource: string;
+}
+
+export interface MonitorTriggerConditionsMetricsOutlierCondition {
+    critical?: outputs.MonitorTriggerConditionsMetricsOutlierConditionCritical;
+    direction?: string;
+    warning?: outputs.MonitorTriggerConditionsMetricsOutlierConditionWarning;
+}
+
+export interface MonitorTriggerConditionsMetricsOutlierConditionCritical {
+    baselineWindow?: string;
+    threshold?: number;
+}
+
+export interface MonitorTriggerConditionsMetricsOutlierConditionWarning {
+    baselineWindow?: string;
+    threshold?: number;
+}
+
+export interface MonitorTriggerConditionsMetricsStaticCondition {
+    critical?: outputs.MonitorTriggerConditionsMetricsStaticConditionCritical;
+    warning?: outputs.MonitorTriggerConditionsMetricsStaticConditionWarning;
+}
+
+export interface MonitorTriggerConditionsMetricsStaticConditionCritical {
+    alert: outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalAlert;
+    occurrenceType: string;
+    resolution: outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution;
+    timeRange: string;
+}
+
+export interface MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsMetricsStaticConditionWarning {
+    alert: outputs.MonitorTriggerConditionsMetricsStaticConditionWarningAlert;
+    occurrenceType: string;
+    resolution: outputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolution;
+    timeRange: string;
+}
+
+export interface MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsMetricsStaticConditionWarningResolution {
+    threshold?: number;
+    thresholdType?: string;
+}
+
+export interface PoliciesUserConcurrentSessionsLimit {
+    enabled: boolean;
+    maxConcurrentSessions?: number;
+}
+
 export interface PollingSourceAuthentication {
     accessKey?: string;
     roleArn?: string;
@@ -648,6 +1956,7 @@ export interface PollingSourcePathTagFilter {
 
 export interface S3AuditSourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;
@@ -682,6 +1991,7 @@ export interface S3AuditSourcePathTagFilter {
 
 export interface S3SourceAuthentication {
     accessKey?: string;
+    region?: string;
     roleArn?: string;
     secretKey?: string;
     type: string;

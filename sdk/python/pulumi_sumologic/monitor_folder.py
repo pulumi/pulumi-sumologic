@@ -382,7 +382,43 @@ class MonitorFolder(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a MonitorFolder resource with the given unique name, props, and options.
+        Provides the ability to create, read, delete, and update folders for [Monitors](https://help.sumologic.com/?cid=10020).
+
+        ## Example Monitor Folder
+
+        NOTE: Monitor folders are considered a different resource from Library content folders.
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for monitors managed by terraform.")
+        ```
+
+        ## Argument reference
+
+        The following arguments are supported:
+
+        - `type` - (Optional) The type of object model. Valid value:
+          - `MonitorsLibraryFolder`
+        - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
+        - `description` - (Required) The description of the monitor folder.
+        - `parent_id` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+
+        Additional data provided in state:
+
+        - `id` - (Computed) The identifier for this monitor folder.
+
+        ## Import
+
+        Monitor folders can be imported using the monitor folder identifier, such ashcl
+
+        ```sh
+         $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
+        ```
+
+         [1]https://help.sumologic.com/?cid=10020
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -393,7 +429,43 @@ class MonitorFolder(pulumi.CustomResource):
                  args: MonitorFolderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MonitorFolder resource with the given unique name, props, and options.
+        Provides the ability to create, read, delete, and update folders for [Monitors](https://help.sumologic.com/?cid=10020).
+
+        ## Example Monitor Folder
+
+        NOTE: Monitor folders are considered a different resource from Library content folders.
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for monitors managed by terraform.")
+        ```
+
+        ## Argument reference
+
+        The following arguments are supported:
+
+        - `type` - (Optional) The type of object model. Valid value:
+          - `MonitorsLibraryFolder`
+        - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
+        - `description` - (Required) The description of the monitor folder.
+        - `parent_id` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+
+        Additional data provided in state:
+
+        - `id` - (Computed) The identifier for this monitor folder.
+
+        ## Import
+
+        Monitor folders can be imported using the monitor folder identifier, such ashcl
+
+        ```sh
+         $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
+        ```
+
+         [1]https://help.sumologic.com/?cid=10020
+
         :param str resource_name: The name of the resource.
         :param MonitorFolderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

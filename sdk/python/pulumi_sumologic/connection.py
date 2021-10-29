@@ -16,6 +16,7 @@ class ConnectionArgs:
                  default_payload: pulumi.Input[str],
                  type: pulumi.Input[str],
                  url: pulumi.Input[str],
+                 connection_subtype: Optional[pulumi.Input[str]] = None,
                  custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -27,6 +28,8 @@ class ConnectionArgs:
         pulumi.set(__self__, "default_payload", default_payload)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "url", url)
+        if connection_subtype is not None:
+            pulumi.set(__self__, "connection_subtype", connection_subtype)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
         if description is not None:
@@ -64,6 +67,15 @@ class ConnectionArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="connectionSubtype")
+    def connection_subtype(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_subtype")
+
+    @connection_subtype.setter
+    def connection_subtype(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_subtype", value)
 
     @property
     @pulumi.getter(name="customHeaders")
@@ -114,6 +126,7 @@ class ConnectionArgs:
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 connection_subtype: Optional[pulumi.Input[str]] = None,
                  custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_payload: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -125,6 +138,8 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         """
+        if connection_subtype is not None:
+            pulumi.set(__self__, "connection_subtype", connection_subtype)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
         if default_payload is not None:
@@ -141,6 +156,15 @@ class _ConnectionState:
             pulumi.set(__self__, "url", url)
         if webhook_type is not None:
             pulumi.set(__self__, "webhook_type", webhook_type)
+
+    @property
+    @pulumi.getter(name="connectionSubtype")
+    def connection_subtype(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_subtype")
+
+    @connection_subtype.setter
+    def connection_subtype(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_subtype", value)
 
     @property
     @pulumi.getter(name="customHeaders")
@@ -220,6 +244,7 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 connection_subtype: Optional[pulumi.Input[str]] = None,
                  custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_payload: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -263,14 +288,15 @@ class Connection(pulumi.CustomResource):
 
         The following arguments are supported:
 
-        - `type` - (Required) Type of connection. Only `WebhookDefinition` is implimented right now.
+        - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
         - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
         - `description` - (Optional) Description of the connection.
         - `url` - (Required) URL for the webhook connection.
         - `headers` - (Optional) Map of access authorization headers.
         - `custom_headers` - (Optional) Map of custom webhook headers
         - `default_payload` - (Required) Default payload of the webhook.
-        - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, and `MicrosoftTeams`. Default: `Webhook`
+        - `connection_subtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
 
         Additional data provided in state
 
@@ -327,14 +353,15 @@ class Connection(pulumi.CustomResource):
 
         The following arguments are supported:
 
-        - `type` - (Required) Type of connection. Only `WebhookDefinition` is implimented right now.
+        - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
         - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
         - `description` - (Optional) Description of the connection.
         - `url` - (Required) URL for the webhook connection.
         - `headers` - (Optional) Map of access authorization headers.
         - `custom_headers` - (Optional) Map of custom webhook headers
         - `default_payload` - (Required) Default payload of the webhook.
-        - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, and `MicrosoftTeams`. Default: `Webhook`
+        - `connection_subtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
 
         Additional data provided in state
 
@@ -363,6 +390,7 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 connection_subtype: Optional[pulumi.Input[str]] = None,
                  custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_payload: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -383,6 +411,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            __props__.__dict__["connection_subtype"] = connection_subtype
             __props__.__dict__["custom_headers"] = custom_headers
             if default_payload is None and not opts.urn:
                 raise TypeError("Missing required property 'default_payload'")
@@ -407,6 +436,7 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            connection_subtype: Optional[pulumi.Input[str]] = None,
             custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             default_payload: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -427,6 +457,7 @@ class Connection(pulumi.CustomResource):
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["connection_subtype"] = connection_subtype
         __props__.__dict__["custom_headers"] = custom_headers
         __props__.__dict__["default_payload"] = default_payload
         __props__.__dict__["description"] = description
@@ -436,6 +467,11 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         __props__.__dict__["webhook_type"] = webhook_type
         return Connection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectionSubtype")
+    def connection_subtype(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "connection_subtype")
 
     @property
     @pulumi.getter(name="customHeaders")

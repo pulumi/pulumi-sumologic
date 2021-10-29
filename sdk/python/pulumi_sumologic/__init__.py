@@ -14,18 +14,34 @@ from .collector import *
 from .collector_ingest_budget_assignment import *
 from .connection import *
 from .content import *
+from .cse_aggregation_rule import *
+from .cse_chain_rule import *
+from .cse_custom_entity_type import *
+from .cse_custom_insight import *
+from .cse_entity_criticality_config import *
+from .cse_insights_configuration import *
+from .cse_insights_resolution import *
+from .cse_insights_status import *
+from .cse_log_mapping import *
+from .cse_match_rule import *
+from .cse_network_block import *
+from .cse_rule_tuning_expression import *
+from .cse_threshold_rule import *
 from .dashboard import *
 from .elb_source import *
 from .field import *
 from .field_extraction_rule import *
 from .folder import *
 from .gcp_source import *
+from .get_admin_recommended_folder import *
 from .get_caller_identity import *
 from .get_collector import *
+from .get_cse_log_mapping_vendor_product import *
 from .get_http_source import *
 from .get_my_user_id import *
 from .get_personal_folder import *
 from .get_role import *
+from .hierarchy import *
 from .http_source import *
 from .ingest_budget import *
 from .ingest_budget_v2 import *
@@ -36,6 +52,7 @@ from .monitor import *
 from .monitor_folder import *
 from .partition import *
 from .password_policy import *
+from .policies import *
 from .polling_source import *
 from .provider import *
 from .role import *
@@ -44,6 +61,7 @@ from .s3_source import *
 from .saml_configuration import *
 from .scheduled_view import *
 from .subdomain import *
+from .token import *
 from .user import *
 from ._inputs import *
 from . import outputs
@@ -87,6 +105,32 @@ def _register_module():
                 return Connection(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/content:Content":
                 return Content(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseAggregationRule:CseAggregationRule":
+                return CseAggregationRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseChainRule:CseChainRule":
+                return CseChainRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseCustomEntityType:CseCustomEntityType":
+                return CseCustomEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseCustomInsight:CseCustomInsight":
+                return CseCustomInsight(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig":
+                return CseEntityCriticalityConfig(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
+                return CseInsightsConfiguration(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseInsightsResolution:CseInsightsResolution":
+                return CseInsightsResolution(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseInsightsStatus:CseInsightsStatus":
+                return CseInsightsStatus(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseLogMapping:CseLogMapping":
+                return CseLogMapping(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseMatchRule:CseMatchRule":
+                return CseMatchRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseNetworkBlock:CseNetworkBlock":
+                return CseNetworkBlock(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression":
+                return CseRuleTuningExpression(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/cseThresholdRule:CseThresholdRule":
+                return CseThresholdRule(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/dashboard:Dashboard":
                 return Dashboard(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/elbSource:ElbSource":
@@ -99,6 +143,8 @@ def _register_module():
                 return Folder(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/gcpSource:GcpSource":
                 return GcpSource(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/hierarchy:Hierarchy":
+                return Hierarchy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/httpSource:HttpSource":
                 return HttpSource(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/ingestBudget:IngestBudget":
@@ -119,6 +165,8 @@ def _register_module():
                 return Partition(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/passwordPolicy:PasswordPolicy":
                 return PasswordPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/policies:Policies":
+                return Policies(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/pollingSource:PollingSource":
                 return PollingSource(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/role:Role":
@@ -133,6 +181,8 @@ def _register_module():
                 return ScheduledView(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/subdomain:Subdomain":
                 return Subdomain(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "sumologic:index/token:Token":
+                return Token(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "sumologic:index/user:User":
                 return User(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -151,12 +201,26 @@ def _register_module():
     pulumi.runtime.register_resource_module("sumologic", "index/collectorIngestBudgetAssignment", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/connection", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/content", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseAggregationRule", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseChainRule", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseCustomEntityType", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseCustomInsight", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseEntityCriticalityConfig", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseInsightsConfiguration", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseInsightsResolution", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseInsightsStatus", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseLogMapping", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseMatchRule", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseNetworkBlock", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseRuleTuningExpression", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/cseThresholdRule", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/dashboard", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/elbSource", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/field", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/fieldExtractionRule", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/folder", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/gcpSource", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/hierarchy", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/httpSource", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/ingestBudget", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/ingestBudgetV2", _module_instance)
@@ -167,6 +231,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("sumologic", "index/monitorFolder", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/partition", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/passwordPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/policies", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/pollingSource", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/role", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/s3AuditSource", _module_instance)
@@ -174,6 +239,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("sumologic", "index/samlConfiguration", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/scheduledView", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/subdomain", _module_instance)
+    pulumi.runtime.register_resource_module("sumologic", "index/token", _module_instance)
     pulumi.runtime.register_resource_module("sumologic", "index/user", _module_instance)
 
 

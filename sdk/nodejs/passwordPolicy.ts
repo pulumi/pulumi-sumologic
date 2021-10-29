@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * The following arguments are supported:
  *
  * - `minLength` - (Optional) The minimum length of the password. Defaults to 8.
- * - `maxLength` - (Optional) The maximum length of the password. Defaults to 128.
+ * - `maxLength` - (Optional) The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
  * - `mustContainLowercase` - (Optional) If the password must contain lower case characters. Defaults to true.
  * - `mustContainUppercase` - (Optional) If the password must contain upper case characters. Defaults to true.
  * - `mustContainDigits` - (Optional) If the password must contain digits. Defaults to true.

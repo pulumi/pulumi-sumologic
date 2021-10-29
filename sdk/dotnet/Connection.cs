@@ -54,14 +54,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// The following arguments are supported:
     /// 
-    /// - `type` - (Required) Type of connection. Only `WebhookDefinition` is implimented right now.
+    /// - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
     /// - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
     /// - `description` - (Optional) Description of the connection.
     /// - `url` - (Required) URL for the webhook connection.
     /// - `headers` - (Optional) Map of access authorization headers.
     /// - `custom_headers` - (Optional) Map of custom webhook headers
     /// - `default_payload` - (Required) Default payload of the webhook.
-    /// - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, and `MicrosoftTeams`. Default: `Webhook`
+    /// - `connection_subtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+    /// - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
     /// 
     /// Additional data provided in state
     /// 
@@ -78,6 +79,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
+        [Output("connectionSubtype")]
+        public Output<string?> ConnectionSubtype { get; private set; } = null!;
+
         [Output("customHeaders")]
         public Output<ImmutableDictionary<string, string>?> CustomHeaders { get; private set; } = null!;
 
@@ -148,6 +152,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class ConnectionArgs : Pulumi.ResourceArgs
     {
+        [Input("connectionSubtype")]
+        public Input<string>? ConnectionSubtype { get; set; }
+
         [Input("customHeaders")]
         private InputMap<string>? _customHeaders;
         public InputMap<string> CustomHeaders
@@ -189,6 +196,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class ConnectionState : Pulumi.ResourceArgs
     {
+        [Input("connectionSubtype")]
+        public Input<string>? ConnectionSubtype { get; set; }
+
         [Input("customHeaders")]
         private InputMap<string>? _customHeaders;
         public InputMap<string> CustomHeaders

@@ -71,6 +71,8 @@ import * as utilities from "./utilities";
  *
  * - `id` - Unique identifier for the SAML Configuration.
  * - `certificate` - Authentication Request Signing Certificate for the user.
+ * - `assertionConsumerUrl` - The URL on Sumo Logic where the IdP will redirect to with its authentication response.
+ * - `entityId` - A unique identifier that is the intended audience of the SAML assertion.
  *
  * ## Import
  *
@@ -110,12 +112,14 @@ export class SamlConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === SamlConfiguration.__pulumiType;
     }
 
+    public /*out*/ readonly assertionConsumerUrl!: pulumi.Output<string>;
     public readonly authnRequestUrl!: pulumi.Output<string | undefined>;
     public /*out*/ readonly certificate!: pulumi.Output<string>;
     public readonly configurationName!: pulumi.Output<string>;
     public readonly debugMode!: pulumi.Output<boolean | undefined>;
     public readonly disableRequestedAuthnContext!: pulumi.Output<boolean | undefined>;
     public readonly emailAttribute!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly entityId!: pulumi.Output<string>;
     public readonly isRedirectBinding!: pulumi.Output<boolean | undefined>;
     public readonly issuer!: pulumi.Output<string>;
     public readonly logoutEnabled!: pulumi.Output<boolean | undefined>;
@@ -142,12 +146,14 @@ export class SamlConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SamlConfigurationState | undefined;
+            inputs["assertionConsumerUrl"] = state ? state.assertionConsumerUrl : undefined;
             inputs["authnRequestUrl"] = state ? state.authnRequestUrl : undefined;
             inputs["certificate"] = state ? state.certificate : undefined;
             inputs["configurationName"] = state ? state.configurationName : undefined;
             inputs["debugMode"] = state ? state.debugMode : undefined;
             inputs["disableRequestedAuthnContext"] = state ? state.disableRequestedAuthnContext : undefined;
             inputs["emailAttribute"] = state ? state.emailAttribute : undefined;
+            inputs["entityId"] = state ? state.entityId : undefined;
             inputs["isRedirectBinding"] = state ? state.isRedirectBinding : undefined;
             inputs["issuer"] = state ? state.issuer : undefined;
             inputs["logoutEnabled"] = state ? state.logoutEnabled : undefined;
@@ -188,7 +194,9 @@ export class SamlConfiguration extends pulumi.CustomResource {
             inputs["x509cert1"] = args ? args.x509cert1 : undefined;
             inputs["x509cert2"] = args ? args.x509cert2 : undefined;
             inputs["x509cert3"] = args ? args.x509cert3 : undefined;
+            inputs["assertionConsumerUrl"] = undefined /*out*/;
             inputs["certificate"] = undefined /*out*/;
+            inputs["entityId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -201,12 +209,14 @@ export class SamlConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SamlConfiguration resources.
  */
 export interface SamlConfigurationState {
+    readonly assertionConsumerUrl?: pulumi.Input<string>;
     readonly authnRequestUrl?: pulumi.Input<string>;
     readonly certificate?: pulumi.Input<string>;
     readonly configurationName?: pulumi.Input<string>;
     readonly debugMode?: pulumi.Input<boolean>;
     readonly disableRequestedAuthnContext?: pulumi.Input<boolean>;
     readonly emailAttribute?: pulumi.Input<string>;
+    readonly entityId?: pulumi.Input<string>;
     readonly isRedirectBinding?: pulumi.Input<boolean>;
     readonly issuer?: pulumi.Input<string>;
     readonly logoutEnabled?: pulumi.Input<boolean>;

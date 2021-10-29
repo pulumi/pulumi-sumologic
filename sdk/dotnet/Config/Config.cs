@@ -12,6 +12,8 @@ namespace Pulumi.SumoLogic
 
         public static string? AccessKey { get; set; } = __config.Get("accessKey");
 
+        public static bool? AdminMode { get; set; } = __config.GetBoolean("adminMode");
+
         public static string? BaseUrl { get; set; } = __config.Get("baseUrl") ?? Utilities.GetEnv("SUMOLOGIC_BASE_URL");
 
         public static string? Environment { get; set; } = __config.Get("environment") ?? Utilities.GetEnv("SUMOLOGIC_ENVIRONMENT");

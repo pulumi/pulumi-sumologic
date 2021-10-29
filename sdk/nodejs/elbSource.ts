@@ -49,7 +49,8 @@ import * as utilities from "./utilities";
  *      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
  *      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`.
  *      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`.
- *      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`.
+ *      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+ *      + `region` - (Optional) Your AWS Bucket region.
  *  - `path` - (Required) The location to scan for new data.
  *      + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
  *      + `bucketName` - (Required) The name of the bucket.

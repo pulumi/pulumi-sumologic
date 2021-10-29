@@ -20,6 +20,7 @@ class MonitorArgs:
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 evaluation_delay: Optional[pulumi.Input[str]] = None,
                  group_notifications: Optional[pulumi.Input[bool]] = None,
                  is_disabled: Optional[pulumi.Input[bool]] = None,
                  is_locked: Optional[pulumi.Input[bool]] = None,
@@ -30,9 +31,11 @@ class MonitorArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
+                 playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -48,6 +51,8 @@ class MonitorArgs:
             pulumi.set(__self__, "created_by", created_by)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if evaluation_delay is not None:
+            pulumi.set(__self__, "evaluation_delay", evaluation_delay)
         if group_notifications is not None:
             pulumi.set(__self__, "group_notifications", group_notifications)
         if is_disabled is not None:
@@ -68,12 +73,19 @@ class MonitorArgs:
             pulumi.set(__self__, "notifications", notifications)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
+        if playbook is not None:
+            pulumi.set(__self__, "playbook", playbook)
         if post_request_map is not None:
             pulumi.set(__self__, "post_request_map", post_request_map)
         if queries is not None:
             pulumi.set(__self__, "queries", queries)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
+        if trigger_conditions is not None:
+            pulumi.set(__self__, "trigger_conditions", trigger_conditions)
+        if triggers is not None:
+            warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
+            pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
         if triggers is not None:
             pulumi.set(__self__, "triggers", triggers)
         if type is not None:
@@ -125,6 +137,15 @@ class MonitorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="evaluationDelay")
+    def evaluation_delay(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluation_delay")
+
+    @evaluation_delay.setter
+    def evaluation_delay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluation_delay", value)
 
     @property
     @pulumi.getter(name="groupNotifications")
@@ -217,6 +238,15 @@ class MonitorArgs:
         pulumi.set(self, "parent_id", value)
 
     @property
+    @pulumi.getter
+    def playbook(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "playbook")
+
+    @playbook.setter
+    def playbook(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "playbook", value)
+
+    @property
     @pulumi.getter(name="postRequestMap")
     def post_request_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "post_request_map")
@@ -242,6 +272,15 @@ class MonitorArgs:
     @statuses.setter
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "statuses", value)
+
+    @property
+    @pulumi.getter(name="triggerConditions")
+    def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
+        return pulumi.get(self, "trigger_conditions")
+
+    @trigger_conditions.setter
+    def trigger_conditions(self, value: Optional[pulumi.Input['MonitorTriggerConditionsArgs']]):
+        pulumi.set(self, "trigger_conditions", value)
 
     @property
     @pulumi.getter
@@ -278,6 +317,7 @@ class _MonitorState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 evaluation_delay: Optional[pulumi.Input[str]] = None,
                  group_notifications: Optional[pulumi.Input[bool]] = None,
                  is_disabled: Optional[pulumi.Input[bool]] = None,
                  is_locked: Optional[pulumi.Input[bool]] = None,
@@ -289,9 +329,11 @@ class _MonitorState:
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
+                 playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -306,6 +348,8 @@ class _MonitorState:
             pulumi.set(__self__, "created_by", created_by)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if evaluation_delay is not None:
+            pulumi.set(__self__, "evaluation_delay", evaluation_delay)
         if group_notifications is not None:
             pulumi.set(__self__, "group_notifications", group_notifications)
         if is_disabled is not None:
@@ -328,12 +372,19 @@ class _MonitorState:
             pulumi.set(__self__, "notifications", notifications)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
+        if playbook is not None:
+            pulumi.set(__self__, "playbook", playbook)
         if post_request_map is not None:
             pulumi.set(__self__, "post_request_map", post_request_map)
         if queries is not None:
             pulumi.set(__self__, "queries", queries)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
+        if trigger_conditions is not None:
+            pulumi.set(__self__, "trigger_conditions", trigger_conditions)
+        if triggers is not None:
+            warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
+            pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
         if triggers is not None:
             pulumi.set(__self__, "triggers", triggers)
         if type is not None:
@@ -376,6 +427,15 @@ class _MonitorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="evaluationDelay")
+    def evaluation_delay(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluation_delay")
+
+    @evaluation_delay.setter
+    def evaluation_delay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluation_delay", value)
 
     @property
     @pulumi.getter(name="groupNotifications")
@@ -477,6 +537,15 @@ class _MonitorState:
         pulumi.set(self, "parent_id", value)
 
     @property
+    @pulumi.getter
+    def playbook(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "playbook")
+
+    @playbook.setter
+    def playbook(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "playbook", value)
+
+    @property
     @pulumi.getter(name="postRequestMap")
     def post_request_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "post_request_map")
@@ -502,6 +571,15 @@ class _MonitorState:
     @statuses.setter
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "statuses", value)
+
+    @property
+    @pulumi.getter(name="triggerConditions")
+    def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
+        return pulumi.get(self, "trigger_conditions")
+
+    @trigger_conditions.setter
+    def trigger_conditions(self, value: Optional[pulumi.Input['MonitorTriggerConditionsArgs']]):
+        pulumi.set(self, "trigger_conditions", value)
 
     @property
     @pulumi.getter
@@ -540,6 +618,7 @@ class Monitor(pulumi.CustomResource):
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 evaluation_delay: Optional[pulumi.Input[str]] = None,
                  group_notifications: Optional[pulumi.Input[bool]] = None,
                  is_disabled: Optional[pulumi.Input[bool]] = None,
                  is_locked: Optional[pulumi.Input[bool]] = None,
@@ -551,9 +630,11 @@ class Monitor(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
+                 playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
@@ -561,8 +642,139 @@ class Monitor(pulumi.CustomResource):
         """
         Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
 
-        ## Example Logs Monitor
+        ## Monitor Folders
 
+        <<<<<<< HEAD
+        NOTE: Monitor folders are considered a different resource from Library content folders.
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="a folder for monitors")
+        ```
+        =======
+        NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
+        > > > > > > > v2.11.0
+
+        ## Argument reference
+
+        The following arguments are supported:
+
+        - `type` - (Optional) The type of object model. Valid value:
+          - `MonitorsLibraryMonitor`
+        - `name` - (Required) The name of the monitor. The name must be alphanumeric.
+        - `description` - (Required) The description of the monitor.
+        - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        - `content_type` - (Optional) The type of the content object. Valid value:
+          - `Monitor`
+        - `monitor_type` - (Required) The type of monitor. Valid values:
+          - `Logs`: A logs query monitor.
+          - `Metrics`: A metrics query monitor.
+        - `queries` - (Required) All queries from the monitor.
+        - `trigger_conditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
+        - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
+        - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+
+        Additional data provided in state:
+
+        - `id` - (Computed) The ID for this monitor.
+        - `status` - (Computed) The current status for this monitor. Values are:
+          - `Critical`
+          - `Warning`
+          - `MissingData`
+          - `Normal`
+          - `Disabled`
+
+        ## The `trigger_conditions` block
+
+        A `trigger_conditions` block configures conditions for sending notifications.
+        ### Example
+        ```python
+        import pulumi
+        ```
+        ### Arguments
+        A `trigger_conditions` block contains one or more subblocks of the following types:
+        - `logs_static_condition`
+        - `metrics_static_condition`
+        - `logs_outlier_condition`
+        - `metrics_outlier_condition`
+        - `logs_missing_data_condition`
+        - `metrics_missing_data_condition`
+
+        Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
+
+        Here is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):
+        #### logs_static_condition
+          - `field`
+          - `critical`
+            - `time_range` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+          - `warning`
+            - `time_range` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+        #### metrics_static_condition
+          - `critical`
+            - `time_range` (Required)
+            - `occurrence_type` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+          - `warning`
+            - `time_range` (Required)
+            - `occurrence_type` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+        #### logs_outlier_condition
+          - `field`
+          - `direction`
+          - `critical`
+             - `window`
+             - `consecutive`
+             - `threshold`
+          - `warning`
+             - `window`
+             - `consecutive`
+             - `threshold`
+        #### metrics_outlier_condition
+          - `direction`
+          - `critical`
+             - `baseline_window`
+             - `threshold`
+          - `warning`
+            - `baseline_window`
+            - `threshold`
+        #### logs_missing_data_condition
+          - `time_range` (Required)
+        #### metrics_missing_data_condition
+          - `time_range` (Required)
+          - `trigger_source` (Required)
+
+        ## The `triggers` block
+
+        The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
+
+        Here's an example logs monitor that uses `triggers` to specify trigger conditions:
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -624,184 +836,6 @@ class Monitor(pulumi.CustomResource):
             type="MonitorsLibraryMonitor")
         ```
 
-        ## Example Metrics Monitor
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_metrics_monitor1 = sumologic.Monitor("tfMetricsMonitor1",
-            content_type="Monitor",
-            description="tf metrics monitor",
-            is_disabled=False,
-            monitor_type="Metrics",
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    recipients=["abc@example.com"],
-                    subject="Triggered {{TriggerType}} Alert on Monitor {{Name}}",
-                    time_zone="PST",
-                ),
-                run_for_trigger_types=[
-                    "Critical",
-                    "ResolvedCritical",
-                ],
-            )],
-            queries=[sumologic.MonitorQueryArgs(
-                query="metric=CPU_Idle _sourceCategory=event-action",
-                row_id="A",
-            )],
-            triggers=[
-                sumologic.MonitorTriggerArgs(
-                    detection_method="StaticCondition",
-                    occurrence_type="AtLeastOnce",
-                    threshold=40,
-                    threshold_type="GreaterThanOrEqual",
-                    time_range="15m",
-                    trigger_source="AnyTimeSeries",
-                    trigger_type="Critical",
-                ),
-                sumologic.MonitorTriggerArgs(
-                    detection_method="StaticCondition",
-                    occurrence_type="Always",
-                    threshold=40,
-                    threshold_type="LessThan",
-                    time_range="15m",
-                    trigger_source="AnyTimeSeries",
-                    trigger_type="ResolvedCritical",
-                ),
-            ],
-            type="MonitorsLibraryMonitor")
-        ```
-
-        ## Example Logs Monitor with Webhook Connection and Folder
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for Monitors")
-        example_pagerduty_connection = sumologic.Connection("examplePagerdutyConnection",
-            description="PagerDuty connection for notifications from Monitors",
-            type="WebhookConnection",
-            webhook_type="PagerDuty",
-            url="https://events.pagerduty.com/",
-            default_payload=\"\"\"{
-          "service_key": "pagerduty_api_integration_key",
-          "event_type": "trigger",
-          "description": "PagerDuty connection for notifications",
-          "client": "Sumo Logic",
-          "client_url": ""
-        }
-        \"\"\")
-        tf_logs_monitor2 = sumologic.Monitor("tfLogsMonitor2",
-            description="logs monitor with webhook",
-            type="MonitorsLibraryMonitor",
-            parent_id=tf_monitor_folder1.id,
-            is_disabled=False,
-            content_type="Monitor",
-            monitor_type="Logs",
-            queries=[sumologic.MonitorQueryArgs(
-                row_id="A",
-                query="_sourceCategory=event-action info",
-            )],
-            triggers=[
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="GreaterThan",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="Critical",
-                    detection_method="StaticCondition",
-                ),
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="LessThanOrEqual",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="ResolvedCritical",
-                    detection_method="StaticCondition",
-                ),
-            ],
-            notifications=[
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="Email",
-                        recipients=["abc@example.com"],
-                        subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                        time_zone="PST",
-                        message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    ),
-                    run_for_trigger_types=[
-                        "Critical",
-                        "ResolvedCritical",
-                    ],
-                ),
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="PagerDuty",
-                        connection_id=example_pagerduty_connection.id,
-                        payload_override=\"\"\"{
-          "service_key": "your_pagerduty_api_integration_key",
-          "event_type": "trigger",
-          "description": "Alert: Triggered {{TriggerType}} for Monitor {{Name}}",
-          "client": "Sumo Logic",
-          "client_url": "{{QueryUrl}}"
-        }
-        \"\"\",
-                    ),
-                    run_for_trigger_types=[
-                        "Critical",
-                        "ResolvedCritical",
-                    ],
-                ),
-            ])
-        ```
-
-        ## Example Monitor Folder
-
-        NOTE: Monitor folders are considered a different resource from Library content folders.
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="a folder for monitors")
-        ```
-
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Optional) The type of object model. Valid value:
-          - `MonitorsLibraryMonitor`
-        - `name` - (Required) The name of the monitor. The name must be alphanumeric.
-        - `description` - (Required) The description of the monitor.
-        - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
-        - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
-        - `content_type` - (Optional) The type of the content object. Valid value:
-          - `Monitor`
-        - `monitor_type` - (Required) The type of monitor. Valid values:
-          - `Logs`: A logs query monitor.
-          - `Metrics`: A metrics query monitor.
-        - `queries` - (Required) All queries from the monitor.
-        - `triggers` - (Required) Defines the conditions of when to send notifications.
-        - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
-        - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
-
-        Additional data provided in state:
-
-        - `id` - (Computed) The ID for this monitor.
-        - `status` - (Computed) The current status for this monitor. Values are:
-          - `Critical`
-          - `Warning`
-          - `MissingData`
-          - `Normal`
-          - `Disabled`
-
         ## Import
 
         Monitors can be imported using the monitor ID, such ashcl
@@ -810,7 +844,7 @@ class Monitor(pulumi.CustomResource):
          $ pulumi import sumologic:index/monitor:Monitor test 1234567890
         ```
 
-         [1]https://help.sumologic.com/?cid=10020
+         [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -824,8 +858,139 @@ class Monitor(pulumi.CustomResource):
         """
         Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
 
-        ## Example Logs Monitor
+        ## Monitor Folders
 
+        <<<<<<< HEAD
+        NOTE: Monitor folders are considered a different resource from Library content folders.
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="a folder for monitors")
+        ```
+        =======
+        NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
+        > > > > > > > v2.11.0
+
+        ## Argument reference
+
+        The following arguments are supported:
+
+        - `type` - (Optional) The type of object model. Valid value:
+          - `MonitorsLibraryMonitor`
+        - `name` - (Required) The name of the monitor. The name must be alphanumeric.
+        - `description` - (Required) The description of the monitor.
+        - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        - `content_type` - (Optional) The type of the content object. Valid value:
+          - `Monitor`
+        - `monitor_type` - (Required) The type of monitor. Valid values:
+          - `Logs`: A logs query monitor.
+          - `Metrics`: A metrics query monitor.
+        - `queries` - (Required) All queries from the monitor.
+        - `trigger_conditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
+        - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
+        - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+
+        Additional data provided in state:
+
+        - `id` - (Computed) The ID for this monitor.
+        - `status` - (Computed) The current status for this monitor. Values are:
+          - `Critical`
+          - `Warning`
+          - `MissingData`
+          - `Normal`
+          - `Disabled`
+
+        ## The `trigger_conditions` block
+
+        A `trigger_conditions` block configures conditions for sending notifications.
+        ### Example
+        ```python
+        import pulumi
+        ```
+        ### Arguments
+        A `trigger_conditions` block contains one or more subblocks of the following types:
+        - `logs_static_condition`
+        - `metrics_static_condition`
+        - `logs_outlier_condition`
+        - `metrics_outlier_condition`
+        - `logs_missing_data_condition`
+        - `metrics_missing_data_condition`
+
+        Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
+
+        Here is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):
+        #### logs_static_condition
+          - `field`
+          - `critical`
+            - `time_range` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+          - `warning`
+            - `time_range` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+        #### metrics_static_condition
+          - `critical`
+            - `time_range` (Required)
+            - `occurrence_type` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+          - `warning`
+            - `time_range` (Required)
+            - `occurrence_type` (Required)
+            - `alert` (Required)
+              - `threshold`
+              - `threshold_type`
+            - `resolution` (Required)
+              - `threshold`
+              - `threshold_type`
+        #### logs_outlier_condition
+          - `field`
+          - `direction`
+          - `critical`
+             - `window`
+             - `consecutive`
+             - `threshold`
+          - `warning`
+             - `window`
+             - `consecutive`
+             - `threshold`
+        #### metrics_outlier_condition
+          - `direction`
+          - `critical`
+             - `baseline_window`
+             - `threshold`
+          - `warning`
+            - `baseline_window`
+            - `threshold`
+        #### logs_missing_data_condition
+          - `time_range` (Required)
+        #### metrics_missing_data_condition
+          - `time_range` (Required)
+          - `trigger_source` (Required)
+
+        ## The `triggers` block
+
+        The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
+
+        Here's an example logs monitor that uses `triggers` to specify trigger conditions:
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -887,184 +1052,6 @@ class Monitor(pulumi.CustomResource):
             type="MonitorsLibraryMonitor")
         ```
 
-        ## Example Metrics Monitor
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_metrics_monitor1 = sumologic.Monitor("tfMetricsMonitor1",
-            content_type="Monitor",
-            description="tf metrics monitor",
-            is_disabled=False,
-            monitor_type="Metrics",
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    recipients=["abc@example.com"],
-                    subject="Triggered {{TriggerType}} Alert on Monitor {{Name}}",
-                    time_zone="PST",
-                ),
-                run_for_trigger_types=[
-                    "Critical",
-                    "ResolvedCritical",
-                ],
-            )],
-            queries=[sumologic.MonitorQueryArgs(
-                query="metric=CPU_Idle _sourceCategory=event-action",
-                row_id="A",
-            )],
-            triggers=[
-                sumologic.MonitorTriggerArgs(
-                    detection_method="StaticCondition",
-                    occurrence_type="AtLeastOnce",
-                    threshold=40,
-                    threshold_type="GreaterThanOrEqual",
-                    time_range="15m",
-                    trigger_source="AnyTimeSeries",
-                    trigger_type="Critical",
-                ),
-                sumologic.MonitorTriggerArgs(
-                    detection_method="StaticCondition",
-                    occurrence_type="Always",
-                    threshold=40,
-                    threshold_type="LessThan",
-                    time_range="15m",
-                    trigger_source="AnyTimeSeries",
-                    trigger_type="ResolvedCritical",
-                ),
-            ],
-            type="MonitorsLibraryMonitor")
-        ```
-
-        ## Example Logs Monitor with Webhook Connection and Folder
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for Monitors")
-        example_pagerduty_connection = sumologic.Connection("examplePagerdutyConnection",
-            description="PagerDuty connection for notifications from Monitors",
-            type="WebhookConnection",
-            webhook_type="PagerDuty",
-            url="https://events.pagerduty.com/",
-            default_payload=\"\"\"{
-          "service_key": "pagerduty_api_integration_key",
-          "event_type": "trigger",
-          "description": "PagerDuty connection for notifications",
-          "client": "Sumo Logic",
-          "client_url": ""
-        }
-        \"\"\")
-        tf_logs_monitor2 = sumologic.Monitor("tfLogsMonitor2",
-            description="logs monitor with webhook",
-            type="MonitorsLibraryMonitor",
-            parent_id=tf_monitor_folder1.id,
-            is_disabled=False,
-            content_type="Monitor",
-            monitor_type="Logs",
-            queries=[sumologic.MonitorQueryArgs(
-                row_id="A",
-                query="_sourceCategory=event-action info",
-            )],
-            triggers=[
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="GreaterThan",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="Critical",
-                    detection_method="StaticCondition",
-                ),
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="LessThanOrEqual",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="ResolvedCritical",
-                    detection_method="StaticCondition",
-                ),
-            ],
-            notifications=[
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="Email",
-                        recipients=["abc@example.com"],
-                        subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                        time_zone="PST",
-                        message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    ),
-                    run_for_trigger_types=[
-                        "Critical",
-                        "ResolvedCritical",
-                    ],
-                ),
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="PagerDuty",
-                        connection_id=example_pagerduty_connection.id,
-                        payload_override=\"\"\"{
-          "service_key": "your_pagerduty_api_integration_key",
-          "event_type": "trigger",
-          "description": "Alert: Triggered {{TriggerType}} for Monitor {{Name}}",
-          "client": "Sumo Logic",
-          "client_url": "{{QueryUrl}}"
-        }
-        \"\"\",
-                    ),
-                    run_for_trigger_types=[
-                        "Critical",
-                        "ResolvedCritical",
-                    ],
-                ),
-            ])
-        ```
-
-        ## Example Monitor Folder
-
-        NOTE: Monitor folders are considered a different resource from Library content folders.
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="a folder for monitors")
-        ```
-
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Optional) The type of object model. Valid value:
-          - `MonitorsLibraryMonitor`
-        - `name` - (Required) The name of the monitor. The name must be alphanumeric.
-        - `description` - (Required) The description of the monitor.
-        - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
-        - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
-        - `content_type` - (Optional) The type of the content object. Valid value:
-          - `Monitor`
-        - `monitor_type` - (Required) The type of monitor. Valid values:
-          - `Logs`: A logs query monitor.
-          - `Metrics`: A metrics query monitor.
-        - `queries` - (Required) All queries from the monitor.
-        - `triggers` - (Required) Defines the conditions of when to send notifications.
-        - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
-        - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
-
-        Additional data provided in state:
-
-        - `id` - (Computed) The ID for this monitor.
-        - `status` - (Computed) The current status for this monitor. Values are:
-          - `Critical`
-          - `Warning`
-          - `MissingData`
-          - `Normal`
-          - `Disabled`
-
         ## Import
 
         Monitors can be imported using the monitor ID, such ashcl
@@ -1073,7 +1060,7 @@ class Monitor(pulumi.CustomResource):
          $ pulumi import sumologic:index/monitor:Monitor test 1234567890
         ```
 
-         [1]https://help.sumologic.com/?cid=10020
+         [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown
 
         :param str resource_name: The name of the resource.
         :param MonitorArgs args: The arguments to use to populate this resource's properties.
@@ -1094,6 +1081,7 @@ class Monitor(pulumi.CustomResource):
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 evaluation_delay: Optional[pulumi.Input[str]] = None,
                  group_notifications: Optional[pulumi.Input[bool]] = None,
                  is_disabled: Optional[pulumi.Input[bool]] = None,
                  is_locked: Optional[pulumi.Input[bool]] = None,
@@ -1105,9 +1093,11 @@ class Monitor(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
+                 playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
@@ -1127,6 +1117,7 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["created_by"] = created_by
             __props__.__dict__["description"] = description
+            __props__.__dict__["evaluation_delay"] = evaluation_delay
             __props__.__dict__["group_notifications"] = group_notifications
             __props__.__dict__["is_disabled"] = is_disabled
             __props__.__dict__["is_locked"] = is_locked
@@ -1140,9 +1131,14 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["parent_id"] = parent_id
+            __props__.__dict__["playbook"] = playbook
             __props__.__dict__["post_request_map"] = post_request_map
             __props__.__dict__["queries"] = queries
             __props__.__dict__["statuses"] = statuses
+            __props__.__dict__["trigger_conditions"] = trigger_conditions
+            if triggers is not None and not opts.urn:
+                warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
+                pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
             __props__.__dict__["triggers"] = triggers
             __props__.__dict__["type"] = type
             __props__.__dict__["version"] = version
@@ -1160,6 +1156,7 @@ class Monitor(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            evaluation_delay: Optional[pulumi.Input[str]] = None,
             group_notifications: Optional[pulumi.Input[bool]] = None,
             is_disabled: Optional[pulumi.Input[bool]] = None,
             is_locked: Optional[pulumi.Input[bool]] = None,
@@ -1171,9 +1168,11 @@ class Monitor(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
+            playbook: Optional[pulumi.Input[str]] = None,
             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
             triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'Monitor':
@@ -1193,6 +1192,7 @@ class Monitor(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["description"] = description
+        __props__.__dict__["evaluation_delay"] = evaluation_delay
         __props__.__dict__["group_notifications"] = group_notifications
         __props__.__dict__["is_disabled"] = is_disabled
         __props__.__dict__["is_locked"] = is_locked
@@ -1204,9 +1204,11 @@ class Monitor(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["parent_id"] = parent_id
+        __props__.__dict__["playbook"] = playbook
         __props__.__dict__["post_request_map"] = post_request_map
         __props__.__dict__["queries"] = queries
         __props__.__dict__["statuses"] = statuses
+        __props__.__dict__["trigger_conditions"] = trigger_conditions
         __props__.__dict__["triggers"] = triggers
         __props__.__dict__["type"] = type
         __props__.__dict__["version"] = version
@@ -1231,6 +1233,11 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="evaluationDelay")
+    def evaluation_delay(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "evaluation_delay")
 
     @property
     @pulumi.getter(name="groupNotifications")
@@ -1288,6 +1295,11 @@ class Monitor(pulumi.CustomResource):
         return pulumi.get(self, "parent_id")
 
     @property
+    @pulumi.getter
+    def playbook(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "playbook")
+
+    @property
     @pulumi.getter(name="postRequestMap")
     def post_request_map(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         return pulumi.get(self, "post_request_map")
@@ -1301,6 +1313,11 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter
     def statuses(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "statuses")
+
+    @property
+    @pulumi.getter(name="triggerConditions")
+    def trigger_conditions(self) -> pulumi.Output[Optional['outputs.MonitorTriggerConditions']]:
+        return pulumi.get(self, "trigger_conditions")
 
     @property
     @pulumi.getter

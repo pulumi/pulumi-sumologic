@@ -8,5 +8,6 @@ let __config = new pulumi.Config("sumologic");
 
 export let accessId: string | undefined = __config.get("accessId");
 export let accessKey: string | undefined = __config.get("accessKey");
+export let adminMode: boolean | undefined = __config.getObject<boolean>("adminMode");
 export let baseUrl: string | undefined = __config.get("baseUrl") || utilities.getEnv("SUMOLOGIC_BASE_URL");
 export let environment: string | undefined = __config.get("environment") || utilities.getEnv("SUMOLOGIC_ENVIRONMENT");

@@ -16,18 +16,34 @@ export * from "./collector";
 export * from "./collectorIngestBudgetAssignment";
 export * from "./connection";
 export * from "./content";
+export * from "./cseAggregationRule";
+export * from "./cseChainRule";
+export * from "./cseCustomEntityType";
+export * from "./cseCustomInsight";
+export * from "./cseEntityCriticalityConfig";
+export * from "./cseInsightsConfiguration";
+export * from "./cseInsightsResolution";
+export * from "./cseInsightsStatus";
+export * from "./cseLogMapping";
+export * from "./cseMatchRule";
+export * from "./cseNetworkBlock";
+export * from "./cseRuleTuningExpression";
+export * from "./cseThresholdRule";
 export * from "./dashboard";
 export * from "./elbSource";
 export * from "./field";
 export * from "./fieldExtractionRule";
 export * from "./folder";
 export * from "./gcpSource";
+export * from "./getAdminRecommendedFolder";
 export * from "./getCallerIdentity";
 export * from "./getCollector";
+export * from "./getCseLogMappingVendorProduct";
 export * from "./getHttpSource";
 export * from "./getMyUserId";
 export * from "./getPersonalFolder";
 export * from "./getRole";
+export * from "./hierarchy";
 export * from "./httpSource";
 export * from "./ingestBudget";
 export * from "./ingestBudgetV2";
@@ -38,6 +54,7 @@ export * from "./monitor";
 export * from "./monitorFolder";
 export * from "./partition";
 export * from "./passwordPolicy";
+export * from "./policies";
 export * from "./pollingSource";
 export * from "./provider";
 export * from "./role";
@@ -46,6 +63,7 @@ export * from "./s3source";
 export * from "./samlConfiguration";
 export * from "./scheduledView";
 export * from "./subdomain";
+export * from "./token";
 export * from "./user";
 
 // Export sub-modules:
@@ -69,12 +87,26 @@ import { Collector } from "./collector";
 import { CollectorIngestBudgetAssignment } from "./collectorIngestBudgetAssignment";
 import { Connection } from "./connection";
 import { Content } from "./content";
+import { CseAggregationRule } from "./cseAggregationRule";
+import { CseChainRule } from "./cseChainRule";
+import { CseCustomEntityType } from "./cseCustomEntityType";
+import { CseCustomInsight } from "./cseCustomInsight";
+import { CseEntityCriticalityConfig } from "./cseEntityCriticalityConfig";
+import { CseInsightsConfiguration } from "./cseInsightsConfiguration";
+import { CseInsightsResolution } from "./cseInsightsResolution";
+import { CseInsightsStatus } from "./cseInsightsStatus";
+import { CseLogMapping } from "./cseLogMapping";
+import { CseMatchRule } from "./cseMatchRule";
+import { CseNetworkBlock } from "./cseNetworkBlock";
+import { CseRuleTuningExpression } from "./cseRuleTuningExpression";
+import { CseThresholdRule } from "./cseThresholdRule";
 import { Dashboard } from "./dashboard";
 import { ElbSource } from "./elbSource";
 import { Field } from "./field";
 import { FieldExtractionRule } from "./fieldExtractionRule";
 import { Folder } from "./folder";
 import { GcpSource } from "./gcpSource";
+import { Hierarchy } from "./hierarchy";
 import { HttpSource } from "./httpSource";
 import { IngestBudget } from "./ingestBudget";
 import { IngestBudgetV2 } from "./ingestBudgetV2";
@@ -85,6 +117,7 @@ import { Monitor } from "./monitor";
 import { MonitorFolder } from "./monitorFolder";
 import { Partition } from "./partition";
 import { PasswordPolicy } from "./passwordPolicy";
+import { Policies } from "./policies";
 import { PollingSource } from "./pollingSource";
 import { Role } from "./role";
 import { S3AuditSource } from "./s3auditSource";
@@ -92,6 +125,7 @@ import { S3Source } from "./s3source";
 import { SamlConfiguration } from "./samlConfiguration";
 import { ScheduledView } from "./scheduledView";
 import { Subdomain } from "./subdomain";
+import { Token } from "./token";
 import { User } from "./user";
 
 const _module = {
@@ -120,6 +154,32 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "sumologic:index/content:Content":
                 return new Content(name, <any>undefined, { urn })
+            case "sumologic:index/cseAggregationRule:CseAggregationRule":
+                return new CseAggregationRule(name, <any>undefined, { urn })
+            case "sumologic:index/cseChainRule:CseChainRule":
+                return new CseChainRule(name, <any>undefined, { urn })
+            case "sumologic:index/cseCustomEntityType:CseCustomEntityType":
+                return new CseCustomEntityType(name, <any>undefined, { urn })
+            case "sumologic:index/cseCustomInsight:CseCustomInsight":
+                return new CseCustomInsight(name, <any>undefined, { urn })
+            case "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig":
+                return new CseEntityCriticalityConfig(name, <any>undefined, { urn })
+            case "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
+                return new CseInsightsConfiguration(name, <any>undefined, { urn })
+            case "sumologic:index/cseInsightsResolution:CseInsightsResolution":
+                return new CseInsightsResolution(name, <any>undefined, { urn })
+            case "sumologic:index/cseInsightsStatus:CseInsightsStatus":
+                return new CseInsightsStatus(name, <any>undefined, { urn })
+            case "sumologic:index/cseLogMapping:CseLogMapping":
+                return new CseLogMapping(name, <any>undefined, { urn })
+            case "sumologic:index/cseMatchRule:CseMatchRule":
+                return new CseMatchRule(name, <any>undefined, { urn })
+            case "sumologic:index/cseNetworkBlock:CseNetworkBlock":
+                return new CseNetworkBlock(name, <any>undefined, { urn })
+            case "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression":
+                return new CseRuleTuningExpression(name, <any>undefined, { urn })
+            case "sumologic:index/cseThresholdRule:CseThresholdRule":
+                return new CseThresholdRule(name, <any>undefined, { urn })
             case "sumologic:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
             case "sumologic:index/elbSource:ElbSource":
@@ -132,6 +192,8 @@ const _module = {
                 return new Folder(name, <any>undefined, { urn })
             case "sumologic:index/gcpSource:GcpSource":
                 return new GcpSource(name, <any>undefined, { urn })
+            case "sumologic:index/hierarchy:Hierarchy":
+                return new Hierarchy(name, <any>undefined, { urn })
             case "sumologic:index/httpSource:HttpSource":
                 return new HttpSource(name, <any>undefined, { urn })
             case "sumologic:index/ingestBudget:IngestBudget":
@@ -152,6 +214,8 @@ const _module = {
                 return new Partition(name, <any>undefined, { urn })
             case "sumologic:index/passwordPolicy:PasswordPolicy":
                 return new PasswordPolicy(name, <any>undefined, { urn })
+            case "sumologic:index/policies:Policies":
+                return new Policies(name, <any>undefined, { urn })
             case "sumologic:index/pollingSource:PollingSource":
                 return new PollingSource(name, <any>undefined, { urn })
             case "sumologic:index/role:Role":
@@ -166,6 +230,8 @@ const _module = {
                 return new ScheduledView(name, <any>undefined, { urn })
             case "sumologic:index/subdomain:Subdomain":
                 return new Subdomain(name, <any>undefined, { urn })
+            case "sumologic:index/token:Token":
+                return new Token(name, <any>undefined, { urn })
             case "sumologic:index/user:User":
                 return new User(name, <any>undefined, { urn })
             default:
@@ -184,12 +250,26 @@ pulumi.runtime.registerResourceModule("sumologic", "index/collector", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/collectorIngestBudgetAssignment", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/connection", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/content", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseAggregationRule", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseChainRule", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomEntityType", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomInsight", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityCriticalityConfig", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsConfiguration", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsResolution", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsStatus", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseLogMapping", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchRule", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseNetworkBlock", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseRuleTuningExpression", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseThresholdRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/elbSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/field", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/fieldExtractionRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/folder", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/gcpSource", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/hierarchy", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/httpSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudget", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudgetV2", _module)
@@ -200,6 +280,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/monitor", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitorFolder", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/partition", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/passwordPolicy", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/policies", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/pollingSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/role", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3AuditSource", _module)
@@ -207,6 +288,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/s3Source", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/samlConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/scheduledView", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/subdomain", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/token", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/user", _module)
 
 import { Provider } from "./provider";

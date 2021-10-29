@@ -8,8 +8,141 @@ import * as utilities from "./utilities";
 /**
  * Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
  *
- * ## Example Logs Monitor
+ * ## Monitor Folders
  *
+ * <<<<<<< HEAD
+ * NOTE: Monitor folders are considered a different resource from Library content folders.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tfMonitorFolder1 = new sumologic.MonitorFolder("tf_monitor_folder_1", {
+ *     description: "a folder for monitors",
+ * });
+ * ```
+ * =======
+ * NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
+ * > > > > > > > v2.11.0
+ *
+ * ## Argument reference
+ *
+ * The following arguments are supported:
+ *
+ * - `type` - (Optional) The type of object model. Valid value:
+ *   - `MonitorsLibraryMonitor`
+ * - `name` - (Required) The name of the monitor. The name must be alphanumeric.
+ * - `description` - (Required) The description of the monitor.
+ * - `isDisabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+ * - `parentId` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+ * - `contentType` - (Optional) The type of the content object. Valid value:
+ *   - `Monitor`
+ * - `monitorType` - (Required) The type of monitor. Valid values:
+ *   - `Logs`: A logs query monitor.
+ *   - `Metrics`: A metrics query monitor.
+ * - `queries` - (Required) All queries from the monitor.
+ * - `triggerConditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+ * - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
+ * - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
+ * - `groupNotifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+ * - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+ *
+ * Additional data provided in state:
+ *
+ * - `id` - (Computed) The ID for this monitor.
+ * - `status` - (Computed) The current status for this monitor. Values are:
+ *   - `Critical`
+ *   - `Warning`
+ *   - `MissingData`
+ *   - `Normal`
+ *   - `Disabled`
+ *
+ * ## The `triggerConditions` block
+ *
+ * A `triggerConditions` block configures conditions for sending notifications.
+ * ### Example
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ * ### Arguments
+ * A `triggerConditions` block contains one or more subblocks of the following types:
+ * - `logsStaticCondition`
+ * - `metricsStaticCondition`
+ * - `logsOutlierCondition`
+ * - `metricsOutlierCondition`
+ * - `logsMissingDataCondition`
+ * - `metricsMissingDataCondition`
+ *
+ * Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
+ *
+ * Here is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):
+ * #### logsStaticCondition
+ *   - `field`
+ *   - `critical`
+ *     - `timeRange` (Required)
+ *     - `alert` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ *     - `resolution` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ *   - `warning`
+ *     - `timeRange` (Required)
+ *     - `alert` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ *     - `resolution` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ * #### metricsStaticCondition
+ *   - `critical`
+ *     - `timeRange` (Required)
+ *     - `occurrenceType` (Required)
+ *     - `alert` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ *     - `resolution` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ *   - `warning`
+ *     - `timeRange` (Required)
+ *     - `occurrenceType` (Required)
+ *     - `alert` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ *     - `resolution` (Required)
+ *       - `threshold`
+ *       - `thresholdType`
+ * #### logsOutlierCondition
+ *   - `field`
+ *   - `direction`
+ *   - `critical`
+ *      - `window`
+ *      - `consecutive`
+ *      - `threshold`
+ *   - `warning`
+ *      - `window`
+ *      - `consecutive`
+ *      - `threshold`
+ * #### metricsOutlierCondition
+ *   - `direction`
+ *   - `critical`
+ *      - `baselineWindow`
+ *      - `threshold`
+ *   - `warning`
+ *     - `baselineWindow`
+ *     - `threshold`
+ * #### logsMissingDataCondition
+ *   - `timeRange` (Required)
+ * #### metricsMissingDataCondition
+ *   - `timeRange` (Required)
+ *   - `triggerSource` (Required)
+ *
+ * ## The `triggers` block
+ *
+ * The `triggers` block is deprecated. Please use `triggerConditions` to specify notification conditions.
+ *
+ * Here's an example logs monitor that uses `triggers` to specify trigger conditions:
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -72,189 +205,6 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ## Example Metrics Monitor
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const tfMetricsMonitor1 = new sumologic.Monitor("tf_metrics_monitor_1", {
- *     contentType: "Monitor",
- *     description: "tf metrics monitor",
- *     isDisabled: false,
- *     monitorType: "Metrics",
- *     notifications: [{
- *         notification: {
- *             connectionType: "Email",
- *             messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
- *             recipients: ["abc@example.com"],
- *             subject: "Triggered {{TriggerType}} Alert on Monitor {{Name}}",
- *             timeZone: "PST",
- *         },
- *         runForTriggerTypes: [
- *             "Critical",
- *             "ResolvedCritical",
- *         ],
- *     }],
- *     queries: [{
- *         query: "metric=CPU_Idle _sourceCategory=event-action",
- *         rowId: "A",
- *     }],
- *     triggers: [
- *         {
- *             detectionMethod: "StaticCondition",
- *             occurrenceType: "AtLeastOnce",
- *             threshold: 40,
- *             thresholdType: "GreaterThanOrEqual",
- *             timeRange: "15m",
- *             triggerSource: "AnyTimeSeries",
- *             triggerType: "Critical",
- *         },
- *         {
- *             detectionMethod: "StaticCondition",
- *             occurrenceType: "Always",
- *             threshold: 40,
- *             thresholdType: "LessThan",
- *             timeRange: "15m",
- *             triggerSource: "AnyTimeSeries",
- *             triggerType: "ResolvedCritical",
- *         },
- *     ],
- *     type: "MonitorsLibraryMonitor",
- * });
- * ```
- *
- * ## Example Logs Monitor with Webhook Connection and Folder
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const tfMonitorFolder1 = new sumologic.MonitorFolder("tfMonitorFolder1", {description: "A folder for Monitors"});
- * const examplePagerdutyConnection = new sumologic.Connection("examplePagerdutyConnection", {
- *     description: "PagerDuty connection for notifications from Monitors",
- *     type: "WebhookConnection",
- *     webhookType: "PagerDuty",
- *     url: "https://events.pagerduty.com/",
- *     defaultPayload: `{
- *   "service_key": "pagerduty_api_integration_key",
- *   "event_type": "trigger",
- *   "description": "PagerDuty connection for notifications",
- *   "client": "Sumo Logic",
- *   "client_url": ""
- * }
- * `,
- * });
- * const tfLogsMonitor2 = new sumologic.Monitor("tfLogsMonitor2", {
- *     description: "logs monitor with webhook",
- *     type: "MonitorsLibraryMonitor",
- *     parentId: tfMonitorFolder1.id,
- *     isDisabled: false,
- *     contentType: "Monitor",
- *     monitorType: "Logs",
- *     queries: [{
- *         rowId: "A",
- *         query: "_sourceCategory=event-action info",
- *     }],
- *     triggers: [
- *         {
- *             thresholdType: "GreaterThan",
- *             threshold: 40,
- *             timeRange: "15m",
- *             occurrenceType: "ResultCount",
- *             triggerSource: "AllResults",
- *             triggerType: "Critical",
- *             detectionMethod: "StaticCondition",
- *         },
- *         {
- *             thresholdType: "LessThanOrEqual",
- *             threshold: 40,
- *             timeRange: "15m",
- *             occurrenceType: "ResultCount",
- *             triggerSource: "AllResults",
- *             triggerType: "ResolvedCritical",
- *             detectionMethod: "StaticCondition",
- *         },
- *     ],
- *     notifications: [
- *         {
- *             notification: {
- *                 connectionType: "Email",
- *                 recipients: ["abc@example.com"],
- *                 subject: "Monitor Alert: {{TriggerType}} on {{Name}}",
- *                 timeZone: "PST",
- *                 messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
- *             },
- *             runForTriggerTypes: [
- *                 "Critical",
- *                 "ResolvedCritical",
- *             ],
- *         },
- *         {
- *             notification: {
- *                 connectionType: "PagerDuty",
- *                 connectionId: examplePagerdutyConnection.id,
- *                 payloadOverride: `{
- *   "service_key": "your_pagerduty_api_integration_key",
- *   "event_type": "trigger",
- *   "description": "Alert: Triggered {{TriggerType}} for Monitor {{Name}}",
- *   "client": "Sumo Logic",
- *   "client_url": "{{QueryUrl}}"
- * }
- * `,
- *             },
- *             runForTriggerTypes: [
- *                 "Critical",
- *                 "ResolvedCritical",
- *             ],
- *         },
- *     ],
- * });
- * ```
- *
- * ## Example Monitor Folder
- *
- * NOTE: Monitor folders are considered a different resource from Library content folders.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const tfMonitorFolder1 = new sumologic.MonitorFolder("tf_monitor_folder_1", {
- *     description: "a folder for monitors",
- * });
- * ```
- *
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `type` - (Optional) The type of object model. Valid value:
- *   - `MonitorsLibraryMonitor`
- * - `name` - (Required) The name of the monitor. The name must be alphanumeric.
- * - `description` - (Required) The description of the monitor.
- * - `isDisabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
- * - `parentId` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
- * - `contentType` - (Optional) The type of the content object. Valid value:
- *   - `Monitor`
- * - `monitorType` - (Required) The type of monitor. Valid values:
- *   - `Logs`: A logs query monitor.
- *   - `Metrics`: A metrics query monitor.
- * - `queries` - (Required) All queries from the monitor.
- * - `triggers` - (Required) Defines the conditions of when to send notifications.
- * - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
- * - `groupNotifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
- *
- * Additional data provided in state:
- *
- * - `id` - (Computed) The ID for this monitor.
- * - `status` - (Computed) The current status for this monitor. Values are:
- *   - `Critical`
- *   - `Warning`
- *   - `MissingData`
- *   - `Normal`
- *   - `Disabled`
- *
  * ## Import
  *
  * Monitors can be imported using the monitor ID, such ashcl
@@ -263,7 +213,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import sumologic:index/monitor:Monitor test 1234567890
  * ```
  *
- *  [1]https://help.sumologic.com/?cid=10020
+ *  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown
  */
 export class Monitor extends pulumi.CustomResource {
     /**
@@ -297,6 +247,7 @@ export class Monitor extends pulumi.CustomResource {
     public readonly createdAt!: pulumi.Output<string>;
     public readonly createdBy!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly evaluationDelay!: pulumi.Output<string>;
     public readonly groupNotifications!: pulumi.Output<boolean | undefined>;
     public readonly isDisabled!: pulumi.Output<boolean | undefined>;
     public readonly isLocked!: pulumi.Output<boolean>;
@@ -308,9 +259,14 @@ export class Monitor extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly notifications!: pulumi.Output<outputs.MonitorNotification[] | undefined>;
     public readonly parentId!: pulumi.Output<string>;
+    public readonly playbook!: pulumi.Output<string | undefined>;
     public readonly postRequestMap!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly queries!: pulumi.Output<outputs.MonitorQuery[] | undefined>;
     public readonly statuses!: pulumi.Output<string[]>;
+    public readonly triggerConditions!: pulumi.Output<outputs.MonitorTriggerConditions | undefined>;
+    /**
+     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+     */
     public readonly triggers!: pulumi.Output<outputs.MonitorTrigger[] | undefined>;
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
@@ -332,6 +288,7 @@ export class Monitor extends pulumi.CustomResource {
             inputs["createdAt"] = state ? state.createdAt : undefined;
             inputs["createdBy"] = state ? state.createdBy : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["evaluationDelay"] = state ? state.evaluationDelay : undefined;
             inputs["groupNotifications"] = state ? state.groupNotifications : undefined;
             inputs["isDisabled"] = state ? state.isDisabled : undefined;
             inputs["isLocked"] = state ? state.isLocked : undefined;
@@ -343,9 +300,11 @@ export class Monitor extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["notifications"] = state ? state.notifications : undefined;
             inputs["parentId"] = state ? state.parentId : undefined;
+            inputs["playbook"] = state ? state.playbook : undefined;
             inputs["postRequestMap"] = state ? state.postRequestMap : undefined;
             inputs["queries"] = state ? state.queries : undefined;
             inputs["statuses"] = state ? state.statuses : undefined;
+            inputs["triggerConditions"] = state ? state.triggerConditions : undefined;
             inputs["triggers"] = state ? state.triggers : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["version"] = state ? state.version : undefined;
@@ -358,6 +317,7 @@ export class Monitor extends pulumi.CustomResource {
             inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["createdBy"] = args ? args.createdBy : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["evaluationDelay"] = args ? args.evaluationDelay : undefined;
             inputs["groupNotifications"] = args ? args.groupNotifications : undefined;
             inputs["isDisabled"] = args ? args.isDisabled : undefined;
             inputs["isLocked"] = args ? args.isLocked : undefined;
@@ -369,9 +329,11 @@ export class Monitor extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["notifications"] = args ? args.notifications : undefined;
             inputs["parentId"] = args ? args.parentId : undefined;
+            inputs["playbook"] = args ? args.playbook : undefined;
             inputs["postRequestMap"] = args ? args.postRequestMap : undefined;
             inputs["queries"] = args ? args.queries : undefined;
             inputs["statuses"] = args ? args.statuses : undefined;
+            inputs["triggerConditions"] = args ? args.triggerConditions : undefined;
             inputs["triggers"] = args ? args.triggers : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -391,6 +353,7 @@ export interface MonitorState {
     readonly createdAt?: pulumi.Input<string>;
     readonly createdBy?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    readonly evaluationDelay?: pulumi.Input<string>;
     readonly groupNotifications?: pulumi.Input<boolean>;
     readonly isDisabled?: pulumi.Input<boolean>;
     readonly isLocked?: pulumi.Input<boolean>;
@@ -402,9 +365,14 @@ export interface MonitorState {
     readonly name?: pulumi.Input<string>;
     readonly notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
     readonly parentId?: pulumi.Input<string>;
+    readonly playbook?: pulumi.Input<string>;
     readonly postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
     readonly statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
+    /**
+     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+     */
     readonly triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     readonly type?: pulumi.Input<string>;
     readonly version?: pulumi.Input<number>;
@@ -418,6 +386,7 @@ export interface MonitorArgs {
     readonly createdAt?: pulumi.Input<string>;
     readonly createdBy?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
+    readonly evaluationDelay?: pulumi.Input<string>;
     readonly groupNotifications?: pulumi.Input<boolean>;
     readonly isDisabled?: pulumi.Input<boolean>;
     readonly isLocked?: pulumi.Input<boolean>;
@@ -429,9 +398,14 @@ export interface MonitorArgs {
     readonly name?: pulumi.Input<string>;
     readonly notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
     readonly parentId?: pulumi.Input<string>;
+    readonly playbook?: pulumi.Input<string>;
     readonly postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
     readonly statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
+    /**
+     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+     */
     readonly triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     readonly type?: pulumi.Input<string>;
     readonly version?: pulumi.Input<number>;

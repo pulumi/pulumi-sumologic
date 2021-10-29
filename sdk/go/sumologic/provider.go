@@ -49,6 +49,7 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	AccessId    string  `pulumi:"accessId"`
 	AccessKey   string  `pulumi:"accessKey"`
+	AdminMode   *bool   `pulumi:"adminMode"`
 	BaseUrl     *string `pulumi:"baseUrl"`
 	Environment *string `pulumi:"environment"`
 }
@@ -57,6 +58,7 @@ type providerArgs struct {
 type ProviderArgs struct {
 	AccessId    pulumi.StringInput
 	AccessKey   pulumi.StringInput
+	AdminMode   pulumi.BoolPtrInput
 	BaseUrl     pulumi.StringPtrInput
 	Environment pulumi.StringPtrInput
 }
