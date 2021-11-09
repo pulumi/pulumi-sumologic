@@ -209,47 +209,47 @@ export class SamlConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SamlConfiguration resources.
  */
 export interface SamlConfigurationState {
-    readonly assertionConsumerUrl?: pulumi.Input<string>;
-    readonly authnRequestUrl?: pulumi.Input<string>;
-    readonly certificate?: pulumi.Input<string>;
-    readonly configurationName?: pulumi.Input<string>;
-    readonly debugMode?: pulumi.Input<boolean>;
-    readonly disableRequestedAuthnContext?: pulumi.Input<boolean>;
-    readonly emailAttribute?: pulumi.Input<string>;
-    readonly entityId?: pulumi.Input<string>;
-    readonly isRedirectBinding?: pulumi.Input<boolean>;
-    readonly issuer?: pulumi.Input<string>;
-    readonly logoutEnabled?: pulumi.Input<boolean>;
-    readonly logoutUrl?: pulumi.Input<string>;
-    readonly onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
-    readonly rolesAttribute?: pulumi.Input<string>;
-    readonly signAuthnRequest?: pulumi.Input<boolean>;
-    readonly spInitiatedLoginEnabled?: pulumi.Input<boolean>;
-    readonly spInitiatedLoginPath?: pulumi.Input<string>;
-    readonly x509cert1?: pulumi.Input<string>;
-    readonly x509cert2?: pulumi.Input<string>;
-    readonly x509cert3?: pulumi.Input<string>;
+    assertionConsumerUrl?: pulumi.Input<string>;
+    authnRequestUrl?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
+    configurationName?: pulumi.Input<string>;
+    debugMode?: pulumi.Input<boolean>;
+    disableRequestedAuthnContext?: pulumi.Input<boolean>;
+    emailAttribute?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string>;
+    isRedirectBinding?: pulumi.Input<boolean>;
+    issuer?: pulumi.Input<string>;
+    logoutEnabled?: pulumi.Input<boolean>;
+    logoutUrl?: pulumi.Input<string>;
+    onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
+    rolesAttribute?: pulumi.Input<string>;
+    signAuthnRequest?: pulumi.Input<boolean>;
+    spInitiatedLoginEnabled?: pulumi.Input<boolean>;
+    spInitiatedLoginPath?: pulumi.Input<string>;
+    x509cert1?: pulumi.Input<string>;
+    x509cert2?: pulumi.Input<string>;
+    x509cert3?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a SamlConfiguration resource.
  */
 export interface SamlConfigurationArgs {
-    readonly authnRequestUrl?: pulumi.Input<string>;
-    readonly configurationName: pulumi.Input<string>;
-    readonly debugMode?: pulumi.Input<boolean>;
-    readonly disableRequestedAuthnContext?: pulumi.Input<boolean>;
-    readonly emailAttribute?: pulumi.Input<string>;
-    readonly isRedirectBinding?: pulumi.Input<boolean>;
-    readonly issuer: pulumi.Input<string>;
-    readonly logoutEnabled?: pulumi.Input<boolean>;
-    readonly logoutUrl?: pulumi.Input<string>;
-    readonly onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
-    readonly rolesAttribute?: pulumi.Input<string>;
-    readonly signAuthnRequest?: pulumi.Input<boolean>;
-    readonly spInitiatedLoginEnabled?: pulumi.Input<boolean>;
-    readonly spInitiatedLoginPath?: pulumi.Input<string>;
-    readonly x509cert1: pulumi.Input<string>;
-    readonly x509cert2?: pulumi.Input<string>;
-    readonly x509cert3?: pulumi.Input<string>;
+    authnRequestUrl?: pulumi.Input<string>;
+    configurationName: pulumi.Input<string>;
+    debugMode?: pulumi.Input<boolean>;
+    disableRequestedAuthnContext?: pulumi.Input<boolean>;
+    emailAttribute?: pulumi.Input<string>;
+    isRedirectBinding?: pulumi.Input<boolean>;
+    issuer: pulumi.Input<string>;
+    logoutEnabled?: pulumi.Input<boolean>;
+    logoutUrl?: pulumi.Input<string>;
+    onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
+    rolesAttribute?: pulumi.Input<string>;
+    signAuthnRequest?: pulumi.Input<boolean>;
+    spInitiatedLoginEnabled?: pulumi.Input<boolean>;
+    spInitiatedLoginPath?: pulumi.Input<string>;
+    x509cert1: pulumi.Input<string>;
+    x509cert2?: pulumi.Input<string>;
+    x509cert3?: pulumi.Input<string>;
 }

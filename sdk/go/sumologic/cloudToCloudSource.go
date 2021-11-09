@@ -230,7 +230,7 @@ type CloudToCloudSourceArrayInput interface {
 type CloudToCloudSourceArray []CloudToCloudSourceInput
 
 func (CloudToCloudSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CloudToCloudSource)(nil))
+	return reflect.TypeOf((*[]*CloudToCloudSource)(nil)).Elem()
 }
 
 func (i CloudToCloudSourceArray) ToCloudToCloudSourceArrayOutput() CloudToCloudSourceArrayOutput {
@@ -255,7 +255,7 @@ type CloudToCloudSourceMapInput interface {
 type CloudToCloudSourceMap map[string]CloudToCloudSourceInput
 
 func (CloudToCloudSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CloudToCloudSource)(nil))
+	return reflect.TypeOf((*map[string]*CloudToCloudSource)(nil)).Elem()
 }
 
 func (i CloudToCloudSourceMap) ToCloudToCloudSourceMapOutput() CloudToCloudSourceMapOutput {
@@ -266,9 +266,7 @@ func (i CloudToCloudSourceMap) ToCloudToCloudSourceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CloudToCloudSourceMapOutput)
 }
 
-type CloudToCloudSourceOutput struct {
-	*pulumi.OutputState
-}
+type CloudToCloudSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudToCloudSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CloudToCloudSource)(nil))
@@ -287,14 +285,12 @@ func (o CloudToCloudSourceOutput) ToCloudToCloudSourcePtrOutput() CloudToCloudSo
 }
 
 func (o CloudToCloudSourceOutput) ToCloudToCloudSourcePtrOutputWithContext(ctx context.Context) CloudToCloudSourcePtrOutput {
-	return o.ApplyT(func(v CloudToCloudSource) *CloudToCloudSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudToCloudSource) *CloudToCloudSource {
 		return &v
 	}).(CloudToCloudSourcePtrOutput)
 }
 
-type CloudToCloudSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type CloudToCloudSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudToCloudSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CloudToCloudSource)(nil))
@@ -306,6 +302,16 @@ func (o CloudToCloudSourcePtrOutput) ToCloudToCloudSourcePtrOutput() CloudToClou
 
 func (o CloudToCloudSourcePtrOutput) ToCloudToCloudSourcePtrOutputWithContext(ctx context.Context) CloudToCloudSourcePtrOutput {
 	return o
+}
+
+func (o CloudToCloudSourcePtrOutput) Elem() CloudToCloudSourceOutput {
+	return o.ApplyT(func(v *CloudToCloudSource) CloudToCloudSource {
+		if v != nil {
+			return *v
+		}
+		var ret CloudToCloudSource
+		return ret
+	}).(CloudToCloudSourceOutput)
 }
 
 type CloudToCloudSourceArrayOutput struct{ *pulumi.OutputState }
@@ -349,6 +355,10 @@ func (o CloudToCloudSourceMapOutput) MapIndex(k pulumi.StringInput) CloudToCloud
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudToCloudSourceInput)(nil)).Elem(), &CloudToCloudSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudToCloudSourcePtrInput)(nil)).Elem(), &CloudToCloudSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudToCloudSourceArrayInput)(nil)).Elem(), CloudToCloudSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudToCloudSourceMapInput)(nil)).Elem(), CloudToCloudSourceMap{})
 	pulumi.RegisterOutputType(CloudToCloudSourceOutput{})
 	pulumi.RegisterOutputType(CloudToCloudSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudToCloudSourceArrayOutput{})

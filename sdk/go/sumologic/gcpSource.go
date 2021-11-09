@@ -286,7 +286,7 @@ type GcpSourceArrayInput interface {
 type GcpSourceArray []GcpSourceInput
 
 func (GcpSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GcpSource)(nil))
+	return reflect.TypeOf((*[]*GcpSource)(nil)).Elem()
 }
 
 func (i GcpSourceArray) ToGcpSourceArrayOutput() GcpSourceArrayOutput {
@@ -311,7 +311,7 @@ type GcpSourceMapInput interface {
 type GcpSourceMap map[string]GcpSourceInput
 
 func (GcpSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GcpSource)(nil))
+	return reflect.TypeOf((*map[string]*GcpSource)(nil)).Elem()
 }
 
 func (i GcpSourceMap) ToGcpSourceMapOutput() GcpSourceMapOutput {
@@ -322,9 +322,7 @@ func (i GcpSourceMap) ToGcpSourceMapOutputWithContext(ctx context.Context) GcpSo
 	return pulumi.ToOutputWithContext(ctx, i).(GcpSourceMapOutput)
 }
 
-type GcpSourceOutput struct {
-	*pulumi.OutputState
-}
+type GcpSourceOutput struct{ *pulumi.OutputState }
 
 func (GcpSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GcpSource)(nil))
@@ -343,14 +341,12 @@ func (o GcpSourceOutput) ToGcpSourcePtrOutput() GcpSourcePtrOutput {
 }
 
 func (o GcpSourceOutput) ToGcpSourcePtrOutputWithContext(ctx context.Context) GcpSourcePtrOutput {
-	return o.ApplyT(func(v GcpSource) *GcpSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpSource) *GcpSource {
 		return &v
 	}).(GcpSourcePtrOutput)
 }
 
-type GcpSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type GcpSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (GcpSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GcpSource)(nil))
@@ -362,6 +358,16 @@ func (o GcpSourcePtrOutput) ToGcpSourcePtrOutput() GcpSourcePtrOutput {
 
 func (o GcpSourcePtrOutput) ToGcpSourcePtrOutputWithContext(ctx context.Context) GcpSourcePtrOutput {
 	return o
+}
+
+func (o GcpSourcePtrOutput) Elem() GcpSourceOutput {
+	return o.ApplyT(func(v *GcpSource) GcpSource {
+		if v != nil {
+			return *v
+		}
+		var ret GcpSource
+		return ret
+	}).(GcpSourceOutput)
 }
 
 type GcpSourceArrayOutput struct{ *pulumi.OutputState }
@@ -405,6 +411,10 @@ func (o GcpSourceMapOutput) MapIndex(k pulumi.StringInput) GcpSourceOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceInput)(nil)).Elem(), &GcpSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourcePtrInput)(nil)).Elem(), &GcpSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceArrayInput)(nil)).Elem(), GcpSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceMapInput)(nil)).Elem(), GcpSourceMap{})
 	pulumi.RegisterOutputType(GcpSourceOutput{})
 	pulumi.RegisterOutputType(GcpSourcePtrOutput{})
 	pulumi.RegisterOutputType(GcpSourceArrayOutput{})

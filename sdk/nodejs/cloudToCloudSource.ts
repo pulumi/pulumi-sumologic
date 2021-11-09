@@ -135,16 +135,16 @@ export class CloudToCloudSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudToCloudSource resources.
  */
 export interface CloudToCloudSourceState {
-    readonly collectorId?: pulumi.Input<number>;
-    readonly config?: pulumi.Input<string>;
-    readonly schemaRef?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    collectorId?: pulumi.Input<number>;
+    config?: pulumi.Input<string>;
+    schemaRef?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
  * The set of arguments for constructing a CloudToCloudSource resource.
  */
 export interface CloudToCloudSourceArgs {
-    readonly collectorId: pulumi.Input<number>;
-    readonly config: pulumi.Input<string>;
-    readonly schemaRef: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    collectorId: pulumi.Input<number>;
+    config: pulumi.Input<string>;
+    schemaRef: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -255,54 +255,54 @@ export class KinesisMetricsSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KinesisMetricsSource resources.
  */
 export interface KinesisMetricsSourceState {
-    readonly authentication?: pulumi.Input<inputs.KinesisMetricsSourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId?: pulumi.Input<number>;
-    readonly contentType?: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly messagePerRequest?: pulumi.Input<boolean>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path?: pulumi.Input<inputs.KinesisMetricsSourcePath>;
-    readonly timezone?: pulumi.Input<string>;
+    authentication?: pulumi.Input<inputs.KinesisMetricsSourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId?: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    messagePerRequest?: pulumi.Input<boolean>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<inputs.KinesisMetricsSourcePath>;
+    timezone?: pulumi.Input<string>;
     /**
      * The HTTP endpoint to used while creating Kinesis Firehose on AWS.
      */
-    readonly url?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    url?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a KinesisMetricsSource resource.
  */
 export interface KinesisMetricsSourceArgs {
-    readonly authentication: pulumi.Input<inputs.KinesisMetricsSourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId: pulumi.Input<number>;
-    readonly contentType: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly messagePerRequest?: pulumi.Input<boolean>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path: pulumi.Input<inputs.KinesisMetricsSourcePath>;
-    readonly timezone?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    authentication: pulumi.Input<inputs.KinesisMetricsSourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId: pulumi.Input<number>;
+    contentType: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    messagePerRequest?: pulumi.Input<boolean>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path: pulumi.Input<inputs.KinesisMetricsSourcePath>;
+    timezone?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const thisCollector = pulumi.output(sumologic.getCollector({
  *     name: "MyCollector",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -25,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * const that = pulumi.output(sumologic.getCollector({
  *     id: 1234567890,
- * }, { async: true }));
+ * }));
  * ```
  *
  * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -60,8 +59,8 @@ export function getCollector(args?: GetCollectorArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getCollector.
  */
 export interface GetCollectorArgs {
-    readonly id?: number;
-    readonly name?: string;
+    id?: number;
+    name?: string;
 }
 
 /**
@@ -74,4 +73,16 @@ export interface GetCollectorResult {
     readonly id: number;
     readonly name: string;
     readonly timezone: string;
+}
+
+export function getCollectorOutput(args?: GetCollectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollectorResult> {
+    return pulumi.output(args).apply(a => getCollector(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCollector.
+ */
+export interface GetCollectorOutputArgs {
+    id?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
 }

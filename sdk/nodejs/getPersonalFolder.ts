@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const personalFolder = pulumi.output(sumologic.getPersonalFolder({ async: true }));
+ * const personalFolder = pulumi.output(sumologic.getPersonalFolder());
  * ```
  * ## Attributes reference
  *
@@ -44,9 +43,9 @@ export function getPersonalFolder(args?: GetPersonalFolderArgs, opts?: pulumi.In
  * A collection of arguments for invoking getPersonalFolder.
  */
 export interface GetPersonalFolderArgs {
-    readonly description?: string;
-    readonly id?: string;
-    readonly name?: string;
+    description?: string;
+    id?: string;
+    name?: string;
 }
 
 /**
@@ -56,4 +55,17 @@ export interface GetPersonalFolderResult {
     readonly description: string;
     readonly id: string;
     readonly name: string;
+}
+
+export function getPersonalFolderOutput(args?: GetPersonalFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPersonalFolderResult> {
+    return pulumi.output(args).apply(a => getPersonalFolder(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPersonalFolder.
+ */
+export interface GetPersonalFolderOutputArgs {
+    description?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

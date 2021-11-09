@@ -101,14 +101,14 @@ export class CseEntityCriticalityConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseEntityCriticalityConfig resources.
  */
 export interface CseEntityCriticalityConfigState {
-    readonly name?: pulumi.Input<string>;
-    readonly severityExpression?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    severityExpression?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CseEntityCriticalityConfig resource.
  */
 export interface CseEntityCriticalityConfigArgs {
-    readonly name?: pulumi.Input<string>;
-    readonly severityExpression: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    severityExpression: pulumi.Input<string>;
 }

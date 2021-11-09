@@ -145,38 +145,38 @@ export class MonitorFolder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MonitorFolder resources.
  */
 export interface MonitorFolderState {
-    readonly contentType?: pulumi.Input<string>;
-    readonly createdAt?: pulumi.Input<string>;
-    readonly createdBy?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly isLocked?: pulumi.Input<boolean>;
-    readonly isMutable?: pulumi.Input<boolean>;
-    readonly isSystem?: pulumi.Input<boolean>;
-    readonly modifiedAt?: pulumi.Input<string>;
-    readonly modifiedBy?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentId?: pulumi.Input<string>;
-    readonly postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly type?: pulumi.Input<string>;
-    readonly version?: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    isLocked?: pulumi.Input<boolean>;
+    isMutable?: pulumi.Input<boolean>;
+    isSystem?: pulumi.Input<boolean>;
+    modifiedAt?: pulumi.Input<string>;
+    modifiedBy?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string>;
+    postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    type?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a MonitorFolder resource.
  */
 export interface MonitorFolderArgs {
-    readonly contentType?: pulumi.Input<string>;
-    readonly createdAt?: pulumi.Input<string>;
-    readonly createdBy?: pulumi.Input<string>;
-    readonly description: pulumi.Input<string>;
-    readonly isLocked?: pulumi.Input<boolean>;
-    readonly isMutable?: pulumi.Input<boolean>;
-    readonly isSystem?: pulumi.Input<boolean>;
-    readonly modifiedAt?: pulumi.Input<string>;
-    readonly modifiedBy?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentId?: pulumi.Input<string>;
-    readonly postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly type?: pulumi.Input<string>;
-    readonly version?: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string>;
+    description: pulumi.Input<string>;
+    isLocked?: pulumi.Input<boolean>;
+    isMutable?: pulumi.Input<boolean>;
+    isSystem?: pulumi.Input<boolean>;
+    modifiedAt?: pulumi.Input<string>;
+    modifiedBy?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string>;
+    postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    type?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }

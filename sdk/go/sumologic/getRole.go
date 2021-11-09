@@ -4,6 +4,9 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "MyRole"
-// 		_, err := sumologic.LookupRole(ctx, &sumologic.LookupRoleArgs{
+// 		_, err := sumologic.LookupRole(ctx, &GetRoleArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -44,7 +47,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "1234567890"
-// 		_, err := sumologic.LookupRole(ctx, &sumologic.LookupRoleArgs{
+// 		_, err := sumologic.LookupRole(ctx, &GetRoleArgs{
 // 			Id: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -89,4 +92,62 @@ type LookupRoleResult struct {
 	FilterPredicate string   `pulumi:"filterPredicate"`
 	Id              string   `pulumi:"id"`
 	Name            string   `pulumi:"name"`
+}
+
+func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRoleResult, error) {
+			args := v.(LookupRoleArgs)
+			r, err := LookupRole(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRoleResultOutput)
+}
+
+// A collection of arguments for invoking getRole.
+type LookupRoleOutputArgs struct {
+	Id   pulumi.StringPtrInput `pulumi:"id"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRole.
+type LookupRoleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleResult)(nil)).Elem()
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutput() LookupRoleResultOutput {
+	return o
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.Context) LookupRoleResultOutput {
+	return o
+}
+
+func (o LookupRoleResultOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRoleResult) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupRoleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleResultOutput) FilterPredicate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.FilterPredicate }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRoleResultOutput{})
 }

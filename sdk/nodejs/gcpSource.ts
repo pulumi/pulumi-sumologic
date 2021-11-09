@@ -167,54 +167,54 @@ export class GcpSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GcpSource resources.
  */
 export interface GcpSourceState {
-    readonly authentication?: pulumi.Input<inputs.GcpSourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId?: pulumi.Input<number>;
-    readonly contentType?: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.GcpSourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.GcpSourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly messagePerRequest?: pulumi.Input<boolean>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path?: pulumi.Input<inputs.GcpSourcePath>;
-    readonly timezone?: pulumi.Input<string>;
+    authentication?: pulumi.Input<inputs.GcpSourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId?: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.GcpSourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GcpSourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    messagePerRequest?: pulumi.Input<boolean>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<inputs.GcpSourcePath>;
+    timezone?: pulumi.Input<string>;
     /**
      * The HTTP endpoint to use for sending data to this source.
      */
-    readonly url?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    url?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a GcpSource resource.
  */
 export interface GcpSourceArgs {
-    readonly authentication?: pulumi.Input<inputs.GcpSourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId: pulumi.Input<number>;
-    readonly contentType?: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.GcpSourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.GcpSourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly messagePerRequest?: pulumi.Input<boolean>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path?: pulumi.Input<inputs.GcpSourcePath>;
-    readonly timezone?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    authentication?: pulumi.Input<inputs.GcpSourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.GcpSourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GcpSourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    messagePerRequest?: pulumi.Input<boolean>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<inputs.GcpSourcePath>;
+    timezone?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }

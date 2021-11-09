@@ -12,6 +12,7 @@ __all__ = [
     'GetHttpSourceResult',
     'AwaitableGetHttpSourceResult',
     'get_http_source',
+    'get_http_source_output',
 ]
 
 @pulumi.output_type
@@ -128,3 +129,14 @@ def get_http_source(collector_id: Optional[int] = None,
         name=__ret__.name,
         timezone=__ret__.timezone,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_http_source)
+def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] = None,
+                           id: Optional[pulumi.Input[Optional[int]]] = None,
+                           name: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHttpSourceResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

@@ -139,24 +139,24 @@ export class ScheduledView extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ScheduledView resources.
  */
 export interface ScheduledViewState {
-    readonly dataForwardingId?: pulumi.Input<string>;
-    readonly indexName?: pulumi.Input<string>;
-    readonly parsingMode?: pulumi.Input<string>;
-    readonly query?: pulumi.Input<string>;
-    readonly reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
-    readonly retentionPeriod?: pulumi.Input<number>;
-    readonly startTime?: pulumi.Input<string>;
+    dataForwardingId?: pulumi.Input<string>;
+    indexName?: pulumi.Input<string>;
+    parsingMode?: pulumi.Input<string>;
+    query?: pulumi.Input<string>;
+    reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    retentionPeriod?: pulumi.Input<number>;
+    startTime?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a ScheduledView resource.
  */
 export interface ScheduledViewArgs {
-    readonly dataForwardingId?: pulumi.Input<string>;
-    readonly indexName: pulumi.Input<string>;
-    readonly parsingMode?: pulumi.Input<string>;
-    readonly query: pulumi.Input<string>;
-    readonly reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
-    readonly retentionPeriod?: pulumi.Input<number>;
-    readonly startTime: pulumi.Input<string>;
+    dataForwardingId?: pulumi.Input<string>;
+    indexName: pulumi.Input<string>;
+    parsingMode?: pulumi.Input<string>;
+    query: pulumi.Input<string>;
+    reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    retentionPeriod?: pulumi.Input<number>;
+    startTime: pulumi.Input<string>;
 }

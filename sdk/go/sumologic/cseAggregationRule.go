@@ -26,8 +26,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sumologic.NewCseAggregationRule(ctx, "aggregationRule", &sumologic.CseAggregationRuleArgs{
-// 			AggregationFunctions: sumologic.CseAggregationRuleAggregationFunctionArray{
-// 				&sumologic.CseAggregationRuleAggregationFunctionArgs{
+// 			AggregationFunctions: CseAggregationRuleAggregationFunctionArray{
+// 				&CseAggregationRuleAggregationFunctionArgs{
 // 					Arguments: pulumi.StringArray{
 // 						pulumi.String("metadata_deviceEventId"),
 // 					},
@@ -37,8 +37,8 @@ import (
 // 			},
 // 			DescriptionExpression: pulumi.String("Signal description"),
 // 			Enabled:               pulumi.Bool(true),
-// 			EntitySelectors: sumologic.CseAggregationRuleEntitySelectorArray{
-// 				&sumologic.CseAggregationRuleEntitySelectorArgs{
+// 			EntitySelectors: CseAggregationRuleEntitySelectorArray{
+// 				&CseAggregationRuleEntitySelectorArgs{
 // 					EntityType: pulumi.String("_ip"),
 // 					Expression: pulumi.String("srcDevice_ip"),
 // 				},
@@ -50,7 +50,7 @@ import (
 // 			IsPrototype:     pulumi.Bool(false),
 // 			MatchExpression: pulumi.String("objectType = \"Network\""),
 // 			NameExpression:  pulumi.String("Signal name"),
-// 			SeverityMapping: &sumologic.CseAggregationRuleSeverityMappingArgs{
+// 			SeverityMapping: &CseAggregationRuleSeverityMappingArgs{
 // 				Default: pulumi.Int(5),
 // 				Type:    pulumi.String("constant"),
 // 			},
@@ -329,7 +329,7 @@ type CseAggregationRuleArrayInput interface {
 type CseAggregationRuleArray []CseAggregationRuleInput
 
 func (CseAggregationRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CseAggregationRule)(nil))
+	return reflect.TypeOf((*[]*CseAggregationRule)(nil)).Elem()
 }
 
 func (i CseAggregationRuleArray) ToCseAggregationRuleArrayOutput() CseAggregationRuleArrayOutput {
@@ -354,7 +354,7 @@ type CseAggregationRuleMapInput interface {
 type CseAggregationRuleMap map[string]CseAggregationRuleInput
 
 func (CseAggregationRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CseAggregationRule)(nil))
+	return reflect.TypeOf((*map[string]*CseAggregationRule)(nil)).Elem()
 }
 
 func (i CseAggregationRuleMap) ToCseAggregationRuleMapOutput() CseAggregationRuleMapOutput {
@@ -365,9 +365,7 @@ func (i CseAggregationRuleMap) ToCseAggregationRuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CseAggregationRuleMapOutput)
 }
 
-type CseAggregationRuleOutput struct {
-	*pulumi.OutputState
-}
+type CseAggregationRuleOutput struct{ *pulumi.OutputState }
 
 func (CseAggregationRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CseAggregationRule)(nil))
@@ -386,14 +384,12 @@ func (o CseAggregationRuleOutput) ToCseAggregationRulePtrOutput() CseAggregation
 }
 
 func (o CseAggregationRuleOutput) ToCseAggregationRulePtrOutputWithContext(ctx context.Context) CseAggregationRulePtrOutput {
-	return o.ApplyT(func(v CseAggregationRule) *CseAggregationRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseAggregationRule) *CseAggregationRule {
 		return &v
 	}).(CseAggregationRulePtrOutput)
 }
 
-type CseAggregationRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type CseAggregationRulePtrOutput struct{ *pulumi.OutputState }
 
 func (CseAggregationRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CseAggregationRule)(nil))
@@ -405,6 +401,16 @@ func (o CseAggregationRulePtrOutput) ToCseAggregationRulePtrOutput() CseAggregat
 
 func (o CseAggregationRulePtrOutput) ToCseAggregationRulePtrOutputWithContext(ctx context.Context) CseAggregationRulePtrOutput {
 	return o
+}
+
+func (o CseAggregationRulePtrOutput) Elem() CseAggregationRuleOutput {
+	return o.ApplyT(func(v *CseAggregationRule) CseAggregationRule {
+		if v != nil {
+			return *v
+		}
+		var ret CseAggregationRule
+		return ret
+	}).(CseAggregationRuleOutput)
 }
 
 type CseAggregationRuleArrayOutput struct{ *pulumi.OutputState }
@@ -448,6 +454,10 @@ func (o CseAggregationRuleMapOutput) MapIndex(k pulumi.StringInput) CseAggregati
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleInput)(nil)).Elem(), &CseAggregationRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRulePtrInput)(nil)).Elem(), &CseAggregationRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleArrayInput)(nil)).Elem(), CseAggregationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleMapInput)(nil)).Elem(), CseAggregationRuleMap{})
 	pulumi.RegisterOutputType(CseAggregationRuleOutput{})
 	pulumi.RegisterOutputType(CseAggregationRulePtrOutput{})
 	pulumi.RegisterOutputType(CseAggregationRuleArrayOutput{})

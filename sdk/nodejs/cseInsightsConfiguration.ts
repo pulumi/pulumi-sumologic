@@ -99,14 +99,14 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseInsightsConfiguration resources.
  */
 export interface CseInsightsConfigurationState {
-    readonly lookbackDays?: pulumi.Input<number>;
-    readonly threshold?: pulumi.Input<number>;
+    lookbackDays?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a CseInsightsConfiguration resource.
  */
 export interface CseInsightsConfigurationArgs {
-    readonly lookbackDays?: pulumi.Input<number>;
-    readonly threshold?: pulumi.Input<number>;
+    lookbackDays?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number>;
 }

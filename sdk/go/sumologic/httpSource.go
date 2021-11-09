@@ -37,8 +37,8 @@ import (
 // 			Category:    pulumi.String("my/source/category"),
 // 			CollectorId: collector.ID(),
 // 			Description: pulumi.String("My description"),
-// 			Filters: sumologic.HttpSourceFilterArray{
-// 				&sumologic.HttpSourceFilterArgs{
+// 			Filters: HttpSourceFilterArray{
+// 				&HttpSourceFilterArgs{
 // 					FilterType: pulumi.String("Exclude"),
 // 					Name:       pulumi.String("Test Exclude Debug"),
 // 					Regexp:     pulumi.String(".*DEBUG.*"),
@@ -307,7 +307,7 @@ type HttpSourceArrayInput interface {
 type HttpSourceArray []HttpSourceInput
 
 func (HttpSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HttpSource)(nil))
+	return reflect.TypeOf((*[]*HttpSource)(nil)).Elem()
 }
 
 func (i HttpSourceArray) ToHttpSourceArrayOutput() HttpSourceArrayOutput {
@@ -332,7 +332,7 @@ type HttpSourceMapInput interface {
 type HttpSourceMap map[string]HttpSourceInput
 
 func (HttpSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HttpSource)(nil))
+	return reflect.TypeOf((*map[string]*HttpSource)(nil)).Elem()
 }
 
 func (i HttpSourceMap) ToHttpSourceMapOutput() HttpSourceMapOutput {
@@ -343,9 +343,7 @@ func (i HttpSourceMap) ToHttpSourceMapOutputWithContext(ctx context.Context) Htt
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSourceMapOutput)
 }
 
-type HttpSourceOutput struct {
-	*pulumi.OutputState
-}
+type HttpSourceOutput struct{ *pulumi.OutputState }
 
 func (HttpSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HttpSource)(nil))
@@ -364,14 +362,12 @@ func (o HttpSourceOutput) ToHttpSourcePtrOutput() HttpSourcePtrOutput {
 }
 
 func (o HttpSourceOutput) ToHttpSourcePtrOutputWithContext(ctx context.Context) HttpSourcePtrOutput {
-	return o.ApplyT(func(v HttpSource) *HttpSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpSource) *HttpSource {
 		return &v
 	}).(HttpSourcePtrOutput)
 }
 
-type HttpSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type HttpSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (HttpSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HttpSource)(nil))
@@ -383,6 +379,16 @@ func (o HttpSourcePtrOutput) ToHttpSourcePtrOutput() HttpSourcePtrOutput {
 
 func (o HttpSourcePtrOutput) ToHttpSourcePtrOutputWithContext(ctx context.Context) HttpSourcePtrOutput {
 	return o
+}
+
+func (o HttpSourcePtrOutput) Elem() HttpSourceOutput {
+	return o.ApplyT(func(v *HttpSource) HttpSource {
+		if v != nil {
+			return *v
+		}
+		var ret HttpSource
+		return ret
+	}).(HttpSourceOutput)
 }
 
 type HttpSourceArrayOutput struct{ *pulumi.OutputState }
@@ -426,6 +432,10 @@ func (o HttpSourceMapOutput) MapIndex(k pulumi.StringInput) HttpSourceOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceInput)(nil)).Elem(), &HttpSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourcePtrInput)(nil)).Elem(), &HttpSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceArrayInput)(nil)).Elem(), HttpSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceMapInput)(nil)).Elem(), HttpSourceMap{})
 	pulumi.RegisterOutputType(HttpSourceOutput{})
 	pulumi.RegisterOutputType(HttpSourcePtrOutput{})
 	pulumi.RegisterOutputType(HttpSourceArrayOutput{})

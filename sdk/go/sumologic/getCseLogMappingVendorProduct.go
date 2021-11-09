@@ -4,6 +4,9 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,60 @@ type GetCseLogMappingVendorProductResult struct {
 	Id      string `pulumi:"id"`
 	Product string `pulumi:"product"`
 	Vendor  string `pulumi:"vendor"`
+}
+
+func GetCseLogMappingVendorProductOutput(ctx *pulumi.Context, args GetCseLogMappingVendorProductOutputArgs, opts ...pulumi.InvokeOption) GetCseLogMappingVendorProductResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCseLogMappingVendorProductResult, error) {
+			args := v.(GetCseLogMappingVendorProductArgs)
+			r, err := GetCseLogMappingVendorProduct(ctx, &args, opts...)
+			return *r, err
+		}).(GetCseLogMappingVendorProductResultOutput)
+}
+
+// A collection of arguments for invoking getCseLogMappingVendorProduct.
+type GetCseLogMappingVendorProductOutputArgs struct {
+	Guid    pulumi.StringPtrInput `pulumi:"guid"`
+	Product pulumi.StringInput    `pulumi:"product"`
+	Vendor  pulumi.StringInput    `pulumi:"vendor"`
+}
+
+func (GetCseLogMappingVendorProductOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCseLogMappingVendorProductArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCseLogMappingVendorProduct.
+type GetCseLogMappingVendorProductResultOutput struct{ *pulumi.OutputState }
+
+func (GetCseLogMappingVendorProductResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCseLogMappingVendorProductResult)(nil)).Elem()
+}
+
+func (o GetCseLogMappingVendorProductResultOutput) ToGetCseLogMappingVendorProductResultOutput() GetCseLogMappingVendorProductResultOutput {
+	return o
+}
+
+func (o GetCseLogMappingVendorProductResultOutput) ToGetCseLogMappingVendorProductResultOutputWithContext(ctx context.Context) GetCseLogMappingVendorProductResultOutput {
+	return o
+}
+
+func (o GetCseLogMappingVendorProductResultOutput) Guid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCseLogMappingVendorProductResult) string { return v.Guid }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCseLogMappingVendorProductResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCseLogMappingVendorProductResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCseLogMappingVendorProductResultOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCseLogMappingVendorProductResult) string { return v.Product }).(pulumi.StringOutput)
+}
+
+func (o GetCseLogMappingVendorProductResultOutput) Vendor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCseLogMappingVendorProductResult) string { return v.Vendor }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCseLogMappingVendorProductResultOutput{})
 }

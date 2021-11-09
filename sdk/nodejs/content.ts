@@ -72,14 +72,14 @@ export class Content extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Content resources.
  */
 export interface ContentState {
-    readonly config?: pulumi.Input<string>;
-    readonly parentId?: pulumi.Input<string>;
+    config?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Content resource.
  */
 export interface ContentArgs {
-    readonly config: pulumi.Input<string>;
-    readonly parentId: pulumi.Input<string>;
+    config: pulumi.Input<string>;
+    parentId: pulumi.Input<string>;
 }

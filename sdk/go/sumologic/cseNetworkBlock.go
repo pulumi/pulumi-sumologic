@@ -197,7 +197,7 @@ type CseNetworkBlockArrayInput interface {
 type CseNetworkBlockArray []CseNetworkBlockInput
 
 func (CseNetworkBlockArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CseNetworkBlock)(nil))
+	return reflect.TypeOf((*[]*CseNetworkBlock)(nil)).Elem()
 }
 
 func (i CseNetworkBlockArray) ToCseNetworkBlockArrayOutput() CseNetworkBlockArrayOutput {
@@ -222,7 +222,7 @@ type CseNetworkBlockMapInput interface {
 type CseNetworkBlockMap map[string]CseNetworkBlockInput
 
 func (CseNetworkBlockMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CseNetworkBlock)(nil))
+	return reflect.TypeOf((*map[string]*CseNetworkBlock)(nil)).Elem()
 }
 
 func (i CseNetworkBlockMap) ToCseNetworkBlockMapOutput() CseNetworkBlockMapOutput {
@@ -233,9 +233,7 @@ func (i CseNetworkBlockMap) ToCseNetworkBlockMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CseNetworkBlockMapOutput)
 }
 
-type CseNetworkBlockOutput struct {
-	*pulumi.OutputState
-}
+type CseNetworkBlockOutput struct{ *pulumi.OutputState }
 
 func (CseNetworkBlockOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CseNetworkBlock)(nil))
@@ -254,14 +252,12 @@ func (o CseNetworkBlockOutput) ToCseNetworkBlockPtrOutput() CseNetworkBlockPtrOu
 }
 
 func (o CseNetworkBlockOutput) ToCseNetworkBlockPtrOutputWithContext(ctx context.Context) CseNetworkBlockPtrOutput {
-	return o.ApplyT(func(v CseNetworkBlock) *CseNetworkBlock {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseNetworkBlock) *CseNetworkBlock {
 		return &v
 	}).(CseNetworkBlockPtrOutput)
 }
 
-type CseNetworkBlockPtrOutput struct {
-	*pulumi.OutputState
-}
+type CseNetworkBlockPtrOutput struct{ *pulumi.OutputState }
 
 func (CseNetworkBlockPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CseNetworkBlock)(nil))
@@ -273,6 +269,16 @@ func (o CseNetworkBlockPtrOutput) ToCseNetworkBlockPtrOutput() CseNetworkBlockPt
 
 func (o CseNetworkBlockPtrOutput) ToCseNetworkBlockPtrOutputWithContext(ctx context.Context) CseNetworkBlockPtrOutput {
 	return o
+}
+
+func (o CseNetworkBlockPtrOutput) Elem() CseNetworkBlockOutput {
+	return o.ApplyT(func(v *CseNetworkBlock) CseNetworkBlock {
+		if v != nil {
+			return *v
+		}
+		var ret CseNetworkBlock
+		return ret
+	}).(CseNetworkBlockOutput)
 }
 
 type CseNetworkBlockArrayOutput struct{ *pulumi.OutputState }
@@ -316,6 +322,10 @@ func (o CseNetworkBlockMapOutput) MapIndex(k pulumi.StringInput) CseNetworkBlock
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CseNetworkBlockInput)(nil)).Elem(), &CseNetworkBlock{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseNetworkBlockPtrInput)(nil)).Elem(), &CseNetworkBlock{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseNetworkBlockArrayInput)(nil)).Elem(), CseNetworkBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseNetworkBlockMapInput)(nil)).Elem(), CseNetworkBlockMap{})
 	pulumi.RegisterOutputType(CseNetworkBlockOutput{})
 	pulumi.RegisterOutputType(CseNetworkBlockPtrOutput{})
 	pulumi.RegisterOutputType(CseNetworkBlockArrayOutput{})

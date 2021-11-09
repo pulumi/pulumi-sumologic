@@ -4,6 +4,9 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,4 +60,55 @@ type GetAdminRecommendedFolderResult struct {
 	Description string `pulumi:"description"`
 	Id          string `pulumi:"id"`
 	Name        string `pulumi:"name"`
+}
+
+func GetAdminRecommendedFolderOutput(ctx *pulumi.Context, args GetAdminRecommendedFolderOutputArgs, opts ...pulumi.InvokeOption) GetAdminRecommendedFolderResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAdminRecommendedFolderResult, error) {
+			args := v.(GetAdminRecommendedFolderArgs)
+			r, err := GetAdminRecommendedFolder(ctx, &args, opts...)
+			return *r, err
+		}).(GetAdminRecommendedFolderResultOutput)
+}
+
+// A collection of arguments for invoking getAdminRecommendedFolder.
+type GetAdminRecommendedFolderOutputArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetAdminRecommendedFolderOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdminRecommendedFolderArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAdminRecommendedFolder.
+type GetAdminRecommendedFolderResultOutput struct{ *pulumi.OutputState }
+
+func (GetAdminRecommendedFolderResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdminRecommendedFolderResult)(nil)).Elem()
+}
+
+func (o GetAdminRecommendedFolderResultOutput) ToGetAdminRecommendedFolderResultOutput() GetAdminRecommendedFolderResultOutput {
+	return o
+}
+
+func (o GetAdminRecommendedFolderResultOutput) ToGetAdminRecommendedFolderResultOutputWithContext(ctx context.Context) GetAdminRecommendedFolderResultOutput {
+	return o
+}
+
+func (o GetAdminRecommendedFolderResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdminRecommendedFolderResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetAdminRecommendedFolderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdminRecommendedFolderResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAdminRecommendedFolderResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdminRecommendedFolderResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAdminRecommendedFolderResultOutput{})
 }

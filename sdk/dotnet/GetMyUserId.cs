@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
@@ -13,6 +14,9 @@ namespace Pulumi.SumoLogic
     {
         public static Task<GetMyUserIdResult> InvokeAsync(GetMyUserIdArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdArgs(), options.WithVersion());
+
+        public static Output<GetMyUserIdResult> Invoke(GetMyUserIdInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdInvokeArgs(), options.WithVersion());
     }
 
 
@@ -22,6 +26,16 @@ namespace Pulumi.SumoLogic
         public string? Id { get; set; }
 
         public GetMyUserIdArgs()
+        {
+        }
+    }
+
+    public sealed class GetMyUserIdInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        public GetMyUserIdInvokeArgs()
         {
         }
     }

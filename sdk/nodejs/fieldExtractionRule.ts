@@ -121,18 +121,18 @@ export class FieldExtractionRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FieldExtractionRule resources.
  */
 export interface FieldExtractionRuleState {
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly parseExpression?: pulumi.Input<string>;
-    readonly scope?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    parseExpression?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a FieldExtractionRule resource.
  */
 export interface FieldExtractionRuleArgs {
-    readonly enabled: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly parseExpression: pulumi.Input<string>;
-    readonly scope: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    parseExpression: pulumi.Input<string>;
+    scope: pulumi.Input<string>;
 }

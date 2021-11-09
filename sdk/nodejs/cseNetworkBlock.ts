@@ -112,18 +112,18 @@ export class CseNetworkBlock extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseNetworkBlock resources.
  */
 export interface CseNetworkBlockState {
-    readonly addressBlock?: pulumi.Input<string>;
-    readonly internal?: pulumi.Input<boolean>;
-    readonly label?: pulumi.Input<string>;
-    readonly suppressesSignals?: pulumi.Input<boolean>;
+    addressBlock?: pulumi.Input<string>;
+    internal?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    suppressesSignals?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a CseNetworkBlock resource.
  */
 export interface CseNetworkBlockArgs {
-    readonly addressBlock: pulumi.Input<string>;
-    readonly internal?: pulumi.Input<boolean>;
-    readonly label?: pulumi.Input<string>;
-    readonly suppressesSignals?: pulumi.Input<boolean>;
+    addressBlock: pulumi.Input<string>;
+    internal?: pulumi.Input<boolean>;
+    label?: pulumi.Input<string>;
+    suppressesSignals?: pulumi.Input<boolean>;
 }

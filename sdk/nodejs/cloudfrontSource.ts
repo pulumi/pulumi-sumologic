@@ -215,56 +215,56 @@ export class CloudfrontSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudfrontSource resources.
  */
 export interface CloudfrontSourceState {
-    readonly authentication?: pulumi.Input<inputs.CloudfrontSourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId?: pulumi.Input<number>;
-    readonly contentType?: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path?: pulumi.Input<inputs.CloudfrontSourcePath>;
-    readonly paused?: pulumi.Input<boolean>;
-    readonly scanInterval?: pulumi.Input<number>;
-    readonly timezone?: pulumi.Input<string>;
+    authentication?: pulumi.Input<inputs.CloudfrontSourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId?: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<inputs.CloudfrontSourcePath>;
+    paused?: pulumi.Input<boolean>;
+    scanInterval?: pulumi.Input<number>;
+    timezone?: pulumi.Input<string>;
     /**
      * The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
      */
-    readonly url?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    url?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a CloudfrontSource resource.
  */
 export interface CloudfrontSourceArgs {
-    readonly authentication: pulumi.Input<inputs.CloudfrontSourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId: pulumi.Input<number>;
-    readonly contentType: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path: pulumi.Input<inputs.CloudfrontSourcePath>;
-    readonly paused: pulumi.Input<boolean>;
-    readonly scanInterval: pulumi.Input<number>;
-    readonly timezone?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    authentication: pulumi.Input<inputs.CloudfrontSourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId: pulumi.Input<number>;
+    contentType: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path: pulumi.Input<inputs.CloudfrontSourcePath>;
+    paused: pulumi.Input<boolean>;
+    scanInterval: pulumi.Input<number>;
+    timezone?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }

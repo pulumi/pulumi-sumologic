@@ -156,35 +156,35 @@ export interface IngestBudgetV2State {
     /**
      * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
      */
-    readonly auditThreshold?: pulumi.Input<number>;
+    auditThreshold?: pulumi.Input<number>;
     /**
      * Capacity of the ingest budget, in bytes.
      */
-    readonly capacityBytes?: pulumi.Input<number>;
+    capacityBytes?: pulumi.Input<number>;
     /**
      * The description of the collector.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of the ingest budget. This must be unique across all of the ingest budgets
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
      */
-    readonly resetTime?: pulumi.Input<string>;
+    resetTime?: pulumi.Input<string>;
     /**
      * A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
 }
 
 /**
@@ -194,33 +194,33 @@ export interface IngestBudgetV2Args {
     /**
      * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
      */
-    readonly action: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
      */
-    readonly auditThreshold?: pulumi.Input<number>;
+    auditThreshold?: pulumi.Input<number>;
     /**
      * Capacity of the ingest budget, in bytes.
      */
-    readonly capacityBytes: pulumi.Input<number>;
+    capacityBytes: pulumi.Input<number>;
     /**
      * The description of the collector.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of the ingest budget. This must be unique across all of the ingest budgets
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
      */
-    readonly resetTime: pulumi.Input<string>;
+    resetTime: pulumi.Input<string>;
     /**
      * A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
      */
-    readonly scope: pulumi.Input<string>;
+    scope: pulumi.Input<string>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
      */
-    readonly timezone: pulumi.Input<string>;
+    timezone: pulumi.Input<string>;
 }

@@ -213,40 +213,40 @@ export class CseAggregationRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseAggregationRule resources.
  */
 export interface CseAggregationRuleState {
-    readonly aggregationFunctions?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleAggregationFunction>[]>;
-    readonly descriptionExpression?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
-    readonly groupByEntity?: pulumi.Input<boolean>;
-    readonly groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly matchExpression?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly nameExpression?: pulumi.Input<string>;
-    readonly severityMapping?: pulumi.Input<inputs.CseAggregationRuleSeverityMapping>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly triggerExpression?: pulumi.Input<string>;
-    readonly windowSize?: pulumi.Input<string>;
+    aggregationFunctions?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleAggregationFunction>[]>;
+    descriptionExpression?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
+    groupByEntity?: pulumi.Input<boolean>;
+    groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    isPrototype?: pulumi.Input<boolean>;
+    matchExpression?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    nameExpression?: pulumi.Input<string>;
+    severityMapping?: pulumi.Input<inputs.CseAggregationRuleSeverityMapping>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    triggerExpression?: pulumi.Input<string>;
+    windowSize?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CseAggregationRule resource.
  */
 export interface CseAggregationRuleArgs {
-    readonly aggregationFunctions: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleAggregationFunction>[]>;
-    readonly descriptionExpression: pulumi.Input<string>;
-    readonly enabled: pulumi.Input<boolean>;
-    readonly entitySelectors: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
-    readonly groupByEntity?: pulumi.Input<boolean>;
-    readonly groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly matchExpression: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly nameExpression: pulumi.Input<string>;
-    readonly severityMapping: pulumi.Input<inputs.CseAggregationRuleSeverityMapping>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly triggerExpression: pulumi.Input<string>;
-    readonly windowSize: pulumi.Input<string>;
+    aggregationFunctions: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleAggregationFunction>[]>;
+    descriptionExpression: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
+    entitySelectors: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
+    groupByEntity?: pulumi.Input<boolean>;
+    groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    isPrototype?: pulumi.Input<boolean>;
+    matchExpression: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    nameExpression: pulumi.Input<string>;
+    severityMapping: pulumi.Input<inputs.CseAggregationRuleSeverityMapping>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    triggerExpression: pulumi.Input<string>;
+    windowSize: pulumi.Input<string>;
 }

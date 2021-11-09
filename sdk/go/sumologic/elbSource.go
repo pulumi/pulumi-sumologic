@@ -34,7 +34,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewElbSource(ctx, "elbSource", &sumologic.ElbSourceArgs{
-// 			Authentication: &sumologic.ElbSourceAuthenticationArgs{
+// 			Authentication: &ElbSourceAuthenticationArgs{
 // 				AccessKey: pulumi.String("someKey"),
 // 				SecretKey: pulumi.String("******"),
 // 				Type:      pulumi.String("S3BucketAuthentication"),
@@ -43,7 +43,7 @@ import (
 // 			CollectorId: collector.ID(),
 // 			ContentType: pulumi.String("AwsElbBucket"),
 // 			Description: pulumi.String("My description"),
-// 			Path: &sumologic.ElbSourcePathArgs{
+// 			Path: &ElbSourcePathArgs{
 // 				BucketName:     pulumi.String("Bucket1"),
 // 				PathExpression: pulumi.String("*"),
 // 				Type:           pulumi.String("S3BucketPathExpression"),
@@ -336,7 +336,7 @@ type ElbSourceArrayInput interface {
 type ElbSourceArray []ElbSourceInput
 
 func (ElbSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ElbSource)(nil))
+	return reflect.TypeOf((*[]*ElbSource)(nil)).Elem()
 }
 
 func (i ElbSourceArray) ToElbSourceArrayOutput() ElbSourceArrayOutput {
@@ -361,7 +361,7 @@ type ElbSourceMapInput interface {
 type ElbSourceMap map[string]ElbSourceInput
 
 func (ElbSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ElbSource)(nil))
+	return reflect.TypeOf((*map[string]*ElbSource)(nil)).Elem()
 }
 
 func (i ElbSourceMap) ToElbSourceMapOutput() ElbSourceMapOutput {
@@ -372,9 +372,7 @@ func (i ElbSourceMap) ToElbSourceMapOutputWithContext(ctx context.Context) ElbSo
 	return pulumi.ToOutputWithContext(ctx, i).(ElbSourceMapOutput)
 }
 
-type ElbSourceOutput struct {
-	*pulumi.OutputState
-}
+type ElbSourceOutput struct{ *pulumi.OutputState }
 
 func (ElbSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ElbSource)(nil))
@@ -393,14 +391,12 @@ func (o ElbSourceOutput) ToElbSourcePtrOutput() ElbSourcePtrOutput {
 }
 
 func (o ElbSourceOutput) ToElbSourcePtrOutputWithContext(ctx context.Context) ElbSourcePtrOutput {
-	return o.ApplyT(func(v ElbSource) *ElbSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElbSource) *ElbSource {
 		return &v
 	}).(ElbSourcePtrOutput)
 }
 
-type ElbSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type ElbSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (ElbSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ElbSource)(nil))
@@ -412,6 +408,16 @@ func (o ElbSourcePtrOutput) ToElbSourcePtrOutput() ElbSourcePtrOutput {
 
 func (o ElbSourcePtrOutput) ToElbSourcePtrOutputWithContext(ctx context.Context) ElbSourcePtrOutput {
 	return o
+}
+
+func (o ElbSourcePtrOutput) Elem() ElbSourceOutput {
+	return o.ApplyT(func(v *ElbSource) ElbSource {
+		if v != nil {
+			return *v
+		}
+		var ret ElbSource
+		return ret
+	}).(ElbSourceOutput)
 }
 
 type ElbSourceArrayOutput struct{ *pulumi.OutputState }
@@ -455,6 +461,10 @@ func (o ElbSourceMapOutput) MapIndex(k pulumi.StringInput) ElbSourceOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceInput)(nil)).Elem(), &ElbSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePtrInput)(nil)).Elem(), &ElbSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceArrayInput)(nil)).Elem(), ElbSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceMapInput)(nil)).Elem(), ElbSourceMap{})
 	pulumi.RegisterOutputType(ElbSourceOutput{})
 	pulumi.RegisterOutputType(ElbSourcePtrOutput{})
 	pulumi.RegisterOutputType(ElbSourceArrayOutput{})

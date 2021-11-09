@@ -185,7 +185,7 @@ type CseInsightsResolutionArrayInput interface {
 type CseInsightsResolutionArray []CseInsightsResolutionInput
 
 func (CseInsightsResolutionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CseInsightsResolution)(nil))
+	return reflect.TypeOf((*[]*CseInsightsResolution)(nil)).Elem()
 }
 
 func (i CseInsightsResolutionArray) ToCseInsightsResolutionArrayOutput() CseInsightsResolutionArrayOutput {
@@ -210,7 +210,7 @@ type CseInsightsResolutionMapInput interface {
 type CseInsightsResolutionMap map[string]CseInsightsResolutionInput
 
 func (CseInsightsResolutionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CseInsightsResolution)(nil))
+	return reflect.TypeOf((*map[string]*CseInsightsResolution)(nil)).Elem()
 }
 
 func (i CseInsightsResolutionMap) ToCseInsightsResolutionMapOutput() CseInsightsResolutionMapOutput {
@@ -221,9 +221,7 @@ func (i CseInsightsResolutionMap) ToCseInsightsResolutionMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsResolutionMapOutput)
 }
 
-type CseInsightsResolutionOutput struct {
-	*pulumi.OutputState
-}
+type CseInsightsResolutionOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsResolutionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CseInsightsResolution)(nil))
@@ -242,14 +240,12 @@ func (o CseInsightsResolutionOutput) ToCseInsightsResolutionPtrOutput() CseInsig
 }
 
 func (o CseInsightsResolutionOutput) ToCseInsightsResolutionPtrOutputWithContext(ctx context.Context) CseInsightsResolutionPtrOutput {
-	return o.ApplyT(func(v CseInsightsResolution) *CseInsightsResolution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseInsightsResolution) *CseInsightsResolution {
 		return &v
 	}).(CseInsightsResolutionPtrOutput)
 }
 
-type CseInsightsResolutionPtrOutput struct {
-	*pulumi.OutputState
-}
+type CseInsightsResolutionPtrOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsResolutionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CseInsightsResolution)(nil))
@@ -261,6 +257,16 @@ func (o CseInsightsResolutionPtrOutput) ToCseInsightsResolutionPtrOutput() CseIn
 
 func (o CseInsightsResolutionPtrOutput) ToCseInsightsResolutionPtrOutputWithContext(ctx context.Context) CseInsightsResolutionPtrOutput {
 	return o
+}
+
+func (o CseInsightsResolutionPtrOutput) Elem() CseInsightsResolutionOutput {
+	return o.ApplyT(func(v *CseInsightsResolution) CseInsightsResolution {
+		if v != nil {
+			return *v
+		}
+		var ret CseInsightsResolution
+		return ret
+	}).(CseInsightsResolutionOutput)
 }
 
 type CseInsightsResolutionArrayOutput struct{ *pulumi.OutputState }
@@ -304,6 +310,10 @@ func (o CseInsightsResolutionMapOutput) MapIndex(k pulumi.StringInput) CseInsigh
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsResolutionInput)(nil)).Elem(), &CseInsightsResolution{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsResolutionPtrInput)(nil)).Elem(), &CseInsightsResolution{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsResolutionArrayInput)(nil)).Elem(), CseInsightsResolutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsResolutionMapInput)(nil)).Elem(), CseInsightsResolutionMap{})
 	pulumi.RegisterOutputType(CseInsightsResolutionOutput{})
 	pulumi.RegisterOutputType(CseInsightsResolutionPtrOutput{})
 	pulumi.RegisterOutputType(CseInsightsResolutionArrayOutput{})

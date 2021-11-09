@@ -172,7 +172,7 @@ type SubdomainArrayInput interface {
 type SubdomainArray []SubdomainInput
 
 func (SubdomainArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Subdomain)(nil))
+	return reflect.TypeOf((*[]*Subdomain)(nil)).Elem()
 }
 
 func (i SubdomainArray) ToSubdomainArrayOutput() SubdomainArrayOutput {
@@ -197,7 +197,7 @@ type SubdomainMapInput interface {
 type SubdomainMap map[string]SubdomainInput
 
 func (SubdomainMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Subdomain)(nil))
+	return reflect.TypeOf((*map[string]*Subdomain)(nil)).Elem()
 }
 
 func (i SubdomainMap) ToSubdomainMapOutput() SubdomainMapOutput {
@@ -208,9 +208,7 @@ func (i SubdomainMap) ToSubdomainMapOutputWithContext(ctx context.Context) Subdo
 	return pulumi.ToOutputWithContext(ctx, i).(SubdomainMapOutput)
 }
 
-type SubdomainOutput struct {
-	*pulumi.OutputState
-}
+type SubdomainOutput struct{ *pulumi.OutputState }
 
 func (SubdomainOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Subdomain)(nil))
@@ -229,14 +227,12 @@ func (o SubdomainOutput) ToSubdomainPtrOutput() SubdomainPtrOutput {
 }
 
 func (o SubdomainOutput) ToSubdomainPtrOutputWithContext(ctx context.Context) SubdomainPtrOutput {
-	return o.ApplyT(func(v Subdomain) *Subdomain {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subdomain) *Subdomain {
 		return &v
 	}).(SubdomainPtrOutput)
 }
 
-type SubdomainPtrOutput struct {
-	*pulumi.OutputState
-}
+type SubdomainPtrOutput struct{ *pulumi.OutputState }
 
 func (SubdomainPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Subdomain)(nil))
@@ -248,6 +244,16 @@ func (o SubdomainPtrOutput) ToSubdomainPtrOutput() SubdomainPtrOutput {
 
 func (o SubdomainPtrOutput) ToSubdomainPtrOutputWithContext(ctx context.Context) SubdomainPtrOutput {
 	return o
+}
+
+func (o SubdomainPtrOutput) Elem() SubdomainOutput {
+	return o.ApplyT(func(v *Subdomain) Subdomain {
+		if v != nil {
+			return *v
+		}
+		var ret Subdomain
+		return ret
+	}).(SubdomainOutput)
 }
 
 type SubdomainArrayOutput struct{ *pulumi.OutputState }
@@ -291,6 +297,10 @@ func (o SubdomainMapOutput) MapIndex(k pulumi.StringInput) SubdomainOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubdomainInput)(nil)).Elem(), &Subdomain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubdomainPtrInput)(nil)).Elem(), &Subdomain{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubdomainArrayInput)(nil)).Elem(), SubdomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubdomainMapInput)(nil)).Elem(), SubdomainMap{})
 	pulumi.RegisterOutputType(SubdomainOutput{})
 	pulumi.RegisterOutputType(SubdomainPtrOutput{})
 	pulumi.RegisterOutputType(SubdomainArrayOutput{})

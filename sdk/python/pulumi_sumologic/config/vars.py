@@ -8,23 +8,29 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'access_id',
-    'access_key',
-    'admin_mode',
-    'base_url',
-    'environment',
-]
+import types
 
 __config__ = pulumi.Config('sumologic')
 
-access_id = __config__.get('accessId')
 
-access_key = __config__.get('accessKey')
+class _ExportableConfig(types.ModuleType):
+    @property
+    def access_id(self) -> Optional[str]:
+        return __config__.get('accessId')
 
-admin_mode = __config__.get('adminMode')
+    @property
+    def access_key(self) -> Optional[str]:
+        return __config__.get('accessKey')
 
-base_url = __config__.get('baseUrl') or _utilities.get_env('SUMOLOGIC_BASE_URL')
+    @property
+    def admin_mode(self) -> Optional[bool]:
+        return __config__.get_bool('adminMode')
 
-environment = __config__.get('environment') or _utilities.get_env('SUMOLOGIC_ENVIRONMENT')
+    @property
+    def base_url(self) -> Optional[str]:
+        return __config__.get('baseUrl') or _utilities.get_env('SUMOLOGIC_BASE_URL')
+
+    @property
+    def environment(self) -> Optional[str]:
+        return __config__.get('environment') or _utilities.get_env('SUMOLOGIC_ENVIRONMENT')
 

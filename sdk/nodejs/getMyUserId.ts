@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getMyUserId(args?: GetMyUserIdArgs, opts?: pulumi.InvokeOptions): Promise<GetMyUserIdResult> {
@@ -23,7 +22,7 @@ export function getMyUserId(args?: GetMyUserIdArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getMyUserId.
  */
 export interface GetMyUserIdArgs {
-    readonly id?: string;
+    id?: string;
 }
 
 /**
@@ -31,4 +30,15 @@ export interface GetMyUserIdArgs {
  */
 export interface GetMyUserIdResult {
     readonly id: string;
+}
+
+export function getMyUserIdOutput(args?: GetMyUserIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMyUserIdResult> {
+    return pulumi.output(args).apply(a => getMyUserId(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMyUserId.
+ */
+export interface GetMyUserIdOutputArgs {
+    id?: pulumi.Input<string>;
 }

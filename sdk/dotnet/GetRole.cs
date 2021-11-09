@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
@@ -70,6 +71,66 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
+        ///         {
+        ///             Name = "MyRole",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var that = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
+        ///         {
+        ///             Id = "1234567890",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+        /// 
+        /// If both `id` and `name` have been specified, `id` takes precedence.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the role. This can be used to create users having that role.
+        /// - `name` - The name of the role.
+        /// - `description` - The description of the role.
+        /// - `filter_predicate` - The search filter to restrict access to specific logs.
+        /// - `capabilities` - The list of capabilities associated with the role.
+        /// </summary>
+        public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -82,6 +143,19 @@ namespace Pulumi.SumoLogic
         public string? Name { get; set; }
 
         public GetRoleArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetRoleInvokeArgs()
         {
         }
     }

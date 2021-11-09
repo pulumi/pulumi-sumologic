@@ -148,36 +148,36 @@ export class LookupTable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LookupTable resources.
  */
 export interface LookupTableState {
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The list of fields in the lookup table.
      */
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentFolderId?: pulumi.Input<string>;
+    fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
+    name?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string>;
     /**
      * The primary key field names.
      */
-    readonly primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly sizeLimitAction?: pulumi.Input<string>;
-    readonly ttl?: pulumi.Input<number>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sizeLimitAction?: pulumi.Input<string>;
+    ttl?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a LookupTable resource.
  */
 export interface LookupTableArgs {
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The list of fields in the lookup table.
      */
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentFolderId?: pulumi.Input<string>;
+    fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
+    name?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string>;
     /**
      * The primary key field names.
      */
-    readonly primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly sizeLimitAction?: pulumi.Input<string>;
-    readonly ttl?: pulumi.Input<number>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sizeLimitAction?: pulumi.Input<string>;
+    ttl?: pulumi.Input<number>;
 }

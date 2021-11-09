@@ -183,34 +183,34 @@ export class CseChainRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseChainRule resources.
  */
 export interface CseChainRuleState {
-    readonly description?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseChainRuleEntitySelector>[]>;
-    readonly expressionsAndLimits?: pulumi.Input<pulumi.Input<inputs.CseChainRuleExpressionsAndLimit>[]>;
-    readonly groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly ordered?: pulumi.Input<boolean>;
-    readonly severity?: pulumi.Input<number>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly windowSize?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseChainRuleEntitySelector>[]>;
+    expressionsAndLimits?: pulumi.Input<pulumi.Input<inputs.CseChainRuleExpressionsAndLimit>[]>;
+    groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    isPrototype?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    ordered?: pulumi.Input<boolean>;
+    severity?: pulumi.Input<number>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    windowSize?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CseChainRule resource.
  */
 export interface CseChainRuleArgs {
-    readonly description: pulumi.Input<string>;
-    readonly enabled: pulumi.Input<boolean>;
-    readonly entitySelectors: pulumi.Input<pulumi.Input<inputs.CseChainRuleEntitySelector>[]>;
-    readonly expressionsAndLimits: pulumi.Input<pulumi.Input<inputs.CseChainRuleExpressionsAndLimit>[]>;
-    readonly groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly ordered?: pulumi.Input<boolean>;
-    readonly severity: pulumi.Input<number>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly windowSize: pulumi.Input<string>;
+    description: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
+    entitySelectors: pulumi.Input<pulumi.Input<inputs.CseChainRuleEntitySelector>[]>;
+    expressionsAndLimits: pulumi.Input<pulumi.Input<inputs.CseChainRuleExpressionsAndLimit>[]>;
+    groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    isPrototype?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    ordered?: pulumi.Input<boolean>;
+    severity: pulumi.Input<number>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    windowSize: pulumi.Input<string>;
 }

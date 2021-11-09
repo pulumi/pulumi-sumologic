@@ -12,6 +12,7 @@ __all__ = [
     'GetAdminRecommendedFolderResult',
     'AwaitableGetAdminRecommendedFolderResult',
     'get_admin_recommended_folder',
+    'get_admin_recommended_folder_output',
 ]
 
 @pulumi.output_type
@@ -94,3 +95,30 @@ def get_admin_recommended_folder(description: Optional[str] = None,
         description=__ret__.description,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_admin_recommended_folder)
+def get_admin_recommended_folder_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                                        id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAdminRecommendedFolderResult]:
+    """
+    Provides an easy way to retrieve the Admin Recommended Folder.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    folder = sumologic.get_admin_recommended_folder()
+    ```
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The ID of the Admin Recommended Folder.
+    - `name` - The name of the Admin Recommended Folder.
+    - `description` - The description of the Admin Recommended Folder.
+    """
+    ...

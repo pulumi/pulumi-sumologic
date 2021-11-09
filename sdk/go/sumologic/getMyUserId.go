@@ -4,6 +4,9 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,4 +27,45 @@ type GetMyUserIdArgs struct {
 // A collection of values returned by getMyUserId.
 type GetMyUserIdResult struct {
 	Id string `pulumi:"id"`
+}
+
+func GetMyUserIdOutput(ctx *pulumi.Context, args GetMyUserIdOutputArgs, opts ...pulumi.InvokeOption) GetMyUserIdResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMyUserIdResult, error) {
+			args := v.(GetMyUserIdArgs)
+			r, err := GetMyUserId(ctx, &args, opts...)
+			return *r, err
+		}).(GetMyUserIdResultOutput)
+}
+
+// A collection of arguments for invoking getMyUserId.
+type GetMyUserIdOutputArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GetMyUserIdOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMyUserIdArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMyUserId.
+type GetMyUserIdResultOutput struct{ *pulumi.OutputState }
+
+func (GetMyUserIdResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMyUserIdResult)(nil)).Elem()
+}
+
+func (o GetMyUserIdResultOutput) ToGetMyUserIdResultOutput() GetMyUserIdResultOutput {
+	return o
+}
+
+func (o GetMyUserIdResultOutput) ToGetMyUserIdResultOutputWithContext(ctx context.Context) GetMyUserIdResultOutput {
+	return o
+}
+
+func (o GetMyUserIdResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMyUserIdResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMyUserIdResultOutput{})
 }

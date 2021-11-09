@@ -27,14 +27,14 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sumologic.NewLookupTable(ctx, "lookupTable", &sumologic.LookupTableArgs{
 // 			Description: pulumi.String("some description"),
-// 			Fields: sumologic.LookupTableFieldArray{
-// 				&sumologic.LookupTableFieldArgs{
-// 					FieldName: "FieldName1",
-// 					FieldType: "boolean",
+// 			Fields: LookupTableFieldArray{
+// 				&LookupTableFieldArgs{
+// 					FieldName: pulumi.String("FieldName1"),
+// 					FieldType: pulumi.String("boolean"),
 // 				},
-// 				&sumologic.LookupTableFieldArgs{
-// 					FieldName: "FieldName2",
-// 					FieldType: "string",
+// 				&LookupTableFieldArgs{
+// 					FieldName: pulumi.String("FieldName2"),
+// 					FieldType: pulumi.String("string"),
 // 				},
 // 			},
 // 			ParentFolderId: pulumi.String("<personal folder id>"),
@@ -244,7 +244,7 @@ type LookupTableArrayInput interface {
 type LookupTableArray []LookupTableInput
 
 func (LookupTableArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LookupTable)(nil))
+	return reflect.TypeOf((*[]*LookupTable)(nil)).Elem()
 }
 
 func (i LookupTableArray) ToLookupTableArrayOutput() LookupTableArrayOutput {
@@ -269,7 +269,7 @@ type LookupTableMapInput interface {
 type LookupTableMap map[string]LookupTableInput
 
 func (LookupTableMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LookupTable)(nil))
+	return reflect.TypeOf((*map[string]*LookupTable)(nil)).Elem()
 }
 
 func (i LookupTableMap) ToLookupTableMapOutput() LookupTableMapOutput {
@@ -280,9 +280,7 @@ func (i LookupTableMap) ToLookupTableMapOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, i).(LookupTableMapOutput)
 }
 
-type LookupTableOutput struct {
-	*pulumi.OutputState
-}
+type LookupTableOutput struct{ *pulumi.OutputState }
 
 func (LookupTableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupTable)(nil))
@@ -301,14 +299,12 @@ func (o LookupTableOutput) ToLookupTablePtrOutput() LookupTablePtrOutput {
 }
 
 func (o LookupTableOutput) ToLookupTablePtrOutputWithContext(ctx context.Context) LookupTablePtrOutput {
-	return o.ApplyT(func(v LookupTable) *LookupTable {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LookupTable) *LookupTable {
 		return &v
 	}).(LookupTablePtrOutput)
 }
 
-type LookupTablePtrOutput struct {
-	*pulumi.OutputState
-}
+type LookupTablePtrOutput struct{ *pulumi.OutputState }
 
 func (LookupTablePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LookupTable)(nil))
@@ -320,6 +316,16 @@ func (o LookupTablePtrOutput) ToLookupTablePtrOutput() LookupTablePtrOutput {
 
 func (o LookupTablePtrOutput) ToLookupTablePtrOutputWithContext(ctx context.Context) LookupTablePtrOutput {
 	return o
+}
+
+func (o LookupTablePtrOutput) Elem() LookupTableOutput {
+	return o.ApplyT(func(v *LookupTable) LookupTable {
+		if v != nil {
+			return *v
+		}
+		var ret LookupTable
+		return ret
+	}).(LookupTableOutput)
 }
 
 type LookupTableArrayOutput struct{ *pulumi.OutputState }
@@ -363,6 +369,10 @@ func (o LookupTableMapOutput) MapIndex(k pulumi.StringInput) LookupTableOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableInput)(nil)).Elem(), &LookupTable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LookupTablePtrInput)(nil)).Elem(), &LookupTable{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableArrayInput)(nil)).Elem(), LookupTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableMapInput)(nil)).Elem(), LookupTableMap{})
 	pulumi.RegisterOutputType(LookupTableOutput{})
 	pulumi.RegisterOutputType(LookupTablePtrOutput{})
 	pulumi.RegisterOutputType(LookupTableArrayOutput{})

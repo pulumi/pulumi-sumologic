@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getHttpSource(args?: GetHttpSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpSourceResult> {
@@ -25,9 +24,9 @@ export function getHttpSource(args?: GetHttpSourceArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getHttpSource.
  */
 export interface GetHttpSourceArgs {
-    readonly collectorId?: number;
-    readonly id?: number;
-    readonly name?: string;
+    collectorId?: number;
+    id?: number;
+    name?: string;
 }
 
 /**
@@ -42,4 +41,17 @@ export interface GetHttpSourceResult {
     readonly name?: string;
     readonly timezone: string;
     readonly url: string;
+}
+
+export function getHttpSourceOutput(args?: GetHttpSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHttpSourceResult> {
+    return pulumi.output(args).apply(a => getHttpSource(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHttpSource.
+ */
+export interface GetHttpSourceOutputArgs {
+    collectorId?: pulumi.Input<number>;
+    id?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
 }

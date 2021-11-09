@@ -34,7 +34,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewAwsXraySource(ctx, "awsXraySource", &sumologic.AwsXraySourceArgs{
-// 			Authentication: &sumologic.AwsXraySourceAuthenticationArgs{
+// 			Authentication: &AwsXraySourceAuthenticationArgs{
 // 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 // 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
 // 			},
@@ -42,7 +42,7 @@ import (
 // 			CollectorId: collector.ID(),
 // 			ContentType: pulumi.String("AwsXRay"),
 // 			Description: pulumi.String("My description"),
-// 			Path: &sumologic.AwsXraySourcePathArgs{
+// 			Path: &AwsXraySourcePathArgs{
 // 				LimitToRegions: pulumi.StringArray{
 // 					pulumi.String("us-west-2"),
 // 				},
@@ -329,7 +329,7 @@ type AwsXraySourceArrayInput interface {
 type AwsXraySourceArray []AwsXraySourceInput
 
 func (AwsXraySourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AwsXraySource)(nil))
+	return reflect.TypeOf((*[]*AwsXraySource)(nil)).Elem()
 }
 
 func (i AwsXraySourceArray) ToAwsXraySourceArrayOutput() AwsXraySourceArrayOutput {
@@ -354,7 +354,7 @@ type AwsXraySourceMapInput interface {
 type AwsXraySourceMap map[string]AwsXraySourceInput
 
 func (AwsXraySourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AwsXraySource)(nil))
+	return reflect.TypeOf((*map[string]*AwsXraySource)(nil)).Elem()
 }
 
 func (i AwsXraySourceMap) ToAwsXraySourceMapOutput() AwsXraySourceMapOutput {
@@ -365,9 +365,7 @@ func (i AwsXraySourceMap) ToAwsXraySourceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourceMapOutput)
 }
 
-type AwsXraySourceOutput struct {
-	*pulumi.OutputState
-}
+type AwsXraySourceOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AwsXraySource)(nil))
@@ -386,14 +384,12 @@ func (o AwsXraySourceOutput) ToAwsXraySourcePtrOutput() AwsXraySourcePtrOutput {
 }
 
 func (o AwsXraySourceOutput) ToAwsXraySourcePtrOutputWithContext(ctx context.Context) AwsXraySourcePtrOutput {
-	return o.ApplyT(func(v AwsXraySource) *AwsXraySource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsXraySource) *AwsXraySource {
 		return &v
 	}).(AwsXraySourcePtrOutput)
 }
 
-type AwsXraySourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type AwsXraySourcePtrOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AwsXraySource)(nil))
@@ -405,6 +401,16 @@ func (o AwsXraySourcePtrOutput) ToAwsXraySourcePtrOutput() AwsXraySourcePtrOutpu
 
 func (o AwsXraySourcePtrOutput) ToAwsXraySourcePtrOutputWithContext(ctx context.Context) AwsXraySourcePtrOutput {
 	return o
+}
+
+func (o AwsXraySourcePtrOutput) Elem() AwsXraySourceOutput {
+	return o.ApplyT(func(v *AwsXraySource) AwsXraySource {
+		if v != nil {
+			return *v
+		}
+		var ret AwsXraySource
+		return ret
+	}).(AwsXraySourceOutput)
 }
 
 type AwsXraySourceArrayOutput struct{ *pulumi.OutputState }
@@ -448,6 +454,10 @@ func (o AwsXraySourceMapOutput) MapIndex(k pulumi.StringInput) AwsXraySourceOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceInput)(nil)).Elem(), &AwsXraySource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePtrInput)(nil)).Elem(), &AwsXraySource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceArrayInput)(nil)).Elem(), AwsXraySourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceMapInput)(nil)).Elem(), AwsXraySourceMap{})
 	pulumi.RegisterOutputType(AwsXraySourceOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePtrOutput{})
 	pulumi.RegisterOutputType(AwsXraySourceArrayOutput{})

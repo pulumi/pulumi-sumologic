@@ -34,7 +34,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewAwsInventorySource(ctx, "awsInventorySource", &sumologic.AwsInventorySourceArgs{
-// 			Authentication: &sumologic.AwsInventorySourceAuthenticationArgs{
+// 			Authentication: &AwsInventorySourceAuthenticationArgs{
 // 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 // 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
 // 			},
@@ -42,7 +42,7 @@ import (
 // 			CollectorId: collector.ID(),
 // 			ContentType: pulumi.String("AwsInventory"),
 // 			Description: pulumi.String("My description"),
-// 			Path: &sumologic.AwsInventorySourcePathArgs{
+// 			Path: &AwsInventorySourcePathArgs{
 // 				LimitToNamespaces: pulumi.StringArray{
 // 					pulumi.String("AWS/RDS"),
 // 					pulumi.String("AWS/EC2"),
@@ -345,7 +345,7 @@ type AwsInventorySourceArrayInput interface {
 type AwsInventorySourceArray []AwsInventorySourceInput
 
 func (AwsInventorySourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AwsInventorySource)(nil))
+	return reflect.TypeOf((*[]*AwsInventorySource)(nil)).Elem()
 }
 
 func (i AwsInventorySourceArray) ToAwsInventorySourceArrayOutput() AwsInventorySourceArrayOutput {
@@ -370,7 +370,7 @@ type AwsInventorySourceMapInput interface {
 type AwsInventorySourceMap map[string]AwsInventorySourceInput
 
 func (AwsInventorySourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AwsInventorySource)(nil))
+	return reflect.TypeOf((*map[string]*AwsInventorySource)(nil)).Elem()
 }
 
 func (i AwsInventorySourceMap) ToAwsInventorySourceMapOutput() AwsInventorySourceMapOutput {
@@ -381,9 +381,7 @@ func (i AwsInventorySourceMap) ToAwsInventorySourceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourceMapOutput)
 }
 
-type AwsInventorySourceOutput struct {
-	*pulumi.OutputState
-}
+type AwsInventorySourceOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AwsInventorySource)(nil))
@@ -402,14 +400,12 @@ func (o AwsInventorySourceOutput) ToAwsInventorySourcePtrOutput() AwsInventorySo
 }
 
 func (o AwsInventorySourceOutput) ToAwsInventorySourcePtrOutputWithContext(ctx context.Context) AwsInventorySourcePtrOutput {
-	return o.ApplyT(func(v AwsInventorySource) *AwsInventorySource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsInventorySource) *AwsInventorySource {
 		return &v
 	}).(AwsInventorySourcePtrOutput)
 }
 
-type AwsInventorySourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type AwsInventorySourcePtrOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AwsInventorySource)(nil))
@@ -421,6 +417,16 @@ func (o AwsInventorySourcePtrOutput) ToAwsInventorySourcePtrOutput() AwsInventor
 
 func (o AwsInventorySourcePtrOutput) ToAwsInventorySourcePtrOutputWithContext(ctx context.Context) AwsInventorySourcePtrOutput {
 	return o
+}
+
+func (o AwsInventorySourcePtrOutput) Elem() AwsInventorySourceOutput {
+	return o.ApplyT(func(v *AwsInventorySource) AwsInventorySource {
+		if v != nil {
+			return *v
+		}
+		var ret AwsInventorySource
+		return ret
+	}).(AwsInventorySourceOutput)
 }
 
 type AwsInventorySourceArrayOutput struct{ *pulumi.OutputState }
@@ -464,6 +470,10 @@ func (o AwsInventorySourceMapOutput) MapIndex(k pulumi.StringInput) AwsInventory
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceInput)(nil)).Elem(), &AwsInventorySource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePtrInput)(nil)).Elem(), &AwsInventorySource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceArrayInput)(nil)).Elem(), AwsInventorySourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceMapInput)(nil)).Elem(), AwsInventorySourceMap{})
 	pulumi.RegisterOutputType(AwsInventorySourceOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePtrOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourceArrayOutput{})

@@ -35,7 +35,7 @@ import (
 // 			Issuer:                       pulumi.String("http://www.okta.com/abxcseyuiwelflkdjh"),
 // 			LogoutEnabled:                pulumi.Bool(false),
 // 			LogoutUrl:                    pulumi.String(""),
-// 			OnDemandProvisioningEnabled: &sumologic.SamlConfigurationOnDemandProvisioningEnabledArgs{
+// 			OnDemandProvisioningEnabled: &SamlConfigurationOnDemandProvisioningEnabledArgs{
 // 				FirstNameAttribute: pulumi.String("firstName"),
 // 				LastNameAttribute:  pulumi.String("lastName"),
 // 				OnDemandProvisioningRoles: pulumi.StringArray{
@@ -321,7 +321,7 @@ type SamlConfigurationArrayInput interface {
 type SamlConfigurationArray []SamlConfigurationInput
 
 func (SamlConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SamlConfiguration)(nil))
+	return reflect.TypeOf((*[]*SamlConfiguration)(nil)).Elem()
 }
 
 func (i SamlConfigurationArray) ToSamlConfigurationArrayOutput() SamlConfigurationArrayOutput {
@@ -346,7 +346,7 @@ type SamlConfigurationMapInput interface {
 type SamlConfigurationMap map[string]SamlConfigurationInput
 
 func (SamlConfigurationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SamlConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*SamlConfiguration)(nil)).Elem()
 }
 
 func (i SamlConfigurationMap) ToSamlConfigurationMapOutput() SamlConfigurationMapOutput {
@@ -357,9 +357,7 @@ func (i SamlConfigurationMap) ToSamlConfigurationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SamlConfigurationMapOutput)
 }
 
-type SamlConfigurationOutput struct {
-	*pulumi.OutputState
-}
+type SamlConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SamlConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SamlConfiguration)(nil))
@@ -378,14 +376,12 @@ func (o SamlConfigurationOutput) ToSamlConfigurationPtrOutput() SamlConfiguratio
 }
 
 func (o SamlConfigurationOutput) ToSamlConfigurationPtrOutputWithContext(ctx context.Context) SamlConfigurationPtrOutput {
-	return o.ApplyT(func(v SamlConfiguration) *SamlConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlConfiguration) *SamlConfiguration {
 		return &v
 	}).(SamlConfigurationPtrOutput)
 }
 
-type SamlConfigurationPtrOutput struct {
-	*pulumi.OutputState
-}
+type SamlConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (SamlConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SamlConfiguration)(nil))
@@ -397,6 +393,16 @@ func (o SamlConfigurationPtrOutput) ToSamlConfigurationPtrOutput() SamlConfigura
 
 func (o SamlConfigurationPtrOutput) ToSamlConfigurationPtrOutputWithContext(ctx context.Context) SamlConfigurationPtrOutput {
 	return o
+}
+
+func (o SamlConfigurationPtrOutput) Elem() SamlConfigurationOutput {
+	return o.ApplyT(func(v *SamlConfiguration) SamlConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SamlConfiguration
+		return ret
+	}).(SamlConfigurationOutput)
 }
 
 type SamlConfigurationArrayOutput struct{ *pulumi.OutputState }
@@ -440,6 +446,10 @@ func (o SamlConfigurationMapOutput) MapIndex(k pulumi.StringInput) SamlConfigura
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationInput)(nil)).Elem(), &SamlConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationPtrInput)(nil)).Elem(), &SamlConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationArrayInput)(nil)).Elem(), SamlConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationMapInput)(nil)).Elem(), SamlConfigurationMap{})
 	pulumi.RegisterOutputType(SamlConfigurationOutput{})
 	pulumi.RegisterOutputType(SamlConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SamlConfigurationArrayOutput{})

@@ -25,6 +25,10 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    public readonly accessId!: pulumi.Output<string>;
+    public readonly accessKey!: pulumi.Output<string>;
+    public readonly baseUrl!: pulumi.Output<string | undefined>;
+    public readonly environment!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -60,9 +64,9 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly accessId: pulumi.Input<string>;
-    readonly accessKey: pulumi.Input<string>;
-    readonly adminMode?: pulumi.Input<boolean>;
-    readonly baseUrl?: pulumi.Input<string>;
-    readonly environment?: pulumi.Input<string>;
+    accessId: pulumi.Input<string>;
+    accessKey: pulumi.Input<string>;
+    adminMode?: pulumi.Input<boolean>;
+    baseUrl?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
 }

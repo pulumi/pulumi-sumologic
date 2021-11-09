@@ -182,7 +182,7 @@ type CseEntityCriticalityConfigArrayInput interface {
 type CseEntityCriticalityConfigArray []CseEntityCriticalityConfigInput
 
 func (CseEntityCriticalityConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CseEntityCriticalityConfig)(nil))
+	return reflect.TypeOf((*[]*CseEntityCriticalityConfig)(nil)).Elem()
 }
 
 func (i CseEntityCriticalityConfigArray) ToCseEntityCriticalityConfigArrayOutput() CseEntityCriticalityConfigArrayOutput {
@@ -207,7 +207,7 @@ type CseEntityCriticalityConfigMapInput interface {
 type CseEntityCriticalityConfigMap map[string]CseEntityCriticalityConfigInput
 
 func (CseEntityCriticalityConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CseEntityCriticalityConfig)(nil))
+	return reflect.TypeOf((*map[string]*CseEntityCriticalityConfig)(nil)).Elem()
 }
 
 func (i CseEntityCriticalityConfigMap) ToCseEntityCriticalityConfigMapOutput() CseEntityCriticalityConfigMapOutput {
@@ -218,9 +218,7 @@ func (i CseEntityCriticalityConfigMap) ToCseEntityCriticalityConfigMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityCriticalityConfigMapOutput)
 }
 
-type CseEntityCriticalityConfigOutput struct {
-	*pulumi.OutputState
-}
+type CseEntityCriticalityConfigOutput struct{ *pulumi.OutputState }
 
 func (CseEntityCriticalityConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CseEntityCriticalityConfig)(nil))
@@ -239,14 +237,12 @@ func (o CseEntityCriticalityConfigOutput) ToCseEntityCriticalityConfigPtrOutput(
 }
 
 func (o CseEntityCriticalityConfigOutput) ToCseEntityCriticalityConfigPtrOutputWithContext(ctx context.Context) CseEntityCriticalityConfigPtrOutput {
-	return o.ApplyT(func(v CseEntityCriticalityConfig) *CseEntityCriticalityConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseEntityCriticalityConfig) *CseEntityCriticalityConfig {
 		return &v
 	}).(CseEntityCriticalityConfigPtrOutput)
 }
 
-type CseEntityCriticalityConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type CseEntityCriticalityConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (CseEntityCriticalityConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CseEntityCriticalityConfig)(nil))
@@ -258,6 +254,16 @@ func (o CseEntityCriticalityConfigPtrOutput) ToCseEntityCriticalityConfigPtrOutp
 
 func (o CseEntityCriticalityConfigPtrOutput) ToCseEntityCriticalityConfigPtrOutputWithContext(ctx context.Context) CseEntityCriticalityConfigPtrOutput {
 	return o
+}
+
+func (o CseEntityCriticalityConfigPtrOutput) Elem() CseEntityCriticalityConfigOutput {
+	return o.ApplyT(func(v *CseEntityCriticalityConfig) CseEntityCriticalityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CseEntityCriticalityConfig
+		return ret
+	}).(CseEntityCriticalityConfigOutput)
 }
 
 type CseEntityCriticalityConfigArrayOutput struct{ *pulumi.OutputState }
@@ -301,6 +307,10 @@ func (o CseEntityCriticalityConfigMapOutput) MapIndex(k pulumi.StringInput) CseE
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CseEntityCriticalityConfigInput)(nil)).Elem(), &CseEntityCriticalityConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseEntityCriticalityConfigPtrInput)(nil)).Elem(), &CseEntityCriticalityConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseEntityCriticalityConfigArrayInput)(nil)).Elem(), CseEntityCriticalityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseEntityCriticalityConfigMapInput)(nil)).Elem(), CseEntityCriticalityConfigMap{})
 	pulumi.RegisterOutputType(CseEntityCriticalityConfigOutput{})
 	pulumi.RegisterOutputType(CseEntityCriticalityConfigPtrOutput{})
 	pulumi.RegisterOutputType(CseEntityCriticalityConfigArrayOutput{})

@@ -163,3 +163,23 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="accessId")
+    def access_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "access_id")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "base_url")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "environment")
+

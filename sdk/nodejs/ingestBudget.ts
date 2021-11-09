@@ -142,31 +142,31 @@ export interface IngestBudgetState {
     /**
      * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * Capacity of the ingest budget, in bytes.
      */
-    readonly capacityBytes?: pulumi.Input<number>;
+    capacityBytes?: pulumi.Input<number>;
     /**
      * Description of the ingest budget.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Custom field value that is used to assign Collectors to the ingest budget.
      */
-    readonly fieldValue?: pulumi.Input<string>;
+    fieldValue?: pulumi.Input<string>;
     /**
      * Display name of the ingest budget. This must be unique across all of the ingest budgets
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
      */
-    readonly resetTime?: pulumi.Input<string>;
+    resetTime?: pulumi.Input<string>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
 }
 
 /**
@@ -176,29 +176,29 @@ export interface IngestBudgetArgs {
     /**
      * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * Capacity of the ingest budget, in bytes.
      */
-    readonly capacityBytes: pulumi.Input<number>;
+    capacityBytes: pulumi.Input<number>;
     /**
      * Description of the ingest budget.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Custom field value that is used to assign Collectors to the ingest budget.
      */
-    readonly fieldValue: pulumi.Input<string>;
+    fieldValue: pulumi.Input<string>;
     /**
      * Display name of the ingest budget. This must be unique across all of the ingest budgets
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
      */
-    readonly resetTime?: pulumi.Input<string>;
+    resetTime?: pulumi.Input<string>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
 }

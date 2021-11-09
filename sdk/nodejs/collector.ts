@@ -126,23 +126,23 @@ export interface CollectorState {
     /**
      * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * The description of the collector.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Map containing [key/value pairs][3].
      */
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
 }
 
 /**
@@ -152,21 +152,21 @@ export interface CollectorArgs {
     /**
      * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * The description of the collector.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Map containing [key/value pairs][3].
      */
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
 }

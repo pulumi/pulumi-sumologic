@@ -172,30 +172,30 @@ export class CseMatchRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseMatchRule resources.
  */
 export interface CseMatchRuleState {
-    readonly descriptionExpression?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
-    readonly expression?: pulumi.Input<string>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly nameExpression?: pulumi.Input<string>;
-    readonly severityMapping?: pulumi.Input<inputs.CseMatchRuleSeverityMapping>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    descriptionExpression?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
+    expression?: pulumi.Input<string>;
+    isPrototype?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    nameExpression?: pulumi.Input<string>;
+    severityMapping?: pulumi.Input<inputs.CseMatchRuleSeverityMapping>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a CseMatchRule resource.
  */
 export interface CseMatchRuleArgs {
-    readonly descriptionExpression: pulumi.Input<string>;
-    readonly enabled: pulumi.Input<boolean>;
-    readonly entitySelectors: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
-    readonly expression: pulumi.Input<string>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly nameExpression: pulumi.Input<string>;
-    readonly severityMapping: pulumi.Input<inputs.CseMatchRuleSeverityMapping>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    descriptionExpression: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
+    entitySelectors: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
+    expression: pulumi.Input<string>;
+    isPrototype?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    nameExpression: pulumi.Input<string>;
+    severityMapping: pulumi.Input<inputs.CseMatchRuleSeverityMapping>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

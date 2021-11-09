@@ -112,16 +112,16 @@ export class CseCustomEntityType extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseCustomEntityType resources.
  */
 export interface CseCustomEntityTypeState {
-    readonly fields?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly identifier?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
+    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    identifier?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CseCustomEntityType resource.
  */
 export interface CseCustomEntityTypeArgs {
-    readonly fields: pulumi.Input<pulumi.Input<string>[]>;
-    readonly identifier: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
+    fields: pulumi.Input<pulumi.Input<string>[]>;
+    identifier: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

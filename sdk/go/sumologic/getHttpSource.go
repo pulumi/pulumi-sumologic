@@ -4,6 +4,9 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,4 +36,75 @@ type LookupHttpSourceResult struct {
 	Name        *string `pulumi:"name"`
 	Timezone    string  `pulumi:"timezone"`
 	Url         string  `pulumi:"url"`
+}
+
+func LookupHttpSourceOutput(ctx *pulumi.Context, args LookupHttpSourceOutputArgs, opts ...pulumi.InvokeOption) LookupHttpSourceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupHttpSourceResult, error) {
+			args := v.(LookupHttpSourceArgs)
+			r, err := LookupHttpSource(ctx, &args, opts...)
+			return *r, err
+		}).(LookupHttpSourceResultOutput)
+}
+
+// A collection of arguments for invoking getHttpSource.
+type LookupHttpSourceOutputArgs struct {
+	CollectorId pulumi.IntPtrInput    `pulumi:"collectorId"`
+	Id          pulumi.IntPtrInput    `pulumi:"id"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupHttpSourceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHttpSourceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHttpSource.
+type LookupHttpSourceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupHttpSourceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHttpSourceResult)(nil)).Elem()
+}
+
+func (o LookupHttpSourceResultOutput) ToLookupHttpSourceResultOutput() LookupHttpSourceResultOutput {
+	return o
+}
+
+func (o LookupHttpSourceResultOutput) ToLookupHttpSourceResultOutputWithContext(ctx context.Context) LookupHttpSourceResultOutput {
+	return o
+}
+
+func (o LookupHttpSourceResultOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) string { return v.Category }).(pulumi.StringOutput)
+}
+
+func (o LookupHttpSourceResultOutput) CollectorId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) *int { return v.CollectorId }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupHttpSourceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupHttpSourceResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o LookupHttpSourceResultOutput) Multiline() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) bool { return v.Multiline }).(pulumi.BoolOutput)
+}
+
+func (o LookupHttpSourceResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupHttpSourceResultOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) string { return v.Timezone }).(pulumi.StringOutput)
+}
+
+func (o LookupHttpSourceResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHttpSourceResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupHttpSourceResultOutput{})
 }

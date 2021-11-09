@@ -121,12 +121,12 @@ export interface HierarchyState {
     /**
      * An optional clause that a hierarchy requires to be matched.
      */
-    readonly filter?: pulumi.Input<inputs.HierarchyFilter>;
-    readonly levels?: pulumi.Input<pulumi.Input<inputs.HierarchyLevel>[]>;
+    filter?: pulumi.Input<inputs.HierarchyFilter>;
+    levels?: pulumi.Input<pulumi.Input<inputs.HierarchyLevel>[]>;
     /**
      * Name of the hierarchy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -136,10 +136,10 @@ export interface HierarchyArgs {
     /**
      * An optional clause that a hierarchy requires to be matched.
      */
-    readonly filter?: pulumi.Input<inputs.HierarchyFilter>;
-    readonly levels: pulumi.Input<pulumi.Input<inputs.HierarchyLevel>[]>;
+    filter?: pulumi.Input<inputs.HierarchyFilter>;
+    levels: pulumi.Input<pulumi.Input<inputs.HierarchyLevel>[]>;
     /**
      * Name of the hierarchy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -57,7 +57,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewKinesisMetricsSource(ctx, "kinesisMetricsAccessKey", &sumologic.KinesisMetricsSourceArgs{
-// 			Authentication: &sumologic.KinesisMetricsSourceAuthenticationArgs{
+// 			Authentication: &KinesisMetricsSourceAuthenticationArgs{
 // 				AccessKey: pulumi.String("someKey"),
 // 				SecretKey: pulumi.String("******"),
 // 				Type:      pulumi.String("S3BucketAuthentication"),
@@ -66,16 +66,16 @@ import (
 // 			CollectorId: collector.ID(),
 // 			ContentType: pulumi.String("KinesisMetric"),
 // 			Description: pulumi.String("Description for Kinesis Metrics Source"),
-// 			Path: &sumologic.KinesisMetricsSourcePathArgs{
-// 				TagFilters: sumologic.KinesisMetricsSourcePathTagFilterArray{
-// 					&sumologic.KinesisMetricsSourcePathTagFilterArgs{
+// 			Path: &KinesisMetricsSourcePathArgs{
+// 				TagFilters: KinesisMetricsSourcePathTagFilterArray{
+// 					&KinesisMetricsSourcePathTagFilterArgs{
 // 						Namespace: pulumi.String("All"),
 // 						Tags: pulumi.StringArray{
 // 							pulumi.String("k3=v3"),
 // 						},
 // 						Type: pulumi.String("TagFilters"),
 // 					},
-// 					&sumologic.KinesisMetricsSourcePathTagFilterArgs{
+// 					&KinesisMetricsSourcePathTagFilterArgs{
 // 						Namespace: pulumi.String("AWS/Route53"),
 // 						Tags: pulumi.StringArray{
 // 							pulumi.String("k1=v1"),
@@ -90,7 +90,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewKinesisMetricsSource(ctx, "kinesisMetricsRoleArn", &sumologic.KinesisMetricsSourceArgs{
-// 			Authentication: &sumologic.KinesisMetricsSourceAuthenticationArgs{
+// 			Authentication: &KinesisMetricsSourceAuthenticationArgs{
 // 				RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
 // 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
 // 			},
@@ -98,16 +98,16 @@ import (
 // 			CollectorId: collector.ID(),
 // 			ContentType: pulumi.String("KinesisMetric"),
 // 			Description: pulumi.String("Description for Kinesis Metrics Source"),
-// 			Path: &sumologic.KinesisMetricsSourcePathArgs{
-// 				TagFilters: sumologic.KinesisMetricsSourcePathTagFilterArray{
-// 					&sumologic.KinesisMetricsSourcePathTagFilterArgs{
+// 			Path: &KinesisMetricsSourcePathArgs{
+// 				TagFilters: KinesisMetricsSourcePathTagFilterArray{
+// 					&KinesisMetricsSourcePathTagFilterArgs{
 // 						Namespace: pulumi.String("All"),
 // 						Tags: pulumi.StringArray{
 // 							pulumi.String("k3=v3"),
 // 						},
 // 						Type: pulumi.String("TagFilters"),
 // 					},
-// 					&sumologic.KinesisMetricsSourcePathTagFilterArgs{
+// 					&KinesisMetricsSourcePathTagFilterArgs{
 // 						Namespace: pulumi.String("AWS/Route53"),
 // 						Tags: pulumi.StringArray{
 // 							pulumi.String("k1=v1"),
@@ -391,7 +391,7 @@ type KinesisMetricsSourceArrayInput interface {
 type KinesisMetricsSourceArray []KinesisMetricsSourceInput
 
 func (KinesisMetricsSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*KinesisMetricsSource)(nil))
+	return reflect.TypeOf((*[]*KinesisMetricsSource)(nil)).Elem()
 }
 
 func (i KinesisMetricsSourceArray) ToKinesisMetricsSourceArrayOutput() KinesisMetricsSourceArrayOutput {
@@ -416,7 +416,7 @@ type KinesisMetricsSourceMapInput interface {
 type KinesisMetricsSourceMap map[string]KinesisMetricsSourceInput
 
 func (KinesisMetricsSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*KinesisMetricsSource)(nil))
+	return reflect.TypeOf((*map[string]*KinesisMetricsSource)(nil)).Elem()
 }
 
 func (i KinesisMetricsSourceMap) ToKinesisMetricsSourceMapOutput() KinesisMetricsSourceMapOutput {
@@ -427,9 +427,7 @@ func (i KinesisMetricsSourceMap) ToKinesisMetricsSourceMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(KinesisMetricsSourceMapOutput)
 }
 
-type KinesisMetricsSourceOutput struct {
-	*pulumi.OutputState
-}
+type KinesisMetricsSourceOutput struct{ *pulumi.OutputState }
 
 func (KinesisMetricsSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KinesisMetricsSource)(nil))
@@ -448,14 +446,12 @@ func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourcePtrOutput() KinesisMet
 }
 
 func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourcePtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePtrOutput {
-	return o.ApplyT(func(v KinesisMetricsSource) *KinesisMetricsSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KinesisMetricsSource) *KinesisMetricsSource {
 		return &v
 	}).(KinesisMetricsSourcePtrOutput)
 }
 
-type KinesisMetricsSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type KinesisMetricsSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (KinesisMetricsSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KinesisMetricsSource)(nil))
@@ -467,6 +463,16 @@ func (o KinesisMetricsSourcePtrOutput) ToKinesisMetricsSourcePtrOutput() Kinesis
 
 func (o KinesisMetricsSourcePtrOutput) ToKinesisMetricsSourcePtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePtrOutput {
 	return o
+}
+
+func (o KinesisMetricsSourcePtrOutput) Elem() KinesisMetricsSourceOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) KinesisMetricsSource {
+		if v != nil {
+			return *v
+		}
+		var ret KinesisMetricsSource
+		return ret
+	}).(KinesisMetricsSourceOutput)
 }
 
 type KinesisMetricsSourceArrayOutput struct{ *pulumi.OutputState }
@@ -510,6 +516,10 @@ func (o KinesisMetricsSourceMapOutput) MapIndex(k pulumi.StringInput) KinesisMet
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceInput)(nil)).Elem(), &KinesisMetricsSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePtrInput)(nil)).Elem(), &KinesisMetricsSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceArrayInput)(nil)).Elem(), KinesisMetricsSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceMapInput)(nil)).Elem(), KinesisMetricsSourceMap{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourcePtrOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceArrayOutput{})
