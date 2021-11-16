@@ -53,6 +53,7 @@
         "getMyUserId.ts",
         "getPersonalFolder.ts",
         "getRole.ts",
+        "getUser.ts",
         "hierarchy.ts",
         "httpSource.ts",
         "index.ts",

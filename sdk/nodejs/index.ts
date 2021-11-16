@@ -43,6 +43,7 @@ export * from "./getHttpSource";
 export * from "./getMyUserId";
 export * from "./getPersonalFolder";
 export * from "./getRole";
+export * from "./getUser";
 export * from "./hierarchy";
 export * from "./httpSource";
 export * from "./ingestBudget";
