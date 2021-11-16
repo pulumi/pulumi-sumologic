@@ -72,14 +72,14 @@ export class CollectorIngestBudgetAssignment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CollectorIngestBudgetAssignment resources.
  */
 export interface CollectorIngestBudgetAssignmentState {
-    readonly collectorId?: pulumi.Input<string>;
-    readonly ingestBudgetId?: pulumi.Input<string>;
+    collectorId?: pulumi.Input<string>;
+    ingestBudgetId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CollectorIngestBudgetAssignment resource.
  */
 export interface CollectorIngestBudgetAssignmentArgs {
-    readonly collectorId: pulumi.Input<string>;
-    readonly ingestBudgetId: pulumi.Input<string>;
+    collectorId: pulumi.Input<string>;
+    ingestBudgetId: pulumi.Input<string>;
 }

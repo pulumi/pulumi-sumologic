@@ -219,7 +219,7 @@ type CollectorArrayInput interface {
 type CollectorArray []CollectorInput
 
 func (CollectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Collector)(nil))
+	return reflect.TypeOf((*[]*Collector)(nil)).Elem()
 }
 
 func (i CollectorArray) ToCollectorArrayOutput() CollectorArrayOutput {
@@ -244,7 +244,7 @@ type CollectorMapInput interface {
 type CollectorMap map[string]CollectorInput
 
 func (CollectorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Collector)(nil))
+	return reflect.TypeOf((*map[string]*Collector)(nil)).Elem()
 }
 
 func (i CollectorMap) ToCollectorMapOutput() CollectorMapOutput {
@@ -255,9 +255,7 @@ func (i CollectorMap) ToCollectorMapOutputWithContext(ctx context.Context) Colle
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorMapOutput)
 }
 
-type CollectorOutput struct {
-	*pulumi.OutputState
-}
+type CollectorOutput struct{ *pulumi.OutputState }
 
 func (CollectorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Collector)(nil))
@@ -276,14 +274,12 @@ func (o CollectorOutput) ToCollectorPtrOutput() CollectorPtrOutput {
 }
 
 func (o CollectorOutput) ToCollectorPtrOutputWithContext(ctx context.Context) CollectorPtrOutput {
-	return o.ApplyT(func(v Collector) *Collector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Collector) *Collector {
 		return &v
 	}).(CollectorPtrOutput)
 }
 
-type CollectorPtrOutput struct {
-	*pulumi.OutputState
-}
+type CollectorPtrOutput struct{ *pulumi.OutputState }
 
 func (CollectorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Collector)(nil))
@@ -295,6 +291,16 @@ func (o CollectorPtrOutput) ToCollectorPtrOutput() CollectorPtrOutput {
 
 func (o CollectorPtrOutput) ToCollectorPtrOutputWithContext(ctx context.Context) CollectorPtrOutput {
 	return o
+}
+
+func (o CollectorPtrOutput) Elem() CollectorOutput {
+	return o.ApplyT(func(v *Collector) Collector {
+		if v != nil {
+			return *v
+		}
+		var ret Collector
+		return ret
+	}).(CollectorOutput)
 }
 
 type CollectorArrayOutput struct{ *pulumi.OutputState }
@@ -338,6 +344,10 @@ func (o CollectorMapOutput) MapIndex(k pulumi.StringInput) CollectorOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectorInput)(nil)).Elem(), &Collector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectorPtrInput)(nil)).Elem(), &Collector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectorArrayInput)(nil)).Elem(), CollectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectorMapInput)(nil)).Elem(), CollectorMap{})
 	pulumi.RegisterOutputType(CollectorOutput{})
 	pulumi.RegisterOutputType(CollectorPtrOutput{})
 	pulumi.RegisterOutputType(CollectorArrayOutput{})

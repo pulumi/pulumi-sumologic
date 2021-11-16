@@ -206,53 +206,53 @@ export class AwsXraySource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AwsXraySource resources.
  */
 export interface AwsXraySourceState {
-    readonly authentication?: pulumi.Input<inputs.AwsXraySourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId?: pulumi.Input<number>;
-    readonly contentType?: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path?: pulumi.Input<inputs.AwsXraySourcePath>;
-    readonly paused?: pulumi.Input<boolean>;
-    readonly scanInterval?: pulumi.Input<number>;
-    readonly timezone?: pulumi.Input<string>;
-    readonly url?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    authentication?: pulumi.Input<inputs.AwsXraySourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId?: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<inputs.AwsXraySourcePath>;
+    paused?: pulumi.Input<boolean>;
+    scanInterval?: pulumi.Input<number>;
+    timezone?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a AwsXraySource resource.
  */
 export interface AwsXraySourceArgs {
-    readonly authentication: pulumi.Input<inputs.AwsXraySourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId: pulumi.Input<number>;
-    readonly contentType: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path: pulumi.Input<inputs.AwsXraySourcePath>;
-    readonly paused: pulumi.Input<boolean>;
-    readonly scanInterval: pulumi.Input<number>;
-    readonly timezone?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    authentication: pulumi.Input<inputs.AwsXraySourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId: pulumi.Input<number>;
+    contentType: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path: pulumi.Input<inputs.AwsXraySourcePath>;
+    paused: pulumi.Input<boolean>;
+    scanInterval: pulumi.Input<number>;
+    timezone?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }

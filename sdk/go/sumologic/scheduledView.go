@@ -200,7 +200,7 @@ type ScheduledViewArrayInput interface {
 type ScheduledViewArray []ScheduledViewInput
 
 func (ScheduledViewArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ScheduledView)(nil))
+	return reflect.TypeOf((*[]*ScheduledView)(nil)).Elem()
 }
 
 func (i ScheduledViewArray) ToScheduledViewArrayOutput() ScheduledViewArrayOutput {
@@ -225,7 +225,7 @@ type ScheduledViewMapInput interface {
 type ScheduledViewMap map[string]ScheduledViewInput
 
 func (ScheduledViewMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ScheduledView)(nil))
+	return reflect.TypeOf((*map[string]*ScheduledView)(nil)).Elem()
 }
 
 func (i ScheduledViewMap) ToScheduledViewMapOutput() ScheduledViewMapOutput {
@@ -236,9 +236,7 @@ func (i ScheduledViewMap) ToScheduledViewMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledViewMapOutput)
 }
 
-type ScheduledViewOutput struct {
-	*pulumi.OutputState
-}
+type ScheduledViewOutput struct{ *pulumi.OutputState }
 
 func (ScheduledViewOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScheduledView)(nil))
@@ -257,14 +255,12 @@ func (o ScheduledViewOutput) ToScheduledViewPtrOutput() ScheduledViewPtrOutput {
 }
 
 func (o ScheduledViewOutput) ToScheduledViewPtrOutputWithContext(ctx context.Context) ScheduledViewPtrOutput {
-	return o.ApplyT(func(v ScheduledView) *ScheduledView {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledView) *ScheduledView {
 		return &v
 	}).(ScheduledViewPtrOutput)
 }
 
-type ScheduledViewPtrOutput struct {
-	*pulumi.OutputState
-}
+type ScheduledViewPtrOutput struct{ *pulumi.OutputState }
 
 func (ScheduledViewPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ScheduledView)(nil))
@@ -276,6 +272,16 @@ func (o ScheduledViewPtrOutput) ToScheduledViewPtrOutput() ScheduledViewPtrOutpu
 
 func (o ScheduledViewPtrOutput) ToScheduledViewPtrOutputWithContext(ctx context.Context) ScheduledViewPtrOutput {
 	return o
+}
+
+func (o ScheduledViewPtrOutput) Elem() ScheduledViewOutput {
+	return o.ApplyT(func(v *ScheduledView) ScheduledView {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduledView
+		return ret
+	}).(ScheduledViewOutput)
 }
 
 type ScheduledViewArrayOutput struct{ *pulumi.OutputState }
@@ -319,6 +325,10 @@ func (o ScheduledViewMapOutput) MapIndex(k pulumi.StringInput) ScheduledViewOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledViewInput)(nil)).Elem(), &ScheduledView{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledViewPtrInput)(nil)).Elem(), &ScheduledView{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledViewArrayInput)(nil)).Elem(), ScheduledViewArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledViewMapInput)(nil)).Elem(), ScheduledViewMap{})
 	pulumi.RegisterOutputType(ScheduledViewOutput{})
 	pulumi.RegisterOutputType(ScheduledViewPtrOutput{})
 	pulumi.RegisterOutputType(ScheduledViewArrayOutput{})

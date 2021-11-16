@@ -153,28 +153,28 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
-    readonly connectionSubtype?: pulumi.Input<string>;
-    readonly customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly defaultPayload?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly name?: pulumi.Input<string>;
-    readonly type?: pulumi.Input<string>;
-    readonly url?: pulumi.Input<string>;
-    readonly webhookType?: pulumi.Input<string>;
+    connectionSubtype?: pulumi.Input<string>;
+    customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    defaultPayload?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
+    webhookType?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
-    readonly connectionSubtype?: pulumi.Input<string>;
-    readonly customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly defaultPayload: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly name?: pulumi.Input<string>;
-    readonly type: pulumi.Input<string>;
-    readonly url: pulumi.Input<string>;
-    readonly webhookType?: pulumi.Input<string>;
+    connectionSubtype?: pulumi.Input<string>;
+    customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    defaultPayload: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+    url: pulumi.Input<string>;
+    webhookType?: pulumi.Input<string>;
 }

@@ -519,32 +519,32 @@ export class Dashboard extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dashboard resources.
  */
 export interface DashboardState {
-    readonly coloringRules?: pulumi.Input<pulumi.Input<inputs.DashboardColoringRule>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly folderId?: pulumi.Input<string>;
-    readonly layout?: pulumi.Input<inputs.DashboardLayout>;
-    readonly panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
-    readonly refreshInterval?: pulumi.Input<number>;
-    readonly theme?: pulumi.Input<string>;
-    readonly timeRange?: pulumi.Input<inputs.DashboardTimeRange>;
-    readonly title?: pulumi.Input<string>;
-    readonly topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
-    readonly variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
+    coloringRules?: pulumi.Input<pulumi.Input<inputs.DashboardColoringRule>[]>;
+    description?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
+    layout?: pulumi.Input<inputs.DashboardLayout>;
+    panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
+    refreshInterval?: pulumi.Input<number>;
+    theme?: pulumi.Input<string>;
+    timeRange?: pulumi.Input<inputs.DashboardTimeRange>;
+    title?: pulumi.Input<string>;
+    topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
+    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }
 
 /**
  * The set of arguments for constructing a Dashboard resource.
  */
 export interface DashboardArgs {
-    readonly coloringRules?: pulumi.Input<pulumi.Input<inputs.DashboardColoringRule>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly folderId?: pulumi.Input<string>;
-    readonly layout?: pulumi.Input<inputs.DashboardLayout>;
-    readonly panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
-    readonly refreshInterval?: pulumi.Input<number>;
-    readonly theme?: pulumi.Input<string>;
-    readonly timeRange: pulumi.Input<inputs.DashboardTimeRange>;
-    readonly title: pulumi.Input<string>;
-    readonly topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
-    readonly variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
+    coloringRules?: pulumi.Input<pulumi.Input<inputs.DashboardColoringRule>[]>;
+    description?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
+    layout?: pulumi.Input<inputs.DashboardLayout>;
+    panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
+    refreshInterval?: pulumi.Input<number>;
+    theme?: pulumi.Input<string>;
+    timeRange: pulumi.Input<inputs.DashboardTimeRange>;
+    title: pulumi.Input<string>;
+    topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
+    variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }

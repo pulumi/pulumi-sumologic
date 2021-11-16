@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const folder = pulumi.output(sumologic.getAdminRecommendedFolder({ async: true }));
+ * const folder = pulumi.output(sumologic.getAdminRecommendedFolder());
  * ```
  * ## Attributes reference
  *
@@ -44,9 +43,9 @@ export function getAdminRecommendedFolder(args?: GetAdminRecommendedFolderArgs, 
  * A collection of arguments for invoking getAdminRecommendedFolder.
  */
 export interface GetAdminRecommendedFolderArgs {
-    readonly description?: string;
-    readonly id?: string;
-    readonly name?: string;
+    description?: string;
+    id?: string;
+    name?: string;
 }
 
 /**
@@ -56,4 +55,17 @@ export interface GetAdminRecommendedFolderResult {
     readonly description: string;
     readonly id: string;
     readonly name: string;
+}
+
+export function getAdminRecommendedFolderOutput(args?: GetAdminRecommendedFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdminRecommendedFolderResult> {
+    return pulumi.output(args).apply(a => getAdminRecommendedFolder(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAdminRecommendedFolder.
+ */
+export interface GetAdminRecommendedFolderOutputArgs {
+    description?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

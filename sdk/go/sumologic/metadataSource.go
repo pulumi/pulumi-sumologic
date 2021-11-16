@@ -297,7 +297,7 @@ type MetadataSourceArrayInput interface {
 type MetadataSourceArray []MetadataSourceInput
 
 func (MetadataSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MetadataSource)(nil))
+	return reflect.TypeOf((*[]*MetadataSource)(nil)).Elem()
 }
 
 func (i MetadataSourceArray) ToMetadataSourceArrayOutput() MetadataSourceArrayOutput {
@@ -322,7 +322,7 @@ type MetadataSourceMapInput interface {
 type MetadataSourceMap map[string]MetadataSourceInput
 
 func (MetadataSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MetadataSource)(nil))
+	return reflect.TypeOf((*map[string]*MetadataSource)(nil)).Elem()
 }
 
 func (i MetadataSourceMap) ToMetadataSourceMapOutput() MetadataSourceMapOutput {
@@ -333,9 +333,7 @@ func (i MetadataSourceMap) ToMetadataSourceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataSourceMapOutput)
 }
 
-type MetadataSourceOutput struct {
-	*pulumi.OutputState
-}
+type MetadataSourceOutput struct{ *pulumi.OutputState }
 
 func (MetadataSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetadataSource)(nil))
@@ -354,14 +352,12 @@ func (o MetadataSourceOutput) ToMetadataSourcePtrOutput() MetadataSourcePtrOutpu
 }
 
 func (o MetadataSourceOutput) ToMetadataSourcePtrOutputWithContext(ctx context.Context) MetadataSourcePtrOutput {
-	return o.ApplyT(func(v MetadataSource) *MetadataSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataSource) *MetadataSource {
 		return &v
 	}).(MetadataSourcePtrOutput)
 }
 
-type MetadataSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type MetadataSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (MetadataSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetadataSource)(nil))
@@ -373,6 +369,16 @@ func (o MetadataSourcePtrOutput) ToMetadataSourcePtrOutput() MetadataSourcePtrOu
 
 func (o MetadataSourcePtrOutput) ToMetadataSourcePtrOutputWithContext(ctx context.Context) MetadataSourcePtrOutput {
 	return o
+}
+
+func (o MetadataSourcePtrOutput) Elem() MetadataSourceOutput {
+	return o.ApplyT(func(v *MetadataSource) MetadataSource {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataSource
+		return ret
+	}).(MetadataSourceOutput)
 }
 
 type MetadataSourceArrayOutput struct{ *pulumi.OutputState }
@@ -416,6 +422,10 @@ func (o MetadataSourceMapOutput) MapIndex(k pulumi.StringInput) MetadataSourceOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceInput)(nil)).Elem(), &MetadataSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourcePtrInput)(nil)).Elem(), &MetadataSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceArrayInput)(nil)).Elem(), MetadataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceMapInput)(nil)).Elem(), MetadataSourceMap{})
 	pulumi.RegisterOutputType(MetadataSourceOutput{})
 	pulumi.RegisterOutputType(MetadataSourcePtrOutput{})
 	pulumi.RegisterOutputType(MetadataSourceArrayOutput{})

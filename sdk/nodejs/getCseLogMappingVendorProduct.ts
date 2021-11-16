@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getCseLogMappingVendorProduct(args: GetCseLogMappingVendorProductArgs, opts?: pulumi.InvokeOptions): Promise<GetCseLogMappingVendorProductResult> {
@@ -24,9 +23,9 @@ export function getCseLogMappingVendorProduct(args: GetCseLogMappingVendorProduc
  * A collection of arguments for invoking getCseLogMappingVendorProduct.
  */
 export interface GetCseLogMappingVendorProductArgs {
-    readonly guid?: string;
-    readonly product: string;
-    readonly vendor: string;
+    guid?: string;
+    product: string;
+    vendor: string;
 }
 
 /**
@@ -40,4 +39,17 @@ export interface GetCseLogMappingVendorProductResult {
     readonly id: string;
     readonly product: string;
     readonly vendor: string;
+}
+
+export function getCseLogMappingVendorProductOutput(args: GetCseLogMappingVendorProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCseLogMappingVendorProductResult> {
+    return pulumi.output(args).apply(a => getCseLogMappingVendorProduct(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCseLogMappingVendorProduct.
+ */
+export interface GetCseLogMappingVendorProductOutputArgs {
+    guid?: pulumi.Input<string>;
+    product: pulumi.Input<string>;
+    vendor: pulumi.Input<string>;
 }

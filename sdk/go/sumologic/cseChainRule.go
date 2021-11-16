@@ -28,23 +28,23 @@ import (
 // 		_, err := sumologic.NewCseChainRule(ctx, "chainRule", &sumologic.CseChainRuleArgs{
 // 			Description: pulumi.String("Signal description"),
 // 			Enabled:     pulumi.Bool(true),
-// 			EntitySelectors: sumologic.CseChainRuleEntitySelectorArray{
-// 				&sumologic.CseChainRuleEntitySelectorArgs{
+// 			EntitySelectors: CseChainRuleEntitySelectorArray{
+// 				&CseChainRuleEntitySelectorArgs{
 // 					EntityType: pulumi.String("_username"),
 // 					Expression: pulumi.String("user_username"),
 // 				},
 // 			},
-// 			ExpressionsAndLimits: sumologic.CseChainRuleExpressionsAndLimitArray{
-// 				&sumologic.CseChainRuleExpressionsAndLimitArgs{
+// 			ExpressionsAndLimits: CseChainRuleExpressionsAndLimitArray{
+// 				&CseChainRuleExpressionsAndLimitArgs{
 // 					Expression: pulumi.String("success = false"),
 // 					Limit:      pulumi.Int(5),
 // 				},
-// 				&sumologic.CseChainRuleExpressionsAndLimitArgs{
+// 				&CseChainRuleExpressionsAndLimitArgs{
 // 					Expression: pulumi.String("success = true"),
 // 					Limit:      pulumi.Int(1),
 // 				},
 // 			},
-// 			GroupByFields:     []interface{}{},
+// 			GroupByFields:     pulumi.StringArray{},
 // 			IsPrototype:       pulumi.Bool(false),
 // 			Ordered:           pulumi.Bool(true),
 // 			Severity:          pulumi.Int(5),
@@ -287,7 +287,7 @@ type CseChainRuleArrayInput interface {
 type CseChainRuleArray []CseChainRuleInput
 
 func (CseChainRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CseChainRule)(nil))
+	return reflect.TypeOf((*[]*CseChainRule)(nil)).Elem()
 }
 
 func (i CseChainRuleArray) ToCseChainRuleArrayOutput() CseChainRuleArrayOutput {
@@ -312,7 +312,7 @@ type CseChainRuleMapInput interface {
 type CseChainRuleMap map[string]CseChainRuleInput
 
 func (CseChainRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CseChainRule)(nil))
+	return reflect.TypeOf((*map[string]*CseChainRule)(nil)).Elem()
 }
 
 func (i CseChainRuleMap) ToCseChainRuleMapOutput() CseChainRuleMapOutput {
@@ -323,9 +323,7 @@ func (i CseChainRuleMap) ToCseChainRuleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CseChainRuleMapOutput)
 }
 
-type CseChainRuleOutput struct {
-	*pulumi.OutputState
-}
+type CseChainRuleOutput struct{ *pulumi.OutputState }
 
 func (CseChainRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CseChainRule)(nil))
@@ -344,14 +342,12 @@ func (o CseChainRuleOutput) ToCseChainRulePtrOutput() CseChainRulePtrOutput {
 }
 
 func (o CseChainRuleOutput) ToCseChainRulePtrOutputWithContext(ctx context.Context) CseChainRulePtrOutput {
-	return o.ApplyT(func(v CseChainRule) *CseChainRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseChainRule) *CseChainRule {
 		return &v
 	}).(CseChainRulePtrOutput)
 }
 
-type CseChainRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type CseChainRulePtrOutput struct{ *pulumi.OutputState }
 
 func (CseChainRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CseChainRule)(nil))
@@ -363,6 +359,16 @@ func (o CseChainRulePtrOutput) ToCseChainRulePtrOutput() CseChainRulePtrOutput {
 
 func (o CseChainRulePtrOutput) ToCseChainRulePtrOutputWithContext(ctx context.Context) CseChainRulePtrOutput {
 	return o
+}
+
+func (o CseChainRulePtrOutput) Elem() CseChainRuleOutput {
+	return o.ApplyT(func(v *CseChainRule) CseChainRule {
+		if v != nil {
+			return *v
+		}
+		var ret CseChainRule
+		return ret
+	}).(CseChainRuleOutput)
 }
 
 type CseChainRuleArrayOutput struct{ *pulumi.OutputState }
@@ -406,6 +412,10 @@ func (o CseChainRuleMapOutput) MapIndex(k pulumi.StringInput) CseChainRuleOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleInput)(nil)).Elem(), &CseChainRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRulePtrInput)(nil)).Elem(), &CseChainRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleArrayInput)(nil)).Elem(), CseChainRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleMapInput)(nil)).Elem(), CseChainRuleMap{})
 	pulumi.RegisterOutputType(CseChainRuleOutput{})
 	pulumi.RegisterOutputType(CseChainRulePtrOutput{})
 	pulumi.RegisterOutputType(CseChainRuleArrayOutput{})

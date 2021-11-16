@@ -131,27 +131,27 @@ export interface TokenState {
     /**
      * The description of the token.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The encoded token for collector registration.
      */
-    readonly encodedTokenAndUrl?: pulumi.Input<string>;
+    encodedTokenAndUrl?: pulumi.Input<string>;
     /**
      * Display name of the token. This must be unique across all of the tokens.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Status of the token. Valid values:
      * - `Active`
      * - `Inactive`
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Type of the token. Valid value:
      * - `CollectorRegistration`.
      */
-    readonly type?: pulumi.Input<string>;
-    readonly version?: pulumi.Input<number>;
+    type?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }
 
 /**
@@ -161,21 +161,21 @@ export interface TokenArgs {
     /**
      * The description of the token.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name of the token. This must be unique across all of the tokens.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Status of the token. Valid values:
      * - `Active`
      * - `Inactive`
      */
-    readonly status: pulumi.Input<string>;
+    status: pulumi.Input<string>;
     /**
      * Type of the token. Valid value:
      * - `CollectorRegistration`.
      */
-    readonly type: pulumi.Input<string>;
-    readonly version?: pulumi.Input<number>;
+    type: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }

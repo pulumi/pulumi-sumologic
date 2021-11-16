@@ -185,38 +185,38 @@ export class CseThresholdRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseThresholdRule resources.
  */
 export interface CseThresholdRuleState {
-    readonly countDistinct?: pulumi.Input<boolean>;
-    readonly countField?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseThresholdRuleEntitySelector>[]>;
-    readonly expression?: pulumi.Input<string>;
-    readonly groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly limit?: pulumi.Input<number>;
-    readonly name?: pulumi.Input<string>;
-    readonly severity?: pulumi.Input<number>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly windowSize?: pulumi.Input<string>;
+    countDistinct?: pulumi.Input<boolean>;
+    countField?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseThresholdRuleEntitySelector>[]>;
+    expression?: pulumi.Input<string>;
+    groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    isPrototype?: pulumi.Input<boolean>;
+    limit?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    severity?: pulumi.Input<number>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    windowSize?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CseThresholdRule resource.
  */
 export interface CseThresholdRuleArgs {
-    readonly countDistinct?: pulumi.Input<boolean>;
-    readonly countField?: pulumi.Input<string>;
-    readonly description: pulumi.Input<string>;
-    readonly enabled: pulumi.Input<boolean>;
-    readonly entitySelectors: pulumi.Input<pulumi.Input<inputs.CseThresholdRuleEntitySelector>[]>;
-    readonly expression: pulumi.Input<string>;
-    readonly groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly isPrototype?: pulumi.Input<boolean>;
-    readonly limit: pulumi.Input<number>;
-    readonly name?: pulumi.Input<string>;
-    readonly severity: pulumi.Input<number>;
-    readonly summaryExpression?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly windowSize: pulumi.Input<string>;
+    countDistinct?: pulumi.Input<boolean>;
+    countField?: pulumi.Input<string>;
+    description: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
+    entitySelectors: pulumi.Input<pulumi.Input<inputs.CseThresholdRuleEntitySelector>[]>;
+    expression: pulumi.Input<string>;
+    groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    isPrototype?: pulumi.Input<boolean>;
+    limit: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    severity: pulumi.Input<number>;
+    summaryExpression?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    windowSize: pulumi.Input<string>;
 }

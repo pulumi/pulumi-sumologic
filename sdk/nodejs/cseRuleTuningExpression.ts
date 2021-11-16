@@ -141,24 +141,24 @@ export class CseRuleTuningExpression extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseRuleTuningExpression resources.
  */
 export interface CseRuleTuningExpressionState {
-    readonly description?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly exclude?: pulumi.Input<boolean>;
-    readonly expression?: pulumi.Input<string>;
-    readonly isGlobal?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    exclude?: pulumi.Input<boolean>;
+    expression?: pulumi.Input<string>;
+    isGlobal?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a CseRuleTuningExpression resource.
  */
 export interface CseRuleTuningExpressionArgs {
-    readonly description: pulumi.Input<string>;
-    readonly enabled: pulumi.Input<boolean>;
-    readonly exclude: pulumi.Input<boolean>;
-    readonly expression: pulumi.Input<string>;
-    readonly isGlobal: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly ruleIds: pulumi.Input<pulumi.Input<string>[]>;
+    description: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
+    exclude: pulumi.Input<boolean>;
+    expression: pulumi.Input<string>;
+    isGlobal: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    ruleIds: pulumi.Input<pulumi.Input<string>[]>;
 }

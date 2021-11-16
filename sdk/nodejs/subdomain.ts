@@ -93,12 +93,12 @@ export class Subdomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subdomain resources.
  */
 export interface SubdomainState {
-    readonly subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Subdomain resource.
  */
 export interface SubdomainArgs {
-    readonly subdomain: pulumi.Input<string>;
+    subdomain: pulumi.Input<string>;
 }

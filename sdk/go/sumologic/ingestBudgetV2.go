@@ -262,7 +262,7 @@ type IngestBudgetV2ArrayInput interface {
 type IngestBudgetV2Array []IngestBudgetV2Input
 
 func (IngestBudgetV2Array) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IngestBudgetV2)(nil))
+	return reflect.TypeOf((*[]*IngestBudgetV2)(nil)).Elem()
 }
 
 func (i IngestBudgetV2Array) ToIngestBudgetV2ArrayOutput() IngestBudgetV2ArrayOutput {
@@ -287,7 +287,7 @@ type IngestBudgetV2MapInput interface {
 type IngestBudgetV2Map map[string]IngestBudgetV2Input
 
 func (IngestBudgetV2Map) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IngestBudgetV2)(nil))
+	return reflect.TypeOf((*map[string]*IngestBudgetV2)(nil)).Elem()
 }
 
 func (i IngestBudgetV2Map) ToIngestBudgetV2MapOutput() IngestBudgetV2MapOutput {
@@ -298,9 +298,7 @@ func (i IngestBudgetV2Map) ToIngestBudgetV2MapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IngestBudgetV2MapOutput)
 }
 
-type IngestBudgetV2Output struct {
-	*pulumi.OutputState
-}
+type IngestBudgetV2Output struct{ *pulumi.OutputState }
 
 func (IngestBudgetV2Output) ElementType() reflect.Type {
 	return reflect.TypeOf((*IngestBudgetV2)(nil))
@@ -319,14 +317,12 @@ func (o IngestBudgetV2Output) ToIngestBudgetV2PtrOutput() IngestBudgetV2PtrOutpu
 }
 
 func (o IngestBudgetV2Output) ToIngestBudgetV2PtrOutputWithContext(ctx context.Context) IngestBudgetV2PtrOutput {
-	return o.ApplyT(func(v IngestBudgetV2) *IngestBudgetV2 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngestBudgetV2) *IngestBudgetV2 {
 		return &v
 	}).(IngestBudgetV2PtrOutput)
 }
 
-type IngestBudgetV2PtrOutput struct {
-	*pulumi.OutputState
-}
+type IngestBudgetV2PtrOutput struct{ *pulumi.OutputState }
 
 func (IngestBudgetV2PtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IngestBudgetV2)(nil))
@@ -338,6 +334,16 @@ func (o IngestBudgetV2PtrOutput) ToIngestBudgetV2PtrOutput() IngestBudgetV2PtrOu
 
 func (o IngestBudgetV2PtrOutput) ToIngestBudgetV2PtrOutputWithContext(ctx context.Context) IngestBudgetV2PtrOutput {
 	return o
+}
+
+func (o IngestBudgetV2PtrOutput) Elem() IngestBudgetV2Output {
+	return o.ApplyT(func(v *IngestBudgetV2) IngestBudgetV2 {
+		if v != nil {
+			return *v
+		}
+		var ret IngestBudgetV2
+		return ret
+	}).(IngestBudgetV2Output)
 }
 
 type IngestBudgetV2ArrayOutput struct{ *pulumi.OutputState }
@@ -381,6 +387,10 @@ func (o IngestBudgetV2MapOutput) MapIndex(k pulumi.StringInput) IngestBudgetV2Ou
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IngestBudgetV2Input)(nil)).Elem(), &IngestBudgetV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngestBudgetV2PtrInput)(nil)).Elem(), &IngestBudgetV2{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngestBudgetV2ArrayInput)(nil)).Elem(), IngestBudgetV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngestBudgetV2MapInput)(nil)).Elem(), IngestBudgetV2Map{})
 	pulumi.RegisterOutputType(IngestBudgetV2Output{})
 	pulumi.RegisterOutputType(IngestBudgetV2PtrOutput{})
 	pulumi.RegisterOutputType(IngestBudgetV2ArrayOutput{})

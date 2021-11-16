@@ -110,18 +110,18 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
-    readonly capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly filterPredicate?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
+    filterPredicate?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
-    readonly capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly filterPredicate?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
+    filterPredicate?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

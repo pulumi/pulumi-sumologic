@@ -65,19 +65,19 @@ import (
 // 			ScanInterval: pulumi.Int(300000),
 // 			Paused:       pulumi.Bool(false),
 // 			CollectorId:  collector.ID(),
-// 			Filters: sumologic.PollingSourceFilterArray{
-// 				&sumologic.PollingSourceFilterArgs{
+// 			Filters: PollingSourceFilterArray{
+// 				&PollingSourceFilterArgs{
 // 					Name:       pulumi.String("Exclude Comments"),
 // 					FilterType: pulumi.String("Exclude"),
 // 					Regexp:     pulumi.String("#.*"),
 // 				},
 // 			},
-// 			Authentication: &sumologic.PollingSourceAuthenticationArgs{
+// 			Authentication: &PollingSourceAuthenticationArgs{
 // 				Type:      pulumi.String("S3BucketAuthentication"),
 // 				AccessKey: pulumi.String("someKey"),
 // 				SecretKey: pulumi.String("******"),
 // 			},
-// 			Path: &sumologic.PollingSourcePathArgs{
+// 			Path: &PollingSourcePathArgs{
 // 				Type:           pulumi.String("S3BucketPathExpression"),
 // 				BucketName:     pulumi.String("Bucket1"),
 // 				PathExpression: pulumi.String("*"),
@@ -93,11 +93,11 @@ import (
 // 			ScanInterval: pulumi.Int(300000),
 // 			Paused:       pulumi.Bool(false),
 // 			CollectorId:  collector.ID(),
-// 			Authentication: &sumologic.PollingSourceAuthenticationArgs{
+// 			Authentication: &PollingSourceAuthenticationArgs{
 // 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
 // 				RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
 // 			},
-// 			Path: &sumologic.PollingSourcePathArgs{
+// 			Path: &PollingSourcePathArgs{
 // 				Type: pulumi.String("CloudWatchPath"),
 // 				LimitToRegions: pulumi.StringArray{
 // 					pulumi.String("us-west-2"),
@@ -107,14 +107,14 @@ import (
 // 					pulumi.String("AWS/S3"),
 // 					pulumi.String("customNamespace"),
 // 				},
-// 				Dynamic: pulumi.MapArray{
-// 					pulumi.Map{
-// 						"forEach": toPulumiMapArray(tagfilters),
-// 						"content": pulumi.AnyMapArray{
-// 							pulumi.AnyMap{
-// 								"type":      pulumi.Any(tag_filters.Value.Type),
-// 								"namespace": pulumi.Any(tag_filters.Value.Namespace),
-// 								"tags":      pulumi.Any(tag_filters.Value.Tags),
+// 				Dynamic: []map[string]interface{}{
+// 					map[string]interface{}{
+// 						"forEach": tagfilters,
+// 						"content": []map[string]interface{}{
+// 							map[string]interface{}{
+// 								"type":      tag_filters.Value.Type,
+// 								"namespace": tag_filters.Value.Namespace,
+// 								"tags":      tag_filters.Value.Tags,
 // 							},
 // 						},
 // 					},
@@ -126,13 +126,6 @@ import (
 // 		}
 // 		return nil
 // 	})
-// }
-// func toPulumiMapArray(arr []Map) pulumi.MapArray {
-// 	var pulumiArr pulumi.MapArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.Map(v))
-// 	}
-// 	return pulumiArr
 // }
 // ```
 // ## Argument reference
@@ -418,7 +411,7 @@ type PollingSourceArrayInput interface {
 type PollingSourceArray []PollingSourceInput
 
 func (PollingSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PollingSource)(nil))
+	return reflect.TypeOf((*[]*PollingSource)(nil)).Elem()
 }
 
 func (i PollingSourceArray) ToPollingSourceArrayOutput() PollingSourceArrayOutput {
@@ -443,7 +436,7 @@ type PollingSourceMapInput interface {
 type PollingSourceMap map[string]PollingSourceInput
 
 func (PollingSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PollingSource)(nil))
+	return reflect.TypeOf((*map[string]*PollingSource)(nil)).Elem()
 }
 
 func (i PollingSourceMap) ToPollingSourceMapOutput() PollingSourceMapOutput {
@@ -454,9 +447,7 @@ func (i PollingSourceMap) ToPollingSourceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PollingSourceMapOutput)
 }
 
-type PollingSourceOutput struct {
-	*pulumi.OutputState
-}
+type PollingSourceOutput struct{ *pulumi.OutputState }
 
 func (PollingSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PollingSource)(nil))
@@ -475,14 +466,12 @@ func (o PollingSourceOutput) ToPollingSourcePtrOutput() PollingSourcePtrOutput {
 }
 
 func (o PollingSourceOutput) ToPollingSourcePtrOutputWithContext(ctx context.Context) PollingSourcePtrOutput {
-	return o.ApplyT(func(v PollingSource) *PollingSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PollingSource) *PollingSource {
 		return &v
 	}).(PollingSourcePtrOutput)
 }
 
-type PollingSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type PollingSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (PollingSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PollingSource)(nil))
@@ -494,6 +483,16 @@ func (o PollingSourcePtrOutput) ToPollingSourcePtrOutput() PollingSourcePtrOutpu
 
 func (o PollingSourcePtrOutput) ToPollingSourcePtrOutputWithContext(ctx context.Context) PollingSourcePtrOutput {
 	return o
+}
+
+func (o PollingSourcePtrOutput) Elem() PollingSourceOutput {
+	return o.ApplyT(func(v *PollingSource) PollingSource {
+		if v != nil {
+			return *v
+		}
+		var ret PollingSource
+		return ret
+	}).(PollingSourceOutput)
 }
 
 type PollingSourceArrayOutput struct{ *pulumi.OutputState }
@@ -537,6 +536,10 @@ func (o PollingSourceMapOutput) MapIndex(k pulumi.StringInput) PollingSourceOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceInput)(nil)).Elem(), &PollingSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePtrInput)(nil)).Elem(), &PollingSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceArrayInput)(nil)).Elem(), PollingSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceMapInput)(nil)).Elem(), PollingSourceMap{})
 	pulumi.RegisterOutputType(PollingSourceOutput{})
 	pulumi.RegisterOutputType(PollingSourcePtrOutput{})
 	pulumi.RegisterOutputType(PollingSourceArrayOutput{})

@@ -18,6 +18,19 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("pulumi:providers:sumologic")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("accessId")]
+        public Output<string> AccessId { get; private set; } = null!;
+
+        [Output("accessKey")]
+        public Output<string> AccessKey { get; private set; } = null!;
+
+        [Output("baseUrl")]
+        public Output<string?> BaseUrl { get; private set; } = null!;
+
+        [Output("environment")]
+        public Output<string?> Environment { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

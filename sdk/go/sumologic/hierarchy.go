@@ -26,20 +26,20 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sumologic.NewHierarchy(ctx, "exampleHierarchy", &sumologic.HierarchyArgs{
-// 			Filter: &sumologic.HierarchyFilterArgs{
+// 			Filter: &HierarchyFilterArgs{
 // 				Key:   pulumi.String("_origin"),
 // 				Value: pulumi.String("kubernetes"),
 // 			},
-// 			Levels: sumologic.HierarchyLevelArray{
-// 				&sumologic.HierarchyLevelArgs{
+// 			Levels: HierarchyLevelArray{
+// 				&HierarchyLevelArgs{
 // 					EntityType: pulumi.String("cluster"),
-// 					NextLevel: &sumologic.HierarchyLevelNextLevelArgs{
+// 					NextLevel: &HierarchyLevelNextLevelArgs{
 // 						EntityType: pulumi.String("node"),
 // 					},
-// 					NextLevelsWithConditions: sumologic.HierarchyLevelNextLevelsWithConditionArray{
-// 						&sumologic.HierarchyLevelNextLevelsWithConditionArgs{
+// 					NextLevelsWithConditions: HierarchyLevelNextLevelsWithConditionArray{
+// 						&HierarchyLevelNextLevelsWithConditionArgs{
 // 							Condition: pulumi.String("testCondition"),
-// 							Level: &sumologic.HierarchyLevelNextLevelsWithConditionLevelArgs{
+// 							Level: &HierarchyLevelNextLevelsWithConditionLevelArgs{
 // 								EntityType: pulumi.String("namespace"),
 // 							},
 // 						},
@@ -208,7 +208,7 @@ type HierarchyArrayInput interface {
 type HierarchyArray []HierarchyInput
 
 func (HierarchyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Hierarchy)(nil))
+	return reflect.TypeOf((*[]*Hierarchy)(nil)).Elem()
 }
 
 func (i HierarchyArray) ToHierarchyArrayOutput() HierarchyArrayOutput {
@@ -233,7 +233,7 @@ type HierarchyMapInput interface {
 type HierarchyMap map[string]HierarchyInput
 
 func (HierarchyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Hierarchy)(nil))
+	return reflect.TypeOf((*map[string]*Hierarchy)(nil)).Elem()
 }
 
 func (i HierarchyMap) ToHierarchyMapOutput() HierarchyMapOutput {
@@ -244,9 +244,7 @@ func (i HierarchyMap) ToHierarchyMapOutputWithContext(ctx context.Context) Hiera
 	return pulumi.ToOutputWithContext(ctx, i).(HierarchyMapOutput)
 }
 
-type HierarchyOutput struct {
-	*pulumi.OutputState
-}
+type HierarchyOutput struct{ *pulumi.OutputState }
 
 func (HierarchyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hierarchy)(nil))
@@ -265,14 +263,12 @@ func (o HierarchyOutput) ToHierarchyPtrOutput() HierarchyPtrOutput {
 }
 
 func (o HierarchyOutput) ToHierarchyPtrOutputWithContext(ctx context.Context) HierarchyPtrOutput {
-	return o.ApplyT(func(v Hierarchy) *Hierarchy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hierarchy) *Hierarchy {
 		return &v
 	}).(HierarchyPtrOutput)
 }
 
-type HierarchyPtrOutput struct {
-	*pulumi.OutputState
-}
+type HierarchyPtrOutput struct{ *pulumi.OutputState }
 
 func (HierarchyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hierarchy)(nil))
@@ -284,6 +280,16 @@ func (o HierarchyPtrOutput) ToHierarchyPtrOutput() HierarchyPtrOutput {
 
 func (o HierarchyPtrOutput) ToHierarchyPtrOutputWithContext(ctx context.Context) HierarchyPtrOutput {
 	return o
+}
+
+func (o HierarchyPtrOutput) Elem() HierarchyOutput {
+	return o.ApplyT(func(v *Hierarchy) Hierarchy {
+		if v != nil {
+			return *v
+		}
+		var ret Hierarchy
+		return ret
+	}).(HierarchyOutput)
 }
 
 type HierarchyArrayOutput struct{ *pulumi.OutputState }
@@ -327,6 +333,10 @@ func (o HierarchyMapOutput) MapIndex(k pulumi.StringInput) HierarchyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyInput)(nil)).Elem(), &Hierarchy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyPtrInput)(nil)).Elem(), &Hierarchy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyArrayInput)(nil)).Elem(), HierarchyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyMapInput)(nil)).Elem(), HierarchyMap{})
 	pulumi.RegisterOutputType(HierarchyOutput{})
 	pulumi.RegisterOutputType(HierarchyPtrOutput{})
 	pulumi.RegisterOutputType(HierarchyArrayOutput{})

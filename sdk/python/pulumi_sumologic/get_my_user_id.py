@@ -12,6 +12,7 @@ __all__ = [
     'GetMyUserIdResult',
     'AwaitableGetMyUserIdResult',
     'get_my_user_id',
+    'get_my_user_id_output',
 ]
 
 @pulumi.output_type
@@ -54,3 +55,12 @@ def get_my_user_id(id: Optional[str] = None,
 
     return AwaitableGetMyUserIdResult(
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_my_user_id)
+def get_my_user_id_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMyUserIdResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

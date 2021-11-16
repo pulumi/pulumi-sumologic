@@ -40,7 +40,7 @@ import (
 // 			MaxUserSessionTimeout:              pulumi.String("7d"),
 // 			SearchAudit:                        pulumi.Bool(false),
 // 			ShareDashboardsOutsideOrganization: pulumi.Bool(false),
-// 			UserConcurrentSessionsLimit: &sumologic.PoliciesUserConcurrentSessionsLimitArgs{
+// 			UserConcurrentSessionsLimit: &PoliciesUserConcurrentSessionsLimitArgs{
 // 				Enabled:               pulumi.Bool(false),
 // 				MaxConcurrentSessions: pulumi.Int(100),
 // 			},
@@ -240,7 +240,7 @@ type PoliciesArrayInput interface {
 type PoliciesArray []PoliciesInput
 
 func (PoliciesArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Policies)(nil))
+	return reflect.TypeOf((*[]*Policies)(nil)).Elem()
 }
 
 func (i PoliciesArray) ToPoliciesArrayOutput() PoliciesArrayOutput {
@@ -265,7 +265,7 @@ type PoliciesMapInput interface {
 type PoliciesMap map[string]PoliciesInput
 
 func (PoliciesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Policies)(nil))
+	return reflect.TypeOf((*map[string]*Policies)(nil)).Elem()
 }
 
 func (i PoliciesMap) ToPoliciesMapOutput() PoliciesMapOutput {
@@ -276,9 +276,7 @@ func (i PoliciesMap) ToPoliciesMapOutputWithContext(ctx context.Context) Policie
 	return pulumi.ToOutputWithContext(ctx, i).(PoliciesMapOutput)
 }
 
-type PoliciesOutput struct {
-	*pulumi.OutputState
-}
+type PoliciesOutput struct{ *pulumi.OutputState }
 
 func (PoliciesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Policies)(nil))
@@ -297,14 +295,12 @@ func (o PoliciesOutput) ToPoliciesPtrOutput() PoliciesPtrOutput {
 }
 
 func (o PoliciesOutput) ToPoliciesPtrOutputWithContext(ctx context.Context) PoliciesPtrOutput {
-	return o.ApplyT(func(v Policies) *Policies {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Policies) *Policies {
 		return &v
 	}).(PoliciesPtrOutput)
 }
 
-type PoliciesPtrOutput struct {
-	*pulumi.OutputState
-}
+type PoliciesPtrOutput struct{ *pulumi.OutputState }
 
 func (PoliciesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Policies)(nil))
@@ -316,6 +312,16 @@ func (o PoliciesPtrOutput) ToPoliciesPtrOutput() PoliciesPtrOutput {
 
 func (o PoliciesPtrOutput) ToPoliciesPtrOutputWithContext(ctx context.Context) PoliciesPtrOutput {
 	return o
+}
+
+func (o PoliciesPtrOutput) Elem() PoliciesOutput {
+	return o.ApplyT(func(v *Policies) Policies {
+		if v != nil {
+			return *v
+		}
+		var ret Policies
+		return ret
+	}).(PoliciesOutput)
 }
 
 type PoliciesArrayOutput struct{ *pulumi.OutputState }
@@ -359,6 +365,10 @@ func (o PoliciesMapOutput) MapIndex(k pulumi.StringInput) PoliciesOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesInput)(nil)).Elem(), &Policies{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesPtrInput)(nil)).Elem(), &Policies{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesArrayInput)(nil)).Elem(), PoliciesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesMapInput)(nil)).Elem(), PoliciesMap{})
 	pulumi.RegisterOutputType(PoliciesOutput{})
 	pulumi.RegisterOutputType(PoliciesPtrOutput{})
 	pulumi.RegisterOutputType(PoliciesArrayOutput{})

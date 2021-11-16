@@ -2029,3 +2029,4 @@ export interface SamlConfigurationOnDemandProvisioningEnabled {
     lastNameAttribute?: string;
     onDemandProvisioningRoles: string[];
 }
+

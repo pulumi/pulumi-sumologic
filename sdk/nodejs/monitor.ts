@@ -349,64 +349,64 @@ export class Monitor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Monitor resources.
  */
 export interface MonitorState {
-    readonly contentType?: pulumi.Input<string>;
-    readonly createdAt?: pulumi.Input<string>;
-    readonly createdBy?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly evaluationDelay?: pulumi.Input<string>;
-    readonly groupNotifications?: pulumi.Input<boolean>;
-    readonly isDisabled?: pulumi.Input<boolean>;
-    readonly isLocked?: pulumi.Input<boolean>;
-    readonly isMutable?: pulumi.Input<boolean>;
-    readonly isSystem?: pulumi.Input<boolean>;
-    readonly modifiedAt?: pulumi.Input<string>;
-    readonly modifiedBy?: pulumi.Input<string>;
-    readonly monitorType?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
-    readonly parentId?: pulumi.Input<string>;
-    readonly playbook?: pulumi.Input<string>;
-    readonly postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
-    readonly statuses?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
+    contentType?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    evaluationDelay?: pulumi.Input<string>;
+    groupNotifications?: pulumi.Input<boolean>;
+    isDisabled?: pulumi.Input<boolean>;
+    isLocked?: pulumi.Input<boolean>;
+    isMutable?: pulumi.Input<boolean>;
+    isSystem?: pulumi.Input<boolean>;
+    modifiedAt?: pulumi.Input<string>;
+    modifiedBy?: pulumi.Input<string>;
+    monitorType?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
+    parentId?: pulumi.Input<string>;
+    playbook?: pulumi.Input<string>;
+    postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
+    statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
     /**
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
-    readonly triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
-    readonly type?: pulumi.Input<string>;
-    readonly version?: pulumi.Input<number>;
+    triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
+    type?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a Monitor resource.
  */
 export interface MonitorArgs {
-    readonly contentType?: pulumi.Input<string>;
-    readonly createdAt?: pulumi.Input<string>;
-    readonly createdBy?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly evaluationDelay?: pulumi.Input<string>;
-    readonly groupNotifications?: pulumi.Input<boolean>;
-    readonly isDisabled?: pulumi.Input<boolean>;
-    readonly isLocked?: pulumi.Input<boolean>;
-    readonly isMutable?: pulumi.Input<boolean>;
-    readonly isSystem?: pulumi.Input<boolean>;
-    readonly modifiedAt?: pulumi.Input<string>;
-    readonly modifiedBy?: pulumi.Input<string>;
-    readonly monitorType: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
-    readonly parentId?: pulumi.Input<string>;
-    readonly playbook?: pulumi.Input<string>;
-    readonly postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
-    readonly statuses?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
+    contentType?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    evaluationDelay?: pulumi.Input<string>;
+    groupNotifications?: pulumi.Input<boolean>;
+    isDisabled?: pulumi.Input<boolean>;
+    isLocked?: pulumi.Input<boolean>;
+    isMutable?: pulumi.Input<boolean>;
+    isSystem?: pulumi.Input<boolean>;
+    modifiedAt?: pulumi.Input<string>;
+    modifiedBy?: pulumi.Input<string>;
+    monitorType: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
+    parentId?: pulumi.Input<string>;
+    playbook?: pulumi.Input<string>;
+    postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
+    statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
     /**
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
-    readonly triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
-    readonly type?: pulumi.Input<string>;
-    readonly version?: pulumi.Input<number>;
+    triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
+    type?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }

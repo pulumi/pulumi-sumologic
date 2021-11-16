@@ -30,8 +30,8 @@ import (
 // 			CountField:    pulumi.String("dstDevice_hostname"),
 // 			Description:   pulumi.String("Signal description"),
 // 			Enabled:       pulumi.Bool(true),
-// 			EntitySelectors: sumologic.CseThresholdRuleEntitySelectorArray{
-// 				&sumologic.CseThresholdRuleEntitySelectorArgs{
+// 			EntitySelectors: CseThresholdRuleEntitySelectorArray{
+// 				&CseThresholdRuleEntitySelectorArgs{
 // 					EntityType: pulumi.String("_ip"),
 // 					Expression: pulumi.String("srcDevice_ip"),
 // 				},
@@ -295,7 +295,7 @@ type CseThresholdRuleArrayInput interface {
 type CseThresholdRuleArray []CseThresholdRuleInput
 
 func (CseThresholdRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CseThresholdRule)(nil))
+	return reflect.TypeOf((*[]*CseThresholdRule)(nil)).Elem()
 }
 
 func (i CseThresholdRuleArray) ToCseThresholdRuleArrayOutput() CseThresholdRuleArrayOutput {
@@ -320,7 +320,7 @@ type CseThresholdRuleMapInput interface {
 type CseThresholdRuleMap map[string]CseThresholdRuleInput
 
 func (CseThresholdRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CseThresholdRule)(nil))
+	return reflect.TypeOf((*map[string]*CseThresholdRule)(nil)).Elem()
 }
 
 func (i CseThresholdRuleMap) ToCseThresholdRuleMapOutput() CseThresholdRuleMapOutput {
@@ -331,9 +331,7 @@ func (i CseThresholdRuleMap) ToCseThresholdRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CseThresholdRuleMapOutput)
 }
 
-type CseThresholdRuleOutput struct {
-	*pulumi.OutputState
-}
+type CseThresholdRuleOutput struct{ *pulumi.OutputState }
 
 func (CseThresholdRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CseThresholdRule)(nil))
@@ -352,14 +350,12 @@ func (o CseThresholdRuleOutput) ToCseThresholdRulePtrOutput() CseThresholdRulePt
 }
 
 func (o CseThresholdRuleOutput) ToCseThresholdRulePtrOutputWithContext(ctx context.Context) CseThresholdRulePtrOutput {
-	return o.ApplyT(func(v CseThresholdRule) *CseThresholdRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseThresholdRule) *CseThresholdRule {
 		return &v
 	}).(CseThresholdRulePtrOutput)
 }
 
-type CseThresholdRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type CseThresholdRulePtrOutput struct{ *pulumi.OutputState }
 
 func (CseThresholdRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CseThresholdRule)(nil))
@@ -371,6 +367,16 @@ func (o CseThresholdRulePtrOutput) ToCseThresholdRulePtrOutput() CseThresholdRul
 
 func (o CseThresholdRulePtrOutput) ToCseThresholdRulePtrOutputWithContext(ctx context.Context) CseThresholdRulePtrOutput {
 	return o
+}
+
+func (o CseThresholdRulePtrOutput) Elem() CseThresholdRuleOutput {
+	return o.ApplyT(func(v *CseThresholdRule) CseThresholdRule {
+		if v != nil {
+			return *v
+		}
+		var ret CseThresholdRule
+		return ret
+	}).(CseThresholdRuleOutput)
 }
 
 type CseThresholdRuleArrayOutput struct{ *pulumi.OutputState }
@@ -414,6 +420,10 @@ func (o CseThresholdRuleMapOutput) MapIndex(k pulumi.StringInput) CseThresholdRu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CseThresholdRuleInput)(nil)).Elem(), &CseThresholdRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseThresholdRulePtrInput)(nil)).Elem(), &CseThresholdRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseThresholdRuleArrayInput)(nil)).Elem(), CseThresholdRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseThresholdRuleMapInput)(nil)).Elem(), CseThresholdRuleMap{})
 	pulumi.RegisterOutputType(CseThresholdRuleOutput{})
 	pulumi.RegisterOutputType(CseThresholdRulePtrOutput{})
 	pulumi.RegisterOutputType(CseThresholdRuleArrayOutput{})

@@ -101,15 +101,15 @@ export class CseInsightsStatus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseInsightsStatus resources.
  */
 export interface CseInsightsStatusState {
-    readonly description?: pulumi.Input<string>;
-    readonly displayName?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CseInsightsStatus resource.
  */
 export interface CseInsightsStatusArgs {
-    readonly description?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

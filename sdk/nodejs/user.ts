@@ -147,22 +147,22 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
-    readonly email?: pulumi.Input<string>;
-    readonly firstName?: pulumi.Input<string>;
-    readonly isActive?: pulumi.Input<boolean>;
-    readonly lastName?: pulumi.Input<string>;
-    readonly roleIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly transferTo?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string>;
+    isActive?: pulumi.Input<boolean>;
+    lastName?: pulumi.Input<string>;
+    roleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    transferTo?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
-    readonly email: pulumi.Input<string>;
-    readonly firstName: pulumi.Input<string>;
-    readonly isActive: pulumi.Input<boolean>;
-    readonly lastName: pulumi.Input<string>;
-    readonly roleIds: pulumi.Input<pulumi.Input<string>[]>;
-    readonly transferTo: pulumi.Input<string>;
+    email: pulumi.Input<string>;
+    firstName: pulumi.Input<string>;
+    isActive: pulumi.Input<boolean>;
+    lastName: pulumi.Input<string>;
+    roleIds: pulumi.Input<pulumi.Input<string>[]>;
+    transferTo: pulumi.Input<string>;
 }

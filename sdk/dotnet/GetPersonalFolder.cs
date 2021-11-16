@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
@@ -45,6 +46,41 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Task<GetPersonalFolderResult> InvokeAsync(GetPersonalFolderArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides an easy way to retrieve the Personal Folder.
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The ID of the Personal Folder.
+        /// - `name` - The name of the Personal Folder.
+        /// - `description` - The description of the Personal Folder.
+        /// </summary>
+        public static Output<GetPersonalFolderResult> Invoke(GetPersonalFolderInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +96,22 @@ namespace Pulumi.SumoLogic
         public string? Name { get; set; }
 
         public GetPersonalFolderArgs()
+        {
+        }
+    }
+
+    public sealed class GetPersonalFolderInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetPersonalFolderInvokeArgs()
         {
         }
     }

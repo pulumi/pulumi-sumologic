@@ -222,53 +222,53 @@ export class AwsInventorySource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AwsInventorySource resources.
  */
 export interface AwsInventorySourceState {
-    readonly authentication?: pulumi.Input<inputs.AwsInventorySourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId?: pulumi.Input<number>;
-    readonly contentType?: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path?: pulumi.Input<inputs.AwsInventorySourcePath>;
-    readonly paused?: pulumi.Input<boolean>;
-    readonly scanInterval?: pulumi.Input<number>;
-    readonly timezone?: pulumi.Input<string>;
-    readonly url?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    authentication?: pulumi.Input<inputs.AwsInventorySourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId?: pulumi.Input<number>;
+    contentType?: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<inputs.AwsInventorySourcePath>;
+    paused?: pulumi.Input<boolean>;
+    scanInterval?: pulumi.Input<number>;
+    timezone?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a AwsInventorySource resource.
  */
 export interface AwsInventorySourceArgs {
-    readonly authentication: pulumi.Input<inputs.AwsInventorySourceAuthentication>;
-    readonly automaticDateParsing?: pulumi.Input<boolean>;
-    readonly category?: pulumi.Input<string>;
-    readonly collectorId: pulumi.Input<number>;
-    readonly contentType: pulumi.Input<string>;
-    readonly cutoffRelativeTime?: pulumi.Input<string>;
-    readonly cutoffTimestamp?: pulumi.Input<number>;
-    readonly defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceDefaultDateFormat>[]>;
-    readonly description?: pulumi.Input<string>;
-    readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceFilter>[]>;
-    readonly forceTimezone?: pulumi.Input<boolean>;
-    readonly hostName?: pulumi.Input<string>;
-    readonly manualPrefixRegexp?: pulumi.Input<string>;
-    readonly multilineProcessingEnabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly path: pulumi.Input<inputs.AwsInventorySourcePath>;
-    readonly paused: pulumi.Input<boolean>;
-    readonly scanInterval: pulumi.Input<number>;
-    readonly timezone?: pulumi.Input<string>;
-    readonly useAutolineMatching?: pulumi.Input<boolean>;
+    authentication: pulumi.Input<inputs.AwsInventorySourceAuthentication>;
+    automaticDateParsing?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
+    collectorId: pulumi.Input<number>;
+    contentType: pulumi.Input<string>;
+    cutoffRelativeTime?: pulumi.Input<string>;
+    cutoffTimestamp?: pulumi.Input<number>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceDefaultDateFormat>[]>;
+    description?: pulumi.Input<string>;
+    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourceFilter>[]>;
+    forceTimezone?: pulumi.Input<boolean>;
+    hostName?: pulumi.Input<string>;
+    manualPrefixRegexp?: pulumi.Input<string>;
+    multilineProcessingEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    path: pulumi.Input<inputs.AwsInventorySourcePath>;
+    paused: pulumi.Input<boolean>;
+    scanInterval: pulumi.Input<number>;
+    timezone?: pulumi.Input<string>;
+    useAutolineMatching?: pulumi.Input<boolean>;
 }

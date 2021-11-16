@@ -191,7 +191,7 @@ type FieldArrayInput interface {
 type FieldArray []FieldInput
 
 func (FieldArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Field)(nil))
+	return reflect.TypeOf((*[]*Field)(nil)).Elem()
 }
 
 func (i FieldArray) ToFieldArrayOutput() FieldArrayOutput {
@@ -216,7 +216,7 @@ type FieldMapInput interface {
 type FieldMap map[string]FieldInput
 
 func (FieldMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Field)(nil))
+	return reflect.TypeOf((*map[string]*Field)(nil)).Elem()
 }
 
 func (i FieldMap) ToFieldMapOutput() FieldMapOutput {
@@ -227,9 +227,7 @@ func (i FieldMap) ToFieldMapOutputWithContext(ctx context.Context) FieldMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FieldMapOutput)
 }
 
-type FieldOutput struct {
-	*pulumi.OutputState
-}
+type FieldOutput struct{ *pulumi.OutputState }
 
 func (FieldOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Field)(nil))
@@ -248,14 +246,12 @@ func (o FieldOutput) ToFieldPtrOutput() FieldPtrOutput {
 }
 
 func (o FieldOutput) ToFieldPtrOutputWithContext(ctx context.Context) FieldPtrOutput {
-	return o.ApplyT(func(v Field) *Field {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Field) *Field {
 		return &v
 	}).(FieldPtrOutput)
 }
 
-type FieldPtrOutput struct {
-	*pulumi.OutputState
-}
+type FieldPtrOutput struct{ *pulumi.OutputState }
 
 func (FieldPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Field)(nil))
@@ -267,6 +263,16 @@ func (o FieldPtrOutput) ToFieldPtrOutput() FieldPtrOutput {
 
 func (o FieldPtrOutput) ToFieldPtrOutputWithContext(ctx context.Context) FieldPtrOutput {
 	return o
+}
+
+func (o FieldPtrOutput) Elem() FieldOutput {
+	return o.ApplyT(func(v *Field) Field {
+		if v != nil {
+			return *v
+		}
+		var ret Field
+		return ret
+	}).(FieldOutput)
 }
 
 type FieldArrayOutput struct{ *pulumi.OutputState }
@@ -310,6 +316,10 @@ func (o FieldMapOutput) MapIndex(k pulumi.StringInput) FieldOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldInput)(nil)).Elem(), &Field{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldPtrInput)(nil)).Elem(), &Field{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldArrayInput)(nil)).Elem(), FieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldMapInput)(nil)).Elem(), FieldMap{})
 	pulumi.RegisterOutputType(FieldOutput{})
 	pulumi.RegisterOutputType(FieldPtrOutput{})
 	pulumi.RegisterOutputType(FieldArrayOutput{})

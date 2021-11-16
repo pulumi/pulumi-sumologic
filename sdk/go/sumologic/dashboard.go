@@ -13,6 +13,291 @@ import (
 
 // Provides a [Sumologic Dashboard (New)][1].
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"text": map[string]interface{}{
+// 				"verticalAlignment":   "top",
+// 				"horizontalAlignment": "left",
+// 				"fontSize":            12,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+// 			"general": map[string]interface{}{
+// 				"mode":          "timeSeries",
+// 				"type":          "area",
+// 				"displayType":   "stacked",
+// 				"markerSize":    5,
+// 				"lineDashType":  "solid",
+// 				"markerType":    "square",
+// 				"lineThickness": 1,
+// 			},
+// 			"title": map[string]interface{}{
+// 				"fontSize": 14,
+// 			},
+// 			"legend": map[string]interface{}{
+// 				"enabled":       true,
+// 				"verticalAlign": "bottom",
+// 				"fontSize":      12,
+// 				"maxHeight":     50,
+// 				"showAsTable":   false,
+// 				"wrap":          true,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json1 := string(tmpJSON1)
+// 		tmpJSON2, err := json.Marshal(map[string]interface{}{
+// 			"general": map[string]interface{}{
+// 				"mode":            "distribution",
+// 				"type":            "pie",
+// 				"displayType":     "default",
+// 				"fillOpacity":     1,
+// 				"startAngle":      270,
+// 				"innerRadius":     fmt.Sprintf("%v%v", "40", "%"),
+// 				"maxNumOfSlices":  10,
+// 				"aggregationType": "sum",
+// 			},
+// 			"title": map[string]interface{}{
+// 				"fontSize": 14,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json2 := string(tmpJSON2)
+// 		tmpJSON3, err := json.Marshal(map[string]interface{}{
+// 			"general": map[string]interface{}{
+// 				"mode":          "timeSeries",
+// 				"type":          "line",
+// 				"displayType":   "smooth",
+// 				"markerSize":    5,
+// 				"lineDashType":  "dashDot",
+// 				"markerType":    "none",
+// 				"lineThickness": 1,
+// 			},
+// 			"title": map[string]interface{}{
+// 				"fontSize": 14,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json3 := string(tmpJSON3)
+// 		_, err = sumologic.NewDashboard(ctx, "api_dashboard", &sumologic.DashboardArgs{
+// 			Title:           pulumi.String("Api Health Dashboard"),
+// 			Description:     pulumi.String("Demo dashboard description"),
+// 			FolderId:        pulumi.String(personalFolder.Id),
+// 			RefreshInterval: pulumi.Int(120),
+// 			Theme:           pulumi.String("Dark"),
+// 			TimeRange: &DashboardTimeRangeArgs{
+// 				BeginBoundedTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeArgs{
+// 					From: &DashboardTimeRangeBeginBoundedTimeRangeFromArgs{
+// 						LiteralTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
+// 							RangeName: pulumi.String("today"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			TopologyLabelMap: &DashboardTopologyLabelMapArgs{
+// 				Datas: DashboardTopologyLabelMapDataArray{
+// 					&DashboardTopologyLabelMapDataArgs{
+// 						Label: pulumi.String("cluster"),
+// 						Values: pulumi.StringArray{
+// 							pulumi.String("api-prod"),
+// 						},
+// 					},
+// 					&DashboardTopologyLabelMapDataArgs{
+// 						Label: pulumi.String("namespace"),
+// 						Values: pulumi.StringArray{
+// 							pulumi.String("default"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Panels: DashboardPanelArray{
+// 				&DashboardPanelArgs{
+// 					TextPanel: &DashboardPanelTextPanelArgs{
+// 						Key:                                    pulumi.String("text-panel-01"),
+// 						Title:                                  pulumi.String("Api Health"),
+// 						VisualSettings:                         pulumi.String(json0),
+// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+// 						Text:                                   pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "## Api Health Monitoring\n", "\n", "Use this dashboard to monitor API service health. It contains following panels:\n", "\n", "1. API errors: Errors in last 12 hours\n", "3. API 5xx: Count of 5xx response\n", "3. CPU utilization: CPU utilization in last 60 mins\n")),
+// 					},
+// 				},
+// 				&DashboardPanelArgs{
+// 					SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+// 						Key:                                    pulumi.String("search-panel-01"),
+// 						Title:                                  pulumi.String("Api Errors by Host"),
+// 						Description:                            pulumi.String("Errors in api service since last 12 hours"),
+// 						VisualSettings:                         pulumi.String(json1),
+// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+// 						Queries: DashboardPanelSumoSearchPanelQueryArray{
+// 							&DashboardPanelSumoSearchPanelQueryArgs{
+// 								QueryString: pulumi.String("_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost"),
+// 								QueryType:   pulumi.String("Logs"),
+// 								QueryKey:    pulumi.String("A"),
+// 							},
+// 						},
+// 						TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
+// 							BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+// 								From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+// 									RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
+// 										RelativeTime: pulumi.String("-12h"),
+// 									},
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 				&DashboardPanelArgs{
+// 					SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+// 						Key:                                    pulumi.String("metrics-panel-01"),
+// 						Title:                                  pulumi.String("Api 5xx Response Count"),
+// 						Description:                            pulumi.String("Count of 5xx response from api service"),
+// 						VisualSettings:                         pulumi.String(json2),
+// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+// 						Queries: DashboardPanelSumoSearchPanelQueryArray{
+// 							&DashboardPanelSumoSearchPanelQueryArgs{
+// 								QueryString:      pulumi.String("_sourceCategory=api metric=Api-5xx"),
+// 								QueryType:        pulumi.String("Metrics"),
+// 								QueryKey:         pulumi.String("A"),
+// 								MetricsQueryMode: pulumi.String("Advanced"),
+// 							},
+// 						},
+// 						TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
+// 							BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+// 								From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+// 									LiteralTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
+// 										RangeName: pulumi.String("today"),
+// 									},
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 				&DashboardPanelArgs{
+// 					SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+// 						Key:                                    pulumi.String("metrics-panel-02"),
+// 						Title:                                  pulumi.String("CPU Utilization"),
+// 						Description:                            pulumi.String("CPU utilization in api service"),
+// 						VisualSettings:                         pulumi.String(json3),
+// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+// 						Queries: DashboardPanelSumoSearchPanelQueryArray{
+// 							&DashboardPanelSumoSearchPanelQueryArgs{
+// 								QueryString:      pulumi.String("metric=Proc_CPU nite-api-1"),
+// 								QueryType:        pulumi.String("Metrics"),
+// 								QueryKey:         pulumi.String("A"),
+// 								MetricsQueryMode: pulumi.String("Basic"),
+// 								MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
+// 									Metric: pulumi.String("Proc_CPU"),
+// 									Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
+// 										&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
+// 											Key:      pulumi.String("_sourcehost"),
+// 											Negation: pulumi.Bool(false),
+// 											Value:    pulumi.String("nite-api-1"),
+// 										},
+// 									},
+// 									AggregationType: pulumi.String("None"),
+// 								},
+// 							},
+// 							&DashboardPanelSumoSearchPanelQueryArgs{
+// 								QueryString:      pulumi.String("metric=Proc_CPU nite-api-2"),
+// 								QueryType:        pulumi.String("Metrics"),
+// 								QueryKey:         pulumi.String("B"),
+// 								MetricsQueryMode: pulumi.String("Basic"),
+// 								MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
+// 									Metric: pulumi.String("Proc_CPU"),
+// 									Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
+// 										&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
+// 											Key:      pulumi.String("_sourcehost"),
+// 											Negation: pulumi.Bool(false),
+// 											Value:    pulumi.String("nite-api-2"),
+// 										},
+// 									},
+// 									AggregationType: pulumi.String("None"),
+// 								},
+// 							},
+// 						},
+// 						TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
+// 							BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+// 								From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+// 									RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
+// 										RelativeTime: pulumi.String("-1h"),
+// 									},
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Layout: &DashboardLayoutArgs{
+// 				Grid: &DashboardLayoutGridArgs{
+// 					LayoutStructures: DashboardLayoutGridLayoutStructureArray{
+// 						&DashboardLayoutGridLayoutStructureArgs{
+// 							Key:       pulumi.String("text-panel-01"),
+// 							Structure: pulumi.String("{\"height\":5,\"width\":24,\"x\":0,\"y\":0}"),
+// 						},
+// 						&DashboardLayoutGridLayoutStructureArgs{
+// 							Key:       pulumi.String("search-panel-01"),
+// 							Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":0,\"y\":5}"),
+// 						},
+// 						&DashboardLayoutGridLayoutStructureArgs{
+// 							Key:       pulumi.String("metrics-panel-01"),
+// 							Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":12,\"y\":5}"),
+// 						},
+// 						&DashboardLayoutGridLayoutStructureArgs{
+// 							Key:       pulumi.String("metrics-panel-02"),
+// 							Structure: pulumi.String("{\"height\":10,\"width\":24,\"x\":0,\"y\":25}"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Variables: DashboardVariableArray{
+// 				&DashboardVariableArgs{
+// 					Name:         pulumi.String("_sourceHost"),
+// 					DisplayName:  pulumi.String("Source Host"),
+// 					DefaultValue: pulumi.String("nite-api-1"),
+// 					SourceDefinition: &DashboardVariableSourceDefinitionArgs{
+// 						CsvVariableSourceDefinition: &DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs{
+// 							Values: pulumi.String("nite-api-1,nite-api-2"),
+// 						},
+// 					},
+// 					AllowMultiSelect: pulumi.Bool(true),
+// 					IncludeAllOption: pulumi.Bool(true),
+// 					HideFromUi:       pulumi.Bool(false),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Argument reference
 //
 // The following arguments are supported:
@@ -365,7 +650,7 @@ type DashboardArrayInput interface {
 type DashboardArray []DashboardInput
 
 func (DashboardArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Dashboard)(nil))
+	return reflect.TypeOf((*[]*Dashboard)(nil)).Elem()
 }
 
 func (i DashboardArray) ToDashboardArrayOutput() DashboardArrayOutput {
@@ -390,7 +675,7 @@ type DashboardMapInput interface {
 type DashboardMap map[string]DashboardInput
 
 func (DashboardMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Dashboard)(nil))
+	return reflect.TypeOf((*map[string]*Dashboard)(nil)).Elem()
 }
 
 func (i DashboardMap) ToDashboardMapOutput() DashboardMapOutput {
@@ -401,9 +686,7 @@ func (i DashboardMap) ToDashboardMapOutputWithContext(ctx context.Context) Dashb
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardMapOutput)
 }
 
-type DashboardOutput struct {
-	*pulumi.OutputState
-}
+type DashboardOutput struct{ *pulumi.OutputState }
 
 func (DashboardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Dashboard)(nil))
@@ -422,14 +705,12 @@ func (o DashboardOutput) ToDashboardPtrOutput() DashboardPtrOutput {
 }
 
 func (o DashboardOutput) ToDashboardPtrOutputWithContext(ctx context.Context) DashboardPtrOutput {
-	return o.ApplyT(func(v Dashboard) *Dashboard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Dashboard) *Dashboard {
 		return &v
 	}).(DashboardPtrOutput)
 }
 
-type DashboardPtrOutput struct {
-	*pulumi.OutputState
-}
+type DashboardPtrOutput struct{ *pulumi.OutputState }
 
 func (DashboardPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Dashboard)(nil))
@@ -441,6 +722,16 @@ func (o DashboardPtrOutput) ToDashboardPtrOutput() DashboardPtrOutput {
 
 func (o DashboardPtrOutput) ToDashboardPtrOutputWithContext(ctx context.Context) DashboardPtrOutput {
 	return o
+}
+
+func (o DashboardPtrOutput) Elem() DashboardOutput {
+	return o.ApplyT(func(v *Dashboard) Dashboard {
+		if v != nil {
+			return *v
+		}
+		var ret Dashboard
+		return ret
+	}).(DashboardOutput)
 }
 
 type DashboardArrayOutput struct{ *pulumi.OutputState }
@@ -484,6 +775,10 @@ func (o DashboardMapOutput) MapIndex(k pulumi.StringInput) DashboardOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardInput)(nil)).Elem(), &Dashboard{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPtrInput)(nil)).Elem(), &Dashboard{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardArrayInput)(nil)).Elem(), DashboardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardMapInput)(nil)).Elem(), DashboardMap{})
 	pulumi.RegisterOutputType(DashboardOutput{})
 	pulumi.RegisterOutputType(DashboardPtrOutput{})
 	pulumi.RegisterOutputType(DashboardArrayOutput{})

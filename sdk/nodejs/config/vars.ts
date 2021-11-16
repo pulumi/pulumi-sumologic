@@ -4,10 +4,46 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("sumologic");
+declare var exports: any;
+const __config = new pulumi.Config("sumologic");
 
-export let accessId: string | undefined = __config.get("accessId");
-export let accessKey: string | undefined = __config.get("accessKey");
-export let adminMode: boolean | undefined = __config.getObject<boolean>("adminMode");
-export let baseUrl: string | undefined = __config.get("baseUrl") || utilities.getEnv("SUMOLOGIC_BASE_URL");
-export let environment: string | undefined = __config.get("environment") || utilities.getEnv("SUMOLOGIC_ENVIRONMENT");
+export declare const accessId: string | undefined;
+Object.defineProperty(exports, "accessId", {
+    get() {
+        return __config.get("accessId");
+    },
+    enumerable: true,
+});
+
+export declare const accessKey: string | undefined;
+Object.defineProperty(exports, "accessKey", {
+    get() {
+        return __config.get("accessKey");
+    },
+    enumerable: true,
+});
+
+export declare const adminMode: boolean | undefined;
+Object.defineProperty(exports, "adminMode", {
+    get() {
+        return __config.getObject<boolean>("adminMode");
+    },
+    enumerable: true,
+});
+
+export declare const baseUrl: string | undefined;
+Object.defineProperty(exports, "baseUrl", {
+    get() {
+        return __config.get("baseUrl") ?? utilities.getEnv("SUMOLOGIC_BASE_URL");
+    },
+    enumerable: true,
+});
+
+export declare const environment: string | undefined;
+Object.defineProperty(exports, "environment", {
+    get() {
+        return __config.get("environment") ?? utilities.getEnv("SUMOLOGIC_ENVIRONMENT");
+    },
+    enumerable: true,
+});
+

@@ -34,7 +34,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewCloudfrontSource(ctx, "cloudfrontSource", &sumologic.CloudfrontSourceArgs{
-// 			Authentication: &sumologic.CloudfrontSourceAuthenticationArgs{
+// 			Authentication: &CloudfrontSourceAuthenticationArgs{
 // 				AccessKey: pulumi.String("someKey"),
 // 				SecretKey: pulumi.String("******"),
 // 				Type:      pulumi.String("S3BucketAuthentication"),
@@ -43,7 +43,7 @@ import (
 // 			CollectorId: collector.ID(),
 // 			ContentType: pulumi.String("AwsCloudFrontBucket"),
 // 			Description: pulumi.String("My description"),
-// 			Path: &sumologic.CloudfrontSourcePathArgs{
+// 			Path: &CloudfrontSourcePathArgs{
 // 				BucketName:     pulumi.String("Bucket1"),
 // 				PathExpression: pulumi.String("*"),
 // 				Type:           pulumi.String("S3BucketPathExpression"),
@@ -336,7 +336,7 @@ type CloudfrontSourceArrayInput interface {
 type CloudfrontSourceArray []CloudfrontSourceInput
 
 func (CloudfrontSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CloudfrontSource)(nil))
+	return reflect.TypeOf((*[]*CloudfrontSource)(nil)).Elem()
 }
 
 func (i CloudfrontSourceArray) ToCloudfrontSourceArrayOutput() CloudfrontSourceArrayOutput {
@@ -361,7 +361,7 @@ type CloudfrontSourceMapInput interface {
 type CloudfrontSourceMap map[string]CloudfrontSourceInput
 
 func (CloudfrontSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CloudfrontSource)(nil))
+	return reflect.TypeOf((*map[string]*CloudfrontSource)(nil)).Elem()
 }
 
 func (i CloudfrontSourceMap) ToCloudfrontSourceMapOutput() CloudfrontSourceMapOutput {
@@ -372,9 +372,7 @@ func (i CloudfrontSourceMap) ToCloudfrontSourceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourceMapOutput)
 }
 
-type CloudfrontSourceOutput struct {
-	*pulumi.OutputState
-}
+type CloudfrontSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CloudfrontSource)(nil))
@@ -393,14 +391,12 @@ func (o CloudfrontSourceOutput) ToCloudfrontSourcePtrOutput() CloudfrontSourcePt
 }
 
 func (o CloudfrontSourceOutput) ToCloudfrontSourcePtrOutputWithContext(ctx context.Context) CloudfrontSourcePtrOutput {
-	return o.ApplyT(func(v CloudfrontSource) *CloudfrontSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudfrontSource) *CloudfrontSource {
 		return &v
 	}).(CloudfrontSourcePtrOutput)
 }
 
-type CloudfrontSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type CloudfrontSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CloudfrontSource)(nil))
@@ -412,6 +408,16 @@ func (o CloudfrontSourcePtrOutput) ToCloudfrontSourcePtrOutput() CloudfrontSourc
 
 func (o CloudfrontSourcePtrOutput) ToCloudfrontSourcePtrOutputWithContext(ctx context.Context) CloudfrontSourcePtrOutput {
 	return o
+}
+
+func (o CloudfrontSourcePtrOutput) Elem() CloudfrontSourceOutput {
+	return o.ApplyT(func(v *CloudfrontSource) CloudfrontSource {
+		if v != nil {
+			return *v
+		}
+		var ret CloudfrontSource
+		return ret
+	}).(CloudfrontSourceOutput)
 }
 
 type CloudfrontSourceArrayOutput struct{ *pulumi.OutputState }
@@ -455,6 +461,10 @@ func (o CloudfrontSourceMapOutput) MapIndex(k pulumi.StringInput) CloudfrontSour
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceInput)(nil)).Elem(), &CloudfrontSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePtrInput)(nil)).Elem(), &CloudfrontSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceArrayInput)(nil)).Elem(), CloudfrontSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceMapInput)(nil)).Elem(), CloudfrontSourceMap{})
 	pulumi.RegisterOutputType(CloudfrontSourceOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourceArrayOutput{})

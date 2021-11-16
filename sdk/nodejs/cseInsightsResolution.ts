@@ -103,16 +103,16 @@ export class CseInsightsResolution extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseInsightsResolution resources.
  */
 export interface CseInsightsResolutionState {
-    readonly description?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly parent?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a CseInsightsResolution resource.
  */
 export interface CseInsightsResolutionArgs {
-    readonly description?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly parent?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
 }

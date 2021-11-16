@@ -152,22 +152,22 @@ export class Policies extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policies resources.
  */
 export interface PoliciesState {
-    readonly audit?: pulumi.Input<boolean>;
-    readonly dataAccessLevel?: pulumi.Input<boolean>;
-    readonly maxUserSessionTimeout?: pulumi.Input<string>;
-    readonly searchAudit?: pulumi.Input<boolean>;
-    readonly shareDashboardsOutsideOrganization?: pulumi.Input<boolean>;
-    readonly userConcurrentSessionsLimit?: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
+    audit?: pulumi.Input<boolean>;
+    dataAccessLevel?: pulumi.Input<boolean>;
+    maxUserSessionTimeout?: pulumi.Input<string>;
+    searchAudit?: pulumi.Input<boolean>;
+    shareDashboardsOutsideOrganization?: pulumi.Input<boolean>;
+    userConcurrentSessionsLimit?: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
 }
 
 /**
  * The set of arguments for constructing a Policies resource.
  */
 export interface PoliciesArgs {
-    readonly audit: pulumi.Input<boolean>;
-    readonly dataAccessLevel: pulumi.Input<boolean>;
-    readonly maxUserSessionTimeout: pulumi.Input<string>;
-    readonly searchAudit: pulumi.Input<boolean>;
-    readonly shareDashboardsOutsideOrganization: pulumi.Input<boolean>;
-    readonly userConcurrentSessionsLimit: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
+    audit: pulumi.Input<boolean>;
+    dataAccessLevel: pulumi.Input<boolean>;
+    maxUserSessionTimeout: pulumi.Input<string>;
+    searchAudit: pulumi.Input<boolean>;
+    shareDashboardsOutsideOrganization: pulumi.Input<boolean>;
+    userConcurrentSessionsLimit: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
 }

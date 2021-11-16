@@ -202,30 +202,30 @@ export class CseLogMapping extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseLogMapping resources.
  */
 export interface CseLogMappingState {
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.CseLogMappingField>[]>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentId?: pulumi.Input<string>;
-    readonly productGuid?: pulumi.Input<string>;
-    readonly recordType?: pulumi.Input<string>;
-    readonly relatesEntities?: pulumi.Input<boolean>;
-    readonly skippedValues?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly structuredInputs?: pulumi.Input<pulumi.Input<inputs.CseLogMappingStructuredInput>[]>;
-    readonly unstructuredFields?: pulumi.Input<inputs.CseLogMappingUnstructuredFields>;
+    enabled?: pulumi.Input<boolean>;
+    fields?: pulumi.Input<pulumi.Input<inputs.CseLogMappingField>[]>;
+    name?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string>;
+    productGuid?: pulumi.Input<string>;
+    recordType?: pulumi.Input<string>;
+    relatesEntities?: pulumi.Input<boolean>;
+    skippedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    structuredInputs?: pulumi.Input<pulumi.Input<inputs.CseLogMappingStructuredInput>[]>;
+    unstructuredFields?: pulumi.Input<inputs.CseLogMappingUnstructuredFields>;
 }
 
 /**
  * The set of arguments for constructing a CseLogMapping resource.
  */
 export interface CseLogMappingArgs {
-    readonly enabled: pulumi.Input<boolean>;
-    readonly fields: pulumi.Input<pulumi.Input<inputs.CseLogMappingField>[]>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentId?: pulumi.Input<string>;
-    readonly productGuid: pulumi.Input<string>;
-    readonly recordType: pulumi.Input<string>;
-    readonly relatesEntities?: pulumi.Input<boolean>;
-    readonly skippedValues?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly structuredInputs?: pulumi.Input<pulumi.Input<inputs.CseLogMappingStructuredInput>[]>;
-    readonly unstructuredFields?: pulumi.Input<inputs.CseLogMappingUnstructuredFields>;
+    enabled: pulumi.Input<boolean>;
+    fields: pulumi.Input<pulumi.Input<inputs.CseLogMappingField>[]>;
+    name?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string>;
+    productGuid: pulumi.Input<string>;
+    recordType: pulumi.Input<string>;
+    relatesEntities?: pulumi.Input<boolean>;
+    skippedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    structuredInputs?: pulumi.Input<pulumi.Input<inputs.CseLogMappingStructuredInput>[]>;
+    unstructuredFields?: pulumi.Input<inputs.CseLogMappingUnstructuredFields>;
 }

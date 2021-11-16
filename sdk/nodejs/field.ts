@@ -108,17 +108,17 @@ export class Field extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Field resources.
  */
 export interface FieldState {
-    readonly dataType?: pulumi.Input<string>;
-    readonly fieldId?: pulumi.Input<string>;
-    readonly fieldName?: pulumi.Input<string>;
-    readonly state?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string>;
+    fieldId?: pulumi.Input<string>;
+    fieldName?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Field resource.
  */
 export interface FieldArgs {
-    readonly dataType?: pulumi.Input<string>;
-    readonly fieldName: pulumi.Input<string>;
-    readonly state?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string>;
+    fieldName: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
 }

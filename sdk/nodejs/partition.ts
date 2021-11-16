@@ -132,26 +132,26 @@ export class Partition extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Partition resources.
  */
 export interface PartitionState {
-    readonly analyticsTier?: pulumi.Input<string>;
-    readonly dataForwardingId?: pulumi.Input<string>;
-    readonly indexType?: pulumi.Input<string>;
-    readonly isActive?: pulumi.Input<boolean>;
-    readonly isCompliant?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
-    readonly retentionPeriod?: pulumi.Input<number>;
-    readonly routingExpression?: pulumi.Input<string>;
-    readonly totalBytes?: pulumi.Input<number>;
+    analyticsTier?: pulumi.Input<string>;
+    dataForwardingId?: pulumi.Input<string>;
+    indexType?: pulumi.Input<string>;
+    isActive?: pulumi.Input<boolean>;
+    isCompliant?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    retentionPeriod?: pulumi.Input<number>;
+    routingExpression?: pulumi.Input<string>;
+    totalBytes?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a Partition resource.
  */
 export interface PartitionArgs {
-    readonly analyticsTier?: pulumi.Input<string>;
-    readonly isCompliant?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
-    readonly retentionPeriod?: pulumi.Input<number>;
-    readonly routingExpression?: pulumi.Input<string>;
+    analyticsTier?: pulumi.Input<string>;
+    isCompliant?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    retentionPeriod?: pulumi.Input<number>;
+    routingExpression?: pulumi.Input<string>;
 }

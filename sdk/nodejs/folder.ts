@@ -113,16 +113,16 @@ export class Folder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Folder resources.
  */
 export interface FolderState {
-    readonly description?: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Folder resource.
  */
 export interface FolderArgs {
-    readonly description: pulumi.Input<string>;
-    readonly name?: pulumi.Input<string>;
-    readonly parentId: pulumi.Input<string>;
+    description: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    parentId: pulumi.Input<string>;
 }

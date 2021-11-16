@@ -146,36 +146,36 @@ export class PasswordPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PasswordPolicy resources.
  */
 export interface PasswordPolicyState {
-    readonly accountLockoutDurationInMins?: pulumi.Input<number>;
-    readonly accountLockoutThreshold?: pulumi.Input<number>;
-    readonly failedLoginResetDurationInMins?: pulumi.Input<number>;
-    readonly maxLength?: pulumi.Input<number>;
-    readonly maxPasswordAgeInDays?: pulumi.Input<number>;
-    readonly minLength?: pulumi.Input<number>;
-    readonly minUniquePasswords?: pulumi.Input<number>;
-    readonly mustContainDigits?: pulumi.Input<boolean>;
-    readonly mustContainLowercase?: pulumi.Input<boolean>;
-    readonly mustContainSpecialChars?: pulumi.Input<boolean>;
-    readonly mustContainUppercase?: pulumi.Input<boolean>;
-    readonly rememberMfa?: pulumi.Input<boolean>;
-    readonly requireMfa?: pulumi.Input<boolean>;
+    accountLockoutDurationInMins?: pulumi.Input<number>;
+    accountLockoutThreshold?: pulumi.Input<number>;
+    failedLoginResetDurationInMins?: pulumi.Input<number>;
+    maxLength?: pulumi.Input<number>;
+    maxPasswordAgeInDays?: pulumi.Input<number>;
+    minLength?: pulumi.Input<number>;
+    minUniquePasswords?: pulumi.Input<number>;
+    mustContainDigits?: pulumi.Input<boolean>;
+    mustContainLowercase?: pulumi.Input<boolean>;
+    mustContainSpecialChars?: pulumi.Input<boolean>;
+    mustContainUppercase?: pulumi.Input<boolean>;
+    rememberMfa?: pulumi.Input<boolean>;
+    requireMfa?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a PasswordPolicy resource.
  */
 export interface PasswordPolicyArgs {
-    readonly accountLockoutDurationInMins?: pulumi.Input<number>;
-    readonly accountLockoutThreshold?: pulumi.Input<number>;
-    readonly failedLoginResetDurationInMins?: pulumi.Input<number>;
-    readonly maxLength?: pulumi.Input<number>;
-    readonly maxPasswordAgeInDays?: pulumi.Input<number>;
-    readonly minLength?: pulumi.Input<number>;
-    readonly minUniquePasswords?: pulumi.Input<number>;
-    readonly mustContainDigits?: pulumi.Input<boolean>;
-    readonly mustContainLowercase?: pulumi.Input<boolean>;
-    readonly mustContainSpecialChars?: pulumi.Input<boolean>;
-    readonly mustContainUppercase?: pulumi.Input<boolean>;
-    readonly rememberMfa?: pulumi.Input<boolean>;
-    readonly requireMfa?: pulumi.Input<boolean>;
+    accountLockoutDurationInMins?: pulumi.Input<number>;
+    accountLockoutThreshold?: pulumi.Input<number>;
+    failedLoginResetDurationInMins?: pulumi.Input<number>;
+    maxLength?: pulumi.Input<number>;
+    maxPasswordAgeInDays?: pulumi.Input<number>;
+    minLength?: pulumi.Input<number>;
+    minUniquePasswords?: pulumi.Input<number>;
+    mustContainDigits?: pulumi.Input<boolean>;
+    mustContainLowercase?: pulumi.Input<boolean>;
+    mustContainSpecialChars?: pulumi.Input<boolean>;
+    mustContainUppercase?: pulumi.Input<boolean>;
+    rememberMfa?: pulumi.Input<boolean>;
+    requireMfa?: pulumi.Input<boolean>;
 }

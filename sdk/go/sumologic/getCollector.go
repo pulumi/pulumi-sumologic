@@ -4,6 +4,9 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "MyCollector"
-// 		_, err := sumologic.LookupCollector(ctx, &sumologic.LookupCollectorArgs{
+// 		_, err := sumologic.LookupCollector(ctx, &GetCollectorArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -44,7 +47,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := 1234567890
-// 		_, err := sumologic.LookupCollector(ctx, &sumologic.LookupCollectorArgs{
+// 		_, err := sumologic.LookupCollector(ctx, &GetCollectorArgs{
 // 			Id: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -90,4 +93,66 @@ type LookupCollectorResult struct {
 	Id          int               `pulumi:"id"`
 	Name        string            `pulumi:"name"`
 	Timezone    string            `pulumi:"timezone"`
+}
+
+func LookupCollectorOutput(ctx *pulumi.Context, args LookupCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupCollectorResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCollectorResult, error) {
+			args := v.(LookupCollectorArgs)
+			r, err := LookupCollector(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCollectorResultOutput)
+}
+
+// A collection of arguments for invoking getCollector.
+type LookupCollectorOutputArgs struct {
+	Id   pulumi.IntPtrInput    `pulumi:"id"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupCollectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCollectorArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCollector.
+type LookupCollectorResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCollectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCollectorResult)(nil)).Elem()
+}
+
+func (o LookupCollectorResultOutput) ToLookupCollectorResultOutput() LookupCollectorResultOutput {
+	return o
+}
+
+func (o LookupCollectorResultOutput) ToLookupCollectorResultOutputWithContext(ctx context.Context) LookupCollectorResultOutput {
+	return o
+}
+
+func (o LookupCollectorResultOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCollectorResult) string { return v.Category }).(pulumi.StringOutput)
+}
+
+func (o LookupCollectorResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCollectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupCollectorResultOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCollectorResult) map[string]string { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o LookupCollectorResultOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCollectorResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o LookupCollectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCollectorResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupCollectorResultOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCollectorResult) string { return v.Timezone }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCollectorResultOutput{})
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const thisRole = pulumi.output(sumologic.getRole({
  *     name: "MyRole",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -25,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * const that = pulumi.output(sumologic.getRole({
  *     id: "1234567890",
- * }, { async: true }));
+ * }));
  * ```
  *
  * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -60,8 +59,8 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleArgs {
-    readonly id?: string;
-    readonly name?: string;
+    id?: string;
+    name?: string;
 }
 
 /**
@@ -73,4 +72,16 @@ export interface GetRoleResult {
     readonly filterPredicate: string;
     readonly id: string;
     readonly name: string;
+}
+
+export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
+    return pulumi.output(args).apply(a => getRole(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRole.
+ */
+export interface GetRoleOutputArgs {
+    id?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

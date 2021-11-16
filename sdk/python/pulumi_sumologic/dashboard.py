@@ -401,15 +401,15 @@ class Dashboard(pulumi.CustomResource):
                             query_type="Logs",
                             query_key="A",
                         )],
-                        time_range={
-                            "beginBoundedTimeRange": {
-                                "from": {
-                                    "relativeTimeRange": {
-                                        "relativeTime": "-12h",
-                                    },
-                                },
-                            },
-                        },
+                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
+                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
+                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
+                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
+                                        relative_time="-12h",
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
                 sumologic.DashboardPanelArgs(
@@ -439,15 +439,15 @@ class Dashboard(pulumi.CustomResource):
                             query_key="A",
                             metrics_query_mode="Advanced",
                         )],
-                        time_range={
-                            "beginBoundedTimeRange": {
-                                "from": {
-                                    "literalTimeRange": {
-                                        "rangeName": "today",
-                                    },
-                                },
-                            },
-                        },
+                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
+                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
+                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
+                                    literal_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs(
+                                        range_name="today",
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
                 sumologic.DashboardPanelArgs(
@@ -502,15 +502,15 @@ class Dashboard(pulumi.CustomResource):
                                 ),
                             ),
                         ],
-                        time_range={
-                            "beginBoundedTimeRange": {
-                                "from": {
-                                    "relativeTimeRange": {
-                                        "relativeTime": "-1h",
-                                    },
-                                },
-                            },
-                        },
+                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
+                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
+                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
+                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
+                                        relative_time="-1h",
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
             ],
@@ -829,15 +829,15 @@ class Dashboard(pulumi.CustomResource):
                             query_type="Logs",
                             query_key="A",
                         )],
-                        time_range={
-                            "beginBoundedTimeRange": {
-                                "from": {
-                                    "relativeTimeRange": {
-                                        "relativeTime": "-12h",
-                                    },
-                                },
-                            },
-                        },
+                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
+                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
+                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
+                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
+                                        relative_time="-12h",
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
                 sumologic.DashboardPanelArgs(
@@ -867,15 +867,15 @@ class Dashboard(pulumi.CustomResource):
                             query_key="A",
                             metrics_query_mode="Advanced",
                         )],
-                        time_range={
-                            "beginBoundedTimeRange": {
-                                "from": {
-                                    "literalTimeRange": {
-                                        "rangeName": "today",
-                                    },
-                                },
-                            },
-                        },
+                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
+                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
+                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
+                                    literal_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs(
+                                        range_name="today",
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
                 sumologic.DashboardPanelArgs(
@@ -930,15 +930,15 @@ class Dashboard(pulumi.CustomResource):
                                 ),
                             ),
                         ],
-                        time_range={
-                            "beginBoundedTimeRange": {
-                                "from": {
-                                    "relativeTimeRange": {
-                                        "relativeTime": "-1h",
-                                    },
-                                },
-                            },
-                        },
+                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
+                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
+                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
+                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
+                                        relative_time="-1h",
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
             ],

@@ -12,6 +12,7 @@ __all__ = [
     'GetCseLogMappingVendorProductResult',
     'AwaitableGetCseLogMappingVendorProductResult',
     'get_cse_log_mapping_vendor_product',
+    'get_cse_log_mapping_vendor_product_output',
 ]
 
 @pulumi.output_type
@@ -91,3 +92,14 @@ def get_cse_log_mapping_vendor_product(guid: Optional[str] = None,
         id=__ret__.id,
         product=__ret__.product,
         vendor=__ret__.vendor)
+
+
+@_utilities.lift_output_func(get_cse_log_mapping_vendor_product)
+def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Optional[str]]] = None,
+                                              product: Optional[pulumi.Input[str]] = None,
+                                              vendor: Optional[pulumi.Input[str]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCseLogMappingVendorProductResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

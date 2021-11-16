@@ -149,26 +149,26 @@ export class CseCustomInsight extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseCustomInsight resources.
  */
 export interface CseCustomInsightState {
-    readonly description?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly ordered?: pulumi.Input<boolean>;
-    readonly ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly severity?: pulumi.Input<string>;
-    readonly signalNames?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    ordered?: pulumi.Input<boolean>;
+    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    severity?: pulumi.Input<string>;
+    signalNames?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a CseCustomInsight resource.
  */
 export interface CseCustomInsightArgs {
-    readonly description: pulumi.Input<string>;
-    readonly enabled: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly ordered: pulumi.Input<boolean>;
-    readonly ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly severity: pulumi.Input<string>;
-    readonly signalNames?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tags: pulumi.Input<pulumi.Input<string>[]>;
+    description: pulumi.Input<string>;
+    enabled: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    ordered: pulumi.Input<boolean>;
+    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    severity: pulumi.Input<string>;
+    signalNames?: pulumi.Input<pulumi.Input<string>[]>;
+    tags: pulumi.Input<pulumi.Input<string>[]>;
 }

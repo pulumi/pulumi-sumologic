@@ -12,6 +12,7 @@ __all__ = [
     'GetPersonalFolderResult',
     'AwaitableGetPersonalFolderResult',
     'get_personal_folder',
+    'get_personal_folder_output',
 ]
 
 @pulumi.output_type
@@ -94,3 +95,30 @@ def get_personal_folder(description: Optional[str] = None,
         description=__ret__.description,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_personal_folder)
+def get_personal_folder_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                               id: Optional[pulumi.Input[Optional[str]]] = None,
+                               name: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPersonalFolderResult]:
+    """
+    Provides an easy way to retrieve the Personal Folder.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    personal_folder = sumologic.get_personal_folder()
+    ```
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The ID of the Personal Folder.
+    - `name` - The name of the Personal Folder.
+    - `description` - The description of the Personal Folder.
+    """
+    ...

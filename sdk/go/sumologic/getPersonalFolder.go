@@ -4,6 +4,9 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,4 +60,55 @@ type GetPersonalFolderResult struct {
 	Description string `pulumi:"description"`
 	Id          string `pulumi:"id"`
 	Name        string `pulumi:"name"`
+}
+
+func GetPersonalFolderOutput(ctx *pulumi.Context, args GetPersonalFolderOutputArgs, opts ...pulumi.InvokeOption) GetPersonalFolderResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPersonalFolderResult, error) {
+			args := v.(GetPersonalFolderArgs)
+			r, err := GetPersonalFolder(ctx, &args, opts...)
+			return *r, err
+		}).(GetPersonalFolderResultOutput)
+}
+
+// A collection of arguments for invoking getPersonalFolder.
+type GetPersonalFolderOutputArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetPersonalFolderOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPersonalFolderArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPersonalFolder.
+type GetPersonalFolderResultOutput struct{ *pulumi.OutputState }
+
+func (GetPersonalFolderResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPersonalFolderResult)(nil)).Elem()
+}
+
+func (o GetPersonalFolderResultOutput) ToGetPersonalFolderResultOutput() GetPersonalFolderResultOutput {
+	return o
+}
+
+func (o GetPersonalFolderResultOutput) ToGetPersonalFolderResultOutputWithContext(ctx context.Context) GetPersonalFolderResultOutput {
+	return o
+}
+
+func (o GetPersonalFolderResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPersonalFolderResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetPersonalFolderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPersonalFolderResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPersonalFolderResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPersonalFolderResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPersonalFolderResultOutput{})
 }

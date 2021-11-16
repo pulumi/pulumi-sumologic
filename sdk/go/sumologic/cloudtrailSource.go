@@ -34,7 +34,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = sumologic.NewCloudtrailSource(ctx, "cloudtrailSource", &sumologic.CloudtrailSourceArgs{
-// 			Authentication: &sumologic.CloudtrailSourceAuthenticationArgs{
+// 			Authentication: &CloudtrailSourceAuthenticationArgs{
 // 				AccessKey: pulumi.String("someKey"),
 // 				SecretKey: pulumi.String("******"),
 // 				Type:      pulumi.String("S3BucketAuthentication"),
@@ -43,7 +43,7 @@ import (
 // 			CollectorId: collector.ID(),
 // 			ContentType: pulumi.String("AwsCloudTrailBucket"),
 // 			Description: pulumi.String("My description"),
-// 			Path: &sumologic.CloudtrailSourcePathArgs{
+// 			Path: &CloudtrailSourcePathArgs{
 // 				BucketName:     pulumi.String("Bucket1"),
 // 				PathExpression: pulumi.String("*"),
 // 				Type:           pulumi.String("S3BucketPathExpression"),
@@ -336,7 +336,7 @@ type CloudtrailSourceArrayInput interface {
 type CloudtrailSourceArray []CloudtrailSourceInput
 
 func (CloudtrailSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CloudtrailSource)(nil))
+	return reflect.TypeOf((*[]*CloudtrailSource)(nil)).Elem()
 }
 
 func (i CloudtrailSourceArray) ToCloudtrailSourceArrayOutput() CloudtrailSourceArrayOutput {
@@ -361,7 +361,7 @@ type CloudtrailSourceMapInput interface {
 type CloudtrailSourceMap map[string]CloudtrailSourceInput
 
 func (CloudtrailSourceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CloudtrailSource)(nil))
+	return reflect.TypeOf((*map[string]*CloudtrailSource)(nil)).Elem()
 }
 
 func (i CloudtrailSourceMap) ToCloudtrailSourceMapOutput() CloudtrailSourceMapOutput {
@@ -372,9 +372,7 @@ func (i CloudtrailSourceMap) ToCloudtrailSourceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourceMapOutput)
 }
 
-type CloudtrailSourceOutput struct {
-	*pulumi.OutputState
-}
+type CloudtrailSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudtrailSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CloudtrailSource)(nil))
@@ -393,14 +391,12 @@ func (o CloudtrailSourceOutput) ToCloudtrailSourcePtrOutput() CloudtrailSourcePt
 }
 
 func (o CloudtrailSourceOutput) ToCloudtrailSourcePtrOutputWithContext(ctx context.Context) CloudtrailSourcePtrOutput {
-	return o.ApplyT(func(v CloudtrailSource) *CloudtrailSource {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudtrailSource) *CloudtrailSource {
 		return &v
 	}).(CloudtrailSourcePtrOutput)
 }
 
-type CloudtrailSourcePtrOutput struct {
-	*pulumi.OutputState
-}
+type CloudtrailSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudtrailSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CloudtrailSource)(nil))
@@ -412,6 +408,16 @@ func (o CloudtrailSourcePtrOutput) ToCloudtrailSourcePtrOutput() CloudtrailSourc
 
 func (o CloudtrailSourcePtrOutput) ToCloudtrailSourcePtrOutputWithContext(ctx context.Context) CloudtrailSourcePtrOutput {
 	return o
+}
+
+func (o CloudtrailSourcePtrOutput) Elem() CloudtrailSourceOutput {
+	return o.ApplyT(func(v *CloudtrailSource) CloudtrailSource {
+		if v != nil {
+			return *v
+		}
+		var ret CloudtrailSource
+		return ret
+	}).(CloudtrailSourceOutput)
 }
 
 type CloudtrailSourceArrayOutput struct{ *pulumi.OutputState }
@@ -455,6 +461,10 @@ func (o CloudtrailSourceMapOutput) MapIndex(k pulumi.StringInput) CloudtrailSour
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceInput)(nil)).Elem(), &CloudtrailSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePtrInput)(nil)).Elem(), &CloudtrailSource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceArrayInput)(nil)).Elem(), CloudtrailSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceMapInput)(nil)).Elem(), CloudtrailSourceMap{})
 	pulumi.RegisterOutputType(CloudtrailSourceOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourceArrayOutput{})

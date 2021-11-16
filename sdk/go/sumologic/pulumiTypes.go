@@ -109,10 +109,11 @@ func (o AwsInventorySourceAuthenticationOutput) ToAwsInventorySourceAuthenticati
 }
 
 func (o AwsInventorySourceAuthenticationOutput) ToAwsInventorySourceAuthenticationPtrOutputWithContext(ctx context.Context) AwsInventorySourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v AwsInventorySourceAuthentication) *AwsInventorySourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsInventorySourceAuthentication) *AwsInventorySourceAuthentication {
 		return &v
 	}).(AwsInventorySourceAuthenticationPtrOutput)
 }
+
 func (o AwsInventorySourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -148,7 +149,13 @@ func (o AwsInventorySourceAuthenticationPtrOutput) ToAwsInventorySourceAuthentic
 }
 
 func (o AwsInventorySourceAuthenticationPtrOutput) Elem() AwsInventorySourceAuthenticationOutput {
-	return o.ApplyT(func(v *AwsInventorySourceAuthentication) AwsInventorySourceAuthentication { return *v }).(AwsInventorySourceAuthenticationOutput)
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) AwsInventorySourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AwsInventorySourceAuthentication
+		return ret
+	}).(AwsInventorySourceAuthenticationOutput)
 }
 
 func (o AwsInventorySourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -509,10 +516,11 @@ func (o AwsInventorySourcePathOutput) ToAwsInventorySourcePathPtrOutput() AwsInv
 }
 
 func (o AwsInventorySourcePathOutput) ToAwsInventorySourcePathPtrOutputWithContext(ctx context.Context) AwsInventorySourcePathPtrOutput {
-	return o.ApplyT(func(v AwsInventorySourcePath) *AwsInventorySourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsInventorySourcePath) *AwsInventorySourcePath {
 		return &v
 	}).(AwsInventorySourcePathPtrOutput)
 }
+
 func (o AwsInventorySourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -552,7 +560,13 @@ func (o AwsInventorySourcePathPtrOutput) ToAwsInventorySourcePathPtrOutputWithCo
 }
 
 func (o AwsInventorySourcePathPtrOutput) Elem() AwsInventorySourcePathOutput {
-	return o.ApplyT(func(v *AwsInventorySourcePath) AwsInventorySourcePath { return *v }).(AwsInventorySourcePathOutput)
+	return o.ApplyT(func(v *AwsInventorySourcePath) AwsInventorySourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret AwsInventorySourcePath
+		return ret
+	}).(AwsInventorySourcePathOutput)
 }
 
 func (o AwsInventorySourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -814,10 +828,11 @@ func (o AwsXraySourceAuthenticationOutput) ToAwsXraySourceAuthenticationPtrOutpu
 }
 
 func (o AwsXraySourceAuthenticationOutput) ToAwsXraySourceAuthenticationPtrOutputWithContext(ctx context.Context) AwsXraySourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v AwsXraySourceAuthentication) *AwsXraySourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsXraySourceAuthentication) *AwsXraySourceAuthentication {
 		return &v
 	}).(AwsXraySourceAuthenticationPtrOutput)
 }
+
 func (o AwsXraySourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -853,7 +868,13 @@ func (o AwsXraySourceAuthenticationPtrOutput) ToAwsXraySourceAuthenticationPtrOu
 }
 
 func (o AwsXraySourceAuthenticationPtrOutput) Elem() AwsXraySourceAuthenticationOutput {
-	return o.ApplyT(func(v *AwsXraySourceAuthentication) AwsXraySourceAuthentication { return *v }).(AwsXraySourceAuthenticationOutput)
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) AwsXraySourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AwsXraySourceAuthentication
+		return ret
+	}).(AwsXraySourceAuthenticationOutput)
 }
 
 func (o AwsXraySourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -1214,10 +1235,11 @@ func (o AwsXraySourcePathOutput) ToAwsXraySourcePathPtrOutput() AwsXraySourcePat
 }
 
 func (o AwsXraySourcePathOutput) ToAwsXraySourcePathPtrOutputWithContext(ctx context.Context) AwsXraySourcePathPtrOutput {
-	return o.ApplyT(func(v AwsXraySourcePath) *AwsXraySourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsXraySourcePath) *AwsXraySourcePath {
 		return &v
 	}).(AwsXraySourcePathPtrOutput)
 }
+
 func (o AwsXraySourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -1257,7 +1279,13 @@ func (o AwsXraySourcePathPtrOutput) ToAwsXraySourcePathPtrOutputWithContext(ctx 
 }
 
 func (o AwsXraySourcePathPtrOutput) Elem() AwsXraySourcePathOutput {
-	return o.ApplyT(func(v *AwsXraySourcePath) AwsXraySourcePath { return *v }).(AwsXraySourcePathOutput)
+	return o.ApplyT(func(v *AwsXraySourcePath) AwsXraySourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret AwsXraySourcePath
+		return ret
+	}).(AwsXraySourcePathOutput)
 }
 
 func (o AwsXraySourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -1731,10 +1759,11 @@ func (o CloudfrontSourceAuthenticationOutput) ToCloudfrontSourceAuthenticationPt
 }
 
 func (o CloudfrontSourceAuthenticationOutput) ToCloudfrontSourceAuthenticationPtrOutputWithContext(ctx context.Context) CloudfrontSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v CloudfrontSourceAuthentication) *CloudfrontSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudfrontSourceAuthentication) *CloudfrontSourceAuthentication {
 		return &v
 	}).(CloudfrontSourceAuthenticationPtrOutput)
 }
+
 func (o CloudfrontSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -1770,7 +1799,13 @@ func (o CloudfrontSourceAuthenticationPtrOutput) ToCloudfrontSourceAuthenticatio
 }
 
 func (o CloudfrontSourceAuthenticationPtrOutput) Elem() CloudfrontSourceAuthenticationOutput {
-	return o.ApplyT(func(v *CloudfrontSourceAuthentication) CloudfrontSourceAuthentication { return *v }).(CloudfrontSourceAuthenticationOutput)
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) CloudfrontSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret CloudfrontSourceAuthentication
+		return ret
+	}).(CloudfrontSourceAuthenticationOutput)
 }
 
 func (o CloudfrontSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -2131,10 +2166,11 @@ func (o CloudfrontSourcePathOutput) ToCloudfrontSourcePathPtrOutput() Cloudfront
 }
 
 func (o CloudfrontSourcePathOutput) ToCloudfrontSourcePathPtrOutputWithContext(ctx context.Context) CloudfrontSourcePathPtrOutput {
-	return o.ApplyT(func(v CloudfrontSourcePath) *CloudfrontSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudfrontSourcePath) *CloudfrontSourcePath {
 		return &v
 	}).(CloudfrontSourcePathPtrOutput)
 }
+
 func (o CloudfrontSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -2174,7 +2210,13 @@ func (o CloudfrontSourcePathPtrOutput) ToCloudfrontSourcePathPtrOutputWithContex
 }
 
 func (o CloudfrontSourcePathPtrOutput) Elem() CloudfrontSourcePathOutput {
-	return o.ApplyT(func(v *CloudfrontSourcePath) CloudfrontSourcePath { return *v }).(CloudfrontSourcePathOutput)
+	return o.ApplyT(func(v *CloudfrontSourcePath) CloudfrontSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret CloudfrontSourcePath
+		return ret
+	}).(CloudfrontSourcePathOutput)
 }
 
 func (o CloudfrontSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -2436,10 +2478,11 @@ func (o CloudtrailSourceAuthenticationOutput) ToCloudtrailSourceAuthenticationPt
 }
 
 func (o CloudtrailSourceAuthenticationOutput) ToCloudtrailSourceAuthenticationPtrOutputWithContext(ctx context.Context) CloudtrailSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v CloudtrailSourceAuthentication) *CloudtrailSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudtrailSourceAuthentication) *CloudtrailSourceAuthentication {
 		return &v
 	}).(CloudtrailSourceAuthenticationPtrOutput)
 }
+
 func (o CloudtrailSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -2475,7 +2518,13 @@ func (o CloudtrailSourceAuthenticationPtrOutput) ToCloudtrailSourceAuthenticatio
 }
 
 func (o CloudtrailSourceAuthenticationPtrOutput) Elem() CloudtrailSourceAuthenticationOutput {
-	return o.ApplyT(func(v *CloudtrailSourceAuthentication) CloudtrailSourceAuthentication { return *v }).(CloudtrailSourceAuthenticationOutput)
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) CloudtrailSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret CloudtrailSourceAuthentication
+		return ret
+	}).(CloudtrailSourceAuthenticationOutput)
 }
 
 func (o CloudtrailSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -2836,10 +2885,11 @@ func (o CloudtrailSourcePathOutput) ToCloudtrailSourcePathPtrOutput() Cloudtrail
 }
 
 func (o CloudtrailSourcePathOutput) ToCloudtrailSourcePathPtrOutputWithContext(ctx context.Context) CloudtrailSourcePathPtrOutput {
-	return o.ApplyT(func(v CloudtrailSourcePath) *CloudtrailSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudtrailSourcePath) *CloudtrailSourcePath {
 		return &v
 	}).(CloudtrailSourcePathPtrOutput)
 }
+
 func (o CloudtrailSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -2879,7 +2929,13 @@ func (o CloudtrailSourcePathPtrOutput) ToCloudtrailSourcePathPtrOutputWithContex
 }
 
 func (o CloudtrailSourcePathPtrOutput) Elem() CloudtrailSourcePathOutput {
-	return o.ApplyT(func(v *CloudtrailSourcePath) CloudtrailSourcePath { return *v }).(CloudtrailSourcePathOutput)
+	return o.ApplyT(func(v *CloudtrailSourcePath) CloudtrailSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret CloudtrailSourcePath
+		return ret
+	}).(CloudtrailSourcePathOutput)
 }
 
 func (o CloudtrailSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -3141,10 +3197,11 @@ func (o CloudwatchSourceAuthenticationOutput) ToCloudwatchSourceAuthenticationPt
 }
 
 func (o CloudwatchSourceAuthenticationOutput) ToCloudwatchSourceAuthenticationPtrOutputWithContext(ctx context.Context) CloudwatchSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v CloudwatchSourceAuthentication) *CloudwatchSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudwatchSourceAuthentication) *CloudwatchSourceAuthentication {
 		return &v
 	}).(CloudwatchSourceAuthenticationPtrOutput)
 }
+
 func (o CloudwatchSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -3180,7 +3237,13 @@ func (o CloudwatchSourceAuthenticationPtrOutput) ToCloudwatchSourceAuthenticatio
 }
 
 func (o CloudwatchSourceAuthenticationPtrOutput) Elem() CloudwatchSourceAuthenticationOutput {
-	return o.ApplyT(func(v *CloudwatchSourceAuthentication) CloudwatchSourceAuthentication { return *v }).(CloudwatchSourceAuthenticationOutput)
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) CloudwatchSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret CloudwatchSourceAuthentication
+		return ret
+	}).(CloudwatchSourceAuthenticationOutput)
 }
 
 func (o CloudwatchSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -3541,10 +3604,11 @@ func (o CloudwatchSourcePathOutput) ToCloudwatchSourcePathPtrOutput() Cloudwatch
 }
 
 func (o CloudwatchSourcePathOutput) ToCloudwatchSourcePathPtrOutputWithContext(ctx context.Context) CloudwatchSourcePathPtrOutput {
-	return o.ApplyT(func(v CloudwatchSourcePath) *CloudwatchSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudwatchSourcePath) *CloudwatchSourcePath {
 		return &v
 	}).(CloudwatchSourcePathPtrOutput)
 }
+
 func (o CloudwatchSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -3584,7 +3648,13 @@ func (o CloudwatchSourcePathPtrOutput) ToCloudwatchSourcePathPtrOutputWithContex
 }
 
 func (o CloudwatchSourcePathPtrOutput) Elem() CloudwatchSourcePathOutput {
-	return o.ApplyT(func(v *CloudwatchSourcePath) CloudwatchSourcePath { return *v }).(CloudwatchSourcePathOutput)
+	return o.ApplyT(func(v *CloudwatchSourcePath) CloudwatchSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret CloudwatchSourcePath
+		return ret
+	}).(CloudwatchSourcePathOutput)
 }
 
 func (o CloudwatchSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -4050,10 +4120,11 @@ func (o CseAggregationRuleSeverityMappingOutput) ToCseAggregationRuleSeverityMap
 }
 
 func (o CseAggregationRuleSeverityMappingOutput) ToCseAggregationRuleSeverityMappingPtrOutputWithContext(ctx context.Context) CseAggregationRuleSeverityMappingPtrOutput {
-	return o.ApplyT(func(v CseAggregationRuleSeverityMapping) *CseAggregationRuleSeverityMapping {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseAggregationRuleSeverityMapping) *CseAggregationRuleSeverityMapping {
 		return &v
 	}).(CseAggregationRuleSeverityMappingPtrOutput)
 }
+
 func (o CseAggregationRuleSeverityMappingOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMapping) *int { return v.Default }).(pulumi.IntPtrOutput)
 }
@@ -4087,7 +4158,13 @@ func (o CseAggregationRuleSeverityMappingPtrOutput) ToCseAggregationRuleSeverity
 }
 
 func (o CseAggregationRuleSeverityMappingPtrOutput) Elem() CseAggregationRuleSeverityMappingOutput {
-	return o.ApplyT(func(v *CseAggregationRuleSeverityMapping) CseAggregationRuleSeverityMapping { return *v }).(CseAggregationRuleSeverityMappingOutput)
+	return o.ApplyT(func(v *CseAggregationRuleSeverityMapping) CseAggregationRuleSeverityMapping {
+		if v != nil {
+			return *v
+		}
+		var ret CseAggregationRuleSeverityMapping
+		return ret
+	}).(CseAggregationRuleSeverityMappingOutput)
 }
 
 func (o CseAggregationRuleSeverityMappingPtrOutput) Default() pulumi.IntPtrOutput {
@@ -4913,10 +4990,11 @@ func (o CseLogMappingUnstructuredFieldsOutput) ToCseLogMappingUnstructuredFields
 }
 
 func (o CseLogMappingUnstructuredFieldsOutput) ToCseLogMappingUnstructuredFieldsPtrOutputWithContext(ctx context.Context) CseLogMappingUnstructuredFieldsPtrOutput {
-	return o.ApplyT(func(v CseLogMappingUnstructuredFields) *CseLogMappingUnstructuredFields {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseLogMappingUnstructuredFields) *CseLogMappingUnstructuredFields {
 		return &v
 	}).(CseLogMappingUnstructuredFieldsPtrOutput)
 }
+
 func (o CseLogMappingUnstructuredFieldsOutput) PatternNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CseLogMappingUnstructuredFields) []string { return v.PatternNames }).(pulumi.StringArrayOutput)
 }
@@ -4936,7 +5014,13 @@ func (o CseLogMappingUnstructuredFieldsPtrOutput) ToCseLogMappingUnstructuredFie
 }
 
 func (o CseLogMappingUnstructuredFieldsPtrOutput) Elem() CseLogMappingUnstructuredFieldsOutput {
-	return o.ApplyT(func(v *CseLogMappingUnstructuredFields) CseLogMappingUnstructuredFields { return *v }).(CseLogMappingUnstructuredFieldsOutput)
+	return o.ApplyT(func(v *CseLogMappingUnstructuredFields) CseLogMappingUnstructuredFields {
+		if v != nil {
+			return *v
+		}
+		var ret CseLogMappingUnstructuredFields
+		return ret
+	}).(CseLogMappingUnstructuredFieldsOutput)
 }
 
 func (o CseLogMappingUnstructuredFieldsPtrOutput) PatternNames() pulumi.StringArrayOutput {
@@ -5145,10 +5229,11 @@ func (o CseMatchRuleSeverityMappingOutput) ToCseMatchRuleSeverityMappingPtrOutpu
 }
 
 func (o CseMatchRuleSeverityMappingOutput) ToCseMatchRuleSeverityMappingPtrOutputWithContext(ctx context.Context) CseMatchRuleSeverityMappingPtrOutput {
-	return o.ApplyT(func(v CseMatchRuleSeverityMapping) *CseMatchRuleSeverityMapping {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseMatchRuleSeverityMapping) *CseMatchRuleSeverityMapping {
 		return &v
 	}).(CseMatchRuleSeverityMappingPtrOutput)
 }
+
 func (o CseMatchRuleSeverityMappingOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMapping) *int { return v.Default }).(pulumi.IntPtrOutput)
 }
@@ -5180,7 +5265,13 @@ func (o CseMatchRuleSeverityMappingPtrOutput) ToCseMatchRuleSeverityMappingPtrOu
 }
 
 func (o CseMatchRuleSeverityMappingPtrOutput) Elem() CseMatchRuleSeverityMappingOutput {
-	return o.ApplyT(func(v *CseMatchRuleSeverityMapping) CseMatchRuleSeverityMapping { return *v }).(CseMatchRuleSeverityMappingOutput)
+	return o.ApplyT(func(v *CseMatchRuleSeverityMapping) CseMatchRuleSeverityMapping {
+		if v != nil {
+			return *v
+		}
+		var ret CseMatchRuleSeverityMapping
+		return ret
+	}).(CseMatchRuleSeverityMappingOutput)
 }
 
 func (o CseMatchRuleSeverityMappingPtrOutput) Default() pulumi.IntPtrOutput {
@@ -5734,10 +5825,11 @@ func (o DashboardLayoutOutput) ToDashboardLayoutPtrOutput() DashboardLayoutPtrOu
 }
 
 func (o DashboardLayoutOutput) ToDashboardLayoutPtrOutputWithContext(ctx context.Context) DashboardLayoutPtrOutput {
-	return o.ApplyT(func(v DashboardLayout) *DashboardLayout {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardLayout) *DashboardLayout {
 		return &v
 	}).(DashboardLayoutPtrOutput)
 }
+
 func (o DashboardLayoutOutput) Grid() DashboardLayoutGridPtrOutput {
 	return o.ApplyT(func(v DashboardLayout) *DashboardLayoutGrid { return v.Grid }).(DashboardLayoutGridPtrOutput)
 }
@@ -5757,7 +5849,13 @@ func (o DashboardLayoutPtrOutput) ToDashboardLayoutPtrOutputWithContext(ctx cont
 }
 
 func (o DashboardLayoutPtrOutput) Elem() DashboardLayoutOutput {
-	return o.ApplyT(func(v *DashboardLayout) DashboardLayout { return *v }).(DashboardLayoutOutput)
+	return o.ApplyT(func(v *DashboardLayout) DashboardLayout {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardLayout
+		return ret
+	}).(DashboardLayoutOutput)
 }
 
 func (o DashboardLayoutPtrOutput) Grid() DashboardLayoutGridPtrOutput {
@@ -5860,10 +5958,11 @@ func (o DashboardLayoutGridOutput) ToDashboardLayoutGridPtrOutput() DashboardLay
 }
 
 func (o DashboardLayoutGridOutput) ToDashboardLayoutGridPtrOutputWithContext(ctx context.Context) DashboardLayoutGridPtrOutput {
-	return o.ApplyT(func(v DashboardLayoutGrid) *DashboardLayoutGrid {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardLayoutGrid) *DashboardLayoutGrid {
 		return &v
 	}).(DashboardLayoutGridPtrOutput)
 }
+
 func (o DashboardLayoutGridOutput) LayoutStructures() DashboardLayoutGridLayoutStructureArrayOutput {
 	return o.ApplyT(func(v DashboardLayoutGrid) []DashboardLayoutGridLayoutStructure { return v.LayoutStructures }).(DashboardLayoutGridLayoutStructureArrayOutput)
 }
@@ -5883,7 +5982,13 @@ func (o DashboardLayoutGridPtrOutput) ToDashboardLayoutGridPtrOutputWithContext(
 }
 
 func (o DashboardLayoutGridPtrOutput) Elem() DashboardLayoutGridOutput {
-	return o.ApplyT(func(v *DashboardLayoutGrid) DashboardLayoutGrid { return *v }).(DashboardLayoutGridOutput)
+	return o.ApplyT(func(v *DashboardLayoutGrid) DashboardLayoutGrid {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardLayoutGrid
+		return ret
+	}).(DashboardLayoutGridOutput)
 }
 
 func (o DashboardLayoutGridPtrOutput) LayoutStructures() DashboardLayoutGridLayoutStructureArrayOutput {
@@ -6204,10 +6309,11 @@ func (o DashboardPanelSumoSearchPanelOutput) ToDashboardPanelSumoSearchPanelPtrO
 }
 
 func (o DashboardPanelSumoSearchPanelOutput) ToDashboardPanelSumoSearchPanelPtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelPtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanel) *DashboardPanelSumoSearchPanel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanel) *DashboardPanelSumoSearchPanel {
 		return &v
 	}).(DashboardPanelSumoSearchPanelPtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelOutput) ColoringRule() DashboardPanelSumoSearchPanelColoringRulePtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanel) *DashboardPanelSumoSearchPanelColoringRule {
 		return v.ColoringRule
@@ -6267,7 +6373,13 @@ func (o DashboardPanelSumoSearchPanelPtrOutput) ToDashboardPanelSumoSearchPanelP
 }
 
 func (o DashboardPanelSumoSearchPanelPtrOutput) Elem() DashboardPanelSumoSearchPanelOutput {
-	return o.ApplyT(func(v *DashboardPanelSumoSearchPanel) DashboardPanelSumoSearchPanel { return *v }).(DashboardPanelSumoSearchPanelOutput)
+	return o.ApplyT(func(v *DashboardPanelSumoSearchPanel) DashboardPanelSumoSearchPanel {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanel
+		return ret
+	}).(DashboardPanelSumoSearchPanelOutput)
 }
 
 func (o DashboardPanelSumoSearchPanelPtrOutput) ColoringRule() DashboardPanelSumoSearchPanelColoringRulePtrOutput {
@@ -6457,10 +6569,11 @@ func (o DashboardPanelSumoSearchPanelColoringRuleOutput) ToDashboardPanelSumoSea
 }
 
 func (o DashboardPanelSumoSearchPanelColoringRuleOutput) ToDashboardPanelSumoSearchPanelColoringRulePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelColoringRulePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelColoringRule) *DashboardPanelSumoSearchPanelColoringRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelColoringRule) *DashboardPanelSumoSearchPanelColoringRule {
 		return &v
 	}).(DashboardPanelSumoSearchPanelColoringRulePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelColoringRuleOutput) ColorThresholds() DashboardPanelSumoSearchPanelColoringRuleColorThresholdArrayOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelColoringRule) []DashboardPanelSumoSearchPanelColoringRuleColorThreshold {
 		return v.ColorThresholds
@@ -6495,7 +6608,11 @@ func (o DashboardPanelSumoSearchPanelColoringRulePtrOutput) ToDashboardPanelSumo
 
 func (o DashboardPanelSumoSearchPanelColoringRulePtrOutput) Elem() DashboardPanelSumoSearchPanelColoringRuleOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelColoringRule) DashboardPanelSumoSearchPanelColoringRule {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelColoringRule
+		return ret
 	}).(DashboardPanelSumoSearchPanelColoringRuleOutput)
 }
 
@@ -6738,10 +6855,11 @@ func (o DashboardPanelSumoSearchPanelLinkedDashboardOutput) ToDashboardPanelSumo
 }
 
 func (o DashboardPanelSumoSearchPanelLinkedDashboardOutput) ToDashboardPanelSumoSearchPanelLinkedDashboardPtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelLinkedDashboardPtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelLinkedDashboard) *DashboardPanelSumoSearchPanelLinkedDashboard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelLinkedDashboard) *DashboardPanelSumoSearchPanelLinkedDashboard {
 		return &v
 	}).(DashboardPanelSumoSearchPanelLinkedDashboardPtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelLinkedDashboardOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelLinkedDashboard) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6774,7 +6892,11 @@ func (o DashboardPanelSumoSearchPanelLinkedDashboardPtrOutput) ToDashboardPanelS
 
 func (o DashboardPanelSumoSearchPanelLinkedDashboardPtrOutput) Elem() DashboardPanelSumoSearchPanelLinkedDashboardOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelLinkedDashboard) DashboardPanelSumoSearchPanelLinkedDashboard {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelLinkedDashboard
+		return ret
 	}).(DashboardPanelSumoSearchPanelLinkedDashboardOutput)
 }
 
@@ -7033,10 +7155,11 @@ func (o DashboardPanelSumoSearchPanelQueryMetricsQueryDataOutput) ToDashboardPan
 }
 
 func (o DashboardPanelSumoSearchPanelQueryMetricsQueryDataOutput) ToDashboardPanelSumoSearchPanelQueryMetricsQueryDataPtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelQueryMetricsQueryDataPtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelQueryMetricsQueryData) *DashboardPanelSumoSearchPanelQueryMetricsQueryData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelQueryMetricsQueryData) *DashboardPanelSumoSearchPanelQueryMetricsQueryData {
 		return &v
 	}).(DashboardPanelSumoSearchPanelQueryMetricsQueryDataPtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelQueryMetricsQueryDataOutput) AggregationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelQueryMetricsQueryData) *string { return v.AggregationType }).(pulumi.StringPtrOutput)
 }
@@ -7077,7 +7200,11 @@ func (o DashboardPanelSumoSearchPanelQueryMetricsQueryDataPtrOutput) ToDashboard
 
 func (o DashboardPanelSumoSearchPanelQueryMetricsQueryDataPtrOutput) Elem() DashboardPanelSumoSearchPanelQueryMetricsQueryDataOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelQueryMetricsQueryData) DashboardPanelSumoSearchPanelQueryMetricsQueryData {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelQueryMetricsQueryData
+		return ret
 	}).(DashboardPanelSumoSearchPanelQueryMetricsQueryDataOutput)
 }
 
@@ -7527,10 +7654,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeOutput) ToDashboardPanelSumoSearch
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRange) *DashboardPanelSumoSearchPanelTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRange) *DashboardPanelSumoSearchPanelTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeOutput) BeginBoundedTimeRange() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange {
 		return v.BeginBoundedTimeRange
@@ -7558,7 +7686,13 @@ func (o DashboardPanelSumoSearchPanelTimeRangePtrOutput) ToDashboardPanelSumoSea
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeOutput {
-	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRange) DashboardPanelSumoSearchPanelTimeRange { return *v }).(DashboardPanelSumoSearchPanelTimeRangeOutput)
+	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRange) DashboardPanelSumoSearchPanelTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRange
+		return ret
+	}).(DashboardPanelSumoSearchPanelTimeRangeOutput)
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangePtrOutput) BeginBoundedTimeRange() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrOutput {
@@ -7672,10 +7806,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeOutput) ToDas
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeOutput) From() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom {
 		return v.From
@@ -7704,7 +7839,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrOutput) To
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeOutput)
 }
 
@@ -7823,10 +7962,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromOutput) T
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromPtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		return v.EpochTimeRange
@@ -7867,7 +8007,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromPtrOutput
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromPtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
@@ -7998,10 +8142,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTime
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) int {
 		return v.EpochMillis
@@ -8024,7 +8169,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTime
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
 }
 
@@ -8128,10 +8277,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601Ti
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) string {
 		return v.Iso8601Time
@@ -8154,7 +8304,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601Ti
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
 }
 
@@ -8258,10 +8412,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTi
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string {
 		return v.RangeName
@@ -8284,7 +8439,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTi
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
 }
 
@@ -8388,10 +8547,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeT
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string {
 		return v.RelativeTime
@@ -8414,7 +8574,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeT
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
 }
 
@@ -8524,10 +8688,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToOutput) ToD
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToPtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToPtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		return v.EpochTimeRange
@@ -8568,7 +8733,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToPtrOutput) 
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToPtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToOutput)
 }
 
@@ -8699,10 +8868,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRa
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange) int {
 		return v.EpochMillis
@@ -8725,7 +8895,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRa
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
 }
 
@@ -8829,10 +9003,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601Time
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) string {
 		return v.Iso8601Time
@@ -8855,7 +9030,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601Time
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
 }
 
@@ -8959,10 +9138,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTime
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string {
 		return v.RangeName
@@ -8985,7 +9165,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTime
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
 }
 
@@ -9089,10 +9273,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTim
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string {
 		return v.RelativeTime
@@ -9115,7 +9300,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTim
 
 func (o DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
 }
 
@@ -9219,10 +9408,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeOutput) To
 }
 
 func (o DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeOutput) ToDashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange) *DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange) *DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange {
 		return &v
 	}).(DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangePtrOutput)
 }
+
 func (o DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -9243,7 +9433,11 @@ func (o DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangePtrOutput)
 
 func (o DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangePtrOutput) Elem() DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange) DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange
+		return ret
 	}).(DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeOutput)
 }
 
@@ -9357,10 +9551,11 @@ func (o DashboardPanelTextPanelOutput) ToDashboardPanelTextPanelPtrOutput() Dash
 }
 
 func (o DashboardPanelTextPanelOutput) ToDashboardPanelTextPanelPtrOutputWithContext(ctx context.Context) DashboardPanelTextPanelPtrOutput {
-	return o.ApplyT(func(v DashboardPanelTextPanel) *DashboardPanelTextPanel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelTextPanel) *DashboardPanelTextPanel {
 		return &v
 	}).(DashboardPanelTextPanelPtrOutput)
 }
+
 func (o DashboardPanelTextPanelOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelTextPanel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -9400,7 +9595,13 @@ func (o DashboardPanelTextPanelPtrOutput) ToDashboardPanelTextPanelPtrOutputWith
 }
 
 func (o DashboardPanelTextPanelPtrOutput) Elem() DashboardPanelTextPanelOutput {
-	return o.ApplyT(func(v *DashboardPanelTextPanel) DashboardPanelTextPanel { return *v }).(DashboardPanelTextPanelOutput)
+	return o.ApplyT(func(v *DashboardPanelTextPanel) DashboardPanelTextPanel {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelTextPanel
+		return ret
+	}).(DashboardPanelTextPanelOutput)
 }
 
 func (o DashboardPanelTextPanelPtrOutput) Id() pulumi.StringPtrOutput {
@@ -9550,10 +9751,11 @@ func (o DashboardTimeRangeOutput) ToDashboardTimeRangePtrOutput() DashboardTimeR
 }
 
 func (o DashboardTimeRangeOutput) ToDashboardTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRange) *DashboardTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRange) *DashboardTimeRange {
 		return &v
 	}).(DashboardTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeOutput) BeginBoundedTimeRange() DashboardTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v DashboardTimeRange) *DashboardTimeRangeBeginBoundedTimeRange { return v.BeginBoundedTimeRange }).(DashboardTimeRangeBeginBoundedTimeRangePtrOutput)
 }
@@ -9579,7 +9781,13 @@ func (o DashboardTimeRangePtrOutput) ToDashboardTimeRangePtrOutputWithContext(ct
 }
 
 func (o DashboardTimeRangePtrOutput) Elem() DashboardTimeRangeOutput {
-	return o.ApplyT(func(v *DashboardTimeRange) DashboardTimeRange { return *v }).(DashboardTimeRangeOutput)
+	return o.ApplyT(func(v *DashboardTimeRange) DashboardTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRange
+		return ret
+	}).(DashboardTimeRangeOutput)
 }
 
 func (o DashboardTimeRangePtrOutput) BeginBoundedTimeRange() DashboardTimeRangeBeginBoundedTimeRangePtrOutput {
@@ -9693,10 +9901,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeOutput) ToDashboardTimeRangeBegin
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRange) *DashboardTimeRangeBeginBoundedTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRange) *DashboardTimeRangeBeginBoundedTimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeOutput) From() DashboardTimeRangeBeginBoundedTimeRangeFromOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRange) DashboardTimeRangeBeginBoundedTimeRangeFrom {
 		return v.From
@@ -9724,7 +9933,13 @@ func (o DashboardTimeRangeBeginBoundedTimeRangePtrOutput) ToDashboardTimeRangeBe
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeOutput {
-	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRange) DashboardTimeRangeBeginBoundedTimeRange { return *v }).(DashboardTimeRangeBeginBoundedTimeRangeOutput)
+	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRange) DashboardTimeRangeBeginBoundedTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRange
+		return ret
+	}).(DashboardTimeRangeBeginBoundedTimeRangeOutput)
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangePtrOutput) From() DashboardTimeRangeBeginBoundedTimeRangeFromPtrOutput {
@@ -9842,10 +10057,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromOutput) ToDashboardTimeRangeB
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromOutput) ToDashboardTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeFromPtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFrom) *DashboardTimeRangeBeginBoundedTimeRangeFrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeFrom) *DashboardTimeRangeBeginBoundedTimeRangeFrom {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFrom) *DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		return v.EpochTimeRange
@@ -9886,7 +10102,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromPtrOutput) ToDashboardTimeRan
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromPtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeFromOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeFrom) DashboardTimeRangeBeginBoundedTimeRangeFrom {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeFrom
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
@@ -10017,10 +10237,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToDashb
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) int { return v.EpochMillis }).(pulumi.IntOutput)
 }
@@ -10041,7 +10262,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ToDa
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
 }
 
@@ -10145,10 +10370,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToDas
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) string { return v.Iso8601Time }).(pulumi.StringOutput)
 }
@@ -10169,7 +10395,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) To
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
 }
 
@@ -10273,10 +10503,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToDas
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -10297,7 +10528,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) To
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
 }
 
@@ -10401,10 +10636,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToDa
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
 }
@@ -10425,7 +10661,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) T
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
 }
 
@@ -10535,10 +10775,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToOutput) ToDashboardTimeRangeBeg
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToOutput) ToDashboardTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeToPtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeTo) *DashboardTimeRangeBeginBoundedTimeRangeTo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeTo) *DashboardTimeRangeBeginBoundedTimeRangeTo {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToPtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeTo) *DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		return v.EpochTimeRange
@@ -10579,7 +10820,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToPtrOutput) ToDashboardTimeRange
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToPtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeToOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeTo) DashboardTimeRangeBeginBoundedTimeRangeTo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeTo
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToOutput)
 }
 
@@ -10710,10 +10955,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToDashboa
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange) int { return v.EpochMillis }).(pulumi.IntOutput)
 }
@@ -10734,7 +10980,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ToDash
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange) DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
 }
 
@@ -10838,10 +11088,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToDashb
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) string { return v.Iso8601Time }).(pulumi.StringOutput)
 }
@@ -10862,7 +11113,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ToDa
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
 }
 
@@ -10966,10 +11221,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToDashb
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -10990,7 +11246,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ToDa
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
 }
 
@@ -11094,10 +11354,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToDash
 }
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToDashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		return &v
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
 }
@@ -11118,7 +11379,11 @@ func (o DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ToD
 
 func (o DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) Elem() DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange
+		return ret
 	}).(DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
 }
 
@@ -11222,10 +11487,11 @@ func (o DashboardTimeRangeCompleteLiteralTimeRangeOutput) ToDashboardTimeRangeCo
 }
 
 func (o DashboardTimeRangeCompleteLiteralTimeRangeOutput) ToDashboardTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) DashboardTimeRangeCompleteLiteralTimeRangePtrOutput {
-	return o.ApplyT(func(v DashboardTimeRangeCompleteLiteralTimeRange) *DashboardTimeRangeCompleteLiteralTimeRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTimeRangeCompleteLiteralTimeRange) *DashboardTimeRangeCompleteLiteralTimeRange {
 		return &v
 	}).(DashboardTimeRangeCompleteLiteralTimeRangePtrOutput)
 }
+
 func (o DashboardTimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardTimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -11246,7 +11512,11 @@ func (o DashboardTimeRangeCompleteLiteralTimeRangePtrOutput) ToDashboardTimeRang
 
 func (o DashboardTimeRangeCompleteLiteralTimeRangePtrOutput) Elem() DashboardTimeRangeCompleteLiteralTimeRangeOutput {
 	return o.ApplyT(func(v *DashboardTimeRangeCompleteLiteralTimeRange) DashboardTimeRangeCompleteLiteralTimeRange {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTimeRangeCompleteLiteralTimeRange
+		return ret
 	}).(DashboardTimeRangeCompleteLiteralTimeRangeOutput)
 }
 
@@ -11350,10 +11620,11 @@ func (o DashboardTopologyLabelMapOutput) ToDashboardTopologyLabelMapPtrOutput() 
 }
 
 func (o DashboardTopologyLabelMapOutput) ToDashboardTopologyLabelMapPtrOutputWithContext(ctx context.Context) DashboardTopologyLabelMapPtrOutput {
-	return o.ApplyT(func(v DashboardTopologyLabelMap) *DashboardTopologyLabelMap {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardTopologyLabelMap) *DashboardTopologyLabelMap {
 		return &v
 	}).(DashboardTopologyLabelMapPtrOutput)
 }
+
 func (o DashboardTopologyLabelMapOutput) Datas() DashboardTopologyLabelMapDataArrayOutput {
 	return o.ApplyT(func(v DashboardTopologyLabelMap) []DashboardTopologyLabelMapData { return v.Datas }).(DashboardTopologyLabelMapDataArrayOutput)
 }
@@ -11373,7 +11644,13 @@ func (o DashboardTopologyLabelMapPtrOutput) ToDashboardTopologyLabelMapPtrOutput
 }
 
 func (o DashboardTopologyLabelMapPtrOutput) Elem() DashboardTopologyLabelMapOutput {
-	return o.ApplyT(func(v *DashboardTopologyLabelMap) DashboardTopologyLabelMap { return *v }).(DashboardTopologyLabelMapOutput)
+	return o.ApplyT(func(v *DashboardTopologyLabelMap) DashboardTopologyLabelMap {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardTopologyLabelMap
+		return ret
+	}).(DashboardTopologyLabelMapOutput)
 }
 
 func (o DashboardTopologyLabelMapPtrOutput) Datas() DashboardTopologyLabelMapDataArrayOutput {
@@ -11779,10 +12056,11 @@ func (o DashboardVariableSourceDefinitionCsvVariableSourceDefinitionOutput) ToDa
 }
 
 func (o DashboardVariableSourceDefinitionCsvVariableSourceDefinitionOutput) ToDashboardVariableSourceDefinitionCsvVariableSourceDefinitionPtrOutputWithContext(ctx context.Context) DashboardVariableSourceDefinitionCsvVariableSourceDefinitionPtrOutput {
-	return o.ApplyT(func(v DashboardVariableSourceDefinitionCsvVariableSourceDefinition) *DashboardVariableSourceDefinitionCsvVariableSourceDefinition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardVariableSourceDefinitionCsvVariableSourceDefinition) *DashboardVariableSourceDefinitionCsvVariableSourceDefinition {
 		return &v
 	}).(DashboardVariableSourceDefinitionCsvVariableSourceDefinitionPtrOutput)
 }
+
 func (o DashboardVariableSourceDefinitionCsvVariableSourceDefinitionOutput) Values() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardVariableSourceDefinitionCsvVariableSourceDefinition) string { return v.Values }).(pulumi.StringOutput)
 }
@@ -11803,7 +12081,11 @@ func (o DashboardVariableSourceDefinitionCsvVariableSourceDefinitionPtrOutput) T
 
 func (o DashboardVariableSourceDefinitionCsvVariableSourceDefinitionPtrOutput) Elem() DashboardVariableSourceDefinitionCsvVariableSourceDefinitionOutput {
 	return o.ApplyT(func(v *DashboardVariableSourceDefinitionCsvVariableSourceDefinition) DashboardVariableSourceDefinitionCsvVariableSourceDefinition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardVariableSourceDefinitionCsvVariableSourceDefinition
+		return ret
 	}).(DashboardVariableSourceDefinitionCsvVariableSourceDefinitionOutput)
 }
 
@@ -11909,10 +12191,11 @@ func (o DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionOutput)
 }
 
 func (o DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionOutput) ToDashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionPtrOutputWithContext(ctx context.Context) DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionPtrOutput {
-	return o.ApplyT(func(v DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition) *DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition) *DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition {
 		return &v
 	}).(DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionPtrOutput)
 }
+
 func (o DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition) string { return v.Field }).(pulumi.StringOutput)
 }
@@ -11937,7 +12220,11 @@ func (o DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionPtrOutp
 
 func (o DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionPtrOutput) Elem() DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionOutput {
 	return o.ApplyT(func(v *DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition) DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition
+		return ret
 	}).(DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionOutput)
 }
 
@@ -12052,10 +12339,11 @@ func (o DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionOutput)
 }
 
 func (o DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionOutput) ToDashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrOutputWithContext(ctx context.Context) DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrOutput {
-	return o.ApplyT(func(v DashboardVariableSourceDefinitionMetadataVariableSourceDefinition) *DashboardVariableSourceDefinitionMetadataVariableSourceDefinition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardVariableSourceDefinitionMetadataVariableSourceDefinition) *DashboardVariableSourceDefinitionMetadataVariableSourceDefinition {
 		return &v
 	}).(DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrOutput)
 }
+
 func (o DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardVariableSourceDefinitionMetadataVariableSourceDefinition) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -12080,7 +12368,11 @@ func (o DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrOutp
 
 func (o DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrOutput) Elem() DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionOutput {
 	return o.ApplyT(func(v *DashboardVariableSourceDefinitionMetadataVariableSourceDefinition) DashboardVariableSourceDefinitionMetadataVariableSourceDefinition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DashboardVariableSourceDefinitionMetadataVariableSourceDefinition
+		return ret
 	}).(DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionOutput)
 }
 
@@ -12201,10 +12493,11 @@ func (o ElbSourceAuthenticationOutput) ToElbSourceAuthenticationPtrOutput() ElbS
 }
 
 func (o ElbSourceAuthenticationOutput) ToElbSourceAuthenticationPtrOutputWithContext(ctx context.Context) ElbSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v ElbSourceAuthentication) *ElbSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElbSourceAuthentication) *ElbSourceAuthentication {
 		return &v
 	}).(ElbSourceAuthenticationPtrOutput)
 }
+
 func (o ElbSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -12240,7 +12533,13 @@ func (o ElbSourceAuthenticationPtrOutput) ToElbSourceAuthenticationPtrOutputWith
 }
 
 func (o ElbSourceAuthenticationPtrOutput) Elem() ElbSourceAuthenticationOutput {
-	return o.ApplyT(func(v *ElbSourceAuthentication) ElbSourceAuthentication { return *v }).(ElbSourceAuthenticationOutput)
+	return o.ApplyT(func(v *ElbSourceAuthentication) ElbSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ElbSourceAuthentication
+		return ret
+	}).(ElbSourceAuthenticationOutput)
 }
 
 func (o ElbSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -12601,10 +12900,11 @@ func (o ElbSourcePathOutput) ToElbSourcePathPtrOutput() ElbSourcePathPtrOutput {
 }
 
 func (o ElbSourcePathOutput) ToElbSourcePathPtrOutputWithContext(ctx context.Context) ElbSourcePathPtrOutput {
-	return o.ApplyT(func(v ElbSourcePath) *ElbSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElbSourcePath) *ElbSourcePath {
 		return &v
 	}).(ElbSourcePathPtrOutput)
 }
+
 func (o ElbSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -12644,7 +12944,13 @@ func (o ElbSourcePathPtrOutput) ToElbSourcePathPtrOutputWithContext(ctx context.
 }
 
 func (o ElbSourcePathPtrOutput) Elem() ElbSourcePathOutput {
-	return o.ApplyT(func(v *ElbSourcePath) ElbSourcePath { return *v }).(ElbSourcePathOutput)
+	return o.ApplyT(func(v *ElbSourcePath) ElbSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret ElbSourcePath
+		return ret
+	}).(ElbSourcePathOutput)
 }
 
 func (o ElbSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -12898,10 +13204,11 @@ func (o GcpSourceAuthenticationOutput) ToGcpSourceAuthenticationPtrOutput() GcpS
 }
 
 func (o GcpSourceAuthenticationOutput) ToGcpSourceAuthenticationPtrOutputWithContext(ctx context.Context) GcpSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v GcpSourceAuthentication) *GcpSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpSourceAuthentication) *GcpSourceAuthentication {
 		return &v
 	}).(GcpSourceAuthenticationPtrOutput)
 }
+
 func (o GcpSourceAuthenticationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcpSourceAuthentication) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -12921,7 +13228,13 @@ func (o GcpSourceAuthenticationPtrOutput) ToGcpSourceAuthenticationPtrOutputWith
 }
 
 func (o GcpSourceAuthenticationPtrOutput) Elem() GcpSourceAuthenticationOutput {
-	return o.ApplyT(func(v *GcpSourceAuthentication) GcpSourceAuthentication { return *v }).(GcpSourceAuthenticationOutput)
+	return o.ApplyT(func(v *GcpSourceAuthentication) GcpSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret GcpSourceAuthentication
+		return ret
+	}).(GcpSourceAuthenticationOutput)
 }
 
 func (o GcpSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
@@ -13236,10 +13549,11 @@ func (o GcpSourcePathOutput) ToGcpSourcePathPtrOutput() GcpSourcePathPtrOutput {
 }
 
 func (o GcpSourcePathOutput) ToGcpSourcePathPtrOutputWithContext(ctx context.Context) GcpSourcePathPtrOutput {
-	return o.ApplyT(func(v GcpSourcePath) *GcpSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpSourcePath) *GcpSourcePath {
 		return &v
 	}).(GcpSourcePathPtrOutput)
 }
+
 func (o GcpSourcePathOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcpSourcePath) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -13259,7 +13573,13 @@ func (o GcpSourcePathPtrOutput) ToGcpSourcePathPtrOutputWithContext(ctx context.
 }
 
 func (o GcpSourcePathPtrOutput) Elem() GcpSourcePathOutput {
-	return o.ApplyT(func(v *GcpSourcePath) GcpSourcePath { return *v }).(GcpSourcePathOutput)
+	return o.ApplyT(func(v *GcpSourcePath) GcpSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret GcpSourcePath
+		return ret
+	}).(GcpSourcePathOutput)
 }
 
 func (o GcpSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
@@ -13368,7 +13688,7 @@ func (o HierarchyFilterOutput) ToHierarchyFilterPtrOutput() HierarchyFilterPtrOu
 }
 
 func (o HierarchyFilterOutput) ToHierarchyFilterPtrOutputWithContext(ctx context.Context) HierarchyFilterPtrOutput {
-	return o.ApplyT(func(v HierarchyFilter) *HierarchyFilter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyFilter) *HierarchyFilter {
 		return &v
 	}).(HierarchyFilterPtrOutput)
 }
@@ -13398,7 +13718,13 @@ func (o HierarchyFilterPtrOutput) ToHierarchyFilterPtrOutputWithContext(ctx cont
 }
 
 func (o HierarchyFilterPtrOutput) Elem() HierarchyFilterOutput {
-	return o.ApplyT(func(v *HierarchyFilter) HierarchyFilter { return *v }).(HierarchyFilterOutput)
+	return o.ApplyT(func(v *HierarchyFilter) HierarchyFilter {
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyFilter
+		return ret
+	}).(HierarchyFilterOutput)
 }
 
 // Filtering key.
@@ -13637,7 +13963,7 @@ func (o HierarchyLevelNextLevelOutput) ToHierarchyLevelNextLevelPtrOutput() Hier
 }
 
 func (o HierarchyLevelNextLevelOutput) ToHierarchyLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevel) *HierarchyLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevel) *HierarchyLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelPtrOutput)
 }
@@ -13674,7 +14000,13 @@ func (o HierarchyLevelNextLevelPtrOutput) ToHierarchyLevelNextLevelPtrOutputWith
 }
 
 func (o HierarchyLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelOutput {
-	return o.ApplyT(func(v *HierarchyLevelNextLevel) HierarchyLevelNextLevel { return *v }).(HierarchyLevelNextLevelOutput)
+	return o.ApplyT(func(v *HierarchyLevelNextLevel) HierarchyLevelNextLevel {
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevel
+		return ret
+	}).(HierarchyLevelNextLevelOutput)
 }
 
 // Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
@@ -13808,7 +14140,7 @@ func (o HierarchyLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLev
 }
 
 func (o HierarchyLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelPtrOutput)
 }
@@ -13847,7 +14179,13 @@ func (o HierarchyLevelNextLevelNextLevelPtrOutput) ToHierarchyLevelNextLevelNext
 }
 
 func (o HierarchyLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelOutput {
-	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevel { return *v }).(HierarchyLevelNextLevelNextLevelOutput)
+	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevel {
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevel
+		return ret
+	}).(HierarchyLevelNextLevelNextLevelOutput)
 }
 
 // Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
@@ -13981,7 +14319,7 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLev
 }
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelNextLevelPtrOutput)
 }
@@ -14021,7 +14359,11 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelPtrOutput) ToHierarchyLevelNext
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelNextLevelOutput)
 }
 
@@ -14156,7 +14498,7 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLev
 }
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelNextLevelNextLevelPtrOutput)
 }
@@ -14196,7 +14538,11 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelPtrOutput) ToHierarchy
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelNextLevelNextLevelOutput)
 }
 
@@ -14327,7 +14673,7 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelOutput) ToHie
 }
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelPtrOutput)
 }
@@ -14360,7 +14706,11 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelPtrOutput) To
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelOutput)
 }
 
@@ -14834,7 +15184,7 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -14869,7 +15219,11 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -15345,7 +15699,7 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOut
 }
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -15387,7 +15741,11 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtr
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -15518,7 +15876,7 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput)
 }
@@ -15553,7 +15911,11 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput)
 }
 
@@ -16029,7 +16391,7 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -16064,7 +16426,11 @@ func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 
 func (o HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -16540,7 +16906,7 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHi
 }
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -16580,7 +16946,11 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) T
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -16715,7 +17085,7 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOut
 }
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput)
 }
@@ -16757,7 +17127,11 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtr
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput)
 }
 
@@ -16888,7 +17262,7 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput)
 }
@@ -16923,7 +17297,11 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput)
 }
 
@@ -17399,7 +17777,7 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -17434,7 +17812,11 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -17914,7 +18296,7 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -17956,7 +18338,11 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -18087,7 +18473,7 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput)
 }
@@ -18122,7 +18508,11 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput)
 }
 
@@ -18598,7 +18988,7 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -18633,7 +19023,11 @@ func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 
 func (o HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -19109,7 +19503,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -19149,7 +19543,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelPtrOutput) ToHierarch
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -19284,7 +19682,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHi
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput)
 }
@@ -19324,7 +19722,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) T
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput)
 }
 
@@ -19459,7 +19861,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOut
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput)
 }
@@ -19501,7 +19903,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtr
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput)
 }
 
@@ -19632,7 +20038,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNex
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelPtrOutput)
 }
@@ -19667,7 +20073,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNex
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelOutput)
 }
 
@@ -20143,7 +20553,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWi
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -20178,7 +20588,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWi
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -20658,7 +21072,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditi
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -20700,7 +21114,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditi
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -20831,7 +21249,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditi
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput)
 }
@@ -20866,7 +21284,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditi
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput)
 }
 
@@ -21342,7 +21764,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditi
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -21377,7 +21799,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditi
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -21855,7 +22281,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -21897,7 +22323,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -22032,7 +22462,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput)
 }
@@ -22074,7 +22504,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput)
 }
 
@@ -22205,7 +22639,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput)
 }
@@ -22240,7 +22674,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelOutput)
 }
 
@@ -22716,7 +23154,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -22751,7 +23189,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -23231,7 +23673,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -23273,7 +23715,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -23404,7 +23850,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput)
 }
@@ -23439,7 +23885,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelOutput)
 }
 
@@ -23915,7 +24365,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput) ToHierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutputWithContext(ctx context.Context) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
-	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return &v
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput)
 }
@@ -23950,7 +24400,11 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput) Elem() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput {
 	return o.ApplyT(func(v *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel
+		return ret
 	}).(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelOutput)
 }
 
@@ -24455,10 +24909,11 @@ func (o KinesisMetricsSourceAuthenticationOutput) ToKinesisMetricsSourceAuthenti
 }
 
 func (o KinesisMetricsSourceAuthenticationOutput) ToKinesisMetricsSourceAuthenticationPtrOutputWithContext(ctx context.Context) KinesisMetricsSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) *KinesisMetricsSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KinesisMetricsSourceAuthentication) *KinesisMetricsSourceAuthentication {
 		return &v
 	}).(KinesisMetricsSourceAuthenticationPtrOutput)
 }
+
 func (o KinesisMetricsSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -24490,7 +24945,13 @@ func (o KinesisMetricsSourceAuthenticationPtrOutput) ToKinesisMetricsSourceAuthe
 }
 
 func (o KinesisMetricsSourceAuthenticationPtrOutput) Elem() KinesisMetricsSourceAuthenticationOutput {
-	return o.ApplyT(func(v *KinesisMetricsSourceAuthentication) KinesisMetricsSourceAuthentication { return *v }).(KinesisMetricsSourceAuthenticationOutput)
+	return o.ApplyT(func(v *KinesisMetricsSourceAuthentication) KinesisMetricsSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret KinesisMetricsSourceAuthentication
+		return ret
+	}).(KinesisMetricsSourceAuthenticationOutput)
 }
 
 func (o KinesisMetricsSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -24834,10 +25295,11 @@ func (o KinesisMetricsSourcePathOutput) ToKinesisMetricsSourcePathPtrOutput() Ki
 }
 
 func (o KinesisMetricsSourcePathOutput) ToKinesisMetricsSourcePathPtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePathPtrOutput {
-	return o.ApplyT(func(v KinesisMetricsSourcePath) *KinesisMetricsSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KinesisMetricsSourcePath) *KinesisMetricsSourcePath {
 		return &v
 	}).(KinesisMetricsSourcePathPtrOutput)
 }
+
 func (o KinesisMetricsSourcePathOutput) TagFilters() KinesisMetricsSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePath) []KinesisMetricsSourcePathTagFilter { return v.TagFilters }).(KinesisMetricsSourcePathTagFilterArrayOutput)
 }
@@ -24861,7 +25323,13 @@ func (o KinesisMetricsSourcePathPtrOutput) ToKinesisMetricsSourcePathPtrOutputWi
 }
 
 func (o KinesisMetricsSourcePathPtrOutput) Elem() KinesisMetricsSourcePathOutput {
-	return o.ApplyT(func(v *KinesisMetricsSourcePath) KinesisMetricsSourcePath { return *v }).(KinesisMetricsSourcePathOutput)
+	return o.ApplyT(func(v *KinesisMetricsSourcePath) KinesisMetricsSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret KinesisMetricsSourcePath
+		return ret
+	}).(KinesisMetricsSourcePathOutput)
 }
 
 func (o KinesisMetricsSourcePathPtrOutput) TagFilters() KinesisMetricsSourcePathTagFilterArrayOutput {
@@ -25185,10 +25653,11 @@ func (o MetadataSourceAuthenticationOutput) ToMetadataSourceAuthenticationPtrOut
 }
 
 func (o MetadataSourceAuthenticationOutput) ToMetadataSourceAuthenticationPtrOutputWithContext(ctx context.Context) MetadataSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v MetadataSourceAuthentication) *MetadataSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataSourceAuthentication) *MetadataSourceAuthentication {
 		return &v
 	}).(MetadataSourceAuthenticationPtrOutput)
 }
+
 func (o MetadataSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -25220,7 +25689,13 @@ func (o MetadataSourceAuthenticationPtrOutput) ToMetadataSourceAuthenticationPtr
 }
 
 func (o MetadataSourceAuthenticationPtrOutput) Elem() MetadataSourceAuthenticationOutput {
-	return o.ApplyT(func(v *MetadataSourceAuthentication) MetadataSourceAuthentication { return *v }).(MetadataSourceAuthenticationOutput)
+	return o.ApplyT(func(v *MetadataSourceAuthentication) MetadataSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataSourceAuthentication
+		return ret
+	}).(MetadataSourceAuthenticationOutput)
 }
 
 func (o MetadataSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -25568,10 +26043,11 @@ func (o MetadataSourcePathOutput) ToMetadataSourcePathPtrOutput() MetadataSource
 }
 
 func (o MetadataSourcePathOutput) ToMetadataSourcePathPtrOutputWithContext(ctx context.Context) MetadataSourcePathPtrOutput {
-	return o.ApplyT(func(v MetadataSourcePath) *MetadataSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetadataSourcePath) *MetadataSourcePath {
 		return &v
 	}).(MetadataSourcePathPtrOutput)
 }
+
 func (o MetadataSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetadataSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
@@ -25603,7 +26079,13 @@ func (o MetadataSourcePathPtrOutput) ToMetadataSourcePathPtrOutputWithContext(ct
 }
 
 func (o MetadataSourcePathPtrOutput) Elem() MetadataSourcePathOutput {
-	return o.ApplyT(func(v *MetadataSourcePath) MetadataSourcePath { return *v }).(MetadataSourcePathOutput)
+	return o.ApplyT(func(v *MetadataSourcePath) MetadataSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret MetadataSourcePath
+		return ret
+	}).(MetadataSourcePathOutput)
 }
 
 func (o MetadataSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
@@ -26167,10 +26649,11 @@ func (o MonitorTriggerConditionsOutput) ToMonitorTriggerConditionsPtrOutput() Mo
 }
 
 func (o MonitorTriggerConditionsOutput) ToMonitorTriggerConditionsPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditions) *MonitorTriggerConditions {
 		return &v
 	}).(MonitorTriggerConditionsPtrOutput)
 }
+
 func (o MonitorTriggerConditionsOutput) LogsMissingDataCondition() MonitorTriggerConditionsLogsMissingDataConditionPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditionsLogsMissingDataCondition {
 		return v.LogsMissingDataCondition
@@ -26222,7 +26705,13 @@ func (o MonitorTriggerConditionsPtrOutput) ToMonitorTriggerConditionsPtrOutputWi
 }
 
 func (o MonitorTriggerConditionsPtrOutput) Elem() MonitorTriggerConditionsOutput {
-	return o.ApplyT(func(v *MonitorTriggerConditions) MonitorTriggerConditions { return *v }).(MonitorTriggerConditionsOutput)
+	return o.ApplyT(func(v *MonitorTriggerConditions) MonitorTriggerConditions {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditions
+		return ret
+	}).(MonitorTriggerConditionsOutput)
 }
 
 func (o MonitorTriggerConditionsPtrOutput) LogsMissingDataCondition() MonitorTriggerConditionsLogsMissingDataConditionPtrOutput {
@@ -26370,10 +26859,11 @@ func (o MonitorTriggerConditionsLogsMissingDataConditionOutput) ToMonitorTrigger
 }
 
 func (o MonitorTriggerConditionsLogsMissingDataConditionOutput) ToMonitorTriggerConditionsLogsMissingDataConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsMissingDataConditionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsMissingDataCondition) *MonitorTriggerConditionsLogsMissingDataCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsMissingDataCondition) *MonitorTriggerConditionsLogsMissingDataCondition {
 		return &v
 	}).(MonitorTriggerConditionsLogsMissingDataConditionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsMissingDataConditionOutput) TimeRange() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsMissingDataCondition) string { return v.TimeRange }).(pulumi.StringOutput)
 }
@@ -26394,7 +26884,11 @@ func (o MonitorTriggerConditionsLogsMissingDataConditionPtrOutput) ToMonitorTrig
 
 func (o MonitorTriggerConditionsLogsMissingDataConditionPtrOutput) Elem() MonitorTriggerConditionsLogsMissingDataConditionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsMissingDataCondition) MonitorTriggerConditionsLogsMissingDataCondition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsMissingDataCondition
+		return ret
 	}).(MonitorTriggerConditionsLogsMissingDataConditionOutput)
 }
 
@@ -26504,10 +26998,11 @@ func (o MonitorTriggerConditionsLogsOutlierConditionOutput) ToMonitorTriggerCond
 }
 
 func (o MonitorTriggerConditionsLogsOutlierConditionOutput) ToMonitorTriggerConditionsLogsOutlierConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsOutlierConditionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsOutlierCondition) *MonitorTriggerConditionsLogsOutlierCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsOutlierCondition) *MonitorTriggerConditionsLogsOutlierCondition {
 		return &v
 	}).(MonitorTriggerConditionsLogsOutlierConditionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsOutlierConditionOutput) Critical() MonitorTriggerConditionsLogsOutlierConditionCriticalPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsOutlierCondition) *MonitorTriggerConditionsLogsOutlierConditionCritical {
 		return v.Critical
@@ -26544,7 +27039,11 @@ func (o MonitorTriggerConditionsLogsOutlierConditionPtrOutput) ToMonitorTriggerC
 
 func (o MonitorTriggerConditionsLogsOutlierConditionPtrOutput) Elem() MonitorTriggerConditionsLogsOutlierConditionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsOutlierCondition) MonitorTriggerConditionsLogsOutlierCondition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsOutlierCondition
+		return ret
 	}).(MonitorTriggerConditionsLogsOutlierConditionOutput)
 }
 
@@ -26679,10 +27178,11 @@ func (o MonitorTriggerConditionsLogsOutlierConditionCriticalOutput) ToMonitorTri
 }
 
 func (o MonitorTriggerConditionsLogsOutlierConditionCriticalOutput) ToMonitorTriggerConditionsLogsOutlierConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsOutlierConditionCriticalPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsOutlierConditionCritical) *MonitorTriggerConditionsLogsOutlierConditionCritical {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsOutlierConditionCritical) *MonitorTriggerConditionsLogsOutlierConditionCritical {
 		return &v
 	}).(MonitorTriggerConditionsLogsOutlierConditionCriticalPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsOutlierConditionCriticalOutput) Consecutive() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsOutlierConditionCritical) *int { return v.Consecutive }).(pulumi.IntPtrOutput)
 }
@@ -26711,7 +27211,11 @@ func (o MonitorTriggerConditionsLogsOutlierConditionCriticalPtrOutput) ToMonitor
 
 func (o MonitorTriggerConditionsLogsOutlierConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsLogsOutlierConditionCriticalOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsOutlierConditionCritical) MonitorTriggerConditionsLogsOutlierConditionCritical {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsOutlierConditionCritical
+		return ret
 	}).(MonitorTriggerConditionsLogsOutlierConditionCriticalOutput)
 }
 
@@ -26837,10 +27341,11 @@ func (o MonitorTriggerConditionsLogsOutlierConditionWarningOutput) ToMonitorTrig
 }
 
 func (o MonitorTriggerConditionsLogsOutlierConditionWarningOutput) ToMonitorTriggerConditionsLogsOutlierConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsOutlierConditionWarningPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsOutlierConditionWarning) *MonitorTriggerConditionsLogsOutlierConditionWarning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsOutlierConditionWarning) *MonitorTriggerConditionsLogsOutlierConditionWarning {
 		return &v
 	}).(MonitorTriggerConditionsLogsOutlierConditionWarningPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsOutlierConditionWarningOutput) Consecutive() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsOutlierConditionWarning) *int { return v.Consecutive }).(pulumi.IntPtrOutput)
 }
@@ -26869,7 +27374,11 @@ func (o MonitorTriggerConditionsLogsOutlierConditionWarningPtrOutput) ToMonitorT
 
 func (o MonitorTriggerConditionsLogsOutlierConditionWarningPtrOutput) Elem() MonitorTriggerConditionsLogsOutlierConditionWarningOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsOutlierConditionWarning) MonitorTriggerConditionsLogsOutlierConditionWarning {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsOutlierConditionWarning
+		return ret
 	}).(MonitorTriggerConditionsLogsOutlierConditionWarningOutput)
 }
 
@@ -26995,10 +27504,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionOutput) ToMonitorTriggerCondi
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionOutput) ToMonitorTriggerConditionsLogsStaticConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsStaticConditionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticCondition) *MonitorTriggerConditionsLogsStaticCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsStaticCondition) *MonitorTriggerConditionsLogsStaticCondition {
 		return &v
 	}).(MonitorTriggerConditionsLogsStaticConditionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsStaticConditionOutput) Critical() MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticCondition) *MonitorTriggerConditionsLogsStaticConditionCritical {
 		return v.Critical
@@ -27031,7 +27541,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionPtrOutput) ToMonitorTriggerCo
 
 func (o MonitorTriggerConditionsLogsStaticConditionPtrOutput) Elem() MonitorTriggerConditionsLogsStaticConditionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticCondition) MonitorTriggerConditionsLogsStaticCondition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsStaticCondition
+		return ret
 	}).(MonitorTriggerConditionsLogsStaticConditionOutput)
 }
 
@@ -27157,10 +27671,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalOutput) ToMonitorTrig
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalOutput) ToMonitorTriggerConditionsLogsStaticConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCritical) *MonitorTriggerConditionsLogsStaticConditionCritical {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsStaticConditionCritical) *MonitorTriggerConditionsLogsStaticConditionCritical {
 		return &v
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalOutput) Alert() MonitorTriggerConditionsLogsStaticConditionCriticalAlertOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCritical) MonitorTriggerConditionsLogsStaticConditionCriticalAlert {
 		return v.Alert
@@ -27193,7 +27708,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput) ToMonitorT
 
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsLogsStaticConditionCriticalOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionCritical) MonitorTriggerConditionsLogsStaticConditionCritical {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsStaticConditionCritical
+		return ret
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalOutput)
 }
 
@@ -27317,10 +27836,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalAlertOutput) ToMonito
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalAlertOutput) ToMonitorTriggerConditionsLogsStaticConditionCriticalAlertPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsStaticConditionCriticalAlertPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCriticalAlert) *MonitorTriggerConditionsLogsStaticConditionCriticalAlert {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsStaticConditionCriticalAlert) *MonitorTriggerConditionsLogsStaticConditionCriticalAlert {
 		return &v
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalAlertPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalAlertOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCriticalAlert) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -27345,7 +27865,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalAlertPtrOutput) ToMon
 
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalAlertPtrOutput) Elem() MonitorTriggerConditionsLogsStaticConditionCriticalAlertOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionCriticalAlert) MonitorTriggerConditionsLogsStaticConditionCriticalAlert {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsStaticConditionCriticalAlert
+		return ret
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalAlertOutput)
 }
 
@@ -27460,10 +27984,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalResolutionOutput) ToM
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalResolutionOutput) ToMonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCriticalResolution) *MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsStaticConditionCriticalResolution) *MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
 		return &v
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalResolutionOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCriticalResolution) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -27488,7 +28013,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrOutput) 
 
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrOutput) Elem() MonitorTriggerConditionsLogsStaticConditionCriticalResolutionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionCriticalResolution) MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsStaticConditionCriticalResolution
+		return ret
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalResolutionOutput)
 }
 
@@ -27605,10 +28134,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningOutput) ToMonitorTrigg
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionWarningOutput) ToMonitorTriggerConditionsLogsStaticConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsStaticConditionWarningPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarning) *MonitorTriggerConditionsLogsStaticConditionWarning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsStaticConditionWarning) *MonitorTriggerConditionsLogsStaticConditionWarning {
 		return &v
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsStaticConditionWarningOutput) Alert() MonitorTriggerConditionsLogsStaticConditionWarningAlertOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarning) MonitorTriggerConditionsLogsStaticConditionWarningAlert {
 		return v.Alert
@@ -27641,7 +28171,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningPtrOutput) ToMonitorTr
 
 func (o MonitorTriggerConditionsLogsStaticConditionWarningPtrOutput) Elem() MonitorTriggerConditionsLogsStaticConditionWarningOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionWarning) MonitorTriggerConditionsLogsStaticConditionWarning {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsStaticConditionWarning
+		return ret
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningOutput)
 }
 
@@ -27765,10 +28299,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningAlertOutput) ToMonitor
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionWarningAlertOutput) ToMonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarningAlert) *MonitorTriggerConditionsLogsStaticConditionWarningAlert {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsStaticConditionWarningAlert) *MonitorTriggerConditionsLogsStaticConditionWarningAlert {
 		return &v
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsStaticConditionWarningAlertOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarningAlert) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -27793,7 +28328,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutput) ToMoni
 
 func (o MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutput) Elem() MonitorTriggerConditionsLogsStaticConditionWarningAlertOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionWarningAlert) MonitorTriggerConditionsLogsStaticConditionWarningAlert {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsStaticConditionWarningAlert
+		return ret
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningAlertOutput)
 }
 
@@ -27908,10 +28447,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput) ToMo
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput) ToMonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarningResolution) *MonitorTriggerConditionsLogsStaticConditionWarningResolution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsLogsStaticConditionWarningResolution) *MonitorTriggerConditionsLogsStaticConditionWarningResolution {
 		return &v
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarningResolution) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -27936,7 +28476,11 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput) T
 
 func (o MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput) Elem() MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionWarningResolution) MonitorTriggerConditionsLogsStaticConditionWarningResolution {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsLogsStaticConditionWarningResolution
+		return ret
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput)
 }
 
@@ -28051,10 +28595,11 @@ func (o MonitorTriggerConditionsMetricsMissingDataConditionOutput) ToMonitorTrig
 }
 
 func (o MonitorTriggerConditionsMetricsMissingDataConditionOutput) ToMonitorTriggerConditionsMetricsMissingDataConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsMissingDataCondition) *MonitorTriggerConditionsMetricsMissingDataCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsMissingDataCondition) *MonitorTriggerConditionsMetricsMissingDataCondition {
 		return &v
 	}).(MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsMissingDataConditionOutput) TimeRange() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsMissingDataCondition) string { return v.TimeRange }).(pulumi.StringOutput)
 }
@@ -28079,7 +28624,11 @@ func (o MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput) ToMonitorT
 
 func (o MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput) Elem() MonitorTriggerConditionsMetricsMissingDataConditionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsMissingDataCondition) MonitorTriggerConditionsMetricsMissingDataCondition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsMissingDataCondition
+		return ret
 	}).(MonitorTriggerConditionsMetricsMissingDataConditionOutput)
 }
 
@@ -28196,10 +28745,11 @@ func (o MonitorTriggerConditionsMetricsOutlierConditionOutput) ToMonitorTriggerC
 }
 
 func (o MonitorTriggerConditionsMetricsOutlierConditionOutput) ToMonitorTriggerConditionsMetricsOutlierConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsOutlierConditionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsOutlierCondition) *MonitorTriggerConditionsMetricsOutlierCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsOutlierCondition) *MonitorTriggerConditionsMetricsOutlierCondition {
 		return &v
 	}).(MonitorTriggerConditionsMetricsOutlierConditionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsOutlierConditionOutput) Critical() MonitorTriggerConditionsMetricsOutlierConditionCriticalPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsOutlierCondition) *MonitorTriggerConditionsMetricsOutlierConditionCritical {
 		return v.Critical
@@ -28232,7 +28782,11 @@ func (o MonitorTriggerConditionsMetricsOutlierConditionPtrOutput) ToMonitorTrigg
 
 func (o MonitorTriggerConditionsMetricsOutlierConditionPtrOutput) Elem() MonitorTriggerConditionsMetricsOutlierConditionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsOutlierCondition) MonitorTriggerConditionsMetricsOutlierCondition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsOutlierCondition
+		return ret
 	}).(MonitorTriggerConditionsMetricsOutlierConditionOutput)
 }
 
@@ -28356,10 +28910,11 @@ func (o MonitorTriggerConditionsMetricsOutlierConditionCriticalOutput) ToMonitor
 }
 
 func (o MonitorTriggerConditionsMetricsOutlierConditionCriticalOutput) ToMonitorTriggerConditionsMetricsOutlierConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsOutlierConditionCriticalPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsOutlierConditionCritical) *MonitorTriggerConditionsMetricsOutlierConditionCritical {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsOutlierConditionCritical) *MonitorTriggerConditionsMetricsOutlierConditionCritical {
 		return &v
 	}).(MonitorTriggerConditionsMetricsOutlierConditionCriticalPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsOutlierConditionCriticalOutput) BaselineWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsOutlierConditionCritical) *string { return v.BaselineWindow }).(pulumi.StringPtrOutput)
 }
@@ -28384,7 +28939,11 @@ func (o MonitorTriggerConditionsMetricsOutlierConditionCriticalPtrOutput) ToMoni
 
 func (o MonitorTriggerConditionsMetricsOutlierConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsMetricsOutlierConditionCriticalOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsOutlierConditionCritical) MonitorTriggerConditionsMetricsOutlierConditionCritical {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsOutlierConditionCritical
+		return ret
 	}).(MonitorTriggerConditionsMetricsOutlierConditionCriticalOutput)
 }
 
@@ -28499,10 +29058,11 @@ func (o MonitorTriggerConditionsMetricsOutlierConditionWarningOutput) ToMonitorT
 }
 
 func (o MonitorTriggerConditionsMetricsOutlierConditionWarningOutput) ToMonitorTriggerConditionsMetricsOutlierConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsOutlierConditionWarningPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsOutlierConditionWarning) *MonitorTriggerConditionsMetricsOutlierConditionWarning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsOutlierConditionWarning) *MonitorTriggerConditionsMetricsOutlierConditionWarning {
 		return &v
 	}).(MonitorTriggerConditionsMetricsOutlierConditionWarningPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsOutlierConditionWarningOutput) BaselineWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsOutlierConditionWarning) *string { return v.BaselineWindow }).(pulumi.StringPtrOutput)
 }
@@ -28527,7 +29087,11 @@ func (o MonitorTriggerConditionsMetricsOutlierConditionWarningPtrOutput) ToMonit
 
 func (o MonitorTriggerConditionsMetricsOutlierConditionWarningPtrOutput) Elem() MonitorTriggerConditionsMetricsOutlierConditionWarningOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsOutlierConditionWarning) MonitorTriggerConditionsMetricsOutlierConditionWarning {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsOutlierConditionWarning
+		return ret
 	}).(MonitorTriggerConditionsMetricsOutlierConditionWarningOutput)
 }
 
@@ -28642,10 +29206,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionOutput) ToMonitorTriggerCo
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionOutput) ToMonitorTriggerConditionsMetricsStaticConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsStaticConditionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticCondition) *MonitorTriggerConditionsMetricsStaticCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsStaticCondition) *MonitorTriggerConditionsMetricsStaticCondition {
 		return &v
 	}).(MonitorTriggerConditionsMetricsStaticConditionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsStaticConditionOutput) Critical() MonitorTriggerConditionsMetricsStaticConditionCriticalPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticCondition) *MonitorTriggerConditionsMetricsStaticConditionCritical {
 		return v.Critical
@@ -28674,7 +29239,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionPtrOutput) ToMonitorTrigge
 
 func (o MonitorTriggerConditionsMetricsStaticConditionPtrOutput) Elem() MonitorTriggerConditionsMetricsStaticConditionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticCondition) MonitorTriggerConditionsMetricsStaticCondition {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsStaticCondition
+		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionOutput)
 }
 
@@ -28793,10 +29362,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalOutput) ToMonitorT
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalOutput) ToMonitorTriggerConditionsMetricsStaticConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsStaticConditionCriticalPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCritical) *MonitorTriggerConditionsMetricsStaticConditionCritical {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsStaticConditionCritical) *MonitorTriggerConditionsMetricsStaticConditionCritical {
 		return &v
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalOutput) Alert() MonitorTriggerConditionsMetricsStaticConditionCriticalAlertOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCritical) MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
 		return v.Alert
@@ -28833,7 +29403,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalPtrOutput) ToMonit
 
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsMetricsStaticConditionCriticalOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionCritical) MonitorTriggerConditionsMetricsStaticConditionCritical {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsStaticConditionCritical
+		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalOutput)
 }
 
@@ -28966,10 +29540,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalAlertOutput) ToMon
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalAlertOutput) ToMonitorTriggerConditionsMetricsStaticConditionCriticalAlertPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsStaticConditionCriticalAlertPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCriticalAlert) *MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsStaticConditionCriticalAlert) *MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
 		return &v
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalAlertPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalAlertOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCriticalAlert) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -28994,7 +29569,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalAlertPtrOutput) To
 
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalAlertPtrOutput) Elem() MonitorTriggerConditionsMetricsStaticConditionCriticalAlertOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionCriticalAlert) MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsStaticConditionCriticalAlert
+		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalAlertOutput)
 }
 
@@ -29109,10 +29688,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput) 
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput) ToMonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCriticalResolution) *MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsStaticConditionCriticalResolution) *MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
 		return &v
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCriticalResolution) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -29139,7 +29719,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutpu
 
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutput) Elem() MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionCriticalResolution) MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsStaticConditionCriticalResolution
+		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput)
 }
 
@@ -29258,10 +29842,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningOutput) ToMonitorTr
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningOutput) ToMonitorTriggerConditionsMetricsStaticConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsStaticConditionWarningPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarning) *MonitorTriggerConditionsMetricsStaticConditionWarning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsStaticConditionWarning) *MonitorTriggerConditionsMetricsStaticConditionWarning {
 		return &v
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningOutput) Alert() MonitorTriggerConditionsMetricsStaticConditionWarningAlertOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarning) MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
 		return v.Alert
@@ -29298,7 +29883,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningPtrOutput) ToMonito
 
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningPtrOutput) Elem() MonitorTriggerConditionsMetricsStaticConditionWarningOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionWarning) MonitorTriggerConditionsMetricsStaticConditionWarning {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsStaticConditionWarning
+		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningOutput)
 }
 
@@ -29431,10 +30020,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningAlertOutput) ToMoni
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningAlertOutput) ToMonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarningAlert) *MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsStaticConditionWarningAlert) *MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
 		return &v
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningAlertOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarningAlert) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -29459,7 +30049,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrOutput) ToM
 
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrOutput) Elem() MonitorTriggerConditionsMetricsStaticConditionWarningAlertOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionWarningAlert) MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsStaticConditionWarningAlert
+		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningAlertOutput)
 }
 
@@ -29574,10 +30168,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput) T
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput) ToMonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarningResolution) *MonitorTriggerConditionsMetricsStaticConditionWarningResolution {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsStaticConditionWarningResolution) *MonitorTriggerConditionsMetricsStaticConditionWarningResolution {
 		return &v
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput)
 }
+
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarningResolution) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -29604,7 +30199,11 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput
 
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput) Elem() MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput {
 	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionWarningResolution) MonitorTriggerConditionsMetricsStaticConditionWarningResolution {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsStaticConditionWarningResolution
+		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput)
 }
 
@@ -29719,10 +30318,11 @@ func (o PoliciesUserConcurrentSessionsLimitOutput) ToPoliciesUserConcurrentSessi
 }
 
 func (o PoliciesUserConcurrentSessionsLimitOutput) ToPoliciesUserConcurrentSessionsLimitPtrOutputWithContext(ctx context.Context) PoliciesUserConcurrentSessionsLimitPtrOutput {
-	return o.ApplyT(func(v PoliciesUserConcurrentSessionsLimit) *PoliciesUserConcurrentSessionsLimit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoliciesUserConcurrentSessionsLimit) *PoliciesUserConcurrentSessionsLimit {
 		return &v
 	}).(PoliciesUserConcurrentSessionsLimitPtrOutput)
 }
+
 func (o PoliciesUserConcurrentSessionsLimitOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PoliciesUserConcurrentSessionsLimit) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -29746,7 +30346,13 @@ func (o PoliciesUserConcurrentSessionsLimitPtrOutput) ToPoliciesUserConcurrentSe
 }
 
 func (o PoliciesUserConcurrentSessionsLimitPtrOutput) Elem() PoliciesUserConcurrentSessionsLimitOutput {
-	return o.ApplyT(func(v *PoliciesUserConcurrentSessionsLimit) PoliciesUserConcurrentSessionsLimit { return *v }).(PoliciesUserConcurrentSessionsLimitOutput)
+	return o.ApplyT(func(v *PoliciesUserConcurrentSessionsLimit) PoliciesUserConcurrentSessionsLimit {
+		if v != nil {
+			return *v
+		}
+		var ret PoliciesUserConcurrentSessionsLimit
+		return ret
+	}).(PoliciesUserConcurrentSessionsLimitOutput)
 }
 
 func (o PoliciesUserConcurrentSessionsLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -29864,10 +30470,11 @@ func (o PollingSourceAuthenticationOutput) ToPollingSourceAuthenticationPtrOutpu
 }
 
 func (o PollingSourceAuthenticationOutput) ToPollingSourceAuthenticationPtrOutputWithContext(ctx context.Context) PollingSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v PollingSourceAuthentication) *PollingSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PollingSourceAuthentication) *PollingSourceAuthentication {
 		return &v
 	}).(PollingSourceAuthenticationPtrOutput)
 }
+
 func (o PollingSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -29899,7 +30506,13 @@ func (o PollingSourceAuthenticationPtrOutput) ToPollingSourceAuthenticationPtrOu
 }
 
 func (o PollingSourceAuthenticationPtrOutput) Elem() PollingSourceAuthenticationOutput {
-	return o.ApplyT(func(v *PollingSourceAuthentication) PollingSourceAuthentication { return *v }).(PollingSourceAuthenticationOutput)
+	return o.ApplyT(func(v *PollingSourceAuthentication) PollingSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret PollingSourceAuthentication
+		return ret
+	}).(PollingSourceAuthenticationOutput)
 }
 
 func (o PollingSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -30251,10 +30864,11 @@ func (o PollingSourcePathOutput) ToPollingSourcePathPtrOutput() PollingSourcePat
 }
 
 func (o PollingSourcePathOutput) ToPollingSourcePathPtrOutputWithContext(ctx context.Context) PollingSourcePathPtrOutput {
-	return o.ApplyT(func(v PollingSourcePath) *PollingSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PollingSourcePath) *PollingSourcePath {
 		return &v
 	}).(PollingSourcePathPtrOutput)
 }
+
 func (o PollingSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -30294,7 +30908,13 @@ func (o PollingSourcePathPtrOutput) ToPollingSourcePathPtrOutputWithContext(ctx 
 }
 
 func (o PollingSourcePathPtrOutput) Elem() PollingSourcePathOutput {
-	return o.ApplyT(func(v *PollingSourcePath) PollingSourcePath { return *v }).(PollingSourcePathOutput)
+	return o.ApplyT(func(v *PollingSourcePath) PollingSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret PollingSourcePath
+		return ret
+	}).(PollingSourcePathOutput)
 }
 
 func (o PollingSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -30556,10 +31176,11 @@ func (o S3AuditSourceAuthenticationOutput) ToS3AuditSourceAuthenticationPtrOutpu
 }
 
 func (o S3AuditSourceAuthenticationOutput) ToS3AuditSourceAuthenticationPtrOutputWithContext(ctx context.Context) S3AuditSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v S3AuditSourceAuthentication) *S3AuditSourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3AuditSourceAuthentication) *S3AuditSourceAuthentication {
 		return &v
 	}).(S3AuditSourceAuthenticationPtrOutput)
 }
+
 func (o S3AuditSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -30595,7 +31216,13 @@ func (o S3AuditSourceAuthenticationPtrOutput) ToS3AuditSourceAuthenticationPtrOu
 }
 
 func (o S3AuditSourceAuthenticationPtrOutput) Elem() S3AuditSourceAuthenticationOutput {
-	return o.ApplyT(func(v *S3AuditSourceAuthentication) S3AuditSourceAuthentication { return *v }).(S3AuditSourceAuthenticationOutput)
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) S3AuditSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret S3AuditSourceAuthentication
+		return ret
+	}).(S3AuditSourceAuthenticationOutput)
 }
 
 func (o S3AuditSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -30956,10 +31583,11 @@ func (o S3AuditSourcePathOutput) ToS3AuditSourcePathPtrOutput() S3AuditSourcePat
 }
 
 func (o S3AuditSourcePathOutput) ToS3AuditSourcePathPtrOutputWithContext(ctx context.Context) S3AuditSourcePathPtrOutput {
-	return o.ApplyT(func(v S3AuditSourcePath) *S3AuditSourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3AuditSourcePath) *S3AuditSourcePath {
 		return &v
 	}).(S3AuditSourcePathPtrOutput)
 }
+
 func (o S3AuditSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -30999,7 +31627,13 @@ func (o S3AuditSourcePathPtrOutput) ToS3AuditSourcePathPtrOutputWithContext(ctx 
 }
 
 func (o S3AuditSourcePathPtrOutput) Elem() S3AuditSourcePathOutput {
-	return o.ApplyT(func(v *S3AuditSourcePath) S3AuditSourcePath { return *v }).(S3AuditSourcePathOutput)
+	return o.ApplyT(func(v *S3AuditSourcePath) S3AuditSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret S3AuditSourcePath
+		return ret
+	}).(S3AuditSourcePathOutput)
 }
 
 func (o S3AuditSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -31261,10 +31895,11 @@ func (o S3SourceAuthenticationOutput) ToS3SourceAuthenticationPtrOutput() S3Sour
 }
 
 func (o S3SourceAuthenticationOutput) ToS3SourceAuthenticationPtrOutputWithContext(ctx context.Context) S3SourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v S3SourceAuthentication) *S3SourceAuthentication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3SourceAuthentication) *S3SourceAuthentication {
 		return &v
 	}).(S3SourceAuthenticationPtrOutput)
 }
+
 func (o S3SourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -31300,7 +31935,13 @@ func (o S3SourceAuthenticationPtrOutput) ToS3SourceAuthenticationPtrOutputWithCo
 }
 
 func (o S3SourceAuthenticationPtrOutput) Elem() S3SourceAuthenticationOutput {
-	return o.ApplyT(func(v *S3SourceAuthentication) S3SourceAuthentication { return *v }).(S3SourceAuthenticationOutput)
+	return o.ApplyT(func(v *S3SourceAuthentication) S3SourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret S3SourceAuthentication
+		return ret
+	}).(S3SourceAuthenticationOutput)
 }
 
 func (o S3SourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
@@ -31661,10 +32302,11 @@ func (o S3SourcePathOutput) ToS3SourcePathPtrOutput() S3SourcePathPtrOutput {
 }
 
 func (o S3SourcePathOutput) ToS3SourcePathPtrOutputWithContext(ctx context.Context) S3SourcePathPtrOutput {
-	return o.ApplyT(func(v S3SourcePath) *S3SourcePath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3SourcePath) *S3SourcePath {
 		return &v
 	}).(S3SourcePathPtrOutput)
 }
+
 func (o S3SourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -31704,7 +32346,13 @@ func (o S3SourcePathPtrOutput) ToS3SourcePathPtrOutputWithContext(ctx context.Co
 }
 
 func (o S3SourcePathPtrOutput) Elem() S3SourcePathOutput {
-	return o.ApplyT(func(v *S3SourcePath) S3SourcePath { return *v }).(S3SourcePathOutput)
+	return o.ApplyT(func(v *S3SourcePath) S3SourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret S3SourcePath
+		return ret
+	}).(S3SourcePathOutput)
 }
 
 func (o S3SourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
@@ -31962,10 +32610,11 @@ func (o SamlConfigurationOnDemandProvisioningEnabledOutput) ToSamlConfigurationO
 }
 
 func (o SamlConfigurationOnDemandProvisioningEnabledOutput) ToSamlConfigurationOnDemandProvisioningEnabledPtrOutputWithContext(ctx context.Context) SamlConfigurationOnDemandProvisioningEnabledPtrOutput {
-	return o.ApplyT(func(v SamlConfigurationOnDemandProvisioningEnabled) *SamlConfigurationOnDemandProvisioningEnabled {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlConfigurationOnDemandProvisioningEnabled) *SamlConfigurationOnDemandProvisioningEnabled {
 		return &v
 	}).(SamlConfigurationOnDemandProvisioningEnabledPtrOutput)
 }
+
 func (o SamlConfigurationOnDemandProvisioningEnabledOutput) FirstNameAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SamlConfigurationOnDemandProvisioningEnabled) *string { return v.FirstNameAttribute }).(pulumi.StringPtrOutput)
 }
@@ -31994,7 +32643,11 @@ func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) ToSamlConfigurati
 
 func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) Elem() SamlConfigurationOnDemandProvisioningEnabledOutput {
 	return o.ApplyT(func(v *SamlConfigurationOnDemandProvisioningEnabled) SamlConfigurationOnDemandProvisioningEnabled {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret SamlConfigurationOnDemandProvisioningEnabled
+		return ret
 	}).(SamlConfigurationOnDemandProvisioningEnabledOutput)
 }
 
@@ -32026,6 +32679,473 @@ func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) OnDemandProvision
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceAuthenticationInput)(nil)).Elem(), AwsInventorySourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceAuthenticationPtrInput)(nil)).Elem(), AwsInventorySourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceDefaultDateFormatInput)(nil)).Elem(), AwsInventorySourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceDefaultDateFormatArrayInput)(nil)).Elem(), AwsInventorySourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceFilterInput)(nil)).Elem(), AwsInventorySourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceFilterArrayInput)(nil)).Elem(), AwsInventorySourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathInput)(nil)).Elem(), AwsInventorySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathPtrInput)(nil)).Elem(), AwsInventorySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathTagFilterInput)(nil)).Elem(), AwsInventorySourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathTagFilterArrayInput)(nil)).Elem(), AwsInventorySourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceAuthenticationInput)(nil)).Elem(), AwsXraySourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceAuthenticationPtrInput)(nil)).Elem(), AwsXraySourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceDefaultDateFormatInput)(nil)).Elem(), AwsXraySourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceDefaultDateFormatArrayInput)(nil)).Elem(), AwsXraySourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceFilterInput)(nil)).Elem(), AwsXraySourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceFilterArrayInput)(nil)).Elem(), AwsXraySourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathInput)(nil)).Elem(), AwsXraySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathPtrInput)(nil)).Elem(), AwsXraySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathTagFilterInput)(nil)).Elem(), AwsXraySourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathTagFilterArrayInput)(nil)).Elem(), AwsXraySourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceDefaultDateFormatInput)(nil)).Elem(), CloudSyslogSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceDefaultDateFormatArrayInput)(nil)).Elem(), CloudSyslogSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceFilterInput)(nil)).Elem(), CloudSyslogSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceFilterArrayInput)(nil)).Elem(), CloudSyslogSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceAuthenticationInput)(nil)).Elem(), CloudfrontSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceAuthenticationPtrInput)(nil)).Elem(), CloudfrontSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceDefaultDateFormatInput)(nil)).Elem(), CloudfrontSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceDefaultDateFormatArrayInput)(nil)).Elem(), CloudfrontSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceFilterInput)(nil)).Elem(), CloudfrontSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceFilterArrayInput)(nil)).Elem(), CloudfrontSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathInput)(nil)).Elem(), CloudfrontSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathPtrInput)(nil)).Elem(), CloudfrontSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathTagFilterInput)(nil)).Elem(), CloudfrontSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathTagFilterArrayInput)(nil)).Elem(), CloudfrontSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceAuthenticationInput)(nil)).Elem(), CloudtrailSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceAuthenticationPtrInput)(nil)).Elem(), CloudtrailSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceDefaultDateFormatInput)(nil)).Elem(), CloudtrailSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceDefaultDateFormatArrayInput)(nil)).Elem(), CloudtrailSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceFilterInput)(nil)).Elem(), CloudtrailSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceFilterArrayInput)(nil)).Elem(), CloudtrailSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathInput)(nil)).Elem(), CloudtrailSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathPtrInput)(nil)).Elem(), CloudtrailSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathTagFilterInput)(nil)).Elem(), CloudtrailSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathTagFilterArrayInput)(nil)).Elem(), CloudtrailSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceAuthenticationInput)(nil)).Elem(), CloudwatchSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceAuthenticationPtrInput)(nil)).Elem(), CloudwatchSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceDefaultDateFormatInput)(nil)).Elem(), CloudwatchSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceDefaultDateFormatArrayInput)(nil)).Elem(), CloudwatchSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceFilterInput)(nil)).Elem(), CloudwatchSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceFilterArrayInput)(nil)).Elem(), CloudwatchSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathInput)(nil)).Elem(), CloudwatchSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathPtrInput)(nil)).Elem(), CloudwatchSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathTagFilterInput)(nil)).Elem(), CloudwatchSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathTagFilterArrayInput)(nil)).Elem(), CloudwatchSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleAggregationFunctionInput)(nil)).Elem(), CseAggregationRuleAggregationFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleAggregationFunctionArrayInput)(nil)).Elem(), CseAggregationRuleAggregationFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleEntitySelectorInput)(nil)).Elem(), CseAggregationRuleEntitySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleEntitySelectorArrayInput)(nil)).Elem(), CseAggregationRuleEntitySelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleSeverityMappingInput)(nil)).Elem(), CseAggregationRuleSeverityMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleSeverityMappingPtrInput)(nil)).Elem(), CseAggregationRuleSeverityMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleSeverityMappingMappingInput)(nil)).Elem(), CseAggregationRuleSeverityMappingMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleSeverityMappingMappingArrayInput)(nil)).Elem(), CseAggregationRuleSeverityMappingMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleEntitySelectorInput)(nil)).Elem(), CseChainRuleEntitySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleEntitySelectorArrayInput)(nil)).Elem(), CseChainRuleEntitySelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleExpressionsAndLimitInput)(nil)).Elem(), CseChainRuleExpressionsAndLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleExpressionsAndLimitArrayInput)(nil)).Elem(), CseChainRuleExpressionsAndLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingFieldInput)(nil)).Elem(), CseLogMappingFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingFieldArrayInput)(nil)).Elem(), CseLogMappingFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingFieldLookupInput)(nil)).Elem(), CseLogMappingFieldLookupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingFieldLookupArrayInput)(nil)).Elem(), CseLogMappingFieldLookupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingStructuredInputInput)(nil)).Elem(), CseLogMappingStructuredInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingStructuredInputArrayInput)(nil)).Elem(), CseLogMappingStructuredInputArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingUnstructuredFieldsInput)(nil)).Elem(), CseLogMappingUnstructuredFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingUnstructuredFieldsPtrInput)(nil)).Elem(), CseLogMappingUnstructuredFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleEntitySelectorInput)(nil)).Elem(), CseMatchRuleEntitySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleEntitySelectorArrayInput)(nil)).Elem(), CseMatchRuleEntitySelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleSeverityMappingInput)(nil)).Elem(), CseMatchRuleSeverityMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleSeverityMappingPtrInput)(nil)).Elem(), CseMatchRuleSeverityMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleSeverityMappingMappingInput)(nil)).Elem(), CseMatchRuleSeverityMappingMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleSeverityMappingMappingArrayInput)(nil)).Elem(), CseMatchRuleSeverityMappingMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseThresholdRuleEntitySelectorInput)(nil)).Elem(), CseThresholdRuleEntitySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseThresholdRuleEntitySelectorArrayInput)(nil)).Elem(), CseThresholdRuleEntitySelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardColoringRuleInput)(nil)).Elem(), DashboardColoringRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardColoringRuleArrayInput)(nil)).Elem(), DashboardColoringRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardColoringRuleColorThresholdInput)(nil)).Elem(), DashboardColoringRuleColorThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardColoringRuleColorThresholdArrayInput)(nil)).Elem(), DashboardColoringRuleColorThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardLayoutInput)(nil)).Elem(), DashboardLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardLayoutPtrInput)(nil)).Elem(), DashboardLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardLayoutGridInput)(nil)).Elem(), DashboardLayoutGridArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardLayoutGridPtrInput)(nil)).Elem(), DashboardLayoutGridArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardLayoutGridLayoutStructureInput)(nil)).Elem(), DashboardLayoutGridLayoutStructureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardLayoutGridLayoutStructureArrayInput)(nil)).Elem(), DashboardLayoutGridLayoutStructureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelInput)(nil)).Elem(), DashboardPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelArrayInput)(nil)).Elem(), DashboardPanelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelInput)(nil)).Elem(), DashboardPanelSumoSearchPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelPtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelColoringRuleInput)(nil)).Elem(), DashboardPanelSumoSearchPanelColoringRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelColoringRulePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelColoringRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelColoringRuleColorThresholdInput)(nil)).Elem(), DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelColoringRuleColorThresholdArrayInput)(nil)).Elem(), DashboardPanelSumoSearchPanelColoringRuleColorThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelLinkedDashboardInput)(nil)).Elem(), DashboardPanelSumoSearchPanelLinkedDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelLinkedDashboardPtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelLinkedDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryArrayInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataPtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArrayInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArrayInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArrayInput)(nil)).Elem(), DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromPtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToPtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangePtrInput)(nil)).Elem(), DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelTextPanelInput)(nil)).Elem(), DashboardPanelTextPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelTextPanelPtrInput)(nil)).Elem(), DashboardPanelTextPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeInput)(nil)).Elem(), DashboardTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromPtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToPtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeCompleteLiteralTimeRangeInput)(nil)).Elem(), DashboardTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTimeRangeCompleteLiteralTimeRangePtrInput)(nil)).Elem(), DashboardTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTopologyLabelMapInput)(nil)).Elem(), DashboardTopologyLabelMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTopologyLabelMapPtrInput)(nil)).Elem(), DashboardTopologyLabelMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTopologyLabelMapDataInput)(nil)).Elem(), DashboardTopologyLabelMapDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardTopologyLabelMapDataArrayInput)(nil)).Elem(), DashboardTopologyLabelMapDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableInput)(nil)).Elem(), DashboardVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableArrayInput)(nil)).Elem(), DashboardVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableSourceDefinitionInput)(nil)).Elem(), DashboardVariableSourceDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableSourceDefinitionCsvVariableSourceDefinitionInput)(nil)).Elem(), DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableSourceDefinitionCsvVariableSourceDefinitionPtrInput)(nil)).Elem(), DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionInput)(nil)).Elem(), DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionPtrInput)(nil)).Elem(), DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionInput)(nil)).Elem(), DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrInput)(nil)).Elem(), DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceAuthenticationInput)(nil)).Elem(), ElbSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceAuthenticationPtrInput)(nil)).Elem(), ElbSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceDefaultDateFormatInput)(nil)).Elem(), ElbSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceDefaultDateFormatArrayInput)(nil)).Elem(), ElbSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceFilterInput)(nil)).Elem(), ElbSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceFilterArrayInput)(nil)).Elem(), ElbSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathInput)(nil)).Elem(), ElbSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathPtrInput)(nil)).Elem(), ElbSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathTagFilterInput)(nil)).Elem(), ElbSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathTagFilterArrayInput)(nil)).Elem(), ElbSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceAuthenticationInput)(nil)).Elem(), GcpSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceAuthenticationPtrInput)(nil)).Elem(), GcpSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceDefaultDateFormatInput)(nil)).Elem(), GcpSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceDefaultDateFormatArrayInput)(nil)).Elem(), GcpSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceFilterInput)(nil)).Elem(), GcpSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceFilterArrayInput)(nil)).Elem(), GcpSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourcePathInput)(nil)).Elem(), GcpSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourcePathPtrInput)(nil)).Elem(), GcpSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyFilterInput)(nil)).Elem(), HierarchyFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyFilterPtrInput)(nil)).Elem(), HierarchyFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelInput)(nil)).Elem(), HierarchyLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelArrayInput)(nil)).Elem(), HierarchyLevelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput)(nil)).Elem(), HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceDefaultDateFormatInput)(nil)).Elem(), HttpSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceDefaultDateFormatArrayInput)(nil)).Elem(), HttpSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceFilterInput)(nil)).Elem(), HttpSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceFilterArrayInput)(nil)).Elem(), HttpSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceAuthenticationInput)(nil)).Elem(), KinesisMetricsSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceAuthenticationPtrInput)(nil)).Elem(), KinesisMetricsSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceDefaultDateFormatInput)(nil)).Elem(), KinesisMetricsSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceDefaultDateFormatArrayInput)(nil)).Elem(), KinesisMetricsSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceFilterInput)(nil)).Elem(), KinesisMetricsSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceFilterArrayInput)(nil)).Elem(), KinesisMetricsSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePathInput)(nil)).Elem(), KinesisMetricsSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePathPtrInput)(nil)).Elem(), KinesisMetricsSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePathTagFilterInput)(nil)).Elem(), KinesisMetricsSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePathTagFilterArrayInput)(nil)).Elem(), KinesisMetricsSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableFieldInput)(nil)).Elem(), LookupTableFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableFieldArrayInput)(nil)).Elem(), LookupTableFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceAuthenticationInput)(nil)).Elem(), MetadataSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceAuthenticationPtrInput)(nil)).Elem(), MetadataSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceDefaultDateFormatInput)(nil)).Elem(), MetadataSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceDefaultDateFormatArrayInput)(nil)).Elem(), MetadataSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceFilterInput)(nil)).Elem(), MetadataSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceFilterArrayInput)(nil)).Elem(), MetadataSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourcePathInput)(nil)).Elem(), MetadataSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourcePathPtrInput)(nil)).Elem(), MetadataSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationInput)(nil)).Elem(), MonitorNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationArrayInput)(nil)).Elem(), MonitorNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationNotificationInput)(nil)).Elem(), MonitorNotificationNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorQueryInput)(nil)).Elem(), MonitorQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorQueryArrayInput)(nil)).Elem(), MonitorQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerInput)(nil)).Elem(), MonitorTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerArrayInput)(nil)).Elem(), MonitorTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsInput)(nil)).Elem(), MonitorTriggerConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsPtrInput)(nil)).Elem(), MonitorTriggerConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsMissingDataConditionInput)(nil)).Elem(), MonitorTriggerConditionsLogsMissingDataConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsMissingDataConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsMissingDataConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsOutlierConditionInput)(nil)).Elem(), MonitorTriggerConditionsLogsOutlierConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsOutlierConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsOutlierConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsOutlierConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsLogsOutlierConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsOutlierConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsOutlierConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsOutlierConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsLogsOutlierConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsOutlierConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsOutlierConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionCriticalAlertInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionCriticalAlertPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionCriticalResolutionInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningAlertInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningResolutionInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsMissingDataConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsMissingDataConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsMissingDataConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsMissingDataConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionCriticalAlertInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionCriticalAlertPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningAlertInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningResolutionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesUserConcurrentSessionsLimitInput)(nil)).Elem(), PoliciesUserConcurrentSessionsLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesUserConcurrentSessionsLimitPtrInput)(nil)).Elem(), PoliciesUserConcurrentSessionsLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceAuthenticationInput)(nil)).Elem(), PollingSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceAuthenticationPtrInput)(nil)).Elem(), PollingSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceDefaultDateFormatInput)(nil)).Elem(), PollingSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceDefaultDateFormatArrayInput)(nil)).Elem(), PollingSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceFilterInput)(nil)).Elem(), PollingSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceFilterArrayInput)(nil)).Elem(), PollingSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePathInput)(nil)).Elem(), PollingSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePathPtrInput)(nil)).Elem(), PollingSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePathTagFilterInput)(nil)).Elem(), PollingSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePathTagFilterArrayInput)(nil)).Elem(), PollingSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceAuthenticationInput)(nil)).Elem(), S3AuditSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceAuthenticationPtrInput)(nil)).Elem(), S3AuditSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceDefaultDateFormatInput)(nil)).Elem(), S3AuditSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceDefaultDateFormatArrayInput)(nil)).Elem(), S3AuditSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceFilterInput)(nil)).Elem(), S3AuditSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceFilterArrayInput)(nil)).Elem(), S3AuditSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathInput)(nil)).Elem(), S3AuditSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathPtrInput)(nil)).Elem(), S3AuditSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathTagFilterInput)(nil)).Elem(), S3AuditSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathTagFilterArrayInput)(nil)).Elem(), S3AuditSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceAuthenticationInput)(nil)).Elem(), S3SourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceAuthenticationPtrInput)(nil)).Elem(), S3SourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceDefaultDateFormatInput)(nil)).Elem(), S3SourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceDefaultDateFormatArrayInput)(nil)).Elem(), S3SourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceFilterInput)(nil)).Elem(), S3SourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceFilterArrayInput)(nil)).Elem(), S3SourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathInput)(nil)).Elem(), S3SourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathPtrInput)(nil)).Elem(), S3SourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathTagFilterInput)(nil)).Elem(), S3SourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathTagFilterArrayInput)(nil)).Elem(), S3SourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationOnDemandProvisioningEnabledInput)(nil)).Elem(), SamlConfigurationOnDemandProvisioningEnabledArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationOnDemandProvisioningEnabledPtrInput)(nil)).Elem(), SamlConfigurationOnDemandProvisioningEnabledArgs{})
 	pulumi.RegisterOutputType(AwsInventorySourceAuthenticationOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourceAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourceDefaultDateFormatOutput{})

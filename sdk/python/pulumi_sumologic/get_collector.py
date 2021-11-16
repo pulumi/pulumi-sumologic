@@ -12,6 +12,7 @@ __all__ = [
     'GetCollectorResult',
     'AwaitableGetCollectorResult',
     'get_collector',
+    'get_collector_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,42 @@ def get_collector(id: Optional[int] = None,
         id=__ret__.id,
         name=__ret__.name,
         timezone=__ret__.timezone)
+
+
+@_utilities.lift_output_func(get_collector)
+def get_collector_output(id: Optional[pulumi.Input[Optional[int]]] = None,
+                         name: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCollectorResult]:
+    """
+    Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    this = sumologic.get_collector(name="MyCollector")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    that = sumologic.get_collector(id=1234567890)
+    ```
+
+    A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+
+    If both `id` and `name` have been specified, `id` takes precedence.
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+    - `name` - The name of the collector.
+    - `description` - The description of the collector.
+    - `category` - The default source category for any source attached to this collector.
+    - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+    """
+    ...

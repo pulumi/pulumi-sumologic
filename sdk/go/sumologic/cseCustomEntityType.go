@@ -195,7 +195,7 @@ type CseCustomEntityTypeArrayInput interface {
 type CseCustomEntityTypeArray []CseCustomEntityTypeInput
 
 func (CseCustomEntityTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CseCustomEntityType)(nil))
+	return reflect.TypeOf((*[]*CseCustomEntityType)(nil)).Elem()
 }
 
 func (i CseCustomEntityTypeArray) ToCseCustomEntityTypeArrayOutput() CseCustomEntityTypeArrayOutput {
@@ -220,7 +220,7 @@ type CseCustomEntityTypeMapInput interface {
 type CseCustomEntityTypeMap map[string]CseCustomEntityTypeInput
 
 func (CseCustomEntityTypeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CseCustomEntityType)(nil))
+	return reflect.TypeOf((*map[string]*CseCustomEntityType)(nil)).Elem()
 }
 
 func (i CseCustomEntityTypeMap) ToCseCustomEntityTypeMapOutput() CseCustomEntityTypeMapOutput {
@@ -231,9 +231,7 @@ func (i CseCustomEntityTypeMap) ToCseCustomEntityTypeMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomEntityTypeMapOutput)
 }
 
-type CseCustomEntityTypeOutput struct {
-	*pulumi.OutputState
-}
+type CseCustomEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (CseCustomEntityTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CseCustomEntityType)(nil))
@@ -252,14 +250,12 @@ func (o CseCustomEntityTypeOutput) ToCseCustomEntityTypePtrOutput() CseCustomEnt
 }
 
 func (o CseCustomEntityTypeOutput) ToCseCustomEntityTypePtrOutputWithContext(ctx context.Context) CseCustomEntityTypePtrOutput {
-	return o.ApplyT(func(v CseCustomEntityType) *CseCustomEntityType {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseCustomEntityType) *CseCustomEntityType {
 		return &v
 	}).(CseCustomEntityTypePtrOutput)
 }
 
-type CseCustomEntityTypePtrOutput struct {
-	*pulumi.OutputState
-}
+type CseCustomEntityTypePtrOutput struct{ *pulumi.OutputState }
 
 func (CseCustomEntityTypePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CseCustomEntityType)(nil))
@@ -271,6 +267,16 @@ func (o CseCustomEntityTypePtrOutput) ToCseCustomEntityTypePtrOutput() CseCustom
 
 func (o CseCustomEntityTypePtrOutput) ToCseCustomEntityTypePtrOutputWithContext(ctx context.Context) CseCustomEntityTypePtrOutput {
 	return o
+}
+
+func (o CseCustomEntityTypePtrOutput) Elem() CseCustomEntityTypeOutput {
+	return o.ApplyT(func(v *CseCustomEntityType) CseCustomEntityType {
+		if v != nil {
+			return *v
+		}
+		var ret CseCustomEntityType
+		return ret
+	}).(CseCustomEntityTypeOutput)
 }
 
 type CseCustomEntityTypeArrayOutput struct{ *pulumi.OutputState }
@@ -314,6 +320,10 @@ func (o CseCustomEntityTypeMapOutput) MapIndex(k pulumi.StringInput) CseCustomEn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomEntityTypeInput)(nil)).Elem(), &CseCustomEntityType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomEntityTypePtrInput)(nil)).Elem(), &CseCustomEntityType{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomEntityTypeArrayInput)(nil)).Elem(), CseCustomEntityTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomEntityTypeMapInput)(nil)).Elem(), CseCustomEntityTypeMap{})
 	pulumi.RegisterOutputType(CseCustomEntityTypeOutput{})
 	pulumi.RegisterOutputType(CseCustomEntityTypePtrOutput{})
 	pulumi.RegisterOutputType(CseCustomEntityTypeArrayOutput{})

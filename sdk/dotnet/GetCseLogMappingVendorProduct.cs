@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
@@ -13,6 +14,9 @@ namespace Pulumi.SumoLogic
     {
         public static Task<GetCseLogMappingVendorProductResult> InvokeAsync(GetCseLogMappingVendorProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductArgs(), options.WithVersion());
+
+        public static Output<GetCseLogMappingVendorProductResult> Invoke(GetCseLogMappingVendorProductInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +32,22 @@ namespace Pulumi.SumoLogic
         public string Vendor { get; set; } = null!;
 
         public GetCseLogMappingVendorProductArgs()
+        {
+        }
+    }
+
+    public sealed class GetCseLogMappingVendorProductInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("guid")]
+        public Input<string>? Guid { get; set; }
+
+        [Input("product", required: true)]
+        public Input<string> Product { get; set; } = null!;
+
+        [Input("vendor", required: true)]
+        public Input<string> Vendor { get; set; } = null!;
+
+        public GetCseLogMappingVendorProductInvokeArgs()
         {
         }
     }
