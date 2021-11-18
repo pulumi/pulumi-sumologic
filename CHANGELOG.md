@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 0.3.0 (2021-11-18)
 * Upgrade to v2.11.2 of the SumoLogic Terraform Provider
 * Upgrade to terraform-bridge 3.11.0
 * Upgrade to pulumi 3.17.0
-
----
 
 ## 0.2.0 (2021-10-29)
 * Upgrade to v2.11.0 of the SumoLogic Terraform Provider
