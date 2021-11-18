@@ -43,6 +43,7 @@ from .get_http_source import *
 from .get_my_user_id import *
 from .get_personal_folder import *
 from .get_role import *
+from .get_user import *
 from .hierarchy import *
 from .http_source import *
 from .ingest_budget import *

@@ -2,6 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+* Upgrade to v2.11.2 of the SumoLogic Terraform Provider
 * Upgrade to terraform-bridge 3.11.0
 * Upgrade to pulumi 3.17.0
 

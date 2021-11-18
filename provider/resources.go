@@ -160,6 +160,7 @@ func Provider() tfbridge.ProviderInfo {
 			"sumologic_role":                           {Tok: makeDataSource(mainMod, "getRole")},
 			"sumologic_admin_recommended_folder":       {Tok: makeDataSource(mainMod, "getAdminRecommendedFolder")},
 			"sumologic_cse_log_mapping_vendor_product": {Tok: makeDataSource(mainMod, "getCseLogMappingVendorProduct")},
+			"sumologic_user":                           {Tok: makeDataSource(mainMod, "getUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
