@@ -6,56 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [Sumologic CloudTrail source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source).
- *
- * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const collector = new sumologic.Collector("collector", {
- *     description: "Just testing this",
- * });
- * const cloudtrailSource = new sumologic.CloudtrailSource("cloudtrail_source", {
- *     authentication: {
- *         accessKey: "someKey",
- *         secretKey: "******",
- *         type: "S3BucketAuthentication",
- *     },
- *     category: "aws/cloudtrail",
- *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
- *     contentType: "AwsCloudTrailBucket",
- *     description: "My description",
- *     path: {
- *         bucketName: "Bucket1",
- *         pathExpression: "*",
- *         type: "S3BucketPathExpression",
- *     },
- *     paused: false,
- *     scanInterval: 300000,
- * });
- * ```
- * ## Argument reference
- *
- * In addition to the common properties, the following arguments are supported:
- *
- *  - `contentType` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
- *  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
- *  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
- *  - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
- *      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
- *      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
- *      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
- *      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
- *      + `region` - (Optional) Your AWS Bucket region.
- *  - `path` - (Required) The location to scan for new data.
- *      + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
- *      + `bucketName` - (Required) The name of the bucket.
- *      + `pathExpression` - (Required) The path to the data.
- *
  * ## Import
  *
  * CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

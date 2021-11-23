@@ -29,8 +29,14 @@ export interface AwsInventorySourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsInventorySourcePathTagFilter[];
     type: string;
+}
+
+export interface AwsInventorySourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface AwsInventorySourcePathTagFilter {
@@ -64,8 +70,14 @@ export interface AwsXraySourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsXraySourcePathTagFilter[];
     type: string;
+}
+
+export interface AwsXraySourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface AwsXraySourcePathTagFilter {
@@ -111,8 +123,14 @@ export interface CloudfrontSourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.CloudfrontSourcePathTagFilter[];
     type: string;
+}
+
+export interface CloudfrontSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface CloudfrontSourcePathTagFilter {
@@ -146,8 +164,14 @@ export interface CloudtrailSourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.CloudtrailSourcePathTagFilter[];
     type: string;
+}
+
+export interface CloudtrailSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface CloudtrailSourcePathTagFilter {
@@ -181,8 +205,14 @@ export interface CloudwatchSourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.CloudwatchSourcePathTagFilter[];
     type: string;
+}
+
+export interface CloudwatchSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface CloudwatchSourcePathTagFilter {
@@ -572,8 +602,14 @@ export interface ElbSourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.ElbSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.ElbSourcePathTagFilter[];
     type: string;
+}
+
+export interface ElbSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface ElbSourcePathTagFilter {
@@ -1979,8 +2015,14 @@ export interface S3AuditSourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.S3AuditSourcePathTagFilter[];
     type: string;
+}
+
+export interface S3AuditSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface S3AuditSourcePathTagFilter {
@@ -2014,8 +2056,14 @@ export interface S3SourcePath {
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.S3SourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.S3SourcePathTagFilter[];
     type: string;
+}
+
+export interface S3SourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface S3SourcePathTagFilter {

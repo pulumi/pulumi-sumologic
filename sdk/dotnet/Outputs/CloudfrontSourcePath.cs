@@ -17,6 +17,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly string? PathExpression;
+        public readonly ImmutableArray<Outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.CloudfrontSourcePathTagFilter> TagFilters;
         public readonly string Type;
 
@@ -30,6 +31,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? pathExpression,
 
+            ImmutableArray<Outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
+
             ImmutableArray<Outputs.CloudfrontSourcePathTagFilter> tagFilters,
 
             string type)
@@ -38,6 +41,7 @@ namespace Pulumi.SumoLogic.Outputs
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             PathExpression = pathExpression;
+            SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
         }

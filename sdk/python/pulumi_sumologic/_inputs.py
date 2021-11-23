@@ -13,11 +13,13 @@ __all__ = [
     'AwsInventorySourceDefaultDateFormatArgs',
     'AwsInventorySourceFilterArgs',
     'AwsInventorySourcePathArgs',
+    'AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs',
     'AwsInventorySourcePathTagFilterArgs',
     'AwsXraySourceAuthenticationArgs',
     'AwsXraySourceDefaultDateFormatArgs',
     'AwsXraySourceFilterArgs',
     'AwsXraySourcePathArgs',
+    'AwsXraySourcePathSnsTopicOrSubscriptionArnArgs',
     'AwsXraySourcePathTagFilterArgs',
     'CloudSyslogSourceDefaultDateFormatArgs',
     'CloudSyslogSourceFilterArgs',
@@ -25,16 +27,19 @@ __all__ = [
     'CloudfrontSourceDefaultDateFormatArgs',
     'CloudfrontSourceFilterArgs',
     'CloudfrontSourcePathArgs',
+    'CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs',
     'CloudfrontSourcePathTagFilterArgs',
     'CloudtrailSourceAuthenticationArgs',
     'CloudtrailSourceDefaultDateFormatArgs',
     'CloudtrailSourceFilterArgs',
     'CloudtrailSourcePathArgs',
+    'CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs',
     'CloudtrailSourcePathTagFilterArgs',
     'CloudwatchSourceAuthenticationArgs',
     'CloudwatchSourceDefaultDateFormatArgs',
     'CloudwatchSourceFilterArgs',
     'CloudwatchSourcePathArgs',
+    'CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs',
     'CloudwatchSourcePathTagFilterArgs',
     'CseAggregationRuleAggregationFunctionArgs',
     'CseAggregationRuleEntitySelectorArgs',
@@ -103,6 +108,7 @@ __all__ = [
     'ElbSourceDefaultDateFormatArgs',
     'ElbSourceFilterArgs',
     'ElbSourcePathArgs',
+    'ElbSourcePathSnsTopicOrSubscriptionArnArgs',
     'ElbSourcePathTagFilterArgs',
     'GcpSourceAuthenticationArgs',
     'GcpSourceDefaultDateFormatArgs',
@@ -252,11 +258,13 @@ __all__ = [
     'S3AuditSourceDefaultDateFormatArgs',
     'S3AuditSourceFilterArgs',
     'S3AuditSourcePathArgs',
+    'S3AuditSourcePathSnsTopicOrSubscriptionArnArgs',
     'S3AuditSourcePathTagFilterArgs',
     'S3SourceAuthenticationArgs',
     'S3SourceDefaultDateFormatArgs',
     'S3SourceFilterArgs',
     'S3SourcePathArgs',
+    'S3SourcePathSnsTopicOrSubscriptionArnArgs',
     'S3SourcePathTagFilterArgs',
     'SamlConfigurationOnDemandProvisioningEnabledArgs',
 ]
@@ -411,6 +419,7 @@ class AwsInventorySourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -421,6 +430,8 @@ class AwsInventorySourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -470,6 +481,15 @@ class AwsInventorySourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -477,6 +497,35 @@ class AwsInventorySourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type
@@ -670,6 +719,7 @@ class AwsXraySourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -680,6 +730,8 @@ class AwsXraySourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -729,6 +781,15 @@ class AwsXraySourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -736,6 +797,35 @@ class AwsXraySourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class AwsXraySourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type
@@ -1007,6 +1097,7 @@ class CloudfrontSourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -1017,6 +1108,8 @@ class CloudfrontSourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -1066,6 +1159,15 @@ class CloudfrontSourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -1073,6 +1175,35 @@ class CloudfrontSourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type
@@ -1266,6 +1397,7 @@ class CloudtrailSourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -1276,6 +1408,8 @@ class CloudtrailSourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -1325,6 +1459,15 @@ class CloudtrailSourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -1332,6 +1475,35 @@ class CloudtrailSourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type
@@ -1525,6 +1697,7 @@ class CloudwatchSourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -1535,6 +1708,8 @@ class CloudwatchSourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -1584,6 +1759,15 @@ class CloudwatchSourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -1591,6 +1775,35 @@ class CloudwatchSourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type
@@ -4019,6 +4232,7 @@ class ElbSourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -4029,6 +4243,8 @@ class ElbSourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -4078,6 +4294,15 @@ class ElbSourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -4085,6 +4310,35 @@ class ElbSourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class ElbSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type
@@ -10178,6 +10432,7 @@ class S3AuditSourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -10188,6 +10443,8 @@ class S3AuditSourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -10237,6 +10494,15 @@ class S3AuditSourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -10244,6 +10510,35 @@ class S3AuditSourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class S3AuditSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type
@@ -10437,6 +10732,7 @@ class S3SourcePathArgs:
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathTagFilterArgs']]]] = None):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
@@ -10447,6 +10743,8 @@ class S3SourcePathArgs:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
 
@@ -10496,6 +10794,15 @@ class S3SourcePathArgs:
         pulumi.set(self, "path_expression", value)
 
     @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathTagFilterArgs']]]]:
         return pulumi.get(self, "tag_filters")
@@ -10503,6 +10810,35 @@ class S3SourcePathArgs:
     @tag_filters.setter
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
+
+
+@pulumi.input_type
+class S3SourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
 
 
 @pulumi.input_type

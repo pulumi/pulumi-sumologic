@@ -6,68 +6,6 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Sumologic AWS Inventory source to collect AWS resource inventory data.
- *
- * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const collector = new sumologic.Collector("collector", {
- *     description: "Just testing this",
- * });
- * const awsInventorySource = new sumologic.AwsInventorySource("aws_inventory_source", {
- *     authentication: {
- *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
- *         type: "AWSRoleBasedAuthentication",
- *     },
- *     category: "aws/aws_inventory",
- *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
- *     contentType: "AwsInventory",
- *     description: "My description",
- *     path: {
- *         limitToNamespaces: [
- *             "AWS/RDS",
- *             "AWS/EC2",
- *         ],
- *         limitToRegions: ["us-west-2"],
- *         type: "AwsInventoryPath",
- *     },
- *     paused: false,
- *     scanInterval: 300000,
- * });
- * ```
- * ## Argument reference
- *
- * In addition to the common properties, the following arguments are supported:
- *
- *  - `contentType` - (Required) The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
- *  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
- *  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
- *  - `authentication` - (Required) Authentication details to access AWS `Describe*` APIs.
- *      + `type` - (Required) Must be `AWSRoleBasedAuthentication`
- *      + `roleArn` - (Required) Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
- *  - `path` - (Required) The location to scan for new data.
- *      + `type` - (Required) type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
- *      + `limitToRegions` - (Optional) List of Amazon regions.
- *      + `limitToNamespaces` - (Optional) List of namespaces. By default all namespaces are selected. You can also choose a subset from
- *         + AWS/EC2
- *         + AWS/AutoScaling
- *         + AWS/EBS
- *         + AWS/ELB
- *         + AWS/ApplicationELB
- *         + AWS/NetworkELB
- *         + AWS/Lambda
- *         + AWS/RDS
- *         + AWS/Dynamodb
- *         + AWS/ECS
- *         + AWS/Elasticache
- *         + AWS/Redshift
- *         + AWS/Kinesis
- *
  * ## Import
  *
  * AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

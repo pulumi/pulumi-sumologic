@@ -34,6 +34,14 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
 
+        [Input("snsTopicOrSubscriptionArns")]
+        private InputList<Inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs>? _snsTopicOrSubscriptionArns;
+        public InputList<Inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs> SnsTopicOrSubscriptionArns
+        {
+            get => _snsTopicOrSubscriptionArns ?? (_snsTopicOrSubscriptionArns = new InputList<Inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs>());
+            set => _snsTopicOrSubscriptionArns = value;
+        }
+
         [Input("tagFilters")]
         private InputList<Inputs.CloudtrailSourcePathTagFilterArgs>? _tagFilters;
         public InputList<Inputs.CloudtrailSourcePathTagFilterArgs> TagFilters

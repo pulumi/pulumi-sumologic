@@ -75,6 +75,7 @@ import (
 //      + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 //      + `bucketName` - (Required) The name of the bucket.
 //      + `pathExpression` - (Required) The path to the data.
+//      + `snsTopicOrSubscriptionArn` - (Computed) This is a computed field for SNS topic/subscription ARN.
 //
 // ## Import
 //

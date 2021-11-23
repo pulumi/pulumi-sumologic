@@ -70,6 +70,7 @@ namespace Pulumi.SumoLogic
     ///      + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
     ///      + `bucket_name` - (Required) The name of the bucket.
     ///      + `path_expression` - (Required) The path to the data.
+    ///      + `sns_topic_or_subscription_arn` - (Computed) This is a computed field for SNS topic/subscription ARN.
     /// 
     /// ## Import
     /// 

@@ -29,8 +29,14 @@ export interface AwsInventorySourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface AwsInventorySourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface AwsInventorySourcePathTagFilter {
@@ -64,8 +70,14 @@ export interface AwsXraySourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface AwsXraySourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface AwsXraySourcePathTagFilter {
@@ -111,8 +123,14 @@ export interface CloudfrontSourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface CloudfrontSourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface CloudfrontSourcePathTagFilter {
@@ -146,8 +164,14 @@ export interface CloudtrailSourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface CloudtrailSourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface CloudtrailSourcePathTagFilter {
@@ -181,8 +205,14 @@ export interface CloudwatchSourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface CloudwatchSourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface CloudwatchSourcePathTagFilter {
@@ -572,8 +602,14 @@ export interface ElbSourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface ElbSourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface ElbSourcePathTagFilter {
@@ -1979,8 +2015,14 @@ export interface S3AuditSourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface S3AuditSourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface S3AuditSourcePathTagFilter {
@@ -2014,8 +2056,14 @@ export interface S3SourcePath {
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.S3SourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.S3SourcePathTagFilter>[]>;
     type: pulumi.Input<string>;
+}
+
+export interface S3SourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
 }
 
 export interface S3SourcePathTagFilter {
@@ -2029,3 +2077,4 @@ export interface SamlConfigurationOnDemandProvisioningEnabled {
     lastNameAttribute?: pulumi.Input<string>;
     onDemandProvisioningRoles: pulumi.Input<pulumi.Input<string>[]>;
 }
+

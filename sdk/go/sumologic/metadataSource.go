@@ -11,32 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Sumologic Metadata (Tag) source. This source allows you to collect tags from EC2 instances running on AWS.
-//
-// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
-//
-// ## Argument reference
-//
-// In addition to the common properties, the following arguments are supported:
-//
-//  - `contentType` - (Required) The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-//  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-//  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-//  - `authentication` - (Required) Authentication details for AWS access.
-//      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-//      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-//      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-//      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-//      + `region` - (Optional) Your AWS Bucket region.
-//  - `path` - (Required) The location to scan for new data.
-//      + `type` - (Required) type of polling source. Only allowed value is `AwsMetadataPath`.
-//      + `limitToRegions` - (Optional) List of Amazon regions.
-//      + `limitToNamespaces` - List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
-//      + `tagFilters` - (Optional) Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
-//
-// ### See also
-//   * [Sumologic > Sources > Sources for Hosted Collectors > AWS > AWS Metadata (Tag) Source][3]
-//
 // ## Import
 //
 // Metadata sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

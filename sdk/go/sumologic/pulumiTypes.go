@@ -416,12 +416,13 @@ func (o AwsInventorySourceFilterArrayOutput) Index(i pulumi.IntInput) AwsInvento
 }
 
 type AwsInventorySourcePath struct {
-	BucketName        *string                           `pulumi:"bucketName"`
-	LimitToNamespaces []string                          `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                          `pulumi:"limitToRegions"`
-	PathExpression    *string                           `pulumi:"pathExpression"`
-	TagFilters        []AwsInventorySourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                            `pulumi:"type"`
+	BucketName                 *string                                           `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                          `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                          `pulumi:"limitToRegions"`
+	PathExpression             *string                                           `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []AwsInventorySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []AwsInventorySourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                            `pulumi:"type"`
 }
 
 // AwsInventorySourcePathInput is an input type that accepts AwsInventorySourcePathArgs and AwsInventorySourcePathOutput values.
@@ -436,12 +437,13 @@ type AwsInventorySourcePathInput interface {
 }
 
 type AwsInventorySourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput                     `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput                   `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput                   `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput                     `pulumi:"pathExpression"`
-	TagFilters        AwsInventorySourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput                        `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                                     `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                                   `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                                   `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                                     `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 AwsInventorySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                                        `pulumi:"type"`
 }
 
 func (AwsInventorySourcePathArgs) ElementType() reflect.Type {
@@ -537,6 +539,12 @@ func (o AwsInventorySourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o AwsInventorySourcePathOutput) SnsTopicOrSubscriptionArns() AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v AwsInventorySourcePath) []AwsInventorySourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o AwsInventorySourcePathOutput) TagFilters() AwsInventorySourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) []AwsInventorySourcePathTagFilter { return v.TagFilters }).(AwsInventorySourcePathTagFilterArrayOutput)
 }
@@ -605,6 +613,15 @@ func (o AwsInventorySourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o AwsInventorySourcePathPtrOutput) SnsTopicOrSubscriptionArns() AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *AwsInventorySourcePath) []AwsInventorySourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o AwsInventorySourcePathPtrOutput) TagFilters() AwsInventorySourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *AwsInventorySourcePath) []AwsInventorySourcePathTagFilter {
 		if v == nil {
@@ -621,6 +638,106 @@ func (o AwsInventorySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type AwsInventorySourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// AwsInventorySourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs and AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `AwsInventorySourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs{...}
+type AwsInventorySourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToAwsInventorySourcePathSnsTopicOrSubscriptionArnOutput() AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput
+	ToAwsInventorySourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsInventorySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnOutput() AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToAwsInventorySourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts AwsInventorySourcePathSnsTopicOrSubscriptionArnArray and AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          AwsInventorySourcePathSnsTopicOrSubscriptionArnArray{ AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToAwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput() AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToAwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type AwsInventorySourcePathSnsTopicOrSubscriptionArnArray []AwsInventorySourcePathSnsTopicOrSubscriptionArnInput
+
+func (AwsInventorySourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsInventorySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i AwsInventorySourcePathSnsTopicOrSubscriptionArnArray) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput() AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToAwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i AwsInventorySourcePathSnsTopicOrSubscriptionArnArray) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsInventorySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnOutput() AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsInventorySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput() AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput) ToAwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsInventorySourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]AwsInventorySourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type AwsInventorySourcePathTagFilter struct {
@@ -1135,12 +1252,13 @@ func (o AwsXraySourceFilterArrayOutput) Index(i pulumi.IntInput) AwsXraySourceFi
 }
 
 type AwsXraySourcePath struct {
-	BucketName        *string                      `pulumi:"bucketName"`
-	LimitToNamespaces []string                     `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                     `pulumi:"limitToRegions"`
-	PathExpression    *string                      `pulumi:"pathExpression"`
-	TagFilters        []AwsXraySourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                       `pulumi:"type"`
+	BucketName                 *string                                      `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                     `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                     `pulumi:"limitToRegions"`
+	PathExpression             *string                                      `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []AwsXraySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []AwsXraySourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                       `pulumi:"type"`
 }
 
 // AwsXraySourcePathInput is an input type that accepts AwsXraySourcePathArgs and AwsXraySourcePathOutput values.
@@ -1155,12 +1273,13 @@ type AwsXraySourcePathInput interface {
 }
 
 type AwsXraySourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput                `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput              `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput              `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput                `pulumi:"pathExpression"`
-	TagFilters        AwsXraySourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput                   `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                                `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                              `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                              `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                                `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 AwsXraySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                                   `pulumi:"type"`
 }
 
 func (AwsXraySourcePathArgs) ElementType() reflect.Type {
@@ -1256,6 +1375,12 @@ func (o AwsXraySourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o AwsXraySourcePathOutput) SnsTopicOrSubscriptionArns() AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v AwsXraySourcePath) []AwsXraySourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o AwsXraySourcePathOutput) TagFilters() AwsXraySourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) []AwsXraySourcePathTagFilter { return v.TagFilters }).(AwsXraySourcePathTagFilterArrayOutput)
 }
@@ -1324,6 +1449,15 @@ func (o AwsXraySourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o AwsXraySourcePathPtrOutput) SnsTopicOrSubscriptionArns() AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *AwsXraySourcePath) []AwsXraySourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o AwsXraySourcePathPtrOutput) TagFilters() AwsXraySourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *AwsXraySourcePath) []AwsXraySourcePathTagFilter {
 		if v == nil {
@@ -1340,6 +1474,106 @@ func (o AwsXraySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type AwsXraySourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// AwsXraySourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts AwsXraySourcePathSnsTopicOrSubscriptionArnArgs and AwsXraySourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `AwsXraySourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          AwsXraySourcePathSnsTopicOrSubscriptionArnArgs{...}
+type AwsXraySourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToAwsXraySourcePathSnsTopicOrSubscriptionArnOutput() AwsXraySourcePathSnsTopicOrSubscriptionArnOutput
+	ToAwsXraySourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) AwsXraySourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type AwsXraySourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (AwsXraySourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsXraySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i AwsXraySourcePathSnsTopicOrSubscriptionArnArgs) ToAwsXraySourcePathSnsTopicOrSubscriptionArnOutput() AwsXraySourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToAwsXraySourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i AwsXraySourcePathSnsTopicOrSubscriptionArnArgs) ToAwsXraySourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) AwsXraySourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts AwsXraySourcePathSnsTopicOrSubscriptionArnArray and AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          AwsXraySourcePathSnsTopicOrSubscriptionArnArray{ AwsXraySourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToAwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput() AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToAwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type AwsXraySourcePathSnsTopicOrSubscriptionArnArray []AwsXraySourcePathSnsTopicOrSubscriptionArnInput
+
+func (AwsXraySourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsXraySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i AwsXraySourcePathSnsTopicOrSubscriptionArnArray) ToAwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput() AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToAwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i AwsXraySourcePathSnsTopicOrSubscriptionArnArray) ToAwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type AwsXraySourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (AwsXraySourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsXraySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o AwsXraySourcePathSnsTopicOrSubscriptionArnOutput) ToAwsXraySourcePathSnsTopicOrSubscriptionArnOutput() AwsXraySourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o AwsXraySourcePathSnsTopicOrSubscriptionArnOutput) ToAwsXraySourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) AwsXraySourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o AwsXraySourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsXraySourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsXraySourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput) ToAwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput() AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput) ToAwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) AwsXraySourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsXraySourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]AwsXraySourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(AwsXraySourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type AwsXraySourcePathTagFilter struct {
@@ -2066,12 +2300,13 @@ func (o CloudfrontSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudfrontSo
 }
 
 type CloudfrontSourcePath struct {
-	BucketName        *string                         `pulumi:"bucketName"`
-	LimitToNamespaces []string                        `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                        `pulumi:"limitToRegions"`
-	PathExpression    *string                         `pulumi:"pathExpression"`
-	TagFilters        []CloudfrontSourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                          `pulumi:"type"`
+	BucketName                 *string                                         `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                        `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                        `pulumi:"limitToRegions"`
+	PathExpression             *string                                         `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []CloudfrontSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []CloudfrontSourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                          `pulumi:"type"`
 }
 
 // CloudfrontSourcePathInput is an input type that accepts CloudfrontSourcePathArgs and CloudfrontSourcePathOutput values.
@@ -2086,12 +2321,13 @@ type CloudfrontSourcePathInput interface {
 }
 
 type CloudfrontSourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput                   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput                 `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput                 `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput                   `pulumi:"pathExpression"`
-	TagFilters        CloudfrontSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput                      `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                                   `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                                 `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                                 `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 CloudfrontSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                                      `pulumi:"type"`
 }
 
 func (CloudfrontSourcePathArgs) ElementType() reflect.Type {
@@ -2187,6 +2423,12 @@ func (o CloudfrontSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudfrontSourcePathOutput) SnsTopicOrSubscriptionArns() CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v CloudfrontSourcePath) []CloudfrontSourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o CloudfrontSourcePathOutput) TagFilters() CloudfrontSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) []CloudfrontSourcePathTagFilter { return v.TagFilters }).(CloudfrontSourcePathTagFilterArrayOutput)
 }
@@ -2255,6 +2497,15 @@ func (o CloudfrontSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudfrontSourcePathPtrOutput) SnsTopicOrSubscriptionArns() CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *CloudfrontSourcePath) []CloudfrontSourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o CloudfrontSourcePathPtrOutput) TagFilters() CloudfrontSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *CloudfrontSourcePath) []CloudfrontSourcePathTagFilter {
 		if v == nil {
@@ -2271,6 +2522,106 @@ func (o CloudfrontSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type CloudfrontSourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// CloudfrontSourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs and CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `CloudfrontSourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs{...}
+type CloudfrontSourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToCloudfrontSourcePathSnsTopicOrSubscriptionArnOutput() CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput
+	ToCloudfrontSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudfrontSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnOutput() CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToCloudfrontSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts CloudfrontSourcePathSnsTopicOrSubscriptionArnArray and CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          CloudfrontSourcePathSnsTopicOrSubscriptionArnArray{ CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToCloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToCloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type CloudfrontSourcePathSnsTopicOrSubscriptionArnArray []CloudfrontSourcePathSnsTopicOrSubscriptionArnInput
+
+func (CloudfrontSourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudfrontSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i CloudfrontSourcePathSnsTopicOrSubscriptionArnArray) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToCloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i CloudfrontSourcePathSnsTopicOrSubscriptionArnArray) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudfrontSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnOutput() CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudfrontSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToCloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudfrontSourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]CloudfrontSourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type CloudfrontSourcePathTagFilter struct {
@@ -2785,12 +3136,13 @@ func (o CloudtrailSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudtrailSo
 }
 
 type CloudtrailSourcePath struct {
-	BucketName        *string                         `pulumi:"bucketName"`
-	LimitToNamespaces []string                        `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                        `pulumi:"limitToRegions"`
-	PathExpression    *string                         `pulumi:"pathExpression"`
-	TagFilters        []CloudtrailSourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                          `pulumi:"type"`
+	BucketName                 *string                                         `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                        `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                        `pulumi:"limitToRegions"`
+	PathExpression             *string                                         `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []CloudtrailSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []CloudtrailSourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                          `pulumi:"type"`
 }
 
 // CloudtrailSourcePathInput is an input type that accepts CloudtrailSourcePathArgs and CloudtrailSourcePathOutput values.
@@ -2805,12 +3157,13 @@ type CloudtrailSourcePathInput interface {
 }
 
 type CloudtrailSourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput                   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput                 `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput                 `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput                   `pulumi:"pathExpression"`
-	TagFilters        CloudtrailSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput                      `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                                   `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                                 `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                                 `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 CloudtrailSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                                      `pulumi:"type"`
 }
 
 func (CloudtrailSourcePathArgs) ElementType() reflect.Type {
@@ -2906,6 +3259,12 @@ func (o CloudtrailSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudtrailSourcePathOutput) SnsTopicOrSubscriptionArns() CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v CloudtrailSourcePath) []CloudtrailSourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o CloudtrailSourcePathOutput) TagFilters() CloudtrailSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) []CloudtrailSourcePathTagFilter { return v.TagFilters }).(CloudtrailSourcePathTagFilterArrayOutput)
 }
@@ -2974,6 +3333,15 @@ func (o CloudtrailSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudtrailSourcePathPtrOutput) SnsTopicOrSubscriptionArns() CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *CloudtrailSourcePath) []CloudtrailSourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o CloudtrailSourcePathPtrOutput) TagFilters() CloudtrailSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *CloudtrailSourcePath) []CloudtrailSourcePathTagFilter {
 		if v == nil {
@@ -2990,6 +3358,106 @@ func (o CloudtrailSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type CloudtrailSourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// CloudtrailSourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs and CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `CloudtrailSourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs{...}
+type CloudtrailSourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToCloudtrailSourcePathSnsTopicOrSubscriptionArnOutput() CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput
+	ToCloudtrailSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudtrailSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnOutput() CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToCloudtrailSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts CloudtrailSourcePathSnsTopicOrSubscriptionArnArray and CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          CloudtrailSourcePathSnsTopicOrSubscriptionArnArray{ CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToCloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToCloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type CloudtrailSourcePathSnsTopicOrSubscriptionArnArray []CloudtrailSourcePathSnsTopicOrSubscriptionArnInput
+
+func (CloudtrailSourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudtrailSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i CloudtrailSourcePathSnsTopicOrSubscriptionArnArray) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToCloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i CloudtrailSourcePathSnsTopicOrSubscriptionArnArray) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudtrailSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnOutput() CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudtrailSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToCloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudtrailSourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]CloudtrailSourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type CloudtrailSourcePathTagFilter struct {
@@ -3504,12 +3972,13 @@ func (o CloudwatchSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudwatchSo
 }
 
 type CloudwatchSourcePath struct {
-	BucketName        *string                         `pulumi:"bucketName"`
-	LimitToNamespaces []string                        `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                        `pulumi:"limitToRegions"`
-	PathExpression    *string                         `pulumi:"pathExpression"`
-	TagFilters        []CloudwatchSourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                          `pulumi:"type"`
+	BucketName                 *string                                         `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                        `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                        `pulumi:"limitToRegions"`
+	PathExpression             *string                                         `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []CloudwatchSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []CloudwatchSourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                          `pulumi:"type"`
 }
 
 // CloudwatchSourcePathInput is an input type that accepts CloudwatchSourcePathArgs and CloudwatchSourcePathOutput values.
@@ -3524,12 +3993,13 @@ type CloudwatchSourcePathInput interface {
 }
 
 type CloudwatchSourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput                   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput                 `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput                 `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput                   `pulumi:"pathExpression"`
-	TagFilters        CloudwatchSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput                      `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                                   `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                                 `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                                 `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 CloudwatchSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                                      `pulumi:"type"`
 }
 
 func (CloudwatchSourcePathArgs) ElementType() reflect.Type {
@@ -3625,6 +4095,12 @@ func (o CloudwatchSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudwatchSourcePathOutput) SnsTopicOrSubscriptionArns() CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v CloudwatchSourcePath) []CloudwatchSourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o CloudwatchSourcePathOutput) TagFilters() CloudwatchSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) []CloudwatchSourcePathTagFilter { return v.TagFilters }).(CloudwatchSourcePathTagFilterArrayOutput)
 }
@@ -3693,6 +4169,15 @@ func (o CloudwatchSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudwatchSourcePathPtrOutput) SnsTopicOrSubscriptionArns() CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *CloudwatchSourcePath) []CloudwatchSourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o CloudwatchSourcePathPtrOutput) TagFilters() CloudwatchSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *CloudwatchSourcePath) []CloudwatchSourcePathTagFilter {
 		if v == nil {
@@ -3709,6 +4194,106 @@ func (o CloudwatchSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type CloudwatchSourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// CloudwatchSourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs and CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `CloudwatchSourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs{...}
+type CloudwatchSourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToCloudwatchSourcePathSnsTopicOrSubscriptionArnOutput() CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput
+	ToCloudwatchSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudwatchSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnOutput() CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToCloudwatchSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts CloudwatchSourcePathSnsTopicOrSubscriptionArnArray and CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          CloudwatchSourcePathSnsTopicOrSubscriptionArnArray{ CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToCloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToCloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type CloudwatchSourcePathSnsTopicOrSubscriptionArnArray []CloudwatchSourcePathSnsTopicOrSubscriptionArnInput
+
+func (CloudwatchSourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudwatchSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i CloudwatchSourcePathSnsTopicOrSubscriptionArnArray) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToCloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i CloudwatchSourcePathSnsTopicOrSubscriptionArnArray) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudwatchSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnOutput() CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudwatchSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput() CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToCloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudwatchSourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]CloudwatchSourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type CloudwatchSourcePathTagFilter struct {
@@ -12800,12 +13385,13 @@ func (o ElbSourceFilterArrayOutput) Index(i pulumi.IntInput) ElbSourceFilterOutp
 }
 
 type ElbSourcePath struct {
-	BucketName        *string                  `pulumi:"bucketName"`
-	LimitToNamespaces []string                 `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                 `pulumi:"limitToRegions"`
-	PathExpression    *string                  `pulumi:"pathExpression"`
-	TagFilters        []ElbSourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                   `pulumi:"type"`
+	BucketName                 *string                                  `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                 `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                 `pulumi:"limitToRegions"`
+	PathExpression             *string                                  `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []ElbSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []ElbSourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                   `pulumi:"type"`
 }
 
 // ElbSourcePathInput is an input type that accepts ElbSourcePathArgs and ElbSourcePathOutput values.
@@ -12820,12 +13406,13 @@ type ElbSourcePathInput interface {
 }
 
 type ElbSourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput            `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput          `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput          `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput            `pulumi:"pathExpression"`
-	TagFilters        ElbSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput               `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                            `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                          `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                          `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                            `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns ElbSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 ElbSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                               `pulumi:"type"`
 }
 
 func (ElbSourcePathArgs) ElementType() reflect.Type {
@@ -12921,6 +13508,10 @@ func (o ElbSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o ElbSourcePathOutput) SnsTopicOrSubscriptionArns() ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v ElbSourcePath) []ElbSourcePathSnsTopicOrSubscriptionArn { return v.SnsTopicOrSubscriptionArns }).(ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o ElbSourcePathOutput) TagFilters() ElbSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v ElbSourcePath) []ElbSourcePathTagFilter { return v.TagFilters }).(ElbSourcePathTagFilterArrayOutput)
 }
@@ -12989,6 +13580,15 @@ func (o ElbSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ElbSourcePathPtrOutput) SnsTopicOrSubscriptionArns() ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *ElbSourcePath) []ElbSourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o ElbSourcePathPtrOutput) TagFilters() ElbSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *ElbSourcePath) []ElbSourcePathTagFilter {
 		if v == nil {
@@ -13005,6 +13605,106 @@ func (o ElbSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type ElbSourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// ElbSourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts ElbSourcePathSnsTopicOrSubscriptionArnArgs and ElbSourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `ElbSourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          ElbSourcePathSnsTopicOrSubscriptionArnArgs{...}
+type ElbSourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToElbSourcePathSnsTopicOrSubscriptionArnOutput() ElbSourcePathSnsTopicOrSubscriptionArnOutput
+	ToElbSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) ElbSourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type ElbSourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (ElbSourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElbSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i ElbSourcePathSnsTopicOrSubscriptionArnArgs) ToElbSourcePathSnsTopicOrSubscriptionArnOutput() ElbSourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToElbSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i ElbSourcePathSnsTopicOrSubscriptionArnArgs) ToElbSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) ElbSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElbSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// ElbSourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts ElbSourcePathSnsTopicOrSubscriptionArnArray and ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `ElbSourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          ElbSourcePathSnsTopicOrSubscriptionArnArray{ ElbSourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type ElbSourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToElbSourcePathSnsTopicOrSubscriptionArnArrayOutput() ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToElbSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type ElbSourcePathSnsTopicOrSubscriptionArnArray []ElbSourcePathSnsTopicOrSubscriptionArnInput
+
+func (ElbSourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElbSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i ElbSourcePathSnsTopicOrSubscriptionArnArray) ToElbSourcePathSnsTopicOrSubscriptionArnArrayOutput() ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToElbSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i ElbSourcePathSnsTopicOrSubscriptionArnArray) ToElbSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type ElbSourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (ElbSourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElbSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o ElbSourcePathSnsTopicOrSubscriptionArnOutput) ToElbSourcePathSnsTopicOrSubscriptionArnOutput() ElbSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o ElbSourcePathSnsTopicOrSubscriptionArnOutput) ToElbSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) ElbSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o ElbSourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElbSourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElbSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToElbSourcePathSnsTopicOrSubscriptionArnArrayOutput() ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToElbSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) ElbSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElbSourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]ElbSourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(ElbSourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type ElbSourcePathTagFilter struct {
@@ -31483,12 +32183,13 @@ func (o S3AuditSourceFilterArrayOutput) Index(i pulumi.IntInput) S3AuditSourceFi
 }
 
 type S3AuditSourcePath struct {
-	BucketName        *string                      `pulumi:"bucketName"`
-	LimitToNamespaces []string                     `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                     `pulumi:"limitToRegions"`
-	PathExpression    *string                      `pulumi:"pathExpression"`
-	TagFilters        []S3AuditSourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                       `pulumi:"type"`
+	BucketName                 *string                                      `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                     `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                     `pulumi:"limitToRegions"`
+	PathExpression             *string                                      `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []S3AuditSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []S3AuditSourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                       `pulumi:"type"`
 }
 
 // S3AuditSourcePathInput is an input type that accepts S3AuditSourcePathArgs and S3AuditSourcePathOutput values.
@@ -31503,12 +32204,13 @@ type S3AuditSourcePathInput interface {
 }
 
 type S3AuditSourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput                `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput              `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput              `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput                `pulumi:"pathExpression"`
-	TagFilters        S3AuditSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput                   `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                                `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                              `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                              `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                                `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 S3AuditSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                                   `pulumi:"type"`
 }
 
 func (S3AuditSourcePathArgs) ElementType() reflect.Type {
@@ -31604,6 +32306,12 @@ func (o S3AuditSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o S3AuditSourcePathOutput) SnsTopicOrSubscriptionArns() S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v S3AuditSourcePath) []S3AuditSourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o S3AuditSourcePathOutput) TagFilters() S3AuditSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) []S3AuditSourcePathTagFilter { return v.TagFilters }).(S3AuditSourcePathTagFilterArrayOutput)
 }
@@ -31672,6 +32380,15 @@ func (o S3AuditSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o S3AuditSourcePathPtrOutput) SnsTopicOrSubscriptionArns() S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *S3AuditSourcePath) []S3AuditSourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o S3AuditSourcePathPtrOutput) TagFilters() S3AuditSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *S3AuditSourcePath) []S3AuditSourcePathTagFilter {
 		if v == nil {
@@ -31688,6 +32405,106 @@ func (o S3AuditSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type S3AuditSourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// S3AuditSourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts S3AuditSourcePathSnsTopicOrSubscriptionArnArgs and S3AuditSourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `S3AuditSourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          S3AuditSourcePathSnsTopicOrSubscriptionArnArgs{...}
+type S3AuditSourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToS3AuditSourcePathSnsTopicOrSubscriptionArnOutput() S3AuditSourcePathSnsTopicOrSubscriptionArnOutput
+	ToS3AuditSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) S3AuditSourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type S3AuditSourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (S3AuditSourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3AuditSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i S3AuditSourcePathSnsTopicOrSubscriptionArnArgs) ToS3AuditSourcePathSnsTopicOrSubscriptionArnOutput() S3AuditSourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToS3AuditSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i S3AuditSourcePathSnsTopicOrSubscriptionArnArgs) ToS3AuditSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) S3AuditSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3AuditSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts S3AuditSourcePathSnsTopicOrSubscriptionArnArray and S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          S3AuditSourcePathSnsTopicOrSubscriptionArnArray{ S3AuditSourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToS3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput() S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToS3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type S3AuditSourcePathSnsTopicOrSubscriptionArnArray []S3AuditSourcePathSnsTopicOrSubscriptionArnInput
+
+func (S3AuditSourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3AuditSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i S3AuditSourcePathSnsTopicOrSubscriptionArnArray) ToS3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput() S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToS3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i S3AuditSourcePathSnsTopicOrSubscriptionArnArray) ToS3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type S3AuditSourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (S3AuditSourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3AuditSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o S3AuditSourcePathSnsTopicOrSubscriptionArnOutput) ToS3AuditSourcePathSnsTopicOrSubscriptionArnOutput() S3AuditSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o S3AuditSourcePathSnsTopicOrSubscriptionArnOutput) ToS3AuditSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) S3AuditSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o S3AuditSourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v S3AuditSourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3AuditSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToS3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput() S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToS3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) S3AuditSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3AuditSourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]S3AuditSourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(S3AuditSourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type S3AuditSourcePathTagFilter struct {
@@ -32202,12 +33019,13 @@ func (o S3SourceFilterArrayOutput) Index(i pulumi.IntInput) S3SourceFilterOutput
 }
 
 type S3SourcePath struct {
-	BucketName        *string                 `pulumi:"bucketName"`
-	LimitToNamespaces []string                `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                `pulumi:"limitToRegions"`
-	PathExpression    *string                 `pulumi:"pathExpression"`
-	TagFilters        []S3SourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                  `pulumi:"type"`
+	BucketName                 *string                                 `pulumi:"bucketName"`
+	LimitToNamespaces          []string                                `pulumi:"limitToNamespaces"`
+	LimitToRegions             []string                                `pulumi:"limitToRegions"`
+	PathExpression             *string                                 `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []S3SourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []S3SourcePathTagFilter                 `pulumi:"tagFilters"`
+	Type                       string                                  `pulumi:"type"`
 }
 
 // S3SourcePathInput is an input type that accepts S3SourcePathArgs and S3SourcePathOutput values.
@@ -32222,12 +33040,13 @@ type S3SourcePathInput interface {
 }
 
 type S3SourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput           `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput         `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput         `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput           `pulumi:"pathExpression"`
-	TagFilters        S3SourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput              `pulumi:"type"`
+	BucketName                 pulumi.StringPtrInput                           `pulumi:"bucketName"`
+	LimitToNamespaces          pulumi.StringArrayInput                         `pulumi:"limitToNamespaces"`
+	LimitToRegions             pulumi.StringArrayInput                         `pulumi:"limitToRegions"`
+	PathExpression             pulumi.StringPtrInput                           `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns S3SourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 S3SourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	Type                       pulumi.StringInput                              `pulumi:"type"`
 }
 
 func (S3SourcePathArgs) ElementType() reflect.Type {
@@ -32323,6 +33142,10 @@ func (o S3SourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+func (o S3SourcePathOutput) SnsTopicOrSubscriptionArns() S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v S3SourcePath) []S3SourcePathSnsTopicOrSubscriptionArn { return v.SnsTopicOrSubscriptionArns }).(S3SourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o S3SourcePathOutput) TagFilters() S3SourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v S3SourcePath) []S3SourcePathTagFilter { return v.TagFilters }).(S3SourcePathTagFilterArrayOutput)
 }
@@ -32391,6 +33214,15 @@ func (o S3SourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o S3SourcePathPtrOutput) SnsTopicOrSubscriptionArns() S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *S3SourcePath) []S3SourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(S3SourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
 func (o S3SourcePathPtrOutput) TagFilters() S3SourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *S3SourcePath) []S3SourcePathTagFilter {
 		if v == nil {
@@ -32407,6 +33239,106 @@ func (o S3SourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type S3SourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// S3SourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts S3SourcePathSnsTopicOrSubscriptionArnArgs and S3SourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `S3SourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          S3SourcePathSnsTopicOrSubscriptionArnArgs{...}
+type S3SourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToS3SourcePathSnsTopicOrSubscriptionArnOutput() S3SourcePathSnsTopicOrSubscriptionArnOutput
+	ToS3SourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) S3SourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type S3SourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (S3SourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3SourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i S3SourcePathSnsTopicOrSubscriptionArnArgs) ToS3SourcePathSnsTopicOrSubscriptionArnOutput() S3SourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToS3SourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i S3SourcePathSnsTopicOrSubscriptionArnArgs) ToS3SourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) S3SourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3SourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// S3SourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts S3SourcePathSnsTopicOrSubscriptionArnArray and S3SourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `S3SourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          S3SourcePathSnsTopicOrSubscriptionArnArray{ S3SourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type S3SourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToS3SourcePathSnsTopicOrSubscriptionArnArrayOutput() S3SourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToS3SourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) S3SourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type S3SourcePathSnsTopicOrSubscriptionArnArray []S3SourcePathSnsTopicOrSubscriptionArnInput
+
+func (S3SourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3SourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i S3SourcePathSnsTopicOrSubscriptionArnArray) ToS3SourcePathSnsTopicOrSubscriptionArnArrayOutput() S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToS3SourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i S3SourcePathSnsTopicOrSubscriptionArnArray) ToS3SourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3SourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type S3SourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (S3SourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3SourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o S3SourcePathSnsTopicOrSubscriptionArnOutput) ToS3SourcePathSnsTopicOrSubscriptionArnOutput() S3SourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o S3SourcePathSnsTopicOrSubscriptionArnOutput) ToS3SourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) S3SourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o S3SourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v S3SourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type S3SourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (S3SourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3SourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o S3SourcePathSnsTopicOrSubscriptionArnArrayOutput) ToS3SourcePathSnsTopicOrSubscriptionArnArrayOutput() S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o S3SourcePathSnsTopicOrSubscriptionArnArrayOutput) ToS3SourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o S3SourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) S3SourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3SourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]S3SourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(S3SourcePathSnsTopicOrSubscriptionArnOutput)
 }
 
 type S3SourcePathTagFilter struct {
@@ -32687,6 +33619,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceFilterArrayInput)(nil)).Elem(), AwsInventorySourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathInput)(nil)).Elem(), AwsInventorySourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathPtrInput)(nil)).Elem(), AwsInventorySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), AwsInventorySourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathTagFilterInput)(nil)).Elem(), AwsInventorySourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathTagFilterArrayInput)(nil)).Elem(), AwsInventorySourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceAuthenticationInput)(nil)).Elem(), AwsXraySourceAuthenticationArgs{})
@@ -32697,6 +33631,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceFilterArrayInput)(nil)).Elem(), AwsXraySourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathInput)(nil)).Elem(), AwsXraySourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathPtrInput)(nil)).Elem(), AwsXraySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), AwsXraySourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), AwsXraySourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathTagFilterInput)(nil)).Elem(), AwsXraySourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathTagFilterArrayInput)(nil)).Elem(), AwsXraySourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceDefaultDateFormatInput)(nil)).Elem(), CloudSyslogSourceDefaultDateFormatArgs{})
@@ -32711,6 +33647,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceFilterArrayInput)(nil)).Elem(), CloudfrontSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathInput)(nil)).Elem(), CloudfrontSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathPtrInput)(nil)).Elem(), CloudfrontSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), CloudfrontSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathTagFilterInput)(nil)).Elem(), CloudfrontSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathTagFilterArrayInput)(nil)).Elem(), CloudfrontSourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceAuthenticationInput)(nil)).Elem(), CloudtrailSourceAuthenticationArgs{})
@@ -32721,6 +33659,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceFilterArrayInput)(nil)).Elem(), CloudtrailSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathInput)(nil)).Elem(), CloudtrailSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathPtrInput)(nil)).Elem(), CloudtrailSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), CloudtrailSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathTagFilterInput)(nil)).Elem(), CloudtrailSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathTagFilterArrayInput)(nil)).Elem(), CloudtrailSourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceAuthenticationInput)(nil)).Elem(), CloudwatchSourceAuthenticationArgs{})
@@ -32731,6 +33671,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceFilterArrayInput)(nil)).Elem(), CloudwatchSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathInput)(nil)).Elem(), CloudwatchSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathPtrInput)(nil)).Elem(), CloudwatchSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), CloudwatchSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathTagFilterInput)(nil)).Elem(), CloudwatchSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathTagFilterArrayInput)(nil)).Elem(), CloudwatchSourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleAggregationFunctionInput)(nil)).Elem(), CseAggregationRuleAggregationFunctionArgs{})
@@ -32866,6 +33808,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceFilterArrayInput)(nil)).Elem(), ElbSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathInput)(nil)).Elem(), ElbSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathPtrInput)(nil)).Elem(), ElbSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), ElbSourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), ElbSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathTagFilterInput)(nil)).Elem(), ElbSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathTagFilterArrayInput)(nil)).Elem(), ElbSourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceAuthenticationInput)(nil)).Elem(), GcpSourceAuthenticationArgs{})
@@ -33132,6 +34076,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceFilterArrayInput)(nil)).Elem(), S3AuditSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathInput)(nil)).Elem(), S3AuditSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathPtrInput)(nil)).Elem(), S3AuditSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), S3AuditSourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), S3AuditSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathTagFilterInput)(nil)).Elem(), S3AuditSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathTagFilterArrayInput)(nil)).Elem(), S3AuditSourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceAuthenticationInput)(nil)).Elem(), S3SourceAuthenticationArgs{})
@@ -33142,6 +34088,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceFilterArrayInput)(nil)).Elem(), S3SourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathInput)(nil)).Elem(), S3SourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathPtrInput)(nil)).Elem(), S3SourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), S3SourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), S3SourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathTagFilterInput)(nil)).Elem(), S3SourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathTagFilterArrayInput)(nil)).Elem(), S3SourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationOnDemandProvisioningEnabledInput)(nil)).Elem(), SamlConfigurationOnDemandProvisioningEnabledArgs{})
@@ -33154,6 +34102,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsInventorySourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathPtrOutput{})
+	pulumi.RegisterOutputType(AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(AwsXraySourceAuthenticationOutput{})
@@ -33164,6 +34114,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsXraySourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathPtrOutput{})
+	pulumi.RegisterOutputType(AwsXraySourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudSyslogSourceDefaultDateFormatOutput{})
@@ -33178,6 +34130,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudfrontSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourceAuthenticationOutput{})
@@ -33188,6 +34142,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudtrailSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourceAuthenticationOutput{})
@@ -33198,6 +34154,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudwatchSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(CseAggregationRuleAggregationFunctionOutput{})
@@ -33333,6 +34291,8 @@ func init() {
 	pulumi.RegisterOutputType(ElbSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(ElbSourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(GcpSourceAuthenticationOutput{})
@@ -33599,6 +34559,8 @@ func init() {
 	pulumi.RegisterOutputType(S3AuditSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(S3AuditSourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(S3SourceAuthenticationOutput{})
@@ -33609,6 +34571,8 @@ func init() {
 	pulumi.RegisterOutputType(S3SourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(S3SourcePathOutput{})
 	pulumi.RegisterOutputType(S3SourcePathPtrOutput{})
+	pulumi.RegisterOutputType(S3SourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(S3SourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(S3SourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(S3SourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(SamlConfigurationOnDemandProvisioningEnabledOutput{})
