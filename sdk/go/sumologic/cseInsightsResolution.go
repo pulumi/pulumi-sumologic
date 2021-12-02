@@ -35,17 +35,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) The name of the insights resolution.
-// - `description` - (Required) The description of the insights resolution.
-// - `parent` - (Required) The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the insights resolution.
 //
 // ## Import
 //
@@ -57,9 +46,12 @@ import (
 type CseInsightsResolution struct {
 	pulumi.CustomResourceState
 
+	// The description of the insights resolution.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Name        pulumi.StringOutput    `pulumi:"name"`
-	Parent      pulumi.StringPtrOutput `pulumi:"parent"`
+	// The name of the insights resolution.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 }
 
 // NewCseInsightsResolution registers a new resource with the given unique name, arguments, and options.
@@ -91,15 +83,21 @@ func GetCseInsightsResolution(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseInsightsResolution resources.
 type cseInsightsResolutionState struct {
+	// The description of the insights resolution.
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
-	Parent      *string `pulumi:"parent"`
+	// The name of the insights resolution.
+	Name *string `pulumi:"name"`
+	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	Parent *string `pulumi:"parent"`
 }
 
 type CseInsightsResolutionState struct {
+	// The description of the insights resolution.
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	Parent      pulumi.StringPtrInput
+	// The name of the insights resolution.
+	Name pulumi.StringPtrInput
+	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	Parent pulumi.StringPtrInput
 }
 
 func (CseInsightsResolutionState) ElementType() reflect.Type {
@@ -107,16 +105,22 @@ func (CseInsightsResolutionState) ElementType() reflect.Type {
 }
 
 type cseInsightsResolutionArgs struct {
+	// The description of the insights resolution.
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
-	Parent      *string `pulumi:"parent"`
+	// The name of the insights resolution.
+	Name *string `pulumi:"name"`
+	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	Parent *string `pulumi:"parent"`
 }
 
 // The set of arguments for constructing a CseInsightsResolution resource.
 type CseInsightsResolutionArgs struct {
+	// The description of the insights resolution.
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	Parent      pulumi.StringPtrInput
+	// The name of the insights resolution.
+	Name pulumi.StringPtrInput
+	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	Parent pulumi.StringPtrInput
 }
 
 func (CseInsightsResolutionArgs) ElementType() reflect.Type {

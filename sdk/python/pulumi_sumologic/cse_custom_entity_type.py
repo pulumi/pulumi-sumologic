@@ -18,6 +18,9 @@ class CseCustomEntityTypeArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseCustomEntityType resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
+        :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "identifier", identifier)
@@ -27,6 +30,9 @@ class CseCustomEntityTypeArgs:
     @property
     @pulumi.getter
     def fields(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -36,6 +42,9 @@ class CseCustomEntityTypeArgs:
     @property
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
+        """
+        Machine friendly and unique identifier. Example: "filehash".
+        """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
@@ -45,6 +54,9 @@ class CseCustomEntityTypeArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human friend and unique name. Example: "File Hash".
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -60,6 +72,9 @@ class _CseCustomEntityTypeState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseCustomEntityType resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
+        :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
@@ -71,6 +86,9 @@ class _CseCustomEntityTypeState:
     @property
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -80,6 +98,9 @@ class _CseCustomEntityTypeState:
     @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Machine friendly and unique identifier. Example: "filehash".
+        """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
@@ -89,6 +110,9 @@ class _CseCustomEntityTypeState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human friend and unique name. Example: "File Hash".
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -121,17 +145,6 @@ class CseCustomEntityType(pulumi.CustomResource):
             ],
             identifier="identifier")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) Human friend and unique name. Example: "File Hash".
-        - `identifier` - (Required) Machine friendly and unique identifier. Example: "filehash".
-        - `fields` - (Required) Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the custom entity type.
 
         ## Import
 
@@ -143,6 +156,9 @@ class CseCustomEntityType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
+        :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
         ...
     @overload
@@ -166,17 +182,6 @@ class CseCustomEntityType(pulumi.CustomResource):
             ],
             identifier="identifier")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) Human friend and unique name. Example: "File Hash".
-        - `identifier` - (Required) Machine friendly and unique identifier. Example: "filehash".
-        - `fields` - (Required) Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the custom entity type.
 
         ## Import
 
@@ -243,6 +248,9 @@ class CseCustomEntityType(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
+        :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -256,15 +264,24 @@ class CseCustomEntityType(pulumi.CustomResource):
     @property
     @pulumi.getter
     def fields(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        """
         return pulumi.get(self, "fields")
 
     @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
+        """
+        Machine friendly and unique identifier. Example: "filehash".
+        """
         return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Human friend and unique name. Example: "File Hash".
+        """
         return pulumi.get(self, "name")
 

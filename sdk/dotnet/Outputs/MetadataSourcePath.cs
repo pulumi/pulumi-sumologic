@@ -13,9 +13,21 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MetadataSourcePath
     {
+        /// <summary>
+        /// List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
+        /// </summary>
         public readonly ImmutableArray<string> LimitToNamespaces;
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
+        /// <summary>
+        /// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+        /// </summary>
         public readonly ImmutableArray<string> TagFilters;
+        /// <summary>
+        /// type of polling source. Only allowed value is `AwsMetadataPath`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

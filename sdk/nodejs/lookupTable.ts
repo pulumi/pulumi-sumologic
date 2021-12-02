@@ -32,20 +32,6 @@ import * as utilities from "./utilities";
  *     ttl: 100,
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) The name of the lookup table.
- * - `parentFolderId` - (Required) The parent-folder-path identifier of the lookup table in the Library.
- * - `description` - (Required) The description of the lookup table.
- * - `fields` - (Required) The list of fields in the lookup table.
- *   - `fieldName` - (Required) The name of the field.
- *   - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
- * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
- * - `ttl` - (Optional) A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
- * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
- *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -90,18 +76,30 @@ export class LookupTable extends pulumi.CustomResource {
         return obj['__pulumiType'] === LookupTable.__pulumiType;
     }
 
+    /**
+     * The description of the lookup table.
+     */
     public readonly description!: pulumi.Output<string>;
     /**
      * The list of fields in the lookup table.
      */
     public readonly fields!: pulumi.Output<outputs.LookupTableField[] | undefined>;
+    /**
+     * The name of the lookup table.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The parent-folder-path identifier of the lookup table in the Library.
+     */
     public readonly parentFolderId!: pulumi.Output<string | undefined>;
     /**
      * The primary key field names.
      */
     public readonly primaryKeys!: pulumi.Output<string[] | undefined>;
     public readonly sizeLimitAction!: pulumi.Output<string | undefined>;
+    /**
+     * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     */
     public readonly ttl!: pulumi.Output<number | undefined>;
 
     /**
@@ -148,18 +146,30 @@ export class LookupTable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LookupTable resources.
  */
 export interface LookupTableState {
+    /**
+     * The description of the lookup table.
+     */
     description?: pulumi.Input<string>;
     /**
      * The list of fields in the lookup table.
      */
     fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
+    /**
+     * The name of the lookup table.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The parent-folder-path identifier of the lookup table in the Library.
+     */
     parentFolderId?: pulumi.Input<string>;
     /**
      * The primary key field names.
      */
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     sizeLimitAction?: pulumi.Input<string>;
+    /**
+     * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     */
     ttl?: pulumi.Input<number>;
 }
 
@@ -167,17 +177,29 @@ export interface LookupTableState {
  * The set of arguments for constructing a LookupTable resource.
  */
 export interface LookupTableArgs {
+    /**
+     * The description of the lookup table.
+     */
     description: pulumi.Input<string>;
     /**
      * The list of fields in the lookup table.
      */
     fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
+    /**
+     * The name of the lookup table.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The parent-folder-path identifier of the lookup table in the Library.
+     */
     parentFolderId?: pulumi.Input<string>;
     /**
      * The primary key field names.
      */
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     sizeLimitAction?: pulumi.Input<string>;
+    /**
+     * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     */
     ttl?: pulumi.Input<number>;
 }

@@ -21,6 +21,12 @@ class PartitionArgs:
                  routing_expression: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Partition resource.
+        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[str] name: The name of the partition.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        :param pulumi.Input[str] routing_expression: The query that defines the data to be included in the partition.
         """
         if analytics_tier is not None:
             pulumi.set(__self__, "analytics_tier", analytics_tier)
@@ -38,6 +44,9 @@ class PartitionArgs:
     @property
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        """
         return pulumi.get(self, "analytics_tier")
 
     @analytics_tier.setter
@@ -47,6 +56,9 @@ class PartitionArgs:
     @property
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        """
         return pulumi.get(self, "is_compliant")
 
     @is_compliant.setter
@@ -56,6 +68,9 @@ class PartitionArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the partition.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -65,6 +80,9 @@ class PartitionArgs:
     @property
     @pulumi.getter(name="reduceRetentionPeriodImmediately")
     def reduce_retention_period_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        """
         return pulumi.get(self, "reduce_retention_period_immediately")
 
     @reduce_retention_period_immediately.setter
@@ -74,6 +92,9 @@ class PartitionArgs:
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -83,6 +104,9 @@ class PartitionArgs:
     @property
     @pulumi.getter(name="routingExpression")
     def routing_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query that defines the data to be included in the partition.
+        """
         return pulumi.get(self, "routing_expression")
 
     @routing_expression.setter
@@ -105,6 +129,12 @@ class _PartitionState:
                  total_bytes: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Partition resources.
+        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[str] name: The name of the partition.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        :param pulumi.Input[str] routing_expression: The query that defines the data to be included in the partition.
         """
         if analytics_tier is not None:
             pulumi.set(__self__, "analytics_tier", analytics_tier)
@@ -130,6 +160,9 @@ class _PartitionState:
     @property
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        """
         return pulumi.get(self, "analytics_tier")
 
     @analytics_tier.setter
@@ -166,6 +199,9 @@ class _PartitionState:
     @property
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        """
         return pulumi.get(self, "is_compliant")
 
     @is_compliant.setter
@@ -175,6 +211,9 @@ class _PartitionState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the partition.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -184,6 +223,9 @@ class _PartitionState:
     @property
     @pulumi.getter(name="reduceRetentionPeriodImmediately")
     def reduce_retention_period_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        """
         return pulumi.get(self, "reduce_retention_period_immediately")
 
     @reduce_retention_period_immediately.setter
@@ -193,6 +235,9 @@ class _PartitionState:
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -202,6 +247,9 @@ class _PartitionState:
     @property
     @pulumi.getter(name="routingExpression")
     def routing_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query that defines the data to be included in the partition.
+        """
         return pulumi.get(self, "routing_expression")
 
     @routing_expression.setter
@@ -233,17 +281,6 @@ class Partition(pulumi.CustomResource):
         """
         Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
 
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required, Forces new resource) The name of the partition.
-        - `routing_expression` - (Required) The query that defines the data to be included in the partition.
-        - `analytics_tier` - (Required) The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
-        - `retention_period` - (Optional) The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
-        - `is_compliant` - (Optional) Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
-        - `reduce_retention_period_immediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -262,6 +299,12 @@ class Partition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[str] name: The name of the partition.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        :param pulumi.Input[str] routing_expression: The query that defines the data to be included in the partition.
         """
         ...
     @overload
@@ -271,17 +314,6 @@ class Partition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
-
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required, Forces new resource) The name of the partition.
-        - `routing_expression` - (Required) The query that defines the data to be included in the partition.
-        - `analytics_tier` - (Required) The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
-        - `retention_period` - (Optional) The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
-        - `is_compliant` - (Optional) Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
-        - `reduce_retention_period_immediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
 
         ## Attributes reference
 
@@ -369,6 +401,12 @@ class Partition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[str] name: The name of the partition.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        :param pulumi.Input[str] routing_expression: The query that defines the data to be included in the partition.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -389,6 +427,9 @@ class Partition(pulumi.CustomResource):
     @property
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        """
         return pulumi.get(self, "analytics_tier")
 
     @property
@@ -409,26 +450,41 @@ class Partition(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        """
         return pulumi.get(self, "is_compliant")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the partition.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="reduceRetentionPeriodImmediately")
     def reduce_retention_period_immediately(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        """
         return pulumi.get(self, "reduce_retention_period_immediately")
 
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        """
         return pulumi.get(self, "retention_period")
 
     @property
     @pulumi.getter(name="routingExpression")
     def routing_expression(self) -> pulumi.Output[Optional[str]]:
+        """
+        The query that defines the data to be included in the partition.
+        """
         return pulumi.get(self, "routing_expression")
 
     @property

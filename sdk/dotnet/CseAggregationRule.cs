@@ -71,41 +71,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `aggregation_functions` - (Required) One or more named aggregation functions
-    ///   + `name` - (Required) The name to use to reference the result in the trigger_expression
-    ///   + `function` - (Required) The function to aggregate with
-    ///   + `arguments` - (Required) One or more expressions to pass as arguments to the function
-    /// - `description_expression` - (Required) The description of the generated Signals
-    /// - `enabled` - (Required) Whether the rule should generate Signals
-    /// - `entity_selectors` - (Required) The entities to generate Signals on
-    ///   + `entityType` - (Required) The type of the entity to generate the Signal on.
-    ///   + `expression` - (Required) The expression or field name to generate the Signal on.
-    /// - `group_by_entity` - (Optional; defaults to true) Whether to group records by the specified entity fields
-    /// - `group_by_fields` - (Optional) A list of fields to group records by
-    /// - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-    /// - `match_expression` - (Required) The expression for which records to match on
-    /// - `name` - (Required) The name of the Rule
-    /// - `name_expression` - (Required) The name of the generated Signals
-    /// - `severity_mapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-    ///   + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-    ///   + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-    ///   + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-    ///   + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-    ///     - `type` - (Required) Must be set to "eq" currently
-    ///     - `from` - (Required) The record value to map from
-    ///     - `to` - (Required) The severity value to map to
-    /// - `summary_expression` - (Optional) The summary of the generated Signals
-    /// - `tags` - (Required) The tags of the generated Signals
-    /// - `trigger_expression` - (Required) The expression to determine whether a Signal should be created based on the aggregation results
-    /// - `window_size` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the aggregation rule.
     /// 
     /// ## Import
     /// 
@@ -118,48 +83,93 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseAggregationRule:CseAggregationRule")]
     public partial class CseAggregationRule : Pulumi.CustomResource
     {
+        /// <summary>
+        /// One or more named aggregation functions
+        /// </summary>
         [Output("aggregationFunctions")]
         public Output<ImmutableArray<Outputs.CseAggregationRuleAggregationFunction>> AggregationFunctions { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Output("descriptionExpression")]
         public Output<string> DescriptionExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         [Output("entitySelectors")]
         public Output<ImmutableArray<Outputs.CseAggregationRuleEntitySelector>> EntitySelectors { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to group records by the specified entity fields
+        /// </summary>
         [Output("groupByEntity")]
         public Output<bool?> GroupByEntity { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of fields to group records by
+        /// </summary>
         [Output("groupByFields")]
         public Output<ImmutableArray<string>> GroupByFields { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Output("isPrototype")]
         public Output<bool?> IsPrototype { get; private set; } = null!;
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Output("matchExpression")]
         public Output<string> MatchExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Rule
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the generated Signals
+        /// </summary>
         [Output("nameExpression")]
         public Output<string> NameExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// The configuration of how the severity of the Signals should be mapped from the Records
+        /// </summary>
         [Output("severityMapping")]
         public Output<Outputs.CseAggregationRuleSeverityMapping> SeverityMapping { get; private set; } = null!;
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Output("summaryExpression")]
         public Output<string?> SummaryExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The expression to determine whether a Signal should be created based on the aggregation results
+        /// </summary>
         [Output("triggerExpression")]
         public Output<string> TriggerExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// </summary>
         [Output("windowSize")]
         public Output<string> WindowSize { get; private set; } = null!;
 
@@ -211,66 +221,115 @@ namespace Pulumi.SumoLogic
     {
         [Input("aggregationFunctions", required: true)]
         private InputList<Inputs.CseAggregationRuleAggregationFunctionArgs>? _aggregationFunctions;
+
+        /// <summary>
+        /// One or more named aggregation functions
+        /// </summary>
         public InputList<Inputs.CseAggregationRuleAggregationFunctionArgs> AggregationFunctions
         {
             get => _aggregationFunctions ?? (_aggregationFunctions = new InputList<Inputs.CseAggregationRuleAggregationFunctionArgs>());
             set => _aggregationFunctions = value;
         }
 
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Input("descriptionExpression", required: true)]
         public Input<string> DescriptionExpression { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("entitySelectors", required: true)]
         private InputList<Inputs.CseAggregationRuleEntitySelectorArgs>? _entitySelectors;
+
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         public InputList<Inputs.CseAggregationRuleEntitySelectorArgs> EntitySelectors
         {
             get => _entitySelectors ?? (_entitySelectors = new InputList<Inputs.CseAggregationRuleEntitySelectorArgs>());
             set => _entitySelectors = value;
         }
 
+        /// <summary>
+        /// Whether to group records by the specified entity fields
+        /// </summary>
         [Input("groupByEntity")]
         public Input<bool>? GroupByEntity { get; set; }
 
         [Input("groupByFields")]
         private InputList<string>? _groupByFields;
+
+        /// <summary>
+        /// A list of fields to group records by
+        /// </summary>
         public InputList<string> GroupByFields
         {
             get => _groupByFields ?? (_groupByFields = new InputList<string>());
             set => _groupByFields = value;
         }
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Input("isPrototype")]
         public Input<bool>? IsPrototype { get; set; }
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("matchExpression", required: true)]
         public Input<string> MatchExpression { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the Rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the generated Signals
+        /// </summary>
         [Input("nameExpression", required: true)]
         public Input<string> NameExpression { get; set; } = null!;
 
+        /// <summary>
+        /// The configuration of how the severity of the Signals should be mapped from the Records
+        /// </summary>
         [Input("severityMapping", required: true)]
         public Input<Inputs.CseAggregationRuleSeverityMappingArgs> SeverityMapping { get; set; } = null!;
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The expression to determine whether a Signal should be created based on the aggregation results
+        /// </summary>
         [Input("triggerExpression", required: true)]
         public Input<string> TriggerExpression { get; set; } = null!;
 
+        /// <summary>
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// </summary>
         [Input("windowSize", required: true)]
         public Input<string> WindowSize { get; set; } = null!;
 
@@ -283,66 +342,115 @@ namespace Pulumi.SumoLogic
     {
         [Input("aggregationFunctions")]
         private InputList<Inputs.CseAggregationRuleAggregationFunctionGetArgs>? _aggregationFunctions;
+
+        /// <summary>
+        /// One or more named aggregation functions
+        /// </summary>
         public InputList<Inputs.CseAggregationRuleAggregationFunctionGetArgs> AggregationFunctions
         {
             get => _aggregationFunctions ?? (_aggregationFunctions = new InputList<Inputs.CseAggregationRuleAggregationFunctionGetArgs>());
             set => _aggregationFunctions = value;
         }
 
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Input("descriptionExpression")]
         public Input<string>? DescriptionExpression { get; set; }
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("entitySelectors")]
         private InputList<Inputs.CseAggregationRuleEntitySelectorGetArgs>? _entitySelectors;
+
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         public InputList<Inputs.CseAggregationRuleEntitySelectorGetArgs> EntitySelectors
         {
             get => _entitySelectors ?? (_entitySelectors = new InputList<Inputs.CseAggregationRuleEntitySelectorGetArgs>());
             set => _entitySelectors = value;
         }
 
+        /// <summary>
+        /// Whether to group records by the specified entity fields
+        /// </summary>
         [Input("groupByEntity")]
         public Input<bool>? GroupByEntity { get; set; }
 
         [Input("groupByFields")]
         private InputList<string>? _groupByFields;
+
+        /// <summary>
+        /// A list of fields to group records by
+        /// </summary>
         public InputList<string> GroupByFields
         {
             get => _groupByFields ?? (_groupByFields = new InputList<string>());
             set => _groupByFields = value;
         }
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Input("isPrototype")]
         public Input<bool>? IsPrototype { get; set; }
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("matchExpression")]
         public Input<string>? MatchExpression { get; set; }
 
+        /// <summary>
+        /// The name of the Rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the generated Signals
+        /// </summary>
         [Input("nameExpression")]
         public Input<string>? NameExpression { get; set; }
 
+        /// <summary>
+        /// The configuration of how the severity of the Signals should be mapped from the Records
+        /// </summary>
         [Input("severityMapping")]
         public Input<Inputs.CseAggregationRuleSeverityMappingGetArgs>? SeverityMapping { get; set; }
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The expression to determine whether a Signal should be created based on the aggregation results
+        /// </summary>
         [Input("triggerExpression")]
         public Input<string>? TriggerExpression { get; set; }
 
+        /// <summary>
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// </summary>
         [Input("windowSize")]
         public Input<string>? WindowSize { get; set; }
 

@@ -33,30 +33,6 @@ import * as utilities from "./utilities";
  *     windowSize: "T30M",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `countDistinct` - (Optional; defaults to false) Whether to count distinct values of a field, as opposed to just counting the number of records
- * - `countField` - (Optional) The field to count if `countDistinct` is set to true
- * - `description` - (Required) The description of the generated Signals
- * - `enabled` - (Required) Whether the rule should generate Signals
- * - `entitySelectors` - (Required) The entities to generate Signals on
- *   + `entityType` - (Required) The type of the entity to generate the Signal on.
- *   + `expression` - (Required) The expression or field name to generate the Signal on.
- * - `expression` - (Required) The expression for which records to match on
- * - `groupByFields` - (Optional) A list of fields to group records by
- * - `isPrototype` - (Optional) Whether the generated Signals should be prototype Signals
- * - `limit` - (Required) A Signal will be fired when this many records/distinct field values are matched
- * - `name` - (Required) The name of the Rule and the generated Signals
- * - `severity` - (Required) The severity of the generated Signals
- * - `summaryExpression` - (Optional) The summary of the generated Signals
- * - `tags` - (Required) The tags of the generated Signals
- * - `windowSize` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the threshold rule.
  *
  * ## Import
  *
@@ -94,19 +70,61 @@ export class CseThresholdRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseThresholdRule.__pulumiType;
     }
 
+    /**
+     * Whether to count distinct values of a field, as opposed to just counting the number of records
+     */
     public readonly countDistinct!: pulumi.Output<boolean | undefined>;
+    /**
+     * The field to count if `countDistinct` is set to true
+     */
     public readonly countField!: pulumi.Output<string | undefined>;
+    /**
+     * The description of the generated Signals
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     public readonly entitySelectors!: pulumi.Output<outputs.CseThresholdRuleEntitySelector[]>;
+    /**
+     * The expression for which records to match on
+     */
     public readonly expression!: pulumi.Output<string>;
+    /**
+     * A list of fields to group records by
+     */
     public readonly groupByFields!: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     public readonly isPrototype!: pulumi.Output<boolean | undefined>;
+    /**
+     * A Signal will be fired when this many records/distinct field values are matched
+     */
     public readonly limit!: pulumi.Output<number>;
+    /**
+     * The name of the Rule and the generated Signals
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The severity of the generated Signals
+     */
     public readonly severity!: pulumi.Output<number>;
+    /**
+     * The summary of the generated Signals
+     */
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
+    /**
+     * The tags of the generated Signals
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     */
     public readonly windowSize!: pulumi.Output<string>;
 
     /**
@@ -185,19 +203,61 @@ export class CseThresholdRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseThresholdRule resources.
  */
 export interface CseThresholdRuleState {
+    /**
+     * Whether to count distinct values of a field, as opposed to just counting the number of records
+     */
     countDistinct?: pulumi.Input<boolean>;
+    /**
+     * The field to count if `countDistinct` is set to true
+     */
     countField?: pulumi.Input<string>;
+    /**
+     * The description of the generated Signals
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseThresholdRuleEntitySelector>[]>;
+    /**
+     * The expression for which records to match on
+     */
     expression?: pulumi.Input<string>;
+    /**
+     * A list of fields to group records by
+     */
     groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     isPrototype?: pulumi.Input<boolean>;
+    /**
+     * A Signal will be fired when this many records/distinct field values are matched
+     */
     limit?: pulumi.Input<number>;
+    /**
+     * The name of the Rule and the generated Signals
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The severity of the generated Signals
+     */
     severity?: pulumi.Input<number>;
+    /**
+     * The summary of the generated Signals
+     */
     summaryExpression?: pulumi.Input<string>;
+    /**
+     * The tags of the generated Signals
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     */
     windowSize?: pulumi.Input<string>;
 }
 
@@ -205,18 +265,60 @@ export interface CseThresholdRuleState {
  * The set of arguments for constructing a CseThresholdRule resource.
  */
 export interface CseThresholdRuleArgs {
+    /**
+     * Whether to count distinct values of a field, as opposed to just counting the number of records
+     */
     countDistinct?: pulumi.Input<boolean>;
+    /**
+     * The field to count if `countDistinct` is set to true
+     */
     countField?: pulumi.Input<string>;
+    /**
+     * The description of the generated Signals
+     */
     description: pulumi.Input<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     entitySelectors: pulumi.Input<pulumi.Input<inputs.CseThresholdRuleEntitySelector>[]>;
+    /**
+     * The expression for which records to match on
+     */
     expression: pulumi.Input<string>;
+    /**
+     * A list of fields to group records by
+     */
     groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     isPrototype?: pulumi.Input<boolean>;
+    /**
+     * A Signal will be fired when this many records/distinct field values are matched
+     */
     limit: pulumi.Input<number>;
+    /**
+     * The name of the Rule and the generated Signals
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The severity of the generated Signals
+     */
     severity: pulumi.Input<number>;
+    /**
+     * The summary of the generated Signals
+     */
     summaryExpression?: pulumi.Input<string>;
+    /**
+     * The tags of the generated Signals
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     */
     windowSize: pulumi.Input<string>;
 }

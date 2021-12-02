@@ -22,6 +22,13 @@ class ScheduledViewArgs:
                  retention_period: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ScheduledView resource.
+        :param pulumi.Input[str] index_name: Name of the index (scheduled view).
+        :param pulumi.Input[str] query: Log query defining the scheduled view.
+        :param pulumi.Input[str] start_time: Start timestamp in UTC in RFC3339 format.
+        :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
         """
         pulumi.set(__self__, "index_name", index_name)
         pulumi.set(__self__, "query", query)
@@ -38,6 +45,9 @@ class ScheduledViewArgs:
     @property
     @pulumi.getter(name="indexName")
     def index_name(self) -> pulumi.Input[str]:
+        """
+        Name of the index (scheduled view).
+        """
         return pulumi.get(self, "index_name")
 
     @index_name.setter
@@ -47,6 +57,9 @@ class ScheduledViewArgs:
     @property
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
+        """
+        Log query defining the scheduled view.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -56,6 +69,9 @@ class ScheduledViewArgs:
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[str]:
+        """
+        Start timestamp in UTC in RFC3339 format.
+        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -65,6 +81,9 @@ class ScheduledViewArgs:
     @property
     @pulumi.getter(name="dataForwardingId")
     def data_forwarding_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional ID of a data forwarding configuration to be used by the scheduled view.
+        """
         return pulumi.get(self, "data_forwarding_id")
 
     @data_forwarding_id.setter
@@ -74,6 +93,9 @@ class ScheduledViewArgs:
     @property
     @pulumi.getter(name="parsingMode")
     def parsing_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+        """
         return pulumi.get(self, "parsing_mode")
 
     @parsing_mode.setter
@@ -83,6 +105,9 @@ class ScheduledViewArgs:
     @property
     @pulumi.getter(name="reduceRetentionPeriodImmediately")
     def reduce_retention_period_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        """
         return pulumi.get(self, "reduce_retention_period_immediately")
 
     @reduce_retention_period_immediately.setter
@@ -92,6 +117,9 @@ class ScheduledViewArgs:
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+        """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -111,6 +139,13 @@ class _ScheduledViewState:
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ScheduledView resources.
+        :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] index_name: Name of the index (scheduled view).
+        :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+        :param pulumi.Input[str] query: Log query defining the scheduled view.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+        :param pulumi.Input[str] start_time: Start timestamp in UTC in RFC3339 format.
         """
         if data_forwarding_id is not None:
             pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
@@ -130,6 +165,9 @@ class _ScheduledViewState:
     @property
     @pulumi.getter(name="dataForwardingId")
     def data_forwarding_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional ID of a data forwarding configuration to be used by the scheduled view.
+        """
         return pulumi.get(self, "data_forwarding_id")
 
     @data_forwarding_id.setter
@@ -139,6 +177,9 @@ class _ScheduledViewState:
     @property
     @pulumi.getter(name="indexName")
     def index_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the index (scheduled view).
+        """
         return pulumi.get(self, "index_name")
 
     @index_name.setter
@@ -148,6 +189,9 @@ class _ScheduledViewState:
     @property
     @pulumi.getter(name="parsingMode")
     def parsing_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+        """
         return pulumi.get(self, "parsing_mode")
 
     @parsing_mode.setter
@@ -157,6 +201,9 @@ class _ScheduledViewState:
     @property
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log query defining the scheduled view.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -166,6 +213,9 @@ class _ScheduledViewState:
     @property
     @pulumi.getter(name="reduceRetentionPeriodImmediately")
     def reduce_retention_period_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        """
         return pulumi.get(self, "reduce_retention_period_immediately")
 
     @reduce_retention_period_immediately.setter
@@ -175,6 +225,9 @@ class _ScheduledViewState:
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+        """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -184,6 +237,9 @@ class _ScheduledViewState:
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start timestamp in UTC in RFC3339 format.
+        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -207,24 +263,6 @@ class ScheduledView(pulumi.CustomResource):
         """
         Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
 
-        ## Argument reference
-
-        The following arguments are supported:
-
-        > For attributes that force a new resource, if the value is updated, it will destroy the resource and recreate it which may incur significant costs. We advise customers to set the `lifecycle` attribute `prevent_destroy` to `true` to avoid accidentally destroying and recreating expensive resources.
-
-        - `index_name` - (Required, Forces new resource) Name of the index (scheduled view).
-        - `query` - (Required, Forces new resource) Log query defining the scheduled view.
-        - `start_time` - (Required, Forces new resource) Start timestamp in UTC in RFC3339 format.
-        - `retention_period` - (Optional) The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
-        - `data_forwarding_id` - (Optional) An optional ID of a data forwarding configuration to be used by the scheduled view.
-        - `parsing_mode` - (Optional, Forces new resource) Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
-        - `reduce_retention_period_immediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the scheduled view.
-
         ## Import
 
         Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2]. hcl
@@ -237,6 +275,13 @@ class ScheduledView(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] index_name: Name of the index (scheduled view).
+        :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+        :param pulumi.Input[str] query: Log query defining the scheduled view.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+        :param pulumi.Input[str] start_time: Start timestamp in UTC in RFC3339 format.
         """
         ...
     @overload
@@ -246,24 +291,6 @@ class ScheduledView(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
-
-        ## Argument reference
-
-        The following arguments are supported:
-
-        > For attributes that force a new resource, if the value is updated, it will destroy the resource and recreate it which may incur significant costs. We advise customers to set the `lifecycle` attribute `prevent_destroy` to `true` to avoid accidentally destroying and recreating expensive resources.
-
-        - `index_name` - (Required, Forces new resource) Name of the index (scheduled view).
-        - `query` - (Required, Forces new resource) Log query defining the scheduled view.
-        - `start_time` - (Required, Forces new resource) Start timestamp in UTC in RFC3339 format.
-        - `retention_period` - (Optional) The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
-        - `data_forwarding_id` - (Optional) An optional ID of a data forwarding configuration to be used by the scheduled view.
-        - `parsing_mode` - (Optional, Forces new resource) Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
-        - `reduce_retention_period_immediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the scheduled view.
 
         ## Import
 
@@ -346,6 +373,13 @@ class ScheduledView(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] index_name: Name of the index (scheduled view).
+        :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+        :param pulumi.Input[str] query: Log query defining the scheduled view.
+        :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+        :param pulumi.Input[str] start_time: Start timestamp in UTC in RFC3339 format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -363,35 +397,56 @@ class ScheduledView(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dataForwardingId")
     def data_forwarding_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional ID of a data forwarding configuration to be used by the scheduled view.
+        """
         return pulumi.get(self, "data_forwarding_id")
 
     @property
     @pulumi.getter(name="indexName")
     def index_name(self) -> pulumi.Output[str]:
+        """
+        Name of the index (scheduled view).
+        """
         return pulumi.get(self, "index_name")
 
     @property
     @pulumi.getter(name="parsingMode")
     def parsing_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+        """
         return pulumi.get(self, "parsing_mode")
 
     @property
     @pulumi.getter
     def query(self) -> pulumi.Output[str]:
+        """
+        Log query defining the scheduled view.
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter(name="reduceRetentionPeriodImmediately")
     def reduce_retention_period_immediately(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        """
         return pulumi.get(self, "reduce_retention_period_immediately")
 
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+        """
         return pulumi.get(self, "retention_period")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[str]:
+        """
+        Start timestamp in UTC in RFC3339 format.
+        """
         return pulumi.get(self, "start_time")
 

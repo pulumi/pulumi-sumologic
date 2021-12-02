@@ -343,26 +343,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `title` - (Required) Title of the dashboard.
-    /// - `description` - (Optional) Description of the dashboard.
-    /// - `folder_id` - (Optional) The identifier of the folder to save the dashboard in. By default it is saved in your
-    ///   personal folder.
-    /// - `refresh_interval` - (Optional) Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
-    /// - `theme` - (Optional) Theme of the dashboard.
-    /// - `topology_label_map` - (Block List, Max: 1, Optional) Topology labels for the dashboard. See
-    ///   topology label map schema
-    ///   for details.
-    /// - `time_range` - (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
-    ///   for details.
-    /// - `panel` - (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
-    /// - `layout` - (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
-    /// - `variable` - (Block List, Optional) A list of variables for the dashboard. See variable schema
-    ///   for details.
-    /// 
     /// ## Attributes reference
     /// 
     /// In addition to all arguments above, the following attributes are exported:
@@ -525,33 +505,68 @@ namespace Pulumi.SumoLogic
         [Output("coloringRules")]
         public Output<ImmutableArray<Outputs.DashboardColoringRule>> ColoringRules { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the dashboard.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of the folder to save the dashboard in. By default it is saved in your
+        /// personal folder.
+        /// </summary>
         [Output("folderId")]
         public Output<string?> FolderId { get; private set; } = null!;
 
+        /// <summary>
+        /// Layout of the dashboard. See layout schema for details.
+        /// </summary>
         [Output("layout")]
         public Output<Outputs.DashboardLayout?> Layout { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of panels in the dashboard. See panel schema for details.
+        /// </summary>
         [Output("panels")]
         public Output<ImmutableArray<Outputs.DashboardPanel>> Panels { get; private set; } = null!;
 
+        /// <summary>
+        /// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        /// </summary>
         [Output("refreshInterval")]
         public Output<int?> RefreshInterval { get; private set; } = null!;
 
+        /// <summary>
+        /// Theme of the dashboard.
+        /// </summary>
         [Output("theme")]
         public Output<string?> Theme { get; private set; } = null!;
 
+        /// <summary>
+        /// Time range of the dashboard. See time range schema
+        /// for details.
+        /// </summary>
         [Output("timeRange")]
         public Output<Outputs.DashboardTimeRange> TimeRange { get; private set; } = null!;
 
+        /// <summary>
+        /// Title of the dashboard.
+        /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
+        /// <summary>
+        /// Topology labels for the dashboard. See
+        /// topology label map schema
+        /// for details.
+        /// </summary>
         [Output("topologyLabelMap")]
         public Output<Outputs.DashboardTopologyLabelMap?> TopologyLabelMap { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of variables for the dashboard. See variable schema
+        /// for details.
+        /// </summary>
         [Output("variables")]
         public Output<ImmutableArray<Outputs.DashboardVariable>> Variables { get; private set; } = null!;
 
@@ -609,40 +624,77 @@ namespace Pulumi.SumoLogic
             set => _coloringRules = value;
         }
 
+        /// <summary>
+        /// Description of the dashboard.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The identifier of the folder to save the dashboard in. By default it is saved in your
+        /// personal folder.
+        /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
+        /// <summary>
+        /// Layout of the dashboard. See layout schema for details.
+        /// </summary>
         [Input("layout")]
         public Input<Inputs.DashboardLayoutArgs>? Layout { get; set; }
 
         [Input("panels")]
         private InputList<Inputs.DashboardPanelArgs>? _panels;
+
+        /// <summary>
+        /// A list of panels in the dashboard. See panel schema for details.
+        /// </summary>
         public InputList<Inputs.DashboardPanelArgs> Panels
         {
             get => _panels ?? (_panels = new InputList<Inputs.DashboardPanelArgs>());
             set => _panels = value;
         }
 
+        /// <summary>
+        /// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        /// </summary>
         [Input("refreshInterval")]
         public Input<int>? RefreshInterval { get; set; }
 
+        /// <summary>
+        /// Theme of the dashboard.
+        /// </summary>
         [Input("theme")]
         public Input<string>? Theme { get; set; }
 
+        /// <summary>
+        /// Time range of the dashboard. See time range schema
+        /// for details.
+        /// </summary>
         [Input("timeRange", required: true)]
         public Input<Inputs.DashboardTimeRangeArgs> TimeRange { get; set; } = null!;
 
+        /// <summary>
+        /// Title of the dashboard.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
+        /// <summary>
+        /// Topology labels for the dashboard. See
+        /// topology label map schema
+        /// for details.
+        /// </summary>
         [Input("topologyLabelMap")]
         public Input<Inputs.DashboardTopologyLabelMapArgs>? TopologyLabelMap { get; set; }
 
         [Input("variables")]
         private InputList<Inputs.DashboardVariableArgs>? _variables;
+
+        /// <summary>
+        /// A list of variables for the dashboard. See variable schema
+        /// for details.
+        /// </summary>
         public InputList<Inputs.DashboardVariableArgs> Variables
         {
             get => _variables ?? (_variables = new InputList<Inputs.DashboardVariableArgs>());
@@ -664,40 +716,77 @@ namespace Pulumi.SumoLogic
             set => _coloringRules = value;
         }
 
+        /// <summary>
+        /// Description of the dashboard.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The identifier of the folder to save the dashboard in. By default it is saved in your
+        /// personal folder.
+        /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }
 
+        /// <summary>
+        /// Layout of the dashboard. See layout schema for details.
+        /// </summary>
         [Input("layout")]
         public Input<Inputs.DashboardLayoutGetArgs>? Layout { get; set; }
 
         [Input("panels")]
         private InputList<Inputs.DashboardPanelGetArgs>? _panels;
+
+        /// <summary>
+        /// A list of panels in the dashboard. See panel schema for details.
+        /// </summary>
         public InputList<Inputs.DashboardPanelGetArgs> Panels
         {
             get => _panels ?? (_panels = new InputList<Inputs.DashboardPanelGetArgs>());
             set => _panels = value;
         }
 
+        /// <summary>
+        /// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        /// </summary>
         [Input("refreshInterval")]
         public Input<int>? RefreshInterval { get; set; }
 
+        /// <summary>
+        /// Theme of the dashboard.
+        /// </summary>
         [Input("theme")]
         public Input<string>? Theme { get; set; }
 
+        /// <summary>
+        /// Time range of the dashboard. See time range schema
+        /// for details.
+        /// </summary>
         [Input("timeRange")]
         public Input<Inputs.DashboardTimeRangeGetArgs>? TimeRange { get; set; }
 
+        /// <summary>
+        /// Title of the dashboard.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 
+        /// <summary>
+        /// Topology labels for the dashboard. See
+        /// topology label map schema
+        /// for details.
+        /// </summary>
         [Input("topologyLabelMap")]
         public Input<Inputs.DashboardTopologyLabelMapGetArgs>? TopologyLabelMap { get; set; }
 
         [Input("variables")]
         private InputList<Inputs.DashboardVariableGetArgs>? _variables;
+
+        /// <summary>
+        /// A list of variables for the dashboard. See variable schema
+        /// for details.
+        /// </summary>
         public InputList<Inputs.DashboardVariableGetArgs> Variables
         {
             get => _variables ?? (_variables = new InputList<Inputs.DashboardVariableGetArgs>());

@@ -12,18 +12,30 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class AwsXraySourceAuthenticationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Your AWS access key if using type `S3BucketAuthentication`
+        /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
+        /// <summary>
+        /// Your AWS secret key if using type `S3BucketAuthentication`
+        /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
+        /// <summary>
+        /// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

@@ -31,39 +31,25 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) The name of the folder. This is required, and has to be unique.
-    /// - `parent_id` - (Required) The ID of the folder in which you want to create the new folder.
-    /// - `description` - (Optional) The description of the folder.
-    /// 
-    /// ### Timeouts
-    /// 
-    /// `sumologic.Folder` provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
-    /// 
-    /// - `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful
-    /// 
-    /// Additional data provided in state
-    /// 
-    /// - `created_at` - (Computed) When the folder was created.
-    /// - `created_by` - (Computed) Who created the folder.
-    /// - `modified_at` - (Computed) When was the folder last modified.
-    /// - `modified_by` - (Computed) The ID of the user who modified the folder last.
-    /// - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder").
-    /// - `permissions` - (Computed) List of permissions the user has on the content item.
-    /// - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
     /// </summary>
     [SumoLogicResourceType("sumologic:index/folder:Folder")]
     public partial class Folder : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the folder.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the folder. This is required, and has to be unique.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the folder in which you want to create the new folder.
+        /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
@@ -113,12 +99,21 @@ namespace Pulumi.SumoLogic
 
     public sealed class FolderArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the folder.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the folder. This is required, and has to be unique.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the folder in which you want to create the new folder.
+        /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
 
@@ -129,12 +124,21 @@ namespace Pulumi.SumoLogic
 
     public sealed class FolderState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the folder.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the folder. This is required, and has to be unique.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the folder in which you want to create the new folder.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 

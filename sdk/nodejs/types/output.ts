@@ -7,8 +7,14 @@ import { input as inputs, output as outputs } from "../types";
 export interface AwsInventorySourceAuthentication {
     accessKey?: string;
     region?: string;
+    /**
+     * Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+     */
     roleArn?: string;
     secretKey?: string;
+    /**
+     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     type: string;
 }
 
@@ -26,24 +32,67 @@ export interface AwsInventorySourceFilter {
 
 export interface AwsInventorySourcePath {
     bucketName?: string;
+    /**
+     * List of namespaces. By default all namespaces are selected. You can also choose a subset from
+     * + AWS/EC2
+     * + AWS/AutoScaling
+     * + AWS/EBS
+     * + AWS/ELB
+     * + AWS/ApplicationELB
+     * + AWS/NetworkELB
+     * + AWS/Lambda
+     * + AWS/RDS
+     * + AWS/Dynamodb
+     * + AWS/ECS
+     * + AWS/Elasticache
+     * + AWS/Redshift
+     * + AWS/Kinesis
+     */
     limitToNamespaces?: string[];
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsInventorySourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     type: string;
+}
+
+export interface AwsInventorySourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface AwsInventorySourcePathTagFilter {
     namespace?: string;
     tags?: string[];
+    /**
+     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     type?: string;
 }
 
 export interface AwsXraySourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: string;
     region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: string;
+    /**
+     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     */
     type: string;
 }
 
@@ -62,15 +111,30 @@ export interface AwsXraySourceFilter {
 export interface AwsXraySourcePath {
     bucketName?: string;
     limitToNamespaces?: string[];
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsXraySourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     */
     type: string;
+}
+
+export interface AwsXraySourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface AwsXraySourcePathTagFilter {
     namespace?: string;
     tags?: string[];
+    /**
+     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     */
     type?: string;
 }
 
@@ -87,10 +151,25 @@ export interface CloudSyslogSourceFilter {
 }
 
 export interface CloudfrontSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: string;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: string;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     */
     type: string;
 }
 
@@ -107,25 +186,61 @@ export interface CloudfrontSourceFilter {
 }
 
 export interface CloudfrontSourcePath {
+    /**
+     * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+     */
     bucketName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    /**
+     * The path to the data. This is needed if using type `S3BucketPathExpression`.
+     */
     pathExpression?: string;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
+    snsTopicOrSubscriptionArns: outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.CloudfrontSourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     */
     type: string;
+}
+
+export interface CloudfrontSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface CloudfrontSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     */
     type?: string;
 }
 
 export interface CloudtrailSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: string;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: string;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     */
     type: string;
 }
 
@@ -142,25 +257,61 @@ export interface CloudtrailSourceFilter {
 }
 
 export interface CloudtrailSourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    /**
+     * The path to the data.
+     */
     pathExpression?: string;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
+    snsTopicOrSubscriptionArns: outputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.CloudtrailSourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     */
     type: string;
+}
+
+export interface CloudtrailSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface CloudtrailSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     */
     type?: string;
 }
 
 export interface CloudwatchSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: string;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: string;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: string;
 }
 
@@ -178,107 +329,266 @@ export interface CloudwatchSourceFilter {
 
 export interface CloudwatchSourcePath {
     bucketName?: string;
+    /**
+     * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+     */
     limitToNamespaces?: string[];
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: string[];
     pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn[];
+    /**
+     * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+     */
     tagFilters?: outputs.CloudwatchSourcePathTagFilter[];
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: string;
 }
 
+export interface CloudwatchSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
+}
+
 export interface CloudwatchSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: string;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: string[];
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: string;
 }
 
 export interface CseAggregationRuleAggregationFunction {
+    /**
+     * One or more expressions to pass as arguments to the function
+     */
     arguments: string[];
+    /**
+     * The function to aggregate with
+     */
     function: string;
+    /**
+     * The name of the Rule
+     */
     name: string;
 }
 
 export interface CseAggregationRuleEntitySelector {
     entityType: string;
+    /**
+     * The expression or field name to generate the Signal on.
+     */
     expression: string;
 }
 
 export interface CseAggregationRuleSeverityMapping {
+    /**
+     * The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+     */
     default?: number;
+    /**
+     * The field to use in the "fieldValue"/"fieldValueMapping" cases.
+     */
     field?: string;
+    /**
+     * The map of record values to severities to use in the "fieldValueMapping" case
+     */
     mappings?: outputs.CseAggregationRuleSeverityMappingMapping[];
+    /**
+     * Must be set to "eq" currently
+     */
     type: string;
 }
 
 export interface CseAggregationRuleSeverityMappingMapping {
+    /**
+     * The record value to map from
+     */
     from: string;
+    /**
+     * The severity value to map to
+     */
     to: number;
+    /**
+     * Must be set to "eq" currently
+     */
     type: string;
 }
 
 export interface CseChainRuleEntitySelector {
     entityType: string;
+    /**
+     * The expression for which records to match on
+     */
     expression: string;
 }
 
 export interface CseChainRuleExpressionsAndLimit {
+    /**
+     * The expression for which records to match on
+     */
     expression: string;
+    /**
+     * How many times this expression must match for the Signal to fire
+     */
     limit: number;
 }
 
 export interface CseLogMappingField {
+    /**
+     * List of alternate values.
+     */
     alternateValues?: string[];
+    /**
+     * Case insensitive flag.
+     */
     caseInsensitive?: boolean;
+    /**
+     * Default value of the field.
+     */
     defaultValue?: string;
+    /**
+     * List of field join values.
+     */
     fieldJoins?: string[];
+    /**
+     * Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+     */
     format?: string;
+    /**
+     * List of format parameters.
+     */
     formatParameters?: string[];
+    /**
+     * Join delimiter.
+     */
     joinDelimiter?: string;
+    /**
+     * List of lookup key value pair for field. See lookupSchema for details.
+     */
     lookups?: outputs.CseLogMappingFieldLookup[];
+    /**
+     * Name of the field.
+     */
     name: string;
+    /**
+     * List of skipped values.
+     */
     skippedValues?: string[];
+    /**
+     * Split delimiter to be used. (some example: ",", "-", "|")
+     */
     splitDelimiter?: string;
     splitIndex?: string;
+    /**
+     * Time zone.
+     */
     timeZone?: string;
+    /**
+     * Lookup value.
+     */
     value?: string;
+    /**
+     * The value type.
+     */
     valueType?: string;
 }
 
 export interface CseLogMappingFieldLookup {
+    /**
+     * Lookup key.
+     */
     key: string;
+    /**
+     * Lookup value.
+     */
     value: string;
 }
 
 export interface CseLogMappingStructuredInput {
+    /**
+     * Event id pattern.
+     */
     eventIdPattern: string;
+    /**
+     * Log format. (JSON, Windows, Syslog, CEF, LEEF )
+     */
     logFormat: string;
+    /**
+     * Product name.
+     */
     product: string;
+    /**
+     * Vendor name.
+     */
     vendor: string;
 }
 
 export interface CseLogMappingUnstructuredFields {
+    /**
+     * List of grok pattern names.
+     */
     patternNames: string[];
 }
 
 export interface CseMatchRuleEntitySelector {
     entityType: string;
+    /**
+     * The expression for which records to match on
+     */
     expression: string;
 }
 
 export interface CseMatchRuleSeverityMapping {
+    /**
+     * The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+     */
     default?: number;
+    /**
+     * The field to use in the "fieldValue"/"fieldValueMapping" cases.
+     */
     field?: string;
+    /**
+     * The map of record values to severities to use in the "fieldValueMapping" case
+     */
     mappings?: outputs.CseMatchRuleSeverityMappingMapping[];
+    /**
+     * Must be set to "eq" currently
+     */
     type: string;
 }
 
 export interface CseMatchRuleSeverityMappingMapping {
+    /**
+     * The record value to map from
+     */
     from: string;
+    /**
+     * The severity value to map to
+     */
     to: number;
+    /**
+     * Must be set to "eq" currently
+     */
     type: string;
 }
 
 export interface CseThresholdRuleEntitySelector {
     entityType: string;
+    /**
+     * The expression for which records to match on
+     */
     expression: string;
 }
 
@@ -315,13 +625,23 @@ export interface DashboardPanel {
 
 export interface DashboardPanelSumoSearchPanel {
     coloringRule?: outputs.DashboardPanelSumoSearchPanelColoringRule;
+    /**
+     * Description of the dashboard.
+     */
     description?: string;
     id: string;
     keepVisualSettingsConsistentWithParent?: boolean;
     key: string;
     linkedDashboard?: outputs.DashboardPanelSumoSearchPanelLinkedDashboard;
     queries?: outputs.DashboardPanelSumoSearchPanelQuery[];
+    /**
+     * Time range of the dashboard. See time range schema
+     * for details.
+     */
     timeRange?: outputs.DashboardPanelSumoSearchPanelTimeRange;
+    /**
+     * Title of the dashboard.
+     */
     title?: string;
     visualSettings?: string;
 }
@@ -443,6 +763,9 @@ export interface DashboardPanelTextPanel {
     keepVisualSettingsConsistentWithParent?: boolean;
     key: string;
     text?: string;
+    /**
+     * Title of the dashboard.
+     */
     title?: string;
     visualSettings?: string;
 }
@@ -548,10 +871,25 @@ export interface DashboardVariableSourceDefinitionMetadataVariableSourceDefiniti
 }
 
 export interface ElbSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`.
+     */
     accessKey?: string;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`.
+     */
     secretKey?: string;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     */
     type: string;
 }
 
@@ -568,17 +906,38 @@ export interface ElbSourceFilter {
 }
 
 export interface ElbSourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    /**
+     * The path to the data.
+     */
     pathExpression?: string;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
+    snsTopicOrSubscriptionArns: outputs.ElbSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.ElbSourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     */
     type: string;
+}
+
+export interface ElbSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface ElbSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     */
     type?: string;
 }
 
@@ -1691,9 +2050,21 @@ export interface HttpSourceFilter {
 }
 
 export interface KinesisMetricsSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: string;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: string;
 }
 
@@ -1710,13 +2081,28 @@ export interface KinesisMetricsSourceFilter {
 }
 
 export interface KinesisMetricsSourcePath {
+    /**
+     * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+     */
     tagFilters?: outputs.KinesisMetricsSourcePathTagFilter[];
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: string;
 }
 
 export interface KinesisMetricsSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: string;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: string[];
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: string;
 }
 
@@ -1726,9 +2112,21 @@ export interface LookupTableField {
 }
 
 export interface MetadataSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: string;
+    /**
+     * type of polling source. Only allowed value is `AwsMetadataPath`.
+     */
     type: string;
 }
 
@@ -1745,9 +2143,21 @@ export interface MetadataSourceFilter {
 }
 
 export interface MetadataSourcePath {
+    /**
+     * List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
+     */
     limitToNamespaces?: string[];
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: string[];
+    /**
+     * Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+     */
     tagFilters?: string[];
+    /**
+     * type of polling source. Only allowed value is `AwsMetadataPath`.
+     */
     type: string;
 }
 
@@ -1916,14 +2326,32 @@ export interface MonitorTriggerConditionsMetricsStaticConditionWarningResolution
 }
 
 export interface PoliciesUserConcurrentSessionsLimit {
+    /**
+     * Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+     */
     enabled: boolean;
+    /**
+     * Maximum number of concurrent sessions a user may have. Defaults to `100`.
+     */
     maxConcurrentSessions?: number;
 }
 
 export interface PollingSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: string;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: string;
 }
 
@@ -1940,25 +2368,67 @@ export interface PollingSourceFilter {
 }
 
 export interface PollingSourcePath {
+    /**
+     * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+     */
     bucketName?: string;
+    /**
+     * List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+     */
     limitToNamespaces?: string[];
+    /**
+     * List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
+     */
     limitToRegions?: string[];
+    /**
+     * The path to the data. This is needed if using type `S3BucketPathExpression`.
+     */
     pathExpression?: string;
+    /**
+     * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+     */
     tagFilters?: outputs.PollingSourcePathTagFilter[];
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: string;
 }
 
 export interface PollingSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: string;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: string[];
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: string;
 }
 
 export interface S3AuditSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`.
+     */
     accessKey?: string;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`.
+     */
     secretKey?: string;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     */
     type: string;
 }
 
@@ -1975,25 +2445,61 @@ export interface S3AuditSourceFilter {
 }
 
 export interface S3AuditSourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    /**
+     * The path to the data.
+     */
     pathExpression?: string;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
+    snsTopicOrSubscriptionArns: outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.S3AuditSourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     */
     type: string;
+}
+
+export interface S3AuditSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface S3AuditSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     */
     type?: string;
 }
 
 export interface S3SourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`.
+     */
     accessKey?: string;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`.
+     */
     secretKey?: string;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
     type: string;
 }
 
@@ -2010,23 +2516,53 @@ export interface S3SourceFilter {
 }
 
 export interface S3SourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    /**
+     * The path to the data.
+     */
     pathExpression?: string;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
+    snsTopicOrSubscriptionArns: outputs.S3SourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.S3SourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
     type: string;
+}
+
+export interface S3SourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
 }
 
 export interface S3SourcePathTagFilter {
     namespace?: string;
     tags?: string[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
     type?: string;
 }
 
 export interface SamlConfigurationOnDemandProvisioningEnabled {
+    /**
+     * First name attribute of the new user account. Defaults to "".
+     */
     firstNameAttribute?: string;
+    /**
+     * Last name attribute of the new user account. Defaults to "".
+     */
     lastNameAttribute?: string;
+    /**
+     * List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+     */
     onDemandProvisioningRoles: string[];
 }
 

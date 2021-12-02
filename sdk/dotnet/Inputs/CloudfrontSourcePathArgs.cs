@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CloudfrontSourcePathArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
@@ -31,8 +34,23 @@ namespace Pulumi.SumoLogic.Inputs
             set => _limitToRegions = value;
         }
 
+        /// <summary>
+        /// The path to the data. This is needed if using type `S3BucketPathExpression`.
+        /// </summary>
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
+
+        [Input("snsTopicOrSubscriptionArns")]
+        private InputList<Inputs.CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs>? _snsTopicOrSubscriptionArns;
+
+        /// <summary>
+        /// This is a computed field for SNS topic/subscription ARN.
+        /// </summary>
+        public InputList<Inputs.CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs> SnsTopicOrSubscriptionArns
+        {
+            get => _snsTopicOrSubscriptionArns ?? (_snsTopicOrSubscriptionArns = new InputList<Inputs.CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs>());
+            set => _snsTopicOrSubscriptionArns = value;
+        }
 
         [Input("tagFilters")]
         private InputList<Inputs.CloudfrontSourcePathTagFilterArgs>? _tagFilters;
@@ -42,6 +60,9 @@ namespace Pulumi.SumoLogic.Inputs
             set => _tagFilters = value;
         }
 
+        /// <summary>
+        /// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

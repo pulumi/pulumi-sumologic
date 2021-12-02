@@ -13,11 +13,24 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class S3AuditSourcePath
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         public readonly string? BucketName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
+        /// <summary>
+        /// The path to the data.
+        /// </summary>
         public readonly string? PathExpression;
+        /// <summary>
+        /// This is a computed field for SNS topic/subscription ARN.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.S3AuditSourcePathTagFilter> TagFilters;
+        /// <summary>
+        /// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -30,6 +43,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? pathExpression,
 
+            ImmutableArray<Outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
+
             ImmutableArray<Outputs.S3AuditSourcePathTagFilter> tagFilters,
 
             string type)
@@ -38,6 +53,7 @@ namespace Pulumi.SumoLogic.Outputs
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             PathExpression = pathExpression;
+            SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
         }

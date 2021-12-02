@@ -18,6 +18,9 @@ class FieldArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Field resource.
+        :param pulumi.Input[str] field_name: Name of the field.
+        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
         pulumi.set(__self__, "field_name", field_name)
         if data_type is not None:
@@ -28,6 +31,9 @@ class FieldArgs:
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> pulumi.Input[str]:
+        """
+        Name of the field.
+        """
         return pulumi.get(self, "field_name")
 
     @field_name.setter
@@ -37,6 +43,9 @@ class FieldArgs:
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -46,6 +55,9 @@ class FieldArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the field (either `Enabled` or `Disabled`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -62,6 +74,10 @@ class _FieldState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Field resources.
+        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        :param pulumi.Input[str] field_id: Field identifier.
+        :param pulumi.Input[str] field_name: Name of the field.
+        :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
         if data_type is not None:
             pulumi.set(__self__, "data_type", data_type)
@@ -75,6 +91,9 @@ class _FieldState:
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -84,6 +103,9 @@ class _FieldState:
     @property
     @pulumi.getter(name="fieldId")
     def field_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field identifier.
+        """
         return pulumi.get(self, "field_id")
 
     @field_id.setter
@@ -93,6 +115,9 @@ class _FieldState:
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the field.
+        """
         return pulumi.get(self, "field_name")
 
     @field_name.setter
@@ -102,6 +127,9 @@ class _FieldState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the field (either `Enabled` or `Disabled`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -131,14 +159,6 @@ class Field(pulumi.CustomResource):
             data_type="Int",
             field_name="int_field_1")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `field_name` - (Required)  Name of the field.
-        - `field_id` - (Required) Field identifier.
-        - `data_type` - (Optional) Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        - `state` - (Optional) State of the field (either `Enabled` or `Disabled`).
 
         ## Import
 
@@ -152,6 +172,9 @@ class Field(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        :param pulumi.Input[str] field_name: Name of the field.
+        :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
         ...
     @overload
@@ -172,14 +195,6 @@ class Field(pulumi.CustomResource):
             data_type="Int",
             field_name="int_field_1")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `field_name` - (Required)  Name of the field.
-        - `field_id` - (Required) Field identifier.
-        - `data_type` - (Optional) Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        - `state` - (Optional) State of the field (either `Enabled` or `Disabled`).
 
         ## Import
 
@@ -248,6 +263,10 @@ class Field(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        :param pulumi.Input[str] field_id: Field identifier.
+        :param pulumi.Input[str] field_name: Name of the field.
+        :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,20 +281,32 @@ class Field(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        """
         return pulumi.get(self, "data_type")
 
     @property
     @pulumi.getter(name="fieldId")
     def field_id(self) -> pulumi.Output[str]:
+        """
+        Field identifier.
+        """
         return pulumi.get(self, "field_id")
 
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> pulumi.Output[str]:
+        """
+        Name of the field.
+        """
         return pulumi.get(self, "field_name")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[str]]:
+        """
+        State of the field (either `Enabled` or `Disabled`).
+        """
         return pulumi.get(self, "state")
 

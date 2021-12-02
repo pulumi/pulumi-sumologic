@@ -38,33 +38,6 @@ import * as utilities from "./utilities";
  *     x509cert3: "",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `spInitiatedLoginPath` - (Optional) The identifier used to generate a unique URL for user login. Defaults to "".
- * - `configurationName` - (Required) Name of the SSO policy or another name used to describe the policy internally.
- * - `issuer` - (Required) The unique URL assigned to the organization by the SAML Identity Provider.
- * - `spInitiatedLoginEnabled` - (Optional) True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
- * - `authnRequestUrl` - (Optional) The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
- * - `x509cert1` - (Required) The certificate is used to verify the signature in SAML assertions.
- * - `x509cert2` - (Optional) The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
- * - `x509cert3` - (Optional) The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
- * - `onDemandProvisioningEnabled` - (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
- * - `rolesAttribute` - (Optional) The role that Sumo Logic will assign to users when they sign in. Defaults to "".
- * - `logoutEnabled` - (Optional) True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
- * - `logoutUrl` - (Optional) The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
- * - `emailAttribute` - (Optional) The email address of the new user account. Defaults to "".
- * - `debugMode` - (Optional) True if additional details are included when a user fails to sign in. Defaults to false.
- * - `signAuthnRequest` - (Optional) True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
- * - `disableRequestedAuthnContext` - (Optional) True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
- * - `isRedirectBinding` - (Optional) True if the SAML binding is of HTTP Redirect type. Defaults to false.
- *
- * ### Schema for `onDemandProvisioningEnabled`
- * - `firstNameAttribute` - (Optional) First name attribute of the new user account. Defaults to "".
- * - `lastNameAttribute` - (Optional) Last name attribute of the new user account. Defaults to "".
- * - `onDemandProvisioningRoles` - (Required) List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
- *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -113,24 +86,75 @@ export class SamlConfiguration extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly assertionConsumerUrl!: pulumi.Output<string>;
+    /**
+     * The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+     */
     public readonly authnRequestUrl!: pulumi.Output<string | undefined>;
     public /*out*/ readonly certificate!: pulumi.Output<string>;
+    /**
+     * Name of the SSO policy or another name used to describe the policy internally.
+     */
     public readonly configurationName!: pulumi.Output<string>;
+    /**
+     * True if additional details are included when a user fails to sign in. Defaults to false.
+     */
     public readonly debugMode!: pulumi.Output<boolean | undefined>;
+    /**
+     * True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+     */
     public readonly disableRequestedAuthnContext!: pulumi.Output<boolean | undefined>;
+    /**
+     * The email address of the new user account. Defaults to "".
+     */
     public readonly emailAttribute!: pulumi.Output<string | undefined>;
     public /*out*/ readonly entityId!: pulumi.Output<string>;
+    /**
+     * True if the SAML binding is of HTTP Redirect type. Defaults to false.
+     */
     public readonly isRedirectBinding!: pulumi.Output<boolean | undefined>;
+    /**
+     * The unique URL assigned to the organization by the SAML Identity Provider.
+     */
     public readonly issuer!: pulumi.Output<string>;
+    /**
+     * True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+     */
     public readonly logoutEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+     */
     public readonly logoutUrl!: pulumi.Output<string | undefined>;
+    /**
+     * The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+     */
     public readonly onDemandProvisioningEnabled!: pulumi.Output<outputs.SamlConfigurationOnDemandProvisioningEnabled | undefined>;
+    /**
+     * The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+     */
     public readonly rolesAttribute!: pulumi.Output<string | undefined>;
+    /**
+     * True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+     */
     public readonly signAuthnRequest!: pulumi.Output<boolean | undefined>;
+    /**
+     * True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+     */
     public readonly spInitiatedLoginEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The identifier used to generate a unique URL for user login. Defaults to "".
+     */
     public readonly spInitiatedLoginPath!: pulumi.Output<string | undefined>;
+    /**
+     * The certificate is used to verify the signature in SAML assertions.
+     */
     public readonly x509cert1!: pulumi.Output<string>;
+    /**
+     * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+     */
     public readonly x509cert2!: pulumi.Output<string | undefined>;
+    /**
+     * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
+     */
     public readonly x509cert3!: pulumi.Output<string | undefined>;
 
     /**
@@ -210,24 +234,75 @@ export class SamlConfiguration extends pulumi.CustomResource {
  */
 export interface SamlConfigurationState {
     assertionConsumerUrl?: pulumi.Input<string>;
+    /**
+     * The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+     */
     authnRequestUrl?: pulumi.Input<string>;
     certificate?: pulumi.Input<string>;
+    /**
+     * Name of the SSO policy or another name used to describe the policy internally.
+     */
     configurationName?: pulumi.Input<string>;
+    /**
+     * True if additional details are included when a user fails to sign in. Defaults to false.
+     */
     debugMode?: pulumi.Input<boolean>;
+    /**
+     * True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+     */
     disableRequestedAuthnContext?: pulumi.Input<boolean>;
+    /**
+     * The email address of the new user account. Defaults to "".
+     */
     emailAttribute?: pulumi.Input<string>;
     entityId?: pulumi.Input<string>;
+    /**
+     * True if the SAML binding is of HTTP Redirect type. Defaults to false.
+     */
     isRedirectBinding?: pulumi.Input<boolean>;
+    /**
+     * The unique URL assigned to the organization by the SAML Identity Provider.
+     */
     issuer?: pulumi.Input<string>;
+    /**
+     * True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+     */
     logoutEnabled?: pulumi.Input<boolean>;
+    /**
+     * The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+     */
     logoutUrl?: pulumi.Input<string>;
+    /**
+     * The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+     */
     onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
+    /**
+     * The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+     */
     rolesAttribute?: pulumi.Input<string>;
+    /**
+     * True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+     */
     signAuthnRequest?: pulumi.Input<boolean>;
+    /**
+     * True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+     */
     spInitiatedLoginEnabled?: pulumi.Input<boolean>;
+    /**
+     * The identifier used to generate a unique URL for user login. Defaults to "".
+     */
     spInitiatedLoginPath?: pulumi.Input<string>;
+    /**
+     * The certificate is used to verify the signature in SAML assertions.
+     */
     x509cert1?: pulumi.Input<string>;
+    /**
+     * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+     */
     x509cert2?: pulumi.Input<string>;
+    /**
+     * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
+     */
     x509cert3?: pulumi.Input<string>;
 }
 
@@ -235,21 +310,72 @@ export interface SamlConfigurationState {
  * The set of arguments for constructing a SamlConfiguration resource.
  */
 export interface SamlConfigurationArgs {
+    /**
+     * The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+     */
     authnRequestUrl?: pulumi.Input<string>;
+    /**
+     * Name of the SSO policy or another name used to describe the policy internally.
+     */
     configurationName: pulumi.Input<string>;
+    /**
+     * True if additional details are included when a user fails to sign in. Defaults to false.
+     */
     debugMode?: pulumi.Input<boolean>;
+    /**
+     * True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+     */
     disableRequestedAuthnContext?: pulumi.Input<boolean>;
+    /**
+     * The email address of the new user account. Defaults to "".
+     */
     emailAttribute?: pulumi.Input<string>;
+    /**
+     * True if the SAML binding is of HTTP Redirect type. Defaults to false.
+     */
     isRedirectBinding?: pulumi.Input<boolean>;
+    /**
+     * The unique URL assigned to the organization by the SAML Identity Provider.
+     */
     issuer: pulumi.Input<string>;
+    /**
+     * True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+     */
     logoutEnabled?: pulumi.Input<boolean>;
+    /**
+     * The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+     */
     logoutUrl?: pulumi.Input<string>;
+    /**
+     * The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+     */
     onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
+    /**
+     * The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+     */
     rolesAttribute?: pulumi.Input<string>;
+    /**
+     * True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+     */
     signAuthnRequest?: pulumi.Input<boolean>;
+    /**
+     * True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+     */
     spInitiatedLoginEnabled?: pulumi.Input<boolean>;
+    /**
+     * The identifier used to generate a unique URL for user login. Defaults to "".
+     */
     spInitiatedLoginPath?: pulumi.Input<string>;
+    /**
+     * The certificate is used to verify the signature in SAML assertions.
+     */
     x509cert1: pulumi.Input<string>;
+    /**
+     * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+     */
     x509cert2?: pulumi.Input<string>;
+    /**
+     * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
+     */
     x509cert3?: pulumi.Input<string>;
 }

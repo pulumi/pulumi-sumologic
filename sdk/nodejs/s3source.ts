@@ -38,26 +38,6 @@ import * as utilities from "./utilities";
  *     scanInterval: 300000,
  * });
  * ```
- * ## Argument reference
- *
- * In addition to the common properties, the following arguments are supported:
- *
- *  - `contentType` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
- *  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
- *  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
- *  - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
- *      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
- *      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`.
- *      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`.
- *      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
- *      + `region` - (Optional) Your AWS Bucket region.
- *  - `path` - (Required) The location to scan for new data.
- *      + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
- *      + `bucketName` - (Required) The name of the bucket.
- *      + `pathExpression` - (Required) The path to the data.
- *
- * ### See also
- *   * [Common Source Properties](https://github.com/SumoLogic/tree/master/website#common-source-properties)
  *
  * ## Import
  *
@@ -103,10 +83,16 @@ export class S3Source extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3Source.__pulumiType;
     }
 
+    /**
+     * Authentication details for connecting to the S3 bucket.
+     */
     public readonly authentication!: pulumi.Output<outputs.S3SourceAuthentication>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     public readonly contentType!: pulumi.Output<string>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -119,8 +105,17 @@ export class S3Source extends pulumi.CustomResource {
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
     public readonly multilineProcessingEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The location to scan for new data.
+     */
     public readonly path!: pulumi.Output<outputs.S3SourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     public readonly paused!: pulumi.Output<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+     */
     public readonly scanInterval!: pulumi.Output<number>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
@@ -218,10 +213,16 @@ export class S3Source extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3Source resources.
  */
 export interface S3SourceState {
+    /**
+     * Authentication details for connecting to the S3 bucket.
+     */
     authentication?: pulumi.Input<inputs.S3SourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -234,8 +235,17 @@ export interface S3SourceState {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path?: pulumi.Input<inputs.S3SourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused?: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+     */
     scanInterval?: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     /**
@@ -249,10 +259,16 @@ export interface S3SourceState {
  * The set of arguments for constructing a S3Source resource.
  */
 export interface S3SourceArgs {
+    /**
+     * Authentication details for connecting to the S3 bucket.
+     */
     authentication: pulumi.Input<inputs.S3SourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     contentType: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -265,8 +281,17 @@ export interface S3SourceArgs {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path: pulumi.Input<inputs.S3SourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+     */
     scanInterval: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;

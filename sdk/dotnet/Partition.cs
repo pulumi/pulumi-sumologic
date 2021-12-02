@@ -12,17 +12,6 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
     /// 
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required, Forces new resource) The name of the partition.
-    /// - `routing_expression` - (Required) The query that defines the data to be included in the partition.
-    /// - `analytics_tier` - (Required) The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
-    /// - `retention_period` - (Optional) The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
-    /// - `is_compliant` - (Optional) Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
-    /// - `reduce_retention_period_immediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
-    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -42,6 +31,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/partition:Partition")]
     public partial class Partition : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        /// </summary>
         [Output("analyticsTier")]
         public Output<string?> AnalyticsTier { get; private set; } = null!;
 
@@ -54,18 +46,33 @@ namespace Pulumi.SumoLogic
         [Output("isActive")]
         public Output<bool> IsActive { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        /// </summary>
         [Output("isCompliant")]
         public Output<bool?> IsCompliant { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the partition.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        /// </summary>
         [Output("reduceRetentionPeriodImmediately")]
         public Output<bool?> ReduceRetentionPeriodImmediately { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        /// </summary>
         [Output("retentionPeriod")]
         public Output<int?> RetentionPeriod { get; private set; } = null!;
 
+        /// <summary>
+        /// The query that defines the data to be included in the partition.
+        /// </summary>
         [Output("routingExpression")]
         public Output<string?> RoutingExpression { get; private set; } = null!;
 
@@ -118,21 +125,39 @@ namespace Pulumi.SumoLogic
 
     public sealed class PartitionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        /// </summary>
         [Input("analyticsTier")]
         public Input<string>? AnalyticsTier { get; set; }
 
+        /// <summary>
+        /// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        /// </summary>
         [Input("isCompliant")]
         public Input<bool>? IsCompliant { get; set; }
 
+        /// <summary>
+        /// The name of the partition.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        /// </summary>
         [Input("reduceRetentionPeriodImmediately")]
         public Input<bool>? ReduceRetentionPeriodImmediately { get; set; }
 
+        /// <summary>
+        /// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
 
+        /// <summary>
+        /// The query that defines the data to be included in the partition.
+        /// </summary>
         [Input("routingExpression")]
         public Input<string>? RoutingExpression { get; set; }
 
@@ -143,6 +168,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class PartitionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        /// </summary>
         [Input("analyticsTier")]
         public Input<string>? AnalyticsTier { get; set; }
 
@@ -155,18 +183,33 @@ namespace Pulumi.SumoLogic
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
+        /// <summary>
+        /// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        /// </summary>
         [Input("isCompliant")]
         public Input<bool>? IsCompliant { get; set; }
 
+        /// <summary>
+        /// The name of the partition.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        /// </summary>
         [Input("reduceRetentionPeriodImmediately")]
         public Input<bool>? ReduceRetentionPeriodImmediately { get; set; }
 
+        /// <summary>
+        /// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+        /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
 
+        /// <summary>
+        /// The query that defines the data to be included in the partition.
+        /// </summary>
         [Input("routingExpression")]
         public Input<string>? RoutingExpression { get; set; }
 

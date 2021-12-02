@@ -38,6 +38,11 @@ class MetadataSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MetadataSource resource.
+        :param pulumi.Input['MetadataSourceAuthenticationArgs'] authentication: Authentication details for AWS access.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['MetadataSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
@@ -79,6 +84,9 @@ class MetadataSourceArgs:
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Input['MetadataSourceAuthenticationArgs']:
+        """
+        Authentication details for AWS access.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -97,6 +105,9 @@ class MetadataSourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
+        """
+        The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -106,6 +117,9 @@ class MetadataSourceArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input['MetadataSourcePathArgs']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -115,6 +129,9 @@ class MetadataSourceArgs:
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Input[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -124,6 +141,9 @@ class MetadataSourceArgs:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Input[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -293,6 +313,11 @@ class _MetadataSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering MetadataSource resources.
+        :param pulumi.Input['MetadataSourceAuthenticationArgs'] authentication: Authentication details for AWS access.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['MetadataSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         if authentication is not None:
@@ -343,6 +368,9 @@ class _MetadataSourceState:
     @property
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input['MetadataSourceAuthenticationArgs']]:
+        """
+        Authentication details for AWS access.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -379,6 +407,9 @@ class _MetadataSourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -487,6 +518,9 @@ class _MetadataSourceState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['MetadataSourcePathArgs']]:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -496,6 +530,9 @@ class _MetadataSourceState:
     @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -505,6 +542,9 @@ class _MetadataSourceState:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -574,28 +614,6 @@ class MetadataSource(pulumi.CustomResource):
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
-        ## Argument reference
-
-        In addition to the common properties, the following arguments are supported:
-
-         - `content_type` - (Required) The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-         - `authentication` - (Required) Authentication details for AWS access.
-             + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-             + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-             + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-             + `region` - (Optional) Your AWS Bucket region.
-         - `path` - (Required) The location to scan for new data.
-             + `type` - (Required) type of polling source. Only allowed value is `AwsMetadataPath`.
-             + `limit_to_regions` - (Optional) List of Amazon regions.
-             + `limit_to_namespaces` - List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
-             + `tag_filters` - (Optional) Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
-
-        ### See also
-          * [Sumologic > Sources > Sources for Hosted Collectors > AWS > AWS Metadata (Tag) Source][3]
-
         ## Import
 
         Metadata sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -614,6 +632,11 @@ class MetadataSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['MetadataSourceAuthenticationArgs']] authentication: Authentication details for AWS access.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['MetadataSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         ...
     @overload
@@ -625,28 +648,6 @@ class MetadataSource(pulumi.CustomResource):
         Provides a Sumologic Metadata (Tag) source. This source allows you to collect tags from EC2 instances running on AWS.
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
-
-        ## Argument reference
-
-        In addition to the common properties, the following arguments are supported:
-
-         - `content_type` - (Required) The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-         - `authentication` - (Required) Authentication details for AWS access.
-             + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-             + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-             + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-             + `region` - (Optional) Your AWS Bucket region.
-         - `path` - (Required) The location to scan for new data.
-             + `type` - (Required) type of polling source. Only allowed value is `AwsMetadataPath`.
-             + `limit_to_regions` - (Optional) List of Amazon regions.
-             + `limit_to_namespaces` - List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
-             + `tag_filters` - (Optional) Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
-
-        ### See also
-          * [Sumologic > Sources > Sources for Hosted Collectors > AWS > AWS Metadata (Tag) Source][3]
 
         ## Import
 
@@ -785,6 +786,11 @@ class MetadataSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['MetadataSourceAuthenticationArgs']] authentication: Authentication details for AWS access.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['MetadataSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -818,6 +824,9 @@ class MetadataSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.MetadataSourceAuthentication']:
+        """
+        Authentication details for AWS access.
+        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -838,6 +847,9 @@ class MetadataSource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
+        """
+        The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -898,16 +910,25 @@ class MetadataSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output['outputs.MetadataSourcePath']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Output[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @property

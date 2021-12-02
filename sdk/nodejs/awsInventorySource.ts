@@ -40,33 +40,6 @@ import * as utilities from "./utilities";
  *     scanInterval: 300000,
  * });
  * ```
- * ## Argument reference
- *
- * In addition to the common properties, the following arguments are supported:
- *
- *  - `contentType` - (Required) The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
- *  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
- *  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
- *  - `authentication` - (Required) Authentication details to access AWS `Describe*` APIs.
- *      + `type` - (Required) Must be `AWSRoleBasedAuthentication`
- *      + `roleArn` - (Required) Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
- *  - `path` - (Required) The location to scan for new data.
- *      + `type` - (Required) type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
- *      + `limitToRegions` - (Optional) List of Amazon regions.
- *      + `limitToNamespaces` - (Optional) List of namespaces. By default all namespaces are selected. You can also choose a subset from
- *         + AWS/EC2
- *         + AWS/AutoScaling
- *         + AWS/EBS
- *         + AWS/ELB
- *         + AWS/ApplicationELB
- *         + AWS/NetworkELB
- *         + AWS/Lambda
- *         + AWS/RDS
- *         + AWS/Dynamodb
- *         + AWS/ECS
- *         + AWS/Elasticache
- *         + AWS/Redshift
- *         + AWS/Kinesis
  *
  * ## Import
  *
@@ -110,10 +83,16 @@ export class AwsInventorySource extends pulumi.CustomResource {
         return obj['__pulumiType'] === AwsInventorySource.__pulumiType;
     }
 
+    /**
+     * Authentication details to access AWS `Describe*` APIs.
+     */
     public readonly authentication!: pulumi.Output<outputs.AwsInventorySourceAuthentication>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     public readonly contentType!: pulumi.Output<string>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -126,8 +105,17 @@ export class AwsInventorySource extends pulumi.CustomResource {
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
     public readonly multilineProcessingEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The location to scan for new data.
+     */
     public readonly path!: pulumi.Output<outputs.AwsInventorySourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     public readonly paused!: pulumi.Output<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+     */
     public readonly scanInterval!: pulumi.Output<number>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -222,10 +210,16 @@ export class AwsInventorySource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AwsInventorySource resources.
  */
 export interface AwsInventorySourceState {
+    /**
+     * Authentication details to access AWS `Describe*` APIs.
+     */
     authentication?: pulumi.Input<inputs.AwsInventorySourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -238,8 +232,17 @@ export interface AwsInventorySourceState {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path?: pulumi.Input<inputs.AwsInventorySourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused?: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+     */
     scanInterval?: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
@@ -250,10 +253,16 @@ export interface AwsInventorySourceState {
  * The set of arguments for constructing a AwsInventorySource resource.
  */
 export interface AwsInventorySourceArgs {
+    /**
+     * Authentication details to access AWS `Describe*` APIs.
+     */
     authentication: pulumi.Input<inputs.AwsInventorySourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     contentType: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -266,8 +275,17 @@ export interface AwsInventorySourceArgs {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path: pulumi.Input<inputs.AwsInventorySourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+     */
     scanInterval: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;

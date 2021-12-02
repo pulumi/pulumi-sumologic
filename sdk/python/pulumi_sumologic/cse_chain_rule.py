@@ -29,6 +29,18 @@ class CseChainRuleArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseChainRule resource.
+        :param pulumi.Input[str] description: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
+        :param pulumi.Input[int] severity: The severity of the generated Signals
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule and the generated SignalS
+        :param pulumi.Input[bool] ordered: Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -52,6 +64,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -61,6 +76,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -70,6 +88,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @entity_selectors.setter
@@ -79,6 +100,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter(name="expressionsAndLimits")
     def expressions_and_limits(self) -> pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]]:
+        """
+        The list of expressions and associated limits to make up the conditions of the chain rule
+        """
         return pulumi.get(self, "expressions_and_limits")
 
     @expressions_and_limits.setter
@@ -88,6 +112,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter
     def severity(self) -> pulumi.Input[int]:
+        """
+        The severity of the generated Signals
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -97,6 +124,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter(name="windowSize")
     def window_size(self) -> pulumi.Input[str]:
+        """
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        """
         return pulumi.get(self, "window_size")
 
     @window_size.setter
@@ -106,6 +136,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter(name="groupByFields")
     def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of fields to group records by
+        """
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
@@ -115,6 +148,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @is_prototype.setter
@@ -124,6 +160,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Rule and the generated SignalS
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -133,6 +172,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter
     def ordered(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+        """
         return pulumi.get(self, "ordered")
 
     @ordered.setter
@@ -142,6 +184,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @summary_expression.setter
@@ -151,6 +196,9 @@ class CseChainRuleArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -175,6 +223,18 @@ class _CseChainRuleState:
                  window_size: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseChainRule resources.
+        :param pulumi.Input[str] description: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule and the generated SignalS
+        :param pulumi.Input[bool] ordered: Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+        :param pulumi.Input[int] severity: The severity of the generated Signals
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -204,6 +264,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -213,6 +276,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -222,6 +288,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]]]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @entity_selectors.setter
@@ -231,6 +300,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter(name="expressionsAndLimits")
     def expressions_and_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]]]:
+        """
+        The list of expressions and associated limits to make up the conditions of the chain rule
+        """
         return pulumi.get(self, "expressions_and_limits")
 
     @expressions_and_limits.setter
@@ -240,6 +312,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter(name="groupByFields")
     def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of fields to group records by
+        """
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
@@ -249,6 +324,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @is_prototype.setter
@@ -258,6 +336,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Rule and the generated SignalS
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -267,6 +348,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter
     def ordered(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+        """
         return pulumi.get(self, "ordered")
 
     @ordered.setter
@@ -276,6 +360,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The severity of the generated Signals
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -285,6 +372,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @summary_expression.setter
@@ -294,6 +384,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -303,6 +396,9 @@ class _CseChainRuleState:
     @property
     @pulumi.getter(name="windowSize")
     def window_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        """
         return pulumi.get(self, "window_size")
 
     @window_size.setter
@@ -362,30 +458,6 @@ class CseChainRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             window_size="T30M")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `description` - (Required) The description of the generated Signals
-        - `enabled` - (Required) Whether the rule should generate Signals
-        - `entity_selectors` - (Required) The entities to generate Signals on
-          + `entityType` - (Required) The type of the entity to generate the Signal on.
-          + `expression` - (Required) The expression or field name to generate the Signal on.
-        - `expressions_and_limits` - (Required) The list of expressions and associated limits to make up the conditions of the chain rule
-          + `expression` - (Required) The expression for which records to match on
-          + `limit` - (Required) How many times this expression must match for the Signal to fire
-        - `group_by_fields` - (Optional) A list of fields to group records by
-        - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-        - `ordered` - (Optional; defaults to false) Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
-        - `name` - (Required) The name of the Rule and the generated SignalS
-        - `severity` - (Required) The severity of the generated Signals
-        - `summary_expression` - (Optional) The summary of the generated Signals
-        - `tags` - (Required) The tags of the generated Signals
-        - `window_size` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the chain rule.
 
         ## Import
 
@@ -397,6 +469,18 @@ class CseChainRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule and the generated SignalS
+        :param pulumi.Input[bool] ordered: Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+        :param pulumi.Input[int] severity: The severity of the generated Signals
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
         """
         ...
     @overload
@@ -438,30 +522,6 @@ class CseChainRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             window_size="T30M")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `description` - (Required) The description of the generated Signals
-        - `enabled` - (Required) Whether the rule should generate Signals
-        - `entity_selectors` - (Required) The entities to generate Signals on
-          + `entityType` - (Required) The type of the entity to generate the Signal on.
-          + `expression` - (Required) The expression or field name to generate the Signal on.
-        - `expressions_and_limits` - (Required) The list of expressions and associated limits to make up the conditions of the chain rule
-          + `expression` - (Required) The expression for which records to match on
-          + `limit` - (Required) How many times this expression must match for the Signal to fire
-        - `group_by_fields` - (Optional) A list of fields to group records by
-        - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-        - `ordered` - (Optional; defaults to false) Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
-        - `name` - (Required) The name of the Rule and the generated SignalS
-        - `severity` - (Required) The severity of the generated Signals
-        - `summary_expression` - (Optional) The summary of the generated Signals
-        - `tags` - (Required) The tags of the generated Signals
-        - `window_size` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the chain rule.
 
         ## Import
 
@@ -563,6 +623,18 @@ class CseChainRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule and the generated SignalS
+        :param pulumi.Input[bool] ordered: Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+        :param pulumi.Input[int] severity: The severity of the generated Signals
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -585,60 +657,96 @@ class CseChainRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseChainRuleEntitySelector']]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @property
     @pulumi.getter(name="expressionsAndLimits")
     def expressions_and_limits(self) -> pulumi.Output[Sequence['outputs.CseChainRuleExpressionsAndLimit']]:
+        """
+        The list of expressions and associated limits to make up the conditions of the chain rule
+        """
         return pulumi.get(self, "expressions_and_limits")
 
     @property
     @pulumi.getter(name="groupByFields")
     def group_by_fields(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of fields to group records by
+        """
         return pulumi.get(self, "group_by_fields")
 
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the Rule and the generated SignalS
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def ordered(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+        """
         return pulumi.get(self, "ordered")
 
     @property
     @pulumi.getter
     def severity(self) -> pulumi.Output[int]:
+        """
+        The severity of the generated Signals
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> pulumi.Output[Optional[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="windowSize")
     def window_size(self) -> pulumi.Output[str]:
+        """
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        """
         return pulumi.get(self, "window_size")
 

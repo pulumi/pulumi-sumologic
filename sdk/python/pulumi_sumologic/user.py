@@ -21,6 +21,12 @@ class UserArgs:
                  transfer_to: pulumi.Input[str]):
         """
         The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] email: Email of the user.
+        :param pulumi.Input[str] first_name: First name of the user.
+        :param pulumi.Input[bool] is_active: This has the value true if the user is active and false if they have been deactivated.
+        :param pulumi.Input[str] last_name: Last name of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
+        :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "first_name", first_name)
@@ -32,6 +38,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
+        """
+        Email of the user.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -41,6 +50,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="firstName")
     def first_name(self) -> pulumi.Input[str]:
+        """
+        First name of the user.
+        """
         return pulumi.get(self, "first_name")
 
     @first_name.setter
@@ -50,6 +62,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="isActive")
     def is_active(self) -> pulumi.Input[bool]:
+        """
+        This has the value true if the user is active and false if they have been deactivated.
+        """
         return pulumi.get(self, "is_active")
 
     @is_active.setter
@@ -59,6 +74,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="lastName")
     def last_name(self) -> pulumi.Input[str]:
+        """
+        Last name of the user.
+        """
         return pulumi.get(self, "last_name")
 
     @last_name.setter
@@ -68,6 +86,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of roleIds associated with the user.
+        """
         return pulumi.get(self, "role_ids")
 
     @role_ids.setter
@@ -77,6 +98,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="transferTo")
     def transfer_to(self) -> pulumi.Input[str]:
+        """
+        UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        """
         return pulumi.get(self, "transfer_to")
 
     @transfer_to.setter
@@ -95,6 +119,12 @@ class _UserState:
                  transfer_to: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[str] email: Email of the user.
+        :param pulumi.Input[str] first_name: First name of the user.
+        :param pulumi.Input[bool] is_active: This has the value true if the user is active and false if they have been deactivated.
+        :param pulumi.Input[str] last_name: Last name of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
+        :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -112,6 +142,9 @@ class _UserState:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email of the user.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -121,6 +154,9 @@ class _UserState:
     @property
     @pulumi.getter(name="firstName")
     def first_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        First name of the user.
+        """
         return pulumi.get(self, "first_name")
 
     @first_name.setter
@@ -130,6 +166,9 @@ class _UserState:
     @property
     @pulumi.getter(name="isActive")
     def is_active(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This has the value true if the user is active and false if they have been deactivated.
+        """
         return pulumi.get(self, "is_active")
 
     @is_active.setter
@@ -139,6 +178,9 @@ class _UserState:
     @property
     @pulumi.getter(name="lastName")
     def last_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last name of the user.
+        """
         return pulumi.get(self, "last_name")
 
     @last_name.setter
@@ -148,6 +190,9 @@ class _UserState:
     @property
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of roleIds associated with the user.
+        """
         return pulumi.get(self, "role_ids")
 
     @role_ids.setter
@@ -157,6 +202,9 @@ class _UserState:
     @property
     @pulumi.getter(name="transferTo")
     def transfer_to(self) -> Optional[pulumi.Input[str]]:
+        """
+        UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        """
         return pulumi.get(self, "transfer_to")
 
     @transfer_to.setter
@@ -200,20 +248,6 @@ class User(pulumi.CustomResource):
             role_ids=[example_role.id],
             transfer_to=example_user1.id)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `first_name` - (Required) First name of the user.
-        - `last_name` - (Required) Last name of the user.
-        - `email` - (Required) Email of the user.
-        - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
-        - `role_ids` - (Required) List of roleIds associated with the user.
-        - `transfer_to` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the user.
 
         ## Import
 
@@ -227,6 +261,12 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] email: Email of the user.
+        :param pulumi.Input[str] first_name: First name of the user.
+        :param pulumi.Input[bool] is_active: This has the value true if the user is active and false if they have been deactivated.
+        :param pulumi.Input[str] last_name: Last name of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
+        :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
         """
         ...
     @overload
@@ -258,20 +298,6 @@ class User(pulumi.CustomResource):
             role_ids=[example_role.id],
             transfer_to=example_user1.id)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `first_name` - (Required) First name of the user.
-        - `last_name` - (Required) Last name of the user.
-        - `email` - (Required) Email of the user.
-        - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
-        - `role_ids` - (Required) List of roleIds associated with the user.
-        - `transfer_to` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the user.
 
         ## Import
 
@@ -357,6 +383,12 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] email: Email of the user.
+        :param pulumi.Input[str] first_name: First name of the user.
+        :param pulumi.Input[bool] is_active: This has the value true if the user is active and false if they have been deactivated.
+        :param pulumi.Input[str] last_name: Last name of the user.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
+        :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -373,30 +405,48 @@ class User(pulumi.CustomResource):
     @property
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
+        """
+        Email of the user.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="firstName")
     def first_name(self) -> pulumi.Output[str]:
+        """
+        First name of the user.
+        """
         return pulumi.get(self, "first_name")
 
     @property
     @pulumi.getter(name="isActive")
     def is_active(self) -> pulumi.Output[bool]:
+        """
+        This has the value true if the user is active and false if they have been deactivated.
+        """
         return pulumi.get(self, "is_active")
 
     @property
     @pulumi.getter(name="lastName")
     def last_name(self) -> pulumi.Output[str]:
+        """
+        Last name of the user.
+        """
         return pulumi.get(self, "last_name")
 
     @property
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of roleIds associated with the user.
+        """
         return pulumi.get(self, "role_ids")
 
     @property
     @pulumi.getter(name="transferTo")
     def transfer_to(self) -> pulumi.Output[str]:
+        """
+        UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        """
         return pulumi.get(self, "transfer_to")
 

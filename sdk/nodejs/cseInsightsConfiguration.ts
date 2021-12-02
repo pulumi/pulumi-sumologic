@@ -18,16 +18,6 @@ import * as utilities from "./utilities";
  *     threshold: 12,
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `lookbackDays` - (Optional) Detection window expressed in days.
- * - `threshold` - (Optional) Detection threshold activity score.
- *
- * The following attributes are exported:
- *
- * - `ID` - The internal ID of the insights configuration.
  *
  * ## Import
  *
@@ -65,7 +55,13 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseInsightsConfiguration.__pulumiType;
     }
 
+    /**
+     * Detection window expressed in days.
+     */
     public readonly lookbackDays!: pulumi.Output<number | undefined>;
+    /**
+     * Detection threshold activity score.
+     */
     public readonly threshold!: pulumi.Output<number | undefined>;
 
     /**
@@ -99,7 +95,13 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseInsightsConfiguration resources.
  */
 export interface CseInsightsConfigurationState {
+    /**
+     * Detection window expressed in days.
+     */
     lookbackDays?: pulumi.Input<number>;
+    /**
+     * Detection threshold activity score.
+     */
     threshold?: pulumi.Input<number>;
 }
 
@@ -107,6 +109,12 @@ export interface CseInsightsConfigurationState {
  * The set of arguments for constructing a CseInsightsConfiguration resource.
  */
 export interface CseInsightsConfigurationArgs {
+    /**
+     * Detection window expressed in days.
+     */
     lookbackDays?: pulumi.Input<number>;
+    /**
+     * Detection threshold activity score.
+     */
     threshold?: pulumi.Input<number>;
 }

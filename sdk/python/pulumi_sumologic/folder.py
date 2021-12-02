@@ -18,6 +18,9 @@ class FolderArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Folder resource.
+        :param pulumi.Input[str] description: The description of the folder.
+        :param pulumi.Input[str] parent_id: The ID of the folder in which you want to create the new folder.
+        :param pulumi.Input[str] name: The name of the folder. This is required, and has to be unique.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "parent_id", parent_id)
@@ -27,6 +30,9 @@ class FolderArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
+        """
+        The description of the folder.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -36,6 +42,9 @@ class FolderArgs:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the folder in which you want to create the new folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -45,6 +54,9 @@ class FolderArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the folder. This is required, and has to be unique.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -60,6 +72,9 @@ class _FolderState:
                  parent_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
+        :param pulumi.Input[str] description: The description of the folder.
+        :param pulumi.Input[str] name: The name of the folder. This is required, and has to be unique.
+        :param pulumi.Input[str] parent_id: The ID of the folder in which you want to create the new folder.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -71,6 +86,9 @@ class _FolderState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the folder.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -80,6 +98,9 @@ class _FolderState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the folder. This is required, and has to be unique.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -89,6 +110,9 @@ class _FolderState:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the folder in which you want to create the new folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -118,32 +142,12 @@ class Folder(pulumi.CustomResource):
             description="A test folder",
             parent_id="<personal folder id>")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the folder. This is required, and has to be unique.
-        - `parent_id` - (Required) The ID of the folder in which you want to create the new folder.
-        - `description` - (Optional) The description of the folder.
-
-        ### Timeouts
-
-        `Folder` provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
-
-        - `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful
-
-        Additional data provided in state
-
-        - `created_at` - (Computed) When the folder was created.
-        - `created_by` - (Computed) Who created the folder.
-        - `modified_at` - (Computed) When was the folder last modified.
-        - `modified_by` - (Computed) The ID of the user who modified the folder last.
-        - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder").
-        - `permissions` - (Computed) List of permissions the user has on the content item.
-        - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the folder.
+        :param pulumi.Input[str] name: The name of the folder. This is required, and has to be unique.
+        :param pulumi.Input[str] parent_id: The ID of the folder in which you want to create the new folder.
         """
         ...
     @overload
@@ -164,29 +168,6 @@ class Folder(pulumi.CustomResource):
             description="A test folder",
             parent_id="<personal folder id>")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the folder. This is required, and has to be unique.
-        - `parent_id` - (Required) The ID of the folder in which you want to create the new folder.
-        - `description` - (Optional) The description of the folder.
-
-        ### Timeouts
-
-        `Folder` provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
-
-        - `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful
-
-        Additional data provided in state
-
-        - `created_at` - (Computed) When the folder was created.
-        - `created_by` - (Computed) Who created the folder.
-        - `modified_at` - (Computed) When was the folder last modified.
-        - `modified_by` - (Computed) The ID of the user who modified the folder last.
-        - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder").
-        - `permissions` - (Computed) List of permissions the user has on the content item.
-        - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.
@@ -245,6 +226,9 @@ class Folder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the folder.
+        :param pulumi.Input[str] name: The name of the folder. This is required, and has to be unique.
+        :param pulumi.Input[str] parent_id: The ID of the folder in which you want to create the new folder.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -258,15 +242,24 @@ class Folder(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        The description of the folder.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the folder. This is required, and has to be unique.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the folder in which you want to create the new folder.
+        """
         return pulumi.get(self, "parent_id")
 

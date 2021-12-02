@@ -30,16 +30,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
-    /// - `severity_expression` - (Required) Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the entity criticality configuration.
     /// 
     /// ## Import
     /// 
@@ -52,9 +42,15 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig")]
     public partial class CseEntityCriticalityConfig : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        /// </summary>
         [Output("severityExpression")]
         public Output<string> SeverityExpression { get; private set; } = null!;
 
@@ -104,9 +100,15 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseEntityCriticalityConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        /// </summary>
         [Input("severityExpression", required: true)]
         public Input<string> SeverityExpression { get; set; } = null!;
 
@@ -117,9 +119,15 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseEntityCriticalityConfigState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        /// </summary>
         [Input("severityExpression")]
         public Input<string>? SeverityExpression { get; set; }
 

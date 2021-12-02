@@ -38,6 +38,11 @@ class CloudtrailSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a CloudtrailSource resource.
+        :param pulumi.Input['CloudtrailSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['CloudtrailSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
@@ -79,6 +84,9 @@ class CloudtrailSourceArgs:
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Input['CloudtrailSourceAuthenticationArgs']:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -97,6 +105,9 @@ class CloudtrailSourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -106,6 +117,9 @@ class CloudtrailSourceArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input['CloudtrailSourcePathArgs']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -115,6 +129,9 @@ class CloudtrailSourceArgs:
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Input[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -124,6 +141,9 @@ class CloudtrailSourceArgs:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Input[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -293,6 +313,11 @@ class _CloudtrailSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering CloudtrailSource resources.
+        :param pulumi.Input['CloudtrailSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['CloudtrailSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         if authentication is not None:
@@ -343,6 +368,9 @@ class _CloudtrailSourceState:
     @property
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input['CloudtrailSourceAuthenticationArgs']]:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -379,6 +407,9 @@ class _CloudtrailSourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -487,6 +518,9 @@ class _CloudtrailSourceState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['CloudtrailSourcePathArgs']]:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -496,6 +530,9 @@ class _CloudtrailSourceState:
     @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -505,6 +542,9 @@ class _CloudtrailSourceState:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -599,23 +639,6 @@ class CloudtrailSource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
-        ## Argument reference
-
-        In addition to the common properties, the following arguments are supported:
-
-         - `content_type` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-         - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
-             + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-             + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-             + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-             + `region` - (Optional) Your AWS Bucket region.
-         - `path` - (Required) The location to scan for new data.
-             + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-             + `bucket_name` - (Required) The name of the bucket.
-             + `path_expression` - (Required) The path to the data.
 
         ## Import
 
@@ -635,6 +658,11 @@ class CloudtrailSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CloudtrailSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['CloudtrailSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         ...
     @overload
@@ -672,23 +700,6 @@ class CloudtrailSource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
-        ## Argument reference
-
-        In addition to the common properties, the following arguments are supported:
-
-         - `content_type` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-         - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
-             + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-             + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-             + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-             + `region` - (Optional) Your AWS Bucket region.
-         - `path` - (Required) The location to scan for new data.
-             + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-             + `bucket_name` - (Required) The name of the bucket.
-             + `path_expression` - (Required) The path to the data.
 
         ## Import
 
@@ -827,6 +838,11 @@ class CloudtrailSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CloudtrailSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['CloudtrailSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -860,6 +876,9 @@ class CloudtrailSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.CloudtrailSourceAuthentication']:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -880,6 +899,9 @@ class CloudtrailSource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -940,16 +962,25 @@ class CloudtrailSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output['outputs.CloudtrailSourcePath']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Output[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @property

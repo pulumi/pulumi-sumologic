@@ -14,12 +14,19 @@ namespace Pulumi.SumoLogic.Inputs
     {
         [Input("tagFilters")]
         private InputList<Inputs.KinesisMetricsSourcePathTagFilterGetArgs>? _tagFilters;
+
+        /// <summary>
+        /// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        /// </summary>
         public InputList<Inputs.KinesisMetricsSourcePathTagFilterGetArgs> TagFilters
         {
             get => _tagFilters ?? (_tagFilters = new InputList<Inputs.KinesisMetricsSourcePathTagFilterGetArgs>());
             set => _tagFilters = value;
         }
 
+        /// <summary>
+        /// This value has to be set to `TagFilters`
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

@@ -14,28 +14,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
     /// 
-    /// ## Argument reference
-    /// 
-    /// In addition to the common properties, the following arguments are supported:
-    /// 
-    ///  - `content_type` - (Required) The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-    ///  - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-    ///  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-    ///  - `authentication` - (Required) Authentication details for AWS access.
-    ///      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-    ///      + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-    ///      + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-    ///      + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-    ///      + `region` - (Optional) Your AWS Bucket region.
-    ///  - `path` - (Required) The location to scan for new data.
-    ///      + `type` - (Required) type of polling source. Only allowed value is `AwsMetadataPath`.
-    ///      + `limit_to_regions` - (Optional) List of Amazon regions.
-    ///      + `limit_to_namespaces` - List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
-    ///      + `tag_filters` - (Optional) Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
-    /// 
-    /// ### See also
-    ///   * [Sumologic &gt; Sources &gt; Sources for Hosted Collectors &gt; AWS &gt; AWS Metadata (Tag) Source][3]
-    /// 
     /// ## Import
     /// 
     /// Metadata sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -55,6 +33,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/metadataSource:MetadataSource")]
     public partial class MetadataSource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for AWS access.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.MetadataSourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -67,6 +48,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -103,12 +87,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.MetadataSourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -170,6 +163,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class MetadataSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for AWS access.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.MetadataSourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -182,6 +178,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -233,12 +232,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.MetadataSourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -255,6 +263,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class MetadataSourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for AWS access.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.MetadataSourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -267,6 +278,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -318,12 +332,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.MetadataSourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

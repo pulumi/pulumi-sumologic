@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 

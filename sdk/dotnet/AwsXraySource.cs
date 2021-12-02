@@ -54,21 +54,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// In addition to the common properties, the following arguments are supported:
-    /// 
-    ///  - `content_type` - (Required) The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
-    ///  - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
-    ///  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-    ///  - `authentication` - (Required) Authentication details for making `xray:Get*` calls.
-    ///      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-    ///      + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-    ///      + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-    ///      + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-    ///  - `path` - (Required) The location to scan for new data.
-    ///      + `type` - (Required) type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-    ///      + `limit_to_regions` - (Optional) List of Amazon regions.
     /// 
     /// ## Import
     /// 
@@ -87,6 +72,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/awsXraySource:AwsXraySource")]
     public partial class AwsXraySource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for making `xray:Get*` calls.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.AwsXraySourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -99,6 +87,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -135,12 +126,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.AwsXraySourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -199,6 +199,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class AwsXraySourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for making `xray:Get*` calls.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.AwsXraySourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -211,6 +214,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -262,12 +268,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.AwsXraySourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -284,6 +299,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class AwsXraySourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for making `xray:Get*` calls.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.AwsXraySourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -296,6 +314,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -347,12 +368,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.AwsXraySourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

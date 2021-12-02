@@ -24,6 +24,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("text")]
         public Input<string>? Text { get; set; }
 
+        /// <summary>
+        /// Title of the dashboard.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

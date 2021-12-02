@@ -18,17 +18,6 @@ import * as utilities from "./utilities";
  *     parent: "No Action",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) The name of the insights resolution.
- * - `description` - (Required) The description of the insights resolution.
- * - `parent` - (Required) The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the insights resolution.
  *
  * ## Import
  *
@@ -66,8 +55,17 @@ export class CseInsightsResolution extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseInsightsResolution.__pulumiType;
     }
 
+    /**
+     * The description of the insights resolution.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the insights resolution.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+     */
     public readonly parent!: pulumi.Output<string | undefined>;
 
     /**
@@ -103,8 +101,17 @@ export class CseInsightsResolution extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseInsightsResolution resources.
  */
 export interface CseInsightsResolutionState {
+    /**
+     * The description of the insights resolution.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the insights resolution.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+     */
     parent?: pulumi.Input<string>;
 }
 
@@ -112,7 +119,16 @@ export interface CseInsightsResolutionState {
  * The set of arguments for constructing a CseInsightsResolution resource.
  */
 export interface CseInsightsResolutionArgs {
+    /**
+     * The description of the insights resolution.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the insights resolution.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+     */
     parent?: pulumi.Input<string>;
 }

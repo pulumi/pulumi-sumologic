@@ -38,21 +38,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) The name of the rule tuning expression.
-    /// - `description` - (Required) The description of the rule tuning expression.
-    /// - `expression` - (Required) Expression to match.
-    /// - `enabled` - (Required) Enabled flag.
-    /// - `exclude` - (Required) Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
-    /// - `is_global` - (Required) Set to true if this tuning expression should be applied to all rules.
-    /// - `rule_ids` - (Required) List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the rule tuning expression.
     /// 
     /// ## Import
     /// 
@@ -65,24 +50,45 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression")]
     public partial class CseRuleTuningExpression : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the rule tuning expression.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Enabled flag.
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        /// </summary>
         [Output("exclude")]
         public Output<bool> Exclude { get; private set; } = null!;
 
+        /// <summary>
+        /// Expression to match.
+        /// </summary>
         [Output("expression")]
         public Output<string> Expression { get; private set; } = null!;
 
+        /// <summary>
+        /// Set to true if this tuning expression should be applied to all rules.
+        /// </summary>
         [Output("isGlobal")]
         public Output<bool> IsGlobal { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the rule tuning expression.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        /// </summary>
         [Output("ruleIds")]
         public Output<ImmutableArray<string>> RuleIds { get; private set; } = null!;
 
@@ -132,26 +138,48 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseRuleTuningExpressionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the rule tuning expression.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// Enabled flag.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        /// </summary>
         [Input("exclude", required: true)]
         public Input<bool> Exclude { get; set; } = null!;
 
+        /// <summary>
+        /// Expression to match.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// Set to true if this tuning expression should be applied to all rules.
+        /// </summary>
         [Input("isGlobal", required: true)]
         public Input<bool> IsGlobal { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the rule tuning expression.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("ruleIds", required: true)]
         private InputList<string>? _ruleIds;
+
+        /// <summary>
+        /// List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        /// </summary>
         public InputList<string> RuleIds
         {
             get => _ruleIds ?? (_ruleIds = new InputList<string>());
@@ -165,26 +193,48 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseRuleTuningExpressionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the rule tuning expression.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Enabled flag.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        /// </summary>
         [Input("exclude")]
         public Input<bool>? Exclude { get; set; }
 
+        /// <summary>
+        /// Expression to match.
+        /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
+        /// <summary>
+        /// Set to true if this tuning expression should be applied to all rules.
+        /// </summary>
         [Input("isGlobal")]
         public Input<bool>? IsGlobal { get; set; }
 
+        /// <summary>
+        /// The name of the rule tuning expression.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("ruleIds")]
         private InputList<string>? _ruleIds;
+
+        /// <summary>
+        /// List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        /// </summary>
         public InputList<string> RuleIds
         {
             get => _ruleIds ?? (_ruleIds = new InputList<string>());

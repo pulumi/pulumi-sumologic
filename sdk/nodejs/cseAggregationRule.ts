@@ -41,41 +41,6 @@ import * as utilities from "./utilities";
  *     windowSize: "T30M",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `aggregationFunctions` - (Required) One or more named aggregation functions
- *   + `name` - (Required) The name to use to reference the result in the triggerExpression
- *   + `function` - (Required) The function to aggregate with
- *   + `arguments` - (Required) One or more expressions to pass as arguments to the function
- * - `descriptionExpression` - (Required) The description of the generated Signals
- * - `enabled` - (Required) Whether the rule should generate Signals
- * - `entitySelectors` - (Required) The entities to generate Signals on
- *   + `entityType` - (Required) The type of the entity to generate the Signal on.
- *   + `expression` - (Required) The expression or field name to generate the Signal on.
- * - `groupByEntity` - (Optional; defaults to true) Whether to group records by the specified entity fields
- * - `groupByFields` - (Optional) A list of fields to group records by
- * - `isPrototype` - (Optional) Whether the generated Signals should be prototype Signals
- * - `matchExpression` - (Required) The expression for which records to match on
- * - `name` - (Required) The name of the Rule
- * - `nameExpression` - (Required) The name of the generated Signals
- * - `severityMapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
- *   + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
- *   + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
- *   + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
- *   + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
- *     - `type` - (Required) Must be set to "eq" currently
- *     - `from` - (Required) The record value to map from
- *     - `to` - (Required) The severity value to map to
- * - `summaryExpression` - (Optional) The summary of the generated Signals
- * - `tags` - (Required) The tags of the generated Signals
- * - `triggerExpression` - (Required) The expression to determine whether a Signal should be created based on the aggregation results
- * - `windowSize` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the aggregation rule.
  *
  * ## Import
  *
@@ -113,20 +78,65 @@ export class CseAggregationRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseAggregationRule.__pulumiType;
     }
 
+    /**
+     * One or more named aggregation functions
+     */
     public readonly aggregationFunctions!: pulumi.Output<outputs.CseAggregationRuleAggregationFunction[]>;
+    /**
+     * The description of the generated Signals
+     */
     public readonly descriptionExpression!: pulumi.Output<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     public readonly entitySelectors!: pulumi.Output<outputs.CseAggregationRuleEntitySelector[]>;
+    /**
+     * Whether to group records by the specified entity fields
+     */
     public readonly groupByEntity!: pulumi.Output<boolean | undefined>;
+    /**
+     * A list of fields to group records by
+     */
     public readonly groupByFields!: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     public readonly isPrototype!: pulumi.Output<boolean | undefined>;
+    /**
+     * The expression for which records to match on
+     */
     public readonly matchExpression!: pulumi.Output<string>;
+    /**
+     * The name of the Rule
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the generated Signals
+     */
     public readonly nameExpression!: pulumi.Output<string>;
+    /**
+     * The configuration of how the severity of the Signals should be mapped from the Records
+     */
     public readonly severityMapping!: pulumi.Output<outputs.CseAggregationRuleSeverityMapping>;
+    /**
+     * The summary of the generated Signals
+     */
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
+    /**
+     * The tags of the generated Signals
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * The expression to determine whether a Signal should be created based on the aggregation results
+     */
     public readonly triggerExpression!: pulumi.Output<string>;
+    /**
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     */
     public readonly windowSize!: pulumi.Output<string>;
 
     /**
@@ -213,20 +223,65 @@ export class CseAggregationRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseAggregationRule resources.
  */
 export interface CseAggregationRuleState {
+    /**
+     * One or more named aggregation functions
+     */
     aggregationFunctions?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleAggregationFunction>[]>;
+    /**
+     * The description of the generated Signals
+     */
     descriptionExpression?: pulumi.Input<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
+    /**
+     * Whether to group records by the specified entity fields
+     */
     groupByEntity?: pulumi.Input<boolean>;
+    /**
+     * A list of fields to group records by
+     */
     groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     isPrototype?: pulumi.Input<boolean>;
+    /**
+     * The expression for which records to match on
+     */
     matchExpression?: pulumi.Input<string>;
+    /**
+     * The name of the Rule
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the generated Signals
+     */
     nameExpression?: pulumi.Input<string>;
+    /**
+     * The configuration of how the severity of the Signals should be mapped from the Records
+     */
     severityMapping?: pulumi.Input<inputs.CseAggregationRuleSeverityMapping>;
+    /**
+     * The summary of the generated Signals
+     */
     summaryExpression?: pulumi.Input<string>;
+    /**
+     * The tags of the generated Signals
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The expression to determine whether a Signal should be created based on the aggregation results
+     */
     triggerExpression?: pulumi.Input<string>;
+    /**
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     */
     windowSize?: pulumi.Input<string>;
 }
 
@@ -234,19 +289,64 @@ export interface CseAggregationRuleState {
  * The set of arguments for constructing a CseAggregationRule resource.
  */
 export interface CseAggregationRuleArgs {
+    /**
+     * One or more named aggregation functions
+     */
     aggregationFunctions: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleAggregationFunction>[]>;
+    /**
+     * The description of the generated Signals
+     */
     descriptionExpression: pulumi.Input<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     entitySelectors: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
+    /**
+     * Whether to group records by the specified entity fields
+     */
     groupByEntity?: pulumi.Input<boolean>;
+    /**
+     * A list of fields to group records by
+     */
     groupByFields?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     isPrototype?: pulumi.Input<boolean>;
+    /**
+     * The expression for which records to match on
+     */
     matchExpression: pulumi.Input<string>;
+    /**
+     * The name of the Rule
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the generated Signals
+     */
     nameExpression: pulumi.Input<string>;
+    /**
+     * The configuration of how the severity of the Signals should be mapped from the Records
+     */
     severityMapping: pulumi.Input<inputs.CseAggregationRuleSeverityMapping>;
+    /**
+     * The summary of the generated Signals
+     */
     summaryExpression?: pulumi.Input<string>;
+    /**
+     * The tags of the generated Signals
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The expression to determine whether a Signal should be created based on the aggregation results
+     */
     triggerExpression: pulumi.Input<string>;
+    /**
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     */
     windowSize: pulumi.Input<string>;
 }

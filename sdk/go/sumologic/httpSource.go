@@ -70,12 +70,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// In addition to the common properties, the following arguments are supported:
-//
-// - `messagePerRequest` - (Optional) When set to `true`, will create one log message per HTTP request.
-// - `contentType`        - (Optional) When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
 //
 // ## Import
 //
@@ -95,23 +89,25 @@ import (
 type HttpSource struct {
 	pulumi.CustomResourceState
 
-	AutomaticDateParsing       pulumi.BoolPtrOutput                   `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                 `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                       `pulumi:"collectorId"`
-	ContentType                pulumi.StringPtrOutput                 `pulumi:"contentType"`
-	CutoffRelativeTime         pulumi.StringPtrOutput                 `pulumi:"cutoffRelativeTime"`
-	CutoffTimestamp            pulumi.IntPtrOutput                    `pulumi:"cutoffTimestamp"`
-	DefaultDateFormats         HttpSourceDefaultDateFormatArrayOutput `pulumi:"defaultDateFormats"`
-	Description                pulumi.StringPtrOutput                 `pulumi:"description"`
-	Fields                     pulumi.StringMapOutput                 `pulumi:"fields"`
-	Filters                    HttpSourceFilterArrayOutput            `pulumi:"filters"`
-	ForceTimezone              pulumi.BoolPtrOutput                   `pulumi:"forceTimezone"`
-	HostName                   pulumi.StringPtrOutput                 `pulumi:"hostName"`
-	ManualPrefixRegexp         pulumi.StringPtrOutput                 `pulumi:"manualPrefixRegexp"`
-	MessagePerRequest          pulumi.BoolPtrOutput                   `pulumi:"messagePerRequest"`
-	MultilineProcessingEnabled pulumi.BoolPtrOutput                   `pulumi:"multilineProcessingEnabled"`
-	Name                       pulumi.StringOutput                    `pulumi:"name"`
-	Timezone                   pulumi.StringPtrOutput                 `pulumi:"timezone"`
+	AutomaticDateParsing pulumi.BoolPtrOutput   `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput `pulumi:"category"`
+	CollectorId          pulumi.IntOutput       `pulumi:"collectorId"`
+	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+	ContentType        pulumi.StringPtrOutput                 `pulumi:"contentType"`
+	CutoffRelativeTime pulumi.StringPtrOutput                 `pulumi:"cutoffRelativeTime"`
+	CutoffTimestamp    pulumi.IntPtrOutput                    `pulumi:"cutoffTimestamp"`
+	DefaultDateFormats HttpSourceDefaultDateFormatArrayOutput `pulumi:"defaultDateFormats"`
+	Description        pulumi.StringPtrOutput                 `pulumi:"description"`
+	Fields             pulumi.StringMapOutput                 `pulumi:"fields"`
+	Filters            HttpSourceFilterArrayOutput            `pulumi:"filters"`
+	ForceTimezone      pulumi.BoolPtrOutput                   `pulumi:"forceTimezone"`
+	HostName           pulumi.StringPtrOutput                 `pulumi:"hostName"`
+	ManualPrefixRegexp pulumi.StringPtrOutput                 `pulumi:"manualPrefixRegexp"`
+	// When set to `true`, will create one log message per HTTP request.
+	MessagePerRequest          pulumi.BoolPtrOutput   `pulumi:"messagePerRequest"`
+	MultilineProcessingEnabled pulumi.BoolPtrOutput   `pulumi:"multilineProcessingEnabled"`
+	Name                       pulumi.StringOutput    `pulumi:"name"`
+	Timezone                   pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The HTTP endpoint to use for sending data to this source.
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -149,42 +145,46 @@ func GetHttpSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HttpSource resources.
 type httpSourceState struct {
-	AutomaticDateParsing       *bool                         `pulumi:"automaticDateParsing"`
-	Category                   *string                       `pulumi:"category"`
-	CollectorId                *int                          `pulumi:"collectorId"`
-	ContentType                *string                       `pulumi:"contentType"`
-	CutoffRelativeTime         *string                       `pulumi:"cutoffRelativeTime"`
-	CutoffTimestamp            *int                          `pulumi:"cutoffTimestamp"`
-	DefaultDateFormats         []HttpSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
-	Description                *string                       `pulumi:"description"`
-	Fields                     map[string]string             `pulumi:"fields"`
-	Filters                    []HttpSourceFilter            `pulumi:"filters"`
-	ForceTimezone              *bool                         `pulumi:"forceTimezone"`
-	HostName                   *string                       `pulumi:"hostName"`
-	ManualPrefixRegexp         *string                       `pulumi:"manualPrefixRegexp"`
-	MessagePerRequest          *bool                         `pulumi:"messagePerRequest"`
-	MultilineProcessingEnabled *bool                         `pulumi:"multilineProcessingEnabled"`
-	Name                       *string                       `pulumi:"name"`
-	Timezone                   *string                       `pulumi:"timezone"`
+	AutomaticDateParsing *bool   `pulumi:"automaticDateParsing"`
+	Category             *string `pulumi:"category"`
+	CollectorId          *int    `pulumi:"collectorId"`
+	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+	ContentType        *string                       `pulumi:"contentType"`
+	CutoffRelativeTime *string                       `pulumi:"cutoffRelativeTime"`
+	CutoffTimestamp    *int                          `pulumi:"cutoffTimestamp"`
+	DefaultDateFormats []HttpSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
+	Description        *string                       `pulumi:"description"`
+	Fields             map[string]string             `pulumi:"fields"`
+	Filters            []HttpSourceFilter            `pulumi:"filters"`
+	ForceTimezone      *bool                         `pulumi:"forceTimezone"`
+	HostName           *string                       `pulumi:"hostName"`
+	ManualPrefixRegexp *string                       `pulumi:"manualPrefixRegexp"`
+	// When set to `true`, will create one log message per HTTP request.
+	MessagePerRequest          *bool   `pulumi:"messagePerRequest"`
+	MultilineProcessingEnabled *bool   `pulumi:"multilineProcessingEnabled"`
+	Name                       *string `pulumi:"name"`
+	Timezone                   *string `pulumi:"timezone"`
 	// The HTTP endpoint to use for sending data to this source.
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type HttpSourceState struct {
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
-	ContentType                pulumi.StringPtrInput
-	CutoffRelativeTime         pulumi.StringPtrInput
-	CutoffTimestamp            pulumi.IntPtrInput
-	DefaultDateFormats         HttpSourceDefaultDateFormatArrayInput
-	Description                pulumi.StringPtrInput
-	Fields                     pulumi.StringMapInput
-	Filters                    HttpSourceFilterArrayInput
-	ForceTimezone              pulumi.BoolPtrInput
-	HostName                   pulumi.StringPtrInput
-	ManualPrefixRegexp         pulumi.StringPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+	ContentType        pulumi.StringPtrInput
+	CutoffRelativeTime pulumi.StringPtrInput
+	CutoffTimestamp    pulumi.IntPtrInput
+	DefaultDateFormats HttpSourceDefaultDateFormatArrayInput
+	Description        pulumi.StringPtrInput
+	Fields             pulumi.StringMapInput
+	Filters            HttpSourceFilterArrayInput
+	ForceTimezone      pulumi.BoolPtrInput
+	HostName           pulumi.StringPtrInput
+	ManualPrefixRegexp pulumi.StringPtrInput
+	// When set to `true`, will create one log message per HTTP request.
 	MessagePerRequest          pulumi.BoolPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
@@ -199,41 +199,45 @@ func (HttpSourceState) ElementType() reflect.Type {
 }
 
 type httpSourceArgs struct {
-	AutomaticDateParsing       *bool                         `pulumi:"automaticDateParsing"`
-	Category                   *string                       `pulumi:"category"`
-	CollectorId                int                           `pulumi:"collectorId"`
-	ContentType                *string                       `pulumi:"contentType"`
-	CutoffRelativeTime         *string                       `pulumi:"cutoffRelativeTime"`
-	CutoffTimestamp            *int                          `pulumi:"cutoffTimestamp"`
-	DefaultDateFormats         []HttpSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
-	Description                *string                       `pulumi:"description"`
-	Fields                     map[string]string             `pulumi:"fields"`
-	Filters                    []HttpSourceFilter            `pulumi:"filters"`
-	ForceTimezone              *bool                         `pulumi:"forceTimezone"`
-	HostName                   *string                       `pulumi:"hostName"`
-	ManualPrefixRegexp         *string                       `pulumi:"manualPrefixRegexp"`
-	MessagePerRequest          *bool                         `pulumi:"messagePerRequest"`
-	MultilineProcessingEnabled *bool                         `pulumi:"multilineProcessingEnabled"`
-	Name                       *string                       `pulumi:"name"`
-	Timezone                   *string                       `pulumi:"timezone"`
-	UseAutolineMatching        *bool                         `pulumi:"useAutolineMatching"`
+	AutomaticDateParsing *bool   `pulumi:"automaticDateParsing"`
+	Category             *string `pulumi:"category"`
+	CollectorId          int     `pulumi:"collectorId"`
+	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+	ContentType        *string                       `pulumi:"contentType"`
+	CutoffRelativeTime *string                       `pulumi:"cutoffRelativeTime"`
+	CutoffTimestamp    *int                          `pulumi:"cutoffTimestamp"`
+	DefaultDateFormats []HttpSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
+	Description        *string                       `pulumi:"description"`
+	Fields             map[string]string             `pulumi:"fields"`
+	Filters            []HttpSourceFilter            `pulumi:"filters"`
+	ForceTimezone      *bool                         `pulumi:"forceTimezone"`
+	HostName           *string                       `pulumi:"hostName"`
+	ManualPrefixRegexp *string                       `pulumi:"manualPrefixRegexp"`
+	// When set to `true`, will create one log message per HTTP request.
+	MessagePerRequest          *bool   `pulumi:"messagePerRequest"`
+	MultilineProcessingEnabled *bool   `pulumi:"multilineProcessingEnabled"`
+	Name                       *string `pulumi:"name"`
+	Timezone                   *string `pulumi:"timezone"`
+	UseAutolineMatching        *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a HttpSource resource.
 type HttpSourceArgs struct {
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
-	ContentType                pulumi.StringPtrInput
-	CutoffRelativeTime         pulumi.StringPtrInput
-	CutoffTimestamp            pulumi.IntPtrInput
-	DefaultDateFormats         HttpSourceDefaultDateFormatArrayInput
-	Description                pulumi.StringPtrInput
-	Fields                     pulumi.StringMapInput
-	Filters                    HttpSourceFilterArrayInput
-	ForceTimezone              pulumi.BoolPtrInput
-	HostName                   pulumi.StringPtrInput
-	ManualPrefixRegexp         pulumi.StringPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+	ContentType        pulumi.StringPtrInput
+	CutoffRelativeTime pulumi.StringPtrInput
+	CutoffTimestamp    pulumi.IntPtrInput
+	DefaultDateFormats HttpSourceDefaultDateFormatArrayInput
+	Description        pulumi.StringPtrInput
+	Fields             pulumi.StringMapInput
+	Filters            HttpSourceFilterArrayInput
+	ForceTimezone      pulumi.BoolPtrInput
+	HostName           pulumi.StringPtrInput
+	ManualPrefixRegexp pulumi.StringPtrInput
+	// When set to `true`, will create one log message per HTTP request.
 	MessagePerRequest          pulumi.BoolPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput

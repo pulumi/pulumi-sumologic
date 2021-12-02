@@ -12,20 +12,33 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CseMatchRuleSeverityMappingGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        /// </summary>
         [Input("default")]
         public Input<int>? Default { get; set; }
 
+        /// <summary>
+        /// The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        /// </summary>
         [Input("field")]
         public Input<string>? Field { get; set; }
 
         [Input("mappings")]
         private InputList<Inputs.CseMatchRuleSeverityMappingMappingGetArgs>? _mappings;
+
+        /// <summary>
+        /// The map of record values to severities to use in the "fieldValueMapping" case
+        /// </summary>
         public InputList<Inputs.CseMatchRuleSeverityMappingMappingGetArgs> Mappings
         {
             get => _mappings ?? (_mappings = new InputList<Inputs.CseMatchRuleSeverityMappingMappingGetArgs>());
             set => _mappings = value;
         }
 
+        /// <summary>
+        /// Must be set to "eq" currently
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

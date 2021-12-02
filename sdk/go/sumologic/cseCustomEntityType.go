@@ -39,17 +39,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) Human friend and unique name. Example: "File Hash".
-// - `identifier` - (Required) Machine friendly and unique identifier. Example: "filehash".
-// - `fields` - (Required) Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the custom entity type.
 //
 // ## Import
 //
@@ -61,9 +50,12 @@ import (
 type CseCustomEntityType struct {
 	pulumi.CustomResourceState
 
-	Fields     pulumi.StringArrayOutput `pulumi:"fields"`
-	Identifier pulumi.StringOutput      `pulumi:"identifier"`
-	Name       pulumi.StringOutput      `pulumi:"name"`
+	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	Fields pulumi.StringArrayOutput `pulumi:"fields"`
+	// Machine friendly and unique identifier. Example: "filehash".
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Human friend and unique name. Example: "File Hash".
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewCseCustomEntityType registers a new resource with the given unique name, arguments, and options.
@@ -101,15 +93,21 @@ func GetCseCustomEntityType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseCustomEntityType resources.
 type cseCustomEntityTypeState struct {
-	Fields     []string `pulumi:"fields"`
-	Identifier *string  `pulumi:"identifier"`
-	Name       *string  `pulumi:"name"`
+	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	Fields []string `pulumi:"fields"`
+	// Machine friendly and unique identifier. Example: "filehash".
+	Identifier *string `pulumi:"identifier"`
+	// Human friend and unique name. Example: "File Hash".
+	Name *string `pulumi:"name"`
 }
 
 type CseCustomEntityTypeState struct {
-	Fields     pulumi.StringArrayInput
+	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	Fields pulumi.StringArrayInput
+	// Machine friendly and unique identifier. Example: "filehash".
 	Identifier pulumi.StringPtrInput
-	Name       pulumi.StringPtrInput
+	// Human friend and unique name. Example: "File Hash".
+	Name pulumi.StringPtrInput
 }
 
 func (CseCustomEntityTypeState) ElementType() reflect.Type {
@@ -117,16 +115,22 @@ func (CseCustomEntityTypeState) ElementType() reflect.Type {
 }
 
 type cseCustomEntityTypeArgs struct {
-	Fields     []string `pulumi:"fields"`
-	Identifier string   `pulumi:"identifier"`
-	Name       *string  `pulumi:"name"`
+	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	Fields []string `pulumi:"fields"`
+	// Machine friendly and unique identifier. Example: "filehash".
+	Identifier string `pulumi:"identifier"`
+	// Human friend and unique name. Example: "File Hash".
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a CseCustomEntityType resource.
 type CseCustomEntityTypeArgs struct {
-	Fields     pulumi.StringArrayInput
+	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	Fields pulumi.StringArrayInput
+	// Machine friendly and unique identifier. Example: "filehash".
 	Identifier pulumi.StringInput
-	Name       pulumi.StringPtrInput
+	// Human friend and unique name. Example: "File Hash".
+	Name pulumi.StringPtrInput
 }
 
 func (CseCustomEntityTypeArgs) ElementType() reflect.Type {

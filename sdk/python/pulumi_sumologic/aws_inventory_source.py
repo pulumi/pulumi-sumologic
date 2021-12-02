@@ -38,6 +38,11 @@ class AwsInventorySourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AwsInventorySource resource.
+        :param pulumi.Input['AwsInventorySourceAuthenticationArgs'] authentication: Authentication details to access AWS `Describe*` APIs.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        :param pulumi.Input['AwsInventorySourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
@@ -79,6 +84,9 @@ class AwsInventorySourceArgs:
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Input['AwsInventorySourceAuthenticationArgs']:
+        """
+        Authentication details to access AWS `Describe*` APIs.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -97,6 +105,9 @@ class AwsInventorySourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
+        """
+        The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -106,6 +117,9 @@ class AwsInventorySourceArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input['AwsInventorySourcePathArgs']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -115,6 +129,9 @@ class AwsInventorySourceArgs:
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Input[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -124,6 +141,9 @@ class AwsInventorySourceArgs:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Input[int]:
+        """
+        Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -293,6 +313,11 @@ class _AwsInventorySourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AwsInventorySource resources.
+        :param pulumi.Input['AwsInventorySourceAuthenticationArgs'] authentication: Authentication details to access AWS `Describe*` APIs.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        :param pulumi.Input['AwsInventorySourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -342,6 +367,9 @@ class _AwsInventorySourceState:
     @property
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input['AwsInventorySourceAuthenticationArgs']]:
+        """
+        Authentication details to access AWS `Describe*` APIs.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -378,6 +406,9 @@ class _AwsInventorySourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -486,6 +517,9 @@ class _AwsInventorySourceState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['AwsInventorySourcePathArgs']]:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -495,6 +529,9 @@ class _AwsInventorySourceState:
     @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -504,6 +541,9 @@ class _AwsInventorySourceState:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -597,33 +637,6 @@ class AwsInventorySource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
-        ## Argument reference
-
-        In addition to the common properties, the following arguments are supported:
-
-         - `content_type` - (Required) The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
-         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
-         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-         - `authentication` - (Required) Authentication details to access AWS `Describe*` APIs.
-             + `type` - (Required) Must be `AWSRoleBasedAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
-         - `path` - (Required) The location to scan for new data.
-             + `type` - (Required) type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-             + `limit_to_regions` - (Optional) List of Amazon regions.
-             + `limit_to_namespaces` - (Optional) List of namespaces. By default all namespaces are selected. You can also choose a subset from
-                + AWS/EC2
-                + AWS/AutoScaling
-                + AWS/EBS
-                + AWS/ELB
-                + AWS/ApplicationELB
-                + AWS/NetworkELB
-                + AWS/Lambda
-                + AWS/RDS
-                + AWS/Dynamodb
-                + AWS/ECS
-                + AWS/Elasticache
-                + AWS/Redshift
-                + AWS/Kinesis
 
         ## Import
 
@@ -641,6 +654,11 @@ class AwsInventorySource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AwsInventorySourceAuthenticationArgs']] authentication: Authentication details to access AWS `Describe*` APIs.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        :param pulumi.Input[pulumi.InputType['AwsInventorySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         """
         ...
     @overload
@@ -680,33 +698,6 @@ class AwsInventorySource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
-        ## Argument reference
-
-        In addition to the common properties, the following arguments are supported:
-
-         - `content_type` - (Required) The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
-         - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
-         - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-         - `authentication` - (Required) Authentication details to access AWS `Describe*` APIs.
-             + `type` - (Required) Must be `AWSRoleBasedAuthentication`
-             + `role_arn` - (Required) Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
-         - `path` - (Required) The location to scan for new data.
-             + `type` - (Required) type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-             + `limit_to_regions` - (Optional) List of Amazon regions.
-             + `limit_to_namespaces` - (Optional) List of namespaces. By default all namespaces are selected. You can also choose a subset from
-                + AWS/EC2
-                + AWS/AutoScaling
-                + AWS/EBS
-                + AWS/ELB
-                + AWS/ApplicationELB
-                + AWS/NetworkELB
-                + AWS/Lambda
-                + AWS/RDS
-                + AWS/Dynamodb
-                + AWS/ECS
-                + AWS/Elasticache
-                + AWS/Redshift
-                + AWS/Kinesis
 
         ## Import
 
@@ -843,6 +834,11 @@ class AwsInventorySource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AwsInventorySourceAuthenticationArgs']] authentication: Authentication details to access AWS `Describe*` APIs.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        :param pulumi.Input[pulumi.InputType['AwsInventorySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -875,6 +871,9 @@ class AwsInventorySource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.AwsInventorySourceAuthentication']:
+        """
+        Authentication details to access AWS `Describe*` APIs.
+        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -895,6 +894,9 @@ class AwsInventorySource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
+        """
+        The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -955,16 +957,25 @@ class AwsInventorySource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output['outputs.AwsInventorySourcePath']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Output[int]:
+        """
+        Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+        """
         return pulumi.get(self, "scan_interval")
 
     @property

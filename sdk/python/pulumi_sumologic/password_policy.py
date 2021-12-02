@@ -28,6 +28,19 @@ class PasswordPolicyArgs:
                  require_mfa: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a PasswordPolicy resource.
+        :param pulumi.Input[int] account_lockout_duration_in_mins: The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        :param pulumi.Input[int] account_lockout_threshold: Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        :param pulumi.Input[int] failed_login_reset_duration_in_mins: The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        :param pulumi.Input[int] max_length: The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        :param pulumi.Input[int] max_password_age_in_days: Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        :param pulumi.Input[int] min_length: The minimum length of the password. Defaults to 8.
+        :param pulumi.Input[int] min_unique_passwords: The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        :param pulumi.Input[bool] must_contain_digits: If the password must contain digits. Defaults to true.
+        :param pulumi.Input[bool] must_contain_lowercase: If the password must contain lower case characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
+        :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
+        :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         if account_lockout_duration_in_mins is not None:
             pulumi.set(__self__, "account_lockout_duration_in_mins", account_lockout_duration_in_mins)
@@ -59,6 +72,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="accountLockoutDurationInMins")
     def account_lockout_duration_in_mins(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        """
         return pulumi.get(self, "account_lockout_duration_in_mins")
 
     @account_lockout_duration_in_mins.setter
@@ -68,6 +84,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="accountLockoutThreshold")
     def account_lockout_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        """
         return pulumi.get(self, "account_lockout_threshold")
 
     @account_lockout_threshold.setter
@@ -77,6 +96,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="failedLoginResetDurationInMins")
     def failed_login_reset_duration_in_mins(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        """
         return pulumi.get(self, "failed_login_reset_duration_in_mins")
 
     @failed_login_reset_duration_in_mins.setter
@@ -86,6 +108,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="maxLength")
     def max_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        """
         return pulumi.get(self, "max_length")
 
     @max_length.setter
@@ -95,6 +120,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="maxPasswordAgeInDays")
     def max_password_age_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        """
         return pulumi.get(self, "max_password_age_in_days")
 
     @max_password_age_in_days.setter
@@ -104,6 +132,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum length of the password. Defaults to 8.
+        """
         return pulumi.get(self, "min_length")
 
     @min_length.setter
@@ -113,6 +144,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="minUniquePasswords")
     def min_unique_passwords(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        """
         return pulumi.get(self, "min_unique_passwords")
 
     @min_unique_passwords.setter
@@ -122,6 +156,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="mustContainDigits")
     def must_contain_digits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain digits. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_digits")
 
     @must_contain_digits.setter
@@ -131,6 +168,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="mustContainLowercase")
     def must_contain_lowercase(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain lower case characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_lowercase")
 
     @must_contain_lowercase.setter
@@ -140,6 +180,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="mustContainSpecialChars")
     def must_contain_special_chars(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain special characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_special_chars")
 
     @must_contain_special_chars.setter
@@ -149,6 +192,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="mustContainUppercase")
     def must_contain_uppercase(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain upper case characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_uppercase")
 
     @must_contain_uppercase.setter
@@ -158,6 +204,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="rememberMfa")
     def remember_mfa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If MFA should be remembered on the browser. Defaults to true.
+        """
         return pulumi.get(self, "remember_mfa")
 
     @remember_mfa.setter
@@ -167,6 +216,9 @@ class PasswordPolicyArgs:
     @property
     @pulumi.getter(name="requireMfa")
     def require_mfa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If MFA should be required to log in. Defaults to false.
+        """
         return pulumi.get(self, "require_mfa")
 
     @require_mfa.setter
@@ -192,6 +244,19 @@ class _PasswordPolicyState:
                  require_mfa: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering PasswordPolicy resources.
+        :param pulumi.Input[int] account_lockout_duration_in_mins: The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        :param pulumi.Input[int] account_lockout_threshold: Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        :param pulumi.Input[int] failed_login_reset_duration_in_mins: The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        :param pulumi.Input[int] max_length: The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        :param pulumi.Input[int] max_password_age_in_days: Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        :param pulumi.Input[int] min_length: The minimum length of the password. Defaults to 8.
+        :param pulumi.Input[int] min_unique_passwords: The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        :param pulumi.Input[bool] must_contain_digits: If the password must contain digits. Defaults to true.
+        :param pulumi.Input[bool] must_contain_lowercase: If the password must contain lower case characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
+        :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
+        :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         if account_lockout_duration_in_mins is not None:
             pulumi.set(__self__, "account_lockout_duration_in_mins", account_lockout_duration_in_mins)
@@ -223,6 +288,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="accountLockoutDurationInMins")
     def account_lockout_duration_in_mins(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        """
         return pulumi.get(self, "account_lockout_duration_in_mins")
 
     @account_lockout_duration_in_mins.setter
@@ -232,6 +300,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="accountLockoutThreshold")
     def account_lockout_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        """
         return pulumi.get(self, "account_lockout_threshold")
 
     @account_lockout_threshold.setter
@@ -241,6 +312,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="failedLoginResetDurationInMins")
     def failed_login_reset_duration_in_mins(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        """
         return pulumi.get(self, "failed_login_reset_duration_in_mins")
 
     @failed_login_reset_duration_in_mins.setter
@@ -250,6 +324,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="maxLength")
     def max_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        """
         return pulumi.get(self, "max_length")
 
     @max_length.setter
@@ -259,6 +336,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="maxPasswordAgeInDays")
     def max_password_age_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        """
         return pulumi.get(self, "max_password_age_in_days")
 
     @max_password_age_in_days.setter
@@ -268,6 +348,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum length of the password. Defaults to 8.
+        """
         return pulumi.get(self, "min_length")
 
     @min_length.setter
@@ -277,6 +360,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="minUniquePasswords")
     def min_unique_passwords(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        """
         return pulumi.get(self, "min_unique_passwords")
 
     @min_unique_passwords.setter
@@ -286,6 +372,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="mustContainDigits")
     def must_contain_digits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain digits. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_digits")
 
     @must_contain_digits.setter
@@ -295,6 +384,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="mustContainLowercase")
     def must_contain_lowercase(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain lower case characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_lowercase")
 
     @must_contain_lowercase.setter
@@ -304,6 +396,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="mustContainSpecialChars")
     def must_contain_special_chars(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain special characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_special_chars")
 
     @must_contain_special_chars.setter
@@ -313,6 +408,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="mustContainUppercase")
     def must_contain_uppercase(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the password must contain upper case characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_uppercase")
 
     @must_contain_uppercase.setter
@@ -322,6 +420,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="rememberMfa")
     def remember_mfa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If MFA should be remembered on the browser. Defaults to true.
+        """
         return pulumi.get(self, "remember_mfa")
 
     @remember_mfa.setter
@@ -331,6 +432,9 @@ class _PasswordPolicyState:
     @property
     @pulumi.getter(name="requireMfa")
     def require_mfa(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If MFA should be required to log in. Defaults to false.
+        """
         return pulumi.get(self, "require_mfa")
 
     @require_mfa.setter
@@ -383,28 +487,22 @@ class PasswordPolicy(pulumi.CustomResource):
             remember_mfa=True,
             require_mfa=False)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `min_length` - (Optional) The minimum length of the password. Defaults to 8.
-        - `max_length` - (Optional) The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
-        - `must_contain_lowercase` - (Optional) If the password must contain lower case characters. Defaults to true.
-        - `must_contain_uppercase` - (Optional) If the password must contain upper case characters. Defaults to true.
-        - `must_contain_digits` - (Optional) If the password must contain digits. Defaults to true.
-        - `must_contain_special_chars` - (Optional) If the password must contain special characters. Defaults to true.
-        - `max_password_age_in_days` - (Optional) Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
-        - `min_unique_passwords` - (Optional) The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
-        - `account_lockout_threshold` - (Optional) Number of failed login attempts allowed before account is locked-out. Defaults to 6.
-        - `failed_login_reset_duration_in_mins` - (Optional) The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
-        - `account_lockout_duration_in_mins` - (Optional) The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
-        - `require_mfa` - (Optional) If MFA should be required to log in. Defaults to false.
-        - `remember_mfa` - (Optional) If MFA should be remembered on the browser. Defaults to true.
-
-        [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] account_lockout_duration_in_mins: The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        :param pulumi.Input[int] account_lockout_threshold: Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        :param pulumi.Input[int] failed_login_reset_duration_in_mins: The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        :param pulumi.Input[int] max_length: The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        :param pulumi.Input[int] max_password_age_in_days: Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        :param pulumi.Input[int] min_length: The minimum length of the password. Defaults to 8.
+        :param pulumi.Input[int] min_unique_passwords: The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        :param pulumi.Input[bool] must_contain_digits: If the password must contain digits. Defaults to true.
+        :param pulumi.Input[bool] must_contain_lowercase: If the password must contain lower case characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
+        :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
+        :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         ...
     @overload
@@ -438,25 +536,6 @@ class PasswordPolicy(pulumi.CustomResource):
             remember_mfa=True,
             require_mfa=False)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `min_length` - (Optional) The minimum length of the password. Defaults to 8.
-        - `max_length` - (Optional) The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
-        - `must_contain_lowercase` - (Optional) If the password must contain lower case characters. Defaults to true.
-        - `must_contain_uppercase` - (Optional) If the password must contain upper case characters. Defaults to true.
-        - `must_contain_digits` - (Optional) If the password must contain digits. Defaults to true.
-        - `must_contain_special_chars` - (Optional) If the password must contain special characters. Defaults to true.
-        - `max_password_age_in_days` - (Optional) Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
-        - `min_unique_passwords` - (Optional) The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
-        - `account_lockout_threshold` - (Optional) Number of failed login attempts allowed before account is locked-out. Defaults to 6.
-        - `failed_login_reset_duration_in_mins` - (Optional) The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
-        - `account_lockout_duration_in_mins` - (Optional) The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
-        - `require_mfa` - (Optional) If MFA should be required to log in. Defaults to false.
-        - `remember_mfa` - (Optional) If MFA should be remembered on the browser. Defaults to true.
-
-        [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 
         :param str resource_name: The name of the resource.
         :param PasswordPolicyArgs args: The arguments to use to populate this resource's properties.
@@ -541,6 +620,19 @@ class PasswordPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] account_lockout_duration_in_mins: The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        :param pulumi.Input[int] account_lockout_threshold: Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        :param pulumi.Input[int] failed_login_reset_duration_in_mins: The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        :param pulumi.Input[int] max_length: The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        :param pulumi.Input[int] max_password_age_in_days: Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        :param pulumi.Input[int] min_length: The minimum length of the password. Defaults to 8.
+        :param pulumi.Input[int] min_unique_passwords: The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        :param pulumi.Input[bool] must_contain_digits: If the password must contain digits. Defaults to true.
+        :param pulumi.Input[bool] must_contain_lowercase: If the password must contain lower case characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
+        :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
+        :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
+        :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -564,65 +656,104 @@ class PasswordPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountLockoutDurationInMins")
     def account_lockout_duration_in_mins(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        """
         return pulumi.get(self, "account_lockout_duration_in_mins")
 
     @property
     @pulumi.getter(name="accountLockoutThreshold")
     def account_lockout_threshold(self) -> pulumi.Output[Optional[int]]:
+        """
+        Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        """
         return pulumi.get(self, "account_lockout_threshold")
 
     @property
     @pulumi.getter(name="failedLoginResetDurationInMins")
     def failed_login_reset_duration_in_mins(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        """
         return pulumi.get(self, "failed_login_reset_duration_in_mins")
 
     @property
     @pulumi.getter(name="maxLength")
     def max_length(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        """
         return pulumi.get(self, "max_length")
 
     @property
     @pulumi.getter(name="maxPasswordAgeInDays")
     def max_password_age_in_days(self) -> pulumi.Output[Optional[int]]:
+        """
+        Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        """
         return pulumi.get(self, "max_password_age_in_days")
 
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> pulumi.Output[Optional[int]]:
+        """
+        The minimum length of the password. Defaults to 8.
+        """
         return pulumi.get(self, "min_length")
 
     @property
     @pulumi.getter(name="minUniquePasswords")
     def min_unique_passwords(self) -> pulumi.Output[Optional[int]]:
+        """
+        The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        """
         return pulumi.get(self, "min_unique_passwords")
 
     @property
     @pulumi.getter(name="mustContainDigits")
     def must_contain_digits(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If the password must contain digits. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_digits")
 
     @property
     @pulumi.getter(name="mustContainLowercase")
     def must_contain_lowercase(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If the password must contain lower case characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_lowercase")
 
     @property
     @pulumi.getter(name="mustContainSpecialChars")
     def must_contain_special_chars(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If the password must contain special characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_special_chars")
 
     @property
     @pulumi.getter(name="mustContainUppercase")
     def must_contain_uppercase(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If the password must contain upper case characters. Defaults to true.
+        """
         return pulumi.get(self, "must_contain_uppercase")
 
     @property
     @pulumi.getter(name="rememberMfa")
     def remember_mfa(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If MFA should be remembered on the browser. Defaults to true.
+        """
         return pulumi.get(self, "remember_mfa")
 
     @property
     @pulumi.getter(name="requireMfa")
     def require_mfa(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If MFA should be required to log in. Defaults to false.
+        """
         return pulumi.get(self, "require_mfa")
 

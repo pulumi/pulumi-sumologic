@@ -15,8 +15,14 @@ namespace Pulumi.SumoLogic.Outputs
     {
         public readonly string? AccessKey;
         public readonly string? Region;
+        /// <summary>
+        /// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+        /// </summary>
         public readonly string? RoleArn;
         public readonly string? SecretKey;
+        /// <summary>
+        /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

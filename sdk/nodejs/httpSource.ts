@@ -42,12 +42,6 @@ import * as utilities from "./utilities";
  *     description: "demo-desc",
  * });
  * ```
- * ## Argument reference
- *
- * In addition to the common properties, the following arguments are supported:
- *
- * - `messagePerRequest` - (Optional) When set to `true`, will create one log message per HTTP request.
- * - `contentType`        - (Optional) When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
  *
  * ## Import
  *
@@ -96,6 +90,9 @@ export class HttpSource extends pulumi.CustomResource {
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+     */
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -106,6 +103,9 @@ export class HttpSource extends pulumi.CustomResource {
     public readonly forceTimezone!: pulumi.Output<boolean | undefined>;
     public readonly hostName!: pulumi.Output<string | undefined>;
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
+    /**
+     * When set to `true`, will create one log message per HTTP request.
+     */
     public readonly messagePerRequest!: pulumi.Output<boolean | undefined>;
     public readonly multilineProcessingEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -187,6 +187,9 @@ export interface HttpSourceState {
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
+    /**
+     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -197,6 +200,9 @@ export interface HttpSourceState {
     forceTimezone?: pulumi.Input<boolean>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
+    /**
+     * When set to `true`, will create one log message per HTTP request.
+     */
     messagePerRequest?: pulumi.Input<boolean>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
@@ -215,6 +221,9 @@ export interface HttpSourceArgs {
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
+    /**
+     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -225,6 +234,9 @@ export interface HttpSourceArgs {
     forceTimezone?: pulumi.Input<boolean>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
+    /**
+     * When set to `true`, will create one log message per HTTP request.
+     */
     messagePerRequest?: pulumi.Input<boolean>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;

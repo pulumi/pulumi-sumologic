@@ -13,9 +13,21 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseMatchRuleSeverityMapping
     {
+        /// <summary>
+        /// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        /// </summary>
         public readonly int? Default;
+        /// <summary>
+        /// The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        /// </summary>
         public readonly string? Field;
+        /// <summary>
+        /// The map of record values to severities to use in the "fieldValueMapping" case
+        /// </summary>
         public readonly ImmutableArray<Outputs.CseMatchRuleSeverityMappingMapping> Mappings;
+        /// <summary>
+        /// Must be set to "eq" currently
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -59,33 +59,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// In addition to the common properties, the following arguments are supported:
-    /// 
-    ///  - `content_type` - (Required) The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
-    ///  - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
-    ///  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-    ///  - `authentication` - (Required) Authentication details to access AWS `Describe*` APIs.
-    ///      + `type` - (Required) Must be `AWSRoleBasedAuthentication`
-    ///      + `role_arn` - (Required) Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
-    ///  - `path` - (Required) The location to scan for new data.
-    ///      + `type` - (Required) type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-    ///      + `limit_to_regions` - (Optional) List of Amazon regions.
-    ///      + `limit_to_namespaces` - (Optional) List of namespaces. By default all namespaces are selected. You can also choose a subset from
-    ///         + AWS/EC2
-    ///         + AWS/AutoScaling
-    ///         + AWS/EBS
-    ///         + AWS/ELB
-    ///         + AWS/ApplicationELB
-    ///         + AWS/NetworkELB
-    ///         + AWS/Lambda
-    ///         + AWS/RDS
-    ///         + AWS/Dynamodb
-    ///         + AWS/ECS
-    ///         + AWS/Elasticache
-    ///         + AWS/Redshift
-    ///         + AWS/Kinesis
     /// 
     /// ## Import
     /// 
@@ -104,6 +77,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/awsInventorySource:AwsInventorySource")]
     public partial class AwsInventorySource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details to access AWS `Describe*` APIs.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.AwsInventorySourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -116,6 +92,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -152,12 +131,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.AwsInventorySourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -216,6 +204,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class AwsInventorySourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details to access AWS `Describe*` APIs.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.AwsInventorySourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -228,6 +219,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -279,12 +273,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.AwsInventorySourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -301,6 +304,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class AwsInventorySourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details to access AWS `Describe*` APIs.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.AwsInventorySourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -313,6 +319,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -364,12 +373,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.AwsInventorySourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

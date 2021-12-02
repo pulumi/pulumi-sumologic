@@ -25,6 +25,10 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("limitToRegions")]
         private InputList<string>? _limitToRegions;
+
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public InputList<string> LimitToRegions
         {
             get => _limitToRegions ?? (_limitToRegions = new InputList<string>());
@@ -34,6 +38,14 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
 
+        [Input("snsTopicOrSubscriptionArns")]
+        private InputList<Inputs.AwsXraySourcePathSnsTopicOrSubscriptionArnGetArgs>? _snsTopicOrSubscriptionArns;
+        public InputList<Inputs.AwsXraySourcePathSnsTopicOrSubscriptionArnGetArgs> SnsTopicOrSubscriptionArns
+        {
+            get => _snsTopicOrSubscriptionArns ?? (_snsTopicOrSubscriptionArns = new InputList<Inputs.AwsXraySourcePathSnsTopicOrSubscriptionArnGetArgs>());
+            set => _snsTopicOrSubscriptionArns = value;
+        }
+
         [Input("tagFilters")]
         private InputList<Inputs.AwsXraySourcePathTagFilterGetArgs>? _tagFilters;
         public InputList<Inputs.AwsXraySourcePathTagFilterGetArgs> TagFilters
@@ -42,6 +54,9 @@ namespace Pulumi.SumoLogic.Inputs
             set => _tagFilters = value;
         }
 
+        /// <summary>
+        /// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

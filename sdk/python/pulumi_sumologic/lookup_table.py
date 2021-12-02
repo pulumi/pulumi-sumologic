@@ -24,8 +24,12 @@ class LookupTableArgs:
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a LookupTable resource.
+        :param pulumi.Input[str] description: The description of the lookup table.
         :param pulumi.Input[Sequence[pulumi.Input['LookupTableFieldArgs']]] fields: The list of fields in the lookup table.
+        :param pulumi.Input[str] name: The name of the lookup table.
+        :param pulumi.Input[str] parent_folder_id: The parent-folder-path identifier of the lookup table in the Library.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: The primary key field names.
+        :param pulumi.Input[int] ttl: A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
         """
         pulumi.set(__self__, "description", description)
         if fields is not None:
@@ -44,6 +48,9 @@ class LookupTableArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
+        """
+        The description of the lookup table.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -65,6 +72,9 @@ class LookupTableArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the lookup table.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -74,6 +84,9 @@ class LookupTableArgs:
     @property
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parent-folder-path identifier of the lookup table in the Library.
+        """
         return pulumi.get(self, "parent_folder_id")
 
     @parent_folder_id.setter
@@ -104,6 +117,9 @@ class LookupTableArgs:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -123,8 +139,12 @@ class _LookupTableState:
                  ttl: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering LookupTable resources.
+        :param pulumi.Input[str] description: The description of the lookup table.
         :param pulumi.Input[Sequence[pulumi.Input['LookupTableFieldArgs']]] fields: The list of fields in the lookup table.
+        :param pulumi.Input[str] name: The name of the lookup table.
+        :param pulumi.Input[str] parent_folder_id: The parent-folder-path identifier of the lookup table in the Library.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: The primary key field names.
+        :param pulumi.Input[int] ttl: A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -144,6 +164,9 @@ class _LookupTableState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the lookup table.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -165,6 +188,9 @@ class _LookupTableState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the lookup table.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -174,6 +200,9 @@ class _LookupTableState:
     @property
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The parent-folder-path identifier of the lookup table in the Library.
+        """
         return pulumi.get(self, "parent_folder_id")
 
     @parent_folder_id.setter
@@ -204,6 +233,9 @@ class _LookupTableState:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -250,20 +282,6 @@ class LookupTable(pulumi.CustomResource):
             size_limit_action="DeleteOldData",
             ttl=100)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the lookup table.
-        - `parent_folder_id` - (Required) The parent-folder-path identifier of the lookup table in the Library.
-        - `description` - (Required) The description of the lookup table.
-        - `fields` - (Required) The list of fields in the lookup table.
-          - `fieldName` - (Required) The name of the field.
-          - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
-        - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
-        - `ttl` - (Optional) A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
-        - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -282,8 +300,12 @@ class LookupTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the lookup table.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LookupTableFieldArgs']]]] fields: The list of fields in the lookup table.
+        :param pulumi.Input[str] name: The name of the lookup table.
+        :param pulumi.Input[str] parent_folder_id: The parent-folder-path identifier of the lookup table in the Library.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: The primary key field names.
+        :param pulumi.Input[int] ttl: A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
         """
         ...
     @overload
@@ -317,20 +339,6 @@ class LookupTable(pulumi.CustomResource):
             size_limit_action="DeleteOldData",
             ttl=100)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the lookup table.
-        - `parent_folder_id` - (Required) The parent-folder-path identifier of the lookup table in the Library.
-        - `description` - (Required) The description of the lookup table.
-        - `fields` - (Required) The list of fields in the lookup table.
-          - `fieldName` - (Required) The name of the field.
-          - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
-        - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
-        - `ttl` - (Optional) A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
-        - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -414,8 +422,12 @@ class LookupTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the lookup table.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LookupTableFieldArgs']]]] fields: The list of fields in the lookup table.
+        :param pulumi.Input[str] name: The name of the lookup table.
+        :param pulumi.Input[str] parent_folder_id: The parent-folder-path identifier of the lookup table in the Library.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: The primary key field names.
+        :param pulumi.Input[int] ttl: A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -433,6 +445,9 @@ class LookupTable(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        The description of the lookup table.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -446,11 +461,17 @@ class LookupTable(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the lookup table.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The parent-folder-path identifier of the lookup table in the Library.
+        """
         return pulumi.get(self, "parent_folder_id")
 
     @property
@@ -469,5 +490,8 @@ class LookupTable(pulumi.CustomResource):
     @property
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[int]]:
+        """
+        A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        """
         return pulumi.get(self, "ttl")
 

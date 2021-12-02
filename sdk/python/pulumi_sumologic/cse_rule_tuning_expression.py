@@ -22,6 +22,13 @@ class CseRuleTuningExpressionArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseRuleTuningExpression resource.
+        :param pulumi.Input[str] description: The description of the rule tuning expression.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[bool] exclude: Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        :param pulumi.Input[str] expression: Expression to match.
+        :param pulumi.Input[bool] is_global: Set to true if this tuning expression should be applied to all rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        :param pulumi.Input[str] name: The name of the rule tuning expression.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -35,6 +42,9 @@ class CseRuleTuningExpressionArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
+        """
+        The description of the rule tuning expression.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -44,6 +54,9 @@ class CseRuleTuningExpressionArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enabled flag.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -53,6 +66,9 @@ class CseRuleTuningExpressionArgs:
     @property
     @pulumi.getter
     def exclude(self) -> pulumi.Input[bool]:
+        """
+        Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        """
         return pulumi.get(self, "exclude")
 
     @exclude.setter
@@ -62,6 +78,9 @@ class CseRuleTuningExpressionArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        Expression to match.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -71,6 +90,9 @@ class CseRuleTuningExpressionArgs:
     @property
     @pulumi.getter(name="isGlobal")
     def is_global(self) -> pulumi.Input[bool]:
+        """
+        Set to true if this tuning expression should be applied to all rules.
+        """
         return pulumi.get(self, "is_global")
 
     @is_global.setter
@@ -80,6 +102,9 @@ class CseRuleTuningExpressionArgs:
     @property
     @pulumi.getter(name="ruleIds")
     def rule_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        """
         return pulumi.get(self, "rule_ids")
 
     @rule_ids.setter
@@ -89,6 +114,9 @@ class CseRuleTuningExpressionArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the rule tuning expression.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -108,6 +136,13 @@ class _CseRuleTuningExpressionState:
                  rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CseRuleTuningExpression resources.
+        :param pulumi.Input[str] description: The description of the rule tuning expression.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[bool] exclude: Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        :param pulumi.Input[str] expression: Expression to match.
+        :param pulumi.Input[bool] is_global: Set to true if this tuning expression should be applied to all rules.
+        :param pulumi.Input[str] name: The name of the rule tuning expression.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -127,6 +162,9 @@ class _CseRuleTuningExpressionState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the rule tuning expression.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -136,6 +174,9 @@ class _CseRuleTuningExpressionState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabled flag.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -145,6 +186,9 @@ class _CseRuleTuningExpressionState:
     @property
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        """
         return pulumi.get(self, "exclude")
 
     @exclude.setter
@@ -154,6 +198,9 @@ class _CseRuleTuningExpressionState:
     @property
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expression to match.
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -163,6 +210,9 @@ class _CseRuleTuningExpressionState:
     @property
     @pulumi.getter(name="isGlobal")
     def is_global(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true if this tuning expression should be applied to all rules.
+        """
         return pulumi.get(self, "is_global")
 
     @is_global.setter
@@ -172,6 +222,9 @@ class _CseRuleTuningExpressionState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the rule tuning expression.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -181,6 +234,9 @@ class _CseRuleTuningExpressionState:
     @property
     @pulumi.getter(name="ruleIds")
     def rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        """
         return pulumi.get(self, "rule_ids")
 
     @rule_ids.setter
@@ -218,21 +274,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the rule tuning expression.
-        - `description` - (Required) The description of the rule tuning expression.
-        - `expression` - (Required) Expression to match.
-        - `enabled` - (Required) Enabled flag.
-        - `exclude` - (Required) Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
-        - `is_global` - (Required) Set to true if this tuning expression should be applied to all rules.
-        - `rule_ids` - (Required) List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the rule tuning expression.
 
         ## Import
 
@@ -244,6 +285,13 @@ class CseRuleTuningExpression(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the rule tuning expression.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[bool] exclude: Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        :param pulumi.Input[str] expression: Expression to match.
+        :param pulumi.Input[bool] is_global: Set to true if this tuning expression should be applied to all rules.
+        :param pulumi.Input[str] name: The name of the rule tuning expression.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
         """
         ...
     @overload
@@ -268,21 +316,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the rule tuning expression.
-        - `description` - (Required) The description of the rule tuning expression.
-        - `expression` - (Required) Expression to match.
-        - `enabled` - (Required) Enabled flag.
-        - `exclude` - (Required) Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
-        - `is_global` - (Required) Set to true if this tuning expression should be applied to all rules.
-        - `rule_ids` - (Required) List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the rule tuning expression.
 
         ## Import
 
@@ -369,6 +402,13 @@ class CseRuleTuningExpression(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the rule tuning expression.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[bool] exclude: Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        :param pulumi.Input[str] expression: Expression to match.
+        :param pulumi.Input[bool] is_global: Set to true if this tuning expression should be applied to all rules.
+        :param pulumi.Input[str] name: The name of the rule tuning expression.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -386,35 +426,56 @@ class CseRuleTuningExpression(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        The description of the rule tuning expression.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
+        """
+        Enabled flag.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def exclude(self) -> pulumi.Output[bool]:
+        """
+        Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+        """
         return pulumi.get(self, "exclude")
 
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Output[str]:
+        """
+        Expression to match.
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter(name="isGlobal")
     def is_global(self) -> pulumi.Output[bool]:
+        """
+        Set to true if this tuning expression should be applied to all rules.
+        """
         return pulumi.get(self, "is_global")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the rule tuning expression.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="ruleIds")
     def rule_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        """
         return pulumi.get(self, "rule_ids")
 

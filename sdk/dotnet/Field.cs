@@ -31,14 +31,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `field_name` - (Required)  Name of the field.
-    /// - `field_id` - (Required) Field identifier.
-    /// - `data_type` - (Optional) Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-    /// - `state` - (Optional) State of the field (either `Enabled` or `Disabled`).
     /// 
     /// ## Import
     /// 
@@ -53,15 +45,27 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/field:Field")]
     public partial class Field : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        /// </summary>
         [Output("dataType")]
         public Output<string?> DataType { get; private set; } = null!;
 
+        /// <summary>
+        /// Field identifier.
+        /// </summary>
         [Output("fieldId")]
         public Output<string> FieldId { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the field.
+        /// </summary>
         [Output("fieldName")]
         public Output<string> FieldName { get; private set; } = null!;
 
+        /// <summary>
+        /// State of the field (either `Enabled` or `Disabled`).
+        /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
 
@@ -111,12 +115,21 @@ namespace Pulumi.SumoLogic
 
     public sealed class FieldArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }
 
+        /// <summary>
+        /// Name of the field.
+        /// </summary>
         [Input("fieldName", required: true)]
         public Input<string> FieldName { get; set; } = null!;
 
+        /// <summary>
+        /// State of the field (either `Enabled` or `Disabled`).
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
@@ -127,15 +140,27 @@ namespace Pulumi.SumoLogic
 
     public sealed class FieldState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+        /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }
 
+        /// <summary>
+        /// Field identifier.
+        /// </summary>
         [Input("fieldId")]
         public Input<string>? FieldId { get; set; }
 
+        /// <summary>
+        /// Name of the field.
+        /// </summary>
         [Input("fieldName")]
         public Input<string>? FieldName { get; set; }
 
+        /// <summary>
+        /// State of the field (either `Enabled` or `Disabled`).
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

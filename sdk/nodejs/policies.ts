@@ -35,20 +35,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `audit` - (Required) Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
- * - `dataAccessLevel` - (Required) Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
- * - `maxUserSessionTimeout` - (Required) The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
- * - `searchAudit` - (Required) Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
- * - `shareDashboardsOutsideOrganization` - (Required) Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
- * - `userConcurrentSessionsLimit` - (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
- *
- * ### Schema for `userConcurrentSessionsLimit`
- * - `enabled` - (Required) Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
- * - `maxConcurrentSessions` - (Optional) Maximum number of concurrent sessions a user may have. Defaults to `100`.
  *
  * ## Import
  *
@@ -88,11 +74,29 @@ export class Policies extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policies.__pulumiType;
     }
 
+    /**
+     * Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+     */
     public readonly audit!: pulumi.Output<boolean>;
+    /**
+     * Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+     */
     public readonly dataAccessLevel!: pulumi.Output<boolean>;
+    /**
+     * The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+     */
     public readonly maxUserSessionTimeout!: pulumi.Output<string>;
+    /**
+     * Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+     */
     public readonly searchAudit!: pulumi.Output<boolean>;
+    /**
+     * Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+     */
     public readonly shareDashboardsOutsideOrganization!: pulumi.Output<boolean>;
+    /**
+     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+     */
     public readonly userConcurrentSessionsLimit!: pulumi.Output<outputs.PoliciesUserConcurrentSessionsLimit>;
 
     /**
@@ -152,11 +156,29 @@ export class Policies extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policies resources.
  */
 export interface PoliciesState {
+    /**
+     * Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+     */
     audit?: pulumi.Input<boolean>;
+    /**
+     * Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+     */
     dataAccessLevel?: pulumi.Input<boolean>;
+    /**
+     * The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+     */
     maxUserSessionTimeout?: pulumi.Input<string>;
+    /**
+     * Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+     */
     searchAudit?: pulumi.Input<boolean>;
+    /**
+     * Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+     */
     shareDashboardsOutsideOrganization?: pulumi.Input<boolean>;
+    /**
+     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+     */
     userConcurrentSessionsLimit?: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
 }
 
@@ -164,10 +186,28 @@ export interface PoliciesState {
  * The set of arguments for constructing a Policies resource.
  */
 export interface PoliciesArgs {
+    /**
+     * Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+     */
     audit: pulumi.Input<boolean>;
+    /**
+     * Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+     */
     dataAccessLevel: pulumi.Input<boolean>;
+    /**
+     * The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+     */
     maxUserSessionTimeout: pulumi.Input<string>;
+    /**
+     * Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+     */
     searchAudit: pulumi.Input<boolean>;
+    /**
+     * Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+     */
     shareDashboardsOutsideOrganization: pulumi.Input<boolean>;
+    /**
+     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+     */
     userConcurrentSessionsLimit: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
 }

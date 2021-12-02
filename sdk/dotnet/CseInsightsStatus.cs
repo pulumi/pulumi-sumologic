@@ -30,16 +30,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) The name of the insights status.
-    /// - `description` - (Required) The description of the insights status.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the insights status.
     /// 
     /// ## Import
     /// 
@@ -52,12 +42,18 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseInsightsStatus:CseInsightsStatus")]
     public partial class CseInsightsStatus : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the insights status.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the insights status.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -107,9 +103,15 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseInsightsStatusArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the insights status.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the insights status.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -120,12 +122,18 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseInsightsStatusState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the insights status.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// The name of the insights status.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

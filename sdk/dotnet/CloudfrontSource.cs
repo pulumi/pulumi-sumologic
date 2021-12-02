@@ -53,23 +53,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// In addition to the common properties, the following arguments are supported:
-    /// 
-    ///  - `content_type` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-    ///  - `scan_interval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-    ///  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-    ///  - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
-    ///      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-    ///      + `access_key` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-    ///      + `secret_key` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-    ///      + `role_arn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-    ///      + `region` - (Optional) Your AWS Bucket region.
-    ///  - `path` - (Required) The location to scan for new data.
-    ///      + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
-    ///      + `bucket_name` - (Required) The name of the bucket. This is needed if using type `S3BucketPathExpression`.
-    ///      + `path_expression` - (Required) The path to the data. This is needed if using type `S3BucketPathExpression`.
     /// 
     /// ## Import
     /// 
@@ -90,6 +73,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cloudfrontSource:CloudfrontSource")]
     public partial class CloudfrontSource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.CloudfrontSourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -102,6 +88,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -138,12 +127,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.CloudfrontSourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -205,6 +203,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class CloudfrontSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.CloudfrontSourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -217,6 +218,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -268,12 +272,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.CloudfrontSourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -290,6 +303,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class CloudfrontSourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.CloudfrontSourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -302,6 +318,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -353,12 +372,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.CloudfrontSourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

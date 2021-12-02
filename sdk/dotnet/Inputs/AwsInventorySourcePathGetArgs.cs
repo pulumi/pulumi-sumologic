@@ -17,6 +17,23 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
+
+        /// <summary>
+        /// List of namespaces. By default all namespaces are selected. You can also choose a subset from
+        /// + AWS/EC2
+        /// + AWS/AutoScaling
+        /// + AWS/EBS
+        /// + AWS/ELB
+        /// + AWS/ApplicationELB
+        /// + AWS/NetworkELB
+        /// + AWS/Lambda
+        /// + AWS/RDS
+        /// + AWS/Dynamodb
+        /// + AWS/ECS
+        /// + AWS/Elasticache
+        /// + AWS/Redshift
+        /// + AWS/Kinesis
+        /// </summary>
         public InputList<string> LimitToNamespaces
         {
             get => _limitToNamespaces ?? (_limitToNamespaces = new InputList<string>());
@@ -25,6 +42,10 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("limitToRegions")]
         private InputList<string>? _limitToRegions;
+
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public InputList<string> LimitToRegions
         {
             get => _limitToRegions ?? (_limitToRegions = new InputList<string>());
@@ -34,6 +55,14 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
 
+        [Input("snsTopicOrSubscriptionArns")]
+        private InputList<Inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArnGetArgs>? _snsTopicOrSubscriptionArns;
+        public InputList<Inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArnGetArgs> SnsTopicOrSubscriptionArns
+        {
+            get => _snsTopicOrSubscriptionArns ?? (_snsTopicOrSubscriptionArns = new InputList<Inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArnGetArgs>());
+            set => _snsTopicOrSubscriptionArns = value;
+        }
+
         [Input("tagFilters")]
         private InputList<Inputs.AwsInventorySourcePathTagFilterGetArgs>? _tagFilters;
         public InputList<Inputs.AwsInventorySourcePathTagFilterGetArgs> TagFilters
@@ -42,6 +71,9 @@ namespace Pulumi.SumoLogic.Inputs
             set => _tagFilters = value;
         }
 
+        /// <summary>
+        /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

@@ -29,22 +29,6 @@ import * as utilities from "./utilities";
  *     tags: ["_mitreAttackTactic:TA0009"],
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `description` - (Required) The description of the generated Insights
- * - `enabled` - (Required) Whether the Custom Insight should generate Insights
- * - `ordered` - (Required) Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
- * - `name` - (Required) The name of the Custom Insight and the generated Insights
- * - `ruleIds` - (Optional) The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
- * - `severity` - (Required) The severity of the generated Insights (HIGH, MEDIUM, or LOW)
- * - `signalNames` - (Optional) The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
- * - `tags` - (Required) The tags of the generated Insights
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the chain rule.
  *
  * ## Import
  *
@@ -82,13 +66,37 @@ export class CseCustomInsight extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseCustomInsight.__pulumiType;
     }
 
+    /**
+     * The description of the generated Insights
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Whether the Custom Insight should generate Insights
+     */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * The name of the Custom Insight and the generated Insights
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+     */
     public readonly ordered!: pulumi.Output<boolean>;
+    /**
+     * The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+     */
     public readonly ruleIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     */
     public readonly severity!: pulumi.Output<string>;
+    /**
+     * The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+     */
     public readonly signalNames!: pulumi.Output<string[] | undefined>;
+    /**
+     * The tags of the generated Insights
+     */
     public readonly tags!: pulumi.Output<string[]>;
 
     /**
@@ -149,13 +157,37 @@ export class CseCustomInsight extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseCustomInsight resources.
  */
 export interface CseCustomInsightState {
+    /**
+     * The description of the generated Insights
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the Custom Insight should generate Insights
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The name of the Custom Insight and the generated Insights
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+     */
     ordered?: pulumi.Input<boolean>;
+    /**
+     * The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+     */
     ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     */
     severity?: pulumi.Input<string>;
+    /**
+     * The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+     */
     signalNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The tags of the generated Insights
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -163,12 +195,36 @@ export interface CseCustomInsightState {
  * The set of arguments for constructing a CseCustomInsight resource.
  */
 export interface CseCustomInsightArgs {
+    /**
+     * The description of the generated Insights
+     */
     description: pulumi.Input<string>;
+    /**
+     * Whether the Custom Insight should generate Insights
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * The name of the Custom Insight and the generated Insights
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+     */
     ordered: pulumi.Input<boolean>;
+    /**
+     * The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+     */
     ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     */
     severity: pulumi.Input<string>;
+    /**
+     * The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+     */
     signalNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The tags of the generated Insights
+     */
     tags: pulumi.Input<pulumi.Input<string>[]>;
 }

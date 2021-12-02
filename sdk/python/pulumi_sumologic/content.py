@@ -17,6 +17,8 @@ class ContentArgs:
                  parent_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a Content resource.
+        :param pulumi.Input[str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        :param pulumi.Input[str] parent_id: The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "parent_id", parent_id)
@@ -24,6 +26,9 @@ class ContentArgs:
     @property
     @pulumi.getter
     def config(self) -> pulumi.Input[str]:
+        """
+        JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -33,6 +38,9 @@ class ContentArgs:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Input[str]:
+        """
+        The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -47,6 +55,8 @@ class _ContentState:
                  parent_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Content resources.
+        :param pulumi.Input[str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        :param pulumi.Input[str] parent_id: The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -56,6 +66,9 @@ class _ContentState:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -65,6 +78,9 @@ class _ContentState:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -84,6 +100,8 @@ class Content(pulumi.CustomResource):
         Create a Content resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        :param pulumi.Input[str] parent_id: The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
         """
         ...
     @overload
@@ -147,6 +165,8 @@ class Content(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        :param pulumi.Input[str] parent_id: The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -159,10 +179,16 @@ class Content(pulumi.CustomResource):
     @property
     @pulumi.getter
     def config(self) -> pulumi.Output[str]:
+        """
+        JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        """
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[str]:
+        """
+        The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+        """
         return pulumi.get(self, "parent_id")
 

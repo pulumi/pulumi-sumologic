@@ -25,23 +25,6 @@ import * as utilities from "./utilities";
  *     startTime: "2019-09-01T00:00:00Z",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * > For attributes that force a new resource, if the value is updated, it will destroy the resource and recreate it which may incur significant costs. We advise customers to set the `lifecycle` attribute `preventDestroy` to `true` to avoid accidentally destroying and recreating expensive resources.
- *
- * - `indexName` - (Required, Forces new resource) Name of the index (scheduled view).
- * - `query` - (Required, Forces new resource) Log query defining the scheduled view.
- * - `startTime` - (Required, Forces new resource) Start timestamp in UTC in RFC3339 format.
- * - `retentionPeriod` - (Optional) The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
- * - `dataForwardingId` - (Optional) An optional ID of a data forwarding configuration to be used by the scheduled view.
- * - `parsingMode` - (Optional, Forces new resource) Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
- * - `reduceRetentionPeriodImmediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the scheduled view.
  *
  * ## Import
  *
@@ -81,12 +64,33 @@ export class ScheduledView extends pulumi.CustomResource {
         return obj['__pulumiType'] === ScheduledView.__pulumiType;
     }
 
+    /**
+     * An optional ID of a data forwarding configuration to be used by the scheduled view.
+     */
     public readonly dataForwardingId!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the index (scheduled view).
+     */
     public readonly indexName!: pulumi.Output<string>;
+    /**
+     * Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+     */
     public readonly parsingMode!: pulumi.Output<string | undefined>;
+    /**
+     * Log query defining the scheduled view.
+     */
     public readonly query!: pulumi.Output<string>;
+    /**
+     * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     */
     public readonly reduceRetentionPeriodImmediately!: pulumi.Output<boolean | undefined>;
+    /**
+     * The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+     */
     public readonly retentionPeriod!: pulumi.Output<number | undefined>;
+    /**
+     * Start timestamp in UTC in RFC3339 format.
+     */
     public readonly startTime!: pulumi.Output<string>;
 
     /**
@@ -139,12 +143,33 @@ export class ScheduledView extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ScheduledView resources.
  */
 export interface ScheduledViewState {
+    /**
+     * An optional ID of a data forwarding configuration to be used by the scheduled view.
+     */
     dataForwardingId?: pulumi.Input<string>;
+    /**
+     * Name of the index (scheduled view).
+     */
     indexName?: pulumi.Input<string>;
+    /**
+     * Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+     */
     parsingMode?: pulumi.Input<string>;
+    /**
+     * Log query defining the scheduled view.
+     */
     query?: pulumi.Input<string>;
+    /**
+     * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     */
     reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    /**
+     * The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+     */
     retentionPeriod?: pulumi.Input<number>;
+    /**
+     * Start timestamp in UTC in RFC3339 format.
+     */
     startTime?: pulumi.Input<string>;
 }
 
@@ -152,11 +177,32 @@ export interface ScheduledViewState {
  * The set of arguments for constructing a ScheduledView resource.
  */
 export interface ScheduledViewArgs {
+    /**
+     * An optional ID of a data forwarding configuration to be used by the scheduled view.
+     */
     dataForwardingId?: pulumi.Input<string>;
+    /**
+     * Name of the index (scheduled view).
+     */
     indexName: pulumi.Input<string>;
+    /**
+     * Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+     */
     parsingMode?: pulumi.Input<string>;
+    /**
+     * Log query defining the scheduled view.
+     */
     query: pulumi.Input<string>;
+    /**
+     * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     */
     reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    /**
+     * The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+     */
     retentionPeriod?: pulumi.Input<number>;
+    /**
+     * Start timestamp in UTC in RFC3339 format.
+     */
     startTime: pulumi.Input<string>;
 }

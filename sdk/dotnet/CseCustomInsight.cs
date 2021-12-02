@@ -47,22 +47,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `description` - (Required) The description of the generated Insights
-    /// - `enabled` - (Required) Whether the Custom Insight should generate Insights
-    /// - `ordered` - (Required) Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
-    /// - `name` - (Required) The name of the Custom Insight and the generated Insights
-    /// - `rule_ids` - (Optional) The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-    /// - `severity` - (Required) The severity of the generated Insights (HIGH, MEDIUM, or LOW)
-    /// - `signal_names` - (Optional) The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-    /// - `tags` - (Required) The tags of the generated Insights
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the chain rule.
     /// 
     /// ## Import
     /// 
@@ -75,27 +59,51 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseCustomInsight:CseCustomInsight")]
     public partial class CseCustomInsight : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the generated Insights
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the Custom Insight should generate Insights
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Custom Insight and the generated Insights
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        /// </summary>
         [Output("ordered")]
         public Output<bool> Ordered { get; private set; } = null!;
 
+        /// <summary>
+        /// The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        /// </summary>
         [Output("ruleIds")]
         public Output<ImmutableArray<string>> RuleIds { get; private set; } = null!;
 
+        /// <summary>
+        /// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        /// </summary>
         [Output("severity")]
         public Output<string> Severity { get; private set; } = null!;
 
+        /// <summary>
+        /// The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        /// </summary>
         [Output("signalNames")]
         public Output<ImmutableArray<string>> SignalNames { get; private set; } = null!;
 
+        /// <summary>
+        /// The tags of the generated Insights
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -145,31 +153,54 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseCustomInsightArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the generated Insights
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the Custom Insight should generate Insights
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the Custom Insight and the generated Insights
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        /// </summary>
         [Input("ordered", required: true)]
         public Input<bool> Ordered { get; set; } = null!;
 
         [Input("ruleIds")]
         private InputList<string>? _ruleIds;
+
+        /// <summary>
+        /// The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        /// </summary>
         public InputList<string> RuleIds
         {
             get => _ruleIds ?? (_ruleIds = new InputList<string>());
             set => _ruleIds = value;
         }
 
+        /// <summary>
+        /// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        /// </summary>
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
 
         [Input("signalNames")]
         private InputList<string>? _signalNames;
+
+        /// <summary>
+        /// The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        /// </summary>
         public InputList<string> SignalNames
         {
             get => _signalNames ?? (_signalNames = new InputList<string>());
@@ -178,6 +209,10 @@ namespace Pulumi.SumoLogic
 
         [Input("tags", required: true)]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Insights
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -191,31 +226,54 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseCustomInsightState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the generated Insights
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether the Custom Insight should generate Insights
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The name of the Custom Insight and the generated Insights
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        /// </summary>
         [Input("ordered")]
         public Input<bool>? Ordered { get; set; }
 
         [Input("ruleIds")]
         private InputList<string>? _ruleIds;
+
+        /// <summary>
+        /// The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        /// </summary>
         public InputList<string> RuleIds
         {
             get => _ruleIds ?? (_ruleIds = new InputList<string>());
             set => _ruleIds = value;
         }
 
+        /// <summary>
+        /// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
 
         [Input("signalNames")]
         private InputList<string>? _signalNames;
+
+        /// <summary>
+        /// The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        /// </summary>
         public InputList<string> SignalNames
         {
             get => _signalNames ?? (_signalNames = new InputList<string>());
@@ -224,6 +282,10 @@ namespace Pulumi.SumoLogic
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Insights
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

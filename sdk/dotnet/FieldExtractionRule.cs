@@ -32,15 +32,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) Name of the field extraction rule. Use a name that makes it easy to identify the rule.
-    /// - `scope` - (Required) Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
-    /// - `parse_expression` - (Required) Describes the fields to be parsed.
-    /// - `enabled` - (Required) Is the field extraction rule enabled.
-    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -60,15 +51,27 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/fieldExtractionRule:FieldExtractionRule")]
     public partial class FieldExtractionRule : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Is the field extraction rule enabled.
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the fields to be parsed.
+        /// </summary>
         [Output("parseExpression")]
         public Output<string> ParseExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+        /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
@@ -118,15 +121,27 @@ namespace Pulumi.SumoLogic
 
     public sealed class FieldExtractionRuleArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Is the field extraction rule enabled.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Describes the fields to be parsed.
+        /// </summary>
         [Input("parseExpression", required: true)]
         public Input<string> ParseExpression { get; set; } = null!;
 
+        /// <summary>
+        /// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+        /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
@@ -137,15 +152,27 @@ namespace Pulumi.SumoLogic
 
     public sealed class FieldExtractionRuleState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Is the field extraction rule enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Describes the fields to be parsed.
+        /// </summary>
         [Input("parseExpression")]
         public Input<string>? ParseExpression { get; set; }
 
+        /// <summary>
+        /// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 

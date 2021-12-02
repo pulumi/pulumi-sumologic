@@ -37,38 +37,6 @@ namespace Pulumi.SumoLogic
     /// NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
     /// &gt; &gt; &gt; &gt; &gt; &gt; &gt; v2.11.0
     /// 
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `type` - (Optional) The type of object model. Valid value:
-    ///   - `MonitorsLibraryMonitor`
-    /// - `name` - (Required) The name of the monitor. The name must be alphanumeric.
-    /// - `description` - (Required) The description of the monitor.
-    /// - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
-    /// - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
-    /// - `content_type` - (Optional) The type of the content object. Valid value:
-    ///   - `Monitor`
-    /// - `monitor_type` - (Required) The type of monitor. Valid values:
-    ///   - `Logs`: A logs query monitor.
-    ///   - `Metrics`: A metrics query monitor.
-    /// - `queries` - (Required) All queries from the monitor.
-    /// - `trigger_conditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-    /// - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
-    /// - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
-    /// - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
-    /// - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
-    /// 
-    /// Additional data provided in state:
-    /// 
-    /// - `id` - (Computed) The ID for this monitor.
-    /// - `status` - (Computed) The current status for this monitor. Values are:
-    ///   - `Critical`
-    ///   - `Warning`
-    ///   - `MissingData`
-    ///   - `Normal`
-    ///   - `Disabled`
-    /// 
     /// ## The `trigger_conditions` block
     /// 
     /// A `trigger_conditions` block configures conditions for sending notifications.
@@ -263,6 +231,10 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/monitor:Monitor")]
     public partial class Monitor : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The type of the content object. Valid value:
+        /// - `Monitor`
+        /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
 
@@ -272,15 +244,24 @@ namespace Pulumi.SumoLogic
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the monitor.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("evaluationDelay")]
         public Output<string> EvaluationDelay { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        /// </summary>
         [Output("groupNotifications")]
         public Output<bool?> GroupNotifications { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        /// </summary>
         [Output("isDisabled")]
         public Output<bool?> IsDisabled { get; private set; } = null!;
 
@@ -299,36 +280,74 @@ namespace Pulumi.SumoLogic
         [Output("modifiedBy")]
         public Output<string> ModifiedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of monitor. Valid values:
+        /// - `Logs`: A logs query monitor.
+        /// - `Metrics`: A metrics query monitor.
+        /// </summary>
         [Output("monitorType")]
         public Output<string> MonitorType { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the monitor. The name must be alphanumeric.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The notifications the monitor will send when the respective trigger condition is met.
+        /// </summary>
         [Output("notifications")]
         public Output<ImmutableArray<Outputs.MonitorNotification>> Notifications { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
+        /// <summary>
+        /// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        /// </summary>
         [Output("playbook")]
         public Output<string?> Playbook { get; private set; } = null!;
 
         [Output("postRequestMap")]
         public Output<ImmutableDictionary<string, string>?> PostRequestMap { get; private set; } = null!;
 
+        /// <summary>
+        /// All queries from the monitor.
+        /// </summary>
         [Output("queries")]
         public Output<ImmutableArray<Outputs.MonitorQuery>> Queries { get; private set; } = null!;
 
+        /// <summary>
+        /// The current status for this monitor. Values are:
+        /// - `Critical`
+        /// - `Warning`
+        /// - `MissingData`
+        /// - `Normal`
+        /// - `Disabled`
+        /// </summary>
         [Output("statuses")]
         public Output<ImmutableArray<string>> Statuses { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        /// </summary>
         [Output("triggerConditions")]
         public Output<Outputs.MonitorTriggerConditions?> TriggerConditions { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the conditions of when to send notifications.
+        /// </summary>
         [Output("triggers")]
         public Output<ImmutableArray<Outputs.MonitorTrigger>> Triggers { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of object model. Valid value:
+        /// - `MonitorsLibraryMonitor`
+        /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
@@ -381,6 +400,10 @@ namespace Pulumi.SumoLogic
 
     public sealed class MonitorArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of the content object. Valid value:
+        /// - `Monitor`
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -390,15 +413,24 @@ namespace Pulumi.SumoLogic
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// The description of the monitor.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }
 
+        /// <summary>
+        /// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        /// </summary>
         [Input("groupNotifications")]
         public Input<bool>? GroupNotifications { get; set; }
 
+        /// <summary>
+        /// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        /// </summary>
         [Input("isDisabled")]
         public Input<bool>? IsDisabled { get; set; }
 
@@ -417,23 +449,41 @@ namespace Pulumi.SumoLogic
         [Input("modifiedBy")]
         public Input<string>? ModifiedBy { get; set; }
 
+        /// <summary>
+        /// The type of monitor. Valid values:
+        /// - `Logs`: A logs query monitor.
+        /// - `Metrics`: A metrics query monitor.
+        /// </summary>
         [Input("monitorType", required: true)]
         public Input<string> MonitorType { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the monitor. The name must be alphanumeric.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("notifications")]
         private InputList<Inputs.MonitorNotificationArgs>? _notifications;
+
+        /// <summary>
+        /// The notifications the monitor will send when the respective trigger condition is met.
+        /// </summary>
         public InputList<Inputs.MonitorNotificationArgs> Notifications
         {
             get => _notifications ?? (_notifications = new InputList<Inputs.MonitorNotificationArgs>());
             set => _notifications = value;
         }
 
+        /// <summary>
+        /// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
+        /// <summary>
+        /// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        /// </summary>
         [Input("playbook")]
         public Input<string>? Playbook { get; set; }
 
@@ -447,6 +497,10 @@ namespace Pulumi.SumoLogic
 
         [Input("queries")]
         private InputList<Inputs.MonitorQueryArgs>? _queries;
+
+        /// <summary>
+        /// All queries from the monitor.
+        /// </summary>
         public InputList<Inputs.MonitorQueryArgs> Queries
         {
             get => _queries ?? (_queries = new InputList<Inputs.MonitorQueryArgs>());
@@ -455,17 +509,33 @@ namespace Pulumi.SumoLogic
 
         [Input("statuses")]
         private InputList<string>? _statuses;
+
+        /// <summary>
+        /// The current status for this monitor. Values are:
+        /// - `Critical`
+        /// - `Warning`
+        /// - `MissingData`
+        /// - `Normal`
+        /// - `Disabled`
+        /// </summary>
         public InputList<string> Statuses
         {
             get => _statuses ?? (_statuses = new InputList<string>());
             set => _statuses = value;
         }
 
+        /// <summary>
+        /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        /// </summary>
         [Input("triggerConditions")]
         public Input<Inputs.MonitorTriggerConditionsArgs>? TriggerConditions { get; set; }
 
         [Input("triggers")]
         private InputList<Inputs.MonitorTriggerArgs>? _triggers;
+
+        /// <summary>
+        /// Defines the conditions of when to send notifications.
+        /// </summary>
         [Obsolete(@"The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.")]
         public InputList<Inputs.MonitorTriggerArgs> Triggers
         {
@@ -473,6 +543,10 @@ namespace Pulumi.SumoLogic
             set => _triggers = value;
         }
 
+        /// <summary>
+        /// The type of object model. Valid value:
+        /// - `MonitorsLibraryMonitor`
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -486,6 +560,10 @@ namespace Pulumi.SumoLogic
 
     public sealed class MonitorState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of the content object. Valid value:
+        /// - `Monitor`
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -495,15 +573,24 @@ namespace Pulumi.SumoLogic
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// The description of the monitor.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }
 
+        /// <summary>
+        /// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        /// </summary>
         [Input("groupNotifications")]
         public Input<bool>? GroupNotifications { get; set; }
 
+        /// <summary>
+        /// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        /// </summary>
         [Input("isDisabled")]
         public Input<bool>? IsDisabled { get; set; }
 
@@ -522,23 +609,41 @@ namespace Pulumi.SumoLogic
         [Input("modifiedBy")]
         public Input<string>? ModifiedBy { get; set; }
 
+        /// <summary>
+        /// The type of monitor. Valid values:
+        /// - `Logs`: A logs query monitor.
+        /// - `Metrics`: A metrics query monitor.
+        /// </summary>
         [Input("monitorType")]
         public Input<string>? MonitorType { get; set; }
 
+        /// <summary>
+        /// The name of the monitor. The name must be alphanumeric.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("notifications")]
         private InputList<Inputs.MonitorNotificationGetArgs>? _notifications;
+
+        /// <summary>
+        /// The notifications the monitor will send when the respective trigger condition is met.
+        /// </summary>
         public InputList<Inputs.MonitorNotificationGetArgs> Notifications
         {
             get => _notifications ?? (_notifications = new InputList<Inputs.MonitorNotificationGetArgs>());
             set => _notifications = value;
         }
 
+        /// <summary>
+        /// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
+        /// <summary>
+        /// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        /// </summary>
         [Input("playbook")]
         public Input<string>? Playbook { get; set; }
 
@@ -552,6 +657,10 @@ namespace Pulumi.SumoLogic
 
         [Input("queries")]
         private InputList<Inputs.MonitorQueryGetArgs>? _queries;
+
+        /// <summary>
+        /// All queries from the monitor.
+        /// </summary>
         public InputList<Inputs.MonitorQueryGetArgs> Queries
         {
             get => _queries ?? (_queries = new InputList<Inputs.MonitorQueryGetArgs>());
@@ -560,17 +669,33 @@ namespace Pulumi.SumoLogic
 
         [Input("statuses")]
         private InputList<string>? _statuses;
+
+        /// <summary>
+        /// The current status for this monitor. Values are:
+        /// - `Critical`
+        /// - `Warning`
+        /// - `MissingData`
+        /// - `Normal`
+        /// - `Disabled`
+        /// </summary>
         public InputList<string> Statuses
         {
             get => _statuses ?? (_statuses = new InputList<string>());
             set => _statuses = value;
         }
 
+        /// <summary>
+        /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        /// </summary>
         [Input("triggerConditions")]
         public Input<Inputs.MonitorTriggerConditionsGetArgs>? TriggerConditions { get; set; }
 
         [Input("triggers")]
         private InputList<Inputs.MonitorTriggerGetArgs>? _triggers;
+
+        /// <summary>
+        /// Defines the conditions of when to send notifications.
+        /// </summary>
         [Obsolete(@"The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.")]
         public InputList<Inputs.MonitorTriggerGetArgs> Triggers
         {
@@ -578,6 +703,10 @@ namespace Pulumi.SumoLogic
             set => _triggers = value;
         }
 
+        /// <summary>
+        /// The type of object model. Valid value:
+        /// - `MonitorsLibraryMonitor`
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

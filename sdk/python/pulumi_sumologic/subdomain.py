@@ -16,12 +16,16 @@ class SubdomainArgs:
                  subdomain: pulumi.Input[str]):
         """
         The set of arguments for constructing a Subdomain resource.
+        :param pulumi.Input[str] subdomain: The subdomain.
         """
         pulumi.set(__self__, "subdomain", subdomain)
 
     @property
     @pulumi.getter
     def subdomain(self) -> pulumi.Input[str]:
+        """
+        The subdomain.
+        """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
@@ -35,6 +39,7 @@ class _SubdomainState:
                  subdomain: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subdomain resources.
+        :param pulumi.Input[str] subdomain: The subdomain.
         """
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
@@ -42,6 +47,9 @@ class _SubdomainState:
     @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subdomain.
+        """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
@@ -67,12 +75,6 @@ class Subdomain(pulumi.CustomResource):
 
         example_subdomain = sumologic.Subdomain("exampleSubdomain", subdomain="my-company")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `subdomain` - (Required) The subdomain.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -83,6 +85,7 @@ class Subdomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] subdomain: The subdomain.
         """
         ...
     @overload
@@ -101,12 +104,6 @@ class Subdomain(pulumi.CustomResource):
 
         example_subdomain = sumologic.Subdomain("exampleSubdomain", subdomain="my-company")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `subdomain` - (Required) The subdomain.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -164,6 +161,7 @@ class Subdomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] subdomain: The subdomain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -175,5 +173,8 @@ class Subdomain(pulumi.CustomResource):
     @property
     @pulumi.getter
     def subdomain(self) -> pulumi.Output[str]:
+        """
+        The subdomain.
+        """
         return pulumi.get(self, "subdomain")
 

@@ -30,20 +30,6 @@ import * as utilities from "./utilities";
  *     transferTo: exampleUser1.id,
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `firstName` - (Required) First name of the user.
- * - `lastName` - (Required) Last name of the user.
- * - `email` - (Required) Email of the user.
- * - `isActive` - (Required) This has the value true if the user is active and false if they have been deactivated.
- * - `roleIds` - (Required) List of roleIds associated with the user.
- * - `transferTo` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the user.
  *
  * ## Import
  *
@@ -83,11 +69,29 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
+    /**
+     * Email of the user.
+     */
     public readonly email!: pulumi.Output<string>;
+    /**
+     * First name of the user.
+     */
     public readonly firstName!: pulumi.Output<string>;
+    /**
+     * This has the value true if the user is active and false if they have been deactivated.
+     */
     public readonly isActive!: pulumi.Output<boolean>;
+    /**
+     * Last name of the user.
+     */
     public readonly lastName!: pulumi.Output<string>;
+    /**
+     * List of roleIds associated with the user.
+     */
     public readonly roleIds!: pulumi.Output<string[]>;
+    /**
+     * UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     */
     public readonly transferTo!: pulumi.Output<string>;
 
     /**
@@ -147,11 +151,29 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
+    /**
+     * Email of the user.
+     */
     email?: pulumi.Input<string>;
+    /**
+     * First name of the user.
+     */
     firstName?: pulumi.Input<string>;
+    /**
+     * This has the value true if the user is active and false if they have been deactivated.
+     */
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Last name of the user.
+     */
     lastName?: pulumi.Input<string>;
+    /**
+     * List of roleIds associated with the user.
+     */
     roleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     */
     transferTo?: pulumi.Input<string>;
 }
 
@@ -159,10 +181,28 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
+    /**
+     * Email of the user.
+     */
     email: pulumi.Input<string>;
+    /**
+     * First name of the user.
+     */
     firstName: pulumi.Input<string>;
+    /**
+     * This has the value true if the user is active and false if they have been deactivated.
+     */
     isActive: pulumi.Input<boolean>;
+    /**
+     * Last name of the user.
+     */
     lastName: pulumi.Input<string>;
+    /**
+     * List of roleIds associated with the user.
+     */
     roleIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     */
     transferTo: pulumi.Input<string>;
 }

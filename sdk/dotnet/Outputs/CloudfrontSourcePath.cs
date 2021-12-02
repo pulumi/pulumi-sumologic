@@ -13,11 +13,24 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CloudfrontSourcePath
     {
+        /// <summary>
+        /// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        /// </summary>
         public readonly string? BucketName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
+        /// <summary>
+        /// The path to the data. This is needed if using type `S3BucketPathExpression`.
+        /// </summary>
         public readonly string? PathExpression;
+        /// <summary>
+        /// This is a computed field for SNS topic/subscription ARN.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.CloudfrontSourcePathTagFilter> TagFilters;
+        /// <summary>
+        /// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -30,6 +43,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? pathExpression,
 
+            ImmutableArray<Outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
+
             ImmutableArray<Outputs.CloudfrontSourcePathTagFilter> tagFilters,
 
             string type)
@@ -38,6 +53,7 @@ namespace Pulumi.SumoLogic.Outputs
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             PathExpression = pathExpression;
+            SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
         }

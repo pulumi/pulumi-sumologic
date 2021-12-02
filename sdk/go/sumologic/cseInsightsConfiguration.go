@@ -35,16 +35,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `lookbackDays` - (Optional) Detection window expressed in days.
-// - `threshold` - (Optional) Detection threshold activity score.
-//
-// The following attributes are exported:
-//
-// - `ID` - The internal ID of the insights configuration.
 //
 // ## Import
 //
@@ -56,8 +46,10 @@ import (
 type CseInsightsConfiguration struct {
 	pulumi.CustomResourceState
 
+	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrOutput `pulumi:"lookbackDays"`
-	Threshold    pulumi.Float64PtrOutput `pulumi:"threshold"`
+	// Detection threshold activity score.
+	Threshold pulumi.Float64PtrOutput `pulumi:"threshold"`
 }
 
 // NewCseInsightsConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -89,13 +81,17 @@ func GetCseInsightsConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseInsightsConfiguration resources.
 type cseInsightsConfigurationState struct {
+	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
-	Threshold    *float64 `pulumi:"threshold"`
+	// Detection threshold activity score.
+	Threshold *float64 `pulumi:"threshold"`
 }
 
 type CseInsightsConfigurationState struct {
+	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
-	Threshold    pulumi.Float64PtrInput
+	// Detection threshold activity score.
+	Threshold pulumi.Float64PtrInput
 }
 
 func (CseInsightsConfigurationState) ElementType() reflect.Type {
@@ -103,14 +99,18 @@ func (CseInsightsConfigurationState) ElementType() reflect.Type {
 }
 
 type cseInsightsConfigurationArgs struct {
+	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
-	Threshold    *float64 `pulumi:"threshold"`
+	// Detection threshold activity score.
+	Threshold *float64 `pulumi:"threshold"`
 }
 
 // The set of arguments for constructing a CseInsightsConfiguration resource.
 type CseInsightsConfigurationArgs struct {
+	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
-	Threshold    pulumi.Float64PtrInput
+	// Detection threshold activity score.
+	Threshold pulumi.Float64PtrInput
 }
 
 func (CseInsightsConfigurationArgs) ElementType() reflect.Type {

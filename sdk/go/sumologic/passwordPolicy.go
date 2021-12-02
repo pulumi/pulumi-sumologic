@@ -48,41 +48,35 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `minLength` - (Optional) The minimum length of the password. Defaults to 8.
-// - `maxLength` - (Optional) The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
-// - `mustContainLowercase` - (Optional) If the password must contain lower case characters. Defaults to true.
-// - `mustContainUppercase` - (Optional) If the password must contain upper case characters. Defaults to true.
-// - `mustContainDigits` - (Optional) If the password must contain digits. Defaults to true.
-// - `mustContainSpecialChars` - (Optional) If the password must contain special characters. Defaults to true.
-// - `maxPasswordAgeInDays` - (Optional) Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
-// - `minUniquePasswords` - (Optional) The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
-// - `accountLockoutThreshold` - (Optional) Number of failed login attempts allowed before account is locked-out. Defaults to 6.
-// - `failedLoginResetDurationInMins` - (Optional) The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
-// - `accountLockoutDurationInMins` - (Optional) The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
-// - `requireMfa` - (Optional) If MFA should be required to log in. Defaults to false.
-// - `rememberMfa` - (Optional) If MFA should be remembered on the browser. Defaults to true.
-//
-// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 type PasswordPolicy struct {
 	pulumi.CustomResourceState
 
-	AccountLockoutDurationInMins   pulumi.IntPtrOutput  `pulumi:"accountLockoutDurationInMins"`
-	AccountLockoutThreshold        pulumi.IntPtrOutput  `pulumi:"accountLockoutThreshold"`
-	FailedLoginResetDurationInMins pulumi.IntPtrOutput  `pulumi:"failedLoginResetDurationInMins"`
-	MaxLength                      pulumi.IntPtrOutput  `pulumi:"maxLength"`
-	MaxPasswordAgeInDays           pulumi.IntPtrOutput  `pulumi:"maxPasswordAgeInDays"`
-	MinLength                      pulumi.IntPtrOutput  `pulumi:"minLength"`
-	MinUniquePasswords             pulumi.IntPtrOutput  `pulumi:"minUniquePasswords"`
-	MustContainDigits              pulumi.BoolPtrOutput `pulumi:"mustContainDigits"`
-	MustContainLowercase           pulumi.BoolPtrOutput `pulumi:"mustContainLowercase"`
-	MustContainSpecialChars        pulumi.BoolPtrOutput `pulumi:"mustContainSpecialChars"`
-	MustContainUppercase           pulumi.BoolPtrOutput `pulumi:"mustContainUppercase"`
-	RememberMfa                    pulumi.BoolPtrOutput `pulumi:"rememberMfa"`
-	RequireMfa                     pulumi.BoolPtrOutput `pulumi:"requireMfa"`
+	// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+	AccountLockoutDurationInMins pulumi.IntPtrOutput `pulumi:"accountLockoutDurationInMins"`
+	// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+	AccountLockoutThreshold pulumi.IntPtrOutput `pulumi:"accountLockoutThreshold"`
+	// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+	FailedLoginResetDurationInMins pulumi.IntPtrOutput `pulumi:"failedLoginResetDurationInMins"`
+	// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+	MaxLength pulumi.IntPtrOutput `pulumi:"maxLength"`
+	// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+	MaxPasswordAgeInDays pulumi.IntPtrOutput `pulumi:"maxPasswordAgeInDays"`
+	// The minimum length of the password. Defaults to 8.
+	MinLength pulumi.IntPtrOutput `pulumi:"minLength"`
+	// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+	MinUniquePasswords pulumi.IntPtrOutput `pulumi:"minUniquePasswords"`
+	// If the password must contain digits. Defaults to true.
+	MustContainDigits pulumi.BoolPtrOutput `pulumi:"mustContainDigits"`
+	// If the password must contain lower case characters. Defaults to true.
+	MustContainLowercase pulumi.BoolPtrOutput `pulumi:"mustContainLowercase"`
+	// If the password must contain special characters. Defaults to true.
+	MustContainSpecialChars pulumi.BoolPtrOutput `pulumi:"mustContainSpecialChars"`
+	// If the password must contain upper case characters. Defaults to true.
+	MustContainUppercase pulumi.BoolPtrOutput `pulumi:"mustContainUppercase"`
+	// If MFA should be remembered on the browser. Defaults to true.
+	RememberMfa pulumi.BoolPtrOutput `pulumi:"rememberMfa"`
+	// If MFA should be required to log in. Defaults to false.
+	RequireMfa pulumi.BoolPtrOutput `pulumi:"requireMfa"`
 }
 
 // NewPasswordPolicy registers a new resource with the given unique name, arguments, and options.
@@ -114,35 +108,61 @@ func GetPasswordPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PasswordPolicy resources.
 type passwordPolicyState struct {
-	AccountLockoutDurationInMins   *int  `pulumi:"accountLockoutDurationInMins"`
-	AccountLockoutThreshold        *int  `pulumi:"accountLockoutThreshold"`
-	FailedLoginResetDurationInMins *int  `pulumi:"failedLoginResetDurationInMins"`
-	MaxLength                      *int  `pulumi:"maxLength"`
-	MaxPasswordAgeInDays           *int  `pulumi:"maxPasswordAgeInDays"`
-	MinLength                      *int  `pulumi:"minLength"`
-	MinUniquePasswords             *int  `pulumi:"minUniquePasswords"`
-	MustContainDigits              *bool `pulumi:"mustContainDigits"`
-	MustContainLowercase           *bool `pulumi:"mustContainLowercase"`
-	MustContainSpecialChars        *bool `pulumi:"mustContainSpecialChars"`
-	MustContainUppercase           *bool `pulumi:"mustContainUppercase"`
-	RememberMfa                    *bool `pulumi:"rememberMfa"`
-	RequireMfa                     *bool `pulumi:"requireMfa"`
+	// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+	AccountLockoutDurationInMins *int `pulumi:"accountLockoutDurationInMins"`
+	// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+	AccountLockoutThreshold *int `pulumi:"accountLockoutThreshold"`
+	// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+	FailedLoginResetDurationInMins *int `pulumi:"failedLoginResetDurationInMins"`
+	// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+	MaxLength *int `pulumi:"maxLength"`
+	// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+	MaxPasswordAgeInDays *int `pulumi:"maxPasswordAgeInDays"`
+	// The minimum length of the password. Defaults to 8.
+	MinLength *int `pulumi:"minLength"`
+	// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+	MinUniquePasswords *int `pulumi:"minUniquePasswords"`
+	// If the password must contain digits. Defaults to true.
+	MustContainDigits *bool `pulumi:"mustContainDigits"`
+	// If the password must contain lower case characters. Defaults to true.
+	MustContainLowercase *bool `pulumi:"mustContainLowercase"`
+	// If the password must contain special characters. Defaults to true.
+	MustContainSpecialChars *bool `pulumi:"mustContainSpecialChars"`
+	// If the password must contain upper case characters. Defaults to true.
+	MustContainUppercase *bool `pulumi:"mustContainUppercase"`
+	// If MFA should be remembered on the browser. Defaults to true.
+	RememberMfa *bool `pulumi:"rememberMfa"`
+	// If MFA should be required to log in. Defaults to false.
+	RequireMfa *bool `pulumi:"requireMfa"`
 }
 
 type PasswordPolicyState struct {
-	AccountLockoutDurationInMins   pulumi.IntPtrInput
-	AccountLockoutThreshold        pulumi.IntPtrInput
+	// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+	AccountLockoutDurationInMins pulumi.IntPtrInput
+	// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+	AccountLockoutThreshold pulumi.IntPtrInput
+	// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
 	FailedLoginResetDurationInMins pulumi.IntPtrInput
-	MaxLength                      pulumi.IntPtrInput
-	MaxPasswordAgeInDays           pulumi.IntPtrInput
-	MinLength                      pulumi.IntPtrInput
-	MinUniquePasswords             pulumi.IntPtrInput
-	MustContainDigits              pulumi.BoolPtrInput
-	MustContainLowercase           pulumi.BoolPtrInput
-	MustContainSpecialChars        pulumi.BoolPtrInput
-	MustContainUppercase           pulumi.BoolPtrInput
-	RememberMfa                    pulumi.BoolPtrInput
-	RequireMfa                     pulumi.BoolPtrInput
+	// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+	MaxLength pulumi.IntPtrInput
+	// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+	MaxPasswordAgeInDays pulumi.IntPtrInput
+	// The minimum length of the password. Defaults to 8.
+	MinLength pulumi.IntPtrInput
+	// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+	MinUniquePasswords pulumi.IntPtrInput
+	// If the password must contain digits. Defaults to true.
+	MustContainDigits pulumi.BoolPtrInput
+	// If the password must contain lower case characters. Defaults to true.
+	MustContainLowercase pulumi.BoolPtrInput
+	// If the password must contain special characters. Defaults to true.
+	MustContainSpecialChars pulumi.BoolPtrInput
+	// If the password must contain upper case characters. Defaults to true.
+	MustContainUppercase pulumi.BoolPtrInput
+	// If MFA should be remembered on the browser. Defaults to true.
+	RememberMfa pulumi.BoolPtrInput
+	// If MFA should be required to log in. Defaults to false.
+	RequireMfa pulumi.BoolPtrInput
 }
 
 func (PasswordPolicyState) ElementType() reflect.Type {
@@ -150,36 +170,62 @@ func (PasswordPolicyState) ElementType() reflect.Type {
 }
 
 type passwordPolicyArgs struct {
-	AccountLockoutDurationInMins   *int  `pulumi:"accountLockoutDurationInMins"`
-	AccountLockoutThreshold        *int  `pulumi:"accountLockoutThreshold"`
-	FailedLoginResetDurationInMins *int  `pulumi:"failedLoginResetDurationInMins"`
-	MaxLength                      *int  `pulumi:"maxLength"`
-	MaxPasswordAgeInDays           *int  `pulumi:"maxPasswordAgeInDays"`
-	MinLength                      *int  `pulumi:"minLength"`
-	MinUniquePasswords             *int  `pulumi:"minUniquePasswords"`
-	MustContainDigits              *bool `pulumi:"mustContainDigits"`
-	MustContainLowercase           *bool `pulumi:"mustContainLowercase"`
-	MustContainSpecialChars        *bool `pulumi:"mustContainSpecialChars"`
-	MustContainUppercase           *bool `pulumi:"mustContainUppercase"`
-	RememberMfa                    *bool `pulumi:"rememberMfa"`
-	RequireMfa                     *bool `pulumi:"requireMfa"`
+	// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+	AccountLockoutDurationInMins *int `pulumi:"accountLockoutDurationInMins"`
+	// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+	AccountLockoutThreshold *int `pulumi:"accountLockoutThreshold"`
+	// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+	FailedLoginResetDurationInMins *int `pulumi:"failedLoginResetDurationInMins"`
+	// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+	MaxLength *int `pulumi:"maxLength"`
+	// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+	MaxPasswordAgeInDays *int `pulumi:"maxPasswordAgeInDays"`
+	// The minimum length of the password. Defaults to 8.
+	MinLength *int `pulumi:"minLength"`
+	// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+	MinUniquePasswords *int `pulumi:"minUniquePasswords"`
+	// If the password must contain digits. Defaults to true.
+	MustContainDigits *bool `pulumi:"mustContainDigits"`
+	// If the password must contain lower case characters. Defaults to true.
+	MustContainLowercase *bool `pulumi:"mustContainLowercase"`
+	// If the password must contain special characters. Defaults to true.
+	MustContainSpecialChars *bool `pulumi:"mustContainSpecialChars"`
+	// If the password must contain upper case characters. Defaults to true.
+	MustContainUppercase *bool `pulumi:"mustContainUppercase"`
+	// If MFA should be remembered on the browser. Defaults to true.
+	RememberMfa *bool `pulumi:"rememberMfa"`
+	// If MFA should be required to log in. Defaults to false.
+	RequireMfa *bool `pulumi:"requireMfa"`
 }
 
 // The set of arguments for constructing a PasswordPolicy resource.
 type PasswordPolicyArgs struct {
-	AccountLockoutDurationInMins   pulumi.IntPtrInput
-	AccountLockoutThreshold        pulumi.IntPtrInput
+	// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+	AccountLockoutDurationInMins pulumi.IntPtrInput
+	// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+	AccountLockoutThreshold pulumi.IntPtrInput
+	// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
 	FailedLoginResetDurationInMins pulumi.IntPtrInput
-	MaxLength                      pulumi.IntPtrInput
-	MaxPasswordAgeInDays           pulumi.IntPtrInput
-	MinLength                      pulumi.IntPtrInput
-	MinUniquePasswords             pulumi.IntPtrInput
-	MustContainDigits              pulumi.BoolPtrInput
-	MustContainLowercase           pulumi.BoolPtrInput
-	MustContainSpecialChars        pulumi.BoolPtrInput
-	MustContainUppercase           pulumi.BoolPtrInput
-	RememberMfa                    pulumi.BoolPtrInput
-	RequireMfa                     pulumi.BoolPtrInput
+	// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+	MaxLength pulumi.IntPtrInput
+	// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+	MaxPasswordAgeInDays pulumi.IntPtrInput
+	// The minimum length of the password. Defaults to 8.
+	MinLength pulumi.IntPtrInput
+	// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+	MinUniquePasswords pulumi.IntPtrInput
+	// If the password must contain digits. Defaults to true.
+	MustContainDigits pulumi.BoolPtrInput
+	// If the password must contain lower case characters. Defaults to true.
+	MustContainLowercase pulumi.BoolPtrInput
+	// If the password must contain special characters. Defaults to true.
+	MustContainSpecialChars pulumi.BoolPtrInput
+	// If the password must contain upper case characters. Defaults to true.
+	MustContainUppercase pulumi.BoolPtrInput
+	// If MFA should be remembered on the browser. Defaults to true.
+	RememberMfa pulumi.BoolPtrInput
+	// If MFA should be required to log in. Defaults to false.
+	RequireMfa pulumi.BoolPtrInput
 }
 
 func (PasswordPolicyArgs) ElementType() reflect.Type {

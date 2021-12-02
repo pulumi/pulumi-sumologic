@@ -21,17 +21,6 @@ import * as utilities from "./utilities";
  *     identifier: "identifier",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) Human friend and unique name. Example: "File Hash".
- * - `identifier` - (Required) Machine friendly and unique identifier. Example: "filehash".
- * - `fields` - (Required) Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the custom entity type.
  *
  * ## Import
  *
@@ -69,8 +58,17 @@ export class CseCustomEntityType extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseCustomEntityType.__pulumiType;
     }
 
+    /**
+     * Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+     */
     public readonly fields!: pulumi.Output<string[]>;
+    /**
+     * Machine friendly and unique identifier. Example: "filehash".
+     */
     public readonly identifier!: pulumi.Output<string>;
+    /**
+     * Human friend and unique name. Example: "File Hash".
+     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -112,8 +110,17 @@ export class CseCustomEntityType extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseCustomEntityType resources.
  */
 export interface CseCustomEntityTypeState {
+    /**
+     * Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+     */
     fields?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Machine friendly and unique identifier. Example: "filehash".
+     */
     identifier?: pulumi.Input<string>;
+    /**
+     * Human friend and unique name. Example: "File Hash".
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -121,7 +128,16 @@ export interface CseCustomEntityTypeState {
  * The set of arguments for constructing a CseCustomEntityType resource.
  */
 export interface CseCustomEntityTypeArgs {
+    /**
+     * Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+     */
     fields: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Machine friendly and unique identifier. Example: "filehash".
+     */
     identifier: pulumi.Input<string>;
+    /**
+     * Human friend and unique name. Example: "File Hash".
+     */
     name?: pulumi.Input<string>;
 }

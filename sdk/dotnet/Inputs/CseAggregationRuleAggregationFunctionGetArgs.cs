@@ -14,15 +14,25 @@ namespace Pulumi.SumoLogic.Inputs
     {
         [Input("arguments", required: true)]
         private InputList<string>? _arguments;
+
+        /// <summary>
+        /// One or more expressions to pass as arguments to the function
+        /// </summary>
         public InputList<string> Arguments
         {
             get => _arguments ?? (_arguments = new InputList<string>());
             set => _arguments = value;
         }
 
+        /// <summary>
+        /// The function to aggregate with
+        /// </summary>
         [Input("function", required: true)]
         public Input<string> Function { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the Rule
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

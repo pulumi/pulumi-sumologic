@@ -58,23 +58,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// In addition to the common properties, the following arguments are supported:
-//
-//  - `contentType` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-//  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-//  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-//  - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
-//      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-//      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-//      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-//      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
-//      + `region` - (Optional) Your AWS Bucket region.
-//  - `path` - (Required) The location to scan for new data.
-//      + `type` - (Required) type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
-//      + `bucketName` - (Required) The name of the bucket. This is needed if using type `S3BucketPathExpression`.
-//      + `pathExpression` - (Required) The path to the data. This is needed if using type `S3BucketPathExpression`.
 //
 // ## Import
 //
@@ -94,10 +77,12 @@ import (
 type CloudfrontSource struct {
 	pulumi.CustomResourceState
 
-	Authentication             CloudfrontSourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                         `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                       `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                             `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudfrontSourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput                 `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput               `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                     `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringOutput                          `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                       `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                          `pulumi:"cutoffTimestamp"`
@@ -110,10 +95,13 @@ type CloudfrontSource struct {
 	ManualPrefixRegexp         pulumi.StringPtrOutput                       `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                         `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                          `pulumi:"name"`
-	Path                       CloudfrontSourcePathOutput                   `pulumi:"path"`
-	Paused                     pulumi.BoolOutput                            `pulumi:"paused"`
-	ScanInterval               pulumi.IntOutput                             `pulumi:"scanInterval"`
-	Timezone                   pulumi.StringPtrOutput                       `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path CloudfrontSourcePathOutput `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntOutput       `pulumi:"scanInterval"`
+	Timezone     pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -166,10 +154,12 @@ func GetCloudfrontSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudfrontSource resources.
 type cloudfrontSourceState struct {
-	Authentication             *CloudfrontSourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                               `pulumi:"automaticDateParsing"`
-	Category                   *string                             `pulumi:"category"`
-	CollectorId                *int                                `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       *CloudfrontSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                           `pulumi:"automaticDateParsing"`
+	Category             *string                         `pulumi:"category"`
+	CollectorId          *int                            `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                *string                             `pulumi:"contentType"`
 	CutoffRelativeTime         *string                             `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                `pulumi:"cutoffTimestamp"`
@@ -182,20 +172,25 @@ type cloudfrontSourceState struct {
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                             `pulumi:"name"`
-	Path                       *CloudfrontSourcePath               `pulumi:"path"`
-	Paused                     *bool                               `pulumi:"paused"`
-	ScanInterval               *int                                `pulumi:"scanInterval"`
-	Timezone                   *string                             `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path *CloudfrontSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused *bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval *int    `pulumi:"scanInterval"`
+	Timezone     *string `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type CloudfrontSourceState struct {
-	Authentication             CloudfrontSourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudfrontSourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -208,10 +203,13 @@ type CloudfrontSourceState struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       CloudfrontSourcePathPtrInput
-	Paused                     pulumi.BoolPtrInput
-	ScanInterval               pulumi.IntPtrInput
-	Timezone                   pulumi.StringPtrInput
+	// The location to scan for new data.
+	Path CloudfrontSourcePathPtrInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolPtrInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntPtrInput
+	Timezone     pulumi.StringPtrInput
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
@@ -222,10 +220,12 @@ func (CloudfrontSourceState) ElementType() reflect.Type {
 }
 
 type cloudfrontSourceArgs struct {
-	Authentication             CloudfrontSourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                               `pulumi:"automaticDateParsing"`
-	Category                   *string                             `pulumi:"category"`
-	CollectorId                int                                 `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudfrontSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                          `pulumi:"automaticDateParsing"`
+	Category             *string                        `pulumi:"category"`
+	CollectorId          int                            `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                string                              `pulumi:"contentType"`
 	CutoffRelativeTime         *string                             `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                `pulumi:"cutoffTimestamp"`
@@ -238,19 +238,24 @@ type cloudfrontSourceArgs struct {
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                             `pulumi:"name"`
-	Path                       CloudfrontSourcePath                `pulumi:"path"`
-	Paused                     bool                                `pulumi:"paused"`
-	ScanInterval               int                                 `pulumi:"scanInterval"`
-	Timezone                   *string                             `pulumi:"timezone"`
-	UseAutolineMatching        *bool                               `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path CloudfrontSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        int     `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a CloudfrontSource resource.
 type CloudfrontSourceArgs struct {
-	Authentication             CloudfrontSourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudfrontSourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -263,11 +268,14 @@ type CloudfrontSourceArgs struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       CloudfrontSourcePathInput
-	Paused                     pulumi.BoolInput
-	ScanInterval               pulumi.IntInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path CloudfrontSourcePathInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        pulumi.IntInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (CloudfrontSourceArgs) ElementType() reflect.Type {

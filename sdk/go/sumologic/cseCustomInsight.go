@@ -49,22 +49,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `description` - (Required) The description of the generated Insights
-// - `enabled` - (Required) Whether the Custom Insight should generate Insights
-// - `ordered` - (Required) Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
-// - `name` - (Required) The name of the Custom Insight and the generated Insights
-// - `ruleIds` - (Optional) The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
-// - `severity` - (Required) The severity of the generated Insights (HIGH, MEDIUM, or LOW)
-// - `signalNames` - (Optional) The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
-// - `tags` - (Required) The tags of the generated Insights
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the chain rule.
 //
 // ## Import
 //
@@ -76,14 +60,22 @@ import (
 type CseCustomInsight struct {
 	pulumi.CustomResourceState
 
-	Description pulumi.StringOutput      `pulumi:"description"`
-	Enabled     pulumi.BoolOutput        `pulumi:"enabled"`
-	Name        pulumi.StringOutput      `pulumi:"name"`
-	Ordered     pulumi.BoolOutput        `pulumi:"ordered"`
-	RuleIds     pulumi.StringArrayOutput `pulumi:"ruleIds"`
-	Severity    pulumi.StringOutput      `pulumi:"severity"`
+	// The description of the generated Insights
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Whether the Custom Insight should generate Insights
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The name of the Custom Insight and the generated Insights
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+	Ordered pulumi.BoolOutput `pulumi:"ordered"`
+	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+	RuleIds pulumi.StringArrayOutput `pulumi:"ruleIds"`
+	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	Severity pulumi.StringOutput `pulumi:"severity"`
+	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayOutput `pulumi:"signalNames"`
-	Tags        pulumi.StringArrayOutput `pulumi:"tags"`
+	// The tags of the generated Insights
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
 // NewCseCustomInsight registers a new resource with the given unique name, arguments, and options.
@@ -130,25 +122,41 @@ func GetCseCustomInsight(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseCustomInsight resources.
 type cseCustomInsightState struct {
-	Description *string  `pulumi:"description"`
-	Enabled     *bool    `pulumi:"enabled"`
-	Name        *string  `pulumi:"name"`
-	Ordered     *bool    `pulumi:"ordered"`
-	RuleIds     []string `pulumi:"ruleIds"`
-	Severity    *string  `pulumi:"severity"`
+	// The description of the generated Insights
+	Description *string `pulumi:"description"`
+	// Whether the Custom Insight should generate Insights
+	Enabled *bool `pulumi:"enabled"`
+	// The name of the Custom Insight and the generated Insights
+	Name *string `pulumi:"name"`
+	// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+	Ordered *bool `pulumi:"ordered"`
+	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+	RuleIds []string `pulumi:"ruleIds"`
+	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	Severity *string `pulumi:"severity"`
+	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
-	Tags        []string `pulumi:"tags"`
+	// The tags of the generated Insights
+	Tags []string `pulumi:"tags"`
 }
 
 type CseCustomInsightState struct {
+	// The description of the generated Insights
 	Description pulumi.StringPtrInput
-	Enabled     pulumi.BoolPtrInput
-	Name        pulumi.StringPtrInput
-	Ordered     pulumi.BoolPtrInput
-	RuleIds     pulumi.StringArrayInput
-	Severity    pulumi.StringPtrInput
+	// Whether the Custom Insight should generate Insights
+	Enabled pulumi.BoolPtrInput
+	// The name of the Custom Insight and the generated Insights
+	Name pulumi.StringPtrInput
+	// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+	Ordered pulumi.BoolPtrInput
+	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+	RuleIds pulumi.StringArrayInput
+	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	Severity pulumi.StringPtrInput
+	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
-	Tags        pulumi.StringArrayInput
+	// The tags of the generated Insights
+	Tags pulumi.StringArrayInput
 }
 
 func (CseCustomInsightState) ElementType() reflect.Type {
@@ -156,26 +164,42 @@ func (CseCustomInsightState) ElementType() reflect.Type {
 }
 
 type cseCustomInsightArgs struct {
-	Description string   `pulumi:"description"`
-	Enabled     bool     `pulumi:"enabled"`
-	Name        *string  `pulumi:"name"`
-	Ordered     bool     `pulumi:"ordered"`
-	RuleIds     []string `pulumi:"ruleIds"`
-	Severity    string   `pulumi:"severity"`
+	// The description of the generated Insights
+	Description string `pulumi:"description"`
+	// Whether the Custom Insight should generate Insights
+	Enabled bool `pulumi:"enabled"`
+	// The name of the Custom Insight and the generated Insights
+	Name *string `pulumi:"name"`
+	// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+	Ordered bool `pulumi:"ordered"`
+	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+	RuleIds []string `pulumi:"ruleIds"`
+	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	Severity string `pulumi:"severity"`
+	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
-	Tags        []string `pulumi:"tags"`
+	// The tags of the generated Insights
+	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CseCustomInsight resource.
 type CseCustomInsightArgs struct {
+	// The description of the generated Insights
 	Description pulumi.StringInput
-	Enabled     pulumi.BoolInput
-	Name        pulumi.StringPtrInput
-	Ordered     pulumi.BoolInput
-	RuleIds     pulumi.StringArrayInput
-	Severity    pulumi.StringInput
+	// Whether the Custom Insight should generate Insights
+	Enabled pulumi.BoolInput
+	// The name of the Custom Insight and the generated Insights
+	Name pulumi.StringPtrInput
+	// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+	Ordered pulumi.BoolInput
+	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+	RuleIds pulumi.StringArrayInput
+	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	Severity pulumi.StringInput
+	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
-	Tags        pulumi.StringArrayInput
+	// The tags of the generated Insights
+	Tags pulumi.StringArrayInput
 }
 
 func (CseCustomInsightArgs) ElementType() reflect.Type {

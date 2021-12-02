@@ -38,18 +38,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) The name of the role.
-// - `description` - (Optional) The description of the role.
-// - `filterPredicate` - (Optional) A search filter to restrict access to specific logs.
-// - `capabilities` - (Optional) List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the role.
 //
 // ## Import
 //
@@ -63,10 +51,14 @@ import (
 type Role struct {
 	pulumi.CustomResourceState
 
-	Capabilities    pulumi.StringArrayOutput `pulumi:"capabilities"`
-	Description     pulumi.StringPtrOutput   `pulumi:"description"`
-	FilterPredicate pulumi.StringPtrOutput   `pulumi:"filterPredicate"`
-	Name            pulumi.StringOutput      `pulumi:"name"`
+	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
+	// The description of the role.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// A search filter to restrict access to specific logs.
+	FilterPredicate pulumi.StringPtrOutput `pulumi:"filterPredicate"`
+	// The name of the role.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewRole registers a new resource with the given unique name, arguments, and options.
@@ -98,17 +90,25 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	Capabilities    []string `pulumi:"capabilities"`
-	Description     *string  `pulumi:"description"`
-	FilterPredicate *string  `pulumi:"filterPredicate"`
-	Name            *string  `pulumi:"name"`
+	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	Capabilities []string `pulumi:"capabilities"`
+	// The description of the role.
+	Description *string `pulumi:"description"`
+	// A search filter to restrict access to specific logs.
+	FilterPredicate *string `pulumi:"filterPredicate"`
+	// The name of the role.
+	Name *string `pulumi:"name"`
 }
 
 type RoleState struct {
-	Capabilities    pulumi.StringArrayInput
-	Description     pulumi.StringPtrInput
+	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	Capabilities pulumi.StringArrayInput
+	// The description of the role.
+	Description pulumi.StringPtrInput
+	// A search filter to restrict access to specific logs.
 	FilterPredicate pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
+	// The name of the role.
+	Name pulumi.StringPtrInput
 }
 
 func (RoleState) ElementType() reflect.Type {
@@ -116,18 +116,26 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	Capabilities    []string `pulumi:"capabilities"`
-	Description     *string  `pulumi:"description"`
-	FilterPredicate *string  `pulumi:"filterPredicate"`
-	Name            *string  `pulumi:"name"`
+	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	Capabilities []string `pulumi:"capabilities"`
+	// The description of the role.
+	Description *string `pulumi:"description"`
+	// A search filter to restrict access to specific logs.
+	FilterPredicate *string `pulumi:"filterPredicate"`
+	// The name of the role.
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	Capabilities    pulumi.StringArrayInput
-	Description     pulumi.StringPtrInput
+	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	Capabilities pulumi.StringArrayInput
+	// The description of the role.
+	Description pulumi.StringPtrInput
+	// A search filter to restrict access to specific logs.
 	FilterPredicate pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
+	// The name of the role.
+	Name pulumi.StringPtrInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {

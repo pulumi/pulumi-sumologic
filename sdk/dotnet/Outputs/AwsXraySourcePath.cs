@@ -15,9 +15,16 @@ namespace Pulumi.SumoLogic.Outputs
     {
         public readonly string? BucketName;
         public readonly ImmutableArray<string> LimitToNamespaces;
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly string? PathExpression;
+        public readonly ImmutableArray<Outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathTagFilter> TagFilters;
+        /// <summary>
+        /// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -30,6 +37,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? pathExpression,
 
+            ImmutableArray<Outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
+
             ImmutableArray<Outputs.AwsXraySourcePathTagFilter> tagFilters,
 
             string type)
@@ -38,6 +47,7 @@ namespace Pulumi.SumoLogic.Outputs
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             PathExpression = pathExpression;
+            SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
         }

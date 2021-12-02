@@ -52,20 +52,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `audit` - (Required) Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
-// - `dataAccessLevel` - (Required) Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
-// - `maxUserSessionTimeout` - (Required) The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
-// - `searchAudit` - (Required) Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
-// - `shareDashboardsOutsideOrganization` - (Required) Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-// - `userConcurrentSessionsLimit` - (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
-//
-// ### Schema for `userConcurrentSessionsLimit`
-// - `enabled` - (Required) Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-// - `maxConcurrentSessions` - (Optional) Maximum number of concurrent sessions a user may have. Defaults to `100`.
 //
 // ## Import
 //
@@ -79,12 +65,18 @@ import (
 type Policies struct {
 	pulumi.CustomResourceState
 
-	Audit                              pulumi.BoolOutput                         `pulumi:"audit"`
-	DataAccessLevel                    pulumi.BoolOutput                         `pulumi:"dataAccessLevel"`
-	MaxUserSessionTimeout              pulumi.StringOutput                       `pulumi:"maxUserSessionTimeout"`
-	SearchAudit                        pulumi.BoolOutput                         `pulumi:"searchAudit"`
-	ShareDashboardsOutsideOrganization pulumi.BoolOutput                         `pulumi:"shareDashboardsOutsideOrganization"`
-	UserConcurrentSessionsLimit        PoliciesUserConcurrentSessionsLimitOutput `pulumi:"userConcurrentSessionsLimit"`
+	// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+	Audit pulumi.BoolOutput `pulumi:"audit"`
+	// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+	DataAccessLevel pulumi.BoolOutput `pulumi:"dataAccessLevel"`
+	// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+	MaxUserSessionTimeout pulumi.StringOutput `pulumi:"maxUserSessionTimeout"`
+	// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+	SearchAudit pulumi.BoolOutput `pulumi:"searchAudit"`
+	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+	ShareDashboardsOutsideOrganization pulumi.BoolOutput `pulumi:"shareDashboardsOutsideOrganization"`
+	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimitOutput `pulumi:"userConcurrentSessionsLimit"`
 }
 
 // NewPolicies registers a new resource with the given unique name, arguments, and options.
@@ -134,21 +126,33 @@ func GetPolicies(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policies resources.
 type policiesState struct {
-	Audit                              *bool                                `pulumi:"audit"`
-	DataAccessLevel                    *bool                                `pulumi:"dataAccessLevel"`
-	MaxUserSessionTimeout              *string                              `pulumi:"maxUserSessionTimeout"`
-	SearchAudit                        *bool                                `pulumi:"searchAudit"`
-	ShareDashboardsOutsideOrganization *bool                                `pulumi:"shareDashboardsOutsideOrganization"`
-	UserConcurrentSessionsLimit        *PoliciesUserConcurrentSessionsLimit `pulumi:"userConcurrentSessionsLimit"`
+	// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+	Audit *bool `pulumi:"audit"`
+	// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+	DataAccessLevel *bool `pulumi:"dataAccessLevel"`
+	// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+	MaxUserSessionTimeout *string `pulumi:"maxUserSessionTimeout"`
+	// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+	SearchAudit *bool `pulumi:"searchAudit"`
+	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+	ShareDashboardsOutsideOrganization *bool `pulumi:"shareDashboardsOutsideOrganization"`
+	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	UserConcurrentSessionsLimit *PoliciesUserConcurrentSessionsLimit `pulumi:"userConcurrentSessionsLimit"`
 }
 
 type PoliciesState struct {
-	Audit                              pulumi.BoolPtrInput
-	DataAccessLevel                    pulumi.BoolPtrInput
-	MaxUserSessionTimeout              pulumi.StringPtrInput
-	SearchAudit                        pulumi.BoolPtrInput
+	// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+	Audit pulumi.BoolPtrInput
+	// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+	DataAccessLevel pulumi.BoolPtrInput
+	// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+	MaxUserSessionTimeout pulumi.StringPtrInput
+	// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+	SearchAudit pulumi.BoolPtrInput
+	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
 	ShareDashboardsOutsideOrganization pulumi.BoolPtrInput
-	UserConcurrentSessionsLimit        PoliciesUserConcurrentSessionsLimitPtrInput
+	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimitPtrInput
 }
 
 func (PoliciesState) ElementType() reflect.Type {
@@ -156,22 +160,34 @@ func (PoliciesState) ElementType() reflect.Type {
 }
 
 type policiesArgs struct {
-	Audit                              bool                                `pulumi:"audit"`
-	DataAccessLevel                    bool                                `pulumi:"dataAccessLevel"`
-	MaxUserSessionTimeout              string                              `pulumi:"maxUserSessionTimeout"`
-	SearchAudit                        bool                                `pulumi:"searchAudit"`
-	ShareDashboardsOutsideOrganization bool                                `pulumi:"shareDashboardsOutsideOrganization"`
-	UserConcurrentSessionsLimit        PoliciesUserConcurrentSessionsLimit `pulumi:"userConcurrentSessionsLimit"`
+	// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+	Audit bool `pulumi:"audit"`
+	// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+	DataAccessLevel bool `pulumi:"dataAccessLevel"`
+	// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+	MaxUserSessionTimeout string `pulumi:"maxUserSessionTimeout"`
+	// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+	SearchAudit bool `pulumi:"searchAudit"`
+	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+	ShareDashboardsOutsideOrganization bool `pulumi:"shareDashboardsOutsideOrganization"`
+	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimit `pulumi:"userConcurrentSessionsLimit"`
 }
 
 // The set of arguments for constructing a Policies resource.
 type PoliciesArgs struct {
-	Audit                              pulumi.BoolInput
-	DataAccessLevel                    pulumi.BoolInput
-	MaxUserSessionTimeout              pulumi.StringInput
-	SearchAudit                        pulumi.BoolInput
+	// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+	Audit pulumi.BoolInput
+	// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+	DataAccessLevel pulumi.BoolInput
+	// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+	MaxUserSessionTimeout pulumi.StringInput
+	// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+	SearchAudit pulumi.BoolInput
+	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
 	ShareDashboardsOutsideOrganization pulumi.BoolInput
-	UserConcurrentSessionsLimit        PoliciesUserConcurrentSessionsLimitInput
+	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimitInput
 }
 
 func (PoliciesArgs) ElementType() reflect.Type {

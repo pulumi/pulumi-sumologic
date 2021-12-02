@@ -13,24 +13,6 @@ import (
 
 // Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
 //
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// > For attributes that force a new resource, if the value is updated, it will destroy the resource and recreate it which may incur significant costs. We advise customers to set the `lifecycle` attribute `preventDestroy` to `true` to avoid accidentally destroying and recreating expensive resources.
-//
-// - `indexName` - (Required, Forces new resource) Name of the index (scheduled view).
-// - `query` - (Required, Forces new resource) Log query defining the scheduled view.
-// - `startTime` - (Required, Forces new resource) Start timestamp in UTC in RFC3339 format.
-// - `retentionPeriod` - (Optional) The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
-// - `dataForwardingId` - (Optional) An optional ID of a data forwarding configuration to be used by the scheduled view.
-// - `parsingMode` - (Optional, Forces new resource) Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
-// - `reduceRetentionPeriodImmediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the scheduled view.
-//
 // ## Import
 //
 // Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2]. hcl
@@ -43,13 +25,20 @@ import (
 type ScheduledView struct {
 	pulumi.CustomResourceState
 
-	DataForwardingId                 pulumi.StringPtrOutput `pulumi:"dataForwardingId"`
-	IndexName                        pulumi.StringOutput    `pulumi:"indexName"`
-	ParsingMode                      pulumi.StringPtrOutput `pulumi:"parsingMode"`
-	Query                            pulumi.StringOutput    `pulumi:"query"`
-	ReduceRetentionPeriodImmediately pulumi.BoolPtrOutput   `pulumi:"reduceRetentionPeriodImmediately"`
-	RetentionPeriod                  pulumi.IntPtrOutput    `pulumi:"retentionPeriod"`
-	StartTime                        pulumi.StringOutput    `pulumi:"startTime"`
+	// An optional ID of a data forwarding configuration to be used by the scheduled view.
+	DataForwardingId pulumi.StringPtrOutput `pulumi:"dataForwardingId"`
+	// Name of the index (scheduled view).
+	IndexName pulumi.StringOutput `pulumi:"indexName"`
+	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+	ParsingMode pulumi.StringPtrOutput `pulumi:"parsingMode"`
+	// Log query defining the scheduled view.
+	Query pulumi.StringOutput `pulumi:"query"`
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	ReduceRetentionPeriodImmediately pulumi.BoolPtrOutput `pulumi:"reduceRetentionPeriodImmediately"`
+	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+	RetentionPeriod pulumi.IntPtrOutput `pulumi:"retentionPeriod"`
+	// Start timestamp in UTC in RFC3339 format.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
 }
 
 // NewScheduledView registers a new resource with the given unique name, arguments, and options.
@@ -90,23 +79,37 @@ func GetScheduledView(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ScheduledView resources.
 type scheduledViewState struct {
-	DataForwardingId                 *string `pulumi:"dataForwardingId"`
-	IndexName                        *string `pulumi:"indexName"`
-	ParsingMode                      *string `pulumi:"parsingMode"`
-	Query                            *string `pulumi:"query"`
-	ReduceRetentionPeriodImmediately *bool   `pulumi:"reduceRetentionPeriodImmediately"`
-	RetentionPeriod                  *int    `pulumi:"retentionPeriod"`
-	StartTime                        *string `pulumi:"startTime"`
+	// An optional ID of a data forwarding configuration to be used by the scheduled view.
+	DataForwardingId *string `pulumi:"dataForwardingId"`
+	// Name of the index (scheduled view).
+	IndexName *string `pulumi:"indexName"`
+	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+	ParsingMode *string `pulumi:"parsingMode"`
+	// Log query defining the scheduled view.
+	Query *string `pulumi:"query"`
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	ReduceRetentionPeriodImmediately *bool `pulumi:"reduceRetentionPeriodImmediately"`
+	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	// Start timestamp in UTC in RFC3339 format.
+	StartTime *string `pulumi:"startTime"`
 }
 
 type ScheduledViewState struct {
-	DataForwardingId                 pulumi.StringPtrInput
-	IndexName                        pulumi.StringPtrInput
-	ParsingMode                      pulumi.StringPtrInput
-	Query                            pulumi.StringPtrInput
+	// An optional ID of a data forwarding configuration to be used by the scheduled view.
+	DataForwardingId pulumi.StringPtrInput
+	// Name of the index (scheduled view).
+	IndexName pulumi.StringPtrInput
+	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+	ParsingMode pulumi.StringPtrInput
+	// Log query defining the scheduled view.
+	Query pulumi.StringPtrInput
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
 	ReduceRetentionPeriodImmediately pulumi.BoolPtrInput
-	RetentionPeriod                  pulumi.IntPtrInput
-	StartTime                        pulumi.StringPtrInput
+	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+	RetentionPeriod pulumi.IntPtrInput
+	// Start timestamp in UTC in RFC3339 format.
+	StartTime pulumi.StringPtrInput
 }
 
 func (ScheduledViewState) ElementType() reflect.Type {
@@ -114,24 +117,38 @@ func (ScheduledViewState) ElementType() reflect.Type {
 }
 
 type scheduledViewArgs struct {
-	DataForwardingId                 *string `pulumi:"dataForwardingId"`
-	IndexName                        string  `pulumi:"indexName"`
-	ParsingMode                      *string `pulumi:"parsingMode"`
-	Query                            string  `pulumi:"query"`
-	ReduceRetentionPeriodImmediately *bool   `pulumi:"reduceRetentionPeriodImmediately"`
-	RetentionPeriod                  *int    `pulumi:"retentionPeriod"`
-	StartTime                        string  `pulumi:"startTime"`
+	// An optional ID of a data forwarding configuration to be used by the scheduled view.
+	DataForwardingId *string `pulumi:"dataForwardingId"`
+	// Name of the index (scheduled view).
+	IndexName string `pulumi:"indexName"`
+	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+	ParsingMode *string `pulumi:"parsingMode"`
+	// Log query defining the scheduled view.
+	Query string `pulumi:"query"`
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	ReduceRetentionPeriodImmediately *bool `pulumi:"reduceRetentionPeriodImmediately"`
+	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	// Start timestamp in UTC in RFC3339 format.
+	StartTime string `pulumi:"startTime"`
 }
 
 // The set of arguments for constructing a ScheduledView resource.
 type ScheduledViewArgs struct {
-	DataForwardingId                 pulumi.StringPtrInput
-	IndexName                        pulumi.StringInput
-	ParsingMode                      pulumi.StringPtrInput
-	Query                            pulumi.StringInput
+	// An optional ID of a data forwarding configuration to be used by the scheduled view.
+	DataForwardingId pulumi.StringPtrInput
+	// Name of the index (scheduled view).
+	IndexName pulumi.StringInput
+	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+	ParsingMode pulumi.StringPtrInput
+	// Log query defining the scheduled view.
+	Query pulumi.StringInput
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
 	ReduceRetentionPeriodImmediately pulumi.BoolPtrInput
-	RetentionPeriod                  pulumi.IntPtrInput
-	StartTime                        pulumi.StringInput
+	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+	RetentionPeriod pulumi.IntPtrInput
+	// Start timestamp in UTC in RFC3339 format.
+	StartTime pulumi.StringInput
 }
 
 func (ScheduledViewArgs) ElementType() reflect.Type {

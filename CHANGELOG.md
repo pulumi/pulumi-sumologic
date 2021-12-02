@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.11.4 of the SumoLogic Terraform Provider
+* Upgrade to terraform-bridge 3.12.0
 
 ---
 

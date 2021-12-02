@@ -13,10 +13,25 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class S3AuditSourceAuthentication
     {
+        /// <summary>
+        /// Your AWS access key if using type `S3BucketAuthentication`.
+        /// </summary>
         public readonly string? AccessKey;
+        /// <summary>
+        /// Your AWS Bucket region.
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// Your AWS secret key if using type `S3BucketAuthentication`.
+        /// </summary>
         public readonly string? SecretKey;
+        /// <summary>
+        /// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

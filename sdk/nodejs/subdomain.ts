@@ -17,12 +17,6 @@ import * as utilities from "./utilities";
  *     subdomain: "my-company",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `subdomain` - (Required) The subdomain.
- *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -59,6 +53,9 @@ export class Subdomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === Subdomain.__pulumiType;
     }
 
+    /**
+     * The subdomain.
+     */
     public readonly subdomain!: pulumi.Output<string>;
 
     /**
@@ -93,6 +90,9 @@ export class Subdomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subdomain resources.
  */
 export interface SubdomainState {
+    /**
+     * The subdomain.
+     */
     subdomain?: pulumi.Input<string>;
 }
 
@@ -100,5 +100,8 @@ export interface SubdomainState {
  * The set of arguments for constructing a Subdomain resource.
  */
 export interface SubdomainArgs {
+    /**
+     * The subdomain.
+     */
     subdomain: pulumi.Input<string>;
 }

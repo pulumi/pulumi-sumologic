@@ -128,28 +128,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// In addition to the common properties, the following arguments are supported:
-//
-//  - `contentType` - (Required) The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-//  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-//  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-//  - `authentication` - (Required) Authentication details for connecting to the S3 bucket.
-//      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-//      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-//      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-//      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-//  - `path` - (Required) The location to scan for new data.
-//      + `type` - (Required) type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
-//      + `bucketName` - (Optional) The name of the bucket. This is needed if using type `S3BucketPathExpression`.
-//      + `pathExpression` - (Optional) The path to the data. This is needed if using type `S3BucketPathExpression`.
-//      + `limitToRegions` - (Optional) List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
-//      + `limitToNamespaces` - (Optional) List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
-//      + `tagFilters` - (Optional) Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
-//           + `type` - This value has to be set to `TagFilters`
-//           + `namespace` - Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-//           + `tags` - List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 //
 // ## Import
 //
@@ -169,10 +147,12 @@ import (
 type PollingSource struct {
 	pulumi.CustomResourceState
 
-	Authentication             PollingSourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                      `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                    `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                          `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       PollingSourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput              `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput            `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                  `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringOutput                       `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                    `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                       `pulumi:"cutoffTimestamp"`
@@ -185,10 +165,13 @@ type PollingSource struct {
 	ManualPrefixRegexp         pulumi.StringPtrOutput                    `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                      `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                       `pulumi:"name"`
-	Path                       PollingSourcePathOutput                   `pulumi:"path"`
-	Paused                     pulumi.BoolOutput                         `pulumi:"paused"`
-	ScanInterval               pulumi.IntOutput                          `pulumi:"scanInterval"`
-	Timezone                   pulumi.StringPtrOutput                    `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path PollingSourcePathOutput `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntOutput       `pulumi:"scanInterval"`
+	Timezone     pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -241,10 +224,12 @@ func GetPollingSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PollingSource resources.
 type pollingSourceState struct {
-	Authentication             *PollingSourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                            `pulumi:"automaticDateParsing"`
-	Category                   *string                          `pulumi:"category"`
-	CollectorId                *int                             `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       *PollingSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                        `pulumi:"automaticDateParsing"`
+	Category             *string                      `pulumi:"category"`
+	CollectorId          *int                         `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                *string                          `pulumi:"contentType"`
 	CutoffRelativeTime         *string                          `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                             `pulumi:"cutoffTimestamp"`
@@ -257,20 +242,25 @@ type pollingSourceState struct {
 	ManualPrefixRegexp         *string                          `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                            `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                          `pulumi:"name"`
-	Path                       *PollingSourcePath               `pulumi:"path"`
-	Paused                     *bool                            `pulumi:"paused"`
-	ScanInterval               *int                             `pulumi:"scanInterval"`
-	Timezone                   *string                          `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path *PollingSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused *bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval *int    `pulumi:"scanInterval"`
+	Timezone     *string `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type PollingSourceState struct {
-	Authentication             PollingSourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       PollingSourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -283,10 +273,13 @@ type PollingSourceState struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       PollingSourcePathPtrInput
-	Paused                     pulumi.BoolPtrInput
-	ScanInterval               pulumi.IntPtrInput
-	Timezone                   pulumi.StringPtrInput
+	// The location to scan for new data.
+	Path PollingSourcePathPtrInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolPtrInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntPtrInput
+	Timezone     pulumi.StringPtrInput
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
@@ -297,10 +290,12 @@ func (PollingSourceState) ElementType() reflect.Type {
 }
 
 type pollingSourceArgs struct {
-	Authentication             PollingSourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                            `pulumi:"automaticDateParsing"`
-	Category                   *string                          `pulumi:"category"`
-	CollectorId                int                              `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       PollingSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                       `pulumi:"automaticDateParsing"`
+	Category             *string                     `pulumi:"category"`
+	CollectorId          int                         `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                string                           `pulumi:"contentType"`
 	CutoffRelativeTime         *string                          `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                             `pulumi:"cutoffTimestamp"`
@@ -313,19 +308,24 @@ type pollingSourceArgs struct {
 	ManualPrefixRegexp         *string                          `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                            `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                          `pulumi:"name"`
-	Path                       PollingSourcePath                `pulumi:"path"`
-	Paused                     bool                             `pulumi:"paused"`
-	ScanInterval               int                              `pulumi:"scanInterval"`
-	Timezone                   *string                          `pulumi:"timezone"`
-	UseAutolineMatching        *bool                            `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path PollingSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        int     `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a PollingSource resource.
 type PollingSourceArgs struct {
-	Authentication             PollingSourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       PollingSourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -338,11 +338,14 @@ type PollingSourceArgs struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       PollingSourcePathInput
-	Paused                     pulumi.BoolInput
-	ScanInterval               pulumi.IntInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path PollingSourcePathInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        pulumi.IntInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (PollingSourceArgs) ElementType() reflect.Type {

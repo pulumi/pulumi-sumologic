@@ -38,18 +38,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `addressBlock` - (Required) The address block.
-// - `label` - (Required) The displayable label of the address block.
-// - `internal` - (Required) Internal flag.
-// - `suppressesSignals` - (Required) Suppresses signal flag.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the network block.
 //
 // ## Import
 //
@@ -61,10 +49,14 @@ import (
 type CseNetworkBlock struct {
 	pulumi.CustomResourceState
 
-	AddressBlock      pulumi.StringOutput    `pulumi:"addressBlock"`
-	Internal          pulumi.BoolPtrOutput   `pulumi:"internal"`
-	Label             pulumi.StringPtrOutput `pulumi:"label"`
-	SuppressesSignals pulumi.BoolPtrOutput   `pulumi:"suppressesSignals"`
+	// The address block.
+	AddressBlock pulumi.StringOutput `pulumi:"addressBlock"`
+	// Internal flag.
+	Internal pulumi.BoolPtrOutput `pulumi:"internal"`
+	// The displayable label of the address block.
+	Label pulumi.StringPtrOutput `pulumi:"label"`
+	// Suppresses signal flag.
+	SuppressesSignals pulumi.BoolPtrOutput `pulumi:"suppressesSignals"`
 }
 
 // NewCseNetworkBlock registers a new resource with the given unique name, arguments, and options.
@@ -99,16 +91,24 @@ func GetCseNetworkBlock(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseNetworkBlock resources.
 type cseNetworkBlockState struct {
-	AddressBlock      *string `pulumi:"addressBlock"`
-	Internal          *bool   `pulumi:"internal"`
-	Label             *string `pulumi:"label"`
-	SuppressesSignals *bool   `pulumi:"suppressesSignals"`
+	// The address block.
+	AddressBlock *string `pulumi:"addressBlock"`
+	// Internal flag.
+	Internal *bool `pulumi:"internal"`
+	// The displayable label of the address block.
+	Label *string `pulumi:"label"`
+	// Suppresses signal flag.
+	SuppressesSignals *bool `pulumi:"suppressesSignals"`
 }
 
 type CseNetworkBlockState struct {
-	AddressBlock      pulumi.StringPtrInput
-	Internal          pulumi.BoolPtrInput
-	Label             pulumi.StringPtrInput
+	// The address block.
+	AddressBlock pulumi.StringPtrInput
+	// Internal flag.
+	Internal pulumi.BoolPtrInput
+	// The displayable label of the address block.
+	Label pulumi.StringPtrInput
+	// Suppresses signal flag.
 	SuppressesSignals pulumi.BoolPtrInput
 }
 
@@ -117,17 +117,25 @@ func (CseNetworkBlockState) ElementType() reflect.Type {
 }
 
 type cseNetworkBlockArgs struct {
-	AddressBlock      string  `pulumi:"addressBlock"`
-	Internal          *bool   `pulumi:"internal"`
-	Label             *string `pulumi:"label"`
-	SuppressesSignals *bool   `pulumi:"suppressesSignals"`
+	// The address block.
+	AddressBlock string `pulumi:"addressBlock"`
+	// Internal flag.
+	Internal *bool `pulumi:"internal"`
+	// The displayable label of the address block.
+	Label *string `pulumi:"label"`
+	// Suppresses signal flag.
+	SuppressesSignals *bool `pulumi:"suppressesSignals"`
 }
 
 // The set of arguments for constructing a CseNetworkBlock resource.
 type CseNetworkBlockArgs struct {
-	AddressBlock      pulumi.StringInput
-	Internal          pulumi.BoolPtrInput
-	Label             pulumi.StringPtrInput
+	// The address block.
+	AddressBlock pulumi.StringInput
+	// Internal flag.
+	Internal pulumi.BoolPtrInput
+	// The displayable label of the address block.
+	Label pulumi.StringPtrInput
+	// Suppresses signal flag.
 	SuppressesSignals pulumi.BoolPtrInput
 }
 

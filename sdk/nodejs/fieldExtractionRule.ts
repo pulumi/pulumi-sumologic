@@ -19,15 +19,6 @@ import * as utilities from "./utilities";
  *     scope: "_sourceHost=127.0.0.1",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) Name of the field extraction rule. Use a name that makes it easy to identify the rule.
- * - `scope` - (Required) Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
- * - `parseExpression` - (Required) Describes the fields to be parsed.
- * - `enabled` - (Required) Is the field extraction rule enabled.
- *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -72,9 +63,21 @@ export class FieldExtractionRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === FieldExtractionRule.__pulumiType;
     }
 
+    /**
+     * Is the field extraction rule enabled.
+     */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Describes the fields to be parsed.
+     */
     public readonly parseExpression!: pulumi.Output<string>;
+    /**
+     * Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+     */
     public readonly scope!: pulumi.Output<string>;
 
     /**
@@ -121,9 +124,21 @@ export class FieldExtractionRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FieldExtractionRule resources.
  */
 export interface FieldExtractionRuleState {
+    /**
+     * Is the field extraction rule enabled.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Describes the fields to be parsed.
+     */
     parseExpression?: pulumi.Input<string>;
+    /**
+     * Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+     */
     scope?: pulumi.Input<string>;
 }
 
@@ -131,8 +146,20 @@ export interface FieldExtractionRuleState {
  * The set of arguments for constructing a FieldExtractionRule resource.
  */
 export interface FieldExtractionRuleArgs {
+    /**
+     * Is the field extraction rule enabled.
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Describes the fields to be parsed.
+     */
     parseExpression: pulumi.Input<string>;
+    /**
+     * Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+     */
     scope: pulumi.Input<string>;
 }

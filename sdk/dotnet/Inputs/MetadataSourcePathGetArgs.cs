@@ -14,6 +14,10 @@ namespace Pulumi.SumoLogic.Inputs
     {
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
+
+        /// <summary>
+        /// List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
+        /// </summary>
         public InputList<string> LimitToNamespaces
         {
             get => _limitToNamespaces ?? (_limitToNamespaces = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("limitToRegions")]
         private InputList<string>? _limitToRegions;
+
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public InputList<string> LimitToRegions
         {
             get => _limitToRegions ?? (_limitToRegions = new InputList<string>());
@@ -30,12 +38,19 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("tagFilters")]
         private InputList<string>? _tagFilters;
+
+        /// <summary>
+        /// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+        /// </summary>
         public InputList<string> TagFilters
         {
             get => _tagFilters ?? (_tagFilters = new InputList<string>());
             set => _tagFilters = value;
         }
 
+        /// <summary>
+        /// type of polling source. Only allowed value is `AwsMetadataPath`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

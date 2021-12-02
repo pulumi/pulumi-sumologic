@@ -12,15 +12,27 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MetadataSourceAuthenticationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Your AWS access key if using type `S3BucketAuthentication`
+        /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
+        /// <summary>
+        /// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
+        /// <summary>
+        /// Your AWS secret key if using type `S3BucketAuthentication`
+        /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
+        /// <summary>
+        /// type of polling source. Only allowed value is `AwsMetadataPath`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

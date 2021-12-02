@@ -13,8 +13,17 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class SamlConfigurationOnDemandProvisioningEnabled
     {
+        /// <summary>
+        /// First name attribute of the new user account. Defaults to "".
+        /// </summary>
         public readonly string? FirstNameAttribute;
+        /// <summary>
+        /// Last name attribute of the new user account. Defaults to "".
+        /// </summary>
         public readonly string? LastNameAttribute;
+        /// <summary>
+        /// List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+        /// </summary>
         public readonly ImmutableArray<string> OnDemandProvisioningRoles;
 
         [OutputConstructor]

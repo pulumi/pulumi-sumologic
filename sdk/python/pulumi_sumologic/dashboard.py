@@ -28,6 +28,21 @@ class DashboardArgs:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
+        :param pulumi.Input['DashboardTimeRangeArgs'] time_range: Time range of the dashboard. See time range schema
+               for details.
+        :param pulumi.Input[str] title: Title of the dashboard.
+        :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
+               personal folder.
+        :param pulumi.Input['DashboardLayoutArgs'] layout: Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        :param pulumi.Input[str] theme: Theme of the dashboard.
+        :param pulumi.Input['DashboardTopologyLabelMapArgs'] topology_label_map: Topology labels for the dashboard. See
+               topology label map schema
+               for details.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: A list of variables for the dashboard. See variable schema
+               for details.
         """
         pulumi.set(__self__, "time_range", time_range)
         pulumi.set(__self__, "title", title)
@@ -53,6 +68,10 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Input['DashboardTimeRangeArgs']:
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
@@ -62,6 +81,9 @@ class DashboardArgs:
     @property
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
+        """
+        Title of the dashboard.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -80,6 +102,9 @@ class DashboardArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the dashboard.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -89,6 +114,10 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the folder to save the dashboard in. By default it is saved in your
+        personal folder.
+        """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
@@ -98,6 +127,9 @@ class DashboardArgs:
     @property
     @pulumi.getter
     def layout(self) -> Optional[pulumi.Input['DashboardLayoutArgs']]:
+        """
+        Layout of the dashboard. See layout schema for details.
+        """
         return pulumi.get(self, "layout")
 
     @layout.setter
@@ -107,6 +139,9 @@ class DashboardArgs:
     @property
     @pulumi.getter
     def panels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]]:
+        """
+        A list of panels in the dashboard. See panel schema for details.
+        """
         return pulumi.get(self, "panels")
 
     @panels.setter
@@ -116,6 +151,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="refreshInterval")
     def refresh_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
@@ -125,6 +163,9 @@ class DashboardArgs:
     @property
     @pulumi.getter
     def theme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Theme of the dashboard.
+        """
         return pulumi.get(self, "theme")
 
     @theme.setter
@@ -134,6 +175,11 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="topologyLabelMap")
     def topology_label_map(self) -> Optional[pulumi.Input['DashboardTopologyLabelMapArgs']]:
+        """
+        Topology labels for the dashboard. See
+        topology label map schema
+        for details.
+        """
         return pulumi.get(self, "topology_label_map")
 
     @topology_label_map.setter
@@ -143,6 +189,10 @@ class DashboardArgs:
     @property
     @pulumi.getter
     def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
+        """
+        A list of variables for the dashboard. See variable schema
+        for details.
+        """
         return pulumi.get(self, "variables")
 
     @variables.setter
@@ -166,6 +216,21 @@ class _DashboardState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
+        :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
+               personal folder.
+        :param pulumi.Input['DashboardLayoutArgs'] layout: Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        :param pulumi.Input[str] theme: Theme of the dashboard.
+        :param pulumi.Input['DashboardTimeRangeArgs'] time_range: Time range of the dashboard. See time range schema
+               for details.
+        :param pulumi.Input[str] title: Title of the dashboard.
+        :param pulumi.Input['DashboardTopologyLabelMapArgs'] topology_label_map: Topology labels for the dashboard. See
+               topology label map schema
+               for details.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: A list of variables for the dashboard. See variable schema
+               for details.
         """
         if coloring_rules is not None:
             pulumi.set(__self__, "coloring_rules", coloring_rules)
@@ -202,6 +267,9 @@ class _DashboardState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the dashboard.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -211,6 +279,10 @@ class _DashboardState:
     @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the folder to save the dashboard in. By default it is saved in your
+        personal folder.
+        """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
@@ -220,6 +292,9 @@ class _DashboardState:
     @property
     @pulumi.getter
     def layout(self) -> Optional[pulumi.Input['DashboardLayoutArgs']]:
+        """
+        Layout of the dashboard. See layout schema for details.
+        """
         return pulumi.get(self, "layout")
 
     @layout.setter
@@ -229,6 +304,9 @@ class _DashboardState:
     @property
     @pulumi.getter
     def panels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]]:
+        """
+        A list of panels in the dashboard. See panel schema for details.
+        """
         return pulumi.get(self, "panels")
 
     @panels.setter
@@ -238,6 +316,9 @@ class _DashboardState:
     @property
     @pulumi.getter(name="refreshInterval")
     def refresh_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        """
         return pulumi.get(self, "refresh_interval")
 
     @refresh_interval.setter
@@ -247,6 +328,9 @@ class _DashboardState:
     @property
     @pulumi.getter
     def theme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Theme of the dashboard.
+        """
         return pulumi.get(self, "theme")
 
     @theme.setter
@@ -256,6 +340,10 @@ class _DashboardState:
     @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input['DashboardTimeRangeArgs']]:
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
         return pulumi.get(self, "time_range")
 
     @time_range.setter
@@ -265,6 +353,9 @@ class _DashboardState:
     @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title of the dashboard.
+        """
         return pulumi.get(self, "title")
 
     @title.setter
@@ -274,6 +365,11 @@ class _DashboardState:
     @property
     @pulumi.getter(name="topologyLabelMap")
     def topology_label_map(self) -> Optional[pulumi.Input['DashboardTopologyLabelMapArgs']]:
+        """
+        Topology labels for the dashboard. See
+        topology label map schema
+        for details.
+        """
         return pulumi.get(self, "topology_label_map")
 
     @topology_label_map.setter
@@ -283,6 +379,10 @@ class _DashboardState:
     @property
     @pulumi.getter
     def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
+        """
+        A list of variables for the dashboard. See variable schema
+        for details.
+        """
         return pulumi.get(self, "variables")
 
     @variables.setter
@@ -550,26 +650,6 @@ class Dashboard(pulumi.CustomResource):
                 hide_from_ui=False,
             )])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `title` - (Required) Title of the dashboard.
-        - `description` - (Optional) Description of the dashboard.
-        - `folder_id` - (Optional) The identifier of the folder to save the dashboard in. By default it is saved in your
-          personal folder.
-        - `refresh_interval` - (Optional) Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
-        - `theme` - (Optional) Theme of the dashboard.
-        - `topology_label_map` - (Block List, Max: 1, Optional) Topology labels for the dashboard. See
-          topology label map schema
-          for details.
-        - `time_range` - (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
-          for details.
-        - `panel` - (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
-        - `layout` - (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
-        - `variable` - (Block List, Optional) A list of variables for the dashboard. See variable schema
-          for details.
-
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -728,6 +808,21 @@ class Dashboard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
+               personal folder.
+        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        :param pulumi.Input[str] theme: Theme of the dashboard.
+        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: Time range of the dashboard. See time range schema
+               for details.
+        :param pulumi.Input[str] title: Title of the dashboard.
+        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: Topology labels for the dashboard. See
+               topology label map schema
+               for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: A list of variables for the dashboard. See variable schema
+               for details.
         """
         ...
     @overload
@@ -978,26 +1073,6 @@ class Dashboard(pulumi.CustomResource):
                 hide_from_ui=False,
             )])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `title` - (Required) Title of the dashboard.
-        - `description` - (Optional) Description of the dashboard.
-        - `folder_id` - (Optional) The identifier of the folder to save the dashboard in. By default it is saved in your
-          personal folder.
-        - `refresh_interval` - (Optional) Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
-        - `theme` - (Optional) Theme of the dashboard.
-        - `topology_label_map` - (Block List, Max: 1, Optional) Topology labels for the dashboard. See
-          topology label map schema
-          for details.
-        - `time_range` - (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
-          for details.
-        - `panel` - (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
-        - `layout` - (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
-        - `variable` - (Block List, Optional) A list of variables for the dashboard. See variable schema
-          for details.
-
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -1235,6 +1310,21 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
+               personal folder.
+        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        :param pulumi.Input[str] theme: Theme of the dashboard.
+        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: Time range of the dashboard. See time range schema
+               for details.
+        :param pulumi.Input[str] title: Title of the dashboard.
+        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: Topology labels for the dashboard. See
+               topology label map schema
+               for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: A list of variables for the dashboard. See variable schema
+               for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1261,50 +1351,85 @@ class Dashboard(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Description of the dashboard.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The identifier of the folder to save the dashboard in. By default it is saved in your
+        personal folder.
+        """
         return pulumi.get(self, "folder_id")
 
     @property
     @pulumi.getter
     def layout(self) -> pulumi.Output[Optional['outputs.DashboardLayout']]:
+        """
+        Layout of the dashboard. See layout schema for details.
+        """
         return pulumi.get(self, "layout")
 
     @property
     @pulumi.getter
     def panels(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardPanel']]]:
+        """
+        A list of panels in the dashboard. See panel schema for details.
+        """
         return pulumi.get(self, "panels")
 
     @property
     @pulumi.getter(name="refreshInterval")
     def refresh_interval(self) -> pulumi.Output[Optional[int]]:
+        """
+        Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+        """
         return pulumi.get(self, "refresh_interval")
 
     @property
     @pulumi.getter
     def theme(self) -> pulumi.Output[Optional[str]]:
+        """
+        Theme of the dashboard.
+        """
         return pulumi.get(self, "theme")
 
     @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output['outputs.DashboardTimeRange']:
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
         return pulumi.get(self, "time_range")
 
     @property
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
+        """
+        Title of the dashboard.
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter(name="topologyLabelMap")
     def topology_label_map(self) -> pulumi.Output[Optional['outputs.DashboardTopologyLabelMap']]:
+        """
+        Topology labels for the dashboard. See
+        topology label map schema
+        for details.
+        """
         return pulumi.get(self, "topology_label_map")
 
     @property
     @pulumi.getter
     def variables(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardVariable']]]:
+        """
+        A list of variables for the dashboard. See variable schema
+        for details.
+        """
         return pulumi.get(self, "variables")
 

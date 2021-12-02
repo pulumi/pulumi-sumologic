@@ -58,21 +58,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// In addition to the common properties, the following arguments are supported:
-//
-//  - `contentType` - (Required) The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
-//  - `scanInterval` - (Required) Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
-//  - `paused` - (Required) When set to true, the scanner is paused. To disable, set to false.
-//  - `authentication` - (Required) Authentication details for making `xray:Get*` calls.
-//      + `type` - (Required) Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
-//      + `accessKey` - (Required) Your AWS access key if using type `S3BucketAuthentication`
-//      + `secretKey` - (Required) Your AWS secret key if using type `S3BucketAuthentication`
-//      + `roleArn` - (Required) Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-//  - `path` - (Required) The location to scan for new data.
-//      + `type` - (Required) type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-//      + `limitToRegions` - (Optional) List of Amazon regions.
 //
 // ## Import
 //
@@ -90,10 +75,12 @@ import (
 type AwsXraySource struct {
 	pulumi.CustomResourceState
 
-	Authentication             AwsXraySourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                      `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                    `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                          `pulumi:"collectorId"`
+	// Authentication details for making `xray:Get*` calls.
+	Authentication       AwsXraySourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput              `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput            `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                  `pulumi:"collectorId"`
+	// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
 	ContentType                pulumi.StringOutput                       `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                    `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                       `pulumi:"cutoffTimestamp"`
@@ -106,12 +93,15 @@ type AwsXraySource struct {
 	ManualPrefixRegexp         pulumi.StringPtrOutput                    `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                      `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                       `pulumi:"name"`
-	Path                       AwsXraySourcePathOutput                   `pulumi:"path"`
-	Paused                     pulumi.BoolOutput                         `pulumi:"paused"`
-	ScanInterval               pulumi.IntOutput                          `pulumi:"scanInterval"`
-	Timezone                   pulumi.StringPtrOutput                    `pulumi:"timezone"`
-	Url                        pulumi.StringOutput                       `pulumi:"url"`
-	UseAutolineMatching        pulumi.BoolPtrOutput                      `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path AwsXraySourcePathOutput `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+	ScanInterval        pulumi.IntOutput       `pulumi:"scanInterval"`
+	Timezone            pulumi.StringPtrOutput `pulumi:"timezone"`
+	Url                 pulumi.StringOutput    `pulumi:"url"`
+	UseAutolineMatching pulumi.BoolPtrOutput   `pulumi:"useAutolineMatching"`
 }
 
 // NewAwsXraySource registers a new resource with the given unique name, arguments, and options.
@@ -161,10 +151,12 @@ func GetAwsXraySource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsXraySource resources.
 type awsXraySourceState struct {
-	Authentication             *AwsXraySourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                            `pulumi:"automaticDateParsing"`
-	Category                   *string                          `pulumi:"category"`
-	CollectorId                *int                             `pulumi:"collectorId"`
+	// Authentication details for making `xray:Get*` calls.
+	Authentication       *AwsXraySourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                        `pulumi:"automaticDateParsing"`
+	Category             *string                      `pulumi:"category"`
+	CollectorId          *int                         `pulumi:"collectorId"`
+	// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
 	ContentType                *string                          `pulumi:"contentType"`
 	CutoffRelativeTime         *string                          `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                             `pulumi:"cutoffTimestamp"`
@@ -177,19 +169,24 @@ type awsXraySourceState struct {
 	ManualPrefixRegexp         *string                          `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                            `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                          `pulumi:"name"`
-	Path                       *AwsXraySourcePath               `pulumi:"path"`
-	Paused                     *bool                            `pulumi:"paused"`
-	ScanInterval               *int                             `pulumi:"scanInterval"`
-	Timezone                   *string                          `pulumi:"timezone"`
-	Url                        *string                          `pulumi:"url"`
-	UseAutolineMatching        *bool                            `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path *AwsXraySourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused *bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+	ScanInterval        *int    `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	Url                 *string `pulumi:"url"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type AwsXraySourceState struct {
-	Authentication             AwsXraySourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details for making `xray:Get*` calls.
+	Authentication       AwsXraySourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -202,12 +199,15 @@ type AwsXraySourceState struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       AwsXraySourcePathPtrInput
-	Paused                     pulumi.BoolPtrInput
-	ScanInterval               pulumi.IntPtrInput
-	Timezone                   pulumi.StringPtrInput
-	Url                        pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path AwsXraySourcePathPtrInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolPtrInput
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+	ScanInterval        pulumi.IntPtrInput
+	Timezone            pulumi.StringPtrInput
+	Url                 pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (AwsXraySourceState) ElementType() reflect.Type {
@@ -215,10 +215,12 @@ func (AwsXraySourceState) ElementType() reflect.Type {
 }
 
 type awsXraySourceArgs struct {
-	Authentication             AwsXraySourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                            `pulumi:"automaticDateParsing"`
-	Category                   *string                          `pulumi:"category"`
-	CollectorId                int                              `pulumi:"collectorId"`
+	// Authentication details for making `xray:Get*` calls.
+	Authentication       AwsXraySourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                       `pulumi:"automaticDateParsing"`
+	Category             *string                     `pulumi:"category"`
+	CollectorId          int                         `pulumi:"collectorId"`
+	// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
 	ContentType                string                           `pulumi:"contentType"`
 	CutoffRelativeTime         *string                          `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                             `pulumi:"cutoffTimestamp"`
@@ -231,19 +233,24 @@ type awsXraySourceArgs struct {
 	ManualPrefixRegexp         *string                          `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                            `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                          `pulumi:"name"`
-	Path                       AwsXraySourcePath                `pulumi:"path"`
-	Paused                     bool                             `pulumi:"paused"`
-	ScanInterval               int                              `pulumi:"scanInterval"`
-	Timezone                   *string                          `pulumi:"timezone"`
-	UseAutolineMatching        *bool                            `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path AwsXraySourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+	ScanInterval        int     `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a AwsXraySource resource.
 type AwsXraySourceArgs struct {
-	Authentication             AwsXraySourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details for making `xray:Get*` calls.
+	Authentication       AwsXraySourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -256,11 +263,14 @@ type AwsXraySourceArgs struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       AwsXraySourcePathInput
-	Paused                     pulumi.BoolInput
-	ScanInterval               pulumi.IntInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path AwsXraySourcePathInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolInput
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+	ScanInterval        pulumi.IntInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (AwsXraySourceArgs) ElementType() reflect.Type {

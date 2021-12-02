@@ -18,14 +18,6 @@ import * as utilities from "./utilities";
  *     fieldName: "int_field_1",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `fieldName` - (Required)  Name of the field.
- * - `fieldId` - (Required) Field identifier.
- * - `dataType` - (Optional) Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
- * - `state` - (Optional) State of the field (either `Enabled` or `Disabled`).
  *
  * ## Import
  *
@@ -65,9 +57,21 @@ export class Field extends pulumi.CustomResource {
         return obj['__pulumiType'] === Field.__pulumiType;
     }
 
+    /**
+     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+     */
     public readonly dataType!: pulumi.Output<string | undefined>;
+    /**
+     * Field identifier.
+     */
     public /*out*/ readonly fieldId!: pulumi.Output<string>;
+    /**
+     * Name of the field.
+     */
     public readonly fieldName!: pulumi.Output<string>;
+    /**
+     * State of the field (either `Enabled` or `Disabled`).
+     */
     public readonly state!: pulumi.Output<string | undefined>;
 
     /**
@@ -108,9 +112,21 @@ export class Field extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Field resources.
  */
 export interface FieldState {
+    /**
+     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+     */
     dataType?: pulumi.Input<string>;
+    /**
+     * Field identifier.
+     */
     fieldId?: pulumi.Input<string>;
+    /**
+     * Name of the field.
+     */
     fieldName?: pulumi.Input<string>;
+    /**
+     * State of the field (either `Enabled` or `Disabled`).
+     */
     state?: pulumi.Input<string>;
 }
 
@@ -118,7 +134,16 @@ export interface FieldState {
  * The set of arguments for constructing a Field resource.
  */
 export interface FieldArgs {
+    /**
+     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+     */
     dataType?: pulumi.Input<string>;
+    /**
+     * Name of the field.
+     */
     fieldName: pulumi.Input<string>;
+    /**
+     * State of the field (either `Enabled` or `Disabled`).
+     */
     state?: pulumi.Input<string>;
 }

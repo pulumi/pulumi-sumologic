@@ -13,10 +13,22 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class AwsXraySourceAuthentication
     {
+        /// <summary>
+        /// Your AWS access key if using type `S3BucketAuthentication`
+        /// </summary>
         public readonly string? AccessKey;
         public readonly string? Region;
+        /// <summary>
+        /// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// Your AWS secret key if using type `S3BucketAuthentication`
+        /// </summary>
         public readonly string? SecretKey;
+        /// <summary>
+        /// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -35,18 +35,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) The name of the role.
-    /// - `description` - (Optional) The description of the role.
-    /// - `filter_predicate` - (Optional) A search filter to restrict access to specific logs.
-    /// - `capabilities` - (Optional) List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the role.
     /// 
     /// ## Import
     /// 
@@ -61,15 +49,27 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/role:Role")]
     public partial class Role : Pulumi.CustomResource
     {
+        /// <summary>
+        /// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        /// </summary>
         [Output("capabilities")]
         public Output<ImmutableArray<string>> Capabilities { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the role.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// A search filter to restrict access to specific logs.
+        /// </summary>
         [Output("filterPredicate")]
         public Output<string?> FilterPredicate { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -121,18 +121,31 @@ namespace Pulumi.SumoLogic
     {
         [Input("capabilities")]
         private InputList<string>? _capabilities;
+
+        /// <summary>
+        /// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        /// </summary>
         public InputList<string> Capabilities
         {
             get => _capabilities ?? (_capabilities = new InputList<string>());
             set => _capabilities = value;
         }
 
+        /// <summary>
+        /// The description of the role.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A search filter to restrict access to specific logs.
+        /// </summary>
         [Input("filterPredicate")]
         public Input<string>? FilterPredicate { get; set; }
 
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -145,18 +158,31 @@ namespace Pulumi.SumoLogic
     {
         [Input("capabilities")]
         private InputList<string>? _capabilities;
+
+        /// <summary>
+        /// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        /// </summary>
         public InputList<string> Capabilities
         {
             get => _capabilities ?? (_capabilities = new InputList<string>());
             set => _capabilities = value;
         }
 
+        /// <summary>
+        /// The description of the role.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A search filter to restrict access to specific logs.
+        /// </summary>
         [Input("filterPredicate")]
         public Input<string>? FilterPredicate { get; set; }
 
+        /// <summary>
+        /// The name of the role.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -61,12 +61,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// In addition to the common properties, the following arguments are supported:
-    /// 
-    /// - `message_per_request` - (Optional) When set to `true`, will create one log message per HTTP request.
-    /// - `content_type`        - (Optional) When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
     /// 
     /// ## Import
     /// 
@@ -96,6 +90,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
 
@@ -126,6 +123,9 @@ namespace Pulumi.SumoLogic
         [Output("manualPrefixRegexp")]
         public Output<string?> ManualPrefixRegexp { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to `true`, will create one log message per HTTP request.
+        /// </summary>
         [Output("messagePerRequest")]
         public Output<bool?> MessagePerRequest { get; private set; } = null!;
 
@@ -202,6 +202,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -247,6 +250,9 @@ namespace Pulumi.SumoLogic
         [Input("manualPrefixRegexp")]
         public Input<string>? ManualPrefixRegexp { get; set; }
 
+        /// <summary>
+        /// When set to `true`, will create one log message per HTTP request.
+        /// </summary>
         [Input("messagePerRequest")]
         public Input<bool>? MessagePerRequest { get; set; }
 
@@ -278,6 +284,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -323,6 +332,9 @@ namespace Pulumi.SumoLogic
         [Input("manualPrefixRegexp")]
         public Input<string>? ManualPrefixRegexp { get; set; }
 
+        /// <summary>
+        /// When set to `true`, will create one log message per HTTP request.
+        /// </summary>
         [Input("messagePerRequest")]
         public Input<bool>? MessagePerRequest { get; set; }
 

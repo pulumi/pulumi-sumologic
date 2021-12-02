@@ -81,53 +81,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) The name of the log mapping.
-// - `parentId` - (Optional) The id of the parent log mapping.
-// - `productGuid` - (Required) Product GUID.
-// - `recordType` - (Required) The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
-// - `enabled` - (Required) Enabled flag.
-// - `relatesEntities` - (Optional) Set to true to relate entities.
-// - `skippedValues` - (Optional) List of skipped values.
-// - `fields` - (Required) List of fields for the new log mapping. See fieldSchema for details.
-// - `structuredInputs` - (Optional, omit if unstructuredFields is defined) List of structured inputs for the new log mapping. See structuredInputSchema for details.
-// - `unstructuredFields` - (Optional, omit if structuredInputs is defined) Unstructured fields for the new log mapping. See unstructuredFieldSchema for details.
-//
-// ### Schema for `field`
-// - `name` - (Required) Name of the field.
-// - `value` - (Optional) Value of the field.
-// - `valueType` - (Optional) The value type.
-// - `skippedValues` - (Optional) List of skipped values.
-// - `defaultValue` - (Optional) Default value of the field.
-// - `format` - (Optional) Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-// - `caseInsensitive` - (Optional) Case insensitive flag.
-// - `alternateValues` - (Optional) List of alternate values.
-// - `timeZone` - (Optional) Time zone.
-// - `splitDelimiter` - (Optional) Split delimiter to be used. (some example: ",", "-", "|")
-// - `fieldJoin` - (Optional) List of field join values.
-// - `joinDelimiter` - (Optional) Join delimiter.
-// - `formatParameters` - (Optional) List of format parameters.
-// - `lookup` - (Optional) List of lookup key value pair for field. See lookupSchema for details.
-//
-// ### Schema for `lookup`
-// - `key` - (Required) Lookup key.
-// - `value` - (Required) Lookup value.
-//
-// ### Schema for `structuredInput`
-// - `eventIdPattern` - (Required) Event id pattern.
-// - `logFormat` - (Required) Log format. (JSON, Windows, Syslog, CEF, LEEF )
-// - `product` - (Required) Product name.
-// - `vendor` - (Required) Vendor name.
-//
-// ### Schema for `unstructuredField`
-// - `patternNames` - (Required) List of grok pattern names.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the log mapping.
 //
 // ## Import
 //
@@ -139,15 +92,25 @@ import (
 type CseLogMapping struct {
 	pulumi.CustomResourceState
 
-	Enabled            pulumi.BoolOutput                        `pulumi:"enabled"`
-	Fields             CseLogMappingFieldArrayOutput            `pulumi:"fields"`
-	Name               pulumi.StringOutput                      `pulumi:"name"`
-	ParentId           pulumi.StringPtrOutput                   `pulumi:"parentId"`
-	ProductGuid        pulumi.StringOutput                      `pulumi:"productGuid"`
-	RecordType         pulumi.StringOutput                      `pulumi:"recordType"`
-	RelatesEntities    pulumi.BoolPtrOutput                     `pulumi:"relatesEntities"`
-	SkippedValues      pulumi.StringArrayOutput                 `pulumi:"skippedValues"`
-	StructuredInputs   CseLogMappingStructuredInputArrayOutput  `pulumi:"structuredInputs"`
+	// Enabled flag.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// List of fields for the new log mapping. See fieldSchema for details.
+	Fields CseLogMappingFieldArrayOutput `pulumi:"fields"`
+	// Name of the field.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The id of the parent log mapping.
+	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
+	// Product GUID.
+	ProductGuid pulumi.StringOutput `pulumi:"productGuid"`
+	// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+	RecordType pulumi.StringOutput `pulumi:"recordType"`
+	// Set to true to relate entities.
+	RelatesEntities pulumi.BoolPtrOutput `pulumi:"relatesEntities"`
+	// List of skipped values.
+	SkippedValues pulumi.StringArrayOutput `pulumi:"skippedValues"`
+	// List of structured inputs for the new log mapping. See structuredInputSchema for details.
+	StructuredInputs CseLogMappingStructuredInputArrayOutput `pulumi:"structuredInputs"`
+	// Unstructured fields for the new log mapping. See unstructuredFieldSchema for details.
 	UnstructuredFields CseLogMappingUnstructuredFieldsPtrOutput `pulumi:"unstructuredFields"`
 }
 
@@ -192,28 +155,48 @@ func GetCseLogMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseLogMapping resources.
 type cseLogMappingState struct {
-	Enabled            *bool                            `pulumi:"enabled"`
-	Fields             []CseLogMappingField             `pulumi:"fields"`
-	Name               *string                          `pulumi:"name"`
-	ParentId           *string                          `pulumi:"parentId"`
-	ProductGuid        *string                          `pulumi:"productGuid"`
-	RecordType         *string                          `pulumi:"recordType"`
-	RelatesEntities    *bool                            `pulumi:"relatesEntities"`
-	SkippedValues      []string                         `pulumi:"skippedValues"`
-	StructuredInputs   []CseLogMappingStructuredInput   `pulumi:"structuredInputs"`
+	// Enabled flag.
+	Enabled *bool `pulumi:"enabled"`
+	// List of fields for the new log mapping. See fieldSchema for details.
+	Fields []CseLogMappingField `pulumi:"fields"`
+	// Name of the field.
+	Name *string `pulumi:"name"`
+	// The id of the parent log mapping.
+	ParentId *string `pulumi:"parentId"`
+	// Product GUID.
+	ProductGuid *string `pulumi:"productGuid"`
+	// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+	RecordType *string `pulumi:"recordType"`
+	// Set to true to relate entities.
+	RelatesEntities *bool `pulumi:"relatesEntities"`
+	// List of skipped values.
+	SkippedValues []string `pulumi:"skippedValues"`
+	// List of structured inputs for the new log mapping. See structuredInputSchema for details.
+	StructuredInputs []CseLogMappingStructuredInput `pulumi:"structuredInputs"`
+	// Unstructured fields for the new log mapping. See unstructuredFieldSchema for details.
 	UnstructuredFields *CseLogMappingUnstructuredFields `pulumi:"unstructuredFields"`
 }
 
 type CseLogMappingState struct {
-	Enabled            pulumi.BoolPtrInput
-	Fields             CseLogMappingFieldArrayInput
-	Name               pulumi.StringPtrInput
-	ParentId           pulumi.StringPtrInput
-	ProductGuid        pulumi.StringPtrInput
-	RecordType         pulumi.StringPtrInput
-	RelatesEntities    pulumi.BoolPtrInput
-	SkippedValues      pulumi.StringArrayInput
-	StructuredInputs   CseLogMappingStructuredInputArrayInput
+	// Enabled flag.
+	Enabled pulumi.BoolPtrInput
+	// List of fields for the new log mapping. See fieldSchema for details.
+	Fields CseLogMappingFieldArrayInput
+	// Name of the field.
+	Name pulumi.StringPtrInput
+	// The id of the parent log mapping.
+	ParentId pulumi.StringPtrInput
+	// Product GUID.
+	ProductGuid pulumi.StringPtrInput
+	// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+	RecordType pulumi.StringPtrInput
+	// Set to true to relate entities.
+	RelatesEntities pulumi.BoolPtrInput
+	// List of skipped values.
+	SkippedValues pulumi.StringArrayInput
+	// List of structured inputs for the new log mapping. See structuredInputSchema for details.
+	StructuredInputs CseLogMappingStructuredInputArrayInput
+	// Unstructured fields for the new log mapping. See unstructuredFieldSchema for details.
 	UnstructuredFields CseLogMappingUnstructuredFieldsPtrInput
 }
 
@@ -222,29 +205,49 @@ func (CseLogMappingState) ElementType() reflect.Type {
 }
 
 type cseLogMappingArgs struct {
-	Enabled            bool                             `pulumi:"enabled"`
-	Fields             []CseLogMappingField             `pulumi:"fields"`
-	Name               *string                          `pulumi:"name"`
-	ParentId           *string                          `pulumi:"parentId"`
-	ProductGuid        string                           `pulumi:"productGuid"`
-	RecordType         string                           `pulumi:"recordType"`
-	RelatesEntities    *bool                            `pulumi:"relatesEntities"`
-	SkippedValues      []string                         `pulumi:"skippedValues"`
-	StructuredInputs   []CseLogMappingStructuredInput   `pulumi:"structuredInputs"`
+	// Enabled flag.
+	Enabled bool `pulumi:"enabled"`
+	// List of fields for the new log mapping. See fieldSchema for details.
+	Fields []CseLogMappingField `pulumi:"fields"`
+	// Name of the field.
+	Name *string `pulumi:"name"`
+	// The id of the parent log mapping.
+	ParentId *string `pulumi:"parentId"`
+	// Product GUID.
+	ProductGuid string `pulumi:"productGuid"`
+	// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+	RecordType string `pulumi:"recordType"`
+	// Set to true to relate entities.
+	RelatesEntities *bool `pulumi:"relatesEntities"`
+	// List of skipped values.
+	SkippedValues []string `pulumi:"skippedValues"`
+	// List of structured inputs for the new log mapping. See structuredInputSchema for details.
+	StructuredInputs []CseLogMappingStructuredInput `pulumi:"structuredInputs"`
+	// Unstructured fields for the new log mapping. See unstructuredFieldSchema for details.
 	UnstructuredFields *CseLogMappingUnstructuredFields `pulumi:"unstructuredFields"`
 }
 
 // The set of arguments for constructing a CseLogMapping resource.
 type CseLogMappingArgs struct {
-	Enabled            pulumi.BoolInput
-	Fields             CseLogMappingFieldArrayInput
-	Name               pulumi.StringPtrInput
-	ParentId           pulumi.StringPtrInput
-	ProductGuid        pulumi.StringInput
-	RecordType         pulumi.StringInput
-	RelatesEntities    pulumi.BoolPtrInput
-	SkippedValues      pulumi.StringArrayInput
-	StructuredInputs   CseLogMappingStructuredInputArrayInput
+	// Enabled flag.
+	Enabled pulumi.BoolInput
+	// List of fields for the new log mapping. See fieldSchema for details.
+	Fields CseLogMappingFieldArrayInput
+	// Name of the field.
+	Name pulumi.StringPtrInput
+	// The id of the parent log mapping.
+	ParentId pulumi.StringPtrInput
+	// Product GUID.
+	ProductGuid pulumi.StringInput
+	// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+	RecordType pulumi.StringInput
+	// Set to true to relate entities.
+	RelatesEntities pulumi.BoolPtrInput
+	// List of skipped values.
+	SkippedValues pulumi.StringArrayInput
+	// List of structured inputs for the new log mapping. See structuredInputSchema for details.
+	StructuredInputs CseLogMappingStructuredInputArrayInput
+	// Unstructured fields for the new log mapping. See unstructuredFieldSchema for details.
 	UnstructuredFields CseLogMappingUnstructuredFieldsPtrInput
 }
 

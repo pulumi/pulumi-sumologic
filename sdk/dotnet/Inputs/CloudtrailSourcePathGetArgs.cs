@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CloudtrailSourcePathGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
@@ -31,8 +34,23 @@ namespace Pulumi.SumoLogic.Inputs
             set => _limitToRegions = value;
         }
 
+        /// <summary>
+        /// The path to the data.
+        /// </summary>
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
+
+        [Input("snsTopicOrSubscriptionArns")]
+        private InputList<Inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArnGetArgs>? _snsTopicOrSubscriptionArns;
+
+        /// <summary>
+        /// This is a computed field for SNS topic/subscription ARN.
+        /// </summary>
+        public InputList<Inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArnGetArgs> SnsTopicOrSubscriptionArns
+        {
+            get => _snsTopicOrSubscriptionArns ?? (_snsTopicOrSubscriptionArns = new InputList<Inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArnGetArgs>());
+            set => _snsTopicOrSubscriptionArns = value;
+        }
 
         [Input("tagFilters")]
         private InputList<Inputs.CloudtrailSourcePathTagFilterGetArgs>? _tagFilters;
@@ -42,6 +60,9 @@ namespace Pulumi.SumoLogic.Inputs
             set => _tagFilters = value;
         }
 
+        /// <summary>
+        /// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
