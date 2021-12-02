@@ -87,53 +87,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) The name of the log mapping.
-    /// - `parent_id` - (Optional) The id of the parent log mapping.
-    /// - `product_guid` - (Required) Product GUID.
-    /// - `record_type` - (Required) The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
-    /// - `enabled` - (Required) Enabled flag.
-    /// - `relates_entities` - (Optional) Set to true to relate entities.
-    /// - `skipped_values` - (Optional) List of skipped values.
-    /// - `fields` - (Required) List of fields for the new log mapping. See field_schema for details.
-    /// - `structured_inputs` - (Optional, omit if unstructured_fields is defined) List of structured inputs for the new log mapping. See structured_input_schema for details.
-    /// - `unstructured_fields` - (Optional, omit if structured_inputs is defined) Unstructured fields for the new log mapping. See unstructured_field_schema for details.
-    /// 
-    /// ### Schema for `field`
-    /// - `name` - (Required) Name of the field.
-    /// - `value` - (Optional) Value of the field.
-    /// - `value_type` - (Optional) The value type.
-    /// - `skipped_values` - (Optional) List of skipped values.
-    /// - `default_value` - (Optional) Default value of the field.
-    /// - `format` - (Optional) Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-    /// - `case_insensitive` - (Optional) Case insensitive flag.
-    /// - `alternate_values` - (Optional) List of alternate values.
-    /// - `time_zone` - (Optional) Time zone.
-    /// - `split_delimiter` - (Optional) Split delimiter to be used. (some example: ",", "-", "|")
-    /// - `field_join` - (Optional) List of field join values.
-    /// - `join_delimiter` - (Optional) Join delimiter.
-    /// - `format_parameters` - (Optional) List of format parameters.
-    /// - `lookup` - (Optional) List of lookup key value pair for field. See lookup_schema for details.
-    /// 
-    /// ### Schema for `lookup`
-    /// - `key` - (Required) Lookup key.
-    /// - `value` - (Required) Lookup value.
-    /// 
-    /// ### Schema for `structured_input`
-    /// - `event_id_pattern` - (Required) Event id pattern.
-    /// - `log_format` - (Required) Log format. (JSON, Windows, Syslog, CEF, LEEF )
-    /// - `product` - (Required) Product name.
-    /// - `vendor` - (Required) Vendor name.
-    /// 
-    /// ### Schema for `unstructured_field`
-    /// - `pattern_names` - (Required) List of grok pattern names.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the log mapping.
     /// 
     /// ## Import
     /// 
@@ -146,33 +99,63 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseLogMapping:CseLogMapping")]
     public partial class CseLogMapping : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Enabled flag.
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// List of fields for the new log mapping. See field_schema for details.
+        /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<Outputs.CseLogMappingField>> Fields { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the field.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the parent log mapping.
+        /// </summary>
         [Output("parentId")]
         public Output<string?> ParentId { get; private set; } = null!;
 
+        /// <summary>
+        /// Product GUID.
+        /// </summary>
         [Output("productGuid")]
         public Output<string> ProductGuid { get; private set; } = null!;
 
+        /// <summary>
+        /// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        /// </summary>
         [Output("recordType")]
         public Output<string> RecordType { get; private set; } = null!;
 
+        /// <summary>
+        /// Set to true to relate entities.
+        /// </summary>
         [Output("relatesEntities")]
         public Output<bool?> RelatesEntities { get; private set; } = null!;
 
+        /// <summary>
+        /// List of skipped values.
+        /// </summary>
         [Output("skippedValues")]
         public Output<ImmutableArray<string>> SkippedValues { get; private set; } = null!;
 
+        /// <summary>
+        /// List of structured inputs for the new log mapping. See structured_input_schema for details.
+        /// </summary>
         [Output("structuredInputs")]
         public Output<ImmutableArray<Outputs.CseLogMappingStructuredInput>> StructuredInputs { get; private set; } = null!;
 
+        /// <summary>
+        /// Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        /// </summary>
         [Output("unstructuredFields")]
         public Output<Outputs.CseLogMappingUnstructuredFields?> UnstructuredFields { get; private set; } = null!;
 
@@ -222,34 +205,60 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseLogMappingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enabled flag.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("fields", required: true)]
         private InputList<Inputs.CseLogMappingFieldArgs>? _fields;
+
+        /// <summary>
+        /// List of fields for the new log mapping. See field_schema for details.
+        /// </summary>
         public InputList<Inputs.CseLogMappingFieldArgs> Fields
         {
             get => _fields ?? (_fields = new InputList<Inputs.CseLogMappingFieldArgs>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// Name of the field.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The id of the parent log mapping.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
+        /// <summary>
+        /// Product GUID.
+        /// </summary>
         [Input("productGuid", required: true)]
         public Input<string> ProductGuid { get; set; } = null!;
 
+        /// <summary>
+        /// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        /// </summary>
         [Input("recordType", required: true)]
         public Input<string> RecordType { get; set; } = null!;
 
+        /// <summary>
+        /// Set to true to relate entities.
+        /// </summary>
         [Input("relatesEntities")]
         public Input<bool>? RelatesEntities { get; set; }
 
         [Input("skippedValues")]
         private InputList<string>? _skippedValues;
+
+        /// <summary>
+        /// List of skipped values.
+        /// </summary>
         public InputList<string> SkippedValues
         {
             get => _skippedValues ?? (_skippedValues = new InputList<string>());
@@ -258,12 +267,19 @@ namespace Pulumi.SumoLogic
 
         [Input("structuredInputs")]
         private InputList<Inputs.CseLogMappingStructuredInputArgs>? _structuredInputs;
+
+        /// <summary>
+        /// List of structured inputs for the new log mapping. See structured_input_schema for details.
+        /// </summary>
         public InputList<Inputs.CseLogMappingStructuredInputArgs> StructuredInputs
         {
             get => _structuredInputs ?? (_structuredInputs = new InputList<Inputs.CseLogMappingStructuredInputArgs>());
             set => _structuredInputs = value;
         }
 
+        /// <summary>
+        /// Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        /// </summary>
         [Input("unstructuredFields")]
         public Input<Inputs.CseLogMappingUnstructuredFieldsArgs>? UnstructuredFields { get; set; }
 
@@ -274,34 +290,60 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseLogMappingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enabled flag.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("fields")]
         private InputList<Inputs.CseLogMappingFieldGetArgs>? _fields;
+
+        /// <summary>
+        /// List of fields for the new log mapping. See field_schema for details.
+        /// </summary>
         public InputList<Inputs.CseLogMappingFieldGetArgs> Fields
         {
             get => _fields ?? (_fields = new InputList<Inputs.CseLogMappingFieldGetArgs>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// Name of the field.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The id of the parent log mapping.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
+        /// <summary>
+        /// Product GUID.
+        /// </summary>
         [Input("productGuid")]
         public Input<string>? ProductGuid { get; set; }
 
+        /// <summary>
+        /// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        /// </summary>
         [Input("recordType")]
         public Input<string>? RecordType { get; set; }
 
+        /// <summary>
+        /// Set to true to relate entities.
+        /// </summary>
         [Input("relatesEntities")]
         public Input<bool>? RelatesEntities { get; set; }
 
         [Input("skippedValues")]
         private InputList<string>? _skippedValues;
+
+        /// <summary>
+        /// List of skipped values.
+        /// </summary>
         public InputList<string> SkippedValues
         {
             get => _skippedValues ?? (_skippedValues = new InputList<string>());
@@ -310,12 +352,19 @@ namespace Pulumi.SumoLogic
 
         [Input("structuredInputs")]
         private InputList<Inputs.CseLogMappingStructuredInputGetArgs>? _structuredInputs;
+
+        /// <summary>
+        /// List of structured inputs for the new log mapping. See structured_input_schema for details.
+        /// </summary>
         public InputList<Inputs.CseLogMappingStructuredInputGetArgs> StructuredInputs
         {
             get => _structuredInputs ?? (_structuredInputs = new InputList<Inputs.CseLogMappingStructuredInputGetArgs>());
             set => _structuredInputs = value;
         }
 
+        /// <summary>
+        /// Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        /// </summary>
         [Input("unstructuredFields")]
         public Input<Inputs.CseLogMappingUnstructuredFieldsGetArgs>? UnstructuredFields { get; set; }
 

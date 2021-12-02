@@ -37,13 +37,6 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- *  - `config` - (Required) This is a JSON object which contains the configuration parameters for the Source.
- *  - `schemaRef` - (Required) Source schema details.
- *      + `type` - (Required) Schema type for the Cloud-to-Cloud source.
  *
  * ## Import
  *
@@ -90,7 +83,13 @@ export class CloudToCloudSource extends pulumi.CustomResource {
     }
 
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * This is a JSON object which contains the configuration parameters for the Source.
+     */
     public readonly config!: pulumi.Output<string>;
+    /**
+     * Source schema details.
+     */
     public readonly schemaRef!: pulumi.Output<{[key: string]: string}>;
 
     /**
@@ -136,7 +135,13 @@ export class CloudToCloudSource extends pulumi.CustomResource {
  */
 export interface CloudToCloudSourceState {
     collectorId?: pulumi.Input<number>;
+    /**
+     * This is a JSON object which contains the configuration parameters for the Source.
+     */
     config?: pulumi.Input<string>;
+    /**
+     * Source schema details.
+     */
     schemaRef?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -145,6 +150,12 @@ export interface CloudToCloudSourceState {
  */
 export interface CloudToCloudSourceArgs {
     collectorId: pulumi.Input<number>;
+    /**
+     * This is a JSON object which contains the configuration parameters for the Source.
+     */
     config: pulumi.Input<string>;
+    /**
+     * Source schema details.
+     */
     schemaRef: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

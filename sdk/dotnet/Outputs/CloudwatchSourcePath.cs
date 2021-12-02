@@ -14,11 +14,23 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class CloudwatchSourcePath
     {
         public readonly string? BucketName;
+        /// <summary>
+        /// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+        /// </summary>
         public readonly ImmutableArray<string> LimitToNamespaces;
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly string? PathExpression;
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
+        /// <summary>
+        /// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        /// </summary>
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathTagFilter> TagFilters;
+        /// <summary>
+        /// This value has to be set to `TagFilters`
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

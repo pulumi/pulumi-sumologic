@@ -10,6 +10,51 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
+    /// 
+    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var awsXraySource = new SumoLogic.AwsXraySource("awsXraySource", new SumoLogic.AwsXraySourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.AwsXraySourceAuthenticationArgs
+    ///             {
+    ///                 RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
+    ///                 Type = "AWSRoleBasedAuthentication",
+    ///             },
+    ///             Category = "aws/xray",
+    ///             CollectorId = collector.Id,
+    ///             ContentType = "AwsXRay",
+    ///             Description = "My description",
+    ///             Path = new SumoLogic.Inputs.AwsXraySourcePathArgs
+    ///             {
+    ///                 LimitToRegions = 
+    ///                 {
+    ///                     "us-west-2",
+    ///                 },
+    ///                 Type = "AwsXRayPath",
+    ///             },
+    ///             Paused = false,
+    ///             ScanInterval = 300000,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -27,6 +72,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/awsXraySource:AwsXraySource")]
     public partial class AwsXraySource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for making `xray:Get*` calls.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.AwsXraySourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -39,6 +87,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -75,12 +126,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.AwsXraySourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -139,6 +199,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class AwsXraySourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for making `xray:Get*` calls.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.AwsXraySourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -151,6 +214,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -202,12 +268,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.AwsXraySourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -224,6 +299,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class AwsXraySourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for making `xray:Get*` calls.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.AwsXraySourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -236,6 +314,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -287,12 +368,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.AwsXraySourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

@@ -34,16 +34,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) The name of the insights status.
-// - `description` - (Required) The description of the insights status.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the insights status.
 //
 // ## Import
 //
@@ -55,9 +45,11 @@ import (
 type CseInsightsStatus struct {
 	pulumi.CustomResourceState
 
+	// The description of the insights status.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	DisplayName pulumi.StringOutput    `pulumi:"displayName"`
-	Name        pulumi.StringOutput    `pulumi:"name"`
+	// The name of the insights status.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewCseInsightsStatus registers a new resource with the given unique name, arguments, and options.
@@ -89,15 +81,19 @@ func GetCseInsightsStatus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseInsightsStatus resources.
 type cseInsightsStatusState struct {
+	// The description of the insights status.
 	Description *string `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
-	Name        *string `pulumi:"name"`
+	// The name of the insights status.
+	Name *string `pulumi:"name"`
 }
 
 type CseInsightsStatusState struct {
+	// The description of the insights status.
 	Description pulumi.StringPtrInput
 	DisplayName pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
+	// The name of the insights status.
+	Name pulumi.StringPtrInput
 }
 
 func (CseInsightsStatusState) ElementType() reflect.Type {
@@ -105,14 +101,18 @@ func (CseInsightsStatusState) ElementType() reflect.Type {
 }
 
 type cseInsightsStatusArgs struct {
+	// The description of the insights status.
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
+	// The name of the insights status.
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a CseInsightsStatus resource.
 type CseInsightsStatusArgs struct {
+	// The description of the insights status.
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
+	// The name of the insights status.
+	Name pulumi.StringPtrInput
 }
 
 func (CseInsightsStatusArgs) ElementType() reflect.Type {

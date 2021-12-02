@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("coloringRule")]
         public Input<Inputs.DashboardPanelSumoSearchPanelColoringRuleArgs>? ColoringRule { get; set; }
 
+        /// <summary>
+        /// Description of the dashboard.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -38,9 +41,16 @@ namespace Pulumi.SumoLogic.Inputs
             set => _queries = value;
         }
 
+        /// <summary>
+        /// Time range of the dashboard. See time range schema
+        /// for details.
+        /// </summary>
         [Input("timeRange")]
         public Input<Inputs.DashboardPanelSumoSearchPanelTimeRangeArgs>? TimeRange { get; set; }
 
+        /// <summary>
+        /// Title of the dashboard.
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

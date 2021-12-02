@@ -23,6 +23,14 @@ class CseCustomInsightArgs:
                  signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseCustomInsight resource.
+        :param pulumi.Input[str] description: The description of the generated Insights
+        :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
+        :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
+        :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -39,6 +47,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
+        """
+        The description of the generated Insights
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -48,6 +59,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the Custom Insight should generate Insights
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -57,6 +71,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter
     def ordered(self) -> pulumi.Input[bool]:
+        """
+        Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        """
         return pulumi.get(self, "ordered")
 
     @ordered.setter
@@ -66,6 +83,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter
     def severity(self) -> pulumi.Input[str]:
+        """
+        The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -75,6 +95,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The tags of the generated Insights
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -84,6 +107,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Custom Insight and the generated Insights
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -93,6 +119,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter(name="ruleIds")
     def rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        """
         return pulumi.get(self, "rule_ids")
 
     @rule_ids.setter
@@ -102,6 +131,9 @@ class CseCustomInsightArgs:
     @property
     @pulumi.getter(name="signalNames")
     def signal_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        """
         return pulumi.get(self, "signal_names")
 
     @signal_names.setter
@@ -122,6 +154,14 @@ class _CseCustomInsightState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CseCustomInsight resources.
+        :param pulumi.Input[str] description: The description of the generated Insights
+        :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
+        :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
+        :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -143,6 +183,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the generated Insights
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -152,6 +195,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Custom Insight should generate Insights
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -161,6 +207,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Custom Insight and the generated Insights
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -170,6 +219,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter
     def ordered(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        """
         return pulumi.get(self, "ordered")
 
     @ordered.setter
@@ -179,6 +231,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter(name="ruleIds")
     def rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        """
         return pulumi.get(self, "rule_ids")
 
     @rule_ids.setter
@@ -188,6 +243,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -197,6 +255,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter(name="signalNames")
     def signal_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        """
         return pulumi.get(self, "signal_names")
 
     @signal_names.setter
@@ -206,6 +267,9 @@ class _CseCustomInsightState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the generated Insights
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -251,22 +315,6 @@ class CseCustomInsight(pulumi.CustomResource):
             ],
             tags=["_mitreAttackTactic:TA0009"])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `description` - (Required) The description of the generated Insights
-        - `enabled` - (Required) Whether the Custom Insight should generate Insights
-        - `ordered` - (Required) Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
-        - `name` - (Required) The name of the Custom Insight and the generated Insights
-        - `rule_ids` - (Optional) The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-        - `severity` - (Required) The severity of the generated Insights (HIGH, MEDIUM, or LOW)
-        - `signal_names` - (Optional) The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-        - `tags` - (Required) The tags of the generated Insights
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the chain rule.
 
         ## Import
 
@@ -278,6 +326,14 @@ class CseCustomInsight(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the generated Insights
+        :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
+        :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
+        :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
         """
         ...
     @overload
@@ -309,22 +365,6 @@ class CseCustomInsight(pulumi.CustomResource):
             ],
             tags=["_mitreAttackTactic:TA0009"])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `description` - (Required) The description of the generated Insights
-        - `enabled` - (Required) Whether the Custom Insight should generate Insights
-        - `ordered` - (Required) Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
-        - `name` - (Required) The name of the Custom Insight and the generated Insights
-        - `rule_ids` - (Optional) The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-        - `severity` - (Required) The severity of the generated Insights (HIGH, MEDIUM, or LOW)
-        - `signal_names` - (Optional) The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-        - `tags` - (Required) The tags of the generated Insights
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the chain rule.
 
         ## Import
 
@@ -412,6 +452,14 @@ class CseCustomInsight(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the generated Insights
+        :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
+        :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
+        :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,40 +478,64 @@ class CseCustomInsight(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        The description of the generated Insights
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the Custom Insight should generate Insights
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the Custom Insight and the generated Insights
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def ordered(self) -> pulumi.Output[bool]:
+        """
+        Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+        """
         return pulumi.get(self, "ordered")
 
     @property
     @pulumi.getter(name="ruleIds")
     def rule_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        """
         return pulumi.get(self, "rule_ids")
 
     @property
     @pulumi.getter
     def severity(self) -> pulumi.Output[str]:
+        """
+        The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="signalNames")
     def signal_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        """
         return pulumi.get(self, "signal_names")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The tags of the generated Insights
+        """
         return pulumi.get(self, "tags")
 

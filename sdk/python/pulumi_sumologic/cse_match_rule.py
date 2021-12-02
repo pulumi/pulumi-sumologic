@@ -27,6 +27,16 @@ class CseMatchRuleArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseMatchRule resource.
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[str] expression: The expression for which records to match on
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input['CseMatchRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         pulumi.set(__self__, "description_expression", description_expression)
         pulumi.set(__self__, "enabled", enabled)
@@ -46,6 +56,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter(name="descriptionExpression")
     def description_expression(self) -> pulumi.Input[str]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description_expression")
 
     @description_expression.setter
@@ -55,6 +68,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -64,6 +80,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @entity_selectors.setter
@@ -73,6 +92,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -82,6 +104,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter(name="nameExpression")
     def name_expression(self) -> pulumi.Input[str]:
+        """
+        The name of the generated Signals
+        """
         return pulumi.get(self, "name_expression")
 
     @name_expression.setter
@@ -91,6 +116,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter(name="severityMapping")
     def severity_mapping(self) -> pulumi.Input['CseMatchRuleSeverityMappingArgs']:
+        """
+        The configuration of how the severity of the Signals should be mapped from the Records
+        """
         return pulumi.get(self, "severity_mapping")
 
     @severity_mapping.setter
@@ -100,6 +128,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @is_prototype.setter
@@ -109,6 +140,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Rule
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -118,6 +152,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @summary_expression.setter
@@ -127,6 +164,9 @@ class CseMatchRuleArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -149,6 +189,16 @@ class _CseMatchRuleState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CseMatchRule resources.
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[str] expression: The expression for which records to match on
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input['CseMatchRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         if description_expression is not None:
             pulumi.set(__self__, "description_expression", description_expression)
@@ -174,6 +224,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter(name="descriptionExpression")
     def description_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description_expression")
 
     @description_expression.setter
@@ -183,6 +236,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -192,6 +248,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]]]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @entity_selectors.setter
@@ -201,6 +260,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "expression")
 
     @expression.setter
@@ -210,6 +272,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @is_prototype.setter
@@ -219,6 +284,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Rule
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -228,6 +296,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter(name="nameExpression")
     def name_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the generated Signals
+        """
         return pulumi.get(self, "name_expression")
 
     @name_expression.setter
@@ -237,6 +308,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter(name="severityMapping")
     def severity_mapping(self) -> Optional[pulumi.Input['CseMatchRuleSeverityMappingArgs']]:
+        """
+        The configuration of how the severity of the Signals should be mapped from the Records
+        """
         return pulumi.get(self, "severity_mapping")
 
     @severity_mapping.setter
@@ -246,6 +320,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @summary_expression.setter
@@ -255,6 +332,9 @@ class _CseMatchRuleState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -304,33 +384,6 @@ class CseMatchRule(pulumi.CustomResource):
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `description_expression` - (Required) The description of the generated Signals
-        - `enabled` - (Required) Whether the rule should generate Signals
-        - `entity_selectors` - (Required) The entities to generate Signals on
-          + `entityType` - (Required) The type of the entity to generate the Signal on.
-          + `expression` - (Required) The expression or field name to generate the Signal on.
-        - `expression` - (Required) The expression for which records to match on
-        - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-        - `name` - (Required) The name of the Rule
-        - `name_expression` - (Required) The name of the generated Signals
-        - `severity_mapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-          + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-          + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-          + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-          + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-            - `type` - (Required) Must be set to "eq" currently
-            - `from` - (Required) The record value to map from
-            - `to` - (Required) The severity value to map to
-        - `summary_expression` - (Optional) The summary of the generated Signals
-        - `tags` - (Required) The tags of the generated Signals
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the match rule.
 
         ## Import
 
@@ -342,6 +395,16 @@ class CseMatchRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[str] expression: The expression for which records to match on
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         ...
     @overload
@@ -375,33 +438,6 @@ class CseMatchRule(pulumi.CustomResource):
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `description_expression` - (Required) The description of the generated Signals
-        - `enabled` - (Required) Whether the rule should generate Signals
-        - `entity_selectors` - (Required) The entities to generate Signals on
-          + `entityType` - (Required) The type of the entity to generate the Signal on.
-          + `expression` - (Required) The expression or field name to generate the Signal on.
-        - `expression` - (Required) The expression for which records to match on
-        - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-        - `name` - (Required) The name of the Rule
-        - `name_expression` - (Required) The name of the generated Signals
-        - `severity_mapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-          + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-          + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-          + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-          + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-            - `type` - (Required) Must be set to "eq" currently
-            - `from` - (Required) The record value to map from
-            - `to` - (Required) The severity value to map to
-        - `summary_expression` - (Optional) The summary of the generated Signals
-        - `tags` - (Required) The tags of the generated Signals
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the match rule.
 
         ## Import
 
@@ -497,6 +533,16 @@ class CseMatchRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[str] expression: The expression for which records to match on
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -517,50 +563,80 @@ class CseMatchRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="descriptionExpression")
     def description_expression(self) -> pulumi.Output[str]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description_expression")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseMatchRuleEntitySelector']]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @property
     @pulumi.getter
     def expression(self) -> pulumi.Output[str]:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the Rule
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameExpression")
     def name_expression(self) -> pulumi.Output[str]:
+        """
+        The name of the generated Signals
+        """
         return pulumi.get(self, "name_expression")
 
     @property
     @pulumi.getter(name="severityMapping")
     def severity_mapping(self) -> pulumi.Output['outputs.CseMatchRuleSeverityMapping']:
+        """
+        The configuration of how the severity of the Signals should be mapped from the Records
+        """
         return pulumi.get(self, "severity_mapping")
 
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> pulumi.Output[Optional[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 

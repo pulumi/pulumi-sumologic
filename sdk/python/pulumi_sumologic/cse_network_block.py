@@ -19,6 +19,10 @@ class CseNetworkBlockArgs:
                  suppresses_signals: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a CseNetworkBlock resource.
+        :param pulumi.Input[str] address_block: The address block.
+        :param pulumi.Input[bool] internal: Internal flag.
+        :param pulumi.Input[str] label: The displayable label of the address block.
+        :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
         """
         pulumi.set(__self__, "address_block", address_block)
         if internal is not None:
@@ -31,6 +35,9 @@ class CseNetworkBlockArgs:
     @property
     @pulumi.getter(name="addressBlock")
     def address_block(self) -> pulumi.Input[str]:
+        """
+        The address block.
+        """
         return pulumi.get(self, "address_block")
 
     @address_block.setter
@@ -40,6 +47,9 @@ class CseNetworkBlockArgs:
     @property
     @pulumi.getter
     def internal(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Internal flag.
+        """
         return pulumi.get(self, "internal")
 
     @internal.setter
@@ -49,6 +59,9 @@ class CseNetworkBlockArgs:
     @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The displayable label of the address block.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -58,6 +71,9 @@ class CseNetworkBlockArgs:
     @property
     @pulumi.getter(name="suppressesSignals")
     def suppresses_signals(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Suppresses signal flag.
+        """
         return pulumi.get(self, "suppresses_signals")
 
     @suppresses_signals.setter
@@ -74,6 +90,10 @@ class _CseNetworkBlockState:
                  suppresses_signals: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering CseNetworkBlock resources.
+        :param pulumi.Input[str] address_block: The address block.
+        :param pulumi.Input[bool] internal: Internal flag.
+        :param pulumi.Input[str] label: The displayable label of the address block.
+        :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
         """
         if address_block is not None:
             pulumi.set(__self__, "address_block", address_block)
@@ -87,6 +107,9 @@ class _CseNetworkBlockState:
     @property
     @pulumi.getter(name="addressBlock")
     def address_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address block.
+        """
         return pulumi.get(self, "address_block")
 
     @address_block.setter
@@ -96,6 +119,9 @@ class _CseNetworkBlockState:
     @property
     @pulumi.getter
     def internal(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Internal flag.
+        """
         return pulumi.get(self, "internal")
 
     @internal.setter
@@ -105,6 +131,9 @@ class _CseNetworkBlockState:
     @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        The displayable label of the address block.
+        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -114,6 +143,9 @@ class _CseNetworkBlockState:
     @property
     @pulumi.getter(name="suppressesSignals")
     def suppresses_signals(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Suppresses signal flag.
+        """
         return pulumi.get(self, "suppresses_signals")
 
     @suppresses_signals.setter
@@ -146,18 +178,6 @@ class CseNetworkBlock(pulumi.CustomResource):
             label="network block from terraform",
             suppresses_signals=False)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `address_block` - (Required) The address block.
-        - `label` - (Required) The displayable label of the address block.
-        - `internal` - (Required) Internal flag.
-        - `suppresses_signals` - (Required) Suppresses signal flag.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the network block.
 
         ## Import
 
@@ -169,6 +189,10 @@ class CseNetworkBlock(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_block: The address block.
+        :param pulumi.Input[bool] internal: Internal flag.
+        :param pulumi.Input[str] label: The displayable label of the address block.
+        :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
         """
         ...
     @overload
@@ -191,18 +215,6 @@ class CseNetworkBlock(pulumi.CustomResource):
             label="network block from terraform",
             suppresses_signals=False)
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `address_block` - (Required) The address block.
-        - `label` - (Required) The displayable label of the address block.
-        - `internal` - (Required) Internal flag.
-        - `suppresses_signals` - (Required) Suppresses signal flag.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the network block.
 
         ## Import
 
@@ -270,6 +282,10 @@ class CseNetworkBlock(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_block: The address block.
+        :param pulumi.Input[bool] internal: Internal flag.
+        :param pulumi.Input[str] label: The displayable label of the address block.
+        :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -284,20 +300,32 @@ class CseNetworkBlock(pulumi.CustomResource):
     @property
     @pulumi.getter(name="addressBlock")
     def address_block(self) -> pulumi.Output[str]:
+        """
+        The address block.
+        """
         return pulumi.get(self, "address_block")
 
     @property
     @pulumi.getter
     def internal(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Internal flag.
+        """
         return pulumi.get(self, "internal")
 
     @property
     @pulumi.getter
     def label(self) -> pulumi.Output[Optional[str]]:
+        """
+        The displayable label of the address block.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter(name="suppressesSignals")
     def suppresses_signals(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Suppresses signal flag.
+        """
         return pulumi.get(self, "suppresses_signals")
 

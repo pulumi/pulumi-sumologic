@@ -36,14 +36,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `fieldName` - (Required)  Name of the field.
-// - `fieldId` - (Required) Field identifier.
-// - `dataType` - (Optional) Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-// - `state` - (Optional) State of the field (either `Enabled` or `Disabled`).
 //
 // ## Import
 //
@@ -57,10 +49,14 @@ import (
 type Field struct {
 	pulumi.CustomResourceState
 
-	DataType  pulumi.StringPtrOutput `pulumi:"dataType"`
-	FieldId   pulumi.StringOutput    `pulumi:"fieldId"`
-	FieldName pulumi.StringOutput    `pulumi:"fieldName"`
-	State     pulumi.StringPtrOutput `pulumi:"state"`
+	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+	DataType pulumi.StringPtrOutput `pulumi:"dataType"`
+	// Field identifier.
+	FieldId pulumi.StringOutput `pulumi:"fieldId"`
+	// Name of the field.
+	FieldName pulumi.StringOutput `pulumi:"fieldName"`
+	// State of the field (either `Enabled` or `Disabled`).
+	State pulumi.StringPtrOutput `pulumi:"state"`
 }
 
 // NewField registers a new resource with the given unique name, arguments, and options.
@@ -95,17 +91,25 @@ func GetField(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Field resources.
 type fieldState struct {
-	DataType  *string `pulumi:"dataType"`
-	FieldId   *string `pulumi:"fieldId"`
+	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+	DataType *string `pulumi:"dataType"`
+	// Field identifier.
+	FieldId *string `pulumi:"fieldId"`
+	// Name of the field.
 	FieldName *string `pulumi:"fieldName"`
-	State     *string `pulumi:"state"`
+	// State of the field (either `Enabled` or `Disabled`).
+	State *string `pulumi:"state"`
 }
 
 type FieldState struct {
-	DataType  pulumi.StringPtrInput
-	FieldId   pulumi.StringPtrInput
+	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+	DataType pulumi.StringPtrInput
+	// Field identifier.
+	FieldId pulumi.StringPtrInput
+	// Name of the field.
 	FieldName pulumi.StringPtrInput
-	State     pulumi.StringPtrInput
+	// State of the field (either `Enabled` or `Disabled`).
+	State pulumi.StringPtrInput
 }
 
 func (FieldState) ElementType() reflect.Type {
@@ -113,16 +117,22 @@ func (FieldState) ElementType() reflect.Type {
 }
 
 type fieldArgs struct {
-	DataType  *string `pulumi:"dataType"`
-	FieldName string  `pulumi:"fieldName"`
-	State     *string `pulumi:"state"`
+	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+	DataType *string `pulumi:"dataType"`
+	// Name of the field.
+	FieldName string `pulumi:"fieldName"`
+	// State of the field (either `Enabled` or `Disabled`).
+	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Field resource.
 type FieldArgs struct {
-	DataType  pulumi.StringPtrInput
+	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+	DataType pulumi.StringPtrInput
+	// Name of the field.
 	FieldName pulumi.StringInput
-	State     pulumi.StringPtrInput
+	// State of the field (either `Enabled` or `Disabled`).
+	State pulumi.StringPtrInput
 }
 
 func (FieldArgs) ElementType() reflect.Type {

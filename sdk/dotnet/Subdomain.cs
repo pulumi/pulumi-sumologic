@@ -30,12 +30,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `subdomain` - (Required) The subdomain.
-    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -47,6 +41,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/subdomain:Subdomain")]
     public partial class Subdomain : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The subdomain.
+        /// </summary>
         [Output("subdomain")]
         public Output<string> SubdomainName { get; private set; } = null!;
 
@@ -96,6 +93,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class SubdomainArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The subdomain.
+        /// </summary>
         [Input("subdomain", required: true)]
         public Input<string> SubdomainName { get; set; } = null!;
 
@@ -106,6 +106,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class SubdomainState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The subdomain.
+        /// </summary>
         [Input("subdomain")]
         public Input<string>? SubdomainName { get; set; }
 

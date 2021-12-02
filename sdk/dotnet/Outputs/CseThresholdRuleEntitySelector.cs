@@ -14,6 +14,9 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class CseThresholdRuleEntitySelector
     {
         public readonly string EntityType;
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         public readonly string Expression;
 
         [OutputConstructor]

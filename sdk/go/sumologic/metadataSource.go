@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Sumologic Metadata (Tag) source. This source allows you to collect tags from EC2 instances running on AWS.
+//
+// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+//
 // ## Import
 //
 // Metadata sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,10 +33,12 @@ import (
 type MetadataSource struct {
 	pulumi.CustomResourceState
 
-	Authentication             MetadataSourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                       `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                     `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                           `pulumi:"collectorId"`
+	// Authentication details for AWS access.
+	Authentication       MetadataSourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput               `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput             `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                   `pulumi:"collectorId"`
+	// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringOutput                        `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                     `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                        `pulumi:"cutoffTimestamp"`
@@ -45,10 +51,13 @@ type MetadataSource struct {
 	ManualPrefixRegexp         pulumi.StringPtrOutput                     `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                       `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                        `pulumi:"name"`
-	Path                       MetadataSourcePathOutput                   `pulumi:"path"`
-	Paused                     pulumi.BoolOutput                          `pulumi:"paused"`
-	ScanInterval               pulumi.IntOutput                           `pulumi:"scanInterval"`
-	Timezone                   pulumi.StringPtrOutput                     `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path MetadataSourcePathOutput `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntOutput       `pulumi:"scanInterval"`
+	Timezone     pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -101,10 +110,12 @@ func GetMetadataSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetadataSource resources.
 type metadataSourceState struct {
-	Authentication             *MetadataSourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                             `pulumi:"automaticDateParsing"`
-	Category                   *string                           `pulumi:"category"`
-	CollectorId                *int                              `pulumi:"collectorId"`
+	// Authentication details for AWS access.
+	Authentication       *MetadataSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                         `pulumi:"automaticDateParsing"`
+	Category             *string                       `pulumi:"category"`
+	CollectorId          *int                          `pulumi:"collectorId"`
+	// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                *string                           `pulumi:"contentType"`
 	CutoffRelativeTime         *string                           `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                              `pulumi:"cutoffTimestamp"`
@@ -117,20 +128,25 @@ type metadataSourceState struct {
 	ManualPrefixRegexp         *string                           `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                             `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                           `pulumi:"name"`
-	Path                       *MetadataSourcePath               `pulumi:"path"`
-	Paused                     *bool                             `pulumi:"paused"`
-	ScanInterval               *int                              `pulumi:"scanInterval"`
-	Timezone                   *string                           `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path *MetadataSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused *bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval *int    `pulumi:"scanInterval"`
+	Timezone     *string `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type MetadataSourceState struct {
-	Authentication             MetadataSourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details for AWS access.
+	Authentication       MetadataSourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -143,10 +159,13 @@ type MetadataSourceState struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       MetadataSourcePathPtrInput
-	Paused                     pulumi.BoolPtrInput
-	ScanInterval               pulumi.IntPtrInput
-	Timezone                   pulumi.StringPtrInput
+	// The location to scan for new data.
+	Path MetadataSourcePathPtrInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolPtrInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntPtrInput
+	Timezone     pulumi.StringPtrInput
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
@@ -157,10 +176,12 @@ func (MetadataSourceState) ElementType() reflect.Type {
 }
 
 type metadataSourceArgs struct {
-	Authentication             MetadataSourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                             `pulumi:"automaticDateParsing"`
-	Category                   *string                           `pulumi:"category"`
-	CollectorId                int                               `pulumi:"collectorId"`
+	// Authentication details for AWS access.
+	Authentication       MetadataSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                        `pulumi:"automaticDateParsing"`
+	Category             *string                      `pulumi:"category"`
+	CollectorId          int                          `pulumi:"collectorId"`
+	// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                string                            `pulumi:"contentType"`
 	CutoffRelativeTime         *string                           `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                              `pulumi:"cutoffTimestamp"`
@@ -173,19 +194,24 @@ type metadataSourceArgs struct {
 	ManualPrefixRegexp         *string                           `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                             `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                           `pulumi:"name"`
-	Path                       MetadataSourcePath                `pulumi:"path"`
-	Paused                     bool                              `pulumi:"paused"`
-	ScanInterval               int                               `pulumi:"scanInterval"`
-	Timezone                   *string                           `pulumi:"timezone"`
-	UseAutolineMatching        *bool                             `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path MetadataSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        int     `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a MetadataSource resource.
 type MetadataSourceArgs struct {
-	Authentication             MetadataSourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details for AWS access.
+	Authentication       MetadataSourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -198,11 +224,14 @@ type MetadataSourceArgs struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       MetadataSourcePathInput
-	Paused                     pulumi.BoolInput
-	ScanInterval               pulumi.IntInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path MetadataSourcePathInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        pulumi.IntInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (MetadataSourceArgs) ElementType() reflect.Type {

@@ -61,30 +61,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `description` - (Required) The description of the generated Signals
-// - `enabled` - (Required) Whether the rule should generate Signals
-// - `entitySelectors` - (Required) The entities to generate Signals on
-//   + `entityType` - (Required) The type of the entity to generate the Signal on.
-//   + `expression` - (Required) The expression or field name to generate the Signal on.
-// - `expressionsAndLimits` - (Required) The list of expressions and associated limits to make up the conditions of the chain rule
-//   + `expression` - (Required) The expression for which records to match on
-//   + `limit` - (Required) How many times this expression must match for the Signal to fire
-// - `groupByFields` - (Optional) A list of fields to group records by
-// - `isPrototype` - (Optional) Whether the generated Signals should be prototype Signals
-// - `ordered` - (Optional; defaults to false) Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
-// - `name` - (Required) The name of the Rule and the generated SignalS
-// - `severity` - (Required) The severity of the generated Signals
-// - `summaryExpression` - (Optional) The summary of the generated Signals
-// - `tags` - (Required) The tags of the generated Signals
-// - `windowSize` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the chain rule.
 //
 // ## Import
 //
@@ -96,18 +72,30 @@ import (
 type CseChainRule struct {
 	pulumi.CustomResourceState
 
-	Description          pulumi.StringOutput                        `pulumi:"description"`
-	Enabled              pulumi.BoolOutput                          `pulumi:"enabled"`
-	EntitySelectors      CseChainRuleEntitySelectorArrayOutput      `pulumi:"entitySelectors"`
+	// The description of the generated Signals
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors CseChainRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
+	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits CseChainRuleExpressionsAndLimitArrayOutput `pulumi:"expressionsAndLimits"`
-	GroupByFields        pulumi.StringArrayOutput                   `pulumi:"groupByFields"`
-	IsPrototype          pulumi.BoolPtrOutput                       `pulumi:"isPrototype"`
-	Name                 pulumi.StringOutput                        `pulumi:"name"`
-	Ordered              pulumi.BoolPtrOutput                       `pulumi:"ordered"`
-	Severity             pulumi.IntOutput                           `pulumi:"severity"`
-	SummaryExpression    pulumi.StringPtrOutput                     `pulumi:"summaryExpression"`
-	Tags                 pulumi.StringArrayOutput                   `pulumi:"tags"`
-	WindowSize           pulumi.StringOutput                        `pulumi:"windowSize"`
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayOutput `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrOutput `pulumi:"isPrototype"`
+	// The name of the Rule and the generated SignalS
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+	Ordered pulumi.BoolPtrOutput `pulumi:"ordered"`
+	// The severity of the generated Signals
+	Severity pulumi.IntOutput `pulumi:"severity"`
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
 }
 
 // NewCseChainRule registers a new resource with the given unique name, arguments, and options.
@@ -157,33 +145,57 @@ func GetCseChainRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseChainRule resources.
 type cseChainRuleState struct {
-	Description          *string                           `pulumi:"description"`
-	Enabled              *bool                             `pulumi:"enabled"`
-	EntitySelectors      []CseChainRuleEntitySelector      `pulumi:"entitySelectors"`
+	// The description of the generated Signals
+	Description *string `pulumi:"description"`
+	// Whether the rule should generate Signals
+	Enabled *bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseChainRuleEntitySelector `pulumi:"entitySelectors"`
+	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits []CseChainRuleExpressionsAndLimit `pulumi:"expressionsAndLimits"`
-	GroupByFields        []string                          `pulumi:"groupByFields"`
-	IsPrototype          *bool                             `pulumi:"isPrototype"`
-	Name                 *string                           `pulumi:"name"`
-	Ordered              *bool                             `pulumi:"ordered"`
-	Severity             *int                              `pulumi:"severity"`
-	SummaryExpression    *string                           `pulumi:"summaryExpression"`
-	Tags                 []string                          `pulumi:"tags"`
-	WindowSize           *string                           `pulumi:"windowSize"`
+	// A list of fields to group records by
+	GroupByFields []string `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// The name of the Rule and the generated SignalS
+	Name *string `pulumi:"name"`
+	// Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+	Ordered *bool `pulumi:"ordered"`
+	// The severity of the generated Signals
+	Severity *int `pulumi:"severity"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize *string `pulumi:"windowSize"`
 }
 
 type CseChainRuleState struct {
-	Description          pulumi.StringPtrInput
-	Enabled              pulumi.BoolPtrInput
-	EntitySelectors      CseChainRuleEntitySelectorArrayInput
+	// The description of the generated Signals
+	Description pulumi.StringPtrInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolPtrInput
+	// The entities to generate Signals on
+	EntitySelectors CseChainRuleEntitySelectorArrayInput
+	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits CseChainRuleExpressionsAndLimitArrayInput
-	GroupByFields        pulumi.StringArrayInput
-	IsPrototype          pulumi.BoolPtrInput
-	Name                 pulumi.StringPtrInput
-	Ordered              pulumi.BoolPtrInput
-	Severity             pulumi.IntPtrInput
-	SummaryExpression    pulumi.StringPtrInput
-	Tags                 pulumi.StringArrayInput
-	WindowSize           pulumi.StringPtrInput
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// The name of the Rule and the generated SignalS
+	Name pulumi.StringPtrInput
+	// Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+	Ordered pulumi.BoolPtrInput
+	// The severity of the generated Signals
+	Severity pulumi.IntPtrInput
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringPtrInput
 }
 
 func (CseChainRuleState) ElementType() reflect.Type {
@@ -191,34 +203,58 @@ func (CseChainRuleState) ElementType() reflect.Type {
 }
 
 type cseChainRuleArgs struct {
-	Description          string                            `pulumi:"description"`
-	Enabled              bool                              `pulumi:"enabled"`
-	EntitySelectors      []CseChainRuleEntitySelector      `pulumi:"entitySelectors"`
+	// The description of the generated Signals
+	Description string `pulumi:"description"`
+	// Whether the rule should generate Signals
+	Enabled bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseChainRuleEntitySelector `pulumi:"entitySelectors"`
+	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits []CseChainRuleExpressionsAndLimit `pulumi:"expressionsAndLimits"`
-	GroupByFields        []string                          `pulumi:"groupByFields"`
-	IsPrototype          *bool                             `pulumi:"isPrototype"`
-	Name                 *string                           `pulumi:"name"`
-	Ordered              *bool                             `pulumi:"ordered"`
-	Severity             int                               `pulumi:"severity"`
-	SummaryExpression    *string                           `pulumi:"summaryExpression"`
-	Tags                 []string                          `pulumi:"tags"`
-	WindowSize           string                            `pulumi:"windowSize"`
+	// A list of fields to group records by
+	GroupByFields []string `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// The name of the Rule and the generated SignalS
+	Name *string `pulumi:"name"`
+	// Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+	Ordered *bool `pulumi:"ordered"`
+	// The severity of the generated Signals
+	Severity int `pulumi:"severity"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize string `pulumi:"windowSize"`
 }
 
 // The set of arguments for constructing a CseChainRule resource.
 type CseChainRuleArgs struct {
-	Description          pulumi.StringInput
-	Enabled              pulumi.BoolInput
-	EntitySelectors      CseChainRuleEntitySelectorArrayInput
+	// The description of the generated Signals
+	Description pulumi.StringInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolInput
+	// The entities to generate Signals on
+	EntitySelectors CseChainRuleEntitySelectorArrayInput
+	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits CseChainRuleExpressionsAndLimitArrayInput
-	GroupByFields        pulumi.StringArrayInput
-	IsPrototype          pulumi.BoolPtrInput
-	Name                 pulumi.StringPtrInput
-	Ordered              pulumi.BoolPtrInput
-	Severity             pulumi.IntInput
-	SummaryExpression    pulumi.StringPtrInput
-	Tags                 pulumi.StringArrayInput
-	WindowSize           pulumi.StringInput
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// The name of the Rule and the generated SignalS
+	Name pulumi.StringPtrInput
+	// Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+	Ordered pulumi.BoolPtrInput
+	// The severity of the generated Signals
+	Severity pulumi.IntInput
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringInput
 }
 
 func (CseChainRuleArgs) ElementType() reflect.Type {

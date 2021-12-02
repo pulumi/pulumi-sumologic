@@ -20,20 +20,6 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `type` - (Optional) The type of object model. Valid value:
- *   - `MonitorsLibraryFolder`
- * - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
- * - `description` - (Required) The description of the monitor folder.
- * - `parentId` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
- *
- * Additional data provided in state:
- *
- * - `id` - (Computed) The identifier for this monitor folder.
- *
  * ## Import
  *
  * Monitor folders can be imported using the monitor folder identifier, such ashcl
@@ -75,15 +61,28 @@ export class MonitorFolder extends pulumi.CustomResource {
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly createdAt!: pulumi.Output<string>;
     public readonly createdBy!: pulumi.Output<string>;
+    /**
+     * The description of the monitor folder.
+     */
     public readonly description!: pulumi.Output<string>;
     public readonly isLocked!: pulumi.Output<boolean | undefined>;
     public readonly isMutable!: pulumi.Output<boolean>;
     public readonly isSystem!: pulumi.Output<boolean>;
     public readonly modifiedAt!: pulumi.Output<string>;
     public readonly modifiedBy!: pulumi.Output<string>;
+    /**
+     * The name of the monitor folder. The name must be alphanumeric.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+     */
     public readonly parentId!: pulumi.Output<string>;
     public readonly postRequestMap!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
+     */
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
 
@@ -148,15 +147,28 @@ export interface MonitorFolderState {
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
+    /**
+     * The description of the monitor folder.
+     */
     description?: pulumi.Input<string>;
     isLocked?: pulumi.Input<boolean>;
     isMutable?: pulumi.Input<boolean>;
     isSystem?: pulumi.Input<boolean>;
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
+    /**
+     * The name of the monitor folder. The name must be alphanumeric.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+     */
     parentId?: pulumi.Input<string>;
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
+     */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }
@@ -168,15 +180,28 @@ export interface MonitorFolderArgs {
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
+    /**
+     * The description of the monitor folder.
+     */
     description: pulumi.Input<string>;
     isLocked?: pulumi.Input<boolean>;
     isMutable?: pulumi.Input<boolean>;
     isSystem?: pulumi.Input<boolean>;
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
+    /**
+     * The name of the monitor folder. The name must be alphanumeric.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+     */
     parentId?: pulumi.Input<string>;
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
+     */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }

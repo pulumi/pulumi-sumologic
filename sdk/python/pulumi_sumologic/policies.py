@@ -23,6 +23,12 @@ class PoliciesArgs:
                  user_concurrent_sessions_limit: pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']):
         """
         The set of arguments for constructing a Policies resource.
+        :param pulumi.Input[bool] audit: Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        :param pulumi.Input[bool] data_access_level: Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         pulumi.set(__self__, "audit", audit)
         pulumi.set(__self__, "data_access_level", data_access_level)
@@ -34,6 +40,9 @@ class PoliciesArgs:
     @property
     @pulumi.getter
     def audit(self) -> pulumi.Input[bool]:
+        """
+        Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        """
         return pulumi.get(self, "audit")
 
     @audit.setter
@@ -43,6 +52,9 @@ class PoliciesArgs:
     @property
     @pulumi.getter(name="dataAccessLevel")
     def data_access_level(self) -> pulumi.Input[bool]:
+        """
+        Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        """
         return pulumi.get(self, "data_access_level")
 
     @data_access_level.setter
@@ -52,6 +64,9 @@ class PoliciesArgs:
     @property
     @pulumi.getter(name="maxUserSessionTimeout")
     def max_user_session_timeout(self) -> pulumi.Input[str]:
+        """
+        The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        """
         return pulumi.get(self, "max_user_session_timeout")
 
     @max_user_session_timeout.setter
@@ -61,6 +76,9 @@ class PoliciesArgs:
     @property
     @pulumi.getter(name="searchAudit")
     def search_audit(self) -> pulumi.Input[bool]:
+        """
+        Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        """
         return pulumi.get(self, "search_audit")
 
     @search_audit.setter
@@ -70,6 +88,9 @@ class PoliciesArgs:
     @property
     @pulumi.getter(name="shareDashboardsOutsideOrganization")
     def share_dashboards_outside_organization(self) -> pulumi.Input[bool]:
+        """
+        Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        """
         return pulumi.get(self, "share_dashboards_outside_organization")
 
     @share_dashboards_outside_organization.setter
@@ -79,6 +100,9 @@ class PoliciesArgs:
     @property
     @pulumi.getter(name="userConcurrentSessionsLimit")
     def user_concurrent_sessions_limit(self) -> pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']:
+        """
+        The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        """
         return pulumi.get(self, "user_concurrent_sessions_limit")
 
     @user_concurrent_sessions_limit.setter
@@ -97,6 +121,12 @@ class _PoliciesState:
                  user_concurrent_sessions_limit: Optional[pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']] = None):
         """
         Input properties used for looking up and filtering Policies resources.
+        :param pulumi.Input[bool] audit: Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        :param pulumi.Input[bool] data_access_level: Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         if audit is not None:
             pulumi.set(__self__, "audit", audit)
@@ -114,6 +144,9 @@ class _PoliciesState:
     @property
     @pulumi.getter
     def audit(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        """
         return pulumi.get(self, "audit")
 
     @audit.setter
@@ -123,6 +156,9 @@ class _PoliciesState:
     @property
     @pulumi.getter(name="dataAccessLevel")
     def data_access_level(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        """
         return pulumi.get(self, "data_access_level")
 
     @data_access_level.setter
@@ -132,6 +168,9 @@ class _PoliciesState:
     @property
     @pulumi.getter(name="maxUserSessionTimeout")
     def max_user_session_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        """
         return pulumi.get(self, "max_user_session_timeout")
 
     @max_user_session_timeout.setter
@@ -141,6 +180,9 @@ class _PoliciesState:
     @property
     @pulumi.getter(name="searchAudit")
     def search_audit(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        """
         return pulumi.get(self, "search_audit")
 
     @search_audit.setter
@@ -150,6 +192,9 @@ class _PoliciesState:
     @property
     @pulumi.getter(name="shareDashboardsOutsideOrganization")
     def share_dashboards_outside_organization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        """
         return pulumi.get(self, "share_dashboards_outside_organization")
 
     @share_dashboards_outside_organization.setter
@@ -159,6 +204,9 @@ class _PoliciesState:
     @property
     @pulumi.getter(name="userConcurrentSessionsLimit")
     def user_concurrent_sessions_limit(self) -> Optional[pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']]:
+        """
+        The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        """
         return pulumi.get(self, "user_concurrent_sessions_limit")
 
     @user_concurrent_sessions_limit.setter
@@ -207,20 +255,6 @@ class Policies(pulumi.CustomResource):
                 max_concurrent_sessions=100,
             ))
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `audit` - (Required) Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
-        - `data_access_level` - (Required) Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
-        - `max_user_session_timeout` - (Required) The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
-        - `search_audit` - (Required) Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
-        - `share_dashboards_outside_organization` - (Required) Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-        - `user_concurrent_sessions_limit` - (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
-
-        ### Schema for `user_concurrent_sessions_limit`
-        - `enabled` - (Required) Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-        - `max_concurrent_sessions` - (Optional) Maximum number of concurrent sessions a user may have. Defaults to `100`.
 
         ## Import
 
@@ -234,6 +268,12 @@ class Policies(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] audit: Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        :param pulumi.Input[bool] data_access_level: Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        :param pulumi.Input[pulumi.InputType['PoliciesUserConcurrentSessionsLimitArgs']] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         ...
     @overload
@@ -270,20 +310,6 @@ class Policies(pulumi.CustomResource):
                 max_concurrent_sessions=100,
             ))
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `audit` - (Required) Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
-        - `data_access_level` - (Required) Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
-        - `max_user_session_timeout` - (Required) The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
-        - `search_audit` - (Required) Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
-        - `share_dashboards_outside_organization` - (Required) Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-        - `user_concurrent_sessions_limit` - (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
-
-        ### Schema for `user_concurrent_sessions_limit`
-        - `enabled` - (Required) Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-        - `max_concurrent_sessions` - (Optional) Maximum number of concurrent sessions a user may have. Defaults to `100`.
 
         ## Import
 
@@ -369,6 +395,12 @@ class Policies(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] audit: Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        :param pulumi.Input[bool] data_access_level: Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        :param pulumi.Input[pulumi.InputType['PoliciesUserConcurrentSessionsLimitArgs']] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -385,30 +417,48 @@ class Policies(pulumi.CustomResource):
     @property
     @pulumi.getter
     def audit(self) -> pulumi.Output[bool]:
+        """
+        Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        """
         return pulumi.get(self, "audit")
 
     @property
     @pulumi.getter(name="dataAccessLevel")
     def data_access_level(self) -> pulumi.Output[bool]:
+        """
+        Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        """
         return pulumi.get(self, "data_access_level")
 
     @property
     @pulumi.getter(name="maxUserSessionTimeout")
     def max_user_session_timeout(self) -> pulumi.Output[str]:
+        """
+        The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        """
         return pulumi.get(self, "max_user_session_timeout")
 
     @property
     @pulumi.getter(name="searchAudit")
     def search_audit(self) -> pulumi.Output[bool]:
+        """
+        Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        """
         return pulumi.get(self, "search_audit")
 
     @property
     @pulumi.getter(name="shareDashboardsOutsideOrganization")
     def share_dashboards_outside_organization(self) -> pulumi.Output[bool]:
+        """
+        Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        """
         return pulumi.get(self, "share_dashboards_outside_organization")
 
     @property
     @pulumi.getter(name="userConcurrentSessionsLimit")
     def user_concurrent_sessions_limit(self) -> pulumi.Output['outputs.PoliciesUserConcurrentSessionsLimit']:
+        """
+        The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        """
         return pulumi.get(self, "user_concurrent_sessions_limit")
 

@@ -12,15 +12,27 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CseLogMappingStructuredInputGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Event id pattern.
+        /// </summary>
         [Input("eventIdPattern", required: true)]
         public Input<string> EventIdPattern { get; set; } = null!;
 
+        /// <summary>
+        /// Log format. (JSON, Windows, Syslog, CEF, LEEF )
+        /// </summary>
         [Input("logFormat", required: true)]
         public Input<string> LogFormat { get; set; } = null!;
 
+        /// <summary>
+        /// Product name.
+        /// </summary>
         [Input("product", required: true)]
         public Input<string> Product { get; set; } = null!;
 
+        /// <summary>
+        /// Vendor name.
+        /// </summary>
         [Input("vendor", required: true)]
         public Input<string> Vendor { get; set; } = null!;
 

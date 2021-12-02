@@ -17,16 +17,6 @@ import * as utilities from "./utilities";
  *     severityExpression: "severity + 2",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
- * - `severityExpression` - (Required) Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the entity criticality configuration.
  *
  * ## Import
  *
@@ -64,7 +54,13 @@ export class CseEntityCriticalityConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseEntityCriticalityConfig.__pulumiType;
     }
 
+    /**
+     * Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+     */
     public readonly severityExpression!: pulumi.Output<string>;
 
     /**
@@ -101,7 +97,13 @@ export class CseEntityCriticalityConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseEntityCriticalityConfig resources.
  */
 export interface CseEntityCriticalityConfigState {
+    /**
+     * Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+     */
     severityExpression?: pulumi.Input<string>;
 }
 
@@ -109,6 +111,12 @@ export interface CseEntityCriticalityConfigState {
  * The set of arguments for constructing a CseEntityCriticalityConfig resource.
  */
 export interface CseEntityCriticalityConfigArgs {
+    /**
+     * Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+     */
     severityExpression: pulumi.Input<string>;
 }

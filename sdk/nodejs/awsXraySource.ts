@@ -6,6 +6,37 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
+ *
+ * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const collector = new sumologic.Collector("collector", {
+ *     description: "Just testing this",
+ * });
+ * const awsXraySource = new sumologic.AwsXraySource("aws_xray_source", {
+ *     authentication: {
+ *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
+ *         type: "AWSRoleBasedAuthentication",
+ *     },
+ *     category: "aws/xray",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "AwsXRay",
+ *     description: "My description",
+ *     path: {
+ *         limitToRegions: ["us-west-2"],
+ *         type: "AwsXRayPath",
+ *     },
+ *     paused: false,
+ *     scanInterval: 300000,
+ * });
+ * ```
+ *
  * ## Import
  *
  * AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -48,10 +79,16 @@ export class AwsXraySource extends pulumi.CustomResource {
         return obj['__pulumiType'] === AwsXraySource.__pulumiType;
     }
 
+    /**
+     * Authentication details for making `xray:Get*` calls.
+     */
     public readonly authentication!: pulumi.Output<outputs.AwsXraySourceAuthentication>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+     */
     public readonly contentType!: pulumi.Output<string>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -64,8 +101,17 @@ export class AwsXraySource extends pulumi.CustomResource {
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
     public readonly multilineProcessingEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The location to scan for new data.
+     */
     public readonly path!: pulumi.Output<outputs.AwsXraySourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     public readonly paused!: pulumi.Output<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+     */
     public readonly scanInterval!: pulumi.Output<number>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -160,10 +206,16 @@ export class AwsXraySource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AwsXraySource resources.
  */
 export interface AwsXraySourceState {
+    /**
+     * Authentication details for making `xray:Get*` calls.
+     */
     authentication?: pulumi.Input<inputs.AwsXraySourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -176,8 +228,17 @@ export interface AwsXraySourceState {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path?: pulumi.Input<inputs.AwsXraySourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused?: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+     */
     scanInterval?: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
@@ -188,10 +249,16 @@ export interface AwsXraySourceState {
  * The set of arguments for constructing a AwsXraySource resource.
  */
 export interface AwsXraySourceArgs {
+    /**
+     * Authentication details for making `xray:Get*` calls.
+     */
     authentication: pulumi.Input<inputs.AwsXraySourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+     */
     contentType: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -204,8 +271,17 @@ export interface AwsXraySourceArgs {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path: pulumi.Input<inputs.AwsXraySourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+     */
     scanInterval: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;

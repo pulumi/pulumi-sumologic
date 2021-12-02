@@ -299,6 +299,10 @@ class AwsInventorySourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        :param str role_arn: Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -312,6 +316,9 @@ class AwsInventorySourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -327,6 +334,9 @@ class AwsInventorySourceAuthentication(dict):
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+        """
         return pulumi.get(self, "role_arn")
 
     @property
@@ -443,6 +453,24 @@ class AwsInventorySourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.AwsInventorySourcePathTagFilter']] = None):
+        """
+        :param str type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        :param Sequence[str] limit_to_namespaces: List of namespaces. By default all namespaces are selected. You can also choose a subset from
+               + AWS/EC2
+               + AWS/AutoScaling
+               + AWS/EBS
+               + AWS/ELB
+               + AWS/ApplicationELB
+               + AWS/NetworkELB
+               + AWS/Lambda
+               + AWS/RDS
+               + AWS/Dynamodb
+               + AWS/ECS
+               + AWS/Elasticache
+               + AWS/Redshift
+               + AWS/Kinesis
+        :param Sequence[str] limit_to_regions: List of Amazon regions.
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -460,6 +488,9 @@ class AwsInventorySourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -470,11 +501,30 @@ class AwsInventorySourcePath(dict):
     @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        List of namespaces. By default all namespaces are selected. You can also choose a subset from
+        + AWS/EC2
+        + AWS/AutoScaling
+        + AWS/EBS
+        + AWS/ELB
+        + AWS/ApplicationELB
+        + AWS/NetworkELB
+        + AWS/Lambda
+        + AWS/RDS
+        + AWS/Dynamodb
+        + AWS/ECS
+        + AWS/Elasticache
+        + AWS/Redshift
+        + AWS/Kinesis
+        """
         return pulumi.get(self, "limit_to_namespaces")
 
     @property
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
+        """
+        List of Amazon regions.
+        """
         return pulumi.get(self, "limit_to_regions")
 
     @property
@@ -537,6 +587,9 @@ class AwsInventorySourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -557,6 +610,9 @@ class AwsInventorySourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
         return pulumi.get(self, "type")
 
 
@@ -589,6 +645,12 @@ class AwsXraySourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -602,11 +664,17 @@ class AwsXraySourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "access_key")
 
     @property
@@ -617,11 +685,17 @@ class AwsXraySourceAuthentication(dict):
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -733,6 +807,10 @@ class AwsXraySourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.AwsXraySourcePathTagFilter']] = None):
+        """
+        :param str type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        :param Sequence[str] limit_to_regions: List of Amazon regions.
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -750,6 +828,9 @@ class AwsXraySourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -765,6 +846,9 @@ class AwsXraySourcePath(dict):
     @property
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
+        """
+        List of Amazon regions.
+        """
         return pulumi.get(self, "limit_to_regions")
 
     @property
@@ -827,6 +911,9 @@ class AwsXraySourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -847,6 +934,9 @@ class AwsXraySourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        """
         return pulumi.get(self, "type")
 
 
@@ -950,6 +1040,13 @@ class CloudfrontSourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str region: Your AWS Bucket region.
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -963,26 +1060,41 @@ class CloudfrontSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Your AWS Bucket region.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -1094,6 +1206,12 @@ class CloudfrontSourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.CloudfrontSourcePathTagFilter']] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        :param str bucket_name: The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        :param str path_expression: The path to the data. This is needed if using type `S3BucketPathExpression`.
+        :param Sequence['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -1111,11 +1229,17 @@ class CloudfrontSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
+        """
+        The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
@@ -1131,11 +1255,17 @@ class CloudfrontSourcePath(dict):
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[str]:
+        """
+        The path to the data. This is needed if using type `S3BucketPathExpression`.
+        """
         return pulumi.get(self, "path_expression")
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
     def sns_topic_or_subscription_arns(self) -> Optional[Sequence['outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn']]:
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
         return pulumi.get(self, "sns_topic_or_subscription_arns")
 
     @property
@@ -1188,6 +1318,9 @@ class CloudfrontSourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -1208,6 +1341,9 @@ class CloudfrontSourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        """
         return pulumi.get(self, "type")
 
 
@@ -1240,6 +1376,13 @@ class CloudtrailSourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str region: Your AWS Bucket region.
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -1253,26 +1396,41 @@ class CloudtrailSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Your AWS Bucket region.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -1384,6 +1542,12 @@ class CloudtrailSourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.CloudtrailSourcePathTagFilter']] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        :param str bucket_name: The name of the bucket.
+        :param str path_expression: The path to the data.
+        :param Sequence['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -1401,11 +1565,17 @@ class CloudtrailSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
+        """
+        The name of the bucket.
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
@@ -1421,11 +1591,17 @@ class CloudtrailSourcePath(dict):
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[str]:
+        """
+        The path to the data.
+        """
         return pulumi.get(self, "path_expression")
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
     def sns_topic_or_subscription_arns(self) -> Optional[Sequence['outputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn']]:
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
         return pulumi.get(self, "sns_topic_or_subscription_arns")
 
     @property
@@ -1478,6 +1654,9 @@ class CloudtrailSourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -1498,6 +1677,9 @@ class CloudtrailSourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        """
         return pulumi.get(self, "type")
 
 
@@ -1530,6 +1712,13 @@ class CloudwatchSourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: This value has to be set to `TagFilters`
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str region: Your AWS Bucket region.
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -1543,26 +1732,41 @@ class CloudwatchSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Your AWS Bucket region.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -1674,6 +1878,12 @@ class CloudwatchSourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.CloudwatchSourcePathTagFilter']] = None):
+        """
+        :param str type: This value has to be set to `TagFilters`
+        :param Sequence[str] limit_to_namespaces: List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+        :param Sequence[str] limit_to_regions: List of Amazon regions.
+        :param Sequence['CloudwatchSourcePathTagFilterArgs'] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -1691,6 +1901,9 @@ class CloudwatchSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
     @property
@@ -1701,11 +1914,17 @@ class CloudwatchSourcePath(dict):
     @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+        """
         return pulumi.get(self, "limit_to_namespaces")
 
     @property
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
+        """
+        List of Amazon regions.
+        """
         return pulumi.get(self, "limit_to_regions")
 
     @property
@@ -1721,6 +1940,9 @@ class CloudwatchSourcePath(dict):
     @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.CloudwatchSourcePathTagFilter']]:
+        """
+        Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
         return pulumi.get(self, "tag_filters")
 
 
@@ -1768,6 +1990,11 @@ class CloudwatchSourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        :param Sequence[str] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        :param str type: This value has to be set to `TagFilters`
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -1778,16 +2005,25 @@ class CloudwatchSourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def namespace(self) -> Optional[str]:
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
 
@@ -1797,6 +2033,11 @@ class CseAggregationRuleAggregationFunction(dict):
                  arguments: Sequence[str],
                  function: str,
                  name: str):
+        """
+        :param Sequence[str] arguments: One or more expressions to pass as arguments to the function
+        :param str function: The function to aggregate with
+        :param str name: The name of the Rule
+        """
         pulumi.set(__self__, "arguments", arguments)
         pulumi.set(__self__, "function", function)
         pulumi.set(__self__, "name", name)
@@ -1804,16 +2045,25 @@ class CseAggregationRuleAggregationFunction(dict):
     @property
     @pulumi.getter
     def arguments(self) -> Sequence[str]:
+        """
+        One or more expressions to pass as arguments to the function
+        """
         return pulumi.get(self, "arguments")
 
     @property
     @pulumi.getter
     def function(self) -> str:
+        """
+        The function to aggregate with
+        """
         return pulumi.get(self, "function")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the Rule
+        """
         return pulumi.get(self, "name")
 
 
@@ -1839,6 +2089,9 @@ class CseAggregationRuleEntitySelector(dict):
     def __init__(__self__, *,
                  entity_type: str,
                  expression: str):
+        """
+        :param str expression: The expression or field name to generate the Signal on.
+        """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "expression", expression)
 
@@ -1850,6 +2103,9 @@ class CseAggregationRuleEntitySelector(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        The expression or field name to generate the Signal on.
+        """
         return pulumi.get(self, "expression")
 
 
@@ -1860,6 +2116,12 @@ class CseAggregationRuleSeverityMapping(dict):
                  default: Optional[int] = None,
                  field: Optional[str] = None,
                  mappings: Optional[Sequence['outputs.CseAggregationRuleSeverityMappingMapping']] = None):
+        """
+        :param str type: Must be set to "eq" currently
+        :param int default: The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        :param str field: The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        :param Sequence['CseAggregationRuleSeverityMappingMappingArgs'] mappings: The map of record values to severities to use in the "fieldValueMapping" case
+        """
         pulumi.set(__self__, "type", type)
         if default is not None:
             pulumi.set(__self__, "default", default)
@@ -1871,21 +2133,33 @@ class CseAggregationRuleSeverityMapping(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Must be set to "eq" currently
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def default(self) -> Optional[int]:
+        """
+        The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def field(self) -> Optional[str]:
+        """
+        The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        """
         return pulumi.get(self, "field")
 
     @property
     @pulumi.getter
     def mappings(self) -> Optional[Sequence['outputs.CseAggregationRuleSeverityMappingMapping']]:
+        """
+        The map of record values to severities to use in the "fieldValueMapping" case
+        """
         return pulumi.get(self, "mappings")
 
 
@@ -1912,6 +2186,11 @@ class CseAggregationRuleSeverityMappingMapping(dict):
                  from_: str,
                  to: int,
                  type: str):
+        """
+        :param str from_: The record value to map from
+        :param int to: The severity value to map to
+        :param str type: Must be set to "eq" currently
+        """
         pulumi.set(__self__, "from_", from_)
         pulumi.set(__self__, "to", to)
         pulumi.set(__self__, "type", type)
@@ -1919,16 +2198,25 @@ class CseAggregationRuleSeverityMappingMapping(dict):
     @property
     @pulumi.getter(name="from")
     def from_(self) -> str:
+        """
+        The record value to map from
+        """
         return pulumi.get(self, "from_")
 
     @property
     @pulumi.getter
     def to(self) -> int:
+        """
+        The severity value to map to
+        """
         return pulumi.get(self, "to")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Must be set to "eq" currently
+        """
         return pulumi.get(self, "type")
 
 
@@ -1954,6 +2242,9 @@ class CseChainRuleEntitySelector(dict):
     def __init__(__self__, *,
                  entity_type: str,
                  expression: str):
+        """
+        :param str expression: The expression for which records to match on
+        """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "expression", expression)
 
@@ -1965,6 +2256,9 @@ class CseChainRuleEntitySelector(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "expression")
 
 
@@ -1973,17 +2267,27 @@ class CseChainRuleExpressionsAndLimit(dict):
     def __init__(__self__, *,
                  expression: str,
                  limit: int):
+        """
+        :param str expression: The expression for which records to match on
+        :param int limit: How many times this expression must match for the Signal to fire
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "limit", limit)
 
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter
     def limit(self) -> int:
+        """
+        How many times this expression must match for the Signal to fire
+        """
         return pulumi.get(self, "limit")
 
 
@@ -2042,6 +2346,22 @@ class CseLogMappingField(dict):
                  time_zone: Optional[str] = None,
                  value: Optional[str] = None,
                  value_type: Optional[str] = None):
+        """
+        :param str name: Name of the field.
+        :param Sequence[str] alternate_values: List of alternate values.
+        :param bool case_insensitive: Case insensitive flag.
+        :param str default_value: Default value of the field.
+        :param Sequence[str] field_joins: List of field join values.
+        :param str format: Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+        :param Sequence[str] format_parameters: List of format parameters.
+        :param str join_delimiter: Join delimiter.
+        :param Sequence['CseLogMappingFieldLookupArgs'] lookups: List of lookup key value pair for field. See lookup_schema for details.
+        :param Sequence[str] skipped_values: List of skipped values.
+        :param str split_delimiter: Split delimiter to be used. (some example: ",", "-", "|")
+        :param str time_zone: Time zone.
+        :param str value: Lookup value.
+        :param str value_type: The value type.
+        """
         pulumi.set(__self__, "name", name)
         if alternate_values is not None:
             pulumi.set(__self__, "alternate_values", alternate_values)
@@ -2075,56 +2395,89 @@ class CseLogMappingField(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the field.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="alternateValues")
     def alternate_values(self) -> Optional[Sequence[str]]:
+        """
+        List of alternate values.
+        """
         return pulumi.get(self, "alternate_values")
 
     @property
     @pulumi.getter(name="caseInsensitive")
     def case_insensitive(self) -> Optional[bool]:
+        """
+        Case insensitive flag.
+        """
         return pulumi.get(self, "case_insensitive")
 
     @property
     @pulumi.getter(name="defaultValue")
     def default_value(self) -> Optional[str]:
+        """
+        Default value of the field.
+        """
         return pulumi.get(self, "default_value")
 
     @property
     @pulumi.getter(name="fieldJoins")
     def field_joins(self) -> Optional[Sequence[str]]:
+        """
+        List of field join values.
+        """
         return pulumi.get(self, "field_joins")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+        """
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter(name="formatParameters")
     def format_parameters(self) -> Optional[Sequence[str]]:
+        """
+        List of format parameters.
+        """
         return pulumi.get(self, "format_parameters")
 
     @property
     @pulumi.getter(name="joinDelimiter")
     def join_delimiter(self) -> Optional[str]:
+        """
+        Join delimiter.
+        """
         return pulumi.get(self, "join_delimiter")
 
     @property
     @pulumi.getter
     def lookups(self) -> Optional[Sequence['outputs.CseLogMappingFieldLookup']]:
+        """
+        List of lookup key value pair for field. See lookup_schema for details.
+        """
         return pulumi.get(self, "lookups")
 
     @property
     @pulumi.getter(name="skippedValues")
     def skipped_values(self) -> Optional[Sequence[str]]:
+        """
+        List of skipped values.
+        """
         return pulumi.get(self, "skipped_values")
 
     @property
     @pulumi.getter(name="splitDelimiter")
     def split_delimiter(self) -> Optional[str]:
+        """
+        Split delimiter to be used. (some example: ",", "-", "|")
+        """
         return pulumi.get(self, "split_delimiter")
 
     @property
@@ -2135,16 +2488,25 @@ class CseLogMappingField(dict):
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[str]:
+        """
+        Time zone.
+        """
         return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        Lookup value.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[str]:
+        """
+        The value type.
+        """
         return pulumi.get(self, "value_type")
 
 
@@ -2153,17 +2515,27 @@ class CseLogMappingFieldLookup(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
+        """
+        :param str key: Lookup key.
+        :param str value: Lookup value.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        Lookup key.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Lookup value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -2193,6 +2565,12 @@ class CseLogMappingStructuredInput(dict):
                  log_format: str,
                  product: str,
                  vendor: str):
+        """
+        :param str event_id_pattern: Event id pattern.
+        :param str log_format: Log format. (JSON, Windows, Syslog, CEF, LEEF )
+        :param str product: Product name.
+        :param str vendor: Vendor name.
+        """
         pulumi.set(__self__, "event_id_pattern", event_id_pattern)
         pulumi.set(__self__, "log_format", log_format)
         pulumi.set(__self__, "product", product)
@@ -2201,21 +2579,33 @@ class CseLogMappingStructuredInput(dict):
     @property
     @pulumi.getter(name="eventIdPattern")
     def event_id_pattern(self) -> str:
+        """
+        Event id pattern.
+        """
         return pulumi.get(self, "event_id_pattern")
 
     @property
     @pulumi.getter(name="logFormat")
     def log_format(self) -> str:
+        """
+        Log format. (JSON, Windows, Syslog, CEF, LEEF )
+        """
         return pulumi.get(self, "log_format")
 
     @property
     @pulumi.getter
     def product(self) -> str:
+        """
+        Product name.
+        """
         return pulumi.get(self, "product")
 
     @property
     @pulumi.getter
     def vendor(self) -> str:
+        """
+        Vendor name.
+        """
         return pulumi.get(self, "vendor")
 
 
@@ -2240,11 +2630,17 @@ class CseLogMappingUnstructuredFields(dict):
 
     def __init__(__self__, *,
                  pattern_names: Sequence[str]):
+        """
+        :param Sequence[str] pattern_names: List of grok pattern names.
+        """
         pulumi.set(__self__, "pattern_names", pattern_names)
 
     @property
     @pulumi.getter(name="patternNames")
     def pattern_names(self) -> Sequence[str]:
+        """
+        List of grok pattern names.
+        """
         return pulumi.get(self, "pattern_names")
 
 
@@ -2270,6 +2666,9 @@ class CseMatchRuleEntitySelector(dict):
     def __init__(__self__, *,
                  entity_type: str,
                  expression: str):
+        """
+        :param str expression: The expression for which records to match on
+        """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "expression", expression)
 
@@ -2281,6 +2680,9 @@ class CseMatchRuleEntitySelector(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "expression")
 
 
@@ -2291,6 +2693,12 @@ class CseMatchRuleSeverityMapping(dict):
                  default: Optional[int] = None,
                  field: Optional[str] = None,
                  mappings: Optional[Sequence['outputs.CseMatchRuleSeverityMappingMapping']] = None):
+        """
+        :param str type: Must be set to "eq" currently
+        :param int default: The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        :param str field: The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        :param Sequence['CseMatchRuleSeverityMappingMappingArgs'] mappings: The map of record values to severities to use in the "fieldValueMapping" case
+        """
         pulumi.set(__self__, "type", type)
         if default is not None:
             pulumi.set(__self__, "default", default)
@@ -2302,21 +2710,33 @@ class CseMatchRuleSeverityMapping(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Must be set to "eq" currently
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def default(self) -> Optional[int]:
+        """
+        The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def field(self) -> Optional[str]:
+        """
+        The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        """
         return pulumi.get(self, "field")
 
     @property
     @pulumi.getter
     def mappings(self) -> Optional[Sequence['outputs.CseMatchRuleSeverityMappingMapping']]:
+        """
+        The map of record values to severities to use in the "fieldValueMapping" case
+        """
         return pulumi.get(self, "mappings")
 
 
@@ -2343,6 +2763,11 @@ class CseMatchRuleSeverityMappingMapping(dict):
                  from_: str,
                  to: int,
                  type: str):
+        """
+        :param str from_: The record value to map from
+        :param int to: The severity value to map to
+        :param str type: Must be set to "eq" currently
+        """
         pulumi.set(__self__, "from_", from_)
         pulumi.set(__self__, "to", to)
         pulumi.set(__self__, "type", type)
@@ -2350,16 +2775,25 @@ class CseMatchRuleSeverityMappingMapping(dict):
     @property
     @pulumi.getter(name="from")
     def from_(self) -> str:
+        """
+        The record value to map from
+        """
         return pulumi.get(self, "from_")
 
     @property
     @pulumi.getter
     def to(self) -> int:
+        """
+        The severity value to map to
+        """
         return pulumi.get(self, "to")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Must be set to "eq" currently
+        """
         return pulumi.get(self, "type")
 
 
@@ -2385,6 +2819,9 @@ class CseThresholdRuleEntitySelector(dict):
     def __init__(__self__, *,
                  entity_type: str,
                  expression: str):
+        """
+        :param str expression: The expression for which records to match on
+        """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "expression", expression)
 
@@ -2396,6 +2833,9 @@ class CseThresholdRuleEntitySelector(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "expression")
 
 
@@ -2621,6 +3061,12 @@ class DashboardPanelSumoSearchPanel(dict):
                  time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRange'] = None,
                  title: Optional[str] = None,
                  visual_settings: Optional[str] = None):
+        """
+        :param str description: Description of the dashboard.
+        :param 'DashboardPanelSumoSearchPanelTimeRangeArgs' time_range: Time range of the dashboard. See time range schema
+               for details.
+        :param str title: Title of the dashboard.
+        """
         pulumi.set(__self__, "key", key)
         if coloring_rule is not None:
             pulumi.set(__self__, "coloring_rule", coloring_rule)
@@ -2654,6 +3100,9 @@ class DashboardPanelSumoSearchPanel(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        Description of the dashboard.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -2679,11 +3128,18 @@ class DashboardPanelSumoSearchPanel(dict):
     @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional['outputs.DashboardPanelSumoSearchPanelTimeRange']:
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
         return pulumi.get(self, "time_range")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        Title of the dashboard.
+        """
         return pulumi.get(self, "title")
 
     @property
@@ -3529,6 +3985,9 @@ class DashboardPanelTextPanel(dict):
                  text: Optional[str] = None,
                  title: Optional[str] = None,
                  visual_settings: Optional[str] = None):
+        """
+        :param str title: Title of the dashboard.
+        """
         pulumi.set(__self__, "key", key)
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -3564,6 +4023,9 @@ class DashboardPanelTextPanel(dict):
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        Title of the dashboard.
+        """
         return pulumi.get(self, "title")
 
     @property
@@ -4284,6 +4746,13 @@ class ElbSourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`.
+        :param str region: Your AWS Bucket region.
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -4297,26 +4766,41 @@ class ElbSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Your AWS Bucket region.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -4428,6 +4912,12 @@ class ElbSourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.ElbSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.ElbSourcePathTagFilter']] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        :param str bucket_name: The name of the bucket.
+        :param str path_expression: The path to the data.
+        :param Sequence['ElbSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -4445,11 +4935,17 @@ class ElbSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
+        """
+        The name of the bucket.
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
@@ -4465,11 +4961,17 @@ class ElbSourcePath(dict):
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[str]:
+        """
+        The path to the data.
+        """
         return pulumi.get(self, "path_expression")
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
     def sns_topic_or_subscription_arns(self) -> Optional[Sequence['outputs.ElbSourcePathSnsTopicOrSubscriptionArn']]:
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
         return pulumi.get(self, "sns_topic_or_subscription_arns")
 
     @property
@@ -4522,6 +5024,9 @@ class ElbSourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -4542,6 +5047,9 @@ class ElbSourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        """
         return pulumi.get(self, "type")
 
 
@@ -9066,6 +9574,12 @@ class KinesisMetricsSourceAuthentication(dict):
                  access_key: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: This value has to be set to `TagFilters`
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -9077,21 +9591,33 @@ class KinesisMetricsSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -9188,6 +9714,10 @@ class KinesisMetricsSourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  tag_filters: Optional[Sequence['outputs.KinesisMetricsSourcePathTagFilter']] = None):
+        """
+        :param str type: This value has to be set to `TagFilters`
+        :param Sequence['KinesisMetricsSourcePathTagFilterArgs'] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
         pulumi.set(__self__, "type", type)
         if tag_filters is not None:
             pulumi.set(__self__, "tag_filters", tag_filters)
@@ -9195,11 +9725,17 @@ class KinesisMetricsSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.KinesisMetricsSourcePathTagFilter']]:
+        """
+        Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
         return pulumi.get(self, "tag_filters")
 
 
@@ -9209,6 +9745,11 @@ class KinesisMetricsSourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        :param Sequence[str] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        :param str type: This value has to be set to `TagFilters`
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -9219,16 +9760,25 @@ class KinesisMetricsSourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def namespace(self) -> Optional[str]:
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
 
@@ -9298,6 +9848,12 @@ class MetadataSourceAuthentication(dict):
                  access_key: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. Only allowed value is `AwsMetadataPath`.
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -9309,21 +9865,33 @@ class MetadataSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. Only allowed value is `AwsMetadataPath`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -9426,6 +9994,12 @@ class MetadataSourcePath(dict):
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
                  tag_filters: Optional[Sequence[str]] = None):
+        """
+        :param str type: type of polling source. Only allowed value is `AwsMetadataPath`.
+        :param Sequence[str] limit_to_namespaces: List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
+        :param Sequence[str] limit_to_regions: List of Amazon regions.
+        :param Sequence[str] tag_filters: Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+        """
         pulumi.set(__self__, "type", type)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
@@ -9437,21 +10011,33 @@ class MetadataSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. Only allowed value is `AwsMetadataPath`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
+        """
         return pulumi.get(self, "limit_to_namespaces")
 
     @property
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
+        """
+        List of Amazon regions.
+        """
         return pulumi.get(self, "limit_to_regions")
 
     @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence[str]]:
+        """
+        Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+        """
         return pulumi.get(self, "tag_filters")
 
 
@@ -10624,6 +11210,10 @@ class PoliciesUserConcurrentSessionsLimit(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  max_concurrent_sessions: Optional[int] = None):
+        """
+        :param bool enabled: Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+        :param int max_concurrent_sessions: Maximum number of concurrent sessions a user may have. Defaults to `100`.
+        """
         pulumi.set(__self__, "enabled", enabled)
         if max_concurrent_sessions is not None:
             pulumi.set(__self__, "max_concurrent_sessions", max_concurrent_sessions)
@@ -10631,11 +11221,17 @@ class PoliciesUserConcurrentSessionsLimit(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="maxConcurrentSessions")
     def max_concurrent_sessions(self) -> Optional[int]:
+        """
+        Maximum number of concurrent sessions a user may have. Defaults to `100`.
+        """
         return pulumi.get(self, "max_concurrent_sessions")
 
 
@@ -10667,6 +11263,12 @@ class PollingSourceAuthentication(dict):
                  access_key: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: This value has to be set to `TagFilters`
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -10678,21 +11280,33 @@ class PollingSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -10801,6 +11415,14 @@ class PollingSourcePath(dict):
                  limit_to_regions: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  tag_filters: Optional[Sequence['outputs.PollingSourcePathTagFilter']] = None):
+        """
+        :param str type: This value has to be set to `TagFilters`
+        :param str bucket_name: The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        :param Sequence[str] limit_to_namespaces: List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+        :param Sequence[str] limit_to_regions: List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
+        :param str path_expression: The path to the data. This is needed if using type `S3BucketPathExpression`.
+        :param Sequence['PollingSourcePathTagFilterArgs'] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -10816,31 +11438,49 @@ class PollingSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
+        """
+        The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+        """
         return pulumi.get(self, "limit_to_namespaces")
 
     @property
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
+        """
+        List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
+        """
         return pulumi.get(self, "limit_to_regions")
 
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[str]:
+        """
+        The path to the data. This is needed if using type `S3BucketPathExpression`.
+        """
         return pulumi.get(self, "path_expression")
 
     @property
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.PollingSourcePathTagFilter']]:
+        """
+        Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
         return pulumi.get(self, "tag_filters")
 
 
@@ -10850,6 +11490,11 @@ class PollingSourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        :param Sequence[str] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        :param str type: This value has to be set to `TagFilters`
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -10860,16 +11505,25 @@ class PollingSourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def namespace(self) -> Optional[str]:
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        This value has to be set to `TagFilters`
+        """
         return pulumi.get(self, "type")
 
 
@@ -10902,6 +11556,13 @@ class S3AuditSourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`.
+        :param str region: Your AWS Bucket region.
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -10915,26 +11576,41 @@ class S3AuditSourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Your AWS Bucket region.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -11046,6 +11722,12 @@ class S3AuditSourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.S3AuditSourcePathTagFilter']] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        :param str bucket_name: The name of the bucket.
+        :param str path_expression: The path to the data.
+        :param Sequence['S3AuditSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -11063,11 +11745,17 @@ class S3AuditSourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
+        """
+        The name of the bucket.
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
@@ -11083,11 +11771,17 @@ class S3AuditSourcePath(dict):
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[str]:
+        """
+        The path to the data.
+        """
         return pulumi.get(self, "path_expression")
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
     def sns_topic_or_subscription_arns(self) -> Optional[Sequence['outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn']]:
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
         return pulumi.get(self, "sns_topic_or_subscription_arns")
 
     @property
@@ -11140,6 +11834,9 @@ class S3AuditSourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -11160,6 +11857,9 @@ class S3AuditSourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        """
         return pulumi.get(self, "type")
 
 
@@ -11192,6 +11892,13 @@ class S3SourceAuthentication(dict):
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`.
+        :param str region: Your AWS Bucket region.
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
+        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -11205,26 +11912,41 @@ class S3SourceAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
         return pulumi.get(self, "access_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Your AWS Bucket region.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
         return pulumi.get(self, "secret_key")
 
 
@@ -11336,6 +12058,12 @@ class S3SourcePath(dict):
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3SourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.S3SourcePathTagFilter']] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        :param str bucket_name: The name of the bucket.
+        :param str path_expression: The path to the data.
+        :param Sequence['S3SourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
+        """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
@@ -11353,11 +12081,17 @@ class S3SourcePath(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
+        """
+        The name of the bucket.
+        """
         return pulumi.get(self, "bucket_name")
 
     @property
@@ -11373,11 +12107,17 @@ class S3SourcePath(dict):
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[str]:
+        """
+        The path to the data.
+        """
         return pulumi.get(self, "path_expression")
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
     def sns_topic_or_subscription_arns(self) -> Optional[Sequence['outputs.S3SourcePathSnsTopicOrSubscriptionArn']]:
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
         return pulumi.get(self, "sns_topic_or_subscription_arns")
 
     @property
@@ -11430,6 +12170,9 @@ class S3SourcePathTagFilter(dict):
                  namespace: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -11450,6 +12193,9 @@ class S3SourcePathTagFilter(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
         return pulumi.get(self, "type")
 
 
@@ -11480,6 +12226,11 @@ class SamlConfigurationOnDemandProvisioningEnabled(dict):
                  on_demand_provisioning_roles: Sequence[str],
                  first_name_attribute: Optional[str] = None,
                  last_name_attribute: Optional[str] = None):
+        """
+        :param Sequence[str] on_demand_provisioning_roles: List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+        :param str first_name_attribute: First name attribute of the new user account. Defaults to "".
+        :param str last_name_attribute: Last name attribute of the new user account. Defaults to "".
+        """
         pulumi.set(__self__, "on_demand_provisioning_roles", on_demand_provisioning_roles)
         if first_name_attribute is not None:
             pulumi.set(__self__, "first_name_attribute", first_name_attribute)
@@ -11489,16 +12240,25 @@ class SamlConfigurationOnDemandProvisioningEnabled(dict):
     @property
     @pulumi.getter(name="onDemandProvisioningRoles")
     def on_demand_provisioning_roles(self) -> Sequence[str]:
+        """
+        List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+        """
         return pulumi.get(self, "on_demand_provisioning_roles")
 
     @property
     @pulumi.getter(name="firstNameAttribute")
     def first_name_attribute(self) -> Optional[str]:
+        """
+        First name attribute of the new user account. Defaults to "".
+        """
         return pulumi.get(self, "first_name_attribute")
 
     @property
     @pulumi.getter(name="lastNameAttribute")
     def last_name_attribute(self) -> Optional[str]:
+        """
+        Last name attribute of the new user account. Defaults to "".
+        """
         return pulumi.get(self, "last_name_attribute")
 
 

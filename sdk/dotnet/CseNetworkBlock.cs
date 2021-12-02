@@ -33,18 +33,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `address_block` - (Required) The address block.
-    /// - `label` - (Required) The displayable label of the address block.
-    /// - `internal` - (Required) Internal flag.
-    /// - `suppresses_signals` - (Required) Suppresses signal flag.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the network block.
     /// 
     /// ## Import
     /// 
@@ -57,15 +45,27 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseNetworkBlock:CseNetworkBlock")]
     public partial class CseNetworkBlock : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The address block.
+        /// </summary>
         [Output("addressBlock")]
         public Output<string> AddressBlock { get; private set; } = null!;
 
+        /// <summary>
+        /// Internal flag.
+        /// </summary>
         [Output("internal")]
         public Output<bool?> Internal { get; private set; } = null!;
 
+        /// <summary>
+        /// The displayable label of the address block.
+        /// </summary>
         [Output("label")]
         public Output<string?> Label { get; private set; } = null!;
 
+        /// <summary>
+        /// Suppresses signal flag.
+        /// </summary>
         [Output("suppressesSignals")]
         public Output<bool?> SuppressesSignals { get; private set; } = null!;
 
@@ -115,15 +115,27 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseNetworkBlockArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The address block.
+        /// </summary>
         [Input("addressBlock", required: true)]
         public Input<string> AddressBlock { get; set; } = null!;
 
+        /// <summary>
+        /// Internal flag.
+        /// </summary>
         [Input("internal")]
         public Input<bool>? Internal { get; set; }
 
+        /// <summary>
+        /// The displayable label of the address block.
+        /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        /// <summary>
+        /// Suppresses signal flag.
+        /// </summary>
         [Input("suppressesSignals")]
         public Input<bool>? SuppressesSignals { get; set; }
 
@@ -134,15 +146,27 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseNetworkBlockState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The address block.
+        /// </summary>
         [Input("addressBlock")]
         public Input<string>? AddressBlock { get; set; }
 
+        /// <summary>
+        /// Internal flag.
+        /// </summary>
         [Input("internal")]
         public Input<bool>? Internal { get; set; }
 
+        /// <summary>
+        /// The displayable label of the address block.
+        /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        /// <summary>
+        /// Suppresses signal flag.
+        /// </summary>
         [Input("suppressesSignals")]
         public Input<bool>? SuppressesSignals { get; set; }
 

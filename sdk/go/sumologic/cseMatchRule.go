@@ -53,33 +53,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `descriptionExpression` - (Required) The description of the generated Signals
-// - `enabled` - (Required) Whether the rule should generate Signals
-// - `entitySelectors` - (Required) The entities to generate Signals on
-//   + `entityType` - (Required) The type of the entity to generate the Signal on.
-//   + `expression` - (Required) The expression or field name to generate the Signal on.
-// - `expression` - (Required) The expression for which records to match on
-// - `isPrototype` - (Optional) Whether the generated Signals should be prototype Signals
-// - `name` - (Required) The name of the Rule
-// - `nameExpression` - (Required) The name of the generated Signals
-// - `severityMapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-//   + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-//   + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-//   + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-//   + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-//     - `type` - (Required) Must be set to "eq" currently
-//     - `from` - (Required) The record value to map from
-//     - `to` - (Required) The severity value to map to
-// - `summaryExpression` - (Optional) The summary of the generated Signals
-// - `tags` - (Required) The tags of the generated Signals
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the match rule.
 //
 // ## Import
 //
@@ -91,16 +64,26 @@ import (
 type CseMatchRule struct {
 	pulumi.CustomResourceState
 
-	DescriptionExpression pulumi.StringOutput                   `pulumi:"descriptionExpression"`
-	Enabled               pulumi.BoolOutput                     `pulumi:"enabled"`
-	EntitySelectors       CseMatchRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
-	Expression            pulumi.StringOutput                   `pulumi:"expression"`
-	IsPrototype           pulumi.BoolPtrOutput                  `pulumi:"isPrototype"`
-	Name                  pulumi.StringOutput                   `pulumi:"name"`
-	NameExpression        pulumi.StringOutput                   `pulumi:"nameExpression"`
-	SeverityMapping       CseMatchRuleSeverityMappingOutput     `pulumi:"severityMapping"`
-	SummaryExpression     pulumi.StringPtrOutput                `pulumi:"summaryExpression"`
-	Tags                  pulumi.StringArrayOutput              `pulumi:"tags"`
+	// The description of the generated Signals
+	DescriptionExpression pulumi.StringOutput `pulumi:"descriptionExpression"`
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors CseMatchRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
+	// The expression for which records to match on
+	Expression pulumi.StringOutput `pulumi:"expression"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrOutput `pulumi:"isPrototype"`
+	// The name of the Rule
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the generated Signals
+	NameExpression pulumi.StringOutput `pulumi:"nameExpression"`
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseMatchRuleSeverityMappingOutput `pulumi:"severityMapping"`
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
 // NewCseMatchRule registers a new resource with the given unique name, arguments, and options.
@@ -150,29 +133,49 @@ func GetCseMatchRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseMatchRule resources.
 type cseMatchRuleState struct {
-	DescriptionExpression *string                      `pulumi:"descriptionExpression"`
-	Enabled               *bool                        `pulumi:"enabled"`
-	EntitySelectors       []CseMatchRuleEntitySelector `pulumi:"entitySelectors"`
-	Expression            *string                      `pulumi:"expression"`
-	IsPrototype           *bool                        `pulumi:"isPrototype"`
-	Name                  *string                      `pulumi:"name"`
-	NameExpression        *string                      `pulumi:"nameExpression"`
-	SeverityMapping       *CseMatchRuleSeverityMapping `pulumi:"severityMapping"`
-	SummaryExpression     *string                      `pulumi:"summaryExpression"`
-	Tags                  []string                     `pulumi:"tags"`
+	// The description of the generated Signals
+	DescriptionExpression *string `pulumi:"descriptionExpression"`
+	// Whether the rule should generate Signals
+	Enabled *bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseMatchRuleEntitySelector `pulumi:"entitySelectors"`
+	// The expression for which records to match on
+	Expression *string `pulumi:"expression"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// The name of the Rule
+	Name *string `pulumi:"name"`
+	// The name of the generated Signals
+	NameExpression *string `pulumi:"nameExpression"`
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping *CseMatchRuleSeverityMapping `pulumi:"severityMapping"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
 }
 
 type CseMatchRuleState struct {
+	// The description of the generated Signals
 	DescriptionExpression pulumi.StringPtrInput
-	Enabled               pulumi.BoolPtrInput
-	EntitySelectors       CseMatchRuleEntitySelectorArrayInput
-	Expression            pulumi.StringPtrInput
-	IsPrototype           pulumi.BoolPtrInput
-	Name                  pulumi.StringPtrInput
-	NameExpression        pulumi.StringPtrInput
-	SeverityMapping       CseMatchRuleSeverityMappingPtrInput
-	SummaryExpression     pulumi.StringPtrInput
-	Tags                  pulumi.StringArrayInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolPtrInput
+	// The entities to generate Signals on
+	EntitySelectors CseMatchRuleEntitySelectorArrayInput
+	// The expression for which records to match on
+	Expression pulumi.StringPtrInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// The name of the Rule
+	Name pulumi.StringPtrInput
+	// The name of the generated Signals
+	NameExpression pulumi.StringPtrInput
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseMatchRuleSeverityMappingPtrInput
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
 }
 
 func (CseMatchRuleState) ElementType() reflect.Type {
@@ -180,30 +183,50 @@ func (CseMatchRuleState) ElementType() reflect.Type {
 }
 
 type cseMatchRuleArgs struct {
-	DescriptionExpression string                       `pulumi:"descriptionExpression"`
-	Enabled               bool                         `pulumi:"enabled"`
-	EntitySelectors       []CseMatchRuleEntitySelector `pulumi:"entitySelectors"`
-	Expression            string                       `pulumi:"expression"`
-	IsPrototype           *bool                        `pulumi:"isPrototype"`
-	Name                  *string                      `pulumi:"name"`
-	NameExpression        string                       `pulumi:"nameExpression"`
-	SeverityMapping       CseMatchRuleSeverityMapping  `pulumi:"severityMapping"`
-	SummaryExpression     *string                      `pulumi:"summaryExpression"`
-	Tags                  []string                     `pulumi:"tags"`
+	// The description of the generated Signals
+	DescriptionExpression string `pulumi:"descriptionExpression"`
+	// Whether the rule should generate Signals
+	Enabled bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseMatchRuleEntitySelector `pulumi:"entitySelectors"`
+	// The expression for which records to match on
+	Expression string `pulumi:"expression"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// The name of the Rule
+	Name *string `pulumi:"name"`
+	// The name of the generated Signals
+	NameExpression string `pulumi:"nameExpression"`
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseMatchRuleSeverityMapping `pulumi:"severityMapping"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CseMatchRule resource.
 type CseMatchRuleArgs struct {
+	// The description of the generated Signals
 	DescriptionExpression pulumi.StringInput
-	Enabled               pulumi.BoolInput
-	EntitySelectors       CseMatchRuleEntitySelectorArrayInput
-	Expression            pulumi.StringInput
-	IsPrototype           pulumi.BoolPtrInput
-	Name                  pulumi.StringPtrInput
-	NameExpression        pulumi.StringInput
-	SeverityMapping       CseMatchRuleSeverityMappingInput
-	SummaryExpression     pulumi.StringPtrInput
-	Tags                  pulumi.StringArrayInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolInput
+	// The entities to generate Signals on
+	EntitySelectors CseMatchRuleEntitySelectorArrayInput
+	// The expression for which records to match on
+	Expression pulumi.StringInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// The name of the Rule
+	Name pulumi.StringPtrInput
+	// The name of the generated Signals
+	NameExpression pulumi.StringInput
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseMatchRuleSeverityMappingInput
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
 }
 
 func (CseMatchRuleArgs) ElementType() reflect.Type {

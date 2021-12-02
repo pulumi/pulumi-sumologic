@@ -52,33 +52,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `description_expression` - (Required) The description of the generated Signals
-    /// - `enabled` - (Required) Whether the rule should generate Signals
-    /// - `entity_selectors` - (Required) The entities to generate Signals on
-    ///   + `entityType` - (Required) The type of the entity to generate the Signal on.
-    ///   + `expression` - (Required) The expression or field name to generate the Signal on.
-    /// - `expression` - (Required) The expression for which records to match on
-    /// - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-    /// - `name` - (Required) The name of the Rule
-    /// - `name_expression` - (Required) The name of the generated Signals
-    /// - `severity_mapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-    ///   + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-    ///   + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-    ///   + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-    ///   + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-    ///     - `type` - (Required) Must be set to "eq" currently
-    ///     - `from` - (Required) The record value to map from
-    ///     - `to` - (Required) The severity value to map to
-    /// - `summary_expression` - (Optional) The summary of the generated Signals
-    /// - `tags` - (Required) The tags of the generated Signals
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the match rule.
     /// 
     /// ## Import
     /// 
@@ -91,33 +64,63 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseMatchRule:CseMatchRule")]
     public partial class CseMatchRule : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Output("descriptionExpression")]
         public Output<string> DescriptionExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         [Output("entitySelectors")]
         public Output<ImmutableArray<Outputs.CseMatchRuleEntitySelector>> EntitySelectors { get; private set; } = null!;
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Output("expression")]
         public Output<string> Expression { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Output("isPrototype")]
         public Output<bool?> IsPrototype { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Rule
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the generated Signals
+        /// </summary>
         [Output("nameExpression")]
         public Output<string> NameExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// The configuration of how the severity of the Signals should be mapped from the Records
+        /// </summary>
         [Output("severityMapping")]
         public Output<Outputs.CseMatchRuleSeverityMapping> SeverityMapping { get; private set; } = null!;
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Output("summaryExpression")]
         public Output<string?> SummaryExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -167,40 +170,72 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseMatchRuleArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Input("descriptionExpression", required: true)]
         public Input<string> DescriptionExpression { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("entitySelectors", required: true)]
         private InputList<Inputs.CseMatchRuleEntitySelectorArgs>? _entitySelectors;
+
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         public InputList<Inputs.CseMatchRuleEntitySelectorArgs> EntitySelectors
         {
             get => _entitySelectors ?? (_entitySelectors = new InputList<Inputs.CseMatchRuleEntitySelectorArgs>());
             set => _entitySelectors = value;
         }
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Input("isPrototype")]
         public Input<bool>? IsPrototype { get; set; }
 
+        /// <summary>
+        /// The name of the Rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the generated Signals
+        /// </summary>
         [Input("nameExpression", required: true)]
         public Input<string> NameExpression { get; set; } = null!;
 
+        /// <summary>
+        /// The configuration of how the severity of the Signals should be mapped from the Records
+        /// </summary>
         [Input("severityMapping", required: true)]
         public Input<Inputs.CseMatchRuleSeverityMappingArgs> SeverityMapping { get; set; } = null!;
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -214,40 +249,72 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseMatchRuleState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Input("descriptionExpression")]
         public Input<string>? DescriptionExpression { get; set; }
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("entitySelectors")]
         private InputList<Inputs.CseMatchRuleEntitySelectorGetArgs>? _entitySelectors;
+
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         public InputList<Inputs.CseMatchRuleEntitySelectorGetArgs> EntitySelectors
         {
             get => _entitySelectors ?? (_entitySelectors = new InputList<Inputs.CseMatchRuleEntitySelectorGetArgs>());
             set => _entitySelectors = value;
         }
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Input("isPrototype")]
         public Input<bool>? IsPrototype { get; set; }
 
+        /// <summary>
+        /// The name of the Rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the generated Signals
+        /// </summary>
         [Input("nameExpression")]
         public Input<string>? NameExpression { get; set; }
 
+        /// <summary>
+        /// The configuration of how the severity of the Signals should be mapped from the Records
+        /// </summary>
         [Input("severityMapping")]
         public Input<Inputs.CseMatchRuleSeverityMappingGetArgs>? SeverityMapping { get; set; }
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

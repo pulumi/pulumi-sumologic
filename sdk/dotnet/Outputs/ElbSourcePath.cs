@@ -13,12 +13,24 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class ElbSourcePath
     {
+        /// <summary>
+        /// The name of the bucket.
+        /// </summary>
         public readonly string? BucketName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
+        /// <summary>
+        /// The path to the data.
+        /// </summary>
         public readonly string? PathExpression;
+        /// <summary>
+        /// This is a computed field for SNS topic/subscription ARN.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ElbSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.ElbSourcePathTagFilter> TagFilters;
+        /// <summary>
+        /// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

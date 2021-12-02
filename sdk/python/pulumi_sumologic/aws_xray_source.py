@@ -38,6 +38,11 @@ class AwsXraySourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AwsXraySource resource.
+        :param pulumi.Input['AwsXraySourceAuthenticationArgs'] authentication: Authentication details for making `xray:Get*` calls.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        :param pulumi.Input['AwsXraySourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
@@ -79,6 +84,9 @@ class AwsXraySourceArgs:
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Input['AwsXraySourceAuthenticationArgs']:
+        """
+        Authentication details for making `xray:Get*` calls.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -97,6 +105,9 @@ class AwsXraySourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
+        """
+        The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -106,6 +117,9 @@ class AwsXraySourceArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input['AwsXraySourcePathArgs']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -115,6 +129,9 @@ class AwsXraySourceArgs:
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Input[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -124,6 +141,9 @@ class AwsXraySourceArgs:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Input[int]:
+        """
+        Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -293,6 +313,11 @@ class _AwsXraySourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AwsXraySource resources.
+        :param pulumi.Input['AwsXraySourceAuthenticationArgs'] authentication: Authentication details for making `xray:Get*` calls.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        :param pulumi.Input['AwsXraySourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -342,6 +367,9 @@ class _AwsXraySourceState:
     @property
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input['AwsXraySourceAuthenticationArgs']]:
+        """
+        Authentication details for making `xray:Get*` calls.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -378,6 +406,9 @@ class _AwsXraySourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -486,6 +517,9 @@ class _AwsXraySourceState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['AwsXraySourcePathArgs']]:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -495,6 +529,9 @@ class _AwsXraySourceState:
     @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -504,6 +541,9 @@ class _AwsXraySourceState:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -566,6 +606,34 @@ class AwsXraySource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        aws_xray_source = sumologic.AwsXraySource("awsXraySource",
+            authentication=sumologic.AwsXraySourceAuthenticationArgs(
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+                type="AWSRoleBasedAuthentication",
+            ),
+            category="aws/xray",
+            collector_id=collector.id,
+            content_type="AwsXRay",
+            description="My description",
+            path=sumologic.AwsXraySourcePathArgs(
+                limit_to_regions=["us-west-2"],
+                type="AwsXRayPath",
+            ),
+            paused=False,
+            scan_interval=300000)
+        ```
+
         ## Import
 
         AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -582,6 +650,11 @@ class AwsXraySource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AwsXraySourceAuthenticationArgs']] authentication: Authentication details for making `xray:Get*` calls.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        :param pulumi.Input[pulumi.InputType['AwsXraySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
         """
         ...
     @overload
@@ -590,6 +663,34 @@ class AwsXraySource(pulumi.CustomResource):
                  args: AwsXraySourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        aws_xray_source = sumologic.AwsXraySource("awsXraySource",
+            authentication=sumologic.AwsXraySourceAuthenticationArgs(
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+                type="AWSRoleBasedAuthentication",
+            ),
+            category="aws/xray",
+            collector_id=collector.id,
+            content_type="AwsXRay",
+            description="My description",
+            path=sumologic.AwsXraySourcePathArgs(
+                limit_to_regions=["us-west-2"],
+                type="AwsXRayPath",
+            ),
+            paused=False,
+            scan_interval=300000)
+        ```
+
         ## Import
 
         AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -725,6 +826,11 @@ class AwsXraySource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AwsXraySourceAuthenticationArgs']] authentication: Authentication details for making `xray:Get*` calls.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        :param pulumi.Input[pulumi.InputType['AwsXraySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -757,6 +863,9 @@ class AwsXraySource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.AwsXraySourceAuthentication']:
+        """
+        Authentication details for making `xray:Get*` calls.
+        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -777,6 +886,9 @@ class AwsXraySource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
+        """
+        The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -837,16 +949,25 @@ class AwsXraySource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output['outputs.AwsXraySourcePath']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Output[int]:
+        """
+        Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+        """
         return pulumi.get(self, "scan_interval")
 
     @property

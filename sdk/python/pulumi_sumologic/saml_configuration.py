@@ -34,6 +34,23 @@ class SamlConfigurationArgs:
                  x509cert3: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SamlConfiguration resource.
+        :param pulumi.Input[str] configuration_name: Name of the SSO policy or another name used to describe the policy internally.
+        :param pulumi.Input[str] issuer: The unique URL assigned to the organization by the SAML Identity Provider.
+        :param pulumi.Input[str] x509cert1: The certificate is used to verify the signature in SAML assertions.
+        :param pulumi.Input[str] authn_request_url: The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+        :param pulumi.Input[bool] debug_mode: True if additional details are included when a user fails to sign in. Defaults to false.
+        :param pulumi.Input[bool] disable_requested_authn_context: True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+        :param pulumi.Input[str] email_attribute: The email address of the new user account. Defaults to "".
+        :param pulumi.Input[bool] is_redirect_binding: True if the SAML binding is of HTTP Redirect type. Defaults to false.
+        :param pulumi.Input[bool] logout_enabled: True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+        :param pulumi.Input[str] logout_url: The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+        :param pulumi.Input['SamlConfigurationOnDemandProvisioningEnabledArgs'] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        :param pulumi.Input[str] roles_attribute: The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+        :param pulumi.Input[bool] sign_authn_request: True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+        :param pulumi.Input[bool] sp_initiated_login_enabled: True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+        :param pulumi.Input[str] sp_initiated_login_path: The identifier used to generate a unique URL for user login. Defaults to "".
+        :param pulumi.Input[str] x509cert2: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+        :param pulumi.Input[str] x509cert3: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
         """
         pulumi.set(__self__, "configuration_name", configuration_name)
         pulumi.set(__self__, "issuer", issuer)
@@ -70,6 +87,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="configurationName")
     def configuration_name(self) -> pulumi.Input[str]:
+        """
+        Name of the SSO policy or another name used to describe the policy internally.
+        """
         return pulumi.get(self, "configuration_name")
 
     @configuration_name.setter
@@ -79,6 +99,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter
     def issuer(self) -> pulumi.Input[str]:
+        """
+        The unique URL assigned to the organization by the SAML Identity Provider.
+        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -88,6 +111,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter
     def x509cert1(self) -> pulumi.Input[str]:
+        """
+        The certificate is used to verify the signature in SAML assertions.
+        """
         return pulumi.get(self, "x509cert1")
 
     @x509cert1.setter
@@ -97,6 +123,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="authnRequestUrl")
     def authn_request_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+        """
         return pulumi.get(self, "authn_request_url")
 
     @authn_request_url.setter
@@ -106,6 +135,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="debugMode")
     def debug_mode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if additional details are included when a user fails to sign in. Defaults to false.
+        """
         return pulumi.get(self, "debug_mode")
 
     @debug_mode.setter
@@ -115,6 +147,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="disableRequestedAuthnContext")
     def disable_requested_authn_context(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+        """
         return pulumi.get(self, "disable_requested_authn_context")
 
     @disable_requested_authn_context.setter
@@ -124,6 +159,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="emailAttribute")
     def email_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the new user account. Defaults to "".
+        """
         return pulumi.get(self, "email_attribute")
 
     @email_attribute.setter
@@ -133,6 +171,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="isRedirectBinding")
     def is_redirect_binding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the SAML binding is of HTTP Redirect type. Defaults to false.
+        """
         return pulumi.get(self, "is_redirect_binding")
 
     @is_redirect_binding.setter
@@ -142,6 +183,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="logoutEnabled")
     def logout_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+        """
         return pulumi.get(self, "logout_enabled")
 
     @logout_enabled.setter
@@ -151,6 +195,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+        """
         return pulumi.get(self, "logout_url")
 
     @logout_url.setter
@@ -160,6 +207,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="onDemandProvisioningEnabled")
     def on_demand_provisioning_enabled(self) -> Optional[pulumi.Input['SamlConfigurationOnDemandProvisioningEnabledArgs']]:
+        """
+        The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        """
         return pulumi.get(self, "on_demand_provisioning_enabled")
 
     @on_demand_provisioning_enabled.setter
@@ -169,6 +219,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="rolesAttribute")
     def roles_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+        """
         return pulumi.get(self, "roles_attribute")
 
     @roles_attribute.setter
@@ -178,6 +231,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="signAuthnRequest")
     def sign_authn_request(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+        """
         return pulumi.get(self, "sign_authn_request")
 
     @sign_authn_request.setter
@@ -187,6 +243,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="spInitiatedLoginEnabled")
     def sp_initiated_login_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+        """
         return pulumi.get(self, "sp_initiated_login_enabled")
 
     @sp_initiated_login_enabled.setter
@@ -196,6 +255,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter(name="spInitiatedLoginPath")
     def sp_initiated_login_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier used to generate a unique URL for user login. Defaults to "".
+        """
         return pulumi.get(self, "sp_initiated_login_path")
 
     @sp_initiated_login_path.setter
@@ -205,6 +267,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter
     def x509cert2(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+        """
         return pulumi.get(self, "x509cert2")
 
     @x509cert2.setter
@@ -214,6 +279,9 @@ class SamlConfigurationArgs:
     @property
     @pulumi.getter
     def x509cert3(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
+        """
         return pulumi.get(self, "x509cert3")
 
     @x509cert3.setter
@@ -246,6 +314,23 @@ class _SamlConfigurationState:
                  x509cert3: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SamlConfiguration resources.
+        :param pulumi.Input[str] authn_request_url: The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+        :param pulumi.Input[str] configuration_name: Name of the SSO policy or another name used to describe the policy internally.
+        :param pulumi.Input[bool] debug_mode: True if additional details are included when a user fails to sign in. Defaults to false.
+        :param pulumi.Input[bool] disable_requested_authn_context: True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+        :param pulumi.Input[str] email_attribute: The email address of the new user account. Defaults to "".
+        :param pulumi.Input[bool] is_redirect_binding: True if the SAML binding is of HTTP Redirect type. Defaults to false.
+        :param pulumi.Input[str] issuer: The unique URL assigned to the organization by the SAML Identity Provider.
+        :param pulumi.Input[bool] logout_enabled: True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+        :param pulumi.Input[str] logout_url: The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+        :param pulumi.Input['SamlConfigurationOnDemandProvisioningEnabledArgs'] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        :param pulumi.Input[str] roles_attribute: The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+        :param pulumi.Input[bool] sign_authn_request: True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+        :param pulumi.Input[bool] sp_initiated_login_enabled: True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+        :param pulumi.Input[str] sp_initiated_login_path: The identifier used to generate a unique URL for user login. Defaults to "".
+        :param pulumi.Input[str] x509cert1: The certificate is used to verify the signature in SAML assertions.
+        :param pulumi.Input[str] x509cert2: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+        :param pulumi.Input[str] x509cert3: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
         """
         if assertion_consumer_url is not None:
             pulumi.set(__self__, "assertion_consumer_url", assertion_consumer_url)
@@ -300,6 +385,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="authnRequestUrl")
     def authn_request_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+        """
         return pulumi.get(self, "authn_request_url")
 
     @authn_request_url.setter
@@ -318,6 +406,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="configurationName")
     def configuration_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the SSO policy or another name used to describe the policy internally.
+        """
         return pulumi.get(self, "configuration_name")
 
     @configuration_name.setter
@@ -327,6 +418,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="debugMode")
     def debug_mode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if additional details are included when a user fails to sign in. Defaults to false.
+        """
         return pulumi.get(self, "debug_mode")
 
     @debug_mode.setter
@@ -336,6 +430,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="disableRequestedAuthnContext")
     def disable_requested_authn_context(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+        """
         return pulumi.get(self, "disable_requested_authn_context")
 
     @disable_requested_authn_context.setter
@@ -345,6 +442,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="emailAttribute")
     def email_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the new user account. Defaults to "".
+        """
         return pulumi.get(self, "email_attribute")
 
     @email_attribute.setter
@@ -363,6 +463,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="isRedirectBinding")
     def is_redirect_binding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the SAML binding is of HTTP Redirect type. Defaults to false.
+        """
         return pulumi.get(self, "is_redirect_binding")
 
     @is_redirect_binding.setter
@@ -372,6 +475,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique URL assigned to the organization by the SAML Identity Provider.
+        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -381,6 +487,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="logoutEnabled")
     def logout_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+        """
         return pulumi.get(self, "logout_enabled")
 
     @logout_enabled.setter
@@ -390,6 +499,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+        """
         return pulumi.get(self, "logout_url")
 
     @logout_url.setter
@@ -399,6 +511,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="onDemandProvisioningEnabled")
     def on_demand_provisioning_enabled(self) -> Optional[pulumi.Input['SamlConfigurationOnDemandProvisioningEnabledArgs']]:
+        """
+        The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        """
         return pulumi.get(self, "on_demand_provisioning_enabled")
 
     @on_demand_provisioning_enabled.setter
@@ -408,6 +523,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="rolesAttribute")
     def roles_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+        """
         return pulumi.get(self, "roles_attribute")
 
     @roles_attribute.setter
@@ -417,6 +535,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="signAuthnRequest")
     def sign_authn_request(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+        """
         return pulumi.get(self, "sign_authn_request")
 
     @sign_authn_request.setter
@@ -426,6 +547,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="spInitiatedLoginEnabled")
     def sp_initiated_login_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+        """
         return pulumi.get(self, "sp_initiated_login_enabled")
 
     @sp_initiated_login_enabled.setter
@@ -435,6 +559,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter(name="spInitiatedLoginPath")
     def sp_initiated_login_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier used to generate a unique URL for user login. Defaults to "".
+        """
         return pulumi.get(self, "sp_initiated_login_path")
 
     @sp_initiated_login_path.setter
@@ -444,6 +571,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter
     def x509cert1(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate is used to verify the signature in SAML assertions.
+        """
         return pulumi.get(self, "x509cert1")
 
     @x509cert1.setter
@@ -453,6 +583,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter
     def x509cert2(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+        """
         return pulumi.get(self, "x509cert2")
 
     @x509cert2.setter
@@ -462,6 +595,9 @@ class _SamlConfigurationState:
     @property
     @pulumi.getter
     def x509cert3(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
+        """
         return pulumi.get(self, "x509cert3")
 
     @x509cert3.setter
@@ -524,33 +660,6 @@ class SamlConfiguration(pulumi.CustomResource):
             x509cert2="",
             x509cert3="")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `sp_initiated_login_path` - (Optional) The identifier used to generate a unique URL for user login. Defaults to "".
-        - `configuration_name` - (Required) Name of the SSO policy or another name used to describe the policy internally.
-        - `issuer` - (Required) The unique URL assigned to the organization by the SAML Identity Provider.
-        - `sp_initiated_login_enabled` - (Optional) True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
-        - `authn_request_url` - (Optional) The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
-        - `x509cert1` - (Required) The certificate is used to verify the signature in SAML assertions.
-        - `x509cert2` - (Optional) The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
-        - `x509cert3` - (Optional) The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
-        - `on_demand_provisioning_enabled` - (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
-        - `roles_attribute` - (Optional) The role that Sumo Logic will assign to users when they sign in. Defaults to "".
-        - `logout_enabled` - (Optional) True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
-        - `logout_url` - (Optional) The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
-        - `email_attribute` - (Optional) The email address of the new user account. Defaults to "".
-        - `debug_mode` - (Optional) True if additional details are included when a user fails to sign in. Defaults to false.
-        - `sign_authn_request` - (Optional) True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
-        - `disable_requested_authn_context` - (Optional) True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
-        - `is_redirect_binding` - (Optional) True if the SAML binding is of HTTP Redirect type. Defaults to false.
-
-        ### Schema for `on_demand_provisioning_enabled`
-        - `first_name_attribute` - (Optional) First name attribute of the new user account. Defaults to "".
-        - `last_name_attribute` - (Optional) Last name attribute of the new user account. Defaults to "".
-        - `on_demand_provisioning_roles` - (Required) List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -572,6 +681,23 @@ class SamlConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] authn_request_url: The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+        :param pulumi.Input[str] configuration_name: Name of the SSO policy or another name used to describe the policy internally.
+        :param pulumi.Input[bool] debug_mode: True if additional details are included when a user fails to sign in. Defaults to false.
+        :param pulumi.Input[bool] disable_requested_authn_context: True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+        :param pulumi.Input[str] email_attribute: The email address of the new user account. Defaults to "".
+        :param pulumi.Input[bool] is_redirect_binding: True if the SAML binding is of HTTP Redirect type. Defaults to false.
+        :param pulumi.Input[str] issuer: The unique URL assigned to the organization by the SAML Identity Provider.
+        :param pulumi.Input[bool] logout_enabled: True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+        :param pulumi.Input[str] logout_url: The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+        :param pulumi.Input[pulumi.InputType['SamlConfigurationOnDemandProvisioningEnabledArgs']] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        :param pulumi.Input[str] roles_attribute: The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+        :param pulumi.Input[bool] sign_authn_request: True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+        :param pulumi.Input[bool] sp_initiated_login_enabled: True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+        :param pulumi.Input[str] sp_initiated_login_path: The identifier used to generate a unique URL for user login. Defaults to "".
+        :param pulumi.Input[str] x509cert1: The certificate is used to verify the signature in SAML assertions.
+        :param pulumi.Input[str] x509cert2: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+        :param pulumi.Input[str] x509cert3: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
         """
         ...
     @overload
@@ -611,33 +737,6 @@ class SamlConfiguration(pulumi.CustomResource):
             x509cert2="",
             x509cert3="")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `sp_initiated_login_path` - (Optional) The identifier used to generate a unique URL for user login. Defaults to "".
-        - `configuration_name` - (Required) Name of the SSO policy or another name used to describe the policy internally.
-        - `issuer` - (Required) The unique URL assigned to the organization by the SAML Identity Provider.
-        - `sp_initiated_login_enabled` - (Optional) True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
-        - `authn_request_url` - (Optional) The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
-        - `x509cert1` - (Required) The certificate is used to verify the signature in SAML assertions.
-        - `x509cert2` - (Optional) The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
-        - `x509cert3` - (Optional) The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
-        - `on_demand_provisioning_enabled` - (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
-        - `roles_attribute` - (Optional) The role that Sumo Logic will assign to users when they sign in. Defaults to "".
-        - `logout_enabled` - (Optional) True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
-        - `logout_url` - (Optional) The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
-        - `email_attribute` - (Optional) The email address of the new user account. Defaults to "".
-        - `debug_mode` - (Optional) True if additional details are included when a user fails to sign in. Defaults to false.
-        - `sign_authn_request` - (Optional) True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
-        - `disable_requested_authn_context` - (Optional) True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
-        - `is_redirect_binding` - (Optional) True if the SAML binding is of HTTP Redirect type. Defaults to false.
-
-        ### Schema for `on_demand_provisioning_enabled`
-        - `first_name_attribute` - (Optional) First name attribute of the new user account. Defaults to "".
-        - `last_name_attribute` - (Optional) Last name attribute of the new user account. Defaults to "".
-        - `on_demand_provisioning_roles` - (Required) List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -764,6 +863,23 @@ class SamlConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] authn_request_url: The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+        :param pulumi.Input[str] configuration_name: Name of the SSO policy or another name used to describe the policy internally.
+        :param pulumi.Input[bool] debug_mode: True if additional details are included when a user fails to sign in. Defaults to false.
+        :param pulumi.Input[bool] disable_requested_authn_context: True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+        :param pulumi.Input[str] email_attribute: The email address of the new user account. Defaults to "".
+        :param pulumi.Input[bool] is_redirect_binding: True if the SAML binding is of HTTP Redirect type. Defaults to false.
+        :param pulumi.Input[str] issuer: The unique URL assigned to the organization by the SAML Identity Provider.
+        :param pulumi.Input[bool] logout_enabled: True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+        :param pulumi.Input[str] logout_url: The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+        :param pulumi.Input[pulumi.InputType['SamlConfigurationOnDemandProvisioningEnabledArgs']] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        :param pulumi.Input[str] roles_attribute: The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+        :param pulumi.Input[bool] sign_authn_request: True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+        :param pulumi.Input[bool] sp_initiated_login_enabled: True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+        :param pulumi.Input[str] sp_initiated_login_path: The identifier used to generate a unique URL for user login. Defaults to "".
+        :param pulumi.Input[str] x509cert1: The certificate is used to verify the signature in SAML assertions.
+        :param pulumi.Input[str] x509cert2: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+        :param pulumi.Input[str] x509cert3: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -799,6 +915,9 @@ class SamlConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="authnRequestUrl")
     def authn_request_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+        """
         return pulumi.get(self, "authn_request_url")
 
     @property
@@ -809,21 +928,33 @@ class SamlConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="configurationName")
     def configuration_name(self) -> pulumi.Output[str]:
+        """
+        Name of the SSO policy or another name used to describe the policy internally.
+        """
         return pulumi.get(self, "configuration_name")
 
     @property
     @pulumi.getter(name="debugMode")
     def debug_mode(self) -> pulumi.Output[Optional[bool]]:
+        """
+        True if additional details are included when a user fails to sign in. Defaults to false.
+        """
         return pulumi.get(self, "debug_mode")
 
     @property
     @pulumi.getter(name="disableRequestedAuthnContext")
     def disable_requested_authn_context(self) -> pulumi.Output[Optional[bool]]:
+        """
+        True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+        """
         return pulumi.get(self, "disable_requested_authn_context")
 
     @property
     @pulumi.getter(name="emailAttribute")
     def email_attribute(self) -> pulumi.Output[Optional[str]]:
+        """
+        The email address of the new user account. Defaults to "".
+        """
         return pulumi.get(self, "email_attribute")
 
     @property
@@ -834,60 +965,96 @@ class SamlConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isRedirectBinding")
     def is_redirect_binding(self) -> pulumi.Output[Optional[bool]]:
+        """
+        True if the SAML binding is of HTTP Redirect type. Defaults to false.
+        """
         return pulumi.get(self, "is_redirect_binding")
 
     @property
     @pulumi.getter
     def issuer(self) -> pulumi.Output[str]:
+        """
+        The unique URL assigned to the organization by the SAML Identity Provider.
+        """
         return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="logoutEnabled")
     def logout_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+        """
         return pulumi.get(self, "logout_enabled")
 
     @property
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+        """
         return pulumi.get(self, "logout_url")
 
     @property
     @pulumi.getter(name="onDemandProvisioningEnabled")
     def on_demand_provisioning_enabled(self) -> pulumi.Output[Optional['outputs.SamlConfigurationOnDemandProvisioningEnabled']]:
+        """
+        The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        """
         return pulumi.get(self, "on_demand_provisioning_enabled")
 
     @property
     @pulumi.getter(name="rolesAttribute")
     def roles_attribute(self) -> pulumi.Output[Optional[str]]:
+        """
+        The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+        """
         return pulumi.get(self, "roles_attribute")
 
     @property
     @pulumi.getter(name="signAuthnRequest")
     def sign_authn_request(self) -> pulumi.Output[Optional[bool]]:
+        """
+        True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+        """
         return pulumi.get(self, "sign_authn_request")
 
     @property
     @pulumi.getter(name="spInitiatedLoginEnabled")
     def sp_initiated_login_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+        """
         return pulumi.get(self, "sp_initiated_login_enabled")
 
     @property
     @pulumi.getter(name="spInitiatedLoginPath")
     def sp_initiated_login_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The identifier used to generate a unique URL for user login. Defaults to "".
+        """
         return pulumi.get(self, "sp_initiated_login_path")
 
     @property
     @pulumi.getter
     def x509cert1(self) -> pulumi.Output[str]:
+        """
+        The certificate is used to verify the signature in SAML assertions.
+        """
         return pulumi.get(self, "x509cert1")
 
     @property
     @pulumi.getter
     def x509cert2(self) -> pulumi.Output[Optional[str]]:
+        """
+        The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+        """
         return pulumi.get(self, "x509cert2")
 
     @property
     @pulumi.getter
     def x509cert3(self) -> pulumi.Output[Optional[str]]:
+        """
+        The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
+        """
         return pulumi.get(self, "x509cert3")
 

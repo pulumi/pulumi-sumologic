@@ -11,6 +11,58 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Sumologic AWS Inventory source to collect AWS resource inventory data.
+//
+// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewAwsInventorySource(ctx, "awsInventorySource", &sumologic.AwsInventorySourceArgs{
+// 			Authentication: &AwsInventorySourceAuthenticationArgs{
+// 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
+// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
+// 			},
+// 			Category:    pulumi.String("aws/aws_inventory"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("AwsInventory"),
+// 			Description: pulumi.String("My description"),
+// 			Path: &AwsInventorySourcePathArgs{
+// 				LimitToNamespaces: pulumi.StringArray{
+// 					pulumi.String("AWS/RDS"),
+// 					pulumi.String("AWS/EC2"),
+// 				},
+// 				LimitToRegions: pulumi.StringArray{
+// 					pulumi.String("us-west-2"),
+// 				},
+// 				Type: pulumi.String("AwsInventoryPath"),
+// 			},
+// 			Paused:       pulumi.Bool(false),
+// 			ScanInterval: pulumi.Int(300000),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -27,10 +79,12 @@ import (
 type AwsInventorySource struct {
 	pulumi.CustomResourceState
 
-	Authentication             AwsInventorySourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                           `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                         `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                               `pulumi:"collectorId"`
+	// Authentication details to access AWS `Describe*` APIs.
+	Authentication       AwsInventorySourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput                   `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput                 `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                       `pulumi:"collectorId"`
+	// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
 	ContentType                pulumi.StringOutput                            `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                         `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                            `pulumi:"cutoffTimestamp"`
@@ -43,12 +97,15 @@ type AwsInventorySource struct {
 	ManualPrefixRegexp         pulumi.StringPtrOutput                         `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                           `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                            `pulumi:"name"`
-	Path                       AwsInventorySourcePathOutput                   `pulumi:"path"`
-	Paused                     pulumi.BoolOutput                              `pulumi:"paused"`
-	ScanInterval               pulumi.IntOutput                               `pulumi:"scanInterval"`
-	Timezone                   pulumi.StringPtrOutput                         `pulumi:"timezone"`
-	Url                        pulumi.StringOutput                            `pulumi:"url"`
-	UseAutolineMatching        pulumi.BoolPtrOutput                           `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path AwsInventorySourcePathOutput `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+	ScanInterval        pulumi.IntOutput       `pulumi:"scanInterval"`
+	Timezone            pulumi.StringPtrOutput `pulumi:"timezone"`
+	Url                 pulumi.StringOutput    `pulumi:"url"`
+	UseAutolineMatching pulumi.BoolPtrOutput   `pulumi:"useAutolineMatching"`
 }
 
 // NewAwsInventorySource registers a new resource with the given unique name, arguments, and options.
@@ -98,10 +155,12 @@ func GetAwsInventorySource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsInventorySource resources.
 type awsInventorySourceState struct {
-	Authentication             *AwsInventorySourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                                 `pulumi:"automaticDateParsing"`
-	Category                   *string                               `pulumi:"category"`
-	CollectorId                *int                                  `pulumi:"collectorId"`
+	// Authentication details to access AWS `Describe*` APIs.
+	Authentication       *AwsInventorySourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                             `pulumi:"automaticDateParsing"`
+	Category             *string                           `pulumi:"category"`
+	CollectorId          *int                              `pulumi:"collectorId"`
+	// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
 	ContentType                *string                               `pulumi:"contentType"`
 	CutoffRelativeTime         *string                               `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                  `pulumi:"cutoffTimestamp"`
@@ -114,19 +173,24 @@ type awsInventorySourceState struct {
 	ManualPrefixRegexp         *string                               `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                                 `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                               `pulumi:"name"`
-	Path                       *AwsInventorySourcePath               `pulumi:"path"`
-	Paused                     *bool                                 `pulumi:"paused"`
-	ScanInterval               *int                                  `pulumi:"scanInterval"`
-	Timezone                   *string                               `pulumi:"timezone"`
-	Url                        *string                               `pulumi:"url"`
-	UseAutolineMatching        *bool                                 `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path *AwsInventorySourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused *bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+	ScanInterval        *int    `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	Url                 *string `pulumi:"url"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type AwsInventorySourceState struct {
-	Authentication             AwsInventorySourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details to access AWS `Describe*` APIs.
+	Authentication       AwsInventorySourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -139,12 +203,15 @@ type AwsInventorySourceState struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       AwsInventorySourcePathPtrInput
-	Paused                     pulumi.BoolPtrInput
-	ScanInterval               pulumi.IntPtrInput
-	Timezone                   pulumi.StringPtrInput
-	Url                        pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path AwsInventorySourcePathPtrInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolPtrInput
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+	ScanInterval        pulumi.IntPtrInput
+	Timezone            pulumi.StringPtrInput
+	Url                 pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (AwsInventorySourceState) ElementType() reflect.Type {
@@ -152,10 +219,12 @@ func (AwsInventorySourceState) ElementType() reflect.Type {
 }
 
 type awsInventorySourceArgs struct {
-	Authentication             AwsInventorySourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                                 `pulumi:"automaticDateParsing"`
-	Category                   *string                               `pulumi:"category"`
-	CollectorId                int                                   `pulumi:"collectorId"`
+	// Authentication details to access AWS `Describe*` APIs.
+	Authentication       AwsInventorySourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                            `pulumi:"automaticDateParsing"`
+	Category             *string                          `pulumi:"category"`
+	CollectorId          int                              `pulumi:"collectorId"`
+	// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
 	ContentType                string                                `pulumi:"contentType"`
 	CutoffRelativeTime         *string                               `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                  `pulumi:"cutoffTimestamp"`
@@ -168,19 +237,24 @@ type awsInventorySourceArgs struct {
 	ManualPrefixRegexp         *string                               `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                                 `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                               `pulumi:"name"`
-	Path                       AwsInventorySourcePath                `pulumi:"path"`
-	Paused                     bool                                  `pulumi:"paused"`
-	ScanInterval               int                                   `pulumi:"scanInterval"`
-	Timezone                   *string                               `pulumi:"timezone"`
-	UseAutolineMatching        *bool                                 `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path AwsInventorySourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+	ScanInterval        int     `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a AwsInventorySource resource.
 type AwsInventorySourceArgs struct {
-	Authentication             AwsInventorySourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details to access AWS `Describe*` APIs.
+	Authentication       AwsInventorySourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -193,11 +267,14 @@ type AwsInventorySourceArgs struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       AwsInventorySourcePathInput
-	Paused                     pulumi.BoolInput
-	ScanInterval               pulumi.IntInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path AwsInventorySourcePathInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolInput
+	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+	ScanInterval        pulumi.IntInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (AwsInventorySourceArgs) ElementType() reflect.Type {

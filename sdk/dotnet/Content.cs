@@ -12,9 +12,15 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/content:Content")]
     public partial class Content : Pulumi.CustomResource
     {
+        /// <summary>
+        /// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+        /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
@@ -64,9 +70,15 @@ namespace Pulumi.SumoLogic
 
     public sealed class ContentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        /// </summary>
         [Input("config", required: true)]
         public Input<string> Config { get; set; } = null!;
 
+        /// <summary>
+        /// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+        /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
 
@@ -77,9 +89,15 @@ namespace Pulumi.SumoLogic
 
     public sealed class ContentState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+        /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
+        /// <summary>
+        /// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 

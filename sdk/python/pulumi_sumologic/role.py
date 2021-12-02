@@ -19,6 +19,10 @@ class RoleArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Role resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        :param pulumi.Input[str] description: The description of the role.
+        :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
+        :param pulumi.Input[str] name: The name of the role.
         """
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
@@ -32,6 +36,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
@@ -41,6 +48,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the role.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -50,6 +60,9 @@ class RoleArgs:
     @property
     @pulumi.getter(name="filterPredicate")
     def filter_predicate(self) -> Optional[pulumi.Input[str]]:
+        """
+        A search filter to restrict access to specific logs.
+        """
         return pulumi.get(self, "filter_predicate")
 
     @filter_predicate.setter
@@ -59,6 +72,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -75,6 +91,10 @@ class _RoleState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        :param pulumi.Input[str] description: The description of the role.
+        :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
+        :param pulumi.Input[str] name: The name of the role.
         """
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
@@ -88,6 +108,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
@@ -97,6 +120,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the role.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -106,6 +132,9 @@ class _RoleState:
     @property
     @pulumi.getter(name="filterPredicate")
     def filter_predicate(self) -> Optional[pulumi.Input[str]]:
+        """
+        A search filter to restrict access to specific logs.
+        """
         return pulumi.get(self, "filter_predicate")
 
     @filter_predicate.setter
@@ -115,6 +144,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -146,18 +178,6 @@ class Role(pulumi.CustomResource):
             description="Testing resource sumologic_role",
             filter_predicate="_sourceCategory=Test")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the role.
-        - `description` - (Optional) The description of the role.
-        - `filter_predicate` - (Optional) A search filter to restrict access to specific logs.
-        - `capabilities` - (Optional) List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the role.
 
         ## Import
 
@@ -171,6 +191,10 @@ class Role(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        :param pulumi.Input[str] description: The description of the role.
+        :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
+        :param pulumi.Input[str] name: The name of the role.
         """
         ...
     @overload
@@ -192,18 +216,6 @@ class Role(pulumi.CustomResource):
             description="Testing resource sumologic_role",
             filter_predicate="_sourceCategory=Test")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the role.
-        - `description` - (Optional) The description of the role.
-        - `filter_predicate` - (Optional) A search filter to restrict access to specific logs.
-        - `capabilities` - (Optional) List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the role.
 
         ## Import
 
@@ -271,6 +283,10 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        :param pulumi.Input[str] description: The description of the role.
+        :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
+        :param pulumi.Input[str] name: The name of the role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -285,20 +301,32 @@ class Role(pulumi.CustomResource):
     @property
     @pulumi.getter
     def capabilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        """
         return pulumi.get(self, "capabilities")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the role.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="filterPredicate")
     def filter_predicate(self) -> pulumi.Output[Optional[str]]:
+        """
+        A search filter to restrict access to specific logs.
+        """
         return pulumi.get(self, "filter_predicate")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 

@@ -18,12 +18,18 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
+        /// <summary>
+        /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

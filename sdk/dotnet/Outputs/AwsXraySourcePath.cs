@@ -15,10 +15,16 @@ namespace Pulumi.SumoLogic.Outputs
     {
         public readonly string? BucketName;
         public readonly ImmutableArray<string> LimitToNamespaces;
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly string? PathExpression;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathTagFilter> TagFilters;
+        /// <summary>
+        /// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -35,23 +35,6 @@ import * as utilities from "./utilities";
  *     webhookType: "Webhook",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
- * - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
- * - `description` - (Optional) Description of the connection.
- * - `url` - (Required) URL for the webhook connection.
- * - `headers` - (Optional) Map of access authorization headers.
- * - `customHeaders` - (Optional) Map of custom webhook headers
- * - `defaultPayload` - (Required) Default payload of the webhook.
- * - `connectionSubtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
- * - `webhookType` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
- *
- * Additional data provided in state
- *
- * - `id` - (Computed) The Id for this connection.
  *
  * ## Import
  *
@@ -89,14 +72,41 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
+    /**
+     * The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+     */
     public readonly connectionSubtype!: pulumi.Output<string | undefined>;
+    /**
+     * Map of custom webhook headers
+     */
     public readonly customHeaders!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Default payload of the webhook.
+     */
     public readonly defaultPayload!: pulumi.Output<string>;
+    /**
+     * Description of the connection.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Map of access authorization headers.
+     */
     public readonly headers!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Name of connection. Name should be a valid alphanumeric value.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Type of connection. Only `WebhookConnection` is implemented right now.
+     */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * URL for the webhook connection.
+     */
     public readonly url!: pulumi.Output<string>;
+    /**
+     * Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+     */
     public readonly webhookType!: pulumi.Output<string | undefined>;
 
     /**
@@ -153,14 +163,41 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    /**
+     * The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+     */
     connectionSubtype?: pulumi.Input<string>;
+    /**
+     * Map of custom webhook headers
+     */
     customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Default payload of the webhook.
+     */
     defaultPayload?: pulumi.Input<string>;
+    /**
+     * Description of the connection.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Map of access authorization headers.
+     */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of connection. Name should be a valid alphanumeric value.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Type of connection. Only `WebhookConnection` is implemented right now.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * URL for the webhook connection.
+     */
     url?: pulumi.Input<string>;
+    /**
+     * Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+     */
     webhookType?: pulumi.Input<string>;
 }
 
@@ -168,13 +205,40 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
+    /**
+     * The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+     */
     connectionSubtype?: pulumi.Input<string>;
+    /**
+     * Map of custom webhook headers
+     */
     customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Default payload of the webhook.
+     */
     defaultPayload: pulumi.Input<string>;
+    /**
+     * Description of the connection.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Map of access authorization headers.
+     */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of connection. Name should be a valid alphanumeric value.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Type of connection. Only `WebhookConnection` is implemented right now.
+     */
     type: pulumi.Input<string>;
+    /**
+     * URL for the webhook connection.
+     */
     url: pulumi.Input<string>;
+    /**
+     * Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+     */
     webhookType?: pulumi.Input<string>;
 }

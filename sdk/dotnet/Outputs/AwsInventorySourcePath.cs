@@ -14,11 +14,33 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class AwsInventorySourcePath
     {
         public readonly string? BucketName;
+        /// <summary>
+        /// List of namespaces. By default all namespaces are selected. You can also choose a subset from
+        /// + AWS/EC2
+        /// + AWS/AutoScaling
+        /// + AWS/EBS
+        /// + AWS/ELB
+        /// + AWS/ApplicationELB
+        /// + AWS/NetworkELB
+        /// + AWS/Lambda
+        /// + AWS/RDS
+        /// + AWS/Dynamodb
+        /// + AWS/ECS
+        /// + AWS/Elasticache
+        /// + AWS/Redshift
+        /// + AWS/Kinesis
+        /// </summary>
         public readonly ImmutableArray<string> LimitToNamespaces;
+        /// <summary>
+        /// List of Amazon regions.
+        /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly string? PathExpression;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathTagFilter> TagFilters;
+        /// <summary>
+        /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

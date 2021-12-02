@@ -38,20 +38,6 @@ import (
 // }
 // ```
 //
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `type` - (Optional) The type of object model. Valid value:
-//   - `MonitorsLibraryFolder`
-// - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
-// - `description` - (Required) The description of the monitor folder.
-// - `parentId` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
-//
-// Additional data provided in state:
-//
-// - `id` - (Computed) The identifier for this monitor folder.
-//
 // ## Import
 //
 // Monitor folders can be imported using the monitor folder identifier, such ashcl
@@ -64,20 +50,25 @@ import (
 type MonitorFolder struct {
 	pulumi.CustomResourceState
 
-	ContentType    pulumi.StringPtrOutput `pulumi:"contentType"`
-	CreatedAt      pulumi.StringOutput    `pulumi:"createdAt"`
-	CreatedBy      pulumi.StringOutput    `pulumi:"createdBy"`
-	Description    pulumi.StringOutput    `pulumi:"description"`
-	IsLocked       pulumi.BoolPtrOutput   `pulumi:"isLocked"`
-	IsMutable      pulumi.BoolOutput      `pulumi:"isMutable"`
-	IsSystem       pulumi.BoolOutput      `pulumi:"isSystem"`
-	ModifiedAt     pulumi.StringOutput    `pulumi:"modifiedAt"`
-	ModifiedBy     pulumi.StringOutput    `pulumi:"modifiedBy"`
-	Name           pulumi.StringOutput    `pulumi:"name"`
+	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
+	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
+	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
+	// The description of the monitor folder.
+	Description pulumi.StringOutput  `pulumi:"description"`
+	IsLocked    pulumi.BoolPtrOutput `pulumi:"isLocked"`
+	IsMutable   pulumi.BoolOutput    `pulumi:"isMutable"`
+	IsSystem    pulumi.BoolOutput    `pulumi:"isSystem"`
+	ModifiedAt  pulumi.StringOutput  `pulumi:"modifiedAt"`
+	ModifiedBy  pulumi.StringOutput  `pulumi:"modifiedBy"`
+	// The name of the monitor folder. The name must be alphanumeric.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringOutput    `pulumi:"parentId"`
 	PostRequestMap pulumi.StringMapOutput `pulumi:"postRequestMap"`
-	Type           pulumi.StringPtrOutput `pulumi:"type"`
-	Version        pulumi.IntOutput       `pulumi:"version"`
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryFolder`
+	Type    pulumi.StringPtrOutput `pulumi:"type"`
+	Version pulumi.IntOutput       `pulumi:"version"`
 }
 
 // NewMonitorFolder registers a new resource with the given unique name, arguments, and options.
@@ -112,37 +103,47 @@ func GetMonitorFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MonitorFolder resources.
 type monitorFolderState struct {
-	ContentType    *string           `pulumi:"contentType"`
-	CreatedAt      *string           `pulumi:"createdAt"`
-	CreatedBy      *string           `pulumi:"createdBy"`
-	Description    *string           `pulumi:"description"`
-	IsLocked       *bool             `pulumi:"isLocked"`
-	IsMutable      *bool             `pulumi:"isMutable"`
-	IsSystem       *bool             `pulumi:"isSystem"`
-	ModifiedAt     *string           `pulumi:"modifiedAt"`
-	ModifiedBy     *string           `pulumi:"modifiedBy"`
-	Name           *string           `pulumi:"name"`
+	ContentType *string `pulumi:"contentType"`
+	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedBy   *string `pulumi:"createdBy"`
+	// The description of the monitor folder.
+	Description *string `pulumi:"description"`
+	IsLocked    *bool   `pulumi:"isLocked"`
+	IsMutable   *bool   `pulumi:"isMutable"`
+	IsSystem    *bool   `pulumi:"isSystem"`
+	ModifiedAt  *string `pulumi:"modifiedAt"`
+	ModifiedBy  *string `pulumi:"modifiedBy"`
+	// The name of the monitor folder. The name must be alphanumeric.
+	Name *string `pulumi:"name"`
+	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
-	Type           *string           `pulumi:"type"`
-	Version        *int              `pulumi:"version"`
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryFolder`
+	Type    *string `pulumi:"type"`
+	Version *int    `pulumi:"version"`
 }
 
 type MonitorFolderState struct {
-	ContentType    pulumi.StringPtrInput
-	CreatedAt      pulumi.StringPtrInput
-	CreatedBy      pulumi.StringPtrInput
-	Description    pulumi.StringPtrInput
-	IsLocked       pulumi.BoolPtrInput
-	IsMutable      pulumi.BoolPtrInput
-	IsSystem       pulumi.BoolPtrInput
-	ModifiedAt     pulumi.StringPtrInput
-	ModifiedBy     pulumi.StringPtrInput
-	Name           pulumi.StringPtrInput
+	ContentType pulumi.StringPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	CreatedBy   pulumi.StringPtrInput
+	// The description of the monitor folder.
+	Description pulumi.StringPtrInput
+	IsLocked    pulumi.BoolPtrInput
+	IsMutable   pulumi.BoolPtrInput
+	IsSystem    pulumi.BoolPtrInput
+	ModifiedAt  pulumi.StringPtrInput
+	ModifiedBy  pulumi.StringPtrInput
+	// The name of the monitor folder. The name must be alphanumeric.
+	Name pulumi.StringPtrInput
+	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput
-	Type           pulumi.StringPtrInput
-	Version        pulumi.IntPtrInput
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryFolder`
+	Type    pulumi.StringPtrInput
+	Version pulumi.IntPtrInput
 }
 
 func (MonitorFolderState) ElementType() reflect.Type {
@@ -150,38 +151,48 @@ func (MonitorFolderState) ElementType() reflect.Type {
 }
 
 type monitorFolderArgs struct {
-	ContentType    *string           `pulumi:"contentType"`
-	CreatedAt      *string           `pulumi:"createdAt"`
-	CreatedBy      *string           `pulumi:"createdBy"`
-	Description    string            `pulumi:"description"`
-	IsLocked       *bool             `pulumi:"isLocked"`
-	IsMutable      *bool             `pulumi:"isMutable"`
-	IsSystem       *bool             `pulumi:"isSystem"`
-	ModifiedAt     *string           `pulumi:"modifiedAt"`
-	ModifiedBy     *string           `pulumi:"modifiedBy"`
-	Name           *string           `pulumi:"name"`
+	ContentType *string `pulumi:"contentType"`
+	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedBy   *string `pulumi:"createdBy"`
+	// The description of the monitor folder.
+	Description string  `pulumi:"description"`
+	IsLocked    *bool   `pulumi:"isLocked"`
+	IsMutable   *bool   `pulumi:"isMutable"`
+	IsSystem    *bool   `pulumi:"isSystem"`
+	ModifiedAt  *string `pulumi:"modifiedAt"`
+	ModifiedBy  *string `pulumi:"modifiedBy"`
+	// The name of the monitor folder. The name must be alphanumeric.
+	Name *string `pulumi:"name"`
+	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
-	Type           *string           `pulumi:"type"`
-	Version        *int              `pulumi:"version"`
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryFolder`
+	Type    *string `pulumi:"type"`
+	Version *int    `pulumi:"version"`
 }
 
 // The set of arguments for constructing a MonitorFolder resource.
 type MonitorFolderArgs struct {
-	ContentType    pulumi.StringPtrInput
-	CreatedAt      pulumi.StringPtrInput
-	CreatedBy      pulumi.StringPtrInput
-	Description    pulumi.StringInput
-	IsLocked       pulumi.BoolPtrInput
-	IsMutable      pulumi.BoolPtrInput
-	IsSystem       pulumi.BoolPtrInput
-	ModifiedAt     pulumi.StringPtrInput
-	ModifiedBy     pulumi.StringPtrInput
-	Name           pulumi.StringPtrInput
+	ContentType pulumi.StringPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	CreatedBy   pulumi.StringPtrInput
+	// The description of the monitor folder.
+	Description pulumi.StringInput
+	IsLocked    pulumi.BoolPtrInput
+	IsMutable   pulumi.BoolPtrInput
+	IsSystem    pulumi.BoolPtrInput
+	ModifiedAt  pulumi.StringPtrInput
+	ModifiedBy  pulumi.StringPtrInput
+	// The name of the monitor folder. The name must be alphanumeric.
+	Name pulumi.StringPtrInput
+	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput
-	Type           pulumi.StringPtrInput
-	Version        pulumi.IntPtrInput
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryFolder`
+	Type    pulumi.StringPtrInput
+	Version pulumi.IntPtrInput
 }
 
 func (MonitorFolderArgs) ElementType() reflect.Type {

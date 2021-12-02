@@ -18,29 +18,6 @@ import * as utilities from "./utilities";
  *     parentId: "<personal folder id>",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) The name of the folder. This is required, and has to be unique.
- * - `parentId` - (Required) The ID of the folder in which you want to create the new folder.
- * - `description` - (Optional) The description of the folder.
- *
- * ### Timeouts
- *
- * `sumologic.Folder` provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
- *
- * - `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful
- *
- * Additional data provided in state
- *
- * - `createdAt` - (Computed) When the folder was created.
- * - `createdBy` - (Computed) Who created the folder.
- * - `modifiedAt` - (Computed) When was the folder last modified.
- * - `modifiedBy` - (Computed) The ID of the user who modified the folder last.
- * - `itemType` - (Computed) What the type of the content item is (will obviously be "Folder").
- * - `permissions` - (Computed) List of permissions the user has on the content item.
- * - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
  */
 export class Folder extends pulumi.CustomResource {
     /**
@@ -70,8 +47,17 @@ export class Folder extends pulumi.CustomResource {
         return obj['__pulumiType'] === Folder.__pulumiType;
     }
 
+    /**
+     * The description of the folder.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The name of the folder. This is required, and has to be unique.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the folder in which you want to create the new folder.
+     */
     public readonly parentId!: pulumi.Output<string>;
 
     /**
@@ -113,8 +99,17 @@ export class Folder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Folder resources.
  */
 export interface FolderState {
+    /**
+     * The description of the folder.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the folder. This is required, and has to be unique.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the folder in which you want to create the new folder.
+     */
     parentId?: pulumi.Input<string>;
 }
 
@@ -122,7 +117,16 @@ export interface FolderState {
  * The set of arguments for constructing a Folder resource.
  */
 export interface FolderArgs {
+    /**
+     * The description of the folder.
+     */
     description: pulumi.Input<string>;
+    /**
+     * The name of the folder. This is required, and has to be unique.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the folder in which you want to create the new folder.
+     */
     parentId: pulumi.Input<string>;
 }

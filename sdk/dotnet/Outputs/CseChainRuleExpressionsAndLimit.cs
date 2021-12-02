@@ -13,7 +13,13 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseChainRuleExpressionsAndLimit
     {
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// How many times this expression must match for the Signal to fire
+        /// </summary>
         public readonly int Limit;
 
         [OutputConstructor]

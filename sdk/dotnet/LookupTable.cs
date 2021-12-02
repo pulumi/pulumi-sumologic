@@ -50,20 +50,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) The name of the lookup table.
-    /// - `parent_folder_id` - (Required) The parent-folder-path identifier of the lookup table in the Library.
-    /// - `description` - (Required) The description of the lookup table.
-    /// - `fields` - (Required) The list of fields in the lookup table.
-    ///   - `fieldName` - (Required) The name of the field.
-    ///   - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
-    /// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
-    /// - `ttl` - (Optional) A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
-    /// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
-    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -83,6 +69,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/lookupTable:LookupTable")]
     public partial class LookupTable : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the lookup table.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
@@ -92,9 +81,15 @@ namespace Pulumi.SumoLogic
         [Output("fields")]
         public Output<ImmutableArray<Outputs.LookupTableField>> Fields { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the lookup table.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The parent-folder-path identifier of the lookup table in the Library.
+        /// </summary>
         [Output("parentFolderId")]
         public Output<string?> ParentFolderId { get; private set; } = null!;
 
@@ -107,6 +102,9 @@ namespace Pulumi.SumoLogic
         [Output("sizeLimitAction")]
         public Output<string?> SizeLimitAction { get; private set; } = null!;
 
+        /// <summary>
+        /// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
 
@@ -156,6 +154,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class LookupTableArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the lookup table.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
@@ -171,9 +172,15 @@ namespace Pulumi.SumoLogic
             set => _fields = value;
         }
 
+        /// <summary>
+        /// The name of the lookup table.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The parent-folder-path identifier of the lookup table in the Library.
+        /// </summary>
         [Input("parentFolderId")]
         public Input<string>? ParentFolderId { get; set; }
 
@@ -192,6 +199,9 @@ namespace Pulumi.SumoLogic
         [Input("sizeLimitAction")]
         public Input<string>? SizeLimitAction { get; set; }
 
+        /// <summary>
+        /// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
@@ -202,6 +212,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class LookupTableState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the lookup table.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -217,9 +230,15 @@ namespace Pulumi.SumoLogic
             set => _fields = value;
         }
 
+        /// <summary>
+        /// The name of the lookup table.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The parent-folder-path identifier of the lookup table in the Library.
+        /// </summary>
         [Input("parentFolderId")]
         public Input<string>? ParentFolderId { get; set; }
 
@@ -238,6 +257,9 @@ namespace Pulumi.SumoLogic
         [Input("sizeLimitAction")]
         public Input<string>? SizeLimitAction { get; set; }
 
+        /// <summary>
+        /// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 

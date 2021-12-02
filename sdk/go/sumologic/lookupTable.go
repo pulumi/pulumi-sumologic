@@ -51,20 +51,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) The name of the lookup table.
-// - `parentFolderId` - (Required) The parent-folder-path identifier of the lookup table in the Library.
-// - `description` - (Required) The description of the lookup table.
-// - `fields` - (Required) The list of fields in the lookup table.
-//   - `fieldName` - (Required) The name of the field.
-//   - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
-// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
-// - `ttl` - (Optional) A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
-// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
-//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -83,15 +69,19 @@ import (
 type LookupTable struct {
 	pulumi.CustomResourceState
 
+	// The description of the lookup table.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The list of fields in the lookup table.
-	Fields         LookupTableFieldArrayOutput `pulumi:"fields"`
-	Name           pulumi.StringOutput         `pulumi:"name"`
-	ParentFolderId pulumi.StringPtrOutput      `pulumi:"parentFolderId"`
+	Fields LookupTableFieldArrayOutput `pulumi:"fields"`
+	// The name of the lookup table.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The parent-folder-path identifier of the lookup table in the Library.
+	ParentFolderId pulumi.StringPtrOutput `pulumi:"parentFolderId"`
 	// The primary key field names.
 	PrimaryKeys     pulumi.StringArrayOutput `pulumi:"primaryKeys"`
 	SizeLimitAction pulumi.StringPtrOutput   `pulumi:"sizeLimitAction"`
-	Ttl             pulumi.IntPtrOutput      `pulumi:"ttl"`
+	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
 }
 
 // NewLookupTable registers a new resource with the given unique name, arguments, and options.
@@ -126,27 +116,35 @@ func GetLookupTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LookupTable resources.
 type lookupTableState struct {
+	// The description of the lookup table.
 	Description *string `pulumi:"description"`
 	// The list of fields in the lookup table.
-	Fields         []LookupTableField `pulumi:"fields"`
-	Name           *string            `pulumi:"name"`
-	ParentFolderId *string            `pulumi:"parentFolderId"`
+	Fields []LookupTableField `pulumi:"fields"`
+	// The name of the lookup table.
+	Name *string `pulumi:"name"`
+	// The parent-folder-path identifier of the lookup table in the Library.
+	ParentFolderId *string `pulumi:"parentFolderId"`
 	// The primary key field names.
 	PrimaryKeys     []string `pulumi:"primaryKeys"`
 	SizeLimitAction *string  `pulumi:"sizeLimitAction"`
-	Ttl             *int     `pulumi:"ttl"`
+	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	Ttl *int `pulumi:"ttl"`
 }
 
 type LookupTableState struct {
+	// The description of the lookup table.
 	Description pulumi.StringPtrInput
 	// The list of fields in the lookup table.
-	Fields         LookupTableFieldArrayInput
-	Name           pulumi.StringPtrInput
+	Fields LookupTableFieldArrayInput
+	// The name of the lookup table.
+	Name pulumi.StringPtrInput
+	// The parent-folder-path identifier of the lookup table in the Library.
 	ParentFolderId pulumi.StringPtrInput
 	// The primary key field names.
 	PrimaryKeys     pulumi.StringArrayInput
 	SizeLimitAction pulumi.StringPtrInput
-	Ttl             pulumi.IntPtrInput
+	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	Ttl pulumi.IntPtrInput
 }
 
 func (LookupTableState) ElementType() reflect.Type {
@@ -154,28 +152,36 @@ func (LookupTableState) ElementType() reflect.Type {
 }
 
 type lookupTableArgs struct {
+	// The description of the lookup table.
 	Description string `pulumi:"description"`
 	// The list of fields in the lookup table.
-	Fields         []LookupTableField `pulumi:"fields"`
-	Name           *string            `pulumi:"name"`
-	ParentFolderId *string            `pulumi:"parentFolderId"`
+	Fields []LookupTableField `pulumi:"fields"`
+	// The name of the lookup table.
+	Name *string `pulumi:"name"`
+	// The parent-folder-path identifier of the lookup table in the Library.
+	ParentFolderId *string `pulumi:"parentFolderId"`
 	// The primary key field names.
 	PrimaryKeys     []string `pulumi:"primaryKeys"`
 	SizeLimitAction *string  `pulumi:"sizeLimitAction"`
-	Ttl             *int     `pulumi:"ttl"`
+	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	Ttl *int `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a LookupTable resource.
 type LookupTableArgs struct {
+	// The description of the lookup table.
 	Description pulumi.StringInput
 	// The list of fields in the lookup table.
-	Fields         LookupTableFieldArrayInput
-	Name           pulumi.StringPtrInput
+	Fields LookupTableFieldArrayInput
+	// The name of the lookup table.
+	Name pulumi.StringPtrInput
+	// The parent-folder-path identifier of the lookup table in the Library.
 	ParentFolderId pulumi.StringPtrInput
 	// The primary key field names.
 	PrimaryKeys     pulumi.StringArrayInput
 	SizeLimitAction pulumi.StringPtrInput
-	Ttl             pulumi.IntPtrInput
+	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	Ttl pulumi.IntPtrInput
 }
 
 func (LookupTableArgs) ElementType() reflect.Type {

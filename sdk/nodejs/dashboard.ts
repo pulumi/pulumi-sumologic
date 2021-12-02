@@ -248,26 +248,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `title` - (Required) Title of the dashboard.
- * - `description` - (Optional) Description of the dashboard.
- * - `folderId` - (Optional) The identifier of the folder to save the dashboard in. By default it is saved in your
- *   personal folder.
- * - `refreshInterval` - (Optional) Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
- * - `theme` - (Optional) Theme of the dashboard.
- * - `topologyLabelMap` - (Block List, Max: 1, Optional) Topology labels for the dashboard. See
- *   topology label map schema
- *   for details.
- * - `timeRange` - (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
- *   for details.
- * - `panel` - (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
- * - `layout` - (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
- * - `variable` - (Block List, Optional) A list of variables for the dashboard. See variable schema
- *   for details.
- *
  * ## Attributes reference
  *
  * In addition to all arguments above, the following attributes are exported:
@@ -453,15 +433,50 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     public readonly coloringRules!: pulumi.Output<outputs.DashboardColoringRule[] | undefined>;
+    /**
+     * Description of the dashboard.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The identifier of the folder to save the dashboard in. By default it is saved in your
+     * personal folder.
+     */
     public readonly folderId!: pulumi.Output<string | undefined>;
+    /**
+     * Layout of the dashboard. See layout schema for details.
+     */
     public readonly layout!: pulumi.Output<outputs.DashboardLayout | undefined>;
+    /**
+     * A list of panels in the dashboard. See panel schema for details.
+     */
     public readonly panels!: pulumi.Output<outputs.DashboardPanel[] | undefined>;
+    /**
+     * Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+     */
     public readonly refreshInterval!: pulumi.Output<number | undefined>;
+    /**
+     * Theme of the dashboard.
+     */
     public readonly theme!: pulumi.Output<string | undefined>;
+    /**
+     * Time range of the dashboard. See time range schema
+     * for details.
+     */
     public readonly timeRange!: pulumi.Output<outputs.DashboardTimeRange>;
+    /**
+     * Title of the dashboard.
+     */
     public readonly title!: pulumi.Output<string>;
+    /**
+     * Topology labels for the dashboard. See
+     * topology label map schema
+     * for details.
+     */
     public readonly topologyLabelMap!: pulumi.Output<outputs.DashboardTopologyLabelMap | undefined>;
+    /**
+     * A list of variables for the dashboard. See variable schema
+     * for details.
+     */
     public readonly variables!: pulumi.Output<outputs.DashboardVariable[] | undefined>;
 
     /**
@@ -520,15 +535,50 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     coloringRules?: pulumi.Input<pulumi.Input<inputs.DashboardColoringRule>[]>;
+    /**
+     * Description of the dashboard.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The identifier of the folder to save the dashboard in. By default it is saved in your
+     * personal folder.
+     */
     folderId?: pulumi.Input<string>;
+    /**
+     * Layout of the dashboard. See layout schema for details.
+     */
     layout?: pulumi.Input<inputs.DashboardLayout>;
+    /**
+     * A list of panels in the dashboard. See panel schema for details.
+     */
     panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
+    /**
+     * Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+     */
     refreshInterval?: pulumi.Input<number>;
+    /**
+     * Theme of the dashboard.
+     */
     theme?: pulumi.Input<string>;
+    /**
+     * Time range of the dashboard. See time range schema
+     * for details.
+     */
     timeRange?: pulumi.Input<inputs.DashboardTimeRange>;
+    /**
+     * Title of the dashboard.
+     */
     title?: pulumi.Input<string>;
+    /**
+     * Topology labels for the dashboard. See
+     * topology label map schema
+     * for details.
+     */
     topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
+    /**
+     * A list of variables for the dashboard. See variable schema
+     * for details.
+     */
     variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }
 
@@ -537,14 +587,49 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     coloringRules?: pulumi.Input<pulumi.Input<inputs.DashboardColoringRule>[]>;
+    /**
+     * Description of the dashboard.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The identifier of the folder to save the dashboard in. By default it is saved in your
+     * personal folder.
+     */
     folderId?: pulumi.Input<string>;
+    /**
+     * Layout of the dashboard. See layout schema for details.
+     */
     layout?: pulumi.Input<inputs.DashboardLayout>;
+    /**
+     * A list of panels in the dashboard. See panel schema for details.
+     */
     panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
+    /**
+     * Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+     */
     refreshInterval?: pulumi.Input<number>;
+    /**
+     * Theme of the dashboard.
+     */
     theme?: pulumi.Input<string>;
+    /**
+     * Time range of the dashboard. See time range schema
+     * for details.
+     */
     timeRange: pulumi.Input<inputs.DashboardTimeRange>;
+    /**
+     * Title of the dashboard.
+     */
     title: pulumi.Input<string>;
+    /**
+     * Topology labels for the dashboard. See
+     * topology label map schema
+     * for details.
+     */
     topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
+    /**
+     * A list of variables for the dashboard. See variable schema
+     * for details.
+     */
     variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }

@@ -22,21 +22,6 @@ import * as utilities from "./utilities";
  *     ruleIds: ["LEGACY-S00084"],
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) The name of the rule tuning expression.
- * - `description` - (Required) The description of the rule tuning expression.
- * - `expression` - (Required) Expression to match.
- * - `enabled` - (Required) Enabled flag.
- * - `exclude` - (Required) Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
- * - `isGlobal` - (Required) Set to true if this tuning expression should be applied to all rules.
- * - `ruleIds` - (Required) List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the rule tuning expression.
  *
  * ## Import
  *
@@ -74,12 +59,33 @@ export class CseRuleTuningExpression extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseRuleTuningExpression.__pulumiType;
     }
 
+    /**
+     * The description of the rule tuning expression.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Enabled flag.
+     */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+     */
     public readonly exclude!: pulumi.Output<boolean>;
+    /**
+     * Expression to match.
+     */
     public readonly expression!: pulumi.Output<string>;
+    /**
+     * Set to true if this tuning expression should be applied to all rules.
+     */
     public readonly isGlobal!: pulumi.Output<boolean>;
+    /**
+     * The name of the rule tuning expression.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+     */
     public readonly ruleIds!: pulumi.Output<string[]>;
 
     /**
@@ -141,12 +147,33 @@ export class CseRuleTuningExpression extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseRuleTuningExpression resources.
  */
 export interface CseRuleTuningExpressionState {
+    /**
+     * The description of the rule tuning expression.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Enabled flag.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+     */
     exclude?: pulumi.Input<boolean>;
+    /**
+     * Expression to match.
+     */
     expression?: pulumi.Input<string>;
+    /**
+     * Set to true if this tuning expression should be applied to all rules.
+     */
     isGlobal?: pulumi.Input<boolean>;
+    /**
+     * The name of the rule tuning expression.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+     */
     ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -154,11 +181,32 @@ export interface CseRuleTuningExpressionState {
  * The set of arguments for constructing a CseRuleTuningExpression resource.
  */
 export interface CseRuleTuningExpressionArgs {
+    /**
+     * The description of the rule tuning expression.
+     */
     description: pulumi.Input<string>;
+    /**
+     * Enabled flag.
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+     */
     exclude: pulumi.Input<boolean>;
+    /**
+     * Expression to match.
+     */
     expression: pulumi.Input<string>;
+    /**
+     * Set to true if this tuning expression should be applied to all rules.
+     */
     isGlobal: pulumi.Input<boolean>;
+    /**
+     * The name of the rule tuning expression.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+     */
     ruleIds: pulumi.Input<pulumi.Input<string>[]>;
 }

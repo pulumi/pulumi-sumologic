@@ -67,13 +67,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-//  - `config` - (Required) This is a JSON object which contains the configuration parameters for the Source.
-//  - `schemaRef` - (Required) Source schema details.
-//      + `type` - (Required) Schema type for the Cloud-to-Cloud source.
 //
 // ## Import
 //
@@ -93,9 +86,11 @@ import (
 type CloudToCloudSource struct {
 	pulumi.CustomResourceState
 
-	CollectorId pulumi.IntOutput       `pulumi:"collectorId"`
-	Config      pulumi.StringOutput    `pulumi:"config"`
-	SchemaRef   pulumi.StringMapOutput `pulumi:"schemaRef"`
+	CollectorId pulumi.IntOutput `pulumi:"collectorId"`
+	// This is a JSON object which contains the configuration parameters for the Source.
+	Config pulumi.StringOutput `pulumi:"config"`
+	// Source schema details.
+	SchemaRef pulumi.StringMapOutput `pulumi:"schemaRef"`
 }
 
 // NewCloudToCloudSource registers a new resource with the given unique name, arguments, and options.
@@ -136,15 +131,19 @@ func GetCloudToCloudSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudToCloudSource resources.
 type cloudToCloudSourceState struct {
-	CollectorId *int              `pulumi:"collectorId"`
-	Config      *string           `pulumi:"config"`
-	SchemaRef   map[string]string `pulumi:"schemaRef"`
+	CollectorId *int `pulumi:"collectorId"`
+	// This is a JSON object which contains the configuration parameters for the Source.
+	Config *string `pulumi:"config"`
+	// Source schema details.
+	SchemaRef map[string]string `pulumi:"schemaRef"`
 }
 
 type CloudToCloudSourceState struct {
 	CollectorId pulumi.IntPtrInput
-	Config      pulumi.StringPtrInput
-	SchemaRef   pulumi.StringMapInput
+	// This is a JSON object which contains the configuration parameters for the Source.
+	Config pulumi.StringPtrInput
+	// Source schema details.
+	SchemaRef pulumi.StringMapInput
 }
 
 func (CloudToCloudSourceState) ElementType() reflect.Type {
@@ -152,16 +151,20 @@ func (CloudToCloudSourceState) ElementType() reflect.Type {
 }
 
 type cloudToCloudSourceArgs struct {
-	CollectorId int               `pulumi:"collectorId"`
-	Config      string            `pulumi:"config"`
-	SchemaRef   map[string]string `pulumi:"schemaRef"`
+	CollectorId int `pulumi:"collectorId"`
+	// This is a JSON object which contains the configuration parameters for the Source.
+	Config string `pulumi:"config"`
+	// Source schema details.
+	SchemaRef map[string]string `pulumi:"schemaRef"`
 }
 
 // The set of arguments for constructing a CloudToCloudSource resource.
 type CloudToCloudSourceArgs struct {
 	CollectorId pulumi.IntInput
-	Config      pulumi.StringInput
-	SchemaRef   pulumi.StringMapInput
+	// This is a JSON object which contains the configuration parameters for the Source.
+	Config pulumi.StringInput
+	// Source schema details.
+	SchemaRef pulumi.StringMapInput
 }
 
 func (CloudToCloudSourceArgs) ElementType() reflect.Type {

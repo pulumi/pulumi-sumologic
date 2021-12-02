@@ -31,17 +31,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) The name of the insights resolution.
-    /// - `description` - (Required) The description of the insights resolution.
-    /// - `parent` - (Required) The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the insights resolution.
     /// 
     /// ## Import
     /// 
@@ -54,12 +43,21 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseInsightsResolution:CseInsightsResolution")]
     public partial class CseInsightsResolution : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the insights resolution.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the insights resolution.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
@@ -109,12 +107,21 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseInsightsResolutionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the insights resolution.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the insights resolution.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
@@ -125,12 +132,21 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseInsightsResolutionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the insights resolution.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The name of the insights resolution.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 

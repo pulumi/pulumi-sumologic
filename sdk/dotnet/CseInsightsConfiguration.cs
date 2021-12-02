@@ -31,16 +31,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `lookback_days` - (Optional) Detection window expressed in days.
-    /// - `threshold` - (Optional) Detection threshold activity score.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `ID` - The internal ID of the insights configuration.
     /// 
     /// ## Import
     /// 
@@ -53,9 +43,15 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration")]
     public partial class CseInsightsConfiguration : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Detection window expressed in days.
+        /// </summary>
         [Output("lookbackDays")]
         public Output<double?> LookbackDays { get; private set; } = null!;
 
+        /// <summary>
+        /// Detection threshold activity score.
+        /// </summary>
         [Output("threshold")]
         public Output<double?> Threshold { get; private set; } = null!;
 
@@ -105,9 +101,15 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseInsightsConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Detection window expressed in days.
+        /// </summary>
         [Input("lookbackDays")]
         public Input<double>? LookbackDays { get; set; }
 
+        /// <summary>
+        /// Detection threshold activity score.
+        /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
 
@@ -118,9 +120,15 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseInsightsConfigurationState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Detection window expressed in days.
+        /// </summary>
         [Input("lookbackDays")]
         public Input<double>? LookbackDays { get; set; }
 
+        /// <summary>
+        /// Detection threshold activity score.
+        /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
 

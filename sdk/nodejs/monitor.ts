@@ -25,38 +25,6 @@ import * as utilities from "./utilities";
  * NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
  * > > > > > > > v2.11.0
  *
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `type` - (Optional) The type of object model. Valid value:
- *   - `MonitorsLibraryMonitor`
- * - `name` - (Required) The name of the monitor. The name must be alphanumeric.
- * - `description` - (Required) The description of the monitor.
- * - `isDisabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
- * - `parentId` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
- * - `contentType` - (Optional) The type of the content object. Valid value:
- *   - `Monitor`
- * - `monitorType` - (Required) The type of monitor. Valid values:
- *   - `Logs`: A logs query monitor.
- *   - `Metrics`: A metrics query monitor.
- * - `queries` - (Required) All queries from the monitor.
- * - `triggerConditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
- * - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
- * - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
- * - `groupNotifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
- * - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
- *
- * Additional data provided in state:
- *
- * - `id` - (Computed) The ID for this monitor.
- * - `status` - (Computed) The current status for this monitor. Values are:
- *   - `Critical`
- *   - `Warning`
- *   - `MissingData`
- *   - `Normal`
- *   - `Disabled`
- *
  * ## The `triggerConditions` block
  *
  * A `triggerConditions` block configures conditions for sending notifications.
@@ -243,31 +211,81 @@ export class Monitor extends pulumi.CustomResource {
         return obj['__pulumiType'] === Monitor.__pulumiType;
     }
 
+    /**
+     * The type of the content object. Valid value:
+     * - `Monitor`
+     */
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly createdAt!: pulumi.Output<string>;
     public readonly createdBy!: pulumi.Output<string>;
+    /**
+     * The description of the monitor.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly evaluationDelay!: pulumi.Output<string>;
+    /**
+     * Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+     */
     public readonly groupNotifications!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+     */
     public readonly isDisabled!: pulumi.Output<boolean | undefined>;
     public readonly isLocked!: pulumi.Output<boolean>;
     public readonly isMutable!: pulumi.Output<boolean>;
     public readonly isSystem!: pulumi.Output<boolean>;
     public readonly modifiedAt!: pulumi.Output<string>;
     public readonly modifiedBy!: pulumi.Output<string>;
+    /**
+     * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     */
     public readonly monitorType!: pulumi.Output<string>;
+    /**
+     * The name of the monitor. The name must be alphanumeric.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The notifications the monitor will send when the respective trigger condition is met.
+     */
     public readonly notifications!: pulumi.Output<outputs.MonitorNotification[] | undefined>;
+    /**
+     * The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+     */
     public readonly parentId!: pulumi.Output<string>;
+    /**
+     * Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+     */
     public readonly playbook!: pulumi.Output<string | undefined>;
     public readonly postRequestMap!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * All queries from the monitor.
+     */
     public readonly queries!: pulumi.Output<outputs.MonitorQuery[] | undefined>;
+    /**
+     * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
+     */
     public readonly statuses!: pulumi.Output<string[]>;
+    /**
+     * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+     */
     public readonly triggerConditions!: pulumi.Output<outputs.MonitorTriggerConditions | undefined>;
     /**
+     * Defines the conditions of when to send notifications.
+     *
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
     public readonly triggers!: pulumi.Output<outputs.MonitorTrigger[] | undefined>;
+    /**
+     * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
+     */
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
 
@@ -349,31 +367,81 @@ export class Monitor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Monitor resources.
  */
 export interface MonitorState {
+    /**
+     * The type of the content object. Valid value:
+     * - `Monitor`
+     */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
+    /**
+     * The description of the monitor.
+     */
     description?: pulumi.Input<string>;
     evaluationDelay?: pulumi.Input<string>;
+    /**
+     * Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+     */
     groupNotifications?: pulumi.Input<boolean>;
+    /**
+     * Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+     */
     isDisabled?: pulumi.Input<boolean>;
     isLocked?: pulumi.Input<boolean>;
     isMutable?: pulumi.Input<boolean>;
     isSystem?: pulumi.Input<boolean>;
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
+    /**
+     * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     */
     monitorType?: pulumi.Input<string>;
+    /**
+     * The name of the monitor. The name must be alphanumeric.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The notifications the monitor will send when the respective trigger condition is met.
+     */
     notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
+    /**
+     * The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+     */
     parentId?: pulumi.Input<string>;
+    /**
+     * Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+     */
     playbook?: pulumi.Input<string>;
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * All queries from the monitor.
+     */
     queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
+    /**
+     * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
+     */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+     */
     triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
     /**
+     * Defines the conditions of when to send notifications.
+     *
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
+    /**
+     * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
+     */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }
@@ -382,31 +450,81 @@ export interface MonitorState {
  * The set of arguments for constructing a Monitor resource.
  */
 export interface MonitorArgs {
+    /**
+     * The type of the content object. Valid value:
+     * - `Monitor`
+     */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
+    /**
+     * The description of the monitor.
+     */
     description?: pulumi.Input<string>;
     evaluationDelay?: pulumi.Input<string>;
+    /**
+     * Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+     */
     groupNotifications?: pulumi.Input<boolean>;
+    /**
+     * Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+     */
     isDisabled?: pulumi.Input<boolean>;
     isLocked?: pulumi.Input<boolean>;
     isMutable?: pulumi.Input<boolean>;
     isSystem?: pulumi.Input<boolean>;
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
+    /**
+     * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     */
     monitorType: pulumi.Input<string>;
+    /**
+     * The name of the monitor. The name must be alphanumeric.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The notifications the monitor will send when the respective trigger condition is met.
+     */
     notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
+    /**
+     * The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+     */
     parentId?: pulumi.Input<string>;
+    /**
+     * Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+     */
     playbook?: pulumi.Input<string>;
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * All queries from the monitor.
+     */
     queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
+    /**
+     * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
+     */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+     */
     triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
     /**
+     * Defines the conditions of when to send notifications.
+     *
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
+    /**
+     * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
+     */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }

@@ -17,16 +17,6 @@ import * as utilities from "./utilities";
  *     description: "New description",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) The name of the insights status.
- * - `description` - (Required) The description of the insights status.
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the insights status.
  *
  * ## Import
  *
@@ -64,8 +54,14 @@ export class CseInsightsStatus extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseInsightsStatus.__pulumiType;
     }
 
+    /**
+     * The description of the insights status.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * The name of the insights status.
+     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -101,8 +97,14 @@ export class CseInsightsStatus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseInsightsStatus resources.
  */
 export interface CseInsightsStatusState {
+    /**
+     * The description of the insights status.
+     */
     description?: pulumi.Input<string>;
     displayName?: pulumi.Input<string>;
+    /**
+     * The name of the insights status.
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -110,6 +112,12 @@ export interface CseInsightsStatusState {
  * The set of arguments for constructing a CseInsightsStatus resource.
  */
 export interface CseInsightsStatusArgs {
+    /**
+     * The description of the insights status.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the insights status.
+     */
     name?: pulumi.Input<string>;
 }

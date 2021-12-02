@@ -35,12 +35,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `subdomain` - (Required) The subdomain.
-//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -51,6 +45,7 @@ import (
 type Subdomain struct {
 	pulumi.CustomResourceState
 
+	// The subdomain.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
 }
 
@@ -86,10 +81,12 @@ func GetSubdomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subdomain resources.
 type subdomainState struct {
+	// The subdomain.
 	Subdomain *string `pulumi:"subdomain"`
 }
 
 type SubdomainState struct {
+	// The subdomain.
 	Subdomain pulumi.StringPtrInput
 }
 
@@ -98,11 +95,13 @@ func (SubdomainState) ElementType() reflect.Type {
 }
 
 type subdomainArgs struct {
+	// The subdomain.
 	Subdomain string `pulumi:"subdomain"`
 }
 
 // The set of arguments for constructing a Subdomain resource.
 type SubdomainArgs struct {
+	// The subdomain.
 	Subdomain pulumi.StringInput
 }
 

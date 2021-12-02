@@ -298,26 +298,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `title` - (Required) Title of the dashboard.
-// - `description` - (Optional) Description of the dashboard.
-// - `folderId` - (Optional) The identifier of the folder to save the dashboard in. By default it is saved in your
-//   personal folder.
-// - `refreshInterval` - (Optional) Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
-// - `theme` - (Optional) Theme of the dashboard.
-// - `topologyLabelMap` - (Block List, Max: 1, Optional) Topology labels for the dashboard. See
-//   topology label map schema
-//   for details.
-// - `timeRange` - (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
-//   for details.
-// - `panel` - (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
-// - `layout` - (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
-// - `variable` - (Block List, Optional) A list of variables for the dashboard. See variable schema
-//   for details.
-//
 // ## Attributes reference
 //
 // In addition to all arguments above, the following attributes are exported:
@@ -476,17 +456,32 @@ import (
 type Dashboard struct {
 	pulumi.CustomResourceState
 
-	ColoringRules    DashboardColoringRuleArrayOutput   `pulumi:"coloringRules"`
-	Description      pulumi.StringPtrOutput             `pulumi:"description"`
-	FolderId         pulumi.StringPtrOutput             `pulumi:"folderId"`
-	Layout           DashboardLayoutPtrOutput           `pulumi:"layout"`
-	Panels           DashboardPanelArrayOutput          `pulumi:"panels"`
-	RefreshInterval  pulumi.IntPtrOutput                `pulumi:"refreshInterval"`
-	Theme            pulumi.StringPtrOutput             `pulumi:"theme"`
-	TimeRange        DashboardTimeRangeOutput           `pulumi:"timeRange"`
-	Title            pulumi.StringOutput                `pulumi:"title"`
+	ColoringRules DashboardColoringRuleArrayOutput `pulumi:"coloringRules"`
+	// Description of the dashboard.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The identifier of the folder to save the dashboard in. By default it is saved in your
+	// personal folder.
+	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
+	// Layout of the dashboard. See layout schema for details.
+	Layout DashboardLayoutPtrOutput `pulumi:"layout"`
+	// A list of panels in the dashboard. See panel schema for details.
+	Panels DashboardPanelArrayOutput `pulumi:"panels"`
+	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
+	// Theme of the dashboard.
+	Theme pulumi.StringPtrOutput `pulumi:"theme"`
+	// Time range of the dashboard. See time range schema
+	// for details.
+	TimeRange DashboardTimeRangeOutput `pulumi:"timeRange"`
+	// Title of the dashboard.
+	Title pulumi.StringOutput `pulumi:"title"`
+	// Topology labels for the dashboard. See
+	// topology label map schema
+	// for details.
 	TopologyLabelMap DashboardTopologyLabelMapPtrOutput `pulumi:"topologyLabelMap"`
-	Variables        DashboardVariableArrayOutput       `pulumi:"variables"`
+	// A list of variables for the dashboard. See variable schema
+	// for details.
+	Variables DashboardVariableArrayOutput `pulumi:"variables"`
 }
 
 // NewDashboard registers a new resource with the given unique name, arguments, and options.
@@ -524,31 +519,61 @@ func GetDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dashboard resources.
 type dashboardState struct {
-	ColoringRules    []DashboardColoringRule    `pulumi:"coloringRules"`
-	Description      *string                    `pulumi:"description"`
-	FolderId         *string                    `pulumi:"folderId"`
-	Layout           *DashboardLayout           `pulumi:"layout"`
-	Panels           []DashboardPanel           `pulumi:"panels"`
-	RefreshInterval  *int                       `pulumi:"refreshInterval"`
-	Theme            *string                    `pulumi:"theme"`
-	TimeRange        *DashboardTimeRange        `pulumi:"timeRange"`
-	Title            *string                    `pulumi:"title"`
+	ColoringRules []DashboardColoringRule `pulumi:"coloringRules"`
+	// Description of the dashboard.
+	Description *string `pulumi:"description"`
+	// The identifier of the folder to save the dashboard in. By default it is saved in your
+	// personal folder.
+	FolderId *string `pulumi:"folderId"`
+	// Layout of the dashboard. See layout schema for details.
+	Layout *DashboardLayout `pulumi:"layout"`
+	// A list of panels in the dashboard. See panel schema for details.
+	Panels []DashboardPanel `pulumi:"panels"`
+	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+	RefreshInterval *int `pulumi:"refreshInterval"`
+	// Theme of the dashboard.
+	Theme *string `pulumi:"theme"`
+	// Time range of the dashboard. See time range schema
+	// for details.
+	TimeRange *DashboardTimeRange `pulumi:"timeRange"`
+	// Title of the dashboard.
+	Title *string `pulumi:"title"`
+	// Topology labels for the dashboard. See
+	// topology label map schema
+	// for details.
 	TopologyLabelMap *DashboardTopologyLabelMap `pulumi:"topologyLabelMap"`
-	Variables        []DashboardVariable        `pulumi:"variables"`
+	// A list of variables for the dashboard. See variable schema
+	// for details.
+	Variables []DashboardVariable `pulumi:"variables"`
 }
 
 type DashboardState struct {
-	ColoringRules    DashboardColoringRuleArrayInput
-	Description      pulumi.StringPtrInput
-	FolderId         pulumi.StringPtrInput
-	Layout           DashboardLayoutPtrInput
-	Panels           DashboardPanelArrayInput
-	RefreshInterval  pulumi.IntPtrInput
-	Theme            pulumi.StringPtrInput
-	TimeRange        DashboardTimeRangePtrInput
-	Title            pulumi.StringPtrInput
+	ColoringRules DashboardColoringRuleArrayInput
+	// Description of the dashboard.
+	Description pulumi.StringPtrInput
+	// The identifier of the folder to save the dashboard in. By default it is saved in your
+	// personal folder.
+	FolderId pulumi.StringPtrInput
+	// Layout of the dashboard. See layout schema for details.
+	Layout DashboardLayoutPtrInput
+	// A list of panels in the dashboard. See panel schema for details.
+	Panels DashboardPanelArrayInput
+	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+	RefreshInterval pulumi.IntPtrInput
+	// Theme of the dashboard.
+	Theme pulumi.StringPtrInput
+	// Time range of the dashboard. See time range schema
+	// for details.
+	TimeRange DashboardTimeRangePtrInput
+	// Title of the dashboard.
+	Title pulumi.StringPtrInput
+	// Topology labels for the dashboard. See
+	// topology label map schema
+	// for details.
 	TopologyLabelMap DashboardTopologyLabelMapPtrInput
-	Variables        DashboardVariableArrayInput
+	// A list of variables for the dashboard. See variable schema
+	// for details.
+	Variables DashboardVariableArrayInput
 }
 
 func (DashboardState) ElementType() reflect.Type {
@@ -556,32 +581,62 @@ func (DashboardState) ElementType() reflect.Type {
 }
 
 type dashboardArgs struct {
-	ColoringRules    []DashboardColoringRule    `pulumi:"coloringRules"`
-	Description      *string                    `pulumi:"description"`
-	FolderId         *string                    `pulumi:"folderId"`
-	Layout           *DashboardLayout           `pulumi:"layout"`
-	Panels           []DashboardPanel           `pulumi:"panels"`
-	RefreshInterval  *int                       `pulumi:"refreshInterval"`
-	Theme            *string                    `pulumi:"theme"`
-	TimeRange        DashboardTimeRange         `pulumi:"timeRange"`
-	Title            string                     `pulumi:"title"`
+	ColoringRules []DashboardColoringRule `pulumi:"coloringRules"`
+	// Description of the dashboard.
+	Description *string `pulumi:"description"`
+	// The identifier of the folder to save the dashboard in. By default it is saved in your
+	// personal folder.
+	FolderId *string `pulumi:"folderId"`
+	// Layout of the dashboard. See layout schema for details.
+	Layout *DashboardLayout `pulumi:"layout"`
+	// A list of panels in the dashboard. See panel schema for details.
+	Panels []DashboardPanel `pulumi:"panels"`
+	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+	RefreshInterval *int `pulumi:"refreshInterval"`
+	// Theme of the dashboard.
+	Theme *string `pulumi:"theme"`
+	// Time range of the dashboard. See time range schema
+	// for details.
+	TimeRange DashboardTimeRange `pulumi:"timeRange"`
+	// Title of the dashboard.
+	Title string `pulumi:"title"`
+	// Topology labels for the dashboard. See
+	// topology label map schema
+	// for details.
 	TopologyLabelMap *DashboardTopologyLabelMap `pulumi:"topologyLabelMap"`
-	Variables        []DashboardVariable        `pulumi:"variables"`
+	// A list of variables for the dashboard. See variable schema
+	// for details.
+	Variables []DashboardVariable `pulumi:"variables"`
 }
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
-	ColoringRules    DashboardColoringRuleArrayInput
-	Description      pulumi.StringPtrInput
-	FolderId         pulumi.StringPtrInput
-	Layout           DashboardLayoutPtrInput
-	Panels           DashboardPanelArrayInput
-	RefreshInterval  pulumi.IntPtrInput
-	Theme            pulumi.StringPtrInput
-	TimeRange        DashboardTimeRangeInput
-	Title            pulumi.StringInput
+	ColoringRules DashboardColoringRuleArrayInput
+	// Description of the dashboard.
+	Description pulumi.StringPtrInput
+	// The identifier of the folder to save the dashboard in. By default it is saved in your
+	// personal folder.
+	FolderId pulumi.StringPtrInput
+	// Layout of the dashboard. See layout schema for details.
+	Layout DashboardLayoutPtrInput
+	// A list of panels in the dashboard. See panel schema for details.
+	Panels DashboardPanelArrayInput
+	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+	RefreshInterval pulumi.IntPtrInput
+	// Theme of the dashboard.
+	Theme pulumi.StringPtrInput
+	// Time range of the dashboard. See time range schema
+	// for details.
+	TimeRange DashboardTimeRangeInput
+	// Title of the dashboard.
+	Title pulumi.StringInput
+	// Topology labels for the dashboard. See
+	// topology label map schema
+	// for details.
 	TopologyLabelMap DashboardTopologyLabelMapPtrInput
-	Variables        DashboardVariableArrayInput
+	// A list of variables for the dashboard. See variable schema
+	// for details.
+	Variables DashboardVariableArrayInput
 }
 
 func (DashboardArgs) ElementType() reflect.Type {

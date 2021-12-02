@@ -19,18 +19,6 @@ import * as utilities from "./utilities";
  *     filterPredicate: "_sourceCategory=Test",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required) The name of the role.
- * - `description` - (Optional) The description of the role.
- * - `filterPredicate` - (Optional) A search filter to restrict access to specific logs.
- * - `capabilities` - (Optional) List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the role.
  *
  * ## Import
  *
@@ -70,9 +58,21 @@ export class Role extends pulumi.CustomResource {
         return obj['__pulumiType'] === Role.__pulumiType;
     }
 
+    /**
+     * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     */
     public readonly capabilities!: pulumi.Output<string[] | undefined>;
+    /**
+     * The description of the role.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * A search filter to restrict access to specific logs.
+     */
     public readonly filterPredicate!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the role.
+     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -110,9 +110,21 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
+    /**
+     * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     */
     capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the role.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * A search filter to restrict access to specific logs.
+     */
     filterPredicate?: pulumi.Input<string>;
+    /**
+     * The name of the role.
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -120,8 +132,20 @@ export interface RoleState {
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
+    /**
+     * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     */
     capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the role.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * A search filter to restrict access to specific logs.
+     */
     filterPredicate?: pulumi.Input<string>;
+    /**
+     * The name of the role.
+     */
     name?: pulumi.Input<string>;
 }

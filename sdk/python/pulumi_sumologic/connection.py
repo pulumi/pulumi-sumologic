@@ -24,6 +24,15 @@ class ConnectionArgs:
                  webhook_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
+        :param pulumi.Input[str] default_payload: Default payload of the webhook.
+        :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
+        :param pulumi.Input[str] url: URL for the webhook connection.
+        :param pulumi.Input[str] connection_subtype: The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_headers: Map of custom webhook headers
+        :param pulumi.Input[str] description: Description of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
+        :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
         """
         pulumi.set(__self__, "default_payload", default_payload)
         pulumi.set(__self__, "type", type)
@@ -44,6 +53,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter(name="defaultPayload")
     def default_payload(self) -> pulumi.Input[str]:
+        """
+        Default payload of the webhook.
+        """
         return pulumi.get(self, "default_payload")
 
     @default_payload.setter
@@ -53,6 +65,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        Type of connection. Only `WebhookConnection` is implemented right now.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -62,6 +77,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
+        """
+        URL for the webhook connection.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -71,6 +89,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter(name="connectionSubtype")
     def connection_subtype(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        """
         return pulumi.get(self, "connection_subtype")
 
     @connection_subtype.setter
@@ -80,6 +101,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of custom webhook headers
+        """
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
@@ -89,6 +113,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the connection.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -98,6 +125,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of access authorization headers.
+        """
         return pulumi.get(self, "headers")
 
     @headers.setter
@@ -107,6 +137,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of connection. Name should be a valid alphanumeric value.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -116,6 +149,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter(name="webhookType")
     def webhook_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+        """
         return pulumi.get(self, "webhook_type")
 
     @webhook_type.setter
@@ -137,6 +173,15 @@ class _ConnectionState:
                  webhook_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] connection_subtype: The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_headers: Map of custom webhook headers
+        :param pulumi.Input[str] default_payload: Default payload of the webhook.
+        :param pulumi.Input[str] description: Description of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
+        :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
+        :param pulumi.Input[str] url: URL for the webhook connection.
+        :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
         """
         if connection_subtype is not None:
             pulumi.set(__self__, "connection_subtype", connection_subtype)
@@ -160,6 +205,9 @@ class _ConnectionState:
     @property
     @pulumi.getter(name="connectionSubtype")
     def connection_subtype(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        """
         return pulumi.get(self, "connection_subtype")
 
     @connection_subtype.setter
@@ -169,6 +217,9 @@ class _ConnectionState:
     @property
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of custom webhook headers
+        """
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
@@ -178,6 +229,9 @@ class _ConnectionState:
     @property
     @pulumi.getter(name="defaultPayload")
     def default_payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default payload of the webhook.
+        """
         return pulumi.get(self, "default_payload")
 
     @default_payload.setter
@@ -187,6 +241,9 @@ class _ConnectionState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the connection.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -196,6 +253,9 @@ class _ConnectionState:
     @property
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of access authorization headers.
+        """
         return pulumi.get(self, "headers")
 
     @headers.setter
@@ -205,6 +265,9 @@ class _ConnectionState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of connection. Name should be a valid alphanumeric value.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -214,6 +277,9 @@ class _ConnectionState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of connection. Only `WebhookConnection` is implemented right now.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -223,6 +289,9 @@ class _ConnectionState:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL for the webhook connection.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -232,6 +301,9 @@ class _ConnectionState:
     @property
     @pulumi.getter(name="webhookType")
     def webhook_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+        """
         return pulumi.get(self, "webhook_type")
 
     @webhook_type.setter
@@ -284,23 +356,6 @@ class Connection(pulumi.CustomResource):
         \"\"\",
             webhook_type="Webhook")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
-        - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
-        - `description` - (Optional) Description of the connection.
-        - `url` - (Required) URL for the webhook connection.
-        - `headers` - (Optional) Map of access authorization headers.
-        - `custom_headers` - (Optional) Map of custom webhook headers
-        - `default_payload` - (Required) Default payload of the webhook.
-        - `connection_subtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
-        - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
-
-        Additional data provided in state
-
-        - `id` - (Computed) The Id for this connection.
 
         ## Import
 
@@ -312,6 +367,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_subtype: The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_headers: Map of custom webhook headers
+        :param pulumi.Input[str] default_payload: Default payload of the webhook.
+        :param pulumi.Input[str] description: Description of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
+        :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
+        :param pulumi.Input[str] url: URL for the webhook connection.
+        :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
         """
         ...
     @overload
@@ -349,23 +413,6 @@ class Connection(pulumi.CustomResource):
         \"\"\",
             webhook_type="Webhook")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Required) Type of connection. Only `WebhookConnection` is implemented right now.
-        - `name` - (Required) Name of connection. Name should be a valid alphanumeric value.
-        - `description` - (Optional) Description of the connection.
-        - `url` - (Required) URL for the webhook connection.
-        - `headers` - (Optional) Map of access authorization headers.
-        - `custom_headers` - (Optional) Map of custom webhook headers
-        - `default_payload` - (Required) Default payload of the webhook.
-        - `connection_subtype` - (Optional) The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
-        - `webhook_type` - (Optional) Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
-
-        Additional data provided in state
-
-        - `id` - (Computed) The Id for this connection.
 
         ## Import
 
@@ -452,6 +499,15 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_subtype: The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_headers: Map of custom webhook headers
+        :param pulumi.Input[str] default_payload: Default payload of the webhook.
+        :param pulumi.Input[str] description: Description of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
+        :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
+        :param pulumi.Input[str] url: URL for the webhook connection.
+        :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -471,45 +527,72 @@ class Connection(pulumi.CustomResource):
     @property
     @pulumi.getter(name="connectionSubtype")
     def connection_subtype(self) -> pulumi.Output[Optional[str]]:
+        """
+        The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+        """
         return pulumi.get(self, "connection_subtype")
 
     @property
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Map of custom webhook headers
+        """
         return pulumi.get(self, "custom_headers")
 
     @property
     @pulumi.getter(name="defaultPayload")
     def default_payload(self) -> pulumi.Output[str]:
+        """
+        Default payload of the webhook.
+        """
         return pulumi.get(self, "default_payload")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Description of the connection.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def headers(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Map of access authorization headers.
+        """
         return pulumi.get(self, "headers")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of connection. Name should be a valid alphanumeric value.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        Type of connection. Only `WebhookConnection` is implemented right now.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
+        """
+        URL for the webhook connection.
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="webhookType")
     def webhook_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+        """
         return pulumi.get(self, "webhook_type")
 

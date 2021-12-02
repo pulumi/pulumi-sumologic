@@ -38,6 +38,11 @@ class PollingSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a PollingSource resource.
+        :param pulumi.Input['PollingSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['PollingSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
@@ -79,6 +84,9 @@ class PollingSourceArgs:
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Input['PollingSourceAuthenticationArgs']:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -97,6 +105,9 @@ class PollingSourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -106,6 +117,9 @@ class PollingSourceArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input['PollingSourcePathArgs']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -115,6 +129,9 @@ class PollingSourceArgs:
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Input[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -124,6 +141,9 @@ class PollingSourceArgs:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Input[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -293,6 +313,11 @@ class _PollingSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering PollingSource resources.
+        :param pulumi.Input['PollingSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['PollingSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         if authentication is not None:
@@ -343,6 +368,9 @@ class _PollingSourceState:
     @property
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input['PollingSourceAuthenticationArgs']]:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -379,6 +407,9 @@ class _PollingSourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -487,6 +518,9 @@ class _PollingSourceState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['PollingSourcePathArgs']]:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -496,6 +530,9 @@ class _PollingSourceState:
     @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -505,6 +542,9 @@ class _PollingSourceState:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -570,6 +610,88 @@ class PollingSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        !> **WARNING:** This data source is deprecated and will be removed in the next major version.
+
+        Provides a Sumologic Polling source. This source is used to import data from various AWS products, eg. AWS S3 buckets, Cloudwatch Metrics etc.
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector", description="Just testing this")
+        s3_audit = sumologic.PollingSource("s3Audit",
+            description="My description",
+            category="aws/s3audit",
+            content_type="AwsS3AuditBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            filters=[sumologic.PollingSourceFilterArgs(
+                name="Exclude Comments",
+                filter_type="Exclude",
+                regexp="#.*",
+            )],
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
+                access_key="someKey",
+                secret_key="******",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                type="S3BucketPathExpression",
+                bucket_name="Bucket1",
+                path_expression="*",
+            ))
+        cw_metrics = sumologic.PollingSource("cwMetrics",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+                dynamic=[{
+                    "forEach": tagfilters,
+                    "content": [{
+                        "type": tag_filters["value"]["type"],
+                        "namespace": tag_filters["value"]["namespace"],
+                        "tags": tag_filters["value"]["tags"],
+                    }],
+                }],
+            ))
+        ```
+
         ## Import
 
         Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -588,6 +710,11 @@ class PollingSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['PollingSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['PollingSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         ...
     @overload
@@ -596,6 +723,88 @@ class PollingSource(pulumi.CustomResource):
                  args: PollingSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        !> **WARNING:** This data source is deprecated and will be removed in the next major version.
+
+        Provides a Sumologic Polling source. This source is used to import data from various AWS products, eg. AWS S3 buckets, Cloudwatch Metrics etc.
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector", description="Just testing this")
+        s3_audit = sumologic.PollingSource("s3Audit",
+            description="My description",
+            category="aws/s3audit",
+            content_type="AwsS3AuditBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            filters=[sumologic.PollingSourceFilterArgs(
+                name="Exclude Comments",
+                filter_type="Exclude",
+                regexp="#.*",
+            )],
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
+                access_key="someKey",
+                secret_key="******",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                type="S3BucketPathExpression",
+                bucket_name="Bucket1",
+                path_expression="*",
+            ))
+        cw_metrics = sumologic.PollingSource("cwMetrics",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+                dynamic=[{
+                    "forEach": tagfilters,
+                    "content": [{
+                        "type": tag_filters["value"]["type"],
+                        "namespace": tag_filters["value"]["namespace"],
+                        "tags": tag_filters["value"]["tags"],
+                    }],
+                }],
+            ))
+        ```
+
         ## Import
 
         Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -733,6 +942,11 @@ class PollingSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['PollingSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['PollingSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -766,6 +980,9 @@ class PollingSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.PollingSourceAuthentication']:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -786,6 +1003,9 @@ class PollingSource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -846,16 +1066,25 @@ class PollingSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output['outputs.PollingSourcePath']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Output[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @property

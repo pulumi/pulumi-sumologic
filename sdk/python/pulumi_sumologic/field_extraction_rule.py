@@ -19,6 +19,10 @@ class FieldExtractionRuleArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FieldExtractionRule resource.
+        :param pulumi.Input[bool] enabled: Is the field extraction rule enabled.
+        :param pulumi.Input[str] parse_expression: Describes the fields to be parsed.
+        :param pulumi.Input[str] scope: Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+        :param pulumi.Input[str] name: Name of the field extraction rule. Use a name that makes it easy to identify the rule.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "parse_expression", parse_expression)
@@ -29,6 +33,9 @@ class FieldExtractionRuleArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Is the field extraction rule enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -38,6 +45,9 @@ class FieldExtractionRuleArgs:
     @property
     @pulumi.getter(name="parseExpression")
     def parse_expression(self) -> pulumi.Input[str]:
+        """
+        Describes the fields to be parsed.
+        """
         return pulumi.get(self, "parse_expression")
 
     @parse_expression.setter
@@ -47,6 +57,9 @@ class FieldExtractionRuleArgs:
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Input[str]:
+        """
+        Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -56,6 +69,9 @@ class FieldExtractionRuleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -72,6 +88,10 @@ class _FieldExtractionRuleState:
                  scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FieldExtractionRule resources.
+        :param pulumi.Input[bool] enabled: Is the field extraction rule enabled.
+        :param pulumi.Input[str] name: Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        :param pulumi.Input[str] parse_expression: Describes the fields to be parsed.
+        :param pulumi.Input[str] scope: Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -85,6 +105,9 @@ class _FieldExtractionRuleState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Is the field extraction rule enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -94,6 +117,9 @@ class _FieldExtractionRuleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -103,6 +129,9 @@ class _FieldExtractionRuleState:
     @property
     @pulumi.getter(name="parseExpression")
     def parse_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the fields to be parsed.
+        """
         return pulumi.get(self, "parse_expression")
 
     @parse_expression.setter
@@ -112,6 +141,9 @@ class _FieldExtractionRuleState:
     @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -143,15 +175,6 @@ class FieldExtractionRule(pulumi.CustomResource):
             parse_expression="csv _raw extract 1 as f1",
             scope="_sourceHost=127.0.0.1")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) Name of the field extraction rule. Use a name that makes it easy to identify the rule.
-        - `scope` - (Required) Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
-        - `parse_expression` - (Required) Describes the fields to be parsed.
-        - `enabled` - (Required) Is the field extraction rule enabled.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -170,6 +193,10 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] enabled: Is the field extraction rule enabled.
+        :param pulumi.Input[str] name: Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        :param pulumi.Input[str] parse_expression: Describes the fields to be parsed.
+        :param pulumi.Input[str] scope: Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
         """
         ...
     @overload
@@ -191,15 +218,6 @@ class FieldExtractionRule(pulumi.CustomResource):
             parse_expression="csv _raw extract 1 as f1",
             scope="_sourceHost=127.0.0.1")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) Name of the field extraction rule. Use a name that makes it easy to identify the rule.
-        - `scope` - (Required) Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
-        - `parse_expression` - (Required) Describes the fields to be parsed.
-        - `enabled` - (Required) Is the field extraction rule enabled.
-
         ## Attributes reference
 
         The following attributes are exported:
@@ -278,6 +296,10 @@ class FieldExtractionRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] enabled: Is the field extraction rule enabled.
+        :param pulumi.Input[str] name: Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        :param pulumi.Input[str] parse_expression: Describes the fields to be parsed.
+        :param pulumi.Input[str] scope: Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -292,20 +314,32 @@ class FieldExtractionRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
+        """
+        Is the field extraction rule enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parseExpression")
     def parse_expression(self) -> pulumi.Output[str]:
+        """
+        Describes the fields to be parsed.
+        """
         return pulumi.get(self, "parse_expression")
 
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
+        """
+        Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+        """
         return pulumi.get(self, "scope")
 

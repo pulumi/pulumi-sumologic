@@ -37,15 +37,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) Name of the field extraction rule. Use a name that makes it easy to identify the rule.
-// - `scope` - (Required) Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
-// - `parseExpression` - (Required) Describes the fields to be parsed.
-// - `enabled` - (Required) Is the field extraction rule enabled.
-//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -64,10 +55,14 @@ import (
 type FieldExtractionRule struct {
 	pulumi.CustomResourceState
 
-	Enabled         pulumi.BoolOutput   `pulumi:"enabled"`
-	Name            pulumi.StringOutput `pulumi:"name"`
+	// Is the field extraction rule enabled.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Describes the fields to be parsed.
 	ParseExpression pulumi.StringOutput `pulumi:"parseExpression"`
-	Scope           pulumi.StringOutput `pulumi:"scope"`
+	// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+	Scope pulumi.StringOutput `pulumi:"scope"`
 }
 
 // NewFieldExtractionRule registers a new resource with the given unique name, arguments, and options.
@@ -108,17 +103,25 @@ func GetFieldExtractionRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FieldExtractionRule resources.
 type fieldExtractionRuleState struct {
-	Enabled         *bool   `pulumi:"enabled"`
-	Name            *string `pulumi:"name"`
+	// Is the field extraction rule enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+	Name *string `pulumi:"name"`
+	// Describes the fields to be parsed.
 	ParseExpression *string `pulumi:"parseExpression"`
-	Scope           *string `pulumi:"scope"`
+	// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+	Scope *string `pulumi:"scope"`
 }
 
 type FieldExtractionRuleState struct {
-	Enabled         pulumi.BoolPtrInput
-	Name            pulumi.StringPtrInput
+	// Is the field extraction rule enabled.
+	Enabled pulumi.BoolPtrInput
+	// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+	Name pulumi.StringPtrInput
+	// Describes the fields to be parsed.
 	ParseExpression pulumi.StringPtrInput
-	Scope           pulumi.StringPtrInput
+	// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+	Scope pulumi.StringPtrInput
 }
 
 func (FieldExtractionRuleState) ElementType() reflect.Type {
@@ -126,18 +129,26 @@ func (FieldExtractionRuleState) ElementType() reflect.Type {
 }
 
 type fieldExtractionRuleArgs struct {
-	Enabled         bool    `pulumi:"enabled"`
-	Name            *string `pulumi:"name"`
-	ParseExpression string  `pulumi:"parseExpression"`
-	Scope           string  `pulumi:"scope"`
+	// Is the field extraction rule enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+	Name *string `pulumi:"name"`
+	// Describes the fields to be parsed.
+	ParseExpression string `pulumi:"parseExpression"`
+	// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+	Scope string `pulumi:"scope"`
 }
 
 // The set of arguments for constructing a FieldExtractionRule resource.
 type FieldExtractionRuleArgs struct {
-	Enabled         pulumi.BoolInput
-	Name            pulumi.StringPtrInput
+	// Is the field extraction rule enabled.
+	Enabled pulumi.BoolInput
+	// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+	Name pulumi.StringPtrInput
+	// Describes the fields to be parsed.
 	ParseExpression pulumi.StringInput
-	Scope           pulumi.StringInput
+	// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+	Scope pulumi.StringInput
 }
 
 func (FieldExtractionRuleArgs) ElementType() reflect.Type {

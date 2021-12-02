@@ -11,6 +11,101 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a [Sumologic CloudWatch source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics).
+//
+// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_ := []map[string]interface{}{
+// 			map[string]interface{}{
+// 				"name":        "Exclude Comments",
+// 				"filter_type": "Exclude",
+// 				"regexp":      "#.*",
+// 			},
+// 		}
+// 		tagfilters := []map[string]interface{}{
+// 			map[string]interface{}{
+// 				"type":      "TagFilters",
+// 				"namespace": "All",
+// 				"tags": []string{
+// 					"k3=v3",
+// 				},
+// 			},
+// 			map[string]interface{}{
+// 				"type":      "TagFilters",
+// 				"namespace": "AWS/Route53",
+// 				"tags": []string{
+// 					"k1=v1",
+// 				},
+// 			},
+// 			map[string]interface{}{
+// 				"type":      "TagFilters",
+// 				"namespace": "AWS/S3",
+// 				"tags": []string{
+// 					"k2=v2",
+// 				},
+// 			},
+// 		}
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewCloudwatchSource(ctx, "cloudwatchSource", &sumologic.CloudwatchSourceArgs{
+// 			Description:  pulumi.String("My description"),
+// 			Category:     pulumi.String("aws/cw"),
+// 			ContentType:  pulumi.String("AwsCloudWatch"),
+// 			ScanInterval: pulumi.Int(300000),
+// 			Paused:       pulumi.Bool(false),
+// 			CollectorId:  collector.ID(),
+// 			Authentication: &CloudwatchSourceAuthenticationArgs{
+// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
+// 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
+// 			},
+// 			Path: &CloudwatchSourcePathArgs{
+// 				Type: pulumi.String("CloudWatchPath"),
+// 				LimitToRegions: pulumi.StringArray{
+// 					pulumi.String("us-west-2"),
+// 				},
+// 				LimitToNamespaces: pulumi.StringArray{
+// 					pulumi.String("AWS/Route53"),
+// 					pulumi.String("AWS/S3"),
+// 					pulumi.String("customNamespace"),
+// 				},
+// 				Dynamic: []map[string]interface{}{
+// 					map[string]interface{}{
+// 						"forEach": tagfilters,
+// 						"content": []map[string]interface{}{
+// 							map[string]interface{}{
+// 								"type":      tag_filters.Value.Type,
+// 								"namespace": tag_filters.Value.Namespace,
+// 								"tags":      tag_filters.Value.Tags,
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,10 +124,12 @@ import (
 type CloudwatchSource struct {
 	pulumi.CustomResourceState
 
-	Authentication             CloudwatchSourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                         `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                       `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                             `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudwatchSourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput                 `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput               `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                     `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringOutput                          `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                       `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                          `pulumi:"cutoffTimestamp"`
@@ -45,10 +142,13 @@ type CloudwatchSource struct {
 	ManualPrefixRegexp         pulumi.StringPtrOutput                       `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                         `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                          `pulumi:"name"`
-	Path                       CloudwatchSourcePathOutput                   `pulumi:"path"`
-	Paused                     pulumi.BoolOutput                            `pulumi:"paused"`
-	ScanInterval               pulumi.IntOutput                             `pulumi:"scanInterval"`
-	Timezone                   pulumi.StringPtrOutput                       `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path CloudwatchSourcePathOutput `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntOutput       `pulumi:"scanInterval"`
+	Timezone     pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -101,10 +201,12 @@ func GetCloudwatchSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudwatchSource resources.
 type cloudwatchSourceState struct {
-	Authentication             *CloudwatchSourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                               `pulumi:"automaticDateParsing"`
-	Category                   *string                             `pulumi:"category"`
-	CollectorId                *int                                `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       *CloudwatchSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                           `pulumi:"automaticDateParsing"`
+	Category             *string                         `pulumi:"category"`
+	CollectorId          *int                            `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                *string                             `pulumi:"contentType"`
 	CutoffRelativeTime         *string                             `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                `pulumi:"cutoffTimestamp"`
@@ -117,20 +219,25 @@ type cloudwatchSourceState struct {
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                             `pulumi:"name"`
-	Path                       *CloudwatchSourcePath               `pulumi:"path"`
-	Paused                     *bool                               `pulumi:"paused"`
-	ScanInterval               *int                                `pulumi:"scanInterval"`
-	Timezone                   *string                             `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path *CloudwatchSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused *bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval *int    `pulumi:"scanInterval"`
+	Timezone     *string `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type CloudwatchSourceState struct {
-	Authentication             CloudwatchSourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudwatchSourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -143,10 +250,13 @@ type CloudwatchSourceState struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       CloudwatchSourcePathPtrInput
-	Paused                     pulumi.BoolPtrInput
-	ScanInterval               pulumi.IntPtrInput
-	Timezone                   pulumi.StringPtrInput
+	// The location to scan for new data.
+	Path CloudwatchSourcePathPtrInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolPtrInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntPtrInput
+	Timezone     pulumi.StringPtrInput
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
@@ -157,10 +267,12 @@ func (CloudwatchSourceState) ElementType() reflect.Type {
 }
 
 type cloudwatchSourceArgs struct {
-	Authentication             CloudwatchSourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                               `pulumi:"automaticDateParsing"`
-	Category                   *string                             `pulumi:"category"`
-	CollectorId                int                                 `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudwatchSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                          `pulumi:"automaticDateParsing"`
+	Category             *string                        `pulumi:"category"`
+	CollectorId          int                            `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                string                              `pulumi:"contentType"`
 	CutoffRelativeTime         *string                             `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                `pulumi:"cutoffTimestamp"`
@@ -173,19 +285,24 @@ type cloudwatchSourceArgs struct {
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                             `pulumi:"name"`
-	Path                       CloudwatchSourcePath                `pulumi:"path"`
-	Paused                     bool                                `pulumi:"paused"`
-	ScanInterval               int                                 `pulumi:"scanInterval"`
-	Timezone                   *string                             `pulumi:"timezone"`
-	UseAutolineMatching        *bool                               `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path CloudwatchSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        int     `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a CloudwatchSource resource.
 type CloudwatchSourceArgs struct {
-	Authentication             CloudwatchSourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudwatchSourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -198,11 +315,14 @@ type CloudwatchSourceArgs struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       CloudwatchSourcePathInput
-	Paused                     pulumi.BoolInput
-	ScanInterval               pulumi.IntInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path CloudwatchSourcePathInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        pulumi.IntInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (CloudwatchSourceArgs) ElementType() reflect.Type {

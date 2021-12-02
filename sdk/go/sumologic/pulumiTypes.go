@@ -13,9 +13,11 @@ import (
 type AwsInventorySourceAuthentication struct {
 	AccessKey *string `pulumi:"accessKey"`
 	Region    *string `pulumi:"region"`
+	// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
 	RoleArn   *string `pulumi:"roleArn"`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+	Type string `pulumi:"type"`
 }
 
 // AwsInventorySourceAuthenticationInput is an input type that accepts AwsInventorySourceAuthenticationArgs and AwsInventorySourceAuthenticationOutput values.
@@ -32,9 +34,11 @@ type AwsInventorySourceAuthenticationInput interface {
 type AwsInventorySourceAuthenticationArgs struct {
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
 	Region    pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
 	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (AwsInventorySourceAuthenticationArgs) ElementType() reflect.Type {
@@ -122,6 +126,7 @@ func (o AwsInventorySourceAuthenticationOutput) Region() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
 func (o AwsInventorySourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
@@ -130,6 +135,7 @@ func (o AwsInventorySourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
 func (o AwsInventorySourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -176,6 +182,7 @@ func (o AwsInventorySourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
 func (o AwsInventorySourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
 		if v == nil {
@@ -194,6 +201,7 @@ func (o AwsInventorySourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
 func (o AwsInventorySourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
 		if v == nil {
@@ -416,13 +424,29 @@ func (o AwsInventorySourceFilterArrayOutput) Index(i pulumi.IntInput) AwsInvento
 }
 
 type AwsInventorySourcePath struct {
-	BucketName                 *string                                           `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                          `pulumi:"limitToNamespaces"`
+	BucketName *string `pulumi:"bucketName"`
+	// List of namespaces. By default all namespaces are selected. You can also choose a subset from
+	// + AWS/EC2
+	// + AWS/AutoScaling
+	// + AWS/EBS
+	// + AWS/ELB
+	// + AWS/ApplicationELB
+	// + AWS/NetworkELB
+	// + AWS/Lambda
+	// + AWS/RDS
+	// + AWS/Dynamodb
+	// + AWS/ECS
+	// + AWS/Elasticache
+	// + AWS/Redshift
+	// + AWS/Kinesis
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	// List of Amazon regions.
 	LimitToRegions             []string                                          `pulumi:"limitToRegions"`
 	PathExpression             *string                                           `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns []AwsInventorySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []AwsInventorySourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                            `pulumi:"type"`
+	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+	Type string `pulumi:"type"`
 }
 
 // AwsInventorySourcePathInput is an input type that accepts AwsInventorySourcePathArgs and AwsInventorySourcePathOutput values.
@@ -437,13 +461,29 @@ type AwsInventorySourcePathInput interface {
 }
 
 type AwsInventorySourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                                     `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                                   `pulumi:"limitToNamespaces"`
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// List of namespaces. By default all namespaces are selected. You can also choose a subset from
+	// + AWS/EC2
+	// + AWS/AutoScaling
+	// + AWS/EBS
+	// + AWS/ELB
+	// + AWS/ApplicationELB
+	// + AWS/NetworkELB
+	// + AWS/Lambda
+	// + AWS/RDS
+	// + AWS/Dynamodb
+	// + AWS/ECS
+	// + AWS/Elasticache
+	// + AWS/Redshift
+	// + AWS/Kinesis
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	// List of Amazon regions.
 	LimitToRegions             pulumi.StringArrayInput                                   `pulumi:"limitToRegions"`
 	PathExpression             pulumi.StringPtrInput                                     `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 AwsInventorySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                                        `pulumi:"type"`
+	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (AwsInventorySourcePathArgs) ElementType() reflect.Type {
@@ -527,10 +567,25 @@ func (o AwsInventorySourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces. By default all namespaces are selected. You can also choose a subset from
+// + AWS/EC2
+// + AWS/AutoScaling
+// + AWS/EBS
+// + AWS/ELB
+// + AWS/ApplicationELB
+// + AWS/NetworkELB
+// + AWS/Lambda
+// + AWS/RDS
+// + AWS/Dynamodb
+// + AWS/ECS
+// + AWS/Elasticache
+// + AWS/Redshift
+// + AWS/Kinesis
 func (o AwsInventorySourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o AwsInventorySourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
@@ -549,6 +604,7 @@ func (o AwsInventorySourcePathOutput) TagFilters() AwsInventorySourcePathTagFilt
 	return o.ApplyT(func(v AwsInventorySourcePath) []AwsInventorySourcePathTagFilter { return v.TagFilters }).(AwsInventorySourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
 func (o AwsInventorySourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -586,6 +642,20 @@ func (o AwsInventorySourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces. By default all namespaces are selected. You can also choose a subset from
+// + AWS/EC2
+// + AWS/AutoScaling
+// + AWS/EBS
+// + AWS/ELB
+// + AWS/ApplicationELB
+// + AWS/NetworkELB
+// + AWS/Lambda
+// + AWS/RDS
+// + AWS/Dynamodb
+// + AWS/ECS
+// + AWS/Elasticache
+// + AWS/Redshift
+// + AWS/Kinesis
 func (o AwsInventorySourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsInventorySourcePath) []string {
 		if v == nil {
@@ -595,6 +665,7 @@ func (o AwsInventorySourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o AwsInventorySourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsInventorySourcePath) []string {
 		if v == nil {
@@ -631,6 +702,7 @@ func (o AwsInventorySourcePathPtrOutput) TagFilters() AwsInventorySourcePathTagF
 	}).(AwsInventorySourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
 func (o AwsInventorySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsInventorySourcePath) *string {
 		if v == nil {
@@ -743,7 +815,8 @@ func (o AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulu
 type AwsInventorySourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+	Type *string `pulumi:"type"`
 }
 
 // AwsInventorySourcePathTagFilterInput is an input type that accepts AwsInventorySourcePathTagFilterArgs and AwsInventorySourcePathTagFilterOutput values.
@@ -760,7 +833,8 @@ type AwsInventorySourcePathTagFilterInput interface {
 type AwsInventorySourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (AwsInventorySourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -822,6 +896,7 @@ func (o AwsInventorySourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsInventorySourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
 func (o AwsInventorySourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -847,11 +922,15 @@ func (o AwsInventorySourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Aws
 }
 
 type AwsXraySourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
 	Region    *string `pulumi:"region"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+	Type string `pulumi:"type"`
 }
 
 // AwsXraySourceAuthenticationInput is an input type that accepts AwsXraySourceAuthenticationArgs and AwsXraySourceAuthenticationOutput values.
@@ -866,11 +945,15 @@ type AwsXraySourceAuthenticationInput interface {
 }
 
 type AwsXraySourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
 	Region    pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (AwsXraySourceAuthenticationArgs) ElementType() reflect.Type {
@@ -950,6 +1033,7 @@ func (o AwsXraySourceAuthenticationOutput) ToAwsXraySourceAuthenticationPtrOutpu
 	}).(AwsXraySourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o AwsXraySourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -958,14 +1042,17 @@ func (o AwsXraySourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 func (o AwsXraySourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o AwsXraySourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
 func (o AwsXraySourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -994,6 +1081,7 @@ func (o AwsXraySourceAuthenticationPtrOutput) Elem() AwsXraySourceAuthentication
 	}).(AwsXraySourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o AwsXraySourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
 		if v == nil {
@@ -1012,6 +1100,7 @@ func (o AwsXraySourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 func (o AwsXraySourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
 		if v == nil {
@@ -1021,6 +1110,7 @@ func (o AwsXraySourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o AwsXraySourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
 		if v == nil {
@@ -1030,6 +1120,7 @@ func (o AwsXraySourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
 func (o AwsXraySourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
 		if v == nil {
@@ -1252,13 +1343,15 @@ func (o AwsXraySourceFilterArrayOutput) Index(i pulumi.IntInput) AwsXraySourceFi
 }
 
 type AwsXraySourcePath struct {
-	BucketName                 *string                                      `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                     `pulumi:"limitToNamespaces"`
+	BucketName        *string  `pulumi:"bucketName"`
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	// List of Amazon regions.
 	LimitToRegions             []string                                     `pulumi:"limitToRegions"`
 	PathExpression             *string                                      `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns []AwsXraySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []AwsXraySourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                       `pulumi:"type"`
+	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+	Type string `pulumi:"type"`
 }
 
 // AwsXraySourcePathInput is an input type that accepts AwsXraySourcePathArgs and AwsXraySourcePathOutput values.
@@ -1273,13 +1366,15 @@ type AwsXraySourcePathInput interface {
 }
 
 type AwsXraySourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                                `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                              `pulumi:"limitToNamespaces"`
+	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	// List of Amazon regions.
 	LimitToRegions             pulumi.StringArrayInput                              `pulumi:"limitToRegions"`
 	PathExpression             pulumi.StringPtrInput                                `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 AwsXraySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                                   `pulumi:"type"`
+	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (AwsXraySourcePathArgs) ElementType() reflect.Type {
@@ -1367,6 +1462,7 @@ func (o AwsXraySourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o AwsXraySourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
@@ -1385,6 +1481,7 @@ func (o AwsXraySourcePathOutput) TagFilters() AwsXraySourcePathTagFilterArrayOut
 	return o.ApplyT(func(v AwsXraySourcePath) []AwsXraySourcePathTagFilter { return v.TagFilters }).(AwsXraySourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
 func (o AwsXraySourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1431,6 +1528,7 @@ func (o AwsXraySourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o AwsXraySourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsXraySourcePath) []string {
 		if v == nil {
@@ -1467,6 +1565,7 @@ func (o AwsXraySourcePathPtrOutput) TagFilters() AwsXraySourcePathTagFilterArray
 	}).(AwsXraySourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
 func (o AwsXraySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsXraySourcePath) *string {
 		if v == nil {
@@ -1579,7 +1678,8 @@ func (o AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.In
 type AwsXraySourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+	Type *string `pulumi:"type"`
 }
 
 // AwsXraySourcePathTagFilterInput is an input type that accepts AwsXraySourcePathTagFilterArgs and AwsXraySourcePathTagFilterOutput values.
@@ -1596,7 +1696,8 @@ type AwsXraySourcePathTagFilterInput interface {
 type AwsXraySourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (AwsXraySourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -1658,6 +1759,7 @@ func (o AwsXraySourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsXraySourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
 func (o AwsXraySourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1895,11 +1997,16 @@ func (o CloudSyslogSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudSyslog
 }
 
 type CloudfrontSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region *string `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+	Type string `pulumi:"type"`
 }
 
 // CloudfrontSourceAuthenticationInput is an input type that accepts CloudfrontSourceAuthenticationArgs and CloudfrontSourceAuthenticationOutput values.
@@ -1914,11 +2021,16 @@ type CloudfrontSourceAuthenticationInput interface {
 }
 
 type CloudfrontSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CloudfrontSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -1998,22 +2110,27 @@ func (o CloudfrontSourceAuthenticationOutput) ToCloudfrontSourceAuthenticationPt
 	}).(CloudfrontSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o CloudfrontSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o CloudfrontSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o CloudfrontSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudfrontSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
 func (o CloudfrontSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2042,6 +2159,7 @@ func (o CloudfrontSourceAuthenticationPtrOutput) Elem() CloudfrontSourceAuthenti
 	}).(CloudfrontSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o CloudfrontSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
 		if v == nil {
@@ -2051,6 +2169,7 @@ func (o CloudfrontSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o CloudfrontSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
 		if v == nil {
@@ -2060,6 +2179,7 @@ func (o CloudfrontSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o CloudfrontSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
 		if v == nil {
@@ -2069,6 +2189,7 @@ func (o CloudfrontSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudfrontSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
 		if v == nil {
@@ -2078,6 +2199,7 @@ func (o CloudfrontSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
 func (o CloudfrontSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
 		if v == nil {
@@ -2300,13 +2422,17 @@ func (o CloudfrontSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudfrontSo
 }
 
 type CloudfrontSourcePath struct {
-	BucketName                 *string                                         `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                        `pulumi:"limitToNamespaces"`
-	LimitToRegions             []string                                        `pulumi:"limitToRegions"`
-	PathExpression             *string                                         `pulumi:"pathExpression"`
+	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+	BucketName        *string  `pulumi:"bucketName"`
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string `pulumi:"limitToRegions"`
+	// The path to the data. This is needed if using type `S3BucketPathExpression`.
+	PathExpression *string `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns []CloudfrontSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []CloudfrontSourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                          `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+	Type string `pulumi:"type"`
 }
 
 // CloudfrontSourcePathInput is an input type that accepts CloudfrontSourcePathArgs and CloudfrontSourcePathOutput values.
@@ -2321,13 +2447,17 @@ type CloudfrontSourcePathInput interface {
 }
 
 type CloudfrontSourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                                   `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                                 `pulumi:"limitToNamespaces"`
-	LimitToRegions             pulumi.StringArrayInput                                 `pulumi:"limitToRegions"`
-	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
+	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// The path to the data. This is needed if using type `S3BucketPathExpression`.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 CloudfrontSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                                      `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CloudfrontSourcePathArgs) ElementType() reflect.Type {
@@ -2407,6 +2537,7 @@ func (o CloudfrontSourcePathOutput) ToCloudfrontSourcePathPtrOutputWithContext(c
 	}).(CloudfrontSourcePathPtrOutput)
 }
 
+// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
 func (o CloudfrontSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -2419,10 +2550,12 @@ func (o CloudfrontSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
 
+// The path to the data. This is needed if using type `S3BucketPathExpression`.
 func (o CloudfrontSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o CloudfrontSourcePathOutput) SnsTopicOrSubscriptionArns() CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) []CloudfrontSourcePathSnsTopicOrSubscriptionArn {
 		return v.SnsTopicOrSubscriptionArns
@@ -2433,6 +2566,7 @@ func (o CloudfrontSourcePathOutput) TagFilters() CloudfrontSourcePathTagFilterAr
 	return o.ApplyT(func(v CloudfrontSourcePath) []CloudfrontSourcePathTagFilter { return v.TagFilters }).(CloudfrontSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
 func (o CloudfrontSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2461,6 +2595,7 @@ func (o CloudfrontSourcePathPtrOutput) Elem() CloudfrontSourcePathOutput {
 	}).(CloudfrontSourcePathOutput)
 }
 
+// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
 func (o CloudfrontSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourcePath) *string {
 		if v == nil {
@@ -2488,6 +2623,7 @@ func (o CloudfrontSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// The path to the data. This is needed if using type `S3BucketPathExpression`.
 func (o CloudfrontSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourcePath) *string {
 		if v == nil {
@@ -2497,6 +2633,7 @@ func (o CloudfrontSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o CloudfrontSourcePathPtrOutput) SnsTopicOrSubscriptionArns() CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v *CloudfrontSourcePath) []CloudfrontSourcePathSnsTopicOrSubscriptionArn {
 		if v == nil {
@@ -2515,6 +2652,7 @@ func (o CloudfrontSourcePathPtrOutput) TagFilters() CloudfrontSourcePathTagFilte
 	}).(CloudfrontSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
 func (o CloudfrontSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourcePath) *string {
 		if v == nil {
@@ -2627,7 +2765,8 @@ func (o CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi
 type CloudfrontSourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+	Type *string `pulumi:"type"`
 }
 
 // CloudfrontSourcePathTagFilterInput is an input type that accepts CloudfrontSourcePathTagFilterArgs and CloudfrontSourcePathTagFilterOutput values.
@@ -2644,7 +2783,8 @@ type CloudfrontSourcePathTagFilterInput interface {
 type CloudfrontSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (CloudfrontSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -2706,6 +2846,7 @@ func (o CloudfrontSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudfrontSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
 func (o CloudfrontSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2731,11 +2872,16 @@ func (o CloudfrontSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Cloud
 }
 
 type CloudtrailSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region *string `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+	Type string `pulumi:"type"`
 }
 
 // CloudtrailSourceAuthenticationInput is an input type that accepts CloudtrailSourceAuthenticationArgs and CloudtrailSourceAuthenticationOutput values.
@@ -2750,11 +2896,16 @@ type CloudtrailSourceAuthenticationInput interface {
 }
 
 type CloudtrailSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CloudtrailSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -2834,22 +2985,27 @@ func (o CloudtrailSourceAuthenticationOutput) ToCloudtrailSourceAuthenticationPt
 	}).(CloudtrailSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o CloudtrailSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o CloudtrailSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o CloudtrailSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudtrailSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
 func (o CloudtrailSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2878,6 +3034,7 @@ func (o CloudtrailSourceAuthenticationPtrOutput) Elem() CloudtrailSourceAuthenti
 	}).(CloudtrailSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o CloudtrailSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
 		if v == nil {
@@ -2887,6 +3044,7 @@ func (o CloudtrailSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o CloudtrailSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
 		if v == nil {
@@ -2896,6 +3054,7 @@ func (o CloudtrailSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o CloudtrailSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
 		if v == nil {
@@ -2905,6 +3064,7 @@ func (o CloudtrailSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudtrailSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
 		if v == nil {
@@ -2914,6 +3074,7 @@ func (o CloudtrailSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
 func (o CloudtrailSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
 		if v == nil {
@@ -3136,13 +3297,17 @@ func (o CloudtrailSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudtrailSo
 }
 
 type CloudtrailSourcePath struct {
-	BucketName                 *string                                         `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                        `pulumi:"limitToNamespaces"`
-	LimitToRegions             []string                                        `pulumi:"limitToRegions"`
-	PathExpression             *string                                         `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        *string  `pulumi:"bucketName"`
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression *string `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns []CloudtrailSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []CloudtrailSourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                          `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+	Type string `pulumi:"type"`
 }
 
 // CloudtrailSourcePathInput is an input type that accepts CloudtrailSourcePathArgs and CloudtrailSourcePathOutput values.
@@ -3157,13 +3322,17 @@ type CloudtrailSourcePathInput interface {
 }
 
 type CloudtrailSourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                                   `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                                 `pulumi:"limitToNamespaces"`
-	LimitToRegions             pulumi.StringArrayInput                                 `pulumi:"limitToRegions"`
-	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 CloudtrailSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                                      `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CloudtrailSourcePathArgs) ElementType() reflect.Type {
@@ -3243,6 +3412,7 @@ func (o CloudtrailSourcePathOutput) ToCloudtrailSourcePathPtrOutputWithContext(c
 	}).(CloudtrailSourcePathPtrOutput)
 }
 
+// The name of the bucket.
 func (o CloudtrailSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -3255,10 +3425,12 @@ func (o CloudtrailSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o CloudtrailSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o CloudtrailSourcePathOutput) SnsTopicOrSubscriptionArns() CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) []CloudtrailSourcePathSnsTopicOrSubscriptionArn {
 		return v.SnsTopicOrSubscriptionArns
@@ -3269,6 +3441,7 @@ func (o CloudtrailSourcePathOutput) TagFilters() CloudtrailSourcePathTagFilterAr
 	return o.ApplyT(func(v CloudtrailSourcePath) []CloudtrailSourcePathTagFilter { return v.TagFilters }).(CloudtrailSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
 func (o CloudtrailSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3297,6 +3470,7 @@ func (o CloudtrailSourcePathPtrOutput) Elem() CloudtrailSourcePathOutput {
 	}).(CloudtrailSourcePathOutput)
 }
 
+// The name of the bucket.
 func (o CloudtrailSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourcePath) *string {
 		if v == nil {
@@ -3324,6 +3498,7 @@ func (o CloudtrailSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o CloudtrailSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourcePath) *string {
 		if v == nil {
@@ -3333,6 +3508,7 @@ func (o CloudtrailSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o CloudtrailSourcePathPtrOutput) SnsTopicOrSubscriptionArns() CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v *CloudtrailSourcePath) []CloudtrailSourcePathSnsTopicOrSubscriptionArn {
 		if v == nil {
@@ -3351,6 +3527,7 @@ func (o CloudtrailSourcePathPtrOutput) TagFilters() CloudtrailSourcePathTagFilte
 	}).(CloudtrailSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
 func (o CloudtrailSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourcePath) *string {
 		if v == nil {
@@ -3463,7 +3640,8 @@ func (o CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi
 type CloudtrailSourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+	Type *string `pulumi:"type"`
 }
 
 // CloudtrailSourcePathTagFilterInput is an input type that accepts CloudtrailSourcePathTagFilterArgs and CloudtrailSourcePathTagFilterOutput values.
@@ -3480,7 +3658,8 @@ type CloudtrailSourcePathTagFilterInput interface {
 type CloudtrailSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (CloudtrailSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -3542,6 +3721,7 @@ func (o CloudtrailSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudtrailSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
 func (o CloudtrailSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3567,11 +3747,16 @@ func (o CloudtrailSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Cloud
 }
 
 type CloudwatchSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region *string `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type string `pulumi:"type"`
 }
 
 // CloudwatchSourceAuthenticationInput is an input type that accepts CloudwatchSourceAuthenticationArgs and CloudwatchSourceAuthenticationOutput values.
@@ -3586,11 +3771,16 @@ type CloudwatchSourceAuthenticationInput interface {
 }
 
 type CloudwatchSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CloudwatchSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -3670,22 +3860,27 @@ func (o CloudwatchSourceAuthenticationOutput) ToCloudwatchSourceAuthenticationPt
 	}).(CloudwatchSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o CloudwatchSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o CloudwatchSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o CloudwatchSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudwatchSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o CloudwatchSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3714,6 +3909,7 @@ func (o CloudwatchSourceAuthenticationPtrOutput) Elem() CloudwatchSourceAuthenti
 	}).(CloudwatchSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o CloudwatchSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
 		if v == nil {
@@ -3723,6 +3919,7 @@ func (o CloudwatchSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o CloudwatchSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
 		if v == nil {
@@ -3732,6 +3929,7 @@ func (o CloudwatchSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o CloudwatchSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
 		if v == nil {
@@ -3741,6 +3939,7 @@ func (o CloudwatchSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudwatchSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
 		if v == nil {
@@ -3750,6 +3949,7 @@ func (o CloudwatchSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o CloudwatchSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
 		if v == nil {
@@ -3972,13 +4172,17 @@ func (o CloudwatchSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudwatchSo
 }
 
 type CloudwatchSourcePath struct {
-	BucketName                 *string                                         `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                        `pulumi:"limitToNamespaces"`
+	BucketName *string `pulumi:"bucketName"`
+	// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	// List of Amazon regions.
 	LimitToRegions             []string                                        `pulumi:"limitToRegions"`
 	PathExpression             *string                                         `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns []CloudwatchSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
-	TagFilters                 []CloudwatchSourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                          `pulumi:"type"`
+	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+	TagFilters []CloudwatchSourcePathTagFilter `pulumi:"tagFilters"`
+	// This value has to be set to `TagFilters`
+	Type string `pulumi:"type"`
 }
 
 // CloudwatchSourcePathInput is an input type that accepts CloudwatchSourcePathArgs and CloudwatchSourcePathOutput values.
@@ -3993,13 +4197,17 @@ type CloudwatchSourcePathInput interface {
 }
 
 type CloudwatchSourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                                   `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                                 `pulumi:"limitToNamespaces"`
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	// List of Amazon regions.
 	LimitToRegions             pulumi.StringArrayInput                                 `pulumi:"limitToRegions"`
 	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
-	TagFilters                 CloudwatchSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                                      `pulumi:"type"`
+	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+	TagFilters CloudwatchSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CloudwatchSourcePathArgs) ElementType() reflect.Type {
@@ -4083,10 +4291,12 @@ func (o CloudwatchSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
 func (o CloudwatchSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o CloudwatchSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
@@ -4101,10 +4311,12 @@ func (o CloudwatchSourcePathOutput) SnsTopicOrSubscriptionArns() CloudwatchSourc
 	}).(CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput)
 }
 
+// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 func (o CloudwatchSourcePathOutput) TagFilters() CloudwatchSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) []CloudwatchSourcePathTagFilter { return v.TagFilters }).(CloudwatchSourcePathTagFilterArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o CloudwatchSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4142,6 +4354,7 @@ func (o CloudwatchSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
 func (o CloudwatchSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudwatchSourcePath) []string {
 		if v == nil {
@@ -4151,6 +4364,7 @@ func (o CloudwatchSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o CloudwatchSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudwatchSourcePath) []string {
 		if v == nil {
@@ -4178,6 +4392,7 @@ func (o CloudwatchSourcePathPtrOutput) SnsTopicOrSubscriptionArns() CloudwatchSo
 	}).(CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput)
 }
 
+// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 func (o CloudwatchSourcePathPtrOutput) TagFilters() CloudwatchSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *CloudwatchSourcePath) []CloudwatchSourcePathTagFilter {
 		if v == nil {
@@ -4187,6 +4402,7 @@ func (o CloudwatchSourcePathPtrOutput) TagFilters() CloudwatchSourcePathTagFilte
 	}).(CloudwatchSourcePathTagFilterArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o CloudwatchSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudwatchSourcePath) *string {
 		if v == nil {
@@ -4297,9 +4513,12 @@ func (o CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi
 }
 
 type CloudwatchSourcePathTagFilter struct {
-	Namespace *string  `pulumi:"namespace"`
-	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace *string `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags []string `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type *string `pulumi:"type"`
 }
 
 // CloudwatchSourcePathTagFilterInput is an input type that accepts CloudwatchSourcePathTagFilterArgs and CloudwatchSourcePathTagFilterOutput values.
@@ -4314,9 +4533,12 @@ type CloudwatchSourcePathTagFilterInput interface {
 }
 
 type CloudwatchSourcePathTagFilterArgs struct {
-	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
-	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (CloudwatchSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -4370,14 +4592,17 @@ func (o CloudwatchSourcePathTagFilterOutput) ToCloudwatchSourcePathTagFilterOutp
 	return o
 }
 
+// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
 func (o CloudwatchSourcePathTagFilterOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourcePathTagFilter) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 func (o CloudwatchSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudwatchSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o CloudwatchSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4403,9 +4628,12 @@ func (o CloudwatchSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Cloud
 }
 
 type CseAggregationRuleAggregationFunction struct {
+	// One or more expressions to pass as arguments to the function
 	Arguments []string `pulumi:"arguments"`
-	Function  string   `pulumi:"function"`
-	Name      string   `pulumi:"name"`
+	// The function to aggregate with
+	Function string `pulumi:"function"`
+	// The name of the Rule
+	Name string `pulumi:"name"`
 }
 
 // CseAggregationRuleAggregationFunctionInput is an input type that accepts CseAggregationRuleAggregationFunctionArgs and CseAggregationRuleAggregationFunctionOutput values.
@@ -4420,9 +4648,12 @@ type CseAggregationRuleAggregationFunctionInput interface {
 }
 
 type CseAggregationRuleAggregationFunctionArgs struct {
+	// One or more expressions to pass as arguments to the function
 	Arguments pulumi.StringArrayInput `pulumi:"arguments"`
-	Function  pulumi.StringInput      `pulumi:"function"`
-	Name      pulumi.StringInput      `pulumi:"name"`
+	// The function to aggregate with
+	Function pulumi.StringInput `pulumi:"function"`
+	// The name of the Rule
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (CseAggregationRuleAggregationFunctionArgs) ElementType() reflect.Type {
@@ -4476,14 +4707,17 @@ func (o CseAggregationRuleAggregationFunctionOutput) ToCseAggregationRuleAggrega
 	return o
 }
 
+// One or more expressions to pass as arguments to the function
 func (o CseAggregationRuleAggregationFunctionOutput) Arguments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CseAggregationRuleAggregationFunction) []string { return v.Arguments }).(pulumi.StringArrayOutput)
 }
 
+// The function to aggregate with
 func (o CseAggregationRuleAggregationFunctionOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v CseAggregationRuleAggregationFunction) string { return v.Function }).(pulumi.StringOutput)
 }
 
+// The name of the Rule
 func (o CseAggregationRuleAggregationFunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CseAggregationRuleAggregationFunction) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4510,6 +4744,7 @@ func (o CseAggregationRuleAggregationFunctionArrayOutput) Index(i pulumi.IntInpu
 
 type CseAggregationRuleEntitySelector struct {
 	EntityType string `pulumi:"entityType"`
+	// The expression or field name to generate the Signal on.
 	Expression string `pulumi:"expression"`
 }
 
@@ -4526,6 +4761,7 @@ type CseAggregationRuleEntitySelectorInput interface {
 
 type CseAggregationRuleEntitySelectorArgs struct {
 	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// The expression or field name to generate the Signal on.
 	Expression pulumi.StringInput `pulumi:"expression"`
 }
 
@@ -4584,6 +4820,7 @@ func (o CseAggregationRuleEntitySelectorOutput) EntityType() pulumi.StringOutput
 	return o.ApplyT(func(v CseAggregationRuleEntitySelector) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
+// The expression or field name to generate the Signal on.
 func (o CseAggregationRuleEntitySelectorOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CseAggregationRuleEntitySelector) string { return v.Expression }).(pulumi.StringOutput)
 }
@@ -4609,10 +4846,14 @@ func (o CseAggregationRuleEntitySelectorArrayOutput) Index(i pulumi.IntInput) Cs
 }
 
 type CseAggregationRuleSeverityMapping struct {
-	Default  *int                                       `pulumi:"default"`
-	Field    *string                                    `pulumi:"field"`
+	// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+	Default *int `pulumi:"default"`
+	// The field to use in the "fieldValue"/"fieldValueMapping" cases.
+	Field *string `pulumi:"field"`
+	// The map of record values to severities to use in the "fieldValueMapping" case
 	Mappings []CseAggregationRuleSeverityMappingMapping `pulumi:"mappings"`
-	Type     string                                     `pulumi:"type"`
+	// Must be set to "eq" currently
+	Type string `pulumi:"type"`
 }
 
 // CseAggregationRuleSeverityMappingInput is an input type that accepts CseAggregationRuleSeverityMappingArgs and CseAggregationRuleSeverityMappingOutput values.
@@ -4627,10 +4868,14 @@ type CseAggregationRuleSeverityMappingInput interface {
 }
 
 type CseAggregationRuleSeverityMappingArgs struct {
-	Default  pulumi.IntPtrInput                                 `pulumi:"default"`
-	Field    pulumi.StringPtrInput                              `pulumi:"field"`
+	// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+	Default pulumi.IntPtrInput `pulumi:"default"`
+	// The field to use in the "fieldValue"/"fieldValueMapping" cases.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The map of record values to severities to use in the "fieldValueMapping" case
 	Mappings CseAggregationRuleSeverityMappingMappingArrayInput `pulumi:"mappings"`
-	Type     pulumi.StringInput                                 `pulumi:"type"`
+	// Must be set to "eq" currently
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CseAggregationRuleSeverityMappingArgs) ElementType() reflect.Type {
@@ -4710,20 +4955,24 @@ func (o CseAggregationRuleSeverityMappingOutput) ToCseAggregationRuleSeverityMap
 	}).(CseAggregationRuleSeverityMappingPtrOutput)
 }
 
+// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
 func (o CseAggregationRuleSeverityMappingOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMapping) *int { return v.Default }).(pulumi.IntPtrOutput)
 }
 
+// The field to use in the "fieldValue"/"fieldValueMapping" cases.
 func (o CseAggregationRuleSeverityMappingOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMapping) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// The map of record values to severities to use in the "fieldValueMapping" case
 func (o CseAggregationRuleSeverityMappingOutput) Mappings() CseAggregationRuleSeverityMappingMappingArrayOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMapping) []CseAggregationRuleSeverityMappingMapping {
 		return v.Mappings
 	}).(CseAggregationRuleSeverityMappingMappingArrayOutput)
 }
 
+// Must be set to "eq" currently
 func (o CseAggregationRuleSeverityMappingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMapping) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4752,6 +5001,7 @@ func (o CseAggregationRuleSeverityMappingPtrOutput) Elem() CseAggregationRuleSev
 	}).(CseAggregationRuleSeverityMappingOutput)
 }
 
+// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
 func (o CseAggregationRuleSeverityMappingPtrOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CseAggregationRuleSeverityMapping) *int {
 		if v == nil {
@@ -4761,6 +5011,7 @@ func (o CseAggregationRuleSeverityMappingPtrOutput) Default() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The field to use in the "fieldValue"/"fieldValueMapping" cases.
 func (o CseAggregationRuleSeverityMappingPtrOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseAggregationRuleSeverityMapping) *string {
 		if v == nil {
@@ -4770,6 +5021,7 @@ func (o CseAggregationRuleSeverityMappingPtrOutput) Field() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The map of record values to severities to use in the "fieldValueMapping" case
 func (o CseAggregationRuleSeverityMappingPtrOutput) Mappings() CseAggregationRuleSeverityMappingMappingArrayOutput {
 	return o.ApplyT(func(v *CseAggregationRuleSeverityMapping) []CseAggregationRuleSeverityMappingMapping {
 		if v == nil {
@@ -4779,6 +5031,7 @@ func (o CseAggregationRuleSeverityMappingPtrOutput) Mappings() CseAggregationRul
 	}).(CseAggregationRuleSeverityMappingMappingArrayOutput)
 }
 
+// Must be set to "eq" currently
 func (o CseAggregationRuleSeverityMappingPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseAggregationRuleSeverityMapping) *string {
 		if v == nil {
@@ -4789,8 +5042,11 @@ func (o CseAggregationRuleSeverityMappingPtrOutput) Type() pulumi.StringPtrOutpu
 }
 
 type CseAggregationRuleSeverityMappingMapping struct {
+	// The record value to map from
 	From string `pulumi:"from"`
-	To   int    `pulumi:"to"`
+	// The severity value to map to
+	To int `pulumi:"to"`
+	// Must be set to "eq" currently
 	Type string `pulumi:"type"`
 }
 
@@ -4806,8 +5062,11 @@ type CseAggregationRuleSeverityMappingMappingInput interface {
 }
 
 type CseAggregationRuleSeverityMappingMappingArgs struct {
+	// The record value to map from
 	From pulumi.StringInput `pulumi:"from"`
-	To   pulumi.IntInput    `pulumi:"to"`
+	// The severity value to map to
+	To pulumi.IntInput `pulumi:"to"`
+	// Must be set to "eq" currently
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4862,14 +5121,17 @@ func (o CseAggregationRuleSeverityMappingMappingOutput) ToCseAggregationRuleSeve
 	return o
 }
 
+// The record value to map from
 func (o CseAggregationRuleSeverityMappingMappingOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMappingMapping) string { return v.From }).(pulumi.StringOutput)
 }
 
+// The severity value to map to
 func (o CseAggregationRuleSeverityMappingMappingOutput) To() pulumi.IntOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMappingMapping) int { return v.To }).(pulumi.IntOutput)
 }
 
+// Must be set to "eq" currently
 func (o CseAggregationRuleSeverityMappingMappingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CseAggregationRuleSeverityMappingMapping) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4896,6 +5158,7 @@ func (o CseAggregationRuleSeverityMappingMappingArrayOutput) Index(i pulumi.IntI
 
 type CseChainRuleEntitySelector struct {
 	EntityType string `pulumi:"entityType"`
+	// The expression for which records to match on
 	Expression string `pulumi:"expression"`
 }
 
@@ -4912,6 +5175,7 @@ type CseChainRuleEntitySelectorInput interface {
 
 type CseChainRuleEntitySelectorArgs struct {
 	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// The expression for which records to match on
 	Expression pulumi.StringInput `pulumi:"expression"`
 }
 
@@ -4970,6 +5234,7 @@ func (o CseChainRuleEntitySelectorOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v CseChainRuleEntitySelector) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
+// The expression for which records to match on
 func (o CseChainRuleEntitySelectorOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CseChainRuleEntitySelector) string { return v.Expression }).(pulumi.StringOutput)
 }
@@ -4995,8 +5260,10 @@ func (o CseChainRuleEntitySelectorArrayOutput) Index(i pulumi.IntInput) CseChain
 }
 
 type CseChainRuleExpressionsAndLimit struct {
+	// The expression for which records to match on
 	Expression string `pulumi:"expression"`
-	Limit      int    `pulumi:"limit"`
+	// How many times this expression must match for the Signal to fire
+	Limit int `pulumi:"limit"`
 }
 
 // CseChainRuleExpressionsAndLimitInput is an input type that accepts CseChainRuleExpressionsAndLimitArgs and CseChainRuleExpressionsAndLimitOutput values.
@@ -5011,8 +5278,10 @@ type CseChainRuleExpressionsAndLimitInput interface {
 }
 
 type CseChainRuleExpressionsAndLimitArgs struct {
+	// The expression for which records to match on
 	Expression pulumi.StringInput `pulumi:"expression"`
-	Limit      pulumi.IntInput    `pulumi:"limit"`
+	// How many times this expression must match for the Signal to fire
+	Limit pulumi.IntInput `pulumi:"limit"`
 }
 
 func (CseChainRuleExpressionsAndLimitArgs) ElementType() reflect.Type {
@@ -5066,10 +5335,12 @@ func (o CseChainRuleExpressionsAndLimitOutput) ToCseChainRuleExpressionsAndLimit
 	return o
 }
 
+// The expression for which records to match on
 func (o CseChainRuleExpressionsAndLimitOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CseChainRuleExpressionsAndLimit) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// How many times this expression must match for the Signal to fire
 func (o CseChainRuleExpressionsAndLimitOutput) Limit() pulumi.IntOutput {
 	return o.ApplyT(func(v CseChainRuleExpressionsAndLimit) int { return v.Limit }).(pulumi.IntOutput)
 }
@@ -5095,21 +5366,35 @@ func (o CseChainRuleExpressionsAndLimitArrayOutput) Index(i pulumi.IntInput) Cse
 }
 
 type CseLogMappingField struct {
-	AlternateValues  []string                   `pulumi:"alternateValues"`
-	CaseInsensitive  *bool                      `pulumi:"caseInsensitive"`
-	DefaultValue     *string                    `pulumi:"defaultValue"`
-	FieldJoins       []string                   `pulumi:"fieldJoins"`
-	Format           *string                    `pulumi:"format"`
-	FormatParameters []string                   `pulumi:"formatParameters"`
-	JoinDelimiter    *string                    `pulumi:"joinDelimiter"`
-	Lookups          []CseLogMappingFieldLookup `pulumi:"lookups"`
-	Name             string                     `pulumi:"name"`
-	SkippedValues    []string                   `pulumi:"skippedValues"`
-	SplitDelimiter   *string                    `pulumi:"splitDelimiter"`
-	SplitIndex       *string                    `pulumi:"splitIndex"`
-	TimeZone         *string                    `pulumi:"timeZone"`
-	Value            *string                    `pulumi:"value"`
-	ValueType        *string                    `pulumi:"valueType"`
+	// List of alternate values.
+	AlternateValues []string `pulumi:"alternateValues"`
+	// Case insensitive flag.
+	CaseInsensitive *bool `pulumi:"caseInsensitive"`
+	// Default value of the field.
+	DefaultValue *string `pulumi:"defaultValue"`
+	// List of field join values.
+	FieldJoins []string `pulumi:"fieldJoins"`
+	// Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+	Format *string `pulumi:"format"`
+	// List of format parameters.
+	FormatParameters []string `pulumi:"formatParameters"`
+	// Join delimiter.
+	JoinDelimiter *string `pulumi:"joinDelimiter"`
+	// List of lookup key value pair for field. See lookupSchema for details.
+	Lookups []CseLogMappingFieldLookup `pulumi:"lookups"`
+	// Name of the field.
+	Name string `pulumi:"name"`
+	// List of skipped values.
+	SkippedValues []string `pulumi:"skippedValues"`
+	// Split delimiter to be used. (some example: ",", "-", "|")
+	SplitDelimiter *string `pulumi:"splitDelimiter"`
+	SplitIndex     *string `pulumi:"splitIndex"`
+	// Time zone.
+	TimeZone *string `pulumi:"timeZone"`
+	// Lookup value.
+	Value *string `pulumi:"value"`
+	// The value type.
+	ValueType *string `pulumi:"valueType"`
 }
 
 // CseLogMappingFieldInput is an input type that accepts CseLogMappingFieldArgs and CseLogMappingFieldOutput values.
@@ -5124,21 +5409,35 @@ type CseLogMappingFieldInput interface {
 }
 
 type CseLogMappingFieldArgs struct {
-	AlternateValues  pulumi.StringArrayInput            `pulumi:"alternateValues"`
-	CaseInsensitive  pulumi.BoolPtrInput                `pulumi:"caseInsensitive"`
-	DefaultValue     pulumi.StringPtrInput              `pulumi:"defaultValue"`
-	FieldJoins       pulumi.StringArrayInput            `pulumi:"fieldJoins"`
-	Format           pulumi.StringPtrInput              `pulumi:"format"`
-	FormatParameters pulumi.StringArrayInput            `pulumi:"formatParameters"`
-	JoinDelimiter    pulumi.StringPtrInput              `pulumi:"joinDelimiter"`
-	Lookups          CseLogMappingFieldLookupArrayInput `pulumi:"lookups"`
-	Name             pulumi.StringInput                 `pulumi:"name"`
-	SkippedValues    pulumi.StringArrayInput            `pulumi:"skippedValues"`
-	SplitDelimiter   pulumi.StringPtrInput              `pulumi:"splitDelimiter"`
-	SplitIndex       pulumi.StringPtrInput              `pulumi:"splitIndex"`
-	TimeZone         pulumi.StringPtrInput              `pulumi:"timeZone"`
-	Value            pulumi.StringPtrInput              `pulumi:"value"`
-	ValueType        pulumi.StringPtrInput              `pulumi:"valueType"`
+	// List of alternate values.
+	AlternateValues pulumi.StringArrayInput `pulumi:"alternateValues"`
+	// Case insensitive flag.
+	CaseInsensitive pulumi.BoolPtrInput `pulumi:"caseInsensitive"`
+	// Default value of the field.
+	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
+	// List of field join values.
+	FieldJoins pulumi.StringArrayInput `pulumi:"fieldJoins"`
+	// Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// List of format parameters.
+	FormatParameters pulumi.StringArrayInput `pulumi:"formatParameters"`
+	// Join delimiter.
+	JoinDelimiter pulumi.StringPtrInput `pulumi:"joinDelimiter"`
+	// List of lookup key value pair for field. See lookupSchema for details.
+	Lookups CseLogMappingFieldLookupArrayInput `pulumi:"lookups"`
+	// Name of the field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of skipped values.
+	SkippedValues pulumi.StringArrayInput `pulumi:"skippedValues"`
+	// Split delimiter to be used. (some example: ",", "-", "|")
+	SplitDelimiter pulumi.StringPtrInput `pulumi:"splitDelimiter"`
+	SplitIndex     pulumi.StringPtrInput `pulumi:"splitIndex"`
+	// Time zone.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+	// Lookup value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The value type.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
 func (CseLogMappingFieldArgs) ElementType() reflect.Type {
@@ -5192,46 +5491,57 @@ func (o CseLogMappingFieldOutput) ToCseLogMappingFieldOutputWithContext(ctx cont
 	return o
 }
 
+// List of alternate values.
 func (o CseLogMappingFieldOutput) AlternateValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CseLogMappingField) []string { return v.AlternateValues }).(pulumi.StringArrayOutput)
 }
 
+// Case insensitive flag.
 func (o CseLogMappingFieldOutput) CaseInsensitive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *bool { return v.CaseInsensitive }).(pulumi.BoolPtrOutput)
 }
 
+// Default value of the field.
 func (o CseLogMappingFieldOutput) DefaultValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
 }
 
+// List of field join values.
 func (o CseLogMappingFieldOutput) FieldJoins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CseLogMappingField) []string { return v.FieldJoins }).(pulumi.StringArrayOutput)
 }
 
+// Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
 func (o CseLogMappingFieldOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// List of format parameters.
 func (o CseLogMappingFieldOutput) FormatParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CseLogMappingField) []string { return v.FormatParameters }).(pulumi.StringArrayOutput)
 }
 
+// Join delimiter.
 func (o CseLogMappingFieldOutput) JoinDelimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.JoinDelimiter }).(pulumi.StringPtrOutput)
 }
 
+// List of lookup key value pair for field. See lookupSchema for details.
 func (o CseLogMappingFieldOutput) Lookups() CseLogMappingFieldLookupArrayOutput {
 	return o.ApplyT(func(v CseLogMappingField) []CseLogMappingFieldLookup { return v.Lookups }).(CseLogMappingFieldLookupArrayOutput)
 }
 
+// Name of the field.
 func (o CseLogMappingFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CseLogMappingField) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of skipped values.
 func (o CseLogMappingFieldOutput) SkippedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CseLogMappingField) []string { return v.SkippedValues }).(pulumi.StringArrayOutput)
 }
 
+// Split delimiter to be used. (some example: ",", "-", "|")
 func (o CseLogMappingFieldOutput) SplitDelimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.SplitDelimiter }).(pulumi.StringPtrOutput)
 }
@@ -5240,14 +5550,17 @@ func (o CseLogMappingFieldOutput) SplitIndex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.SplitIndex }).(pulumi.StringPtrOutput)
 }
 
+// Time zone.
 func (o CseLogMappingFieldOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
+// Lookup value.
 func (o CseLogMappingFieldOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
+// The value type.
 func (o CseLogMappingFieldOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
@@ -5273,7 +5586,9 @@ func (o CseLogMappingFieldArrayOutput) Index(i pulumi.IntInput) CseLogMappingFie
 }
 
 type CseLogMappingFieldLookup struct {
-	Key   string `pulumi:"key"`
+	// Lookup key.
+	Key string `pulumi:"key"`
+	// Lookup value.
 	Value string `pulumi:"value"`
 }
 
@@ -5289,7 +5604,9 @@ type CseLogMappingFieldLookupInput interface {
 }
 
 type CseLogMappingFieldLookupArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Lookup key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Lookup value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5344,10 +5661,12 @@ func (o CseLogMappingFieldLookupOutput) ToCseLogMappingFieldLookupOutputWithCont
 	return o
 }
 
+// Lookup key.
 func (o CseLogMappingFieldLookupOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v CseLogMappingFieldLookup) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Lookup value.
 func (o CseLogMappingFieldLookupOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v CseLogMappingFieldLookup) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5373,10 +5692,14 @@ func (o CseLogMappingFieldLookupArrayOutput) Index(i pulumi.IntInput) CseLogMapp
 }
 
 type CseLogMappingStructuredInput struct {
+	// Event id pattern.
 	EventIdPattern string `pulumi:"eventIdPattern"`
-	LogFormat      string `pulumi:"logFormat"`
-	Product        string `pulumi:"product"`
-	Vendor         string `pulumi:"vendor"`
+	// Log format. (JSON, Windows, Syslog, CEF, LEEF )
+	LogFormat string `pulumi:"logFormat"`
+	// Product name.
+	Product string `pulumi:"product"`
+	// Vendor name.
+	Vendor string `pulumi:"vendor"`
 }
 
 // CseLogMappingStructuredInputInput is an input type that accepts CseLogMappingStructuredInputArgs and CseLogMappingStructuredInputOutput values.
@@ -5391,10 +5714,14 @@ type CseLogMappingStructuredInputInput interface {
 }
 
 type CseLogMappingStructuredInputArgs struct {
+	// Event id pattern.
 	EventIdPattern pulumi.StringInput `pulumi:"eventIdPattern"`
-	LogFormat      pulumi.StringInput `pulumi:"logFormat"`
-	Product        pulumi.StringInput `pulumi:"product"`
-	Vendor         pulumi.StringInput `pulumi:"vendor"`
+	// Log format. (JSON, Windows, Syslog, CEF, LEEF )
+	LogFormat pulumi.StringInput `pulumi:"logFormat"`
+	// Product name.
+	Product pulumi.StringInput `pulumi:"product"`
+	// Vendor name.
+	Vendor pulumi.StringInput `pulumi:"vendor"`
 }
 
 func (CseLogMappingStructuredInputArgs) ElementType() reflect.Type {
@@ -5448,18 +5775,22 @@ func (o CseLogMappingStructuredInputOutput) ToCseLogMappingStructuredInputOutput
 	return o
 }
 
+// Event id pattern.
 func (o CseLogMappingStructuredInputOutput) EventIdPattern() pulumi.StringOutput {
 	return o.ApplyT(func(v CseLogMappingStructuredInput) string { return v.EventIdPattern }).(pulumi.StringOutput)
 }
 
+// Log format. (JSON, Windows, Syslog, CEF, LEEF )
 func (o CseLogMappingStructuredInputOutput) LogFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v CseLogMappingStructuredInput) string { return v.LogFormat }).(pulumi.StringOutput)
 }
 
+// Product name.
 func (o CseLogMappingStructuredInputOutput) Product() pulumi.StringOutput {
 	return o.ApplyT(func(v CseLogMappingStructuredInput) string { return v.Product }).(pulumi.StringOutput)
 }
 
+// Vendor name.
 func (o CseLogMappingStructuredInputOutput) Vendor() pulumi.StringOutput {
 	return o.ApplyT(func(v CseLogMappingStructuredInput) string { return v.Vendor }).(pulumi.StringOutput)
 }
@@ -5485,6 +5816,7 @@ func (o CseLogMappingStructuredInputArrayOutput) Index(i pulumi.IntInput) CseLog
 }
 
 type CseLogMappingUnstructuredFields struct {
+	// List of grok pattern names.
 	PatternNames []string `pulumi:"patternNames"`
 }
 
@@ -5500,6 +5832,7 @@ type CseLogMappingUnstructuredFieldsInput interface {
 }
 
 type CseLogMappingUnstructuredFieldsArgs struct {
+	// List of grok pattern names.
 	PatternNames pulumi.StringArrayInput `pulumi:"patternNames"`
 }
 
@@ -5580,6 +5913,7 @@ func (o CseLogMappingUnstructuredFieldsOutput) ToCseLogMappingUnstructuredFields
 	}).(CseLogMappingUnstructuredFieldsPtrOutput)
 }
 
+// List of grok pattern names.
 func (o CseLogMappingUnstructuredFieldsOutput) PatternNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CseLogMappingUnstructuredFields) []string { return v.PatternNames }).(pulumi.StringArrayOutput)
 }
@@ -5608,6 +5942,7 @@ func (o CseLogMappingUnstructuredFieldsPtrOutput) Elem() CseLogMappingUnstructur
 	}).(CseLogMappingUnstructuredFieldsOutput)
 }
 
+// List of grok pattern names.
 func (o CseLogMappingUnstructuredFieldsPtrOutput) PatternNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseLogMappingUnstructuredFields) []string {
 		if v == nil {
@@ -5619,6 +5954,7 @@ func (o CseLogMappingUnstructuredFieldsPtrOutput) PatternNames() pulumi.StringAr
 
 type CseMatchRuleEntitySelector struct {
 	EntityType string `pulumi:"entityType"`
+	// The expression for which records to match on
 	Expression string `pulumi:"expression"`
 }
 
@@ -5635,6 +5971,7 @@ type CseMatchRuleEntitySelectorInput interface {
 
 type CseMatchRuleEntitySelectorArgs struct {
 	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// The expression for which records to match on
 	Expression pulumi.StringInput `pulumi:"expression"`
 }
 
@@ -5693,6 +6030,7 @@ func (o CseMatchRuleEntitySelectorOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v CseMatchRuleEntitySelector) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
+// The expression for which records to match on
 func (o CseMatchRuleEntitySelectorOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CseMatchRuleEntitySelector) string { return v.Expression }).(pulumi.StringOutput)
 }
@@ -5718,10 +6056,14 @@ func (o CseMatchRuleEntitySelectorArrayOutput) Index(i pulumi.IntInput) CseMatch
 }
 
 type CseMatchRuleSeverityMapping struct {
-	Default  *int                                 `pulumi:"default"`
-	Field    *string                              `pulumi:"field"`
+	// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+	Default *int `pulumi:"default"`
+	// The field to use in the "fieldValue"/"fieldValueMapping" cases.
+	Field *string `pulumi:"field"`
+	// The map of record values to severities to use in the "fieldValueMapping" case
 	Mappings []CseMatchRuleSeverityMappingMapping `pulumi:"mappings"`
-	Type     string                               `pulumi:"type"`
+	// Must be set to "eq" currently
+	Type string `pulumi:"type"`
 }
 
 // CseMatchRuleSeverityMappingInput is an input type that accepts CseMatchRuleSeverityMappingArgs and CseMatchRuleSeverityMappingOutput values.
@@ -5736,10 +6078,14 @@ type CseMatchRuleSeverityMappingInput interface {
 }
 
 type CseMatchRuleSeverityMappingArgs struct {
-	Default  pulumi.IntPtrInput                           `pulumi:"default"`
-	Field    pulumi.StringPtrInput                        `pulumi:"field"`
+	// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+	Default pulumi.IntPtrInput `pulumi:"default"`
+	// The field to use in the "fieldValue"/"fieldValueMapping" cases.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The map of record values to severities to use in the "fieldValueMapping" case
 	Mappings CseMatchRuleSeverityMappingMappingArrayInput `pulumi:"mappings"`
-	Type     pulumi.StringInput                           `pulumi:"type"`
+	// Must be set to "eq" currently
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (CseMatchRuleSeverityMappingArgs) ElementType() reflect.Type {
@@ -5819,18 +6165,22 @@ func (o CseMatchRuleSeverityMappingOutput) ToCseMatchRuleSeverityMappingPtrOutpu
 	}).(CseMatchRuleSeverityMappingPtrOutput)
 }
 
+// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
 func (o CseMatchRuleSeverityMappingOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMapping) *int { return v.Default }).(pulumi.IntPtrOutput)
 }
 
+// The field to use in the "fieldValue"/"fieldValueMapping" cases.
 func (o CseMatchRuleSeverityMappingOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMapping) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// The map of record values to severities to use in the "fieldValueMapping" case
 func (o CseMatchRuleSeverityMappingOutput) Mappings() CseMatchRuleSeverityMappingMappingArrayOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMapping) []CseMatchRuleSeverityMappingMapping { return v.Mappings }).(CseMatchRuleSeverityMappingMappingArrayOutput)
 }
 
+// Must be set to "eq" currently
 func (o CseMatchRuleSeverityMappingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMapping) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5859,6 +6209,7 @@ func (o CseMatchRuleSeverityMappingPtrOutput) Elem() CseMatchRuleSeverityMapping
 	}).(CseMatchRuleSeverityMappingOutput)
 }
 
+// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
 func (o CseMatchRuleSeverityMappingPtrOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CseMatchRuleSeverityMapping) *int {
 		if v == nil {
@@ -5868,6 +6219,7 @@ func (o CseMatchRuleSeverityMappingPtrOutput) Default() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The field to use in the "fieldValue"/"fieldValueMapping" cases.
 func (o CseMatchRuleSeverityMappingPtrOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseMatchRuleSeverityMapping) *string {
 		if v == nil {
@@ -5877,6 +6229,7 @@ func (o CseMatchRuleSeverityMappingPtrOutput) Field() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The map of record values to severities to use in the "fieldValueMapping" case
 func (o CseMatchRuleSeverityMappingPtrOutput) Mappings() CseMatchRuleSeverityMappingMappingArrayOutput {
 	return o.ApplyT(func(v *CseMatchRuleSeverityMapping) []CseMatchRuleSeverityMappingMapping {
 		if v == nil {
@@ -5886,6 +6239,7 @@ func (o CseMatchRuleSeverityMappingPtrOutput) Mappings() CseMatchRuleSeverityMap
 	}).(CseMatchRuleSeverityMappingMappingArrayOutput)
 }
 
+// Must be set to "eq" currently
 func (o CseMatchRuleSeverityMappingPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseMatchRuleSeverityMapping) *string {
 		if v == nil {
@@ -5896,8 +6250,11 @@ func (o CseMatchRuleSeverityMappingPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type CseMatchRuleSeverityMappingMapping struct {
+	// The record value to map from
 	From string `pulumi:"from"`
-	To   int    `pulumi:"to"`
+	// The severity value to map to
+	To int `pulumi:"to"`
+	// Must be set to "eq" currently
 	Type string `pulumi:"type"`
 }
 
@@ -5913,8 +6270,11 @@ type CseMatchRuleSeverityMappingMappingInput interface {
 }
 
 type CseMatchRuleSeverityMappingMappingArgs struct {
+	// The record value to map from
 	From pulumi.StringInput `pulumi:"from"`
-	To   pulumi.IntInput    `pulumi:"to"`
+	// The severity value to map to
+	To pulumi.IntInput `pulumi:"to"`
+	// Must be set to "eq" currently
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5969,14 +6329,17 @@ func (o CseMatchRuleSeverityMappingMappingOutput) ToCseMatchRuleSeverityMappingM
 	return o
 }
 
+// The record value to map from
 func (o CseMatchRuleSeverityMappingMappingOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMappingMapping) string { return v.From }).(pulumi.StringOutput)
 }
 
+// The severity value to map to
 func (o CseMatchRuleSeverityMappingMappingOutput) To() pulumi.IntOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMappingMapping) int { return v.To }).(pulumi.IntOutput)
 }
 
+// Must be set to "eq" currently
 func (o CseMatchRuleSeverityMappingMappingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CseMatchRuleSeverityMappingMapping) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6003,6 +6366,7 @@ func (o CseMatchRuleSeverityMappingMappingArrayOutput) Index(i pulumi.IntInput) 
 
 type CseThresholdRuleEntitySelector struct {
 	EntityType string `pulumi:"entityType"`
+	// The expression for which records to match on
 	Expression string `pulumi:"expression"`
 }
 
@@ -6019,6 +6383,7 @@ type CseThresholdRuleEntitySelectorInput interface {
 
 type CseThresholdRuleEntitySelectorArgs struct {
 	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// The expression for which records to match on
 	Expression pulumi.StringInput `pulumi:"expression"`
 }
 
@@ -6077,6 +6442,7 @@ func (o CseThresholdRuleEntitySelectorOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v CseThresholdRuleEntitySelector) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
+// The expression for which records to match on
 func (o CseThresholdRuleEntitySelectorOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CseThresholdRuleEntitySelector) string { return v.Expression }).(pulumi.StringOutput)
 }
@@ -6786,16 +7152,20 @@ func (o DashboardPanelArrayOutput) Index(i pulumi.IntInput) DashboardPanelOutput
 }
 
 type DashboardPanelSumoSearchPanel struct {
-	ColoringRule                           *DashboardPanelSumoSearchPanelColoringRule    `pulumi:"coloringRule"`
+	ColoringRule *DashboardPanelSumoSearchPanelColoringRule `pulumi:"coloringRule"`
+	// Description of the dashboard.
 	Description                            *string                                       `pulumi:"description"`
 	Id                                     *string                                       `pulumi:"id"`
 	KeepVisualSettingsConsistentWithParent *bool                                         `pulumi:"keepVisualSettingsConsistentWithParent"`
 	Key                                    string                                        `pulumi:"key"`
 	LinkedDashboard                        *DashboardPanelSumoSearchPanelLinkedDashboard `pulumi:"linkedDashboard"`
 	Queries                                []DashboardPanelSumoSearchPanelQuery          `pulumi:"queries"`
-	TimeRange                              *DashboardPanelSumoSearchPanelTimeRange       `pulumi:"timeRange"`
-	Title                                  *string                                       `pulumi:"title"`
-	VisualSettings                         *string                                       `pulumi:"visualSettings"`
+	// Time range of the dashboard. See time range schema
+	// for details.
+	TimeRange *DashboardPanelSumoSearchPanelTimeRange `pulumi:"timeRange"`
+	// Title of the dashboard.
+	Title          *string `pulumi:"title"`
+	VisualSettings *string `pulumi:"visualSettings"`
 }
 
 // DashboardPanelSumoSearchPanelInput is an input type that accepts DashboardPanelSumoSearchPanelArgs and DashboardPanelSumoSearchPanelOutput values.
@@ -6810,16 +7180,20 @@ type DashboardPanelSumoSearchPanelInput interface {
 }
 
 type DashboardPanelSumoSearchPanelArgs struct {
-	ColoringRule                           DashboardPanelSumoSearchPanelColoringRulePtrInput    `pulumi:"coloringRule"`
+	ColoringRule DashboardPanelSumoSearchPanelColoringRulePtrInput `pulumi:"coloringRule"`
+	// Description of the dashboard.
 	Description                            pulumi.StringPtrInput                                `pulumi:"description"`
 	Id                                     pulumi.StringPtrInput                                `pulumi:"id"`
 	KeepVisualSettingsConsistentWithParent pulumi.BoolPtrInput                                  `pulumi:"keepVisualSettingsConsistentWithParent"`
 	Key                                    pulumi.StringInput                                   `pulumi:"key"`
 	LinkedDashboard                        DashboardPanelSumoSearchPanelLinkedDashboardPtrInput `pulumi:"linkedDashboard"`
 	Queries                                DashboardPanelSumoSearchPanelQueryArrayInput         `pulumi:"queries"`
-	TimeRange                              DashboardPanelSumoSearchPanelTimeRangePtrInput       `pulumi:"timeRange"`
-	Title                                  pulumi.StringPtrInput                                `pulumi:"title"`
-	VisualSettings                         pulumi.StringPtrInput                                `pulumi:"visualSettings"`
+	// Time range of the dashboard. See time range schema
+	// for details.
+	TimeRange DashboardPanelSumoSearchPanelTimeRangePtrInput `pulumi:"timeRange"`
+	// Title of the dashboard.
+	Title          pulumi.StringPtrInput `pulumi:"title"`
+	VisualSettings pulumi.StringPtrInput `pulumi:"visualSettings"`
 }
 
 func (DashboardPanelSumoSearchPanelArgs) ElementType() reflect.Type {
@@ -6905,6 +7279,7 @@ func (o DashboardPanelSumoSearchPanelOutput) ColoringRule() DashboardPanelSumoSe
 	}).(DashboardPanelSumoSearchPanelColoringRulePtrOutput)
 }
 
+// Description of the dashboard.
 func (o DashboardPanelSumoSearchPanelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanel) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -6931,10 +7306,13 @@ func (o DashboardPanelSumoSearchPanelOutput) Queries() DashboardPanelSumoSearchP
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanel) []DashboardPanelSumoSearchPanelQuery { return v.Queries }).(DashboardPanelSumoSearchPanelQueryArrayOutput)
 }
 
+// Time range of the dashboard. See time range schema
+// for details.
 func (o DashboardPanelSumoSearchPanelOutput) TimeRange() DashboardPanelSumoSearchPanelTimeRangePtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanel) *DashboardPanelSumoSearchPanelTimeRange { return v.TimeRange }).(DashboardPanelSumoSearchPanelTimeRangePtrOutput)
 }
 
+// Title of the dashboard.
 func (o DashboardPanelSumoSearchPanelOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelSumoSearchPanel) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -6976,6 +7354,7 @@ func (o DashboardPanelSumoSearchPanelPtrOutput) ColoringRule() DashboardPanelSum
 	}).(DashboardPanelSumoSearchPanelColoringRulePtrOutput)
 }
 
+// Description of the dashboard.
 func (o DashboardPanelSumoSearchPanelPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanel) *string {
 		if v == nil {
@@ -7030,6 +7409,8 @@ func (o DashboardPanelSumoSearchPanelPtrOutput) Queries() DashboardPanelSumoSear
 	}).(DashboardPanelSumoSearchPanelQueryArrayOutput)
 }
 
+// Time range of the dashboard. See time range schema
+// for details.
 func (o DashboardPanelSumoSearchPanelPtrOutput) TimeRange() DashboardPanelSumoSearchPanelTimeRangePtrOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanel) *DashboardPanelSumoSearchPanelTimeRange {
 		if v == nil {
@@ -7039,6 +7420,7 @@ func (o DashboardPanelSumoSearchPanelPtrOutput) TimeRange() DashboardPanelSumoSe
 	}).(DashboardPanelSumoSearchPanelTimeRangePtrOutput)
 }
 
+// Title of the dashboard.
 func (o DashboardPanelSumoSearchPanelPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelSumoSearchPanel) *string {
 		if v == nil {
@@ -10040,8 +10422,9 @@ type DashboardPanelTextPanel struct {
 	KeepVisualSettingsConsistentWithParent *bool   `pulumi:"keepVisualSettingsConsistentWithParent"`
 	Key                                    string  `pulumi:"key"`
 	Text                                   *string `pulumi:"text"`
-	Title                                  *string `pulumi:"title"`
-	VisualSettings                         *string `pulumi:"visualSettings"`
+	// Title of the dashboard.
+	Title          *string `pulumi:"title"`
+	VisualSettings *string `pulumi:"visualSettings"`
 }
 
 // DashboardPanelTextPanelInput is an input type that accepts DashboardPanelTextPanelArgs and DashboardPanelTextPanelOutput values.
@@ -10060,8 +10443,9 @@ type DashboardPanelTextPanelArgs struct {
 	KeepVisualSettingsConsistentWithParent pulumi.BoolPtrInput   `pulumi:"keepVisualSettingsConsistentWithParent"`
 	Key                                    pulumi.StringInput    `pulumi:"key"`
 	Text                                   pulumi.StringPtrInput `pulumi:"text"`
-	Title                                  pulumi.StringPtrInput `pulumi:"title"`
-	VisualSettings                         pulumi.StringPtrInput `pulumi:"visualSettings"`
+	// Title of the dashboard.
+	Title          pulumi.StringPtrInput `pulumi:"title"`
+	VisualSettings pulumi.StringPtrInput `pulumi:"visualSettings"`
 }
 
 func (DashboardPanelTextPanelArgs) ElementType() reflect.Type {
@@ -10157,6 +10541,7 @@ func (o DashboardPanelTextPanelOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelTextPanel) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
 
+// Title of the dashboard.
 func (o DashboardPanelTextPanelOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelTextPanel) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -10225,6 +10610,7 @@ func (o DashboardPanelTextPanelPtrOutput) Text() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Title of the dashboard.
 func (o DashboardPanelTextPanelPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelTextPanel) *string {
 		if v == nil {
@@ -12980,11 +13366,16 @@ func (o DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrOutp
 }
 
 type ElbSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
 	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region *string `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+	Type string `pulumi:"type"`
 }
 
 // ElbSourceAuthenticationInput is an input type that accepts ElbSourceAuthenticationArgs and ElbSourceAuthenticationOutput values.
@@ -12999,11 +13390,16 @@ type ElbSourceAuthenticationInput interface {
 }
 
 type ElbSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ElbSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -13083,22 +13479,27 @@ func (o ElbSourceAuthenticationOutput) ToElbSourceAuthenticationPtrOutputWithCon
 	}).(ElbSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`.
 func (o ElbSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o ElbSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 func (o ElbSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`.
 func (o ElbSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 func (o ElbSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -13127,6 +13528,7 @@ func (o ElbSourceAuthenticationPtrOutput) Elem() ElbSourceAuthenticationOutput {
 	}).(ElbSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`.
 func (o ElbSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
 		if v == nil {
@@ -13136,6 +13538,7 @@ func (o ElbSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o ElbSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
 		if v == nil {
@@ -13145,6 +13548,7 @@ func (o ElbSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 func (o ElbSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
 		if v == nil {
@@ -13154,6 +13558,7 @@ func (o ElbSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`.
 func (o ElbSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
 		if v == nil {
@@ -13163,6 +13568,7 @@ func (o ElbSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 func (o ElbSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
 		if v == nil {
@@ -13385,13 +13791,17 @@ func (o ElbSourceFilterArrayOutput) Index(i pulumi.IntInput) ElbSourceFilterOutp
 }
 
 type ElbSourcePath struct {
-	BucketName                 *string                                  `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                 `pulumi:"limitToNamespaces"`
-	LimitToRegions             []string                                 `pulumi:"limitToRegions"`
-	PathExpression             *string                                  `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        *string  `pulumi:"bucketName"`
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression *string `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns []ElbSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []ElbSourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                   `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+	Type string `pulumi:"type"`
 }
 
 // ElbSourcePathInput is an input type that accepts ElbSourcePathArgs and ElbSourcePathOutput values.
@@ -13406,13 +13816,17 @@ type ElbSourcePathInput interface {
 }
 
 type ElbSourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                            `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                          `pulumi:"limitToNamespaces"`
-	LimitToRegions             pulumi.StringArrayInput                          `pulumi:"limitToRegions"`
-	PathExpression             pulumi.StringPtrInput                            `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns ElbSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 ElbSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                               `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ElbSourcePathArgs) ElementType() reflect.Type {
@@ -13492,6 +13906,7 @@ func (o ElbSourcePathOutput) ToElbSourcePathPtrOutputWithContext(ctx context.Con
 	}).(ElbSourcePathPtrOutput)
 }
 
+// The name of the bucket.
 func (o ElbSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -13504,10 +13919,12 @@ func (o ElbSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElbSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o ElbSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o ElbSourcePathOutput) SnsTopicOrSubscriptionArns() ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v ElbSourcePath) []ElbSourcePathSnsTopicOrSubscriptionArn { return v.SnsTopicOrSubscriptionArns }).(ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput)
 }
@@ -13516,6 +13933,7 @@ func (o ElbSourcePathOutput) TagFilters() ElbSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v ElbSourcePath) []ElbSourcePathTagFilter { return v.TagFilters }).(ElbSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 func (o ElbSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElbSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -13544,6 +13962,7 @@ func (o ElbSourcePathPtrOutput) Elem() ElbSourcePathOutput {
 	}).(ElbSourcePathOutput)
 }
 
+// The name of the bucket.
 func (o ElbSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourcePath) *string {
 		if v == nil {
@@ -13571,6 +13990,7 @@ func (o ElbSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o ElbSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourcePath) *string {
 		if v == nil {
@@ -13580,6 +14000,7 @@ func (o ElbSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o ElbSourcePathPtrOutput) SnsTopicOrSubscriptionArns() ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v *ElbSourcePath) []ElbSourcePathSnsTopicOrSubscriptionArn {
 		if v == nil {
@@ -13598,6 +14019,7 @@ func (o ElbSourcePathPtrOutput) TagFilters() ElbSourcePathTagFilterArrayOutput {
 	}).(ElbSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 func (o ElbSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourcePath) *string {
 		if v == nil {
@@ -13710,7 +14132,8 @@ func (o ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInp
 type ElbSourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+	Type *string `pulumi:"type"`
 }
 
 // ElbSourcePathTagFilterInput is an input type that accepts ElbSourcePathTagFilterArgs and ElbSourcePathTagFilterOutput values.
@@ -13727,7 +14150,8 @@ type ElbSourcePathTagFilterInput interface {
 type ElbSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ElbSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -13789,6 +14213,7 @@ func (o ElbSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElbSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 func (o ElbSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -25513,10 +25938,14 @@ func (o HttpSourceFilterArrayOutput) Index(i pulumi.IntInput) HttpSourceFilterOu
 }
 
 type KinesisMetricsSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type string `pulumi:"type"`
 }
 
 // KinesisMetricsSourceAuthenticationInput is an input type that accepts KinesisMetricsSourceAuthenticationArgs and KinesisMetricsSourceAuthenticationOutput values.
@@ -25531,10 +25960,14 @@ type KinesisMetricsSourceAuthenticationInput interface {
 }
 
 type KinesisMetricsSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (KinesisMetricsSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -25614,18 +26047,22 @@ func (o KinesisMetricsSourceAuthenticationOutput) ToKinesisMetricsSourceAuthenti
 	}).(KinesisMetricsSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o KinesisMetricsSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 func (o KinesisMetricsSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o KinesisMetricsSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o KinesisMetricsSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -25654,6 +26091,7 @@ func (o KinesisMetricsSourceAuthenticationPtrOutput) Elem() KinesisMetricsSource
 	}).(KinesisMetricsSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o KinesisMetricsSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourceAuthentication) *string {
 		if v == nil {
@@ -25663,6 +26101,7 @@ func (o KinesisMetricsSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 func (o KinesisMetricsSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourceAuthentication) *string {
 		if v == nil {
@@ -25672,6 +26111,7 @@ func (o KinesisMetricsSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o KinesisMetricsSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourceAuthentication) *string {
 		if v == nil {
@@ -25681,6 +26121,7 @@ func (o KinesisMetricsSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o KinesisMetricsSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourceAuthentication) *string {
 		if v == nil {
@@ -25903,8 +26344,10 @@ func (o KinesisMetricsSourceFilterArrayOutput) Index(i pulumi.IntInput) KinesisM
 }
 
 type KinesisMetricsSourcePath struct {
+	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters []KinesisMetricsSourcePathTagFilter `pulumi:"tagFilters"`
-	Type       string                              `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type string `pulumi:"type"`
 }
 
 // KinesisMetricsSourcePathInput is an input type that accepts KinesisMetricsSourcePathArgs and KinesisMetricsSourcePathOutput values.
@@ -25919,8 +26362,10 @@ type KinesisMetricsSourcePathInput interface {
 }
 
 type KinesisMetricsSourcePathArgs struct {
+	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters KinesisMetricsSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type       pulumi.StringInput                          `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (KinesisMetricsSourcePathArgs) ElementType() reflect.Type {
@@ -26000,10 +26445,12 @@ func (o KinesisMetricsSourcePathOutput) ToKinesisMetricsSourcePathPtrOutputWithC
 	}).(KinesisMetricsSourcePathPtrOutput)
 }
 
+// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 func (o KinesisMetricsSourcePathOutput) TagFilters() KinesisMetricsSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePath) []KinesisMetricsSourcePathTagFilter { return v.TagFilters }).(KinesisMetricsSourcePathTagFilterArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o KinesisMetricsSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -26032,6 +26479,7 @@ func (o KinesisMetricsSourcePathPtrOutput) Elem() KinesisMetricsSourcePathOutput
 	}).(KinesisMetricsSourcePathOutput)
 }
 
+// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 func (o KinesisMetricsSourcePathPtrOutput) TagFilters() KinesisMetricsSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourcePath) []KinesisMetricsSourcePathTagFilter {
 		if v == nil {
@@ -26041,6 +26489,7 @@ func (o KinesisMetricsSourcePathPtrOutput) TagFilters() KinesisMetricsSourcePath
 	}).(KinesisMetricsSourcePathTagFilterArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o KinesisMetricsSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourcePath) *string {
 		if v == nil {
@@ -26051,9 +26500,12 @@ func (o KinesisMetricsSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type KinesisMetricsSourcePathTagFilter struct {
-	Namespace *string  `pulumi:"namespace"`
-	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace *string `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags []string `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type *string `pulumi:"type"`
 }
 
 // KinesisMetricsSourcePathTagFilterInput is an input type that accepts KinesisMetricsSourcePathTagFilterArgs and KinesisMetricsSourcePathTagFilterOutput values.
@@ -26068,9 +26520,12 @@ type KinesisMetricsSourcePathTagFilterInput interface {
 }
 
 type KinesisMetricsSourcePathTagFilterArgs struct {
-	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
-	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (KinesisMetricsSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -26124,14 +26579,17 @@ func (o KinesisMetricsSourcePathTagFilterOutput) ToKinesisMetricsSourcePathTagFi
 	return o
 }
 
+// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
 func (o KinesisMetricsSourcePathTagFilterOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 func (o KinesisMetricsSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o KinesisMetricsSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -26257,10 +26715,14 @@ func (o LookupTableFieldArrayOutput) Index(i pulumi.IntInput) LookupTableFieldOu
 }
 
 type MetadataSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. Only allowed value is `AwsMetadataPath`.
+	Type string `pulumi:"type"`
 }
 
 // MetadataSourceAuthenticationInput is an input type that accepts MetadataSourceAuthenticationArgs and MetadataSourceAuthenticationOutput values.
@@ -26275,10 +26737,14 @@ type MetadataSourceAuthenticationInput interface {
 }
 
 type MetadataSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. Only allowed value is `AwsMetadataPath`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (MetadataSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -26358,18 +26824,22 @@ func (o MetadataSourceAuthenticationOutput) ToMetadataSourceAuthenticationPtrOut
 	}).(MetadataSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o MetadataSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o MetadataSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o MetadataSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. Only allowed value is `AwsMetadataPath`.
 func (o MetadataSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -26398,6 +26868,7 @@ func (o MetadataSourceAuthenticationPtrOutput) Elem() MetadataSourceAuthenticati
 	}).(MetadataSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o MetadataSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetadataSourceAuthentication) *string {
 		if v == nil {
@@ -26407,6 +26878,7 @@ func (o MetadataSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o MetadataSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetadataSourceAuthentication) *string {
 		if v == nil {
@@ -26416,6 +26888,7 @@ func (o MetadataSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o MetadataSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetadataSourceAuthentication) *string {
 		if v == nil {
@@ -26425,6 +26898,7 @@ func (o MetadataSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. Only allowed value is `AwsMetadataPath`.
 func (o MetadataSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetadataSourceAuthentication) *string {
 		if v == nil {
@@ -26647,10 +27121,14 @@ func (o MetadataSourceFilterArrayOutput) Index(i pulumi.IntInput) MetadataSource
 }
 
 type MetadataSourcePath struct {
+	// List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
 	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string `pulumi:"limitToRegions"`
-	TagFilters        []string `pulumi:"tagFilters"`
-	Type              string   `pulumi:"type"`
+	// List of Amazon regions.
+	LimitToRegions []string `pulumi:"limitToRegions"`
+	// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+	TagFilters []string `pulumi:"tagFilters"`
+	// type of polling source. Only allowed value is `AwsMetadataPath`.
+	Type string `pulumi:"type"`
 }
 
 // MetadataSourcePathInput is an input type that accepts MetadataSourcePathArgs and MetadataSourcePathOutput values.
@@ -26665,10 +27143,14 @@ type MetadataSourcePathInput interface {
 }
 
 type MetadataSourcePathArgs struct {
+	// List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
 	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
-	TagFilters        pulumi.StringArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput      `pulumi:"type"`
+	// List of Amazon regions.
+	LimitToRegions pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+	TagFilters pulumi.StringArrayInput `pulumi:"tagFilters"`
+	// type of polling source. Only allowed value is `AwsMetadataPath`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (MetadataSourcePathArgs) ElementType() reflect.Type {
@@ -26748,18 +27230,22 @@ func (o MetadataSourcePathOutput) ToMetadataSourcePathPtrOutputWithContext(ctx c
 	}).(MetadataSourcePathPtrOutput)
 }
 
+// List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
 func (o MetadataSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetadataSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o MetadataSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetadataSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
 
+// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
 func (o MetadataSourcePathOutput) TagFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetadataSourcePath) []string { return v.TagFilters }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. Only allowed value is `AwsMetadataPath`.
 func (o MetadataSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -26788,6 +27274,7 @@ func (o MetadataSourcePathPtrOutput) Elem() MetadataSourcePathOutput {
 	}).(MetadataSourcePathOutput)
 }
 
+// List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
 func (o MetadataSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MetadataSourcePath) []string {
 		if v == nil {
@@ -26797,6 +27284,7 @@ func (o MetadataSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions.
 func (o MetadataSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MetadataSourcePath) []string {
 		if v == nil {
@@ -26806,6 +27294,7 @@ func (o MetadataSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
 func (o MetadataSourcePathPtrOutput) TagFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MetadataSourcePath) []string {
 		if v == nil {
@@ -26815,6 +27304,7 @@ func (o MetadataSourcePathPtrOutput) TagFilters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. Only allowed value is `AwsMetadataPath`.
 func (o MetadataSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetadataSourcePath) *string {
 		if v == nil {
@@ -30926,7 +31416,9 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput
 }
 
 type PoliciesUserConcurrentSessionsLimit struct {
-	Enabled               bool `pulumi:"enabled"`
+	// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Maximum number of concurrent sessions a user may have. Defaults to `100`.
 	MaxConcurrentSessions *int `pulumi:"maxConcurrentSessions"`
 }
 
@@ -30942,7 +31434,9 @@ type PoliciesUserConcurrentSessionsLimitInput interface {
 }
 
 type PoliciesUserConcurrentSessionsLimitArgs struct {
-	Enabled               pulumi.BoolInput   `pulumi:"enabled"`
+	// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Maximum number of concurrent sessions a user may have. Defaults to `100`.
 	MaxConcurrentSessions pulumi.IntPtrInput `pulumi:"maxConcurrentSessions"`
 }
 
@@ -31023,10 +31517,12 @@ func (o PoliciesUserConcurrentSessionsLimitOutput) ToPoliciesUserConcurrentSessi
 	}).(PoliciesUserConcurrentSessionsLimitPtrOutput)
 }
 
+// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
 func (o PoliciesUserConcurrentSessionsLimitOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PoliciesUserConcurrentSessionsLimit) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Maximum number of concurrent sessions a user may have. Defaults to `100`.
 func (o PoliciesUserConcurrentSessionsLimitOutput) MaxConcurrentSessions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PoliciesUserConcurrentSessionsLimit) *int { return v.MaxConcurrentSessions }).(pulumi.IntPtrOutput)
 }
@@ -31055,6 +31551,7 @@ func (o PoliciesUserConcurrentSessionsLimitPtrOutput) Elem() PoliciesUserConcurr
 	}).(PoliciesUserConcurrentSessionsLimitOutput)
 }
 
+// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
 func (o PoliciesUserConcurrentSessionsLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PoliciesUserConcurrentSessionsLimit) *bool {
 		if v == nil {
@@ -31064,6 +31561,7 @@ func (o PoliciesUserConcurrentSessionsLimitPtrOutput) Enabled() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of concurrent sessions a user may have. Defaults to `100`.
 func (o PoliciesUserConcurrentSessionsLimitPtrOutput) MaxConcurrentSessions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PoliciesUserConcurrentSessionsLimit) *int {
 		if v == nil {
@@ -31074,10 +31572,14 @@ func (o PoliciesUserConcurrentSessionsLimitPtrOutput) MaxConcurrentSessions() pu
 }
 
 type PollingSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type string `pulumi:"type"`
 }
 
 // PollingSourceAuthenticationInput is an input type that accepts PollingSourceAuthenticationArgs and PollingSourceAuthenticationOutput values.
@@ -31092,10 +31594,14 @@ type PollingSourceAuthenticationInput interface {
 }
 
 type PollingSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (PollingSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -31175,18 +31681,22 @@ func (o PollingSourceAuthenticationOutput) ToPollingSourceAuthenticationPtrOutpu
 	}).(PollingSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o PollingSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 func (o PollingSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o PollingSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o PollingSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PollingSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -31215,6 +31725,7 @@ func (o PollingSourceAuthenticationPtrOutput) Elem() PollingSourceAuthentication
 	}).(PollingSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`
 func (o PollingSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourceAuthentication) *string {
 		if v == nil {
@@ -31224,6 +31735,7 @@ func (o PollingSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 func (o PollingSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourceAuthentication) *string {
 		if v == nil {
@@ -31233,6 +31745,7 @@ func (o PollingSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`
 func (o PollingSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourceAuthentication) *string {
 		if v == nil {
@@ -31242,6 +31755,7 @@ func (o PollingSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o PollingSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourceAuthentication) *string {
 		if v == nil {
@@ -31464,12 +31978,18 @@ func (o PollingSourceFilterArrayOutput) Index(i pulumi.IntInput) PollingSourceFi
 }
 
 type PollingSourcePath struct {
-	BucketName        *string                      `pulumi:"bucketName"`
-	LimitToNamespaces []string                     `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string                     `pulumi:"limitToRegions"`
-	PathExpression    *string                      `pulumi:"pathExpression"`
-	TagFilters        []PollingSourcePathTagFilter `pulumi:"tagFilters"`
-	Type              string                       `pulumi:"type"`
+	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+	BucketName *string `pulumi:"bucketName"`
+	// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	// List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
+	LimitToRegions []string `pulumi:"limitToRegions"`
+	// The path to the data. This is needed if using type `S3BucketPathExpression`.
+	PathExpression *string `pulumi:"pathExpression"`
+	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+	TagFilters []PollingSourcePathTagFilter `pulumi:"tagFilters"`
+	// This value has to be set to `TagFilters`
+	Type string `pulumi:"type"`
 }
 
 // PollingSourcePathInput is an input type that accepts PollingSourcePathArgs and PollingSourcePathOutput values.
@@ -31484,12 +32004,18 @@ type PollingSourcePathInput interface {
 }
 
 type PollingSourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput                `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput              `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput              `pulumi:"limitToRegions"`
-	PathExpression    pulumi.StringPtrInput                `pulumi:"pathExpression"`
-	TagFilters        PollingSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	Type              pulumi.StringInput                   `pulumi:"type"`
+	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	// List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
+	LimitToRegions pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// The path to the data. This is needed if using type `S3BucketPathExpression`.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+	TagFilters PollingSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (PollingSourcePathArgs) ElementType() reflect.Type {
@@ -31569,26 +32095,32 @@ func (o PollingSourcePathOutput) ToPollingSourcePathPtrOutputWithContext(ctx con
 	}).(PollingSourcePathPtrOutput)
 }
 
+// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
 func (o PollingSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
 func (o PollingSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PollingSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
 func (o PollingSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PollingSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
 
+// The path to the data. This is needed if using type `S3BucketPathExpression`.
 func (o PollingSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 func (o PollingSourcePathOutput) TagFilters() PollingSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v PollingSourcePath) []PollingSourcePathTagFilter { return v.TagFilters }).(PollingSourcePathTagFilterArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o PollingSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PollingSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -31617,6 +32149,7 @@ func (o PollingSourcePathPtrOutput) Elem() PollingSourcePathOutput {
 	}).(PollingSourcePathOutput)
 }
 
+// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
 func (o PollingSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourcePath) *string {
 		if v == nil {
@@ -31626,6 +32159,7 @@ func (o PollingSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
 func (o PollingSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PollingSourcePath) []string {
 		if v == nil {
@@ -31635,6 +32169,7 @@ func (o PollingSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
 func (o PollingSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PollingSourcePath) []string {
 		if v == nil {
@@ -31644,6 +32179,7 @@ func (o PollingSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The path to the data. This is needed if using type `S3BucketPathExpression`.
 func (o PollingSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourcePath) *string {
 		if v == nil {
@@ -31653,6 +32189,7 @@ func (o PollingSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 func (o PollingSourcePathPtrOutput) TagFilters() PollingSourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v *PollingSourcePath) []PollingSourcePathTagFilter {
 		if v == nil {
@@ -31662,6 +32199,7 @@ func (o PollingSourcePathPtrOutput) TagFilters() PollingSourcePathTagFilterArray
 	}).(PollingSourcePathTagFilterArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o PollingSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourcePath) *string {
 		if v == nil {
@@ -31672,9 +32210,12 @@ func (o PollingSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type PollingSourcePathTagFilter struct {
-	Namespace *string  `pulumi:"namespace"`
-	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace *string `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags []string `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type *string `pulumi:"type"`
 }
 
 // PollingSourcePathTagFilterInput is an input type that accepts PollingSourcePathTagFilterArgs and PollingSourcePathTagFilterOutput values.
@@ -31689,9 +32230,12 @@ type PollingSourcePathTagFilterInput interface {
 }
 
 type PollingSourcePathTagFilterArgs struct {
-	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
-	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (PollingSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -31745,14 +32289,17 @@ func (o PollingSourcePathTagFilterOutput) ToPollingSourcePathTagFilterOutputWith
 	return o
 }
 
+// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
 func (o PollingSourcePathTagFilterOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 func (o PollingSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o PollingSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -31778,11 +32325,16 @@ func (o PollingSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) PollingS
 }
 
 type S3AuditSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
 	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region *string `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	Type string `pulumi:"type"`
 }
 
 // S3AuditSourceAuthenticationInput is an input type that accepts S3AuditSourceAuthenticationArgs and S3AuditSourceAuthenticationOutput values.
@@ -31797,11 +32349,16 @@ type S3AuditSourceAuthenticationInput interface {
 }
 
 type S3AuditSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (S3AuditSourceAuthenticationArgs) ElementType() reflect.Type {
@@ -31881,22 +32438,27 @@ func (o S3AuditSourceAuthenticationOutput) ToS3AuditSourceAuthenticationPtrOutpu
 	}).(S3AuditSourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`.
 func (o S3AuditSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o S3AuditSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 func (o S3AuditSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`.
 func (o S3AuditSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
 func (o S3AuditSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -31925,6 +32487,7 @@ func (o S3AuditSourceAuthenticationPtrOutput) Elem() S3AuditSourceAuthentication
 	}).(S3AuditSourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`.
 func (o S3AuditSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
 		if v == nil {
@@ -31934,6 +32497,7 @@ func (o S3AuditSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o S3AuditSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
 		if v == nil {
@@ -31943,6 +32507,7 @@ func (o S3AuditSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 func (o S3AuditSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
 		if v == nil {
@@ -31952,6 +32517,7 @@ func (o S3AuditSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`.
 func (o S3AuditSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
 		if v == nil {
@@ -31961,6 +32527,7 @@ func (o S3AuditSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
 func (o S3AuditSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
 		if v == nil {
@@ -32183,13 +32750,17 @@ func (o S3AuditSourceFilterArrayOutput) Index(i pulumi.IntInput) S3AuditSourceFi
 }
 
 type S3AuditSourcePath struct {
-	BucketName                 *string                                      `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                     `pulumi:"limitToNamespaces"`
-	LimitToRegions             []string                                     `pulumi:"limitToRegions"`
-	PathExpression             *string                                      `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        *string  `pulumi:"bucketName"`
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression *string `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns []S3AuditSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []S3AuditSourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                       `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	Type string `pulumi:"type"`
 }
 
 // S3AuditSourcePathInput is an input type that accepts S3AuditSourcePathArgs and S3AuditSourcePathOutput values.
@@ -32204,13 +32775,17 @@ type S3AuditSourcePathInput interface {
 }
 
 type S3AuditSourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                                `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                              `pulumi:"limitToNamespaces"`
-	LimitToRegions             pulumi.StringArrayInput                              `pulumi:"limitToRegions"`
-	PathExpression             pulumi.StringPtrInput                                `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 S3AuditSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                                   `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (S3AuditSourcePathArgs) ElementType() reflect.Type {
@@ -32290,6 +32865,7 @@ func (o S3AuditSourcePathOutput) ToS3AuditSourcePathPtrOutputWithContext(ctx con
 	}).(S3AuditSourcePathPtrOutput)
 }
 
+// The name of the bucket.
 func (o S3AuditSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -32302,10 +32878,12 @@ func (o S3AuditSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o S3AuditSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o S3AuditSourcePathOutput) SnsTopicOrSubscriptionArns() S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) []S3AuditSourcePathSnsTopicOrSubscriptionArn {
 		return v.SnsTopicOrSubscriptionArns
@@ -32316,6 +32894,7 @@ func (o S3AuditSourcePathOutput) TagFilters() S3AuditSourcePathTagFilterArrayOut
 	return o.ApplyT(func(v S3AuditSourcePath) []S3AuditSourcePathTagFilter { return v.TagFilters }).(S3AuditSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
 func (o S3AuditSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -32344,6 +32923,7 @@ func (o S3AuditSourcePathPtrOutput) Elem() S3AuditSourcePathOutput {
 	}).(S3AuditSourcePathOutput)
 }
 
+// The name of the bucket.
 func (o S3AuditSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourcePath) *string {
 		if v == nil {
@@ -32371,6 +32951,7 @@ func (o S3AuditSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o S3AuditSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourcePath) *string {
 		if v == nil {
@@ -32380,6 +32961,7 @@ func (o S3AuditSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o S3AuditSourcePathPtrOutput) SnsTopicOrSubscriptionArns() S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v *S3AuditSourcePath) []S3AuditSourcePathSnsTopicOrSubscriptionArn {
 		if v == nil {
@@ -32398,6 +32980,7 @@ func (o S3AuditSourcePathPtrOutput) TagFilters() S3AuditSourcePathTagFilterArray
 	}).(S3AuditSourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
 func (o S3AuditSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourcePath) *string {
 		if v == nil {
@@ -32510,7 +33093,8 @@ func (o S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.In
 type S3AuditSourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	Type *string `pulumi:"type"`
 }
 
 // S3AuditSourcePathTagFilterInput is an input type that accepts S3AuditSourcePathTagFilterArgs and S3AuditSourcePathTagFilterOutput values.
@@ -32527,7 +33111,8 @@ type S3AuditSourcePathTagFilterInput interface {
 type S3AuditSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (S3AuditSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -32589,6 +33174,7 @@ func (o S3AuditSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3AuditSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
 func (o S3AuditSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -32614,11 +33200,16 @@ func (o S3AuditSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) S3AuditS
 }
 
 type S3SourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
 	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
-	RoleArn   *string `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region *string `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
-	Type      string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type string `pulumi:"type"`
 }
 
 // S3SourceAuthenticationInput is an input type that accepts S3SourceAuthenticationArgs and S3SourceAuthenticationOutput values.
@@ -32633,11 +33224,16 @@ type S3SourceAuthenticationInput interface {
 }
 
 type S3SourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS Bucket region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	Type      pulumi.StringInput    `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (S3SourceAuthenticationArgs) ElementType() reflect.Type {
@@ -32717,22 +33313,27 @@ func (o S3SourceAuthenticationOutput) ToS3SourceAuthenticationPtrOutputWithConte
 	}).(S3SourceAuthenticationPtrOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`.
 func (o S3SourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o S3SourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o S3SourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`.
 func (o S3SourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 func (o S3SourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -32761,6 +33362,7 @@ func (o S3SourceAuthenticationPtrOutput) Elem() S3SourceAuthenticationOutput {
 	}).(S3SourceAuthenticationOutput)
 }
 
+// Your AWS access key if using type `S3BucketAuthentication`.
 func (o S3SourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourceAuthentication) *string {
 		if v == nil {
@@ -32770,6 +33372,7 @@ func (o S3SourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS Bucket region.
 func (o S3SourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourceAuthentication) *string {
 		if v == nil {
@@ -32779,6 +33382,7 @@ func (o S3SourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 func (o S3SourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourceAuthentication) *string {
 		if v == nil {
@@ -32788,6 +33392,7 @@ func (o S3SourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Your AWS secret key if using type `S3BucketAuthentication`.
 func (o S3SourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourceAuthentication) *string {
 		if v == nil {
@@ -32797,6 +33402,7 @@ func (o S3SourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 func (o S3SourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourceAuthentication) *string {
 		if v == nil {
@@ -33019,13 +33625,17 @@ func (o S3SourceFilterArrayOutput) Index(i pulumi.IntInput) S3SourceFilterOutput
 }
 
 type S3SourcePath struct {
-	BucketName                 *string                                 `pulumi:"bucketName"`
-	LimitToNamespaces          []string                                `pulumi:"limitToNamespaces"`
-	LimitToRegions             []string                                `pulumi:"limitToRegions"`
-	PathExpression             *string                                 `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        *string  `pulumi:"bucketName"`
+	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression *string `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns []S3SourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []S3SourcePathTagFilter                 `pulumi:"tagFilters"`
-	Type                       string                                  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type string `pulumi:"type"`
 }
 
 // S3SourcePathInput is an input type that accepts S3SourcePathArgs and S3SourcePathOutput values.
@@ -33040,13 +33650,17 @@ type S3SourcePathInput interface {
 }
 
 type S3SourcePathArgs struct {
-	BucketName                 pulumi.StringPtrInput                           `pulumi:"bucketName"`
-	LimitToNamespaces          pulumi.StringArrayInput                         `pulumi:"limitToNamespaces"`
-	LimitToRegions             pulumi.StringArrayInput                         `pulumi:"limitToRegions"`
-	PathExpression             pulumi.StringPtrInput                           `pulumi:"pathExpression"`
+	// The name of the bucket.
+	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
+	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// The path to the data.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// This is a computed field for SNS topic/subscription ARN.
 	SnsTopicOrSubscriptionArns S3SourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 S3SourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
-	Type                       pulumi.StringInput                              `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (S3SourcePathArgs) ElementType() reflect.Type {
@@ -33126,6 +33740,7 @@ func (o S3SourcePathOutput) ToS3SourcePathPtrOutputWithContext(ctx context.Conte
 	}).(S3SourcePathPtrOutput)
 }
 
+// The name of the bucket.
 func (o S3SourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
@@ -33138,10 +33753,12 @@ func (o S3SourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3SourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o S3SourcePathOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o S3SourcePathOutput) SnsTopicOrSubscriptionArns() S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v S3SourcePath) []S3SourcePathSnsTopicOrSubscriptionArn { return v.SnsTopicOrSubscriptionArns }).(S3SourcePathSnsTopicOrSubscriptionArnArrayOutput)
 }
@@ -33150,6 +33767,7 @@ func (o S3SourcePathOutput) TagFilters() S3SourcePathTagFilterArrayOutput {
 	return o.ApplyT(func(v S3SourcePath) []S3SourcePathTagFilter { return v.TagFilters }).(S3SourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 func (o S3SourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3SourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -33178,6 +33796,7 @@ func (o S3SourcePathPtrOutput) Elem() S3SourcePathOutput {
 	}).(S3SourcePathOutput)
 }
 
+// The name of the bucket.
 func (o S3SourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourcePath) *string {
 		if v == nil {
@@ -33205,6 +33824,7 @@ func (o S3SourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The path to the data.
 func (o S3SourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourcePath) *string {
 		if v == nil {
@@ -33214,6 +33834,7 @@ func (o S3SourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is a computed field for SNS topic/subscription ARN.
 func (o S3SourcePathPtrOutput) SnsTopicOrSubscriptionArns() S3SourcePathSnsTopicOrSubscriptionArnArrayOutput {
 	return o.ApplyT(func(v *S3SourcePath) []S3SourcePathSnsTopicOrSubscriptionArn {
 		if v == nil {
@@ -33232,6 +33853,7 @@ func (o S3SourcePathPtrOutput) TagFilters() S3SourcePathTagFilterArrayOutput {
 	}).(S3SourcePathTagFilterArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 func (o S3SourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourcePath) *string {
 		if v == nil {
@@ -33344,7 +33966,8 @@ func (o S3SourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInpu
 type S3SourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type *string `pulumi:"type"`
 }
 
 // S3SourcePathTagFilterInput is an input type that accepts S3SourcePathTagFilterArgs and S3SourcePathTagFilterOutput values.
@@ -33361,7 +33984,8 @@ type S3SourcePathTagFilterInput interface {
 type S3SourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (S3SourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -33423,6 +34047,7 @@ func (o S3SourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3SourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 func (o S3SourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -33448,8 +34073,11 @@ func (o S3SourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) S3SourcePathT
 }
 
 type SamlConfigurationOnDemandProvisioningEnabled struct {
-	FirstNameAttribute        *string  `pulumi:"firstNameAttribute"`
-	LastNameAttribute         *string  `pulumi:"lastNameAttribute"`
+	// First name attribute of the new user account. Defaults to "".
+	FirstNameAttribute *string `pulumi:"firstNameAttribute"`
+	// Last name attribute of the new user account. Defaults to "".
+	LastNameAttribute *string `pulumi:"lastNameAttribute"`
+	// List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
 	OnDemandProvisioningRoles []string `pulumi:"onDemandProvisioningRoles"`
 }
 
@@ -33465,8 +34093,11 @@ type SamlConfigurationOnDemandProvisioningEnabledInput interface {
 }
 
 type SamlConfigurationOnDemandProvisioningEnabledArgs struct {
-	FirstNameAttribute        pulumi.StringPtrInput   `pulumi:"firstNameAttribute"`
-	LastNameAttribute         pulumi.StringPtrInput   `pulumi:"lastNameAttribute"`
+	// First name attribute of the new user account. Defaults to "".
+	FirstNameAttribute pulumi.StringPtrInput `pulumi:"firstNameAttribute"`
+	// Last name attribute of the new user account. Defaults to "".
+	LastNameAttribute pulumi.StringPtrInput `pulumi:"lastNameAttribute"`
+	// List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
 	OnDemandProvisioningRoles pulumi.StringArrayInput `pulumi:"onDemandProvisioningRoles"`
 }
 
@@ -33547,14 +34178,17 @@ func (o SamlConfigurationOnDemandProvisioningEnabledOutput) ToSamlConfigurationO
 	}).(SamlConfigurationOnDemandProvisioningEnabledPtrOutput)
 }
 
+// First name attribute of the new user account. Defaults to "".
 func (o SamlConfigurationOnDemandProvisioningEnabledOutput) FirstNameAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SamlConfigurationOnDemandProvisioningEnabled) *string { return v.FirstNameAttribute }).(pulumi.StringPtrOutput)
 }
 
+// Last name attribute of the new user account. Defaults to "".
 func (o SamlConfigurationOnDemandProvisioningEnabledOutput) LastNameAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SamlConfigurationOnDemandProvisioningEnabled) *string { return v.LastNameAttribute }).(pulumi.StringPtrOutput)
 }
 
+// List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
 func (o SamlConfigurationOnDemandProvisioningEnabledOutput) OnDemandProvisioningRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SamlConfigurationOnDemandProvisioningEnabled) []string { return v.OnDemandProvisioningRoles }).(pulumi.StringArrayOutput)
 }
@@ -33583,6 +34217,7 @@ func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) Elem() SamlConfig
 	}).(SamlConfigurationOnDemandProvisioningEnabledOutput)
 }
 
+// First name attribute of the new user account. Defaults to "".
 func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) FirstNameAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SamlConfigurationOnDemandProvisioningEnabled) *string {
 		if v == nil {
@@ -33592,6 +34227,7 @@ func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) FirstNameAttribut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Last name attribute of the new user account. Defaults to "".
 func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) LastNameAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SamlConfigurationOnDemandProvisioningEnabled) *string {
 		if v == nil {
@@ -33601,6 +34237,7 @@ func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) LastNameAttribute
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
 func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) OnDemandProvisioningRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SamlConfigurationOnDemandProvisioningEnabled) []string {
 		if v == nil {

@@ -38,6 +38,11 @@ class CloudwatchSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a CloudwatchSource resource.
+        :param pulumi.Input['CloudwatchSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['CloudwatchSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
@@ -79,6 +84,9 @@ class CloudwatchSourceArgs:
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Input['CloudwatchSourceAuthenticationArgs']:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -97,6 +105,9 @@ class CloudwatchSourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -106,6 +117,9 @@ class CloudwatchSourceArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input['CloudwatchSourcePathArgs']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -115,6 +129,9 @@ class CloudwatchSourceArgs:
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Input[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -124,6 +141,9 @@ class CloudwatchSourceArgs:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Input[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -293,6 +313,11 @@ class _CloudwatchSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering CloudwatchSource resources.
+        :param pulumi.Input['CloudwatchSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['CloudwatchSourcePathArgs'] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         if authentication is not None:
@@ -343,6 +368,9 @@ class _CloudwatchSourceState:
     @property
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input['CloudwatchSourceAuthenticationArgs']]:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -379,6 +407,9 @@ class _CloudwatchSourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -487,6 +518,9 @@ class _CloudwatchSourceState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input['CloudwatchSourcePathArgs']]:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -496,6 +530,9 @@ class _CloudwatchSourceState:
     @property
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @paused.setter
@@ -505,6 +542,9 @@ class _CloudwatchSourceState:
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
@@ -570,6 +610,69 @@ class CloudwatchSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a [Sumologic CloudWatch source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics).
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        filters = [{
+            "name": "Exclude Comments",
+            "filter_type": "Exclude",
+            "regexp": "#.*",
+        }]
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector", description="Just testing this")
+        cloudwatch_source = sumologic.CloudwatchSource("cloudwatchSource",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.CloudwatchSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
+            path=sumologic.CloudwatchSourcePathArgs(
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+                dynamic=[{
+                    "forEach": tagfilters,
+                    "content": [{
+                        "type": tag_filters["value"]["type"],
+                        "namespace": tag_filters["value"]["namespace"],
+                        "tags": tag_filters["value"]["tags"],
+                    }],
+                }],
+            ))
+        ```
+
         ## Import
 
         CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -588,6 +691,11 @@ class CloudwatchSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CloudwatchSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['CloudwatchSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         ...
     @overload
@@ -596,6 +704,69 @@ class CloudwatchSource(pulumi.CustomResource):
                  args: CloudwatchSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a [Sumologic CloudWatch source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics).
+
+        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        filters = [{
+            "name": "Exclude Comments",
+            "filter_type": "Exclude",
+            "regexp": "#.*",
+        }]
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector", description="Just testing this")
+        cloudwatch_source = sumologic.CloudwatchSource("cloudwatchSource",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.CloudwatchSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
+            path=sumologic.CloudwatchSourcePathArgs(
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+                dynamic=[{
+                    "forEach": tagfilters,
+                    "content": [{
+                        "type": tag_filters["value"]["type"],
+                        "namespace": tag_filters["value"]["namespace"],
+                        "tags": tag_filters["value"]["tags"],
+                    }],
+                }],
+            ))
+        ```
+
         ## Import
 
         CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -733,6 +904,11 @@ class CloudwatchSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['CloudwatchSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input[pulumi.InputType['CloudwatchSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
+        :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -766,6 +942,9 @@ class CloudwatchSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.CloudwatchSourceAuthentication']:
+        """
+        Authentication details for connecting to the S3 bucket.
+        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -786,6 +965,9 @@ class CloudwatchSource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
+        """
+        The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -846,16 +1028,25 @@ class CloudwatchSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output['outputs.CloudwatchSourcePath']:
+        """
+        The location to scan for new data.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def paused(self) -> pulumi.Output[bool]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter(name="scanInterval")
     def scan_interval(self) -> pulumi.Output[int]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
         return pulumi.get(self, "scan_interval")
 
     @property

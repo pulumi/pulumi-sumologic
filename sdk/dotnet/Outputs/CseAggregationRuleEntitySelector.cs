@@ -14,6 +14,9 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class CseAggregationRuleEntitySelector
     {
         public readonly string EntityType;
+        /// <summary>
+        /// The expression or field name to generate the Signal on.
+        /// </summary>
         public readonly string Expression;
 
         [OutputConstructor]

@@ -12,9 +12,15 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CseChainRuleExpressionsAndLimitArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// How many times this expression must match for the Signal to fire
+        /// </summary>
         [Input("limit", required: true)]
         public Input<int> Limit { get; set; } = null!;
 

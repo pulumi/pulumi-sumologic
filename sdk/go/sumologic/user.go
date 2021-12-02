@@ -60,20 +60,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `firstName` - (Required) First name of the user.
-// - `lastName` - (Required) Last name of the user.
-// - `email` - (Required) Email of the user.
-// - `isActive` - (Required) This has the value true if the user is active and false if they have been deactivated.
-// - `roleIds` - (Required) List of roleIds associated with the user.
-// - `transferTo` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the user.
 //
 // ## Import
 //
@@ -87,12 +73,18 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	Email      pulumi.StringOutput      `pulumi:"email"`
-	FirstName  pulumi.StringOutput      `pulumi:"firstName"`
-	IsActive   pulumi.BoolOutput        `pulumi:"isActive"`
-	LastName   pulumi.StringOutput      `pulumi:"lastName"`
-	RoleIds    pulumi.StringArrayOutput `pulumi:"roleIds"`
-	TransferTo pulumi.StringOutput      `pulumi:"transferTo"`
+	// Email of the user.
+	Email pulumi.StringOutput `pulumi:"email"`
+	// First name of the user.
+	FirstName pulumi.StringOutput `pulumi:"firstName"`
+	// This has the value true if the user is active and false if they have been deactivated.
+	IsActive pulumi.BoolOutput `pulumi:"isActive"`
+	// Last name of the user.
+	LastName pulumi.StringOutput `pulumi:"lastName"`
+	// List of roleIds associated with the user.
+	RoleIds pulumi.StringArrayOutput `pulumi:"roleIds"`
+	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	TransferTo pulumi.StringOutput `pulumi:"transferTo"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -142,20 +134,32 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	Email      *string  `pulumi:"email"`
-	FirstName  *string  `pulumi:"firstName"`
-	IsActive   *bool    `pulumi:"isActive"`
-	LastName   *string  `pulumi:"lastName"`
-	RoleIds    []string `pulumi:"roleIds"`
-	TransferTo *string  `pulumi:"transferTo"`
+	// Email of the user.
+	Email *string `pulumi:"email"`
+	// First name of the user.
+	FirstName *string `pulumi:"firstName"`
+	// This has the value true if the user is active and false if they have been deactivated.
+	IsActive *bool `pulumi:"isActive"`
+	// Last name of the user.
+	LastName *string `pulumi:"lastName"`
+	// List of roleIds associated with the user.
+	RoleIds []string `pulumi:"roleIds"`
+	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	TransferTo *string `pulumi:"transferTo"`
 }
 
 type UserState struct {
-	Email      pulumi.StringPtrInput
-	FirstName  pulumi.StringPtrInput
-	IsActive   pulumi.BoolPtrInput
-	LastName   pulumi.StringPtrInput
-	RoleIds    pulumi.StringArrayInput
+	// Email of the user.
+	Email pulumi.StringPtrInput
+	// First name of the user.
+	FirstName pulumi.StringPtrInput
+	// This has the value true if the user is active and false if they have been deactivated.
+	IsActive pulumi.BoolPtrInput
+	// Last name of the user.
+	LastName pulumi.StringPtrInput
+	// List of roleIds associated with the user.
+	RoleIds pulumi.StringArrayInput
+	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
 	TransferTo pulumi.StringPtrInput
 }
 
@@ -164,21 +168,33 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	Email      string   `pulumi:"email"`
-	FirstName  string   `pulumi:"firstName"`
-	IsActive   bool     `pulumi:"isActive"`
-	LastName   string   `pulumi:"lastName"`
-	RoleIds    []string `pulumi:"roleIds"`
-	TransferTo string   `pulumi:"transferTo"`
+	// Email of the user.
+	Email string `pulumi:"email"`
+	// First name of the user.
+	FirstName string `pulumi:"firstName"`
+	// This has the value true if the user is active and false if they have been deactivated.
+	IsActive bool `pulumi:"isActive"`
+	// Last name of the user.
+	LastName string `pulumi:"lastName"`
+	// List of roleIds associated with the user.
+	RoleIds []string `pulumi:"roleIds"`
+	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	TransferTo string `pulumi:"transferTo"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	Email      pulumi.StringInput
-	FirstName  pulumi.StringInput
-	IsActive   pulumi.BoolInput
-	LastName   pulumi.StringInput
-	RoleIds    pulumi.StringArrayInput
+	// Email of the user.
+	Email pulumi.StringInput
+	// First name of the user.
+	FirstName pulumi.StringInput
+	// This has the value true if the user is active and false if they have been deactivated.
+	IsActive pulumi.BoolInput
+	// Last name of the user.
+	LastName pulumi.StringInput
+	// List of roleIds associated with the user.
+	RoleIds pulumi.StringArrayInput
+	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
 	TransferTo pulumi.StringInput
 }
 

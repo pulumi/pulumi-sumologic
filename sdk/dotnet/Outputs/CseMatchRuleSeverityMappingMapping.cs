@@ -13,8 +13,17 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseMatchRuleSeverityMappingMapping
     {
+        /// <summary>
+        /// The record value to map from
+        /// </summary>
         public readonly string From;
+        /// <summary>
+        /// The severity value to map to
+        /// </summary>
         public readonly int To;
+        /// <summary>
+        /// Must be set to "eq" currently
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

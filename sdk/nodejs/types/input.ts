@@ -7,8 +7,14 @@ import { input as inputs, output as outputs } from "../types";
 export interface AwsInventorySourceAuthentication {
     accessKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+     */
     roleArn?: pulumi.Input<string>;
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -26,11 +32,33 @@ export interface AwsInventorySourceFilter {
 
 export interface AwsInventorySourcePath {
     bucketName?: pulumi.Input<string>;
+    /**
+     * List of namespaces. By default all namespaces are selected. You can also choose a subset from
+     * + AWS/EC2
+     * + AWS/AutoScaling
+     * + AWS/EBS
+     * + AWS/ELB
+     * + AWS/ApplicationELB
+     * + AWS/NetworkELB
+     * + AWS/Lambda
+     * + AWS/RDS
+     * + AWS/Dynamodb
+     * + AWS/ECS
+     * + AWS/Elasticache
+     * + AWS/Redshift
+     * + AWS/Kinesis
+     */
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathTagFilter>[]>;
+    /**
+     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -42,14 +70,29 @@ export interface AwsInventorySourcePathSnsTopicOrSubscriptionArn {
 export interface AwsInventorySourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface AwsXraySourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -68,10 +111,16 @@ export interface AwsXraySourceFilter {
 export interface AwsXraySourcePath {
     bucketName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathTagFilter>[]>;
+    /**
+     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -83,6 +132,9 @@ export interface AwsXraySourcePathSnsTopicOrSubscriptionArn {
 export interface AwsXraySourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -99,10 +151,25 @@ export interface CloudSyslogSourceFilter {
 }
 
 export interface CloudfrontSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -119,12 +186,24 @@ export interface CloudfrontSourceFilter {
 }
 
 export interface CloudfrontSourcePath {
+    /**
+     * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+     */
     bucketName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The path to the data. This is needed if using type `S3BucketPathExpression`.
+     */
     pathExpression?: pulumi.Input<string>;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathTagFilter>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -136,14 +215,32 @@ export interface CloudfrontSourcePathSnsTopicOrSubscriptionArn {
 export interface CloudfrontSourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface CloudtrailSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -160,12 +257,24 @@ export interface CloudtrailSourceFilter {
 }
 
 export interface CloudtrailSourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The path to the data.
+     */
     pathExpression?: pulumi.Input<string>;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathTagFilter>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -177,14 +286,32 @@ export interface CloudtrailSourcePathSnsTopicOrSubscriptionArn {
 export interface CloudtrailSourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface CloudwatchSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: pulumi.Input<string>;
 }
 
@@ -202,11 +329,23 @@ export interface CloudwatchSourceFilter {
 
 export interface CloudwatchSourcePath {
     bucketName?: pulumi.Input<string>;
+    /**
+     * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+     */
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     pathExpression?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn>[]>;
+    /**
+     * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+     */
     tagFilters?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathTagFilter>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: pulumi.Input<string>;
 }
 
@@ -216,99 +355,240 @@ export interface CloudwatchSourcePathSnsTopicOrSubscriptionArn {
 }
 
 export interface CloudwatchSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface CseAggregationRuleAggregationFunction {
+    /**
+     * One or more expressions to pass as arguments to the function
+     */
     arguments: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The function to aggregate with
+     */
     function: pulumi.Input<string>;
+    /**
+     * The name of the Rule
+     */
     name: pulumi.Input<string>;
 }
 
 export interface CseAggregationRuleEntitySelector {
     entityType: pulumi.Input<string>;
+    /**
+     * The expression or field name to generate the Signal on.
+     */
     expression: pulumi.Input<string>;
 }
 
 export interface CseAggregationRuleSeverityMapping {
+    /**
+     * The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+     */
     default?: pulumi.Input<number>;
+    /**
+     * The field to use in the "fieldValue"/"fieldValueMapping" cases.
+     */
     field?: pulumi.Input<string>;
+    /**
+     * The map of record values to severities to use in the "fieldValueMapping" case
+     */
     mappings?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleSeverityMappingMapping>[]>;
+    /**
+     * Must be set to "eq" currently
+     */
     type: pulumi.Input<string>;
 }
 
 export interface CseAggregationRuleSeverityMappingMapping {
+    /**
+     * The record value to map from
+     */
     from: pulumi.Input<string>;
+    /**
+     * The severity value to map to
+     */
     to: pulumi.Input<number>;
+    /**
+     * Must be set to "eq" currently
+     */
     type: pulumi.Input<string>;
 }
 
 export interface CseChainRuleEntitySelector {
     entityType: pulumi.Input<string>;
+    /**
+     * The expression for which records to match on
+     */
     expression: pulumi.Input<string>;
 }
 
 export interface CseChainRuleExpressionsAndLimit {
+    /**
+     * The expression for which records to match on
+     */
     expression: pulumi.Input<string>;
+    /**
+     * How many times this expression must match for the Signal to fire
+     */
     limit: pulumi.Input<number>;
 }
 
 export interface CseLogMappingField {
+    /**
+     * List of alternate values.
+     */
     alternateValues?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Case insensitive flag.
+     */
     caseInsensitive?: pulumi.Input<boolean>;
+    /**
+     * Default value of the field.
+     */
     defaultValue?: pulumi.Input<string>;
+    /**
+     * List of field join values.
+     */
     fieldJoins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+     */
     format?: pulumi.Input<string>;
+    /**
+     * List of format parameters.
+     */
     formatParameters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Join delimiter.
+     */
     joinDelimiter?: pulumi.Input<string>;
+    /**
+     * List of lookup key value pair for field. See lookupSchema for details.
+     */
     lookups?: pulumi.Input<pulumi.Input<inputs.CseLogMappingFieldLookup>[]>;
+    /**
+     * Name of the field.
+     */
     name: pulumi.Input<string>;
+    /**
+     * List of skipped values.
+     */
     skippedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Split delimiter to be used. (some example: ",", "-", "|")
+     */
     splitDelimiter?: pulumi.Input<string>;
     splitIndex?: pulumi.Input<string>;
+    /**
+     * Time zone.
+     */
     timeZone?: pulumi.Input<string>;
+    /**
+     * Lookup value.
+     */
     value?: pulumi.Input<string>;
+    /**
+     * The value type.
+     */
     valueType?: pulumi.Input<string>;
 }
 
 export interface CseLogMappingFieldLookup {
+    /**
+     * Lookup key.
+     */
     key: pulumi.Input<string>;
+    /**
+     * Lookup value.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface CseLogMappingStructuredInput {
+    /**
+     * Event id pattern.
+     */
     eventIdPattern: pulumi.Input<string>;
+    /**
+     * Log format. (JSON, Windows, Syslog, CEF, LEEF )
+     */
     logFormat: pulumi.Input<string>;
+    /**
+     * Product name.
+     */
     product: pulumi.Input<string>;
+    /**
+     * Vendor name.
+     */
     vendor: pulumi.Input<string>;
 }
 
 export interface CseLogMappingUnstructuredFields {
+    /**
+     * List of grok pattern names.
+     */
     patternNames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface CseMatchRuleEntitySelector {
     entityType: pulumi.Input<string>;
+    /**
+     * The expression for which records to match on
+     */
     expression: pulumi.Input<string>;
 }
 
 export interface CseMatchRuleSeverityMapping {
+    /**
+     * The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+     */
     default?: pulumi.Input<number>;
+    /**
+     * The field to use in the "fieldValue"/"fieldValueMapping" cases.
+     */
     field?: pulumi.Input<string>;
+    /**
+     * The map of record values to severities to use in the "fieldValueMapping" case
+     */
     mappings?: pulumi.Input<pulumi.Input<inputs.CseMatchRuleSeverityMappingMapping>[]>;
+    /**
+     * Must be set to "eq" currently
+     */
     type: pulumi.Input<string>;
 }
 
 export interface CseMatchRuleSeverityMappingMapping {
+    /**
+     * The record value to map from
+     */
     from: pulumi.Input<string>;
+    /**
+     * The severity value to map to
+     */
     to: pulumi.Input<number>;
+    /**
+     * Must be set to "eq" currently
+     */
     type: pulumi.Input<string>;
 }
 
 export interface CseThresholdRuleEntitySelector {
     entityType: pulumi.Input<string>;
+    /**
+     * The expression for which records to match on
+     */
     expression: pulumi.Input<string>;
 }
 
@@ -345,13 +625,23 @@ export interface DashboardPanel {
 
 export interface DashboardPanelSumoSearchPanel {
     coloringRule?: pulumi.Input<inputs.DashboardPanelSumoSearchPanelColoringRule>;
+    /**
+     * Description of the dashboard.
+     */
     description?: pulumi.Input<string>;
     id?: pulumi.Input<string>;
     keepVisualSettingsConsistentWithParent?: pulumi.Input<boolean>;
     key: pulumi.Input<string>;
     linkedDashboard?: pulumi.Input<inputs.DashboardPanelSumoSearchPanelLinkedDashboard>;
     queries?: pulumi.Input<pulumi.Input<inputs.DashboardPanelSumoSearchPanelQuery>[]>;
+    /**
+     * Time range of the dashboard. See time range schema
+     * for details.
+     */
     timeRange?: pulumi.Input<inputs.DashboardPanelSumoSearchPanelTimeRange>;
+    /**
+     * Title of the dashboard.
+     */
     title?: pulumi.Input<string>;
     visualSettings?: pulumi.Input<string>;
 }
@@ -473,6 +763,9 @@ export interface DashboardPanelTextPanel {
     keepVisualSettingsConsistentWithParent?: pulumi.Input<boolean>;
     key: pulumi.Input<string>;
     text?: pulumi.Input<string>;
+    /**
+     * Title of the dashboard.
+     */
     title?: pulumi.Input<string>;
     visualSettings?: pulumi.Input<string>;
 }
@@ -578,10 +871,25 @@ export interface DashboardVariableSourceDefinitionMetadataVariableSourceDefiniti
 }
 
 export interface ElbSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`.
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`.
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -598,12 +906,24 @@ export interface ElbSourceFilter {
 }
 
 export interface ElbSourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The path to the data.
+     */
     pathExpression?: pulumi.Input<string>;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathTagFilter>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -615,6 +935,9 @@ export interface ElbSourcePathSnsTopicOrSubscriptionArn {
 export interface ElbSourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -1727,9 +2050,21 @@ export interface HttpSourceFilter {
 }
 
 export interface KinesisMetricsSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: pulumi.Input<string>;
 }
 
@@ -1746,13 +2081,28 @@ export interface KinesisMetricsSourceFilter {
 }
 
 export interface KinesisMetricsSourcePath {
+    /**
+     * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+     */
     tagFilters?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourcePathTagFilter>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: pulumi.Input<string>;
 }
 
 export interface KinesisMetricsSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -1762,9 +2112,21 @@ export interface LookupTableField {
 }
 
 export interface MetadataSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. Only allowed value is `AwsMetadataPath`.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -1781,9 +2143,21 @@ export interface MetadataSourceFilter {
 }
 
 export interface MetadataSourcePath {
+    /**
+     * List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
+     */
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Amazon regions.
+     */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+     */
     tagFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. Only allowed value is `AwsMetadataPath`.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -1952,14 +2326,32 @@ export interface MonitorTriggerConditionsMetricsStaticConditionWarningResolution
 }
 
 export interface PoliciesUserConcurrentSessionsLimit {
+    /**
+     * Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Maximum number of concurrent sessions a user may have. Defaults to `100`.
+     */
     maxConcurrentSessions?: pulumi.Input<number>;
 }
 
 export interface PollingSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: pulumi.Input<string>;
 }
 
@@ -1976,25 +2368,67 @@ export interface PollingSourceFilter {
 }
 
 export interface PollingSourcePath {
+    /**
+     * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+     */
     bucketName?: pulumi.Input<string>;
+    /**
+     * List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+     */
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
+     */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The path to the data. This is needed if using type `S3BucketPathExpression`.
+     */
     pathExpression?: pulumi.Input<string>;
+    /**
+     * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+     */
     tagFilters?: pulumi.Input<pulumi.Input<inputs.PollingSourcePathTagFilter>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type: pulumi.Input<string>;
 }
 
 export interface PollingSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface S3AuditSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`.
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`.
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -2011,12 +2445,24 @@ export interface S3AuditSourceFilter {
 }
 
 export interface S3AuditSourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The path to the data.
+     */
     pathExpression?: pulumi.Input<string>;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathTagFilter>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -2028,14 +2474,32 @@ export interface S3AuditSourcePathSnsTopicOrSubscriptionArn {
 export interface S3AuditSourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface S3SourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`.
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * Your AWS Bucket region.
+     */
     region?: pulumi.Input<string>;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`.
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -2052,12 +2516,24 @@ export interface S3SourceFilter {
 }
 
 export interface S3SourcePath {
+    /**
+     * The name of the bucket.
+     */
     bucketName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The path to the data.
+     */
     pathExpression?: pulumi.Input<string>;
+    /**
+     * This is a computed field for SNS topic/subscription ARN.
+     */
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.S3SourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.S3SourcePathTagFilter>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
     type: pulumi.Input<string>;
 }
 
@@ -2069,12 +2545,24 @@ export interface S3SourcePathSnsTopicOrSubscriptionArn {
 export interface S3SourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
     type?: pulumi.Input<string>;
 }
 
 export interface SamlConfigurationOnDemandProvisioningEnabled {
+    /**
+     * First name attribute of the new user account. Defaults to "".
+     */
     firstNameAttribute?: pulumi.Input<string>;
+    /**
+     * Last name attribute of the new user account. Defaults to "".
+     */
     lastNameAttribute?: pulumi.Input<string>;
+    /**
+     * List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+     */
     onDemandProvisioningRoles: pulumi.Input<pulumi.Input<string>[]>;
 }
 

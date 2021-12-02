@@ -32,7 +32,13 @@ export class Content extends pulumi.CustomResource {
         return obj['__pulumiType'] === Content.__pulumiType;
     }
 
+    /**
+     * JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+     */
     public readonly config!: pulumi.Output<string>;
+    /**
+     * The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+     */
     public readonly parentId!: pulumi.Output<string>;
 
     /**
@@ -72,7 +78,13 @@ export class Content extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Content resources.
  */
 export interface ContentState {
+    /**
+     * JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+     */
     config?: pulumi.Input<string>;
+    /**
+     * The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+     */
     parentId?: pulumi.Input<string>;
 }
 
@@ -80,6 +92,12 @@ export interface ContentState {
  * The set of arguments for constructing a Content resource.
  */
 export interface ContentArgs {
+    /**
+     * JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+     */
     config: pulumi.Input<string>;
+    /**
+     * The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
+     */
     parentId: pulumi.Input<string>;
 }

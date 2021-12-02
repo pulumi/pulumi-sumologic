@@ -53,20 +53,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `first_name` - (Required) First name of the user.
-    /// - `last_name` - (Required) Last name of the user.
-    /// - `email` - (Required) Email of the user.
-    /// - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
-    /// - `role_ids` - (Required) List of roleIds associated with the user.
-    /// - `transfer_to` - (Required) UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the user.
     /// 
     /// ## Import
     /// 
@@ -81,21 +67,39 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Email of the user.
+        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
+        /// <summary>
+        /// First name of the user.
+        /// </summary>
         [Output("firstName")]
         public Output<string> FirstName { get; private set; } = null!;
 
+        /// <summary>
+        /// This has the value true if the user is active and false if they have been deactivated.
+        /// </summary>
         [Output("isActive")]
         public Output<bool> IsActive { get; private set; } = null!;
 
+        /// <summary>
+        /// Last name of the user.
+        /// </summary>
         [Output("lastName")]
         public Output<string> LastName { get; private set; } = null!;
 
+        /// <summary>
+        /// List of roleIds associated with the user.
+        /// </summary>
         [Output("roleIds")]
         public Output<ImmutableArray<string>> RoleIds { get; private set; } = null!;
 
+        /// <summary>
+        /// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        /// </summary>
         [Output("transferTo")]
         public Output<string> TransferTo { get; private set; } = null!;
 
@@ -145,26 +149,45 @@ namespace Pulumi.SumoLogic
 
     public sealed class UserArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Email of the user.
+        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
+        /// <summary>
+        /// First name of the user.
+        /// </summary>
         [Input("firstName", required: true)]
         public Input<string> FirstName { get; set; } = null!;
 
+        /// <summary>
+        /// This has the value true if the user is active and false if they have been deactivated.
+        /// </summary>
         [Input("isActive", required: true)]
         public Input<bool> IsActive { get; set; } = null!;
 
+        /// <summary>
+        /// Last name of the user.
+        /// </summary>
         [Input("lastName", required: true)]
         public Input<string> LastName { get; set; } = null!;
 
         [Input("roleIds", required: true)]
         private InputList<string>? _roleIds;
+
+        /// <summary>
+        /// List of roleIds associated with the user.
+        /// </summary>
         public InputList<string> RoleIds
         {
             get => _roleIds ?? (_roleIds = new InputList<string>());
             set => _roleIds = value;
         }
 
+        /// <summary>
+        /// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        /// </summary>
         [Input("transferTo", required: true)]
         public Input<string> TransferTo { get; set; } = null!;
 
@@ -175,26 +198,45 @@ namespace Pulumi.SumoLogic
 
     public sealed class UserState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Email of the user.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        /// <summary>
+        /// First name of the user.
+        /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
+        /// <summary>
+        /// This has the value true if the user is active and false if they have been deactivated.
+        /// </summary>
         [Input("isActive")]
         public Input<bool>? IsActive { get; set; }
 
+        /// <summary>
+        /// Last name of the user.
+        /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
         [Input("roleIds")]
         private InputList<string>? _roleIds;
+
+        /// <summary>
+        /// List of roleIds associated with the user.
+        /// </summary>
         public InputList<string> RoleIds
         {
             get => _roleIds ?? (_roleIds = new InputList<string>());
             set => _roleIds = value;
         }
 
+        /// <summary>
+        /// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        /// </summary>
         [Input("transferTo")]
         public Input<string>? TransferTo { get; set; }
 

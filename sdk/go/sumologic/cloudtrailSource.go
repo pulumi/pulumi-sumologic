@@ -11,6 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a [Sumologic CloudTrail source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source).
+//
+// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewCloudtrailSource(ctx, "cloudtrailSource", &sumologic.CloudtrailSourceArgs{
+// 			Authentication: &CloudtrailSourceAuthenticationArgs{
+// 				AccessKey: pulumi.String("someKey"),
+// 				SecretKey: pulumi.String("******"),
+// 				Type:      pulumi.String("S3BucketAuthentication"),
+// 			},
+// 			Category:    pulumi.String("aws/cloudtrail"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("AwsCloudTrailBucket"),
+// 			Description: pulumi.String("My description"),
+// 			Path: &CloudtrailSourcePathArgs{
+// 				BucketName:     pulumi.String("Bucket1"),
+// 				PathExpression: pulumi.String("*"),
+// 				Type:           pulumi.String("S3BucketPathExpression"),
+// 			},
+// 			Paused:       pulumi.Bool(false),
+// 			ScanInterval: pulumi.Int(300000),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,10 +77,12 @@ import (
 type CloudtrailSource struct {
 	pulumi.CustomResourceState
 
-	Authentication             CloudtrailSourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                         `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                       `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                             `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudtrailSourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput                 `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput               `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                     `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringOutput                          `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                       `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                          `pulumi:"cutoffTimestamp"`
@@ -45,10 +95,13 @@ type CloudtrailSource struct {
 	ManualPrefixRegexp         pulumi.StringPtrOutput                       `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                         `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                          `pulumi:"name"`
-	Path                       CloudtrailSourcePathOutput                   `pulumi:"path"`
-	Paused                     pulumi.BoolOutput                            `pulumi:"paused"`
-	ScanInterval               pulumi.IntOutput                             `pulumi:"scanInterval"`
-	Timezone                   pulumi.StringPtrOutput                       `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path CloudtrailSourcePathOutput `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntOutput       `pulumi:"scanInterval"`
+	Timezone     pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -101,10 +154,12 @@ func GetCloudtrailSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudtrailSource resources.
 type cloudtrailSourceState struct {
-	Authentication             *CloudtrailSourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                               `pulumi:"automaticDateParsing"`
-	Category                   *string                             `pulumi:"category"`
-	CollectorId                *int                                `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       *CloudtrailSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                           `pulumi:"automaticDateParsing"`
+	Category             *string                         `pulumi:"category"`
+	CollectorId          *int                            `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                *string                             `pulumi:"contentType"`
 	CutoffRelativeTime         *string                             `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                `pulumi:"cutoffTimestamp"`
@@ -117,20 +172,25 @@ type cloudtrailSourceState struct {
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                             `pulumi:"name"`
-	Path                       *CloudtrailSourcePath               `pulumi:"path"`
-	Paused                     *bool                               `pulumi:"paused"`
-	ScanInterval               *int                                `pulumi:"scanInterval"`
-	Timezone                   *string                             `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path *CloudtrailSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused *bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval *int    `pulumi:"scanInterval"`
+	Timezone     *string `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type CloudtrailSourceState struct {
-	Authentication             CloudtrailSourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudtrailSourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -143,10 +203,13 @@ type CloudtrailSourceState struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       CloudtrailSourcePathPtrInput
-	Paused                     pulumi.BoolPtrInput
-	ScanInterval               pulumi.IntPtrInput
-	Timezone                   pulumi.StringPtrInput
+	// The location to scan for new data.
+	Path CloudtrailSourcePathPtrInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolPtrInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntPtrInput
+	Timezone     pulumi.StringPtrInput
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
@@ -157,10 +220,12 @@ func (CloudtrailSourceState) ElementType() reflect.Type {
 }
 
 type cloudtrailSourceArgs struct {
-	Authentication             CloudtrailSourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                               `pulumi:"automaticDateParsing"`
-	Category                   *string                             `pulumi:"category"`
-	CollectorId                int                                 `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudtrailSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                          `pulumi:"automaticDateParsing"`
+	Category             *string                        `pulumi:"category"`
+	CollectorId          int                            `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                string                              `pulumi:"contentType"`
 	CutoffRelativeTime         *string                             `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                `pulumi:"cutoffTimestamp"`
@@ -173,19 +238,24 @@ type cloudtrailSourceArgs struct {
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                             `pulumi:"name"`
-	Path                       CloudtrailSourcePath                `pulumi:"path"`
-	Paused                     bool                                `pulumi:"paused"`
-	ScanInterval               int                                 `pulumi:"scanInterval"`
-	Timezone                   *string                             `pulumi:"timezone"`
-	UseAutolineMatching        *bool                               `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path CloudtrailSourcePath `pulumi:"path"`
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused bool `pulumi:"paused"`
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        int     `pulumi:"scanInterval"`
+	Timezone            *string `pulumi:"timezone"`
+	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a CloudtrailSource resource.
 type CloudtrailSourceArgs struct {
-	Authentication             CloudtrailSourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       CloudtrailSourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -198,11 +268,14 @@ type CloudtrailSourceArgs struct {
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       CloudtrailSourcePathInput
-	Paused                     pulumi.BoolInput
-	ScanInterval               pulumi.IntInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path CloudtrailSourcePathInput
+	// When set to true, the scanner is paused. To disable, set to false.
+	Paused pulumi.BoolInput
+	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval        pulumi.IntInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (CloudtrailSourceArgs) ElementType() reflect.Type {

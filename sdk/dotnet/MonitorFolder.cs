@@ -33,20 +33,6 @@ namespace Pulumi.SumoLogic
     /// }
     /// ```
     /// 
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `type` - (Optional) The type of object model. Valid value:
-    ///   - `MonitorsLibraryFolder`
-    /// - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
-    /// - `description` - (Required) The description of the monitor folder.
-    /// - `parent_id` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
-    /// 
-    /// Additional data provided in state:
-    /// 
-    /// - `id` - (Computed) The identifier for this monitor folder.
-    /// 
     /// ## Import
     /// 
     /// Monitor folders can be imported using the monitor folder identifier, such ashcl
@@ -69,6 +55,9 @@ namespace Pulumi.SumoLogic
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the monitor folder.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
@@ -87,15 +76,25 @@ namespace Pulumi.SumoLogic
         [Output("modifiedBy")]
         public Output<string> ModifiedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the monitor folder. The name must be alphanumeric.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
         [Output("postRequestMap")]
         public Output<ImmutableDictionary<string, string>?> PostRequestMap { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of object model. Valid value:
+        /// - `MonitorsLibraryFolder`
+        /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
@@ -157,6 +156,9 @@ namespace Pulumi.SumoLogic
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// The description of the monitor folder.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
@@ -175,9 +177,15 @@ namespace Pulumi.SumoLogic
         [Input("modifiedBy")]
         public Input<string>? ModifiedBy { get; set; }
 
+        /// <summary>
+        /// The name of the monitor folder. The name must be alphanumeric.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
@@ -189,6 +197,10 @@ namespace Pulumi.SumoLogic
             set => _postRequestMap = value;
         }
 
+        /// <summary>
+        /// The type of object model. Valid value:
+        /// - `MonitorsLibraryFolder`
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -211,6 +223,9 @@ namespace Pulumi.SumoLogic
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// The description of the monitor folder.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -229,9 +244,15 @@ namespace Pulumi.SumoLogic
         [Input("modifiedBy")]
         public Input<string>? ModifiedBy { get; set; }
 
+        /// <summary>
+        /// The name of the monitor folder. The name must be alphanumeric.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
@@ -243,6 +264,10 @@ namespace Pulumi.SumoLogic
             set => _postRequestMap = value;
         }
 
+        /// <summary>
+        /// The type of object model. Valid value:
+        /// - `MonitorsLibraryFolder`
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

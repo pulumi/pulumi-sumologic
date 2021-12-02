@@ -56,30 +56,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `countDistinct` - (Optional; defaults to false) Whether to count distinct values of a field, as opposed to just counting the number of records
-// - `countField` - (Optional) The field to count if `countDistinct` is set to true
-// - `description` - (Required) The description of the generated Signals
-// - `enabled` - (Required) Whether the rule should generate Signals
-// - `entitySelectors` - (Required) The entities to generate Signals on
-//   + `entityType` - (Required) The type of the entity to generate the Signal on.
-//   + `expression` - (Required) The expression or field name to generate the Signal on.
-// - `expression` - (Required) The expression for which records to match on
-// - `groupByFields` - (Optional) A list of fields to group records by
-// - `isPrototype` - (Optional) Whether the generated Signals should be prototype Signals
-// - `limit` - (Required) A Signal will be fired when this many records/distinct field values are matched
-// - `name` - (Required) The name of the Rule and the generated Signals
-// - `severity` - (Required) The severity of the generated Signals
-// - `summaryExpression` - (Optional) The summary of the generated Signals
-// - `tags` - (Required) The tags of the generated Signals
-// - `windowSize` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the threshold rule.
 //
 // ## Import
 //
@@ -91,20 +67,34 @@ import (
 type CseThresholdRule struct {
 	pulumi.CustomResourceState
 
-	CountDistinct     pulumi.BoolPtrOutput                      `pulumi:"countDistinct"`
-	CountField        pulumi.StringPtrOutput                    `pulumi:"countField"`
-	Description       pulumi.StringOutput                       `pulumi:"description"`
-	Enabled           pulumi.BoolOutput                         `pulumi:"enabled"`
-	EntitySelectors   CseThresholdRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
-	Expression        pulumi.StringOutput                       `pulumi:"expression"`
-	GroupByFields     pulumi.StringArrayOutput                  `pulumi:"groupByFields"`
-	IsPrototype       pulumi.BoolPtrOutput                      `pulumi:"isPrototype"`
-	Limit             pulumi.IntOutput                          `pulumi:"limit"`
-	Name              pulumi.StringOutput                       `pulumi:"name"`
-	Severity          pulumi.IntOutput                          `pulumi:"severity"`
-	SummaryExpression pulumi.StringPtrOutput                    `pulumi:"summaryExpression"`
-	Tags              pulumi.StringArrayOutput                  `pulumi:"tags"`
-	WindowSize        pulumi.StringOutput                       `pulumi:"windowSize"`
+	// Whether to count distinct values of a field, as opposed to just counting the number of records
+	CountDistinct pulumi.BoolPtrOutput `pulumi:"countDistinct"`
+	// The field to count if `countDistinct` is set to true
+	CountField pulumi.StringPtrOutput `pulumi:"countField"`
+	// The description of the generated Signals
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors CseThresholdRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
+	// The expression for which records to match on
+	Expression pulumi.StringOutput `pulumi:"expression"`
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayOutput `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrOutput `pulumi:"isPrototype"`
+	// A Signal will be fired when this many records/distinct field values are matched
+	Limit pulumi.IntOutput `pulumi:"limit"`
+	// The name of the Rule and the generated Signals
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The severity of the generated Signals
+	Severity pulumi.IntOutput `pulumi:"severity"`
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
 }
 
 // NewCseThresholdRule registers a new resource with the given unique name, arguments, and options.
@@ -157,37 +147,65 @@ func GetCseThresholdRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseThresholdRule resources.
 type cseThresholdRuleState struct {
-	CountDistinct     *bool                            `pulumi:"countDistinct"`
-	CountField        *string                          `pulumi:"countField"`
-	Description       *string                          `pulumi:"description"`
-	Enabled           *bool                            `pulumi:"enabled"`
-	EntitySelectors   []CseThresholdRuleEntitySelector `pulumi:"entitySelectors"`
-	Expression        *string                          `pulumi:"expression"`
-	GroupByFields     []string                         `pulumi:"groupByFields"`
-	IsPrototype       *bool                            `pulumi:"isPrototype"`
-	Limit             *int                             `pulumi:"limit"`
-	Name              *string                          `pulumi:"name"`
-	Severity          *int                             `pulumi:"severity"`
-	SummaryExpression *string                          `pulumi:"summaryExpression"`
-	Tags              []string                         `pulumi:"tags"`
-	WindowSize        *string                          `pulumi:"windowSize"`
+	// Whether to count distinct values of a field, as opposed to just counting the number of records
+	CountDistinct *bool `pulumi:"countDistinct"`
+	// The field to count if `countDistinct` is set to true
+	CountField *string `pulumi:"countField"`
+	// The description of the generated Signals
+	Description *string `pulumi:"description"`
+	// Whether the rule should generate Signals
+	Enabled *bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseThresholdRuleEntitySelector `pulumi:"entitySelectors"`
+	// The expression for which records to match on
+	Expression *string `pulumi:"expression"`
+	// A list of fields to group records by
+	GroupByFields []string `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// A Signal will be fired when this many records/distinct field values are matched
+	Limit *int `pulumi:"limit"`
+	// The name of the Rule and the generated Signals
+	Name *string `pulumi:"name"`
+	// The severity of the generated Signals
+	Severity *int `pulumi:"severity"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize *string `pulumi:"windowSize"`
 }
 
 type CseThresholdRuleState struct {
-	CountDistinct     pulumi.BoolPtrInput
-	CountField        pulumi.StringPtrInput
-	Description       pulumi.StringPtrInput
-	Enabled           pulumi.BoolPtrInput
-	EntitySelectors   CseThresholdRuleEntitySelectorArrayInput
-	Expression        pulumi.StringPtrInput
-	GroupByFields     pulumi.StringArrayInput
-	IsPrototype       pulumi.BoolPtrInput
-	Limit             pulumi.IntPtrInput
-	Name              pulumi.StringPtrInput
-	Severity          pulumi.IntPtrInput
+	// Whether to count distinct values of a field, as opposed to just counting the number of records
+	CountDistinct pulumi.BoolPtrInput
+	// The field to count if `countDistinct` is set to true
+	CountField pulumi.StringPtrInput
+	// The description of the generated Signals
+	Description pulumi.StringPtrInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolPtrInput
+	// The entities to generate Signals on
+	EntitySelectors CseThresholdRuleEntitySelectorArrayInput
+	// The expression for which records to match on
+	Expression pulumi.StringPtrInput
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// A Signal will be fired when this many records/distinct field values are matched
+	Limit pulumi.IntPtrInput
+	// The name of the Rule and the generated Signals
+	Name pulumi.StringPtrInput
+	// The severity of the generated Signals
+	Severity pulumi.IntPtrInput
+	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
-	Tags              pulumi.StringArrayInput
-	WindowSize        pulumi.StringPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringPtrInput
 }
 
 func (CseThresholdRuleState) ElementType() reflect.Type {
@@ -195,38 +213,66 @@ func (CseThresholdRuleState) ElementType() reflect.Type {
 }
 
 type cseThresholdRuleArgs struct {
-	CountDistinct     *bool                            `pulumi:"countDistinct"`
-	CountField        *string                          `pulumi:"countField"`
-	Description       string                           `pulumi:"description"`
-	Enabled           bool                             `pulumi:"enabled"`
-	EntitySelectors   []CseThresholdRuleEntitySelector `pulumi:"entitySelectors"`
-	Expression        string                           `pulumi:"expression"`
-	GroupByFields     []string                         `pulumi:"groupByFields"`
-	IsPrototype       *bool                            `pulumi:"isPrototype"`
-	Limit             int                              `pulumi:"limit"`
-	Name              *string                          `pulumi:"name"`
-	Severity          int                              `pulumi:"severity"`
-	SummaryExpression *string                          `pulumi:"summaryExpression"`
-	Tags              []string                         `pulumi:"tags"`
-	WindowSize        string                           `pulumi:"windowSize"`
+	// Whether to count distinct values of a field, as opposed to just counting the number of records
+	CountDistinct *bool `pulumi:"countDistinct"`
+	// The field to count if `countDistinct` is set to true
+	CountField *string `pulumi:"countField"`
+	// The description of the generated Signals
+	Description string `pulumi:"description"`
+	// Whether the rule should generate Signals
+	Enabled bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseThresholdRuleEntitySelector `pulumi:"entitySelectors"`
+	// The expression for which records to match on
+	Expression string `pulumi:"expression"`
+	// A list of fields to group records by
+	GroupByFields []string `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// A Signal will be fired when this many records/distinct field values are matched
+	Limit int `pulumi:"limit"`
+	// The name of the Rule and the generated Signals
+	Name *string `pulumi:"name"`
+	// The severity of the generated Signals
+	Severity int `pulumi:"severity"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize string `pulumi:"windowSize"`
 }
 
 // The set of arguments for constructing a CseThresholdRule resource.
 type CseThresholdRuleArgs struct {
-	CountDistinct     pulumi.BoolPtrInput
-	CountField        pulumi.StringPtrInput
-	Description       pulumi.StringInput
-	Enabled           pulumi.BoolInput
-	EntitySelectors   CseThresholdRuleEntitySelectorArrayInput
-	Expression        pulumi.StringInput
-	GroupByFields     pulumi.StringArrayInput
-	IsPrototype       pulumi.BoolPtrInput
-	Limit             pulumi.IntInput
-	Name              pulumi.StringPtrInput
-	Severity          pulumi.IntInput
+	// Whether to count distinct values of a field, as opposed to just counting the number of records
+	CountDistinct pulumi.BoolPtrInput
+	// The field to count if `countDistinct` is set to true
+	CountField pulumi.StringPtrInput
+	// The description of the generated Signals
+	Description pulumi.StringInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolInput
+	// The entities to generate Signals on
+	EntitySelectors CseThresholdRuleEntitySelectorArrayInput
+	// The expression for which records to match on
+	Expression pulumi.StringInput
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// A Signal will be fired when this many records/distinct field values are matched
+	Limit pulumi.IntInput
+	// The name of the Rule and the generated Signals
+	Name pulumi.StringPtrInput
+	// The severity of the generated Signals
+	Severity pulumi.IntInput
+	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
-	Tags              pulumi.StringArrayInput
-	WindowSize        pulumi.StringInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringInput
 }
 
 func (CseThresholdRuleArgs) ElementType() reflect.Type {

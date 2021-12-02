@@ -35,16 +35,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
-// - `severityExpression` - (Required) Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the entity criticality configuration.
 //
 // ## Import
 //
@@ -56,7 +46,9 @@ import (
 type CseEntityCriticalityConfig struct {
 	pulumi.CustomResourceState
 
-	Name               pulumi.StringOutput `pulumi:"name"`
+	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
 	SeverityExpression pulumi.StringOutput `pulumi:"severityExpression"`
 }
 
@@ -92,12 +84,16 @@ func GetCseEntityCriticalityConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseEntityCriticalityConfig resources.
 type cseEntityCriticalityConfigState struct {
-	Name               *string `pulumi:"name"`
+	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+	Name *string `pulumi:"name"`
+	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
 	SeverityExpression *string `pulumi:"severityExpression"`
 }
 
 type CseEntityCriticalityConfigState struct {
-	Name               pulumi.StringPtrInput
+	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+	Name pulumi.StringPtrInput
+	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
 	SeverityExpression pulumi.StringPtrInput
 }
 
@@ -106,13 +102,17 @@ func (CseEntityCriticalityConfigState) ElementType() reflect.Type {
 }
 
 type cseEntityCriticalityConfigArgs struct {
-	Name               *string `pulumi:"name"`
-	SeverityExpression string  `pulumi:"severityExpression"`
+	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+	Name *string `pulumi:"name"`
+	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+	SeverityExpression string `pulumi:"severityExpression"`
 }
 
 // The set of arguments for constructing a CseEntityCriticalityConfig resource.
 type CseEntityCriticalityConfigArgs struct {
-	Name               pulumi.StringPtrInput
+	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+	Name pulumi.StringPtrInput
+	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
 	SeverityExpression pulumi.StringInput
 }
 

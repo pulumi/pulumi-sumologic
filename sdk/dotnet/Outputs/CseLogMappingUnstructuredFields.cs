@@ -13,6 +13,9 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseLogMappingUnstructuredFields
     {
+        /// <summary>
+        /// List of grok pattern names.
+        /// </summary>
         public readonly ImmutableArray<string> PatternNames;
 
         [OutputConstructor]

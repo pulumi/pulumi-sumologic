@@ -42,21 +42,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) The name of the rule tuning expression.
-// - `description` - (Required) The description of the rule tuning expression.
-// - `expression` - (Required) Expression to match.
-// - `enabled` - (Required) Enabled flag.
-// - `exclude` - (Required) Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
-// - `isGlobal` - (Required) Set to true if this tuning expression should be applied to all rules.
-// - `ruleIds` - (Required) List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the rule tuning expression.
 //
 // ## Import
 //
@@ -68,13 +53,20 @@ import (
 type CseRuleTuningExpression struct {
 	pulumi.CustomResourceState
 
-	Description pulumi.StringOutput      `pulumi:"description"`
-	Enabled     pulumi.BoolOutput        `pulumi:"enabled"`
-	Exclude     pulumi.BoolOutput        `pulumi:"exclude"`
-	Expression  pulumi.StringOutput      `pulumi:"expression"`
-	IsGlobal    pulumi.BoolOutput        `pulumi:"isGlobal"`
-	Name        pulumi.StringOutput      `pulumi:"name"`
-	RuleIds     pulumi.StringArrayOutput `pulumi:"ruleIds"`
+	// The description of the rule tuning expression.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Enabled flag.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+	Exclude pulumi.BoolOutput `pulumi:"exclude"`
+	// Expression to match.
+	Expression pulumi.StringOutput `pulumi:"expression"`
+	// Set to true if this tuning expression should be applied to all rules.
+	IsGlobal pulumi.BoolOutput `pulumi:"isGlobal"`
+	// The name of the rule tuning expression.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	RuleIds pulumi.StringArrayOutput `pulumi:"ruleIds"`
 }
 
 // NewCseRuleTuningExpression registers a new resource with the given unique name, arguments, and options.
@@ -124,23 +116,37 @@ func GetCseRuleTuningExpression(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseRuleTuningExpression resources.
 type cseRuleTuningExpressionState struct {
-	Description *string  `pulumi:"description"`
-	Enabled     *bool    `pulumi:"enabled"`
-	Exclude     *bool    `pulumi:"exclude"`
-	Expression  *string  `pulumi:"expression"`
-	IsGlobal    *bool    `pulumi:"isGlobal"`
-	Name        *string  `pulumi:"name"`
-	RuleIds     []string `pulumi:"ruleIds"`
+	// The description of the rule tuning expression.
+	Description *string `pulumi:"description"`
+	// Enabled flag.
+	Enabled *bool `pulumi:"enabled"`
+	// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+	Exclude *bool `pulumi:"exclude"`
+	// Expression to match.
+	Expression *string `pulumi:"expression"`
+	// Set to true if this tuning expression should be applied to all rules.
+	IsGlobal *bool `pulumi:"isGlobal"`
+	// The name of the rule tuning expression.
+	Name *string `pulumi:"name"`
+	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	RuleIds []string `pulumi:"ruleIds"`
 }
 
 type CseRuleTuningExpressionState struct {
+	// The description of the rule tuning expression.
 	Description pulumi.StringPtrInput
-	Enabled     pulumi.BoolPtrInput
-	Exclude     pulumi.BoolPtrInput
-	Expression  pulumi.StringPtrInput
-	IsGlobal    pulumi.BoolPtrInput
-	Name        pulumi.StringPtrInput
-	RuleIds     pulumi.StringArrayInput
+	// Enabled flag.
+	Enabled pulumi.BoolPtrInput
+	// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+	Exclude pulumi.BoolPtrInput
+	// Expression to match.
+	Expression pulumi.StringPtrInput
+	// Set to true if this tuning expression should be applied to all rules.
+	IsGlobal pulumi.BoolPtrInput
+	// The name of the rule tuning expression.
+	Name pulumi.StringPtrInput
+	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	RuleIds pulumi.StringArrayInput
 }
 
 func (CseRuleTuningExpressionState) ElementType() reflect.Type {
@@ -148,24 +154,38 @@ func (CseRuleTuningExpressionState) ElementType() reflect.Type {
 }
 
 type cseRuleTuningExpressionArgs struct {
-	Description string   `pulumi:"description"`
-	Enabled     bool     `pulumi:"enabled"`
-	Exclude     bool     `pulumi:"exclude"`
-	Expression  string   `pulumi:"expression"`
-	IsGlobal    bool     `pulumi:"isGlobal"`
-	Name        *string  `pulumi:"name"`
-	RuleIds     []string `pulumi:"ruleIds"`
+	// The description of the rule tuning expression.
+	Description string `pulumi:"description"`
+	// Enabled flag.
+	Enabled bool `pulumi:"enabled"`
+	// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+	Exclude bool `pulumi:"exclude"`
+	// Expression to match.
+	Expression string `pulumi:"expression"`
+	// Set to true if this tuning expression should be applied to all rules.
+	IsGlobal bool `pulumi:"isGlobal"`
+	// The name of the rule tuning expression.
+	Name *string `pulumi:"name"`
+	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	RuleIds []string `pulumi:"ruleIds"`
 }
 
 // The set of arguments for constructing a CseRuleTuningExpression resource.
 type CseRuleTuningExpressionArgs struct {
+	// The description of the rule tuning expression.
 	Description pulumi.StringInput
-	Enabled     pulumi.BoolInput
-	Exclude     pulumi.BoolInput
-	Expression  pulumi.StringInput
-	IsGlobal    pulumi.BoolInput
-	Name        pulumi.StringPtrInput
-	RuleIds     pulumi.StringArrayInput
+	// Enabled flag.
+	Enabled pulumi.BoolInput
+	// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+	Exclude pulumi.BoolInput
+	// Expression to match.
+	Expression pulumi.StringInput
+	// Set to true if this tuning expression should be applied to all rules.
+	IsGlobal pulumi.BoolInput
+	// The name of the rule tuning expression.
+	Name pulumi.StringPtrInput
+	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	RuleIds pulumi.StringArrayInput
 }
 
 func (CseRuleTuningExpressionArgs) ElementType() reflect.Type {

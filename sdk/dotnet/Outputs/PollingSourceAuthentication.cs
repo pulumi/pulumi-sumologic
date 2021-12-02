@@ -13,9 +13,21 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class PollingSourceAuthentication
     {
+        /// <summary>
+        /// Your AWS access key if using type `S3BucketAuthentication`
+        /// </summary>
         public readonly string? AccessKey;
+        /// <summary>
+        /// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// Your AWS secret key if using type `S3BucketAuthentication`
+        /// </summary>
         public readonly string? SecretKey;
+        /// <summary>
+        /// This value has to be set to `TagFilters`
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

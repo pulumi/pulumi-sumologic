@@ -19,17 +19,6 @@ import * as utilities from "./utilities";
  *     routingExpression: "_sourcecategory=*&#47;IAC",
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `name` - (Required, Forces new resource) The name of the partition.
- * - `routingExpression` - (Required) The query that defines the data to be included in the partition.
- * - `analyticsTier` - (Required) The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
- * - `retentionPeriod` - (Optional) The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
- * - `isCompliant` - (Optional) Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
- * - `reduceRetentionPeriodImmediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
- *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -74,14 +63,32 @@ export class Partition extends pulumi.CustomResource {
         return obj['__pulumiType'] === Partition.__pulumiType;
     }
 
+    /**
+     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     */
     public readonly analyticsTier!: pulumi.Output<string | undefined>;
     public /*out*/ readonly dataForwardingId!: pulumi.Output<string>;
     public /*out*/ readonly indexType!: pulumi.Output<string>;
     public /*out*/ readonly isActive!: pulumi.Output<boolean>;
+    /**
+     * Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+     */
     public readonly isCompliant!: pulumi.Output<boolean | undefined>;
+    /**
+     * The name of the partition.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     */
     public readonly reduceRetentionPeriodImmediately!: pulumi.Output<boolean | undefined>;
+    /**
+     * The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+     */
     public readonly retentionPeriod!: pulumi.Output<number | undefined>;
+    /**
+     * The query that defines the data to be included in the partition.
+     */
     public readonly routingExpression!: pulumi.Output<string | undefined>;
     public /*out*/ readonly totalBytes!: pulumi.Output<number>;
 
@@ -132,14 +139,32 @@ export class Partition extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Partition resources.
  */
 export interface PartitionState {
+    /**
+     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     */
     analyticsTier?: pulumi.Input<string>;
     dataForwardingId?: pulumi.Input<string>;
     indexType?: pulumi.Input<string>;
     isActive?: pulumi.Input<boolean>;
+    /**
+     * Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+     */
     isCompliant?: pulumi.Input<boolean>;
+    /**
+     * The name of the partition.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     */
     reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    /**
+     * The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+     */
     retentionPeriod?: pulumi.Input<number>;
+    /**
+     * The query that defines the data to be included in the partition.
+     */
     routingExpression?: pulumi.Input<string>;
     totalBytes?: pulumi.Input<number>;
 }
@@ -148,10 +173,28 @@ export interface PartitionState {
  * The set of arguments for constructing a Partition resource.
  */
 export interface PartitionArgs {
+    /**
+     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     */
     analyticsTier?: pulumi.Input<string>;
+    /**
+     * Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+     */
     isCompliant?: pulumi.Input<boolean>;
+    /**
+     * The name of the partition.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     */
     reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
+    /**
+     * The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+     */
     retentionPeriod?: pulumi.Input<number>;
+    /**
+     * The query that defines the data to be included in the partition.
+     */
     routingExpression?: pulumi.Input<string>;
 }

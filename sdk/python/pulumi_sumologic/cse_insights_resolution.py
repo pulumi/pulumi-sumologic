@@ -18,6 +18,9 @@ class CseInsightsResolutionArgs:
                  parent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseInsightsResolution resource.
+        :param pulumi.Input[str] description: The description of the insights resolution.
+        :param pulumi.Input[str] name: The name of the insights resolution.
+        :param pulumi.Input[str] parent: The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -29,6 +32,9 @@ class CseInsightsResolutionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the insights resolution.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -38,6 +44,9 @@ class CseInsightsResolutionArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the insights resolution.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -47,6 +56,9 @@ class CseInsightsResolutionArgs:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -62,6 +74,9 @@ class _CseInsightsResolutionState:
                  parent: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseInsightsResolution resources.
+        :param pulumi.Input[str] description: The description of the insights resolution.
+        :param pulumi.Input[str] name: The name of the insights resolution.
+        :param pulumi.Input[str] parent: The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -73,6 +88,9 @@ class _CseInsightsResolutionState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the insights resolution.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -82,6 +100,9 @@ class _CseInsightsResolutionState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the insights resolution.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -91,6 +112,9 @@ class _CseInsightsResolutionState:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -120,17 +144,6 @@ class CseInsightsResolution(pulumi.CustomResource):
             description="New description",
             parent="No Action")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the insights resolution.
-        - `description` - (Required) The description of the insights resolution.
-        - `parent` - (Required) The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the insights resolution.
 
         ## Import
 
@@ -142,6 +155,9 @@ class CseInsightsResolution(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the insights resolution.
+        :param pulumi.Input[str] name: The name of the insights resolution.
+        :param pulumi.Input[str] parent: The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
         """
         ...
     @overload
@@ -162,17 +178,6 @@ class CseInsightsResolution(pulumi.CustomResource):
             description="New description",
             parent="No Action")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the insights resolution.
-        - `description` - (Required) The description of the insights resolution.
-        - `parent` - (Required) The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the insights resolution.
 
         ## Import
 
@@ -235,6 +240,9 @@ class CseInsightsResolution(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the insights resolution.
+        :param pulumi.Input[str] name: The name of the insights resolution.
+        :param pulumi.Input[str] parent: The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -248,15 +256,24 @@ class CseInsightsResolution(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the insights resolution.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the insights resolution.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        """
         return pulumi.get(self, "parent")
 

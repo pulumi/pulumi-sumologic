@@ -32,33 +32,6 @@ import * as utilities from "./utilities";
  *     tags: ["_mitreAttackTactic:TA0009"],
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `descriptionExpression` - (Required) The description of the generated Signals
- * - `enabled` - (Required) Whether the rule should generate Signals
- * - `entitySelectors` - (Required) The entities to generate Signals on
- *   + `entityType` - (Required) The type of the entity to generate the Signal on.
- *   + `expression` - (Required) The expression or field name to generate the Signal on.
- * - `expression` - (Required) The expression for which records to match on
- * - `isPrototype` - (Optional) Whether the generated Signals should be prototype Signals
- * - `name` - (Required) The name of the Rule
- * - `nameExpression` - (Required) The name of the generated Signals
- * - `severityMapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
- *   + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
- *   + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
- *   + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
- *   + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
- *     - `type` - (Required) Must be set to "eq" currently
- *     - `from` - (Required) The record value to map from
- *     - `to` - (Required) The severity value to map to
- * - `summaryExpression` - (Optional) The summary of the generated Signals
- * - `tags` - (Required) The tags of the generated Signals
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the match rule.
  *
  * ## Import
  *
@@ -96,15 +69,45 @@ export class CseMatchRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseMatchRule.__pulumiType;
     }
 
+    /**
+     * The description of the generated Signals
+     */
     public readonly descriptionExpression!: pulumi.Output<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     public readonly entitySelectors!: pulumi.Output<outputs.CseMatchRuleEntitySelector[]>;
+    /**
+     * The expression for which records to match on
+     */
     public readonly expression!: pulumi.Output<string>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     public readonly isPrototype!: pulumi.Output<boolean | undefined>;
+    /**
+     * The name of the Rule
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the generated Signals
+     */
     public readonly nameExpression!: pulumi.Output<string>;
+    /**
+     * The configuration of how the severity of the Signals should be mapped from the Records
+     */
     public readonly severityMapping!: pulumi.Output<outputs.CseMatchRuleSeverityMapping>;
+    /**
+     * The summary of the generated Signals
+     */
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
+    /**
+     * The tags of the generated Signals
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -172,15 +175,45 @@ export class CseMatchRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseMatchRule resources.
  */
 export interface CseMatchRuleState {
+    /**
+     * The description of the generated Signals
+     */
     descriptionExpression?: pulumi.Input<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
+    /**
+     * The expression for which records to match on
+     */
     expression?: pulumi.Input<string>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     isPrototype?: pulumi.Input<boolean>;
+    /**
+     * The name of the Rule
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the generated Signals
+     */
     nameExpression?: pulumi.Input<string>;
+    /**
+     * The configuration of how the severity of the Signals should be mapped from the Records
+     */
     severityMapping?: pulumi.Input<inputs.CseMatchRuleSeverityMapping>;
+    /**
+     * The summary of the generated Signals
+     */
     summaryExpression?: pulumi.Input<string>;
+    /**
+     * The tags of the generated Signals
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -188,14 +221,44 @@ export interface CseMatchRuleState {
  * The set of arguments for constructing a CseMatchRule resource.
  */
 export interface CseMatchRuleArgs {
+    /**
+     * The description of the generated Signals
+     */
     descriptionExpression: pulumi.Input<string>;
+    /**
+     * Whether the rule should generate Signals
+     */
     enabled: pulumi.Input<boolean>;
+    /**
+     * The entities to generate Signals on
+     */
     entitySelectors: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
+    /**
+     * The expression for which records to match on
+     */
     expression: pulumi.Input<string>;
+    /**
+     * Whether the generated Signals should be prototype Signals
+     */
     isPrototype?: pulumi.Input<boolean>;
+    /**
+     * The name of the Rule
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the generated Signals
+     */
     nameExpression: pulumi.Input<string>;
+    /**
+     * The configuration of how the severity of the Signals should be mapped from the Records
+     */
     severityMapping: pulumi.Input<inputs.CseMatchRuleSeverityMapping>;
+    /**
+     * The summary of the generated Signals
+     */
     summaryExpression?: pulumi.Input<string>;
+    /**
+     * The tags of the generated Signals
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

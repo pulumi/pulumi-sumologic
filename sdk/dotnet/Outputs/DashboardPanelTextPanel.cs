@@ -17,6 +17,9 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly bool? KeepVisualSettingsConsistentWithParent;
         public readonly string Key;
         public readonly string? Text;
+        /// <summary>
+        /// Title of the dashboard.
+        /// </summary>
         public readonly string? Title;
         public readonly string? VisualSettings;
 

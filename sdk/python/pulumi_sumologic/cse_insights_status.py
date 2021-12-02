@@ -17,6 +17,8 @@ class CseInsightsStatusArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseInsightsStatus resource.
+        :param pulumi.Input[str] description: The description of the insights status.
+        :param pulumi.Input[str] name: The name of the insights status.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -26,6 +28,9 @@ class CseInsightsStatusArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the insights status.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -35,6 +40,9 @@ class CseInsightsStatusArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the insights status.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -50,6 +58,8 @@ class _CseInsightsStatusState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseInsightsStatus resources.
+        :param pulumi.Input[str] description: The description of the insights status.
+        :param pulumi.Input[str] name: The name of the insights status.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -61,6 +71,9 @@ class _CseInsightsStatusState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the insights status.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -79,6 +92,9 @@ class _CseInsightsStatusState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the insights status.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -105,16 +121,6 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         insights_status = sumologic.CseInsightsStatus("insightsStatus", description="New description")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the insights status.
-        - `description` - (Required) The description of the insights status.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the insights status.
 
         ## Import
 
@@ -126,6 +132,8 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the insights status.
+        :param pulumi.Input[str] name: The name of the insights status.
         """
         ...
     @overload
@@ -144,16 +152,6 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         insights_status = sumologic.CseInsightsStatus("insightsStatus", description="New description")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the insights status.
-        - `description` - (Required) The description of the insights status.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the insights status.
 
         ## Import
 
@@ -215,6 +213,8 @@ class CseInsightsStatus(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the insights status.
+        :param pulumi.Input[str] name: The name of the insights status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -228,6 +228,9 @@ class CseInsightsStatus(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the insights status.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -238,5 +241,8 @@ class CseInsightsStatus(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the insights status.
+        """
         return pulumi.get(self, "name")
 

@@ -42,38 +42,6 @@ import (
 // NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
 // > > > > > > > v2.11.0
 //
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `type` - (Optional) The type of object model. Valid value:
-//   - `MonitorsLibraryMonitor`
-// - `name` - (Required) The name of the monitor. The name must be alphanumeric.
-// - `description` - (Required) The description of the monitor.
-// - `isDisabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
-// - `parentId` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
-// - `contentType` - (Optional) The type of the content object. Valid value:
-//   - `Monitor`
-// - `monitorType` - (Required) The type of monitor. Valid values:
-//   - `Logs`: A logs query monitor.
-//   - `Metrics`: A metrics query monitor.
-// - `queries` - (Required) All queries from the monitor.
-// - `triggerConditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
-// - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
-// - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
-// - `groupNotifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
-// - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
-//
-// Additional data provided in state:
-//
-// - `id` - (Computed) The ID for this monitor.
-// - `status` - (Computed) The current status for this monitor. Values are:
-//   - `Critical`
-//   - `Warning`
-//   - `MissingData`
-//   - `Normal`
-//   - `Disabled`
-//
 // ## The `triggerConditions` block
 //
 // A `triggerConditions` block configures conditions for sending notifications.
@@ -260,31 +228,55 @@ import (
 type Monitor struct {
 	pulumi.CustomResourceState
 
-	ContentType        pulumi.StringPtrOutput            `pulumi:"contentType"`
-	CreatedAt          pulumi.StringOutput               `pulumi:"createdAt"`
-	CreatedBy          pulumi.StringOutput               `pulumi:"createdBy"`
-	Description        pulumi.StringPtrOutput            `pulumi:"description"`
-	EvaluationDelay    pulumi.StringOutput               `pulumi:"evaluationDelay"`
-	GroupNotifications pulumi.BoolPtrOutput              `pulumi:"groupNotifications"`
-	IsDisabled         pulumi.BoolPtrOutput              `pulumi:"isDisabled"`
-	IsLocked           pulumi.BoolOutput                 `pulumi:"isLocked"`
-	IsMutable          pulumi.BoolOutput                 `pulumi:"isMutable"`
-	IsSystem           pulumi.BoolOutput                 `pulumi:"isSystem"`
-	ModifiedAt         pulumi.StringOutput               `pulumi:"modifiedAt"`
-	ModifiedBy         pulumi.StringOutput               `pulumi:"modifiedBy"`
-	MonitorType        pulumi.StringOutput               `pulumi:"monitorType"`
-	Name               pulumi.StringOutput               `pulumi:"name"`
-	Notifications      MonitorNotificationArrayOutput    `pulumi:"notifications"`
-	ParentId           pulumi.StringOutput               `pulumi:"parentId"`
-	Playbook           pulumi.StringPtrOutput            `pulumi:"playbook"`
-	PostRequestMap     pulumi.StringMapOutput            `pulumi:"postRequestMap"`
-	Queries            MonitorQueryArrayOutput           `pulumi:"queries"`
-	Statuses           pulumi.StringArrayOutput          `pulumi:"statuses"`
-	TriggerConditions  MonitorTriggerConditionsPtrOutput `pulumi:"triggerConditions"`
+	// The type of the content object. Valid value:
+	// - `Monitor`
+	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
+	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
+	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
+	// The description of the monitor.
+	Description     pulumi.StringPtrOutput `pulumi:"description"`
+	EvaluationDelay pulumi.StringOutput    `pulumi:"evaluationDelay"`
+	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+	GroupNotifications pulumi.BoolPtrOutput `pulumi:"groupNotifications"`
+	// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+	IsDisabled pulumi.BoolPtrOutput `pulumi:"isDisabled"`
+	IsLocked   pulumi.BoolOutput    `pulumi:"isLocked"`
+	IsMutable  pulumi.BoolOutput    `pulumi:"isMutable"`
+	IsSystem   pulumi.BoolOutput    `pulumi:"isSystem"`
+	ModifiedAt pulumi.StringOutput  `pulumi:"modifiedAt"`
+	ModifiedBy pulumi.StringOutput  `pulumi:"modifiedBy"`
+	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	MonitorType pulumi.StringOutput `pulumi:"monitorType"`
+	// The name of the monitor. The name must be alphanumeric.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The notifications the monitor will send when the respective trigger condition is met.
+	Notifications MonitorNotificationArrayOutput `pulumi:"notifications"`
+	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+	ParentId pulumi.StringOutput `pulumi:"parentId"`
+	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+	Playbook       pulumi.StringPtrOutput `pulumi:"playbook"`
+	PostRequestMap pulumi.StringMapOutput `pulumi:"postRequestMap"`
+	// All queries from the monitor.
+	Queries MonitorQueryArrayOutput `pulumi:"queries"`
+	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
+	Statuses pulumi.StringArrayOutput `pulumi:"statuses"`
+	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+	TriggerConditions MonitorTriggerConditionsPtrOutput `pulumi:"triggerConditions"`
+	// Defines the conditions of when to send notifications.
+	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayOutput `pulumi:"triggers"`
-	Type     pulumi.StringPtrOutput    `pulumi:"type"`
-	Version  pulumi.IntOutput          `pulumi:"version"`
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
+	Type    pulumi.StringPtrOutput `pulumi:"type"`
+	Version pulumi.IntOutput       `pulumi:"version"`
 }
 
 // NewMonitor registers a new resource with the given unique name, arguments, and options.
@@ -319,59 +311,107 @@ func GetMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Monitor resources.
 type monitorState struct {
-	ContentType        *string                   `pulumi:"contentType"`
-	CreatedAt          *string                   `pulumi:"createdAt"`
-	CreatedBy          *string                   `pulumi:"createdBy"`
-	Description        *string                   `pulumi:"description"`
-	EvaluationDelay    *string                   `pulumi:"evaluationDelay"`
-	GroupNotifications *bool                     `pulumi:"groupNotifications"`
-	IsDisabled         *bool                     `pulumi:"isDisabled"`
-	IsLocked           *bool                     `pulumi:"isLocked"`
-	IsMutable          *bool                     `pulumi:"isMutable"`
-	IsSystem           *bool                     `pulumi:"isSystem"`
-	ModifiedAt         *string                   `pulumi:"modifiedAt"`
-	ModifiedBy         *string                   `pulumi:"modifiedBy"`
-	MonitorType        *string                   `pulumi:"monitorType"`
-	Name               *string                   `pulumi:"name"`
-	Notifications      []MonitorNotification     `pulumi:"notifications"`
-	ParentId           *string                   `pulumi:"parentId"`
-	Playbook           *string                   `pulumi:"playbook"`
-	PostRequestMap     map[string]string         `pulumi:"postRequestMap"`
-	Queries            []MonitorQuery            `pulumi:"queries"`
-	Statuses           []string                  `pulumi:"statuses"`
-	TriggerConditions  *MonitorTriggerConditions `pulumi:"triggerConditions"`
+	// The type of the content object. Valid value:
+	// - `Monitor`
+	ContentType *string `pulumi:"contentType"`
+	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedBy   *string `pulumi:"createdBy"`
+	// The description of the monitor.
+	Description     *string `pulumi:"description"`
+	EvaluationDelay *string `pulumi:"evaluationDelay"`
+	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+	GroupNotifications *bool `pulumi:"groupNotifications"`
+	// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+	IsDisabled *bool   `pulumi:"isDisabled"`
+	IsLocked   *bool   `pulumi:"isLocked"`
+	IsMutable  *bool   `pulumi:"isMutable"`
+	IsSystem   *bool   `pulumi:"isSystem"`
+	ModifiedAt *string `pulumi:"modifiedAt"`
+	ModifiedBy *string `pulumi:"modifiedBy"`
+	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	MonitorType *string `pulumi:"monitorType"`
+	// The name of the monitor. The name must be alphanumeric.
+	Name *string `pulumi:"name"`
+	// The notifications the monitor will send when the respective trigger condition is met.
+	Notifications []MonitorNotification `pulumi:"notifications"`
+	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+	ParentId *string `pulumi:"parentId"`
+	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+	Playbook       *string           `pulumi:"playbook"`
+	PostRequestMap map[string]string `pulumi:"postRequestMap"`
+	// All queries from the monitor.
+	Queries []MonitorQuery `pulumi:"queries"`
+	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
+	Statuses []string `pulumi:"statuses"`
+	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
+	// Defines the conditions of when to send notifications.
+	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
-	Type     *string          `pulumi:"type"`
-	Version  *int             `pulumi:"version"`
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
+	Type    *string `pulumi:"type"`
+	Version *int    `pulumi:"version"`
 }
 
 type MonitorState struct {
-	ContentType        pulumi.StringPtrInput
-	CreatedAt          pulumi.StringPtrInput
-	CreatedBy          pulumi.StringPtrInput
-	Description        pulumi.StringPtrInput
-	EvaluationDelay    pulumi.StringPtrInput
+	// The type of the content object. Valid value:
+	// - `Monitor`
+	ContentType pulumi.StringPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	CreatedBy   pulumi.StringPtrInput
+	// The description of the monitor.
+	Description     pulumi.StringPtrInput
+	EvaluationDelay pulumi.StringPtrInput
+	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrInput
-	IsDisabled         pulumi.BoolPtrInput
-	IsLocked           pulumi.BoolPtrInput
-	IsMutable          pulumi.BoolPtrInput
-	IsSystem           pulumi.BoolPtrInput
-	ModifiedAt         pulumi.StringPtrInput
-	ModifiedBy         pulumi.StringPtrInput
-	MonitorType        pulumi.StringPtrInput
-	Name               pulumi.StringPtrInput
-	Notifications      MonitorNotificationArrayInput
-	ParentId           pulumi.StringPtrInput
-	Playbook           pulumi.StringPtrInput
-	PostRequestMap     pulumi.StringMapInput
-	Queries            MonitorQueryArrayInput
-	Statuses           pulumi.StringArrayInput
-	TriggerConditions  MonitorTriggerConditionsPtrInput
+	// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+	IsDisabled pulumi.BoolPtrInput
+	IsLocked   pulumi.BoolPtrInput
+	IsMutable  pulumi.BoolPtrInput
+	IsSystem   pulumi.BoolPtrInput
+	ModifiedAt pulumi.StringPtrInput
+	ModifiedBy pulumi.StringPtrInput
+	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	MonitorType pulumi.StringPtrInput
+	// The name of the monitor. The name must be alphanumeric.
+	Name pulumi.StringPtrInput
+	// The notifications the monitor will send when the respective trigger condition is met.
+	Notifications MonitorNotificationArrayInput
+	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+	ParentId pulumi.StringPtrInput
+	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+	Playbook       pulumi.StringPtrInput
+	PostRequestMap pulumi.StringMapInput
+	// All queries from the monitor.
+	Queries MonitorQueryArrayInput
+	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
+	Statuses pulumi.StringArrayInput
+	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+	TriggerConditions MonitorTriggerConditionsPtrInput
+	// Defines the conditions of when to send notifications.
+	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayInput
-	Type     pulumi.StringPtrInput
-	Version  pulumi.IntPtrInput
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
+	Type    pulumi.StringPtrInput
+	Version pulumi.IntPtrInput
 }
 
 func (MonitorState) ElementType() reflect.Type {
@@ -379,60 +419,108 @@ func (MonitorState) ElementType() reflect.Type {
 }
 
 type monitorArgs struct {
-	ContentType        *string                   `pulumi:"contentType"`
-	CreatedAt          *string                   `pulumi:"createdAt"`
-	CreatedBy          *string                   `pulumi:"createdBy"`
-	Description        *string                   `pulumi:"description"`
-	EvaluationDelay    *string                   `pulumi:"evaluationDelay"`
-	GroupNotifications *bool                     `pulumi:"groupNotifications"`
-	IsDisabled         *bool                     `pulumi:"isDisabled"`
-	IsLocked           *bool                     `pulumi:"isLocked"`
-	IsMutable          *bool                     `pulumi:"isMutable"`
-	IsSystem           *bool                     `pulumi:"isSystem"`
-	ModifiedAt         *string                   `pulumi:"modifiedAt"`
-	ModifiedBy         *string                   `pulumi:"modifiedBy"`
-	MonitorType        string                    `pulumi:"monitorType"`
-	Name               *string                   `pulumi:"name"`
-	Notifications      []MonitorNotification     `pulumi:"notifications"`
-	ParentId           *string                   `pulumi:"parentId"`
-	Playbook           *string                   `pulumi:"playbook"`
-	PostRequestMap     map[string]string         `pulumi:"postRequestMap"`
-	Queries            []MonitorQuery            `pulumi:"queries"`
-	Statuses           []string                  `pulumi:"statuses"`
-	TriggerConditions  *MonitorTriggerConditions `pulumi:"triggerConditions"`
+	// The type of the content object. Valid value:
+	// - `Monitor`
+	ContentType *string `pulumi:"contentType"`
+	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedBy   *string `pulumi:"createdBy"`
+	// The description of the monitor.
+	Description     *string `pulumi:"description"`
+	EvaluationDelay *string `pulumi:"evaluationDelay"`
+	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+	GroupNotifications *bool `pulumi:"groupNotifications"`
+	// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+	IsDisabled *bool   `pulumi:"isDisabled"`
+	IsLocked   *bool   `pulumi:"isLocked"`
+	IsMutable  *bool   `pulumi:"isMutable"`
+	IsSystem   *bool   `pulumi:"isSystem"`
+	ModifiedAt *string `pulumi:"modifiedAt"`
+	ModifiedBy *string `pulumi:"modifiedBy"`
+	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	MonitorType string `pulumi:"monitorType"`
+	// The name of the monitor. The name must be alphanumeric.
+	Name *string `pulumi:"name"`
+	// The notifications the monitor will send when the respective trigger condition is met.
+	Notifications []MonitorNotification `pulumi:"notifications"`
+	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+	ParentId *string `pulumi:"parentId"`
+	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+	Playbook       *string           `pulumi:"playbook"`
+	PostRequestMap map[string]string `pulumi:"postRequestMap"`
+	// All queries from the monitor.
+	Queries []MonitorQuery `pulumi:"queries"`
+	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
+	Statuses []string `pulumi:"statuses"`
+	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
+	// Defines the conditions of when to send notifications.
+	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
-	Type     *string          `pulumi:"type"`
-	Version  *int             `pulumi:"version"`
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
+	Type    *string `pulumi:"type"`
+	Version *int    `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Monitor resource.
 type MonitorArgs struct {
-	ContentType        pulumi.StringPtrInput
-	CreatedAt          pulumi.StringPtrInput
-	CreatedBy          pulumi.StringPtrInput
-	Description        pulumi.StringPtrInput
-	EvaluationDelay    pulumi.StringPtrInput
+	// The type of the content object. Valid value:
+	// - `Monitor`
+	ContentType pulumi.StringPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	CreatedBy   pulumi.StringPtrInput
+	// The description of the monitor.
+	Description     pulumi.StringPtrInput
+	EvaluationDelay pulumi.StringPtrInput
+	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrInput
-	IsDisabled         pulumi.BoolPtrInput
-	IsLocked           pulumi.BoolPtrInput
-	IsMutable          pulumi.BoolPtrInput
-	IsSystem           pulumi.BoolPtrInput
-	ModifiedAt         pulumi.StringPtrInput
-	ModifiedBy         pulumi.StringPtrInput
-	MonitorType        pulumi.StringInput
-	Name               pulumi.StringPtrInput
-	Notifications      MonitorNotificationArrayInput
-	ParentId           pulumi.StringPtrInput
-	Playbook           pulumi.StringPtrInput
-	PostRequestMap     pulumi.StringMapInput
-	Queries            MonitorQueryArrayInput
-	Statuses           pulumi.StringArrayInput
-	TriggerConditions  MonitorTriggerConditionsPtrInput
+	// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+	IsDisabled pulumi.BoolPtrInput
+	IsLocked   pulumi.BoolPtrInput
+	IsMutable  pulumi.BoolPtrInput
+	IsSystem   pulumi.BoolPtrInput
+	ModifiedAt pulumi.StringPtrInput
+	ModifiedBy pulumi.StringPtrInput
+	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	MonitorType pulumi.StringInput
+	// The name of the monitor. The name must be alphanumeric.
+	Name pulumi.StringPtrInput
+	// The notifications the monitor will send when the respective trigger condition is met.
+	Notifications MonitorNotificationArrayInput
+	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+	ParentId pulumi.StringPtrInput
+	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+	Playbook       pulumi.StringPtrInput
+	PostRequestMap pulumi.StringMapInput
+	// All queries from the monitor.
+	Queries MonitorQueryArrayInput
+	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
+	Statuses pulumi.StringArrayInput
+	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+	TriggerConditions MonitorTriggerConditionsPtrInput
+	// Defines the conditions of when to send notifications.
+	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayInput
-	Type     pulumi.StringPtrInput
-	Version  pulumi.IntPtrInput
+	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
+	Type    pulumi.StringPtrInput
+	Version pulumi.IntPtrInput
 }
 
 func (MonitorArgs) ElementType() reflect.Type {

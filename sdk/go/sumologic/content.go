@@ -14,7 +14,9 @@ import (
 type Content struct {
 	pulumi.CustomResourceState
 
-	Config   pulumi.StringOutput `pulumi:"config"`
+	// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+	Config pulumi.StringOutput `pulumi:"config"`
+	// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
 }
 
@@ -53,12 +55,16 @@ func GetContent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Content resources.
 type contentState struct {
-	Config   *string `pulumi:"config"`
+	// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+	Config *string `pulumi:"config"`
+	// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
 	ParentId *string `pulumi:"parentId"`
 }
 
 type ContentState struct {
-	Config   pulumi.StringPtrInput
+	// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+	Config pulumi.StringPtrInput
+	// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
 	ParentId pulumi.StringPtrInput
 }
 
@@ -67,13 +73,17 @@ func (ContentState) ElementType() reflect.Type {
 }
 
 type contentArgs struct {
-	Config   string `pulumi:"config"`
+	// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+	Config string `pulumi:"config"`
+	// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
 	ParentId string `pulumi:"parentId"`
 }
 
 // The set of arguments for constructing a Content resource.
 type ContentArgs struct {
-	Config   pulumi.StringInput
+	// JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
+	Config pulumi.StringInput
+	// The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
 	ParentId pulumi.StringInput
 }
 

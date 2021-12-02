@@ -44,65 +44,85 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `min_length` - (Optional) The minimum length of the password. Defaults to 8.
-    /// - `max_length` - (Optional) The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
-    /// - `must_contain_lowercase` - (Optional) If the password must contain lower case characters. Defaults to true.
-    /// - `must_contain_uppercase` - (Optional) If the password must contain upper case characters. Defaults to true.
-    /// - `must_contain_digits` - (Optional) If the password must contain digits. Defaults to true.
-    /// - `must_contain_special_chars` - (Optional) If the password must contain special characters. Defaults to true.
-    /// - `max_password_age_in_days` - (Optional) Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
-    /// - `min_unique_passwords` - (Optional) The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
-    /// - `account_lockout_threshold` - (Optional) Number of failed login attempts allowed before account is locked-out. Defaults to 6.
-    /// - `failed_login_reset_duration_in_mins` - (Optional) The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
-    /// - `account_lockout_duration_in_mins` - (Optional) The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
-    /// - `require_mfa` - (Optional) If MFA should be required to log in. Defaults to false.
-    /// - `remember_mfa` - (Optional) If MFA should be remembered on the browser. Defaults to true.
-    /// 
-    /// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
     /// </summary>
     [SumoLogicResourceType("sumologic:index/passwordPolicy:PasswordPolicy")]
     public partial class PasswordPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        /// </summary>
         [Output("accountLockoutDurationInMins")]
         public Output<int?> AccountLockoutDurationInMins { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        /// </summary>
         [Output("accountLockoutThreshold")]
         public Output<int?> AccountLockoutThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        /// </summary>
         [Output("failedLoginResetDurationInMins")]
         public Output<int?> FailedLoginResetDurationInMins { get; private set; } = null!;
 
+        /// <summary>
+        /// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        /// </summary>
         [Output("maxLength")]
         public Output<int?> MaxLength { get; private set; } = null!;
 
+        /// <summary>
+        /// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        /// </summary>
         [Output("maxPasswordAgeInDays")]
         public Output<int?> MaxPasswordAgeInDays { get; private set; } = null!;
 
+        /// <summary>
+        /// The minimum length of the password. Defaults to 8.
+        /// </summary>
         [Output("minLength")]
         public Output<int?> MinLength { get; private set; } = null!;
 
+        /// <summary>
+        /// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        /// </summary>
         [Output("minUniquePasswords")]
         public Output<int?> MinUniquePasswords { get; private set; } = null!;
 
+        /// <summary>
+        /// If the password must contain digits. Defaults to true.
+        /// </summary>
         [Output("mustContainDigits")]
         public Output<bool?> MustContainDigits { get; private set; } = null!;
 
+        /// <summary>
+        /// If the password must contain lower case characters. Defaults to true.
+        /// </summary>
         [Output("mustContainLowercase")]
         public Output<bool?> MustContainLowercase { get; private set; } = null!;
 
+        /// <summary>
+        /// If the password must contain special characters. Defaults to true.
+        /// </summary>
         [Output("mustContainSpecialChars")]
         public Output<bool?> MustContainSpecialChars { get; private set; } = null!;
 
+        /// <summary>
+        /// If the password must contain upper case characters. Defaults to true.
+        /// </summary>
         [Output("mustContainUppercase")]
         public Output<bool?> MustContainUppercase { get; private set; } = null!;
 
+        /// <summary>
+        /// If MFA should be remembered on the browser. Defaults to true.
+        /// </summary>
         [Output("rememberMfa")]
         public Output<bool?> RememberMfa { get; private set; } = null!;
 
+        /// <summary>
+        /// If MFA should be required to log in. Defaults to false.
+        /// </summary>
         [Output("requireMfa")]
         public Output<bool?> RequireMfa { get; private set; } = null!;
 
@@ -152,42 +172,81 @@ namespace Pulumi.SumoLogic
 
     public sealed class PasswordPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        /// </summary>
         [Input("accountLockoutDurationInMins")]
         public Input<int>? AccountLockoutDurationInMins { get; set; }
 
+        /// <summary>
+        /// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        /// </summary>
         [Input("accountLockoutThreshold")]
         public Input<int>? AccountLockoutThreshold { get; set; }
 
+        /// <summary>
+        /// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        /// </summary>
         [Input("failedLoginResetDurationInMins")]
         public Input<int>? FailedLoginResetDurationInMins { get; set; }
 
+        /// <summary>
+        /// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        /// </summary>
         [Input("maxLength")]
         public Input<int>? MaxLength { get; set; }
 
+        /// <summary>
+        /// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        /// </summary>
         [Input("maxPasswordAgeInDays")]
         public Input<int>? MaxPasswordAgeInDays { get; set; }
 
+        /// <summary>
+        /// The minimum length of the password. Defaults to 8.
+        /// </summary>
         [Input("minLength")]
         public Input<int>? MinLength { get; set; }
 
+        /// <summary>
+        /// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        /// </summary>
         [Input("minUniquePasswords")]
         public Input<int>? MinUniquePasswords { get; set; }
 
+        /// <summary>
+        /// If the password must contain digits. Defaults to true.
+        /// </summary>
         [Input("mustContainDigits")]
         public Input<bool>? MustContainDigits { get; set; }
 
+        /// <summary>
+        /// If the password must contain lower case characters. Defaults to true.
+        /// </summary>
         [Input("mustContainLowercase")]
         public Input<bool>? MustContainLowercase { get; set; }
 
+        /// <summary>
+        /// If the password must contain special characters. Defaults to true.
+        /// </summary>
         [Input("mustContainSpecialChars")]
         public Input<bool>? MustContainSpecialChars { get; set; }
 
+        /// <summary>
+        /// If the password must contain upper case characters. Defaults to true.
+        /// </summary>
         [Input("mustContainUppercase")]
         public Input<bool>? MustContainUppercase { get; set; }
 
+        /// <summary>
+        /// If MFA should be remembered on the browser. Defaults to true.
+        /// </summary>
         [Input("rememberMfa")]
         public Input<bool>? RememberMfa { get; set; }
 
+        /// <summary>
+        /// If MFA should be required to log in. Defaults to false.
+        /// </summary>
         [Input("requireMfa")]
         public Input<bool>? RequireMfa { get; set; }
 
@@ -198,42 +257,81 @@ namespace Pulumi.SumoLogic
 
     public sealed class PasswordPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+        /// </summary>
         [Input("accountLockoutDurationInMins")]
         public Input<int>? AccountLockoutDurationInMins { get; set; }
 
+        /// <summary>
+        /// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+        /// </summary>
         [Input("accountLockoutThreshold")]
         public Input<int>? AccountLockoutThreshold { get; set; }
 
+        /// <summary>
+        /// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+        /// </summary>
         [Input("failedLoginResetDurationInMins")]
         public Input<int>? FailedLoginResetDurationInMins { get; set; }
 
+        /// <summary>
+        /// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+        /// </summary>
         [Input("maxLength")]
         public Input<int>? MaxLength { get; set; }
 
+        /// <summary>
+        /// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+        /// </summary>
         [Input("maxPasswordAgeInDays")]
         public Input<int>? MaxPasswordAgeInDays { get; set; }
 
+        /// <summary>
+        /// The minimum length of the password. Defaults to 8.
+        /// </summary>
         [Input("minLength")]
         public Input<int>? MinLength { get; set; }
 
+        /// <summary>
+        /// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+        /// </summary>
         [Input("minUniquePasswords")]
         public Input<int>? MinUniquePasswords { get; set; }
 
+        /// <summary>
+        /// If the password must contain digits. Defaults to true.
+        /// </summary>
         [Input("mustContainDigits")]
         public Input<bool>? MustContainDigits { get; set; }
 
+        /// <summary>
+        /// If the password must contain lower case characters. Defaults to true.
+        /// </summary>
         [Input("mustContainLowercase")]
         public Input<bool>? MustContainLowercase { get; set; }
 
+        /// <summary>
+        /// If the password must contain special characters. Defaults to true.
+        /// </summary>
         [Input("mustContainSpecialChars")]
         public Input<bool>? MustContainSpecialChars { get; set; }
 
+        /// <summary>
+        /// If the password must contain upper case characters. Defaults to true.
+        /// </summary>
         [Input("mustContainUppercase")]
         public Input<bool>? MustContainUppercase { get; set; }
 
+        /// <summary>
+        /// If MFA should be remembered on the browser. Defaults to true.
+        /// </summary>
         [Input("rememberMfa")]
         public Input<bool>? RememberMfa { get; set; }
 
+        /// <summary>
+        /// If MFA should be required to log in. Defaults to false.
+        /// </summary>
         [Input("requireMfa")]
         public Input<bool>? RequireMfa { get; set; }
 

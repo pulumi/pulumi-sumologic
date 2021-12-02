@@ -10,6 +10,134 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// Provides a Sumologic Kinesis Metrics source. This source is used to ingest data from Cloudwatch Metrics Stream via Kinesis Firehose from AWS.
+    /// 
+    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tagfilters = 
+    ///         {
+    ///             
+    ///             {
+    ///                 { "namespace", "All" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k3=v3",
+    ///                 } },
+    ///                 { "type", "TagFilters" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "namespace", "AWS/Route53" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k1=v1",
+    ///                 } },
+    ///                 { "type", "TagFilters" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "namespace", "AWS/S3" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k2=v2",
+    ///                 } },
+    ///                 { "type", "TagFilters" },
+    ///             },
+    ///         };
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var kinesisMetricsAccessKey = new SumoLogic.KinesisMetricsSource("kinesisMetricsAccessKey", new SumoLogic.KinesisMetricsSourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.KinesisMetricsSourceAuthenticationArgs
+    ///             {
+    ///                 AccessKey = "someKey",
+    ///                 SecretKey = "******",
+    ///                 Type = "S3BucketAuthentication",
+    ///             },
+    ///             Category = "prod/kinesis/metrics",
+    ///             CollectorId = collector.Id,
+    ///             ContentType = "KinesisMetric",
+    ///             Description = "Description for Kinesis Metrics Source",
+    ///             Path = new SumoLogic.Inputs.KinesisMetricsSourcePathArgs
+    ///             {
+    ///                 TagFilters = 
+    ///                 {
+    ///                     new SumoLogic.Inputs.KinesisMetricsSourcePathTagFilterArgs
+    ///                     {
+    ///                         Namespace = "All",
+    ///                         Tags = 
+    ///                         {
+    ///                             "k3=v3",
+    ///                         },
+    ///                         Type = "TagFilters",
+    ///                     },
+    ///                     new SumoLogic.Inputs.KinesisMetricsSourcePathTagFilterArgs
+    ///                     {
+    ///                         Namespace = "AWS/Route53",
+    ///                         Tags = 
+    ///                         {
+    ///                             "k1=v1",
+    ///                         },
+    ///                         Type = "TagFilters",
+    ///                     },
+    ///                 },
+    ///                 Type = "KinesisMetricPath",
+    ///             },
+    ///         });
+    ///         var kinesisMetricsRoleArn = new SumoLogic.KinesisMetricsSource("kinesisMetricsRoleArn", new SumoLogic.KinesisMetricsSourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.KinesisMetricsSourceAuthenticationArgs
+    ///             {
+    ///                 RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+    ///                 Type = "AWSRoleBasedAuthentication",
+    ///             },
+    ///             Category = "prod/kinesis/metrics",
+    ///             CollectorId = collector.Id,
+    ///             ContentType = "KinesisMetric",
+    ///             Description = "Description for Kinesis Metrics Source",
+    ///             Path = new SumoLogic.Inputs.KinesisMetricsSourcePathArgs
+    ///             {
+    ///                 TagFilters = 
+    ///                 {
+    ///                     new SumoLogic.Inputs.KinesisMetricsSourcePathTagFilterArgs
+    ///                     {
+    ///                         Namespace = "All",
+    ///                         Tags = 
+    ///                         {
+    ///                             "k3=v3",
+    ///                         },
+    ///                         Type = "TagFilters",
+    ///                     },
+    ///                     new SumoLogic.Inputs.KinesisMetricsSourcePathTagFilterArgs
+    ///                     {
+    ///                         Namespace = "AWS/Route53",
+    ///                         Tags = 
+    ///                         {
+    ///                             "k1=v1",
+    ///                         },
+    ///                         Type = "TagFilters",
+    ///                     },
+    ///                 },
+    ///                 Type = "KinesisMetricPath",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,6 +157,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/kinesisMetricsSource:KinesisMetricsSource")]
     public partial class KinesisMetricsSource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.KinesisMetricsSourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -41,6 +172,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -80,6 +214,9 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.KinesisMetricsSourcePath> Path { get; private set; } = null!;
 
@@ -141,6 +278,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class KinesisMetricsSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.KinesisMetricsSourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -153,6 +293,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -207,6 +350,9 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.KinesisMetricsSourcePathArgs> Path { get; set; } = null!;
 
@@ -223,6 +369,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class KinesisMetricsSourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.KinesisMetricsSourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -235,6 +384,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -289,6 +441,9 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.KinesisMetricsSourcePathGetArgs>? Path { get; set; }
 

@@ -12,17 +12,6 @@ import (
 
 // Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
 //
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required, Forces new resource) The name of the partition.
-// - `routingExpression` - (Required) The query that defines the data to be included in the partition.
-// - `analyticsTier` - (Required) The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
-// - `retentionPeriod` - (Optional) The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
-// - `isCompliant` - (Optional) Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
-// - `reduceRetentionPeriodImmediately` - (Optional) This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
-//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -41,16 +30,22 @@ import (
 type Partition struct {
 	pulumi.CustomResourceState
 
-	AnalyticsTier                    pulumi.StringPtrOutput `pulumi:"analyticsTier"`
-	DataForwardingId                 pulumi.StringOutput    `pulumi:"dataForwardingId"`
-	IndexType                        pulumi.StringOutput    `pulumi:"indexType"`
-	IsActive                         pulumi.BoolOutput      `pulumi:"isActive"`
-	IsCompliant                      pulumi.BoolPtrOutput   `pulumi:"isCompliant"`
-	Name                             pulumi.StringOutput    `pulumi:"name"`
-	ReduceRetentionPeriodImmediately pulumi.BoolPtrOutput   `pulumi:"reduceRetentionPeriodImmediately"`
-	RetentionPeriod                  pulumi.IntPtrOutput    `pulumi:"retentionPeriod"`
-	RoutingExpression                pulumi.StringPtrOutput `pulumi:"routingExpression"`
-	TotalBytes                       pulumi.IntOutput       `pulumi:"totalBytes"`
+	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	AnalyticsTier    pulumi.StringPtrOutput `pulumi:"analyticsTier"`
+	DataForwardingId pulumi.StringOutput    `pulumi:"dataForwardingId"`
+	IndexType        pulumi.StringOutput    `pulumi:"indexType"`
+	IsActive         pulumi.BoolOutput      `pulumi:"isActive"`
+	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+	IsCompliant pulumi.BoolPtrOutput `pulumi:"isCompliant"`
+	// The name of the partition.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	ReduceRetentionPeriodImmediately pulumi.BoolPtrOutput `pulumi:"reduceRetentionPeriodImmediately"`
+	// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+	RetentionPeriod pulumi.IntPtrOutput `pulumi:"retentionPeriod"`
+	// The query that defines the data to be included in the partition.
+	RoutingExpression pulumi.StringPtrOutput `pulumi:"routingExpression"`
+	TotalBytes        pulumi.IntOutput       `pulumi:"totalBytes"`
 }
 
 // NewPartition registers a new resource with the given unique name, arguments, and options.
@@ -82,29 +77,41 @@ func GetPartition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Partition resources.
 type partitionState struct {
-	AnalyticsTier                    *string `pulumi:"analyticsTier"`
-	DataForwardingId                 *string `pulumi:"dataForwardingId"`
-	IndexType                        *string `pulumi:"indexType"`
-	IsActive                         *bool   `pulumi:"isActive"`
-	IsCompliant                      *bool   `pulumi:"isCompliant"`
-	Name                             *string `pulumi:"name"`
-	ReduceRetentionPeriodImmediately *bool   `pulumi:"reduceRetentionPeriodImmediately"`
-	RetentionPeriod                  *int    `pulumi:"retentionPeriod"`
-	RoutingExpression                *string `pulumi:"routingExpression"`
-	TotalBytes                       *int    `pulumi:"totalBytes"`
+	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	AnalyticsTier    *string `pulumi:"analyticsTier"`
+	DataForwardingId *string `pulumi:"dataForwardingId"`
+	IndexType        *string `pulumi:"indexType"`
+	IsActive         *bool   `pulumi:"isActive"`
+	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+	IsCompliant *bool `pulumi:"isCompliant"`
+	// The name of the partition.
+	Name *string `pulumi:"name"`
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	ReduceRetentionPeriodImmediately *bool `pulumi:"reduceRetentionPeriodImmediately"`
+	// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	// The query that defines the data to be included in the partition.
+	RoutingExpression *string `pulumi:"routingExpression"`
+	TotalBytes        *int    `pulumi:"totalBytes"`
 }
 
 type PartitionState struct {
-	AnalyticsTier                    pulumi.StringPtrInput
-	DataForwardingId                 pulumi.StringPtrInput
-	IndexType                        pulumi.StringPtrInput
-	IsActive                         pulumi.BoolPtrInput
-	IsCompliant                      pulumi.BoolPtrInput
-	Name                             pulumi.StringPtrInput
+	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	AnalyticsTier    pulumi.StringPtrInput
+	DataForwardingId pulumi.StringPtrInput
+	IndexType        pulumi.StringPtrInput
+	IsActive         pulumi.BoolPtrInput
+	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+	IsCompliant pulumi.BoolPtrInput
+	// The name of the partition.
+	Name pulumi.StringPtrInput
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
 	ReduceRetentionPeriodImmediately pulumi.BoolPtrInput
-	RetentionPeriod                  pulumi.IntPtrInput
-	RoutingExpression                pulumi.StringPtrInput
-	TotalBytes                       pulumi.IntPtrInput
+	// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+	RetentionPeriod pulumi.IntPtrInput
+	// The query that defines the data to be included in the partition.
+	RoutingExpression pulumi.StringPtrInput
+	TotalBytes        pulumi.IntPtrInput
 }
 
 func (PartitionState) ElementType() reflect.Type {
@@ -112,22 +119,34 @@ func (PartitionState) ElementType() reflect.Type {
 }
 
 type partitionArgs struct {
-	AnalyticsTier                    *string `pulumi:"analyticsTier"`
-	IsCompliant                      *bool   `pulumi:"isCompliant"`
-	Name                             *string `pulumi:"name"`
-	ReduceRetentionPeriodImmediately *bool   `pulumi:"reduceRetentionPeriodImmediately"`
-	RetentionPeriod                  *int    `pulumi:"retentionPeriod"`
-	RoutingExpression                *string `pulumi:"routingExpression"`
+	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	AnalyticsTier *string `pulumi:"analyticsTier"`
+	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+	IsCompliant *bool `pulumi:"isCompliant"`
+	// The name of the partition.
+	Name *string `pulumi:"name"`
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	ReduceRetentionPeriodImmediately *bool `pulumi:"reduceRetentionPeriodImmediately"`
+	// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	// The query that defines the data to be included in the partition.
+	RoutingExpression *string `pulumi:"routingExpression"`
 }
 
 // The set of arguments for constructing a Partition resource.
 type PartitionArgs struct {
-	AnalyticsTier                    pulumi.StringPtrInput
-	IsCompliant                      pulumi.BoolPtrInput
-	Name                             pulumi.StringPtrInput
+	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	AnalyticsTier pulumi.StringPtrInput
+	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+	IsCompliant pulumi.BoolPtrInput
+	// The name of the partition.
+	Name pulumi.StringPtrInput
+	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
 	ReduceRetentionPeriodImmediately pulumi.BoolPtrInput
-	RetentionPeriod                  pulumi.IntPtrInput
-	RoutingExpression                pulumi.StringPtrInput
+	// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+	RetentionPeriod pulumi.IntPtrInput
+	// The query that defines the data to be included in the partition.
+	RoutingExpression pulumi.StringPtrInput
 }
 
 func (PartitionArgs) ElementType() reflect.Type {

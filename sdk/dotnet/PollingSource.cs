@@ -10,6 +10,135 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// !&gt; **WARNING:** This data source is deprecated and will be removed in the next major version.
+    /// 
+    /// Provides a Sumologic Polling source. This source is used to import data from various AWS products, eg. AWS S3 buckets, Cloudwatch Metrics etc.
+    /// 
+    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tagfilters = 
+    ///         {
+    ///             
+    ///             {
+    ///                 { "type", "TagFilters" },
+    ///                 { "namespace", "All" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k3=v3",
+    ///                 } },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "type", "TagFilters" },
+    ///                 { "namespace", "AWS/Route53" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k1=v1",
+    ///                 } },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "type", "TagFilters" },
+    ///                 { "namespace", "AWS/S3" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k2=v2",
+    ///                 } },
+    ///             },
+    ///         };
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var s3Audit = new SumoLogic.PollingSource("s3Audit", new SumoLogic.PollingSourceArgs
+    ///         {
+    ///             Description = "My description",
+    ///             Category = "aws/s3audit",
+    ///             ContentType = "AwsS3AuditBucket",
+    ///             ScanInterval = 300000,
+    ///             Paused = false,
+    ///             CollectorId = collector.Id,
+    ///             Filters = 
+    ///             {
+    ///                 new SumoLogic.Inputs.PollingSourceFilterArgs
+    ///                 {
+    ///                     Name = "Exclude Comments",
+    ///                     FilterType = "Exclude",
+    ///                     Regexp = "#.*",
+    ///                 },
+    ///             },
+    ///             Authentication = new SumoLogic.Inputs.PollingSourceAuthenticationArgs
+    ///             {
+    ///                 Type = "S3BucketAuthentication",
+    ///                 AccessKey = "someKey",
+    ///                 SecretKey = "******",
+    ///             },
+    ///             Path = new SumoLogic.Inputs.PollingSourcePathArgs
+    ///             {
+    ///                 Type = "S3BucketPathExpression",
+    ///                 BucketName = "Bucket1",
+    ///                 PathExpression = "*",
+    ///             },
+    ///         });
+    ///         var cwMetrics = new SumoLogic.PollingSource("cwMetrics", new SumoLogic.PollingSourceArgs
+    ///         {
+    ///             Description = "My description",
+    ///             Category = "aws/cw",
+    ///             ContentType = "AwsCloudWatch",
+    ///             ScanInterval = 300000,
+    ///             Paused = false,
+    ///             CollectorId = collector.Id,
+    ///             Authentication = new SumoLogic.Inputs.PollingSourceAuthenticationArgs
+    ///             {
+    ///                 Type = "AWSRoleBasedAuthentication",
+    ///                 RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+    ///             },
+    ///             Path = new SumoLogic.Inputs.PollingSourcePathArgs
+    ///             {
+    ///                 Type = "CloudWatchPath",
+    ///                 LimitToRegions = 
+    ///                 {
+    ///                     "us-west-2",
+    ///                 },
+    ///                 LimitToNamespaces = 
+    ///                 {
+    ///                     "AWS/Route53",
+    ///                     "AWS/S3",
+    ///                     "customNamespace",
+    ///                 },
+    ///                 Dynamic = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "forEach", tagfilters },
+    ///                         { "content", 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "type", tag_filters.Value.Type },
+    ///                                 { "namespace", tag_filters.Value.Namespace },
+    ///                                 { "tags", tag_filters.Value.Tags },
+    ///                             },
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,6 +158,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/pollingSource:PollingSource")]
     public partial class PollingSource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.PollingSourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -41,6 +173,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -77,12 +212,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.PollingSourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -144,6 +288,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class PollingSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.PollingSourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -156,6 +303,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -207,12 +357,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.PollingSourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -229,6 +388,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class PollingSourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.PollingSourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -241,6 +403,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -292,12 +457,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.PollingSourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

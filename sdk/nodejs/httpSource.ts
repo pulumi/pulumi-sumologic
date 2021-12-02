@@ -6,6 +6,43 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source) and [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). To start using Traces contact your Sumo account representative to activate.
+ *
+ * __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const collector = new sumologic.Collector("collector", {
+ *     description: "Just testing this",
+ * });
+ * const httpSource = new sumologic.HttpSource("http_source", {
+ *     category: "my/source/category",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     description: "My description",
+ *     filters: [{
+ *         filterType: "Exclude",
+ *         name: "Test Exclude Debug",
+ *         regexp: ".*DEBUG.*",
+ *     }],
+ * });
+ * const httpTracesSource = new sumologic.HttpSource("http_traces_source", {
+ *     category: "my/source/category",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "Zipkin",
+ *     description: "My description",
+ * });
+ * const kinesisLog = new sumologic.HttpSource("kinesisLog", {
+ *     category: "demo-category",
+ *     collectorId: sumologic_collector_test.id,
+ *     contentType: "KinesisLog",
+ *     description: "demo-desc",
+ * });
+ * ```
+ *
  * ## Import
  *
  * HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -53,6 +90,9 @@ export class HttpSource extends pulumi.CustomResource {
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+     */
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -63,6 +103,9 @@ export class HttpSource extends pulumi.CustomResource {
     public readonly forceTimezone!: pulumi.Output<boolean | undefined>;
     public readonly hostName!: pulumi.Output<string | undefined>;
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
+    /**
+     * When set to `true`, will create one log message per HTTP request.
+     */
     public readonly messagePerRequest!: pulumi.Output<boolean | undefined>;
     public readonly multilineProcessingEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -144,6 +187,9 @@ export interface HttpSourceState {
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
+    /**
+     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -154,6 +200,9 @@ export interface HttpSourceState {
     forceTimezone?: pulumi.Input<boolean>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
+    /**
+     * When set to `true`, will create one log message per HTTP request.
+     */
     messagePerRequest?: pulumi.Input<boolean>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
@@ -172,6 +221,9 @@ export interface HttpSourceArgs {
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
+    /**
+     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -182,6 +234,9 @@ export interface HttpSourceArgs {
     forceTimezone?: pulumi.Input<boolean>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
+    /**
+     * When set to `true`, will create one log message per HTTP request.
+     */
     messagePerRequest?: pulumi.Input<boolean>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;

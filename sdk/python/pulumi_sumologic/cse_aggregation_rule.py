@@ -32,6 +32,21 @@ class CseAggregationRuleArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseAggregationRule resource.
+        :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]] aggregation_functions: One or more named aggregation functions
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[str] match_expression: The expression for which records to match on
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input['CseAggregationRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         pulumi.set(__self__, "aggregation_functions", aggregation_functions)
         pulumi.set(__self__, "description_expression", description_expression)
@@ -58,6 +73,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="aggregationFunctions")
     def aggregation_functions(self) -> pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]]:
+        """
+        One or more named aggregation functions
+        """
         return pulumi.get(self, "aggregation_functions")
 
     @aggregation_functions.setter
@@ -67,6 +85,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="descriptionExpression")
     def description_expression(self) -> pulumi.Input[str]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description_expression")
 
     @description_expression.setter
@@ -76,6 +97,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -85,6 +109,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @entity_selectors.setter
@@ -94,6 +121,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="matchExpression")
     def match_expression(self) -> pulumi.Input[str]:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "match_expression")
 
     @match_expression.setter
@@ -103,6 +133,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="nameExpression")
     def name_expression(self) -> pulumi.Input[str]:
+        """
+        The name of the generated Signals
+        """
         return pulumi.get(self, "name_expression")
 
     @name_expression.setter
@@ -112,6 +145,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="severityMapping")
     def severity_mapping(self) -> pulumi.Input['CseAggregationRuleSeverityMappingArgs']:
+        """
+        The configuration of how the severity of the Signals should be mapped from the Records
+        """
         return pulumi.get(self, "severity_mapping")
 
     @severity_mapping.setter
@@ -121,6 +157,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="triggerExpression")
     def trigger_expression(self) -> pulumi.Input[str]:
+        """
+        The expression to determine whether a Signal should be created based on the aggregation results
+        """
         return pulumi.get(self, "trigger_expression")
 
     @trigger_expression.setter
@@ -130,6 +169,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="windowSize")
     def window_size(self) -> pulumi.Input[str]:
+        """
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        """
         return pulumi.get(self, "window_size")
 
     @window_size.setter
@@ -139,6 +181,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="groupByEntity")
     def group_by_entity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to group records by the specified entity fields
+        """
         return pulumi.get(self, "group_by_entity")
 
     @group_by_entity.setter
@@ -148,6 +193,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="groupByFields")
     def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of fields to group records by
+        """
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
@@ -157,6 +205,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @is_prototype.setter
@@ -166,6 +217,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Rule
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -175,6 +229,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @summary_expression.setter
@@ -184,6 +241,9 @@ class CseAggregationRuleArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -211,6 +271,21 @@ class _CseAggregationRuleState:
                  window_size: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseAggregationRule resources.
+        :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]] aggregation_functions: One or more named aggregation functions
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] match_expression: The expression for which records to match on
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input['CseAggregationRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
         """
         if aggregation_functions is not None:
             pulumi.set(__self__, "aggregation_functions", aggregation_functions)
@@ -246,6 +321,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="aggregationFunctions")
     def aggregation_functions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]]]:
+        """
+        One or more named aggregation functions
+        """
         return pulumi.get(self, "aggregation_functions")
 
     @aggregation_functions.setter
@@ -255,6 +333,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="descriptionExpression")
     def description_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description_expression")
 
     @description_expression.setter
@@ -264,6 +345,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -273,6 +357,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]]]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @entity_selectors.setter
@@ -282,6 +369,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="groupByEntity")
     def group_by_entity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to group records by the specified entity fields
+        """
         return pulumi.get(self, "group_by_entity")
 
     @group_by_entity.setter
@@ -291,6 +381,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="groupByFields")
     def group_by_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of fields to group records by
+        """
         return pulumi.get(self, "group_by_fields")
 
     @group_by_fields.setter
@@ -300,6 +393,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @is_prototype.setter
@@ -309,6 +405,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="matchExpression")
     def match_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "match_expression")
 
     @match_expression.setter
@@ -318,6 +417,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Rule
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -327,6 +429,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="nameExpression")
     def name_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the generated Signals
+        """
         return pulumi.get(self, "name_expression")
 
     @name_expression.setter
@@ -336,6 +441,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="severityMapping")
     def severity_mapping(self) -> Optional[pulumi.Input['CseAggregationRuleSeverityMappingArgs']]:
+        """
+        The configuration of how the severity of the Signals should be mapped from the Records
+        """
         return pulumi.get(self, "severity_mapping")
 
     @severity_mapping.setter
@@ -345,6 +453,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @summary_expression.setter
@@ -354,6 +465,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -363,6 +477,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="triggerExpression")
     def trigger_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expression to determine whether a Signal should be created based on the aggregation results
+        """
         return pulumi.get(self, "trigger_expression")
 
     @trigger_expression.setter
@@ -372,6 +489,9 @@ class _CseAggregationRuleState:
     @property
     @pulumi.getter(name="windowSize")
     def window_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        """
         return pulumi.get(self, "window_size")
 
     @window_size.setter
@@ -435,41 +555,6 @@ class CseAggregationRule(pulumi.CustomResource):
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `aggregation_functions` - (Required) One or more named aggregation functions
-          + `name` - (Required) The name to use to reference the result in the trigger_expression
-          + `function` - (Required) The function to aggregate with
-          + `arguments` - (Required) One or more expressions to pass as arguments to the function
-        - `description_expression` - (Required) The description of the generated Signals
-        - `enabled` - (Required) Whether the rule should generate Signals
-        - `entity_selectors` - (Required) The entities to generate Signals on
-          + `entityType` - (Required) The type of the entity to generate the Signal on.
-          + `expression` - (Required) The expression or field name to generate the Signal on.
-        - `group_by_entity` - (Optional; defaults to true) Whether to group records by the specified entity fields
-        - `group_by_fields` - (Optional) A list of fields to group records by
-        - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-        - `match_expression` - (Required) The expression for which records to match on
-        - `name` - (Required) The name of the Rule
-        - `name_expression` - (Required) The name of the generated Signals
-        - `severity_mapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-          + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-          + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-          + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-          + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-            - `type` - (Required) Must be set to "eq" currently
-            - `from` - (Required) The record value to map from
-            - `to` - (Required) The severity value to map to
-        - `summary_expression` - (Optional) The summary of the generated Signals
-        - `tags` - (Required) The tags of the generated Signals
-        - `trigger_expression` - (Required) The expression to determine whether a Signal should be created based on the aggregation results
-        - `window_size` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the aggregation rule.
 
         ## Import
 
@@ -481,6 +566,21 @@ class CseAggregationRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleAggregationFunctionArgs']]]] aggregation_functions: One or more named aggregation functions
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] match_expression: The expression for which records to match on
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
         """
         ...
     @overload
@@ -523,41 +623,6 @@ class CseAggregationRule(pulumi.CustomResource):
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `aggregation_functions` - (Required) One or more named aggregation functions
-          + `name` - (Required) The name to use to reference the result in the trigger_expression
-          + `function` - (Required) The function to aggregate with
-          + `arguments` - (Required) One or more expressions to pass as arguments to the function
-        - `description_expression` - (Required) The description of the generated Signals
-        - `enabled` - (Required) Whether the rule should generate Signals
-        - `entity_selectors` - (Required) The entities to generate Signals on
-          + `entityType` - (Required) The type of the entity to generate the Signal on.
-          + `expression` - (Required) The expression or field name to generate the Signal on.
-        - `group_by_entity` - (Optional; defaults to true) Whether to group records by the specified entity fields
-        - `group_by_fields` - (Optional) A list of fields to group records by
-        - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-        - `match_expression` - (Required) The expression for which records to match on
-        - `name` - (Required) The name of the Rule
-        - `name_expression` - (Required) The name of the generated Signals
-        - `severity_mapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-          + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-          + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-          + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-          + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-            - `type` - (Required) Must be set to "eq" currently
-            - `from` - (Required) The record value to map from
-            - `to` - (Required) The severity value to map to
-        - `summary_expression` - (Optional) The summary of the generated Signals
-        - `tags` - (Required) The tags of the generated Signals
-        - `trigger_expression` - (Required) The expression to determine whether a Signal should be created based on the aggregation results
-        - `window_size` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the aggregation rule.
 
         ## Import
 
@@ -674,6 +739,21 @@ class CseAggregationRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleAggregationFunctionArgs']]]] aggregation_functions: One or more named aggregation functions
+        :param pulumi.Input[str] description_expression: The description of the generated Signals
+        :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
+        :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
+        :param pulumi.Input[str] match_expression: The expression for which records to match on
+        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] name_expression: The name of the generated Signals
+        :param pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -699,75 +779,120 @@ class CseAggregationRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="aggregationFunctions")
     def aggregation_functions(self) -> pulumi.Output[Sequence['outputs.CseAggregationRuleAggregationFunction']]:
+        """
+        One or more named aggregation functions
+        """
         return pulumi.get(self, "aggregation_functions")
 
     @property
     @pulumi.getter(name="descriptionExpression")
     def description_expression(self) -> pulumi.Output[str]:
+        """
+        The description of the generated Signals
+        """
         return pulumi.get(self, "description_expression")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the rule should generate Signals
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="entitySelectors")
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseAggregationRuleEntitySelector']]:
+        """
+        The entities to generate Signals on
+        """
         return pulumi.get(self, "entity_selectors")
 
     @property
     @pulumi.getter(name="groupByEntity")
     def group_by_entity(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to group records by the specified entity fields
+        """
         return pulumi.get(self, "group_by_entity")
 
     @property
     @pulumi.getter(name="groupByFields")
     def group_by_fields(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of fields to group records by
+        """
         return pulumi.get(self, "group_by_fields")
 
     @property
     @pulumi.getter(name="isPrototype")
     def is_prototype(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the generated Signals should be prototype Signals
+        """
         return pulumi.get(self, "is_prototype")
 
     @property
     @pulumi.getter(name="matchExpression")
     def match_expression(self) -> pulumi.Output[str]:
+        """
+        The expression for which records to match on
+        """
         return pulumi.get(self, "match_expression")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the Rule
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameExpression")
     def name_expression(self) -> pulumi.Output[str]:
+        """
+        The name of the generated Signals
+        """
         return pulumi.get(self, "name_expression")
 
     @property
     @pulumi.getter(name="severityMapping")
     def severity_mapping(self) -> pulumi.Output['outputs.CseAggregationRuleSeverityMapping']:
+        """
+        The configuration of how the severity of the Signals should be mapped from the Records
+        """
         return pulumi.get(self, "severity_mapping")
 
     @property
     @pulumi.getter(name="summaryExpression")
     def summary_expression(self) -> pulumi.Output[Optional[str]]:
+        """
+        The summary of the generated Signals
+        """
         return pulumi.get(self, "summary_expression")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The tags of the generated Signals
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="triggerExpression")
     def trigger_expression(self) -> pulumi.Output[str]:
+        """
+        The expression to determine whether a Signal should be created based on the aggregation results
+        """
         return pulumi.get(self, "trigger_expression")
 
     @property
     @pulumi.getter(name="windowSize")
     def window_size(self) -> pulumi.Output[str]:
+        """
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        """
         return pulumi.get(self, "window_size")
 

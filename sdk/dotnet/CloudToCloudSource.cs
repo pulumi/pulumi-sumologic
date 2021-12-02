@@ -58,13 +58,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    ///  - `config` - (Required) This is a JSON object which contains the configuration parameters for the Source.
-    ///  - `schema_ref` - (Required) Source schema details.
-    ///      + `type` - (Required) Schema type for the Cloud-to-Cloud source.
     /// 
     /// ## Import
     /// 
@@ -88,9 +81,15 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// This is a JSON object which contains the configuration parameters for the Source.
+        /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
 
+        /// <summary>
+        /// Source schema details.
+        /// </summary>
         [Output("schemaRef")]
         public Output<ImmutableDictionary<string, string>> SchemaRef { get; private set; } = null!;
 
@@ -143,11 +142,18 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// This is a JSON object which contains the configuration parameters for the Source.
+        /// </summary>
         [Input("config", required: true)]
         public Input<string> Config { get; set; } = null!;
 
         [Input("schemaRef", required: true)]
         private InputMap<string>? _schemaRef;
+
+        /// <summary>
+        /// Source schema details.
+        /// </summary>
         public InputMap<string> SchemaRef
         {
             get => _schemaRef ?? (_schemaRef = new InputMap<string>());
@@ -164,11 +170,18 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// This is a JSON object which contains the configuration parameters for the Source.
+        /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
         [Input("schemaRef")]
         private InputMap<string>? _schemaRef;
+
+        /// <summary>
+        /// Source schema details.
+        /// </summary>
         public InputMap<string> SchemaRef
         {
             get => _schemaRef ?? (_schemaRef = new InputMap<string>());

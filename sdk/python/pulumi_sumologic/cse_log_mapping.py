@@ -27,6 +27,16 @@ class CseLogMappingArgs:
                  unstructured_fields: Optional[pulumi.Input['CseLogMappingUnstructuredFieldsArgs']] = None):
         """
         The set of arguments for constructing a CseLogMapping resource.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]] fields: List of fields for the new log mapping. See field_schema for details.
+        :param pulumi.Input[str] product_guid: Product GUID.
+        :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] parent_id: The id of the parent log mapping.
+        :param pulumi.Input[bool] relates_entities: Set to true to relate entities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
+        :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
+        :param pulumi.Input['CseLogMappingUnstructuredFieldsArgs'] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "fields", fields)
@@ -48,6 +58,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enabled flag.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -57,6 +70,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter
     def fields(self) -> pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]]:
+        """
+        List of fields for the new log mapping. See field_schema for details.
+        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -66,6 +82,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter(name="productGuid")
     def product_guid(self) -> pulumi.Input[str]:
+        """
+        Product GUID.
+        """
         return pulumi.get(self, "product_guid")
 
     @product_guid.setter
@@ -75,6 +94,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Input[str]:
+        """
+        The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
@@ -84,6 +106,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the field.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -93,6 +118,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the parent log mapping.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -102,6 +130,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter(name="relatesEntities")
     def relates_entities(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to relate entities.
+        """
         return pulumi.get(self, "relates_entities")
 
     @relates_entities.setter
@@ -111,6 +142,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter(name="skippedValues")
     def skipped_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of skipped values.
+        """
         return pulumi.get(self, "skipped_values")
 
     @skipped_values.setter
@@ -120,6 +154,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter(name="structuredInputs")
     def structured_inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]]]:
+        """
+        List of structured inputs for the new log mapping. See structured_input_schema for details.
+        """
         return pulumi.get(self, "structured_inputs")
 
     @structured_inputs.setter
@@ -129,6 +166,9 @@ class CseLogMappingArgs:
     @property
     @pulumi.getter(name="unstructuredFields")
     def unstructured_fields(self) -> Optional[pulumi.Input['CseLogMappingUnstructuredFieldsArgs']]:
+        """
+        Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        """
         return pulumi.get(self, "unstructured_fields")
 
     @unstructured_fields.setter
@@ -151,6 +191,16 @@ class _CseLogMappingState:
                  unstructured_fields: Optional[pulumi.Input['CseLogMappingUnstructuredFieldsArgs']] = None):
         """
         Input properties used for looking up and filtering CseLogMapping resources.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]] fields: List of fields for the new log mapping. See field_schema for details.
+        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] parent_id: The id of the parent log mapping.
+        :param pulumi.Input[str] product_guid: Product GUID.
+        :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        :param pulumi.Input[bool] relates_entities: Set to true to relate entities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
+        :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
+        :param pulumi.Input['CseLogMappingUnstructuredFieldsArgs'] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -176,6 +226,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabled flag.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -185,6 +238,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]]]:
+        """
+        List of fields for the new log mapping. See field_schema for details.
+        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -194,6 +250,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the field.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -203,6 +262,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the parent log mapping.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -212,6 +274,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter(name="productGuid")
     def product_guid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Product GUID.
+        """
         return pulumi.get(self, "product_guid")
 
     @product_guid.setter
@@ -221,6 +286,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter(name="recordType")
     def record_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
@@ -230,6 +298,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter(name="relatesEntities")
     def relates_entities(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to relate entities.
+        """
         return pulumi.get(self, "relates_entities")
 
     @relates_entities.setter
@@ -239,6 +310,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter(name="skippedValues")
     def skipped_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of skipped values.
+        """
         return pulumi.get(self, "skipped_values")
 
     @skipped_values.setter
@@ -248,6 +322,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter(name="structuredInputs")
     def structured_inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]]]:
+        """
+        List of structured inputs for the new log mapping. See structured_input_schema for details.
+        """
         return pulumi.get(self, "structured_inputs")
 
     @structured_inputs.setter
@@ -257,6 +334,9 @@ class _CseLogMappingState:
     @property
     @pulumi.getter(name="unstructuredFields")
     def unstructured_fields(self) -> Optional[pulumi.Input['CseLogMappingUnstructuredFieldsArgs']]:
+        """
+        Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        """
         return pulumi.get(self, "unstructured_fields")
 
     @unstructured_fields.setter
@@ -322,53 +402,6 @@ class CseLogMapping(pulumi.CustomResource):
                 vendor="fortinate",
             )])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the log mapping.
-        - `parent_id` - (Optional) The id of the parent log mapping.
-        - `product_guid` - (Required) Product GUID.
-        - `record_type` - (Required) The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
-        - `enabled` - (Required) Enabled flag.
-        - `relates_entities` - (Optional) Set to true to relate entities.
-        - `skipped_values` - (Optional) List of skipped values.
-        - `fields` - (Required) List of fields for the new log mapping. See field_schema for details.
-        - `structured_inputs` - (Optional, omit if unstructured_fields is defined) List of structured inputs for the new log mapping. See structured_input_schema for details.
-        - `unstructured_fields` - (Optional, omit if structured_inputs is defined) Unstructured fields for the new log mapping. See unstructured_field_schema for details.
-
-        ### Schema for `field`
-        - `name` - (Required) Name of the field.
-        - `value` - (Optional) Value of the field.
-        - `value_type` - (Optional) The value type.
-        - `skipped_values` - (Optional) List of skipped values.
-        - `default_value` - (Optional) Default value of the field.
-        - `format` - (Optional) Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-        - `case_insensitive` - (Optional) Case insensitive flag.
-        - `alternate_values` - (Optional) List of alternate values.
-        - `time_zone` - (Optional) Time zone.
-        - `split_delimiter` - (Optional) Split delimiter to be used. (some example: ",", "-", "|")
-        - `field_join` - (Optional) List of field join values.
-        - `join_delimiter` - (Optional) Join delimiter.
-        - `format_parameters` - (Optional) List of format parameters.
-        - `lookup` - (Optional) List of lookup key value pair for field. See lookup_schema for details.
-
-        ### Schema for `lookup`
-        - `key` - (Required) Lookup key.
-        - `value` - (Required) Lookup value.
-
-        ### Schema for `structured_input`
-        - `event_id_pattern` - (Required) Event id pattern.
-        - `log_format` - (Required) Log format. (JSON, Windows, Syslog, CEF, LEEF )
-        - `product` - (Required) Product name.
-        - `vendor` - (Required) Vendor name.
-
-        ### Schema for `unstructured_field`
-        - `pattern_names` - (Required) List of grok pattern names.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the log mapping.
 
         ## Import
 
@@ -380,6 +413,16 @@ class CseLogMapping(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]] fields: List of fields for the new log mapping. See field_schema for details.
+        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] parent_id: The id of the parent log mapping.
+        :param pulumi.Input[str] product_guid: Product GUID.
+        :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        :param pulumi.Input[bool] relates_entities: Set to true to relate entities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingStructuredInputArgs']]]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
+        :param pulumi.Input[pulumi.InputType['CseLogMappingUnstructuredFieldsArgs']] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
         ...
     @overload
@@ -429,53 +472,6 @@ class CseLogMapping(pulumi.CustomResource):
                 vendor="fortinate",
             )])
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) The name of the log mapping.
-        - `parent_id` - (Optional) The id of the parent log mapping.
-        - `product_guid` - (Required) Product GUID.
-        - `record_type` - (Required) The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
-        - `enabled` - (Required) Enabled flag.
-        - `relates_entities` - (Optional) Set to true to relate entities.
-        - `skipped_values` - (Optional) List of skipped values.
-        - `fields` - (Required) List of fields for the new log mapping. See field_schema for details.
-        - `structured_inputs` - (Optional, omit if unstructured_fields is defined) List of structured inputs for the new log mapping. See structured_input_schema for details.
-        - `unstructured_fields` - (Optional, omit if structured_inputs is defined) Unstructured fields for the new log mapping. See unstructured_field_schema for details.
-
-        ### Schema for `field`
-        - `name` - (Required) Name of the field.
-        - `value` - (Optional) Value of the field.
-        - `value_type` - (Optional) The value type.
-        - `skipped_values` - (Optional) List of skipped values.
-        - `default_value` - (Optional) Default value of the field.
-        - `format` - (Optional) Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-        - `case_insensitive` - (Optional) Case insensitive flag.
-        - `alternate_values` - (Optional) List of alternate values.
-        - `time_zone` - (Optional) Time zone.
-        - `split_delimiter` - (Optional) Split delimiter to be used. (some example: ",", "-", "|")
-        - `field_join` - (Optional) List of field join values.
-        - `join_delimiter` - (Optional) Join delimiter.
-        - `format_parameters` - (Optional) List of format parameters.
-        - `lookup` - (Optional) List of lookup key value pair for field. See lookup_schema for details.
-
-        ### Schema for `lookup`
-        - `key` - (Required) Lookup key.
-        - `value` - (Required) Lookup value.
-
-        ### Schema for `structured_input`
-        - `event_id_pattern` - (Required) Event id pattern.
-        - `log_format` - (Required) Log format. (JSON, Windows, Syslog, CEF, LEEF )
-        - `product` - (Required) Product name.
-        - `vendor` - (Required) Vendor name.
-
-        ### Schema for `unstructured_field`
-        - `pattern_names` - (Required) List of grok pattern names.
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the log mapping.
 
         ## Import
 
@@ -567,6 +563,16 @@ class CseLogMapping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] enabled: Enabled flag.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]] fields: List of fields for the new log mapping. See field_schema for details.
+        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] parent_id: The id of the parent log mapping.
+        :param pulumi.Input[str] product_guid: Product GUID.
+        :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        :param pulumi.Input[bool] relates_entities: Set to true to relate entities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingStructuredInputArgs']]]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
+        :param pulumi.Input[pulumi.InputType['CseLogMappingUnstructuredFieldsArgs']] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -587,50 +593,80 @@ class CseLogMapping(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
+        """
+        Enabled flag.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def fields(self) -> pulumi.Output[Sequence['outputs.CseLogMappingField']]:
+        """
+        List of fields for the new log mapping. See field_schema for details.
+        """
         return pulumi.get(self, "fields")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of the field.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The id of the parent log mapping.
+        """
         return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter(name="productGuid")
     def product_guid(self) -> pulumi.Output[str]:
+        """
+        Product GUID.
+        """
         return pulumi.get(self, "product_guid")
 
     @property
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Output[str]:
+        """
+        The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+        """
         return pulumi.get(self, "record_type")
 
     @property
     @pulumi.getter(name="relatesEntities")
     def relates_entities(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set to true to relate entities.
+        """
         return pulumi.get(self, "relates_entities")
 
     @property
     @pulumi.getter(name="skippedValues")
     def skipped_values(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of skipped values.
+        """
         return pulumi.get(self, "skipped_values")
 
     @property
     @pulumi.getter(name="structuredInputs")
     def structured_inputs(self) -> pulumi.Output[Optional[Sequence['outputs.CseLogMappingStructuredInput']]]:
+        """
+        List of structured inputs for the new log mapping. See structured_input_schema for details.
+        """
         return pulumi.get(self, "structured_inputs")
 
     @property
     @pulumi.getter(name="unstructuredFields")
     def unstructured_fields(self) -> pulumi.Output[Optional['outputs.CseLogMappingUnstructuredFields']]:
+        """
+        Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        """
         return pulumi.get(self, "unstructured_fields")
 

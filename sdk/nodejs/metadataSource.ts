@@ -6,6 +6,10 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Sumologic Metadata (Tag) source. This source allows you to collect tags from EC2 instances running on AWS.
+ *
+ * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ *
  * ## Import
  *
  * Metadata sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -50,10 +54,16 @@ export class MetadataSource extends pulumi.CustomResource {
         return obj['__pulumiType'] === MetadataSource.__pulumiType;
     }
 
+    /**
+     * Authentication details for AWS access.
+     */
     public readonly authentication!: pulumi.Output<outputs.MetadataSourceAuthentication>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     public readonly contentType!: pulumi.Output<string>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -66,8 +76,17 @@ export class MetadataSource extends pulumi.CustomResource {
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
     public readonly multilineProcessingEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The location to scan for new data.
+     */
     public readonly path!: pulumi.Output<outputs.MetadataSourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     public readonly paused!: pulumi.Output<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+     */
     public readonly scanInterval!: pulumi.Output<number>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
@@ -165,10 +184,16 @@ export class MetadataSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MetadataSource resources.
  */
 export interface MetadataSourceState {
+    /**
+     * Authentication details for AWS access.
+     */
     authentication?: pulumi.Input<inputs.MetadataSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -181,8 +206,17 @@ export interface MetadataSourceState {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path?: pulumi.Input<inputs.MetadataSourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused?: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+     */
     scanInterval?: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     /**
@@ -196,10 +230,16 @@ export interface MetadataSourceState {
  * The set of arguments for constructing a MetadataSource resource.
  */
 export interface MetadataSourceArgs {
+    /**
+     * Authentication details for AWS access.
+     */
     authentication: pulumi.Input<inputs.MetadataSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     contentType: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -212,8 +252,17 @@ export interface MetadataSourceArgs {
     manualPrefixRegexp?: pulumi.Input<string>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path: pulumi.Input<inputs.MetadataSourcePath>;
+    /**
+     * When set to true, the scanner is paused. To disable, set to false.
+     */
     paused: pulumi.Input<boolean>;
+    /**
+     * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+     */
     scanInterval: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;

@@ -14,13 +14,23 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class DashboardPanelSumoSearchPanel
     {
         public readonly Outputs.DashboardPanelSumoSearchPanelColoringRule? ColoringRule;
+        /// <summary>
+        /// Description of the dashboard.
+        /// </summary>
         public readonly string? Description;
         public readonly string? Id;
         public readonly bool? KeepVisualSettingsConsistentWithParent;
         public readonly string Key;
         public readonly Outputs.DashboardPanelSumoSearchPanelLinkedDashboard? LinkedDashboard;
         public readonly ImmutableArray<Outputs.DashboardPanelSumoSearchPanelQuery> Queries;
+        /// <summary>
+        /// Time range of the dashboard. See time range schema
+        /// for details.
+        /// </summary>
         public readonly Outputs.DashboardPanelSumoSearchPanelTimeRange? TimeRange;
+        /// <summary>
+        /// Title of the dashboard.
+        /// </summary>
         public readonly string? Title;
         public readonly string? VisualSettings;
 

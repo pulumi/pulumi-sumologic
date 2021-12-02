@@ -48,20 +48,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `audit` - (Required) Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
-    /// - `data_access_level` - (Required) Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
-    /// - `max_user_session_timeout` - (Required) The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
-    /// - `search_audit` - (Required) Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
-    /// - `share_dashboards_outside_organization` - (Required) Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-    /// - `user_concurrent_sessions_limit` - (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
-    /// 
-    /// ### Schema for `user_concurrent_sessions_limit`
-    /// - `enabled` - (Required) Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-    /// - `max_concurrent_sessions` - (Optional) Maximum number of concurrent sessions a user may have. Defaults to `100`.
     /// 
     /// ## Import
     /// 
@@ -76,21 +62,39 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/policies:Policies")]
     public partial class Policies : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        /// </summary>
         [Output("audit")]
         public Output<bool> Audit { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        /// </summary>
         [Output("dataAccessLevel")]
         public Output<bool> DataAccessLevel { get; private set; } = null!;
 
+        /// <summary>
+        /// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        /// </summary>
         [Output("maxUserSessionTimeout")]
         public Output<string> MaxUserSessionTimeout { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        /// </summary>
         [Output("searchAudit")]
         public Output<bool> SearchAudit { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        /// </summary>
         [Output("shareDashboardsOutsideOrganization")]
         public Output<bool> ShareDashboardsOutsideOrganization { get; private set; } = null!;
 
+        /// <summary>
+        /// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        /// </summary>
         [Output("userConcurrentSessionsLimit")]
         public Output<Outputs.PoliciesUserConcurrentSessionsLimit> UserConcurrentSessionsLimit { get; private set; } = null!;
 
@@ -140,21 +144,39 @@ namespace Pulumi.SumoLogic
 
     public sealed class PoliciesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        /// </summary>
         [Input("audit", required: true)]
         public Input<bool> Audit { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        /// </summary>
         [Input("dataAccessLevel", required: true)]
         public Input<bool> DataAccessLevel { get; set; } = null!;
 
+        /// <summary>
+        /// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        /// </summary>
         [Input("maxUserSessionTimeout", required: true)]
         public Input<string> MaxUserSessionTimeout { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        /// </summary>
         [Input("searchAudit", required: true)]
         public Input<bool> SearchAudit { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        /// </summary>
         [Input("shareDashboardsOutsideOrganization", required: true)]
         public Input<bool> ShareDashboardsOutsideOrganization { get; set; } = null!;
 
+        /// <summary>
+        /// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        /// </summary>
         [Input("userConcurrentSessionsLimit", required: true)]
         public Input<Inputs.PoliciesUserConcurrentSessionsLimitArgs> UserConcurrentSessionsLimit { get; set; } = null!;
 
@@ -165,21 +187,39 @@ namespace Pulumi.SumoLogic
 
     public sealed class PoliciesState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+        /// </summary>
         [Input("audit")]
         public Input<bool>? Audit { get; set; }
 
+        /// <summary>
+        /// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+        /// </summary>
         [Input("dataAccessLevel")]
         public Input<bool>? DataAccessLevel { get; set; }
 
+        /// <summary>
+        /// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+        /// </summary>
         [Input("maxUserSessionTimeout")]
         public Input<string>? MaxUserSessionTimeout { get; set; }
 
+        /// <summary>
+        /// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+        /// </summary>
         [Input("searchAudit")]
         public Input<bool>? SearchAudit { get; set; }
 
+        /// <summary>
+        /// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+        /// </summary>
         [Input("shareDashboardsOutsideOrganization")]
         public Input<bool>? ShareDashboardsOutsideOrganization { get; set; }
 
+        /// <summary>
+        /// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        /// </summary>
         [Input("userConcurrentSessionsLimit")]
         public Input<Inputs.PoliciesUserConcurrentSessionsLimitGetArgs>? UserConcurrentSessionsLimit { get; set; }
 

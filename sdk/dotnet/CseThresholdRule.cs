@@ -55,30 +55,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `count_distinct` - (Optional; defaults to false) Whether to count distinct values of a field, as opposed to just counting the number of records
-    /// - `count_field` - (Optional) The field to count if `count_distinct` is set to true
-    /// - `description` - (Required) The description of the generated Signals
-    /// - `enabled` - (Required) Whether the rule should generate Signals
-    /// - `entity_selectors` - (Required) The entities to generate Signals on
-    ///   + `entityType` - (Required) The type of the entity to generate the Signal on.
-    ///   + `expression` - (Required) The expression or field name to generate the Signal on.
-    /// - `expression` - (Required) The expression for which records to match on
-    /// - `group_by_fields` - (Optional) A list of fields to group records by
-    /// - `is_prototype` - (Optional) Whether the generated Signals should be prototype Signals
-    /// - `limit` - (Required) A Signal will be fired when this many records/distinct field values are matched
-    /// - `name` - (Required) The name of the Rule and the generated Signals
-    /// - `severity` - (Required) The severity of the generated Signals
-    /// - `summary_expression` - (Optional) The summary of the generated Signals
-    /// - `tags` - (Required) The tags of the generated Signals
-    /// - `window_size` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the threshold rule.
     /// 
     /// ## Import
     /// 
@@ -91,45 +67,87 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseThresholdRule:CseThresholdRule")]
     public partial class CseThresholdRule : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether to count distinct values of a field, as opposed to just counting the number of records
+        /// </summary>
         [Output("countDistinct")]
         public Output<bool?> CountDistinct { get; private set; } = null!;
 
+        /// <summary>
+        /// The field to count if `count_distinct` is set to true
+        /// </summary>
         [Output("countField")]
         public Output<string?> CountField { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         [Output("entitySelectors")]
         public Output<ImmutableArray<Outputs.CseThresholdRuleEntitySelector>> EntitySelectors { get; private set; } = null!;
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Output("expression")]
         public Output<string> Expression { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of fields to group records by
+        /// </summary>
         [Output("groupByFields")]
         public Output<ImmutableArray<string>> GroupByFields { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Output("isPrototype")]
         public Output<bool?> IsPrototype { get; private set; } = null!;
 
+        /// <summary>
+        /// A Signal will be fired when this many records/distinct field values are matched
+        /// </summary>
         [Output("limit")]
         public Output<int> Limit { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Rule and the generated Signals
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The severity of the generated Signals
+        /// </summary>
         [Output("severity")]
         public Output<int> Severity { get; private set; } = null!;
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Output("summaryExpression")]
         public Output<string?> SummaryExpression { get; private set; } = null!;
 
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// </summary>
         [Output("windowSize")]
         public Output<string> WindowSize { get; private set; } = null!;
 
@@ -179,60 +197,105 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseThresholdRuleArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to count distinct values of a field, as opposed to just counting the number of records
+        /// </summary>
         [Input("countDistinct")]
         public Input<bool>? CountDistinct { get; set; }
 
+        /// <summary>
+        /// The field to count if `count_distinct` is set to true
+        /// </summary>
         [Input("countField")]
         public Input<string>? CountField { get; set; }
 
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("entitySelectors", required: true)]
         private InputList<Inputs.CseThresholdRuleEntitySelectorArgs>? _entitySelectors;
+
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         public InputList<Inputs.CseThresholdRuleEntitySelectorArgs> EntitySelectors
         {
             get => _entitySelectors ?? (_entitySelectors = new InputList<Inputs.CseThresholdRuleEntitySelectorArgs>());
             set => _entitySelectors = value;
         }
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
         [Input("groupByFields")]
         private InputList<string>? _groupByFields;
+
+        /// <summary>
+        /// A list of fields to group records by
+        /// </summary>
         public InputList<string> GroupByFields
         {
             get => _groupByFields ?? (_groupByFields = new InputList<string>());
             set => _groupByFields = value;
         }
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Input("isPrototype")]
         public Input<bool>? IsPrototype { get; set; }
 
+        /// <summary>
+        /// A Signal will be fired when this many records/distinct field values are matched
+        /// </summary>
         [Input("limit", required: true)]
         public Input<int> Limit { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the Rule and the generated Signals
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The severity of the generated Signals
+        /// </summary>
         [Input("severity", required: true)]
         public Input<int> Severity { get; set; } = null!;
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// </summary>
         [Input("windowSize", required: true)]
         public Input<string> WindowSize { get; set; } = null!;
 
@@ -243,60 +306,105 @@ namespace Pulumi.SumoLogic
 
     public sealed class CseThresholdRuleState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to count distinct values of a field, as opposed to just counting the number of records
+        /// </summary>
         [Input("countDistinct")]
         public Input<bool>? CountDistinct { get; set; }
 
+        /// <summary>
+        /// The field to count if `count_distinct` is set to true
+        /// </summary>
         [Input("countField")]
         public Input<string>? CountField { get; set; }
 
+        /// <summary>
+        /// The description of the generated Signals
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether the rule should generate Signals
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("entitySelectors")]
         private InputList<Inputs.CseThresholdRuleEntitySelectorGetArgs>? _entitySelectors;
+
+        /// <summary>
+        /// The entities to generate Signals on
+        /// </summary>
         public InputList<Inputs.CseThresholdRuleEntitySelectorGetArgs> EntitySelectors
         {
             get => _entitySelectors ?? (_entitySelectors = new InputList<Inputs.CseThresholdRuleEntitySelectorGetArgs>());
             set => _entitySelectors = value;
         }
 
+        /// <summary>
+        /// The expression for which records to match on
+        /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
         [Input("groupByFields")]
         private InputList<string>? _groupByFields;
+
+        /// <summary>
+        /// A list of fields to group records by
+        /// </summary>
         public InputList<string> GroupByFields
         {
             get => _groupByFields ?? (_groupByFields = new InputList<string>());
             set => _groupByFields = value;
         }
 
+        /// <summary>
+        /// Whether the generated Signals should be prototype Signals
+        /// </summary>
         [Input("isPrototype")]
         public Input<bool>? IsPrototype { get; set; }
 
+        /// <summary>
+        /// A Signal will be fired when this many records/distinct field values are matched
+        /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }
 
+        /// <summary>
+        /// The name of the Rule and the generated Signals
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The severity of the generated Signals
+        /// </summary>
         [Input("severity")]
         public Input<int>? Severity { get; set; }
 
+        /// <summary>
+        /// The summary of the generated Signals
+        /// </summary>
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The tags of the generated Signals
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// </summary>
         [Input("windowSize")]
         public Input<string>? WindowSize { get; set; }
 

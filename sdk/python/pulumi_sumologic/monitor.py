@@ -41,6 +41,29 @@ class MonitorArgs:
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Monitor resource.
+        :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
+               - `Logs`: A logs query monitor.
+               - `Metrics`: A metrics query monitor.
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `Monitor`
+        :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
+        :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+               - `Critical`
+               - `Warning`
+               - `MissingData`
+               - `Normal`
+               - `Disabled`
+        :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryMonitor`
         """
         pulumi.set(__self__, "monitor_type", monitor_type)
         if content_type is not None:
@@ -96,6 +119,11 @@ class MonitorArgs:
     @property
     @pulumi.getter(name="monitorType")
     def monitor_type(self) -> pulumi.Input[str]:
+        """
+        The type of monitor. Valid values:
+        - `Logs`: A logs query monitor.
+        - `Metrics`: A metrics query monitor.
+        """
         return pulumi.get(self, "monitor_type")
 
     @monitor_type.setter
@@ -105,6 +133,10 @@ class MonitorArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the content object. Valid value:
+        - `Monitor`
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -132,6 +164,9 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the monitor.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -150,6 +185,9 @@ class MonitorArgs:
     @property
     @pulumi.getter(name="groupNotifications")
     def group_notifications(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        """
         return pulumi.get(self, "group_notifications")
 
     @group_notifications.setter
@@ -159,6 +197,9 @@ class MonitorArgs:
     @property
     @pulumi.getter(name="isDisabled")
     def is_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        """
         return pulumi.get(self, "is_disabled")
 
     @is_disabled.setter
@@ -213,6 +254,9 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the monitor. The name must be alphanumeric.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -222,6 +266,9 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]]]:
+        """
+        The notifications the monitor will send when the respective trigger condition is met.
+        """
         return pulumi.get(self, "notifications")
 
     @notifications.setter
@@ -231,6 +278,9 @@ class MonitorArgs:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -240,6 +290,9 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def playbook(self) -> Optional[pulumi.Input[str]]:
+        """
+        Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        """
         return pulumi.get(self, "playbook")
 
     @playbook.setter
@@ -258,6 +311,9 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]]:
+        """
+        All queries from the monitor.
+        """
         return pulumi.get(self, "queries")
 
     @queries.setter
@@ -267,6 +323,14 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The current status for this monitor. Values are:
+        - `Critical`
+        - `Warning`
+        - `MissingData`
+        - `Normal`
+        - `Disabled`
+        """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
@@ -276,6 +340,9 @@ class MonitorArgs:
     @property
     @pulumi.getter(name="triggerConditions")
     def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
+        """
+        Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        """
         return pulumi.get(self, "trigger_conditions")
 
     @trigger_conditions.setter
@@ -285,6 +352,9 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]]:
+        """
+        Defines the conditions of when to send notifications.
+        """
         return pulumi.get(self, "triggers")
 
     @triggers.setter
@@ -294,6 +364,10 @@ class MonitorArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of object model. Valid value:
+        - `MonitorsLibraryMonitor`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -339,6 +413,29 @@ class _MonitorState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Monitor resources.
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `Monitor`
+        :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
+               - `Logs`: A logs query monitor.
+               - `Metrics`: A metrics query monitor.
+        :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
+        :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+               - `Critical`
+               - `Warning`
+               - `MissingData`
+               - `Normal`
+               - `Disabled`
+        :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryMonitor`
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -395,6 +492,10 @@ class _MonitorState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the content object. Valid value:
+        - `Monitor`
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -422,6 +523,9 @@ class _MonitorState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the monitor.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -440,6 +544,9 @@ class _MonitorState:
     @property
     @pulumi.getter(name="groupNotifications")
     def group_notifications(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        """
         return pulumi.get(self, "group_notifications")
 
     @group_notifications.setter
@@ -449,6 +556,9 @@ class _MonitorState:
     @property
     @pulumi.getter(name="isDisabled")
     def is_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        """
         return pulumi.get(self, "is_disabled")
 
     @is_disabled.setter
@@ -503,6 +613,11 @@ class _MonitorState:
     @property
     @pulumi.getter(name="monitorType")
     def monitor_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of monitor. Valid values:
+        - `Logs`: A logs query monitor.
+        - `Metrics`: A metrics query monitor.
+        """
         return pulumi.get(self, "monitor_type")
 
     @monitor_type.setter
@@ -512,6 +627,9 @@ class _MonitorState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the monitor. The name must be alphanumeric.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -521,6 +639,9 @@ class _MonitorState:
     @property
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]]]:
+        """
+        The notifications the monitor will send when the respective trigger condition is met.
+        """
         return pulumi.get(self, "notifications")
 
     @notifications.setter
@@ -530,6 +651,9 @@ class _MonitorState:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -539,6 +663,9 @@ class _MonitorState:
     @property
     @pulumi.getter
     def playbook(self) -> Optional[pulumi.Input[str]]:
+        """
+        Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        """
         return pulumi.get(self, "playbook")
 
     @playbook.setter
@@ -557,6 +684,9 @@ class _MonitorState:
     @property
     @pulumi.getter
     def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]]:
+        """
+        All queries from the monitor.
+        """
         return pulumi.get(self, "queries")
 
     @queries.setter
@@ -566,6 +696,14 @@ class _MonitorState:
     @property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The current status for this monitor. Values are:
+        - `Critical`
+        - `Warning`
+        - `MissingData`
+        - `Normal`
+        - `Disabled`
+        """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
@@ -575,6 +713,9 @@ class _MonitorState:
     @property
     @pulumi.getter(name="triggerConditions")
     def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
+        """
+        Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        """
         return pulumi.get(self, "trigger_conditions")
 
     @trigger_conditions.setter
@@ -584,6 +725,9 @@ class _MonitorState:
     @property
     @pulumi.getter
     def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]]:
+        """
+        Defines the conditions of when to send notifications.
+        """
         return pulumi.get(self, "triggers")
 
     @triggers.setter
@@ -593,6 +737,10 @@ class _MonitorState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of object model. Valid value:
+        - `MonitorsLibraryMonitor`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -656,38 +804,6 @@ class Monitor(pulumi.CustomResource):
         =======
         NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
         > > > > > > > v2.11.0
-
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Optional) The type of object model. Valid value:
-          - `MonitorsLibraryMonitor`
-        - `name` - (Required) The name of the monitor. The name must be alphanumeric.
-        - `description` - (Required) The description of the monitor.
-        - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
-        - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
-        - `content_type` - (Optional) The type of the content object. Valid value:
-          - `Monitor`
-        - `monitor_type` - (Required) The type of monitor. Valid values:
-          - `Logs`: A logs query monitor.
-          - `Metrics`: A metrics query monitor.
-        - `queries` - (Required) All queries from the monitor.
-        - `trigger_conditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
-        - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
-        - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
-        - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
-
-        Additional data provided in state:
-
-        - `id` - (Computed) The ID for this monitor.
-        - `status` - (Computed) The current status for this monitor. Values are:
-          - `Critical`
-          - `Warning`
-          - `MissingData`
-          - `Normal`
-          - `Disabled`
 
         ## The `trigger_conditions` block
 
@@ -848,6 +964,29 @@ class Monitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `Monitor`
+        :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
+               - `Logs`: A logs query monitor.
+               - `Metrics`: A metrics query monitor.
+        :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
+        :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+               - `Critical`
+               - `Warning`
+               - `MissingData`
+               - `Normal`
+               - `Disabled`
+        :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryMonitor`
         """
         ...
     @overload
@@ -872,38 +1011,6 @@ class Monitor(pulumi.CustomResource):
         =======
         NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
         > > > > > > > v2.11.0
-
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Optional) The type of object model. Valid value:
-          - `MonitorsLibraryMonitor`
-        - `name` - (Required) The name of the monitor. The name must be alphanumeric.
-        - `description` - (Required) The description of the monitor.
-        - `is_disabled` - (Optional) Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
-        - `parent_id` - (Optional) The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
-        - `content_type` - (Optional) The type of the content object. Valid value:
-          - `Monitor`
-        - `monitor_type` - (Required) The type of monitor. Valid values:
-          - `Logs`: A logs query monitor.
-          - `Metrics`: A metrics query monitor.
-        - `queries` - (Required) All queries from the monitor.
-        - `trigger_conditions` - (Required if not using `triggers`) Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        - `triggers` - (Deprecated) Defines the conditions of when to send notifications.
-        - `notifications` - (Optional) The notifications the monitor will send when the respective trigger condition is met.
-        - `group_notifications` - (Optional) Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
-        - `playbook` - (Optional - Beta) Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
-
-        Additional data provided in state:
-
-        - `id` - (Computed) The ID for this monitor.
-        - `status` - (Computed) The current status for this monitor. Values are:
-          - `Critical`
-          - `Warning`
-          - `MissingData`
-          - `Normal`
-          - `Disabled`
 
         ## The `trigger_conditions` block
 
@@ -1183,6 +1290,29 @@ class Monitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `Monitor`
+        :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
+               - `Logs`: A logs query monitor.
+               - `Metrics`: A metrics query monitor.
+        :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
+        :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+               - `Critical`
+               - `Warning`
+               - `MissingData`
+               - `Normal`
+               - `Disabled`
+        :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryMonitor`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1217,6 +1347,10 @@ class Monitor(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of the content object. Valid value:
+        - `Monitor`
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -1232,6 +1366,9 @@ class Monitor(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the monitor.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -1242,11 +1379,17 @@ class Monitor(pulumi.CustomResource):
     @property
     @pulumi.getter(name="groupNotifications")
     def group_notifications(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+        """
         return pulumi.get(self, "group_notifications")
 
     @property
     @pulumi.getter(name="isDisabled")
     def is_disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+        """
         return pulumi.get(self, "is_disabled")
 
     @property
@@ -1277,26 +1420,43 @@ class Monitor(pulumi.CustomResource):
     @property
     @pulumi.getter(name="monitorType")
     def monitor_type(self) -> pulumi.Output[str]:
+        """
+        The type of monitor. Valid values:
+        - `Logs`: A logs query monitor.
+        - `Metrics`: A metrics query monitor.
+        """
         return pulumi.get(self, "monitor_type")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the monitor. The name must be alphanumeric.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def notifications(self) -> pulumi.Output[Optional[Sequence['outputs.MonitorNotification']]]:
+        """
+        The notifications the monitor will send when the respective trigger condition is met.
+        """
         return pulumi.get(self, "notifications")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter
     def playbook(self) -> pulumi.Output[Optional[str]]:
+        """
+        Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+        """
         return pulumi.get(self, "playbook")
 
     @property
@@ -1307,26 +1467,47 @@ class Monitor(pulumi.CustomResource):
     @property
     @pulumi.getter
     def queries(self) -> pulumi.Output[Optional[Sequence['outputs.MonitorQuery']]]:
+        """
+        All queries from the monitor.
+        """
         return pulumi.get(self, "queries")
 
     @property
     @pulumi.getter
     def statuses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The current status for this monitor. Values are:
+        - `Critical`
+        - `Warning`
+        - `MissingData`
+        - `Normal`
+        - `Disabled`
+        """
         return pulumi.get(self, "statuses")
 
     @property
     @pulumi.getter(name="triggerConditions")
     def trigger_conditions(self) -> pulumi.Output[Optional['outputs.MonitorTriggerConditions']]:
+        """
+        Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        """
         return pulumi.get(self, "trigger_conditions")
 
     @property
     @pulumi.getter
     def triggers(self) -> pulumi.Output[Optional[Sequence['outputs.MonitorTrigger']]]:
+        """
+        Defines the conditions of when to send notifications.
+        """
         return pulumi.get(self, "triggers")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of object model. Valid value:
+        - `MonitorsLibraryMonitor`
+        """
         return pulumi.get(self, "type")
 
     @property

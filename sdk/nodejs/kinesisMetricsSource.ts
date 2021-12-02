@@ -6,6 +6,89 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Sumologic Kinesis Metrics source. This source is used to ingest data from Cloudwatch Metrics Stream via Kinesis Firehose from AWS.
+ *
+ * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tagfilters = [
+ *     {
+ *         namespace: "All",
+ *         tags: ["k3=v3"],
+ *         type: "TagFilters",
+ *     },
+ *     {
+ *         namespace: "AWS/Route53",
+ *         tags: ["k1=v1"],
+ *         type: "TagFilters",
+ *     },
+ *     {
+ *         namespace: "AWS/S3",
+ *         tags: ["k2=v2"],
+ *         type: "TagFilters",
+ *     },
+ * ];
+ * const collector = new sumologic.Collector("collector", {
+ *     description: "Just testing this",
+ * });
+ * const kinesisMetricsAccessKey = new sumologic.KinesisMetricsSource("kinesis_metrics_access_key", {
+ *     authentication: {
+ *         accessKey: "someKey",
+ *         secretKey: "******",
+ *         type: "S3BucketAuthentication",
+ *     },
+ *     category: "prod/kinesis/metrics",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "KinesisMetric",
+ *     description: "Description for Kinesis Metrics Source",
+ *     path: {
+ *         tagFilters: [
+ *             {
+ *                 namespace: "All",
+ *                 tags: ["k3=v3"],
+ *                 type: "TagFilters",
+ *             },
+ *             {
+ *                 namespace: "AWS/Route53",
+ *                 tags: ["k1=v1"],
+ *                 type: "TagFilters",
+ *             },
+ *         ],
+ *         type: "KinesisMetricPath",
+ *     },
+ * });
+ * const kinesisMetricsRoleArn = new sumologic.KinesisMetricsSource("kinesis_metrics_role_arn", {
+ *     authentication: {
+ *         roleArn: "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+ *         type: "AWSRoleBasedAuthentication",
+ *     },
+ *     category: "prod/kinesis/metrics",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "KinesisMetric",
+ *     description: "Description for Kinesis Metrics Source",
+ *     path: {
+ *         tagFilters: [
+ *             {
+ *                 namespace: "All",
+ *                 tags: ["k3=v3"],
+ *                 type: "TagFilters",
+ *             },
+ *             {
+ *                 namespace: "AWS/Route53",
+ *                 tags: ["k1=v1"],
+ *                 type: "TagFilters",
+ *             },
+ *         ],
+ *         type: "KinesisMetricPath",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -50,10 +133,16 @@ export class KinesisMetricsSource extends pulumi.CustomResource {
         return obj['__pulumiType'] === KinesisMetricsSource.__pulumiType;
     }
 
+    /**
+     * Authentication details for connecting to the S3 bucket.
+     */
     public readonly authentication!: pulumi.Output<outputs.KinesisMetricsSourceAuthentication>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
+    /**
+     * The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     public readonly contentType!: pulumi.Output<string>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -67,6 +156,9 @@ export class KinesisMetricsSource extends pulumi.CustomResource {
     public readonly messagePerRequest!: pulumi.Output<boolean | undefined>;
     public readonly multilineProcessingEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The location to scan for new data.
+     */
     public readonly path!: pulumi.Output<outputs.KinesisMetricsSourcePath>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
@@ -156,10 +248,16 @@ export class KinesisMetricsSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KinesisMetricsSource resources.
  */
 export interface KinesisMetricsSourceState {
+    /**
+     * Authentication details for connecting to the S3 bucket.
+     */
     authentication?: pulumi.Input<inputs.KinesisMetricsSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -173,6 +271,9 @@ export interface KinesisMetricsSourceState {
     messagePerRequest?: pulumi.Input<boolean>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path?: pulumi.Input<inputs.KinesisMetricsSourcePath>;
     timezone?: pulumi.Input<string>;
     /**
@@ -186,10 +287,16 @@ export interface KinesisMetricsSourceState {
  * The set of arguments for constructing a KinesisMetricsSource resource.
  */
 export interface KinesisMetricsSourceArgs {
+    /**
+     * Authentication details for connecting to the S3 bucket.
+     */
     authentication: pulumi.Input<inputs.KinesisMetricsSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
+    /**
+     * The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+     */
     contentType: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -203,6 +310,9 @@ export interface KinesisMetricsSourceArgs {
     messagePerRequest?: pulumi.Input<boolean>;
     multilineProcessingEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    /**
+     * The location to scan for new data.
+     */
     path: pulumi.Input<inputs.KinesisMetricsSourcePath>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;

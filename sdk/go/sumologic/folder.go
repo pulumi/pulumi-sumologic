@@ -36,35 +36,15 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `name` - (Required) The name of the folder. This is required, and has to be unique.
-// - `parentId` - (Required) The ID of the folder in which you want to create the new folder.
-// - `description` - (Optional) The description of the folder.
-//
-// ### Timeouts
-//
-// `Folder` provides the following [Timeouts](https://www.terraform.io/docs/configuration/resources.html#timeouts) configuration options:
-//
-// - `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful
-//
-// Additional data provided in state
-//
-// - `createdAt` - (Computed) When the folder was created.
-// - `createdBy` - (Computed) Who created the folder.
-// - `modifiedAt` - (Computed) When was the folder last modified.
-// - `modifiedBy` - (Computed) The ID of the user who modified the folder last.
-// - `itemType` - (Computed) What the type of the content item is (will obviously be "Folder").
-// - `permissions` - (Computed) List of permissions the user has on the content item.
-// - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
 type Folder struct {
 	pulumi.CustomResourceState
 
+	// The description of the folder.
 	Description pulumi.StringOutput `pulumi:"description"`
-	Name        pulumi.StringOutput `pulumi:"name"`
-	ParentId    pulumi.StringOutput `pulumi:"parentId"`
+	// The name of the folder. This is required, and has to be unique.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the folder in which you want to create the new folder.
+	ParentId pulumi.StringOutput `pulumi:"parentId"`
 }
 
 // NewFolder registers a new resource with the given unique name, arguments, and options.
@@ -102,15 +82,21 @@ func GetFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
+	// The description of the folder.
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
-	ParentId    *string `pulumi:"parentId"`
+	// The name of the folder. This is required, and has to be unique.
+	Name *string `pulumi:"name"`
+	// The ID of the folder in which you want to create the new folder.
+	ParentId *string `pulumi:"parentId"`
 }
 
 type FolderState struct {
+	// The description of the folder.
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	ParentId    pulumi.StringPtrInput
+	// The name of the folder. This is required, and has to be unique.
+	Name pulumi.StringPtrInput
+	// The ID of the folder in which you want to create the new folder.
+	ParentId pulumi.StringPtrInput
 }
 
 func (FolderState) ElementType() reflect.Type {
@@ -118,16 +104,22 @@ func (FolderState) ElementType() reflect.Type {
 }
 
 type folderArgs struct {
-	Description string  `pulumi:"description"`
-	Name        *string `pulumi:"name"`
-	ParentId    string  `pulumi:"parentId"`
+	// The description of the folder.
+	Description string `pulumi:"description"`
+	// The name of the folder. This is required, and has to be unique.
+	Name *string `pulumi:"name"`
+	// The ID of the folder in which you want to create the new folder.
+	ParentId string `pulumi:"parentId"`
 }
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
+	// The description of the folder.
 	Description pulumi.StringInput
-	Name        pulumi.StringPtrInput
-	ParentId    pulumi.StringInput
+	// The name of the folder. This is required, and has to be unique.
+	Name pulumi.StringPtrInput
+	// The ID of the folder in which you want to create the new folder.
+	ParentId pulumi.StringInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {

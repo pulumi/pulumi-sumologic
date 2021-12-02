@@ -10,6 +10,50 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// Provides a [AWS S3 Audit Source][2].
+    /// 
+    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var s3Audit = new SumoLogic.S3AuditSource("s3Audit", new SumoLogic.S3AuditSourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.S3AuditSourceAuthenticationArgs
+    ///             {
+    ///                 AccessKey = "someKey",
+    ///                 SecretKey = "******",
+    ///                 Type = "S3BucketAuthentication",
+    ///             },
+    ///             Category = "aws/s3audit",
+    ///             CollectorId = collector.Id,
+    ///             ContentType = "AwsS3AuditBucket",
+    ///             Description = "My description",
+    ///             Path = new SumoLogic.Inputs.S3AuditSourcePathArgs
+    ///             {
+    ///                 BucketName = "Bucket1",
+    ///                 PathExpression = "*",
+    ///                 Type = "S3BucketPathExpression",
+    ///             },
+    ///             Paused = false,
+    ///             ScanInterval = 300000,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// S3 Audit sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,6 +73,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/s3AuditSource:S3AuditSource")]
     public partial class S3AuditSource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.S3AuditSourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -41,6 +88,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -77,12 +127,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.S3AuditSourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -144,6 +203,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class S3AuditSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.S3AuditSourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -156,6 +218,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -207,12 +272,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.S3AuditSourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -229,6 +303,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class S3AuditSourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.S3AuditSourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -241,6 +318,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -292,12 +372,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.S3AuditSourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

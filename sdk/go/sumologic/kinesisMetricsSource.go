@@ -11,6 +11,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Sumologic Kinesis Metrics source. This source is used to ingest data from Cloudwatch Metrics Stream via Kinesis Firehose from AWS.
+//
+// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_ := []map[string]interface{}{
+// 			map[string]interface{}{
+// 				"namespace": "All",
+// 				"tags": []string{
+// 					"k3=v3",
+// 				},
+// 				"type": "TagFilters",
+// 			},
+// 			map[string]interface{}{
+// 				"namespace": "AWS/Route53",
+// 				"tags": []string{
+// 					"k1=v1",
+// 				},
+// 				"type": "TagFilters",
+// 			},
+// 			map[string]interface{}{
+// 				"namespace": "AWS/S3",
+// 				"tags": []string{
+// 					"k2=v2",
+// 				},
+// 				"type": "TagFilters",
+// 			},
+// 		}
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewKinesisMetricsSource(ctx, "kinesisMetricsAccessKey", &sumologic.KinesisMetricsSourceArgs{
+// 			Authentication: &KinesisMetricsSourceAuthenticationArgs{
+// 				AccessKey: pulumi.String("someKey"),
+// 				SecretKey: pulumi.String("******"),
+// 				Type:      pulumi.String("S3BucketAuthentication"),
+// 			},
+// 			Category:    pulumi.String("prod/kinesis/metrics"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("KinesisMetric"),
+// 			Description: pulumi.String("Description for Kinesis Metrics Source"),
+// 			Path: &KinesisMetricsSourcePathArgs{
+// 				TagFilters: KinesisMetricsSourcePathTagFilterArray{
+// 					&KinesisMetricsSourcePathTagFilterArgs{
+// 						Namespace: pulumi.String("All"),
+// 						Tags: pulumi.StringArray{
+// 							pulumi.String("k3=v3"),
+// 						},
+// 						Type: pulumi.String("TagFilters"),
+// 					},
+// 					&KinesisMetricsSourcePathTagFilterArgs{
+// 						Namespace: pulumi.String("AWS/Route53"),
+// 						Tags: pulumi.StringArray{
+// 							pulumi.String("k1=v1"),
+// 						},
+// 						Type: pulumi.String("TagFilters"),
+// 					},
+// 				},
+// 				Type: pulumi.String("KinesisMetricPath"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewKinesisMetricsSource(ctx, "kinesisMetricsRoleArn", &sumologic.KinesisMetricsSourceArgs{
+// 			Authentication: &KinesisMetricsSourceAuthenticationArgs{
+// 				RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
+// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
+// 			},
+// 			Category:    pulumi.String("prod/kinesis/metrics"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("KinesisMetric"),
+// 			Description: pulumi.String("Description for Kinesis Metrics Source"),
+// 			Path: &KinesisMetricsSourcePathArgs{
+// 				TagFilters: KinesisMetricsSourcePathTagFilterArray{
+// 					&KinesisMetricsSourcePathTagFilterArgs{
+// 						Namespace: pulumi.String("All"),
+// 						Tags: pulumi.StringArray{
+// 							pulumi.String("k3=v3"),
+// 						},
+// 						Type: pulumi.String("TagFilters"),
+// 					},
+// 					&KinesisMetricsSourcePathTagFilterArgs{
+// 						Namespace: pulumi.String("AWS/Route53"),
+// 						Tags: pulumi.StringArray{
+// 							pulumi.String("k1=v1"),
+// 						},
+// 						Type: pulumi.String("TagFilters"),
+// 					},
+// 				},
+// 				Type: pulumi.String("KinesisMetricPath"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,10 +144,12 @@ import (
 type KinesisMetricsSource struct {
 	pulumi.CustomResourceState
 
-	Authentication             KinesisMetricsSourceAuthenticationOutput         `pulumi:"authentication"`
-	AutomaticDateParsing       pulumi.BoolPtrOutput                             `pulumi:"automaticDateParsing"`
-	Category                   pulumi.StringPtrOutput                           `pulumi:"category"`
-	CollectorId                pulumi.IntOutput                                 `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       KinesisMetricsSourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput                     `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput                   `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                         `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringOutput                              `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                           `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                              `pulumi:"cutoffTimestamp"`
@@ -46,8 +163,9 @@ type KinesisMetricsSource struct {
 	MessagePerRequest          pulumi.BoolPtrOutput                             `pulumi:"messagePerRequest"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                             `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                              `pulumi:"name"`
-	Path                       KinesisMetricsSourcePathOutput                   `pulumi:"path"`
-	Timezone                   pulumi.StringPtrOutput                           `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path     KinesisMetricsSourcePathOutput `pulumi:"path"`
+	Timezone pulumi.StringPtrOutput         `pulumi:"timezone"`
 	// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -94,10 +212,12 @@ func GetKinesisMetricsSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KinesisMetricsSource resources.
 type kinesisMetricsSourceState struct {
-	Authentication             *KinesisMetricsSourceAuthentication     `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                                   `pulumi:"automaticDateParsing"`
-	Category                   *string                                 `pulumi:"category"`
-	CollectorId                *int                                    `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       *KinesisMetricsSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                               `pulumi:"automaticDateParsing"`
+	Category             *string                             `pulumi:"category"`
+	CollectorId          *int                                `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                *string                                 `pulumi:"contentType"`
 	CutoffRelativeTime         *string                                 `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                    `pulumi:"cutoffTimestamp"`
@@ -111,18 +231,21 @@ type kinesisMetricsSourceState struct {
 	MessagePerRequest          *bool                                   `pulumi:"messagePerRequest"`
 	MultilineProcessingEnabled *bool                                   `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                                 `pulumi:"name"`
-	Path                       *KinesisMetricsSourcePath               `pulumi:"path"`
-	Timezone                   *string                                 `pulumi:"timezone"`
+	// The location to scan for new data.
+	Path     *KinesisMetricsSourcePath `pulumi:"path"`
+	Timezone *string                   `pulumi:"timezone"`
 	// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
 
 type KinesisMetricsSourceState struct {
-	Authentication             KinesisMetricsSourceAuthenticationPtrInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntPtrInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       KinesisMetricsSourceAuthenticationPtrInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntPtrInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -136,8 +259,9 @@ type KinesisMetricsSourceState struct {
 	MessagePerRequest          pulumi.BoolPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       KinesisMetricsSourcePathPtrInput
-	Timezone                   pulumi.StringPtrInput
+	// The location to scan for new data.
+	Path     KinesisMetricsSourcePathPtrInput
+	Timezone pulumi.StringPtrInput
 	// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
 	Url                 pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
@@ -148,10 +272,12 @@ func (KinesisMetricsSourceState) ElementType() reflect.Type {
 }
 
 type kinesisMetricsSourceArgs struct {
-	Authentication             KinesisMetricsSourceAuthentication      `pulumi:"authentication"`
-	AutomaticDateParsing       *bool                                   `pulumi:"automaticDateParsing"`
-	Category                   *string                                 `pulumi:"category"`
-	CollectorId                int                                     `pulumi:"collectorId"`
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       KinesisMetricsSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                              `pulumi:"automaticDateParsing"`
+	Category             *string                            `pulumi:"category"`
+	CollectorId          int                                `pulumi:"collectorId"`
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                string                                  `pulumi:"contentType"`
 	CutoffRelativeTime         *string                                 `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                    `pulumi:"cutoffTimestamp"`
@@ -165,17 +291,20 @@ type kinesisMetricsSourceArgs struct {
 	MessagePerRequest          *bool                                   `pulumi:"messagePerRequest"`
 	MultilineProcessingEnabled *bool                                   `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                                 `pulumi:"name"`
-	Path                       KinesisMetricsSourcePath                `pulumi:"path"`
-	Timezone                   *string                                 `pulumi:"timezone"`
-	UseAutolineMatching        *bool                                   `pulumi:"useAutolineMatching"`
+	// The location to scan for new data.
+	Path                KinesisMetricsSourcePath `pulumi:"path"`
+	Timezone            *string                  `pulumi:"timezone"`
+	UseAutolineMatching *bool                    `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a KinesisMetricsSource resource.
 type KinesisMetricsSourceArgs struct {
-	Authentication             KinesisMetricsSourceAuthenticationInput
-	AutomaticDateParsing       pulumi.BoolPtrInput
-	Category                   pulumi.StringPtrInput
-	CollectorId                pulumi.IntInput
+	// Authentication details for connecting to the S3 bucket.
+	Authentication       KinesisMetricsSourceAuthenticationInput
+	AutomaticDateParsing pulumi.BoolPtrInput
+	Category             pulumi.StringPtrInput
+	CollectorId          pulumi.IntInput
+	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -189,9 +318,10 @@ type KinesisMetricsSourceArgs struct {
 	MessagePerRequest          pulumi.BoolPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
-	Path                       KinesisMetricsSourcePathInput
-	Timezone                   pulumi.StringPtrInput
-	UseAutolineMatching        pulumi.BoolPtrInput
+	// The location to scan for new data.
+	Path                KinesisMetricsSourcePathInput
+	Timezone            pulumi.StringPtrInput
+	UseAutolineMatching pulumi.BoolPtrInput
 }
 
 func (KinesisMetricsSourceArgs) ElementType() reflect.Type {

@@ -20,18 +20,6 @@ import * as utilities from "./utilities";
  *     suppressesSignals: false,
  * });
  * ```
- * ## Argument reference
- *
- * The following arguments are supported:
- *
- * - `addressBlock` - (Required) The address block.
- * - `label` - (Required) The displayable label of the address block.
- * - `internal` - (Required) Internal flag.
- * - `suppressesSignals` - (Required) Suppresses signal flag.
- *
- * The following attributes are exported:
- *
- * - `id` - The internal ID of the network block.
  *
  * ## Import
  *
@@ -69,9 +57,21 @@ export class CseNetworkBlock extends pulumi.CustomResource {
         return obj['__pulumiType'] === CseNetworkBlock.__pulumiType;
     }
 
+    /**
+     * The address block.
+     */
     public readonly addressBlock!: pulumi.Output<string>;
+    /**
+     * Internal flag.
+     */
     public readonly internal!: pulumi.Output<boolean | undefined>;
+    /**
+     * The displayable label of the address block.
+     */
     public readonly label!: pulumi.Output<string | undefined>;
+    /**
+     * Suppresses signal flag.
+     */
     public readonly suppressesSignals!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -112,9 +112,21 @@ export class CseNetworkBlock extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CseNetworkBlock resources.
  */
 export interface CseNetworkBlockState {
+    /**
+     * The address block.
+     */
     addressBlock?: pulumi.Input<string>;
+    /**
+     * Internal flag.
+     */
     internal?: pulumi.Input<boolean>;
+    /**
+     * The displayable label of the address block.
+     */
     label?: pulumi.Input<string>;
+    /**
+     * Suppresses signal flag.
+     */
     suppressesSignals?: pulumi.Input<boolean>;
 }
 
@@ -122,8 +134,20 @@ export interface CseNetworkBlockState {
  * The set of arguments for constructing a CseNetworkBlock resource.
  */
 export interface CseNetworkBlockArgs {
+    /**
+     * The address block.
+     */
     addressBlock: pulumi.Input<string>;
+    /**
+     * Internal flag.
+     */
     internal?: pulumi.Input<boolean>;
+    /**
+     * The displayable label of the address block.
+     */
     label?: pulumi.Input<string>;
+    /**
+     * Suppresses signal flag.
+     */
     suppressesSignals?: pulumi.Input<boolean>;
 }

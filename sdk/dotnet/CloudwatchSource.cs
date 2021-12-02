@@ -10,6 +10,112 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// Provides a [Sumologic CloudWatch source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics).
+    /// 
+    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var filters = 
+    ///         {
+    ///             
+    ///             {
+    ///                 { "name", "Exclude Comments" },
+    ///                 { "filter_type", "Exclude" },
+    ///                 { "regexp", "#.*" },
+    ///             },
+    ///         };
+    ///         var tagfilters = 
+    ///         {
+    ///             
+    ///             {
+    ///                 { "type", "TagFilters" },
+    ///                 { "namespace", "All" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k3=v3",
+    ///                 } },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "type", "TagFilters" },
+    ///                 { "namespace", "AWS/Route53" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k1=v1",
+    ///                 } },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "type", "TagFilters" },
+    ///                 { "namespace", "AWS/S3" },
+    ///                 { "tags", 
+    ///                 {
+    ///                     "k2=v2",
+    ///                 } },
+    ///             },
+    ///         };
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var cloudwatchSource = new SumoLogic.CloudwatchSource("cloudwatchSource", new SumoLogic.CloudwatchSourceArgs
+    ///         {
+    ///             Description = "My description",
+    ///             Category = "aws/cw",
+    ///             ContentType = "AwsCloudWatch",
+    ///             ScanInterval = 300000,
+    ///             Paused = false,
+    ///             CollectorId = collector.Id,
+    ///             Authentication = new SumoLogic.Inputs.CloudwatchSourceAuthenticationArgs
+    ///             {
+    ///                 Type = "AWSRoleBasedAuthentication",
+    ///                 RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
+    ///             },
+    ///             Path = new SumoLogic.Inputs.CloudwatchSourcePathArgs
+    ///             {
+    ///                 Type = "CloudWatchPath",
+    ///                 LimitToRegions = 
+    ///                 {
+    ///                     "us-west-2",
+    ///                 },
+    ///                 LimitToNamespaces = 
+    ///                 {
+    ///                     "AWS/Route53",
+    ///                     "AWS/S3",
+    ///                     "customNamespace",
+    ///                 },
+    ///                 Dynamic = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "forEach", tagfilters },
+    ///                         { "content", 
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "type", tag_filters.Value.Type },
+    ///                                 { "namespace", tag_filters.Value.Namespace },
+    ///                                 { "tags", tag_filters.Value.Tags },
+    ///                             },
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -29,6 +135,9 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cloudwatchSource:CloudwatchSource")]
     public partial class CloudwatchSource : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Output("authentication")]
         public Output<Outputs.CloudwatchSourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -41,6 +150,9 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -77,12 +189,21 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Output("path")]
         public Output<Outputs.CloudwatchSourcePath> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Output("paused")]
         public Output<bool> Paused { get; private set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Output("scanInterval")]
         public Output<int> ScanInterval { get; private set; } = null!;
 
@@ -144,6 +265,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class CloudwatchSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.CloudwatchSourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -156,6 +280,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -207,12 +334,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path", required: true)]
         public Input<Inputs.CloudwatchSourcePathArgs> Path { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused", required: true)]
         public Input<bool> Paused { get; set; } = null!;
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval", required: true)]
         public Input<int> ScanInterval { get; set; } = null!;
 
@@ -229,6 +365,9 @@ namespace Pulumi.SumoLogic
 
     public sealed class CloudwatchSourceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Authentication details for connecting to the S3 bucket.
+        /// </summary>
         [Input("authentication")]
         public Input<Inputs.CloudwatchSourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -241,6 +380,9 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
+        /// <summary>
+        /// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
@@ -292,12 +434,21 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The location to scan for new data.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.CloudwatchSourcePathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// When set to true, the scanner is paused. To disable, set to false.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        /// <summary>
+        /// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        /// </summary>
         [Input("scanInterval")]
         public Input<int>? ScanInterval { get; set; }
 

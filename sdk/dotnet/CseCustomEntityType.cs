@@ -35,17 +35,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// - `name` - (Required) Human friend and unique name. Example: "File Hash".
-    /// - `identifier` - (Required) Machine friendly and unique identifier. Example: "filehash".
-    /// - `fields` - (Required) Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
-    /// 
-    /// The following attributes are exported:
-    /// 
-    /// - `id` - The internal ID of the custom entity type.
     /// 
     /// ## Import
     /// 
@@ -58,12 +47,21 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/cseCustomEntityType:CseCustomEntityType")]
     public partial class CseCustomEntityType : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<string>> Fields { get; private set; } = null!;
 
+        /// <summary>
+        /// Machine friendly and unique identifier. Example: "filehash".
+        /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
+        /// <summary>
+        /// Human friend and unique name. Example: "File Hash".
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -115,15 +113,25 @@ namespace Pulumi.SumoLogic
     {
         [Input("fields", required: true)]
         private InputList<string>? _fields;
+
+        /// <summary>
+        /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        /// </summary>
         public InputList<string> Fields
         {
             get => _fields ?? (_fields = new InputList<string>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// Machine friendly and unique identifier. Example: "filehash".
+        /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Human friend and unique name. Example: "File Hash".
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -136,15 +144,25 @@ namespace Pulumi.SumoLogic
     {
         [Input("fields")]
         private InputList<string>? _fields;
+
+        /// <summary>
+        /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        /// </summary>
         public InputList<string> Fields
         {
             get => _fields ?? (_fields = new InputList<string>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// Machine friendly and unique identifier. Example: "filehash".
+        /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
+        /// <summary>
+        /// Human friend and unique name. Example: "File Hash".
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

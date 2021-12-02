@@ -35,6 +35,8 @@ class HttpSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a HttpSource resource.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         """
         pulumi.set(__self__, "collector_id", collector_id)
         if automatic_date_parsing is not None:
@@ -102,6 +104,9 @@ class HttpSourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -192,6 +197,9 @@ class HttpSourceArgs:
     @property
     @pulumi.getter(name="messagePerRequest")
     def message_per_request(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to `true`, will create one log message per HTTP request.
+        """
         return pulumi.get(self, "message_per_request")
 
     @message_per_request.setter
@@ -259,6 +267,8 @@ class _HttpSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering HttpSource resources.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         :param pulumi.Input[str] url: The HTTP endpoint to use for sending data to this source.
         """
         if automatic_date_parsing is not None:
@@ -330,6 +340,9 @@ class _HttpSourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -420,6 +433,9 @@ class _HttpSourceState:
     @property
     @pulumi.getter(name="messagePerRequest")
     def message_per_request(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to `true`, will create one log message per HTTP request.
+        """
         return pulumi.get(self, "message_per_request")
 
     @message_per_request.setter
@@ -500,6 +516,38 @@ class HttpSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source) and [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). To start using Traces contact your Sumo account representative to activate.
+
+        __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        http_source = sumologic.HttpSource("httpSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            description="My description",
+            filters=[sumologic.HttpSourceFilterArgs(
+                filter_type="Exclude",
+                name="Test Exclude Debug",
+                regexp=".*DEBUG.*",
+            )])
+        http_traces_source = sumologic.HttpSource("httpTracesSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            content_type="Zipkin",
+            description="My description")
+        kinesis_log = sumologic.HttpSource("kinesisLog",
+            category="demo-category",
+            collector_id=sumologic_collector["test"]["id"],
+            content_type="KinesisLog",
+            description="demo-desc")
+        ```
+
         ## Import
 
         HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -518,6 +566,8 @@ class HttpSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         """
         ...
     @overload
@@ -526,6 +576,38 @@ class HttpSource(pulumi.CustomResource):
                  args: HttpSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source) and [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). To start using Traces contact your Sumo account representative to activate.
+
+        __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        http_source = sumologic.HttpSource("httpSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            description="My description",
+            filters=[sumologic.HttpSourceFilterArgs(
+                filter_type="Exclude",
+                name="Test Exclude Debug",
+                regexp=".*DEBUG.*",
+            )])
+        http_traces_source = sumologic.HttpSource("httpTracesSource",
+            category="my/source/category",
+            collector_id=collector.id,
+            content_type="Zipkin",
+            description="My description")
+        kinesis_log = sumologic.HttpSource("kinesisLog",
+            category="demo-category",
+            collector_id=sumologic_collector["test"]["id"],
+            content_type="KinesisLog",
+            description="demo-desc")
+        ```
+
         ## Import
 
         HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -644,6 +726,8 @@ class HttpSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         :param pulumi.Input[str] url: The HTTP endpoint to use for sending data to this source.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -689,6 +773,9 @@ class HttpSource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        """
         return pulumi.get(self, "content_type")
 
     @property
@@ -739,6 +826,9 @@ class HttpSource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="messagePerRequest")
     def message_per_request(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When set to `true`, will create one log message per HTTP request.
+        """
         return pulumi.get(self, "message_per_request")
 
     @property

@@ -29,6 +29,11 @@ class MonitorFolderArgs:
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a MonitorFolder resource.
+        :param pulumi.Input[str] description: The description of the monitor folder.
+        :param pulumi.Input[str] name: The name of the monitor folder. The name must be alphanumeric.
+        :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         pulumi.set(__self__, "description", description)
         if content_type is not None:
@@ -61,6 +66,9 @@ class MonitorFolderArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
+        """
+        The description of the monitor folder.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -142,6 +150,9 @@ class MonitorFolderArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the monitor folder. The name must be alphanumeric.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -151,6 +162,9 @@ class MonitorFolderArgs:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -169,6 +183,10 @@ class MonitorFolderArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of object model. Valid value:
+        - `MonitorsLibraryFolder`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -204,6 +222,11 @@ class _MonitorFolderState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering MonitorFolder resources.
+        :param pulumi.Input[str] description: The description of the monitor folder.
+        :param pulumi.Input[str] name: The name of the monitor folder. The name must be alphanumeric.
+        :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -264,6 +287,9 @@ class _MonitorFolderState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the monitor folder.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -318,6 +344,9 @@ class _MonitorFolderState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the monitor folder. The name must be alphanumeric.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -327,6 +356,9 @@ class _MonitorFolderState:
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -345,6 +377,10 @@ class _MonitorFolderState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of object model. Valid value:
+        - `MonitorsLibraryFolder`
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -395,20 +431,6 @@ class MonitorFolder(pulumi.CustomResource):
         tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for monitors managed by terraform.")
         ```
 
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Optional) The type of object model. Valid value:
-          - `MonitorsLibraryFolder`
-        - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
-        - `description` - (Required) The description of the monitor folder.
-        - `parent_id` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
-
-        Additional data provided in state:
-
-        - `id` - (Computed) The identifier for this monitor folder.
-
         ## Import
 
         Monitor folders can be imported using the monitor folder identifier, such ashcl
@@ -421,6 +443,11 @@ class MonitorFolder(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the monitor folder.
+        :param pulumi.Input[str] name: The name of the monitor folder. The name must be alphanumeric.
+        :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         ...
     @overload
@@ -441,20 +468,6 @@ class MonitorFolder(pulumi.CustomResource):
 
         tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for monitors managed by terraform.")
         ```
-
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `type` - (Optional) The type of object model. Valid value:
-          - `MonitorsLibraryFolder`
-        - `name` - (Required) The name of the monitor folder. The name must be alphanumeric.
-        - `description` - (Required) The description of the monitor folder.
-        - `parent_id` - (Optional) The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
-
-        Additional data provided in state:
-
-        - `id` - (Computed) The identifier for this monitor folder.
 
         ## Import
 
@@ -554,6 +567,11 @@ class MonitorFolder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the monitor folder.
+        :param pulumi.Input[str] name: The name of the monitor folder. The name must be alphanumeric.
+        :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -593,6 +611,9 @@ class MonitorFolder(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        The description of the monitor folder.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -623,11 +644,17 @@ class MonitorFolder(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the monitor folder. The name must be alphanumeric.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[str]:
+        """
+        The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+        """
         return pulumi.get(self, "parent_id")
 
     @property
@@ -638,6 +665,10 @@ class MonitorFolder(pulumi.CustomResource):
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of object model. Valid value:
+        - `MonitorsLibraryFolder`
+        """
         return pulumi.get(self, "type")
 
     @property

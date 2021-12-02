@@ -17,6 +17,8 @@ class CseEntityCriticalityConfigArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseEntityCriticalityConfig resource.
+        :param pulumi.Input[str] severity_expression: Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        :param pulumi.Input[str] name: Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
         """
         pulumi.set(__self__, "severity_expression", severity_expression)
         if name is not None:
@@ -25,6 +27,9 @@ class CseEntityCriticalityConfigArgs:
     @property
     @pulumi.getter(name="severityExpression")
     def severity_expression(self) -> pulumi.Input[str]:
+        """
+        Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        """
         return pulumi.get(self, "severity_expression")
 
     @severity_expression.setter
@@ -34,6 +39,9 @@ class CseEntityCriticalityConfigArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -48,6 +56,8 @@ class _CseEntityCriticalityConfigState:
                  severity_expression: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseEntityCriticalityConfig resources.
+        :param pulumi.Input[str] name: Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        :param pulumi.Input[str] severity_expression: Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -57,6 +67,9 @@ class _CseEntityCriticalityConfigState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -66,6 +79,9 @@ class _CseEntityCriticalityConfigState:
     @property
     @pulumi.getter(name="severityExpression")
     def severity_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        """
         return pulumi.get(self, "severity_expression")
 
     @severity_expression.setter
@@ -92,16 +108,6 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
 
         entity_criticality_config = sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", severity_expression="severity + 2")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
-        - `severity_expression` - (Required) Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the entity criticality configuration.
 
         ## Import
 
@@ -113,6 +119,8 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        :param pulumi.Input[str] severity_expression: Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
         """
         ...
     @overload
@@ -131,16 +139,6 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
 
         entity_criticality_config = sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", severity_expression="severity + 2")
         ```
-        ## Argument reference
-
-        The following arguments are supported:
-
-        - `name` - (Required) Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
-        - `severity_expression` - (Required) Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
-
-        The following attributes are exported:
-
-        - `id` - The internal ID of the entity criticality configuration.
 
         ## Import
 
@@ -202,6 +200,8 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        :param pulumi.Input[str] severity_expression: Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -214,10 +214,16 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="severityExpression")
     def severity_expression(self) -> pulumi.Output[str]:
+        """
+        Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        """
         return pulumi.get(self, "severity_expression")
 

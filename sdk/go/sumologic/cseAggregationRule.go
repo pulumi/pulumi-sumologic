@@ -68,41 +68,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// - `aggregationFunctions` - (Required) One or more named aggregation functions
-//   + `name` - (Required) The name to use to reference the result in the triggerExpression
-//   + `function` - (Required) The function to aggregate with
-//   + `arguments` - (Required) One or more expressions to pass as arguments to the function
-// - `descriptionExpression` - (Required) The description of the generated Signals
-// - `enabled` - (Required) Whether the rule should generate Signals
-// - `entitySelectors` - (Required) The entities to generate Signals on
-//   + `entityType` - (Required) The type of the entity to generate the Signal on.
-//   + `expression` - (Required) The expression or field name to generate the Signal on.
-// - `groupByEntity` - (Optional; defaults to true) Whether to group records by the specified entity fields
-// - `groupByFields` - (Optional) A list of fields to group records by
-// - `isPrototype` - (Optional) Whether the generated Signals should be prototype Signals
-// - `matchExpression` - (Required) The expression for which records to match on
-// - `name` - (Required) The name of the Rule
-// - `nameExpression` - (Required) The name of the generated Signals
-// - `severityMapping` - (Required) The configuration of how the severity of the Signals should be mapped from the Records
-//   + `type` - (Required) Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
-//   + `default` - (Optional) The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
-//   + `field` - (Optional) The field to use in the "fieldValue"/"fieldValueMapping" cases.
-//   + `mapping` - (Optional) The map of record values to severities to use in the "fieldValueMapping" case
-//     - `type` - (Required) Must be set to "eq" currently
-//     - `from` - (Required) The record value to map from
-//     - `to` - (Required) The severity value to map to
-// - `summaryExpression` - (Optional) The summary of the generated Signals
-// - `tags` - (Required) The tags of the generated Signals
-// - `triggerExpression` - (Required) The expression to determine whether a Signal should be created based on the aggregation results
-// - `windowSize` - (Required) How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-//
-// The following attributes are exported:
-//
-// - `id` - The internal ID of the aggregation rule.
 //
 // ## Import
 //
@@ -114,21 +79,36 @@ import (
 type CseAggregationRule struct {
 	pulumi.CustomResourceState
 
-	AggregationFunctions  CseAggregationRuleAggregationFunctionArrayOutput `pulumi:"aggregationFunctions"`
-	DescriptionExpression pulumi.StringOutput                              `pulumi:"descriptionExpression"`
-	Enabled               pulumi.BoolOutput                                `pulumi:"enabled"`
-	EntitySelectors       CseAggregationRuleEntitySelectorArrayOutput      `pulumi:"entitySelectors"`
-	GroupByEntity         pulumi.BoolPtrOutput                             `pulumi:"groupByEntity"`
-	GroupByFields         pulumi.StringArrayOutput                         `pulumi:"groupByFields"`
-	IsPrototype           pulumi.BoolPtrOutput                             `pulumi:"isPrototype"`
-	MatchExpression       pulumi.StringOutput                              `pulumi:"matchExpression"`
-	Name                  pulumi.StringOutput                              `pulumi:"name"`
-	NameExpression        pulumi.StringOutput                              `pulumi:"nameExpression"`
-	SeverityMapping       CseAggregationRuleSeverityMappingOutput          `pulumi:"severityMapping"`
-	SummaryExpression     pulumi.StringPtrOutput                           `pulumi:"summaryExpression"`
-	Tags                  pulumi.StringArrayOutput                         `pulumi:"tags"`
-	TriggerExpression     pulumi.StringOutput                              `pulumi:"triggerExpression"`
-	WindowSize            pulumi.StringOutput                              `pulumi:"windowSize"`
+	// One or more named aggregation functions
+	AggregationFunctions CseAggregationRuleAggregationFunctionArrayOutput `pulumi:"aggregationFunctions"`
+	// The description of the generated Signals
+	DescriptionExpression pulumi.StringOutput `pulumi:"descriptionExpression"`
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors CseAggregationRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
+	// Whether to group records by the specified entity fields
+	GroupByEntity pulumi.BoolPtrOutput `pulumi:"groupByEntity"`
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayOutput `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrOutput `pulumi:"isPrototype"`
+	// The expression for which records to match on
+	MatchExpression pulumi.StringOutput `pulumi:"matchExpression"`
+	// The name of the Rule
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the generated Signals
+	NameExpression pulumi.StringOutput `pulumi:"nameExpression"`
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseAggregationRuleSeverityMappingOutput `pulumi:"severityMapping"`
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// The expression to determine whether a Signal should be created based on the aggregation results
+	TriggerExpression pulumi.StringOutput `pulumi:"triggerExpression"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
 }
 
 // NewCseAggregationRule registers a new resource with the given unique name, arguments, and options.
@@ -187,39 +167,69 @@ func GetCseAggregationRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseAggregationRule resources.
 type cseAggregationRuleState struct {
-	AggregationFunctions  []CseAggregationRuleAggregationFunction `pulumi:"aggregationFunctions"`
-	DescriptionExpression *string                                 `pulumi:"descriptionExpression"`
-	Enabled               *bool                                   `pulumi:"enabled"`
-	EntitySelectors       []CseAggregationRuleEntitySelector      `pulumi:"entitySelectors"`
-	GroupByEntity         *bool                                   `pulumi:"groupByEntity"`
-	GroupByFields         []string                                `pulumi:"groupByFields"`
-	IsPrototype           *bool                                   `pulumi:"isPrototype"`
-	MatchExpression       *string                                 `pulumi:"matchExpression"`
-	Name                  *string                                 `pulumi:"name"`
-	NameExpression        *string                                 `pulumi:"nameExpression"`
-	SeverityMapping       *CseAggregationRuleSeverityMapping      `pulumi:"severityMapping"`
-	SummaryExpression     *string                                 `pulumi:"summaryExpression"`
-	Tags                  []string                                `pulumi:"tags"`
-	TriggerExpression     *string                                 `pulumi:"triggerExpression"`
-	WindowSize            *string                                 `pulumi:"windowSize"`
+	// One or more named aggregation functions
+	AggregationFunctions []CseAggregationRuleAggregationFunction `pulumi:"aggregationFunctions"`
+	// The description of the generated Signals
+	DescriptionExpression *string `pulumi:"descriptionExpression"`
+	// Whether the rule should generate Signals
+	Enabled *bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseAggregationRuleEntitySelector `pulumi:"entitySelectors"`
+	// Whether to group records by the specified entity fields
+	GroupByEntity *bool `pulumi:"groupByEntity"`
+	// A list of fields to group records by
+	GroupByFields []string `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// The expression for which records to match on
+	MatchExpression *string `pulumi:"matchExpression"`
+	// The name of the Rule
+	Name *string `pulumi:"name"`
+	// The name of the generated Signals
+	NameExpression *string `pulumi:"nameExpression"`
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping *CseAggregationRuleSeverityMapping `pulumi:"severityMapping"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// The expression to determine whether a Signal should be created based on the aggregation results
+	TriggerExpression *string `pulumi:"triggerExpression"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize *string `pulumi:"windowSize"`
 }
 
 type CseAggregationRuleState struct {
-	AggregationFunctions  CseAggregationRuleAggregationFunctionArrayInput
+	// One or more named aggregation functions
+	AggregationFunctions CseAggregationRuleAggregationFunctionArrayInput
+	// The description of the generated Signals
 	DescriptionExpression pulumi.StringPtrInput
-	Enabled               pulumi.BoolPtrInput
-	EntitySelectors       CseAggregationRuleEntitySelectorArrayInput
-	GroupByEntity         pulumi.BoolPtrInput
-	GroupByFields         pulumi.StringArrayInput
-	IsPrototype           pulumi.BoolPtrInput
-	MatchExpression       pulumi.StringPtrInput
-	Name                  pulumi.StringPtrInput
-	NameExpression        pulumi.StringPtrInput
-	SeverityMapping       CseAggregationRuleSeverityMappingPtrInput
-	SummaryExpression     pulumi.StringPtrInput
-	Tags                  pulumi.StringArrayInput
-	TriggerExpression     pulumi.StringPtrInput
-	WindowSize            pulumi.StringPtrInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolPtrInput
+	// The entities to generate Signals on
+	EntitySelectors CseAggregationRuleEntitySelectorArrayInput
+	// Whether to group records by the specified entity fields
+	GroupByEntity pulumi.BoolPtrInput
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// The expression for which records to match on
+	MatchExpression pulumi.StringPtrInput
+	// The name of the Rule
+	Name pulumi.StringPtrInput
+	// The name of the generated Signals
+	NameExpression pulumi.StringPtrInput
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseAggregationRuleSeverityMappingPtrInput
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// The expression to determine whether a Signal should be created based on the aggregation results
+	TriggerExpression pulumi.StringPtrInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringPtrInput
 }
 
 func (CseAggregationRuleState) ElementType() reflect.Type {
@@ -227,40 +237,70 @@ func (CseAggregationRuleState) ElementType() reflect.Type {
 }
 
 type cseAggregationRuleArgs struct {
-	AggregationFunctions  []CseAggregationRuleAggregationFunction `pulumi:"aggregationFunctions"`
-	DescriptionExpression string                                  `pulumi:"descriptionExpression"`
-	Enabled               bool                                    `pulumi:"enabled"`
-	EntitySelectors       []CseAggregationRuleEntitySelector      `pulumi:"entitySelectors"`
-	GroupByEntity         *bool                                   `pulumi:"groupByEntity"`
-	GroupByFields         []string                                `pulumi:"groupByFields"`
-	IsPrototype           *bool                                   `pulumi:"isPrototype"`
-	MatchExpression       string                                  `pulumi:"matchExpression"`
-	Name                  *string                                 `pulumi:"name"`
-	NameExpression        string                                  `pulumi:"nameExpression"`
-	SeverityMapping       CseAggregationRuleSeverityMapping       `pulumi:"severityMapping"`
-	SummaryExpression     *string                                 `pulumi:"summaryExpression"`
-	Tags                  []string                                `pulumi:"tags"`
-	TriggerExpression     string                                  `pulumi:"triggerExpression"`
-	WindowSize            string                                  `pulumi:"windowSize"`
+	// One or more named aggregation functions
+	AggregationFunctions []CseAggregationRuleAggregationFunction `pulumi:"aggregationFunctions"`
+	// The description of the generated Signals
+	DescriptionExpression string `pulumi:"descriptionExpression"`
+	// Whether the rule should generate Signals
+	Enabled bool `pulumi:"enabled"`
+	// The entities to generate Signals on
+	EntitySelectors []CseAggregationRuleEntitySelector `pulumi:"entitySelectors"`
+	// Whether to group records by the specified entity fields
+	GroupByEntity *bool `pulumi:"groupByEntity"`
+	// A list of fields to group records by
+	GroupByFields []string `pulumi:"groupByFields"`
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype *bool `pulumi:"isPrototype"`
+	// The expression for which records to match on
+	MatchExpression string `pulumi:"matchExpression"`
+	// The name of the Rule
+	Name *string `pulumi:"name"`
+	// The name of the generated Signals
+	NameExpression string `pulumi:"nameExpression"`
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseAggregationRuleSeverityMapping `pulumi:"severityMapping"`
+	// The summary of the generated Signals
+	SummaryExpression *string `pulumi:"summaryExpression"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// The expression to determine whether a Signal should be created based on the aggregation results
+	TriggerExpression string `pulumi:"triggerExpression"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize string `pulumi:"windowSize"`
 }
 
 // The set of arguments for constructing a CseAggregationRule resource.
 type CseAggregationRuleArgs struct {
-	AggregationFunctions  CseAggregationRuleAggregationFunctionArrayInput
+	// One or more named aggregation functions
+	AggregationFunctions CseAggregationRuleAggregationFunctionArrayInput
+	// The description of the generated Signals
 	DescriptionExpression pulumi.StringInput
-	Enabled               pulumi.BoolInput
-	EntitySelectors       CseAggregationRuleEntitySelectorArrayInput
-	GroupByEntity         pulumi.BoolPtrInput
-	GroupByFields         pulumi.StringArrayInput
-	IsPrototype           pulumi.BoolPtrInput
-	MatchExpression       pulumi.StringInput
-	Name                  pulumi.StringPtrInput
-	NameExpression        pulumi.StringInput
-	SeverityMapping       CseAggregationRuleSeverityMappingInput
-	SummaryExpression     pulumi.StringPtrInput
-	Tags                  pulumi.StringArrayInput
-	TriggerExpression     pulumi.StringInput
-	WindowSize            pulumi.StringInput
+	// Whether the rule should generate Signals
+	Enabled pulumi.BoolInput
+	// The entities to generate Signals on
+	EntitySelectors CseAggregationRuleEntitySelectorArrayInput
+	// Whether to group records by the specified entity fields
+	GroupByEntity pulumi.BoolPtrInput
+	// A list of fields to group records by
+	GroupByFields pulumi.StringArrayInput
+	// Whether the generated Signals should be prototype Signals
+	IsPrototype pulumi.BoolPtrInput
+	// The expression for which records to match on
+	MatchExpression pulumi.StringInput
+	// The name of the Rule
+	Name pulumi.StringPtrInput
+	// The name of the generated Signals
+	NameExpression pulumi.StringInput
+	// The configuration of how the severity of the Signals should be mapped from the Records
+	SeverityMapping CseAggregationRuleSeverityMappingInput
+	// The summary of the generated Signals
+	SummaryExpression pulumi.StringPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// The expression to determine whether a Signal should be created based on the aggregation results
+	TriggerExpression pulumi.StringInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	WindowSize pulumi.StringInput
 }
 
 func (CseAggregationRuleArgs) ElementType() reflect.Type {
