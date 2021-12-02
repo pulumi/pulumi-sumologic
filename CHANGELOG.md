@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.11.4 of the SumoLogic Terraform Provider
-* Upgrade to terraform-bridge 3.12.0
+_(none)_
 
 ---
+
+## 0.4.0 (2021-12-02)
+* Upgrade to v2.11.4 of the SumoLogic Terraform Provider
+* Upgrade to terraform-bridge 3.12.0
 
 ## 0.3.0 (2021-11-18)
 * Upgrade to v2.11.2 of the SumoLogic Terraform Provider
