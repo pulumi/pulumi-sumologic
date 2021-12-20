@@ -15,27 +15,9 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides an easy way to retrieve the Admin Recommended Folder.
         /// 
+        /// In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
+        /// Please refer to the Example Usage section below for more details. 
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using SumoLogic = Pulumi.SumoLogic;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var folder = Output.Create(SumoLogic.GetAdminRecommendedFolder.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:
@@ -50,27 +32,9 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides an easy way to retrieve the Admin Recommended Folder.
         /// 
+        /// In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
+        /// Please refer to the Example Usage section below for more details. 
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using SumoLogic = Pulumi.SumoLogic;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var folder = Output.Create(SumoLogic.GetAdminRecommendedFolder.InvokeAsync());
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:

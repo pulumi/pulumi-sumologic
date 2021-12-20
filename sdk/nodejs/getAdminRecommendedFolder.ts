@@ -7,14 +7,9 @@ import * as utilities from "./utilities";
 /**
  * Provides an easy way to retrieve the Admin Recommended Folder.
  *
- * ## Example Usage
+ * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
+ * Please refer to the Example Usage section below for more details.
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const folder = pulumi.output(sumologic.getAdminRecommendedFolder());
- * ```
  * ## Attributes reference
  *
  * The following attributes are exported:
