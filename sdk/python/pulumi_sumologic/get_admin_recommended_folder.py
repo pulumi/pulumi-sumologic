@@ -65,14 +65,9 @@ def get_admin_recommended_folder(description: Optional[str] = None,
     """
     Provides an easy way to retrieve the Admin Recommended Folder.
 
-    ## Example Usage
+    In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
+    Please refer to the Example Usage section below for more details.
 
-    ```python
-    import pulumi
-    import pulumi_sumologic as sumologic
-
-    folder = sumologic.get_admin_recommended_folder()
-    ```
     ## Attributes reference
 
     The following attributes are exported:
@@ -105,14 +100,9 @@ def get_admin_recommended_folder_output(description: Optional[pulumi.Input[Optio
     """
     Provides an easy way to retrieve the Admin Recommended Folder.
 
-    ## Example Usage
+    In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
+    Please refer to the Example Usage section below for more details.
 
-    ```python
-    import pulumi
-    import pulumi_sumologic as sumologic
-
-    folder = sumologic.get_admin_recommended_folder()
-    ```
     ## Attributes reference
 
     The following attributes are exported:

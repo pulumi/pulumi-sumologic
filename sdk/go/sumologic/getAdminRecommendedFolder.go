@@ -12,26 +12,9 @@ import (
 
 // Provides an easy way to retrieve the Admin Recommended Folder.
 //
-// ## Example Usage
+// In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
+// Please refer to the Example Usage section below for more details.
 //
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.GetAdminRecommendedFolder(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ## Attributes reference
 //
 // The following attributes are exported:
