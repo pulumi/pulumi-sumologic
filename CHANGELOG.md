@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.11.5 of the SumoLogic Terraform Provider
+_(none)_
 
 ---
+
+## 0.4.1 (2021-12-20)
+* Upgrade to v2.11.5 of the SumoLogic Terraform Provider
 
 ## 0.4.0 (2021-12-02)
 * Upgrade to v2.11.4 of the SumoLogic Terraform Provider
