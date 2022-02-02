@@ -135,20 +135,20 @@ export class CseLogMapping extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseLogMappingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseLogMappingArgs | CseLogMappingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseLogMappingState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentId"] = state ? state.parentId : undefined;
-            inputs["productGuid"] = state ? state.productGuid : undefined;
-            inputs["recordType"] = state ? state.recordType : undefined;
-            inputs["relatesEntities"] = state ? state.relatesEntities : undefined;
-            inputs["skippedValues"] = state ? state.skippedValues : undefined;
-            inputs["structuredInputs"] = state ? state.structuredInputs : undefined;
-            inputs["unstructuredFields"] = state ? state.unstructuredFields : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["productGuid"] = state ? state.productGuid : undefined;
+            resourceInputs["recordType"] = state ? state.recordType : undefined;
+            resourceInputs["relatesEntities"] = state ? state.relatesEntities : undefined;
+            resourceInputs["skippedValues"] = state ? state.skippedValues : undefined;
+            resourceInputs["structuredInputs"] = state ? state.structuredInputs : undefined;
+            resourceInputs["unstructuredFields"] = state ? state.unstructuredFields : undefined;
         } else {
             const args = argsOrState as CseLogMappingArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -163,21 +163,19 @@ export class CseLogMapping extends pulumi.CustomResource {
             if ((!args || args.recordType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'recordType'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
-            inputs["productGuid"] = args ? args.productGuid : undefined;
-            inputs["recordType"] = args ? args.recordType : undefined;
-            inputs["relatesEntities"] = args ? args.relatesEntities : undefined;
-            inputs["skippedValues"] = args ? args.skippedValues : undefined;
-            inputs["structuredInputs"] = args ? args.structuredInputs : undefined;
-            inputs["unstructuredFields"] = args ? args.unstructuredFields : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["productGuid"] = args ? args.productGuid : undefined;
+            resourceInputs["recordType"] = args ? args.recordType : undefined;
+            resourceInputs["relatesEntities"] = args ? args.relatesEntities : undefined;
+            resourceInputs["skippedValues"] = args ? args.skippedValues : undefined;
+            resourceInputs["structuredInputs"] = args ? args.structuredInputs : undefined;
+            resourceInputs["unstructuredFields"] = args ? args.unstructuredFields : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseLogMapping.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseLogMapping.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -83,28 +83,26 @@ export class Field extends pulumi.CustomResource {
      */
     constructor(name: string, args: FieldArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FieldArgs | FieldState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FieldState | undefined;
-            inputs["dataType"] = state ? state.dataType : undefined;
-            inputs["fieldId"] = state ? state.fieldId : undefined;
-            inputs["fieldName"] = state ? state.fieldName : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["dataType"] = state ? state.dataType : undefined;
+            resourceInputs["fieldId"] = state ? state.fieldId : undefined;
+            resourceInputs["fieldName"] = state ? state.fieldName : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as FieldArgs | undefined;
             if ((!args || args.fieldName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fieldName'");
             }
-            inputs["dataType"] = args ? args.dataType : undefined;
-            inputs["fieldName"] = args ? args.fieldName : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["fieldId"] = undefined /*out*/;
+            resourceInputs["dataType"] = args ? args.dataType : undefined;
+            resourceInputs["fieldName"] = args ? args.fieldName : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["fieldId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Field.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Field.__pulumiType, name, resourceInputs, opts);
     }
 }
 

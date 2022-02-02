@@ -38,7 +38,7 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
             if ((!args || args.accessId === undefined) && !opts.urn) {
@@ -47,16 +47,14 @@ export class Provider extends pulumi.ProviderResource {
             if ((!args || args.accessKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessKey'");
             }
-            inputs["accessId"] = args ? args.accessId : undefined;
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["adminMode"] = pulumi.output(args ? args.adminMode : undefined).apply(JSON.stringify);
-            inputs["baseUrl"] = (args ? args.baseUrl : undefined) ?? utilities.getEnv("SUMOLOGIC_BASE_URL");
-            inputs["environment"] = (args ? args.environment : undefined) ?? utilities.getEnv("SUMOLOGIC_ENVIRONMENT");
+            resourceInputs["accessId"] = args ? args.accessId : undefined;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["adminMode"] = pulumi.output(args ? args.adminMode : undefined).apply(JSON.stringify);
+            resourceInputs["baseUrl"] = (args ? args.baseUrl : undefined) ?? utilities.getEnv("SUMOLOGIC_BASE_URL");
+            resourceInputs["environment"] = (args ? args.environment : undefined) ?? utilities.getEnv("SUMOLOGIC_ENVIRONMENT");
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

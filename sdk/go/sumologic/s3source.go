@@ -290,7 +290,7 @@ type S3SourceInput interface {
 }
 
 func (*S3Source) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3Source)(nil))
+	return reflect.TypeOf((**S3Source)(nil)).Elem()
 }
 
 func (i *S3Source) ToS3SourceOutput() S3SourceOutput {
@@ -299,35 +299,6 @@ func (i *S3Source) ToS3SourceOutput() S3SourceOutput {
 
 func (i *S3Source) ToS3SourceOutputWithContext(ctx context.Context) S3SourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3SourceOutput)
-}
-
-func (i *S3Source) ToS3SourcePtrOutput() S3SourcePtrOutput {
-	return i.ToS3SourcePtrOutputWithContext(context.Background())
-}
-
-func (i *S3Source) ToS3SourcePtrOutputWithContext(ctx context.Context) S3SourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3SourcePtrOutput)
-}
-
-type S3SourcePtrInput interface {
-	pulumi.Input
-
-	ToS3SourcePtrOutput() S3SourcePtrOutput
-	ToS3SourcePtrOutputWithContext(ctx context.Context) S3SourcePtrOutput
-}
-
-type s3sourcePtrType S3SourceArgs
-
-func (*s3sourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**S3Source)(nil))
-}
-
-func (i *s3sourcePtrType) ToS3SourcePtrOutput() S3SourcePtrOutput {
-	return i.ToS3SourcePtrOutputWithContext(context.Background())
-}
-
-func (i *s3sourcePtrType) ToS3SourcePtrOutputWithContext(ctx context.Context) S3SourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3SourcePtrOutput)
 }
 
 // S3SourceArrayInput is an input type that accepts S3SourceArray and S3SourceArrayOutput values.
@@ -383,7 +354,7 @@ func (i S3SourceMap) ToS3SourceMapOutputWithContext(ctx context.Context) S3Sourc
 type S3SourceOutput struct{ *pulumi.OutputState }
 
 func (S3SourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3Source)(nil))
+	return reflect.TypeOf((**S3Source)(nil)).Elem()
 }
 
 func (o S3SourceOutput) ToS3SourceOutput() S3SourceOutput {
@@ -394,44 +365,10 @@ func (o S3SourceOutput) ToS3SourceOutputWithContext(ctx context.Context) S3Sourc
 	return o
 }
 
-func (o S3SourceOutput) ToS3SourcePtrOutput() S3SourcePtrOutput {
-	return o.ToS3SourcePtrOutputWithContext(context.Background())
-}
-
-func (o S3SourceOutput) ToS3SourcePtrOutputWithContext(ctx context.Context) S3SourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3Source) *S3Source {
-		return &v
-	}).(S3SourcePtrOutput)
-}
-
-type S3SourcePtrOutput struct{ *pulumi.OutputState }
-
-func (S3SourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**S3Source)(nil))
-}
-
-func (o S3SourcePtrOutput) ToS3SourcePtrOutput() S3SourcePtrOutput {
-	return o
-}
-
-func (o S3SourcePtrOutput) ToS3SourcePtrOutputWithContext(ctx context.Context) S3SourcePtrOutput {
-	return o
-}
-
-func (o S3SourcePtrOutput) Elem() S3SourceOutput {
-	return o.ApplyT(func(v *S3Source) S3Source {
-		if v != nil {
-			return *v
-		}
-		var ret S3Source
-		return ret
-	}).(S3SourceOutput)
-}
-
 type S3SourceArrayOutput struct{ *pulumi.OutputState }
 
 func (S3SourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]S3Source)(nil))
+	return reflect.TypeOf((*[]*S3Source)(nil)).Elem()
 }
 
 func (o S3SourceArrayOutput) ToS3SourceArrayOutput() S3SourceArrayOutput {
@@ -443,15 +380,15 @@ func (o S3SourceArrayOutput) ToS3SourceArrayOutputWithContext(ctx context.Contex
 }
 
 func (o S3SourceArrayOutput) Index(i pulumi.IntInput) S3SourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3Source {
-		return vs[0].([]S3Source)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3Source {
+		return vs[0].([]*S3Source)[vs[1].(int)]
 	}).(S3SourceOutput)
 }
 
 type S3SourceMapOutput struct{ *pulumi.OutputState }
 
 func (S3SourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]S3Source)(nil))
+	return reflect.TypeOf((*map[string]*S3Source)(nil)).Elem()
 }
 
 func (o S3SourceMapOutput) ToS3SourceMapOutput() S3SourceMapOutput {
@@ -463,18 +400,16 @@ func (o S3SourceMapOutput) ToS3SourceMapOutputWithContext(ctx context.Context) S
 }
 
 func (o S3SourceMapOutput) MapIndex(k pulumi.StringInput) S3SourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) S3Source {
-		return vs[0].(map[string]S3Source)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *S3Source {
+		return vs[0].(map[string]*S3Source)[vs[1].(string)]
 	}).(S3SourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceInput)(nil)).Elem(), &S3Source{})
-	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePtrInput)(nil)).Elem(), &S3Source{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceArrayInput)(nil)).Elem(), S3SourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceMapInput)(nil)).Elem(), S3SourceMap{})
 	pulumi.RegisterOutputType(S3SourceOutput{})
-	pulumi.RegisterOutputType(S3SourcePtrOutput{})
 	pulumi.RegisterOutputType(S3SourceArrayOutput{})
 	pulumi.RegisterOutputType(S3SourceMapOutput{})
 }

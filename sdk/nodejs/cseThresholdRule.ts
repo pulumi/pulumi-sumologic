@@ -136,24 +136,24 @@ export class CseThresholdRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseThresholdRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseThresholdRuleArgs | CseThresholdRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseThresholdRuleState | undefined;
-            inputs["countDistinct"] = state ? state.countDistinct : undefined;
-            inputs["countField"] = state ? state.countField : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["entitySelectors"] = state ? state.entitySelectors : undefined;
-            inputs["expression"] = state ? state.expression : undefined;
-            inputs["groupByFields"] = state ? state.groupByFields : undefined;
-            inputs["isPrototype"] = state ? state.isPrototype : undefined;
-            inputs["limit"] = state ? state.limit : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["severity"] = state ? state.severity : undefined;
-            inputs["summaryExpression"] = state ? state.summaryExpression : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["windowSize"] = state ? state.windowSize : undefined;
+            resourceInputs["countDistinct"] = state ? state.countDistinct : undefined;
+            resourceInputs["countField"] = state ? state.countField : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["entitySelectors"] = state ? state.entitySelectors : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["groupByFields"] = state ? state.groupByFields : undefined;
+            resourceInputs["isPrototype"] = state ? state.isPrototype : undefined;
+            resourceInputs["limit"] = state ? state.limit : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["summaryExpression"] = state ? state.summaryExpression : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["windowSize"] = state ? state.windowSize : undefined;
         } else {
             const args = argsOrState as CseThresholdRuleArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -177,25 +177,23 @@ export class CseThresholdRule extends pulumi.CustomResource {
             if ((!args || args.windowSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'windowSize'");
             }
-            inputs["countDistinct"] = args ? args.countDistinct : undefined;
-            inputs["countField"] = args ? args.countField : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["entitySelectors"] = args ? args.entitySelectors : undefined;
-            inputs["expression"] = args ? args.expression : undefined;
-            inputs["groupByFields"] = args ? args.groupByFields : undefined;
-            inputs["isPrototype"] = args ? args.isPrototype : undefined;
-            inputs["limit"] = args ? args.limit : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["severity"] = args ? args.severity : undefined;
-            inputs["summaryExpression"] = args ? args.summaryExpression : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["windowSize"] = args ? args.windowSize : undefined;
+            resourceInputs["countDistinct"] = args ? args.countDistinct : undefined;
+            resourceInputs["countField"] = args ? args.countField : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["entitySelectors"] = args ? args.entitySelectors : undefined;
+            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["groupByFields"] = args ? args.groupByFields : undefined;
+            resourceInputs["isPrototype"] = args ? args.isPrototype : undefined;
+            resourceInputs["limit"] = args ? args.limit : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["summaryExpression"] = args ? args.summaryExpression : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["windowSize"] = args ? args.windowSize : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseThresholdRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseThresholdRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

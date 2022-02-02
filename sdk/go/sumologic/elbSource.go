@@ -290,7 +290,7 @@ type ElbSourceInput interface {
 }
 
 func (*ElbSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElbSource)(nil))
+	return reflect.TypeOf((**ElbSource)(nil)).Elem()
 }
 
 func (i *ElbSource) ToElbSourceOutput() ElbSourceOutput {
@@ -299,35 +299,6 @@ func (i *ElbSource) ToElbSourceOutput() ElbSourceOutput {
 
 func (i *ElbSource) ToElbSourceOutputWithContext(ctx context.Context) ElbSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElbSourceOutput)
-}
-
-func (i *ElbSource) ToElbSourcePtrOutput() ElbSourcePtrOutput {
-	return i.ToElbSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *ElbSource) ToElbSourcePtrOutputWithContext(ctx context.Context) ElbSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElbSourcePtrOutput)
-}
-
-type ElbSourcePtrInput interface {
-	pulumi.Input
-
-	ToElbSourcePtrOutput() ElbSourcePtrOutput
-	ToElbSourcePtrOutputWithContext(ctx context.Context) ElbSourcePtrOutput
-}
-
-type elbSourcePtrType ElbSourceArgs
-
-func (*elbSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElbSource)(nil))
-}
-
-func (i *elbSourcePtrType) ToElbSourcePtrOutput() ElbSourcePtrOutput {
-	return i.ToElbSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *elbSourcePtrType) ToElbSourcePtrOutputWithContext(ctx context.Context) ElbSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElbSourcePtrOutput)
 }
 
 // ElbSourceArrayInput is an input type that accepts ElbSourceArray and ElbSourceArrayOutput values.
@@ -383,7 +354,7 @@ func (i ElbSourceMap) ToElbSourceMapOutputWithContext(ctx context.Context) ElbSo
 type ElbSourceOutput struct{ *pulumi.OutputState }
 
 func (ElbSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElbSource)(nil))
+	return reflect.TypeOf((**ElbSource)(nil)).Elem()
 }
 
 func (o ElbSourceOutput) ToElbSourceOutput() ElbSourceOutput {
@@ -394,44 +365,10 @@ func (o ElbSourceOutput) ToElbSourceOutputWithContext(ctx context.Context) ElbSo
 	return o
 }
 
-func (o ElbSourceOutput) ToElbSourcePtrOutput() ElbSourcePtrOutput {
-	return o.ToElbSourcePtrOutputWithContext(context.Background())
-}
-
-func (o ElbSourceOutput) ToElbSourcePtrOutputWithContext(ctx context.Context) ElbSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElbSource) *ElbSource {
-		return &v
-	}).(ElbSourcePtrOutput)
-}
-
-type ElbSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (ElbSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElbSource)(nil))
-}
-
-func (o ElbSourcePtrOutput) ToElbSourcePtrOutput() ElbSourcePtrOutput {
-	return o
-}
-
-func (o ElbSourcePtrOutput) ToElbSourcePtrOutputWithContext(ctx context.Context) ElbSourcePtrOutput {
-	return o
-}
-
-func (o ElbSourcePtrOutput) Elem() ElbSourceOutput {
-	return o.ApplyT(func(v *ElbSource) ElbSource {
-		if v != nil {
-			return *v
-		}
-		var ret ElbSource
-		return ret
-	}).(ElbSourceOutput)
-}
-
 type ElbSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (ElbSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElbSource)(nil))
+	return reflect.TypeOf((*[]*ElbSource)(nil)).Elem()
 }
 
 func (o ElbSourceArrayOutput) ToElbSourceArrayOutput() ElbSourceArrayOutput {
@@ -443,15 +380,15 @@ func (o ElbSourceArrayOutput) ToElbSourceArrayOutputWithContext(ctx context.Cont
 }
 
 func (o ElbSourceArrayOutput) Index(i pulumi.IntInput) ElbSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElbSource {
-		return vs[0].([]ElbSource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElbSource {
+		return vs[0].([]*ElbSource)[vs[1].(int)]
 	}).(ElbSourceOutput)
 }
 
 type ElbSourceMapOutput struct{ *pulumi.OutputState }
 
 func (ElbSourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ElbSource)(nil))
+	return reflect.TypeOf((*map[string]*ElbSource)(nil)).Elem()
 }
 
 func (o ElbSourceMapOutput) ToElbSourceMapOutput() ElbSourceMapOutput {
@@ -463,18 +400,16 @@ func (o ElbSourceMapOutput) ToElbSourceMapOutputWithContext(ctx context.Context)
 }
 
 func (o ElbSourceMapOutput) MapIndex(k pulumi.StringInput) ElbSourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ElbSource {
-		return vs[0].(map[string]ElbSource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ElbSource {
+		return vs[0].(map[string]*ElbSource)[vs[1].(string)]
 	}).(ElbSourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceInput)(nil)).Elem(), &ElbSource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePtrInput)(nil)).Elem(), &ElbSource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceArrayInput)(nil)).Elem(), ElbSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceMapInput)(nil)).Elem(), ElbSourceMap{})
 	pulumi.RegisterOutputType(ElbSourceOutput{})
-	pulumi.RegisterOutputType(ElbSourcePtrOutput{})
 	pulumi.RegisterOutputType(ElbSourceArrayOutput{})
 	pulumi.RegisterOutputType(ElbSourceMapOutput{})
 }

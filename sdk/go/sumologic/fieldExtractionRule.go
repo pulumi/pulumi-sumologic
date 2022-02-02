@@ -163,7 +163,7 @@ type FieldExtractionRuleInput interface {
 }
 
 func (*FieldExtractionRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*FieldExtractionRule)(nil))
+	return reflect.TypeOf((**FieldExtractionRule)(nil)).Elem()
 }
 
 func (i *FieldExtractionRule) ToFieldExtractionRuleOutput() FieldExtractionRuleOutput {
@@ -172,35 +172,6 @@ func (i *FieldExtractionRule) ToFieldExtractionRuleOutput() FieldExtractionRuleO
 
 func (i *FieldExtractionRule) ToFieldExtractionRuleOutputWithContext(ctx context.Context) FieldExtractionRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractionRuleOutput)
-}
-
-func (i *FieldExtractionRule) ToFieldExtractionRulePtrOutput() FieldExtractionRulePtrOutput {
-	return i.ToFieldExtractionRulePtrOutputWithContext(context.Background())
-}
-
-func (i *FieldExtractionRule) ToFieldExtractionRulePtrOutputWithContext(ctx context.Context) FieldExtractionRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractionRulePtrOutput)
-}
-
-type FieldExtractionRulePtrInput interface {
-	pulumi.Input
-
-	ToFieldExtractionRulePtrOutput() FieldExtractionRulePtrOutput
-	ToFieldExtractionRulePtrOutputWithContext(ctx context.Context) FieldExtractionRulePtrOutput
-}
-
-type fieldExtractionRulePtrType FieldExtractionRuleArgs
-
-func (*fieldExtractionRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FieldExtractionRule)(nil))
-}
-
-func (i *fieldExtractionRulePtrType) ToFieldExtractionRulePtrOutput() FieldExtractionRulePtrOutput {
-	return i.ToFieldExtractionRulePtrOutputWithContext(context.Background())
-}
-
-func (i *fieldExtractionRulePtrType) ToFieldExtractionRulePtrOutputWithContext(ctx context.Context) FieldExtractionRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractionRulePtrOutput)
 }
 
 // FieldExtractionRuleArrayInput is an input type that accepts FieldExtractionRuleArray and FieldExtractionRuleArrayOutput values.
@@ -256,7 +227,7 @@ func (i FieldExtractionRuleMap) ToFieldExtractionRuleMapOutputWithContext(ctx co
 type FieldExtractionRuleOutput struct{ *pulumi.OutputState }
 
 func (FieldExtractionRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FieldExtractionRule)(nil))
+	return reflect.TypeOf((**FieldExtractionRule)(nil)).Elem()
 }
 
 func (o FieldExtractionRuleOutput) ToFieldExtractionRuleOutput() FieldExtractionRuleOutput {
@@ -267,44 +238,10 @@ func (o FieldExtractionRuleOutput) ToFieldExtractionRuleOutputWithContext(ctx co
 	return o
 }
 
-func (o FieldExtractionRuleOutput) ToFieldExtractionRulePtrOutput() FieldExtractionRulePtrOutput {
-	return o.ToFieldExtractionRulePtrOutputWithContext(context.Background())
-}
-
-func (o FieldExtractionRuleOutput) ToFieldExtractionRulePtrOutputWithContext(ctx context.Context) FieldExtractionRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FieldExtractionRule) *FieldExtractionRule {
-		return &v
-	}).(FieldExtractionRulePtrOutput)
-}
-
-type FieldExtractionRulePtrOutput struct{ *pulumi.OutputState }
-
-func (FieldExtractionRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FieldExtractionRule)(nil))
-}
-
-func (o FieldExtractionRulePtrOutput) ToFieldExtractionRulePtrOutput() FieldExtractionRulePtrOutput {
-	return o
-}
-
-func (o FieldExtractionRulePtrOutput) ToFieldExtractionRulePtrOutputWithContext(ctx context.Context) FieldExtractionRulePtrOutput {
-	return o
-}
-
-func (o FieldExtractionRulePtrOutput) Elem() FieldExtractionRuleOutput {
-	return o.ApplyT(func(v *FieldExtractionRule) FieldExtractionRule {
-		if v != nil {
-			return *v
-		}
-		var ret FieldExtractionRule
-		return ret
-	}).(FieldExtractionRuleOutput)
-}
-
 type FieldExtractionRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (FieldExtractionRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FieldExtractionRule)(nil))
+	return reflect.TypeOf((*[]*FieldExtractionRule)(nil)).Elem()
 }
 
 func (o FieldExtractionRuleArrayOutput) ToFieldExtractionRuleArrayOutput() FieldExtractionRuleArrayOutput {
@@ -316,15 +253,15 @@ func (o FieldExtractionRuleArrayOutput) ToFieldExtractionRuleArrayOutputWithCont
 }
 
 func (o FieldExtractionRuleArrayOutput) Index(i pulumi.IntInput) FieldExtractionRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldExtractionRule {
-		return vs[0].([]FieldExtractionRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FieldExtractionRule {
+		return vs[0].([]*FieldExtractionRule)[vs[1].(int)]
 	}).(FieldExtractionRuleOutput)
 }
 
 type FieldExtractionRuleMapOutput struct{ *pulumi.OutputState }
 
 func (FieldExtractionRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FieldExtractionRule)(nil))
+	return reflect.TypeOf((*map[string]*FieldExtractionRule)(nil)).Elem()
 }
 
 func (o FieldExtractionRuleMapOutput) ToFieldExtractionRuleMapOutput() FieldExtractionRuleMapOutput {
@@ -336,18 +273,16 @@ func (o FieldExtractionRuleMapOutput) ToFieldExtractionRuleMapOutputWithContext(
 }
 
 func (o FieldExtractionRuleMapOutput) MapIndex(k pulumi.StringInput) FieldExtractionRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FieldExtractionRule {
-		return vs[0].(map[string]FieldExtractionRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FieldExtractionRule {
+		return vs[0].(map[string]*FieldExtractionRule)[vs[1].(string)]
 	}).(FieldExtractionRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractionRuleInput)(nil)).Elem(), &FieldExtractionRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractionRulePtrInput)(nil)).Elem(), &FieldExtractionRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractionRuleArrayInput)(nil)).Elem(), FieldExtractionRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldExtractionRuleMapInput)(nil)).Elem(), FieldExtractionRuleMap{})
 	pulumi.RegisterOutputType(FieldExtractionRuleOutput{})
-	pulumi.RegisterOutputType(FieldExtractionRulePtrOutput{})
 	pulumi.RegisterOutputType(FieldExtractionRuleArrayOutput{})
 	pulumi.RegisterOutputType(FieldExtractionRuleMapOutput{})
 }

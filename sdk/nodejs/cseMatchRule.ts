@@ -119,20 +119,20 @@ export class CseMatchRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseMatchRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseMatchRuleArgs | CseMatchRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseMatchRuleState | undefined;
-            inputs["descriptionExpression"] = state ? state.descriptionExpression : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["entitySelectors"] = state ? state.entitySelectors : undefined;
-            inputs["expression"] = state ? state.expression : undefined;
-            inputs["isPrototype"] = state ? state.isPrototype : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nameExpression"] = state ? state.nameExpression : undefined;
-            inputs["severityMapping"] = state ? state.severityMapping : undefined;
-            inputs["summaryExpression"] = state ? state.summaryExpression : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["descriptionExpression"] = state ? state.descriptionExpression : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["entitySelectors"] = state ? state.entitySelectors : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["isPrototype"] = state ? state.isPrototype : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nameExpression"] = state ? state.nameExpression : undefined;
+            resourceInputs["severityMapping"] = state ? state.severityMapping : undefined;
+            resourceInputs["summaryExpression"] = state ? state.summaryExpression : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CseMatchRuleArgs | undefined;
             if ((!args || args.descriptionExpression === undefined) && !opts.urn) {
@@ -153,21 +153,19 @@ export class CseMatchRule extends pulumi.CustomResource {
             if ((!args || args.severityMapping === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'severityMapping'");
             }
-            inputs["descriptionExpression"] = args ? args.descriptionExpression : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["entitySelectors"] = args ? args.entitySelectors : undefined;
-            inputs["expression"] = args ? args.expression : undefined;
-            inputs["isPrototype"] = args ? args.isPrototype : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nameExpression"] = args ? args.nameExpression : undefined;
-            inputs["severityMapping"] = args ? args.severityMapping : undefined;
-            inputs["summaryExpression"] = args ? args.summaryExpression : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["descriptionExpression"] = args ? args.descriptionExpression : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["entitySelectors"] = args ? args.entitySelectors : undefined;
+            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["isPrototype"] = args ? args.isPrototype : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nameExpression"] = args ? args.nameExpression : undefined;
+            resourceInputs["severityMapping"] = args ? args.severityMapping : undefined;
+            resourceInputs["summaryExpression"] = args ? args.summaryExpression : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseMatchRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseMatchRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

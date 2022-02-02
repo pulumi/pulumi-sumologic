@@ -24,9 +24,7 @@ export function getAdminRecommendedFolder(args?: GetAdminRecommendedFolderArgs, 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", {
         "description": args.description,
         "id": args.id,

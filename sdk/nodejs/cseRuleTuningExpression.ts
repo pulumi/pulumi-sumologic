@@ -97,17 +97,17 @@ export class CseRuleTuningExpression extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseRuleTuningExpressionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseRuleTuningExpressionArgs | CseRuleTuningExpressionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseRuleTuningExpressionState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["exclude"] = state ? state.exclude : undefined;
-            inputs["expression"] = state ? state.expression : undefined;
-            inputs["isGlobal"] = state ? state.isGlobal : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ruleIds"] = state ? state.ruleIds : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["exclude"] = state ? state.exclude : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["isGlobal"] = state ? state.isGlobal : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ruleIds"] = state ? state.ruleIds : undefined;
         } else {
             const args = argsOrState as CseRuleTuningExpressionArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -128,18 +128,16 @@ export class CseRuleTuningExpression extends pulumi.CustomResource {
             if ((!args || args.ruleIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleIds'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["exclude"] = args ? args.exclude : undefined;
-            inputs["expression"] = args ? args.expression : undefined;
-            inputs["isGlobal"] = args ? args.isGlobal : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ruleIds"] = args ? args.ruleIds : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["exclude"] = args ? args.exclude : undefined;
+            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["isGlobal"] = args ? args.isGlobal : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ruleIds"] = args ? args.ruleIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseRuleTuningExpression.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseRuleTuningExpression.__pulumiType, name, resourceInputs, opts);
     }
 }
 

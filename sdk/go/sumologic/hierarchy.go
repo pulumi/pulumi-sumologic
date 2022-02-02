@@ -154,7 +154,7 @@ type HierarchyInput interface {
 }
 
 func (*Hierarchy) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hierarchy)(nil))
+	return reflect.TypeOf((**Hierarchy)(nil)).Elem()
 }
 
 func (i *Hierarchy) ToHierarchyOutput() HierarchyOutput {
@@ -163,35 +163,6 @@ func (i *Hierarchy) ToHierarchyOutput() HierarchyOutput {
 
 func (i *Hierarchy) ToHierarchyOutputWithContext(ctx context.Context) HierarchyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HierarchyOutput)
-}
-
-func (i *Hierarchy) ToHierarchyPtrOutput() HierarchyPtrOutput {
-	return i.ToHierarchyPtrOutputWithContext(context.Background())
-}
-
-func (i *Hierarchy) ToHierarchyPtrOutputWithContext(ctx context.Context) HierarchyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HierarchyPtrOutput)
-}
-
-type HierarchyPtrInput interface {
-	pulumi.Input
-
-	ToHierarchyPtrOutput() HierarchyPtrOutput
-	ToHierarchyPtrOutputWithContext(ctx context.Context) HierarchyPtrOutput
-}
-
-type hierarchyPtrType HierarchyArgs
-
-func (*hierarchyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hierarchy)(nil))
-}
-
-func (i *hierarchyPtrType) ToHierarchyPtrOutput() HierarchyPtrOutput {
-	return i.ToHierarchyPtrOutputWithContext(context.Background())
-}
-
-func (i *hierarchyPtrType) ToHierarchyPtrOutputWithContext(ctx context.Context) HierarchyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HierarchyPtrOutput)
 }
 
 // HierarchyArrayInput is an input type that accepts HierarchyArray and HierarchyArrayOutput values.
@@ -247,7 +218,7 @@ func (i HierarchyMap) ToHierarchyMapOutputWithContext(ctx context.Context) Hiera
 type HierarchyOutput struct{ *pulumi.OutputState }
 
 func (HierarchyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hierarchy)(nil))
+	return reflect.TypeOf((**Hierarchy)(nil)).Elem()
 }
 
 func (o HierarchyOutput) ToHierarchyOutput() HierarchyOutput {
@@ -258,44 +229,10 @@ func (o HierarchyOutput) ToHierarchyOutputWithContext(ctx context.Context) Hiera
 	return o
 }
 
-func (o HierarchyOutput) ToHierarchyPtrOutput() HierarchyPtrOutput {
-	return o.ToHierarchyPtrOutputWithContext(context.Background())
-}
-
-func (o HierarchyOutput) ToHierarchyPtrOutputWithContext(ctx context.Context) HierarchyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hierarchy) *Hierarchy {
-		return &v
-	}).(HierarchyPtrOutput)
-}
-
-type HierarchyPtrOutput struct{ *pulumi.OutputState }
-
-func (HierarchyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Hierarchy)(nil))
-}
-
-func (o HierarchyPtrOutput) ToHierarchyPtrOutput() HierarchyPtrOutput {
-	return o
-}
-
-func (o HierarchyPtrOutput) ToHierarchyPtrOutputWithContext(ctx context.Context) HierarchyPtrOutput {
-	return o
-}
-
-func (o HierarchyPtrOutput) Elem() HierarchyOutput {
-	return o.ApplyT(func(v *Hierarchy) Hierarchy {
-		if v != nil {
-			return *v
-		}
-		var ret Hierarchy
-		return ret
-	}).(HierarchyOutput)
-}
-
 type HierarchyArrayOutput struct{ *pulumi.OutputState }
 
 func (HierarchyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Hierarchy)(nil))
+	return reflect.TypeOf((*[]*Hierarchy)(nil)).Elem()
 }
 
 func (o HierarchyArrayOutput) ToHierarchyArrayOutput() HierarchyArrayOutput {
@@ -307,15 +244,15 @@ func (o HierarchyArrayOutput) ToHierarchyArrayOutputWithContext(ctx context.Cont
 }
 
 func (o HierarchyArrayOutput) Index(i pulumi.IntInput) HierarchyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hierarchy {
-		return vs[0].([]Hierarchy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hierarchy {
+		return vs[0].([]*Hierarchy)[vs[1].(int)]
 	}).(HierarchyOutput)
 }
 
 type HierarchyMapOutput struct{ *pulumi.OutputState }
 
 func (HierarchyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Hierarchy)(nil))
+	return reflect.TypeOf((*map[string]*Hierarchy)(nil)).Elem()
 }
 
 func (o HierarchyMapOutput) ToHierarchyMapOutput() HierarchyMapOutput {
@@ -327,18 +264,16 @@ func (o HierarchyMapOutput) ToHierarchyMapOutputWithContext(ctx context.Context)
 }
 
 func (o HierarchyMapOutput) MapIndex(k pulumi.StringInput) HierarchyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hierarchy {
-		return vs[0].(map[string]Hierarchy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Hierarchy {
+		return vs[0].(map[string]*Hierarchy)[vs[1].(string)]
 	}).(HierarchyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyInput)(nil)).Elem(), &Hierarchy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyPtrInput)(nil)).Elem(), &Hierarchy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyArrayInput)(nil)).Elem(), HierarchyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HierarchyMapInput)(nil)).Elem(), HierarchyMap{})
 	pulumi.RegisterOutputType(HierarchyOutput{})
-	pulumi.RegisterOutputType(HierarchyPtrOutput{})
 	pulumi.RegisterOutputType(HierarchyArrayOutput{})
 	pulumi.RegisterOutputType(HierarchyMapOutput{})
 }

@@ -101,17 +101,17 @@ export class IngestBudget extends pulumi.CustomResource {
      */
     constructor(name: string, args: IngestBudgetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IngestBudgetArgs | IngestBudgetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IngestBudgetState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["capacityBytes"] = state ? state.capacityBytes : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fieldValue"] = state ? state.fieldValue : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resetTime"] = state ? state.resetTime : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["capacityBytes"] = state ? state.capacityBytes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fieldValue"] = state ? state.fieldValue : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resetTime"] = state ? state.resetTime : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as IngestBudgetArgs | undefined;
             if ((!args || args.capacityBytes === undefined) && !opts.urn) {
@@ -120,18 +120,16 @@ export class IngestBudget extends pulumi.CustomResource {
             if ((!args || args.fieldValue === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fieldValue'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["capacityBytes"] = args ? args.capacityBytes : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fieldValue"] = args ? args.fieldValue : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["resetTime"] = args ? args.resetTime : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["capacityBytes"] = args ? args.capacityBytes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fieldValue"] = args ? args.fieldValue : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resetTime"] = args ? args.resetTime : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IngestBudget.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IngestBudget.__pulumiType, name, resourceInputs, opts);
     }
 }
 

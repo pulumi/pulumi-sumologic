@@ -101,37 +101,35 @@ export class Partition extends pulumi.CustomResource {
      */
     constructor(name: string, args?: PartitionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PartitionArgs | PartitionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PartitionState | undefined;
-            inputs["analyticsTier"] = state ? state.analyticsTier : undefined;
-            inputs["dataForwardingId"] = state ? state.dataForwardingId : undefined;
-            inputs["indexType"] = state ? state.indexType : undefined;
-            inputs["isActive"] = state ? state.isActive : undefined;
-            inputs["isCompliant"] = state ? state.isCompliant : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["reduceRetentionPeriodImmediately"] = state ? state.reduceRetentionPeriodImmediately : undefined;
-            inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            inputs["routingExpression"] = state ? state.routingExpression : undefined;
-            inputs["totalBytes"] = state ? state.totalBytes : undefined;
+            resourceInputs["analyticsTier"] = state ? state.analyticsTier : undefined;
+            resourceInputs["dataForwardingId"] = state ? state.dataForwardingId : undefined;
+            resourceInputs["indexType"] = state ? state.indexType : undefined;
+            resourceInputs["isActive"] = state ? state.isActive : undefined;
+            resourceInputs["isCompliant"] = state ? state.isCompliant : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["reduceRetentionPeriodImmediately"] = state ? state.reduceRetentionPeriodImmediately : undefined;
+            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["routingExpression"] = state ? state.routingExpression : undefined;
+            resourceInputs["totalBytes"] = state ? state.totalBytes : undefined;
         } else {
             const args = argsOrState as PartitionArgs | undefined;
-            inputs["analyticsTier"] = args ? args.analyticsTier : undefined;
-            inputs["isCompliant"] = args ? args.isCompliant : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["reduceRetentionPeriodImmediately"] = args ? args.reduceRetentionPeriodImmediately : undefined;
-            inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
-            inputs["routingExpression"] = args ? args.routingExpression : undefined;
-            inputs["dataForwardingId"] = undefined /*out*/;
-            inputs["indexType"] = undefined /*out*/;
-            inputs["isActive"] = undefined /*out*/;
-            inputs["totalBytes"] = undefined /*out*/;
+            resourceInputs["analyticsTier"] = args ? args.analyticsTier : undefined;
+            resourceInputs["isCompliant"] = args ? args.isCompliant : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["reduceRetentionPeriodImmediately"] = args ? args.reduceRetentionPeriodImmediately : undefined;
+            resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
+            resourceInputs["routingExpression"] = args ? args.routingExpression : undefined;
+            resourceInputs["dataForwardingId"] = undefined /*out*/;
+            resourceInputs["indexType"] = undefined /*out*/;
+            resourceInputs["isActive"] = undefined /*out*/;
+            resourceInputs["totalBytes"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Partition.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Partition.__pulumiType, name, resourceInputs, opts);
     }
 }
 

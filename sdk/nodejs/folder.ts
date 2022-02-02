@@ -69,13 +69,13 @@ export class Folder extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -84,14 +84,12 @@ export class Folder extends pulumi.CustomResource {
             if ((!args || args.parentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parentId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Folder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Folder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

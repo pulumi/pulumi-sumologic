@@ -166,30 +166,30 @@ export class SamlConfiguration extends pulumi.CustomResource {
      */
     constructor(name: string, args: SamlConfigurationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SamlConfigurationArgs | SamlConfigurationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SamlConfigurationState | undefined;
-            inputs["assertionConsumerUrl"] = state ? state.assertionConsumerUrl : undefined;
-            inputs["authnRequestUrl"] = state ? state.authnRequestUrl : undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["configurationName"] = state ? state.configurationName : undefined;
-            inputs["debugMode"] = state ? state.debugMode : undefined;
-            inputs["disableRequestedAuthnContext"] = state ? state.disableRequestedAuthnContext : undefined;
-            inputs["emailAttribute"] = state ? state.emailAttribute : undefined;
-            inputs["entityId"] = state ? state.entityId : undefined;
-            inputs["isRedirectBinding"] = state ? state.isRedirectBinding : undefined;
-            inputs["issuer"] = state ? state.issuer : undefined;
-            inputs["logoutEnabled"] = state ? state.logoutEnabled : undefined;
-            inputs["logoutUrl"] = state ? state.logoutUrl : undefined;
-            inputs["onDemandProvisioningEnabled"] = state ? state.onDemandProvisioningEnabled : undefined;
-            inputs["rolesAttribute"] = state ? state.rolesAttribute : undefined;
-            inputs["signAuthnRequest"] = state ? state.signAuthnRequest : undefined;
-            inputs["spInitiatedLoginEnabled"] = state ? state.spInitiatedLoginEnabled : undefined;
-            inputs["spInitiatedLoginPath"] = state ? state.spInitiatedLoginPath : undefined;
-            inputs["x509cert1"] = state ? state.x509cert1 : undefined;
-            inputs["x509cert2"] = state ? state.x509cert2 : undefined;
-            inputs["x509cert3"] = state ? state.x509cert3 : undefined;
+            resourceInputs["assertionConsumerUrl"] = state ? state.assertionConsumerUrl : undefined;
+            resourceInputs["authnRequestUrl"] = state ? state.authnRequestUrl : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["configurationName"] = state ? state.configurationName : undefined;
+            resourceInputs["debugMode"] = state ? state.debugMode : undefined;
+            resourceInputs["disableRequestedAuthnContext"] = state ? state.disableRequestedAuthnContext : undefined;
+            resourceInputs["emailAttribute"] = state ? state.emailAttribute : undefined;
+            resourceInputs["entityId"] = state ? state.entityId : undefined;
+            resourceInputs["isRedirectBinding"] = state ? state.isRedirectBinding : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["logoutEnabled"] = state ? state.logoutEnabled : undefined;
+            resourceInputs["logoutUrl"] = state ? state.logoutUrl : undefined;
+            resourceInputs["onDemandProvisioningEnabled"] = state ? state.onDemandProvisioningEnabled : undefined;
+            resourceInputs["rolesAttribute"] = state ? state.rolesAttribute : undefined;
+            resourceInputs["signAuthnRequest"] = state ? state.signAuthnRequest : undefined;
+            resourceInputs["spInitiatedLoginEnabled"] = state ? state.spInitiatedLoginEnabled : undefined;
+            resourceInputs["spInitiatedLoginPath"] = state ? state.spInitiatedLoginPath : undefined;
+            resourceInputs["x509cert1"] = state ? state.x509cert1 : undefined;
+            resourceInputs["x509cert2"] = state ? state.x509cert2 : undefined;
+            resourceInputs["x509cert3"] = state ? state.x509cert3 : undefined;
         } else {
             const args = argsOrState as SamlConfigurationArgs | undefined;
             if ((!args || args.configurationName === undefined) && !opts.urn) {
@@ -201,31 +201,29 @@ export class SamlConfiguration extends pulumi.CustomResource {
             if ((!args || args.x509cert1 === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'x509cert1'");
             }
-            inputs["authnRequestUrl"] = args ? args.authnRequestUrl : undefined;
-            inputs["configurationName"] = args ? args.configurationName : undefined;
-            inputs["debugMode"] = args ? args.debugMode : undefined;
-            inputs["disableRequestedAuthnContext"] = args ? args.disableRequestedAuthnContext : undefined;
-            inputs["emailAttribute"] = args ? args.emailAttribute : undefined;
-            inputs["isRedirectBinding"] = args ? args.isRedirectBinding : undefined;
-            inputs["issuer"] = args ? args.issuer : undefined;
-            inputs["logoutEnabled"] = args ? args.logoutEnabled : undefined;
-            inputs["logoutUrl"] = args ? args.logoutUrl : undefined;
-            inputs["onDemandProvisioningEnabled"] = args ? args.onDemandProvisioningEnabled : undefined;
-            inputs["rolesAttribute"] = args ? args.rolesAttribute : undefined;
-            inputs["signAuthnRequest"] = args ? args.signAuthnRequest : undefined;
-            inputs["spInitiatedLoginEnabled"] = args ? args.spInitiatedLoginEnabled : undefined;
-            inputs["spInitiatedLoginPath"] = args ? args.spInitiatedLoginPath : undefined;
-            inputs["x509cert1"] = args ? args.x509cert1 : undefined;
-            inputs["x509cert2"] = args ? args.x509cert2 : undefined;
-            inputs["x509cert3"] = args ? args.x509cert3 : undefined;
-            inputs["assertionConsumerUrl"] = undefined /*out*/;
-            inputs["certificate"] = undefined /*out*/;
-            inputs["entityId"] = undefined /*out*/;
+            resourceInputs["authnRequestUrl"] = args ? args.authnRequestUrl : undefined;
+            resourceInputs["configurationName"] = args ? args.configurationName : undefined;
+            resourceInputs["debugMode"] = args ? args.debugMode : undefined;
+            resourceInputs["disableRequestedAuthnContext"] = args ? args.disableRequestedAuthnContext : undefined;
+            resourceInputs["emailAttribute"] = args ? args.emailAttribute : undefined;
+            resourceInputs["isRedirectBinding"] = args ? args.isRedirectBinding : undefined;
+            resourceInputs["issuer"] = args ? args.issuer : undefined;
+            resourceInputs["logoutEnabled"] = args ? args.logoutEnabled : undefined;
+            resourceInputs["logoutUrl"] = args ? args.logoutUrl : undefined;
+            resourceInputs["onDemandProvisioningEnabled"] = args ? args.onDemandProvisioningEnabled : undefined;
+            resourceInputs["rolesAttribute"] = args ? args.rolesAttribute : undefined;
+            resourceInputs["signAuthnRequest"] = args ? args.signAuthnRequest : undefined;
+            resourceInputs["spInitiatedLoginEnabled"] = args ? args.spInitiatedLoginEnabled : undefined;
+            resourceInputs["spInitiatedLoginPath"] = args ? args.spInitiatedLoginPath : undefined;
+            resourceInputs["x509cert1"] = args ? args.x509cert1 : undefined;
+            resourceInputs["x509cert2"] = args ? args.x509cert2 : undefined;
+            resourceInputs["x509cert3"] = args ? args.x509cert3 : undefined;
+            resourceInputs["assertionConsumerUrl"] = undefined /*out*/;
+            resourceInputs["certificate"] = undefined /*out*/;
+            resourceInputs["entityId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SamlConfiguration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SamlConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

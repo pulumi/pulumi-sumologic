@@ -108,16 +108,16 @@ export class Policies extends pulumi.CustomResource {
      */
     constructor(name: string, args: PoliciesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PoliciesArgs | PoliciesState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PoliciesState | undefined;
-            inputs["audit"] = state ? state.audit : undefined;
-            inputs["dataAccessLevel"] = state ? state.dataAccessLevel : undefined;
-            inputs["maxUserSessionTimeout"] = state ? state.maxUserSessionTimeout : undefined;
-            inputs["searchAudit"] = state ? state.searchAudit : undefined;
-            inputs["shareDashboardsOutsideOrganization"] = state ? state.shareDashboardsOutsideOrganization : undefined;
-            inputs["userConcurrentSessionsLimit"] = state ? state.userConcurrentSessionsLimit : undefined;
+            resourceInputs["audit"] = state ? state.audit : undefined;
+            resourceInputs["dataAccessLevel"] = state ? state.dataAccessLevel : undefined;
+            resourceInputs["maxUserSessionTimeout"] = state ? state.maxUserSessionTimeout : undefined;
+            resourceInputs["searchAudit"] = state ? state.searchAudit : undefined;
+            resourceInputs["shareDashboardsOutsideOrganization"] = state ? state.shareDashboardsOutsideOrganization : undefined;
+            resourceInputs["userConcurrentSessionsLimit"] = state ? state.userConcurrentSessionsLimit : undefined;
         } else {
             const args = argsOrState as PoliciesArgs | undefined;
             if ((!args || args.audit === undefined) && !opts.urn) {
@@ -138,17 +138,15 @@ export class Policies extends pulumi.CustomResource {
             if ((!args || args.userConcurrentSessionsLimit === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userConcurrentSessionsLimit'");
             }
-            inputs["audit"] = args ? args.audit : undefined;
-            inputs["dataAccessLevel"] = args ? args.dataAccessLevel : undefined;
-            inputs["maxUserSessionTimeout"] = args ? args.maxUserSessionTimeout : undefined;
-            inputs["searchAudit"] = args ? args.searchAudit : undefined;
-            inputs["shareDashboardsOutsideOrganization"] = args ? args.shareDashboardsOutsideOrganization : undefined;
-            inputs["userConcurrentSessionsLimit"] = args ? args.userConcurrentSessionsLimit : undefined;
+            resourceInputs["audit"] = args ? args.audit : undefined;
+            resourceInputs["dataAccessLevel"] = args ? args.dataAccessLevel : undefined;
+            resourceInputs["maxUserSessionTimeout"] = args ? args.maxUserSessionTimeout : undefined;
+            resourceInputs["searchAudit"] = args ? args.searchAudit : undefined;
+            resourceInputs["shareDashboardsOutsideOrganization"] = args ? args.shareDashboardsOutsideOrganization : undefined;
+            resourceInputs["userConcurrentSessionsLimit"] = args ? args.userConcurrentSessionsLimit : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Policies.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Policies.__pulumiType, name, resourceInputs, opts);
     }
 }
 

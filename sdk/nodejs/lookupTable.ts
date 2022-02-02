@@ -111,34 +111,32 @@ export class LookupTable extends pulumi.CustomResource {
      */
     constructor(name: string, args: LookupTableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LookupTableArgs | LookupTableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LookupTableState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentFolderId"] = state ? state.parentFolderId : undefined;
-            inputs["primaryKeys"] = state ? state.primaryKeys : undefined;
-            inputs["sizeLimitAction"] = state ? state.sizeLimitAction : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentFolderId"] = state ? state.parentFolderId : undefined;
+            resourceInputs["primaryKeys"] = state ? state.primaryKeys : undefined;
+            resourceInputs["sizeLimitAction"] = state ? state.sizeLimitAction : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as LookupTableArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parentFolderId"] = args ? args.parentFolderId : undefined;
-            inputs["primaryKeys"] = args ? args.primaryKeys : undefined;
-            inputs["sizeLimitAction"] = args ? args.sizeLimitAction : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentFolderId"] = args ? args.parentFolderId : undefined;
+            resourceInputs["primaryKeys"] = args ? args.primaryKeys : undefined;
+            resourceInputs["sizeLimitAction"] = args ? args.sizeLimitAction : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LookupTable.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LookupTable.__pulumiType, name, resourceInputs, opts);
     }
 }
 

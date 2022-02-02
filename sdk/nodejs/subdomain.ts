@@ -67,22 +67,20 @@ export class Subdomain extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubdomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubdomainArgs | SubdomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubdomainState | undefined;
-            inputs["subdomain"] = state ? state.subdomain : undefined;
+            resourceInputs["subdomain"] = state ? state.subdomain : undefined;
         } else {
             const args = argsOrState as SubdomainArgs | undefined;
             if ((!args || args.subdomain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subdomain'");
             }
-            inputs["subdomain"] = args ? args.subdomain : undefined;
+            resourceInputs["subdomain"] = args ? args.subdomain : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Subdomain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Subdomain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

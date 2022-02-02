@@ -55,6 +55,7 @@ setup(name='pulumi_sumologic',
       package_data={
           'pulumi_sumologic': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

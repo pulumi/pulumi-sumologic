@@ -101,13 +101,13 @@ export class CloudToCloudSource extends pulumi.CustomResource {
      */
     constructor(name: string, args: CloudToCloudSourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CloudToCloudSourceArgs | CloudToCloudSourceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudToCloudSourceState | undefined;
-            inputs["collectorId"] = state ? state.collectorId : undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["schemaRef"] = state ? state.schemaRef : undefined;
+            resourceInputs["collectorId"] = state ? state.collectorId : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["schemaRef"] = state ? state.schemaRef : undefined;
         } else {
             const args = argsOrState as CloudToCloudSourceArgs | undefined;
             if ((!args || args.collectorId === undefined) && !opts.urn) {
@@ -119,14 +119,12 @@ export class CloudToCloudSource extends pulumi.CustomResource {
             if ((!args || args.schemaRef === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schemaRef'");
             }
-            inputs["collectorId"] = args ? args.collectorId : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["schemaRef"] = args ? args.schemaRef : undefined;
+            resourceInputs["collectorId"] = args ? args.collectorId : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["schemaRef"] = args ? args.schemaRef : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CloudToCloudSource.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CloudToCloudSource.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -290,7 +290,7 @@ type CloudfrontSourceInput interface {
 }
 
 func (*CloudfrontSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudfrontSource)(nil))
+	return reflect.TypeOf((**CloudfrontSource)(nil)).Elem()
 }
 
 func (i *CloudfrontSource) ToCloudfrontSourceOutput() CloudfrontSourceOutput {
@@ -299,35 +299,6 @@ func (i *CloudfrontSource) ToCloudfrontSourceOutput() CloudfrontSourceOutput {
 
 func (i *CloudfrontSource) ToCloudfrontSourceOutputWithContext(ctx context.Context) CloudfrontSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourceOutput)
-}
-
-func (i *CloudfrontSource) ToCloudfrontSourcePtrOutput() CloudfrontSourcePtrOutput {
-	return i.ToCloudfrontSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *CloudfrontSource) ToCloudfrontSourcePtrOutputWithContext(ctx context.Context) CloudfrontSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourcePtrOutput)
-}
-
-type CloudfrontSourcePtrInput interface {
-	pulumi.Input
-
-	ToCloudfrontSourcePtrOutput() CloudfrontSourcePtrOutput
-	ToCloudfrontSourcePtrOutputWithContext(ctx context.Context) CloudfrontSourcePtrOutput
-}
-
-type cloudfrontSourcePtrType CloudfrontSourceArgs
-
-func (*cloudfrontSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudfrontSource)(nil))
-}
-
-func (i *cloudfrontSourcePtrType) ToCloudfrontSourcePtrOutput() CloudfrontSourcePtrOutput {
-	return i.ToCloudfrontSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudfrontSourcePtrType) ToCloudfrontSourcePtrOutputWithContext(ctx context.Context) CloudfrontSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourcePtrOutput)
 }
 
 // CloudfrontSourceArrayInput is an input type that accepts CloudfrontSourceArray and CloudfrontSourceArrayOutput values.
@@ -383,7 +354,7 @@ func (i CloudfrontSourceMap) ToCloudfrontSourceMapOutputWithContext(ctx context.
 type CloudfrontSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudfrontSource)(nil))
+	return reflect.TypeOf((**CloudfrontSource)(nil)).Elem()
 }
 
 func (o CloudfrontSourceOutput) ToCloudfrontSourceOutput() CloudfrontSourceOutput {
@@ -394,44 +365,10 @@ func (o CloudfrontSourceOutput) ToCloudfrontSourceOutputWithContext(ctx context.
 	return o
 }
 
-func (o CloudfrontSourceOutput) ToCloudfrontSourcePtrOutput() CloudfrontSourcePtrOutput {
-	return o.ToCloudfrontSourcePtrOutputWithContext(context.Background())
-}
-
-func (o CloudfrontSourceOutput) ToCloudfrontSourcePtrOutputWithContext(ctx context.Context) CloudfrontSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudfrontSource) *CloudfrontSource {
-		return &v
-	}).(CloudfrontSourcePtrOutput)
-}
-
-type CloudfrontSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudfrontSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudfrontSource)(nil))
-}
-
-func (o CloudfrontSourcePtrOutput) ToCloudfrontSourcePtrOutput() CloudfrontSourcePtrOutput {
-	return o
-}
-
-func (o CloudfrontSourcePtrOutput) ToCloudfrontSourcePtrOutputWithContext(ctx context.Context) CloudfrontSourcePtrOutput {
-	return o
-}
-
-func (o CloudfrontSourcePtrOutput) Elem() CloudfrontSourceOutput {
-	return o.ApplyT(func(v *CloudfrontSource) CloudfrontSource {
-		if v != nil {
-			return *v
-		}
-		var ret CloudfrontSource
-		return ret
-	}).(CloudfrontSourceOutput)
-}
-
 type CloudfrontSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudfrontSource)(nil))
+	return reflect.TypeOf((*[]*CloudfrontSource)(nil)).Elem()
 }
 
 func (o CloudfrontSourceArrayOutput) ToCloudfrontSourceArrayOutput() CloudfrontSourceArrayOutput {
@@ -443,15 +380,15 @@ func (o CloudfrontSourceArrayOutput) ToCloudfrontSourceArrayOutputWithContext(ct
 }
 
 func (o CloudfrontSourceArrayOutput) Index(i pulumi.IntInput) CloudfrontSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudfrontSource {
-		return vs[0].([]CloudfrontSource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudfrontSource {
+		return vs[0].([]*CloudfrontSource)[vs[1].(int)]
 	}).(CloudfrontSourceOutput)
 }
 
 type CloudfrontSourceMapOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CloudfrontSource)(nil))
+	return reflect.TypeOf((*map[string]*CloudfrontSource)(nil)).Elem()
 }
 
 func (o CloudfrontSourceMapOutput) ToCloudfrontSourceMapOutput() CloudfrontSourceMapOutput {
@@ -463,18 +400,16 @@ func (o CloudfrontSourceMapOutput) ToCloudfrontSourceMapOutputWithContext(ctx co
 }
 
 func (o CloudfrontSourceMapOutput) MapIndex(k pulumi.StringInput) CloudfrontSourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CloudfrontSource {
-		return vs[0].(map[string]CloudfrontSource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CloudfrontSource {
+		return vs[0].(map[string]*CloudfrontSource)[vs[1].(string)]
 	}).(CloudfrontSourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceInput)(nil)).Elem(), &CloudfrontSource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePtrInput)(nil)).Elem(), &CloudfrontSource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceArrayInput)(nil)).Elem(), CloudfrontSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceMapInput)(nil)).Elem(), CloudfrontSourceMap{})
 	pulumi.RegisterOutputType(CloudfrontSourceOutput{})
-	pulumi.RegisterOutputType(CloudfrontSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourceArrayOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourceMapOutput{})
 }

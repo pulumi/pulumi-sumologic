@@ -337,7 +337,7 @@ type CloudwatchSourceInput interface {
 }
 
 func (*CloudwatchSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudwatchSource)(nil))
+	return reflect.TypeOf((**CloudwatchSource)(nil)).Elem()
 }
 
 func (i *CloudwatchSource) ToCloudwatchSourceOutput() CloudwatchSourceOutput {
@@ -346,35 +346,6 @@ func (i *CloudwatchSource) ToCloudwatchSourceOutput() CloudwatchSourceOutput {
 
 func (i *CloudwatchSource) ToCloudwatchSourceOutputWithContext(ctx context.Context) CloudwatchSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourceOutput)
-}
-
-func (i *CloudwatchSource) ToCloudwatchSourcePtrOutput() CloudwatchSourcePtrOutput {
-	return i.ToCloudwatchSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *CloudwatchSource) ToCloudwatchSourcePtrOutputWithContext(ctx context.Context) CloudwatchSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourcePtrOutput)
-}
-
-type CloudwatchSourcePtrInput interface {
-	pulumi.Input
-
-	ToCloudwatchSourcePtrOutput() CloudwatchSourcePtrOutput
-	ToCloudwatchSourcePtrOutputWithContext(ctx context.Context) CloudwatchSourcePtrOutput
-}
-
-type cloudwatchSourcePtrType CloudwatchSourceArgs
-
-func (*cloudwatchSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudwatchSource)(nil))
-}
-
-func (i *cloudwatchSourcePtrType) ToCloudwatchSourcePtrOutput() CloudwatchSourcePtrOutput {
-	return i.ToCloudwatchSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudwatchSourcePtrType) ToCloudwatchSourcePtrOutputWithContext(ctx context.Context) CloudwatchSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourcePtrOutput)
 }
 
 // CloudwatchSourceArrayInput is an input type that accepts CloudwatchSourceArray and CloudwatchSourceArrayOutput values.
@@ -430,7 +401,7 @@ func (i CloudwatchSourceMap) ToCloudwatchSourceMapOutputWithContext(ctx context.
 type CloudwatchSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudwatchSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudwatchSource)(nil))
+	return reflect.TypeOf((**CloudwatchSource)(nil)).Elem()
 }
 
 func (o CloudwatchSourceOutput) ToCloudwatchSourceOutput() CloudwatchSourceOutput {
@@ -441,44 +412,10 @@ func (o CloudwatchSourceOutput) ToCloudwatchSourceOutputWithContext(ctx context.
 	return o
 }
 
-func (o CloudwatchSourceOutput) ToCloudwatchSourcePtrOutput() CloudwatchSourcePtrOutput {
-	return o.ToCloudwatchSourcePtrOutputWithContext(context.Background())
-}
-
-func (o CloudwatchSourceOutput) ToCloudwatchSourcePtrOutputWithContext(ctx context.Context) CloudwatchSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudwatchSource) *CloudwatchSource {
-		return &v
-	}).(CloudwatchSourcePtrOutput)
-}
-
-type CloudwatchSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudwatchSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudwatchSource)(nil))
-}
-
-func (o CloudwatchSourcePtrOutput) ToCloudwatchSourcePtrOutput() CloudwatchSourcePtrOutput {
-	return o
-}
-
-func (o CloudwatchSourcePtrOutput) ToCloudwatchSourcePtrOutputWithContext(ctx context.Context) CloudwatchSourcePtrOutput {
-	return o
-}
-
-func (o CloudwatchSourcePtrOutput) Elem() CloudwatchSourceOutput {
-	return o.ApplyT(func(v *CloudwatchSource) CloudwatchSource {
-		if v != nil {
-			return *v
-		}
-		var ret CloudwatchSource
-		return ret
-	}).(CloudwatchSourceOutput)
-}
-
 type CloudwatchSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (CloudwatchSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudwatchSource)(nil))
+	return reflect.TypeOf((*[]*CloudwatchSource)(nil)).Elem()
 }
 
 func (o CloudwatchSourceArrayOutput) ToCloudwatchSourceArrayOutput() CloudwatchSourceArrayOutput {
@@ -490,15 +427,15 @@ func (o CloudwatchSourceArrayOutput) ToCloudwatchSourceArrayOutputWithContext(ct
 }
 
 func (o CloudwatchSourceArrayOutput) Index(i pulumi.IntInput) CloudwatchSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudwatchSource {
-		return vs[0].([]CloudwatchSource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudwatchSource {
+		return vs[0].([]*CloudwatchSource)[vs[1].(int)]
 	}).(CloudwatchSourceOutput)
 }
 
 type CloudwatchSourceMapOutput struct{ *pulumi.OutputState }
 
 func (CloudwatchSourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CloudwatchSource)(nil))
+	return reflect.TypeOf((*map[string]*CloudwatchSource)(nil)).Elem()
 }
 
 func (o CloudwatchSourceMapOutput) ToCloudwatchSourceMapOutput() CloudwatchSourceMapOutput {
@@ -510,18 +447,16 @@ func (o CloudwatchSourceMapOutput) ToCloudwatchSourceMapOutputWithContext(ctx co
 }
 
 func (o CloudwatchSourceMapOutput) MapIndex(k pulumi.StringInput) CloudwatchSourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CloudwatchSource {
-		return vs[0].(map[string]CloudwatchSource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CloudwatchSource {
+		return vs[0].(map[string]*CloudwatchSource)[vs[1].(string)]
 	}).(CloudwatchSourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceInput)(nil)).Elem(), &CloudwatchSource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePtrInput)(nil)).Elem(), &CloudwatchSource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceArrayInput)(nil)).Elem(), CloudwatchSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceMapInput)(nil)).Elem(), CloudwatchSourceMap{})
 	pulumi.RegisterOutputType(CloudwatchSourceOutput{})
-	pulumi.RegisterOutputType(CloudwatchSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourceArrayOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourceMapOutput{})
 }

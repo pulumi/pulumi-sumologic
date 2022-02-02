@@ -241,7 +241,7 @@ type CseMatchRuleInput interface {
 }
 
 func (*CseMatchRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseMatchRule)(nil))
+	return reflect.TypeOf((**CseMatchRule)(nil)).Elem()
 }
 
 func (i *CseMatchRule) ToCseMatchRuleOutput() CseMatchRuleOutput {
@@ -250,35 +250,6 @@ func (i *CseMatchRule) ToCseMatchRuleOutput() CseMatchRuleOutput {
 
 func (i *CseMatchRule) ToCseMatchRuleOutputWithContext(ctx context.Context) CseMatchRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseMatchRuleOutput)
-}
-
-func (i *CseMatchRule) ToCseMatchRulePtrOutput() CseMatchRulePtrOutput {
-	return i.ToCseMatchRulePtrOutputWithContext(context.Background())
-}
-
-func (i *CseMatchRule) ToCseMatchRulePtrOutputWithContext(ctx context.Context) CseMatchRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseMatchRulePtrOutput)
-}
-
-type CseMatchRulePtrInput interface {
-	pulumi.Input
-
-	ToCseMatchRulePtrOutput() CseMatchRulePtrOutput
-	ToCseMatchRulePtrOutputWithContext(ctx context.Context) CseMatchRulePtrOutput
-}
-
-type cseMatchRulePtrType CseMatchRuleArgs
-
-func (*cseMatchRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseMatchRule)(nil))
-}
-
-func (i *cseMatchRulePtrType) ToCseMatchRulePtrOutput() CseMatchRulePtrOutput {
-	return i.ToCseMatchRulePtrOutputWithContext(context.Background())
-}
-
-func (i *cseMatchRulePtrType) ToCseMatchRulePtrOutputWithContext(ctx context.Context) CseMatchRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseMatchRulePtrOutput)
 }
 
 // CseMatchRuleArrayInput is an input type that accepts CseMatchRuleArray and CseMatchRuleArrayOutput values.
@@ -334,7 +305,7 @@ func (i CseMatchRuleMap) ToCseMatchRuleMapOutputWithContext(ctx context.Context)
 type CseMatchRuleOutput struct{ *pulumi.OutputState }
 
 func (CseMatchRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseMatchRule)(nil))
+	return reflect.TypeOf((**CseMatchRule)(nil)).Elem()
 }
 
 func (o CseMatchRuleOutput) ToCseMatchRuleOutput() CseMatchRuleOutput {
@@ -345,44 +316,10 @@ func (o CseMatchRuleOutput) ToCseMatchRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o CseMatchRuleOutput) ToCseMatchRulePtrOutput() CseMatchRulePtrOutput {
-	return o.ToCseMatchRulePtrOutputWithContext(context.Background())
-}
-
-func (o CseMatchRuleOutput) ToCseMatchRulePtrOutputWithContext(ctx context.Context) CseMatchRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseMatchRule) *CseMatchRule {
-		return &v
-	}).(CseMatchRulePtrOutput)
-}
-
-type CseMatchRulePtrOutput struct{ *pulumi.OutputState }
-
-func (CseMatchRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseMatchRule)(nil))
-}
-
-func (o CseMatchRulePtrOutput) ToCseMatchRulePtrOutput() CseMatchRulePtrOutput {
-	return o
-}
-
-func (o CseMatchRulePtrOutput) ToCseMatchRulePtrOutputWithContext(ctx context.Context) CseMatchRulePtrOutput {
-	return o
-}
-
-func (o CseMatchRulePtrOutput) Elem() CseMatchRuleOutput {
-	return o.ApplyT(func(v *CseMatchRule) CseMatchRule {
-		if v != nil {
-			return *v
-		}
-		var ret CseMatchRule
-		return ret
-	}).(CseMatchRuleOutput)
-}
-
 type CseMatchRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (CseMatchRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseMatchRule)(nil))
+	return reflect.TypeOf((*[]*CseMatchRule)(nil)).Elem()
 }
 
 func (o CseMatchRuleArrayOutput) ToCseMatchRuleArrayOutput() CseMatchRuleArrayOutput {
@@ -394,15 +331,15 @@ func (o CseMatchRuleArrayOutput) ToCseMatchRuleArrayOutputWithContext(ctx contex
 }
 
 func (o CseMatchRuleArrayOutput) Index(i pulumi.IntInput) CseMatchRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseMatchRule {
-		return vs[0].([]CseMatchRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseMatchRule {
+		return vs[0].([]*CseMatchRule)[vs[1].(int)]
 	}).(CseMatchRuleOutput)
 }
 
 type CseMatchRuleMapOutput struct{ *pulumi.OutputState }
 
 func (CseMatchRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseMatchRule)(nil))
+	return reflect.TypeOf((*map[string]*CseMatchRule)(nil)).Elem()
 }
 
 func (o CseMatchRuleMapOutput) ToCseMatchRuleMapOutput() CseMatchRuleMapOutput {
@@ -414,18 +351,16 @@ func (o CseMatchRuleMapOutput) ToCseMatchRuleMapOutputWithContext(ctx context.Co
 }
 
 func (o CseMatchRuleMapOutput) MapIndex(k pulumi.StringInput) CseMatchRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseMatchRule {
-		return vs[0].(map[string]CseMatchRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseMatchRule {
+		return vs[0].(map[string]*CseMatchRule)[vs[1].(string)]
 	}).(CseMatchRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleInput)(nil)).Elem(), &CseMatchRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRulePtrInput)(nil)).Elem(), &CseMatchRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleArrayInput)(nil)).Elem(), CseMatchRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleMapInput)(nil)).Elem(), CseMatchRuleMap{})
 	pulumi.RegisterOutputType(CseMatchRuleOutput{})
-	pulumi.RegisterOutputType(CseMatchRulePtrOutput{})
 	pulumi.RegisterOutputType(CseMatchRuleArrayOutput{})
 	pulumi.RegisterOutputType(CseMatchRuleMapOutput{})
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
@@ -45,7 +44,7 @@ namespace Pulumi.SumoLogic
         /// - `description` - The description of the Personal Folder.
         /// </summary>
         public static Task<GetPersonalFolderResult> InvokeAsync(GetPersonalFolderArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides an easy way to retrieve the Personal Folder.
@@ -80,7 +79,7 @@ namespace Pulumi.SumoLogic
         /// - `description` - The description of the Personal Folder.
         /// </summary>
         public static Output<GetPersonalFolderResult> Invoke(GetPersonalFolderInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderInvokeArgs(), options.WithDefaults());
     }
 
 

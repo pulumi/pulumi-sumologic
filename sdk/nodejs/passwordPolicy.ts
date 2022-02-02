@@ -122,43 +122,41 @@ export class PasswordPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: PasswordPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PasswordPolicyArgs | PasswordPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PasswordPolicyState | undefined;
-            inputs["accountLockoutDurationInMins"] = state ? state.accountLockoutDurationInMins : undefined;
-            inputs["accountLockoutThreshold"] = state ? state.accountLockoutThreshold : undefined;
-            inputs["failedLoginResetDurationInMins"] = state ? state.failedLoginResetDurationInMins : undefined;
-            inputs["maxLength"] = state ? state.maxLength : undefined;
-            inputs["maxPasswordAgeInDays"] = state ? state.maxPasswordAgeInDays : undefined;
-            inputs["minLength"] = state ? state.minLength : undefined;
-            inputs["minUniquePasswords"] = state ? state.minUniquePasswords : undefined;
-            inputs["mustContainDigits"] = state ? state.mustContainDigits : undefined;
-            inputs["mustContainLowercase"] = state ? state.mustContainLowercase : undefined;
-            inputs["mustContainSpecialChars"] = state ? state.mustContainSpecialChars : undefined;
-            inputs["mustContainUppercase"] = state ? state.mustContainUppercase : undefined;
-            inputs["rememberMfa"] = state ? state.rememberMfa : undefined;
-            inputs["requireMfa"] = state ? state.requireMfa : undefined;
+            resourceInputs["accountLockoutDurationInMins"] = state ? state.accountLockoutDurationInMins : undefined;
+            resourceInputs["accountLockoutThreshold"] = state ? state.accountLockoutThreshold : undefined;
+            resourceInputs["failedLoginResetDurationInMins"] = state ? state.failedLoginResetDurationInMins : undefined;
+            resourceInputs["maxLength"] = state ? state.maxLength : undefined;
+            resourceInputs["maxPasswordAgeInDays"] = state ? state.maxPasswordAgeInDays : undefined;
+            resourceInputs["minLength"] = state ? state.minLength : undefined;
+            resourceInputs["minUniquePasswords"] = state ? state.minUniquePasswords : undefined;
+            resourceInputs["mustContainDigits"] = state ? state.mustContainDigits : undefined;
+            resourceInputs["mustContainLowercase"] = state ? state.mustContainLowercase : undefined;
+            resourceInputs["mustContainSpecialChars"] = state ? state.mustContainSpecialChars : undefined;
+            resourceInputs["mustContainUppercase"] = state ? state.mustContainUppercase : undefined;
+            resourceInputs["rememberMfa"] = state ? state.rememberMfa : undefined;
+            resourceInputs["requireMfa"] = state ? state.requireMfa : undefined;
         } else {
             const args = argsOrState as PasswordPolicyArgs | undefined;
-            inputs["accountLockoutDurationInMins"] = args ? args.accountLockoutDurationInMins : undefined;
-            inputs["accountLockoutThreshold"] = args ? args.accountLockoutThreshold : undefined;
-            inputs["failedLoginResetDurationInMins"] = args ? args.failedLoginResetDurationInMins : undefined;
-            inputs["maxLength"] = args ? args.maxLength : undefined;
-            inputs["maxPasswordAgeInDays"] = args ? args.maxPasswordAgeInDays : undefined;
-            inputs["minLength"] = args ? args.minLength : undefined;
-            inputs["minUniquePasswords"] = args ? args.minUniquePasswords : undefined;
-            inputs["mustContainDigits"] = args ? args.mustContainDigits : undefined;
-            inputs["mustContainLowercase"] = args ? args.mustContainLowercase : undefined;
-            inputs["mustContainSpecialChars"] = args ? args.mustContainSpecialChars : undefined;
-            inputs["mustContainUppercase"] = args ? args.mustContainUppercase : undefined;
-            inputs["rememberMfa"] = args ? args.rememberMfa : undefined;
-            inputs["requireMfa"] = args ? args.requireMfa : undefined;
+            resourceInputs["accountLockoutDurationInMins"] = args ? args.accountLockoutDurationInMins : undefined;
+            resourceInputs["accountLockoutThreshold"] = args ? args.accountLockoutThreshold : undefined;
+            resourceInputs["failedLoginResetDurationInMins"] = args ? args.failedLoginResetDurationInMins : undefined;
+            resourceInputs["maxLength"] = args ? args.maxLength : undefined;
+            resourceInputs["maxPasswordAgeInDays"] = args ? args.maxPasswordAgeInDays : undefined;
+            resourceInputs["minLength"] = args ? args.minLength : undefined;
+            resourceInputs["minUniquePasswords"] = args ? args.minUniquePasswords : undefined;
+            resourceInputs["mustContainDigits"] = args ? args.mustContainDigits : undefined;
+            resourceInputs["mustContainLowercase"] = args ? args.mustContainLowercase : undefined;
+            resourceInputs["mustContainSpecialChars"] = args ? args.mustContainSpecialChars : undefined;
+            resourceInputs["mustContainUppercase"] = args ? args.mustContainUppercase : undefined;
+            resourceInputs["rememberMfa"] = args ? args.rememberMfa : undefined;
+            resourceInputs["requireMfa"] = args ? args.requireMfa : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PasswordPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PasswordPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

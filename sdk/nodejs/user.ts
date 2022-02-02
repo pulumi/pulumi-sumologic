@@ -103,16 +103,16 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["firstName"] = state ? state.firstName : undefined;
-            inputs["isActive"] = state ? state.isActive : undefined;
-            inputs["lastName"] = state ? state.lastName : undefined;
-            inputs["roleIds"] = state ? state.roleIds : undefined;
-            inputs["transferTo"] = state ? state.transferTo : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["firstName"] = state ? state.firstName : undefined;
+            resourceInputs["isActive"] = state ? state.isActive : undefined;
+            resourceInputs["lastName"] = state ? state.lastName : undefined;
+            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
+            resourceInputs["transferTo"] = state ? state.transferTo : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
@@ -133,17 +133,15 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.transferTo === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transferTo'");
             }
-            inputs["email"] = args ? args.email : undefined;
-            inputs["firstName"] = args ? args.firstName : undefined;
-            inputs["isActive"] = args ? args.isActive : undefined;
-            inputs["lastName"] = args ? args.lastName : undefined;
-            inputs["roleIds"] = args ? args.roleIds : undefined;
-            inputs["transferTo"] = args ? args.transferTo : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["firstName"] = args ? args.firstName : undefined;
+            resourceInputs["isActive"] = args ? args.isActive : undefined;
+            resourceInputs["lastName"] = args ? args.lastName : undefined;
+            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["transferTo"] = args ? args.transferTo : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

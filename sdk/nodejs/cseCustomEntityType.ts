@@ -80,13 +80,13 @@ export class CseCustomEntityType extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseCustomEntityTypeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseCustomEntityTypeArgs | CseCustomEntityTypeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseCustomEntityTypeState | undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["identifier"] = state ? state.identifier : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CseCustomEntityTypeArgs | undefined;
             if ((!args || args.fields === undefined) && !opts.urn) {
@@ -95,14 +95,12 @@ export class CseCustomEntityType extends pulumi.CustomResource {
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["identifier"] = args ? args.identifier : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseCustomEntityType.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseCustomEntityType.__pulumiType, name, resourceInputs, opts);
     }
 }
 

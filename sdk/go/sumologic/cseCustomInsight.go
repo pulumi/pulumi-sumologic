@@ -214,7 +214,7 @@ type CseCustomInsightInput interface {
 }
 
 func (*CseCustomInsight) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseCustomInsight)(nil))
+	return reflect.TypeOf((**CseCustomInsight)(nil)).Elem()
 }
 
 func (i *CseCustomInsight) ToCseCustomInsightOutput() CseCustomInsightOutput {
@@ -223,35 +223,6 @@ func (i *CseCustomInsight) ToCseCustomInsightOutput() CseCustomInsightOutput {
 
 func (i *CseCustomInsight) ToCseCustomInsightOutputWithContext(ctx context.Context) CseCustomInsightOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomInsightOutput)
-}
-
-func (i *CseCustomInsight) ToCseCustomInsightPtrOutput() CseCustomInsightPtrOutput {
-	return i.ToCseCustomInsightPtrOutputWithContext(context.Background())
-}
-
-func (i *CseCustomInsight) ToCseCustomInsightPtrOutputWithContext(ctx context.Context) CseCustomInsightPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseCustomInsightPtrOutput)
-}
-
-type CseCustomInsightPtrInput interface {
-	pulumi.Input
-
-	ToCseCustomInsightPtrOutput() CseCustomInsightPtrOutput
-	ToCseCustomInsightPtrOutputWithContext(ctx context.Context) CseCustomInsightPtrOutput
-}
-
-type cseCustomInsightPtrType CseCustomInsightArgs
-
-func (*cseCustomInsightPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseCustomInsight)(nil))
-}
-
-func (i *cseCustomInsightPtrType) ToCseCustomInsightPtrOutput() CseCustomInsightPtrOutput {
-	return i.ToCseCustomInsightPtrOutputWithContext(context.Background())
-}
-
-func (i *cseCustomInsightPtrType) ToCseCustomInsightPtrOutputWithContext(ctx context.Context) CseCustomInsightPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseCustomInsightPtrOutput)
 }
 
 // CseCustomInsightArrayInput is an input type that accepts CseCustomInsightArray and CseCustomInsightArrayOutput values.
@@ -307,7 +278,7 @@ func (i CseCustomInsightMap) ToCseCustomInsightMapOutputWithContext(ctx context.
 type CseCustomInsightOutput struct{ *pulumi.OutputState }
 
 func (CseCustomInsightOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseCustomInsight)(nil))
+	return reflect.TypeOf((**CseCustomInsight)(nil)).Elem()
 }
 
 func (o CseCustomInsightOutput) ToCseCustomInsightOutput() CseCustomInsightOutput {
@@ -318,44 +289,10 @@ func (o CseCustomInsightOutput) ToCseCustomInsightOutputWithContext(ctx context.
 	return o
 }
 
-func (o CseCustomInsightOutput) ToCseCustomInsightPtrOutput() CseCustomInsightPtrOutput {
-	return o.ToCseCustomInsightPtrOutputWithContext(context.Background())
-}
-
-func (o CseCustomInsightOutput) ToCseCustomInsightPtrOutputWithContext(ctx context.Context) CseCustomInsightPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseCustomInsight) *CseCustomInsight {
-		return &v
-	}).(CseCustomInsightPtrOutput)
-}
-
-type CseCustomInsightPtrOutput struct{ *pulumi.OutputState }
-
-func (CseCustomInsightPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseCustomInsight)(nil))
-}
-
-func (o CseCustomInsightPtrOutput) ToCseCustomInsightPtrOutput() CseCustomInsightPtrOutput {
-	return o
-}
-
-func (o CseCustomInsightPtrOutput) ToCseCustomInsightPtrOutputWithContext(ctx context.Context) CseCustomInsightPtrOutput {
-	return o
-}
-
-func (o CseCustomInsightPtrOutput) Elem() CseCustomInsightOutput {
-	return o.ApplyT(func(v *CseCustomInsight) CseCustomInsight {
-		if v != nil {
-			return *v
-		}
-		var ret CseCustomInsight
-		return ret
-	}).(CseCustomInsightOutput)
-}
-
 type CseCustomInsightArrayOutput struct{ *pulumi.OutputState }
 
 func (CseCustomInsightArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseCustomInsight)(nil))
+	return reflect.TypeOf((*[]*CseCustomInsight)(nil)).Elem()
 }
 
 func (o CseCustomInsightArrayOutput) ToCseCustomInsightArrayOutput() CseCustomInsightArrayOutput {
@@ -367,15 +304,15 @@ func (o CseCustomInsightArrayOutput) ToCseCustomInsightArrayOutputWithContext(ct
 }
 
 func (o CseCustomInsightArrayOutput) Index(i pulumi.IntInput) CseCustomInsightOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseCustomInsight {
-		return vs[0].([]CseCustomInsight)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseCustomInsight {
+		return vs[0].([]*CseCustomInsight)[vs[1].(int)]
 	}).(CseCustomInsightOutput)
 }
 
 type CseCustomInsightMapOutput struct{ *pulumi.OutputState }
 
 func (CseCustomInsightMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseCustomInsight)(nil))
+	return reflect.TypeOf((*map[string]*CseCustomInsight)(nil)).Elem()
 }
 
 func (o CseCustomInsightMapOutput) ToCseCustomInsightMapOutput() CseCustomInsightMapOutput {
@@ -387,18 +324,16 @@ func (o CseCustomInsightMapOutput) ToCseCustomInsightMapOutputWithContext(ctx co
 }
 
 func (o CseCustomInsightMapOutput) MapIndex(k pulumi.StringInput) CseCustomInsightOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseCustomInsight {
-		return vs[0].(map[string]CseCustomInsight)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseCustomInsight {
+		return vs[0].(map[string]*CseCustomInsight)[vs[1].(string)]
 	}).(CseCustomInsightOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomInsightInput)(nil)).Elem(), &CseCustomInsight{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomInsightPtrInput)(nil)).Elem(), &CseCustomInsight{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomInsightArrayInput)(nil)).Elem(), CseCustomInsightArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseCustomInsightMapInput)(nil)).Elem(), CseCustomInsightMap{})
 	pulumi.RegisterOutputType(CseCustomInsightOutput{})
-	pulumi.RegisterOutputType(CseCustomInsightPtrOutput{})
 	pulumi.RegisterOutputType(CseCustomInsightArrayOutput{})
 	pulumi.RegisterOutputType(CseCustomInsightMapOutput{})
 }

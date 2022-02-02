@@ -488,21 +488,21 @@ export class Dashboard extends pulumi.CustomResource {
      */
     constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardArgs | DashboardState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            inputs["coloringRules"] = state ? state.coloringRules : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["layout"] = state ? state.layout : undefined;
-            inputs["panels"] = state ? state.panels : undefined;
-            inputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            inputs["theme"] = state ? state.theme : undefined;
-            inputs["timeRange"] = state ? state.timeRange : undefined;
-            inputs["title"] = state ? state.title : undefined;
-            inputs["topologyLabelMap"] = state ? state.topologyLabelMap : undefined;
-            inputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["coloringRules"] = state ? state.coloringRules : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["layout"] = state ? state.layout : undefined;
+            resourceInputs["panels"] = state ? state.panels : undefined;
+            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
+            resourceInputs["theme"] = state ? state.theme : undefined;
+            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["topologyLabelMap"] = state ? state.topologyLabelMap : undefined;
+            resourceInputs["variables"] = state ? state.variables : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
             if ((!args || args.timeRange === undefined) && !opts.urn) {
@@ -511,22 +511,20 @@ export class Dashboard extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["coloringRules"] = args ? args.coloringRules : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["layout"] = args ? args.layout : undefined;
-            inputs["panels"] = args ? args.panels : undefined;
-            inputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            inputs["theme"] = args ? args.theme : undefined;
-            inputs["timeRange"] = args ? args.timeRange : undefined;
-            inputs["title"] = args ? args.title : undefined;
-            inputs["topologyLabelMap"] = args ? args.topologyLabelMap : undefined;
-            inputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["coloringRules"] = args ? args.coloringRules : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["layout"] = args ? args.layout : undefined;
+            resourceInputs["panels"] = args ? args.panels : undefined;
+            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
+            resourceInputs["theme"] = args ? args.theme : undefined;
+            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["topologyLabelMap"] = args ? args.topologyLabelMap : undefined;
+            resourceInputs["variables"] = args ? args.variables : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Dashboard.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Dashboard.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -50,12 +50,12 @@ export class Content extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContentArgs | ContentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContentState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
         } else {
             const args = argsOrState as ContentArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -64,13 +64,11 @@ export class Content extends pulumi.CustomResource {
             if ((!args || args.parentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parentId'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Content.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Content.__pulumiType, name, resourceInputs, opts);
     }
 }
 

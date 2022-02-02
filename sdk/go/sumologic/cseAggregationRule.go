@@ -315,7 +315,7 @@ type CseAggregationRuleInput interface {
 }
 
 func (*CseAggregationRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseAggregationRule)(nil))
+	return reflect.TypeOf((**CseAggregationRule)(nil)).Elem()
 }
 
 func (i *CseAggregationRule) ToCseAggregationRuleOutput() CseAggregationRuleOutput {
@@ -324,35 +324,6 @@ func (i *CseAggregationRule) ToCseAggregationRuleOutput() CseAggregationRuleOutp
 
 func (i *CseAggregationRule) ToCseAggregationRuleOutputWithContext(ctx context.Context) CseAggregationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseAggregationRuleOutput)
-}
-
-func (i *CseAggregationRule) ToCseAggregationRulePtrOutput() CseAggregationRulePtrOutput {
-	return i.ToCseAggregationRulePtrOutputWithContext(context.Background())
-}
-
-func (i *CseAggregationRule) ToCseAggregationRulePtrOutputWithContext(ctx context.Context) CseAggregationRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseAggregationRulePtrOutput)
-}
-
-type CseAggregationRulePtrInput interface {
-	pulumi.Input
-
-	ToCseAggregationRulePtrOutput() CseAggregationRulePtrOutput
-	ToCseAggregationRulePtrOutputWithContext(ctx context.Context) CseAggregationRulePtrOutput
-}
-
-type cseAggregationRulePtrType CseAggregationRuleArgs
-
-func (*cseAggregationRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseAggregationRule)(nil))
-}
-
-func (i *cseAggregationRulePtrType) ToCseAggregationRulePtrOutput() CseAggregationRulePtrOutput {
-	return i.ToCseAggregationRulePtrOutputWithContext(context.Background())
-}
-
-func (i *cseAggregationRulePtrType) ToCseAggregationRulePtrOutputWithContext(ctx context.Context) CseAggregationRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseAggregationRulePtrOutput)
 }
 
 // CseAggregationRuleArrayInput is an input type that accepts CseAggregationRuleArray and CseAggregationRuleArrayOutput values.
@@ -408,7 +379,7 @@ func (i CseAggregationRuleMap) ToCseAggregationRuleMapOutputWithContext(ctx cont
 type CseAggregationRuleOutput struct{ *pulumi.OutputState }
 
 func (CseAggregationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseAggregationRule)(nil))
+	return reflect.TypeOf((**CseAggregationRule)(nil)).Elem()
 }
 
 func (o CseAggregationRuleOutput) ToCseAggregationRuleOutput() CseAggregationRuleOutput {
@@ -419,44 +390,10 @@ func (o CseAggregationRuleOutput) ToCseAggregationRuleOutputWithContext(ctx cont
 	return o
 }
 
-func (o CseAggregationRuleOutput) ToCseAggregationRulePtrOutput() CseAggregationRulePtrOutput {
-	return o.ToCseAggregationRulePtrOutputWithContext(context.Background())
-}
-
-func (o CseAggregationRuleOutput) ToCseAggregationRulePtrOutputWithContext(ctx context.Context) CseAggregationRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseAggregationRule) *CseAggregationRule {
-		return &v
-	}).(CseAggregationRulePtrOutput)
-}
-
-type CseAggregationRulePtrOutput struct{ *pulumi.OutputState }
-
-func (CseAggregationRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseAggregationRule)(nil))
-}
-
-func (o CseAggregationRulePtrOutput) ToCseAggregationRulePtrOutput() CseAggregationRulePtrOutput {
-	return o
-}
-
-func (o CseAggregationRulePtrOutput) ToCseAggregationRulePtrOutputWithContext(ctx context.Context) CseAggregationRulePtrOutput {
-	return o
-}
-
-func (o CseAggregationRulePtrOutput) Elem() CseAggregationRuleOutput {
-	return o.ApplyT(func(v *CseAggregationRule) CseAggregationRule {
-		if v != nil {
-			return *v
-		}
-		var ret CseAggregationRule
-		return ret
-	}).(CseAggregationRuleOutput)
-}
-
 type CseAggregationRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (CseAggregationRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseAggregationRule)(nil))
+	return reflect.TypeOf((*[]*CseAggregationRule)(nil)).Elem()
 }
 
 func (o CseAggregationRuleArrayOutput) ToCseAggregationRuleArrayOutput() CseAggregationRuleArrayOutput {
@@ -468,15 +405,15 @@ func (o CseAggregationRuleArrayOutput) ToCseAggregationRuleArrayOutputWithContex
 }
 
 func (o CseAggregationRuleArrayOutput) Index(i pulumi.IntInput) CseAggregationRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseAggregationRule {
-		return vs[0].([]CseAggregationRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseAggregationRule {
+		return vs[0].([]*CseAggregationRule)[vs[1].(int)]
 	}).(CseAggregationRuleOutput)
 }
 
 type CseAggregationRuleMapOutput struct{ *pulumi.OutputState }
 
 func (CseAggregationRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseAggregationRule)(nil))
+	return reflect.TypeOf((*map[string]*CseAggregationRule)(nil)).Elem()
 }
 
 func (o CseAggregationRuleMapOutput) ToCseAggregationRuleMapOutput() CseAggregationRuleMapOutput {
@@ -488,18 +425,16 @@ func (o CseAggregationRuleMapOutput) ToCseAggregationRuleMapOutputWithContext(ct
 }
 
 func (o CseAggregationRuleMapOutput) MapIndex(k pulumi.StringInput) CseAggregationRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseAggregationRule {
-		return vs[0].(map[string]CseAggregationRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseAggregationRule {
+		return vs[0].(map[string]*CseAggregationRule)[vs[1].(string)]
 	}).(CseAggregationRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleInput)(nil)).Elem(), &CseAggregationRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRulePtrInput)(nil)).Elem(), &CseAggregationRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleArrayInput)(nil)).Elem(), CseAggregationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleMapInput)(nil)).Elem(), CseAggregationRuleMap{})
 	pulumi.RegisterOutputType(CseAggregationRuleOutput{})
-	pulumi.RegisterOutputType(CseAggregationRulePtrOutput{})
 	pulumi.RegisterOutputType(CseAggregationRuleArrayOutput{})
 	pulumi.RegisterOutputType(CseAggregationRuleMapOutput{})
 }

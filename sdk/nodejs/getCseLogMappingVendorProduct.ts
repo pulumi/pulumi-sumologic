@@ -9,9 +9,7 @@ export function getCseLogMappingVendorProduct(args: GetCseLogMappingVendorProduc
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", {
         "guid": args.guid,
         "product": args.product,

@@ -89,14 +89,14 @@ export class FieldExtractionRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: FieldExtractionRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FieldExtractionRuleArgs | FieldExtractionRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FieldExtractionRuleState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parseExpression"] = state ? state.parseExpression : undefined;
-            inputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parseExpression"] = state ? state.parseExpression : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
         } else {
             const args = argsOrState as FieldExtractionRuleArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -108,15 +108,13 @@ export class FieldExtractionRule extends pulumi.CustomResource {
             if ((!args || args.scope === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parseExpression"] = args ? args.parseExpression : undefined;
-            inputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parseExpression"] = args ? args.parseExpression : undefined;
+            resourceInputs["scope"] = args ? args.scope : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FieldExtractionRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FieldExtractionRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

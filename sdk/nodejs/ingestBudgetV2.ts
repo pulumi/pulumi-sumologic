@@ -104,18 +104,18 @@ export class IngestBudgetV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: IngestBudgetV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IngestBudgetV2Args | IngestBudgetV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IngestBudgetV2State | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["auditThreshold"] = state ? state.auditThreshold : undefined;
-            inputs["capacityBytes"] = state ? state.capacityBytes : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resetTime"] = state ? state.resetTime : undefined;
-            inputs["scope"] = state ? state.scope : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["auditThreshold"] = state ? state.auditThreshold : undefined;
+            resourceInputs["capacityBytes"] = state ? state.capacityBytes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resetTime"] = state ? state.resetTime : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as IngestBudgetV2Args | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -133,19 +133,17 @@ export class IngestBudgetV2 extends pulumi.CustomResource {
             if ((!args || args.timezone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timezone'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["auditThreshold"] = args ? args.auditThreshold : undefined;
-            inputs["capacityBytes"] = args ? args.capacityBytes : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["resetTime"] = args ? args.resetTime : undefined;
-            inputs["scope"] = args ? args.scope : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["auditThreshold"] = args ? args.auditThreshold : undefined;
+            resourceInputs["capacityBytes"] = args ? args.capacityBytes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resetTime"] = args ? args.resetTime : undefined;
+            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IngestBudgetV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IngestBudgetV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

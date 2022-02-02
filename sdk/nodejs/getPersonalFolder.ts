@@ -29,9 +29,7 @@ export function getPersonalFolder(args?: GetPersonalFolderArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("sumologic:index/getPersonalFolder:getPersonalFolder", {
         "description": args.description,
         "id": args.id,

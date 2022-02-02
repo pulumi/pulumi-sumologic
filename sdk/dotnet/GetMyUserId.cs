@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
     public static class GetMyUserId
     {
         public static Task<GetMyUserIdResult> InvokeAsync(GetMyUserIdArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdArgs(), options.WithDefaults());
 
         public static Output<GetMyUserIdResult> Invoke(GetMyUserIdInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdInvokeArgs(), options.WithDefaults());
     }
 
 

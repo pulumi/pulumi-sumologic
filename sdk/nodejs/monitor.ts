@@ -298,68 +298,66 @@ export class Monitor extends pulumi.CustomResource {
      */
     constructor(name: string, args: MonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorArgs | MonitorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorState | undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["createdBy"] = state ? state.createdBy : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["evaluationDelay"] = state ? state.evaluationDelay : undefined;
-            inputs["groupNotifications"] = state ? state.groupNotifications : undefined;
-            inputs["isDisabled"] = state ? state.isDisabled : undefined;
-            inputs["isLocked"] = state ? state.isLocked : undefined;
-            inputs["isMutable"] = state ? state.isMutable : undefined;
-            inputs["isSystem"] = state ? state.isSystem : undefined;
-            inputs["modifiedAt"] = state ? state.modifiedAt : undefined;
-            inputs["modifiedBy"] = state ? state.modifiedBy : undefined;
-            inputs["monitorType"] = state ? state.monitorType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notifications"] = state ? state.notifications : undefined;
-            inputs["parentId"] = state ? state.parentId : undefined;
-            inputs["playbook"] = state ? state.playbook : undefined;
-            inputs["postRequestMap"] = state ? state.postRequestMap : undefined;
-            inputs["queries"] = state ? state.queries : undefined;
-            inputs["statuses"] = state ? state.statuses : undefined;
-            inputs["triggerConditions"] = state ? state.triggerConditions : undefined;
-            inputs["triggers"] = state ? state.triggers : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["evaluationDelay"] = state ? state.evaluationDelay : undefined;
+            resourceInputs["groupNotifications"] = state ? state.groupNotifications : undefined;
+            resourceInputs["isDisabled"] = state ? state.isDisabled : undefined;
+            resourceInputs["isLocked"] = state ? state.isLocked : undefined;
+            resourceInputs["isMutable"] = state ? state.isMutable : undefined;
+            resourceInputs["isSystem"] = state ? state.isSystem : undefined;
+            resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
+            resourceInputs["modifiedBy"] = state ? state.modifiedBy : undefined;
+            resourceInputs["monitorType"] = state ? state.monitorType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifications"] = state ? state.notifications : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["playbook"] = state ? state.playbook : undefined;
+            resourceInputs["postRequestMap"] = state ? state.postRequestMap : undefined;
+            resourceInputs["queries"] = state ? state.queries : undefined;
+            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["triggerConditions"] = state ? state.triggerConditions : undefined;
+            resourceInputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as MonitorArgs | undefined;
             if ((!args || args.monitorType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'monitorType'");
             }
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
-            inputs["createdBy"] = args ? args.createdBy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["evaluationDelay"] = args ? args.evaluationDelay : undefined;
-            inputs["groupNotifications"] = args ? args.groupNotifications : undefined;
-            inputs["isDisabled"] = args ? args.isDisabled : undefined;
-            inputs["isLocked"] = args ? args.isLocked : undefined;
-            inputs["isMutable"] = args ? args.isMutable : undefined;
-            inputs["isSystem"] = args ? args.isSystem : undefined;
-            inputs["modifiedAt"] = args ? args.modifiedAt : undefined;
-            inputs["modifiedBy"] = args ? args.modifiedBy : undefined;
-            inputs["monitorType"] = args ? args.monitorType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notifications"] = args ? args.notifications : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
-            inputs["playbook"] = args ? args.playbook : undefined;
-            inputs["postRequestMap"] = args ? args.postRequestMap : undefined;
-            inputs["queries"] = args ? args.queries : undefined;
-            inputs["statuses"] = args ? args.statuses : undefined;
-            inputs["triggerConditions"] = args ? args.triggerConditions : undefined;
-            inputs["triggers"] = args ? args.triggers : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
+            resourceInputs["createdBy"] = args ? args.createdBy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["evaluationDelay"] = args ? args.evaluationDelay : undefined;
+            resourceInputs["groupNotifications"] = args ? args.groupNotifications : undefined;
+            resourceInputs["isDisabled"] = args ? args.isDisabled : undefined;
+            resourceInputs["isLocked"] = args ? args.isLocked : undefined;
+            resourceInputs["isMutable"] = args ? args.isMutable : undefined;
+            resourceInputs["isSystem"] = args ? args.isSystem : undefined;
+            resourceInputs["modifiedAt"] = args ? args.modifiedAt : undefined;
+            resourceInputs["modifiedBy"] = args ? args.modifiedBy : undefined;
+            resourceInputs["monitorType"] = args ? args.monitorType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifications"] = args ? args.notifications : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["playbook"] = args ? args.playbook : undefined;
+            resourceInputs["postRequestMap"] = args ? args.postRequestMap : undefined;
+            resourceInputs["queries"] = args ? args.queries : undefined;
+            resourceInputs["statuses"] = args ? args.statuses : undefined;
+            resourceInputs["triggerConditions"] = args ? args.triggerConditions : undefined;
+            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Monitor.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Monitor.__pulumiType, name, resourceInputs, opts);
     }
 }
 
