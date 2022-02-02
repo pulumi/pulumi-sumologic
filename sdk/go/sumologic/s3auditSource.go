@@ -290,7 +290,7 @@ type S3AuditSourceInput interface {
 }
 
 func (*S3AuditSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3AuditSource)(nil))
+	return reflect.TypeOf((**S3AuditSource)(nil)).Elem()
 }
 
 func (i *S3AuditSource) ToS3AuditSourceOutput() S3AuditSourceOutput {
@@ -299,35 +299,6 @@ func (i *S3AuditSource) ToS3AuditSourceOutput() S3AuditSourceOutput {
 
 func (i *S3AuditSource) ToS3AuditSourceOutputWithContext(ctx context.Context) S3AuditSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3AuditSourceOutput)
-}
-
-func (i *S3AuditSource) ToS3AuditSourcePtrOutput() S3AuditSourcePtrOutput {
-	return i.ToS3AuditSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *S3AuditSource) ToS3AuditSourcePtrOutputWithContext(ctx context.Context) S3AuditSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3AuditSourcePtrOutput)
-}
-
-type S3AuditSourcePtrInput interface {
-	pulumi.Input
-
-	ToS3AuditSourcePtrOutput() S3AuditSourcePtrOutput
-	ToS3AuditSourcePtrOutputWithContext(ctx context.Context) S3AuditSourcePtrOutput
-}
-
-type s3auditSourcePtrType S3AuditSourceArgs
-
-func (*s3auditSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**S3AuditSource)(nil))
-}
-
-func (i *s3auditSourcePtrType) ToS3AuditSourcePtrOutput() S3AuditSourcePtrOutput {
-	return i.ToS3AuditSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *s3auditSourcePtrType) ToS3AuditSourcePtrOutputWithContext(ctx context.Context) S3AuditSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3AuditSourcePtrOutput)
 }
 
 // S3AuditSourceArrayInput is an input type that accepts S3AuditSourceArray and S3AuditSourceArrayOutput values.
@@ -383,7 +354,7 @@ func (i S3AuditSourceMap) ToS3AuditSourceMapOutputWithContext(ctx context.Contex
 type S3AuditSourceOutput struct{ *pulumi.OutputState }
 
 func (S3AuditSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3AuditSource)(nil))
+	return reflect.TypeOf((**S3AuditSource)(nil)).Elem()
 }
 
 func (o S3AuditSourceOutput) ToS3AuditSourceOutput() S3AuditSourceOutput {
@@ -394,44 +365,10 @@ func (o S3AuditSourceOutput) ToS3AuditSourceOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o S3AuditSourceOutput) ToS3AuditSourcePtrOutput() S3AuditSourcePtrOutput {
-	return o.ToS3AuditSourcePtrOutputWithContext(context.Background())
-}
-
-func (o S3AuditSourceOutput) ToS3AuditSourcePtrOutputWithContext(ctx context.Context) S3AuditSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3AuditSource) *S3AuditSource {
-		return &v
-	}).(S3AuditSourcePtrOutput)
-}
-
-type S3AuditSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (S3AuditSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**S3AuditSource)(nil))
-}
-
-func (o S3AuditSourcePtrOutput) ToS3AuditSourcePtrOutput() S3AuditSourcePtrOutput {
-	return o
-}
-
-func (o S3AuditSourcePtrOutput) ToS3AuditSourcePtrOutputWithContext(ctx context.Context) S3AuditSourcePtrOutput {
-	return o
-}
-
-func (o S3AuditSourcePtrOutput) Elem() S3AuditSourceOutput {
-	return o.ApplyT(func(v *S3AuditSource) S3AuditSource {
-		if v != nil {
-			return *v
-		}
-		var ret S3AuditSource
-		return ret
-	}).(S3AuditSourceOutput)
-}
-
 type S3AuditSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (S3AuditSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]S3AuditSource)(nil))
+	return reflect.TypeOf((*[]*S3AuditSource)(nil)).Elem()
 }
 
 func (o S3AuditSourceArrayOutput) ToS3AuditSourceArrayOutput() S3AuditSourceArrayOutput {
@@ -443,15 +380,15 @@ func (o S3AuditSourceArrayOutput) ToS3AuditSourceArrayOutputWithContext(ctx cont
 }
 
 func (o S3AuditSourceArrayOutput) Index(i pulumi.IntInput) S3AuditSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3AuditSource {
-		return vs[0].([]S3AuditSource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3AuditSource {
+		return vs[0].([]*S3AuditSource)[vs[1].(int)]
 	}).(S3AuditSourceOutput)
 }
 
 type S3AuditSourceMapOutput struct{ *pulumi.OutputState }
 
 func (S3AuditSourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]S3AuditSource)(nil))
+	return reflect.TypeOf((*map[string]*S3AuditSource)(nil)).Elem()
 }
 
 func (o S3AuditSourceMapOutput) ToS3AuditSourceMapOutput() S3AuditSourceMapOutput {
@@ -463,18 +400,16 @@ func (o S3AuditSourceMapOutput) ToS3AuditSourceMapOutputWithContext(ctx context.
 }
 
 func (o S3AuditSourceMapOutput) MapIndex(k pulumi.StringInput) S3AuditSourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) S3AuditSource {
-		return vs[0].(map[string]S3AuditSource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *S3AuditSource {
+		return vs[0].(map[string]*S3AuditSource)[vs[1].(string)]
 	}).(S3AuditSourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceInput)(nil)).Elem(), &S3AuditSource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePtrInput)(nil)).Elem(), &S3AuditSource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceArrayInput)(nil)).Elem(), S3AuditSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceMapInput)(nil)).Elem(), S3AuditSourceMap{})
 	pulumi.RegisterOutputType(S3AuditSourceOutput{})
-	pulumi.RegisterOutputType(S3AuditSourcePtrOutput{})
 	pulumi.RegisterOutputType(S3AuditSourceArrayOutput{})
 	pulumi.RegisterOutputType(S3AuditSourceMapOutput{})
 }

@@ -83,28 +83,26 @@ export class CseNetworkBlock extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseNetworkBlockArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseNetworkBlockArgs | CseNetworkBlockState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseNetworkBlockState | undefined;
-            inputs["addressBlock"] = state ? state.addressBlock : undefined;
-            inputs["internal"] = state ? state.internal : undefined;
-            inputs["label"] = state ? state.label : undefined;
-            inputs["suppressesSignals"] = state ? state.suppressesSignals : undefined;
+            resourceInputs["addressBlock"] = state ? state.addressBlock : undefined;
+            resourceInputs["internal"] = state ? state.internal : undefined;
+            resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["suppressesSignals"] = state ? state.suppressesSignals : undefined;
         } else {
             const args = argsOrState as CseNetworkBlockArgs | undefined;
             if ((!args || args.addressBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'addressBlock'");
             }
-            inputs["addressBlock"] = args ? args.addressBlock : undefined;
-            inputs["internal"] = args ? args.internal : undefined;
-            inputs["label"] = args ? args.label : undefined;
-            inputs["suppressesSignals"] = args ? args.suppressesSignals : undefined;
+            resourceInputs["addressBlock"] = args ? args.addressBlock : undefined;
+            resourceInputs["internal"] = args ? args.internal : undefined;
+            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["suppressesSignals"] = args ? args.suppressesSignals : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseNetworkBlock.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseNetworkBlock.__pulumiType, name, resourceInputs, opts);
     }
 }
 

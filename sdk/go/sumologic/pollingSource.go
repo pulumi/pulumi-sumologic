@@ -360,7 +360,7 @@ type PollingSourceInput interface {
 }
 
 func (*PollingSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*PollingSource)(nil))
+	return reflect.TypeOf((**PollingSource)(nil)).Elem()
 }
 
 func (i *PollingSource) ToPollingSourceOutput() PollingSourceOutput {
@@ -369,35 +369,6 @@ func (i *PollingSource) ToPollingSourceOutput() PollingSourceOutput {
 
 func (i *PollingSource) ToPollingSourceOutputWithContext(ctx context.Context) PollingSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PollingSourceOutput)
-}
-
-func (i *PollingSource) ToPollingSourcePtrOutput() PollingSourcePtrOutput {
-	return i.ToPollingSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *PollingSource) ToPollingSourcePtrOutputWithContext(ctx context.Context) PollingSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PollingSourcePtrOutput)
-}
-
-type PollingSourcePtrInput interface {
-	pulumi.Input
-
-	ToPollingSourcePtrOutput() PollingSourcePtrOutput
-	ToPollingSourcePtrOutputWithContext(ctx context.Context) PollingSourcePtrOutput
-}
-
-type pollingSourcePtrType PollingSourceArgs
-
-func (*pollingSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PollingSource)(nil))
-}
-
-func (i *pollingSourcePtrType) ToPollingSourcePtrOutput() PollingSourcePtrOutput {
-	return i.ToPollingSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *pollingSourcePtrType) ToPollingSourcePtrOutputWithContext(ctx context.Context) PollingSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PollingSourcePtrOutput)
 }
 
 // PollingSourceArrayInput is an input type that accepts PollingSourceArray and PollingSourceArrayOutput values.
@@ -453,7 +424,7 @@ func (i PollingSourceMap) ToPollingSourceMapOutputWithContext(ctx context.Contex
 type PollingSourceOutput struct{ *pulumi.OutputState }
 
 func (PollingSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PollingSource)(nil))
+	return reflect.TypeOf((**PollingSource)(nil)).Elem()
 }
 
 func (o PollingSourceOutput) ToPollingSourceOutput() PollingSourceOutput {
@@ -464,44 +435,10 @@ func (o PollingSourceOutput) ToPollingSourceOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o PollingSourceOutput) ToPollingSourcePtrOutput() PollingSourcePtrOutput {
-	return o.ToPollingSourcePtrOutputWithContext(context.Background())
-}
-
-func (o PollingSourceOutput) ToPollingSourcePtrOutputWithContext(ctx context.Context) PollingSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PollingSource) *PollingSource {
-		return &v
-	}).(PollingSourcePtrOutput)
-}
-
-type PollingSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (PollingSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PollingSource)(nil))
-}
-
-func (o PollingSourcePtrOutput) ToPollingSourcePtrOutput() PollingSourcePtrOutput {
-	return o
-}
-
-func (o PollingSourcePtrOutput) ToPollingSourcePtrOutputWithContext(ctx context.Context) PollingSourcePtrOutput {
-	return o
-}
-
-func (o PollingSourcePtrOutput) Elem() PollingSourceOutput {
-	return o.ApplyT(func(v *PollingSource) PollingSource {
-		if v != nil {
-			return *v
-		}
-		var ret PollingSource
-		return ret
-	}).(PollingSourceOutput)
-}
-
 type PollingSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (PollingSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PollingSource)(nil))
+	return reflect.TypeOf((*[]*PollingSource)(nil)).Elem()
 }
 
 func (o PollingSourceArrayOutput) ToPollingSourceArrayOutput() PollingSourceArrayOutput {
@@ -513,15 +450,15 @@ func (o PollingSourceArrayOutput) ToPollingSourceArrayOutputWithContext(ctx cont
 }
 
 func (o PollingSourceArrayOutput) Index(i pulumi.IntInput) PollingSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PollingSource {
-		return vs[0].([]PollingSource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PollingSource {
+		return vs[0].([]*PollingSource)[vs[1].(int)]
 	}).(PollingSourceOutput)
 }
 
 type PollingSourceMapOutput struct{ *pulumi.OutputState }
 
 func (PollingSourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PollingSource)(nil))
+	return reflect.TypeOf((*map[string]*PollingSource)(nil)).Elem()
 }
 
 func (o PollingSourceMapOutput) ToPollingSourceMapOutput() PollingSourceMapOutput {
@@ -533,18 +470,16 @@ func (o PollingSourceMapOutput) ToPollingSourceMapOutputWithContext(ctx context.
 }
 
 func (o PollingSourceMapOutput) MapIndex(k pulumi.StringInput) PollingSourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PollingSource {
-		return vs[0].(map[string]PollingSource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PollingSource {
+		return vs[0].(map[string]*PollingSource)[vs[1].(string)]
 	}).(PollingSourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceInput)(nil)).Elem(), &PollingSource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePtrInput)(nil)).Elem(), &PollingSource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceArrayInput)(nil)).Elem(), PollingSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceMapInput)(nil)).Elem(), PollingSourceMap{})
 	pulumi.RegisterOutputType(PollingSourceOutput{})
-	pulumi.RegisterOutputType(PollingSourcePtrOutput{})
 	pulumi.RegisterOutputType(PollingSourceArrayOutput{})
 	pulumi.RegisterOutputType(PollingSourceMapOutput{})
 }

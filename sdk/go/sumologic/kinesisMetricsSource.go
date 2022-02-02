@@ -336,7 +336,7 @@ type KinesisMetricsSourceInput interface {
 }
 
 func (*KinesisMetricsSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*KinesisMetricsSource)(nil))
+	return reflect.TypeOf((**KinesisMetricsSource)(nil)).Elem()
 }
 
 func (i *KinesisMetricsSource) ToKinesisMetricsSourceOutput() KinesisMetricsSourceOutput {
@@ -345,35 +345,6 @@ func (i *KinesisMetricsSource) ToKinesisMetricsSourceOutput() KinesisMetricsSour
 
 func (i *KinesisMetricsSource) ToKinesisMetricsSourceOutputWithContext(ctx context.Context) KinesisMetricsSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KinesisMetricsSourceOutput)
-}
-
-func (i *KinesisMetricsSource) ToKinesisMetricsSourcePtrOutput() KinesisMetricsSourcePtrOutput {
-	return i.ToKinesisMetricsSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *KinesisMetricsSource) ToKinesisMetricsSourcePtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KinesisMetricsSourcePtrOutput)
-}
-
-type KinesisMetricsSourcePtrInput interface {
-	pulumi.Input
-
-	ToKinesisMetricsSourcePtrOutput() KinesisMetricsSourcePtrOutput
-	ToKinesisMetricsSourcePtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePtrOutput
-}
-
-type kinesisMetricsSourcePtrType KinesisMetricsSourceArgs
-
-func (*kinesisMetricsSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KinesisMetricsSource)(nil))
-}
-
-func (i *kinesisMetricsSourcePtrType) ToKinesisMetricsSourcePtrOutput() KinesisMetricsSourcePtrOutput {
-	return i.ToKinesisMetricsSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *kinesisMetricsSourcePtrType) ToKinesisMetricsSourcePtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KinesisMetricsSourcePtrOutput)
 }
 
 // KinesisMetricsSourceArrayInput is an input type that accepts KinesisMetricsSourceArray and KinesisMetricsSourceArrayOutput values.
@@ -429,7 +400,7 @@ func (i KinesisMetricsSourceMap) ToKinesisMetricsSourceMapOutputWithContext(ctx 
 type KinesisMetricsSourceOutput struct{ *pulumi.OutputState }
 
 func (KinesisMetricsSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KinesisMetricsSource)(nil))
+	return reflect.TypeOf((**KinesisMetricsSource)(nil)).Elem()
 }
 
 func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourceOutput() KinesisMetricsSourceOutput {
@@ -440,44 +411,10 @@ func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourceOutputWithContext(ctx 
 	return o
 }
 
-func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourcePtrOutput() KinesisMetricsSourcePtrOutput {
-	return o.ToKinesisMetricsSourcePtrOutputWithContext(context.Background())
-}
-
-func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourcePtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KinesisMetricsSource) *KinesisMetricsSource {
-		return &v
-	}).(KinesisMetricsSourcePtrOutput)
-}
-
-type KinesisMetricsSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (KinesisMetricsSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KinesisMetricsSource)(nil))
-}
-
-func (o KinesisMetricsSourcePtrOutput) ToKinesisMetricsSourcePtrOutput() KinesisMetricsSourcePtrOutput {
-	return o
-}
-
-func (o KinesisMetricsSourcePtrOutput) ToKinesisMetricsSourcePtrOutputWithContext(ctx context.Context) KinesisMetricsSourcePtrOutput {
-	return o
-}
-
-func (o KinesisMetricsSourcePtrOutput) Elem() KinesisMetricsSourceOutput {
-	return o.ApplyT(func(v *KinesisMetricsSource) KinesisMetricsSource {
-		if v != nil {
-			return *v
-		}
-		var ret KinesisMetricsSource
-		return ret
-	}).(KinesisMetricsSourceOutput)
-}
-
 type KinesisMetricsSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (KinesisMetricsSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KinesisMetricsSource)(nil))
+	return reflect.TypeOf((*[]*KinesisMetricsSource)(nil)).Elem()
 }
 
 func (o KinesisMetricsSourceArrayOutput) ToKinesisMetricsSourceArrayOutput() KinesisMetricsSourceArrayOutput {
@@ -489,15 +426,15 @@ func (o KinesisMetricsSourceArrayOutput) ToKinesisMetricsSourceArrayOutputWithCo
 }
 
 func (o KinesisMetricsSourceArrayOutput) Index(i pulumi.IntInput) KinesisMetricsSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KinesisMetricsSource {
-		return vs[0].([]KinesisMetricsSource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KinesisMetricsSource {
+		return vs[0].([]*KinesisMetricsSource)[vs[1].(int)]
 	}).(KinesisMetricsSourceOutput)
 }
 
 type KinesisMetricsSourceMapOutput struct{ *pulumi.OutputState }
 
 func (KinesisMetricsSourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KinesisMetricsSource)(nil))
+	return reflect.TypeOf((*map[string]*KinesisMetricsSource)(nil)).Elem()
 }
 
 func (o KinesisMetricsSourceMapOutput) ToKinesisMetricsSourceMapOutput() KinesisMetricsSourceMapOutput {
@@ -509,18 +446,16 @@ func (o KinesisMetricsSourceMapOutput) ToKinesisMetricsSourceMapOutputWithContex
 }
 
 func (o KinesisMetricsSourceMapOutput) MapIndex(k pulumi.StringInput) KinesisMetricsSourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KinesisMetricsSource {
-		return vs[0].(map[string]KinesisMetricsSource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KinesisMetricsSource {
+		return vs[0].(map[string]*KinesisMetricsSource)[vs[1].(string)]
 	}).(KinesisMetricsSourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceInput)(nil)).Elem(), &KinesisMetricsSource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePtrInput)(nil)).Elem(), &KinesisMetricsSource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceArrayInput)(nil)).Elem(), KinesisMetricsSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceMapInput)(nil)).Elem(), KinesisMetricsSourceMap{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceOutput{})
-	pulumi.RegisterOutputType(KinesisMetricsSourcePtrOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceArrayOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceMapOutput{})
 }

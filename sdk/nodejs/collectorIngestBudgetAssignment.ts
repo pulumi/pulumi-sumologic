@@ -44,12 +44,12 @@ export class CollectorIngestBudgetAssignment extends pulumi.CustomResource {
      */
     constructor(name: string, args: CollectorIngestBudgetAssignmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CollectorIngestBudgetAssignmentArgs | CollectorIngestBudgetAssignmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CollectorIngestBudgetAssignmentState | undefined;
-            inputs["collectorId"] = state ? state.collectorId : undefined;
-            inputs["ingestBudgetId"] = state ? state.ingestBudgetId : undefined;
+            resourceInputs["collectorId"] = state ? state.collectorId : undefined;
+            resourceInputs["ingestBudgetId"] = state ? state.ingestBudgetId : undefined;
         } else {
             const args = argsOrState as CollectorIngestBudgetAssignmentArgs | undefined;
             if ((!args || args.collectorId === undefined) && !opts.urn) {
@@ -58,13 +58,11 @@ export class CollectorIngestBudgetAssignment extends pulumi.CustomResource {
             if ((!args || args.ingestBudgetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ingestBudgetId'");
             }
-            inputs["collectorId"] = args ? args.collectorId : undefined;
-            inputs["ingestBudgetId"] = args ? args.ingestBudgetId : undefined;
+            resourceInputs["collectorId"] = args ? args.collectorId : undefined;
+            resourceInputs["ingestBudgetId"] = args ? args.ingestBudgetId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CollectorIngestBudgetAssignment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CollectorIngestBudgetAssignment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

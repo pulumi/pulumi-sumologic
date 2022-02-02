@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
     public static class GetHttpSource
     {
         public static Task<GetHttpSourceResult> InvokeAsync(GetHttpSourceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceArgs(), options.WithDefaults());
 
         public static Output<GetHttpSourceResult> Invoke(GetHttpSourceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceInvokeArgs(), options.WithDefaults());
     }
 
 

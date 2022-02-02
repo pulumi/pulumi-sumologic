@@ -325,7 +325,7 @@ type SamlConfigurationInput interface {
 }
 
 func (*SamlConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlConfiguration)(nil))
+	return reflect.TypeOf((**SamlConfiguration)(nil)).Elem()
 }
 
 func (i *SamlConfiguration) ToSamlConfigurationOutput() SamlConfigurationOutput {
@@ -334,35 +334,6 @@ func (i *SamlConfiguration) ToSamlConfigurationOutput() SamlConfigurationOutput 
 
 func (i *SamlConfiguration) ToSamlConfigurationOutputWithContext(ctx context.Context) SamlConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SamlConfigurationOutput)
-}
-
-func (i *SamlConfiguration) ToSamlConfigurationPtrOutput() SamlConfigurationPtrOutput {
-	return i.ToSamlConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *SamlConfiguration) ToSamlConfigurationPtrOutputWithContext(ctx context.Context) SamlConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SamlConfigurationPtrOutput)
-}
-
-type SamlConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToSamlConfigurationPtrOutput() SamlConfigurationPtrOutput
-	ToSamlConfigurationPtrOutputWithContext(ctx context.Context) SamlConfigurationPtrOutput
-}
-
-type samlConfigurationPtrType SamlConfigurationArgs
-
-func (*samlConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SamlConfiguration)(nil))
-}
-
-func (i *samlConfigurationPtrType) ToSamlConfigurationPtrOutput() SamlConfigurationPtrOutput {
-	return i.ToSamlConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *samlConfigurationPtrType) ToSamlConfigurationPtrOutputWithContext(ctx context.Context) SamlConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SamlConfigurationPtrOutput)
 }
 
 // SamlConfigurationArrayInput is an input type that accepts SamlConfigurationArray and SamlConfigurationArrayOutput values.
@@ -418,7 +389,7 @@ func (i SamlConfigurationMap) ToSamlConfigurationMapOutputWithContext(ctx contex
 type SamlConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SamlConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlConfiguration)(nil))
+	return reflect.TypeOf((**SamlConfiguration)(nil)).Elem()
 }
 
 func (o SamlConfigurationOutput) ToSamlConfigurationOutput() SamlConfigurationOutput {
@@ -429,44 +400,10 @@ func (o SamlConfigurationOutput) ToSamlConfigurationOutputWithContext(ctx contex
 	return o
 }
 
-func (o SamlConfigurationOutput) ToSamlConfigurationPtrOutput() SamlConfigurationPtrOutput {
-	return o.ToSamlConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o SamlConfigurationOutput) ToSamlConfigurationPtrOutputWithContext(ctx context.Context) SamlConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlConfiguration) *SamlConfiguration {
-		return &v
-	}).(SamlConfigurationPtrOutput)
-}
-
-type SamlConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (SamlConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SamlConfiguration)(nil))
-}
-
-func (o SamlConfigurationPtrOutput) ToSamlConfigurationPtrOutput() SamlConfigurationPtrOutput {
-	return o
-}
-
-func (o SamlConfigurationPtrOutput) ToSamlConfigurationPtrOutputWithContext(ctx context.Context) SamlConfigurationPtrOutput {
-	return o
-}
-
-func (o SamlConfigurationPtrOutput) Elem() SamlConfigurationOutput {
-	return o.ApplyT(func(v *SamlConfiguration) SamlConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret SamlConfiguration
-		return ret
-	}).(SamlConfigurationOutput)
-}
-
 type SamlConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (SamlConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SamlConfiguration)(nil))
+	return reflect.TypeOf((*[]*SamlConfiguration)(nil)).Elem()
 }
 
 func (o SamlConfigurationArrayOutput) ToSamlConfigurationArrayOutput() SamlConfigurationArrayOutput {
@@ -478,15 +415,15 @@ func (o SamlConfigurationArrayOutput) ToSamlConfigurationArrayOutputWithContext(
 }
 
 func (o SamlConfigurationArrayOutput) Index(i pulumi.IntInput) SamlConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SamlConfiguration {
-		return vs[0].([]SamlConfiguration)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SamlConfiguration {
+		return vs[0].([]*SamlConfiguration)[vs[1].(int)]
 	}).(SamlConfigurationOutput)
 }
 
 type SamlConfigurationMapOutput struct{ *pulumi.OutputState }
 
 func (SamlConfigurationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SamlConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*SamlConfiguration)(nil)).Elem()
 }
 
 func (o SamlConfigurationMapOutput) ToSamlConfigurationMapOutput() SamlConfigurationMapOutput {
@@ -498,18 +435,16 @@ func (o SamlConfigurationMapOutput) ToSamlConfigurationMapOutputWithContext(ctx 
 }
 
 func (o SamlConfigurationMapOutput) MapIndex(k pulumi.StringInput) SamlConfigurationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SamlConfiguration {
-		return vs[0].(map[string]SamlConfiguration)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SamlConfiguration {
+		return vs[0].(map[string]*SamlConfiguration)[vs[1].(string)]
 	}).(SamlConfigurationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationInput)(nil)).Elem(), &SamlConfiguration{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationPtrInput)(nil)).Elem(), &SamlConfiguration{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationArrayInput)(nil)).Elem(), SamlConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationMapInput)(nil)).Elem(), SamlConfigurationMap{})
 	pulumi.RegisterOutputType(SamlConfigurationOutput{})
-	pulumi.RegisterOutputType(SamlConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SamlConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(SamlConfigurationMapOutput{})
 }

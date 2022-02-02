@@ -125,7 +125,7 @@ type CseInsightsConfigurationInput interface {
 }
 
 func (*CseInsightsConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseInsightsConfiguration)(nil))
+	return reflect.TypeOf((**CseInsightsConfiguration)(nil)).Elem()
 }
 
 func (i *CseInsightsConfiguration) ToCseInsightsConfigurationOutput() CseInsightsConfigurationOutput {
@@ -134,35 +134,6 @@ func (i *CseInsightsConfiguration) ToCseInsightsConfigurationOutput() CseInsight
 
 func (i *CseInsightsConfiguration) ToCseInsightsConfigurationOutputWithContext(ctx context.Context) CseInsightsConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsConfigurationOutput)
-}
-
-func (i *CseInsightsConfiguration) ToCseInsightsConfigurationPtrOutput() CseInsightsConfigurationPtrOutput {
-	return i.ToCseInsightsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *CseInsightsConfiguration) ToCseInsightsConfigurationPtrOutputWithContext(ctx context.Context) CseInsightsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsConfigurationPtrOutput)
-}
-
-type CseInsightsConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToCseInsightsConfigurationPtrOutput() CseInsightsConfigurationPtrOutput
-	ToCseInsightsConfigurationPtrOutputWithContext(ctx context.Context) CseInsightsConfigurationPtrOutput
-}
-
-type cseInsightsConfigurationPtrType CseInsightsConfigurationArgs
-
-func (*cseInsightsConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseInsightsConfiguration)(nil))
-}
-
-func (i *cseInsightsConfigurationPtrType) ToCseInsightsConfigurationPtrOutput() CseInsightsConfigurationPtrOutput {
-	return i.ToCseInsightsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *cseInsightsConfigurationPtrType) ToCseInsightsConfigurationPtrOutputWithContext(ctx context.Context) CseInsightsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsConfigurationPtrOutput)
 }
 
 // CseInsightsConfigurationArrayInput is an input type that accepts CseInsightsConfigurationArray and CseInsightsConfigurationArrayOutput values.
@@ -218,7 +189,7 @@ func (i CseInsightsConfigurationMap) ToCseInsightsConfigurationMapOutputWithCont
 type CseInsightsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseInsightsConfiguration)(nil))
+	return reflect.TypeOf((**CseInsightsConfiguration)(nil)).Elem()
 }
 
 func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationOutput() CseInsightsConfigurationOutput {
@@ -229,44 +200,10 @@ func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationOutputWithCont
 	return o
 }
 
-func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationPtrOutput() CseInsightsConfigurationPtrOutput {
-	return o.ToCseInsightsConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationPtrOutputWithContext(ctx context.Context) CseInsightsConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseInsightsConfiguration) *CseInsightsConfiguration {
-		return &v
-	}).(CseInsightsConfigurationPtrOutput)
-}
-
-type CseInsightsConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (CseInsightsConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseInsightsConfiguration)(nil))
-}
-
-func (o CseInsightsConfigurationPtrOutput) ToCseInsightsConfigurationPtrOutput() CseInsightsConfigurationPtrOutput {
-	return o
-}
-
-func (o CseInsightsConfigurationPtrOutput) ToCseInsightsConfigurationPtrOutputWithContext(ctx context.Context) CseInsightsConfigurationPtrOutput {
-	return o
-}
-
-func (o CseInsightsConfigurationPtrOutput) Elem() CseInsightsConfigurationOutput {
-	return o.ApplyT(func(v *CseInsightsConfiguration) CseInsightsConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret CseInsightsConfiguration
-		return ret
-	}).(CseInsightsConfigurationOutput)
-}
-
 type CseInsightsConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseInsightsConfiguration)(nil))
+	return reflect.TypeOf((*[]*CseInsightsConfiguration)(nil)).Elem()
 }
 
 func (o CseInsightsConfigurationArrayOutput) ToCseInsightsConfigurationArrayOutput() CseInsightsConfigurationArrayOutput {
@@ -278,15 +215,15 @@ func (o CseInsightsConfigurationArrayOutput) ToCseInsightsConfigurationArrayOutp
 }
 
 func (o CseInsightsConfigurationArrayOutput) Index(i pulumi.IntInput) CseInsightsConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseInsightsConfiguration {
-		return vs[0].([]CseInsightsConfiguration)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseInsightsConfiguration {
+		return vs[0].([]*CseInsightsConfiguration)[vs[1].(int)]
 	}).(CseInsightsConfigurationOutput)
 }
 
 type CseInsightsConfigurationMapOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsConfigurationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseInsightsConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*CseInsightsConfiguration)(nil)).Elem()
 }
 
 func (o CseInsightsConfigurationMapOutput) ToCseInsightsConfigurationMapOutput() CseInsightsConfigurationMapOutput {
@@ -298,18 +235,16 @@ func (o CseInsightsConfigurationMapOutput) ToCseInsightsConfigurationMapOutputWi
 }
 
 func (o CseInsightsConfigurationMapOutput) MapIndex(k pulumi.StringInput) CseInsightsConfigurationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseInsightsConfiguration {
-		return vs[0].(map[string]CseInsightsConfiguration)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseInsightsConfiguration {
+		return vs[0].(map[string]*CseInsightsConfiguration)[vs[1].(string)]
 	}).(CseInsightsConfigurationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsConfigurationInput)(nil)).Elem(), &CseInsightsConfiguration{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsConfigurationPtrInput)(nil)).Elem(), &CseInsightsConfiguration{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsConfigurationArrayInput)(nil)).Elem(), CseInsightsConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsConfigurationMapInput)(nil)).Elem(), CseInsightsConfigurationMap{})
 	pulumi.RegisterOutputType(CseInsightsConfigurationOutput{})
-	pulumi.RegisterOutputType(CseInsightsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(CseInsightsConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(CseInsightsConfigurationMapOutput{})
 }

@@ -108,18 +108,18 @@ export class CseCustomInsight extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseCustomInsightArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseCustomInsightArgs | CseCustomInsightState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseCustomInsightState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ordered"] = state ? state.ordered : undefined;
-            inputs["ruleIds"] = state ? state.ruleIds : undefined;
-            inputs["severity"] = state ? state.severity : undefined;
-            inputs["signalNames"] = state ? state.signalNames : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ordered"] = state ? state.ordered : undefined;
+            resourceInputs["ruleIds"] = state ? state.ruleIds : undefined;
+            resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["signalNames"] = state ? state.signalNames : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CseCustomInsightArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -137,19 +137,17 @@ export class CseCustomInsight extends pulumi.CustomResource {
             if ((!args || args.tags === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tags'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ordered"] = args ? args.ordered : undefined;
-            inputs["ruleIds"] = args ? args.ruleIds : undefined;
-            inputs["severity"] = args ? args.severity : undefined;
-            inputs["signalNames"] = args ? args.signalNames : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ordered"] = args ? args.ordered : undefined;
+            resourceInputs["ruleIds"] = args ? args.ruleIds : undefined;
+            resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["signalNames"] = args ? args.signalNames : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseCustomInsight.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseCustomInsight.__pulumiType, name, resourceInputs, opts);
     }
 }
 

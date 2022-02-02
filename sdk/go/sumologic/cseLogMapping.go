@@ -263,7 +263,7 @@ type CseLogMappingInput interface {
 }
 
 func (*CseLogMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseLogMapping)(nil))
+	return reflect.TypeOf((**CseLogMapping)(nil)).Elem()
 }
 
 func (i *CseLogMapping) ToCseLogMappingOutput() CseLogMappingOutput {
@@ -272,35 +272,6 @@ func (i *CseLogMapping) ToCseLogMappingOutput() CseLogMappingOutput {
 
 func (i *CseLogMapping) ToCseLogMappingOutputWithContext(ctx context.Context) CseLogMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseLogMappingOutput)
-}
-
-func (i *CseLogMapping) ToCseLogMappingPtrOutput() CseLogMappingPtrOutput {
-	return i.ToCseLogMappingPtrOutputWithContext(context.Background())
-}
-
-func (i *CseLogMapping) ToCseLogMappingPtrOutputWithContext(ctx context.Context) CseLogMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseLogMappingPtrOutput)
-}
-
-type CseLogMappingPtrInput interface {
-	pulumi.Input
-
-	ToCseLogMappingPtrOutput() CseLogMappingPtrOutput
-	ToCseLogMappingPtrOutputWithContext(ctx context.Context) CseLogMappingPtrOutput
-}
-
-type cseLogMappingPtrType CseLogMappingArgs
-
-func (*cseLogMappingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseLogMapping)(nil))
-}
-
-func (i *cseLogMappingPtrType) ToCseLogMappingPtrOutput() CseLogMappingPtrOutput {
-	return i.ToCseLogMappingPtrOutputWithContext(context.Background())
-}
-
-func (i *cseLogMappingPtrType) ToCseLogMappingPtrOutputWithContext(ctx context.Context) CseLogMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseLogMappingPtrOutput)
 }
 
 // CseLogMappingArrayInput is an input type that accepts CseLogMappingArray and CseLogMappingArrayOutput values.
@@ -356,7 +327,7 @@ func (i CseLogMappingMap) ToCseLogMappingMapOutputWithContext(ctx context.Contex
 type CseLogMappingOutput struct{ *pulumi.OutputState }
 
 func (CseLogMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseLogMapping)(nil))
+	return reflect.TypeOf((**CseLogMapping)(nil)).Elem()
 }
 
 func (o CseLogMappingOutput) ToCseLogMappingOutput() CseLogMappingOutput {
@@ -367,44 +338,10 @@ func (o CseLogMappingOutput) ToCseLogMappingOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o CseLogMappingOutput) ToCseLogMappingPtrOutput() CseLogMappingPtrOutput {
-	return o.ToCseLogMappingPtrOutputWithContext(context.Background())
-}
-
-func (o CseLogMappingOutput) ToCseLogMappingPtrOutputWithContext(ctx context.Context) CseLogMappingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseLogMapping) *CseLogMapping {
-		return &v
-	}).(CseLogMappingPtrOutput)
-}
-
-type CseLogMappingPtrOutput struct{ *pulumi.OutputState }
-
-func (CseLogMappingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseLogMapping)(nil))
-}
-
-func (o CseLogMappingPtrOutput) ToCseLogMappingPtrOutput() CseLogMappingPtrOutput {
-	return o
-}
-
-func (o CseLogMappingPtrOutput) ToCseLogMappingPtrOutputWithContext(ctx context.Context) CseLogMappingPtrOutput {
-	return o
-}
-
-func (o CseLogMappingPtrOutput) Elem() CseLogMappingOutput {
-	return o.ApplyT(func(v *CseLogMapping) CseLogMapping {
-		if v != nil {
-			return *v
-		}
-		var ret CseLogMapping
-		return ret
-	}).(CseLogMappingOutput)
-}
-
 type CseLogMappingArrayOutput struct{ *pulumi.OutputState }
 
 func (CseLogMappingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseLogMapping)(nil))
+	return reflect.TypeOf((*[]*CseLogMapping)(nil)).Elem()
 }
 
 func (o CseLogMappingArrayOutput) ToCseLogMappingArrayOutput() CseLogMappingArrayOutput {
@@ -416,15 +353,15 @@ func (o CseLogMappingArrayOutput) ToCseLogMappingArrayOutputWithContext(ctx cont
 }
 
 func (o CseLogMappingArrayOutput) Index(i pulumi.IntInput) CseLogMappingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseLogMapping {
-		return vs[0].([]CseLogMapping)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseLogMapping {
+		return vs[0].([]*CseLogMapping)[vs[1].(int)]
 	}).(CseLogMappingOutput)
 }
 
 type CseLogMappingMapOutput struct{ *pulumi.OutputState }
 
 func (CseLogMappingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseLogMapping)(nil))
+	return reflect.TypeOf((*map[string]*CseLogMapping)(nil)).Elem()
 }
 
 func (o CseLogMappingMapOutput) ToCseLogMappingMapOutput() CseLogMappingMapOutput {
@@ -436,18 +373,16 @@ func (o CseLogMappingMapOutput) ToCseLogMappingMapOutputWithContext(ctx context.
 }
 
 func (o CseLogMappingMapOutput) MapIndex(k pulumi.StringInput) CseLogMappingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseLogMapping {
-		return vs[0].(map[string]CseLogMapping)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseLogMapping {
+		return vs[0].(map[string]*CseLogMapping)[vs[1].(string)]
 	}).(CseLogMappingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingInput)(nil)).Elem(), &CseLogMapping{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingPtrInput)(nil)).Elem(), &CseLogMapping{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingArrayInput)(nil)).Elem(), CseLogMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingMapInput)(nil)).Elem(), CseLogMappingMap{})
 	pulumi.RegisterOutputType(CseLogMappingOutput{})
-	pulumi.RegisterOutputType(CseLogMappingPtrOutput{})
 	pulumi.RegisterOutputType(CseLogMappingArrayOutput{})
 	pulumi.RegisterOutputType(CseLogMappingMapOutput{})
 }

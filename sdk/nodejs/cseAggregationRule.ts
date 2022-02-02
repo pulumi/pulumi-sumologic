@@ -148,25 +148,25 @@ export class CseAggregationRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseAggregationRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseAggregationRuleArgs | CseAggregationRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseAggregationRuleState | undefined;
-            inputs["aggregationFunctions"] = state ? state.aggregationFunctions : undefined;
-            inputs["descriptionExpression"] = state ? state.descriptionExpression : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["entitySelectors"] = state ? state.entitySelectors : undefined;
-            inputs["groupByEntity"] = state ? state.groupByEntity : undefined;
-            inputs["groupByFields"] = state ? state.groupByFields : undefined;
-            inputs["isPrototype"] = state ? state.isPrototype : undefined;
-            inputs["matchExpression"] = state ? state.matchExpression : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nameExpression"] = state ? state.nameExpression : undefined;
-            inputs["severityMapping"] = state ? state.severityMapping : undefined;
-            inputs["summaryExpression"] = state ? state.summaryExpression : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["triggerExpression"] = state ? state.triggerExpression : undefined;
-            inputs["windowSize"] = state ? state.windowSize : undefined;
+            resourceInputs["aggregationFunctions"] = state ? state.aggregationFunctions : undefined;
+            resourceInputs["descriptionExpression"] = state ? state.descriptionExpression : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["entitySelectors"] = state ? state.entitySelectors : undefined;
+            resourceInputs["groupByEntity"] = state ? state.groupByEntity : undefined;
+            resourceInputs["groupByFields"] = state ? state.groupByFields : undefined;
+            resourceInputs["isPrototype"] = state ? state.isPrototype : undefined;
+            resourceInputs["matchExpression"] = state ? state.matchExpression : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nameExpression"] = state ? state.nameExpression : undefined;
+            resourceInputs["severityMapping"] = state ? state.severityMapping : undefined;
+            resourceInputs["summaryExpression"] = state ? state.summaryExpression : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["triggerExpression"] = state ? state.triggerExpression : undefined;
+            resourceInputs["windowSize"] = state ? state.windowSize : undefined;
         } else {
             const args = argsOrState as CseAggregationRuleArgs | undefined;
             if ((!args || args.aggregationFunctions === undefined) && !opts.urn) {
@@ -196,26 +196,24 @@ export class CseAggregationRule extends pulumi.CustomResource {
             if ((!args || args.windowSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'windowSize'");
             }
-            inputs["aggregationFunctions"] = args ? args.aggregationFunctions : undefined;
-            inputs["descriptionExpression"] = args ? args.descriptionExpression : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["entitySelectors"] = args ? args.entitySelectors : undefined;
-            inputs["groupByEntity"] = args ? args.groupByEntity : undefined;
-            inputs["groupByFields"] = args ? args.groupByFields : undefined;
-            inputs["isPrototype"] = args ? args.isPrototype : undefined;
-            inputs["matchExpression"] = args ? args.matchExpression : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nameExpression"] = args ? args.nameExpression : undefined;
-            inputs["severityMapping"] = args ? args.severityMapping : undefined;
-            inputs["summaryExpression"] = args ? args.summaryExpression : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["triggerExpression"] = args ? args.triggerExpression : undefined;
-            inputs["windowSize"] = args ? args.windowSize : undefined;
+            resourceInputs["aggregationFunctions"] = args ? args.aggregationFunctions : undefined;
+            resourceInputs["descriptionExpression"] = args ? args.descriptionExpression : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["entitySelectors"] = args ? args.entitySelectors : undefined;
+            resourceInputs["groupByEntity"] = args ? args.groupByEntity : undefined;
+            resourceInputs["groupByFields"] = args ? args.groupByFields : undefined;
+            resourceInputs["isPrototype"] = args ? args.isPrototype : undefined;
+            resourceInputs["matchExpression"] = args ? args.matchExpression : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nameExpression"] = args ? args.nameExpression : undefined;
+            resourceInputs["severityMapping"] = args ? args.severityMapping : undefined;
+            resourceInputs["summaryExpression"] = args ? args.summaryExpression : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["triggerExpression"] = args ? args.triggerExpression : undefined;
+            resourceInputs["windowSize"] = args ? args.windowSize : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseAggregationRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseAggregationRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

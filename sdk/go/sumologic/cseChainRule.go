@@ -269,7 +269,7 @@ type CseChainRuleInput interface {
 }
 
 func (*CseChainRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseChainRule)(nil))
+	return reflect.TypeOf((**CseChainRule)(nil)).Elem()
 }
 
 func (i *CseChainRule) ToCseChainRuleOutput() CseChainRuleOutput {
@@ -278,35 +278,6 @@ func (i *CseChainRule) ToCseChainRuleOutput() CseChainRuleOutput {
 
 func (i *CseChainRule) ToCseChainRuleOutputWithContext(ctx context.Context) CseChainRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseChainRuleOutput)
-}
-
-func (i *CseChainRule) ToCseChainRulePtrOutput() CseChainRulePtrOutput {
-	return i.ToCseChainRulePtrOutputWithContext(context.Background())
-}
-
-func (i *CseChainRule) ToCseChainRulePtrOutputWithContext(ctx context.Context) CseChainRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseChainRulePtrOutput)
-}
-
-type CseChainRulePtrInput interface {
-	pulumi.Input
-
-	ToCseChainRulePtrOutput() CseChainRulePtrOutput
-	ToCseChainRulePtrOutputWithContext(ctx context.Context) CseChainRulePtrOutput
-}
-
-type cseChainRulePtrType CseChainRuleArgs
-
-func (*cseChainRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseChainRule)(nil))
-}
-
-func (i *cseChainRulePtrType) ToCseChainRulePtrOutput() CseChainRulePtrOutput {
-	return i.ToCseChainRulePtrOutputWithContext(context.Background())
-}
-
-func (i *cseChainRulePtrType) ToCseChainRulePtrOutputWithContext(ctx context.Context) CseChainRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseChainRulePtrOutput)
 }
 
 // CseChainRuleArrayInput is an input type that accepts CseChainRuleArray and CseChainRuleArrayOutput values.
@@ -362,7 +333,7 @@ func (i CseChainRuleMap) ToCseChainRuleMapOutputWithContext(ctx context.Context)
 type CseChainRuleOutput struct{ *pulumi.OutputState }
 
 func (CseChainRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseChainRule)(nil))
+	return reflect.TypeOf((**CseChainRule)(nil)).Elem()
 }
 
 func (o CseChainRuleOutput) ToCseChainRuleOutput() CseChainRuleOutput {
@@ -373,44 +344,10 @@ func (o CseChainRuleOutput) ToCseChainRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o CseChainRuleOutput) ToCseChainRulePtrOutput() CseChainRulePtrOutput {
-	return o.ToCseChainRulePtrOutputWithContext(context.Background())
-}
-
-func (o CseChainRuleOutput) ToCseChainRulePtrOutputWithContext(ctx context.Context) CseChainRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseChainRule) *CseChainRule {
-		return &v
-	}).(CseChainRulePtrOutput)
-}
-
-type CseChainRulePtrOutput struct{ *pulumi.OutputState }
-
-func (CseChainRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseChainRule)(nil))
-}
-
-func (o CseChainRulePtrOutput) ToCseChainRulePtrOutput() CseChainRulePtrOutput {
-	return o
-}
-
-func (o CseChainRulePtrOutput) ToCseChainRulePtrOutputWithContext(ctx context.Context) CseChainRulePtrOutput {
-	return o
-}
-
-func (o CseChainRulePtrOutput) Elem() CseChainRuleOutput {
-	return o.ApplyT(func(v *CseChainRule) CseChainRule {
-		if v != nil {
-			return *v
-		}
-		var ret CseChainRule
-		return ret
-	}).(CseChainRuleOutput)
-}
-
 type CseChainRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (CseChainRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseChainRule)(nil))
+	return reflect.TypeOf((*[]*CseChainRule)(nil)).Elem()
 }
 
 func (o CseChainRuleArrayOutput) ToCseChainRuleArrayOutput() CseChainRuleArrayOutput {
@@ -422,15 +359,15 @@ func (o CseChainRuleArrayOutput) ToCseChainRuleArrayOutputWithContext(ctx contex
 }
 
 func (o CseChainRuleArrayOutput) Index(i pulumi.IntInput) CseChainRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseChainRule {
-		return vs[0].([]CseChainRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseChainRule {
+		return vs[0].([]*CseChainRule)[vs[1].(int)]
 	}).(CseChainRuleOutput)
 }
 
 type CseChainRuleMapOutput struct{ *pulumi.OutputState }
 
 func (CseChainRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseChainRule)(nil))
+	return reflect.TypeOf((*map[string]*CseChainRule)(nil)).Elem()
 }
 
 func (o CseChainRuleMapOutput) ToCseChainRuleMapOutput() CseChainRuleMapOutput {
@@ -442,18 +379,16 @@ func (o CseChainRuleMapOutput) ToCseChainRuleMapOutputWithContext(ctx context.Co
 }
 
 func (o CseChainRuleMapOutput) MapIndex(k pulumi.StringInput) CseChainRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseChainRule {
-		return vs[0].(map[string]CseChainRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseChainRule {
+		return vs[0].(map[string]*CseChainRule)[vs[1].(string)]
 	}).(CseChainRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleInput)(nil)).Elem(), &CseChainRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRulePtrInput)(nil)).Elem(), &CseChainRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleArrayInput)(nil)).Elem(), CseChainRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseChainRuleMapInput)(nil)).Elem(), CseChainRuleMap{})
 	pulumi.RegisterOutputType(CseChainRuleOutput{})
-	pulumi.RegisterOutputType(CseChainRulePtrOutput{})
 	pulumi.RegisterOutputType(CseChainRuleArrayOutput{})
 	pulumi.RegisterOutputType(CseChainRuleMapOutput{})
 }

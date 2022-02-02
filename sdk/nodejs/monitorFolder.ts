@@ -95,48 +95,46 @@ export class MonitorFolder extends pulumi.CustomResource {
      */
     constructor(name: string, args: MonitorFolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorFolderArgs | MonitorFolderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorFolderState | undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["createdBy"] = state ? state.createdBy : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["isLocked"] = state ? state.isLocked : undefined;
-            inputs["isMutable"] = state ? state.isMutable : undefined;
-            inputs["isSystem"] = state ? state.isSystem : undefined;
-            inputs["modifiedAt"] = state ? state.modifiedAt : undefined;
-            inputs["modifiedBy"] = state ? state.modifiedBy : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentId"] = state ? state.parentId : undefined;
-            inputs["postRequestMap"] = state ? state.postRequestMap : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["isLocked"] = state ? state.isLocked : undefined;
+            resourceInputs["isMutable"] = state ? state.isMutable : undefined;
+            resourceInputs["isSystem"] = state ? state.isSystem : undefined;
+            resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
+            resourceInputs["modifiedBy"] = state ? state.modifiedBy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["postRequestMap"] = state ? state.postRequestMap : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as MonitorFolderArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
-            inputs["createdBy"] = args ? args.createdBy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["isLocked"] = args ? args.isLocked : undefined;
-            inputs["isMutable"] = args ? args.isMutable : undefined;
-            inputs["isSystem"] = args ? args.isSystem : undefined;
-            inputs["modifiedAt"] = args ? args.modifiedAt : undefined;
-            inputs["modifiedBy"] = args ? args.modifiedBy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
-            inputs["postRequestMap"] = args ? args.postRequestMap : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
+            resourceInputs["createdBy"] = args ? args.createdBy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["isLocked"] = args ? args.isLocked : undefined;
+            resourceInputs["isMutable"] = args ? args.isMutable : undefined;
+            resourceInputs["isSystem"] = args ? args.isSystem : undefined;
+            resourceInputs["modifiedAt"] = args ? args.modifiedAt : undefined;
+            resourceInputs["modifiedBy"] = args ? args.modifiedBy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["postRequestMap"] = args ? args.postRequestMap : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MonitorFolder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MonitorFolder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

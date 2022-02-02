@@ -285,7 +285,7 @@ type AwsXraySourceInput interface {
 }
 
 func (*AwsXraySource) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsXraySource)(nil))
+	return reflect.TypeOf((**AwsXraySource)(nil)).Elem()
 }
 
 func (i *AwsXraySource) ToAwsXraySourceOutput() AwsXraySourceOutput {
@@ -294,35 +294,6 @@ func (i *AwsXraySource) ToAwsXraySourceOutput() AwsXraySourceOutput {
 
 func (i *AwsXraySource) ToAwsXraySourceOutputWithContext(ctx context.Context) AwsXraySourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourceOutput)
-}
-
-func (i *AwsXraySource) ToAwsXraySourcePtrOutput() AwsXraySourcePtrOutput {
-	return i.ToAwsXraySourcePtrOutputWithContext(context.Background())
-}
-
-func (i *AwsXraySource) ToAwsXraySourcePtrOutputWithContext(ctx context.Context) AwsXraySourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourcePtrOutput)
-}
-
-type AwsXraySourcePtrInput interface {
-	pulumi.Input
-
-	ToAwsXraySourcePtrOutput() AwsXraySourcePtrOutput
-	ToAwsXraySourcePtrOutputWithContext(ctx context.Context) AwsXraySourcePtrOutput
-}
-
-type awsXraySourcePtrType AwsXraySourceArgs
-
-func (*awsXraySourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsXraySource)(nil))
-}
-
-func (i *awsXraySourcePtrType) ToAwsXraySourcePtrOutput() AwsXraySourcePtrOutput {
-	return i.ToAwsXraySourcePtrOutputWithContext(context.Background())
-}
-
-func (i *awsXraySourcePtrType) ToAwsXraySourcePtrOutputWithContext(ctx context.Context) AwsXraySourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourcePtrOutput)
 }
 
 // AwsXraySourceArrayInput is an input type that accepts AwsXraySourceArray and AwsXraySourceArrayOutput values.
@@ -378,7 +349,7 @@ func (i AwsXraySourceMap) ToAwsXraySourceMapOutputWithContext(ctx context.Contex
 type AwsXraySourceOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsXraySource)(nil))
+	return reflect.TypeOf((**AwsXraySource)(nil)).Elem()
 }
 
 func (o AwsXraySourceOutput) ToAwsXraySourceOutput() AwsXraySourceOutput {
@@ -389,44 +360,10 @@ func (o AwsXraySourceOutput) ToAwsXraySourceOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AwsXraySourceOutput) ToAwsXraySourcePtrOutput() AwsXraySourcePtrOutput {
-	return o.ToAwsXraySourcePtrOutputWithContext(context.Background())
-}
-
-func (o AwsXraySourceOutput) ToAwsXraySourcePtrOutputWithContext(ctx context.Context) AwsXraySourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsXraySource) *AwsXraySource {
-		return &v
-	}).(AwsXraySourcePtrOutput)
-}
-
-type AwsXraySourcePtrOutput struct{ *pulumi.OutputState }
-
-func (AwsXraySourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsXraySource)(nil))
-}
-
-func (o AwsXraySourcePtrOutput) ToAwsXraySourcePtrOutput() AwsXraySourcePtrOutput {
-	return o
-}
-
-func (o AwsXraySourcePtrOutput) ToAwsXraySourcePtrOutputWithContext(ctx context.Context) AwsXraySourcePtrOutput {
-	return o
-}
-
-func (o AwsXraySourcePtrOutput) Elem() AwsXraySourceOutput {
-	return o.ApplyT(func(v *AwsXraySource) AwsXraySource {
-		if v != nil {
-			return *v
-		}
-		var ret AwsXraySource
-		return ret
-	}).(AwsXraySourceOutput)
-}
-
 type AwsXraySourceArrayOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AwsXraySource)(nil))
+	return reflect.TypeOf((*[]*AwsXraySource)(nil)).Elem()
 }
 
 func (o AwsXraySourceArrayOutput) ToAwsXraySourceArrayOutput() AwsXraySourceArrayOutput {
@@ -438,15 +375,15 @@ func (o AwsXraySourceArrayOutput) ToAwsXraySourceArrayOutputWithContext(ctx cont
 }
 
 func (o AwsXraySourceArrayOutput) Index(i pulumi.IntInput) AwsXraySourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsXraySource {
-		return vs[0].([]AwsXraySource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsXraySource {
+		return vs[0].([]*AwsXraySource)[vs[1].(int)]
 	}).(AwsXraySourceOutput)
 }
 
 type AwsXraySourceMapOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AwsXraySource)(nil))
+	return reflect.TypeOf((*map[string]*AwsXraySource)(nil)).Elem()
 }
 
 func (o AwsXraySourceMapOutput) ToAwsXraySourceMapOutput() AwsXraySourceMapOutput {
@@ -458,18 +395,16 @@ func (o AwsXraySourceMapOutput) ToAwsXraySourceMapOutputWithContext(ctx context.
 }
 
 func (o AwsXraySourceMapOutput) MapIndex(k pulumi.StringInput) AwsXraySourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AwsXraySource {
-		return vs[0].(map[string]AwsXraySource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AwsXraySource {
+		return vs[0].(map[string]*AwsXraySource)[vs[1].(string)]
 	}).(AwsXraySourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceInput)(nil)).Elem(), &AwsXraySource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePtrInput)(nil)).Elem(), &AwsXraySource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceArrayInput)(nil)).Elem(), AwsXraySourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceMapInput)(nil)).Elem(), AwsXraySourceMap{})
 	pulumi.RegisterOutputType(AwsXraySourceOutput{})
-	pulumi.RegisterOutputType(AwsXraySourcePtrOutput{})
 	pulumi.RegisterOutputType(AwsXraySourceArrayOutput{})
 	pulumi.RegisterOutputType(AwsXraySourceMapOutput{})
 }

@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
     public static class GetCseLogMappingVendorProduct
     {
         public static Task<GetCseLogMappingVendorProductResult> InvokeAsync(GetCseLogMappingVendorProductArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductArgs(), options.WithDefaults());
 
         public static Output<GetCseLogMappingVendorProductResult> Invoke(GetCseLogMappingVendorProductInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductInvokeArgs(), options.WithDefaults());
     }
 
 

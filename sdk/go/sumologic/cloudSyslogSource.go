@@ -220,7 +220,7 @@ type CloudSyslogSourceInput interface {
 }
 
 func (*CloudSyslogSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSyslogSource)(nil))
+	return reflect.TypeOf((**CloudSyslogSource)(nil)).Elem()
 }
 
 func (i *CloudSyslogSource) ToCloudSyslogSourceOutput() CloudSyslogSourceOutput {
@@ -229,35 +229,6 @@ func (i *CloudSyslogSource) ToCloudSyslogSourceOutput() CloudSyslogSourceOutput 
 
 func (i *CloudSyslogSource) ToCloudSyslogSourceOutputWithContext(ctx context.Context) CloudSyslogSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSyslogSourceOutput)
-}
-
-func (i *CloudSyslogSource) ToCloudSyslogSourcePtrOutput() CloudSyslogSourcePtrOutput {
-	return i.ToCloudSyslogSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *CloudSyslogSource) ToCloudSyslogSourcePtrOutputWithContext(ctx context.Context) CloudSyslogSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSyslogSourcePtrOutput)
-}
-
-type CloudSyslogSourcePtrInput interface {
-	pulumi.Input
-
-	ToCloudSyslogSourcePtrOutput() CloudSyslogSourcePtrOutput
-	ToCloudSyslogSourcePtrOutputWithContext(ctx context.Context) CloudSyslogSourcePtrOutput
-}
-
-type cloudSyslogSourcePtrType CloudSyslogSourceArgs
-
-func (*cloudSyslogSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSyslogSource)(nil))
-}
-
-func (i *cloudSyslogSourcePtrType) ToCloudSyslogSourcePtrOutput() CloudSyslogSourcePtrOutput {
-	return i.ToCloudSyslogSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *cloudSyslogSourcePtrType) ToCloudSyslogSourcePtrOutputWithContext(ctx context.Context) CloudSyslogSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudSyslogSourcePtrOutput)
 }
 
 // CloudSyslogSourceArrayInput is an input type that accepts CloudSyslogSourceArray and CloudSyslogSourceArrayOutput values.
@@ -313,7 +284,7 @@ func (i CloudSyslogSourceMap) ToCloudSyslogSourceMapOutputWithContext(ctx contex
 type CloudSyslogSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudSyslogSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudSyslogSource)(nil))
+	return reflect.TypeOf((**CloudSyslogSource)(nil)).Elem()
 }
 
 func (o CloudSyslogSourceOutput) ToCloudSyslogSourceOutput() CloudSyslogSourceOutput {
@@ -324,44 +295,10 @@ func (o CloudSyslogSourceOutput) ToCloudSyslogSourceOutputWithContext(ctx contex
 	return o
 }
 
-func (o CloudSyslogSourceOutput) ToCloudSyslogSourcePtrOutput() CloudSyslogSourcePtrOutput {
-	return o.ToCloudSyslogSourcePtrOutputWithContext(context.Background())
-}
-
-func (o CloudSyslogSourceOutput) ToCloudSyslogSourcePtrOutputWithContext(ctx context.Context) CloudSyslogSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSyslogSource) *CloudSyslogSource {
-		return &v
-	}).(CloudSyslogSourcePtrOutput)
-}
-
-type CloudSyslogSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudSyslogSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudSyslogSource)(nil))
-}
-
-func (o CloudSyslogSourcePtrOutput) ToCloudSyslogSourcePtrOutput() CloudSyslogSourcePtrOutput {
-	return o
-}
-
-func (o CloudSyslogSourcePtrOutput) ToCloudSyslogSourcePtrOutputWithContext(ctx context.Context) CloudSyslogSourcePtrOutput {
-	return o
-}
-
-func (o CloudSyslogSourcePtrOutput) Elem() CloudSyslogSourceOutput {
-	return o.ApplyT(func(v *CloudSyslogSource) CloudSyslogSource {
-		if v != nil {
-			return *v
-		}
-		var ret CloudSyslogSource
-		return ret
-	}).(CloudSyslogSourceOutput)
-}
-
 type CloudSyslogSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (CloudSyslogSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudSyslogSource)(nil))
+	return reflect.TypeOf((*[]*CloudSyslogSource)(nil)).Elem()
 }
 
 func (o CloudSyslogSourceArrayOutput) ToCloudSyslogSourceArrayOutput() CloudSyslogSourceArrayOutput {
@@ -373,15 +310,15 @@ func (o CloudSyslogSourceArrayOutput) ToCloudSyslogSourceArrayOutputWithContext(
 }
 
 func (o CloudSyslogSourceArrayOutput) Index(i pulumi.IntInput) CloudSyslogSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudSyslogSource {
-		return vs[0].([]CloudSyslogSource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudSyslogSource {
+		return vs[0].([]*CloudSyslogSource)[vs[1].(int)]
 	}).(CloudSyslogSourceOutput)
 }
 
 type CloudSyslogSourceMapOutput struct{ *pulumi.OutputState }
 
 func (CloudSyslogSourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CloudSyslogSource)(nil))
+	return reflect.TypeOf((*map[string]*CloudSyslogSource)(nil)).Elem()
 }
 
 func (o CloudSyslogSourceMapOutput) ToCloudSyslogSourceMapOutput() CloudSyslogSourceMapOutput {
@@ -393,18 +330,16 @@ func (o CloudSyslogSourceMapOutput) ToCloudSyslogSourceMapOutputWithContext(ctx 
 }
 
 func (o CloudSyslogSourceMapOutput) MapIndex(k pulumi.StringInput) CloudSyslogSourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CloudSyslogSource {
-		return vs[0].(map[string]CloudSyslogSource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CloudSyslogSource {
+		return vs[0].(map[string]*CloudSyslogSource)[vs[1].(string)]
 	}).(CloudSyslogSourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceInput)(nil)).Elem(), &CloudSyslogSource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourcePtrInput)(nil)).Elem(), &CloudSyslogSource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceArrayInput)(nil)).Elem(), CloudSyslogSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSyslogSourceMapInput)(nil)).Elem(), CloudSyslogSourceMap{})
 	pulumi.RegisterOutputType(CloudSyslogSourceOutput{})
-	pulumi.RegisterOutputType(CloudSyslogSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudSyslogSourceArrayOutput{})
 	pulumi.RegisterOutputType(CloudSyslogSourceMapOutput{})
 }

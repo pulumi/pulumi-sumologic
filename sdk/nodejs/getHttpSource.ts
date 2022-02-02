@@ -10,9 +10,7 @@ export function getHttpSource(args?: GetHttpSourceArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("sumologic:index/getHttpSource:getHttpSource", {
         "collectorId": args.collectorId,
         "id": args.id,

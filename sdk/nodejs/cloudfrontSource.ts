@@ -133,32 +133,32 @@ export class CloudfrontSource extends pulumi.CustomResource {
      */
     constructor(name: string, args: CloudfrontSourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CloudfrontSourceArgs | CloudfrontSourceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudfrontSourceState | undefined;
-            inputs["authentication"] = state ? state.authentication : undefined;
-            inputs["automaticDateParsing"] = state ? state.automaticDateParsing : undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["collectorId"] = state ? state.collectorId : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["cutoffRelativeTime"] = state ? state.cutoffRelativeTime : undefined;
-            inputs["cutoffTimestamp"] = state ? state.cutoffTimestamp : undefined;
-            inputs["defaultDateFormats"] = state ? state.defaultDateFormats : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["filters"] = state ? state.filters : undefined;
-            inputs["forceTimezone"] = state ? state.forceTimezone : undefined;
-            inputs["hostName"] = state ? state.hostName : undefined;
-            inputs["manualPrefixRegexp"] = state ? state.manualPrefixRegexp : undefined;
-            inputs["multilineProcessingEnabled"] = state ? state.multilineProcessingEnabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["path"] = state ? state.path : undefined;
-            inputs["paused"] = state ? state.paused : undefined;
-            inputs["scanInterval"] = state ? state.scanInterval : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["useAutolineMatching"] = state ? state.useAutolineMatching : undefined;
+            resourceInputs["authentication"] = state ? state.authentication : undefined;
+            resourceInputs["automaticDateParsing"] = state ? state.automaticDateParsing : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["collectorId"] = state ? state.collectorId : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["cutoffRelativeTime"] = state ? state.cutoffRelativeTime : undefined;
+            resourceInputs["cutoffTimestamp"] = state ? state.cutoffTimestamp : undefined;
+            resourceInputs["defaultDateFormats"] = state ? state.defaultDateFormats : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["forceTimezone"] = state ? state.forceTimezone : undefined;
+            resourceInputs["hostName"] = state ? state.hostName : undefined;
+            resourceInputs["manualPrefixRegexp"] = state ? state.manualPrefixRegexp : undefined;
+            resourceInputs["multilineProcessingEnabled"] = state ? state.multilineProcessingEnabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["scanInterval"] = state ? state.scanInterval : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["useAutolineMatching"] = state ? state.useAutolineMatching : undefined;
         } else {
             const args = argsOrState as CloudfrontSourceArgs | undefined;
             if ((!args || args.authentication === undefined) && !opts.urn) {
@@ -179,33 +179,31 @@ export class CloudfrontSource extends pulumi.CustomResource {
             if ((!args || args.scanInterval === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scanInterval'");
             }
-            inputs["authentication"] = args ? args.authentication : undefined;
-            inputs["automaticDateParsing"] = args ? args.automaticDateParsing : undefined;
-            inputs["category"] = args ? args.category : undefined;
-            inputs["collectorId"] = args ? args.collectorId : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["cutoffRelativeTime"] = args ? args.cutoffRelativeTime : undefined;
-            inputs["cutoffTimestamp"] = args ? args.cutoffTimestamp : undefined;
-            inputs["defaultDateFormats"] = args ? args.defaultDateFormats : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["filters"] = args ? args.filters : undefined;
-            inputs["forceTimezone"] = args ? args.forceTimezone : undefined;
-            inputs["hostName"] = args ? args.hostName : undefined;
-            inputs["manualPrefixRegexp"] = args ? args.manualPrefixRegexp : undefined;
-            inputs["multilineProcessingEnabled"] = args ? args.multilineProcessingEnabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["path"] = args ? args.path : undefined;
-            inputs["paused"] = args ? args.paused : undefined;
-            inputs["scanInterval"] = args ? args.scanInterval : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
-            inputs["useAutolineMatching"] = args ? args.useAutolineMatching : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["authentication"] = args ? args.authentication : undefined;
+            resourceInputs["automaticDateParsing"] = args ? args.automaticDateParsing : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["collectorId"] = args ? args.collectorId : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["cutoffRelativeTime"] = args ? args.cutoffRelativeTime : undefined;
+            resourceInputs["cutoffTimestamp"] = args ? args.cutoffTimestamp : undefined;
+            resourceInputs["defaultDateFormats"] = args ? args.defaultDateFormats : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["forceTimezone"] = args ? args.forceTimezone : undefined;
+            resourceInputs["hostName"] = args ? args.hostName : undefined;
+            resourceInputs["manualPrefixRegexp"] = args ? args.manualPrefixRegexp : undefined;
+            resourceInputs["multilineProcessingEnabled"] = args ? args.multilineProcessingEnabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["scanInterval"] = args ? args.scanInterval : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["useAutolineMatching"] = args ? args.useAutolineMatching : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CloudfrontSource.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CloudfrontSource.__pulumiType, name, resourceInputs, opts);
     }
 }
 

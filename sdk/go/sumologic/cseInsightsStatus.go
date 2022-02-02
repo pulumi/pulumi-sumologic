@@ -127,7 +127,7 @@ type CseInsightsStatusInput interface {
 }
 
 func (*CseInsightsStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseInsightsStatus)(nil))
+	return reflect.TypeOf((**CseInsightsStatus)(nil)).Elem()
 }
 
 func (i *CseInsightsStatus) ToCseInsightsStatusOutput() CseInsightsStatusOutput {
@@ -136,35 +136,6 @@ func (i *CseInsightsStatus) ToCseInsightsStatusOutput() CseInsightsStatusOutput 
 
 func (i *CseInsightsStatus) ToCseInsightsStatusOutputWithContext(ctx context.Context) CseInsightsStatusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsStatusOutput)
-}
-
-func (i *CseInsightsStatus) ToCseInsightsStatusPtrOutput() CseInsightsStatusPtrOutput {
-	return i.ToCseInsightsStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *CseInsightsStatus) ToCseInsightsStatusPtrOutputWithContext(ctx context.Context) CseInsightsStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsStatusPtrOutput)
-}
-
-type CseInsightsStatusPtrInput interface {
-	pulumi.Input
-
-	ToCseInsightsStatusPtrOutput() CseInsightsStatusPtrOutput
-	ToCseInsightsStatusPtrOutputWithContext(ctx context.Context) CseInsightsStatusPtrOutput
-}
-
-type cseInsightsStatusPtrType CseInsightsStatusArgs
-
-func (*cseInsightsStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseInsightsStatus)(nil))
-}
-
-func (i *cseInsightsStatusPtrType) ToCseInsightsStatusPtrOutput() CseInsightsStatusPtrOutput {
-	return i.ToCseInsightsStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *cseInsightsStatusPtrType) ToCseInsightsStatusPtrOutputWithContext(ctx context.Context) CseInsightsStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsStatusPtrOutput)
 }
 
 // CseInsightsStatusArrayInput is an input type that accepts CseInsightsStatusArray and CseInsightsStatusArrayOutput values.
@@ -220,7 +191,7 @@ func (i CseInsightsStatusMap) ToCseInsightsStatusMapOutputWithContext(ctx contex
 type CseInsightsStatusOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseInsightsStatus)(nil))
+	return reflect.TypeOf((**CseInsightsStatus)(nil)).Elem()
 }
 
 func (o CseInsightsStatusOutput) ToCseInsightsStatusOutput() CseInsightsStatusOutput {
@@ -231,44 +202,10 @@ func (o CseInsightsStatusOutput) ToCseInsightsStatusOutputWithContext(ctx contex
 	return o
 }
 
-func (o CseInsightsStatusOutput) ToCseInsightsStatusPtrOutput() CseInsightsStatusPtrOutput {
-	return o.ToCseInsightsStatusPtrOutputWithContext(context.Background())
-}
-
-func (o CseInsightsStatusOutput) ToCseInsightsStatusPtrOutputWithContext(ctx context.Context) CseInsightsStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseInsightsStatus) *CseInsightsStatus {
-		return &v
-	}).(CseInsightsStatusPtrOutput)
-}
-
-type CseInsightsStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (CseInsightsStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseInsightsStatus)(nil))
-}
-
-func (o CseInsightsStatusPtrOutput) ToCseInsightsStatusPtrOutput() CseInsightsStatusPtrOutput {
-	return o
-}
-
-func (o CseInsightsStatusPtrOutput) ToCseInsightsStatusPtrOutputWithContext(ctx context.Context) CseInsightsStatusPtrOutput {
-	return o
-}
-
-func (o CseInsightsStatusPtrOutput) Elem() CseInsightsStatusOutput {
-	return o.ApplyT(func(v *CseInsightsStatus) CseInsightsStatus {
-		if v != nil {
-			return *v
-		}
-		var ret CseInsightsStatus
-		return ret
-	}).(CseInsightsStatusOutput)
-}
-
 type CseInsightsStatusArrayOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsStatusArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseInsightsStatus)(nil))
+	return reflect.TypeOf((*[]*CseInsightsStatus)(nil)).Elem()
 }
 
 func (o CseInsightsStatusArrayOutput) ToCseInsightsStatusArrayOutput() CseInsightsStatusArrayOutput {
@@ -280,15 +217,15 @@ func (o CseInsightsStatusArrayOutput) ToCseInsightsStatusArrayOutputWithContext(
 }
 
 func (o CseInsightsStatusArrayOutput) Index(i pulumi.IntInput) CseInsightsStatusOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseInsightsStatus {
-		return vs[0].([]CseInsightsStatus)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseInsightsStatus {
+		return vs[0].([]*CseInsightsStatus)[vs[1].(int)]
 	}).(CseInsightsStatusOutput)
 }
 
 type CseInsightsStatusMapOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsStatusMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseInsightsStatus)(nil))
+	return reflect.TypeOf((*map[string]*CseInsightsStatus)(nil)).Elem()
 }
 
 func (o CseInsightsStatusMapOutput) ToCseInsightsStatusMapOutput() CseInsightsStatusMapOutput {
@@ -300,18 +237,16 @@ func (o CseInsightsStatusMapOutput) ToCseInsightsStatusMapOutputWithContext(ctx 
 }
 
 func (o CseInsightsStatusMapOutput) MapIndex(k pulumi.StringInput) CseInsightsStatusOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseInsightsStatus {
-		return vs[0].(map[string]CseInsightsStatus)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseInsightsStatus {
+		return vs[0].(map[string]*CseInsightsStatus)[vs[1].(string)]
 	}).(CseInsightsStatusOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsStatusInput)(nil)).Elem(), &CseInsightsStatus{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsStatusPtrInput)(nil)).Elem(), &CseInsightsStatus{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsStatusArrayInput)(nil)).Elem(), CseInsightsStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseInsightsStatusMapInput)(nil)).Elem(), CseInsightsStatusMap{})
 	pulumi.RegisterOutputType(CseInsightsStatusOutput{})
-	pulumi.RegisterOutputType(CseInsightsStatusPtrOutput{})
 	pulumi.RegisterOutputType(CseInsightsStatusArrayOutput{})
 	pulumi.RegisterOutputType(CseInsightsStatusMapOutput{})
 }

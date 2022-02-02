@@ -207,7 +207,7 @@ type MonitorFolderInput interface {
 }
 
 func (*MonitorFolder) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorFolder)(nil))
+	return reflect.TypeOf((**MonitorFolder)(nil)).Elem()
 }
 
 func (i *MonitorFolder) ToMonitorFolderOutput() MonitorFolderOutput {
@@ -216,35 +216,6 @@ func (i *MonitorFolder) ToMonitorFolderOutput() MonitorFolderOutput {
 
 func (i *MonitorFolder) ToMonitorFolderOutputWithContext(ctx context.Context) MonitorFolderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderOutput)
-}
-
-func (i *MonitorFolder) ToMonitorFolderPtrOutput() MonitorFolderPtrOutput {
-	return i.ToMonitorFolderPtrOutputWithContext(context.Background())
-}
-
-func (i *MonitorFolder) ToMonitorFolderPtrOutputWithContext(ctx context.Context) MonitorFolderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderPtrOutput)
-}
-
-type MonitorFolderPtrInput interface {
-	pulumi.Input
-
-	ToMonitorFolderPtrOutput() MonitorFolderPtrOutput
-	ToMonitorFolderPtrOutputWithContext(ctx context.Context) MonitorFolderPtrOutput
-}
-
-type monitorFolderPtrType MonitorFolderArgs
-
-func (*monitorFolderPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonitorFolder)(nil))
-}
-
-func (i *monitorFolderPtrType) ToMonitorFolderPtrOutput() MonitorFolderPtrOutput {
-	return i.ToMonitorFolderPtrOutputWithContext(context.Background())
-}
-
-func (i *monitorFolderPtrType) ToMonitorFolderPtrOutputWithContext(ctx context.Context) MonitorFolderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderPtrOutput)
 }
 
 // MonitorFolderArrayInput is an input type that accepts MonitorFolderArray and MonitorFolderArrayOutput values.
@@ -300,7 +271,7 @@ func (i MonitorFolderMap) ToMonitorFolderMapOutputWithContext(ctx context.Contex
 type MonitorFolderOutput struct{ *pulumi.OutputState }
 
 func (MonitorFolderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitorFolder)(nil))
+	return reflect.TypeOf((**MonitorFolder)(nil)).Elem()
 }
 
 func (o MonitorFolderOutput) ToMonitorFolderOutput() MonitorFolderOutput {
@@ -311,44 +282,10 @@ func (o MonitorFolderOutput) ToMonitorFolderOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o MonitorFolderOutput) ToMonitorFolderPtrOutput() MonitorFolderPtrOutput {
-	return o.ToMonitorFolderPtrOutputWithContext(context.Background())
-}
-
-func (o MonitorFolderOutput) ToMonitorFolderPtrOutputWithContext(ctx context.Context) MonitorFolderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorFolder) *MonitorFolder {
-		return &v
-	}).(MonitorFolderPtrOutput)
-}
-
-type MonitorFolderPtrOutput struct{ *pulumi.OutputState }
-
-func (MonitorFolderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MonitorFolder)(nil))
-}
-
-func (o MonitorFolderPtrOutput) ToMonitorFolderPtrOutput() MonitorFolderPtrOutput {
-	return o
-}
-
-func (o MonitorFolderPtrOutput) ToMonitorFolderPtrOutputWithContext(ctx context.Context) MonitorFolderPtrOutput {
-	return o
-}
-
-func (o MonitorFolderPtrOutput) Elem() MonitorFolderOutput {
-	return o.ApplyT(func(v *MonitorFolder) MonitorFolder {
-		if v != nil {
-			return *v
-		}
-		var ret MonitorFolder
-		return ret
-	}).(MonitorFolderOutput)
-}
-
 type MonitorFolderArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorFolderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MonitorFolder)(nil))
+	return reflect.TypeOf((*[]*MonitorFolder)(nil)).Elem()
 }
 
 func (o MonitorFolderArrayOutput) ToMonitorFolderArrayOutput() MonitorFolderArrayOutput {
@@ -360,15 +297,15 @@ func (o MonitorFolderArrayOutput) ToMonitorFolderArrayOutputWithContext(ctx cont
 }
 
 func (o MonitorFolderArrayOutput) Index(i pulumi.IntInput) MonitorFolderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorFolder {
-		return vs[0].([]MonitorFolder)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitorFolder {
+		return vs[0].([]*MonitorFolder)[vs[1].(int)]
 	}).(MonitorFolderOutput)
 }
 
 type MonitorFolderMapOutput struct{ *pulumi.OutputState }
 
 func (MonitorFolderMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MonitorFolder)(nil))
+	return reflect.TypeOf((*map[string]*MonitorFolder)(nil)).Elem()
 }
 
 func (o MonitorFolderMapOutput) ToMonitorFolderMapOutput() MonitorFolderMapOutput {
@@ -380,18 +317,16 @@ func (o MonitorFolderMapOutput) ToMonitorFolderMapOutputWithContext(ctx context.
 }
 
 func (o MonitorFolderMapOutput) MapIndex(k pulumi.StringInput) MonitorFolderOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MonitorFolder {
-		return vs[0].(map[string]MonitorFolder)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MonitorFolder {
+		return vs[0].(map[string]*MonitorFolder)[vs[1].(string)]
 	}).(MonitorFolderOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderInput)(nil)).Elem(), &MonitorFolder{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderPtrInput)(nil)).Elem(), &MonitorFolder{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderArrayInput)(nil)).Elem(), MonitorFolderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderMapInput)(nil)).Elem(), MonitorFolderMap{})
 	pulumi.RegisterOutputType(MonitorFolderOutput{})
-	pulumi.RegisterOutputType(MonitorFolderPtrOutput{})
 	pulumi.RegisterOutputType(MonitorFolderArrayOutput{})
 	pulumi.RegisterOutputType(MonitorFolderMapOutput{})
 }

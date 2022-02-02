@@ -92,16 +92,16 @@ export class Token extends pulumi.CustomResource {
      */
     constructor(name: string, args: TokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TokenArgs | TokenState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encodedTokenAndUrl"] = state ? state.encodedTokenAndUrl : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encodedTokenAndUrl"] = state ? state.encodedTokenAndUrl : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as TokenArgs | undefined;
             if ((!args || args.status === undefined) && !opts.urn) {
@@ -110,17 +110,15 @@ export class Token extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["encodedTokenAndUrl"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["encodedTokenAndUrl"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Token.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Token.__pulumiType, name, resourceInputs, opts);
     }
 }
 

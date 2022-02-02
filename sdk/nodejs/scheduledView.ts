@@ -102,17 +102,17 @@ export class ScheduledView extends pulumi.CustomResource {
      */
     constructor(name: string, args: ScheduledViewArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScheduledViewArgs | ScheduledViewState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduledViewState | undefined;
-            inputs["dataForwardingId"] = state ? state.dataForwardingId : undefined;
-            inputs["indexName"] = state ? state.indexName : undefined;
-            inputs["parsingMode"] = state ? state.parsingMode : undefined;
-            inputs["query"] = state ? state.query : undefined;
-            inputs["reduceRetentionPeriodImmediately"] = state ? state.reduceRetentionPeriodImmediately : undefined;
-            inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["dataForwardingId"] = state ? state.dataForwardingId : undefined;
+            resourceInputs["indexName"] = state ? state.indexName : undefined;
+            resourceInputs["parsingMode"] = state ? state.parsingMode : undefined;
+            resourceInputs["query"] = state ? state.query : undefined;
+            resourceInputs["reduceRetentionPeriodImmediately"] = state ? state.reduceRetentionPeriodImmediately : undefined;
+            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
         } else {
             const args = argsOrState as ScheduledViewArgs | undefined;
             if ((!args || args.indexName === undefined) && !opts.urn) {
@@ -124,18 +124,16 @@ export class ScheduledView extends pulumi.CustomResource {
             if ((!args || args.startTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
             }
-            inputs["dataForwardingId"] = args ? args.dataForwardingId : undefined;
-            inputs["indexName"] = args ? args.indexName : undefined;
-            inputs["parsingMode"] = args ? args.parsingMode : undefined;
-            inputs["query"] = args ? args.query : undefined;
-            inputs["reduceRetentionPeriodImmediately"] = args ? args.reduceRetentionPeriodImmediately : undefined;
-            inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["dataForwardingId"] = args ? args.dataForwardingId : undefined;
+            resourceInputs["indexName"] = args ? args.indexName : undefined;
+            resourceInputs["parsingMode"] = args ? args.parsingMode : undefined;
+            resourceInputs["query"] = args ? args.query : undefined;
+            resourceInputs["reduceRetentionPeriodImmediately"] = args ? args.reduceRetentionPeriodImmediately : undefined;
+            resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ScheduledView.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ScheduledView.__pulumiType, name, resourceInputs, opts);
     }
 }
 

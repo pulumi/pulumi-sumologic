@@ -289,7 +289,7 @@ type AwsInventorySourceInput interface {
 }
 
 func (*AwsInventorySource) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsInventorySource)(nil))
+	return reflect.TypeOf((**AwsInventorySource)(nil)).Elem()
 }
 
 func (i *AwsInventorySource) ToAwsInventorySourceOutput() AwsInventorySourceOutput {
@@ -298,35 +298,6 @@ func (i *AwsInventorySource) ToAwsInventorySourceOutput() AwsInventorySourceOutp
 
 func (i *AwsInventorySource) ToAwsInventorySourceOutputWithContext(ctx context.Context) AwsInventorySourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourceOutput)
-}
-
-func (i *AwsInventorySource) ToAwsInventorySourcePtrOutput() AwsInventorySourcePtrOutput {
-	return i.ToAwsInventorySourcePtrOutputWithContext(context.Background())
-}
-
-func (i *AwsInventorySource) ToAwsInventorySourcePtrOutputWithContext(ctx context.Context) AwsInventorySourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourcePtrOutput)
-}
-
-type AwsInventorySourcePtrInput interface {
-	pulumi.Input
-
-	ToAwsInventorySourcePtrOutput() AwsInventorySourcePtrOutput
-	ToAwsInventorySourcePtrOutputWithContext(ctx context.Context) AwsInventorySourcePtrOutput
-}
-
-type awsInventorySourcePtrType AwsInventorySourceArgs
-
-func (*awsInventorySourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsInventorySource)(nil))
-}
-
-func (i *awsInventorySourcePtrType) ToAwsInventorySourcePtrOutput() AwsInventorySourcePtrOutput {
-	return i.ToAwsInventorySourcePtrOutputWithContext(context.Background())
-}
-
-func (i *awsInventorySourcePtrType) ToAwsInventorySourcePtrOutputWithContext(ctx context.Context) AwsInventorySourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourcePtrOutput)
 }
 
 // AwsInventorySourceArrayInput is an input type that accepts AwsInventorySourceArray and AwsInventorySourceArrayOutput values.
@@ -382,7 +353,7 @@ func (i AwsInventorySourceMap) ToAwsInventorySourceMapOutputWithContext(ctx cont
 type AwsInventorySourceOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AwsInventorySource)(nil))
+	return reflect.TypeOf((**AwsInventorySource)(nil)).Elem()
 }
 
 func (o AwsInventorySourceOutput) ToAwsInventorySourceOutput() AwsInventorySourceOutput {
@@ -393,44 +364,10 @@ func (o AwsInventorySourceOutput) ToAwsInventorySourceOutputWithContext(ctx cont
 	return o
 }
 
-func (o AwsInventorySourceOutput) ToAwsInventorySourcePtrOutput() AwsInventorySourcePtrOutput {
-	return o.ToAwsInventorySourcePtrOutputWithContext(context.Background())
-}
-
-func (o AwsInventorySourceOutput) ToAwsInventorySourcePtrOutputWithContext(ctx context.Context) AwsInventorySourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsInventorySource) *AwsInventorySource {
-		return &v
-	}).(AwsInventorySourcePtrOutput)
-}
-
-type AwsInventorySourcePtrOutput struct{ *pulumi.OutputState }
-
-func (AwsInventorySourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AwsInventorySource)(nil))
-}
-
-func (o AwsInventorySourcePtrOutput) ToAwsInventorySourcePtrOutput() AwsInventorySourcePtrOutput {
-	return o
-}
-
-func (o AwsInventorySourcePtrOutput) ToAwsInventorySourcePtrOutputWithContext(ctx context.Context) AwsInventorySourcePtrOutput {
-	return o
-}
-
-func (o AwsInventorySourcePtrOutput) Elem() AwsInventorySourceOutput {
-	return o.ApplyT(func(v *AwsInventorySource) AwsInventorySource {
-		if v != nil {
-			return *v
-		}
-		var ret AwsInventorySource
-		return ret
-	}).(AwsInventorySourceOutput)
-}
-
 type AwsInventorySourceArrayOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AwsInventorySource)(nil))
+	return reflect.TypeOf((*[]*AwsInventorySource)(nil)).Elem()
 }
 
 func (o AwsInventorySourceArrayOutput) ToAwsInventorySourceArrayOutput() AwsInventorySourceArrayOutput {
@@ -442,15 +379,15 @@ func (o AwsInventorySourceArrayOutput) ToAwsInventorySourceArrayOutputWithContex
 }
 
 func (o AwsInventorySourceArrayOutput) Index(i pulumi.IntInput) AwsInventorySourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsInventorySource {
-		return vs[0].([]AwsInventorySource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsInventorySource {
+		return vs[0].([]*AwsInventorySource)[vs[1].(int)]
 	}).(AwsInventorySourceOutput)
 }
 
 type AwsInventorySourceMapOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AwsInventorySource)(nil))
+	return reflect.TypeOf((*map[string]*AwsInventorySource)(nil)).Elem()
 }
 
 func (o AwsInventorySourceMapOutput) ToAwsInventorySourceMapOutput() AwsInventorySourceMapOutput {
@@ -462,18 +399,16 @@ func (o AwsInventorySourceMapOutput) ToAwsInventorySourceMapOutputWithContext(ct
 }
 
 func (o AwsInventorySourceMapOutput) MapIndex(k pulumi.StringInput) AwsInventorySourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AwsInventorySource {
-		return vs[0].(map[string]AwsInventorySource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AwsInventorySource {
+		return vs[0].(map[string]*AwsInventorySource)[vs[1].(string)]
 	}).(AwsInventorySourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceInput)(nil)).Elem(), &AwsInventorySource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePtrInput)(nil)).Elem(), &AwsInventorySource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceArrayInput)(nil)).Elem(), AwsInventorySourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceMapInput)(nil)).Elem(), AwsInventorySourceMap{})
 	pulumi.RegisterOutputType(AwsInventorySourceOutput{})
-	pulumi.RegisterOutputType(AwsInventorySourcePtrOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourceArrayOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourceMapOutput{})
 }

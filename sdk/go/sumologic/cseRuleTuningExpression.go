@@ -200,7 +200,7 @@ type CseRuleTuningExpressionInput interface {
 }
 
 func (*CseRuleTuningExpression) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseRuleTuningExpression)(nil))
+	return reflect.TypeOf((**CseRuleTuningExpression)(nil)).Elem()
 }
 
 func (i *CseRuleTuningExpression) ToCseRuleTuningExpressionOutput() CseRuleTuningExpressionOutput {
@@ -209,35 +209,6 @@ func (i *CseRuleTuningExpression) ToCseRuleTuningExpressionOutput() CseRuleTunin
 
 func (i *CseRuleTuningExpression) ToCseRuleTuningExpressionOutputWithContext(ctx context.Context) CseRuleTuningExpressionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseRuleTuningExpressionOutput)
-}
-
-func (i *CseRuleTuningExpression) ToCseRuleTuningExpressionPtrOutput() CseRuleTuningExpressionPtrOutput {
-	return i.ToCseRuleTuningExpressionPtrOutputWithContext(context.Background())
-}
-
-func (i *CseRuleTuningExpression) ToCseRuleTuningExpressionPtrOutputWithContext(ctx context.Context) CseRuleTuningExpressionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseRuleTuningExpressionPtrOutput)
-}
-
-type CseRuleTuningExpressionPtrInput interface {
-	pulumi.Input
-
-	ToCseRuleTuningExpressionPtrOutput() CseRuleTuningExpressionPtrOutput
-	ToCseRuleTuningExpressionPtrOutputWithContext(ctx context.Context) CseRuleTuningExpressionPtrOutput
-}
-
-type cseRuleTuningExpressionPtrType CseRuleTuningExpressionArgs
-
-func (*cseRuleTuningExpressionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseRuleTuningExpression)(nil))
-}
-
-func (i *cseRuleTuningExpressionPtrType) ToCseRuleTuningExpressionPtrOutput() CseRuleTuningExpressionPtrOutput {
-	return i.ToCseRuleTuningExpressionPtrOutputWithContext(context.Background())
-}
-
-func (i *cseRuleTuningExpressionPtrType) ToCseRuleTuningExpressionPtrOutputWithContext(ctx context.Context) CseRuleTuningExpressionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CseRuleTuningExpressionPtrOutput)
 }
 
 // CseRuleTuningExpressionArrayInput is an input type that accepts CseRuleTuningExpressionArray and CseRuleTuningExpressionArrayOutput values.
@@ -293,7 +264,7 @@ func (i CseRuleTuningExpressionMap) ToCseRuleTuningExpressionMapOutputWithContex
 type CseRuleTuningExpressionOutput struct{ *pulumi.OutputState }
 
 func (CseRuleTuningExpressionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CseRuleTuningExpression)(nil))
+	return reflect.TypeOf((**CseRuleTuningExpression)(nil)).Elem()
 }
 
 func (o CseRuleTuningExpressionOutput) ToCseRuleTuningExpressionOutput() CseRuleTuningExpressionOutput {
@@ -304,44 +275,10 @@ func (o CseRuleTuningExpressionOutput) ToCseRuleTuningExpressionOutputWithContex
 	return o
 }
 
-func (o CseRuleTuningExpressionOutput) ToCseRuleTuningExpressionPtrOutput() CseRuleTuningExpressionPtrOutput {
-	return o.ToCseRuleTuningExpressionPtrOutputWithContext(context.Background())
-}
-
-func (o CseRuleTuningExpressionOutput) ToCseRuleTuningExpressionPtrOutputWithContext(ctx context.Context) CseRuleTuningExpressionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CseRuleTuningExpression) *CseRuleTuningExpression {
-		return &v
-	}).(CseRuleTuningExpressionPtrOutput)
-}
-
-type CseRuleTuningExpressionPtrOutput struct{ *pulumi.OutputState }
-
-func (CseRuleTuningExpressionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CseRuleTuningExpression)(nil))
-}
-
-func (o CseRuleTuningExpressionPtrOutput) ToCseRuleTuningExpressionPtrOutput() CseRuleTuningExpressionPtrOutput {
-	return o
-}
-
-func (o CseRuleTuningExpressionPtrOutput) ToCseRuleTuningExpressionPtrOutputWithContext(ctx context.Context) CseRuleTuningExpressionPtrOutput {
-	return o
-}
-
-func (o CseRuleTuningExpressionPtrOutput) Elem() CseRuleTuningExpressionOutput {
-	return o.ApplyT(func(v *CseRuleTuningExpression) CseRuleTuningExpression {
-		if v != nil {
-			return *v
-		}
-		var ret CseRuleTuningExpression
-		return ret
-	}).(CseRuleTuningExpressionOutput)
-}
-
 type CseRuleTuningExpressionArrayOutput struct{ *pulumi.OutputState }
 
 func (CseRuleTuningExpressionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CseRuleTuningExpression)(nil))
+	return reflect.TypeOf((*[]*CseRuleTuningExpression)(nil)).Elem()
 }
 
 func (o CseRuleTuningExpressionArrayOutput) ToCseRuleTuningExpressionArrayOutput() CseRuleTuningExpressionArrayOutput {
@@ -353,15 +290,15 @@ func (o CseRuleTuningExpressionArrayOutput) ToCseRuleTuningExpressionArrayOutput
 }
 
 func (o CseRuleTuningExpressionArrayOutput) Index(i pulumi.IntInput) CseRuleTuningExpressionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseRuleTuningExpression {
-		return vs[0].([]CseRuleTuningExpression)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseRuleTuningExpression {
+		return vs[0].([]*CseRuleTuningExpression)[vs[1].(int)]
 	}).(CseRuleTuningExpressionOutput)
 }
 
 type CseRuleTuningExpressionMapOutput struct{ *pulumi.OutputState }
 
 func (CseRuleTuningExpressionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CseRuleTuningExpression)(nil))
+	return reflect.TypeOf((*map[string]*CseRuleTuningExpression)(nil)).Elem()
 }
 
 func (o CseRuleTuningExpressionMapOutput) ToCseRuleTuningExpressionMapOutput() CseRuleTuningExpressionMapOutput {
@@ -373,18 +310,16 @@ func (o CseRuleTuningExpressionMapOutput) ToCseRuleTuningExpressionMapOutputWith
 }
 
 func (o CseRuleTuningExpressionMapOutput) MapIndex(k pulumi.StringInput) CseRuleTuningExpressionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CseRuleTuningExpression {
-		return vs[0].(map[string]CseRuleTuningExpression)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CseRuleTuningExpression {
+		return vs[0].(map[string]*CseRuleTuningExpression)[vs[1].(string)]
 	}).(CseRuleTuningExpressionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseRuleTuningExpressionInput)(nil)).Elem(), &CseRuleTuningExpression{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CseRuleTuningExpressionPtrInput)(nil)).Elem(), &CseRuleTuningExpression{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseRuleTuningExpressionArrayInput)(nil)).Elem(), CseRuleTuningExpressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseRuleTuningExpressionMapInput)(nil)).Elem(), CseRuleTuningExpressionMap{})
 	pulumi.RegisterOutputType(CseRuleTuningExpressionOutput{})
-	pulumi.RegisterOutputType(CseRuleTuningExpressionPtrOutput{})
 	pulumi.RegisterOutputType(CseRuleTuningExpressionArrayOutput{})
 	pulumi.RegisterOutputType(CseRuleTuningExpressionMapOutput{})
 }

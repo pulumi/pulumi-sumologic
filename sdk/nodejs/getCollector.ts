@@ -46,9 +46,7 @@ export function getCollector(args?: GetCollectorArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("sumologic:index/getCollector:getCollector", {
         "id": args.id,
         "name": args.name,

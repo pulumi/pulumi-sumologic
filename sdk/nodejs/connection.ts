@@ -118,19 +118,19 @@ export class Connection extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            inputs["connectionSubtype"] = state ? state.connectionSubtype : undefined;
-            inputs["customHeaders"] = state ? state.customHeaders : undefined;
-            inputs["defaultPayload"] = state ? state.defaultPayload : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["headers"] = state ? state.headers : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["webhookType"] = state ? state.webhookType : undefined;
+            resourceInputs["connectionSubtype"] = state ? state.connectionSubtype : undefined;
+            resourceInputs["customHeaders"] = state ? state.customHeaders : undefined;
+            resourceInputs["defaultPayload"] = state ? state.defaultPayload : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["headers"] = state ? state.headers : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["webhookType"] = state ? state.webhookType : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.defaultPayload === undefined) && !opts.urn) {
@@ -142,20 +142,18 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["connectionSubtype"] = args ? args.connectionSubtype : undefined;
-            inputs["customHeaders"] = args ? args.customHeaders : undefined;
-            inputs["defaultPayload"] = args ? args.defaultPayload : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["headers"] = args ? args.headers : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["webhookType"] = args ? args.webhookType : undefined;
+            resourceInputs["connectionSubtype"] = args ? args.connectionSubtype : undefined;
+            resourceInputs["customHeaders"] = args ? args.customHeaders : undefined;
+            resourceInputs["defaultPayload"] = args ? args.defaultPayload : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["headers"] = args ? args.headers : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["webhookType"] = args ? args.webhookType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Connection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

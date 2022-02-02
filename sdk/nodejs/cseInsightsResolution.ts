@@ -77,23 +77,21 @@ export class CseInsightsResolution extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CseInsightsResolutionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseInsightsResolutionArgs | CseInsightsResolutionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseInsightsResolutionState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as CseInsightsResolutionArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseInsightsResolution.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseInsightsResolution.__pulumiType, name, resourceInputs, opts);
     }
 }
 

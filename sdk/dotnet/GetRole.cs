@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.SumoLogic
 {
@@ -70,7 +69,7 @@ namespace Pulumi.SumoLogic
         /// - `capabilities` - The list of capabilities associated with the role.
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
@@ -130,7 +129,7 @@ namespace Pulumi.SumoLogic
         /// - `capabilities` - The list of capabilities associated with the role.
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 

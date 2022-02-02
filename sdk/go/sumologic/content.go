@@ -99,7 +99,7 @@ type ContentInput interface {
 }
 
 func (*Content) ElementType() reflect.Type {
-	return reflect.TypeOf((*Content)(nil))
+	return reflect.TypeOf((**Content)(nil)).Elem()
 }
 
 func (i *Content) ToContentOutput() ContentOutput {
@@ -108,35 +108,6 @@ func (i *Content) ToContentOutput() ContentOutput {
 
 func (i *Content) ToContentOutputWithContext(ctx context.Context) ContentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentOutput)
-}
-
-func (i *Content) ToContentPtrOutput() ContentPtrOutput {
-	return i.ToContentPtrOutputWithContext(context.Background())
-}
-
-func (i *Content) ToContentPtrOutputWithContext(ctx context.Context) ContentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContentPtrOutput)
-}
-
-type ContentPtrInput interface {
-	pulumi.Input
-
-	ToContentPtrOutput() ContentPtrOutput
-	ToContentPtrOutputWithContext(ctx context.Context) ContentPtrOutput
-}
-
-type contentPtrType ContentArgs
-
-func (*contentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Content)(nil))
-}
-
-func (i *contentPtrType) ToContentPtrOutput() ContentPtrOutput {
-	return i.ToContentPtrOutputWithContext(context.Background())
-}
-
-func (i *contentPtrType) ToContentPtrOutputWithContext(ctx context.Context) ContentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContentPtrOutput)
 }
 
 // ContentArrayInput is an input type that accepts ContentArray and ContentArrayOutput values.
@@ -192,7 +163,7 @@ func (i ContentMap) ToContentMapOutputWithContext(ctx context.Context) ContentMa
 type ContentOutput struct{ *pulumi.OutputState }
 
 func (ContentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Content)(nil))
+	return reflect.TypeOf((**Content)(nil)).Elem()
 }
 
 func (o ContentOutput) ToContentOutput() ContentOutput {
@@ -203,44 +174,10 @@ func (o ContentOutput) ToContentOutputWithContext(ctx context.Context) ContentOu
 	return o
 }
 
-func (o ContentOutput) ToContentPtrOutput() ContentPtrOutput {
-	return o.ToContentPtrOutputWithContext(context.Background())
-}
-
-func (o ContentOutput) ToContentPtrOutputWithContext(ctx context.Context) ContentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Content) *Content {
-		return &v
-	}).(ContentPtrOutput)
-}
-
-type ContentPtrOutput struct{ *pulumi.OutputState }
-
-func (ContentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Content)(nil))
-}
-
-func (o ContentPtrOutput) ToContentPtrOutput() ContentPtrOutput {
-	return o
-}
-
-func (o ContentPtrOutput) ToContentPtrOutputWithContext(ctx context.Context) ContentPtrOutput {
-	return o
-}
-
-func (o ContentPtrOutput) Elem() ContentOutput {
-	return o.ApplyT(func(v *Content) Content {
-		if v != nil {
-			return *v
-		}
-		var ret Content
-		return ret
-	}).(ContentOutput)
-}
-
 type ContentArrayOutput struct{ *pulumi.OutputState }
 
 func (ContentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Content)(nil))
+	return reflect.TypeOf((*[]*Content)(nil)).Elem()
 }
 
 func (o ContentArrayOutput) ToContentArrayOutput() ContentArrayOutput {
@@ -252,15 +189,15 @@ func (o ContentArrayOutput) ToContentArrayOutputWithContext(ctx context.Context)
 }
 
 func (o ContentArrayOutput) Index(i pulumi.IntInput) ContentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Content {
-		return vs[0].([]Content)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Content {
+		return vs[0].([]*Content)[vs[1].(int)]
 	}).(ContentOutput)
 }
 
 type ContentMapOutput struct{ *pulumi.OutputState }
 
 func (ContentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Content)(nil))
+	return reflect.TypeOf((*map[string]*Content)(nil)).Elem()
 }
 
 func (o ContentMapOutput) ToContentMapOutput() ContentMapOutput {
@@ -272,18 +209,16 @@ func (o ContentMapOutput) ToContentMapOutputWithContext(ctx context.Context) Con
 }
 
 func (o ContentMapOutput) MapIndex(k pulumi.StringInput) ContentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Content {
-		return vs[0].(map[string]Content)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Content {
+		return vs[0].(map[string]*Content)[vs[1].(string)]
 	}).(ContentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentInput)(nil)).Elem(), &Content{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContentPtrInput)(nil)).Elem(), &Content{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentArrayInput)(nil)).Elem(), ContentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentMapInput)(nil)).Elem(), ContentMap{})
 	pulumi.RegisterOutputType(ContentOutput{})
-	pulumi.RegisterOutputType(ContentPtrOutput{})
 	pulumi.RegisterOutputType(ContentArrayOutput{})
 	pulumi.RegisterOutputType(ContentMapOutput{})
 }

@@ -89,7 +89,7 @@ type CollectorIngestBudgetAssignmentInput interface {
 }
 
 func (*CollectorIngestBudgetAssignment) ElementType() reflect.Type {
-	return reflect.TypeOf((*CollectorIngestBudgetAssignment)(nil))
+	return reflect.TypeOf((**CollectorIngestBudgetAssignment)(nil)).Elem()
 }
 
 func (i *CollectorIngestBudgetAssignment) ToCollectorIngestBudgetAssignmentOutput() CollectorIngestBudgetAssignmentOutput {
@@ -98,35 +98,6 @@ func (i *CollectorIngestBudgetAssignment) ToCollectorIngestBudgetAssignmentOutpu
 
 func (i *CollectorIngestBudgetAssignment) ToCollectorIngestBudgetAssignmentOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorIngestBudgetAssignmentOutput)
-}
-
-func (i *CollectorIngestBudgetAssignment) ToCollectorIngestBudgetAssignmentPtrOutput() CollectorIngestBudgetAssignmentPtrOutput {
-	return i.ToCollectorIngestBudgetAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i *CollectorIngestBudgetAssignment) ToCollectorIngestBudgetAssignmentPtrOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CollectorIngestBudgetAssignmentPtrOutput)
-}
-
-type CollectorIngestBudgetAssignmentPtrInput interface {
-	pulumi.Input
-
-	ToCollectorIngestBudgetAssignmentPtrOutput() CollectorIngestBudgetAssignmentPtrOutput
-	ToCollectorIngestBudgetAssignmentPtrOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentPtrOutput
-}
-
-type collectorIngestBudgetAssignmentPtrType CollectorIngestBudgetAssignmentArgs
-
-func (*collectorIngestBudgetAssignmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CollectorIngestBudgetAssignment)(nil))
-}
-
-func (i *collectorIngestBudgetAssignmentPtrType) ToCollectorIngestBudgetAssignmentPtrOutput() CollectorIngestBudgetAssignmentPtrOutput {
-	return i.ToCollectorIngestBudgetAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i *collectorIngestBudgetAssignmentPtrType) ToCollectorIngestBudgetAssignmentPtrOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CollectorIngestBudgetAssignmentPtrOutput)
 }
 
 // CollectorIngestBudgetAssignmentArrayInput is an input type that accepts CollectorIngestBudgetAssignmentArray and CollectorIngestBudgetAssignmentArrayOutput values.
@@ -182,7 +153,7 @@ func (i CollectorIngestBudgetAssignmentMap) ToCollectorIngestBudgetAssignmentMap
 type CollectorIngestBudgetAssignmentOutput struct{ *pulumi.OutputState }
 
 func (CollectorIngestBudgetAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CollectorIngestBudgetAssignment)(nil))
+	return reflect.TypeOf((**CollectorIngestBudgetAssignment)(nil)).Elem()
 }
 
 func (o CollectorIngestBudgetAssignmentOutput) ToCollectorIngestBudgetAssignmentOutput() CollectorIngestBudgetAssignmentOutput {
@@ -193,44 +164,10 @@ func (o CollectorIngestBudgetAssignmentOutput) ToCollectorIngestBudgetAssignment
 	return o
 }
 
-func (o CollectorIngestBudgetAssignmentOutput) ToCollectorIngestBudgetAssignmentPtrOutput() CollectorIngestBudgetAssignmentPtrOutput {
-	return o.ToCollectorIngestBudgetAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (o CollectorIngestBudgetAssignmentOutput) ToCollectorIngestBudgetAssignmentPtrOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectorIngestBudgetAssignment) *CollectorIngestBudgetAssignment {
-		return &v
-	}).(CollectorIngestBudgetAssignmentPtrOutput)
-}
-
-type CollectorIngestBudgetAssignmentPtrOutput struct{ *pulumi.OutputState }
-
-func (CollectorIngestBudgetAssignmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CollectorIngestBudgetAssignment)(nil))
-}
-
-func (o CollectorIngestBudgetAssignmentPtrOutput) ToCollectorIngestBudgetAssignmentPtrOutput() CollectorIngestBudgetAssignmentPtrOutput {
-	return o
-}
-
-func (o CollectorIngestBudgetAssignmentPtrOutput) ToCollectorIngestBudgetAssignmentPtrOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentPtrOutput {
-	return o
-}
-
-func (o CollectorIngestBudgetAssignmentPtrOutput) Elem() CollectorIngestBudgetAssignmentOutput {
-	return o.ApplyT(func(v *CollectorIngestBudgetAssignment) CollectorIngestBudgetAssignment {
-		if v != nil {
-			return *v
-		}
-		var ret CollectorIngestBudgetAssignment
-		return ret
-	}).(CollectorIngestBudgetAssignmentOutput)
-}
-
 type CollectorIngestBudgetAssignmentArrayOutput struct{ *pulumi.OutputState }
 
 func (CollectorIngestBudgetAssignmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CollectorIngestBudgetAssignment)(nil))
+	return reflect.TypeOf((*[]*CollectorIngestBudgetAssignment)(nil)).Elem()
 }
 
 func (o CollectorIngestBudgetAssignmentArrayOutput) ToCollectorIngestBudgetAssignmentArrayOutput() CollectorIngestBudgetAssignmentArrayOutput {
@@ -242,15 +179,15 @@ func (o CollectorIngestBudgetAssignmentArrayOutput) ToCollectorIngestBudgetAssig
 }
 
 func (o CollectorIngestBudgetAssignmentArrayOutput) Index(i pulumi.IntInput) CollectorIngestBudgetAssignmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CollectorIngestBudgetAssignment {
-		return vs[0].([]CollectorIngestBudgetAssignment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CollectorIngestBudgetAssignment {
+		return vs[0].([]*CollectorIngestBudgetAssignment)[vs[1].(int)]
 	}).(CollectorIngestBudgetAssignmentOutput)
 }
 
 type CollectorIngestBudgetAssignmentMapOutput struct{ *pulumi.OutputState }
 
 func (CollectorIngestBudgetAssignmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CollectorIngestBudgetAssignment)(nil))
+	return reflect.TypeOf((*map[string]*CollectorIngestBudgetAssignment)(nil)).Elem()
 }
 
 func (o CollectorIngestBudgetAssignmentMapOutput) ToCollectorIngestBudgetAssignmentMapOutput() CollectorIngestBudgetAssignmentMapOutput {
@@ -262,18 +199,16 @@ func (o CollectorIngestBudgetAssignmentMapOutput) ToCollectorIngestBudgetAssignm
 }
 
 func (o CollectorIngestBudgetAssignmentMapOutput) MapIndex(k pulumi.StringInput) CollectorIngestBudgetAssignmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CollectorIngestBudgetAssignment {
-		return vs[0].(map[string]CollectorIngestBudgetAssignment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CollectorIngestBudgetAssignment {
+		return vs[0].(map[string]*CollectorIngestBudgetAssignment)[vs[1].(string)]
 	}).(CollectorIngestBudgetAssignmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectorIngestBudgetAssignmentInput)(nil)).Elem(), &CollectorIngestBudgetAssignment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CollectorIngestBudgetAssignmentPtrInput)(nil)).Elem(), &CollectorIngestBudgetAssignment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectorIngestBudgetAssignmentArrayInput)(nil)).Elem(), CollectorIngestBudgetAssignmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectorIngestBudgetAssignmentMapInput)(nil)).Elem(), CollectorIngestBudgetAssignmentMap{})
 	pulumi.RegisterOutputType(CollectorIngestBudgetAssignmentOutput{})
-	pulumi.RegisterOutputType(CollectorIngestBudgetAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(CollectorIngestBudgetAssignmentArrayOutput{})
 	pulumi.RegisterOutputType(CollectorIngestBudgetAssignmentMapOutput{})
 }

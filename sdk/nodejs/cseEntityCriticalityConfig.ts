@@ -72,24 +72,22 @@ export class CseEntityCriticalityConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: CseEntityCriticalityConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseEntityCriticalityConfigArgs | CseEntityCriticalityConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseEntityCriticalityConfigState | undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["severityExpression"] = state ? state.severityExpression : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["severityExpression"] = state ? state.severityExpression : undefined;
         } else {
             const args = argsOrState as CseEntityCriticalityConfigArgs | undefined;
             if ((!args || args.severityExpression === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'severityExpression'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["severityExpression"] = args ? args.severityExpression : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["severityExpression"] = args ? args.severityExpression : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseEntityCriticalityConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseEntityCriticalityConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -95,27 +95,25 @@ export class Collector extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CollectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CollectorArgs | CollectorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CollectorState | undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fields"] = state ? state.fields : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
             const args = argsOrState as CollectorArgs | undefined;
-            inputs["category"] = args ? args.category : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fields"] = args ? args.fields : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Collector.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Collector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

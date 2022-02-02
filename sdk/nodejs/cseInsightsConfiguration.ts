@@ -73,21 +73,19 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CseInsightsConfigurationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CseInsightsConfigurationArgs | CseInsightsConfigurationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseInsightsConfigurationState | undefined;
-            inputs["lookbackDays"] = state ? state.lookbackDays : undefined;
-            inputs["threshold"] = state ? state.threshold : undefined;
+            resourceInputs["lookbackDays"] = state ? state.lookbackDays : undefined;
+            resourceInputs["threshold"] = state ? state.threshold : undefined;
         } else {
             const args = argsOrState as CseInsightsConfigurationArgs | undefined;
-            inputs["lookbackDays"] = args ? args.lookbackDays : undefined;
-            inputs["threshold"] = args ? args.threshold : undefined;
+            resourceInputs["lookbackDays"] = args ? args.lookbackDays : undefined;
+            resourceInputs["threshold"] = args ? args.threshold : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CseInsightsConfiguration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CseInsightsConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }
 
