@@ -11,9 +11,119 @@ namespace Pulumi.SumoLogic
 {
     public static class GetUser
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
+        ///         {
+        ///             Id = "1234567890",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var that = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
+        ///         {
+        ///             Email = "user@example.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
+        /// 
+        /// If both `id` and `email` have been specified, `id` takes precedence.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the user.
+        /// - `email` - (Required) Email of the user.
+        /// - `first_name` - (Required) First name of the user.
+        /// - `last_name` - (Required) Last name of the user.
+        /// - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
+        /// - `role_ids` - (Required) List of roleIds associated with the user.
+        /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("sumologic:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
+        ///         {
+        ///             Id = "1234567890",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var that = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
+        ///         {
+        ///             Email = "user@example.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
+        /// 
+        /// If both `id` and `email` have been specified, `id` takes precedence.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the user.
+        /// - `email` - (Required) Email of the user.
+        /// - `first_name` - (Required) First name of the user.
+        /// - `last_name` - (Required) Last name of the user.
+        /// - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
+        /// - `role_ids` - (Required) List of roleIds associated with the user.
+        /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetUserResult>("sumologic:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }

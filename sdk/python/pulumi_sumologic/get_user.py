@@ -89,7 +89,35 @@ def get_user(email: Optional[str] = None,
              id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    this = sumologic.get_user(id="1234567890")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    that = sumologic.get_user(email="user@example.com")
+    ```
+
+    A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
+
+    If both `id` and `email` have been specified, `id` takes precedence.
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The internal ID of the user.
+    - `email` - (Required) Email of the user.
+    - `first_name` - (Required) First name of the user.
+    - `last_name` - (Required) Last name of the user.
+    - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
+    - `role_ids` - (Required) List of roleIds associated with the user.
     """
     __args__ = dict()
     __args__['email'] = email
@@ -114,6 +142,34 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    this = sumologic.get_user(id="1234567890")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    that = sumologic.get_user(email="user@example.com")
+    ```
+
+    A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
+
+    If both `id` and `email` have been specified, `id` takes precedence.
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The internal ID of the user.
+    - `email` - (Required) Email of the user.
+    - `first_name` - (Required) First name of the user.
+    - `last_name` - (Required) Last name of the user.
+    - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
+    - `role_ids` - (Required) List of roleIds associated with the user.
     """
     ...

@@ -10,6 +10,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sumologic.GetCseLogMappingVendorProduct(ctx, &GetCseLogMappingVendorProductArgs{
+// 			Product: "Web Gateway",
+// 			Vendor:  "McAfee",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
+// Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+// ## Attributes reference
+//
+// The following attributes are exported:
+//
+// - `guid` - The internal GUID of the log mapping vendor product.
+// - `product` - The name of the product.
+// - `vendor` - The name of the vendor.
 func GetCseLogMappingVendorProduct(ctx *pulumi.Context, args *GetCseLogMappingVendorProductArgs, opts ...pulumi.InvokeOption) (*GetCseLogMappingVendorProductResult, error) {
 	var rv GetCseLogMappingVendorProductResult
 	err := ctx.Invoke("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args, &rv, opts...)

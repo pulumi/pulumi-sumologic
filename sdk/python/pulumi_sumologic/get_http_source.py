@@ -108,7 +108,29 @@ def get_http_source(collector_id: Optional[int] = None,
                     name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHttpSourceResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    this = sumologic.get_http_source(collector_id=121212,
+        name="source_name")
+    ```
+
+    A HTTP Source can be looked up by using a combination of `collector_id` & `name`.
+    If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+    - `name` - The name of the collector.
+    - `description` - The description of the collector.
+    - `category` - The default source category for any source attached to this collector.
+    - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+    - `multiline` - Multiline processing enabled or not.
+    - `url` - The HTTP endpoint to use for sending data to this source.
     """
     __args__ = dict()
     __args__['collectorId'] = collector_id
@@ -137,6 +159,28 @@ def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] =
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHttpSourceResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    this = sumologic.get_http_source(collector_id=121212,
+        name="source_name")
+    ```
+
+    A HTTP Source can be looked up by using a combination of `collector_id` & `name`.
+    If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+    - `name` - The name of the collector.
+    - `description` - The description of the collector.
+    - `category` - The default source category for any source attached to this collector.
+    - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+    - `multiline` - Multiline processing enabled or not.
+    - `url` - The HTTP endpoint to use for sending data to this source.
     """
     ...

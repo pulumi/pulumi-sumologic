@@ -9,6 +9,97 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SumoLogic
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
+    ///         var test = new SumoLogic.Content("test", new SumoLogic.ContentArgs
+    ///         {
+    ///             ParentId = personalFolder.Apply(personalFolder =&gt; personalFolder.Id),
+    ///             Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "type", "SavedSearchWithScheduleSyncDefinition" },
+    ///                 { "name", "test-333" },
+    ///                 { "search", new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     { "queryText", "\"warn\"" },
+    ///                     { "defaultTimeRange", "-15m" },
+    ///                     { "byReceiptTime", false },
+    ///                     { "viewName", "" },
+    ///                     { "viewStartTime", "1970-01-01T00:00:00Z" },
+    ///                     { "queryParameters", new[]
+    ///                         {
+    ///                         }
+    ///                      },
+    ///                     { "parsingMode", "Manual" },
+    ///                 } },
+    ///                 { "searchSchedule", new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     { "cronExpression", "0 0 * * * ? *" },
+    ///                     { "displayableTimeRange", "-10m" },
+    ///                     { "parseableTimeRange", new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         { "type", "BeginBoundedTimeRange" },
+    ///                         { "from", new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "type", "RelativeTimeRangeBoundary" },
+    ///                             { "relativeTime", "-50m" },
+    ///                         } },
+    ///                         { "to", null },
+    ///                     } },
+    ///                     { "timeZone", "America/Los_Angeles" },
+    ///                     { "threshold", new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         { "thresholdType", "message" },
+    ///                         { "operator", "gt" },
+    ///                         { "count", 0 },
+    ///                     } },
+    ///                     { "notification", new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         { "taskType", "EmailSearchNotificationSyncDefinition" },
+    ///                         { "toList", new[]
+    ///                             {
+    ///                                 "ops@acme.org",
+    ///                             }
+    ///                          },
+    ///                         { "subjectTemplate", "Search Results: {{Name}}" },
+    ///                         { "includeQuery", true },
+    ///                         { "includeResultSet", true },
+    ///                         { "includeHistogram", false },
+    ///                         { "includeCsvAttachment", false },
+    ///                     } },
+    ///                     { "scheduleType", "1Hour" },
+    ///                     { "muteErrorEmails", false },
+    ///                     { "parameters", new[]
+    ///                         {
+    ///                         }
+    ///                      },
+    ///                 } },
+    ///                 { "description", "Runs every hour with timerange of 15m and sends email notifications" },
+    ///             }),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Attributes reference
+    /// 
+    /// The following attributes are exported:
+    /// 
+    /// - `id` - Unique identifier for the content item.
+    /// 
+    /// [1]: https://help.sumologic.com/APIs/Content-Management-API
+    /// </summary>
     [SumoLogicResourceType("sumologic:index/content:Content")]
     public partial class Content : Pulumi.CustomResource
     {
