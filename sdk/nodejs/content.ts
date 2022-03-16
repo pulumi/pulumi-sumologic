@@ -4,6 +4,70 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const personalFolder = sumologic.getPersonalFolder({});
+ * const test = new sumologic.Content("test", {
+ *     parentId: personalFolder.then(personalFolder => personalFolder.id),
+ *     config: JSON.stringify({
+ *         type: "SavedSearchWithScheduleSyncDefinition",
+ *         name: "test-333",
+ *         search: {
+ *             queryText: "\"warn\"",
+ *             defaultTimeRange: "-15m",
+ *             byReceiptTime: false,
+ *             viewName: "",
+ *             viewStartTime: "1970-01-01T00:00:00Z",
+ *             queryParameters: [],
+ *             parsingMode: "Manual",
+ *         },
+ *         searchSchedule: {
+ *             cronExpression: "0 0 * * * ? *",
+ *             displayableTimeRange: "-10m",
+ *             parseableTimeRange: {
+ *                 type: "BeginBoundedTimeRange",
+ *                 from: {
+ *                     type: "RelativeTimeRangeBoundary",
+ *                     relativeTime: "-50m",
+ *                 },
+ *                 to: undefined,
+ *             },
+ *             timeZone: "America/Los_Angeles",
+ *             threshold: {
+ *                 thresholdType: "message",
+ *                 operator: "gt",
+ *                 count: 0,
+ *             },
+ *             notification: {
+ *                 taskType: "EmailSearchNotificationSyncDefinition",
+ *                 toList: ["ops@acme.org"],
+ *                 subjectTemplate: "Search Results: {{Name}}",
+ *                 includeQuery: true,
+ *                 includeResultSet: true,
+ *                 includeHistogram: false,
+ *                 includeCsvAttachment: false,
+ *             },
+ *             scheduleType: "1Hour",
+ *             muteErrorEmails: false,
+ *             parameters: [],
+ *         },
+ *         description: "Runs every hour with timerange of 15m and sends email notifications",
+ *     }),
+ * });
+ * ```
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - Unique identifier for the content item.
+ *
+ * [1]: https://help.sumologic.com/APIs/Content-Management-API
+ */
 export class Content extends pulumi.CustomResource {
     /**
      * Get an existing Content resource's state with the given name, ID, and optional extra

@@ -11,9 +11,79 @@ namespace Pulumi.SumoLogic
 {
     public static class GetCseLogMappingVendorProduct
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var webGateway = Output.Create(SumoLogic.GetCseLogMappingVendorProduct.InvokeAsync(new SumoLogic.GetCseLogMappingVendorProductArgs
+        ///         {
+        ///             Product = "Web Gateway",
+        ///             Vendor = "McAfee",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
+        /// Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `guid` - The internal GUID of the log mapping vendor product.
+        /// - `product` - The name of the product.
+        /// - `vendor` - The name of the vendor.
+        /// </summary>
         public static Task<GetCseLogMappingVendorProductResult> InvokeAsync(GetCseLogMappingVendorProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var webGateway = Output.Create(SumoLogic.GetCseLogMappingVendorProduct.InvokeAsync(new SumoLogic.GetCseLogMappingVendorProductArgs
+        ///         {
+        ///             Product = "Web Gateway",
+        ///             Vendor = "McAfee",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
+        /// Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `guid` - The internal GUID of the log mapping vendor product.
+        /// - `product` - The name of the product.
+        /// - `vendor` - The name of the vendor.
+        /// </summary>
         public static Output<GetCseLogMappingVendorProductResult> Invoke(GetCseLogMappingVendorProductInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductInvokeArgs(), options.WithDefaults());
     }

@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const webGateway = pulumi.output(sumologic.getCseLogMappingVendorProduct({
+ *     product: "Web Gateway",
+ *     vendor: "McAfee",
+ * }));
+ * ```
+ *
+ * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
+ * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `guid` - The internal GUID of the log mapping vendor product.
+ * - `product` - The name of the product.
+ * - `vendor` - The name of the vendor.
+ */
 export function getCseLogMappingVendorProduct(args: GetCseLogMappingVendorProductArgs, opts?: pulumi.InvokeOptions): Promise<GetCseLogMappingVendorProductResult> {
     if (!opts) {
         opts = {}

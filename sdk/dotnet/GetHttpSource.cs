@@ -11,9 +11,87 @@ namespace Pulumi.SumoLogic
 {
     public static class GetHttpSource
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(SumoLogic.GetHttpSource.InvokeAsync(new SumoLogic.GetHttpSourceArgs
+        ///         {
+        ///             CollectorId = 121212,
+        ///             Name = "source_name",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
+        /// If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+        /// - `name` - The name of the collector.
+        /// - `description` - The description of the collector.
+        /// - `category` - The default source category for any source attached to this collector.
+        /// - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+        /// - `multiline` - Multiline processing enabled or not.
+        /// - `url` - The HTTP endpoint to use for sending data to this source.
+        /// </summary>
         public static Task<GetHttpSourceResult> InvokeAsync(GetHttpSourceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(SumoLogic.GetHttpSource.InvokeAsync(new SumoLogic.GetHttpSourceArgs
+        ///         {
+        ///             CollectorId = 121212,
+        ///             Name = "source_name",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
+        /// If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+        /// - `name` - The name of the collector.
+        /// - `description` - The description of the collector.
+        /// - `category` - The default source category for any source attached to this collector.
+        /// - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+        /// - `multiline` - Multiline processing enabled or not.
+        /// - `url` - The HTTP endpoint to use for sending data to this source.
+        /// </summary>
         public static Output<GetHttpSourceResult> Invoke(GetHttpSourceInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceInvokeArgs(), options.WithDefaults());
     }

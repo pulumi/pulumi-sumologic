@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "MyRole"
 // 		_, err := sumologic.LookupRole(ctx, &GetRoleArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("MyRole"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -46,9 +45,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "1234567890"
 // 		_, err := sumologic.LookupRole(ctx, &GetRoleArgs{
-// 			Id: &opt0,
+// 			Id: pulumi.StringRef("1234567890"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

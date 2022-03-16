@@ -10,6 +10,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sumologic.LookupHttpSource(ctx, &GetHttpSourceArgs{
+// 			CollectorId: pulumi.IntRef(121212),
+// 			Name:        pulumi.StringRef("source_name"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// A HTTP Source can be looked up by using a combination of `collectorId` & `name`.
+// If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+// ## Attributes reference
+//
+// The following attributes are exported:
+//
+// - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+// - `name` - The name of the collector.
+// - `description` - The description of the collector.
+// - `category` - The default source category for any source attached to this collector.
+// - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+// - `multiline` - Multiline processing enabled or not.
+// - `url` - The HTTP endpoint to use for sending data to this source.
 func LookupHttpSource(ctx *pulumi.Context, args *LookupHttpSourceArgs, opts ...pulumi.InvokeOption) (*LookupHttpSourceResult, error) {
 	var rv LookupHttpSourceResult
 	err := ctx.Invoke("sumologic:index/getHttpSource:getHttpSource", args, &rv, opts...)

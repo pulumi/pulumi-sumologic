@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const thisUser = pulumi.output(sumologic.getUser({
+ *     id: "1234567890",
+ * }));
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const that = pulumi.output(sumologic.getUser({
+ *     email: "user@example.com",
+ * }));
+ * ```
+ *
+ * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
+ *
+ * If both `id` and `email` have been specified, `id` takes precedence.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The internal ID of the user.
+ * - `email` - (Required) Email of the user.
+ * - `firstName` - (Required) First name of the user.
+ * - `lastName` - (Required) Last name of the user.
+ * - `isActive` - (Required) This has the value true if the user is active and false if they have been deactivated.
+ * - `roleIds` - (Required) List of roleIds associated with the user.
+ */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
     if (!opts) {

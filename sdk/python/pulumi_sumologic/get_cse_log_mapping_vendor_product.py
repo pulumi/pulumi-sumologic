@@ -75,7 +75,25 @@ def get_cse_log_mapping_vendor_product(guid: Optional[str] = None,
                                        vendor: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCseLogMappingVendorProductResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    web_gateway = sumologic.get_cse_log_mapping_vendor_product(product="Web Gateway",
+        vendor="McAfee")
+    ```
+
+    A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
+    Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `guid` - The internal GUID of the log mapping vendor product.
+    - `product` - The name of the product.
+    - `vendor` - The name of the vendor.
     """
     __args__ = dict()
     __args__['guid'] = guid
@@ -100,6 +118,24 @@ def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Option
                                               vendor: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCseLogMappingVendorProductResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    web_gateway = sumologic.get_cse_log_mapping_vendor_product(product="Web Gateway",
+        vendor="McAfee")
+    ```
+
+    A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
+    Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `guid` - The internal GUID of the log mapping vendor product.
+    - `product` - The name of the product.
+    - `vendor` - The name of the vendor.
     """
     ...
