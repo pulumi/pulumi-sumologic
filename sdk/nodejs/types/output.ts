@@ -6,12 +6,21 @@ import { input as inputs, output as outputs } from "../types";
 
 export interface AwsInventorySourceAuthentication {
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     region?: string;
     /**
      * Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
      */
     roleArn?: string;
     secretKey?: string;
+    tokenUri?: string;
     /**
      * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
      */
@@ -32,6 +41,7 @@ export interface AwsInventorySourceFilter {
 
 export interface AwsInventorySourcePath {
     bucketName?: string;
+    customServices?: outputs.AwsInventorySourcePathCustomService[];
     /**
      * List of namespaces. By default all namespaces are selected. You can also choose a subset from
      * + AWS/EC2
@@ -53,6 +63,7 @@ export interface AwsInventorySourcePath {
      * List of Amazon regions.
      */
     limitToRegions?: string[];
+    limitToServices?: string[];
     pathExpression?: string;
     snsTopicOrSubscriptionArns: outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsInventorySourcePathTagFilter[];
@@ -60,6 +71,11 @@ export interface AwsInventorySourcePath {
      * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
      */
     type: string;
+}
+
+export interface AwsInventorySourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
 }
 
 export interface AwsInventorySourcePathSnsTopicOrSubscriptionArn {
@@ -81,6 +97,14 @@ export interface AwsXraySourceAuthentication {
      * Your AWS access key if using type `S3BucketAuthentication`
      */
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     region?: string;
     /**
      * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
@@ -90,6 +114,7 @@ export interface AwsXraySourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    tokenUri?: string;
     /**
      * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
      */
@@ -110,11 +135,13 @@ export interface AwsXraySourceFilter {
 
 export interface AwsXraySourcePath {
     bucketName?: string;
+    customServices?: outputs.AwsXraySourcePathCustomService[];
     limitToNamespaces?: string[];
     /**
      * List of Amazon regions.
      */
     limitToRegions?: string[];
+    limitToServices?: string[];
     pathExpression?: string;
     snsTopicOrSubscriptionArns: outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsXraySourcePathTagFilter[];
@@ -122,6 +149,11 @@ export interface AwsXraySourcePath {
      * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
      */
     type: string;
+}
+
+export interface AwsXraySourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
 }
 
 export interface AwsXraySourcePathSnsTopicOrSubscriptionArn {
@@ -155,6 +187,14 @@ export interface CloudfrontSourceAuthentication {
      * Your AWS access key if using type `S3BucketAuthentication`
      */
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     /**
      * Your AWS Bucket region.
      */
@@ -167,6 +207,7 @@ export interface CloudfrontSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    tokenUri?: string;
     /**
      * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
      */
@@ -190,8 +231,10 @@ export interface CloudfrontSourcePath {
      * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
      */
     bucketName?: string;
+    customServices?: outputs.CloudfrontSourcePathCustomService[];
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    limitToServices?: string[];
     /**
      * The path to the data. This is needed if using type `S3BucketPathExpression`.
      */
@@ -205,6 +248,11 @@ export interface CloudfrontSourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
      */
     type: string;
+}
+
+export interface CloudfrontSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
 }
 
 export interface CloudfrontSourcePathSnsTopicOrSubscriptionArn {
@@ -226,6 +274,14 @@ export interface CloudtrailSourceAuthentication {
      * Your AWS access key if using type `S3BucketAuthentication`
      */
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     /**
      * Your AWS Bucket region.
      */
@@ -238,6 +294,7 @@ export interface CloudtrailSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    tokenUri?: string;
     /**
      * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
      */
@@ -261,8 +318,10 @@ export interface CloudtrailSourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    customServices?: outputs.CloudtrailSourcePathCustomService[];
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    limitToServices?: string[];
     /**
      * The path to the data.
      */
@@ -276,6 +335,11 @@ export interface CloudtrailSourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
      */
     type: string;
+}
+
+export interface CloudtrailSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
 }
 
 export interface CloudtrailSourcePathSnsTopicOrSubscriptionArn {
@@ -297,6 +361,14 @@ export interface CloudwatchSourceAuthentication {
      * Your AWS access key if using type `S3BucketAuthentication`
      */
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     /**
      * Your AWS Bucket region.
      */
@@ -309,6 +381,7 @@ export interface CloudwatchSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    tokenUri?: string;
     /**
      * This value has to be set to `TagFilters`
      */
@@ -329,6 +402,7 @@ export interface CloudwatchSourceFilter {
 
 export interface CloudwatchSourcePath {
     bucketName?: string;
+    customServices?: outputs.CloudwatchSourcePathCustomService[];
     /**
      * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
      */
@@ -337,6 +411,7 @@ export interface CloudwatchSourcePath {
      * List of Amazon regions.
      */
     limitToRegions?: string[];
+    limitToServices?: string[];
     pathExpression?: string;
     snsTopicOrSubscriptionArns: outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn[];
     /**
@@ -347,6 +422,11 @@ export interface CloudwatchSourcePath {
      * This value has to be set to `TagFilters`
      */
     type: string;
+}
+
+export interface CloudwatchSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
 }
 
 export interface CloudwatchSourcePathSnsTopicOrSubscriptionArn {
@@ -367,6 +447,12 @@ export interface CloudwatchSourcePathTagFilter {
      * This value has to be set to `TagFilters`
      */
     type?: string;
+}
+
+export interface ContentPermissionPermission {
+    permissionName: string;
+    sourceId: string;
+    sourceType: string;
 }
 
 export interface CseAggregationRuleAggregationFunction {
@@ -490,7 +576,10 @@ export interface CseLogMappingField {
      * Split delimiter to be used. (some example: ",", "-", "|")
      */
     splitDelimiter?: string;
-    splitIndex?: string;
+    /**
+     * The index value to select (starting at zero)
+     */
+    splitIndex?: number;
     /**
      * Time zone.
      */
@@ -875,6 +964,14 @@ export interface ElbSourceAuthentication {
      * Your AWS access key if using type `S3BucketAuthentication`.
      */
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     /**
      * Your AWS Bucket region.
      */
@@ -887,6 +984,7 @@ export interface ElbSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: string;
+    tokenUri?: string;
     /**
      * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
      */
@@ -910,8 +1008,10 @@ export interface ElbSourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    customServices?: outputs.ElbSourcePathCustomService[];
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    limitToServices?: string[];
     /**
      * The path to the data.
      */
@@ -927,6 +1027,11 @@ export interface ElbSourcePath {
     type: string;
 }
 
+export interface ElbSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
+}
+
 export interface ElbSourcePathSnsTopicOrSubscriptionArn {
     arn: string;
     isSuccess: boolean;
@@ -937,6 +1042,114 @@ export interface ElbSourcePathTagFilter {
     tags?: string[];
     /**
      * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     */
+    type?: string;
+}
+
+export interface GcpMetricsSourceAuthentication {
+    accessKey?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    authProviderX509CertUrl?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    authUri?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    clientEmail?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    clientId?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    clientX509CertUrl?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    privateKey?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    privateKeyId?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    projectId?: string;
+    region?: string;
+    roleArn?: string;
+    secretKey?: string;
+    /**
+     * As per the service_account.json downloaded from GCP
+     */
+    tokenUri?: string;
+    /**
+     * Type of polling source. This has to be `GcpMetricsPath`.
+     */
+    type: string;
+}
+
+export interface GcpMetricsSourceDefaultDateFormat {
+    format: string;
+    locator?: string;
+}
+
+export interface GcpMetricsSourceFilter {
+    filterType: string;
+    mask?: string;
+    name: string;
+    regexp: string;
+}
+
+export interface GcpMetricsSourcePath {
+    bucketName?: string;
+    /**
+     * Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+     */
+    customServices?: outputs.GcpMetricsSourcePathCustomService[];
+    limitToNamespaces?: string[];
+    /**
+     * List of regions for which metrics would be collected (Empty to collect from all regions)
+     */
+    limitToRegions?: string[];
+    /**
+     * List of services from which metrics would be collected
+     */
+    limitToServices?: string[];
+    pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArn[];
+    tagFilters?: outputs.GcpMetricsSourcePathTagFilter[];
+    /**
+     * Type of polling source. This has to be `GcpMetricsPath`.
+     */
+    type: string;
+}
+
+export interface GcpMetricsSourcePathCustomService {
+    /**
+     * List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+     */
+    prefixes?: string[];
+    /**
+     * Name of the custom service you want to define.
+     */
+    serviceName?: string;
+}
+
+export interface GcpMetricsSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
+}
+
+export interface GcpMetricsSourcePathTagFilter {
+    namespace?: string;
+    tags?: string[];
+    /**
+     * Type of polling source. This has to be `GcpMetricsPath`.
      */
     type?: string;
 }
@@ -2049,6 +2262,56 @@ export interface HttpSourceFilter {
     regexp: string;
 }
 
+export interface KineisLogSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`
+     */
+    accessKey?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+     */
+    roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`
+     */
+    secretKey?: string;
+    /**
+     * Must be either `KinesisLogPath` or `NoPathExpression`
+     */
+    type: string;
+}
+
+export interface KineisLogSourceDefaultDateFormat {
+    format: string;
+    locator?: string;
+}
+
+export interface KineisLogSourceFilter {
+    filterType: string;
+    mask?: string;
+    name: string;
+    regexp: string;
+}
+
+export interface KineisLogSourcePath {
+    /**
+     * The name of the bucket. This is needed if using type `KinesisLogPath`.
+     */
+    bucketName?: string;
+    /**
+     * The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+     */
+    pathExpression?: string;
+    /**
+     * The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+     */
+    scanInterval?: number;
+    /**
+     * Must be either `KinesisLogPath` or `NoPathExpression`
+     */
+    type: string;
+}
+
 export interface KinesisMetricsSourceAuthentication {
     /**
      * Your AWS access key if using type `S3BucketAuthentication`
@@ -2304,6 +2567,7 @@ export interface MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
 }
 
 export interface MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
+    occurrenceType?: string;
     threshold?: number;
     thresholdType?: string;
 }
@@ -2321,6 +2585,7 @@ export interface MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
 }
 
 export interface MonitorTriggerConditionsMetricsStaticConditionWarningResolution {
+    occurrenceType?: string;
     threshold?: number;
     thresholdType?: string;
 }
@@ -2414,6 +2679,14 @@ export interface S3AuditSourceAuthentication {
      * Your AWS access key if using type `S3BucketAuthentication`.
      */
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     /**
      * Your AWS Bucket region.
      */
@@ -2426,6 +2699,7 @@ export interface S3AuditSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: string;
+    tokenUri?: string;
     /**
      * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
      */
@@ -2449,8 +2723,10 @@ export interface S3AuditSourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    customServices?: outputs.S3AuditSourcePathCustomService[];
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    limitToServices?: string[];
     /**
      * The path to the data.
      */
@@ -2464,6 +2740,11 @@ export interface S3AuditSourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
      */
     type: string;
+}
+
+export interface S3AuditSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
 }
 
 export interface S3AuditSourcePathSnsTopicOrSubscriptionArn {
@@ -2485,6 +2766,14 @@ export interface S3SourceAuthentication {
      * Your AWS access key if using type `S3BucketAuthentication`.
      */
     accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
     /**
      * Your AWS Bucket region.
      */
@@ -2497,6 +2786,7 @@ export interface S3SourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: string;
+    tokenUri?: string;
     /**
      * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
      */
@@ -2520,8 +2810,10 @@ export interface S3SourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    customServices?: outputs.S3SourcePathCustomService[];
     limitToNamespaces?: string[];
     limitToRegions?: string[];
+    limitToServices?: string[];
     /**
      * The path to the data.
      */
@@ -2535,6 +2827,11 @@ export interface S3SourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
      */
     type: string;
+}
+
+export interface S3SourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
 }
 
 export interface S3SourcePathSnsTopicOrSubscriptionArn {

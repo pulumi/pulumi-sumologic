@@ -67,6 +67,7 @@ namespace Pulumi.SumoLogic
     ///                     },
     ///                 },
     ///             },
+    ///             Domain = "app",
     ///             Panels = 
     ///             {
     ///                 new SumoLogic.Inputs.DashboardPanelArgs
@@ -415,8 +416,6 @@ namespace Pulumi.SumoLogic
     /// - `description` - (Optional) Description of the panel.
     /// - `time_range` - (Block List, Max: 1, Optional) Time range of the panel. See time_range schema
     ///   for details.
-    /// - `coloring_rule` - (Block List, Optional) Coloring rules for the panel. See coloring_rule schema
-    ///   for details.
     /// - `linked_dashboard` - (Block List, Optional) A list of linked dashboards. See
     ///   linked_dashboard schema for details.
     /// 
@@ -444,16 +443,6 @@ namespace Pulumi.SumoLogic
     /// - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
     ///     - `key` - (Required) The key of the operator parameter.
     ///     - `value` - (Required) The value of the operator parameter.
-    /// 
-    /// ### Schema for `coloring_rule`
-    /// - `scope` - (Required) Regex string to match queries to apply coloring to.
-    /// - `single_series_aggregate_function` - (Required) Function to aggregate one series into one single value.
-    /// - `multiple_series_aggregate_function` - (Required) Function to aggregate the aggregate values of multiple time series
-    ///   into one single value.
-    /// - `color_threshold` - (Block List, Optional) A list of color threshold object.
-    ///     - `color` - (Required) Color for the threshold.
-    ///     - `min` - (Optional) Absolute inclusive threshold to color by.
-    ///     - `max` - (Optional) Absolute exclusive threshold to color by.
     /// 
     /// ### Schema for `linked_dashboard`
     /// - `id` - (Required) Identifier of the linked dashboard.
@@ -510,6 +499,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+        /// </summary>
+        [Output("domain")]
+        public Output<string?> Domain { get; private set; } = null!;
 
         /// <summary>
         /// The identifier of the folder to save the dashboard in. By default it is saved in your
@@ -631,6 +626,12 @@ namespace Pulumi.SumoLogic
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+        /// </summary>
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
+
+        /// <summary>
         /// The identifier of the folder to save the dashboard in. By default it is saved in your
         /// personal folder.
         /// </summary>
@@ -721,6 +722,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+        /// </summary>
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
 
         /// <summary>
         /// The identifier of the folder to save the dashboard in. By default it is saved in your

@@ -150,6 +150,9 @@ func Provider() tfbridge.ProviderInfo {
 			"sumologic_hierarchy":                     {Tok: makeResource(mainMod, "Hierarchy")},
 			"sumologic_policies":                      {Tok: makeResource(mainMod, "Policies")},
 			"sumologic_token":                         {Tok: makeResource(mainMod, "Token")},
+			"sumologic_content_permission":            {Tok: makeResource(mainMod, "ContentPermission")},
+			"sumologic_gcp_metrics_source":            {Tok: makeResource(mainMod, "GcpMetricsSource")},
+			"sumologic_kinesis_log_source":            {Tok: makeResource(mainMod, "KineisLogSource")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"sumologic_caller_identity":                {Tok: makeDataSource(mainMod, "getCallerIdentity")},

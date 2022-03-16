@@ -57,7 +57,10 @@ namespace Pulumi.SumoLogic.Outputs
         /// Split delimiter to be used. (some example: ",", "-", "|")
         /// </summary>
         public readonly string? SplitDelimiter;
-        public readonly string? SplitIndex;
+        /// <summary>
+        /// The index value to select (starting at zero)
+        /// </summary>
+        public readonly int? SplitIndex;
         /// <summary>
         /// Time zone.
         /// </summary>
@@ -95,7 +98,7 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? splitDelimiter,
 
-            string? splitIndex,
+            int? splitIndex,
 
             string? timeZone,
 

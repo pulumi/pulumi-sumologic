@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source) and [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). To start using Traces contact your Sumo account representative to activate.
+    /// Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source), [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source) and [Sumologic HTTP_OTLP_source][4]. To start using Traces contact your Sumo account representative to activate.
     /// 
     /// __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
     /// 
@@ -57,6 +57,13 @@ namespace Pulumi.SumoLogic
     ///             ContentType = "KinesisLog",
     ///             Description = "demo-desc",
     ///         });
+    ///         var httpOtlpSource = new SumoLogic.HttpSource("httpOtlpSource", new SumoLogic.HttpSourceArgs
+    ///         {
+    ///             Category = "my/source/category",
+    ///             CollectorId = sumologic_collector.Test.Id,
+    ///             ContentType = "Otlp",
+    ///             Description = "My description",
+    ///         });
     ///     }
     /// 
     /// }
@@ -76,7 +83,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
+    ///  [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source [4]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/OTLP_HTTP_Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/httpSource:HttpSource")]
     public partial class HttpSource : Pulumi.CustomResource
@@ -91,7 +98,7 @@ namespace Pulumi.SumoLogic
         public Output<int> CollectorId { get; private set; } = null!;
 
         /// <summary>
-        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -203,7 +210,7 @@ namespace Pulumi.SumoLogic
         public Input<int> CollectorId { get; set; } = null!;
 
         /// <summary>
-        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -285,7 +292,7 @@ namespace Pulumi.SumoLogic
         public Input<int>? CollectorId { get; set; }
 
         /// <summary>
-        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        /// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }

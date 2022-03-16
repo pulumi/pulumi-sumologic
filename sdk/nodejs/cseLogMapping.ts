@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *         name: "action",
  *         skippedValues: ["-"],
  *         splitDelimiter: ",",
- *         splitIndex: "index",
+ *         splitIndex: 0,
  *         timeZone: "UTC",
  *         value: "action",
  *         valueType: "constant",

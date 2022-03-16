@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs : Pulumi.ResourceArgs
     {
+        [Input("occurrenceType")]
+        public Input<string>? OccurrenceType { get; set; }
+
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
 

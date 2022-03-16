@@ -15,6 +15,30 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
+        [Input("authProviderX509CertUrl")]
+        public Input<string>? AuthProviderX509CertUrl { get; set; }
+
+        [Input("authUri")]
+        public Input<string>? AuthUri { get; set; }
+
+        [Input("clientEmail")]
+        public Input<string>? ClientEmail { get; set; }
+
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("clientX509CertUrl")]
+        public Input<string>? ClientX509CertUrl { get; set; }
+
+        [Input("privateKey")]
+        public Input<string>? PrivateKey { get; set; }
+
+        [Input("privateKeyId")]
+        public Input<string>? PrivateKeyId { get; set; }
+
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -26,6 +50,9 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
+
+        [Input("tokenUri")]
+        public Input<string>? TokenUri { get; set; }
 
         /// <summary>
         /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.

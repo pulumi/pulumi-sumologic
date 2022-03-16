@@ -15,6 +15,14 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
+        [Input("customServices")]
+        private InputList<Inputs.AwsInventorySourcePathCustomServiceArgs>? _customServices;
+        public InputList<Inputs.AwsInventorySourcePathCustomServiceArgs> CustomServices
+        {
+            get => _customServices ?? (_customServices = new InputList<Inputs.AwsInventorySourcePathCustomServiceArgs>());
+            set => _customServices = value;
+        }
+
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
 
@@ -50,6 +58,14 @@ namespace Pulumi.SumoLogic.Inputs
         {
             get => _limitToRegions ?? (_limitToRegions = new InputList<string>());
             set => _limitToRegions = value;
+        }
+
+        [Input("limitToServices")]
+        private InputList<string>? _limitToServices;
+        public InputList<string> LimitToServices
+        {
+            get => _limitToServices ?? (_limitToServices = new InputList<string>());
+            set => _limitToServices = value;
         }
 
         [Input("pathExpression")]

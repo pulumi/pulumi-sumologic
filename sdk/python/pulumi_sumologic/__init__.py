@@ -16,6 +16,7 @@ from .collector import *
 from .collector_ingest_budget_assignment import *
 from .connection import *
 from .content import *
+from .content_permission import *
 from .cse_aggregation_rule import *
 from .cse_chain_rule import *
 from .cse_custom_entity_type import *
@@ -34,6 +35,7 @@ from .elb_source import *
 from .field import *
 from .field_extraction_rule import *
 from .folder import *
+from .gcp_metrics_source import *
 from .gcp_source import *
 from .get_admin_recommended_folder import *
 from .get_caller_identity import *
@@ -48,6 +50,7 @@ from .hierarchy import *
 from .http_source import *
 from .ingest_budget import *
 from .ingest_budget_v2 import *
+from .kineis_log_source import *
 from .kinesis_metrics_source import *
 from .lookup_table import *
 from .metadata_source import *
@@ -165,6 +168,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/content:Content": "Content"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/contentPermission",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/contentPermission:ContentPermission": "ContentPermission"
   }
  },
  {
@@ -313,6 +324,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/gcpMetricsSource",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/gcpMetricsSource:GcpMetricsSource": "GcpMetricsSource"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/gcpSource",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -349,6 +368,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/ingestBudgetV2:IngestBudgetV2": "IngestBudgetV2"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/kineisLogSource",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/kineisLogSource:KineisLogSource": "KineisLogSource"
   }
  },
  {

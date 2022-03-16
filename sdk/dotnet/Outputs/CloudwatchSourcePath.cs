@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class CloudwatchSourcePath
     {
         public readonly string? BucketName;
+        public readonly ImmutableArray<Outputs.CloudwatchSourcePathCustomService> CustomServices;
         /// <summary>
         /// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
         /// </summary>
@@ -22,6 +23,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// List of Amazon regions.
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
+        public readonly ImmutableArray<string> LimitToServices;
         public readonly string? PathExpression;
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         /// <summary>
@@ -37,9 +39,13 @@ namespace Pulumi.SumoLogic.Outputs
         private CloudwatchSourcePath(
             string? bucketName,
 
+            ImmutableArray<Outputs.CloudwatchSourcePathCustomService> customServices,
+
             ImmutableArray<string> limitToNamespaces,
 
             ImmutableArray<string> limitToRegions,
+
+            ImmutableArray<string> limitToServices,
 
             string? pathExpression,
 
@@ -50,8 +56,10 @@ namespace Pulumi.SumoLogic.Outputs
             string type)
         {
             BucketName = bucketName;
+            CustomServices = customServices;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
+            LimitToServices = limitToServices;
             PathExpression = pathExpression;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;

@@ -137,6 +137,7 @@ import (
 // 					},
 // 				},
 // 			},
+// 			Domain: pulumi.String("app"),
 // 			Panels: DashboardPanelArray{
 // 				&DashboardPanelArgs{
 // 					TextPanel: &DashboardPanelTextPanelArgs{
@@ -370,8 +371,6 @@ import (
 // - `description` - (Optional) Description of the panel.
 // - `timeRange` - (Block List, Max: 1, Optional) Time range of the panel. See timeRange schema
 //   for details.
-// - `coloringRule` - (Block List, Optional) Coloring rules for the panel. See coloringRule schema
-//   for details.
 // - `linkedDashboard` - (Block List, Optional) A list of linked dashboards. See
 //   linkedDashboard schema for details.
 //
@@ -399,16 +398,6 @@ import (
 // - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
 //     - `key` - (Required) The key of the operator parameter.
 //     - `value` - (Required) The value of the operator parameter.
-//
-// ### Schema for `coloringRule`
-// - `scope` - (Required) Regex string to match queries to apply coloring to.
-// - `singleSeriesAggregateFunction` - (Required) Function to aggregate one series into one single value.
-// - `multipleSeriesAggregateFunction` - (Required) Function to aggregate the aggregate values of multiple time series
-//   into one single value.
-// - `colorThreshold` - (Block List, Optional) A list of color threshold object.
-//     - `color` - (Required) Color for the threshold.
-//     - `min` - (Optional) Absolute inclusive threshold to color by.
-//     - `max` - (Optional) Absolute exclusive threshold to color by.
 //
 // ### Schema for `linkedDashboard`
 // - `id` - (Required) Identifier of the linked dashboard.
@@ -459,6 +448,8 @@ type Dashboard struct {
 	ColoringRules DashboardColoringRuleArrayOutput `pulumi:"coloringRules"`
 	// Description of the dashboard.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
@@ -522,6 +513,8 @@ type dashboardState struct {
 	ColoringRules []DashboardColoringRule `pulumi:"coloringRules"`
 	// Description of the dashboard.
 	Description *string `pulumi:"description"`
+	// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+	Domain *string `pulumi:"domain"`
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId *string `pulumi:"folderId"`
@@ -551,6 +544,8 @@ type DashboardState struct {
 	ColoringRules DashboardColoringRuleArrayInput
 	// Description of the dashboard.
 	Description pulumi.StringPtrInput
+	// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+	Domain pulumi.StringPtrInput
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId pulumi.StringPtrInput
@@ -584,6 +579,8 @@ type dashboardArgs struct {
 	ColoringRules []DashboardColoringRule `pulumi:"coloringRules"`
 	// Description of the dashboard.
 	Description *string `pulumi:"description"`
+	// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+	Domain *string `pulumi:"domain"`
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId *string `pulumi:"folderId"`
@@ -614,6 +611,8 @@ type DashboardArgs struct {
 	ColoringRules DashboardColoringRuleArrayInput
 	// Description of the dashboard.
 	Description pulumi.StringPtrInput
+	// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+	Domain pulumi.StringPtrInput
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId pulumi.StringPtrInput

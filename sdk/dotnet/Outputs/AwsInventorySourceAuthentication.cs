@@ -14,12 +14,21 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class AwsInventorySourceAuthentication
     {
         public readonly string? AccessKey;
+        public readonly string? AuthProviderX509CertUrl;
+        public readonly string? AuthUri;
+        public readonly string? ClientEmail;
+        public readonly string? ClientId;
+        public readonly string? ClientX509CertUrl;
+        public readonly string? PrivateKey;
+        public readonly string? PrivateKeyId;
+        public readonly string? ProjectId;
         public readonly string? Region;
         /// <summary>
         /// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
         /// </summary>
         public readonly string? RoleArn;
         public readonly string? SecretKey;
+        public readonly string? TokenUri;
         /// <summary>
         /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
         /// </summary>
@@ -29,18 +38,45 @@ namespace Pulumi.SumoLogic.Outputs
         private AwsInventorySourceAuthentication(
             string? accessKey,
 
+            string? authProviderX509CertUrl,
+
+            string? authUri,
+
+            string? clientEmail,
+
+            string? clientId,
+
+            string? clientX509CertUrl,
+
+            string? privateKey,
+
+            string? privateKeyId,
+
+            string? projectId,
+
             string? region,
 
             string? roleArn,
 
             string? secretKey,
 
+            string? tokenUri,
+
             string type)
         {
             AccessKey = accessKey;
+            AuthProviderX509CertUrl = authProviderX509CertUrl;
+            AuthUri = authUri;
+            ClientEmail = clientEmail;
+            ClientId = clientId;
+            ClientX509CertUrl = clientX509CertUrl;
+            PrivateKey = privateKey;
+            PrivateKeyId = privateKeyId;
+            ProjectId = projectId;
             Region = region;
             RoleArn = roleArn;
             SecretKey = secretKey;
+            TokenUri = tokenUri;
             Type = type;
         }
     }

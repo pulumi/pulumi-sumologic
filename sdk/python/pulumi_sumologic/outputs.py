@@ -14,12 +14,14 @@ __all__ = [
     'AwsInventorySourceDefaultDateFormat',
     'AwsInventorySourceFilter',
     'AwsInventorySourcePath',
+    'AwsInventorySourcePathCustomService',
     'AwsInventorySourcePathSnsTopicOrSubscriptionArn',
     'AwsInventorySourcePathTagFilter',
     'AwsXraySourceAuthentication',
     'AwsXraySourceDefaultDateFormat',
     'AwsXraySourceFilter',
     'AwsXraySourcePath',
+    'AwsXraySourcePathCustomService',
     'AwsXraySourcePathSnsTopicOrSubscriptionArn',
     'AwsXraySourcePathTagFilter',
     'CloudSyslogSourceDefaultDateFormat',
@@ -28,20 +30,24 @@ __all__ = [
     'CloudfrontSourceDefaultDateFormat',
     'CloudfrontSourceFilter',
     'CloudfrontSourcePath',
+    'CloudfrontSourcePathCustomService',
     'CloudfrontSourcePathSnsTopicOrSubscriptionArn',
     'CloudfrontSourcePathTagFilter',
     'CloudtrailSourceAuthentication',
     'CloudtrailSourceDefaultDateFormat',
     'CloudtrailSourceFilter',
     'CloudtrailSourcePath',
+    'CloudtrailSourcePathCustomService',
     'CloudtrailSourcePathSnsTopicOrSubscriptionArn',
     'CloudtrailSourcePathTagFilter',
     'CloudwatchSourceAuthentication',
     'CloudwatchSourceDefaultDateFormat',
     'CloudwatchSourceFilter',
     'CloudwatchSourcePath',
+    'CloudwatchSourcePathCustomService',
     'CloudwatchSourcePathSnsTopicOrSubscriptionArn',
     'CloudwatchSourcePathTagFilter',
+    'ContentPermissionPermission',
     'CseAggregationRuleAggregationFunction',
     'CseAggregationRuleEntitySelector',
     'CseAggregationRuleSeverityMapping',
@@ -109,8 +115,16 @@ __all__ = [
     'ElbSourceDefaultDateFormat',
     'ElbSourceFilter',
     'ElbSourcePath',
+    'ElbSourcePathCustomService',
     'ElbSourcePathSnsTopicOrSubscriptionArn',
     'ElbSourcePathTagFilter',
+    'GcpMetricsSourceAuthentication',
+    'GcpMetricsSourceDefaultDateFormat',
+    'GcpMetricsSourceFilter',
+    'GcpMetricsSourcePath',
+    'GcpMetricsSourcePathCustomService',
+    'GcpMetricsSourcePathSnsTopicOrSubscriptionArn',
+    'GcpMetricsSourcePathTagFilter',
     'GcpSourceAuthentication',
     'GcpSourceDefaultDateFormat',
     'GcpSourceFilter',
@@ -212,6 +226,10 @@ __all__ = [
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
     'HttpSourceDefaultDateFormat',
     'HttpSourceFilter',
+    'KineisLogSourceAuthentication',
+    'KineisLogSourceDefaultDateFormat',
+    'KineisLogSourceFilter',
+    'KineisLogSourcePath',
     'KinesisMetricsSourceAuthentication',
     'KinesisMetricsSourceDefaultDateFormat',
     'KinesisMetricsSourceFilter',
@@ -259,12 +277,14 @@ __all__ = [
     'S3AuditSourceDefaultDateFormat',
     'S3AuditSourceFilter',
     'S3AuditSourcePath',
+    'S3AuditSourcePathCustomService',
     'S3AuditSourcePathSnsTopicOrSubscriptionArn',
     'S3AuditSourcePathTagFilter',
     'S3SourceAuthentication',
     'S3SourceDefaultDateFormat',
     'S3SourceFilter',
     'S3SourcePath',
+    'S3SourcePathCustomService',
     'S3SourcePathSnsTopicOrSubscriptionArn',
     'S3SourcePathTagFilter',
     'SamlConfigurationOnDemandProvisioningEnabled',
@@ -277,10 +297,28 @@ class AwsInventorySourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsInventorySourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -296,9 +334,18 @@ class AwsInventorySourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
         :param str role_arn: Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
@@ -306,12 +353,30 @@ class AwsInventorySourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -325,6 +390,46 @@ class AwsInventorySourceAuthentication(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -343,6 +448,11 @@ class AwsInventorySourceAuthentication(dict):
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -423,10 +533,14 @@ class AwsInventorySourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -448,8 +562,10 @@ class AwsInventorySourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.AwsInventorySourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.AwsInventorySourcePathTagFilter']] = None):
@@ -474,10 +590,14 @@ class AwsInventorySourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -497,6 +617,11 @@ class AwsInventorySourcePath(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[str]:
         return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.AwsInventorySourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -528,6 +653,11 @@ class AwsInventorySourcePath(dict):
         return pulumi.get(self, "limit_to_regions")
 
     @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[str]:
         return pulumi.get(self, "path_expression")
@@ -541,6 +671,44 @@ class AwsInventorySourcePath(dict):
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.AwsInventorySourcePathTagFilter']]:
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class AwsInventorySourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsInventorySourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsInventorySourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsInventorySourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -623,10 +791,28 @@ class AwsXraySourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsXraySourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -642,9 +828,18 @@ class AwsXraySourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
@@ -654,12 +849,30 @@ class AwsXraySourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -676,6 +889,46 @@ class AwsXraySourceAuthentication(dict):
         Your AWS access key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -697,6 +950,11 @@ class AwsXraySourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -777,10 +1035,14 @@ class AwsXraySourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -802,8 +1064,10 @@ class AwsXraySourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.AwsXraySourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.AwsXraySourcePathTagFilter']] = None):
@@ -814,10 +1078,14 @@ class AwsXraySourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -839,6 +1107,11 @@ class AwsXraySourcePath(dict):
         return pulumi.get(self, "bucket_name")
 
     @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.AwsXraySourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
+
+    @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_namespaces")
@@ -850,6 +1123,11 @@ class AwsXraySourcePath(dict):
         List of Amazon regions.
         """
         return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
 
     @property
     @pulumi.getter(name="pathExpression")
@@ -865,6 +1143,44 @@ class AwsXraySourcePath(dict):
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.AwsXraySourcePathTagFilter']]:
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class AwsXraySourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsXraySourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsXraySourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsXraySourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -1018,10 +1334,28 @@ class CloudfrontSourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudfrontSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -1037,9 +1371,18 @@ class CloudfrontSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
@@ -1050,12 +1393,30 @@ class CloudfrontSourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -1072,6 +1433,46 @@ class CloudfrontSourceAuthentication(dict):
         Your AWS access key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -1096,6 +1497,11 @@ class CloudfrontSourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -1176,10 +1582,14 @@ class CloudfrontSourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -1201,8 +1611,10 @@ class CloudfrontSourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.CloudfrontSourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.CloudfrontSourcePathTagFilter']] = None):
@@ -1215,10 +1627,14 @@ class CloudfrontSourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -1243,6 +1659,11 @@ class CloudfrontSourcePath(dict):
         return pulumi.get(self, "bucket_name")
 
     @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.CloudfrontSourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
+
+    @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_namespaces")
@@ -1251,6 +1672,11 @@ class CloudfrontSourcePath(dict):
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
 
     @property
     @pulumi.getter(name="pathExpression")
@@ -1272,6 +1698,44 @@ class CloudfrontSourcePath(dict):
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.CloudfrontSourcePathTagFilter']]:
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class CloudfrontSourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudfrontSourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudfrontSourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudfrontSourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -1354,10 +1818,28 @@ class CloudtrailSourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudtrailSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -1373,9 +1855,18 @@ class CloudtrailSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
@@ -1386,12 +1877,30 @@ class CloudtrailSourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -1408,6 +1917,46 @@ class CloudtrailSourceAuthentication(dict):
         Your AWS access key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -1432,6 +1981,11 @@ class CloudtrailSourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -1512,10 +2066,14 @@ class CloudtrailSourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -1537,8 +2095,10 @@ class CloudtrailSourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.CloudtrailSourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.CloudtrailSourcePathTagFilter']] = None):
@@ -1551,10 +2111,14 @@ class CloudtrailSourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -1579,6 +2143,11 @@ class CloudtrailSourcePath(dict):
         return pulumi.get(self, "bucket_name")
 
     @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.CloudtrailSourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
+
+    @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_namespaces")
@@ -1587,6 +2156,11 @@ class CloudtrailSourcePath(dict):
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
 
     @property
     @pulumi.getter(name="pathExpression")
@@ -1608,6 +2182,44 @@ class CloudtrailSourcePath(dict):
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.CloudtrailSourcePathTagFilter']]:
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class CloudtrailSourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudtrailSourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudtrailSourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudtrailSourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -1690,10 +2302,28 @@ class CloudwatchSourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudwatchSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -1709,9 +2339,18 @@ class CloudwatchSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: This value has to be set to `TagFilters`
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
@@ -1722,12 +2361,30 @@ class CloudwatchSourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -1744,6 +2401,46 @@ class CloudwatchSourceAuthentication(dict):
         Your AWS access key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -1768,6 +2465,11 @@ class CloudwatchSourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -1848,10 +2550,14 @@ class CloudwatchSourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -1873,8 +2579,10 @@ class CloudwatchSourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.CloudwatchSourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.CloudwatchSourcePathTagFilter']] = None):
@@ -1887,10 +2595,14 @@ class CloudwatchSourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -1912,6 +2624,11 @@ class CloudwatchSourcePath(dict):
         return pulumi.get(self, "bucket_name")
 
     @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.CloudwatchSourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
+
+    @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
         """
@@ -1926,6 +2643,11 @@ class CloudwatchSourcePath(dict):
         List of Amazon regions.
         """
         return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
 
     @property
     @pulumi.getter(name="pathExpression")
@@ -1944,6 +2666,44 @@ class CloudwatchSourcePath(dict):
         Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
         """
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class CloudwatchSourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudwatchSourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudwatchSourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudwatchSourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -2025,6 +2785,53 @@ class CloudwatchSourcePathTagFilter(dict):
         This value has to be set to `TagFilters`
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ContentPermissionPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permissionName":
+            suggest = "permission_name"
+        elif key == "sourceId":
+            suggest = "source_id"
+        elif key == "sourceType":
+            suggest = "source_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContentPermissionPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContentPermissionPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContentPermissionPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 permission_name: str,
+                 source_id: str,
+                 source_type: str):
+        pulumi.set(__self__, "permission_name", permission_name)
+        pulumi.set(__self__, "source_id", source_id)
+        pulumi.set(__self__, "source_type", source_type)
+
+    @property
+    @pulumi.getter(name="permissionName")
+    def permission_name(self) -> str:
+        return pulumi.get(self, "permission_name")
+
+    @property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> str:
+        return pulumi.get(self, "source_id")
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> str:
+        return pulumi.get(self, "source_type")
 
 
 @pulumi.output_type
@@ -2342,7 +3149,7 @@ class CseLogMappingField(dict):
                  lookups: Optional[Sequence['outputs.CseLogMappingFieldLookup']] = None,
                  skipped_values: Optional[Sequence[str]] = None,
                  split_delimiter: Optional[str] = None,
-                 split_index: Optional[str] = None,
+                 split_index: Optional[int] = None,
                  time_zone: Optional[str] = None,
                  value: Optional[str] = None,
                  value_type: Optional[str] = None):
@@ -2358,6 +3165,7 @@ class CseLogMappingField(dict):
         :param Sequence['CseLogMappingFieldLookupArgs'] lookups: List of lookup key value pair for field. See lookup_schema for details.
         :param Sequence[str] skipped_values: List of skipped values.
         :param str split_delimiter: Split delimiter to be used. (some example: ",", "-", "|")
+        :param int split_index: The index value to select (starting at zero)
         :param str time_zone: Time zone.
         :param str value: Lookup value.
         :param str value_type: The value type.
@@ -2482,7 +3290,10 @@ class CseLogMappingField(dict):
 
     @property
     @pulumi.getter(name="splitIndex")
-    def split_index(self) -> Optional[str]:
+    def split_index(self) -> Optional[int]:
+        """
+        The index value to select (starting at zero)
+        """
         return pulumi.get(self, "split_index")
 
     @property
@@ -4724,10 +5535,28 @@ class ElbSourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElbSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -4743,9 +5572,18 @@ class ElbSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`.
@@ -4756,12 +5594,30 @@ class ElbSourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -4778,6 +5634,46 @@ class ElbSourceAuthentication(dict):
         Your AWS access key if using type `S3BucketAuthentication`.
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -4802,6 +5698,11 @@ class ElbSourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`.
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -4882,10 +5783,14 @@ class ElbSourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -4907,8 +5812,10 @@ class ElbSourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.ElbSourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.ElbSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.ElbSourcePathTagFilter']] = None):
@@ -4921,10 +5828,14 @@ class ElbSourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -4949,6 +5860,11 @@ class ElbSourcePath(dict):
         return pulumi.get(self, "bucket_name")
 
     @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.ElbSourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
+
+    @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_namespaces")
@@ -4957,6 +5873,11 @@ class ElbSourcePath(dict):
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
 
     @property
     @pulumi.getter(name="pathExpression")
@@ -4978,6 +5899,44 @@ class ElbSourcePath(dict):
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.ElbSourcePathTagFilter']]:
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class ElbSourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ElbSourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ElbSourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ElbSourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -5049,6 +6008,520 @@ class ElbSourcePathTagFilter(dict):
     def type(self) -> Optional[str]:
         """
         type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GcpMetricsSourceAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "secretKey":
+            suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpMetricsSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpMetricsSourceAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpMetricsSourceAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
+        """
+        :param str type: Type of polling source. This has to be `GcpMetricsPath`.
+        :param str auth_provider_x509_cert_url: As per the service_account.json downloaded from GCP
+        :param str auth_uri: As per the service_account.json downloaded from GCP
+        :param str client_email: As per the service_account.json downloaded from GCP
+        :param str client_id: As per the service_account.json downloaded from GCP
+        :param str client_x509_cert_url: As per the service_account.json downloaded from GCP
+        :param str private_key: As per the service_account.json downloaded from GCP
+        :param str private_key_id: As per the service_account.json downloaded from GCP
+        :param str project_id: As per the service_account.json downloaded from GCP
+        :param str token_uri: As per the service_account.json downloaded from GCP
+        """
+        pulumi.set(__self__, "type", type)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of polling source. This has to be `GcpMetricsPath`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        return pulumi.get(self, "token_uri")
+
+
+@pulumi.output_type
+class GcpMetricsSourceDefaultDateFormat(dict):
+    def __init__(__self__, *,
+                 format: str,
+                 locator: Optional[str] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[str]:
+        return pulumi.get(self, "locator")
+
+
+@pulumi.output_type
+class GcpMetricsSourceFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterType":
+            suggest = "filter_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpMetricsSourceFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpMetricsSourceFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpMetricsSourceFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_type: str,
+                 name: str,
+                 regexp: str,
+                 mask: Optional[str] = None):
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> str:
+        return pulumi.get(self, "filter_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> str:
+        return pulumi.get(self, "regexp")
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[str]:
+        return pulumi.get(self, "mask")
+
+
+@pulumi.output_type
+class GcpMetricsSourcePath(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
+        elif key == "limitToNamespaces":
+            suggest = "limit_to_namespaces"
+        elif key == "limitToRegions":
+            suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
+        elif key == "pathExpression":
+            suggest = "path_expression"
+        elif key == "snsTopicOrSubscriptionArns":
+            suggest = "sns_topic_or_subscription_arns"
+        elif key == "tagFilters":
+            suggest = "tag_filters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpMetricsSourcePath. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpMetricsSourcePath.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpMetricsSourcePath.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.GcpMetricsSourcePathCustomService']] = None,
+                 limit_to_namespaces: Optional[Sequence[str]] = None,
+                 limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
+                 path_expression: Optional[str] = None,
+                 sns_topic_or_subscription_arns: Optional[Sequence['outputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArn']] = None,
+                 tag_filters: Optional[Sequence['outputs.GcpMetricsSourcePathTagFilter']] = None):
+        """
+        :param str type: Type of polling source. This has to be `GcpMetricsPath`.
+        :param Sequence['GcpMetricsSourcePathCustomServiceArgs'] custom_services: Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+        :param Sequence[str] limit_to_regions: List of regions for which metrics would be collected (Empty to collect from all regions)
+        :param Sequence[str] limit_to_services: List of services from which metrics would be collected
+        """
+        pulumi.set(__self__, "type", type)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
+        if limit_to_namespaces is not None:
+            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+        if limit_to_regions is not None:
+            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if path_expression is not None:
+            pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+        if tag_filters is not None:
+            pulumi.set(__self__, "tag_filters", tag_filters)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of polling source. This has to be `GcpMetricsPath`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[str]:
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.GcpMetricsSourcePathCustomService']]:
+        """
+        Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+        """
+        return pulumi.get(self, "custom_services")
+
+    @property
+    @pulumi.getter(name="limitToNamespaces")
+    def limit_to_namespaces(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_namespaces")
+
+    @property
+    @pulumi.getter(name="limitToRegions")
+    def limit_to_regions(self) -> Optional[Sequence[str]]:
+        """
+        List of regions for which metrics would be collected (Empty to collect from all regions)
+        """
+        return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        """
+        List of services from which metrics would be collected
+        """
+        return pulumi.get(self, "limit_to_services")
+
+    @property
+    @pulumi.getter(name="pathExpression")
+    def path_expression(self) -> Optional[str]:
+        return pulumi.get(self, "path_expression")
+
+    @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[Sequence['outputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArn']]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @property
+    @pulumi.getter(name="tagFilters")
+    def tag_filters(self) -> Optional[Sequence['outputs.GcpMetricsSourcePathTagFilter']]:
+        return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class GcpMetricsSourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpMetricsSourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpMetricsSourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpMetricsSourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        """
+        :param Sequence[str] prefixes: List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+        :param str service_name: Name of the custom service you want to define.
+        """
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        """
+        List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+        """
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        Name of the custom service you want to define.
+        """
+        return pulumi.get(self, "service_name")
+
+
+@pulumi.output_type
+class GcpMetricsSourcePathSnsTopicOrSubscriptionArn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isSuccess":
+            suggest = "is_success"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpMetricsSourcePathSnsTopicOrSubscriptionArn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpMetricsSourcePathSnsTopicOrSubscriptionArn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpMetricsSourcePathSnsTopicOrSubscriptionArn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arn: Optional[str] = None,
+                 is_success: Optional[bool] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[str]:
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[bool]:
+        return pulumi.get(self, "is_success")
+
+
+@pulumi.output_type
+class GcpMetricsSourcePathTagFilter(dict):
+    def __init__(__self__, *,
+                 namespace: Optional[str] = None,
+                 tags: Optional[Sequence[str]] = None,
+                 type: Optional[str] = None):
+        """
+        :param str type: Type of polling source. This has to be `GcpMetricsPath`.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of polling source. This has to be `GcpMetricsPath`.
         """
         return pulumi.get(self, "type")
 
@@ -9547,6 +11020,227 @@ class HttpSourceFilter(dict):
 
 
 @pulumi.output_type
+class KineisLogSourceAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "secretKey":
+            suggest = "secret_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KineisLogSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KineisLogSourceAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KineisLogSourceAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 access_key: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 secret_key: Optional[str] = None):
+        """
+        :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
+        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
+        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        pulumi.set(__self__, "type", type)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[str]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        return pulumi.get(self, "secret_key")
+
+
+@pulumi.output_type
+class KineisLogSourceDefaultDateFormat(dict):
+    def __init__(__self__, *,
+                 format: str,
+                 locator: Optional[str] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[str]:
+        return pulumi.get(self, "locator")
+
+
+@pulumi.output_type
+class KineisLogSourceFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterType":
+            suggest = "filter_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KineisLogSourceFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KineisLogSourceFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KineisLogSourceFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_type: str,
+                 name: str,
+                 regexp: str,
+                 mask: Optional[str] = None):
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> str:
+        return pulumi.get(self, "filter_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> str:
+        return pulumi.get(self, "regexp")
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[str]:
+        return pulumi.get(self, "mask")
+
+
+@pulumi.output_type
+class KineisLogSourcePath(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "pathExpression":
+            suggest = "path_expression"
+        elif key == "scanInterval":
+            suggest = "scan_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KineisLogSourcePath. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KineisLogSourcePath.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KineisLogSourcePath.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 bucket_name: Optional[str] = None,
+                 path_expression: Optional[str] = None,
+                 scan_interval: Optional[int] = None):
+        """
+        :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
+        :param str bucket_name: The name of the bucket. This is needed if using type `KinesisLogPath`.
+        :param str path_expression: The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+        :param int scan_interval: The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
+        pulumi.set(__self__, "type", type)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if path_expression is not None:
+            pulumi.set(__self__, "path_expression", path_expression)
+        if scan_interval is not None:
+            pulumi.set(__self__, "scan_interval", scan_interval)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[str]:
+        """
+        The name of the bucket. This is needed if using type `KinesisLogPath`.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="pathExpression")
+    def path_expression(self) -> Optional[str]:
+        """
+        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+        """
+        return pulumi.get(self, "path_expression")
+
+    @property
+    @pulumi.getter(name="scanInterval")
+    def scan_interval(self) -> Optional[int]:
+        """
+        The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
+        return pulumi.get(self, "scan_interval")
+
+
+@pulumi.output_type
 class KinesisMetricsSourceAuthentication(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11027,7 +12721,9 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "thresholdType":
+        if key == "occurrenceType":
+            suggest = "occurrence_type"
+        elif key == "thresholdType":
             suggest = "threshold_type"
 
         if suggest:
@@ -11042,12 +12738,20 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 occurrence_type: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        if occurrence_type is not None:
+            pulumi.set(__self__, "occurrence_type", occurrence_type)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="occurrenceType")
+    def occurrence_type(self) -> Optional[str]:
+        return pulumi.get(self, "occurrence_type")
 
     @property
     @pulumi.getter
@@ -11155,7 +12859,9 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningResolution(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "thresholdType":
+        if key == "occurrenceType":
+            suggest = "occurrence_type"
+        elif key == "thresholdType":
             suggest = "threshold_type"
 
         if suggest:
@@ -11170,12 +12876,20 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningResolution(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 occurrence_type: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        if occurrence_type is not None:
+            pulumi.set(__self__, "occurrence_type", occurrence_type)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="occurrenceType")
+    def occurrence_type(self) -> Optional[str]:
+        return pulumi.get(self, "occurrence_type")
 
     @property
     @pulumi.getter
@@ -11534,10 +13248,28 @@ class S3AuditSourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in S3AuditSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -11553,9 +13285,18 @@ class S3AuditSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`.
@@ -11566,12 +13307,30 @@ class S3AuditSourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -11588,6 +13347,46 @@ class S3AuditSourceAuthentication(dict):
         Your AWS access key if using type `S3BucketAuthentication`.
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -11612,6 +13411,11 @@ class S3AuditSourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`.
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -11692,10 +13496,14 @@ class S3AuditSourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -11717,8 +13525,10 @@ class S3AuditSourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.S3AuditSourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.S3AuditSourcePathTagFilter']] = None):
@@ -11731,10 +13541,14 @@ class S3AuditSourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -11759,6 +13573,11 @@ class S3AuditSourcePath(dict):
         return pulumi.get(self, "bucket_name")
 
     @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.S3AuditSourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
+
+    @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_namespaces")
@@ -11767,6 +13586,11 @@ class S3AuditSourcePath(dict):
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
 
     @property
     @pulumi.getter(name="pathExpression")
@@ -11788,6 +13612,44 @@ class S3AuditSourcePath(dict):
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.S3AuditSourcePathTagFilter']]:
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class S3AuditSourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in S3AuditSourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        S3AuditSourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        S3AuditSourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type
@@ -11870,10 +13732,28 @@ class S3SourceAuthentication(dict):
         suggest = None
         if key == "accessKey":
             suggest = "access_key"
+        elif key == "authProviderX509CertUrl":
+            suggest = "auth_provider_x509_cert_url"
+        elif key == "authUri":
+            suggest = "auth_uri"
+        elif key == "clientEmail":
+            suggest = "client_email"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientX509CertUrl":
+            suggest = "client_x509_cert_url"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "secretKey":
             suggest = "secret_key"
+        elif key == "tokenUri":
+            suggest = "token_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in S3SourceAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -11889,9 +13769,18 @@ class S3SourceAuthentication(dict):
     def __init__(__self__, *,
                  type: str,
                  access_key: Optional[str] = None,
+                 auth_provider_x509_cert_url: Optional[str] = None,
+                 auth_uri: Optional[str] = None,
+                 client_email: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_x509_cert_url: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 private_key_id: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 token_uri: Optional[str] = None):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`.
@@ -11902,12 +13791,30 @@ class S3SourceAuthentication(dict):
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -11924,6 +13831,46 @@ class S3SourceAuthentication(dict):
         Your AWS access key if using type `S3BucketAuthentication`.
         """
         return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[str]:
+        return pulumi.get(self, "auth_uri")
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[str]:
+        return pulumi.get(self, "client_email")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[str]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -11948,6 +13895,11 @@ class S3SourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`.
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[str]:
+        return pulumi.get(self, "token_uri")
 
 
 @pulumi.output_type
@@ -12028,10 +13980,14 @@ class S3SourcePath(dict):
         suggest = None
         if key == "bucketName":
             suggest = "bucket_name"
+        elif key == "customServices":
+            suggest = "custom_services"
         elif key == "limitToNamespaces":
             suggest = "limit_to_namespaces"
         elif key == "limitToRegions":
             suggest = "limit_to_regions"
+        elif key == "limitToServices":
+            suggest = "limit_to_services"
         elif key == "pathExpression":
             suggest = "path_expression"
         elif key == "snsTopicOrSubscriptionArns":
@@ -12053,8 +14009,10 @@ class S3SourcePath(dict):
     def __init__(__self__, *,
                  type: str,
                  bucket_name: Optional[str] = None,
+                 custom_services: Optional[Sequence['outputs.S3SourcePathCustomService']] = None,
                  limit_to_namespaces: Optional[Sequence[str]] = None,
                  limit_to_regions: Optional[Sequence[str]] = None,
+                 limit_to_services: Optional[Sequence[str]] = None,
                  path_expression: Optional[str] = None,
                  sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3SourcePathSnsTopicOrSubscriptionArn']] = None,
                  tag_filters: Optional[Sequence['outputs.S3SourcePathTagFilter']] = None):
@@ -12067,10 +14025,14 @@ class S3SourcePath(dict):
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
@@ -12095,6 +14057,11 @@ class S3SourcePath(dict):
         return pulumi.get(self, "bucket_name")
 
     @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[Sequence['outputs.S3SourcePathCustomService']]:
+        return pulumi.get(self, "custom_services")
+
+    @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_namespaces")
@@ -12103,6 +14070,11 @@ class S3SourcePath(dict):
     @pulumi.getter(name="limitToRegions")
     def limit_to_regions(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "limit_to_regions")
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "limit_to_services")
 
     @property
     @pulumi.getter(name="pathExpression")
@@ -12124,6 +14096,44 @@ class S3SourcePath(dict):
     @pulumi.getter(name="tagFilters")
     def tag_filters(self) -> Optional[Sequence['outputs.S3SourcePathTagFilter']]:
         return pulumi.get(self, "tag_filters")
+
+
+@pulumi.output_type
+class S3SourcePathCustomService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in S3SourcePathCustomService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        S3SourcePathCustomService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        S3SourcePathCustomService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefixes: Optional[Sequence[str]] = None,
+                 service_name: Optional[str] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type

@@ -19,6 +19,7 @@ class DashboardArgs:
                  title: pulumi.Input[str],
                  coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColoringRuleArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  layout: Optional[pulumi.Input['DashboardLayoutArgs']] = None,
                  panels: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]] = None,
@@ -32,6 +33,7 @@ class DashboardArgs:
                for details.
         :param pulumi.Input[str] title: Title of the dashboard.
         :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
         :param pulumi.Input['DashboardLayoutArgs'] layout: Layout of the dashboard. See layout schema for details.
@@ -50,6 +52,8 @@ class DashboardArgs:
             pulumi.set(__self__, "coloring_rules", coloring_rules)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
         if layout is not None:
@@ -110,6 +114,18 @@ class DashboardArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
 
     @property
     @pulumi.getter(name="folderId")
@@ -205,6 +221,7 @@ class _DashboardState:
     def __init__(__self__, *,
                  coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColoringRuleArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  layout: Optional[pulumi.Input['DashboardLayoutArgs']] = None,
                  panels: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]] = None,
@@ -217,6 +234,7 @@ class _DashboardState:
         """
         Input properties used for looking up and filtering Dashboard resources.
         :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
         :param pulumi.Input['DashboardLayoutArgs'] layout: Layout of the dashboard. See layout schema for details.
@@ -236,6 +254,8 @@ class _DashboardState:
             pulumi.set(__self__, "coloring_rules", coloring_rules)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
         if layout is not None:
@@ -275,6 +295,18 @@ class _DashboardState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
 
     @property
     @pulumi.getter(name="folderId")
@@ -397,6 +429,7 @@ class Dashboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColoringRuleArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  layout: Optional[pulumi.Input[pulumi.InputType['DashboardLayoutArgs']]] = None,
                  panels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]]] = None,
@@ -445,6 +478,7 @@ class Dashboard(pulumi.CustomResource):
                     ),
                 ],
             ),
+            domain="app",
             panels=[
                 sumologic.DashboardPanelArgs(
                     text_panel=sumologic.DashboardPanelTextPanelArgs(
@@ -722,8 +756,6 @@ class Dashboard(pulumi.CustomResource):
         - `description` - (Optional) Description of the panel.
         - `time_range` - (Block List, Max: 1, Optional) Time range of the panel. See time_range schema
           for details.
-        - `coloring_rule` - (Block List, Optional) Coloring rules for the panel. See coloring_rule schema
-          for details.
         - `linked_dashboard` - (Block List, Optional) A list of linked dashboards. See
           linked_dashboard schema for details.
 
@@ -751,16 +783,6 @@ class Dashboard(pulumi.CustomResource):
         - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
             - `key` - (Required) The key of the operator parameter.
             - `value` - (Required) The value of the operator parameter.
-
-        ### Schema for `coloring_rule`
-        - `scope` - (Required) Regex string to match queries to apply coloring to.
-        - `single_series_aggregate_function` - (Required) Function to aggregate one series into one single value.
-        - `multiple_series_aggregate_function` - (Required) Function to aggregate the aggregate values of multiple time series
-          into one single value.
-        - `color_threshold` - (Block List, Optional) A list of color threshold object.
-            - `color` - (Required) Color for the threshold.
-            - `min` - (Optional) Absolute inclusive threshold to color by.
-            - `max` - (Optional) Absolute exclusive threshold to color by.
 
         ### Schema for `linked_dashboard`
         - `id` - (Required) Identifier of the linked dashboard.
@@ -809,6 +831,7 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
         :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
@@ -868,6 +891,7 @@ class Dashboard(pulumi.CustomResource):
                     ),
                 ],
             ),
+            domain="app",
             panels=[
                 sumologic.DashboardPanelArgs(
                     text_panel=sumologic.DashboardPanelTextPanelArgs(
@@ -1145,8 +1169,6 @@ class Dashboard(pulumi.CustomResource):
         - `description` - (Optional) Description of the panel.
         - `time_range` - (Block List, Max: 1, Optional) Time range of the panel. See time_range schema
           for details.
-        - `coloring_rule` - (Block List, Optional) Coloring rules for the panel. See coloring_rule schema
-          for details.
         - `linked_dashboard` - (Block List, Optional) A list of linked dashboards. See
           linked_dashboard schema for details.
 
@@ -1174,16 +1196,6 @@ class Dashboard(pulumi.CustomResource):
         - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
             - `key` - (Required) The key of the operator parameter.
             - `value` - (Required) The value of the operator parameter.
-
-        ### Schema for `coloring_rule`
-        - `scope` - (Required) Regex string to match queries to apply coloring to.
-        - `single_series_aggregate_function` - (Required) Function to aggregate one series into one single value.
-        - `multiple_series_aggregate_function` - (Required) Function to aggregate the aggregate values of multiple time series
-          into one single value.
-        - `color_threshold` - (Block List, Optional) A list of color threshold object.
-            - `color` - (Required) Color for the threshold.
-            - `min` - (Optional) Absolute inclusive threshold to color by.
-            - `max` - (Optional) Absolute exclusive threshold to color by.
 
         ### Schema for `linked_dashboard`
         - `id` - (Required) Identifier of the linked dashboard.
@@ -1246,6 +1258,7 @@ class Dashboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColoringRuleArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  layout: Optional[pulumi.Input[pulumi.InputType['DashboardLayoutArgs']]] = None,
                  panels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]]] = None,
@@ -1269,6 +1282,7 @@ class Dashboard(pulumi.CustomResource):
 
             __props__.__dict__["coloring_rules"] = coloring_rules
             __props__.__dict__["description"] = description
+            __props__.__dict__["domain"] = domain
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["layout"] = layout
             __props__.__dict__["panels"] = panels
@@ -1294,6 +1308,7 @@ class Dashboard(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColoringRuleArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            domain: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             layout: Optional[pulumi.Input[pulumi.InputType['DashboardLayoutArgs']]] = None,
             panels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]]] = None,
@@ -1311,6 +1326,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the dashboard.
+        :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
         :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
@@ -1332,6 +1348,7 @@ class Dashboard(pulumi.CustomResource):
 
         __props__.__dict__["coloring_rules"] = coloring_rules
         __props__.__dict__["description"] = description
+        __props__.__dict__["domain"] = domain
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["layout"] = layout
         __props__.__dict__["panels"] = panels
@@ -1355,6 +1372,14 @@ class Dashboard(pulumi.CustomResource):
         Description of the dashboard.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Output[Optional[str]]:
+        """
+        Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+        """
+        return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="folderId")

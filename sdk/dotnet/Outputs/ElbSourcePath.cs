@@ -17,8 +17,10 @@ namespace Pulumi.SumoLogic.Outputs
         /// The name of the bucket.
         /// </summary>
         public readonly string? BucketName;
+        public readonly ImmutableArray<Outputs.ElbSourcePathCustomService> CustomServices;
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
+        public readonly ImmutableArray<string> LimitToServices;
         /// <summary>
         /// The path to the data.
         /// </summary>
@@ -37,9 +39,13 @@ namespace Pulumi.SumoLogic.Outputs
         private ElbSourcePath(
             string? bucketName,
 
+            ImmutableArray<Outputs.ElbSourcePathCustomService> customServices,
+
             ImmutableArray<string> limitToNamespaces,
 
             ImmutableArray<string> limitToRegions,
+
+            ImmutableArray<string> limitToServices,
 
             string? pathExpression,
 
@@ -50,8 +56,10 @@ namespace Pulumi.SumoLogic.Outputs
             string type)
         {
             BucketName = bucketName;
+            CustomServices = customServices;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
+            LimitToServices = limitToServices;
             PathExpression = pathExpression;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
