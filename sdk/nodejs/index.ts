@@ -16,6 +16,7 @@ export * from "./collector";
 export * from "./collectorIngestBudgetAssignment";
 export * from "./connection";
 export * from "./content";
+export * from "./contentPermission";
 export * from "./cseAggregationRule";
 export * from "./cseChainRule";
 export * from "./cseCustomEntityType";
@@ -34,6 +35,7 @@ export * from "./elbSource";
 export * from "./field";
 export * from "./fieldExtractionRule";
 export * from "./folder";
+export * from "./gcpMetricsSource";
 export * from "./gcpSource";
 export * from "./getAdminRecommendedFolder";
 export * from "./getCallerIdentity";
@@ -48,6 +50,7 @@ export * from "./hierarchy";
 export * from "./httpSource";
 export * from "./ingestBudget";
 export * from "./ingestBudgetV2";
+export * from "./kineisLogSource";
 export * from "./kinesisMetricsSource";
 export * from "./lookupTable";
 export * from "./metadataSource";
@@ -88,6 +91,7 @@ import { Collector } from "./collector";
 import { CollectorIngestBudgetAssignment } from "./collectorIngestBudgetAssignment";
 import { Connection } from "./connection";
 import { Content } from "./content";
+import { ContentPermission } from "./contentPermission";
 import { CseAggregationRule } from "./cseAggregationRule";
 import { CseChainRule } from "./cseChainRule";
 import { CseCustomEntityType } from "./cseCustomEntityType";
@@ -106,11 +110,13 @@ import { ElbSource } from "./elbSource";
 import { Field } from "./field";
 import { FieldExtractionRule } from "./fieldExtractionRule";
 import { Folder } from "./folder";
+import { GcpMetricsSource } from "./gcpMetricsSource";
 import { GcpSource } from "./gcpSource";
 import { Hierarchy } from "./hierarchy";
 import { HttpSource } from "./httpSource";
 import { IngestBudget } from "./ingestBudget";
 import { IngestBudgetV2 } from "./ingestBudgetV2";
+import { KineisLogSource } from "./kineisLogSource";
 import { KinesisMetricsSource } from "./kinesisMetricsSource";
 import { LookupTable } from "./lookupTable";
 import { MetadataSource } from "./metadataSource";
@@ -155,6 +161,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "sumologic:index/content:Content":
                 return new Content(name, <any>undefined, { urn })
+            case "sumologic:index/contentPermission:ContentPermission":
+                return new ContentPermission(name, <any>undefined, { urn })
             case "sumologic:index/cseAggregationRule:CseAggregationRule":
                 return new CseAggregationRule(name, <any>undefined, { urn })
             case "sumologic:index/cseChainRule:CseChainRule":
@@ -191,6 +199,8 @@ const _module = {
                 return new FieldExtractionRule(name, <any>undefined, { urn })
             case "sumologic:index/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "sumologic:index/gcpMetricsSource:GcpMetricsSource":
+                return new GcpMetricsSource(name, <any>undefined, { urn })
             case "sumologic:index/gcpSource:GcpSource":
                 return new GcpSource(name, <any>undefined, { urn })
             case "sumologic:index/hierarchy:Hierarchy":
@@ -201,6 +211,8 @@ const _module = {
                 return new IngestBudget(name, <any>undefined, { urn })
             case "sumologic:index/ingestBudgetV2:IngestBudgetV2":
                 return new IngestBudgetV2(name, <any>undefined, { urn })
+            case "sumologic:index/kineisLogSource:KineisLogSource":
+                return new KineisLogSource(name, <any>undefined, { urn })
             case "sumologic:index/kinesisMetricsSource:KinesisMetricsSource":
                 return new KinesisMetricsSource(name, <any>undefined, { urn })
             case "sumologic:index/lookupTable:LookupTable":
@@ -251,6 +263,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/collector", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/collectorIngestBudgetAssignment", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/connection", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/content", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/contentPermission", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseAggregationRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseChainRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomEntityType", _module)
@@ -269,11 +282,13 @@ pulumi.runtime.registerResourceModule("sumologic", "index/elbSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/field", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/fieldExtractionRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/folder", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/gcpMetricsSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/gcpSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/hierarchy", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/httpSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudget", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudgetV2", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/kineisLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kinesisMetricsSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/lookupTable", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/metadataSource", _module)

@@ -14,11 +14,13 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class AwsXraySourcePath
     {
         public readonly string? BucketName;
+        public readonly ImmutableArray<Outputs.AwsXraySourcePathCustomService> CustomServices;
         public readonly ImmutableArray<string> LimitToNamespaces;
         /// <summary>
         /// List of Amazon regions.
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
+        public readonly ImmutableArray<string> LimitToServices;
         public readonly string? PathExpression;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathTagFilter> TagFilters;
@@ -31,9 +33,13 @@ namespace Pulumi.SumoLogic.Outputs
         private AwsXraySourcePath(
             string? bucketName,
 
+            ImmutableArray<Outputs.AwsXraySourcePathCustomService> customServices,
+
             ImmutableArray<string> limitToNamespaces,
 
             ImmutableArray<string> limitToRegions,
+
+            ImmutableArray<string> limitToServices,
 
             string? pathExpression,
 
@@ -44,8 +50,10 @@ namespace Pulumi.SumoLogic.Outputs
             string type)
         {
             BucketName = bucketName;
+            CustomServices = customServices;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
+            LimitToServices = limitToServices;
             PathExpression = pathExpression;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;

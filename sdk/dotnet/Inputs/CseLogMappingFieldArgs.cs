@@ -108,8 +108,11 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("splitDelimiter")]
         public Input<string>? SplitDelimiter { get; set; }
 
+        /// <summary>
+        /// The index value to select (starting at zero)
+        /// </summary>
         [Input("splitIndex")]
-        public Input<string>? SplitIndex { get; set; }
+        public Input<int>? SplitIndex { get; set; }
 
         /// <summary>
         /// Time zone.

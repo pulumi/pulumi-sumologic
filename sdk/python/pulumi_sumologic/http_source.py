@@ -35,7 +35,7 @@ class HttpSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a HttpSource resource.
-        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         """
         pulumi.set(__self__, "collector_id", collector_id)
@@ -105,7 +105,7 @@ class HttpSourceArgs:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         """
         return pulumi.get(self, "content_type")
 
@@ -267,7 +267,7 @@ class _HttpSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering HttpSource resources.
-        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         :param pulumi.Input[str] url: The HTTP endpoint to use for sending data to this source.
         """
@@ -341,7 +341,7 @@ class _HttpSourceState:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         """
         return pulumi.get(self, "content_type")
 
@@ -516,7 +516,7 @@ class HttpSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source) and [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). To start using Traces contact your Sumo account representative to activate.
+        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source), [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source) and [Sumologic HTTP_OTLP_source][4]. To start using Traces contact your Sumo account representative to activate.
 
         __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
 
@@ -546,6 +546,11 @@ class HttpSource(pulumi.CustomResource):
             collector_id=sumologic_collector["test"]["id"],
             content_type="KinesisLog",
             description="demo-desc")
+        http_otlp_source = sumologic.HttpSource("httpOtlpSource",
+            category="my/source/category",
+            collector_id=sumologic_collector["test"]["id"],
+            content_type="Otlp",
+            description="My description")
         ```
 
         ## Import
@@ -562,11 +567,11 @@ class HttpSource(pulumi.CustomResource):
          $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
+         [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source [4]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/OTLP_HTTP_Source
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         """
         ...
@@ -576,7 +581,7 @@ class HttpSource(pulumi.CustomResource):
                  args: HttpSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source) and [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). To start using Traces contact your Sumo account representative to activate.
+        Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source), [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source) and [Sumologic HTTP_OTLP_source][4]. To start using Traces contact your Sumo account representative to activate.
 
         __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
 
@@ -606,6 +611,11 @@ class HttpSource(pulumi.CustomResource):
             collector_id=sumologic_collector["test"]["id"],
             content_type="KinesisLog",
             description="demo-desc")
+        http_otlp_source = sumologic.HttpSource("httpOtlpSource",
+            category="my/source/category",
+            collector_id=sumologic_collector["test"]["id"],
+            content_type="Otlp",
+            description="My description")
         ```
 
         ## Import
@@ -622,7 +632,7 @@ class HttpSource(pulumi.CustomResource):
          $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
+         [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source [4]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/OTLP_HTTP_Source
 
         :param str resource_name: The name of the resource.
         :param HttpSourceArgs args: The arguments to use to populate this resource's properties.
@@ -726,7 +736,7 @@ class HttpSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        :param pulumi.Input[str] content_type: When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         :param pulumi.Input[bool] message_per_request: When set to `true`, will create one log message per HTTP request.
         :param pulumi.Input[str] url: The HTTP endpoint to use for sending data to this source.
         """
@@ -774,7 +784,7 @@ class HttpSource(pulumi.CustomResource):
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[Optional[str]]:
         """
-        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. This should only be used when creating a Traces or Kinesis Log source.
+        When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
         """
         return pulumi.get(self, "content_type")
 

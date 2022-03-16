@@ -42,6 +42,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "sumologic:index/content:Content":
 		r = &Content{}
+	case "sumologic:index/contentPermission:ContentPermission":
+		r = &ContentPermission{}
 	case "sumologic:index/cseAggregationRule:CseAggregationRule":
 		r = &CseAggregationRule{}
 	case "sumologic:index/cseChainRule:CseChainRule":
@@ -78,6 +80,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FieldExtractionRule{}
 	case "sumologic:index/folder:Folder":
 		r = &Folder{}
+	case "sumologic:index/gcpMetricsSource:GcpMetricsSource":
+		r = &GcpMetricsSource{}
 	case "sumologic:index/gcpSource:GcpSource":
 		r = &GcpSource{}
 	case "sumologic:index/hierarchy:Hierarchy":
@@ -88,6 +92,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IngestBudget{}
 	case "sumologic:index/ingestBudgetV2:IngestBudgetV2":
 		r = &IngestBudgetV2{}
+	case "sumologic:index/kineisLogSource:KineisLogSource":
+		r = &KineisLogSource{}
 	case "sumologic:index/kinesisMetricsSource:KinesisMetricsSource":
 		r = &KinesisMetricsSource{}
 	case "sumologic:index/lookupTable:LookupTable":
@@ -210,6 +216,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/contentPermission",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/cseAggregationRule",
 		&module{version},
 	)
@@ -300,6 +311,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/gcpMetricsSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/gcpSource",
 		&module{version},
 	)
@@ -321,6 +337,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/ingestBudgetV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/kineisLogSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

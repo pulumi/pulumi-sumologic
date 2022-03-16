@@ -18,6 +18,14 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
+        [Input("customServices")]
+        private InputList<Inputs.CloudtrailSourcePathCustomServiceArgs>? _customServices;
+        public InputList<Inputs.CloudtrailSourcePathCustomServiceArgs> CustomServices
+        {
+            get => _customServices ?? (_customServices = new InputList<Inputs.CloudtrailSourcePathCustomServiceArgs>());
+            set => _customServices = value;
+        }
+
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
         public InputList<string> LimitToNamespaces
@@ -32,6 +40,14 @@ namespace Pulumi.SumoLogic.Inputs
         {
             get => _limitToRegions ?? (_limitToRegions = new InputList<string>());
             set => _limitToRegions = value;
+        }
+
+        [Input("limitToServices")]
+        private InputList<string>? _limitToServices;
+        public InputList<string> LimitToServices
+        {
+            get => _limitToServices ?? (_limitToServices = new InputList<string>());
+            set => _limitToServices = value;
         }
 
         /// <summary>

@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-sumologic/provider
 go 1.16
 
 replace (
-	github.com/SumoLogic/terraform-provider-sumologic => github.com/pulumi/terraform-provider-sumologic v0.0.0-20211220142147-8cc293c6d7ae
+	github.com/SumoLogic/terraform-provider-sumologic => github.com/pulumi/terraform-provider-sumologic v0.0.0-20220316122858-bab0c6a11467
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 )
 

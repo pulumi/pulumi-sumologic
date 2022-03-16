@@ -42,6 +42,7 @@ import * as utilities from "./utilities";
  *             },
  *         ],
  *     },
+ *     domain: "app",
  *     panels: [
  *         {
  *             textPanel: {
@@ -320,8 +321,6 @@ import * as utilities from "./utilities";
  * - `description` - (Optional) Description of the panel.
  * - `timeRange` - (Block List, Max: 1, Optional) Time range of the panel. See timeRange schema
  *   for details.
- * - `coloringRule` - (Block List, Optional) Coloring rules for the panel. See coloringRule schema
- *   for details.
  * - `linkedDashboard` - (Block List, Optional) A list of linked dashboards. See
  *   linkedDashboard schema for details.
  *
@@ -349,16 +348,6 @@ import * as utilities from "./utilities";
  * - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
  *     - `key` - (Required) The key of the operator parameter.
  *     - `value` - (Required) The value of the operator parameter.
- *
- * ### Schema for `coloringRule`
- * - `scope` - (Required) Regex string to match queries to apply coloring to.
- * - `singleSeriesAggregateFunction` - (Required) Function to aggregate one series into one single value.
- * - `multipleSeriesAggregateFunction` - (Required) Function to aggregate the aggregate values of multiple time series
- *   into one single value.
- * - `colorThreshold` - (Block List, Optional) A list of color threshold object.
- *     - `color` - (Required) Color for the threshold.
- *     - `min` - (Optional) Absolute inclusive threshold to color by.
- *     - `max` - (Optional) Absolute exclusive threshold to color by.
  *
  * ### Schema for `linkedDashboard`
  * - `id` - (Required) Identifier of the linked dashboard.
@@ -438,6 +427,10 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+     */
+    public readonly domain!: pulumi.Output<string | undefined>;
+    /**
      * The identifier of the folder to save the dashboard in. By default it is saved in your
      * personal folder.
      */
@@ -494,6 +487,7 @@ export class Dashboard extends pulumi.CustomResource {
             const state = argsOrState as DashboardState | undefined;
             resourceInputs["coloringRules"] = state ? state.coloringRules : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
             resourceInputs["layout"] = state ? state.layout : undefined;
             resourceInputs["panels"] = state ? state.panels : undefined;
@@ -513,6 +507,7 @@ export class Dashboard extends pulumi.CustomResource {
             }
             resourceInputs["coloringRules"] = args ? args.coloringRules : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["layout"] = args ? args.layout : undefined;
             resourceInputs["panels"] = args ? args.panels : undefined;
@@ -537,6 +532,10 @@ export interface DashboardState {
      * Description of the dashboard.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+     */
+    domain?: pulumi.Input<string>;
     /**
      * The identifier of the folder to save the dashboard in. By default it is saved in your
      * personal folder.
@@ -589,6 +588,10 @@ export interface DashboardArgs {
      * Description of the dashboard.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+     */
+    domain?: pulumi.Input<string>;
     /**
      * The identifier of the folder to save the dashboard in. By default it is saved in your
      * personal folder.

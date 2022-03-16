@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class AwsInventorySourcePath
     {
         public readonly string? BucketName;
+        public readonly ImmutableArray<Outputs.AwsInventorySourcePathCustomService> CustomServices;
         /// <summary>
         /// List of namespaces. By default all namespaces are selected. You can also choose a subset from
         /// + AWS/EC2
@@ -35,6 +36,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// List of Amazon regions.
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
+        public readonly ImmutableArray<string> LimitToServices;
         public readonly string? PathExpression;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathTagFilter> TagFilters;
@@ -47,9 +49,13 @@ namespace Pulumi.SumoLogic.Outputs
         private AwsInventorySourcePath(
             string? bucketName,
 
+            ImmutableArray<Outputs.AwsInventorySourcePathCustomService> customServices,
+
             ImmutableArray<string> limitToNamespaces,
 
             ImmutableArray<string> limitToRegions,
+
+            ImmutableArray<string> limitToServices,
 
             string? pathExpression,
 
@@ -60,8 +66,10 @@ namespace Pulumi.SumoLogic.Outputs
             string type)
         {
             BucketName = bucketName;
+            CustomServices = customServices;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
+            LimitToServices = limitToServices;
             PathExpression = pathExpression;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;

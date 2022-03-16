@@ -59,7 +59,7 @@ namespace Pulumi.SumoLogic
     ///                         "-",
     ///                     },
     ///                     SplitDelimiter = ",",
-    ///                     SplitIndex = "index",
+    ///                     SplitIndex = 0,
     ///                     TimeZone = "UTC",
     ///                     Value = "action",
     ///                     ValueType = "constant",

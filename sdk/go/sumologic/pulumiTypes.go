@@ -11,11 +11,20 @@ import (
 )
 
 type AwsInventorySourceAuthentication struct {
-	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
+	Region                  *string `pulumi:"region"`
 	// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
 	RoleArn   *string `pulumi:"roleArn"`
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
 	Type string `pulumi:"type"`
 }
@@ -32,11 +41,20 @@ type AwsInventorySourceAuthenticationInput interface {
 }
 
 type AwsInventorySourceAuthenticationArgs struct {
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
+	Region                  pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
 	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -122,6 +140,38 @@ func (o AwsInventorySourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o AwsInventorySourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 func (o AwsInventorySourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -133,6 +183,10 @@ func (o AwsInventorySourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput
 
 func (o AwsInventorySourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
@@ -173,6 +227,78 @@ func (o AwsInventorySourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o AwsInventorySourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o AwsInventorySourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
 		if v == nil {
@@ -198,6 +324,15 @@ func (o AwsInventorySourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrO
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -424,7 +559,8 @@ func (o AwsInventorySourceFilterArrayOutput) Index(i pulumi.IntInput) AwsInvento
 }
 
 type AwsInventorySourcePath struct {
-	BucketName *string `pulumi:"bucketName"`
+	BucketName     *string                               `pulumi:"bucketName"`
+	CustomServices []AwsInventorySourcePathCustomService `pulumi:"customServices"`
 	// List of namespaces. By default all namespaces are selected. You can also choose a subset from
 	// + AWS/EC2
 	// + AWS/AutoScaling
@@ -442,6 +578,7 @@ type AwsInventorySourcePath struct {
 	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
 	// List of Amazon regions.
 	LimitToRegions             []string                                          `pulumi:"limitToRegions"`
+	LimitToServices            []string                                          `pulumi:"limitToServices"`
 	PathExpression             *string                                           `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns []AwsInventorySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []AwsInventorySourcePathTagFilter                 `pulumi:"tagFilters"`
@@ -461,7 +598,8 @@ type AwsInventorySourcePathInput interface {
 }
 
 type AwsInventorySourcePathArgs struct {
-	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	BucketName     pulumi.StringPtrInput                         `pulumi:"bucketName"`
+	CustomServices AwsInventorySourcePathCustomServiceArrayInput `pulumi:"customServices"`
 	// List of namespaces. By default all namespaces are selected. You can also choose a subset from
 	// + AWS/EC2
 	// + AWS/AutoScaling
@@ -479,6 +617,7 @@ type AwsInventorySourcePathArgs struct {
 	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
 	// List of Amazon regions.
 	LimitToRegions             pulumi.StringArrayInput                                   `pulumi:"limitToRegions"`
+	LimitToServices            pulumi.StringArrayInput                                   `pulumi:"limitToServices"`
 	PathExpression             pulumi.StringPtrInput                                     `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 AwsInventorySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
@@ -567,6 +706,10 @@ func (o AwsInventorySourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o AwsInventorySourcePathOutput) CustomServices() AwsInventorySourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v AwsInventorySourcePath) []AwsInventorySourcePathCustomService { return v.CustomServices }).(AwsInventorySourcePathCustomServiceArrayOutput)
+}
+
 // List of namespaces. By default all namespaces are selected. You can also choose a subset from
 // + AWS/EC2
 // + AWS/AutoScaling
@@ -588,6 +731,10 @@ func (o AwsInventorySourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutp
 // List of Amazon regions.
 func (o AwsInventorySourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsInventorySourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsInventorySourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 func (o AwsInventorySourcePathOutput) PathExpression() pulumi.StringPtrOutput {
@@ -642,6 +789,15 @@ func (o AwsInventorySourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o AwsInventorySourcePathPtrOutput) CustomServices() AwsInventorySourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *AwsInventorySourcePath) []AwsInventorySourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(AwsInventorySourcePathCustomServiceArrayOutput)
+}
+
 // List of namespaces. By default all namespaces are selected. You can also choose a subset from
 // + AWS/EC2
 // + AWS/AutoScaling
@@ -672,6 +828,15 @@ func (o AwsInventorySourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutp
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AwsInventorySourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsInventorySourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -710,6 +875,106 @@ func (o AwsInventorySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type AwsInventorySourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// AwsInventorySourcePathCustomServiceInput is an input type that accepts AwsInventorySourcePathCustomServiceArgs and AwsInventorySourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `AwsInventorySourcePathCustomServiceInput` via:
+//
+//          AwsInventorySourcePathCustomServiceArgs{...}
+type AwsInventorySourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToAwsInventorySourcePathCustomServiceOutput() AwsInventorySourcePathCustomServiceOutput
+	ToAwsInventorySourcePathCustomServiceOutputWithContext(context.Context) AwsInventorySourcePathCustomServiceOutput
+}
+
+type AwsInventorySourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (AwsInventorySourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsInventorySourcePathCustomService)(nil)).Elem()
+}
+
+func (i AwsInventorySourcePathCustomServiceArgs) ToAwsInventorySourcePathCustomServiceOutput() AwsInventorySourcePathCustomServiceOutput {
+	return i.ToAwsInventorySourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i AwsInventorySourcePathCustomServiceArgs) ToAwsInventorySourcePathCustomServiceOutputWithContext(ctx context.Context) AwsInventorySourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourcePathCustomServiceOutput)
+}
+
+// AwsInventorySourcePathCustomServiceArrayInput is an input type that accepts AwsInventorySourcePathCustomServiceArray and AwsInventorySourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `AwsInventorySourcePathCustomServiceArrayInput` via:
+//
+//          AwsInventorySourcePathCustomServiceArray{ AwsInventorySourcePathCustomServiceArgs{...} }
+type AwsInventorySourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToAwsInventorySourcePathCustomServiceArrayOutput() AwsInventorySourcePathCustomServiceArrayOutput
+	ToAwsInventorySourcePathCustomServiceArrayOutputWithContext(context.Context) AwsInventorySourcePathCustomServiceArrayOutput
+}
+
+type AwsInventorySourcePathCustomServiceArray []AwsInventorySourcePathCustomServiceInput
+
+func (AwsInventorySourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsInventorySourcePathCustomService)(nil)).Elem()
+}
+
+func (i AwsInventorySourcePathCustomServiceArray) ToAwsInventorySourcePathCustomServiceArrayOutput() AwsInventorySourcePathCustomServiceArrayOutput {
+	return i.ToAwsInventorySourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AwsInventorySourcePathCustomServiceArray) ToAwsInventorySourcePathCustomServiceArrayOutputWithContext(ctx context.Context) AwsInventorySourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourcePathCustomServiceArrayOutput)
+}
+
+type AwsInventorySourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (AwsInventorySourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsInventorySourcePathCustomService)(nil)).Elem()
+}
+
+func (o AwsInventorySourcePathCustomServiceOutput) ToAwsInventorySourcePathCustomServiceOutput() AwsInventorySourcePathCustomServiceOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathCustomServiceOutput) ToAwsInventorySourcePathCustomServiceOutputWithContext(ctx context.Context) AwsInventorySourcePathCustomServiceOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsInventorySourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsInventorySourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type AwsInventorySourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsInventorySourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsInventorySourcePathCustomService)(nil)).Elem()
+}
+
+func (o AwsInventorySourcePathCustomServiceArrayOutput) ToAwsInventorySourcePathCustomServiceArrayOutput() AwsInventorySourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathCustomServiceArrayOutput) ToAwsInventorySourcePathCustomServiceArrayOutputWithContext(ctx context.Context) AwsInventorySourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o AwsInventorySourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) AwsInventorySourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsInventorySourcePathCustomService {
+		return vs[0].([]AwsInventorySourcePathCustomService)[vs[1].(int)]
+	}).(AwsInventorySourcePathCustomServiceOutput)
 }
 
 type AwsInventorySourcePathSnsTopicOrSubscriptionArn struct {
@@ -923,12 +1188,21 @@ func (o AwsInventorySourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Aws
 
 type AwsXraySourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey *string `pulumi:"accessKey"`
-	Region    *string `pulumi:"region"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
+	Region                  *string `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
 	Type string `pulumi:"type"`
 }
@@ -946,12 +1220,21 @@ type AwsXraySourceAuthenticationInput interface {
 
 type AwsXraySourceAuthenticationArgs struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	Region    pulumi.StringPtrInput `pulumi:"region"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
+	Region                  pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -1038,6 +1321,38 @@ func (o AwsXraySourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o AwsXraySourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 func (o AwsXraySourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -1050,6 +1365,10 @@ func (o AwsXraySourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 // Your AWS secret key if using type `S3BucketAuthentication`
 func (o AwsXraySourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
@@ -1091,6 +1410,78 @@ func (o AwsXraySourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o AwsXraySourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o AwsXraySourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
 		if v == nil {
@@ -1117,6 +1508,15 @@ func (o AwsXraySourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1343,10 +1743,12 @@ func (o AwsXraySourceFilterArrayOutput) Index(i pulumi.IntInput) AwsXraySourceFi
 }
 
 type AwsXraySourcePath struct {
-	BucketName        *string  `pulumi:"bucketName"`
-	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
+	BucketName        *string                          `pulumi:"bucketName"`
+	CustomServices    []AwsXraySourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                         `pulumi:"limitToNamespaces"`
 	// List of Amazon regions.
 	LimitToRegions             []string                                     `pulumi:"limitToRegions"`
+	LimitToServices            []string                                     `pulumi:"limitToServices"`
 	PathExpression             *string                                      `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns []AwsXraySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []AwsXraySourcePathTagFilter                 `pulumi:"tagFilters"`
@@ -1366,10 +1768,12 @@ type AwsXraySourcePathInput interface {
 }
 
 type AwsXraySourcePathArgs struct {
-	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
+	BucketName        pulumi.StringPtrInput                    `pulumi:"bucketName"`
+	CustomServices    AwsXraySourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput                  `pulumi:"limitToNamespaces"`
 	// List of Amazon regions.
 	LimitToRegions             pulumi.StringArrayInput                              `pulumi:"limitToRegions"`
+	LimitToServices            pulumi.StringArrayInput                              `pulumi:"limitToServices"`
 	PathExpression             pulumi.StringPtrInput                                `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 AwsXraySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
@@ -1458,6 +1862,10 @@ func (o AwsXraySourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o AwsXraySourcePathOutput) CustomServices() AwsXraySourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v AwsXraySourcePath) []AwsXraySourcePathCustomService { return v.CustomServices }).(AwsXraySourcePathCustomServiceArrayOutput)
+}
+
 func (o AwsXraySourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
@@ -1465,6 +1873,10 @@ func (o AwsXraySourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 // List of Amazon regions.
 func (o AwsXraySourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsXraySourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsXraySourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 func (o AwsXraySourcePathOutput) PathExpression() pulumi.StringPtrOutput {
@@ -1519,6 +1931,15 @@ func (o AwsXraySourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o AwsXraySourcePathPtrOutput) CustomServices() AwsXraySourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *AwsXraySourcePath) []AwsXraySourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(AwsXraySourcePathCustomServiceArrayOutput)
+}
+
 func (o AwsXraySourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsXraySourcePath) []string {
 		if v == nil {
@@ -1535,6 +1956,15 @@ func (o AwsXraySourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o AwsXraySourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsXraySourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -1573,6 +2003,106 @@ func (o AwsXraySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type AwsXraySourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// AwsXraySourcePathCustomServiceInput is an input type that accepts AwsXraySourcePathCustomServiceArgs and AwsXraySourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `AwsXraySourcePathCustomServiceInput` via:
+//
+//          AwsXraySourcePathCustomServiceArgs{...}
+type AwsXraySourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToAwsXraySourcePathCustomServiceOutput() AwsXraySourcePathCustomServiceOutput
+	ToAwsXraySourcePathCustomServiceOutputWithContext(context.Context) AwsXraySourcePathCustomServiceOutput
+}
+
+type AwsXraySourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (AwsXraySourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsXraySourcePathCustomService)(nil)).Elem()
+}
+
+func (i AwsXraySourcePathCustomServiceArgs) ToAwsXraySourcePathCustomServiceOutput() AwsXraySourcePathCustomServiceOutput {
+	return i.ToAwsXraySourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i AwsXraySourcePathCustomServiceArgs) ToAwsXraySourcePathCustomServiceOutputWithContext(ctx context.Context) AwsXraySourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourcePathCustomServiceOutput)
+}
+
+// AwsXraySourcePathCustomServiceArrayInput is an input type that accepts AwsXraySourcePathCustomServiceArray and AwsXraySourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `AwsXraySourcePathCustomServiceArrayInput` via:
+//
+//          AwsXraySourcePathCustomServiceArray{ AwsXraySourcePathCustomServiceArgs{...} }
+type AwsXraySourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToAwsXraySourcePathCustomServiceArrayOutput() AwsXraySourcePathCustomServiceArrayOutput
+	ToAwsXraySourcePathCustomServiceArrayOutputWithContext(context.Context) AwsXraySourcePathCustomServiceArrayOutput
+}
+
+type AwsXraySourcePathCustomServiceArray []AwsXraySourcePathCustomServiceInput
+
+func (AwsXraySourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsXraySourcePathCustomService)(nil)).Elem()
+}
+
+func (i AwsXraySourcePathCustomServiceArray) ToAwsXraySourcePathCustomServiceArrayOutput() AwsXraySourcePathCustomServiceArrayOutput {
+	return i.ToAwsXraySourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AwsXraySourcePathCustomServiceArray) ToAwsXraySourcePathCustomServiceArrayOutputWithContext(ctx context.Context) AwsXraySourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourcePathCustomServiceArrayOutput)
+}
+
+type AwsXraySourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (AwsXraySourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsXraySourcePathCustomService)(nil)).Elem()
+}
+
+func (o AwsXraySourcePathCustomServiceOutput) ToAwsXraySourcePathCustomServiceOutput() AwsXraySourcePathCustomServiceOutput {
+	return o
+}
+
+func (o AwsXraySourcePathCustomServiceOutput) ToAwsXraySourcePathCustomServiceOutputWithContext(ctx context.Context) AwsXraySourcePathCustomServiceOutput {
+	return o
+}
+
+func (o AwsXraySourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsXraySourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsXraySourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsXraySourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type AwsXraySourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AwsXraySourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AwsXraySourcePathCustomService)(nil)).Elem()
+}
+
+func (o AwsXraySourcePathCustomServiceArrayOutput) ToAwsXraySourcePathCustomServiceArrayOutput() AwsXraySourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o AwsXraySourcePathCustomServiceArrayOutput) ToAwsXraySourcePathCustomServiceArrayOutputWithContext(ctx context.Context) AwsXraySourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o AwsXraySourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) AwsXraySourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AwsXraySourcePathCustomService {
+		return vs[0].([]AwsXraySourcePathCustomService)[vs[1].(int)]
+	}).(AwsXraySourcePathCustomServiceOutput)
 }
 
 type AwsXraySourcePathSnsTopicOrSubscriptionArn struct {
@@ -1998,13 +2528,22 @@ func (o CloudSyslogSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudSyslog
 
 type CloudfrontSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region *string `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
 	Type string `pulumi:"type"`
 }
@@ -2022,13 +2561,22 @@ type CloudfrontSourceAuthenticationInput interface {
 
 type CloudfrontSourceAuthenticationArgs struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -2115,6 +2663,38 @@ func (o CloudfrontSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudfrontSourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o CloudfrontSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -2128,6 +2708,10 @@ func (o CloudfrontSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 // Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudfrontSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
@@ -2169,6 +2753,78 @@ func (o CloudfrontSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudfrontSourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o CloudfrontSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
@@ -2196,6 +2852,15 @@ func (o CloudfrontSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOut
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2423,9 +3088,11 @@ func (o CloudfrontSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudfrontSo
 
 type CloudfrontSourcePath struct {
 	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
-	BucketName        *string  `pulumi:"bucketName"`
-	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string `pulumi:"limitToRegions"`
+	BucketName        *string                             `pulumi:"bucketName"`
+	CustomServices    []CloudfrontSourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                            `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string                            `pulumi:"limitToRegions"`
+	LimitToServices   []string                            `pulumi:"limitToServices"`
 	// The path to the data. This is needed if using type `S3BucketPathExpression`.
 	PathExpression *string `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -2448,9 +3115,11 @@ type CloudfrontSourcePathInput interface {
 
 type CloudfrontSourcePathArgs struct {
 	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
-	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	BucketName        pulumi.StringPtrInput                       `pulumi:"bucketName"`
+	CustomServices    CloudfrontSourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput                     `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput                     `pulumi:"limitToRegions"`
+	LimitToServices   pulumi.StringArrayInput                     `pulumi:"limitToServices"`
 	// The path to the data. This is needed if using type `S3BucketPathExpression`.
 	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -2542,12 +3211,20 @@ func (o CloudfrontSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudfrontSourcePathOutput) CustomServices() CloudfrontSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v CloudfrontSourcePath) []CloudfrontSourcePathCustomService { return v.CustomServices }).(CloudfrontSourcePathCustomServiceArrayOutput)
+}
+
 func (o CloudfrontSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
 func (o CloudfrontSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudfrontSourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudfrontSourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 // The path to the data. This is needed if using type `S3BucketPathExpression`.
@@ -2605,6 +3282,15 @@ func (o CloudfrontSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudfrontSourcePathPtrOutput) CustomServices() CloudfrontSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *CloudfrontSourcePath) []CloudfrontSourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(CloudfrontSourcePathCustomServiceArrayOutput)
+}
+
 func (o CloudfrontSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudfrontSourcePath) []string {
 		if v == nil {
@@ -2620,6 +3306,15 @@ func (o CloudfrontSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o CloudfrontSourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudfrontSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -2660,6 +3355,106 @@ func (o CloudfrontSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type CloudfrontSourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// CloudfrontSourcePathCustomServiceInput is an input type that accepts CloudfrontSourcePathCustomServiceArgs and CloudfrontSourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `CloudfrontSourcePathCustomServiceInput` via:
+//
+//          CloudfrontSourcePathCustomServiceArgs{...}
+type CloudfrontSourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToCloudfrontSourcePathCustomServiceOutput() CloudfrontSourcePathCustomServiceOutput
+	ToCloudfrontSourcePathCustomServiceOutputWithContext(context.Context) CloudfrontSourcePathCustomServiceOutput
+}
+
+type CloudfrontSourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (CloudfrontSourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudfrontSourcePathCustomService)(nil)).Elem()
+}
+
+func (i CloudfrontSourcePathCustomServiceArgs) ToCloudfrontSourcePathCustomServiceOutput() CloudfrontSourcePathCustomServiceOutput {
+	return i.ToCloudfrontSourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i CloudfrontSourcePathCustomServiceArgs) ToCloudfrontSourcePathCustomServiceOutputWithContext(ctx context.Context) CloudfrontSourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourcePathCustomServiceOutput)
+}
+
+// CloudfrontSourcePathCustomServiceArrayInput is an input type that accepts CloudfrontSourcePathCustomServiceArray and CloudfrontSourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `CloudfrontSourcePathCustomServiceArrayInput` via:
+//
+//          CloudfrontSourcePathCustomServiceArray{ CloudfrontSourcePathCustomServiceArgs{...} }
+type CloudfrontSourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToCloudfrontSourcePathCustomServiceArrayOutput() CloudfrontSourcePathCustomServiceArrayOutput
+	ToCloudfrontSourcePathCustomServiceArrayOutputWithContext(context.Context) CloudfrontSourcePathCustomServiceArrayOutput
+}
+
+type CloudfrontSourcePathCustomServiceArray []CloudfrontSourcePathCustomServiceInput
+
+func (CloudfrontSourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudfrontSourcePathCustomService)(nil)).Elem()
+}
+
+func (i CloudfrontSourcePathCustomServiceArray) ToCloudfrontSourcePathCustomServiceArrayOutput() CloudfrontSourcePathCustomServiceArrayOutput {
+	return i.ToCloudfrontSourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i CloudfrontSourcePathCustomServiceArray) ToCloudfrontSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) CloudfrontSourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourcePathCustomServiceArrayOutput)
+}
+
+type CloudfrontSourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (CloudfrontSourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudfrontSourcePathCustomService)(nil)).Elem()
+}
+
+func (o CloudfrontSourcePathCustomServiceOutput) ToCloudfrontSourcePathCustomServiceOutput() CloudfrontSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathCustomServiceOutput) ToCloudfrontSourcePathCustomServiceOutputWithContext(ctx context.Context) CloudfrontSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudfrontSourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudfrontSourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type CloudfrontSourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudfrontSourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudfrontSourcePathCustomService)(nil)).Elem()
+}
+
+func (o CloudfrontSourcePathCustomServiceArrayOutput) ToCloudfrontSourcePathCustomServiceArrayOutput() CloudfrontSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathCustomServiceArrayOutput) ToCloudfrontSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) CloudfrontSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o CloudfrontSourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) CloudfrontSourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudfrontSourcePathCustomService {
+		return vs[0].([]CloudfrontSourcePathCustomService)[vs[1].(int)]
+	}).(CloudfrontSourcePathCustomServiceOutput)
 }
 
 type CloudfrontSourcePathSnsTopicOrSubscriptionArn struct {
@@ -2873,13 +3668,22 @@ func (o CloudfrontSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Cloud
 
 type CloudtrailSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region *string `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
 	Type string `pulumi:"type"`
 }
@@ -2897,13 +3701,22 @@ type CloudtrailSourceAuthenticationInput interface {
 
 type CloudtrailSourceAuthenticationArgs struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -2990,6 +3803,38 @@ func (o CloudtrailSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudtrailSourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o CloudtrailSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -3003,6 +3848,10 @@ func (o CloudtrailSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 // Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudtrailSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
@@ -3044,6 +3893,78 @@ func (o CloudtrailSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudtrailSourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o CloudtrailSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
@@ -3071,6 +3992,15 @@ func (o CloudtrailSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOut
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3298,9 +4228,11 @@ func (o CloudtrailSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudtrailSo
 
 type CloudtrailSourcePath struct {
 	// The name of the bucket.
-	BucketName        *string  `pulumi:"bucketName"`
-	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string `pulumi:"limitToRegions"`
+	BucketName        *string                             `pulumi:"bucketName"`
+	CustomServices    []CloudtrailSourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                            `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string                            `pulumi:"limitToRegions"`
+	LimitToServices   []string                            `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression *string `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -3323,9 +4255,11 @@ type CloudtrailSourcePathInput interface {
 
 type CloudtrailSourcePathArgs struct {
 	// The name of the bucket.
-	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	BucketName        pulumi.StringPtrInput                       `pulumi:"bucketName"`
+	CustomServices    CloudtrailSourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput                     `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput                     `pulumi:"limitToRegions"`
+	LimitToServices   pulumi.StringArrayInput                     `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -3417,12 +4351,20 @@ func (o CloudtrailSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudtrailSourcePathOutput) CustomServices() CloudtrailSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v CloudtrailSourcePath) []CloudtrailSourcePathCustomService { return v.CustomServices }).(CloudtrailSourcePathCustomServiceArrayOutput)
+}
+
 func (o CloudtrailSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
 func (o CloudtrailSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudtrailSourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudtrailSourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 // The path to the data.
@@ -3480,6 +4422,15 @@ func (o CloudtrailSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudtrailSourcePathPtrOutput) CustomServices() CloudtrailSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *CloudtrailSourcePath) []CloudtrailSourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(CloudtrailSourcePathCustomServiceArrayOutput)
+}
+
 func (o CloudtrailSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudtrailSourcePath) []string {
 		if v == nil {
@@ -3495,6 +4446,15 @@ func (o CloudtrailSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o CloudtrailSourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudtrailSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -3535,6 +4495,106 @@ func (o CloudtrailSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type CloudtrailSourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// CloudtrailSourcePathCustomServiceInput is an input type that accepts CloudtrailSourcePathCustomServiceArgs and CloudtrailSourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `CloudtrailSourcePathCustomServiceInput` via:
+//
+//          CloudtrailSourcePathCustomServiceArgs{...}
+type CloudtrailSourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToCloudtrailSourcePathCustomServiceOutput() CloudtrailSourcePathCustomServiceOutput
+	ToCloudtrailSourcePathCustomServiceOutputWithContext(context.Context) CloudtrailSourcePathCustomServiceOutput
+}
+
+type CloudtrailSourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (CloudtrailSourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudtrailSourcePathCustomService)(nil)).Elem()
+}
+
+func (i CloudtrailSourcePathCustomServiceArgs) ToCloudtrailSourcePathCustomServiceOutput() CloudtrailSourcePathCustomServiceOutput {
+	return i.ToCloudtrailSourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i CloudtrailSourcePathCustomServiceArgs) ToCloudtrailSourcePathCustomServiceOutputWithContext(ctx context.Context) CloudtrailSourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourcePathCustomServiceOutput)
+}
+
+// CloudtrailSourcePathCustomServiceArrayInput is an input type that accepts CloudtrailSourcePathCustomServiceArray and CloudtrailSourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `CloudtrailSourcePathCustomServiceArrayInput` via:
+//
+//          CloudtrailSourcePathCustomServiceArray{ CloudtrailSourcePathCustomServiceArgs{...} }
+type CloudtrailSourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToCloudtrailSourcePathCustomServiceArrayOutput() CloudtrailSourcePathCustomServiceArrayOutput
+	ToCloudtrailSourcePathCustomServiceArrayOutputWithContext(context.Context) CloudtrailSourcePathCustomServiceArrayOutput
+}
+
+type CloudtrailSourcePathCustomServiceArray []CloudtrailSourcePathCustomServiceInput
+
+func (CloudtrailSourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudtrailSourcePathCustomService)(nil)).Elem()
+}
+
+func (i CloudtrailSourcePathCustomServiceArray) ToCloudtrailSourcePathCustomServiceArrayOutput() CloudtrailSourcePathCustomServiceArrayOutput {
+	return i.ToCloudtrailSourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i CloudtrailSourcePathCustomServiceArray) ToCloudtrailSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) CloudtrailSourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourcePathCustomServiceArrayOutput)
+}
+
+type CloudtrailSourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (CloudtrailSourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudtrailSourcePathCustomService)(nil)).Elem()
+}
+
+func (o CloudtrailSourcePathCustomServiceOutput) ToCloudtrailSourcePathCustomServiceOutput() CloudtrailSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathCustomServiceOutput) ToCloudtrailSourcePathCustomServiceOutputWithContext(ctx context.Context) CloudtrailSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudtrailSourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudtrailSourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type CloudtrailSourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudtrailSourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudtrailSourcePathCustomService)(nil)).Elem()
+}
+
+func (o CloudtrailSourcePathCustomServiceArrayOutput) ToCloudtrailSourcePathCustomServiceArrayOutput() CloudtrailSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathCustomServiceArrayOutput) ToCloudtrailSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) CloudtrailSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o CloudtrailSourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) CloudtrailSourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudtrailSourcePathCustomService {
+		return vs[0].([]CloudtrailSourcePathCustomService)[vs[1].(int)]
+	}).(CloudtrailSourcePathCustomServiceOutput)
 }
 
 type CloudtrailSourcePathSnsTopicOrSubscriptionArn struct {
@@ -3748,13 +4808,22 @@ func (o CloudtrailSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Cloud
 
 type CloudwatchSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region *string `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// This value has to be set to `TagFilters`
 	Type string `pulumi:"type"`
 }
@@ -3772,13 +4841,22 @@ type CloudwatchSourceAuthenticationInput interface {
 
 type CloudwatchSourceAuthenticationArgs struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// This value has to be set to `TagFilters`
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -3865,6 +4943,38 @@ func (o CloudwatchSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudwatchSourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o CloudwatchSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -3878,6 +4988,10 @@ func (o CloudwatchSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 // Your AWS secret key if using type `S3BucketAuthentication`
 func (o CloudwatchSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // This value has to be set to `TagFilters`
@@ -3919,6 +5033,78 @@ func (o CloudwatchSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudwatchSourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o CloudwatchSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
@@ -3946,6 +5132,15 @@ func (o CloudwatchSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOut
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4172,11 +5367,13 @@ func (o CloudwatchSourceFilterArrayOutput) Index(i pulumi.IntInput) CloudwatchSo
 }
 
 type CloudwatchSourcePath struct {
-	BucketName *string `pulumi:"bucketName"`
+	BucketName     *string                             `pulumi:"bucketName"`
+	CustomServices []CloudwatchSourcePathCustomService `pulumi:"customServices"`
 	// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
 	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
 	// List of Amazon regions.
 	LimitToRegions             []string                                        `pulumi:"limitToRegions"`
+	LimitToServices            []string                                        `pulumi:"limitToServices"`
 	PathExpression             *string                                         `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns []CloudwatchSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
@@ -4197,11 +5394,13 @@ type CloudwatchSourcePathInput interface {
 }
 
 type CloudwatchSourcePathArgs struct {
-	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	BucketName     pulumi.StringPtrInput                       `pulumi:"bucketName"`
+	CustomServices CloudwatchSourcePathCustomServiceArrayInput `pulumi:"customServices"`
 	// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
 	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
 	// List of Amazon regions.
 	LimitToRegions             pulumi.StringArrayInput                                 `pulumi:"limitToRegions"`
+	LimitToServices            pulumi.StringArrayInput                                 `pulumi:"limitToServices"`
 	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
 	SnsTopicOrSubscriptionArns CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
@@ -4291,6 +5490,10 @@ func (o CloudwatchSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o CloudwatchSourcePathOutput) CustomServices() CloudwatchSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v CloudwatchSourcePath) []CloudwatchSourcePathCustomService { return v.CustomServices }).(CloudwatchSourcePathCustomServiceArrayOutput)
+}
+
 // List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
 func (o CloudwatchSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
@@ -4299,6 +5502,10 @@ func (o CloudwatchSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput
 // List of Amazon regions.
 func (o CloudwatchSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudwatchSourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudwatchSourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 func (o CloudwatchSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
@@ -4354,6 +5561,15 @@ func (o CloudwatchSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o CloudwatchSourcePathPtrOutput) CustomServices() CloudwatchSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *CloudwatchSourcePath) []CloudwatchSourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(CloudwatchSourcePathCustomServiceArrayOutput)
+}
+
 // List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
 func (o CloudwatchSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudwatchSourcePath) []string {
@@ -4371,6 +5587,15 @@ func (o CloudwatchSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o CloudwatchSourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudwatchSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -4410,6 +5635,106 @@ func (o CloudwatchSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type CloudwatchSourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// CloudwatchSourcePathCustomServiceInput is an input type that accepts CloudwatchSourcePathCustomServiceArgs and CloudwatchSourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `CloudwatchSourcePathCustomServiceInput` via:
+//
+//          CloudwatchSourcePathCustomServiceArgs{...}
+type CloudwatchSourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToCloudwatchSourcePathCustomServiceOutput() CloudwatchSourcePathCustomServiceOutput
+	ToCloudwatchSourcePathCustomServiceOutputWithContext(context.Context) CloudwatchSourcePathCustomServiceOutput
+}
+
+type CloudwatchSourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (CloudwatchSourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudwatchSourcePathCustomService)(nil)).Elem()
+}
+
+func (i CloudwatchSourcePathCustomServiceArgs) ToCloudwatchSourcePathCustomServiceOutput() CloudwatchSourcePathCustomServiceOutput {
+	return i.ToCloudwatchSourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i CloudwatchSourcePathCustomServiceArgs) ToCloudwatchSourcePathCustomServiceOutputWithContext(ctx context.Context) CloudwatchSourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourcePathCustomServiceOutput)
+}
+
+// CloudwatchSourcePathCustomServiceArrayInput is an input type that accepts CloudwatchSourcePathCustomServiceArray and CloudwatchSourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `CloudwatchSourcePathCustomServiceArrayInput` via:
+//
+//          CloudwatchSourcePathCustomServiceArray{ CloudwatchSourcePathCustomServiceArgs{...} }
+type CloudwatchSourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToCloudwatchSourcePathCustomServiceArrayOutput() CloudwatchSourcePathCustomServiceArrayOutput
+	ToCloudwatchSourcePathCustomServiceArrayOutputWithContext(context.Context) CloudwatchSourcePathCustomServiceArrayOutput
+}
+
+type CloudwatchSourcePathCustomServiceArray []CloudwatchSourcePathCustomServiceInput
+
+func (CloudwatchSourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudwatchSourcePathCustomService)(nil)).Elem()
+}
+
+func (i CloudwatchSourcePathCustomServiceArray) ToCloudwatchSourcePathCustomServiceArrayOutput() CloudwatchSourcePathCustomServiceArrayOutput {
+	return i.ToCloudwatchSourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i CloudwatchSourcePathCustomServiceArray) ToCloudwatchSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) CloudwatchSourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourcePathCustomServiceArrayOutput)
+}
+
+type CloudwatchSourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (CloudwatchSourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudwatchSourcePathCustomService)(nil)).Elem()
+}
+
+func (o CloudwatchSourcePathCustomServiceOutput) ToCloudwatchSourcePathCustomServiceOutput() CloudwatchSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathCustomServiceOutput) ToCloudwatchSourcePathCustomServiceOutputWithContext(ctx context.Context) CloudwatchSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudwatchSourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o CloudwatchSourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type CloudwatchSourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudwatchSourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudwatchSourcePathCustomService)(nil)).Elem()
+}
+
+func (o CloudwatchSourcePathCustomServiceArrayOutput) ToCloudwatchSourcePathCustomServiceArrayOutput() CloudwatchSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathCustomServiceArrayOutput) ToCloudwatchSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) CloudwatchSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o CloudwatchSourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) CloudwatchSourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudwatchSourcePathCustomService {
+		return vs[0].([]CloudwatchSourcePathCustomService)[vs[1].(int)]
+	}).(CloudwatchSourcePathCustomServiceOutput)
 }
 
 type CloudwatchSourcePathSnsTopicOrSubscriptionArn struct {
@@ -4625,6 +5950,112 @@ func (o CloudwatchSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Cloud
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudwatchSourcePathTagFilter {
 		return vs[0].([]CloudwatchSourcePathTagFilter)[vs[1].(int)]
 	}).(CloudwatchSourcePathTagFilterOutput)
+}
+
+type ContentPermissionPermission struct {
+	PermissionName string `pulumi:"permissionName"`
+	SourceId       string `pulumi:"sourceId"`
+	SourceType     string `pulumi:"sourceType"`
+}
+
+// ContentPermissionPermissionInput is an input type that accepts ContentPermissionPermissionArgs and ContentPermissionPermissionOutput values.
+// You can construct a concrete instance of `ContentPermissionPermissionInput` via:
+//
+//          ContentPermissionPermissionArgs{...}
+type ContentPermissionPermissionInput interface {
+	pulumi.Input
+
+	ToContentPermissionPermissionOutput() ContentPermissionPermissionOutput
+	ToContentPermissionPermissionOutputWithContext(context.Context) ContentPermissionPermissionOutput
+}
+
+type ContentPermissionPermissionArgs struct {
+	PermissionName pulumi.StringInput `pulumi:"permissionName"`
+	SourceId       pulumi.StringInput `pulumi:"sourceId"`
+	SourceType     pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (ContentPermissionPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentPermissionPermission)(nil)).Elem()
+}
+
+func (i ContentPermissionPermissionArgs) ToContentPermissionPermissionOutput() ContentPermissionPermissionOutput {
+	return i.ToContentPermissionPermissionOutputWithContext(context.Background())
+}
+
+func (i ContentPermissionPermissionArgs) ToContentPermissionPermissionOutputWithContext(ctx context.Context) ContentPermissionPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentPermissionPermissionOutput)
+}
+
+// ContentPermissionPermissionArrayInput is an input type that accepts ContentPermissionPermissionArray and ContentPermissionPermissionArrayOutput values.
+// You can construct a concrete instance of `ContentPermissionPermissionArrayInput` via:
+//
+//          ContentPermissionPermissionArray{ ContentPermissionPermissionArgs{...} }
+type ContentPermissionPermissionArrayInput interface {
+	pulumi.Input
+
+	ToContentPermissionPermissionArrayOutput() ContentPermissionPermissionArrayOutput
+	ToContentPermissionPermissionArrayOutputWithContext(context.Context) ContentPermissionPermissionArrayOutput
+}
+
+type ContentPermissionPermissionArray []ContentPermissionPermissionInput
+
+func (ContentPermissionPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentPermissionPermission)(nil)).Elem()
+}
+
+func (i ContentPermissionPermissionArray) ToContentPermissionPermissionArrayOutput() ContentPermissionPermissionArrayOutput {
+	return i.ToContentPermissionPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i ContentPermissionPermissionArray) ToContentPermissionPermissionArrayOutputWithContext(ctx context.Context) ContentPermissionPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentPermissionPermissionArrayOutput)
+}
+
+type ContentPermissionPermissionOutput struct{ *pulumi.OutputState }
+
+func (ContentPermissionPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentPermissionPermission)(nil)).Elem()
+}
+
+func (o ContentPermissionPermissionOutput) ToContentPermissionPermissionOutput() ContentPermissionPermissionOutput {
+	return o
+}
+
+func (o ContentPermissionPermissionOutput) ToContentPermissionPermissionOutputWithContext(ctx context.Context) ContentPermissionPermissionOutput {
+	return o
+}
+
+func (o ContentPermissionPermissionOutput) PermissionName() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentPermissionPermission) string { return v.PermissionName }).(pulumi.StringOutput)
+}
+
+func (o ContentPermissionPermissionOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentPermissionPermission) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+func (o ContentPermissionPermissionOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentPermissionPermission) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type ContentPermissionPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (ContentPermissionPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentPermissionPermission)(nil)).Elem()
+}
+
+func (o ContentPermissionPermissionArrayOutput) ToContentPermissionPermissionArrayOutput() ContentPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o ContentPermissionPermissionArrayOutput) ToContentPermissionPermissionArrayOutputWithContext(ctx context.Context) ContentPermissionPermissionArrayOutput {
+	return o
+}
+
+func (o ContentPermissionPermissionArrayOutput) Index(i pulumi.IntInput) ContentPermissionPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentPermissionPermission {
+		return vs[0].([]ContentPermissionPermission)[vs[1].(int)]
+	}).(ContentPermissionPermissionOutput)
 }
 
 type CseAggregationRuleAggregationFunction struct {
@@ -5388,7 +6819,8 @@ type CseLogMappingField struct {
 	SkippedValues []string `pulumi:"skippedValues"`
 	// Split delimiter to be used. (some example: ",", "-", "|")
 	SplitDelimiter *string `pulumi:"splitDelimiter"`
-	SplitIndex     *string `pulumi:"splitIndex"`
+	// The index value to select (starting at zero)
+	SplitIndex *int `pulumi:"splitIndex"`
 	// Time zone.
 	TimeZone *string `pulumi:"timeZone"`
 	// Lookup value.
@@ -5431,7 +6863,8 @@ type CseLogMappingFieldArgs struct {
 	SkippedValues pulumi.StringArrayInput `pulumi:"skippedValues"`
 	// Split delimiter to be used. (some example: ",", "-", "|")
 	SplitDelimiter pulumi.StringPtrInput `pulumi:"splitDelimiter"`
-	SplitIndex     pulumi.StringPtrInput `pulumi:"splitIndex"`
+	// The index value to select (starting at zero)
+	SplitIndex pulumi.IntPtrInput `pulumi:"splitIndex"`
 	// Time zone.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// Lookup value.
@@ -5546,8 +6979,9 @@ func (o CseLogMappingFieldOutput) SplitDelimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CseLogMappingField) *string { return v.SplitDelimiter }).(pulumi.StringPtrOutput)
 }
 
-func (o CseLogMappingFieldOutput) SplitIndex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CseLogMappingField) *string { return v.SplitIndex }).(pulumi.StringPtrOutput)
+// The index value to select (starting at zero)
+func (o CseLogMappingFieldOutput) SplitIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CseLogMappingField) *int { return v.SplitIndex }).(pulumi.IntPtrOutput)
 }
 
 // Time zone.
@@ -13367,13 +14801,22 @@ func (o DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionPtrOutp
 
 type ElbSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`.
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region *string `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 	Type string `pulumi:"type"`
 }
@@ -13391,13 +14834,22 @@ type ElbSourceAuthenticationInput interface {
 
 type ElbSourceAuthenticationArgs struct {
 	// Your AWS access key if using type `S3BucketAuthentication`.
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -13484,6 +14936,38 @@ func (o ElbSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o ElbSourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o ElbSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -13497,6 +14981,10 @@ func (o ElbSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 // Your AWS secret key if using type `S3BucketAuthentication`.
 func (o ElbSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
@@ -13538,6 +15026,78 @@ func (o ElbSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ElbSourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o ElbSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
@@ -13565,6 +15125,15 @@ func (o ElbSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13792,9 +15361,11 @@ func (o ElbSourceFilterArrayOutput) Index(i pulumi.IntInput) ElbSourceFilterOutp
 
 type ElbSourcePath struct {
 	// The name of the bucket.
-	BucketName        *string  `pulumi:"bucketName"`
-	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string `pulumi:"limitToRegions"`
+	BucketName        *string                      `pulumi:"bucketName"`
+	CustomServices    []ElbSourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                     `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string                     `pulumi:"limitToRegions"`
+	LimitToServices   []string                     `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression *string `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -13817,9 +15388,11 @@ type ElbSourcePathInput interface {
 
 type ElbSourcePathArgs struct {
 	// The name of the bucket.
-	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	BucketName        pulumi.StringPtrInput                `pulumi:"bucketName"`
+	CustomServices    ElbSourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput              `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput              `pulumi:"limitToRegions"`
+	LimitToServices   pulumi.StringArrayInput              `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -13911,12 +15484,20 @@ func (o ElbSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElbSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o ElbSourcePathOutput) CustomServices() ElbSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v ElbSourcePath) []ElbSourcePathCustomService { return v.CustomServices }).(ElbSourcePathCustomServiceArrayOutput)
+}
+
 func (o ElbSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElbSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
 func (o ElbSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElbSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o ElbSourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElbSourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 // The path to the data.
@@ -13972,6 +15553,15 @@ func (o ElbSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ElbSourcePathPtrOutput) CustomServices() ElbSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *ElbSourcePath) []ElbSourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(ElbSourcePathCustomServiceArrayOutput)
+}
+
 func (o ElbSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElbSourcePath) []string {
 		if v == nil {
@@ -13987,6 +15577,15 @@ func (o ElbSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ElbSourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ElbSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -14027,6 +15626,106 @@ func (o ElbSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type ElbSourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// ElbSourcePathCustomServiceInput is an input type that accepts ElbSourcePathCustomServiceArgs and ElbSourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `ElbSourcePathCustomServiceInput` via:
+//
+//          ElbSourcePathCustomServiceArgs{...}
+type ElbSourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToElbSourcePathCustomServiceOutput() ElbSourcePathCustomServiceOutput
+	ToElbSourcePathCustomServiceOutputWithContext(context.Context) ElbSourcePathCustomServiceOutput
+}
+
+type ElbSourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (ElbSourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElbSourcePathCustomService)(nil)).Elem()
+}
+
+func (i ElbSourcePathCustomServiceArgs) ToElbSourcePathCustomServiceOutput() ElbSourcePathCustomServiceOutput {
+	return i.ToElbSourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i ElbSourcePathCustomServiceArgs) ToElbSourcePathCustomServiceOutputWithContext(ctx context.Context) ElbSourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElbSourcePathCustomServiceOutput)
+}
+
+// ElbSourcePathCustomServiceArrayInput is an input type that accepts ElbSourcePathCustomServiceArray and ElbSourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `ElbSourcePathCustomServiceArrayInput` via:
+//
+//          ElbSourcePathCustomServiceArray{ ElbSourcePathCustomServiceArgs{...} }
+type ElbSourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToElbSourcePathCustomServiceArrayOutput() ElbSourcePathCustomServiceArrayOutput
+	ToElbSourcePathCustomServiceArrayOutputWithContext(context.Context) ElbSourcePathCustomServiceArrayOutput
+}
+
+type ElbSourcePathCustomServiceArray []ElbSourcePathCustomServiceInput
+
+func (ElbSourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElbSourcePathCustomService)(nil)).Elem()
+}
+
+func (i ElbSourcePathCustomServiceArray) ToElbSourcePathCustomServiceArrayOutput() ElbSourcePathCustomServiceArrayOutput {
+	return i.ToElbSourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i ElbSourcePathCustomServiceArray) ToElbSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) ElbSourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElbSourcePathCustomServiceArrayOutput)
+}
+
+type ElbSourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (ElbSourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElbSourcePathCustomService)(nil)).Elem()
+}
+
+func (o ElbSourcePathCustomServiceOutput) ToElbSourcePathCustomServiceOutput() ElbSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o ElbSourcePathCustomServiceOutput) ToElbSourcePathCustomServiceOutputWithContext(ctx context.Context) ElbSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o ElbSourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElbSourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o ElbSourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElbSourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type ElbSourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (ElbSourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElbSourcePathCustomService)(nil)).Elem()
+}
+
+func (o ElbSourcePathCustomServiceArrayOutput) ToElbSourcePathCustomServiceArrayOutput() ElbSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o ElbSourcePathCustomServiceArrayOutput) ToElbSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) ElbSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o ElbSourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) ElbSourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElbSourcePathCustomService {
+		return vs[0].([]ElbSourcePathCustomService)[vs[1].(int)]
+	}).(ElbSourcePathCustomServiceOutput)
 }
 
 type ElbSourcePathSnsTopicOrSubscriptionArn struct {
@@ -14236,6 +15935,1172 @@ func (o ElbSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) ElbSourcePat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElbSourcePathTagFilter {
 		return vs[0].([]ElbSourcePathTagFilter)[vs[1].(int)]
 	}).(ElbSourcePathTagFilterOutput)
+}
+
+type GcpMetricsSourceAuthentication struct {
+	AccessKey *string `pulumi:"accessKey"`
+	// As per the service_account.json downloaded from GCP
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	// As per the service_account.json downloaded from GCP
+	AuthUri *string `pulumi:"authUri"`
+	// As per the service_account.json downloaded from GCP
+	ClientEmail *string `pulumi:"clientEmail"`
+	// As per the service_account.json downloaded from GCP
+	ClientId *string `pulumi:"clientId"`
+	// As per the service_account.json downloaded from GCP
+	ClientX509CertUrl *string `pulumi:"clientX509CertUrl"`
+	// As per the service_account.json downloaded from GCP
+	PrivateKey *string `pulumi:"privateKey"`
+	// As per the service_account.json downloaded from GCP
+	PrivateKeyId *string `pulumi:"privateKeyId"`
+	// As per the service_account.json downloaded from GCP
+	ProjectId *string `pulumi:"projectId"`
+	Region    *string `pulumi:"region"`
+	RoleArn   *string `pulumi:"roleArn"`
+	SecretKey *string `pulumi:"secretKey"`
+	// As per the service_account.json downloaded from GCP
+	TokenUri *string `pulumi:"tokenUri"`
+	// Type of polling source. This has to be `GcpMetricsPath`.
+	Type string `pulumi:"type"`
+}
+
+// GcpMetricsSourceAuthenticationInput is an input type that accepts GcpMetricsSourceAuthenticationArgs and GcpMetricsSourceAuthenticationOutput values.
+// You can construct a concrete instance of `GcpMetricsSourceAuthenticationInput` via:
+//
+//          GcpMetricsSourceAuthenticationArgs{...}
+type GcpMetricsSourceAuthenticationInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourceAuthenticationOutput() GcpMetricsSourceAuthenticationOutput
+	ToGcpMetricsSourceAuthenticationOutputWithContext(context.Context) GcpMetricsSourceAuthenticationOutput
+}
+
+type GcpMetricsSourceAuthenticationArgs struct {
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// As per the service_account.json downloaded from GCP
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	// As per the service_account.json downloaded from GCP
+	AuthUri pulumi.StringPtrInput `pulumi:"authUri"`
+	// As per the service_account.json downloaded from GCP
+	ClientEmail pulumi.StringPtrInput `pulumi:"clientEmail"`
+	// As per the service_account.json downloaded from GCP
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// As per the service_account.json downloaded from GCP
+	ClientX509CertUrl pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	// As per the service_account.json downloaded from GCP
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// As per the service_account.json downloaded from GCP
+	PrivateKeyId pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	// As per the service_account.json downloaded from GCP
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Region    pulumi.StringPtrInput `pulumi:"region"`
+	RoleArn   pulumi.StringPtrInput `pulumi:"roleArn"`
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// As per the service_account.json downloaded from GCP
+	TokenUri pulumi.StringPtrInput `pulumi:"tokenUri"`
+	// Type of polling source. This has to be `GcpMetricsPath`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GcpMetricsSourceAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourceAuthentication)(nil)).Elem()
+}
+
+func (i GcpMetricsSourceAuthenticationArgs) ToGcpMetricsSourceAuthenticationOutput() GcpMetricsSourceAuthenticationOutput {
+	return i.ToGcpMetricsSourceAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourceAuthenticationArgs) ToGcpMetricsSourceAuthenticationOutputWithContext(ctx context.Context) GcpMetricsSourceAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceAuthenticationOutput)
+}
+
+func (i GcpMetricsSourceAuthenticationArgs) ToGcpMetricsSourceAuthenticationPtrOutput() GcpMetricsSourceAuthenticationPtrOutput {
+	return i.ToGcpMetricsSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourceAuthenticationArgs) ToGcpMetricsSourceAuthenticationPtrOutputWithContext(ctx context.Context) GcpMetricsSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceAuthenticationOutput).ToGcpMetricsSourceAuthenticationPtrOutputWithContext(ctx)
+}
+
+// GcpMetricsSourceAuthenticationPtrInput is an input type that accepts GcpMetricsSourceAuthenticationArgs, GcpMetricsSourceAuthenticationPtr and GcpMetricsSourceAuthenticationPtrOutput values.
+// You can construct a concrete instance of `GcpMetricsSourceAuthenticationPtrInput` via:
+//
+//          GcpMetricsSourceAuthenticationArgs{...}
+//
+//  or:
+//
+//          nil
+type GcpMetricsSourceAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourceAuthenticationPtrOutput() GcpMetricsSourceAuthenticationPtrOutput
+	ToGcpMetricsSourceAuthenticationPtrOutputWithContext(context.Context) GcpMetricsSourceAuthenticationPtrOutput
+}
+
+type gcpMetricsSourceAuthenticationPtrType GcpMetricsSourceAuthenticationArgs
+
+func GcpMetricsSourceAuthenticationPtr(v *GcpMetricsSourceAuthenticationArgs) GcpMetricsSourceAuthenticationPtrInput {
+	return (*gcpMetricsSourceAuthenticationPtrType)(v)
+}
+
+func (*gcpMetricsSourceAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpMetricsSourceAuthentication)(nil)).Elem()
+}
+
+func (i *gcpMetricsSourceAuthenticationPtrType) ToGcpMetricsSourceAuthenticationPtrOutput() GcpMetricsSourceAuthenticationPtrOutput {
+	return i.ToGcpMetricsSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpMetricsSourceAuthenticationPtrType) ToGcpMetricsSourceAuthenticationPtrOutputWithContext(ctx context.Context) GcpMetricsSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceAuthenticationPtrOutput)
+}
+
+type GcpMetricsSourceAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourceAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourceAuthentication)(nil)).Elem()
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) ToGcpMetricsSourceAuthenticationOutput() GcpMetricsSourceAuthenticationOutput {
+	return o
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) ToGcpMetricsSourceAuthenticationOutputWithContext(ctx context.Context) GcpMetricsSourceAuthenticationOutput {
+	return o
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) ToGcpMetricsSourceAuthenticationPtrOutput() GcpMetricsSourceAuthenticationPtrOutput {
+	return o.ToGcpMetricsSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) ToGcpMetricsSourceAuthenticationPtrOutputWithContext(ctx context.Context) GcpMetricsSourceAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpMetricsSourceAuthentication) *GcpMetricsSourceAuthentication {
+		return &v
+	}).(GcpMetricsSourceAuthenticationPtrOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
+}
+
+// Type of polling source. This has to be `GcpMetricsPath`.
+func (o GcpMetricsSourceAuthenticationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpMetricsSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GcpMetricsSourceAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourceAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpMetricsSourceAuthentication)(nil)).Elem()
+}
+
+func (o GcpMetricsSourceAuthenticationPtrOutput) ToGcpMetricsSourceAuthenticationPtrOutput() GcpMetricsSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o GcpMetricsSourceAuthenticationPtrOutput) ToGcpMetricsSourceAuthenticationPtrOutputWithContext(ctx context.Context) GcpMetricsSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o GcpMetricsSourceAuthenticationPtrOutput) Elem() GcpMetricsSourceAuthenticationOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) GcpMetricsSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret GcpMetricsSourceAuthentication
+		return ret
+	}).(GcpMetricsSourceAuthenticationOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// As per the service_account.json downloaded from GCP
+func (o GcpMetricsSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of polling source. This has to be `GcpMetricsPath`.
+func (o GcpMetricsSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpMetricsSourceDefaultDateFormat struct {
+	Format  string  `pulumi:"format"`
+	Locator *string `pulumi:"locator"`
+}
+
+// GcpMetricsSourceDefaultDateFormatInput is an input type that accepts GcpMetricsSourceDefaultDateFormatArgs and GcpMetricsSourceDefaultDateFormatOutput values.
+// You can construct a concrete instance of `GcpMetricsSourceDefaultDateFormatInput` via:
+//
+//          GcpMetricsSourceDefaultDateFormatArgs{...}
+type GcpMetricsSourceDefaultDateFormatInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourceDefaultDateFormatOutput() GcpMetricsSourceDefaultDateFormatOutput
+	ToGcpMetricsSourceDefaultDateFormatOutputWithContext(context.Context) GcpMetricsSourceDefaultDateFormatOutput
+}
+
+type GcpMetricsSourceDefaultDateFormatArgs struct {
+	Format  pulumi.StringInput    `pulumi:"format"`
+	Locator pulumi.StringPtrInput `pulumi:"locator"`
+}
+
+func (GcpMetricsSourceDefaultDateFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i GcpMetricsSourceDefaultDateFormatArgs) ToGcpMetricsSourceDefaultDateFormatOutput() GcpMetricsSourceDefaultDateFormatOutput {
+	return i.ToGcpMetricsSourceDefaultDateFormatOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourceDefaultDateFormatArgs) ToGcpMetricsSourceDefaultDateFormatOutputWithContext(ctx context.Context) GcpMetricsSourceDefaultDateFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceDefaultDateFormatOutput)
+}
+
+// GcpMetricsSourceDefaultDateFormatArrayInput is an input type that accepts GcpMetricsSourceDefaultDateFormatArray and GcpMetricsSourceDefaultDateFormatArrayOutput values.
+// You can construct a concrete instance of `GcpMetricsSourceDefaultDateFormatArrayInput` via:
+//
+//          GcpMetricsSourceDefaultDateFormatArray{ GcpMetricsSourceDefaultDateFormatArgs{...} }
+type GcpMetricsSourceDefaultDateFormatArrayInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourceDefaultDateFormatArrayOutput() GcpMetricsSourceDefaultDateFormatArrayOutput
+	ToGcpMetricsSourceDefaultDateFormatArrayOutputWithContext(context.Context) GcpMetricsSourceDefaultDateFormatArrayOutput
+}
+
+type GcpMetricsSourceDefaultDateFormatArray []GcpMetricsSourceDefaultDateFormatInput
+
+func (GcpMetricsSourceDefaultDateFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i GcpMetricsSourceDefaultDateFormatArray) ToGcpMetricsSourceDefaultDateFormatArrayOutput() GcpMetricsSourceDefaultDateFormatArrayOutput {
+	return i.ToGcpMetricsSourceDefaultDateFormatArrayOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourceDefaultDateFormatArray) ToGcpMetricsSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) GcpMetricsSourceDefaultDateFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceDefaultDateFormatArrayOutput)
+}
+
+type GcpMetricsSourceDefaultDateFormatOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourceDefaultDateFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o GcpMetricsSourceDefaultDateFormatOutput) ToGcpMetricsSourceDefaultDateFormatOutput() GcpMetricsSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o GcpMetricsSourceDefaultDateFormatOutput) ToGcpMetricsSourceDefaultDateFormatOutputWithContext(ctx context.Context) GcpMetricsSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o GcpMetricsSourceDefaultDateFormatOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpMetricsSourceDefaultDateFormat) string { return v.Format }).(pulumi.StringOutput)
+}
+
+func (o GcpMetricsSourceDefaultDateFormatOutput) Locator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceDefaultDateFormat) *string { return v.Locator }).(pulumi.StringPtrOutput)
+}
+
+type GcpMetricsSourceDefaultDateFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourceDefaultDateFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o GcpMetricsSourceDefaultDateFormatArrayOutput) ToGcpMetricsSourceDefaultDateFormatArrayOutput() GcpMetricsSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourceDefaultDateFormatArrayOutput) ToGcpMetricsSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) GcpMetricsSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourceDefaultDateFormatArrayOutput) Index(i pulumi.IntInput) GcpMetricsSourceDefaultDateFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpMetricsSourceDefaultDateFormat {
+		return vs[0].([]GcpMetricsSourceDefaultDateFormat)[vs[1].(int)]
+	}).(GcpMetricsSourceDefaultDateFormatOutput)
+}
+
+type GcpMetricsSourceFilter struct {
+	FilterType string  `pulumi:"filterType"`
+	Mask       *string `pulumi:"mask"`
+	Name       string  `pulumi:"name"`
+	Regexp     string  `pulumi:"regexp"`
+}
+
+// GcpMetricsSourceFilterInput is an input type that accepts GcpMetricsSourceFilterArgs and GcpMetricsSourceFilterOutput values.
+// You can construct a concrete instance of `GcpMetricsSourceFilterInput` via:
+//
+//          GcpMetricsSourceFilterArgs{...}
+type GcpMetricsSourceFilterInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourceFilterOutput() GcpMetricsSourceFilterOutput
+	ToGcpMetricsSourceFilterOutputWithContext(context.Context) GcpMetricsSourceFilterOutput
+}
+
+type GcpMetricsSourceFilterArgs struct {
+	FilterType pulumi.StringInput    `pulumi:"filterType"`
+	Mask       pulumi.StringPtrInput `pulumi:"mask"`
+	Name       pulumi.StringInput    `pulumi:"name"`
+	Regexp     pulumi.StringInput    `pulumi:"regexp"`
+}
+
+func (GcpMetricsSourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourceFilter)(nil)).Elem()
+}
+
+func (i GcpMetricsSourceFilterArgs) ToGcpMetricsSourceFilterOutput() GcpMetricsSourceFilterOutput {
+	return i.ToGcpMetricsSourceFilterOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourceFilterArgs) ToGcpMetricsSourceFilterOutputWithContext(ctx context.Context) GcpMetricsSourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceFilterOutput)
+}
+
+// GcpMetricsSourceFilterArrayInput is an input type that accepts GcpMetricsSourceFilterArray and GcpMetricsSourceFilterArrayOutput values.
+// You can construct a concrete instance of `GcpMetricsSourceFilterArrayInput` via:
+//
+//          GcpMetricsSourceFilterArray{ GcpMetricsSourceFilterArgs{...} }
+type GcpMetricsSourceFilterArrayInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourceFilterArrayOutput() GcpMetricsSourceFilterArrayOutput
+	ToGcpMetricsSourceFilterArrayOutputWithContext(context.Context) GcpMetricsSourceFilterArrayOutput
+}
+
+type GcpMetricsSourceFilterArray []GcpMetricsSourceFilterInput
+
+func (GcpMetricsSourceFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourceFilter)(nil)).Elem()
+}
+
+func (i GcpMetricsSourceFilterArray) ToGcpMetricsSourceFilterArrayOutput() GcpMetricsSourceFilterArrayOutput {
+	return i.ToGcpMetricsSourceFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourceFilterArray) ToGcpMetricsSourceFilterArrayOutputWithContext(ctx context.Context) GcpMetricsSourceFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceFilterArrayOutput)
+}
+
+type GcpMetricsSourceFilterOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourceFilter)(nil)).Elem()
+}
+
+func (o GcpMetricsSourceFilterOutput) ToGcpMetricsSourceFilterOutput() GcpMetricsSourceFilterOutput {
+	return o
+}
+
+func (o GcpMetricsSourceFilterOutput) ToGcpMetricsSourceFilterOutputWithContext(ctx context.Context) GcpMetricsSourceFilterOutput {
+	return o
+}
+
+func (o GcpMetricsSourceFilterOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpMetricsSourceFilter) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+func (o GcpMetricsSourceFilterOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourceFilter) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpMetricsSourceFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GcpMetricsSourceFilterOutput) Regexp() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpMetricsSourceFilter) string { return v.Regexp }).(pulumi.StringOutput)
+}
+
+type GcpMetricsSourceFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourceFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourceFilter)(nil)).Elem()
+}
+
+func (o GcpMetricsSourceFilterArrayOutput) ToGcpMetricsSourceFilterArrayOutput() GcpMetricsSourceFilterArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourceFilterArrayOutput) ToGcpMetricsSourceFilterArrayOutputWithContext(ctx context.Context) GcpMetricsSourceFilterArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourceFilterArrayOutput) Index(i pulumi.IntInput) GcpMetricsSourceFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpMetricsSourceFilter {
+		return vs[0].([]GcpMetricsSourceFilter)[vs[1].(int)]
+	}).(GcpMetricsSourceFilterOutput)
+}
+
+type GcpMetricsSourcePath struct {
+	BucketName *string `pulumi:"bucketName"`
+	// Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+	CustomServices    []GcpMetricsSourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                            `pulumi:"limitToNamespaces"`
+	// List of regions for which metrics would be collected (Empty to collect from all regions)
+	LimitToRegions []string `pulumi:"limitToRegions"`
+	// List of services from which metrics would be collected
+	LimitToServices            []string                                        `pulumi:"limitToServices"`
+	PathExpression             *string                                         `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []GcpMetricsSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []GcpMetricsSourcePathTagFilter                 `pulumi:"tagFilters"`
+	// Type of polling source. This has to be `GcpMetricsPath`.
+	Type string `pulumi:"type"`
+}
+
+// GcpMetricsSourcePathInput is an input type that accepts GcpMetricsSourcePathArgs and GcpMetricsSourcePathOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathInput` via:
+//
+//          GcpMetricsSourcePathArgs{...}
+type GcpMetricsSourcePathInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathOutput() GcpMetricsSourcePathOutput
+	ToGcpMetricsSourcePathOutputWithContext(context.Context) GcpMetricsSourcePathOutput
+}
+
+type GcpMetricsSourcePathArgs struct {
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+	CustomServices    GcpMetricsSourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput                     `pulumi:"limitToNamespaces"`
+	// List of regions for which metrics would be collected (Empty to collect from all regions)
+	LimitToRegions pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	// List of services from which metrics would be collected
+	LimitToServices            pulumi.StringArrayInput                                 `pulumi:"limitToServices"`
+	PathExpression             pulumi.StringPtrInput                                   `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 GcpMetricsSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	// Type of polling source. This has to be `GcpMetricsPath`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GcpMetricsSourcePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePath)(nil)).Elem()
+}
+
+func (i GcpMetricsSourcePathArgs) ToGcpMetricsSourcePathOutput() GcpMetricsSourcePathOutput {
+	return i.ToGcpMetricsSourcePathOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathArgs) ToGcpMetricsSourcePathOutputWithContext(ctx context.Context) GcpMetricsSourcePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathOutput)
+}
+
+func (i GcpMetricsSourcePathArgs) ToGcpMetricsSourcePathPtrOutput() GcpMetricsSourcePathPtrOutput {
+	return i.ToGcpMetricsSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathArgs) ToGcpMetricsSourcePathPtrOutputWithContext(ctx context.Context) GcpMetricsSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathOutput).ToGcpMetricsSourcePathPtrOutputWithContext(ctx)
+}
+
+// GcpMetricsSourcePathPtrInput is an input type that accepts GcpMetricsSourcePathArgs, GcpMetricsSourcePathPtr and GcpMetricsSourcePathPtrOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathPtrInput` via:
+//
+//          GcpMetricsSourcePathArgs{...}
+//
+//  or:
+//
+//          nil
+type GcpMetricsSourcePathPtrInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathPtrOutput() GcpMetricsSourcePathPtrOutput
+	ToGcpMetricsSourcePathPtrOutputWithContext(context.Context) GcpMetricsSourcePathPtrOutput
+}
+
+type gcpMetricsSourcePathPtrType GcpMetricsSourcePathArgs
+
+func GcpMetricsSourcePathPtr(v *GcpMetricsSourcePathArgs) GcpMetricsSourcePathPtrInput {
+	return (*gcpMetricsSourcePathPtrType)(v)
+}
+
+func (*gcpMetricsSourcePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpMetricsSourcePath)(nil)).Elem()
+}
+
+func (i *gcpMetricsSourcePathPtrType) ToGcpMetricsSourcePathPtrOutput() GcpMetricsSourcePathPtrOutput {
+	return i.ToGcpMetricsSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpMetricsSourcePathPtrType) ToGcpMetricsSourcePathPtrOutputWithContext(ctx context.Context) GcpMetricsSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathPtrOutput)
+}
+
+type GcpMetricsSourcePathOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePath)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathOutput) ToGcpMetricsSourcePathOutput() GcpMetricsSourcePathOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathOutput) ToGcpMetricsSourcePathOutputWithContext(ctx context.Context) GcpMetricsSourcePathOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathOutput) ToGcpMetricsSourcePathPtrOutput() GcpMetricsSourcePathPtrOutput {
+	return o.ToGcpMetricsSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (o GcpMetricsSourcePathOutput) ToGcpMetricsSourcePathPtrOutputWithContext(ctx context.Context) GcpMetricsSourcePathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpMetricsSourcePath) *GcpMetricsSourcePath {
+		return &v
+	}).(GcpMetricsSourcePathPtrOutput)
+}
+
+func (o GcpMetricsSourcePathOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+func (o GcpMetricsSourcePathOutput) CustomServices() GcpMetricsSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) []GcpMetricsSourcePathCustomService { return v.CustomServices }).(GcpMetricsSourcePathCustomServiceArrayOutput)
+}
+
+func (o GcpMetricsSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
+}
+
+// List of regions for which metrics would be collected (Empty to collect from all regions)
+func (o GcpMetricsSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+// List of services from which metrics would be collected
+func (o GcpMetricsSourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
+}
+
+func (o GcpMetricsSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourcePathOutput) SnsTopicOrSubscriptionArns() GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) []GcpMetricsSourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+func (o GcpMetricsSourcePathOutput) TagFilters() GcpMetricsSourcePathTagFilterArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) []GcpMetricsSourcePathTagFilter { return v.TagFilters }).(GcpMetricsSourcePathTagFilterArrayOutput)
+}
+
+// Type of polling source. This has to be `GcpMetricsPath`.
+func (o GcpMetricsSourcePathOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GcpMetricsSourcePathPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpMetricsSourcePath)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathPtrOutput) ToGcpMetricsSourcePathPtrOutput() GcpMetricsSourcePathPtrOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathPtrOutput) ToGcpMetricsSourcePathPtrOutputWithContext(ctx context.Context) GcpMetricsSourcePathPtrOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathPtrOutput) Elem() GcpMetricsSourcePathOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) GcpMetricsSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret GcpMetricsSourcePath
+		return ret
+	}).(GcpMetricsSourcePathOutput)
+}
+
+func (o GcpMetricsSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+func (o GcpMetricsSourcePathPtrOutput) CustomServices() GcpMetricsSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) []GcpMetricsSourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(GcpMetricsSourcePathCustomServiceArrayOutput)
+}
+
+func (o GcpMetricsSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of regions for which metrics would be collected (Empty to collect from all regions)
+func (o GcpMetricsSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of services from which metrics would be collected
+func (o GcpMetricsSourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GcpMetricsSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourcePathPtrOutput) SnsTopicOrSubscriptionArns() GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) []GcpMetricsSourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+func (o GcpMetricsSourcePathPtrOutput) TagFilters() GcpMetricsSourcePathTagFilterArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) []GcpMetricsSourcePathTagFilter {
+		if v == nil {
+			return nil
+		}
+		return v.TagFilters
+	}).(GcpMetricsSourcePathTagFilterArrayOutput)
+}
+
+// Type of polling source. This has to be `GcpMetricsPath`.
+func (o GcpMetricsSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpMetricsSourcePathCustomService struct {
+	// List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+	Prefixes []string `pulumi:"prefixes"`
+	// Name of the custom service you want to define.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// GcpMetricsSourcePathCustomServiceInput is an input type that accepts GcpMetricsSourcePathCustomServiceArgs and GcpMetricsSourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathCustomServiceInput` via:
+//
+//          GcpMetricsSourcePathCustomServiceArgs{...}
+type GcpMetricsSourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathCustomServiceOutput() GcpMetricsSourcePathCustomServiceOutput
+	ToGcpMetricsSourcePathCustomServiceOutputWithContext(context.Context) GcpMetricsSourcePathCustomServiceOutput
+}
+
+type GcpMetricsSourcePathCustomServiceArgs struct {
+	// List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
+	// Name of the custom service you want to define.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (GcpMetricsSourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePathCustomService)(nil)).Elem()
+}
+
+func (i GcpMetricsSourcePathCustomServiceArgs) ToGcpMetricsSourcePathCustomServiceOutput() GcpMetricsSourcePathCustomServiceOutput {
+	return i.ToGcpMetricsSourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathCustomServiceArgs) ToGcpMetricsSourcePathCustomServiceOutputWithContext(ctx context.Context) GcpMetricsSourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathCustomServiceOutput)
+}
+
+// GcpMetricsSourcePathCustomServiceArrayInput is an input type that accepts GcpMetricsSourcePathCustomServiceArray and GcpMetricsSourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathCustomServiceArrayInput` via:
+//
+//          GcpMetricsSourcePathCustomServiceArray{ GcpMetricsSourcePathCustomServiceArgs{...} }
+type GcpMetricsSourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathCustomServiceArrayOutput() GcpMetricsSourcePathCustomServiceArrayOutput
+	ToGcpMetricsSourcePathCustomServiceArrayOutputWithContext(context.Context) GcpMetricsSourcePathCustomServiceArrayOutput
+}
+
+type GcpMetricsSourcePathCustomServiceArray []GcpMetricsSourcePathCustomServiceInput
+
+func (GcpMetricsSourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourcePathCustomService)(nil)).Elem()
+}
+
+func (i GcpMetricsSourcePathCustomServiceArray) ToGcpMetricsSourcePathCustomServiceArrayOutput() GcpMetricsSourcePathCustomServiceArrayOutput {
+	return i.ToGcpMetricsSourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathCustomServiceArray) ToGcpMetricsSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) GcpMetricsSourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathCustomServiceArrayOutput)
+}
+
+type GcpMetricsSourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePathCustomService)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathCustomServiceOutput) ToGcpMetricsSourcePathCustomServiceOutput() GcpMetricsSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathCustomServiceOutput) ToGcpMetricsSourcePathCustomServiceOutputWithContext(ctx context.Context) GcpMetricsSourcePathCustomServiceOutput {
+	return o
+}
+
+// List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+func (o GcpMetricsSourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// Name of the custom service you want to define.
+func (o GcpMetricsSourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type GcpMetricsSourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourcePathCustomService)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathCustomServiceArrayOutput) ToGcpMetricsSourcePathCustomServiceArrayOutput() GcpMetricsSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathCustomServiceArrayOutput) ToGcpMetricsSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) GcpMetricsSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) GcpMetricsSourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpMetricsSourcePathCustomService {
+		return vs[0].([]GcpMetricsSourcePathCustomService)[vs[1].(int)]
+	}).(GcpMetricsSourcePathCustomServiceOutput)
+}
+
+type GcpMetricsSourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// GcpMetricsSourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs and GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//          GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs{...}
+type GcpMetricsSourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput() GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput
+	ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput() GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts GcpMetricsSourcePathSnsTopicOrSubscriptionArnArray and GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//          GcpMetricsSourcePathSnsTopicOrSubscriptionArnArray{ GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput() GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type GcpMetricsSourcePathSnsTopicOrSubscriptionArnArray []GcpMetricsSourcePathSnsTopicOrSubscriptionArnInput
+
+func (GcpMetricsSourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i GcpMetricsSourcePathSnsTopicOrSubscriptionArnArray) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput() GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathSnsTopicOrSubscriptionArnArray) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput() GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput() GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToGcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpMetricsSourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]GcpMetricsSourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+type GcpMetricsSourcePathTagFilter struct {
+	Namespace *string  `pulumi:"namespace"`
+	Tags      []string `pulumi:"tags"`
+	// Type of polling source. This has to be `GcpMetricsPath`.
+	Type *string `pulumi:"type"`
+}
+
+// GcpMetricsSourcePathTagFilterInput is an input type that accepts GcpMetricsSourcePathTagFilterArgs and GcpMetricsSourcePathTagFilterOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathTagFilterInput` via:
+//
+//          GcpMetricsSourcePathTagFilterArgs{...}
+type GcpMetricsSourcePathTagFilterInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathTagFilterOutput() GcpMetricsSourcePathTagFilterOutput
+	ToGcpMetricsSourcePathTagFilterOutputWithContext(context.Context) GcpMetricsSourcePathTagFilterOutput
+}
+
+type GcpMetricsSourcePathTagFilterArgs struct {
+	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
+	Tags      pulumi.StringArrayInput `pulumi:"tags"`
+	// Type of polling source. This has to be `GcpMetricsPath`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GcpMetricsSourcePathTagFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePathTagFilter)(nil)).Elem()
+}
+
+func (i GcpMetricsSourcePathTagFilterArgs) ToGcpMetricsSourcePathTagFilterOutput() GcpMetricsSourcePathTagFilterOutput {
+	return i.ToGcpMetricsSourcePathTagFilterOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathTagFilterArgs) ToGcpMetricsSourcePathTagFilterOutputWithContext(ctx context.Context) GcpMetricsSourcePathTagFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathTagFilterOutput)
+}
+
+// GcpMetricsSourcePathTagFilterArrayInput is an input type that accepts GcpMetricsSourcePathTagFilterArray and GcpMetricsSourcePathTagFilterArrayOutput values.
+// You can construct a concrete instance of `GcpMetricsSourcePathTagFilterArrayInput` via:
+//
+//          GcpMetricsSourcePathTagFilterArray{ GcpMetricsSourcePathTagFilterArgs{...} }
+type GcpMetricsSourcePathTagFilterArrayInput interface {
+	pulumi.Input
+
+	ToGcpMetricsSourcePathTagFilterArrayOutput() GcpMetricsSourcePathTagFilterArrayOutput
+	ToGcpMetricsSourcePathTagFilterArrayOutputWithContext(context.Context) GcpMetricsSourcePathTagFilterArrayOutput
+}
+
+type GcpMetricsSourcePathTagFilterArray []GcpMetricsSourcePathTagFilterInput
+
+func (GcpMetricsSourcePathTagFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourcePathTagFilter)(nil)).Elem()
+}
+
+func (i GcpMetricsSourcePathTagFilterArray) ToGcpMetricsSourcePathTagFilterArrayOutput() GcpMetricsSourcePathTagFilterArrayOutput {
+	return i.ToGcpMetricsSourcePathTagFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GcpMetricsSourcePathTagFilterArray) ToGcpMetricsSourcePathTagFilterArrayOutputWithContext(ctx context.Context) GcpMetricsSourcePathTagFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourcePathTagFilterArrayOutput)
+}
+
+type GcpMetricsSourcePathTagFilterOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathTagFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpMetricsSourcePathTagFilter)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathTagFilterOutput) ToGcpMetricsSourcePathTagFilterOutput() GcpMetricsSourcePathTagFilterOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathTagFilterOutput) ToGcpMetricsSourcePathTagFilterOutputWithContext(ctx context.Context) GcpMetricsSourcePathTagFilterOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathTagFilterOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePathTagFilter) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Type of polling source. This has to be `GcpMetricsPath`.
+func (o GcpMetricsSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GcpMetricsSourcePathTagFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpMetricsSourcePathTagFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpMetricsSourcePathTagFilter)(nil)).Elem()
+}
+
+func (o GcpMetricsSourcePathTagFilterArrayOutput) ToGcpMetricsSourcePathTagFilterArrayOutput() GcpMetricsSourcePathTagFilterArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathTagFilterArrayOutput) ToGcpMetricsSourcePathTagFilterArrayOutputWithContext(ctx context.Context) GcpMetricsSourcePathTagFilterArrayOutput {
+	return o
+}
+
+func (o GcpMetricsSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) GcpMetricsSourcePathTagFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpMetricsSourcePathTagFilter {
+		return vs[0].([]GcpMetricsSourcePathTagFilter)[vs[1].(int)]
+	}).(GcpMetricsSourcePathTagFilterOutput)
 }
 
 type GcpSourceAuthentication struct {
@@ -25937,6 +28802,606 @@ func (o HttpSourceFilterArrayOutput) Index(i pulumi.IntInput) HttpSourceFilterOu
 	}).(HttpSourceFilterOutput)
 }
 
+type KineisLogSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
+	AccessKey *string `pulumi:"accessKey"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
+	SecretKey *string `pulumi:"secretKey"`
+	// Must be either `KinesisLogPath` or `NoPathExpression`
+	Type string `pulumi:"type"`
+}
+
+// KineisLogSourceAuthenticationInput is an input type that accepts KineisLogSourceAuthenticationArgs and KineisLogSourceAuthenticationOutput values.
+// You can construct a concrete instance of `KineisLogSourceAuthenticationInput` via:
+//
+//          KineisLogSourceAuthenticationArgs{...}
+type KineisLogSourceAuthenticationInput interface {
+	pulumi.Input
+
+	ToKineisLogSourceAuthenticationOutput() KineisLogSourceAuthenticationOutput
+	ToKineisLogSourceAuthenticationOutputWithContext(context.Context) KineisLogSourceAuthenticationOutput
+}
+
+type KineisLogSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// Must be either `KinesisLogPath` or `NoPathExpression`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (KineisLogSourceAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationOutput() KineisLogSourceAuthenticationOutput {
+	return i.ToKineisLogSourceAuthenticationOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceAuthenticationOutput)
+}
+
+func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
+	return i.ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceAuthenticationOutput).ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx)
+}
+
+// KineisLogSourceAuthenticationPtrInput is an input type that accepts KineisLogSourceAuthenticationArgs, KineisLogSourceAuthenticationPtr and KineisLogSourceAuthenticationPtrOutput values.
+// You can construct a concrete instance of `KineisLogSourceAuthenticationPtrInput` via:
+//
+//          KineisLogSourceAuthenticationArgs{...}
+//
+//  or:
+//
+//          nil
+type KineisLogSourceAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput
+	ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Context) KineisLogSourceAuthenticationPtrOutput
+}
+
+type kineisLogSourceAuthenticationPtrType KineisLogSourceAuthenticationArgs
+
+func KineisLogSourceAuthenticationPtr(v *KineisLogSourceAuthenticationArgs) KineisLogSourceAuthenticationPtrInput {
+	return (*kineisLogSourceAuthenticationPtrType)(v)
+}
+
+func (*kineisLogSourceAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KineisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (i *kineisLogSourceAuthenticationPtrType) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
+	return i.ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *kineisLogSourceAuthenticationPtrType) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceAuthenticationPtrOutput)
+}
+
+type KineisLogSourceAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourceAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationOutput() KineisLogSourceAuthenticationOutput {
+	return o
+}
+
+func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationOutput {
+	return o
+}
+
+func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
+	return o.ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KineisLogSourceAuthentication) *KineisLogSourceAuthentication {
+		return &v
+	}).(KineisLogSourceAuthenticationPtrOutput)
+}
+
+// Your AWS access key if using type `S3BucketAuthentication`
+func (o KineisLogSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+func (o KineisLogSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Your AWS secret key if using type `S3BucketAuthentication`
+func (o KineisLogSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// Must be either `KinesisLogPath` or `NoPathExpression`
+func (o KineisLogSourceAuthenticationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v KineisLogSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type KineisLogSourceAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourceAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KineisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (o KineisLogSourceAuthenticationPtrOutput) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o KineisLogSourceAuthenticationPtrOutput) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o KineisLogSourceAuthenticationPtrOutput) Elem() KineisLogSourceAuthenticationOutput {
+	return o.ApplyT(func(v *KineisLogSourceAuthentication) KineisLogSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret KineisLogSourceAuthentication
+		return ret
+	}).(KineisLogSourceAuthenticationOutput)
+}
+
+// Your AWS access key if using type `S3BucketAuthentication`
+func (o KineisLogSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+func (o KineisLogSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your AWS secret key if using type `S3BucketAuthentication`
+func (o KineisLogSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Must be either `KinesisLogPath` or `NoPathExpression`
+func (o KineisLogSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type KineisLogSourceDefaultDateFormat struct {
+	Format  string  `pulumi:"format"`
+	Locator *string `pulumi:"locator"`
+}
+
+// KineisLogSourceDefaultDateFormatInput is an input type that accepts KineisLogSourceDefaultDateFormatArgs and KineisLogSourceDefaultDateFormatOutput values.
+// You can construct a concrete instance of `KineisLogSourceDefaultDateFormatInput` via:
+//
+//          KineisLogSourceDefaultDateFormatArgs{...}
+type KineisLogSourceDefaultDateFormatInput interface {
+	pulumi.Input
+
+	ToKineisLogSourceDefaultDateFormatOutput() KineisLogSourceDefaultDateFormatOutput
+	ToKineisLogSourceDefaultDateFormatOutputWithContext(context.Context) KineisLogSourceDefaultDateFormatOutput
+}
+
+type KineisLogSourceDefaultDateFormatArgs struct {
+	Format  pulumi.StringInput    `pulumi:"format"`
+	Locator pulumi.StringPtrInput `pulumi:"locator"`
+}
+
+func (KineisLogSourceDefaultDateFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i KineisLogSourceDefaultDateFormatArgs) ToKineisLogSourceDefaultDateFormatOutput() KineisLogSourceDefaultDateFormatOutput {
+	return i.ToKineisLogSourceDefaultDateFormatOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourceDefaultDateFormatArgs) ToKineisLogSourceDefaultDateFormatOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceDefaultDateFormatOutput)
+}
+
+// KineisLogSourceDefaultDateFormatArrayInput is an input type that accepts KineisLogSourceDefaultDateFormatArray and KineisLogSourceDefaultDateFormatArrayOutput values.
+// You can construct a concrete instance of `KineisLogSourceDefaultDateFormatArrayInput` via:
+//
+//          KineisLogSourceDefaultDateFormatArray{ KineisLogSourceDefaultDateFormatArgs{...} }
+type KineisLogSourceDefaultDateFormatArrayInput interface {
+	pulumi.Input
+
+	ToKineisLogSourceDefaultDateFormatArrayOutput() KineisLogSourceDefaultDateFormatArrayOutput
+	ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(context.Context) KineisLogSourceDefaultDateFormatArrayOutput
+}
+
+type KineisLogSourceDefaultDateFormatArray []KineisLogSourceDefaultDateFormatInput
+
+func (KineisLogSourceDefaultDateFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KineisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i KineisLogSourceDefaultDateFormatArray) ToKineisLogSourceDefaultDateFormatArrayOutput() KineisLogSourceDefaultDateFormatArrayOutput {
+	return i.ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourceDefaultDateFormatArray) ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceDefaultDateFormatArrayOutput)
+}
+
+type KineisLogSourceDefaultDateFormatOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourceDefaultDateFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o KineisLogSourceDefaultDateFormatOutput) ToKineisLogSourceDefaultDateFormatOutput() KineisLogSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o KineisLogSourceDefaultDateFormatOutput) ToKineisLogSourceDefaultDateFormatOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o KineisLogSourceDefaultDateFormatOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v KineisLogSourceDefaultDateFormat) string { return v.Format }).(pulumi.StringOutput)
+}
+
+func (o KineisLogSourceDefaultDateFormatOutput) Locator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KineisLogSourceDefaultDateFormat) *string { return v.Locator }).(pulumi.StringPtrOutput)
+}
+
+type KineisLogSourceDefaultDateFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourceDefaultDateFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KineisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o KineisLogSourceDefaultDateFormatArrayOutput) ToKineisLogSourceDefaultDateFormatArrayOutput() KineisLogSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o KineisLogSourceDefaultDateFormatArrayOutput) ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o KineisLogSourceDefaultDateFormatArrayOutput) Index(i pulumi.IntInput) KineisLogSourceDefaultDateFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KineisLogSourceDefaultDateFormat {
+		return vs[0].([]KineisLogSourceDefaultDateFormat)[vs[1].(int)]
+	}).(KineisLogSourceDefaultDateFormatOutput)
+}
+
+type KineisLogSourceFilter struct {
+	FilterType string  `pulumi:"filterType"`
+	Mask       *string `pulumi:"mask"`
+	Name       string  `pulumi:"name"`
+	Regexp     string  `pulumi:"regexp"`
+}
+
+// KineisLogSourceFilterInput is an input type that accepts KineisLogSourceFilterArgs and KineisLogSourceFilterOutput values.
+// You can construct a concrete instance of `KineisLogSourceFilterInput` via:
+//
+//          KineisLogSourceFilterArgs{...}
+type KineisLogSourceFilterInput interface {
+	pulumi.Input
+
+	ToKineisLogSourceFilterOutput() KineisLogSourceFilterOutput
+	ToKineisLogSourceFilterOutputWithContext(context.Context) KineisLogSourceFilterOutput
+}
+
+type KineisLogSourceFilterArgs struct {
+	FilterType pulumi.StringInput    `pulumi:"filterType"`
+	Mask       pulumi.StringPtrInput `pulumi:"mask"`
+	Name       pulumi.StringInput    `pulumi:"name"`
+	Regexp     pulumi.StringInput    `pulumi:"regexp"`
+}
+
+func (KineisLogSourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourceFilter)(nil)).Elem()
+}
+
+func (i KineisLogSourceFilterArgs) ToKineisLogSourceFilterOutput() KineisLogSourceFilterOutput {
+	return i.ToKineisLogSourceFilterOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourceFilterArgs) ToKineisLogSourceFilterOutputWithContext(ctx context.Context) KineisLogSourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceFilterOutput)
+}
+
+// KineisLogSourceFilterArrayInput is an input type that accepts KineisLogSourceFilterArray and KineisLogSourceFilterArrayOutput values.
+// You can construct a concrete instance of `KineisLogSourceFilterArrayInput` via:
+//
+//          KineisLogSourceFilterArray{ KineisLogSourceFilterArgs{...} }
+type KineisLogSourceFilterArrayInput interface {
+	pulumi.Input
+
+	ToKineisLogSourceFilterArrayOutput() KineisLogSourceFilterArrayOutput
+	ToKineisLogSourceFilterArrayOutputWithContext(context.Context) KineisLogSourceFilterArrayOutput
+}
+
+type KineisLogSourceFilterArray []KineisLogSourceFilterInput
+
+func (KineisLogSourceFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KineisLogSourceFilter)(nil)).Elem()
+}
+
+func (i KineisLogSourceFilterArray) ToKineisLogSourceFilterArrayOutput() KineisLogSourceFilterArrayOutput {
+	return i.ToKineisLogSourceFilterArrayOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourceFilterArray) ToKineisLogSourceFilterArrayOutputWithContext(ctx context.Context) KineisLogSourceFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceFilterArrayOutput)
+}
+
+type KineisLogSourceFilterOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourceFilter)(nil)).Elem()
+}
+
+func (o KineisLogSourceFilterOutput) ToKineisLogSourceFilterOutput() KineisLogSourceFilterOutput {
+	return o
+}
+
+func (o KineisLogSourceFilterOutput) ToKineisLogSourceFilterOutputWithContext(ctx context.Context) KineisLogSourceFilterOutput {
+	return o
+}
+
+func (o KineisLogSourceFilterOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v KineisLogSourceFilter) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+func (o KineisLogSourceFilterOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KineisLogSourceFilter) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+func (o KineisLogSourceFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v KineisLogSourceFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o KineisLogSourceFilterOutput) Regexp() pulumi.StringOutput {
+	return o.ApplyT(func(v KineisLogSourceFilter) string { return v.Regexp }).(pulumi.StringOutput)
+}
+
+type KineisLogSourceFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourceFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KineisLogSourceFilter)(nil)).Elem()
+}
+
+func (o KineisLogSourceFilterArrayOutput) ToKineisLogSourceFilterArrayOutput() KineisLogSourceFilterArrayOutput {
+	return o
+}
+
+func (o KineisLogSourceFilterArrayOutput) ToKineisLogSourceFilterArrayOutputWithContext(ctx context.Context) KineisLogSourceFilterArrayOutput {
+	return o
+}
+
+func (o KineisLogSourceFilterArrayOutput) Index(i pulumi.IntInput) KineisLogSourceFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KineisLogSourceFilter {
+		return vs[0].([]KineisLogSourceFilter)[vs[1].(int)]
+	}).(KineisLogSourceFilterOutput)
+}
+
+type KineisLogSourcePath struct {
+	// The name of the bucket. This is needed if using type `KinesisLogPath`.
+	BucketName *string `pulumi:"bucketName"`
+	// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+	PathExpression *string `pulumi:"pathExpression"`
+	// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval *int `pulumi:"scanInterval"`
+	// Must be either `KinesisLogPath` or `NoPathExpression`
+	Type string `pulumi:"type"`
+}
+
+// KineisLogSourcePathInput is an input type that accepts KineisLogSourcePathArgs and KineisLogSourcePathOutput values.
+// You can construct a concrete instance of `KineisLogSourcePathInput` via:
+//
+//          KineisLogSourcePathArgs{...}
+type KineisLogSourcePathInput interface {
+	pulumi.Input
+
+	ToKineisLogSourcePathOutput() KineisLogSourcePathOutput
+	ToKineisLogSourcePathOutputWithContext(context.Context) KineisLogSourcePathOutput
+}
+
+type KineisLogSourcePathArgs struct {
+	// The name of the bucket. This is needed if using type `KinesisLogPath`.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntPtrInput `pulumi:"scanInterval"`
+	// Must be either `KinesisLogPath` or `NoPathExpression`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (KineisLogSourcePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourcePath)(nil)).Elem()
+}
+
+func (i KineisLogSourcePathArgs) ToKineisLogSourcePathOutput() KineisLogSourcePathOutput {
+	return i.ToKineisLogSourcePathOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourcePathArgs) ToKineisLogSourcePathOutputWithContext(ctx context.Context) KineisLogSourcePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourcePathOutput)
+}
+
+func (i KineisLogSourcePathArgs) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
+	return i.ToKineisLogSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i KineisLogSourcePathArgs) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourcePathOutput).ToKineisLogSourcePathPtrOutputWithContext(ctx)
+}
+
+// KineisLogSourcePathPtrInput is an input type that accepts KineisLogSourcePathArgs, KineisLogSourcePathPtr and KineisLogSourcePathPtrOutput values.
+// You can construct a concrete instance of `KineisLogSourcePathPtrInput` via:
+//
+//          KineisLogSourcePathArgs{...}
+//
+//  or:
+//
+//          nil
+type KineisLogSourcePathPtrInput interface {
+	pulumi.Input
+
+	ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput
+	ToKineisLogSourcePathPtrOutputWithContext(context.Context) KineisLogSourcePathPtrOutput
+}
+
+type kineisLogSourcePathPtrType KineisLogSourcePathArgs
+
+func KineisLogSourcePathPtr(v *KineisLogSourcePathArgs) KineisLogSourcePathPtrInput {
+	return (*kineisLogSourcePathPtrType)(v)
+}
+
+func (*kineisLogSourcePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KineisLogSourcePath)(nil)).Elem()
+}
+
+func (i *kineisLogSourcePathPtrType) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
+	return i.ToKineisLogSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i *kineisLogSourcePathPtrType) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourcePathPtrOutput)
+}
+
+type KineisLogSourcePathOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourcePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KineisLogSourcePath)(nil)).Elem()
+}
+
+func (o KineisLogSourcePathOutput) ToKineisLogSourcePathOutput() KineisLogSourcePathOutput {
+	return o
+}
+
+func (o KineisLogSourcePathOutput) ToKineisLogSourcePathOutputWithContext(ctx context.Context) KineisLogSourcePathOutput {
+	return o
+}
+
+func (o KineisLogSourcePathOutput) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
+	return o.ToKineisLogSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (o KineisLogSourcePathOutput) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KineisLogSourcePath) *KineisLogSourcePath {
+		return &v
+	}).(KineisLogSourcePathPtrOutput)
+}
+
+// The name of the bucket. This is needed if using type `KinesisLogPath`.
+func (o KineisLogSourcePathOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KineisLogSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+func (o KineisLogSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KineisLogSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
+}
+
+// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o KineisLogSourcePathOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KineisLogSourcePath) *int { return v.ScanInterval }).(pulumi.IntPtrOutput)
+}
+
+// Must be either `KinesisLogPath` or `NoPathExpression`
+func (o KineisLogSourcePathOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v KineisLogSourcePath) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type KineisLogSourcePathPtrOutput struct{ *pulumi.OutputState }
+
+func (KineisLogSourcePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KineisLogSourcePath)(nil)).Elem()
+}
+
+func (o KineisLogSourcePathPtrOutput) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
+	return o
+}
+
+func (o KineisLogSourcePathPtrOutput) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
+	return o
+}
+
+func (o KineisLogSourcePathPtrOutput) Elem() KineisLogSourcePathOutput {
+	return o.ApplyT(func(v *KineisLogSourcePath) KineisLogSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret KineisLogSourcePath
+		return ret
+	}).(KineisLogSourcePathOutput)
+}
+
+// The name of the bucket. This is needed if using type `KinesisLogPath`.
+func (o KineisLogSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+func (o KineisLogSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o KineisLogSourcePathPtrOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourcePath) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Must be either `KinesisLogPath` or `NoPathExpression`
+func (o KineisLogSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type KinesisMetricsSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
@@ -30786,8 +34251,9 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalAlertPtrOutput) Th
 }
 
 type MonitorTriggerConditionsMetricsStaticConditionCriticalResolution struct {
-	Threshold     *float64 `pulumi:"threshold"`
-	ThresholdType *string  `pulumi:"thresholdType"`
+	OccurrenceType *string  `pulumi:"occurrenceType"`
+	Threshold      *float64 `pulumi:"threshold"`
+	ThresholdType  *string  `pulumi:"thresholdType"`
 }
 
 // MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionInput is an input type that accepts MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs and MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput values.
@@ -30802,8 +34268,9 @@ type MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionInput inter
 }
 
 type MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs struct {
-	Threshold     pulumi.Float64PtrInput `pulumi:"threshold"`
-	ThresholdType pulumi.StringPtrInput  `pulumi:"thresholdType"`
+	OccurrenceType pulumi.StringPtrInput  `pulumi:"occurrenceType"`
+	Threshold      pulumi.Float64PtrInput `pulumi:"threshold"`
+	ThresholdType  pulumi.StringPtrInput  `pulumi:"thresholdType"`
 }
 
 func (MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs) ElementType() reflect.Type {
@@ -30883,6 +34350,12 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput) 
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutput)
 }
 
+func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput) OccurrenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCriticalResolution) *string {
+		return v.OccurrenceType
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionCriticalResolution) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -30915,6 +34388,15 @@ func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutpu
 		var ret MonitorTriggerConditionsMetricsStaticConditionCriticalResolution
 		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutput) OccurrenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionCriticalResolution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OccurrenceType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionPtrOutput) Threshold() pulumi.Float64PtrOutput {
@@ -31266,8 +34748,9 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrOutput) Thr
 }
 
 type MonitorTriggerConditionsMetricsStaticConditionWarningResolution struct {
-	Threshold     *float64 `pulumi:"threshold"`
-	ThresholdType *string  `pulumi:"thresholdType"`
+	OccurrenceType *string  `pulumi:"occurrenceType"`
+	Threshold      *float64 `pulumi:"threshold"`
+	ThresholdType  *string  `pulumi:"thresholdType"`
 }
 
 // MonitorTriggerConditionsMetricsStaticConditionWarningResolutionInput is an input type that accepts MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs and MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput values.
@@ -31282,8 +34765,9 @@ type MonitorTriggerConditionsMetricsStaticConditionWarningResolutionInput interf
 }
 
 type MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs struct {
-	Threshold     pulumi.Float64PtrInput `pulumi:"threshold"`
-	ThresholdType pulumi.StringPtrInput  `pulumi:"thresholdType"`
+	OccurrenceType pulumi.StringPtrInput  `pulumi:"occurrenceType"`
+	Threshold      pulumi.Float64PtrInput `pulumi:"threshold"`
+	ThresholdType  pulumi.StringPtrInput  `pulumi:"thresholdType"`
 }
 
 func (MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs) ElementType() reflect.Type {
@@ -31363,6 +34847,12 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput) T
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput)
 }
 
+func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput) OccurrenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarningResolution) *string {
+		return v.OccurrenceType
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsMetricsStaticConditionWarningResolution) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -31395,6 +34885,15 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput
 		var ret MonitorTriggerConditionsMetricsStaticConditionWarningResolution
 		return ret
 	}).(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput) OccurrenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsStaticConditionWarningResolution) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OccurrenceType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput) Threshold() pulumi.Float64PtrOutput {
@@ -32326,13 +35825,22 @@ func (o PollingSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) PollingS
 
 type S3AuditSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`.
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region *string `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
 	Type string `pulumi:"type"`
 }
@@ -32350,13 +35858,22 @@ type S3AuditSourceAuthenticationInput interface {
 
 type S3AuditSourceAuthenticationArgs struct {
 	// Your AWS access key if using type `S3BucketAuthentication`.
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -32443,6 +35960,38 @@ func (o S3AuditSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o S3AuditSourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o S3AuditSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -32456,6 +36005,10 @@ func (o S3AuditSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 // Your AWS secret key if using type `S3BucketAuthentication`.
 func (o S3AuditSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
@@ -32497,6 +36050,78 @@ func (o S3AuditSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o S3AuditSourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o S3AuditSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
@@ -32524,6 +36149,15 @@ func (o S3AuditSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32751,9 +36385,11 @@ func (o S3AuditSourceFilterArrayOutput) Index(i pulumi.IntInput) S3AuditSourceFi
 
 type S3AuditSourcePath struct {
 	// The name of the bucket.
-	BucketName        *string  `pulumi:"bucketName"`
-	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string `pulumi:"limitToRegions"`
+	BucketName        *string                          `pulumi:"bucketName"`
+	CustomServices    []S3AuditSourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                         `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string                         `pulumi:"limitToRegions"`
+	LimitToServices   []string                         `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression *string `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -32776,9 +36412,11 @@ type S3AuditSourcePathInput interface {
 
 type S3AuditSourcePathArgs struct {
 	// The name of the bucket.
-	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	BucketName        pulumi.StringPtrInput                    `pulumi:"bucketName"`
+	CustomServices    S3AuditSourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput                  `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput                  `pulumi:"limitToRegions"`
+	LimitToServices   pulumi.StringArrayInput                  `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -32870,12 +36508,20 @@ func (o S3AuditSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o S3AuditSourcePathOutput) CustomServices() S3AuditSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v S3AuditSourcePath) []S3AuditSourcePathCustomService { return v.CustomServices }).(S3AuditSourcePathCustomServiceArrayOutput)
+}
+
 func (o S3AuditSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
 func (o S3AuditSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o S3AuditSourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3AuditSourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 // The path to the data.
@@ -32933,6 +36579,15 @@ func (o S3AuditSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o S3AuditSourcePathPtrOutput) CustomServices() S3AuditSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *S3AuditSourcePath) []S3AuditSourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(S3AuditSourcePathCustomServiceArrayOutput)
+}
+
 func (o S3AuditSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *S3AuditSourcePath) []string {
 		if v == nil {
@@ -32948,6 +36603,15 @@ func (o S3AuditSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o S3AuditSourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *S3AuditSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -32988,6 +36652,106 @@ func (o S3AuditSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type S3AuditSourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// S3AuditSourcePathCustomServiceInput is an input type that accepts S3AuditSourcePathCustomServiceArgs and S3AuditSourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `S3AuditSourcePathCustomServiceInput` via:
+//
+//          S3AuditSourcePathCustomServiceArgs{...}
+type S3AuditSourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToS3AuditSourcePathCustomServiceOutput() S3AuditSourcePathCustomServiceOutput
+	ToS3AuditSourcePathCustomServiceOutputWithContext(context.Context) S3AuditSourcePathCustomServiceOutput
+}
+
+type S3AuditSourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (S3AuditSourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3AuditSourcePathCustomService)(nil)).Elem()
+}
+
+func (i S3AuditSourcePathCustomServiceArgs) ToS3AuditSourcePathCustomServiceOutput() S3AuditSourcePathCustomServiceOutput {
+	return i.ToS3AuditSourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i S3AuditSourcePathCustomServiceArgs) ToS3AuditSourcePathCustomServiceOutputWithContext(ctx context.Context) S3AuditSourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3AuditSourcePathCustomServiceOutput)
+}
+
+// S3AuditSourcePathCustomServiceArrayInput is an input type that accepts S3AuditSourcePathCustomServiceArray and S3AuditSourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `S3AuditSourcePathCustomServiceArrayInput` via:
+//
+//          S3AuditSourcePathCustomServiceArray{ S3AuditSourcePathCustomServiceArgs{...} }
+type S3AuditSourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToS3AuditSourcePathCustomServiceArrayOutput() S3AuditSourcePathCustomServiceArrayOutput
+	ToS3AuditSourcePathCustomServiceArrayOutputWithContext(context.Context) S3AuditSourcePathCustomServiceArrayOutput
+}
+
+type S3AuditSourcePathCustomServiceArray []S3AuditSourcePathCustomServiceInput
+
+func (S3AuditSourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3AuditSourcePathCustomService)(nil)).Elem()
+}
+
+func (i S3AuditSourcePathCustomServiceArray) ToS3AuditSourcePathCustomServiceArrayOutput() S3AuditSourcePathCustomServiceArrayOutput {
+	return i.ToS3AuditSourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i S3AuditSourcePathCustomServiceArray) ToS3AuditSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) S3AuditSourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3AuditSourcePathCustomServiceArrayOutput)
+}
+
+type S3AuditSourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (S3AuditSourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3AuditSourcePathCustomService)(nil)).Elem()
+}
+
+func (o S3AuditSourcePathCustomServiceOutput) ToS3AuditSourcePathCustomServiceOutput() S3AuditSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o S3AuditSourcePathCustomServiceOutput) ToS3AuditSourcePathCustomServiceOutputWithContext(ctx context.Context) S3AuditSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o S3AuditSourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3AuditSourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o S3AuditSourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3AuditSourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type S3AuditSourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (S3AuditSourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3AuditSourcePathCustomService)(nil)).Elem()
+}
+
+func (o S3AuditSourcePathCustomServiceArrayOutput) ToS3AuditSourcePathCustomServiceArrayOutput() S3AuditSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o S3AuditSourcePathCustomServiceArrayOutput) ToS3AuditSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) S3AuditSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o S3AuditSourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) S3AuditSourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3AuditSourcePathCustomService {
+		return vs[0].([]S3AuditSourcePathCustomService)[vs[1].(int)]
+	}).(S3AuditSourcePathCustomServiceOutput)
 }
 
 type S3AuditSourcePathSnsTopicOrSubscriptionArn struct {
@@ -33201,13 +36965,22 @@ func (o S3AuditSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) S3AuditS
 
 type S3SourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`.
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region *string `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 	Type string `pulumi:"type"`
 }
@@ -33225,13 +36998,22 @@ type S3SourceAuthenticationInput interface {
 
 type S3SourceAuthenticationArgs struct {
 	// Your AWS access key if using type `S3BucketAuthentication`.
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
 	// Your AWS Bucket region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -33318,6 +37100,38 @@ func (o S3SourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o S3SourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o S3SourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -33331,6 +37145,10 @@ func (o S3SourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
 // Your AWS secret key if using type `S3BucketAuthentication`.
 func (o S3SourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
 // type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
@@ -33372,6 +37190,78 @@ func (o S3SourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o S3SourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Your AWS Bucket region.
 func (o S3SourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourceAuthentication) *string {
@@ -33399,6 +37289,15 @@ func (o S3SourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3SourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33626,9 +37525,11 @@ func (o S3SourceFilterArrayOutput) Index(i pulumi.IntInput) S3SourceFilterOutput
 
 type S3SourcePath struct {
 	// The name of the bucket.
-	BucketName        *string  `pulumi:"bucketName"`
-	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
-	LimitToRegions    []string `pulumi:"limitToRegions"`
+	BucketName        *string                     `pulumi:"bucketName"`
+	CustomServices    []S3SourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                    `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string                    `pulumi:"limitToRegions"`
+	LimitToServices   []string                    `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression *string `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -33651,9 +37552,11 @@ type S3SourcePathInput interface {
 
 type S3SourcePathArgs struct {
 	// The name of the bucket.
-	BucketName        pulumi.StringPtrInput   `pulumi:"bucketName"`
-	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
-	LimitToRegions    pulumi.StringArrayInput `pulumi:"limitToRegions"`
+	BucketName        pulumi.StringPtrInput               `pulumi:"bucketName"`
+	CustomServices    S3SourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput             `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput             `pulumi:"limitToRegions"`
+	LimitToServices   pulumi.StringArrayInput             `pulumi:"limitToServices"`
 	// The path to the data.
 	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
 	// This is a computed field for SNS topic/subscription ARN.
@@ -33745,12 +37648,20 @@ func (o S3SourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
+func (o S3SourcePathOutput) CustomServices() S3SourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v S3SourcePath) []S3SourcePathCustomService { return v.CustomServices }).(S3SourcePathCustomServiceArrayOutput)
+}
+
 func (o S3SourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3SourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
 
 func (o S3SourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3SourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o S3SourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3SourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
 }
 
 // The path to the data.
@@ -33806,6 +37717,15 @@ func (o S3SourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o S3SourcePathPtrOutput) CustomServices() S3SourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *S3SourcePath) []S3SourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(S3SourcePathCustomServiceArrayOutput)
+}
+
 func (o S3SourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *S3SourcePath) []string {
 		if v == nil {
@@ -33821,6 +37741,15 @@ func (o S3SourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o S3SourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *S3SourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -33861,6 +37790,106 @@ func (o S3SourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type S3SourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// S3SourcePathCustomServiceInput is an input type that accepts S3SourcePathCustomServiceArgs and S3SourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `S3SourcePathCustomServiceInput` via:
+//
+//          S3SourcePathCustomServiceArgs{...}
+type S3SourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToS3SourcePathCustomServiceOutput() S3SourcePathCustomServiceOutput
+	ToS3SourcePathCustomServiceOutputWithContext(context.Context) S3SourcePathCustomServiceOutput
+}
+
+type S3SourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (S3SourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3SourcePathCustomService)(nil)).Elem()
+}
+
+func (i S3SourcePathCustomServiceArgs) ToS3SourcePathCustomServiceOutput() S3SourcePathCustomServiceOutput {
+	return i.ToS3SourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i S3SourcePathCustomServiceArgs) ToS3SourcePathCustomServiceOutputWithContext(ctx context.Context) S3SourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3SourcePathCustomServiceOutput)
+}
+
+// S3SourcePathCustomServiceArrayInput is an input type that accepts S3SourcePathCustomServiceArray and S3SourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `S3SourcePathCustomServiceArrayInput` via:
+//
+//          S3SourcePathCustomServiceArray{ S3SourcePathCustomServiceArgs{...} }
+type S3SourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToS3SourcePathCustomServiceArrayOutput() S3SourcePathCustomServiceArrayOutput
+	ToS3SourcePathCustomServiceArrayOutputWithContext(context.Context) S3SourcePathCustomServiceArrayOutput
+}
+
+type S3SourcePathCustomServiceArray []S3SourcePathCustomServiceInput
+
+func (S3SourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3SourcePathCustomService)(nil)).Elem()
+}
+
+func (i S3SourcePathCustomServiceArray) ToS3SourcePathCustomServiceArrayOutput() S3SourcePathCustomServiceArrayOutput {
+	return i.ToS3SourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i S3SourcePathCustomServiceArray) ToS3SourcePathCustomServiceArrayOutputWithContext(ctx context.Context) S3SourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3SourcePathCustomServiceArrayOutput)
+}
+
+type S3SourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (S3SourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3SourcePathCustomService)(nil)).Elem()
+}
+
+func (o S3SourcePathCustomServiceOutput) ToS3SourcePathCustomServiceOutput() S3SourcePathCustomServiceOutput {
+	return o
+}
+
+func (o S3SourcePathCustomServiceOutput) ToS3SourcePathCustomServiceOutputWithContext(ctx context.Context) S3SourcePathCustomServiceOutput {
+	return o
+}
+
+func (o S3SourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3SourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o S3SourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3SourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type S3SourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (S3SourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3SourcePathCustomService)(nil)).Elem()
+}
+
+func (o S3SourcePathCustomServiceArrayOutput) ToS3SourcePathCustomServiceArrayOutput() S3SourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o S3SourcePathCustomServiceArrayOutput) ToS3SourcePathCustomServiceArrayOutputWithContext(ctx context.Context) S3SourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o S3SourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) S3SourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3SourcePathCustomService {
+		return vs[0].([]S3SourcePathCustomService)[vs[1].(int)]
+	}).(S3SourcePathCustomServiceOutput)
 }
 
 type S3SourcePathSnsTopicOrSubscriptionArn struct {
@@ -34256,6 +38285,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceFilterArrayInput)(nil)).Elem(), AwsInventorySourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathInput)(nil)).Elem(), AwsInventorySourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathPtrInput)(nil)).Elem(), AwsInventorySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathCustomServiceInput)(nil)).Elem(), AwsInventorySourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathCustomServiceArrayInput)(nil)).Elem(), AwsInventorySourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), AwsInventorySourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourcePathTagFilterInput)(nil)).Elem(), AwsInventorySourcePathTagFilterArgs{})
@@ -34268,6 +38299,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourceFilterArrayInput)(nil)).Elem(), AwsXraySourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathInput)(nil)).Elem(), AwsXraySourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathPtrInput)(nil)).Elem(), AwsXraySourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathCustomServiceInput)(nil)).Elem(), AwsXraySourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathCustomServiceArrayInput)(nil)).Elem(), AwsXraySourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), AwsXraySourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), AwsXraySourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsXraySourcePathTagFilterInput)(nil)).Elem(), AwsXraySourcePathTagFilterArgs{})
@@ -34284,6 +38317,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourceFilterArrayInput)(nil)).Elem(), CloudfrontSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathInput)(nil)).Elem(), CloudfrontSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathPtrInput)(nil)).Elem(), CloudfrontSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathCustomServiceInput)(nil)).Elem(), CloudfrontSourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathCustomServiceArrayInput)(nil)).Elem(), CloudfrontSourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), CloudfrontSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudfrontSourcePathTagFilterInput)(nil)).Elem(), CloudfrontSourcePathTagFilterArgs{})
@@ -34296,6 +38331,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourceFilterArrayInput)(nil)).Elem(), CloudtrailSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathInput)(nil)).Elem(), CloudtrailSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathPtrInput)(nil)).Elem(), CloudtrailSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathCustomServiceInput)(nil)).Elem(), CloudtrailSourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathCustomServiceArrayInput)(nil)).Elem(), CloudtrailSourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), CloudtrailSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudtrailSourcePathTagFilterInput)(nil)).Elem(), CloudtrailSourcePathTagFilterArgs{})
@@ -34308,10 +38345,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourceFilterArrayInput)(nil)).Elem(), CloudwatchSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathInput)(nil)).Elem(), CloudwatchSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathPtrInput)(nil)).Elem(), CloudwatchSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathCustomServiceInput)(nil)).Elem(), CloudwatchSourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathCustomServiceArrayInput)(nil)).Elem(), CloudwatchSourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), CloudwatchSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathTagFilterInput)(nil)).Elem(), CloudwatchSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudwatchSourcePathTagFilterArrayInput)(nil)).Elem(), CloudwatchSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentPermissionPermissionInput)(nil)).Elem(), ContentPermissionPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentPermissionPermissionArrayInput)(nil)).Elem(), ContentPermissionPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleAggregationFunctionInput)(nil)).Elem(), CseAggregationRuleAggregationFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleAggregationFunctionArrayInput)(nil)).Elem(), CseAggregationRuleAggregationFunctionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseAggregationRuleEntitySelectorInput)(nil)).Elem(), CseAggregationRuleEntitySelectorArgs{})
@@ -34445,10 +38486,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourceFilterArrayInput)(nil)).Elem(), ElbSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathInput)(nil)).Elem(), ElbSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathPtrInput)(nil)).Elem(), ElbSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathCustomServiceInput)(nil)).Elem(), ElbSourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathCustomServiceArrayInput)(nil)).Elem(), ElbSourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), ElbSourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), ElbSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathTagFilterInput)(nil)).Elem(), ElbSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElbSourcePathTagFilterArrayInput)(nil)).Elem(), ElbSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourceAuthenticationInput)(nil)).Elem(), GcpMetricsSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourceAuthenticationPtrInput)(nil)).Elem(), GcpMetricsSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourceDefaultDateFormatInput)(nil)).Elem(), GcpMetricsSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourceDefaultDateFormatArrayInput)(nil)).Elem(), GcpMetricsSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourceFilterInput)(nil)).Elem(), GcpMetricsSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourceFilterArrayInput)(nil)).Elem(), GcpMetricsSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathInput)(nil)).Elem(), GcpMetricsSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathPtrInput)(nil)).Elem(), GcpMetricsSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathCustomServiceInput)(nil)).Elem(), GcpMetricsSourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathCustomServiceArrayInput)(nil)).Elem(), GcpMetricsSourcePathCustomServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), GcpMetricsSourcePathSnsTopicOrSubscriptionArnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathTagFilterInput)(nil)).Elem(), GcpMetricsSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpMetricsSourcePathTagFilterArrayInput)(nil)).Elem(), GcpMetricsSourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceAuthenticationInput)(nil)).Elem(), GcpSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceAuthenticationPtrInput)(nil)).Elem(), GcpSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpSourceDefaultDateFormatInput)(nil)).Elem(), GcpSourceDefaultDateFormatArgs{})
@@ -34620,6 +38677,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceDefaultDateFormatArrayInput)(nil)).Elem(), HttpSourceDefaultDateFormatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceFilterInput)(nil)).Elem(), HttpSourceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceFilterArrayInput)(nil)).Elem(), HttpSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceAuthenticationInput)(nil)).Elem(), KineisLogSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceAuthenticationPtrInput)(nil)).Elem(), KineisLogSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceDefaultDateFormatInput)(nil)).Elem(), KineisLogSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceDefaultDateFormatArrayInput)(nil)).Elem(), KineisLogSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceFilterInput)(nil)).Elem(), KineisLogSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceFilterArrayInput)(nil)).Elem(), KineisLogSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourcePathInput)(nil)).Elem(), KineisLogSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourcePathPtrInput)(nil)).Elem(), KineisLogSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceAuthenticationInput)(nil)).Elem(), KinesisMetricsSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceAuthenticationPtrInput)(nil)).Elem(), KinesisMetricsSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceDefaultDateFormatInput)(nil)).Elem(), KinesisMetricsSourceDefaultDateFormatArgs{})
@@ -34713,6 +38778,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceFilterArrayInput)(nil)).Elem(), S3AuditSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathInput)(nil)).Elem(), S3AuditSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathPtrInput)(nil)).Elem(), S3AuditSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathCustomServiceInput)(nil)).Elem(), S3AuditSourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathCustomServiceArrayInput)(nil)).Elem(), S3AuditSourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), S3AuditSourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), S3AuditSourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourcePathTagFilterInput)(nil)).Elem(), S3AuditSourcePathTagFilterArgs{})
@@ -34725,6 +38792,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourceFilterArrayInput)(nil)).Elem(), S3SourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathInput)(nil)).Elem(), S3SourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathPtrInput)(nil)).Elem(), S3SourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathCustomServiceInput)(nil)).Elem(), S3SourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathCustomServiceArrayInput)(nil)).Elem(), S3SourcePathCustomServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), S3SourcePathSnsTopicOrSubscriptionArnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), S3SourcePathSnsTopicOrSubscriptionArnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathTagFilterInput)(nil)).Elem(), S3SourcePathTagFilterArgs{})
@@ -34739,6 +38808,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsInventorySourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathPtrOutput{})
+	pulumi.RegisterOutputType(AwsInventorySourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(AwsInventorySourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourcePathTagFilterOutput{})
@@ -34751,6 +38822,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsXraySourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathPtrOutput{})
+	pulumi.RegisterOutputType(AwsXraySourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(AwsXraySourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(AwsXraySourcePathTagFilterOutput{})
@@ -34767,6 +38840,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudfrontSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(CloudfrontSourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(CloudfrontSourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(CloudfrontSourcePathTagFilterOutput{})
@@ -34779,6 +38854,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudtrailSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(CloudtrailSourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(CloudtrailSourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(CloudtrailSourcePathTagFilterOutput{})
@@ -34791,10 +38868,14 @@ func init() {
 	pulumi.RegisterOutputType(CloudwatchSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(CloudwatchSourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(CloudwatchSourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(CloudwatchSourcePathTagFilterArrayOutput{})
+	pulumi.RegisterOutputType(ContentPermissionPermissionOutput{})
+	pulumi.RegisterOutputType(ContentPermissionPermissionArrayOutput{})
 	pulumi.RegisterOutputType(CseAggregationRuleAggregationFunctionOutput{})
 	pulumi.RegisterOutputType(CseAggregationRuleAggregationFunctionArrayOutput{})
 	pulumi.RegisterOutputType(CseAggregationRuleEntitySelectorOutput{})
@@ -34928,10 +39009,26 @@ func init() {
 	pulumi.RegisterOutputType(ElbSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(ElbSourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(ElbSourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(ElbSourcePathTagFilterArrayOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourceAuthenticationOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourceAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourceDefaultDateFormatOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourceDefaultDateFormatArrayOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourceFilterOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourceFilterArrayOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathCustomServiceArrayOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathTagFilterOutput{})
+	pulumi.RegisterOutputType(GcpMetricsSourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(GcpSourceAuthenticationOutput{})
 	pulumi.RegisterOutputType(GcpSourceAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(GcpSourceDefaultDateFormatOutput{})
@@ -35103,6 +39200,14 @@ func init() {
 	pulumi.RegisterOutputType(HttpSourceDefaultDateFormatArrayOutput{})
 	pulumi.RegisterOutputType(HttpSourceFilterOutput{})
 	pulumi.RegisterOutputType(HttpSourceFilterArrayOutput{})
+	pulumi.RegisterOutputType(KineisLogSourceAuthenticationOutput{})
+	pulumi.RegisterOutputType(KineisLogSourceAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(KineisLogSourceDefaultDateFormatOutput{})
+	pulumi.RegisterOutputType(KineisLogSourceDefaultDateFormatArrayOutput{})
+	pulumi.RegisterOutputType(KineisLogSourceFilterOutput{})
+	pulumi.RegisterOutputType(KineisLogSourceFilterArrayOutput{})
+	pulumi.RegisterOutputType(KineisLogSourcePathOutput{})
+	pulumi.RegisterOutputType(KineisLogSourcePathPtrOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceAuthenticationOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceDefaultDateFormatOutput{})
@@ -35196,6 +39301,8 @@ func init() {
 	pulumi.RegisterOutputType(S3AuditSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(S3AuditSourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(S3AuditSourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(S3AuditSourcePathTagFilterOutput{})
@@ -35208,6 +39315,8 @@ func init() {
 	pulumi.RegisterOutputType(S3SourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(S3SourcePathOutput{})
 	pulumi.RegisterOutputType(S3SourcePathPtrOutput{})
+	pulumi.RegisterOutputType(S3SourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(S3SourcePathCustomServiceArrayOutput{})
 	pulumi.RegisterOutputType(S3SourcePathSnsTopicOrSubscriptionArnOutput{})
 	pulumi.RegisterOutputType(S3SourcePathSnsTopicOrSubscriptionArnArrayOutput{})
 	pulumi.RegisterOutputType(S3SourcePathTagFilterOutput{})
