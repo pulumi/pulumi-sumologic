@@ -72,7 +72,12 @@ class _CollectorIngestBudgetAssignmentState:
         pulumi.set(self, "ingest_budget_id", value)
 
 
+warnings.warn("""Use Collector.fields instead to assign an ingest bucket.""", DeprecationWarning)
+
+
 class CollectorIngestBudgetAssignment(pulumi.CustomResource):
+    warnings.warn("""Use Collector.fields instead to assign an ingest bucket.""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -111,6 +116,7 @@ class CollectorIngestBudgetAssignment(pulumi.CustomResource):
                  collector_id: Optional[pulumi.Input[str]] = None,
                  ingest_budget_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""CollectorIngestBudgetAssignment is deprecated: Use Collector.fields instead to assign an ingest bucket.""")
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

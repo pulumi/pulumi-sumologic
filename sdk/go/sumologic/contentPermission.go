@@ -11,13 +11,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a way to configure permissions on a content to share it with a user, a role, or the entire
+// org. You can read more [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content).
+//
+// There are three permission levels `View`, `Edit` and `Manage`. You can read more about different
+// levels [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+//
+// > When you add a new permission to a content, all the lower level permissions are added by default.
+// For example, giving a user "Manage" permission on a content, implicitly gives them "Edit" and "View"
+// permissions on the content. Due to this behavior, when you add a higher level permission, you must
+// also add all the lower level permissions. For example, when you give a user "Edit" permission via
+// the resource, you must give them "View" permission otherwise state and configuration will be out
+// of sync.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+//
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"type":        "FolderSyncDefinition",
+// 			"name":        "test_permission_resource_folder",
+// 			"description": "",
+// 			"children":    []interface{}{},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		permissionTestContent, err := sumologic.NewContent(ctx, "permissionTestContent", &sumologic.ContentArgs{
+// 			ParentId: pulumi.String(personalFolder.Id),
+// 			Config:   pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		role, err := sumologic.LookupRole(ctx, &GetRoleArgs{
+// 			Name: pulumi.StringRef("test_role"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		user, err := sumologic.LookupUser(ctx, &GetUserArgs{
+// 			Email: pulumi.StringRef("user@example.com"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewContentPermission(ctx, "contentPermissionTest", &sumologic.ContentPermissionArgs{
+// 			ContentId:           permissionTestContent.ID(),
+// 			NotifyRecipient:     pulumi.Bool(true),
+// 			NotificationMessage: pulumi.String("You now have the permission to access this content"),
+// 			Permissions: ContentPermissionPermissionArray{
+// 				&ContentPermissionPermissionArgs{
+// 					PermissionName: pulumi.String("View"),
+// 					SourceType:     pulumi.String("role"),
+// 					SourceId:       pulumi.String(role.Id),
+// 				},
+// 				&ContentPermissionPermissionArgs{
+// 					PermissionName: pulumi.String("View"),
+// 					SourceType:     pulumi.String("user"),
+// 					SourceId:       pulumi.String(user.Id),
+// 				},
+// 				&ContentPermissionPermissionArgs{
+// 					PermissionName: pulumi.String("Edit"),
+// 					SourceType:     pulumi.String("user"),
+// 					SourceId:       pulumi.String(user.Id),
+// 				},
+// 				&ContentPermissionPermissionArgs{
+// 					PermissionName: pulumi.String("Manage"),
+// 					SourceType:     pulumi.String("user"),
+// 					SourceId:       pulumi.String(user.Id),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Permisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E
+//
+// ```sh
+//  $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+// ```
 type ContentPermission struct {
 	pulumi.CustomResourceState
 
-	ContentId           pulumi.StringOutput                    `pulumi:"contentId"`
-	NotificationMessage pulumi.StringPtrOutput                 `pulumi:"notificationMessage"`
-	NotifyRecipient     pulumi.BoolOutput                      `pulumi:"notifyRecipient"`
-	Permissions         ContentPermissionPermissionArrayOutput `pulumi:"permissions"`
+	// The identifier of the content item for which you want to update
+	// permissions.
+	ContentId pulumi.StringOutput `pulumi:"contentId"`
+	// The notification message to send to the users.
+	NotificationMessage pulumi.StringPtrOutput `pulumi:"notificationMessage"`
+	// Boolean value. Set it to "true" to notify the recipients by email.
+	NotifyRecipient pulumi.BoolOutput `pulumi:"notifyRecipient"`
+	// Permission block defining permission on the content. See
+	// permission schema for details.
+	Permissions ContentPermissionPermissionArrayOutput `pulumi:"permissions"`
 }
 
 // NewContentPermission registers a new resource with the given unique name, arguments, and options.
@@ -58,17 +166,29 @@ func GetContentPermission(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContentPermission resources.
 type contentPermissionState struct {
-	ContentId           *string                       `pulumi:"contentId"`
-	NotificationMessage *string                       `pulumi:"notificationMessage"`
-	NotifyRecipient     *bool                         `pulumi:"notifyRecipient"`
-	Permissions         []ContentPermissionPermission `pulumi:"permissions"`
+	// The identifier of the content item for which you want to update
+	// permissions.
+	ContentId *string `pulumi:"contentId"`
+	// The notification message to send to the users.
+	NotificationMessage *string `pulumi:"notificationMessage"`
+	// Boolean value. Set it to "true" to notify the recipients by email.
+	NotifyRecipient *bool `pulumi:"notifyRecipient"`
+	// Permission block defining permission on the content. See
+	// permission schema for details.
+	Permissions []ContentPermissionPermission `pulumi:"permissions"`
 }
 
 type ContentPermissionState struct {
-	ContentId           pulumi.StringPtrInput
+	// The identifier of the content item for which you want to update
+	// permissions.
+	ContentId pulumi.StringPtrInput
+	// The notification message to send to the users.
 	NotificationMessage pulumi.StringPtrInput
-	NotifyRecipient     pulumi.BoolPtrInput
-	Permissions         ContentPermissionPermissionArrayInput
+	// Boolean value. Set it to "true" to notify the recipients by email.
+	NotifyRecipient pulumi.BoolPtrInput
+	// Permission block defining permission on the content. See
+	// permission schema for details.
+	Permissions ContentPermissionPermissionArrayInput
 }
 
 func (ContentPermissionState) ElementType() reflect.Type {
@@ -76,18 +196,30 @@ func (ContentPermissionState) ElementType() reflect.Type {
 }
 
 type contentPermissionArgs struct {
-	ContentId           string                        `pulumi:"contentId"`
-	NotificationMessage *string                       `pulumi:"notificationMessage"`
-	NotifyRecipient     bool                          `pulumi:"notifyRecipient"`
-	Permissions         []ContentPermissionPermission `pulumi:"permissions"`
+	// The identifier of the content item for which you want to update
+	// permissions.
+	ContentId string `pulumi:"contentId"`
+	// The notification message to send to the users.
+	NotificationMessage *string `pulumi:"notificationMessage"`
+	// Boolean value. Set it to "true" to notify the recipients by email.
+	NotifyRecipient bool `pulumi:"notifyRecipient"`
+	// Permission block defining permission on the content. See
+	// permission schema for details.
+	Permissions []ContentPermissionPermission `pulumi:"permissions"`
 }
 
 // The set of arguments for constructing a ContentPermission resource.
 type ContentPermissionArgs struct {
-	ContentId           pulumi.StringInput
+	// The identifier of the content item for which you want to update
+	// permissions.
+	ContentId pulumi.StringInput
+	// The notification message to send to the users.
 	NotificationMessage pulumi.StringPtrInput
-	NotifyRecipient     pulumi.BoolInput
-	Permissions         ContentPermissionPermissionArrayInput
+	// Boolean value. Set it to "true" to notify the recipients by email.
+	NotifyRecipient pulumi.BoolInput
+	// Permission block defining permission on the content. See
+	// permission schema for details.
+	Permissions ContentPermissionPermissionArrayInput
 }
 
 func (ContentPermissionArgs) ElementType() reflect.Type {

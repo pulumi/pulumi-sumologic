@@ -21,6 +21,12 @@ class ContentPermissionArgs:
                  notification_message: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ContentPermission resource.
+        :param pulumi.Input[str] content_id: The identifier of the content item for which you want to update
+               permissions.
+        :param pulumi.Input[bool] notify_recipient: Boolean value. Set it to "true" to notify the recipients by email.
+        :param pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]] permissions: Permission block defining permission on the content. See
+               permission schema for details.
+        :param pulumi.Input[str] notification_message: The notification message to send to the users.
         """
         pulumi.set(__self__, "content_id", content_id)
         pulumi.set(__self__, "notify_recipient", notify_recipient)
@@ -31,6 +37,10 @@ class ContentPermissionArgs:
     @property
     @pulumi.getter(name="contentId")
     def content_id(self) -> pulumi.Input[str]:
+        """
+        The identifier of the content item for which you want to update
+        permissions.
+        """
         return pulumi.get(self, "content_id")
 
     @content_id.setter
@@ -40,6 +50,9 @@ class ContentPermissionArgs:
     @property
     @pulumi.getter(name="notifyRecipient")
     def notify_recipient(self) -> pulumi.Input[bool]:
+        """
+        Boolean value. Set it to "true" to notify the recipients by email.
+        """
         return pulumi.get(self, "notify_recipient")
 
     @notify_recipient.setter
@@ -49,6 +62,10 @@ class ContentPermissionArgs:
     @property
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]]:
+        """
+        Permission block defining permission on the content. See
+        permission schema for details.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -58,6 +75,9 @@ class ContentPermissionArgs:
     @property
     @pulumi.getter(name="notificationMessage")
     def notification_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The notification message to send to the users.
+        """
         return pulumi.get(self, "notification_message")
 
     @notification_message.setter
@@ -74,6 +94,12 @@ class _ContentPermissionState:
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]]] = None):
         """
         Input properties used for looking up and filtering ContentPermission resources.
+        :param pulumi.Input[str] content_id: The identifier of the content item for which you want to update
+               permissions.
+        :param pulumi.Input[str] notification_message: The notification message to send to the users.
+        :param pulumi.Input[bool] notify_recipient: Boolean value. Set it to "true" to notify the recipients by email.
+        :param pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]] permissions: Permission block defining permission on the content. See
+               permission schema for details.
         """
         if content_id is not None:
             pulumi.set(__self__, "content_id", content_id)
@@ -87,6 +113,10 @@ class _ContentPermissionState:
     @property
     @pulumi.getter(name="contentId")
     def content_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the content item for which you want to update
+        permissions.
+        """
         return pulumi.get(self, "content_id")
 
     @content_id.setter
@@ -96,6 +126,9 @@ class _ContentPermissionState:
     @property
     @pulumi.getter(name="notificationMessage")
     def notification_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The notification message to send to the users.
+        """
         return pulumi.get(self, "notification_message")
 
     @notification_message.setter
@@ -105,6 +138,9 @@ class _ContentPermissionState:
     @property
     @pulumi.getter(name="notifyRecipient")
     def notify_recipient(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value. Set it to "true" to notify the recipients by email.
+        """
         return pulumi.get(self, "notify_recipient")
 
     @notify_recipient.setter
@@ -114,6 +150,10 @@ class _ContentPermissionState:
     @property
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]]]:
+        """
+        Permission block defining permission on the content. See
+        permission schema for details.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -132,9 +172,83 @@ class ContentPermission(pulumi.CustomResource):
                  permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]]] = None,
                  __props__=None):
         """
-        Create a ContentPermission resource with the given unique name, props, and options.
+        Provides a way to configure permissions on a content to share it with a user, a role, or the entire
+        org. You can read more [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content).
+
+        There are three permission levels `View`, `Edit` and `Manage`. You can read more about different
+        levels [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+
+        > When you add a new permission to a content, all the lower level permissions are added by default.
+        For example, giving a user "Manage" permission on a content, implicitly gives them "Edit" and "View"
+        permissions on the content. Due to this behavior, when you add a higher level permission, you must
+        also add all the lower level permissions. For example, when you give a user "Edit" permission via
+        the resource, you must give them "View" permission otherwise state and configuration will be out
+        of sync.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_sumologic as sumologic
+
+        personal_folder = sumologic.get_personal_folder()
+        permission_test_content = sumologic.Content("permissionTestContent",
+            parent_id=personal_folder.id,
+            config=json.dumps({
+                "type": "FolderSyncDefinition",
+                "name": "test_permission_resource_folder",
+                "description": "",
+                "children": [],
+            }))
+        role = sumologic.get_role(name="test_role")
+        user = sumologic.get_user(email="user@example.com")
+        # Grant user `user@example.com` "Manage" permission and role `test_role`
+        # "View" permission on the folder `test_permission_resource_folder`.
+        content_permission_test = sumologic.ContentPermission("contentPermissionTest",
+            content_id=permission_test_content.id,
+            notify_recipient=True,
+            notification_message="You now have the permission to access this content",
+            permissions=[
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="View",
+                    source_type="role",
+                    source_id=role.id,
+                ),
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="View",
+                    source_type="user",
+                    source_id=user.id,
+                ),
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="Edit",
+                    source_type="user",
+                    source_id=user.id,
+                ),
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="Manage",
+                    source_type="user",
+                    source_id=user.id,
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Permisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E
+
+        ```sh
+         $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_id: The identifier of the content item for which you want to update
+               permissions.
+        :param pulumi.Input[str] notification_message: The notification message to send to the users.
+        :param pulumi.Input[bool] notify_recipient: Boolean value. Set it to "true" to notify the recipients by email.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]] permissions: Permission block defining permission on the content. See
+               permission schema for details.
         """
         ...
     @overload
@@ -143,7 +257,75 @@ class ContentPermission(pulumi.CustomResource):
                  args: ContentPermissionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ContentPermission resource with the given unique name, props, and options.
+        Provides a way to configure permissions on a content to share it with a user, a role, or the entire
+        org. You can read more [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content).
+
+        There are three permission levels `View`, `Edit` and `Manage`. You can read more about different
+        levels [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+
+        > When you add a new permission to a content, all the lower level permissions are added by default.
+        For example, giving a user "Manage" permission on a content, implicitly gives them "Edit" and "View"
+        permissions on the content. Due to this behavior, when you add a higher level permission, you must
+        also add all the lower level permissions. For example, when you give a user "Edit" permission via
+        the resource, you must give them "View" permission otherwise state and configuration will be out
+        of sync.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_sumologic as sumologic
+
+        personal_folder = sumologic.get_personal_folder()
+        permission_test_content = sumologic.Content("permissionTestContent",
+            parent_id=personal_folder.id,
+            config=json.dumps({
+                "type": "FolderSyncDefinition",
+                "name": "test_permission_resource_folder",
+                "description": "",
+                "children": [],
+            }))
+        role = sumologic.get_role(name="test_role")
+        user = sumologic.get_user(email="user@example.com")
+        # Grant user `user@example.com` "Manage" permission and role `test_role`
+        # "View" permission on the folder `test_permission_resource_folder`.
+        content_permission_test = sumologic.ContentPermission("contentPermissionTest",
+            content_id=permission_test_content.id,
+            notify_recipient=True,
+            notification_message="You now have the permission to access this content",
+            permissions=[
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="View",
+                    source_type="role",
+                    source_id=role.id,
+                ),
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="View",
+                    source_type="user",
+                    source_id=user.id,
+                ),
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="Edit",
+                    source_type="user",
+                    source_id=user.id,
+                ),
+                sumologic.ContentPermissionPermissionArgs(
+                    permission_name="Manage",
+                    source_type="user",
+                    source_id=user.id,
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Permisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E
+
+        ```sh
+         $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+        ```
+
         :param str resource_name: The name of the resource.
         :param ContentPermissionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,6 +388,12 @@ class ContentPermission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_id: The identifier of the content item for which you want to update
+               permissions.
+        :param pulumi.Input[str] notification_message: The notification message to send to the users.
+        :param pulumi.Input[bool] notify_recipient: Boolean value. Set it to "true" to notify the recipients by email.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]] permissions: Permission block defining permission on the content. See
+               permission schema for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -220,20 +408,34 @@ class ContentPermission(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentId")
     def content_id(self) -> pulumi.Output[str]:
+        """
+        The identifier of the content item for which you want to update
+        permissions.
+        """
         return pulumi.get(self, "content_id")
 
     @property
     @pulumi.getter(name="notificationMessage")
     def notification_message(self) -> pulumi.Output[Optional[str]]:
+        """
+        The notification message to send to the users.
+        """
         return pulumi.get(self, "notification_message")
 
     @property
     @pulumi.getter(name="notifyRecipient")
     def notify_recipient(self) -> pulumi.Output[bool]:
+        """
+        Boolean value. Set it to "true" to notify the recipients by email.
+        """
         return pulumi.get(self, "notify_recipient")
 
     @property
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Sequence['outputs.ContentPermissionPermission']]:
+        """
+        Permission block defining permission on the content. See
+        permission schema for details.
+        """
         return pulumi.get(self, "permissions")
 

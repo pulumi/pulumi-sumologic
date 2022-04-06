@@ -2046,6 +2046,7 @@
             "properties": {
                 "permissionName": {
                     "type": "string",
+                    "description": "Content permission name. Valid values are `View`, `GrantView`,\n`Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels\n[here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2054,6 +2055,7 @@
                 },
                 "sourceId": {
                     "type": "string",
+                    "description": "An identifier that belongs to the source type chosen above. For example,\nif the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share\ncontent with (same goes for role and org source type).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2062,6 +2064,7 @@
                 },
                 "sourceType": {
                     "type": "string",
+                    "description": "Type of source for the permission. Valid values are `user`, `role`,\nand `org`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2530,6 +2533,60 @@
             "required": [
                 "patternNames"
             ]
+        },
+        "sumologic:index/CseMatchListItem:CseMatchListItem": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Match list item description.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expiration": {
+                    "type": "string",
+                    "description": "Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The internal ID of the match list.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Match list item value.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "id",
+                        "value"
+                    ]
+                }
+            }
         },
         "sumologic:index/CseMatchRuleEntitySelector:CseMatchRuleEntitySelector": {
             "properties": {
@@ -12134,7 +12191,8 @@
                     }
                 },
                 "type": "object"
-            }
+            },
+            "deprecationMessage": "Use Collector.fields instead to assign an ingest bucket."
         },
         "sumologic:index/connection:Connection": {
             "description": "Provides the ability to create, read, delete, update connections.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst connection = new sumologic.Connection(\"connection\", {\n    type: \"WebhookConnection\",\n    description: \"My description\",\n    url: \"https://connection-endpoint.com\",\n    headers: {\n        \"X-Header\": \"my-header\",\n    },\n    customHeaders: {\n        \"X-custom\": \"my-custom-header\",\n    },\n    defaultPayload: `{\n  \"client\" : \"Sumo Logic\",\n  \"eventType\" : \"{{Name}}\",\n  \"description\" : \"{{Description}}\",\n  \"search_url\" : \"{{QueryUrl}}\",\n  \"num_records\" : \"{{NumRawResults}}\",\n  \"search_results\" : \"{{AggregateResultsJson}}\"\n}\n`,\n    webhookType: \"Webhook\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nconnection = sumologic.Connection(\"connection\",\n    type=\"WebhookConnection\",\n    description=\"My description\",\n    url=\"https://connection-endpoint.com\",\n    headers={\n        \"X-Header\": \"my-header\",\n    },\n    custom_headers={\n        \"X-custom\": \"my-custom-header\",\n    },\n    default_payload=\"\"\"{\n  \"client\" : \"Sumo Logic\",\n  \"eventType\" : \"{{Name}}\",\n  \"description\" : \"{{Description}}\",\n  \"search_url\" : \"{{QueryUrl}}\",\n  \"num_records\" : \"{{NumRawResults}}\",\n  \"search_results\" : \"{{AggregateResultsJson}}\"\n}\n\"\"\",\n    webhook_type=\"Webhook\")\n```\n```csharp\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var connection = new SumoLogic.Connection(\"connection\", new SumoLogic.ConnectionArgs\n        {\n            Type = \"WebhookConnection\",\n            Description = \"My description\",\n            Url = \"https://connection-endpoint.com\",\n            Headers = \n            {\n                { \"X-Header\", \"my-header\" },\n            },\n            CustomHeaders = \n            {\n                { \"X-custom\", \"my-custom-header\" },\n            },\n            DefaultPayload = @\"{\n  \"\"client\"\" : \"\"Sumo Logic\"\",\n  \"\"eventType\"\" : \"\"{{Name}}\"\",\n  \"\"description\"\" : \"\"{{Description}}\"\",\n  \"\"search_url\"\" : \"\"{{QueryUrl}}\"\",\n  \"\"num_records\"\" : \"\"{{NumRawResults}}\"\",\n  \"\"search_results\"\" : \"\"{{AggregateResultsJson}}\"\"\n}\n\",\n            WebhookType = \"Webhook\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewConnection(ctx, \"connection\", \u0026sumologic.ConnectionArgs{\n\t\t\tType:        pulumi.String(\"WebhookConnection\"),\n\t\t\tDescription: pulumi.String(\"My description\"),\n\t\t\tUrl:         pulumi.String(\"https://connection-endpoint.com\"),\n\t\t\tHeaders: pulumi.StringMap{\n\t\t\t\t\"X-Header\": pulumi.String(\"my-header\"),\n\t\t\t},\n\t\t\tCustomHeaders: pulumi.StringMap{\n\t\t\t\t\"X-custom\": pulumi.String(\"my-custom-header\"),\n\t\t\t},\n\t\t\tDefaultPayload: pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v\", \"{\\n\", \"  \\\"client\\\" : \\\"Sumo Logic\\\",\\n\", \"  \\\"eventType\\\" : \\\"{{Name}}\\\",\\n\", \"  \\\"description\\\" : \\\"{{Description}}\\\",\\n\", \"  \\\"search_url\\\" : \\\"{{QueryUrl}}\\\",\\n\", \"  \\\"num_records\\\" : \\\"{{NumRawResults}}\\\",\\n\", \"  \\\"search_results\\\" : \\\"{{AggregateResultsJson}}\\\"\\n\", \"}\\n\")),\n\t\t\tWebhookType:    pulumi.String(\"Webhook\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nConnections can be imported using the connection id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/connection:Connection test 1234567890\n```\n\n ",
@@ -12179,7 +12237,7 @@
                 },
                 "webhookType": {
                     "type": "string",
-                    "description": "Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`\n"
+                    "description": "Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`\n"
                 }
             },
             "required": [
@@ -12229,7 +12287,7 @@
                 },
                 "webhookType": {
                     "type": "string",
-                    "description": "Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`\n"
+                    "description": "Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`\n"
                 }
             },
             "requiredInputs": [
@@ -12280,7 +12338,7 @@
                     },
                     "webhookType": {
                         "type": "string",
-                        "description": "Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`\n"
+                        "description": "Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`\n"
                     }
                 },
                 "type": "object"
@@ -12332,21 +12390,26 @@
             }
         },
         "sumologic:index/contentPermission:ContentPermission": {
+            "description": "Provides a way to configure permissions on a content to share it with a user, a role, or the entire\norg. You can read more [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content).\n\nThere are three permission levels `View`, `Edit` and `Manage`. You can read more about different\nlevels [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).\n\n\u003e When you add a new permission to a content, all the lower level permissions are added by default.\nFor example, giving a user \"Manage\" permission on a content, implicitly gives them \"Edit\" and \"View\"\npermissions on the content. Due to this behavior, when you add a higher level permission, you must\nalso add all the lower level permissions. For example, when you give a user \"Edit\" permission via\nthe resource, you must give them \"View\" permission otherwise state and configuration will be out\nof sync.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst personalFolder = sumologic.getPersonalFolder({});\nconst permissionTestContent = new sumologic.Content(\"permissionTestContent\", {\n    parentId: personalFolder.then(personalFolder =\u003e personalFolder.id),\n    config: JSON.stringify({\n        type: \"FolderSyncDefinition\",\n        name: \"test_permission_resource_folder\",\n        description: \"\",\n        children: [],\n    }),\n});\nconst role = sumologic.getRole({\n    name: \"test_role\",\n});\nconst user = sumologic.getUser({\n    email: \"user@example.com\",\n});\n// Grant user `user@example.com` \"Manage\" permission and role `test_role`\n// \"View\" permission on the folder `test_permission_resource_folder`.\nconst contentPermissionTest = new sumologic.ContentPermission(\"contentPermissionTest\", {\n    contentId: permissionTestContent.id,\n    notifyRecipient: true,\n    notificationMessage: \"You now have the permission to access this content\",\n    permissions: [\n        {\n            permissionName: \"View\",\n            sourceType: \"role\",\n            sourceId: role.then(role =\u003e role.id),\n        },\n        {\n            permissionName: \"View\",\n            sourceType: \"user\",\n            sourceId: user.then(user =\u003e user.id),\n        },\n        {\n            permissionName: \"Edit\",\n            sourceType: \"user\",\n            sourceId: user.then(user =\u003e user.id),\n        },\n        {\n            permissionName: \"Manage\",\n            sourceType: \"user\",\n            sourceId: user.then(user =\u003e user.id),\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_sumologic as sumologic\n\npersonal_folder = sumologic.get_personal_folder()\npermission_test_content = sumologic.Content(\"permissionTestContent\",\n    parent_id=personal_folder.id,\n    config=json.dumps({\n        \"type\": \"FolderSyncDefinition\",\n        \"name\": \"test_permission_resource_folder\",\n        \"description\": \"\",\n        \"children\": [],\n    }))\nrole = sumologic.get_role(name=\"test_role\")\nuser = sumologic.get_user(email=\"user@example.com\")\n# Grant user `user@example.com` \"Manage\" permission and role `test_role`\n# \"View\" permission on the folder `test_permission_resource_folder`.\ncontent_permission_test = sumologic.ContentPermission(\"contentPermissionTest\",\n    content_id=permission_test_content.id,\n    notify_recipient=True,\n    notification_message=\"You now have the permission to access this content\",\n    permissions=[\n        sumologic.ContentPermissionPermissionArgs(\n            permission_name=\"View\",\n            source_type=\"role\",\n            source_id=role.id,\n        ),\n        sumologic.ContentPermissionPermissionArgs(\n            permission_name=\"View\",\n            source_type=\"user\",\n            source_id=user.id,\n        ),\n        sumologic.ContentPermissionPermissionArgs(\n            permission_name=\"Edit\",\n            source_type=\"user\",\n            source_id=user.id,\n        ),\n        sumologic.ContentPermissionPermissionArgs(\n            permission_name=\"Manage\",\n            source_type=\"user\",\n            source_id=user.id,\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());\n        var permissionTestContent = new SumoLogic.Content(\"permissionTestContent\", new SumoLogic.ContentArgs\n        {\n            ParentId = personalFolder.Apply(personalFolder =\u003e personalFolder.Id),\n            Config = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"type\", \"FolderSyncDefinition\" },\n                { \"name\", \"test_permission_resource_folder\" },\n                { \"description\", \"\" },\n                { \"children\", new[]\n                    {\n                    }\n                 },\n            }),\n        });\n        var role = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs\n        {\n            Name = \"test_role\",\n        }));\n        var user = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs\n        {\n            Email = \"user@example.com\",\n        }));\n        // Grant user `user@example.com` \"Manage\" permission and role `test_role`\n        // \"View\" permission on the folder `test_permission_resource_folder`.\n        var contentPermissionTest = new SumoLogic.ContentPermission(\"contentPermissionTest\", new SumoLogic.ContentPermissionArgs\n        {\n            ContentId = permissionTestContent.Id,\n            NotifyRecipient = true,\n            NotificationMessage = \"You now have the permission to access this content\",\n            Permissions = \n            {\n                new SumoLogic.Inputs.ContentPermissionPermissionArgs\n                {\n                    PermissionName = \"View\",\n                    SourceType = \"role\",\n                    SourceId = role.Apply(role =\u003e role.Id),\n                },\n                new SumoLogic.Inputs.ContentPermissionPermissionArgs\n                {\n                    PermissionName = \"View\",\n                    SourceType = \"user\",\n                    SourceId = user.Apply(user =\u003e user.Id),\n                },\n                new SumoLogic.Inputs.ContentPermissionPermissionArgs\n                {\n                    PermissionName = \"Edit\",\n                    SourceType = \"user\",\n                    SourceId = user.Apply(user =\u003e user.Id),\n                },\n                new SumoLogic.Inputs.ContentPermissionPermissionArgs\n                {\n                    PermissionName = \"Manage\",\n                    SourceType = \"user\",\n                    SourceId = user.Apply(user =\u003e user.Id),\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpersonalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"type\":        \"FolderSyncDefinition\",\n\t\t\t\"name\":        \"test_permission_resource_folder\",\n\t\t\t\"description\": \"\",\n\t\t\t\"children\":    []interface{}{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\tpermissionTestContent, err := sumologic.NewContent(ctx, \"permissionTestContent\", \u0026sumologic.ContentArgs{\n\t\t\tParentId: pulumi.String(personalFolder.Id),\n\t\t\tConfig:   pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\trole, err := sumologic.LookupRole(ctx, \u0026GetRoleArgs{\n\t\t\tName: pulumi.StringRef(\"test_role\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tuser, err := sumologic.LookupUser(ctx, \u0026GetUserArgs{\n\t\t\tEmail: pulumi.StringRef(\"user@example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewContentPermission(ctx, \"contentPermissionTest\", \u0026sumologic.ContentPermissionArgs{\n\t\t\tContentId:           permissionTestContent.ID(),\n\t\t\tNotifyRecipient:     pulumi.Bool(true),\n\t\t\tNotificationMessage: pulumi.String(\"You now have the permission to access this content\"),\n\t\t\tPermissions: ContentPermissionPermissionArray{\n\t\t\t\t\u0026ContentPermissionPermissionArgs{\n\t\t\t\t\tPermissionName: pulumi.String(\"View\"),\n\t\t\t\t\tSourceType:     pulumi.String(\"role\"),\n\t\t\t\t\tSourceId:       pulumi.String(role.Id),\n\t\t\t\t},\n\t\t\t\t\u0026ContentPermissionPermissionArgs{\n\t\t\t\t\tPermissionName: pulumi.String(\"View\"),\n\t\t\t\t\tSourceType:     pulumi.String(\"user\"),\n\t\t\t\t\tSourceId:       pulumi.String(user.Id),\n\t\t\t\t},\n\t\t\t\t\u0026ContentPermissionPermissionArgs{\n\t\t\t\t\tPermissionName: pulumi.String(\"Edit\"),\n\t\t\t\t\tSourceType:     pulumi.String(\"user\"),\n\t\t\t\t\tSourceId:       pulumi.String(user.Id),\n\t\t\t\t},\n\t\t\t\t\u0026ContentPermissionPermissionArgs{\n\t\t\t\t\tPermissionName: pulumi.String(\"Manage\"),\n\t\t\t\t\tSourceType:     pulumi.String(\"user\"),\n\t\t\t\t\tSourceId:       pulumi.String(user.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPermisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E\n\n```sh\n $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E\n```\n\n ",
             "properties": {
                 "contentId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The identifier of the content item for which you want to update\npermissions.\n"
                 },
                 "notificationMessage": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The notification message to send to the users.\n"
                 },
                 "notifyRecipient": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean value. Set it to \"true\" to notify the recipients by email.\n"
                 },
                 "permissions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/ContentPermissionPermission:ContentPermissionPermission"
-                    }
+                    },
+                    "description": "Permission block defining permission on the content. See\npermission schema for details.\n"
                 }
             },
             "required": [
@@ -12356,19 +12419,23 @@
             ],
             "inputProperties": {
                 "contentId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The identifier of the content item for which you want to update\npermissions.\n"
                 },
                 "notificationMessage": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The notification message to send to the users.\n"
                 },
                 "notifyRecipient": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean value. Set it to \"true\" to notify the recipients by email.\n"
                 },
                 "permissions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/ContentPermissionPermission:ContentPermissionPermission"
-                    }
+                    },
+                    "description": "Permission block defining permission on the content. See\npermission schema for details.\n"
                 }
             },
             "requiredInputs": [
@@ -12380,19 +12447,23 @@
                 "description": "Input properties used for looking up and filtering ContentPermission resources.\n",
                 "properties": {
                     "contentId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The identifier of the content item for which you want to update\npermissions.\n"
                     },
                     "notificationMessage": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The notification message to send to the users.\n"
                     },
                     "notifyRecipient": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Boolean value. Set it to \"true\" to notify the recipients by email.\n"
                     },
                     "permissions": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/sumologic:index/ContentPermissionPermission:ContentPermissionPermission"
-                        }
+                        },
+                        "description": "Permission block defining permission on the content. See\npermission schema for details.\n"
                     }
                 },
                 "type": "object"
@@ -13426,6 +13497,125 @@
                     "unstructuredFields": {
                         "$ref": "#/types/sumologic:index/CseLogMappingUnstructuredFields:CseLogMappingUnstructuredFields",
                         "description": "Unstructured fields for the new log mapping. See unstructured_field_schema for details.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/cseMatchList:CseMatchList": {
+            "description": "Provides a Sumologic CSE Match List.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst matchList = new sumologic.CseMatchList(\"match_list\", {\n    defaultTtl: 10800,\n    description: \"Match list description\",\n    items: [{\n        description: \"IP address\",\n        expiration: \"2022-02-27T04:00:00\",\n        value: \"192.168.0.1\",\n    }],\n    targetColumn: \"SrcIp\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmatch_list = sumologic.CseMatchList(\"matchList\",\n    default_ttl=10800,\n    description=\"Match list description\",\n    items=[sumologic.CseMatchListItemArgs(\n        description=\"IP address\",\n        expiration=\"2022-02-27T04:00:00\",\n        value=\"192.168.0.1\",\n    )],\n    target_column=\"SrcIp\")\n```\n```csharp\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var matchList = new SumoLogic.CseMatchList(\"matchList\", new SumoLogic.CseMatchListArgs\n        {\n            DefaultTtl = 10800,\n            Description = \"Match list description\",\n            Items = \n            {\n                new SumoLogic.Inputs.CseMatchListItemArgs\n                {\n                    Description = \"IP address\",\n                    Expiration = \"2022-02-27T04:00:00\",\n                    Value = \"192.168.0.1\",\n                },\n            },\n            TargetColumn = \"SrcIp\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseMatchList(ctx, \"matchList\", \u0026sumologic.CseMatchListArgs{\n\t\t\tDefaultTtl:  pulumi.Int(10800),\n\t\t\tDescription: pulumi.String(\"Match list description\"),\n\t\t\tItems: CseMatchListItemArray{\n\t\t\t\t\u0026CseMatchListItemArgs{\n\t\t\t\t\tDescription: pulumi.String(\"IP address\"),\n\t\t\t\t\tExpiration:  pulumi.String(\"2022-02-27T04:00:00\"),\n\t\t\t\t\tValue:       pulumi.String(\"192.168.0.1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTargetColumn: pulumi.String(\"SrcIp\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nMatch List can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseMatchList:CseMatchList match_list id\n```\n\n ",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "defaultTtl": {
+                    "type": "integer",
+                    "description": "The default time to live for match list items added through the UI. Specified in seconds.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Match list item description.\n"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseMatchListItem:CseMatchListItem"
+                    },
+                    "description": "List of match list items. See match_list_item schema for details.\n"
+                },
+                "lastUpdated": {
+                    "type": "string"
+                },
+                "lastUpdatedBy": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Match list name.\n"
+                },
+                "targetColumn": {
+                    "type": "string",
+                    "description": "Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)\n"
+                }
+            },
+            "required": [
+                "created",
+                "createdBy",
+                "description",
+                "lastUpdated",
+                "lastUpdatedBy",
+                "name",
+                "targetColumn"
+            ],
+            "inputProperties": {
+                "defaultTtl": {
+                    "type": "integer",
+                    "description": "The default time to live for match list items added through the UI. Specified in seconds.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Match list item description.\n"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseMatchListItem:CseMatchListItem"
+                    },
+                    "description": "List of match list items. See match_list_item schema for details.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Match list name.\n"
+                },
+                "targetColumn": {
+                    "type": "string",
+                    "description": "Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "targetColumn"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CseMatchList resources.\n",
+                "properties": {
+                    "created": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "defaultTtl": {
+                        "type": "integer",
+                        "description": "The default time to live for match list items added through the UI. Specified in seconds.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Match list item description.\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/CseMatchListItem:CseMatchListItem"
+                        },
+                        "description": "List of match list items. See match_list_item schema for details.\n"
+                    },
+                    "lastUpdated": {
+                        "type": "string"
+                    },
+                    "lastUpdatedBy": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Match list name.\n"
+                    },
+                    "targetColumn": {
+                        "type": "string",
+                        "description": "Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)\n"
                     }
                 },
                 "type": "object"

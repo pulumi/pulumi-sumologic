@@ -58,6 +58,7 @@ __all__ = [
     'CseLogMappingFieldLookup',
     'CseLogMappingStructuredInput',
     'CseLogMappingUnstructuredFields',
+    'CseMatchListItem',
     'CseMatchRuleEntitySelector',
     'CseMatchRuleSeverityMapping',
     'CseMatchRuleSeverityMappingMapping',
@@ -2814,6 +2815,16 @@ class ContentPermissionPermission(dict):
                  permission_name: str,
                  source_id: str,
                  source_type: str):
+        """
+        :param str permission_name: Content permission name. Valid values are `View`, `GrantView`,
+               `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+               [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+        :param str source_id: An identifier that belongs to the source type chosen above. For example,
+               if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+               content with (same goes for role and org source type).
+        :param str source_type: Type of source for the permission. Valid values are `user`, `role`,
+               and `org`.
+        """
         pulumi.set(__self__, "permission_name", permission_name)
         pulumi.set(__self__, "source_id", source_id)
         pulumi.set(__self__, "source_type", source_type)
@@ -2821,16 +2832,30 @@ class ContentPermissionPermission(dict):
     @property
     @pulumi.getter(name="permissionName")
     def permission_name(self) -> str:
+        """
+        Content permission name. Valid values are `View`, `GrantView`,
+        `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+        [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+        """
         return pulumi.get(self, "permission_name")
 
     @property
     @pulumi.getter(name="sourceId")
     def source_id(self) -> str:
+        """
+        An identifier that belongs to the source type chosen above. For example,
+        if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+        content with (same goes for role and org source type).
+        """
         return pulumi.get(self, "source_id")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
+        """
+        Type of source for the permission. Valid values are `user`, `role`,
+        and `org`.
+        """
         return pulumi.get(self, "source_type")
 
 
@@ -3453,6 +3478,59 @@ class CseLogMappingUnstructuredFields(dict):
         List of grok pattern names.
         """
         return pulumi.get(self, "pattern_names")
+
+
+@pulumi.output_type
+class CseMatchListItem(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 value: str,
+                 expiration: Optional[str] = None,
+                 id: Optional[str] = None):
+        """
+        :param str description: Match list item description.
+        :param str value: Match list item value.
+        :param str expiration: Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+        :param str id: The internal ID of the match list.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "value", value)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Match list item description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Match list item value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[str]:
+        """
+        Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+        """
+        return pulumi.get(self, "expiration")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The internal ID of the match list.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

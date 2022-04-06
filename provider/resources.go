@@ -92,36 +92,40 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"sumologic_collector":                          {Tok: makeResource(mainMod, "Collector")},
-			"sumologic_http_source":                        {Tok: makeResource(mainMod, "HttpSource")},
-			"sumologic_gcp_source":                         {Tok: makeResource(mainMod, "GcpSource")},
-			"sumologic_polling_source":                     {Tok: makeResource(mainMod, "PollingSource")},
-			"sumologic_s3_source":                          {Tok: makeResource(mainMod, "S3Source")},
-			"sumologic_s3_audit_source":                    {Tok: makeResource(mainMod, "S3AuditSource")},
-			"sumologic_cloudwatch_source":                  {Tok: makeResource(mainMod, "CloudwatchSource")},
-			"sumologic_aws_inventory_source":               {Tok: makeResource(mainMod, "AwsInventorySource")},
-			"sumologic_aws_xray_source":                    {Tok: makeResource(mainMod, "AwsXraySource")},
-			"sumologic_cloudtrail_source":                  {Tok: makeResource(mainMod, "CloudtrailSource")},
-			"sumologic_elb_source":                         {Tok: makeResource(mainMod, "ElbSource")},
-			"sumologic_cloudfront_source":                  {Tok: makeResource(mainMod, "CloudfrontSource")},
-			"sumologic_cloud_to_cloud_source":              {Tok: makeResource(mainMod, "CloudToCloudSource")},
-			"sumologic_metadata_source":                    {Tok: makeResource(mainMod, "MetadataSource")},
-			"sumologic_cloudsyslog_source":                 {Tok: makeResource(mainMod, "CloudSyslogSource")},
-			"sumologic_role":                               {Tok: makeResource(mainMod, "Role")},
-			"sumologic_user":                               {Tok: makeResource(mainMod, "User")},
-			"sumologic_ingest_budget":                      {Tok: makeResource(mainMod, "IngestBudget")},
-			"sumologic_collector_ingest_budget_assignment": {Tok: makeResource(mainMod, "CollectorIngestBudgetAssignment")},
-			"sumologic_folder":                             {Tok: makeResource(mainMod, "Folder")},
-			"sumologic_content":                            {Tok: makeResource(mainMod, "Content")},
-			"sumologic_scheduled_view":                     {Tok: makeResource(mainMod, "ScheduledView")},
-			"sumologic_partition":                          {Tok: makeResource(mainMod, "Partition")},
-			"sumologic_field_extraction_rule":              {Tok: makeResource(mainMod, "FieldExtractionRule")},
-			"sumologic_connection":                         {Tok: makeResource(mainMod, "Connection")},
-			"sumologic_monitor":                            {Tok: makeResource(mainMod, "Monitor")},
-			"sumologic_monitor_folder":                     {Tok: makeResource(mainMod, "MonitorFolder")},
-			"sumologic_ingest_budget_v2":                   {Tok: makeResource(mainMod, "IngestBudgetV2")},
-			"sumologic_field":                              {Tok: makeResource(mainMod, "Field")},
-			"sumologic_lookup_table":                       {Tok: makeResource(mainMod, "LookupTable")},
+			"sumologic_collector":             {Tok: makeResource(mainMod, "Collector")},
+			"sumologic_http_source":           {Tok: makeResource(mainMod, "HttpSource")},
+			"sumologic_gcp_source":            {Tok: makeResource(mainMod, "GcpSource")},
+			"sumologic_polling_source":        {Tok: makeResource(mainMod, "PollingSource")},
+			"sumologic_s3_source":             {Tok: makeResource(mainMod, "S3Source")},
+			"sumologic_s3_audit_source":       {Tok: makeResource(mainMod, "S3AuditSource")},
+			"sumologic_cloudwatch_source":     {Tok: makeResource(mainMod, "CloudwatchSource")},
+			"sumologic_aws_inventory_source":  {Tok: makeResource(mainMod, "AwsInventorySource")},
+			"sumologic_aws_xray_source":       {Tok: makeResource(mainMod, "AwsXraySource")},
+			"sumologic_cloudtrail_source":     {Tok: makeResource(mainMod, "CloudtrailSource")},
+			"sumologic_elb_source":            {Tok: makeResource(mainMod, "ElbSource")},
+			"sumologic_cloudfront_source":     {Tok: makeResource(mainMod, "CloudfrontSource")},
+			"sumologic_cloud_to_cloud_source": {Tok: makeResource(mainMod, "CloudToCloudSource")},
+			"sumologic_metadata_source":       {Tok: makeResource(mainMod, "MetadataSource")},
+			"sumologic_cloudsyslog_source":    {Tok: makeResource(mainMod, "CloudSyslogSource")},
+			"sumologic_role":                  {Tok: makeResource(mainMod, "Role")},
+			"sumologic_user":                  {Tok: makeResource(mainMod, "User")},
+			"sumologic_ingest_budget":         {Tok: makeResource(mainMod, "IngestBudget")},
+			"sumologic_collector_ingest_budget_assignment": {
+				Tok:                makeResource(mainMod, "CollectorIngestBudgetAssignment"),
+				DeprecationMessage: "Use Collector.fields instead to assign an ingest bucket.",
+				Docs:               noUpstreamDocs(),
+			},
+			"sumologic_folder":                {Tok: makeResource(mainMod, "Folder")},
+			"sumologic_content":               {Tok: makeResource(mainMod, "Content")},
+			"sumologic_scheduled_view":        {Tok: makeResource(mainMod, "ScheduledView")},
+			"sumologic_partition":             {Tok: makeResource(mainMod, "Partition")},
+			"sumologic_field_extraction_rule": {Tok: makeResource(mainMod, "FieldExtractionRule")},
+			"sumologic_connection":            {Tok: makeResource(mainMod, "Connection")},
+			"sumologic_monitor":               {Tok: makeResource(mainMod, "Monitor")},
+			"sumologic_monitor_folder":        {Tok: makeResource(mainMod, "MonitorFolder")},
+			"sumologic_ingest_budget_v2":      {Tok: makeResource(mainMod, "IngestBudgetV2")},
+			"sumologic_field":                 {Tok: makeResource(mainMod, "Field")},
+			"sumologic_lookup_table":          {Tok: makeResource(mainMod, "LookupTable")},
 			"sumologic_subdomain": {
 				Tok: makeResource(mainMod, "Subdomain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -150,16 +154,33 @@ func Provider() tfbridge.ProviderInfo {
 			"sumologic_hierarchy":                     {Tok: makeResource(mainMod, "Hierarchy")},
 			"sumologic_policies":                      {Tok: makeResource(mainMod, "Policies")},
 			"sumologic_token":                         {Tok: makeResource(mainMod, "Token")},
-			"sumologic_content_permission":            {Tok: makeResource(mainMod, "ContentPermission")},
-			"sumologic_gcp_metrics_source":            {Tok: makeResource(mainMod, "GcpMetricsSource")},
-			"sumologic_kinesis_log_source":            {Tok: makeResource(mainMod, "KineisLogSource")},
+			"sumologic_content_permission": {
+				Tok: makeResource(mainMod, "ContentPermission"),
+				Docs: &tfbridge.DocInfo{
+					Source: "content_permission_source.html.markdown",
+				},
+			},
+			"sumologic_gcp_metrics_source": {Tok: makeResource(mainMod, "GcpMetricsSource")},
+			"sumologic_kinesis_log_source": {Tok: makeResource(mainMod, "KineisLogSource")},
+			"sumologic_cse_match_list": {
+				Tok: makeResource(mainMod, "CseMatchList"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cse_log_match_list.html.markdown",
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"sumologic_caller_identity":                {Tok: makeDataSource(mainMod, "getCallerIdentity")},
-			"sumologic_collector":                      {Tok: makeDataSource(mainMod, "getCollector")},
-			"sumologic_http_source":                    {Tok: makeDataSource(mainMod, "getHttpSource")},
-			"sumologic_personal_folder":                {Tok: makeDataSource(mainMod, "getPersonalFolder")},
-			"sumologic_my_user_id":                     {Tok: makeDataSource(mainMod, "getMyUserId")},
+			"sumologic_caller_identity": {Tok: makeDataSource(mainMod, "getCallerIdentity")},
+			"sumologic_collector":       {Tok: makeDataSource(mainMod, "getCollector")},
+			"sumologic_http_source":     {Tok: makeDataSource(mainMod, "getHttpSource")},
+			"sumologic_personal_folder": {Tok: makeDataSource(mainMod, "getPersonalFolder")},
+			"sumologic_my_user_id": {
+				Tok: makeDataSource(mainMod, "getMyUserId"),
+				// This data source is not public in the upstream docs and is probably superceded by getCallerIdentity,
+				// but there are no comments in the upstream repo at the time of writing that directly indicate that
+				// this data source is deprecated:
+				Docs: noUpstreamDocs(),
+			},
 			"sumologic_role":                           {Tok: makeDataSource(mainMod, "getRole")},
 			"sumologic_admin_recommended_folder":       {Tok: makeDataSource(mainMod, "getAdminRecommendedFolder")},
 			"sumologic_cse_log_mapping_vendor_product": {Tok: makeDataSource(mainMod, "getCseLogMappingVendorProduct")},
@@ -199,4 +220,10 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func noUpstreamDocs() *tfbridge.DocInfo {
+	return &tfbridge.DocInfo{
+		Markdown: []byte(" "),
+	}
 }

@@ -62,6 +62,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CseInsightsStatus{}
 	case "sumologic:index/cseLogMapping:CseLogMapping":
 		r = &CseLogMapping{}
+	case "sumologic:index/cseMatchList:CseMatchList":
+		r = &CseMatchList{}
 	case "sumologic:index/cseMatchRule:CseMatchRule":
 		r = &CseMatchRule{}
 	case "sumologic:index/cseNetworkBlock:CseNetworkBlock":
@@ -262,6 +264,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/cseLogMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseMatchList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

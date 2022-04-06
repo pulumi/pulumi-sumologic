@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SumoLogic
 {
+    [Obsolete(@"Use Collector.fields instead to assign an ingest bucket.")]
     [SumoLogicResourceType("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment")]
     public partial class CollectorIngestBudgetAssignment : Pulumi.CustomResource
     {

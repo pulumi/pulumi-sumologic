@@ -74,7 +74,7 @@ type Connection struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// URL for the webhook connection.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType pulumi.StringPtrOutput `pulumi:"webhookType"`
 }
 
@@ -132,7 +132,7 @@ type connectionState struct {
 	Type *string `pulumi:"type"`
 	// URL for the webhook connection.
 	Url *string `pulumi:"url"`
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType *string `pulumi:"webhookType"`
 }
 
@@ -153,7 +153,7 @@ type ConnectionState struct {
 	Type pulumi.StringPtrInput
 	// URL for the webhook connection.
 	Url pulumi.StringPtrInput
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType pulumi.StringPtrInput
 }
 
@@ -178,7 +178,7 @@ type connectionArgs struct {
 	Type string `pulumi:"type"`
 	// URL for the webhook connection.
 	Url string `pulumi:"url"`
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType *string `pulumi:"webhookType"`
 }
 
@@ -200,7 +200,7 @@ type ConnectionArgs struct {
 	Type pulumi.StringInput
 	// URL for the webhook connection.
 	Url pulumi.StringInput
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, and `ServiceNow`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType pulumi.StringPtrInput
 }
 
