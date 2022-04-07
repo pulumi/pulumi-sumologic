@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: Use Collector.fields instead to assign an ingest bucket.
 type CollectorIngestBudgetAssignment struct {
 	pulumi.CustomResourceState
 

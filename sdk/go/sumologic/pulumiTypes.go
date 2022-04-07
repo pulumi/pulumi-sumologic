@@ -5953,9 +5953,17 @@ func (o CloudwatchSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) Cloud
 }
 
 type ContentPermissionPermission struct {
+	// Content permission name. Valid values are `View`, `GrantView`,
+	// `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+	// [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
 	PermissionName string `pulumi:"permissionName"`
-	SourceId       string `pulumi:"sourceId"`
-	SourceType     string `pulumi:"sourceType"`
+	// An identifier that belongs to the source type chosen above. For example,
+	// if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+	// content with (same goes for role and org source type).
+	SourceId string `pulumi:"sourceId"`
+	// Type of source for the permission. Valid values are `user`, `role`,
+	// and `org`.
+	SourceType string `pulumi:"sourceType"`
 }
 
 // ContentPermissionPermissionInput is an input type that accepts ContentPermissionPermissionArgs and ContentPermissionPermissionOutput values.
@@ -5970,9 +5978,17 @@ type ContentPermissionPermissionInput interface {
 }
 
 type ContentPermissionPermissionArgs struct {
+	// Content permission name. Valid values are `View`, `GrantView`,
+	// `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+	// [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
 	PermissionName pulumi.StringInput `pulumi:"permissionName"`
-	SourceId       pulumi.StringInput `pulumi:"sourceId"`
-	SourceType     pulumi.StringInput `pulumi:"sourceType"`
+	// An identifier that belongs to the source type chosen above. For example,
+	// if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+	// content with (same goes for role and org source type).
+	SourceId pulumi.StringInput `pulumi:"sourceId"`
+	// Type of source for the permission. Valid values are `user`, `role`,
+	// and `org`.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
 }
 
 func (ContentPermissionPermissionArgs) ElementType() reflect.Type {
@@ -6026,14 +6042,22 @@ func (o ContentPermissionPermissionOutput) ToContentPermissionPermissionOutputWi
 	return o
 }
 
+// Content permission name. Valid values are `View`, `GrantView`,
+// `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+// [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
 func (o ContentPermissionPermissionOutput) PermissionName() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentPermissionPermission) string { return v.PermissionName }).(pulumi.StringOutput)
 }
 
+// An identifier that belongs to the source type chosen above. For example,
+// if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+// content with (same goes for role and org source type).
 func (o ContentPermissionPermissionOutput) SourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentPermissionPermission) string { return v.SourceId }).(pulumi.StringOutput)
 }
 
+// Type of source for the permission. Valid values are `user`, `role`,
+// and `org`.
 func (o ContentPermissionPermissionOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentPermissionPermission) string { return v.SourceType }).(pulumi.StringOutput)
 }
@@ -7384,6 +7408,130 @@ func (o CseLogMappingUnstructuredFieldsPtrOutput) PatternNames() pulumi.StringAr
 		}
 		return v.PatternNames
 	}).(pulumi.StringArrayOutput)
+}
+
+type CseMatchListItem struct {
+	// Match list item description.
+	Description string `pulumi:"description"`
+	// Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+	Expiration *string `pulumi:"expiration"`
+	// The internal ID of the match list.
+	Id *string `pulumi:"id"`
+	// Match list item value.
+	Value string `pulumi:"value"`
+}
+
+// CseMatchListItemInput is an input type that accepts CseMatchListItemArgs and CseMatchListItemOutput values.
+// You can construct a concrete instance of `CseMatchListItemInput` via:
+//
+//          CseMatchListItemArgs{...}
+type CseMatchListItemInput interface {
+	pulumi.Input
+
+	ToCseMatchListItemOutput() CseMatchListItemOutput
+	ToCseMatchListItemOutputWithContext(context.Context) CseMatchListItemOutput
+}
+
+type CseMatchListItemArgs struct {
+	// Match list item description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	// The internal ID of the match list.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Match list item value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (CseMatchListItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CseMatchListItem)(nil)).Elem()
+}
+
+func (i CseMatchListItemArgs) ToCseMatchListItemOutput() CseMatchListItemOutput {
+	return i.ToCseMatchListItemOutputWithContext(context.Background())
+}
+
+func (i CseMatchListItemArgs) ToCseMatchListItemOutputWithContext(ctx context.Context) CseMatchListItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CseMatchListItemOutput)
+}
+
+// CseMatchListItemArrayInput is an input type that accepts CseMatchListItemArray and CseMatchListItemArrayOutput values.
+// You can construct a concrete instance of `CseMatchListItemArrayInput` via:
+//
+//          CseMatchListItemArray{ CseMatchListItemArgs{...} }
+type CseMatchListItemArrayInput interface {
+	pulumi.Input
+
+	ToCseMatchListItemArrayOutput() CseMatchListItemArrayOutput
+	ToCseMatchListItemArrayOutputWithContext(context.Context) CseMatchListItemArrayOutput
+}
+
+type CseMatchListItemArray []CseMatchListItemInput
+
+func (CseMatchListItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CseMatchListItem)(nil)).Elem()
+}
+
+func (i CseMatchListItemArray) ToCseMatchListItemArrayOutput() CseMatchListItemArrayOutput {
+	return i.ToCseMatchListItemArrayOutputWithContext(context.Background())
+}
+
+func (i CseMatchListItemArray) ToCseMatchListItemArrayOutputWithContext(ctx context.Context) CseMatchListItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CseMatchListItemArrayOutput)
+}
+
+type CseMatchListItemOutput struct{ *pulumi.OutputState }
+
+func (CseMatchListItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CseMatchListItem)(nil)).Elem()
+}
+
+func (o CseMatchListItemOutput) ToCseMatchListItemOutput() CseMatchListItemOutput {
+	return o
+}
+
+func (o CseMatchListItemOutput) ToCseMatchListItemOutputWithContext(ctx context.Context) CseMatchListItemOutput {
+	return o
+}
+
+// Match list item description.
+func (o CseMatchListItemOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CseMatchListItem) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+func (o CseMatchListItemOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CseMatchListItem) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// The internal ID of the match list.
+func (o CseMatchListItemOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CseMatchListItem) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Match list item value.
+func (o CseMatchListItemOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CseMatchListItem) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CseMatchListItemArrayOutput struct{ *pulumi.OutputState }
+
+func (CseMatchListItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CseMatchListItem)(nil)).Elem()
+}
+
+func (o CseMatchListItemArrayOutput) ToCseMatchListItemArrayOutput() CseMatchListItemArrayOutput {
+	return o
+}
+
+func (o CseMatchListItemArrayOutput) ToCseMatchListItemArrayOutputWithContext(ctx context.Context) CseMatchListItemArrayOutput {
+	return o
+}
+
+func (o CseMatchListItemArrayOutput) Index(i pulumi.IntInput) CseMatchListItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CseMatchListItem {
+		return vs[0].([]CseMatchListItem)[vs[1].(int)]
+	}).(CseMatchListItemOutput)
 }
 
 type CseMatchRuleEntitySelector struct {
@@ -38373,6 +38521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingStructuredInputArrayInput)(nil)).Elem(), CseLogMappingStructuredInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingUnstructuredFieldsInput)(nil)).Elem(), CseLogMappingUnstructuredFieldsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseLogMappingUnstructuredFieldsPtrInput)(nil)).Elem(), CseLogMappingUnstructuredFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchListItemInput)(nil)).Elem(), CseMatchListItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchListItemArrayInput)(nil)).Elem(), CseMatchListItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleEntitySelectorInput)(nil)).Elem(), CseMatchRuleEntitySelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleEntitySelectorArrayInput)(nil)).Elem(), CseMatchRuleEntitySelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CseMatchRuleSeverityMappingInput)(nil)).Elem(), CseMatchRuleSeverityMappingArgs{})
@@ -38896,6 +39046,8 @@ func init() {
 	pulumi.RegisterOutputType(CseLogMappingStructuredInputArrayOutput{})
 	pulumi.RegisterOutputType(CseLogMappingUnstructuredFieldsOutput{})
 	pulumi.RegisterOutputType(CseLogMappingUnstructuredFieldsPtrOutput{})
+	pulumi.RegisterOutputType(CseMatchListItemOutput{})
+	pulumi.RegisterOutputType(CseMatchListItemArrayOutput{})
 	pulumi.RegisterOutputType(CseMatchRuleEntitySelectorOutput{})
 	pulumi.RegisterOutputType(CseMatchRuleEntitySelectorArrayOutput{})
 	pulumi.RegisterOutputType(CseMatchRuleSeverityMappingOutput{})

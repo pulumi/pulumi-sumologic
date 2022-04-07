@@ -450,8 +450,22 @@ export interface CloudwatchSourcePathTagFilter {
 }
 
 export interface ContentPermissionPermission {
+    /**
+     * Content permission name. Valid values are `View`, `GrantView`,
+     * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+     * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+     */
     permissionName: string;
+    /**
+     * An identifier that belongs to the source type chosen above. For example,
+     * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+     * content with (same goes for role and org source type).
+     */
     sourceId: string;
+    /**
+     * Type of source for the permission. Valid values are `user`, `role`,
+     * and `org`.
+     */
     sourceType: string;
 }
 
@@ -629,6 +643,25 @@ export interface CseLogMappingUnstructuredFields {
      * List of grok pattern names.
      */
     patternNames: string[];
+}
+
+export interface CseMatchListItem {
+    /**
+     * Match list item description.
+     */
+    description: string;
+    /**
+     * Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+     */
+    expiration?: string;
+    /**
+     * The internal ID of the match list.
+     */
+    id: string;
+    /**
+     * Match list item value.
+     */
+    value: string;
 }
 
 export interface CseMatchRuleEntitySelector {

@@ -26,6 +26,7 @@ from .cse_insights_configuration import *
 from .cse_insights_resolution import *
 from .cse_insights_status import *
 from .cse_log_mapping import *
+from .cse_match_list import *
 from .cse_match_rule import *
 from .cse_network_block import *
 from .cse_rule_tuning_expression import *
@@ -248,6 +249,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/cseLogMapping:CseLogMapping": "CseLogMapping"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/cseMatchList",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseMatchList:CseMatchList": "CseMatchList"
   }
  },
  {

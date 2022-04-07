@@ -36,6 +36,7 @@
         "cseInsightsResolution.ts",
         "cseInsightsStatus.ts",
         "cseLogMapping.ts",
+        "cseMatchList.ts",
         "cseMatchRule.ts",
         "cseNetworkBlock.ts",
         "cseRuleTuningExpression.ts",

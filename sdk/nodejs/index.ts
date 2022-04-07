@@ -26,6 +26,7 @@ export * from "./cseInsightsConfiguration";
 export * from "./cseInsightsResolution";
 export * from "./cseInsightsStatus";
 export * from "./cseLogMapping";
+export * from "./cseMatchList";
 export * from "./cseMatchRule";
 export * from "./cseNetworkBlock";
 export * from "./cseRuleTuningExpression";
@@ -101,6 +102,7 @@ import { CseInsightsConfiguration } from "./cseInsightsConfiguration";
 import { CseInsightsResolution } from "./cseInsightsResolution";
 import { CseInsightsStatus } from "./cseInsightsStatus";
 import { CseLogMapping } from "./cseLogMapping";
+import { CseMatchList } from "./cseMatchList";
 import { CseMatchRule } from "./cseMatchRule";
 import { CseNetworkBlock } from "./cseNetworkBlock";
 import { CseRuleTuningExpression } from "./cseRuleTuningExpression";
@@ -181,6 +183,8 @@ const _module = {
                 return new CseInsightsStatus(name, <any>undefined, { urn })
             case "sumologic:index/cseLogMapping:CseLogMapping":
                 return new CseLogMapping(name, <any>undefined, { urn })
+            case "sumologic:index/cseMatchList:CseMatchList":
+                return new CseMatchList(name, <any>undefined, { urn })
             case "sumologic:index/cseMatchRule:CseMatchRule":
                 return new CseMatchRule(name, <any>undefined, { urn })
             case "sumologic:index/cseNetworkBlock:CseNetworkBlock":
@@ -273,6 +277,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsConfigurati
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsResolution", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsStatus", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseLogMapping", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchList", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseNetworkBlock", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseRuleTuningExpression", _module)

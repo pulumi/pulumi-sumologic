@@ -9,18 +9,129 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SumoLogic
 {
+    /// <summary>
+    /// Provides a way to configure permissions on a content to share it with a user, a role, or the entire
+    /// org. You can read more [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content).
+    /// 
+    /// There are three permission levels `View`, `Edit` and `Manage`. You can read more about different
+    /// levels [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+    /// 
+    /// &gt; When you add a new permission to a content, all the lower level permissions are added by default.
+    /// For example, giving a user "Manage" permission on a content, implicitly gives them "Edit" and "View"
+    /// permissions on the content. Due to this behavior, when you add a higher level permission, you must
+    /// also add all the lower level permissions. For example, when you give a user "Edit" permission via
+    /// the resource, you must give them "View" permission otherwise state and configuration will be out
+    /// of sync.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
+    ///         var permissionTestContent = new SumoLogic.Content("permissionTestContent", new SumoLogic.ContentArgs
+    ///         {
+    ///             ParentId = personalFolder.Apply(personalFolder =&gt; personalFolder.Id),
+    ///             Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "type", "FolderSyncDefinition" },
+    ///                 { "name", "test_permission_resource_folder" },
+    ///                 { "description", "" },
+    ///                 { "children", new[]
+    ///                     {
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
+    ///         var role = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
+    ///         {
+    ///             Name = "test_role",
+    ///         }));
+    ///         var user = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
+    ///         {
+    ///             Email = "user@example.com",
+    ///         }));
+    ///         // Grant user `user@example.com` "Manage" permission and role `test_role`
+    ///         // "View" permission on the folder `test_permission_resource_folder`.
+    ///         var contentPermissionTest = new SumoLogic.ContentPermission("contentPermissionTest", new SumoLogic.ContentPermissionArgs
+    ///         {
+    ///             ContentId = permissionTestContent.Id,
+    ///             NotifyRecipient = true,
+    ///             NotificationMessage = "You now have the permission to access this content",
+    ///             Permissions = 
+    ///             {
+    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///                 {
+    ///                     PermissionName = "View",
+    ///                     SourceType = "role",
+    ///                     SourceId = role.Apply(role =&gt; role.Id),
+    ///                 },
+    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///                 {
+    ///                     PermissionName = "View",
+    ///                     SourceType = "user",
+    ///                     SourceId = user.Apply(user =&gt; user.Id),
+    ///                 },
+    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///                 {
+    ///                     PermissionName = "Edit",
+    ///                     SourceType = "user",
+    ///                     SourceId = user.Apply(user =&gt; user.Id),
+    ///                 },
+    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///                 {
+    ///                     PermissionName = "Manage",
+    ///                     SourceType = "user",
+    ///                     SourceId = user.Apply(user =&gt; user.Id),
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Permisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E
+    /// 
+    /// ```sh
+    ///  $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+    /// ```
+    /// </summary>
     [SumoLogicResourceType("sumologic:index/contentPermission:ContentPermission")]
     public partial class ContentPermission : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The identifier of the content item for which you want to update
+        /// permissions.
+        /// </summary>
         [Output("contentId")]
         public Output<string> ContentId { get; private set; } = null!;
 
+        /// <summary>
+        /// The notification message to send to the users.
+        /// </summary>
         [Output("notificationMessage")]
         public Output<string?> NotificationMessage { get; private set; } = null!;
 
+        /// <summary>
+        /// Boolean value. Set it to "true" to notify the recipients by email.
+        /// </summary>
         [Output("notifyRecipient")]
         public Output<bool> NotifyRecipient { get; private set; } = null!;
 
+        /// <summary>
+        /// Permission block defining permission on the content. See
+        /// permission schema for details.
+        /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.ContentPermissionPermission>> Permissions { get; private set; } = null!;
 
@@ -70,17 +181,32 @@ namespace Pulumi.SumoLogic
 
     public sealed class ContentPermissionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier of the content item for which you want to update
+        /// permissions.
+        /// </summary>
         [Input("contentId", required: true)]
         public Input<string> ContentId { get; set; } = null!;
 
+        /// <summary>
+        /// The notification message to send to the users.
+        /// </summary>
         [Input("notificationMessage")]
         public Input<string>? NotificationMessage { get; set; }
 
+        /// <summary>
+        /// Boolean value. Set it to "true" to notify the recipients by email.
+        /// </summary>
         [Input("notifyRecipient", required: true)]
         public Input<bool> NotifyRecipient { get; set; } = null!;
 
         [Input("permissions", required: true)]
         private InputList<Inputs.ContentPermissionPermissionArgs>? _permissions;
+
+        /// <summary>
+        /// Permission block defining permission on the content. See
+        /// permission schema for details.
+        /// </summary>
         public InputList<Inputs.ContentPermissionPermissionArgs> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<Inputs.ContentPermissionPermissionArgs>());
@@ -94,17 +220,32 @@ namespace Pulumi.SumoLogic
 
     public sealed class ContentPermissionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier of the content item for which you want to update
+        /// permissions.
+        /// </summary>
         [Input("contentId")]
         public Input<string>? ContentId { get; set; }
 
+        /// <summary>
+        /// The notification message to send to the users.
+        /// </summary>
         [Input("notificationMessage")]
         public Input<string>? NotificationMessage { get; set; }
 
+        /// <summary>
+        /// Boolean value. Set it to "true" to notify the recipients by email.
+        /// </summary>
         [Input("notifyRecipient")]
         public Input<bool>? NotifyRecipient { get; set; }
 
         [Input("permissions")]
         private InputList<Inputs.ContentPermissionPermissionGetArgs>? _permissions;
+
+        /// <summary>
+        /// Permission block defining permission on the content. See
+        /// permission schema for details.
+        /// </summary>
         public InputList<Inputs.ContentPermissionPermissionGetArgs> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<Inputs.ContentPermissionPermissionGetArgs>());

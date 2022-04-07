@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated Use Collector.fields instead to assign an ingest bucket.
+ */
 export class CollectorIngestBudgetAssignment extends pulumi.CustomResource {
     /**
      * Get an existing CollectorIngestBudgetAssignment resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class CollectorIngestBudgetAssignment extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CollectorIngestBudgetAssignmentState, opts?: pulumi.CustomResourceOptions): CollectorIngestBudgetAssignment {
+        pulumi.log.warn("CollectorIngestBudgetAssignment is deprecated: Use Collector.fields instead to assign an ingest bucket.")
         return new CollectorIngestBudgetAssignment(name, <any>state, { ...opts, id: id });
     }
 
@@ -42,8 +46,11 @@ export class CollectorIngestBudgetAssignment extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated Use Collector.fields instead to assign an ingest bucket. */
     constructor(name: string, args: CollectorIngestBudgetAssignmentArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated Use Collector.fields instead to assign an ingest bucket. */
     constructor(name: string, argsOrState?: CollectorIngestBudgetAssignmentArgs | CollectorIngestBudgetAssignmentState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("CollectorIngestBudgetAssignment is deprecated: Use Collector.fields instead to assign an ingest bucket.")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

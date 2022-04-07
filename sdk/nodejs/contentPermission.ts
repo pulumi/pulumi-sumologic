@@ -5,6 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a way to configure permissions on a content to share it with a user, a role, or the entire
+ * org. You can read more [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content).
+ *
+ * There are three permission levels `View`, `Edit` and `Manage`. You can read more about different
+ * levels [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+ *
+ * > When you add a new permission to a content, all the lower level permissions are added by default.
+ * For example, giving a user "Manage" permission on a content, implicitly gives them "Edit" and "View"
+ * permissions on the content. Due to this behavior, when you add a higher level permission, you must
+ * also add all the lower level permissions. For example, when you give a user "Edit" permission via
+ * the resource, you must give them "View" permission otherwise state and configuration will be out
+ * of sync.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const personalFolder = sumologic.getPersonalFolder({});
+ * const permissionTestContent = new sumologic.Content("permissionTestContent", {
+ *     parentId: personalFolder.then(personalFolder => personalFolder.id),
+ *     config: JSON.stringify({
+ *         type: "FolderSyncDefinition",
+ *         name: "test_permission_resource_folder",
+ *         description: "",
+ *         children: [],
+ *     }),
+ * });
+ * const role = sumologic.getRole({
+ *     name: "test_role",
+ * });
+ * const user = sumologic.getUser({
+ *     email: "user@example.com",
+ * });
+ * // Grant user `user@example.com` "Manage" permission and role `test_role`
+ * // "View" permission on the folder `test_permission_resource_folder`.
+ * const contentPermissionTest = new sumologic.ContentPermission("contentPermissionTest", {
+ *     contentId: permissionTestContent.id,
+ *     notifyRecipient: true,
+ *     notificationMessage: "You now have the permission to access this content",
+ *     permissions: [
+ *         {
+ *             permissionName: "View",
+ *             sourceType: "role",
+ *             sourceId: role.then(role => role.id),
+ *         },
+ *         {
+ *             permissionName: "View",
+ *             sourceType: "user",
+ *             sourceId: user.then(user => user.id),
+ *         },
+ *         {
+ *             permissionName: "Edit",
+ *             sourceType: "user",
+ *             sourceId: user.then(user => user.id),
+ *         },
+ *         {
+ *             permissionName: "Manage",
+ *             sourceType: "user",
+ *             sourceId: user.then(user => user.id),
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Permisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E
+ *
+ * ```sh
+ *  $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+ * ```
+ */
 export class ContentPermission extends pulumi.CustomResource {
     /**
      * Get an existing ContentPermission resource's state with the given name, ID, and optional extra
@@ -33,9 +108,23 @@ export class ContentPermission extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContentPermission.__pulumiType;
     }
 
+    /**
+     * The identifier of the content item for which you want to update
+     * permissions.
+     */
     public readonly contentId!: pulumi.Output<string>;
+    /**
+     * The notification message to send to the users.
+     */
     public readonly notificationMessage!: pulumi.Output<string | undefined>;
+    /**
+     * Boolean value. Set it to "true" to notify the recipients by email.
+     */
     public readonly notifyRecipient!: pulumi.Output<boolean>;
+    /**
+     * Permission block defining permission on the content. See
+     * permission schema for details.
+     */
     public readonly permissions!: pulumi.Output<outputs.ContentPermissionPermission[]>;
 
     /**
@@ -80,9 +169,23 @@ export class ContentPermission extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContentPermission resources.
  */
 export interface ContentPermissionState {
+    /**
+     * The identifier of the content item for which you want to update
+     * permissions.
+     */
     contentId?: pulumi.Input<string>;
+    /**
+     * The notification message to send to the users.
+     */
     notificationMessage?: pulumi.Input<string>;
+    /**
+     * Boolean value. Set it to "true" to notify the recipients by email.
+     */
     notifyRecipient?: pulumi.Input<boolean>;
+    /**
+     * Permission block defining permission on the content. See
+     * permission schema for details.
+     */
     permissions?: pulumi.Input<pulumi.Input<inputs.ContentPermissionPermission>[]>;
 }
 
@@ -90,8 +193,22 @@ export interface ContentPermissionState {
  * The set of arguments for constructing a ContentPermission resource.
  */
 export interface ContentPermissionArgs {
+    /**
+     * The identifier of the content item for which you want to update
+     * permissions.
+     */
     contentId: pulumi.Input<string>;
+    /**
+     * The notification message to send to the users.
+     */
     notificationMessage?: pulumi.Input<string>;
+    /**
+     * Boolean value. Set it to "true" to notify the recipients by email.
+     */
     notifyRecipient: pulumi.Input<boolean>;
+    /**
+     * Permission block defining permission on the content. See
+     * permission schema for details.
+     */
     permissions: pulumi.Input<pulumi.Input<inputs.ContentPermissionPermission>[]>;
 }
