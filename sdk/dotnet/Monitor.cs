@@ -12,6 +12,92 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
     /// 
+    /// ## Example SLO Monitors
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tfSloMonitor1 = new SumoLogic.Monitor("tfSloMonitor1", new SumoLogic.MonitorArgs
+    ///         {
+    ///             ContentType = "Monitor",
+    ///             EvaluationDelay = "5m",
+    ///             IsDisabled = false,
+    ///             MonitorType = "Slo",
+    ///             Notifications = 
+    ///             {
+    ///                 new SumoLogic.Inputs.MonitorNotificationArgs
+    ///                 {
+    ///                     Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
+    ///                     {
+    ///                         ConnectionType = "Email",
+    ///                         MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+    ///                         Recipients = 
+    ///                         {
+    ///                             "abc@example.com",
+    ///                         },
+    ///                         Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
+    ///                         TimeZone = "PST",
+    ///                     },
+    ///                     RunForTriggerTypes = 
+    ///                     {
+    ///                         "Critical",
+    ///                         "ResolvedCritical",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Playbook = "test playbook",
+    ///             SloId = "0000000000000009",
+    ///             TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///             {
+    ///                 SloSliCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionArgs
+    ///                 {
+    ///                     Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs
+    ///                     {
+    ///                         SliThreshold = 99.5,
+    ///                     },
+    ///                     Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionWarningArgs
+    ///                     {
+    ///                         SliThreshold = 99.9,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Type = "MonitorsLibraryMonitor",
+    ///         });
+    ///         var tfSloMonitor2 = new SumoLogic.Monitor("tfSloMonitor2", new SumoLogic.MonitorArgs
+    ///         {
+    ///             ContentType = "Monitor",
+    ///             EvaluationDelay = "5m",
+    ///             IsDisabled = false,
+    ///             MonitorType = "Slo",
+    ///             SloId = "0000000000000009",
+    ///             TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///             {
+    ///                 SloBurnRateCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionArgs
+    ///                 {
+    ///                     Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs
+    ///                     {
+    ///                         BurnRateThreshold = 10,
+    ///                         TimeRange = "1d",
+    ///                     },
+    ///                     Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs
+    ///                     {
+    ///                         BurnRateThreshold = 5,
+    ///                         TimeRange = "1d",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Type = "MonitorsLibraryMonitor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Monitor Folders
     /// 
     /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -125,6 +211,19 @@ namespace Pulumi.SumoLogic
     /// #### metrics_missing_data_condition
     ///   - `time_range` (Required)
     ///   - `trigger_source` (Required)
+    /// #### slo_sli_condition
+    ///   - `critical`
+    ///     - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
+    ///   - `warning`
+    ///     - `sli_threshold` (Required)
+    /// 
+    /// #### slo_burn_rate_condition
+    ///   - `critical`
+    ///     - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.
+    ///     - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
+    ///   - `warning`
+    ///     - `time_range` (Required)
+    ///     - `burn_rate_threshold` (Required)
     /// 
     /// ## The `triggers` block
     /// 
@@ -232,6 +331,12 @@ namespace Pulumi.SumoLogic
     public partial class Monitor : Pulumi.CustomResource
     {
         /// <summary>
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        /// </summary>
+        [Output("alertName")]
+        public Output<string?> AlertName { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the content object. Valid value:
         /// - `Monitor`
         /// </summary>
@@ -284,6 +389,7 @@ namespace Pulumi.SumoLogic
         /// The type of monitor. Valid values:
         /// - `Logs`: A logs query monitor.
         /// - `Metrics`: A metrics query monitor.
+        /// - `Slo`: A SLO based monitor  (beta).
         /// </summary>
         [Output("monitorType")]
         public Output<string> MonitorType { get; private set; } = null!;
@@ -320,6 +426,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Output("queries")]
         public Output<ImmutableArray<Outputs.MonitorQuery>> Queries { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier of the SLO definition for the monitor. This is only applicable &amp; required for Slo `monitor_type`.
+        /// </summary>
+        [Output("sloId")]
+        public Output<string?> SloId { get; private set; } = null!;
 
         /// <summary>
         /// The current status for this monitor. Values are:
@@ -401,6 +513,12 @@ namespace Pulumi.SumoLogic
     public sealed class MonitorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        /// </summary>
+        [Input("alertName")]
+        public Input<string>? AlertName { get; set; }
+
+        /// <summary>
         /// The type of the content object. Valid value:
         /// - `Monitor`
         /// </summary>
@@ -453,6 +571,7 @@ namespace Pulumi.SumoLogic
         /// The type of monitor. Valid values:
         /// - `Logs`: A logs query monitor.
         /// - `Metrics`: A metrics query monitor.
+        /// - `Slo`: A SLO based monitor  (beta).
         /// </summary>
         [Input("monitorType", required: true)]
         public Input<string> MonitorType { get; set; } = null!;
@@ -506,6 +625,12 @@ namespace Pulumi.SumoLogic
             get => _queries ?? (_queries = new InputList<Inputs.MonitorQueryArgs>());
             set => _queries = value;
         }
+
+        /// <summary>
+        /// Identifier of the SLO definition for the monitor. This is only applicable &amp; required for Slo `monitor_type`.
+        /// </summary>
+        [Input("sloId")]
+        public Input<string>? SloId { get; set; }
 
         [Input("statuses")]
         private InputList<string>? _statuses;
@@ -561,6 +686,12 @@ namespace Pulumi.SumoLogic
     public sealed class MonitorState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        /// </summary>
+        [Input("alertName")]
+        public Input<string>? AlertName { get; set; }
+
+        /// <summary>
         /// The type of the content object. Valid value:
         /// - `Monitor`
         /// </summary>
@@ -613,6 +744,7 @@ namespace Pulumi.SumoLogic
         /// The type of monitor. Valid values:
         /// - `Logs`: A logs query monitor.
         /// - `Metrics`: A metrics query monitor.
+        /// - `Slo`: A SLO based monitor  (beta).
         /// </summary>
         [Input("monitorType")]
         public Input<string>? MonitorType { get; set; }
@@ -666,6 +798,12 @@ namespace Pulumi.SumoLogic
             get => _queries ?? (_queries = new InputList<Inputs.MonitorQueryGetArgs>());
             set => _queries = value;
         }
+
+        /// <summary>
+        /// Identifier of the SLO definition for the monitor. This is only applicable &amp; required for Slo `monitor_type`.
+        /// </summary>
+        [Input("sloId")]
+        public Input<string>? SloId { get; set; }
 
         [Input("statuses")]
         private InputList<string>? _statuses;

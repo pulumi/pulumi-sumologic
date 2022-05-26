@@ -2457,6 +2457,23 @@ export interface MetadataSourcePath {
     type: pulumi.Input<string>;
 }
 
+export interface MonitorFolderObjPermission {
+    /**
+     * A Set of Permissions. Valid Permission Values: 
+     * - `Create`
+     * - `Read`
+     */
+    permissions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A Role ID or the Org ID of the account
+     */
+    subjectId: pulumi.Input<string>;
+    /**
+     * Valid values:
+     */
+    subjectType: pulumi.Input<string>;
+}
+
 export interface MonitorNotification {
     notification: pulumi.Input<inputs.MonitorNotificationNotification>;
     runForTriggerTypes: pulumi.Input<pulumi.Input<string>[]>;
@@ -2498,6 +2515,8 @@ export interface MonitorTriggerConditions {
     metricsMissingDataCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsMissingDataCondition>;
     metricsOutlierCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsOutlierCondition>;
     metricsStaticCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsStaticCondition>;
+    sloBurnRateCondition?: pulumi.Input<inputs.MonitorTriggerConditionsSloBurnRateCondition>;
+    sloSliCondition?: pulumi.Input<inputs.MonitorTriggerConditionsSloSliCondition>;
 }
 
 export interface MonitorTriggerConditionsLogsMissingDataCondition {
@@ -2621,6 +2640,34 @@ export interface MonitorTriggerConditionsMetricsStaticConditionWarningResolution
     occurrenceType?: pulumi.Input<string>;
     threshold?: pulumi.Input<number>;
     thresholdType?: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateCondition {
+    critical?: pulumi.Input<inputs.MonitorTriggerConditionsSloBurnRateConditionCritical>;
+    warning?: pulumi.Input<inputs.MonitorTriggerConditionsSloBurnRateConditionWarning>;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionCritical {
+    burnRateThreshold: pulumi.Input<number>;
+    timeRange: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionWarning {
+    burnRateThreshold: pulumi.Input<number>;
+    timeRange: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsSloSliCondition {
+    critical?: pulumi.Input<inputs.MonitorTriggerConditionsSloSliConditionCritical>;
+    warning?: pulumi.Input<inputs.MonitorTriggerConditionsSloSliConditionWarning>;
+}
+
+export interface MonitorTriggerConditionsSloSliConditionCritical {
+    sliThreshold: pulumi.Input<number>;
+}
+
+export interface MonitorTriggerConditionsSloSliConditionWarning {
+    sliThreshold: pulumi.Input<number>;
 }
 
 export interface PoliciesUserConcurrentSessionsLimit {
@@ -2895,3 +2942,149 @@ export interface SamlConfigurationOnDemandProvisioningEnabled {
      */
     onDemandProvisioningRoles: pulumi.Input<pulumi.Input<string>[]>;
 }
+
+export interface SloCompliance {
+    /**
+     * The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+     */
+    complianceType: pulumi.Input<string>;
+    /**
+     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+     * based evaluation.
+     */
+    size: pulumi.Input<string>;
+    /**
+     * Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+     * Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+     * For `Month` it's not required and is set to first day of the month.
+     */
+    startFrom?: pulumi.Input<string>;
+    /**
+     * The target value to use, must be a number between 0 and 100.
+     */
+    target: pulumi.Input<number>;
+    /**
+     * Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+     */
+    timezone: pulumi.Input<string>;
+}
+
+export interface SloIndicator {
+    requestBasedEvaluation?: pulumi.Input<inputs.SloIndicatorRequestBasedEvaluation>;
+    windowBasedEvaluation?: pulumi.Input<inputs.SloIndicatorWindowBasedEvaluation>;
+}
+
+export interface SloIndicatorRequestBasedEvaluation {
+    /**
+     * Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * , `GreaterThanOrEqual`.
+     */
+    op?: pulumi.Input<string>;
+    /**
+     * The queries to use.
+     */
+    queries: pulumi.Input<pulumi.Input<inputs.SloIndicatorRequestBasedEvaluationQuery>[]>;
+    /**
+     * The type of query to use. Valid values are `Metrics` or `Logs`.
+     */
+    queryType: pulumi.Input<string>;
+    /**
+     * Compared against threshold query's raw data points to determine success criteria.
+     */
+    threshold?: pulumi.Input<number>;
+}
+
+export interface SloIndicatorRequestBasedEvaluationQuery {
+    /**
+     * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+     * , `Threshold`.
+     */
+    queryGroupType: pulumi.Input<string>;
+    /**
+     * List of queries to use.
+     */
+    queryGroups: pulumi.Input<pulumi.Input<inputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup>[]>;
+}
+
+export interface SloIndicatorRequestBasedEvaluationQueryQueryGroup {
+    /**
+     * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
+     */
+    field?: pulumi.Input<string>;
+    /**
+     * The query string to use.
+     */
+    query: pulumi.Input<string>;
+    /**
+     * The row ID to use.
+     */
+    rowId: pulumi.Input<string>;
+    /**
+     * Whether to use the row count. Defaults to false.
+     */
+    useRowCount: pulumi.Input<boolean>;
+}
+
+export interface SloIndicatorWindowBasedEvaluation {
+    /**
+     * Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+     * , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+     */
+    aggregation?: pulumi.Input<string>;
+    /**
+     * Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * , `GreaterThanOrEqual`.
+     */
+    op: pulumi.Input<string>;
+    /**
+     * The queries to use.
+     */
+    queries: pulumi.Input<pulumi.Input<inputs.SloIndicatorWindowBasedEvaluationQuery>[]>;
+    /**
+     * The type of query to use. Valid values are `Metrics` or `Logs`.
+     */
+    queryType: pulumi.Input<string>;
+    /**
+     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+     * based evaluation.
+     */
+    size: pulumi.Input<string>;
+    /**
+     * Compared against threshold query's raw data points to determine success criteria.
+     */
+    threshold: pulumi.Input<number>;
+}
+
+export interface SloIndicatorWindowBasedEvaluationQuery {
+    /**
+     * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+     * , `Threshold`.
+     */
+    queryGroupType: pulumi.Input<string>;
+    /**
+     * List of queries to use.
+     */
+    queryGroups: pulumi.Input<pulumi.Input<inputs.SloIndicatorWindowBasedEvaluationQueryQueryGroup>[]>;
+}
+
+export interface SloIndicatorWindowBasedEvaluationQueryQueryGroup {
+    /**
+     * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
+     */
+    field?: pulumi.Input<string>;
+    /**
+     * The query string to use.
+     */
+    query: pulumi.Input<string>;
+    /**
+     * The row ID to use.
+     */
+    rowId: pulumi.Input<string>;
+    /**
+     * Whether to use the row count. Defaults to false.
+     */
+    useRowCount: pulumi.Input<boolean>;
+}
+

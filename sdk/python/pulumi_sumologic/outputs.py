@@ -241,6 +241,7 @@ __all__ = [
     'MetadataSourceDefaultDateFormat',
     'MetadataSourceFilter',
     'MetadataSourcePath',
+    'MonitorFolderObjPermission',
     'MonitorNotification',
     'MonitorNotificationNotification',
     'MonitorQuery',
@@ -268,6 +269,12 @@ __all__ = [
     'MonitorTriggerConditionsMetricsStaticConditionWarning',
     'MonitorTriggerConditionsMetricsStaticConditionWarningAlert',
     'MonitorTriggerConditionsMetricsStaticConditionWarningResolution',
+    'MonitorTriggerConditionsSloBurnRateCondition',
+    'MonitorTriggerConditionsSloBurnRateConditionCritical',
+    'MonitorTriggerConditionsSloBurnRateConditionWarning',
+    'MonitorTriggerConditionsSloSliCondition',
+    'MonitorTriggerConditionsSloSliConditionCritical',
+    'MonitorTriggerConditionsSloSliConditionWarning',
     'PoliciesUserConcurrentSessionsLimit',
     'PollingSourceAuthentication',
     'PollingSourceDefaultDateFormat',
@@ -289,6 +296,14 @@ __all__ = [
     'S3SourcePathSnsTopicOrSubscriptionArn',
     'S3SourcePathTagFilter',
     'SamlConfigurationOnDemandProvisioningEnabled',
+    'SloCompliance',
+    'SloIndicator',
+    'SloIndicatorRequestBasedEvaluation',
+    'SloIndicatorRequestBasedEvaluationQuery',
+    'SloIndicatorRequestBasedEvaluationQueryQueryGroup',
+    'SloIndicatorWindowBasedEvaluation',
+    'SloIndicatorWindowBasedEvaluationQuery',
+    'SloIndicatorWindowBasedEvaluationQueryQueryGroup',
 ]
 
 @pulumi.output_type
@@ -11814,6 +11829,69 @@ class MetadataSourcePath(dict):
 
 
 @pulumi.output_type
+class MonitorFolderObjPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subjectId":
+            suggest = "subject_id"
+        elif key == "subjectType":
+            suggest = "subject_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorFolderObjPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorFolderObjPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorFolderObjPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 permissions: Sequence[str],
+                 subject_id: str,
+                 subject_type: str):
+        """
+        :param Sequence[str] permissions: A Set of Permissions. Valid Permission Values: 
+               - `Create`
+               - `Read`
+        :param str subject_id: A Role ID or the Org ID of the account
+        :param str subject_type: Valid values:
+        """
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "subject_id", subject_id)
+        pulumi.set(__self__, "subject_type", subject_type)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Sequence[str]:
+        """
+        A Set of Permissions. Valid Permission Values: 
+        - `Create`
+        - `Read`
+        """
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter(name="subjectId")
+    def subject_id(self) -> str:
+        """
+        A Role ID or the Org ID of the account
+        """
+        return pulumi.get(self, "subject_id")
+
+    @property
+    @pulumi.getter(name="subjectType")
+    def subject_type(self) -> str:
+        """
+        Valid values:
+        """
+        return pulumi.get(self, "subject_type")
+
+
+@pulumi.output_type
 class MonitorNotification(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -12086,6 +12164,10 @@ class MonitorTriggerConditions(dict):
             suggest = "metrics_outlier_condition"
         elif key == "metricsStaticCondition":
             suggest = "metrics_static_condition"
+        elif key == "sloBurnRateCondition":
+            suggest = "slo_burn_rate_condition"
+        elif key == "sloSliCondition":
+            suggest = "slo_sli_condition"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditions. Access the value via the '{suggest}' property getter instead.")
@@ -12104,7 +12186,9 @@ class MonitorTriggerConditions(dict):
                  logs_static_condition: Optional['outputs.MonitorTriggerConditionsLogsStaticCondition'] = None,
                  metrics_missing_data_condition: Optional['outputs.MonitorTriggerConditionsMetricsMissingDataCondition'] = None,
                  metrics_outlier_condition: Optional['outputs.MonitorTriggerConditionsMetricsOutlierCondition'] = None,
-                 metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None):
+                 metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None,
+                 slo_burn_rate_condition: Optional['outputs.MonitorTriggerConditionsSloBurnRateCondition'] = None,
+                 slo_sli_condition: Optional['outputs.MonitorTriggerConditionsSloSliCondition'] = None):
         if logs_missing_data_condition is not None:
             pulumi.set(__self__, "logs_missing_data_condition", logs_missing_data_condition)
         if logs_outlier_condition is not None:
@@ -12117,6 +12201,10 @@ class MonitorTriggerConditions(dict):
             pulumi.set(__self__, "metrics_outlier_condition", metrics_outlier_condition)
         if metrics_static_condition is not None:
             pulumi.set(__self__, "metrics_static_condition", metrics_static_condition)
+        if slo_burn_rate_condition is not None:
+            pulumi.set(__self__, "slo_burn_rate_condition", slo_burn_rate_condition)
+        if slo_sli_condition is not None:
+            pulumi.set(__self__, "slo_sli_condition", slo_sli_condition)
 
     @property
     @pulumi.getter(name="logsMissingDataCondition")
@@ -12147,6 +12235,16 @@ class MonitorTriggerConditions(dict):
     @pulumi.getter(name="metricsStaticCondition")
     def metrics_static_condition(self) -> Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition']:
         return pulumi.get(self, "metrics_static_condition")
+
+    @property
+    @pulumi.getter(name="sloBurnRateCondition")
+    def slo_burn_rate_condition(self) -> Optional['outputs.MonitorTriggerConditionsSloBurnRateCondition']:
+        return pulumi.get(self, "slo_burn_rate_condition")
+
+    @property
+    @pulumi.getter(name="sloSliCondition")
+    def slo_sli_condition(self) -> Optional['outputs.MonitorTriggerConditionsSloSliCondition']:
+        return pulumi.get(self, "slo_sli_condition")
 
 
 @pulumi.output_type
@@ -12978,6 +13076,182 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningResolution(dict):
     @pulumi.getter(name="thresholdType")
     def threshold_type(self) -> Optional[str]:
         return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloBurnRateCondition(dict):
+    def __init__(__self__, *,
+                 critical: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionCritical'] = None,
+                 warning: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionWarning'] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionCritical']:
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionWarning']:
+        return pulumi.get(self, "warning")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloBurnRateConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "burnRateThreshold":
+            suggest = "burn_rate_threshold"
+        elif key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsSloBurnRateConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 burn_rate_threshold: float,
+                 time_range: str):
+        pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> float:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloBurnRateConditionWarning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "burnRateThreshold":
+            suggest = "burn_rate_threshold"
+        elif key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsSloBurnRateConditionWarning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionWarning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 burn_rate_threshold: float,
+                 time_range: str):
+        pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> float:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloSliCondition(dict):
+    def __init__(__self__, *,
+                 critical: Optional['outputs.MonitorTriggerConditionsSloSliConditionCritical'] = None,
+                 warning: Optional['outputs.MonitorTriggerConditionsSloSliConditionWarning'] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional['outputs.MonitorTriggerConditionsSloSliConditionCritical']:
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional['outputs.MonitorTriggerConditionsSloSliConditionWarning']:
+        return pulumi.get(self, "warning")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloSliConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sliThreshold":
+            suggest = "sli_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsSloSliConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsSloSliConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsSloSliConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sli_threshold: float):
+        pulumi.set(__self__, "sli_threshold", sli_threshold)
+
+    @property
+    @pulumi.getter(name="sliThreshold")
+    def sli_threshold(self) -> float:
+        return pulumi.get(self, "sli_threshold")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloSliConditionWarning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sliThreshold":
+            suggest = "sli_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsSloSliConditionWarning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsSloSliConditionWarning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsSloSliConditionWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sli_threshold: float):
+        pulumi.set(__self__, "sli_threshold", sli_threshold)
+
+    @property
+    @pulumi.getter(name="sliThreshold")
+    def sli_threshold(self) -> float:
+        return pulumi.get(self, "sli_threshold")
 
 
 @pulumi.output_type
@@ -14348,5 +14622,548 @@ class SamlConfigurationOnDemandProvisioningEnabled(dict):
         Last name attribute of the new user account. Defaults to "".
         """
         return pulumi.get(self, "last_name_attribute")
+
+
+@pulumi.output_type
+class SloCompliance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceType":
+            suggest = "compliance_type"
+        elif key == "startFrom":
+            suggest = "start_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloCompliance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloCompliance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloCompliance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compliance_type: str,
+                 size: str,
+                 target: float,
+                 timezone: str,
+                 start_from: Optional[str] = None):
+        """
+        :param str compliance_type: The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+        :param str size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+               based evaluation.
+        :param float target: The target value to use, must be a number between 0 and 100.
+        :param str timezone: Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        :param str start_from: Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+               Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+               For `Month` it's not required and is set to first day of the month.
+        """
+        pulumi.set(__self__, "compliance_type", compliance_type)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "timezone", timezone)
+        if start_from is not None:
+            pulumi.set(__self__, "start_from", start_from)
+
+    @property
+    @pulumi.getter(name="complianceType")
+    def compliance_type(self) -> str:
+        """
+        The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+        """
+        return pulumi.get(self, "compliance_type")
+
+    @property
+    @pulumi.getter
+    def size(self) -> str:
+        """
+        The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+        based evaluation.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def target(self) -> float:
+        """
+        The target value to use, must be a number between 0 and 100.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> str:
+        """
+        Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        """
+        return pulumi.get(self, "timezone")
+
+    @property
+    @pulumi.getter(name="startFrom")
+    def start_from(self) -> Optional[str]:
+        """
+        Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+        Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+        For `Month` it's not required and is set to first day of the month.
+        """
+        return pulumi.get(self, "start_from")
+
+
+@pulumi.output_type
+class SloIndicator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestBasedEvaluation":
+            suggest = "request_based_evaluation"
+        elif key == "windowBasedEvaluation":
+            suggest = "window_based_evaluation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloIndicator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloIndicator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloIndicator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_based_evaluation: Optional['outputs.SloIndicatorRequestBasedEvaluation'] = None,
+                 window_based_evaluation: Optional['outputs.SloIndicatorWindowBasedEvaluation'] = None):
+        if request_based_evaluation is not None:
+            pulumi.set(__self__, "request_based_evaluation", request_based_evaluation)
+        if window_based_evaluation is not None:
+            pulumi.set(__self__, "window_based_evaluation", window_based_evaluation)
+
+    @property
+    @pulumi.getter(name="requestBasedEvaluation")
+    def request_based_evaluation(self) -> Optional['outputs.SloIndicatorRequestBasedEvaluation']:
+        return pulumi.get(self, "request_based_evaluation")
+
+    @property
+    @pulumi.getter(name="windowBasedEvaluation")
+    def window_based_evaluation(self) -> Optional['outputs.SloIndicatorWindowBasedEvaluation']:
+        return pulumi.get(self, "window_based_evaluation")
+
+
+@pulumi.output_type
+class SloIndicatorRequestBasedEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryType":
+            suggest = "query_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloIndicatorRequestBasedEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloIndicatorRequestBasedEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloIndicatorRequestBasedEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 queries: Sequence['outputs.SloIndicatorRequestBasedEvaluationQuery'],
+                 query_type: str,
+                 op: Optional[str] = None,
+                 threshold: Optional[float] = None):
+        """
+        :param Sequence['SloIndicatorRequestBasedEvaluationQueryArgs'] queries: The queries to use.
+        :param str query_type: The type of query to use. Valid values are `Metrics` or `Logs`.
+        :param str op: Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+               , `GreaterThanOrEqual`.
+        :param float threshold: Compared against threshold query's raw data points to determine success criteria.
+        """
+        pulumi.set(__self__, "queries", queries)
+        pulumi.set(__self__, "query_type", query_type)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Sequence['outputs.SloIndicatorRequestBasedEvaluationQuery']:
+        """
+        The queries to use.
+        """
+        return pulumi.get(self, "queries")
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> str:
+        """
+        The type of query to use. Valid values are `Metrics` or `Logs`.
+        """
+        return pulumi.get(self, "query_type")
+
+    @property
+    @pulumi.getter
+    def op(self) -> Optional[str]:
+        """
+        Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        , `GreaterThanOrEqual`.
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        """
+        Compared against threshold query's raw data points to determine success criteria.
+        """
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class SloIndicatorRequestBasedEvaluationQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryGroupType":
+            suggest = "query_group_type"
+        elif key == "queryGroups":
+            suggest = "query_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloIndicatorRequestBasedEvaluationQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloIndicatorRequestBasedEvaluationQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloIndicatorRequestBasedEvaluationQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_group_type: str,
+                 query_groups: Sequence['outputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup']):
+        """
+        :param str query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+               , `Threshold`.
+        :param Sequence['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs'] query_groups: List of queries to use.
+        """
+        pulumi.set(__self__, "query_group_type", query_group_type)
+        pulumi.set(__self__, "query_groups", query_groups)
+
+    @property
+    @pulumi.getter(name="queryGroupType")
+    def query_group_type(self) -> str:
+        """
+        The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
+        """
+        return pulumi.get(self, "query_group_type")
+
+    @property
+    @pulumi.getter(name="queryGroups")
+    def query_groups(self) -> Sequence['outputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup']:
+        """
+        List of queries to use.
+        """
+        return pulumi.get(self, "query_groups")
+
+
+@pulumi.output_type
+class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowId":
+            suggest = "row_id"
+        elif key == "useRowCount":
+            suggest = "use_row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloIndicatorRequestBasedEvaluationQueryQueryGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloIndicatorRequestBasedEvaluationQueryQueryGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloIndicatorRequestBasedEvaluationQueryQueryGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query: str,
+                 row_id: str,
+                 use_row_count: bool,
+                 field: Optional[str] = None):
+        """
+        :param str query: The query string to use.
+        :param str row_id: The row ID to use.
+        :param bool use_row_count: Whether to use the row count. Defaults to false.
+        :param str field: Field of log query output to compare against. To be used only for logs based data
+               type when `use_row_count` is false.
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "row_id", row_id)
+        pulumi.set(__self__, "use_row_count", use_row_count)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @property
+    @pulumi.getter
+    def query(self) -> str:
+        """
+        The query string to use.
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="rowId")
+    def row_id(self) -> str:
+        """
+        The row ID to use.
+        """
+        return pulumi.get(self, "row_id")
+
+    @property
+    @pulumi.getter(name="useRowCount")
+    def use_row_count(self) -> bool:
+        """
+        Whether to use the row count. Defaults to false.
+        """
+        return pulumi.get(self, "use_row_count")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        """
+        Field of log query output to compare against. To be used only for logs based data
+        type when `use_row_count` is false.
+        """
+        return pulumi.get(self, "field")
+
+
+@pulumi.output_type
+class SloIndicatorWindowBasedEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryType":
+            suggest = "query_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloIndicatorWindowBasedEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloIndicatorWindowBasedEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloIndicatorWindowBasedEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 op: str,
+                 queries: Sequence['outputs.SloIndicatorWindowBasedEvaluationQuery'],
+                 query_type: str,
+                 size: str,
+                 threshold: float,
+                 aggregation: Optional[str] = None):
+        """
+        :param str op: Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+               , `GreaterThanOrEqual`.
+        :param Sequence['SloIndicatorWindowBasedEvaluationQueryArgs'] queries: The queries to use.
+        :param str query_type: The type of query to use. Valid values are `Metrics` or `Logs`.
+        :param str size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+               based evaluation.
+        :param float threshold: Compared against threshold query's raw data points to determine success criteria.
+        :param str aggregation: Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+               , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+        """
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "queries", queries)
+        pulumi.set(__self__, "query_type", query_type)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "threshold", threshold)
+        if aggregation is not None:
+            pulumi.set(__self__, "aggregation", aggregation)
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        , `GreaterThanOrEqual`.
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Sequence['outputs.SloIndicatorWindowBasedEvaluationQuery']:
+        """
+        The queries to use.
+        """
+        return pulumi.get(self, "queries")
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> str:
+        """
+        The type of query to use. Valid values are `Metrics` or `Logs`.
+        """
+        return pulumi.get(self, "query_type")
+
+    @property
+    @pulumi.getter
+    def size(self) -> str:
+        """
+        The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+        based evaluation.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> float:
+        """
+        Compared against threshold query's raw data points to determine success criteria.
+        """
+        return pulumi.get(self, "threshold")
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> Optional[str]:
+        """
+        Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+        , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+        """
+        return pulumi.get(self, "aggregation")
+
+
+@pulumi.output_type
+class SloIndicatorWindowBasedEvaluationQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryGroupType":
+            suggest = "query_group_type"
+        elif key == "queryGroups":
+            suggest = "query_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloIndicatorWindowBasedEvaluationQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloIndicatorWindowBasedEvaluationQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloIndicatorWindowBasedEvaluationQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_group_type: str,
+                 query_groups: Sequence['outputs.SloIndicatorWindowBasedEvaluationQueryQueryGroup']):
+        """
+        :param str query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+               , `Threshold`.
+        :param Sequence['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs'] query_groups: List of queries to use.
+        """
+        pulumi.set(__self__, "query_group_type", query_group_type)
+        pulumi.set(__self__, "query_groups", query_groups)
+
+    @property
+    @pulumi.getter(name="queryGroupType")
+    def query_group_type(self) -> str:
+        """
+        The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
+        """
+        return pulumi.get(self, "query_group_type")
+
+    @property
+    @pulumi.getter(name="queryGroups")
+    def query_groups(self) -> Sequence['outputs.SloIndicatorWindowBasedEvaluationQueryQueryGroup']:
+        """
+        List of queries to use.
+        """
+        return pulumi.get(self, "query_groups")
+
+
+@pulumi.output_type
+class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowId":
+            suggest = "row_id"
+        elif key == "useRowCount":
+            suggest = "use_row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SloIndicatorWindowBasedEvaluationQueryQueryGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SloIndicatorWindowBasedEvaluationQueryQueryGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SloIndicatorWindowBasedEvaluationQueryQueryGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query: str,
+                 row_id: str,
+                 use_row_count: bool,
+                 field: Optional[str] = None):
+        """
+        :param str query: The query string to use.
+        :param str row_id: The row ID to use.
+        :param bool use_row_count: Whether to use the row count. Defaults to false.
+        :param str field: Field of log query output to compare against. To be used only for logs based data
+               type when `use_row_count` is false.
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "row_id", row_id)
+        pulumi.set(__self__, "use_row_count", use_row_count)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @property
+    @pulumi.getter
+    def query(self) -> str:
+        """
+        The query string to use.
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="rowId")
+    def row_id(self) -> str:
+        """
+        The row ID to use.
+        """
+        return pulumi.get(self, "row_id")
+
+    @property
+    @pulumi.getter(name="useRowCount")
+    def use_row_count(self) -> bool:
+        """
+        Whether to use the row count. Defaults to false.
+        """
+        return pulumi.get(self, "use_row_count")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        """
+        Field of log query output to compare against. To be used only for logs based data
+        type when `use_row_count` is false.
+        """
+        return pulumi.get(self, "field")
 
 

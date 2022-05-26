@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides a Sumologic Kinesis Log source. This source is used to ingest log via Kinesis Firehose from AWS.
+    /// Provides a [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). This source is used to ingest log via Kinesis Firehose from AWS.
     /// 
     /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
     /// 
@@ -18,11 +18,55 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
+    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         {
+    ///             Description = "Just testing this",
+    ///         });
+    ///         var kinesisLogAccessKey = new SumoLogic.KineisLogSource("kinesisLogAccessKey", new SumoLogic.KineisLogSourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
+    ///             {
+    ///                 AccessKey = "someKey",
+    ///                 SecretKey = "******",
+    ///                 Type = "S3BucketAuthentication",
+    ///             },
+    ///             Category = "prod/kinesis/log",
+    ///             CollectorId = collector.Id,
+    ///             ContentType = "KinesisLog",
+    ///             Description = "Description for Kinesis Log Source",
+    ///             Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
+    ///             {
+    ///                 BucketName = "testBucket",
+    ///                 PathExpression = "http-endpoint-failed/*",
+    ///                 ScanInterval = 30000,
+    ///                 Type = "KinesisLogPath",
+    ///             },
+    ///         });
+    ///         var kinesisLogRoleArn = new SumoLogic.KineisLogSource("kinesisLogRoleArn", new SumoLogic.KineisLogSourceArgs
+    ///         {
+    ///             Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
+    ///             {
+    ///                 RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+    ///                 Type = "AWSRoleBasedAuthentication",
+    ///             },
+    ///             Category = "prod/kinesis/log",
+    ///             CollectorId = collector.Id,
+    ///             ContentType = "KinesisLog",
+    ///             Description = "Description for Kinesis Log Source",
+    ///             Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
+    ///             {
+    ///                 BucketName = "testBucket",
+    ///                 PathExpression = "http-endpoint-failed/*",
+    ///                 ScanInterval = 30000,
+    ///                 Type = "KinesisLogPath",
+    ///             },
+    ///         });
     ///     }
     /// 
     /// }
@@ -42,7 +86,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+    ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/kineisLogSource:KineisLogSource")]
     public partial class KineisLogSource : Pulumi.CustomResource
@@ -114,7 +158,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> Timezone { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+        /// The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -341,7 +385,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Timezone { get; set; }
 
         /// <summary>
-        /// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+        /// The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

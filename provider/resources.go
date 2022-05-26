@@ -168,6 +168,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cse_log_match_list.html.markdown",
 				},
 			},
+			"sumologic_slo":        {Tok: makeResource(mainMod, "Slo")},
+			"sumologic_slo_folder": {Tok: makeResource(mainMod, "SloFolder")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"sumologic_caller_identity": {Tok: makeDataSource(mainMod, "getCallerIdentity")},
@@ -185,6 +187,7 @@ func Provider() tfbridge.ProviderInfo {
 			"sumologic_admin_recommended_folder":       {Tok: makeDataSource(mainMod, "getAdminRecommendedFolder")},
 			"sumologic_cse_log_mapping_vendor_product": {Tok: makeDataSource(mainMod, "getCseLogMappingVendorProduct")},
 			"sumologic_user":                           {Tok: makeDataSource(mainMod, "getUser")},
+			"sumologic_folder":                         {Tok: makeDataSource(mainMod, "getFolder")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

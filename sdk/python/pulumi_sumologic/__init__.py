@@ -42,6 +42,7 @@ from .get_admin_recommended_folder import *
 from .get_caller_identity import *
 from .get_collector import *
 from .get_cse_log_mapping_vendor_product import *
+from .get_folder import *
 from .get_http_source import *
 from .get_my_user_id import *
 from .get_personal_folder import *
@@ -67,6 +68,8 @@ from .s3_audit_source import *
 from .s3_source import *
 from .saml_configuration import *
 from .scheduled_view import *
+from .slo import *
+from .slo_folder import *
 from .subdomain import *
 from .token import *
 from .user import *
@@ -497,6 +500,22 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/scheduledView:ScheduledView": "ScheduledView"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/slo",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/slo:Slo": "Slo"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/sloFolder",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/sloFolder:SloFolder": "SloFolder"
   }
  },
  {
