@@ -16,6 +16,7 @@ __all__ = ['MonitorArgs', 'Monitor']
 class MonitorArgs:
     def __init__(__self__, *,
                  monitor_type: pulumi.Input[str],
+                 alert_name: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class MonitorArgs:
                  playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
+                 slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
@@ -44,6 +46,8 @@ class MonitorArgs:
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
                - `Logs`: A logs query monitor.
                - `Metrics`: A metrics query monitor.
+               - `Slo`: A SLO based monitor  (beta).
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -54,6 +58,7 @@ class MonitorArgs:
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
+        :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
                - `Critical`
                - `Warning`
@@ -66,6 +71,8 @@ class MonitorArgs:
                - `MonitorsLibraryMonitor`
         """
         pulumi.set(__self__, "monitor_type", monitor_type)
+        if alert_name is not None:
+            pulumi.set(__self__, "alert_name", alert_name)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if created_at is not None:
@@ -102,6 +109,8 @@ class MonitorArgs:
             pulumi.set(__self__, "post_request_map", post_request_map)
         if queries is not None:
             pulumi.set(__self__, "queries", queries)
+        if slo_id is not None:
+            pulumi.set(__self__, "slo_id", slo_id)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
         if trigger_conditions is not None:
@@ -123,12 +132,25 @@ class MonitorArgs:
         The type of monitor. Valid values:
         - `Logs`: A logs query monitor.
         - `Metrics`: A metrics query monitor.
+        - `Slo`: A SLO based monitor  (beta).
         """
         return pulumi.get(self, "monitor_type")
 
     @monitor_type.setter
     def monitor_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "monitor_type", value)
+
+    @property
+    @pulumi.getter(name="alertName")
+    def alert_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        """
+        return pulumi.get(self, "alert_name")
+
+    @alert_name.setter
+    def alert_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alert_name", value)
 
     @property
     @pulumi.getter(name="contentType")
@@ -321,6 +343,18 @@ class MonitorArgs:
         pulumi.set(self, "queries", value)
 
     @property
+    @pulumi.getter(name="sloId")
+    def slo_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
+        """
+        return pulumi.get(self, "slo_id")
+
+    @slo_id.setter
+    def slo_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slo_id", value)
+
+    @property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -387,6 +421,7 @@ class MonitorArgs:
 @pulumi.input_type
 class _MonitorState:
     def __init__(__self__, *,
+                 alert_name: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
@@ -406,6 +441,7 @@ class _MonitorState:
                  playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
+                 slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
@@ -413,6 +449,7 @@ class _MonitorState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Monitor resources.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -421,11 +458,13 @@ class _MonitorState:
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
                - `Logs`: A logs query monitor.
                - `Metrics`: A metrics query monitor.
+               - `Slo`: A SLO based monitor  (beta).
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
+        :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
                - `Critical`
                - `Warning`
@@ -437,6 +476,8 @@ class _MonitorState:
         :param pulumi.Input[str] type: The type of object model. Valid value:
                - `MonitorsLibraryMonitor`
         """
+        if alert_name is not None:
+            pulumi.set(__self__, "alert_name", alert_name)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if created_at is not None:
@@ -475,6 +516,8 @@ class _MonitorState:
             pulumi.set(__self__, "post_request_map", post_request_map)
         if queries is not None:
             pulumi.set(__self__, "queries", queries)
+        if slo_id is not None:
+            pulumi.set(__self__, "slo_id", slo_id)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
         if trigger_conditions is not None:
@@ -488,6 +531,18 @@ class _MonitorState:
             pulumi.set(__self__, "type", type)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="alertName")
+    def alert_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        """
+        return pulumi.get(self, "alert_name")
+
+    @alert_name.setter
+    def alert_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alert_name", value)
 
     @property
     @pulumi.getter(name="contentType")
@@ -617,6 +672,7 @@ class _MonitorState:
         The type of monitor. Valid values:
         - `Logs`: A logs query monitor.
         - `Metrics`: A metrics query monitor.
+        - `Slo`: A SLO based monitor  (beta).
         """
         return pulumi.get(self, "monitor_type")
 
@@ -694,6 +750,18 @@ class _MonitorState:
         pulumi.set(self, "queries", value)
 
     @property
+    @pulumi.getter(name="sloId")
+    def slo_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
+        """
+        return pulumi.get(self, "slo_id")
+
+    @slo_id.setter
+    def slo_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slo_id", value)
+
+    @property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -762,6 +830,7 @@ class Monitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alert_name: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
@@ -781,6 +850,7 @@ class Monitor(pulumi.CustomResource):
                  playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
+                 slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
@@ -789,6 +859,64 @@ class Monitor(pulumi.CustomResource):
                  __props__=None):
         """
         Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
+
+        ## Example SLO Monitors
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_slo_monitor1 = sumologic.Monitor("tfSloMonitor1",
+            content_type="Monitor",
+            evaluation_delay="5m",
+            is_disabled=False,
+            monitor_type="Slo",
+            notifications=[sumologic.MonitorNotificationArgs(
+                notification=sumologic.MonitorNotificationNotificationArgs(
+                    connection_type="Email",
+                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                    recipients=["abc@example.com"],
+                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
+                    time_zone="PST",
+                ),
+                run_for_trigger_types=[
+                    "Critical",
+                    "ResolvedCritical",
+                ],
+            )],
+            playbook="test playbook",
+            slo_id="0000000000000009",
+            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
+                slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(
+                    critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(
+                        sli_threshold=99.5,
+                    ),
+                    warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(
+                        sli_threshold=99.9,
+                    ),
+                ),
+            ),
+            type="MonitorsLibraryMonitor")
+        tf_slo_monitor2 = sumologic.Monitor("tfSloMonitor2",
+            content_type="Monitor",
+            evaluation_delay="5m",
+            is_disabled=False,
+            monitor_type="Slo",
+            slo_id="0000000000000009",
+            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
+                slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(
+                    critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(
+                        burn_rate_threshold=10,
+                        time_range="1d",
+                    ),
+                    warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(
+                        burn_rate_threshold=5,
+                        time_range="1d",
+                    ),
+                ),
+            ),
+            type="MonitorsLibraryMonitor")
+        ```
 
         ## Monitor Folders
 
@@ -885,6 +1013,19 @@ class Monitor(pulumi.CustomResource):
         #### metrics_missing_data_condition
           - `time_range` (Required)
           - `trigger_source` (Required)
+        #### slo_sli_condition
+          - `critical`
+            - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
+          - `warning`
+            - `sli_threshold` (Required)
+
+        #### slo_burn_rate_condition
+          - `critical`
+            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.
+            - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
+          - `warning`
+            - `time_range` (Required)
+            - `burn_rate_threshold` (Required)
 
         ## The `triggers` block
 
@@ -964,6 +1105,7 @@ class Monitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -972,11 +1114,13 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
                - `Logs`: A logs query monitor.
                - `Metrics`: A metrics query monitor.
+               - `Slo`: A SLO based monitor  (beta).
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
+        :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
                - `Critical`
                - `Warning`
@@ -996,6 +1140,64 @@ class Monitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
+
+        ## Example SLO Monitors
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_slo_monitor1 = sumologic.Monitor("tfSloMonitor1",
+            content_type="Monitor",
+            evaluation_delay="5m",
+            is_disabled=False,
+            monitor_type="Slo",
+            notifications=[sumologic.MonitorNotificationArgs(
+                notification=sumologic.MonitorNotificationNotificationArgs(
+                    connection_type="Email",
+                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                    recipients=["abc@example.com"],
+                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
+                    time_zone="PST",
+                ),
+                run_for_trigger_types=[
+                    "Critical",
+                    "ResolvedCritical",
+                ],
+            )],
+            playbook="test playbook",
+            slo_id="0000000000000009",
+            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
+                slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(
+                    critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(
+                        sli_threshold=99.5,
+                    ),
+                    warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(
+                        sli_threshold=99.9,
+                    ),
+                ),
+            ),
+            type="MonitorsLibraryMonitor")
+        tf_slo_monitor2 = sumologic.Monitor("tfSloMonitor2",
+            content_type="Monitor",
+            evaluation_delay="5m",
+            is_disabled=False,
+            monitor_type="Slo",
+            slo_id="0000000000000009",
+            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
+                slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(
+                    critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(
+                        burn_rate_threshold=10,
+                        time_range="1d",
+                    ),
+                    warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(
+                        burn_rate_threshold=5,
+                        time_range="1d",
+                    ),
+                ),
+            ),
+            type="MonitorsLibraryMonitor")
+        ```
 
         ## Monitor Folders
 
@@ -1092,6 +1294,19 @@ class Monitor(pulumi.CustomResource):
         #### metrics_missing_data_condition
           - `time_range` (Required)
           - `trigger_source` (Required)
+        #### slo_sli_condition
+          - `critical`
+            - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
+          - `warning`
+            - `sli_threshold` (Required)
+
+        #### slo_burn_rate_condition
+          - `critical`
+            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.
+            - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
+          - `warning`
+            - `time_range` (Required)
+            - `burn_rate_threshold` (Required)
 
         ## The `triggers` block
 
@@ -1184,6 +1399,7 @@ class Monitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alert_name: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
@@ -1203,6 +1419,7 @@ class Monitor(pulumi.CustomResource):
                  playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
+                 slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
@@ -1220,6 +1437,7 @@ class Monitor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MonitorArgs.__new__(MonitorArgs)
 
+            __props__.__dict__["alert_name"] = alert_name
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["created_by"] = created_by
@@ -1241,6 +1459,7 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["playbook"] = playbook
             __props__.__dict__["post_request_map"] = post_request_map
             __props__.__dict__["queries"] = queries
+            __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["statuses"] = statuses
             __props__.__dict__["trigger_conditions"] = trigger_conditions
             if triggers is not None and not opts.urn:
@@ -1259,6 +1478,7 @@ class Monitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            alert_name: Optional[pulumi.Input[str]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
@@ -1278,6 +1498,7 @@ class Monitor(pulumi.CustomResource):
             playbook: Optional[pulumi.Input[str]] = None,
             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
+            slo_id: Optional[pulumi.Input[str]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
             triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
@@ -1290,6 +1511,7 @@ class Monitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -1298,11 +1520,13 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
                - `Logs`: A logs query monitor.
                - `Metrics`: A metrics query monitor.
+               - `Slo`: A SLO based monitor  (beta).
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
+        :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
                - `Critical`
                - `Warning`
@@ -1318,6 +1542,7 @@ class Monitor(pulumi.CustomResource):
 
         __props__ = _MonitorState.__new__(_MonitorState)
 
+        __props__.__dict__["alert_name"] = alert_name
         __props__.__dict__["content_type"] = content_type
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
@@ -1337,12 +1562,21 @@ class Monitor(pulumi.CustomResource):
         __props__.__dict__["playbook"] = playbook
         __props__.__dict__["post_request_map"] = post_request_map
         __props__.__dict__["queries"] = queries
+        __props__.__dict__["slo_id"] = slo_id
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["trigger_conditions"] = trigger_conditions
         __props__.__dict__["triggers"] = triggers
         __props__.__dict__["type"] = type
         __props__.__dict__["version"] = version
         return Monitor(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="alertName")
+    def alert_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        """
+        return pulumi.get(self, "alert_name")
 
     @property
     @pulumi.getter(name="contentType")
@@ -1424,6 +1658,7 @@ class Monitor(pulumi.CustomResource):
         The type of monitor. Valid values:
         - `Logs`: A logs query monitor.
         - `Metrics`: A metrics query monitor.
+        - `Slo`: A SLO based monitor  (beta).
         """
         return pulumi.get(self, "monitor_type")
 
@@ -1471,6 +1706,14 @@ class Monitor(pulumi.CustomResource):
         All queries from the monitor.
         """
         return pulumi.get(self, "queries")
+
+    @property
+    @pulumi.getter(name="sloId")
+    def slo_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
+        """
+        return pulumi.get(self, "slo_id")
 
     @property
     @pulumi.getter

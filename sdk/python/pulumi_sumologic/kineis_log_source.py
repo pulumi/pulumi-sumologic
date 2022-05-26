@@ -299,7 +299,7 @@ class _KineisLogSourceState:
         :param pulumi.Input['KineisLogSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
         :param pulumi.Input['KineisLogSourcePathArgs'] path: The location of S3 bucket for failed Kinesis log data.
-        :param pulumi.Input[str] url: The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+        :param pulumi.Input[str] url: The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -528,7 +528,7 @@ class _KineisLogSourceState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+        The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         """
         return pulumi.get(self, "url")
 
@@ -573,7 +573,7 @@ class KineisLogSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a Sumologic Kinesis Log source. This source is used to ingest log via Kinesis Firehose from AWS.
+        Provides a [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). This source is used to ingest log via Kinesis Firehose from AWS.
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
@@ -581,6 +581,40 @@ class KineisLogSource(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        kinesis_log_access_key = sumologic.KineisLogSource("kinesisLogAccessKey",
+            authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                access_key="someKey",
+                secret_key="******",
+                type="S3BucketAuthentication",
+            ),
+            category="prod/kinesis/log",
+            collector_id=collector.id,
+            content_type="KinesisLog",
+            description="Description for Kinesis Log Source",
+            path=sumologic.KineisLogSourcePathArgs(
+                bucket_name="testBucket",
+                path_expression="http-endpoint-failed/*",
+                scan_interval=30000,
+                type="KinesisLogPath",
+            ))
+        kinesis_log_role_arn = sumologic.KineisLogSource("kinesisLogRoleArn",
+            authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+                type="AWSRoleBasedAuthentication",
+            ),
+            category="prod/kinesis/log",
+            collector_id=collector.id,
+            content_type="KinesisLog",
+            description="Description for Kinesis Log Source",
+            path=sumologic.KineisLogSourcePathArgs(
+                bucket_name="testBucket",
+                path_expression="http-endpoint-failed/*",
+                scan_interval=30000,
+                type="KinesisLogPath",
+            ))
         ```
 
         ## Import
@@ -597,7 +631,7 @@ class KineisLogSource(pulumi.CustomResource):
          $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -612,7 +646,7 @@ class KineisLogSource(pulumi.CustomResource):
                  args: KineisLogSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Sumologic Kinesis Log source. This source is used to ingest log via Kinesis Firehose from AWS.
+        Provides a [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). This source is used to ingest log via Kinesis Firehose from AWS.
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
@@ -620,6 +654,40 @@ class KineisLogSource(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", description="Just testing this")
+        kinesis_log_access_key = sumologic.KineisLogSource("kinesisLogAccessKey",
+            authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                access_key="someKey",
+                secret_key="******",
+                type="S3BucketAuthentication",
+            ),
+            category="prod/kinesis/log",
+            collector_id=collector.id,
+            content_type="KinesisLog",
+            description="Description for Kinesis Log Source",
+            path=sumologic.KineisLogSourcePathArgs(
+                bucket_name="testBucket",
+                path_expression="http-endpoint-failed/*",
+                scan_interval=30000,
+                type="KinesisLogPath",
+            ))
+        kinesis_log_role_arn = sumologic.KineisLogSource("kinesisLogRoleArn",
+            authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+                type="AWSRoleBasedAuthentication",
+            ),
+            category="prod/kinesis/log",
+            collector_id=collector.id,
+            content_type="KinesisLog",
+            description="Description for Kinesis Log Source",
+            path=sumologic.KineisLogSourcePathArgs(
+                bucket_name="testBucket",
+                path_expression="http-endpoint-failed/*",
+                scan_interval=30000,
+                type="KinesisLogPath",
+            ))
         ```
 
         ## Import
@@ -636,7 +704,7 @@ class KineisLogSource(pulumi.CustomResource):
          $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
 
         :param str resource_name: The name of the resource.
         :param KineisLogSourceArgs args: The arguments to use to populate this resource's properties.
@@ -751,7 +819,7 @@ class KineisLogSource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['KineisLogSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
         :param pulumi.Input[pulumi.InputType['KineisLogSourcePathArgs']] path: The location of S3 bucket for failed Kinesis log data.
-        :param pulumi.Input[str] url: The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+        :param pulumi.Input[str] url: The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -888,7 +956,7 @@ class KineisLogSource(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+        The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         """
         return pulumi.get(self, "url")
 

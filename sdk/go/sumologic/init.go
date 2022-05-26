@@ -124,6 +124,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SamlConfiguration{}
 	case "sumologic:index/scheduledView:ScheduledView":
 		r = &ScheduledView{}
+	case "sumologic:index/slo:Slo":
+		r = &Slo{}
+	case "sumologic:index/sloFolder:SloFolder":
+		r = &SloFolder{}
 	case "sumologic:index/subdomain:Subdomain":
 		r = &Subdomain{}
 	case "sumologic:index/token:Token":
@@ -416,6 +420,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/scheduledView",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/slo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/sloFolder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

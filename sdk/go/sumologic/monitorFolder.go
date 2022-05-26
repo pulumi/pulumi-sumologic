@@ -12,6 +12,7 @@ import (
 )
 
 // Provides the ability to create, read, delete, and update folders for [Monitors](https://help.sumologic.com/?cid=10020).
+// > If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor folder resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders).
 //
 // ## Example Monitor Folder
 //
@@ -46,7 +47,7 @@ import (
 //  $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
 // ```
 //
-//  [1]https://help.sumologic.com/?cid=10020
+//  [1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
 type MonitorFolder struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +63,8 @@ type MonitorFolder struct {
 	ModifiedBy  pulumi.StringOutput  `pulumi:"modifiedBy"`
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	ObjPermissions MonitorFolderObjPermissionArrayOutput `pulumi:"objPermissions"`
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringOutput    `pulumi:"parentId"`
 	PostRequestMap pulumi.StringMapOutput `pulumi:"postRequestMap"`
@@ -115,6 +118,8 @@ type monitorFolderState struct {
 	ModifiedBy  *string `pulumi:"modifiedBy"`
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
+	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	ObjPermissions []MonitorFolderObjPermission `pulumi:"objPermissions"`
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
@@ -137,6 +142,8 @@ type MonitorFolderState struct {
 	ModifiedBy  pulumi.StringPtrInput
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
+	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	ObjPermissions MonitorFolderObjPermissionArrayInput
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput
@@ -163,6 +170,8 @@ type monitorFolderArgs struct {
 	ModifiedBy  *string `pulumi:"modifiedBy"`
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
+	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	ObjPermissions []MonitorFolderObjPermission `pulumi:"objPermissions"`
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
@@ -186,6 +195,8 @@ type MonitorFolderArgs struct {
 	ModifiedBy  pulumi.StringPtrInput
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
+	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	ObjPermissions MonitorFolderObjPermissionArrayInput
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput

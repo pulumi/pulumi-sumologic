@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Sumologic Kinesis Log source. This source is used to ingest log via Kinesis Firehose from AWS.
+ * Provides a [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). This source is used to ingest log via Kinesis Firehose from AWS.
  *
  * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
  *
@@ -14,6 +14,44 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const collector = new sumologic.Collector("collector", {
+ *     description: "Just testing this",
+ * });
+ * const kinesisLogAccessKey = new sumologic.KineisLogSource("kinesis_log_access_key", {
+ *     authentication: {
+ *         accessKey: "someKey",
+ *         secretKey: "******",
+ *         type: "S3BucketAuthentication",
+ *     },
+ *     category: "prod/kinesis/log",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "KinesisLog",
+ *     description: "Description for Kinesis Log Source",
+ *     path: {
+ *         bucketName: "testBucket",
+ *         pathExpression: "http-endpoint-failed/*",
+ *         scanInterval: 30000,
+ *         type: "KinesisLogPath",
+ *     },
+ * });
+ * const kinesisLogRoleArn = new sumologic.KineisLogSource("kinesis_log_role_arn", {
+ *     authentication: {
+ *         roleArn: "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+ *         type: "AWSRoleBasedAuthentication",
+ *     },
+ *     category: "prod/kinesis/log",
+ *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     contentType: "KinesisLog",
+ *     description: "Description for Kinesis Log Source",
+ *     path: {
+ *         bucketName: "testBucket",
+ *         pathExpression: "http-endpoint-failed/*",
+ *         scanInterval: 30000,
+ *         type: "KinesisLogPath",
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -30,7 +68,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
  * ```
  *
- *  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+ *  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
  */
 export class KineisLogSource extends pulumi.CustomResource {
     /**
@@ -89,7 +127,7 @@ export class KineisLogSource extends pulumi.CustomResource {
     public readonly path!: pulumi.Output<outputs.KineisLogSourcePath | undefined>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
-     * The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+     * The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     public readonly useAutolineMatching!: pulumi.Output<boolean | undefined>;
@@ -196,7 +234,7 @@ export interface KineisLogSourceState {
     path?: pulumi.Input<inputs.KineisLogSourcePath>;
     timezone?: pulumi.Input<string>;
     /**
-     * The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+     * The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
      */
     url?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;

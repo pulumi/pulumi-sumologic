@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Sumologic Kinesis Log source. This source is used to ingest log via Kinesis Firehose from AWS.
+// Provides a [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). This source is used to ingest log via Kinesis Firehose from AWS.
 //
 // __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 //
@@ -21,11 +21,57 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+// 			Description: pulumi.String("Just testing this"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogAccessKey", &sumologic.KineisLogSourceArgs{
+// 			Authentication: &KineisLogSourceAuthenticationArgs{
+// 				AccessKey: pulumi.String("someKey"),
+// 				SecretKey: pulumi.String("******"),
+// 				Type:      pulumi.String("S3BucketAuthentication"),
+// 			},
+// 			Category:    pulumi.String("prod/kinesis/log"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("KinesisLog"),
+// 			Description: pulumi.String("Description for Kinesis Log Source"),
+// 			Path: &KineisLogSourcePathArgs{
+// 				BucketName:     pulumi.String("testBucket"),
+// 				PathExpression: pulumi.String("http-endpoint-failed/*"),
+// 				ScanInterval:   pulumi.Int(30000),
+// 				Type:           pulumi.String("KinesisLogPath"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogRoleArn", &sumologic.KineisLogSourceArgs{
+// 			Authentication: &KineisLogSourceAuthenticationArgs{
+// 				RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
+// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
+// 			},
+// 			Category:    pulumi.String("prod/kinesis/log"),
+// 			CollectorId: collector.ID(),
+// 			ContentType: pulumi.String("KinesisLog"),
+// 			Description: pulumi.String("Description for Kinesis Log Source"),
+// 			Path: &KineisLogSourcePathArgs{
+// 				BucketName:     pulumi.String("testBucket"),
+// 				PathExpression: pulumi.String("http-endpoint-failed/*"),
+// 				ScanInterval:   pulumi.Int(30000),
+// 				Type:           pulumi.String("KinesisLogPath"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }
@@ -45,7 +91,7 @@ import (
 //  $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
 type KineisLogSource struct {
 	pulumi.CustomResourceState
 
@@ -71,7 +117,7 @@ type KineisLogSource struct {
 	// The location of S3 bucket for failed Kinesis log data.
 	Path     KineisLogSourcePathPtrOutput `pulumi:"path"`
 	Timezone pulumi.StringPtrOutput       `pulumi:"timezone"`
-	// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+	// The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
 }
@@ -133,7 +179,7 @@ type kineisLogSourceState struct {
 	// The location of S3 bucket for failed Kinesis log data.
 	Path     *KineisLogSourcePath `pulumi:"path"`
 	Timezone *string              `pulumi:"timezone"`
-	// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+	// The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
 	Url                 *string `pulumi:"url"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
@@ -161,7 +207,7 @@ type KineisLogSourceState struct {
 	// The location of S3 bucket for failed Kinesis log data.
 	Path     KineisLogSourcePathPtrInput
 	Timezone pulumi.StringPtrInput
-	// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+	// The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
 	Url                 pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
 }

@@ -30927,6 +30927,127 @@ func (o MetadataSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MonitorFolderObjPermission struct {
+	// A Set of Permissions. Valid Permission Values:
+	// - `Create`
+	// - `Read`
+	Permissions []string `pulumi:"permissions"`
+	// A Role ID or the Org ID of the account
+	SubjectId string `pulumi:"subjectId"`
+	// Valid values:
+	SubjectType string `pulumi:"subjectType"`
+}
+
+// MonitorFolderObjPermissionInput is an input type that accepts MonitorFolderObjPermissionArgs and MonitorFolderObjPermissionOutput values.
+// You can construct a concrete instance of `MonitorFolderObjPermissionInput` via:
+//
+//          MonitorFolderObjPermissionArgs{...}
+type MonitorFolderObjPermissionInput interface {
+	pulumi.Input
+
+	ToMonitorFolderObjPermissionOutput() MonitorFolderObjPermissionOutput
+	ToMonitorFolderObjPermissionOutputWithContext(context.Context) MonitorFolderObjPermissionOutput
+}
+
+type MonitorFolderObjPermissionArgs struct {
+	// A Set of Permissions. Valid Permission Values:
+	// - `Create`
+	// - `Read`
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+	// A Role ID or the Org ID of the account
+	SubjectId pulumi.StringInput `pulumi:"subjectId"`
+	// Valid values:
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
+}
+
+func (MonitorFolderObjPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorFolderObjPermission)(nil)).Elem()
+}
+
+func (i MonitorFolderObjPermissionArgs) ToMonitorFolderObjPermissionOutput() MonitorFolderObjPermissionOutput {
+	return i.ToMonitorFolderObjPermissionOutputWithContext(context.Background())
+}
+
+func (i MonitorFolderObjPermissionArgs) ToMonitorFolderObjPermissionOutputWithContext(ctx context.Context) MonitorFolderObjPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderObjPermissionOutput)
+}
+
+// MonitorFolderObjPermissionArrayInput is an input type that accepts MonitorFolderObjPermissionArray and MonitorFolderObjPermissionArrayOutput values.
+// You can construct a concrete instance of `MonitorFolderObjPermissionArrayInput` via:
+//
+//          MonitorFolderObjPermissionArray{ MonitorFolderObjPermissionArgs{...} }
+type MonitorFolderObjPermissionArrayInput interface {
+	pulumi.Input
+
+	ToMonitorFolderObjPermissionArrayOutput() MonitorFolderObjPermissionArrayOutput
+	ToMonitorFolderObjPermissionArrayOutputWithContext(context.Context) MonitorFolderObjPermissionArrayOutput
+}
+
+type MonitorFolderObjPermissionArray []MonitorFolderObjPermissionInput
+
+func (MonitorFolderObjPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorFolderObjPermission)(nil)).Elem()
+}
+
+func (i MonitorFolderObjPermissionArray) ToMonitorFolderObjPermissionArrayOutput() MonitorFolderObjPermissionArrayOutput {
+	return i.ToMonitorFolderObjPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorFolderObjPermissionArray) ToMonitorFolderObjPermissionArrayOutputWithContext(ctx context.Context) MonitorFolderObjPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderObjPermissionArrayOutput)
+}
+
+type MonitorFolderObjPermissionOutput struct{ *pulumi.OutputState }
+
+func (MonitorFolderObjPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorFolderObjPermission)(nil)).Elem()
+}
+
+func (o MonitorFolderObjPermissionOutput) ToMonitorFolderObjPermissionOutput() MonitorFolderObjPermissionOutput {
+	return o
+}
+
+func (o MonitorFolderObjPermissionOutput) ToMonitorFolderObjPermissionOutputWithContext(ctx context.Context) MonitorFolderObjPermissionOutput {
+	return o
+}
+
+// A Set of Permissions. Valid Permission Values:
+// - `Create`
+// - `Read`
+func (o MonitorFolderObjPermissionOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MonitorFolderObjPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+// A Role ID or the Org ID of the account
+func (o MonitorFolderObjPermissionOutput) SubjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorFolderObjPermission) string { return v.SubjectId }).(pulumi.StringOutput)
+}
+
+// Valid values:
+func (o MonitorFolderObjPermissionOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorFolderObjPermission) string { return v.SubjectType }).(pulumi.StringOutput)
+}
+
+type MonitorFolderObjPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorFolderObjPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorFolderObjPermission)(nil)).Elem()
+}
+
+func (o MonitorFolderObjPermissionArrayOutput) ToMonitorFolderObjPermissionArrayOutput() MonitorFolderObjPermissionArrayOutput {
+	return o
+}
+
+func (o MonitorFolderObjPermissionArrayOutput) ToMonitorFolderObjPermissionArrayOutputWithContext(ctx context.Context) MonitorFolderObjPermissionArrayOutput {
+	return o
+}
+
+func (o MonitorFolderObjPermissionArrayOutput) Index(i pulumi.IntInput) MonitorFolderObjPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorFolderObjPermission {
+		return vs[0].([]MonitorFolderObjPermission)[vs[1].(int)]
+	}).(MonitorFolderObjPermissionOutput)
+}
+
 type MonitorNotification struct {
 	Notification       MonitorNotificationNotification `pulumi:"notification"`
 	RunForTriggerTypes []string                        `pulumi:"runForTriggerTypes"`
@@ -31358,6 +31479,8 @@ type MonitorTriggerConditions struct {
 	MetricsMissingDataCondition *MonitorTriggerConditionsMetricsMissingDataCondition `pulumi:"metricsMissingDataCondition"`
 	MetricsOutlierCondition     *MonitorTriggerConditionsMetricsOutlierCondition     `pulumi:"metricsOutlierCondition"`
 	MetricsStaticCondition      *MonitorTriggerConditionsMetricsStaticCondition      `pulumi:"metricsStaticCondition"`
+	SloBurnRateCondition        *MonitorTriggerConditionsSloBurnRateCondition        `pulumi:"sloBurnRateCondition"`
+	SloSliCondition             *MonitorTriggerConditionsSloSliCondition             `pulumi:"sloSliCondition"`
 }
 
 // MonitorTriggerConditionsInput is an input type that accepts MonitorTriggerConditionsArgs and MonitorTriggerConditionsOutput values.
@@ -31378,6 +31501,8 @@ type MonitorTriggerConditionsArgs struct {
 	MetricsMissingDataCondition MonitorTriggerConditionsMetricsMissingDataConditionPtrInput `pulumi:"metricsMissingDataCondition"`
 	MetricsOutlierCondition     MonitorTriggerConditionsMetricsOutlierConditionPtrInput     `pulumi:"metricsOutlierCondition"`
 	MetricsStaticCondition      MonitorTriggerConditionsMetricsStaticConditionPtrInput      `pulumi:"metricsStaticCondition"`
+	SloBurnRateCondition        MonitorTriggerConditionsSloBurnRateConditionPtrInput        `pulumi:"sloBurnRateCondition"`
+	SloSliCondition             MonitorTriggerConditionsSloSliConditionPtrInput             `pulumi:"sloSliCondition"`
 }
 
 func (MonitorTriggerConditionsArgs) ElementType() reflect.Type {
@@ -31493,6 +31618,16 @@ func (o MonitorTriggerConditionsOutput) MetricsStaticCondition() MonitorTriggerC
 	}).(MonitorTriggerConditionsMetricsStaticConditionPtrOutput)
 }
 
+func (o MonitorTriggerConditionsOutput) SloBurnRateCondition() MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditionsSloBurnRateCondition {
+		return v.SloBurnRateCondition
+	}).(MonitorTriggerConditionsSloBurnRateConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsOutput) SloSliCondition() MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditionsSloSliCondition { return v.SloSliCondition }).(MonitorTriggerConditionsSloSliConditionPtrOutput)
+}
+
 type MonitorTriggerConditionsPtrOutput struct{ *pulumi.OutputState }
 
 func (MonitorTriggerConditionsPtrOutput) ElementType() reflect.Type {
@@ -31569,6 +31704,24 @@ func (o MonitorTriggerConditionsPtrOutput) MetricsStaticCondition() MonitorTrigg
 		}
 		return v.MetricsStaticCondition
 	}).(MonitorTriggerConditionsMetricsStaticConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsPtrOutput) SloBurnRateCondition() MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditions) *MonitorTriggerConditionsSloBurnRateCondition {
+		if v == nil {
+			return nil
+		}
+		return v.SloBurnRateCondition
+	}).(MonitorTriggerConditionsSloBurnRateConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsPtrOutput) SloSliCondition() MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditions) *MonitorTriggerConditionsSloSliCondition {
+		if v == nil {
+			return nil
+		}
+		return v.SloSliCondition
+	}).(MonitorTriggerConditionsSloSliConditionPtrOutput)
 }
 
 type MonitorTriggerConditionsLogsMissingDataCondition struct {
@@ -35062,6 +35215,872 @@ func (o MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type MonitorTriggerConditionsSloBurnRateCondition struct {
+	Critical *MonitorTriggerConditionsSloBurnRateConditionCritical `pulumi:"critical"`
+	Warning  *MonitorTriggerConditionsSloBurnRateConditionWarning  `pulumi:"warning"`
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionArgs and MonitorTriggerConditionsSloBurnRateConditionOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionInput` via:
+//
+//          MonitorTriggerConditionsSloBurnRateConditionArgs{...}
+type MonitorTriggerConditionsSloBurnRateConditionInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionOutput() MonitorTriggerConditionsSloBurnRateConditionOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionOutput
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionArgs struct {
+	Critical MonitorTriggerConditionsSloBurnRateConditionCriticalPtrInput `pulumi:"critical"`
+	Warning  MonitorTriggerConditionsSloBurnRateConditionWarningPtrInput  `pulumi:"warning"`
+}
+
+func (MonitorTriggerConditionsSloBurnRateConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateCondition)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionArgs) ToMonitorTriggerConditionsSloBurnRateConditionOutput() MonitorTriggerConditionsSloBurnRateConditionOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionArgs) ToMonitorTriggerConditionsSloBurnRateConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionOutput)
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionArgs) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutput() MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionArgs) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionOutput).ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionPtrInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionArgs, MonitorTriggerConditionsSloBurnRateConditionPtr and MonitorTriggerConditionsSloBurnRateConditionPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionPtrInput` via:
+//
+//          MonitorTriggerConditionsSloBurnRateConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitorTriggerConditionsSloBurnRateConditionPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionPtrOutput() MonitorTriggerConditionsSloBurnRateConditionPtrOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionPtrOutput
+}
+
+type monitorTriggerConditionsSloBurnRateConditionPtrType MonitorTriggerConditionsSloBurnRateConditionArgs
+
+func MonitorTriggerConditionsSloBurnRateConditionPtr(v *MonitorTriggerConditionsSloBurnRateConditionArgs) MonitorTriggerConditionsSloBurnRateConditionPtrInput {
+	return (*monitorTriggerConditionsSloBurnRateConditionPtrType)(v)
+}
+
+func (*monitorTriggerConditionsSloBurnRateConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloBurnRateCondition)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsSloBurnRateConditionPtrType) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutput() MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsSloBurnRateConditionPtrType) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionPtrOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionOutput) ToMonitorTriggerConditionsSloBurnRateConditionOutput() MonitorTriggerConditionsSloBurnRateConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionOutput) ToMonitorTriggerConditionsSloBurnRateConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionOutput) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutput() MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return o.ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionOutput) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsSloBurnRateCondition) *MonitorTriggerConditionsSloBurnRateCondition {
+		return &v
+	}).(MonitorTriggerConditionsSloBurnRateConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionOutput) Critical() MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateCondition) *MonitorTriggerConditionsSloBurnRateConditionCritical {
+		return v.Critical
+	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionOutput) Warning() MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateCondition) *MonitorTriggerConditionsSloBurnRateConditionWarning {
+		return v.Warning
+	}).(MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloBurnRateCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionPtrOutput) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutput() MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionPtrOutput) ToMonitorTriggerConditionsSloBurnRateConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionPtrOutput) Elem() MonitorTriggerConditionsSloBurnRateConditionOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateCondition) MonitorTriggerConditionsSloBurnRateCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsSloBurnRateCondition
+		return ret
+	}).(MonitorTriggerConditionsSloBurnRateConditionOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionPtrOutput) Critical() MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateCondition) *MonitorTriggerConditionsSloBurnRateConditionCritical {
+		if v == nil {
+			return nil
+		}
+		return v.Critical
+	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionPtrOutput) Warning() MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateCondition) *MonitorTriggerConditionsSloBurnRateConditionWarning {
+		if v == nil {
+			return nil
+		}
+		return v.Warning
+	}).(MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCritical struct {
+	BurnRateThreshold float64 `pulumi:"burnRateThreshold"`
+	TimeRange         string  `pulumi:"timeRange"`
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionCriticalInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionCriticalArgs and MonitorTriggerConditionsSloBurnRateConditionCriticalOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionCriticalInput` via:
+//
+//          MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{...}
+type MonitorTriggerConditionsSloBurnRateConditionCriticalInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalOutput
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCriticalArgs struct {
+	BurnRateThreshold pulumi.Float64Input `pulumi:"burnRateThreshold"`
+	TimeRange         pulumi.StringInput  `pulumi:"timeRange"`
+}
+
+func (MonitorTriggerConditionsSloBurnRateConditionCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCritical)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalArgs) ToMonitorTriggerConditionsSloBurnRateConditionCriticalOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionCriticalOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalArgs) ToMonitorTriggerConditionsSloBurnRateConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionCriticalOutput)
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalArgs) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalArgs) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionCriticalOutput).ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionCriticalPtrInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionCriticalArgs, MonitorTriggerConditionsSloBurnRateConditionCriticalPtr and MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionCriticalPtrInput` via:
+//
+//          MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitorTriggerConditionsSloBurnRateConditionCriticalPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput
+}
+
+type monitorTriggerConditionsSloBurnRateConditionCriticalPtrType MonitorTriggerConditionsSloBurnRateConditionCriticalArgs
+
+func MonitorTriggerConditionsSloBurnRateConditionCriticalPtr(v *MonitorTriggerConditionsSloBurnRateConditionCriticalArgs) MonitorTriggerConditionsSloBurnRateConditionCriticalPtrInput {
+	return (*monitorTriggerConditionsSloBurnRateConditionCriticalPtrType)(v)
+}
+
+func (*monitorTriggerConditionsSloBurnRateConditionCriticalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloBurnRateConditionCritical)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsSloBurnRateConditionCriticalPtrType) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsSloBurnRateConditionCriticalPtrType) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCriticalOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return o.ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsSloBurnRateConditionCritical) *MonitorTriggerConditionsSloBurnRateConditionCritical {
+		return &v
+	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) BurnRateThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCritical) float64 { return v.BurnRateThreshold }).(pulumi.Float64Output)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) TimeRange() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCritical) string { return v.TimeRange }).(pulumi.StringOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloBurnRateConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsSloBurnRateConditionCriticalOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionCritical) MonitorTriggerConditionsSloBurnRateConditionCritical {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsSloBurnRateConditionCritical
+		return ret
+	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) BurnRateThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionCritical) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.BurnRateThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeRange
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarning struct {
+	BurnRateThreshold float64 `pulumi:"burnRateThreshold"`
+	TimeRange         string  `pulumi:"timeRange"`
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionWarningInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionWarningArgs and MonitorTriggerConditionsSloBurnRateConditionWarningOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionWarningInput` via:
+//
+//          MonitorTriggerConditionsSloBurnRateConditionWarningArgs{...}
+type MonitorTriggerConditionsSloBurnRateConditionWarningInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningOutput() MonitorTriggerConditionsSloBurnRateConditionWarningOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningOutput
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningArgs struct {
+	BurnRateThreshold pulumi.Float64Input `pulumi:"burnRateThreshold"`
+	TimeRange         pulumi.StringInput  `pulumi:"timeRange"`
+}
+
+func (MonitorTriggerConditionsSloBurnRateConditionWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarning)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningArgs) ToMonitorTriggerConditionsSloBurnRateConditionWarningOutput() MonitorTriggerConditionsSloBurnRateConditionWarningOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionWarningOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningArgs) ToMonitorTriggerConditionsSloBurnRateConditionWarningOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionWarningOutput)
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningArgs) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput() MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningArgs) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionWarningOutput).ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionWarningPtrInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionWarningArgs, MonitorTriggerConditionsSloBurnRateConditionWarningPtr and MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionWarningPtrInput` via:
+//
+//          MonitorTriggerConditionsSloBurnRateConditionWarningArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitorTriggerConditionsSloBurnRateConditionWarningPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput() MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput
+}
+
+type monitorTriggerConditionsSloBurnRateConditionWarningPtrType MonitorTriggerConditionsSloBurnRateConditionWarningArgs
+
+func MonitorTriggerConditionsSloBurnRateConditionWarningPtr(v *MonitorTriggerConditionsSloBurnRateConditionWarningArgs) MonitorTriggerConditionsSloBurnRateConditionWarningPtrInput {
+	return (*monitorTriggerConditionsSloBurnRateConditionWarningPtrType)(v)
+}
+
+func (*monitorTriggerConditionsSloBurnRateConditionWarningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloBurnRateConditionWarning)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsSloBurnRateConditionWarningPtrType) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput() MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsSloBurnRateConditionWarningPtrType) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarning)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningOutput() MonitorTriggerConditionsSloBurnRateConditionWarningOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput() MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return o.ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsSloBurnRateConditionWarning) *MonitorTriggerConditionsSloBurnRateConditionWarning {
+		return &v
+	}).(MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) BurnRateThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarning) float64 { return v.BurnRateThreshold }).(pulumi.Float64Output)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) TimeRange() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarning) string { return v.TimeRange }).(pulumi.StringOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloBurnRateConditionWarning)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput() MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) Elem() MonitorTriggerConditionsSloBurnRateConditionWarningOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionWarning) MonitorTriggerConditionsSloBurnRateConditionWarning {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsSloBurnRateConditionWarning
+		return ret
+	}).(MonitorTriggerConditionsSloBurnRateConditionWarningOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) BurnRateThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionWarning) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.BurnRateThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionWarning) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeRange
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsSloSliCondition struct {
+	Critical *MonitorTriggerConditionsSloSliConditionCritical `pulumi:"critical"`
+	Warning  *MonitorTriggerConditionsSloSliConditionWarning  `pulumi:"warning"`
+}
+
+// MonitorTriggerConditionsSloSliConditionInput is an input type that accepts MonitorTriggerConditionsSloSliConditionArgs and MonitorTriggerConditionsSloSliConditionOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloSliConditionInput` via:
+//
+//          MonitorTriggerConditionsSloSliConditionArgs{...}
+type MonitorTriggerConditionsSloSliConditionInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloSliConditionOutput() MonitorTriggerConditionsSloSliConditionOutput
+	ToMonitorTriggerConditionsSloSliConditionOutputWithContext(context.Context) MonitorTriggerConditionsSloSliConditionOutput
+}
+
+type MonitorTriggerConditionsSloSliConditionArgs struct {
+	Critical MonitorTriggerConditionsSloSliConditionCriticalPtrInput `pulumi:"critical"`
+	Warning  MonitorTriggerConditionsSloSliConditionWarningPtrInput  `pulumi:"warning"`
+}
+
+func (MonitorTriggerConditionsSloSliConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloSliCondition)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloSliConditionArgs) ToMonitorTriggerConditionsSloSliConditionOutput() MonitorTriggerConditionsSloSliConditionOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloSliConditionArgs) ToMonitorTriggerConditionsSloSliConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionOutput)
+}
+
+func (i MonitorTriggerConditionsSloSliConditionArgs) ToMonitorTriggerConditionsSloSliConditionPtrOutput() MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloSliConditionArgs) ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionOutput).ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsSloSliConditionPtrInput is an input type that accepts MonitorTriggerConditionsSloSliConditionArgs, MonitorTriggerConditionsSloSliConditionPtr and MonitorTriggerConditionsSloSliConditionPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloSliConditionPtrInput` via:
+//
+//          MonitorTriggerConditionsSloSliConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitorTriggerConditionsSloSliConditionPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloSliConditionPtrOutput() MonitorTriggerConditionsSloSliConditionPtrOutput
+	ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(context.Context) MonitorTriggerConditionsSloSliConditionPtrOutput
+}
+
+type monitorTriggerConditionsSloSliConditionPtrType MonitorTriggerConditionsSloSliConditionArgs
+
+func MonitorTriggerConditionsSloSliConditionPtr(v *MonitorTriggerConditionsSloSliConditionArgs) MonitorTriggerConditionsSloSliConditionPtrInput {
+	return (*monitorTriggerConditionsSloSliConditionPtrType)(v)
+}
+
+func (*monitorTriggerConditionsSloSliConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloSliCondition)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsSloSliConditionPtrType) ToMonitorTriggerConditionsSloSliConditionPtrOutput() MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsSloSliConditionPtrType) ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionPtrOutput)
+}
+
+type MonitorTriggerConditionsSloSliConditionOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloSliConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloSliCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloSliConditionOutput) ToMonitorTriggerConditionsSloSliConditionOutput() MonitorTriggerConditionsSloSliConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionOutput) ToMonitorTriggerConditionsSloSliConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionOutput) ToMonitorTriggerConditionsSloSliConditionPtrOutput() MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return o.ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsSloSliConditionOutput) ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsSloSliCondition) *MonitorTriggerConditionsSloSliCondition {
+		return &v
+	}).(MonitorTriggerConditionsSloSliConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionOutput) Critical() MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloSliCondition) *MonitorTriggerConditionsSloSliConditionCritical {
+		return v.Critical
+	}).(MonitorTriggerConditionsSloSliConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionOutput) Warning() MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloSliCondition) *MonitorTriggerConditionsSloSliConditionWarning {
+		return v.Warning
+	}).(MonitorTriggerConditionsSloSliConditionWarningPtrOutput)
+}
+
+type MonitorTriggerConditionsSloSliConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloSliConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloSliCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloSliConditionPtrOutput) ToMonitorTriggerConditionsSloSliConditionPtrOutput() MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionPtrOutput) ToMonitorTriggerConditionsSloSliConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionPtrOutput) Elem() MonitorTriggerConditionsSloSliConditionOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloSliCondition) MonitorTriggerConditionsSloSliCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsSloSliCondition
+		return ret
+	}).(MonitorTriggerConditionsSloSliConditionOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionPtrOutput) Critical() MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloSliCondition) *MonitorTriggerConditionsSloSliConditionCritical {
+		if v == nil {
+			return nil
+		}
+		return v.Critical
+	}).(MonitorTriggerConditionsSloSliConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionPtrOutput) Warning() MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloSliCondition) *MonitorTriggerConditionsSloSliConditionWarning {
+		if v == nil {
+			return nil
+		}
+		return v.Warning
+	}).(MonitorTriggerConditionsSloSliConditionWarningPtrOutput)
+}
+
+type MonitorTriggerConditionsSloSliConditionCritical struct {
+	SliThreshold float64 `pulumi:"sliThreshold"`
+}
+
+// MonitorTriggerConditionsSloSliConditionCriticalInput is an input type that accepts MonitorTriggerConditionsSloSliConditionCriticalArgs and MonitorTriggerConditionsSloSliConditionCriticalOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloSliConditionCriticalInput` via:
+//
+//          MonitorTriggerConditionsSloSliConditionCriticalArgs{...}
+type MonitorTriggerConditionsSloSliConditionCriticalInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloSliConditionCriticalOutput() MonitorTriggerConditionsSloSliConditionCriticalOutput
+	ToMonitorTriggerConditionsSloSliConditionCriticalOutputWithContext(context.Context) MonitorTriggerConditionsSloSliConditionCriticalOutput
+}
+
+type MonitorTriggerConditionsSloSliConditionCriticalArgs struct {
+	SliThreshold pulumi.Float64Input `pulumi:"sliThreshold"`
+}
+
+func (MonitorTriggerConditionsSloSliConditionCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionCritical)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloSliConditionCriticalArgs) ToMonitorTriggerConditionsSloSliConditionCriticalOutput() MonitorTriggerConditionsSloSliConditionCriticalOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionCriticalOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloSliConditionCriticalArgs) ToMonitorTriggerConditionsSloSliConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionCriticalOutput)
+}
+
+func (i MonitorTriggerConditionsSloSliConditionCriticalArgs) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutput() MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloSliConditionCriticalArgs) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionCriticalOutput).ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsSloSliConditionCriticalPtrInput is an input type that accepts MonitorTriggerConditionsSloSliConditionCriticalArgs, MonitorTriggerConditionsSloSliConditionCriticalPtr and MonitorTriggerConditionsSloSliConditionCriticalPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloSliConditionCriticalPtrInput` via:
+//
+//          MonitorTriggerConditionsSloSliConditionCriticalArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitorTriggerConditionsSloSliConditionCriticalPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutput() MonitorTriggerConditionsSloSliConditionCriticalPtrOutput
+	ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(context.Context) MonitorTriggerConditionsSloSliConditionCriticalPtrOutput
+}
+
+type monitorTriggerConditionsSloSliConditionCriticalPtrType MonitorTriggerConditionsSloSliConditionCriticalArgs
+
+func MonitorTriggerConditionsSloSliConditionCriticalPtr(v *MonitorTriggerConditionsSloSliConditionCriticalArgs) MonitorTriggerConditionsSloSliConditionCriticalPtrInput {
+	return (*monitorTriggerConditionsSloSliConditionCriticalPtrType)(v)
+}
+
+func (*monitorTriggerConditionsSloSliConditionCriticalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloSliConditionCritical)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsSloSliConditionCriticalPtrType) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutput() MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsSloSliConditionCriticalPtrType) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionCriticalPtrOutput)
+}
+
+type MonitorTriggerConditionsSloSliConditionCriticalOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloSliConditionCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalOutput) ToMonitorTriggerConditionsSloSliConditionCriticalOutput() MonitorTriggerConditionsSloSliConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalOutput) ToMonitorTriggerConditionsSloSliConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalOutput) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutput() MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return o.ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalOutput) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsSloSliConditionCritical) *MonitorTriggerConditionsSloSliConditionCritical {
+		return &v
+	}).(MonitorTriggerConditionsSloSliConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalOutput) SliThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloSliConditionCritical) float64 { return v.SliThreshold }).(pulumi.Float64Output)
+}
+
+type MonitorTriggerConditionsSloSliConditionCriticalPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloSliConditionCriticalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloSliConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalPtrOutput) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutput() MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalPtrOutput) ToMonitorTriggerConditionsSloSliConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsSloSliConditionCriticalOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloSliConditionCritical) MonitorTriggerConditionsSloSliConditionCritical {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsSloSliConditionCritical
+		return ret
+	}).(MonitorTriggerConditionsSloSliConditionCriticalOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionCriticalPtrOutput) SliThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloSliConditionCritical) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.SliThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type MonitorTriggerConditionsSloSliConditionWarning struct {
+	SliThreshold float64 `pulumi:"sliThreshold"`
+}
+
+// MonitorTriggerConditionsSloSliConditionWarningInput is an input type that accepts MonitorTriggerConditionsSloSliConditionWarningArgs and MonitorTriggerConditionsSloSliConditionWarningOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloSliConditionWarningInput` via:
+//
+//          MonitorTriggerConditionsSloSliConditionWarningArgs{...}
+type MonitorTriggerConditionsSloSliConditionWarningInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloSliConditionWarningOutput() MonitorTriggerConditionsSloSliConditionWarningOutput
+	ToMonitorTriggerConditionsSloSliConditionWarningOutputWithContext(context.Context) MonitorTriggerConditionsSloSliConditionWarningOutput
+}
+
+type MonitorTriggerConditionsSloSliConditionWarningArgs struct {
+	SliThreshold pulumi.Float64Input `pulumi:"sliThreshold"`
+}
+
+func (MonitorTriggerConditionsSloSliConditionWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionWarning)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloSliConditionWarningArgs) ToMonitorTriggerConditionsSloSliConditionWarningOutput() MonitorTriggerConditionsSloSliConditionWarningOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionWarningOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloSliConditionWarningArgs) ToMonitorTriggerConditionsSloSliConditionWarningOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionWarningOutput)
+}
+
+func (i MonitorTriggerConditionsSloSliConditionWarningArgs) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutput() MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloSliConditionWarningArgs) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionWarningOutput).ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsSloSliConditionWarningPtrInput is an input type that accepts MonitorTriggerConditionsSloSliConditionWarningArgs, MonitorTriggerConditionsSloSliConditionWarningPtr and MonitorTriggerConditionsSloSliConditionWarningPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloSliConditionWarningPtrInput` via:
+//
+//          MonitorTriggerConditionsSloSliConditionWarningArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitorTriggerConditionsSloSliConditionWarningPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloSliConditionWarningPtrOutput() MonitorTriggerConditionsSloSliConditionWarningPtrOutput
+	ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(context.Context) MonitorTriggerConditionsSloSliConditionWarningPtrOutput
+}
+
+type monitorTriggerConditionsSloSliConditionWarningPtrType MonitorTriggerConditionsSloSliConditionWarningArgs
+
+func MonitorTriggerConditionsSloSliConditionWarningPtr(v *MonitorTriggerConditionsSloSliConditionWarningArgs) MonitorTriggerConditionsSloSliConditionWarningPtrInput {
+	return (*monitorTriggerConditionsSloSliConditionWarningPtrType)(v)
+}
+
+func (*monitorTriggerConditionsSloSliConditionWarningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloSliConditionWarning)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsSloSliConditionWarningPtrType) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutput() MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return i.ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsSloSliConditionWarningPtrType) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloSliConditionWarningPtrOutput)
+}
+
+type MonitorTriggerConditionsSloSliConditionWarningOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloSliConditionWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionWarning)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningOutput) ToMonitorTriggerConditionsSloSliConditionWarningOutput() MonitorTriggerConditionsSloSliConditionWarningOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningOutput) ToMonitorTriggerConditionsSloSliConditionWarningOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionWarningOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningOutput) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutput() MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return o.ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningOutput) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsSloSliConditionWarning) *MonitorTriggerConditionsSloSliConditionWarning {
+		return &v
+	}).(MonitorTriggerConditionsSloSliConditionWarningPtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningOutput) SliThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloSliConditionWarning) float64 { return v.SliThreshold }).(pulumi.Float64Output)
+}
+
+type MonitorTriggerConditionsSloSliConditionWarningPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloSliConditionWarningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsSloSliConditionWarning)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningPtrOutput) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutput() MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningPtrOutput) ToMonitorTriggerConditionsSloSliConditionWarningPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloSliConditionWarningPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningPtrOutput) Elem() MonitorTriggerConditionsSloSliConditionWarningOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloSliConditionWarning) MonitorTriggerConditionsSloSliConditionWarning {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsSloSliConditionWarning
+		return ret
+	}).(MonitorTriggerConditionsSloSliConditionWarningOutput)
+}
+
+func (o MonitorTriggerConditionsSloSliConditionWarningPtrOutput) SliThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloSliConditionWarning) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.SliThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
 type PoliciesUserConcurrentSessionsLimit struct {
 	// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -38424,6 +39443,1214 @@ func (o SamlConfigurationOnDemandProvisioningEnabledPtrOutput) OnDemandProvision
 	}).(pulumi.StringArrayOutput)
 }
 
+type SloCompliance struct {
+	// The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+	ComplianceType string `pulumi:"complianceType"`
+	// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+	// based evaluation.
+	Size string `pulumi:"size"`
+	// Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+	// Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+	// For `Month` it's not required and is set to first day of the month.
+	StartFrom *string `pulumi:"startFrom"`
+	// The target value to use, must be a number between 0 and 100.
+	Target float64 `pulumi:"target"`
+	// Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+	Timezone string `pulumi:"timezone"`
+}
+
+// SloComplianceInput is an input type that accepts SloComplianceArgs and SloComplianceOutput values.
+// You can construct a concrete instance of `SloComplianceInput` via:
+//
+//          SloComplianceArgs{...}
+type SloComplianceInput interface {
+	pulumi.Input
+
+	ToSloComplianceOutput() SloComplianceOutput
+	ToSloComplianceOutputWithContext(context.Context) SloComplianceOutput
+}
+
+type SloComplianceArgs struct {
+	// The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+	ComplianceType pulumi.StringInput `pulumi:"complianceType"`
+	// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+	// based evaluation.
+	Size pulumi.StringInput `pulumi:"size"`
+	// Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+	// Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+	// For `Month` it's not required and is set to first day of the month.
+	StartFrom pulumi.StringPtrInput `pulumi:"startFrom"`
+	// The target value to use, must be a number between 0 and 100.
+	Target pulumi.Float64Input `pulumi:"target"`
+	// Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+	Timezone pulumi.StringInput `pulumi:"timezone"`
+}
+
+func (SloComplianceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloCompliance)(nil)).Elem()
+}
+
+func (i SloComplianceArgs) ToSloComplianceOutput() SloComplianceOutput {
+	return i.ToSloComplianceOutputWithContext(context.Background())
+}
+
+func (i SloComplianceArgs) ToSloComplianceOutputWithContext(ctx context.Context) SloComplianceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloComplianceOutput)
+}
+
+// SloComplianceArrayInput is an input type that accepts SloComplianceArray and SloComplianceArrayOutput values.
+// You can construct a concrete instance of `SloComplianceArrayInput` via:
+//
+//          SloComplianceArray{ SloComplianceArgs{...} }
+type SloComplianceArrayInput interface {
+	pulumi.Input
+
+	ToSloComplianceArrayOutput() SloComplianceArrayOutput
+	ToSloComplianceArrayOutputWithContext(context.Context) SloComplianceArrayOutput
+}
+
+type SloComplianceArray []SloComplianceInput
+
+func (SloComplianceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloCompliance)(nil)).Elem()
+}
+
+func (i SloComplianceArray) ToSloComplianceArrayOutput() SloComplianceArrayOutput {
+	return i.ToSloComplianceArrayOutputWithContext(context.Background())
+}
+
+func (i SloComplianceArray) ToSloComplianceArrayOutputWithContext(ctx context.Context) SloComplianceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloComplianceArrayOutput)
+}
+
+type SloComplianceOutput struct{ *pulumi.OutputState }
+
+func (SloComplianceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloCompliance)(nil)).Elem()
+}
+
+func (o SloComplianceOutput) ToSloComplianceOutput() SloComplianceOutput {
+	return o
+}
+
+func (o SloComplianceOutput) ToSloComplianceOutputWithContext(ctx context.Context) SloComplianceOutput {
+	return o
+}
+
+// The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+func (o SloComplianceOutput) ComplianceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SloCompliance) string { return v.ComplianceType }).(pulumi.StringOutput)
+}
+
+// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+// based evaluation.
+func (o SloComplianceOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v SloCompliance) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+// Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+// For `Month` it's not required and is set to first day of the month.
+func (o SloComplianceOutput) StartFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloCompliance) *string { return v.StartFrom }).(pulumi.StringPtrOutput)
+}
+
+// The target value to use, must be a number between 0 and 100.
+func (o SloComplianceOutput) Target() pulumi.Float64Output {
+	return o.ApplyT(func(v SloCompliance) float64 { return v.Target }).(pulumi.Float64Output)
+}
+
+// Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+func (o SloComplianceOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v SloCompliance) string { return v.Timezone }).(pulumi.StringOutput)
+}
+
+type SloComplianceArrayOutput struct{ *pulumi.OutputState }
+
+func (SloComplianceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloCompliance)(nil)).Elem()
+}
+
+func (o SloComplianceArrayOutput) ToSloComplianceArrayOutput() SloComplianceArrayOutput {
+	return o
+}
+
+func (o SloComplianceArrayOutput) ToSloComplianceArrayOutputWithContext(ctx context.Context) SloComplianceArrayOutput {
+	return o
+}
+
+func (o SloComplianceArrayOutput) Index(i pulumi.IntInput) SloComplianceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SloCompliance {
+		return vs[0].([]SloCompliance)[vs[1].(int)]
+	}).(SloComplianceOutput)
+}
+
+type SloIndicator struct {
+	RequestBasedEvaluation *SloIndicatorRequestBasedEvaluation `pulumi:"requestBasedEvaluation"`
+	WindowBasedEvaluation  *SloIndicatorWindowBasedEvaluation  `pulumi:"windowBasedEvaluation"`
+}
+
+// SloIndicatorInput is an input type that accepts SloIndicatorArgs and SloIndicatorOutput values.
+// You can construct a concrete instance of `SloIndicatorInput` via:
+//
+//          SloIndicatorArgs{...}
+type SloIndicatorInput interface {
+	pulumi.Input
+
+	ToSloIndicatorOutput() SloIndicatorOutput
+	ToSloIndicatorOutputWithContext(context.Context) SloIndicatorOutput
+}
+
+type SloIndicatorArgs struct {
+	RequestBasedEvaluation SloIndicatorRequestBasedEvaluationPtrInput `pulumi:"requestBasedEvaluation"`
+	WindowBasedEvaluation  SloIndicatorWindowBasedEvaluationPtrInput  `pulumi:"windowBasedEvaluation"`
+}
+
+func (SloIndicatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicator)(nil)).Elem()
+}
+
+func (i SloIndicatorArgs) ToSloIndicatorOutput() SloIndicatorOutput {
+	return i.ToSloIndicatorOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorArgs) ToSloIndicatorOutputWithContext(ctx context.Context) SloIndicatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorOutput)
+}
+
+func (i SloIndicatorArgs) ToSloIndicatorPtrOutput() SloIndicatorPtrOutput {
+	return i.ToSloIndicatorPtrOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorArgs) ToSloIndicatorPtrOutputWithContext(ctx context.Context) SloIndicatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorOutput).ToSloIndicatorPtrOutputWithContext(ctx)
+}
+
+// SloIndicatorPtrInput is an input type that accepts SloIndicatorArgs, SloIndicatorPtr and SloIndicatorPtrOutput values.
+// You can construct a concrete instance of `SloIndicatorPtrInput` via:
+//
+//          SloIndicatorArgs{...}
+//
+//  or:
+//
+//          nil
+type SloIndicatorPtrInput interface {
+	pulumi.Input
+
+	ToSloIndicatorPtrOutput() SloIndicatorPtrOutput
+	ToSloIndicatorPtrOutputWithContext(context.Context) SloIndicatorPtrOutput
+}
+
+type sloIndicatorPtrType SloIndicatorArgs
+
+func SloIndicatorPtr(v *SloIndicatorArgs) SloIndicatorPtrInput {
+	return (*sloIndicatorPtrType)(v)
+}
+
+func (*sloIndicatorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloIndicator)(nil)).Elem()
+}
+
+func (i *sloIndicatorPtrType) ToSloIndicatorPtrOutput() SloIndicatorPtrOutput {
+	return i.ToSloIndicatorPtrOutputWithContext(context.Background())
+}
+
+func (i *sloIndicatorPtrType) ToSloIndicatorPtrOutputWithContext(ctx context.Context) SloIndicatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorPtrOutput)
+}
+
+type SloIndicatorOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicator)(nil)).Elem()
+}
+
+func (o SloIndicatorOutput) ToSloIndicatorOutput() SloIndicatorOutput {
+	return o
+}
+
+func (o SloIndicatorOutput) ToSloIndicatorOutputWithContext(ctx context.Context) SloIndicatorOutput {
+	return o
+}
+
+func (o SloIndicatorOutput) ToSloIndicatorPtrOutput() SloIndicatorPtrOutput {
+	return o.ToSloIndicatorPtrOutputWithContext(context.Background())
+}
+
+func (o SloIndicatorOutput) ToSloIndicatorPtrOutputWithContext(ctx context.Context) SloIndicatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloIndicator) *SloIndicator {
+		return &v
+	}).(SloIndicatorPtrOutput)
+}
+
+func (o SloIndicatorOutput) RequestBasedEvaluation() SloIndicatorRequestBasedEvaluationPtrOutput {
+	return o.ApplyT(func(v SloIndicator) *SloIndicatorRequestBasedEvaluation { return v.RequestBasedEvaluation }).(SloIndicatorRequestBasedEvaluationPtrOutput)
+}
+
+func (o SloIndicatorOutput) WindowBasedEvaluation() SloIndicatorWindowBasedEvaluationPtrOutput {
+	return o.ApplyT(func(v SloIndicator) *SloIndicatorWindowBasedEvaluation { return v.WindowBasedEvaluation }).(SloIndicatorWindowBasedEvaluationPtrOutput)
+}
+
+type SloIndicatorPtrOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloIndicator)(nil)).Elem()
+}
+
+func (o SloIndicatorPtrOutput) ToSloIndicatorPtrOutput() SloIndicatorPtrOutput {
+	return o
+}
+
+func (o SloIndicatorPtrOutput) ToSloIndicatorPtrOutputWithContext(ctx context.Context) SloIndicatorPtrOutput {
+	return o
+}
+
+func (o SloIndicatorPtrOutput) Elem() SloIndicatorOutput {
+	return o.ApplyT(func(v *SloIndicator) SloIndicator {
+		if v != nil {
+			return *v
+		}
+		var ret SloIndicator
+		return ret
+	}).(SloIndicatorOutput)
+}
+
+func (o SloIndicatorPtrOutput) RequestBasedEvaluation() SloIndicatorRequestBasedEvaluationPtrOutput {
+	return o.ApplyT(func(v *SloIndicator) *SloIndicatorRequestBasedEvaluation {
+		if v == nil {
+			return nil
+		}
+		return v.RequestBasedEvaluation
+	}).(SloIndicatorRequestBasedEvaluationPtrOutput)
+}
+
+func (o SloIndicatorPtrOutput) WindowBasedEvaluation() SloIndicatorWindowBasedEvaluationPtrOutput {
+	return o.ApplyT(func(v *SloIndicator) *SloIndicatorWindowBasedEvaluation {
+		if v == nil {
+			return nil
+		}
+		return v.WindowBasedEvaluation
+	}).(SloIndicatorWindowBasedEvaluationPtrOutput)
+}
+
+type SloIndicatorRequestBasedEvaluation struct {
+	// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+	// , `GreaterThanOrEqual`.
+	Op *string `pulumi:"op"`
+	// The queries to use.
+	Queries []SloIndicatorRequestBasedEvaluationQuery `pulumi:"queries"`
+	// The type of query to use. Valid values are `Metrics` or `Logs`.
+	QueryType string `pulumi:"queryType"`
+	// Compared against threshold query's raw data points to determine success criteria.
+	Threshold *float64 `pulumi:"threshold"`
+}
+
+// SloIndicatorRequestBasedEvaluationInput is an input type that accepts SloIndicatorRequestBasedEvaluationArgs and SloIndicatorRequestBasedEvaluationOutput values.
+// You can construct a concrete instance of `SloIndicatorRequestBasedEvaluationInput` via:
+//
+//          SloIndicatorRequestBasedEvaluationArgs{...}
+type SloIndicatorRequestBasedEvaluationInput interface {
+	pulumi.Input
+
+	ToSloIndicatorRequestBasedEvaluationOutput() SloIndicatorRequestBasedEvaluationOutput
+	ToSloIndicatorRequestBasedEvaluationOutputWithContext(context.Context) SloIndicatorRequestBasedEvaluationOutput
+}
+
+type SloIndicatorRequestBasedEvaluationArgs struct {
+	// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+	// , `GreaterThanOrEqual`.
+	Op pulumi.StringPtrInput `pulumi:"op"`
+	// The queries to use.
+	Queries SloIndicatorRequestBasedEvaluationQueryArrayInput `pulumi:"queries"`
+	// The type of query to use. Valid values are `Metrics` or `Logs`.
+	QueryType pulumi.StringInput `pulumi:"queryType"`
+	// Compared against threshold query's raw data points to determine success criteria.
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+}
+
+func (SloIndicatorRequestBasedEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorRequestBasedEvaluation)(nil)).Elem()
+}
+
+func (i SloIndicatorRequestBasedEvaluationArgs) ToSloIndicatorRequestBasedEvaluationOutput() SloIndicatorRequestBasedEvaluationOutput {
+	return i.ToSloIndicatorRequestBasedEvaluationOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorRequestBasedEvaluationArgs) ToSloIndicatorRequestBasedEvaluationOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorRequestBasedEvaluationOutput)
+}
+
+func (i SloIndicatorRequestBasedEvaluationArgs) ToSloIndicatorRequestBasedEvaluationPtrOutput() SloIndicatorRequestBasedEvaluationPtrOutput {
+	return i.ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorRequestBasedEvaluationArgs) ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorRequestBasedEvaluationOutput).ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(ctx)
+}
+
+// SloIndicatorRequestBasedEvaluationPtrInput is an input type that accepts SloIndicatorRequestBasedEvaluationArgs, SloIndicatorRequestBasedEvaluationPtr and SloIndicatorRequestBasedEvaluationPtrOutput values.
+// You can construct a concrete instance of `SloIndicatorRequestBasedEvaluationPtrInput` via:
+//
+//          SloIndicatorRequestBasedEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type SloIndicatorRequestBasedEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToSloIndicatorRequestBasedEvaluationPtrOutput() SloIndicatorRequestBasedEvaluationPtrOutput
+	ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(context.Context) SloIndicatorRequestBasedEvaluationPtrOutput
+}
+
+type sloIndicatorRequestBasedEvaluationPtrType SloIndicatorRequestBasedEvaluationArgs
+
+func SloIndicatorRequestBasedEvaluationPtr(v *SloIndicatorRequestBasedEvaluationArgs) SloIndicatorRequestBasedEvaluationPtrInput {
+	return (*sloIndicatorRequestBasedEvaluationPtrType)(v)
+}
+
+func (*sloIndicatorRequestBasedEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloIndicatorRequestBasedEvaluation)(nil)).Elem()
+}
+
+func (i *sloIndicatorRequestBasedEvaluationPtrType) ToSloIndicatorRequestBasedEvaluationPtrOutput() SloIndicatorRequestBasedEvaluationPtrOutput {
+	return i.ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *sloIndicatorRequestBasedEvaluationPtrType) ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorRequestBasedEvaluationPtrOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorRequestBasedEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorRequestBasedEvaluation)(nil)).Elem()
+}
+
+func (o SloIndicatorRequestBasedEvaluationOutput) ToSloIndicatorRequestBasedEvaluationOutput() SloIndicatorRequestBasedEvaluationOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationOutput) ToSloIndicatorRequestBasedEvaluationOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationOutput) ToSloIndicatorRequestBasedEvaluationPtrOutput() SloIndicatorRequestBasedEvaluationPtrOutput {
+	return o.ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o SloIndicatorRequestBasedEvaluationOutput) ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloIndicatorRequestBasedEvaluation) *SloIndicatorRequestBasedEvaluation {
+		return &v
+	}).(SloIndicatorRequestBasedEvaluationPtrOutput)
+}
+
+// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+// , `GreaterThanOrEqual`.
+func (o SloIndicatorRequestBasedEvaluationOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluation) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+// The queries to use.
+func (o SloIndicatorRequestBasedEvaluationOutput) Queries() SloIndicatorRequestBasedEvaluationQueryArrayOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluation) []SloIndicatorRequestBasedEvaluationQuery { return v.Queries }).(SloIndicatorRequestBasedEvaluationQueryArrayOutput)
+}
+
+// The type of query to use. Valid values are `Metrics` or `Logs`.
+func (o SloIndicatorRequestBasedEvaluationOutput) QueryType() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluation) string { return v.QueryType }).(pulumi.StringOutput)
+}
+
+// Compared against threshold query's raw data points to determine success criteria.
+func (o SloIndicatorRequestBasedEvaluationOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluation) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorRequestBasedEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloIndicatorRequestBasedEvaluation)(nil)).Elem()
+}
+
+func (o SloIndicatorRequestBasedEvaluationPtrOutput) ToSloIndicatorRequestBasedEvaluationPtrOutput() SloIndicatorRequestBasedEvaluationPtrOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationPtrOutput) ToSloIndicatorRequestBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationPtrOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationPtrOutput) Elem() SloIndicatorRequestBasedEvaluationOutput {
+	return o.ApplyT(func(v *SloIndicatorRequestBasedEvaluation) SloIndicatorRequestBasedEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret SloIndicatorRequestBasedEvaluation
+		return ret
+	}).(SloIndicatorRequestBasedEvaluationOutput)
+}
+
+// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+// , `GreaterThanOrEqual`.
+func (o SloIndicatorRequestBasedEvaluationPtrOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloIndicatorRequestBasedEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Op
+	}).(pulumi.StringPtrOutput)
+}
+
+// The queries to use.
+func (o SloIndicatorRequestBasedEvaluationPtrOutput) Queries() SloIndicatorRequestBasedEvaluationQueryArrayOutput {
+	return o.ApplyT(func(v *SloIndicatorRequestBasedEvaluation) []SloIndicatorRequestBasedEvaluationQuery {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(SloIndicatorRequestBasedEvaluationQueryArrayOutput)
+}
+
+// The type of query to use. Valid values are `Metrics` or `Logs`.
+func (o SloIndicatorRequestBasedEvaluationPtrOutput) QueryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloIndicatorRequestBasedEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Compared against threshold query's raw data points to determine success criteria.
+func (o SloIndicatorRequestBasedEvaluationPtrOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloIndicatorRequestBasedEvaluation) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationQuery struct {
+	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+	// , `Threshold`.
+	QueryGroupType string `pulumi:"queryGroupType"`
+	// List of queries to use.
+	QueryGroups []SloIndicatorRequestBasedEvaluationQueryQueryGroup `pulumi:"queryGroups"`
+}
+
+// SloIndicatorRequestBasedEvaluationQueryInput is an input type that accepts SloIndicatorRequestBasedEvaluationQueryArgs and SloIndicatorRequestBasedEvaluationQueryOutput values.
+// You can construct a concrete instance of `SloIndicatorRequestBasedEvaluationQueryInput` via:
+//
+//          SloIndicatorRequestBasedEvaluationQueryArgs{...}
+type SloIndicatorRequestBasedEvaluationQueryInput interface {
+	pulumi.Input
+
+	ToSloIndicatorRequestBasedEvaluationQueryOutput() SloIndicatorRequestBasedEvaluationQueryOutput
+	ToSloIndicatorRequestBasedEvaluationQueryOutputWithContext(context.Context) SloIndicatorRequestBasedEvaluationQueryOutput
+}
+
+type SloIndicatorRequestBasedEvaluationQueryArgs struct {
+	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+	// , `Threshold`.
+	QueryGroupType pulumi.StringInput `pulumi:"queryGroupType"`
+	// List of queries to use.
+	QueryGroups SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayInput `pulumi:"queryGroups"`
+}
+
+func (SloIndicatorRequestBasedEvaluationQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryArgs) ToSloIndicatorRequestBasedEvaluationQueryOutput() SloIndicatorRequestBasedEvaluationQueryOutput {
+	return i.ToSloIndicatorRequestBasedEvaluationQueryOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryArgs) ToSloIndicatorRequestBasedEvaluationQueryOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorRequestBasedEvaluationQueryOutput)
+}
+
+// SloIndicatorRequestBasedEvaluationQueryArrayInput is an input type that accepts SloIndicatorRequestBasedEvaluationQueryArray and SloIndicatorRequestBasedEvaluationQueryArrayOutput values.
+// You can construct a concrete instance of `SloIndicatorRequestBasedEvaluationQueryArrayInput` via:
+//
+//          SloIndicatorRequestBasedEvaluationQueryArray{ SloIndicatorRequestBasedEvaluationQueryArgs{...} }
+type SloIndicatorRequestBasedEvaluationQueryArrayInput interface {
+	pulumi.Input
+
+	ToSloIndicatorRequestBasedEvaluationQueryArrayOutput() SloIndicatorRequestBasedEvaluationQueryArrayOutput
+	ToSloIndicatorRequestBasedEvaluationQueryArrayOutputWithContext(context.Context) SloIndicatorRequestBasedEvaluationQueryArrayOutput
+}
+
+type SloIndicatorRequestBasedEvaluationQueryArray []SloIndicatorRequestBasedEvaluationQueryInput
+
+func (SloIndicatorRequestBasedEvaluationQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorRequestBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryArray) ToSloIndicatorRequestBasedEvaluationQueryArrayOutput() SloIndicatorRequestBasedEvaluationQueryArrayOutput {
+	return i.ToSloIndicatorRequestBasedEvaluationQueryArrayOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryArray) ToSloIndicatorRequestBasedEvaluationQueryArrayOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorRequestBasedEvaluationQueryArrayOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationQueryOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorRequestBasedEvaluationQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryOutput) ToSloIndicatorRequestBasedEvaluationQueryOutput() SloIndicatorRequestBasedEvaluationQueryOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryOutput) ToSloIndicatorRequestBasedEvaluationQueryOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryOutput {
+	return o
+}
+
+// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+// , `Threshold`.
+func (o SloIndicatorRequestBasedEvaluationQueryOutput) QueryGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQuery) string { return v.QueryGroupType }).(pulumi.StringOutput)
+}
+
+// List of queries to use.
+func (o SloIndicatorRequestBasedEvaluationQueryOutput) QueryGroups() SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQuery) []SloIndicatorRequestBasedEvaluationQueryQueryGroup {
+		return v.QueryGroups
+	}).(SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorRequestBasedEvaluationQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorRequestBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryArrayOutput) ToSloIndicatorRequestBasedEvaluationQueryArrayOutput() SloIndicatorRequestBasedEvaluationQueryArrayOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryArrayOutput) ToSloIndicatorRequestBasedEvaluationQueryArrayOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryArrayOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryArrayOutput) Index(i pulumi.IntInput) SloIndicatorRequestBasedEvaluationQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SloIndicatorRequestBasedEvaluationQuery {
+		return vs[0].([]SloIndicatorRequestBasedEvaluationQuery)[vs[1].(int)]
+	}).(SloIndicatorRequestBasedEvaluationQueryOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationQueryQueryGroup struct {
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field *string `pulumi:"field"`
+	// The query string to use.
+	Query string `pulumi:"query"`
+	// The row ID to use.
+	RowId string `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount bool `pulumi:"useRowCount"`
+}
+
+// SloIndicatorRequestBasedEvaluationQueryQueryGroupInput is an input type that accepts SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs and SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput values.
+// You can construct a concrete instance of `SloIndicatorRequestBasedEvaluationQueryQueryGroupInput` via:
+//
+//          SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs{...}
+type SloIndicatorRequestBasedEvaluationQueryQueryGroupInput interface {
+	pulumi.Input
+
+	ToSloIndicatorRequestBasedEvaluationQueryQueryGroupOutput() SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput
+	ToSloIndicatorRequestBasedEvaluationQueryQueryGroupOutputWithContext(context.Context) SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput
+}
+
+type SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs struct {
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The query string to use.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The row ID to use.
+	RowId pulumi.StringInput `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount pulumi.BoolInput `pulumi:"useRowCount"`
+}
+
+func (SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupOutput() SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput {
+	return i.ToSloIndicatorRequestBasedEvaluationQueryQueryGroupOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput)
+}
+
+// SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayInput is an input type that accepts SloIndicatorRequestBasedEvaluationQueryQueryGroupArray and SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput values.
+// You can construct a concrete instance of `SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayInput` via:
+//
+//          SloIndicatorRequestBasedEvaluationQueryQueryGroupArray{ SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs{...} }
+type SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayInput interface {
+	pulumi.Input
+
+	ToSloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput() SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput
+	ToSloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutputWithContext(context.Context) SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput
+}
+
+type SloIndicatorRequestBasedEvaluationQueryQueryGroupArray []SloIndicatorRequestBasedEvaluationQueryQueryGroupInput
+
+func (SloIndicatorRequestBasedEvaluationQueryQueryGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorRequestBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryQueryGroupArray) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput() SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput {
+	return i.ToSloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorRequestBasedEvaluationQueryQueryGroupArray) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupOutput() SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput {
+	return o
+}
+
+// Field of log query output to compare against. To be used only for logs based data
+// type when `useRowCount` is false.
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// The query string to use.
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The row ID to use.
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) RowId() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) string { return v.RowId }).(pulumi.StringOutput)
+}
+
+// Whether to use the row count. Defaults to false.
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) UseRowCount() pulumi.BoolOutput {
+	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) bool { return v.UseRowCount }).(pulumi.BoolOutput)
+}
+
+type SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorRequestBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput() SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput) ToSloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutputWithContext(ctx context.Context) SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput {
+	return o
+}
+
+func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput) Index(i pulumi.IntInput) SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SloIndicatorRequestBasedEvaluationQueryQueryGroup {
+		return vs[0].([]SloIndicatorRequestBasedEvaluationQueryQueryGroup)[vs[1].(int)]
+	}).(SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput)
+}
+
+type SloIndicatorWindowBasedEvaluation struct {
+	// Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+	// , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+	Aggregation *string `pulumi:"aggregation"`
+	// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+	// , `GreaterThanOrEqual`.
+	Op string `pulumi:"op"`
+	// The queries to use.
+	Queries []SloIndicatorWindowBasedEvaluationQuery `pulumi:"queries"`
+	// The type of query to use. Valid values are `Metrics` or `Logs`.
+	QueryType string `pulumi:"queryType"`
+	// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+	// based evaluation.
+	Size string `pulumi:"size"`
+	// Compared against threshold query's raw data points to determine success criteria.
+	Threshold float64 `pulumi:"threshold"`
+}
+
+// SloIndicatorWindowBasedEvaluationInput is an input type that accepts SloIndicatorWindowBasedEvaluationArgs and SloIndicatorWindowBasedEvaluationOutput values.
+// You can construct a concrete instance of `SloIndicatorWindowBasedEvaluationInput` via:
+//
+//          SloIndicatorWindowBasedEvaluationArgs{...}
+type SloIndicatorWindowBasedEvaluationInput interface {
+	pulumi.Input
+
+	ToSloIndicatorWindowBasedEvaluationOutput() SloIndicatorWindowBasedEvaluationOutput
+	ToSloIndicatorWindowBasedEvaluationOutputWithContext(context.Context) SloIndicatorWindowBasedEvaluationOutput
+}
+
+type SloIndicatorWindowBasedEvaluationArgs struct {
+	// Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+	// , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+	Aggregation pulumi.StringPtrInput `pulumi:"aggregation"`
+	// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+	// , `GreaterThanOrEqual`.
+	Op pulumi.StringInput `pulumi:"op"`
+	// The queries to use.
+	Queries SloIndicatorWindowBasedEvaluationQueryArrayInput `pulumi:"queries"`
+	// The type of query to use. Valid values are `Metrics` or `Logs`.
+	QueryType pulumi.StringInput `pulumi:"queryType"`
+	// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+	// based evaluation.
+	Size pulumi.StringInput `pulumi:"size"`
+	// Compared against threshold query's raw data points to determine success criteria.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+}
+
+func (SloIndicatorWindowBasedEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorWindowBasedEvaluation)(nil)).Elem()
+}
+
+func (i SloIndicatorWindowBasedEvaluationArgs) ToSloIndicatorWindowBasedEvaluationOutput() SloIndicatorWindowBasedEvaluationOutput {
+	return i.ToSloIndicatorWindowBasedEvaluationOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorWindowBasedEvaluationArgs) ToSloIndicatorWindowBasedEvaluationOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorWindowBasedEvaluationOutput)
+}
+
+func (i SloIndicatorWindowBasedEvaluationArgs) ToSloIndicatorWindowBasedEvaluationPtrOutput() SloIndicatorWindowBasedEvaluationPtrOutput {
+	return i.ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorWindowBasedEvaluationArgs) ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorWindowBasedEvaluationOutput).ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(ctx)
+}
+
+// SloIndicatorWindowBasedEvaluationPtrInput is an input type that accepts SloIndicatorWindowBasedEvaluationArgs, SloIndicatorWindowBasedEvaluationPtr and SloIndicatorWindowBasedEvaluationPtrOutput values.
+// You can construct a concrete instance of `SloIndicatorWindowBasedEvaluationPtrInput` via:
+//
+//          SloIndicatorWindowBasedEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type SloIndicatorWindowBasedEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToSloIndicatorWindowBasedEvaluationPtrOutput() SloIndicatorWindowBasedEvaluationPtrOutput
+	ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(context.Context) SloIndicatorWindowBasedEvaluationPtrOutput
+}
+
+type sloIndicatorWindowBasedEvaluationPtrType SloIndicatorWindowBasedEvaluationArgs
+
+func SloIndicatorWindowBasedEvaluationPtr(v *SloIndicatorWindowBasedEvaluationArgs) SloIndicatorWindowBasedEvaluationPtrInput {
+	return (*sloIndicatorWindowBasedEvaluationPtrType)(v)
+}
+
+func (*sloIndicatorWindowBasedEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloIndicatorWindowBasedEvaluation)(nil)).Elem()
+}
+
+func (i *sloIndicatorWindowBasedEvaluationPtrType) ToSloIndicatorWindowBasedEvaluationPtrOutput() SloIndicatorWindowBasedEvaluationPtrOutput {
+	return i.ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *sloIndicatorWindowBasedEvaluationPtrType) ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorWindowBasedEvaluationPtrOutput)
+}
+
+type SloIndicatorWindowBasedEvaluationOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorWindowBasedEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorWindowBasedEvaluation)(nil)).Elem()
+}
+
+func (o SloIndicatorWindowBasedEvaluationOutput) ToSloIndicatorWindowBasedEvaluationOutput() SloIndicatorWindowBasedEvaluationOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationOutput) ToSloIndicatorWindowBasedEvaluationOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationOutput) ToSloIndicatorWindowBasedEvaluationPtrOutput() SloIndicatorWindowBasedEvaluationPtrOutput {
+	return o.ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o SloIndicatorWindowBasedEvaluationOutput) ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloIndicatorWindowBasedEvaluation) *SloIndicatorWindowBasedEvaluation {
+		return &v
+	}).(SloIndicatorWindowBasedEvaluationPtrOutput)
+}
+
+// Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+// , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+func (o SloIndicatorWindowBasedEvaluationOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
+}
+
+// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+// , `GreaterThanOrEqual`.
+func (o SloIndicatorWindowBasedEvaluationOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// The queries to use.
+func (o SloIndicatorWindowBasedEvaluationOutput) Queries() SloIndicatorWindowBasedEvaluationQueryArrayOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) []SloIndicatorWindowBasedEvaluationQuery { return v.Queries }).(SloIndicatorWindowBasedEvaluationQueryArrayOutput)
+}
+
+// The type of query to use. Valid values are `Metrics` or `Logs`.
+func (o SloIndicatorWindowBasedEvaluationOutput) QueryType() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) string { return v.QueryType }).(pulumi.StringOutput)
+}
+
+// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+// based evaluation.
+func (o SloIndicatorWindowBasedEvaluationOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// Compared against threshold query's raw data points to determine success criteria.
+func (o SloIndicatorWindowBasedEvaluationOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+type SloIndicatorWindowBasedEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorWindowBasedEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloIndicatorWindowBasedEvaluation)(nil)).Elem()
+}
+
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) ToSloIndicatorWindowBasedEvaluationPtrOutput() SloIndicatorWindowBasedEvaluationPtrOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) ToSloIndicatorWindowBasedEvaluationPtrOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationPtrOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) Elem() SloIndicatorWindowBasedEvaluationOutput {
+	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) SloIndicatorWindowBasedEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret SloIndicatorWindowBasedEvaluation
+		return ret
+	}).(SloIndicatorWindowBasedEvaluationOutput)
+}
+
+// Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+// , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Aggregation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+// , `GreaterThanOrEqual`.
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Op
+	}).(pulumi.StringPtrOutput)
+}
+
+// The queries to use.
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) Queries() SloIndicatorWindowBasedEvaluationQueryArrayOutput {
+	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) []SloIndicatorWindowBasedEvaluationQuery {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(SloIndicatorWindowBasedEvaluationQueryArrayOutput)
+}
+
+// The type of query to use. Valid values are `Metrics` or `Logs`.
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) QueryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+// based evaluation.
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// Compared against threshold query's raw data points to determine success criteria.
+func (o SloIndicatorWindowBasedEvaluationPtrOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type SloIndicatorWindowBasedEvaluationQuery struct {
+	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+	// , `Threshold`.
+	QueryGroupType string `pulumi:"queryGroupType"`
+	// List of queries to use.
+	QueryGroups []SloIndicatorWindowBasedEvaluationQueryQueryGroup `pulumi:"queryGroups"`
+}
+
+// SloIndicatorWindowBasedEvaluationQueryInput is an input type that accepts SloIndicatorWindowBasedEvaluationQueryArgs and SloIndicatorWindowBasedEvaluationQueryOutput values.
+// You can construct a concrete instance of `SloIndicatorWindowBasedEvaluationQueryInput` via:
+//
+//          SloIndicatorWindowBasedEvaluationQueryArgs{...}
+type SloIndicatorWindowBasedEvaluationQueryInput interface {
+	pulumi.Input
+
+	ToSloIndicatorWindowBasedEvaluationQueryOutput() SloIndicatorWindowBasedEvaluationQueryOutput
+	ToSloIndicatorWindowBasedEvaluationQueryOutputWithContext(context.Context) SloIndicatorWindowBasedEvaluationQueryOutput
+}
+
+type SloIndicatorWindowBasedEvaluationQueryArgs struct {
+	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+	// , `Threshold`.
+	QueryGroupType pulumi.StringInput `pulumi:"queryGroupType"`
+	// List of queries to use.
+	QueryGroups SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayInput `pulumi:"queryGroups"`
+}
+
+func (SloIndicatorWindowBasedEvaluationQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryArgs) ToSloIndicatorWindowBasedEvaluationQueryOutput() SloIndicatorWindowBasedEvaluationQueryOutput {
+	return i.ToSloIndicatorWindowBasedEvaluationQueryOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryArgs) ToSloIndicatorWindowBasedEvaluationQueryOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorWindowBasedEvaluationQueryOutput)
+}
+
+// SloIndicatorWindowBasedEvaluationQueryArrayInput is an input type that accepts SloIndicatorWindowBasedEvaluationQueryArray and SloIndicatorWindowBasedEvaluationQueryArrayOutput values.
+// You can construct a concrete instance of `SloIndicatorWindowBasedEvaluationQueryArrayInput` via:
+//
+//          SloIndicatorWindowBasedEvaluationQueryArray{ SloIndicatorWindowBasedEvaluationQueryArgs{...} }
+type SloIndicatorWindowBasedEvaluationQueryArrayInput interface {
+	pulumi.Input
+
+	ToSloIndicatorWindowBasedEvaluationQueryArrayOutput() SloIndicatorWindowBasedEvaluationQueryArrayOutput
+	ToSloIndicatorWindowBasedEvaluationQueryArrayOutputWithContext(context.Context) SloIndicatorWindowBasedEvaluationQueryArrayOutput
+}
+
+type SloIndicatorWindowBasedEvaluationQueryArray []SloIndicatorWindowBasedEvaluationQueryInput
+
+func (SloIndicatorWindowBasedEvaluationQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorWindowBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryArray) ToSloIndicatorWindowBasedEvaluationQueryArrayOutput() SloIndicatorWindowBasedEvaluationQueryArrayOutput {
+	return i.ToSloIndicatorWindowBasedEvaluationQueryArrayOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryArray) ToSloIndicatorWindowBasedEvaluationQueryArrayOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorWindowBasedEvaluationQueryArrayOutput)
+}
+
+type SloIndicatorWindowBasedEvaluationQueryOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorWindowBasedEvaluationQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryOutput) ToSloIndicatorWindowBasedEvaluationQueryOutput() SloIndicatorWindowBasedEvaluationQueryOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryOutput) ToSloIndicatorWindowBasedEvaluationQueryOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryOutput {
+	return o
+}
+
+// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+// , `Threshold`.
+func (o SloIndicatorWindowBasedEvaluationQueryOutput) QueryGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQuery) string { return v.QueryGroupType }).(pulumi.StringOutput)
+}
+
+// List of queries to use.
+func (o SloIndicatorWindowBasedEvaluationQueryOutput) QueryGroups() SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQuery) []SloIndicatorWindowBasedEvaluationQueryQueryGroup {
+		return v.QueryGroups
+	}).(SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput)
+}
+
+type SloIndicatorWindowBasedEvaluationQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorWindowBasedEvaluationQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorWindowBasedEvaluationQuery)(nil)).Elem()
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryArrayOutput) ToSloIndicatorWindowBasedEvaluationQueryArrayOutput() SloIndicatorWindowBasedEvaluationQueryArrayOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryArrayOutput) ToSloIndicatorWindowBasedEvaluationQueryArrayOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryArrayOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryArrayOutput) Index(i pulumi.IntInput) SloIndicatorWindowBasedEvaluationQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SloIndicatorWindowBasedEvaluationQuery {
+		return vs[0].([]SloIndicatorWindowBasedEvaluationQuery)[vs[1].(int)]
+	}).(SloIndicatorWindowBasedEvaluationQueryOutput)
+}
+
+type SloIndicatorWindowBasedEvaluationQueryQueryGroup struct {
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field *string `pulumi:"field"`
+	// The query string to use.
+	Query string `pulumi:"query"`
+	// The row ID to use.
+	RowId string `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount bool `pulumi:"useRowCount"`
+}
+
+// SloIndicatorWindowBasedEvaluationQueryQueryGroupInput is an input type that accepts SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs and SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput values.
+// You can construct a concrete instance of `SloIndicatorWindowBasedEvaluationQueryQueryGroupInput` via:
+//
+//          SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs{...}
+type SloIndicatorWindowBasedEvaluationQueryQueryGroupInput interface {
+	pulumi.Input
+
+	ToSloIndicatorWindowBasedEvaluationQueryQueryGroupOutput() SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput
+	ToSloIndicatorWindowBasedEvaluationQueryQueryGroupOutputWithContext(context.Context) SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput
+}
+
+type SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs struct {
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The query string to use.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The row ID to use.
+	RowId pulumi.StringInput `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount pulumi.BoolInput `pulumi:"useRowCount"`
+}
+
+func (SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupOutput() SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput {
+	return i.ToSloIndicatorWindowBasedEvaluationQueryQueryGroupOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput)
+}
+
+// SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayInput is an input type that accepts SloIndicatorWindowBasedEvaluationQueryQueryGroupArray and SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput values.
+// You can construct a concrete instance of `SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayInput` via:
+//
+//          SloIndicatorWindowBasedEvaluationQueryQueryGroupArray{ SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs{...} }
+type SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayInput interface {
+	pulumi.Input
+
+	ToSloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput() SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput
+	ToSloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutputWithContext(context.Context) SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput
+}
+
+type SloIndicatorWindowBasedEvaluationQueryQueryGroupArray []SloIndicatorWindowBasedEvaluationQueryQueryGroupInput
+
+func (SloIndicatorWindowBasedEvaluationQueryQueryGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorWindowBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryQueryGroupArray) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput() SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput {
+	return i.ToSloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutputWithContext(context.Background())
+}
+
+func (i SloIndicatorWindowBasedEvaluationQueryQueryGroupArray) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput)
+}
+
+type SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupOutput() SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput {
+	return o
+}
+
+// Field of log query output to compare against. To be used only for logs based data
+// type when `useRowCount` is false.
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// The query string to use.
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The row ID to use.
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) RowId() pulumi.StringOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) string { return v.RowId }).(pulumi.StringOutput)
+}
+
+// Whether to use the row count. Defaults to false.
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) UseRowCount() pulumi.BoolOutput {
+	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) bool { return v.UseRowCount }).(pulumi.BoolOutput)
+}
+
+type SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloIndicatorWindowBasedEvaluationQueryQueryGroup)(nil)).Elem()
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput() SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput) ToSloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutputWithContext(ctx context.Context) SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput {
+	return o
+}
+
+func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput) Index(i pulumi.IntInput) SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SloIndicatorWindowBasedEvaluationQueryQueryGroup {
+		return vs[0].([]SloIndicatorWindowBasedEvaluationQueryQueryGroup)[vs[1].(int)]
+	}).(SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceAuthenticationInput)(nil)).Elem(), AwsInventorySourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsInventorySourceAuthenticationPtrInput)(nil)).Elem(), AwsInventorySourceAuthenticationArgs{})
@@ -38855,6 +41082,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceFilterArrayInput)(nil)).Elem(), MetadataSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourcePathInput)(nil)).Elem(), MetadataSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourcePathPtrInput)(nil)).Elem(), MetadataSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderObjPermissionInput)(nil)).Elem(), MonitorFolderObjPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderObjPermissionArrayInput)(nil)).Elem(), MonitorFolderObjPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationInput)(nil)).Elem(), MonitorNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationArrayInput)(nil)).Elem(), MonitorNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationNotificationInput)(nil)).Elem(), MonitorNotificationNotificationArgs{})
@@ -38908,6 +41137,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningResolutionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionWarningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesUserConcurrentSessionsLimitInput)(nil)).Elem(), PoliciesUserConcurrentSessionsLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesUserConcurrentSessionsLimitPtrInput)(nil)).Elem(), PoliciesUserConcurrentSessionsLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceAuthenticationInput)(nil)).Elem(), PollingSourceAuthenticationArgs{})
@@ -38950,6 +41191,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3SourcePathTagFilterArrayInput)(nil)).Elem(), S3SourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationOnDemandProvisioningEnabledInput)(nil)).Elem(), SamlConfigurationOnDemandProvisioningEnabledArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlConfigurationOnDemandProvisioningEnabledPtrInput)(nil)).Elem(), SamlConfigurationOnDemandProvisioningEnabledArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloComplianceInput)(nil)).Elem(), SloComplianceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloComplianceArrayInput)(nil)).Elem(), SloComplianceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorInput)(nil)).Elem(), SloIndicatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorPtrInput)(nil)).Elem(), SloIndicatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorRequestBasedEvaluationInput)(nil)).Elem(), SloIndicatorRequestBasedEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorRequestBasedEvaluationPtrInput)(nil)).Elem(), SloIndicatorRequestBasedEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQueryInput)(nil)).Elem(), SloIndicatorRequestBasedEvaluationQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQueryArrayInput)(nil)).Elem(), SloIndicatorRequestBasedEvaluationQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQueryQueryGroupInput)(nil)).Elem(), SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayInput)(nil)).Elem(), SloIndicatorRequestBasedEvaluationQueryQueryGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationPtrInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryArrayInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryQueryGroupInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationQueryQueryGroupArray{})
 	pulumi.RegisterOutputType(AwsInventorySourceAuthenticationOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourceAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AwsInventorySourceDefaultDateFormatOutput{})
@@ -39380,6 +41637,8 @@ func init() {
 	pulumi.RegisterOutputType(MetadataSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(MetadataSourcePathOutput{})
 	pulumi.RegisterOutputType(MetadataSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(MonitorFolderObjPermissionOutput{})
+	pulumi.RegisterOutputType(MonitorFolderObjPermissionArrayOutput{})
 	pulumi.RegisterOutputType(MonitorNotificationOutput{})
 	pulumi.RegisterOutputType(MonitorNotificationArrayOutput{})
 	pulumi.RegisterOutputType(MonitorNotificationNotificationOutput{})
@@ -39433,6 +41692,18 @@ func init() {
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsStaticConditionWarningAlertPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionCriticalOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionWarningOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionCriticalOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionCriticalPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionWarningOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionWarningPtrOutput{})
 	pulumi.RegisterOutputType(PoliciesUserConcurrentSessionsLimitOutput{})
 	pulumi.RegisterOutputType(PoliciesUserConcurrentSessionsLimitPtrOutput{})
 	pulumi.RegisterOutputType(PollingSourceAuthenticationOutput{})
@@ -39475,4 +41746,20 @@ func init() {
 	pulumi.RegisterOutputType(S3SourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(SamlConfigurationOnDemandProvisioningEnabledOutput{})
 	pulumi.RegisterOutputType(SamlConfigurationOnDemandProvisioningEnabledPtrOutput{})
+	pulumi.RegisterOutputType(SloComplianceOutput{})
+	pulumi.RegisterOutputType(SloComplianceArrayOutput{})
+	pulumi.RegisterOutputType(SloIndicatorOutput{})
+	pulumi.RegisterOutputType(SloIndicatorPtrOutput{})
+	pulumi.RegisterOutputType(SloIndicatorRequestBasedEvaluationOutput{})
+	pulumi.RegisterOutputType(SloIndicatorRequestBasedEvaluationPtrOutput{})
+	pulumi.RegisterOutputType(SloIndicatorRequestBasedEvaluationQueryOutput{})
+	pulumi.RegisterOutputType(SloIndicatorRequestBasedEvaluationQueryArrayOutput{})
+	pulumi.RegisterOutputType(SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput{})
+	pulumi.RegisterOutputType(SloIndicatorRequestBasedEvaluationQueryQueryGroupArrayOutput{})
+	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationOutput{})
+	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationPtrOutput{})
+	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationQueryOutput{})
+	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationQueryArrayOutput{})
+	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput{})
+	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput{})
 }

@@ -240,6 +240,7 @@ __all__ = [
     'MetadataSourceDefaultDateFormatArgs',
     'MetadataSourceFilterArgs',
     'MetadataSourcePathArgs',
+    'MonitorFolderObjPermissionArgs',
     'MonitorNotificationArgs',
     'MonitorNotificationNotificationArgs',
     'MonitorQueryArgs',
@@ -267,6 +268,12 @@ __all__ = [
     'MonitorTriggerConditionsMetricsStaticConditionWarningArgs',
     'MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs',
     'MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionCriticalArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionWarningArgs',
+    'MonitorTriggerConditionsSloSliConditionArgs',
+    'MonitorTriggerConditionsSloSliConditionCriticalArgs',
+    'MonitorTriggerConditionsSloSliConditionWarningArgs',
     'PoliciesUserConcurrentSessionsLimitArgs',
     'PollingSourceAuthenticationArgs',
     'PollingSourceDefaultDateFormatArgs',
@@ -288,6 +295,14 @@ __all__ = [
     'S3SourcePathSnsTopicOrSubscriptionArnArgs',
     'S3SourcePathTagFilterArgs',
     'SamlConfigurationOnDemandProvisioningEnabledArgs',
+    'SloComplianceArgs',
+    'SloIndicatorArgs',
+    'SloIndicatorRequestBasedEvaluationArgs',
+    'SloIndicatorRequestBasedEvaluationQueryArgs',
+    'SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs',
+    'SloIndicatorWindowBasedEvaluationArgs',
+    'SloIndicatorWindowBasedEvaluationQueryArgs',
+    'SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs',
 ]
 
 @pulumi.input_type
@@ -11394,6 +11409,62 @@ class MetadataSourcePathArgs:
 
 
 @pulumi.input_type
+class MonitorFolderObjPermissionArgs:
+    def __init__(__self__, *,
+                 permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 subject_id: pulumi.Input[str],
+                 subject_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: A Set of Permissions. Valid Permission Values: 
+               - `Create`
+               - `Read`
+        :param pulumi.Input[str] subject_id: A Role ID or the Org ID of the account
+        :param pulumi.Input[str] subject_type: Valid values:
+        """
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "subject_id", subject_id)
+        pulumi.set(__self__, "subject_type", subject_type)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A Set of Permissions. Valid Permission Values: 
+        - `Create`
+        - `Read`
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter(name="subjectId")
+    def subject_id(self) -> pulumi.Input[str]:
+        """
+        A Role ID or the Org ID of the account
+        """
+        return pulumi.get(self, "subject_id")
+
+    @subject_id.setter
+    def subject_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subject_id", value)
+
+    @property
+    @pulumi.getter(name="subjectType")
+    def subject_type(self) -> pulumi.Input[str]:
+        """
+        Valid values:
+        """
+        return pulumi.get(self, "subject_type")
+
+    @subject_type.setter
+    def subject_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subject_type", value)
+
+
+@pulumi.input_type
 class MonitorNotificationArgs:
     def __init__(__self__, *,
                  notification: pulumi.Input['MonitorNotificationNotificationArgs'],
@@ -11648,7 +11719,9 @@ class MonitorTriggerConditionsArgs:
                  logs_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgs']] = None,
                  metrics_missing_data_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsMissingDataConditionArgs']] = None,
                  metrics_outlier_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionArgs']] = None,
-                 metrics_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgs']] = None):
+                 metrics_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgs']] = None,
+                 slo_burn_rate_condition: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionArgs']] = None,
+                 slo_sli_condition: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionArgs']] = None):
         if logs_missing_data_condition is not None:
             pulumi.set(__self__, "logs_missing_data_condition", logs_missing_data_condition)
         if logs_outlier_condition is not None:
@@ -11661,6 +11734,10 @@ class MonitorTriggerConditionsArgs:
             pulumi.set(__self__, "metrics_outlier_condition", metrics_outlier_condition)
         if metrics_static_condition is not None:
             pulumi.set(__self__, "metrics_static_condition", metrics_static_condition)
+        if slo_burn_rate_condition is not None:
+            pulumi.set(__self__, "slo_burn_rate_condition", slo_burn_rate_condition)
+        if slo_sli_condition is not None:
+            pulumi.set(__self__, "slo_sli_condition", slo_sli_condition)
 
     @property
     @pulumi.getter(name="logsMissingDataCondition")
@@ -11715,6 +11792,24 @@ class MonitorTriggerConditionsArgs:
     @metrics_static_condition.setter
     def metrics_static_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgs']]):
         pulumi.set(self, "metrics_static_condition", value)
+
+    @property
+    @pulumi.getter(name="sloBurnRateCondition")
+    def slo_burn_rate_condition(self) -> Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionArgs']]:
+        return pulumi.get(self, "slo_burn_rate_condition")
+
+    @slo_burn_rate_condition.setter
+    def slo_burn_rate_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionArgs']]):
+        pulumi.set(self, "slo_burn_rate_condition", value)
+
+    @property
+    @pulumi.getter(name="sloSliCondition")
+    def slo_sli_condition(self) -> Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionArgs']]:
+        return pulumi.get(self, "slo_sli_condition")
+
+    @slo_sli_condition.setter
+    def slo_sli_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionArgs']]):
+        pulumi.set(self, "slo_sli_condition", value)
 
 
 @pulumi.input_type
@@ -12492,6 +12587,150 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs:
     @threshold_type.setter
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloBurnRateConditionArgs:
+    def __init__(__self__, *,
+                 critical: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalArgs']] = None,
+                 warning: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningArgs']] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalArgs']]:
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalArgs']]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningArgs']]:
+        return pulumi.get(self, "warning")
+
+    @warning.setter
+    def warning(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningArgs']]):
+        pulumi.set(self, "warning", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloBurnRateConditionCriticalArgs:
+    def __init__(__self__, *,
+                 burn_rate_threshold: pulumi.Input[float],
+                 time_range: pulumi.Input[str]):
+        pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @burn_rate_threshold.setter
+    def burn_rate_threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "burn_rate_threshold", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_range", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloBurnRateConditionWarningArgs:
+    def __init__(__self__, *,
+                 burn_rate_threshold: pulumi.Input[float],
+                 time_range: pulumi.Input[str]):
+        pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @burn_rate_threshold.setter
+    def burn_rate_threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "burn_rate_threshold", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_range", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloSliConditionArgs:
+    def __init__(__self__, *,
+                 critical: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionCriticalArgs']] = None,
+                 warning: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionWarningArgs']] = None):
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if warning is not None:
+            pulumi.set(__self__, "warning", warning)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionCriticalArgs']]:
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionCriticalArgs']]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter
+    def warning(self) -> Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionWarningArgs']]:
+        return pulumi.get(self, "warning")
+
+    @warning.setter
+    def warning(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionWarningArgs']]):
+        pulumi.set(self, "warning", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloSliConditionCriticalArgs:
+    def __init__(__self__, *,
+                 sli_threshold: pulumi.Input[float]):
+        pulumi.set(__self__, "sli_threshold", sli_threshold)
+
+    @property
+    @pulumi.getter(name="sliThreshold")
+    def sli_threshold(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "sli_threshold")
+
+    @sli_threshold.setter
+    def sli_threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "sli_threshold", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloSliConditionWarningArgs:
+    def __init__(__self__, *,
+                 sli_threshold: pulumi.Input[float]):
+        pulumi.set(__self__, "sli_threshold", sli_threshold)
+
+    @property
+    @pulumi.getter(name="sliThreshold")
+    def sli_threshold(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "sli_threshold")
+
+    @sli_threshold.setter
+    def sli_threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "sli_threshold", value)
 
 
 @pulumi.input_type
@@ -13903,5 +14142,516 @@ class SamlConfigurationOnDemandProvisioningEnabledArgs:
     @last_name_attribute.setter
     def last_name_attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_name_attribute", value)
+
+
+@pulumi.input_type
+class SloComplianceArgs:
+    def __init__(__self__, *,
+                 compliance_type: pulumi.Input[str],
+                 size: pulumi.Input[str],
+                 target: pulumi.Input[float],
+                 timezone: pulumi.Input[str],
+                 start_from: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] compliance_type: The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+        :param pulumi.Input[str] size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+               based evaluation.
+        :param pulumi.Input[float] target: The target value to use, must be a number between 0 and 100.
+        :param pulumi.Input[str] timezone: Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        :param pulumi.Input[str] start_from: Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+               Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+               For `Month` it's not required and is set to first day of the month.
+        """
+        pulumi.set(__self__, "compliance_type", compliance_type)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "timezone", timezone)
+        if start_from is not None:
+            pulumi.set(__self__, "start_from", start_from)
+
+    @property
+    @pulumi.getter(name="complianceType")
+    def compliance_type(self) -> pulumi.Input[str]:
+        """
+        The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+        """
+        return pulumi.get(self, "compliance_type")
+
+    @compliance_type.setter
+    def compliance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compliance_type", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[str]:
+        """
+        The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+        based evaluation.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[str]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[float]:
+        """
+        The target value to use, must be a number between 0 and 100.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[float]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> pulumi.Input[str]:
+        """
+        Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter(name="startFrom")
+    def start_from(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+        Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+        For `Month` it's not required and is set to first day of the month.
+        """
+        return pulumi.get(self, "start_from")
+
+    @start_from.setter
+    def start_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_from", value)
+
+
+@pulumi.input_type
+class SloIndicatorArgs:
+    def __init__(__self__, *,
+                 request_based_evaluation: Optional[pulumi.Input['SloIndicatorRequestBasedEvaluationArgs']] = None,
+                 window_based_evaluation: Optional[pulumi.Input['SloIndicatorWindowBasedEvaluationArgs']] = None):
+        if request_based_evaluation is not None:
+            pulumi.set(__self__, "request_based_evaluation", request_based_evaluation)
+        if window_based_evaluation is not None:
+            pulumi.set(__self__, "window_based_evaluation", window_based_evaluation)
+
+    @property
+    @pulumi.getter(name="requestBasedEvaluation")
+    def request_based_evaluation(self) -> Optional[pulumi.Input['SloIndicatorRequestBasedEvaluationArgs']]:
+        return pulumi.get(self, "request_based_evaluation")
+
+    @request_based_evaluation.setter
+    def request_based_evaluation(self, value: Optional[pulumi.Input['SloIndicatorRequestBasedEvaluationArgs']]):
+        pulumi.set(self, "request_based_evaluation", value)
+
+    @property
+    @pulumi.getter(name="windowBasedEvaluation")
+    def window_based_evaluation(self) -> Optional[pulumi.Input['SloIndicatorWindowBasedEvaluationArgs']]:
+        return pulumi.get(self, "window_based_evaluation")
+
+    @window_based_evaluation.setter
+    def window_based_evaluation(self, value: Optional[pulumi.Input['SloIndicatorWindowBasedEvaluationArgs']]):
+        pulumi.set(self, "window_based_evaluation", value)
+
+
+@pulumi.input_type
+class SloIndicatorRequestBasedEvaluationArgs:
+    def __init__(__self__, *,
+                 queries: pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryArgs']]],
+                 query_type: pulumi.Input[str],
+                 op: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryArgs']]] queries: The queries to use.
+        :param pulumi.Input[str] query_type: The type of query to use. Valid values are `Metrics` or `Logs`.
+        :param pulumi.Input[str] op: Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+               , `GreaterThanOrEqual`.
+        :param pulumi.Input[float] threshold: Compared against threshold query's raw data points to determine success criteria.
+        """
+        pulumi.set(__self__, "queries", queries)
+        pulumi.set(__self__, "query_type", query_type)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryArgs']]]:
+        """
+        The queries to use.
+        """
+        return pulumi.get(self, "queries")
+
+    @queries.setter
+    def queries(self, value: pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryArgs']]]):
+        pulumi.set(self, "queries", value)
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> pulumi.Input[str]:
+        """
+        The type of query to use. Valid values are `Metrics` or `Logs`.
+        """
+        return pulumi.get(self, "query_type")
+
+    @query_type.setter
+    def query_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_type", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        , `GreaterThanOrEqual`.
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Compared against threshold query's raw data points to determine success criteria.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "threshold", value)
+
+
+@pulumi.input_type
+class SloIndicatorRequestBasedEvaluationQueryArgs:
+    def __init__(__self__, *,
+                 query_group_type: pulumi.Input[str],
+                 query_groups: pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs']]]):
+        """
+        :param pulumi.Input[str] query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+               , `Threshold`.
+        :param pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs']]] query_groups: List of queries to use.
+        """
+        pulumi.set(__self__, "query_group_type", query_group_type)
+        pulumi.set(__self__, "query_groups", query_groups)
+
+    @property
+    @pulumi.getter(name="queryGroupType")
+    def query_group_type(self) -> pulumi.Input[str]:
+        """
+        The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
+        """
+        return pulumi.get(self, "query_group_type")
+
+    @query_group_type.setter
+    def query_group_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_group_type", value)
+
+    @property
+    @pulumi.getter(name="queryGroups")
+    def query_groups(self) -> pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs']]]:
+        """
+        List of queries to use.
+        """
+        return pulumi.get(self, "query_groups")
+
+    @query_groups.setter
+    def query_groups(self, value: pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs']]]):
+        pulumi.set(self, "query_groups", value)
+
+
+@pulumi.input_type
+class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
+    def __init__(__self__, *,
+                 query: pulumi.Input[str],
+                 row_id: pulumi.Input[str],
+                 use_row_count: pulumi.Input[bool],
+                 field: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] query: The query string to use.
+        :param pulumi.Input[str] row_id: The row ID to use.
+        :param pulumi.Input[bool] use_row_count: Whether to use the row count. Defaults to false.
+        :param pulumi.Input[str] field: Field of log query output to compare against. To be used only for logs based data
+               type when `use_row_count` is false.
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "row_id", row_id)
+        pulumi.set(__self__, "use_row_count", use_row_count)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        The query string to use.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="rowId")
+    def row_id(self) -> pulumi.Input[str]:
+        """
+        The row ID to use.
+        """
+        return pulumi.get(self, "row_id")
+
+    @row_id.setter
+    def row_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "row_id", value)
+
+    @property
+    @pulumi.getter(name="useRowCount")
+    def use_row_count(self) -> pulumi.Input[bool]:
+        """
+        Whether to use the row count. Defaults to false.
+        """
+        return pulumi.get(self, "use_row_count")
+
+    @use_row_count.setter
+    def use_row_count(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "use_row_count", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field of log query output to compare against. To be used only for logs based data
+        type when `use_row_count` is false.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+
+@pulumi.input_type
+class SloIndicatorWindowBasedEvaluationArgs:
+    def __init__(__self__, *,
+                 op: pulumi.Input[str],
+                 queries: pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryArgs']]],
+                 query_type: pulumi.Input[str],
+                 size: pulumi.Input[str],
+                 threshold: pulumi.Input[float],
+                 aggregation: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] op: Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+               , `GreaterThanOrEqual`.
+        :param pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryArgs']]] queries: The queries to use.
+        :param pulumi.Input[str] query_type: The type of query to use. Valid values are `Metrics` or `Logs`.
+        :param pulumi.Input[str] size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+               based evaluation.
+        :param pulumi.Input[float] threshold: Compared against threshold query's raw data points to determine success criteria.
+        :param pulumi.Input[str] aggregation: Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+               , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+        """
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "queries", queries)
+        pulumi.set(__self__, "query_type", query_type)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "threshold", threshold)
+        if aggregation is not None:
+            pulumi.set(__self__, "aggregation", aggregation)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        , `GreaterThanOrEqual`.
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryArgs']]]:
+        """
+        The queries to use.
+        """
+        return pulumi.get(self, "queries")
+
+    @queries.setter
+    def queries(self, value: pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryArgs']]]):
+        pulumi.set(self, "queries", value)
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> pulumi.Input[str]:
+        """
+        The type of query to use. Valid values are `Metrics` or `Logs`.
+        """
+        return pulumi.get(self, "query_type")
+
+    @query_type.setter
+    def query_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_type", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Input[str]:
+        """
+        The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+        based evaluation.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: pulumi.Input[str]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[float]:
+        """
+        Compared against threshold query's raw data points to determine success criteria.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+        , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+        """
+        return pulumi.get(self, "aggregation")
+
+    @aggregation.setter
+    def aggregation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aggregation", value)
+
+
+@pulumi.input_type
+class SloIndicatorWindowBasedEvaluationQueryArgs:
+    def __init__(__self__, *,
+                 query_group_type: pulumi.Input[str],
+                 query_groups: pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs']]]):
+        """
+        :param pulumi.Input[str] query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+               , `Threshold`.
+        :param pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs']]] query_groups: List of queries to use.
+        """
+        pulumi.set(__self__, "query_group_type", query_group_type)
+        pulumi.set(__self__, "query_groups", query_groups)
+
+    @property
+    @pulumi.getter(name="queryGroupType")
+    def query_group_type(self) -> pulumi.Input[str]:
+        """
+        The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
+        """
+        return pulumi.get(self, "query_group_type")
+
+    @query_group_type.setter
+    def query_group_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_group_type", value)
+
+    @property
+    @pulumi.getter(name="queryGroups")
+    def query_groups(self) -> pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs']]]:
+        """
+        List of queries to use.
+        """
+        return pulumi.get(self, "query_groups")
+
+    @query_groups.setter
+    def query_groups(self, value: pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs']]]):
+        pulumi.set(self, "query_groups", value)
+
+
+@pulumi.input_type
+class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:
+    def __init__(__self__, *,
+                 query: pulumi.Input[str],
+                 row_id: pulumi.Input[str],
+                 use_row_count: pulumi.Input[bool],
+                 field: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] query: The query string to use.
+        :param pulumi.Input[str] row_id: The row ID to use.
+        :param pulumi.Input[bool] use_row_count: Whether to use the row count. Defaults to false.
+        :param pulumi.Input[str] field: Field of log query output to compare against. To be used only for logs based data
+               type when `use_row_count` is false.
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "row_id", row_id)
+        pulumi.set(__self__, "use_row_count", use_row_count)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        The query string to use.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="rowId")
+    def row_id(self) -> pulumi.Input[str]:
+        """
+        The row ID to use.
+        """
+        return pulumi.get(self, "row_id")
+
+    @row_id.setter
+    def row_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "row_id", value)
+
+    @property
+    @pulumi.getter(name="useRowCount")
+    def use_row_count(self) -> pulumi.Input[bool]:
+        """
+        Whether to use the row count. Defaults to false.
+        """
+        return pulumi.get(self, "use_row_count")
+
+    @use_row_count.setter
+    def use_row_count(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "use_row_count", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field of log query output to compare against. To be used only for logs based data
+        type when `use_row_count` is false.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
 
 

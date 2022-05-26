@@ -11,6 +11,7 @@ namespace Pulumi.SumoLogic
 {
     /// <summary>
     /// Provides the ability to create, read, delete, and update folders for [Monitors](https://help.sumologic.com/?cid=10020).
+    /// &gt; If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor folder resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders).
     /// 
     /// ## Example Monitor Folder
     /// 
@@ -41,7 +42,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/?cid=10020
+    ///  [1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
     /// </summary>
     [SumoLogicResourceType("sumologic:index/monitorFolder:MonitorFolder")]
     public partial class MonitorFolder : Pulumi.CustomResource
@@ -81,6 +82,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+        /// </summary>
+        [Output("objPermissions")]
+        public Output<ImmutableArray<Outputs.MonitorFolderObjPermission>> ObjPermissions { get; private set; } = null!;
 
         /// <summary>
         /// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
@@ -183,6 +190,18 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("objPermissions")]
+        private InputList<Inputs.MonitorFolderObjPermissionArgs>? _objPermissions;
+
+        /// <summary>
+        /// `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+        /// </summary>
+        public InputList<Inputs.MonitorFolderObjPermissionArgs> ObjPermissions
+        {
+            get => _objPermissions ?? (_objPermissions = new InputList<Inputs.MonitorFolderObjPermissionArgs>());
+            set => _objPermissions = value;
+        }
+
         /// <summary>
         /// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
         /// </summary>
@@ -249,6 +268,18 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("objPermissions")]
+        private InputList<Inputs.MonitorFolderObjPermissionGetArgs>? _objPermissions;
+
+        /// <summary>
+        /// `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+        /// </summary>
+        public InputList<Inputs.MonitorFolderObjPermissionGetArgs> ObjPermissions
+        {
+            get => _objPermissions ?? (_objPermissions = new InputList<Inputs.MonitorFolderObjPermissionGetArgs>());
+            set => _objPermissions = value;
+        }
 
         /// <summary>
         /// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.

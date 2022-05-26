@@ -30,6 +30,12 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("metricsStaticCondition")]
         public Input<Inputs.MonitorTriggerConditionsMetricsStaticConditionGetArgs>? MetricsStaticCondition { get; set; }
 
+        [Input("sloBurnRateCondition")]
+        public Input<Inputs.MonitorTriggerConditionsSloBurnRateConditionGetArgs>? SloBurnRateCondition { get; set; }
+
+        [Input("sloSliCondition")]
+        public Input<Inputs.MonitorTriggerConditionsSloSliConditionGetArgs>? SloSliCondition { get; set; }
+
         public MonitorTriggerConditionsGetArgs()
         {
         }

@@ -8,6 +8,66 @@ import * as utilities from "./utilities";
 /**
  * Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
  *
+ * ## Example SLO Monitors
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tfSloMonitor1 = new sumologic.Monitor("tf_slo_monitor_1", {
+ *     contentType: "Monitor",
+ *     evaluationDelay: "5m",
+ *     isDisabled: false,
+ *     monitorType: "Slo",
+ *     notifications: [{
+ *         notification: {
+ *             connectionType: "Email",
+ *             messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+ *             recipients: ["abc@example.com"],
+ *             subject: "Monitor Alert: {{TriggerType}} on {{Name}}",
+ *             timeZone: "PST",
+ *         },
+ *         runForTriggerTypes: [
+ *             "Critical",
+ *             "ResolvedCritical",
+ *         ],
+ *     }],
+ *     playbook: "test playbook",
+ *     sloId: "0000000000000009",
+ *     triggerConditions: {
+ *         sloSliCondition: {
+ *             critical: {
+ *                 sliThreshold: 99.5,
+ *             },
+ *             warning: {
+ *                 sliThreshold: 99.9,
+ *             },
+ *         },
+ *     },
+ *     type: "MonitorsLibraryMonitor",
+ * });
+ * const tfSloMonitor2 = new sumologic.Monitor("tf_slo_monitor_2", {
+ *     contentType: "Monitor",
+ *     evaluationDelay: "5m",
+ *     isDisabled: false,
+ *     monitorType: "Slo",
+ *     sloId: "0000000000000009",
+ *     triggerConditions: {
+ *         sloBurnRateCondition: {
+ *             critical: {
+ *                 burnRateThreshold: 10,
+ *                 timeRange: "1d",
+ *             },
+ *             warning: {
+ *                 burnRateThreshold: 5,
+ *                 timeRange: "1d",
+ *             },
+ *         },
+ *     },
+ *     type: "MonitorsLibraryMonitor",
+ * });
+ * ```
+ *
  * ## Monitor Folders
  *
  * <<<<<<< HEAD
@@ -105,6 +165,19 @@ import * as utilities from "./utilities";
  * #### metricsMissingDataCondition
  *   - `timeRange` (Required)
  *   - `triggerSource` (Required)
+ * #### sloSliCondition
+ *   - `critical`
+ *     - `sliThreshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
+ *   - `warning`
+ *     - `sliThreshold` (Required)
+ *
+ * #### sloBurnRateCondition
+ *   - `critical`
+ *     - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.
+ *     - `burnRateThreshold` (Required) : The burn rate percentage threshold.
+ *   - `warning`
+ *     - `timeRange` (Required)
+ *     - `burnRateThreshold` (Required)
  *
  * ## The `triggers` block
  *
@@ -212,6 +285,10 @@ export class Monitor extends pulumi.CustomResource {
     }
 
     /**
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+     */
+    public readonly alertName!: pulumi.Output<string | undefined>;
+    /**
      * The type of the content object. Valid value:
      * - `Monitor`
      */
@@ -240,6 +317,7 @@ export class Monitor extends pulumi.CustomResource {
      * The type of monitor. Valid values:
      * - `Logs`: A logs query monitor.
      * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor  (beta).
      */
     public readonly monitorType!: pulumi.Output<string>;
     /**
@@ -263,6 +341,10 @@ export class Monitor extends pulumi.CustomResource {
      * All queries from the monitor.
      */
     public readonly queries!: pulumi.Output<outputs.MonitorQuery[] | undefined>;
+    /**
+     * Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
+     */
+    public readonly sloId!: pulumi.Output<string | undefined>;
     /**
      * The current status for this monitor. Values are:
      * - `Critical`
@@ -302,6 +384,7 @@ export class Monitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorState | undefined;
+            resourceInputs["alertName"] = state ? state.alertName : undefined;
             resourceInputs["contentType"] = state ? state.contentType : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
@@ -321,6 +404,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["playbook"] = state ? state.playbook : undefined;
             resourceInputs["postRequestMap"] = state ? state.postRequestMap : undefined;
             resourceInputs["queries"] = state ? state.queries : undefined;
+            resourceInputs["sloId"] = state ? state.sloId : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
             resourceInputs["triggerConditions"] = state ? state.triggerConditions : undefined;
             resourceInputs["triggers"] = state ? state.triggers : undefined;
@@ -331,6 +415,7 @@ export class Monitor extends pulumi.CustomResource {
             if ((!args || args.monitorType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'monitorType'");
             }
+            resourceInputs["alertName"] = args ? args.alertName : undefined;
             resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["createdBy"] = args ? args.createdBy : undefined;
@@ -350,6 +435,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["playbook"] = args ? args.playbook : undefined;
             resourceInputs["postRequestMap"] = args ? args.postRequestMap : undefined;
             resourceInputs["queries"] = args ? args.queries : undefined;
+            resourceInputs["sloId"] = args ? args.sloId : undefined;
             resourceInputs["statuses"] = args ? args.statuses : undefined;
             resourceInputs["triggerConditions"] = args ? args.triggerConditions : undefined;
             resourceInputs["triggers"] = args ? args.triggers : undefined;
@@ -365,6 +451,10 @@ export class Monitor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Monitor resources.
  */
 export interface MonitorState {
+    /**
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+     */
+    alertName?: pulumi.Input<string>;
     /**
      * The type of the content object. Valid value:
      * - `Monitor`
@@ -394,6 +484,7 @@ export interface MonitorState {
      * The type of monitor. Valid values:
      * - `Logs`: A logs query monitor.
      * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor  (beta).
      */
     monitorType?: pulumi.Input<string>;
     /**
@@ -417,6 +508,10 @@ export interface MonitorState {
      * All queries from the monitor.
      */
     queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
+    /**
+     * Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
+     */
+    sloId?: pulumi.Input<string>;
     /**
      * The current status for this monitor. Values are:
      * - `Critical`
@@ -449,6 +544,10 @@ export interface MonitorState {
  */
 export interface MonitorArgs {
     /**
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+     */
+    alertName?: pulumi.Input<string>;
+    /**
      * The type of the content object. Valid value:
      * - `Monitor`
      */
@@ -477,6 +576,7 @@ export interface MonitorArgs {
      * The type of monitor. Valid values:
      * - `Logs`: A logs query monitor.
      * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor  (beta).
      */
     monitorType: pulumi.Input<string>;
     /**
@@ -500,6 +600,10 @@ export interface MonitorArgs {
      * All queries from the monitor.
      */
     queries?: pulumi.Input<pulumi.Input<inputs.MonitorQuery>[]>;
+    /**
+     * Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
+     */
+    sloId?: pulumi.Input<string>;
     /**
      * The current status for this monitor. Values are:
      * - `Critical`

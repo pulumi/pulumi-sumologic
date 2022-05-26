@@ -2457,6 +2457,23 @@ export interface MetadataSourcePath {
     type: string;
 }
 
+export interface MonitorFolderObjPermission {
+    /**
+     * A Set of Permissions. Valid Permission Values: 
+     * - `Create`
+     * - `Read`
+     */
+    permissions: string[];
+    /**
+     * A Role ID or the Org ID of the account
+     */
+    subjectId: string;
+    /**
+     * Valid values:
+     */
+    subjectType: string;
+}
+
 export interface MonitorNotification {
     notification: outputs.MonitorNotificationNotification;
     runForTriggerTypes: string[];
@@ -2498,6 +2515,8 @@ export interface MonitorTriggerConditions {
     metricsMissingDataCondition?: outputs.MonitorTriggerConditionsMetricsMissingDataCondition;
     metricsOutlierCondition?: outputs.MonitorTriggerConditionsMetricsOutlierCondition;
     metricsStaticCondition?: outputs.MonitorTriggerConditionsMetricsStaticCondition;
+    sloBurnRateCondition?: outputs.MonitorTriggerConditionsSloBurnRateCondition;
+    sloSliCondition?: outputs.MonitorTriggerConditionsSloSliCondition;
 }
 
 export interface MonitorTriggerConditionsLogsMissingDataCondition {
@@ -2621,6 +2640,34 @@ export interface MonitorTriggerConditionsMetricsStaticConditionWarningResolution
     occurrenceType?: string;
     threshold?: number;
     thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateCondition {
+    critical?: outputs.MonitorTriggerConditionsSloBurnRateConditionCritical;
+    warning?: outputs.MonitorTriggerConditionsSloBurnRateConditionWarning;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionCritical {
+    burnRateThreshold: number;
+    timeRange: string;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionWarning {
+    burnRateThreshold: number;
+    timeRange: string;
+}
+
+export interface MonitorTriggerConditionsSloSliCondition {
+    critical?: outputs.MonitorTriggerConditionsSloSliConditionCritical;
+    warning?: outputs.MonitorTriggerConditionsSloSliConditionWarning;
+}
+
+export interface MonitorTriggerConditionsSloSliConditionCritical {
+    sliThreshold: number;
+}
+
+export interface MonitorTriggerConditionsSloSliConditionWarning {
+    sliThreshold: number;
 }
 
 export interface PoliciesUserConcurrentSessionsLimit {
@@ -2894,5 +2941,150 @@ export interface SamlConfigurationOnDemandProvisioningEnabled {
      * List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
      */
     onDemandProvisioningRoles: string[];
+}
+
+export interface SloCompliance {
+    /**
+     * The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+     */
+    complianceType: string;
+    /**
+     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+     * based evaluation.
+     */
+    size: string;
+    /**
+     * Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+     * Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+     * For `Month` it's not required and is set to first day of the month.
+     */
+    startFrom?: string;
+    /**
+     * The target value to use, must be a number between 0 and 100.
+     */
+    target: number;
+    /**
+     * Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+     */
+    timezone: string;
+}
+
+export interface SloIndicator {
+    requestBasedEvaluation?: outputs.SloIndicatorRequestBasedEvaluation;
+    windowBasedEvaluation?: outputs.SloIndicatorWindowBasedEvaluation;
+}
+
+export interface SloIndicatorRequestBasedEvaluation {
+    /**
+     * Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * , `GreaterThanOrEqual`.
+     */
+    op?: string;
+    /**
+     * The queries to use.
+     */
+    queries: outputs.SloIndicatorRequestBasedEvaluationQuery[];
+    /**
+     * The type of query to use. Valid values are `Metrics` or `Logs`.
+     */
+    queryType: string;
+    /**
+     * Compared against threshold query's raw data points to determine success criteria.
+     */
+    threshold?: number;
+}
+
+export interface SloIndicatorRequestBasedEvaluationQuery {
+    /**
+     * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+     * , `Threshold`.
+     */
+    queryGroupType: string;
+    /**
+     * List of queries to use.
+     */
+    queryGroups: outputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup[];
+}
+
+export interface SloIndicatorRequestBasedEvaluationQueryQueryGroup {
+    /**
+     * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
+     */
+    field?: string;
+    /**
+     * The query string to use.
+     */
+    query: string;
+    /**
+     * The row ID to use.
+     */
+    rowId: string;
+    /**
+     * Whether to use the row count. Defaults to false.
+     */
+    useRowCount: boolean;
+}
+
+export interface SloIndicatorWindowBasedEvaluation {
+    /**
+     * Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+     * , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+     */
+    aggregation?: string;
+    /**
+     * Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * , `GreaterThanOrEqual`.
+     */
+    op: string;
+    /**
+     * The queries to use.
+     */
+    queries: outputs.SloIndicatorWindowBasedEvaluationQuery[];
+    /**
+     * The type of query to use. Valid values are `Metrics` or `Logs`.
+     */
+    queryType: string;
+    /**
+     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
+     * based evaluation.
+     */
+    size: string;
+    /**
+     * Compared against threshold query's raw data points to determine success criteria.
+     */
+    threshold: number;
+}
+
+export interface SloIndicatorWindowBasedEvaluationQuery {
+    /**
+     * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+     * , `Threshold`.
+     */
+    queryGroupType: string;
+    /**
+     * List of queries to use.
+     */
+    queryGroups: outputs.SloIndicatorWindowBasedEvaluationQueryQueryGroup[];
+}
+
+export interface SloIndicatorWindowBasedEvaluationQueryQueryGroup {
+    /**
+     * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
+     */
+    field?: string;
+    /**
+     * The query string to use.
+     */
+    query: string;
+    /**
+     * The row ID to use.
+     */
+    rowId: string;
+    /**
+     * Whether to use the row count. Defaults to false.
+     */
+    useRowCount: boolean;
 }
 

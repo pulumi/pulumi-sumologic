@@ -42,6 +42,7 @@ export * from "./getAdminRecommendedFolder";
 export * from "./getCallerIdentity";
 export * from "./getCollector";
 export * from "./getCseLogMappingVendorProduct";
+export * from "./getFolder";
 export * from "./getHttpSource";
 export * from "./getMyUserId";
 export * from "./getPersonalFolder";
@@ -67,6 +68,8 @@ export * from "./s3auditSource";
 export * from "./s3source";
 export * from "./samlConfiguration";
 export * from "./scheduledView";
+export * from "./slo";
+export * from "./sloFolder";
 export * from "./subdomain";
 export * from "./token";
 export * from "./user";
@@ -133,6 +136,8 @@ import { S3AuditSource } from "./s3auditSource";
 import { S3Source } from "./s3source";
 import { SamlConfiguration } from "./samlConfiguration";
 import { ScheduledView } from "./scheduledView";
+import { Slo } from "./slo";
+import { SloFolder } from "./sloFolder";
 import { Subdomain } from "./subdomain";
 import { Token } from "./token";
 import { User } from "./user";
@@ -245,6 +250,10 @@ const _module = {
                 return new SamlConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/scheduledView:ScheduledView":
                 return new ScheduledView(name, <any>undefined, { urn })
+            case "sumologic:index/slo:Slo":
+                return new Slo(name, <any>undefined, { urn })
+            case "sumologic:index/sloFolder:SloFolder":
+                return new SloFolder(name, <any>undefined, { urn })
             case "sumologic:index/subdomain:Subdomain":
                 return new Subdomain(name, <any>undefined, { urn })
             case "sumologic:index/token:Token":
@@ -308,6 +317,8 @@ pulumi.runtime.registerResourceModule("sumologic", "index/s3AuditSource", _modul
 pulumi.runtime.registerResourceModule("sumologic", "index/s3Source", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/samlConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/scheduledView", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/slo", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/sloFolder", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/subdomain", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/token", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/user", _module)

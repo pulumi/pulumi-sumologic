@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
  * Provides the ability to create, read, delete, and update folders for [Monitors](https://help.sumologic.com/?cid=10020).
+ * > If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor folder resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders).
  *
  * ## Example Monitor Folder
  *
@@ -28,7 +30,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
  * ```
  *
- *  [1]https://help.sumologic.com/?cid=10020
+ *  [1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
  */
 export class MonitorFolder extends pulumi.CustomResource {
     /**
@@ -75,6 +77,10 @@ export class MonitorFolder extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     */
+    public readonly objPermissions!: pulumi.Output<outputs.MonitorFolderObjPermission[] | undefined>;
+    /**
      * The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
      */
     public readonly parentId!: pulumi.Output<string>;
@@ -109,6 +115,7 @@ export class MonitorFolder extends pulumi.CustomResource {
             resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
             resourceInputs["modifiedBy"] = state ? state.modifiedBy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["objPermissions"] = state ? state.objPermissions : undefined;
             resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["postRequestMap"] = state ? state.postRequestMap : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -128,6 +135,7 @@ export class MonitorFolder extends pulumi.CustomResource {
             resourceInputs["modifiedAt"] = args ? args.modifiedAt : undefined;
             resourceInputs["modifiedBy"] = args ? args.modifiedBy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["objPermissions"] = args ? args.objPermissions : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["postRequestMap"] = args ? args.postRequestMap : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -158,6 +166,10 @@ export interface MonitorFolderState {
      * The name of the monitor folder. The name must be alphanumeric.
      */
     name?: pulumi.Input<string>;
+    /**
+     * `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     */
+    objPermissions?: pulumi.Input<pulumi.Input<inputs.MonitorFolderObjPermission>[]>;
     /**
      * The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
      */
@@ -191,6 +203,10 @@ export interface MonitorFolderArgs {
      * The name of the monitor folder. The name must be alphanumeric.
      */
     name?: pulumi.Input<string>;
+    /**
+     * `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     */
+    objPermissions?: pulumi.Input<pulumi.Input<inputs.MonitorFolderObjPermission>[]>;
     /**
      * The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
      */

@@ -19,6 +19,8 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly Outputs.MonitorTriggerConditionsMetricsMissingDataCondition? MetricsMissingDataCondition;
         public readonly Outputs.MonitorTriggerConditionsMetricsOutlierCondition? MetricsOutlierCondition;
         public readonly Outputs.MonitorTriggerConditionsMetricsStaticCondition? MetricsStaticCondition;
+        public readonly Outputs.MonitorTriggerConditionsSloBurnRateCondition? SloBurnRateCondition;
+        public readonly Outputs.MonitorTriggerConditionsSloSliCondition? SloSliCondition;
 
         [OutputConstructor]
         private MonitorTriggerConditions(
@@ -32,7 +34,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             Outputs.MonitorTriggerConditionsMetricsOutlierCondition? metricsOutlierCondition,
 
-            Outputs.MonitorTriggerConditionsMetricsStaticCondition? metricsStaticCondition)
+            Outputs.MonitorTriggerConditionsMetricsStaticCondition? metricsStaticCondition,
+
+            Outputs.MonitorTriggerConditionsSloBurnRateCondition? sloBurnRateCondition,
+
+            Outputs.MonitorTriggerConditionsSloSliCondition? sloSliCondition)
         {
             LogsMissingDataCondition = logsMissingDataCondition;
             LogsOutlierCondition = logsOutlierCondition;
@@ -40,6 +46,8 @@ namespace Pulumi.SumoLogic.Outputs
             MetricsMissingDataCondition = metricsMissingDataCondition;
             MetricsOutlierCondition = metricsOutlierCondition;
             MetricsStaticCondition = metricsStaticCondition;
+            SloBurnRateCondition = sloBurnRateCondition;
+            SloSliCondition = sloSliCondition;
         }
     }
 }
