@@ -571,85 +571,6 @@ class KinesisMetricsSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a Sumologic Kinesis Metrics source. This source is used to ingest data from Cloudwatch Metrics Stream via Kinesis Firehose from AWS.
-
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tagfilters = [
-            {
-                "namespace": "All",
-                "tags": ["k3=v3"],
-                "type": "TagFilters",
-            },
-            {
-                "namespace": "AWS/Route53",
-                "tags": ["k1=v1"],
-                "type": "TagFilters",
-            },
-            {
-                "namespace": "AWS/S3",
-                "tags": ["k2=v2"],
-                "type": "TagFilters",
-            },
-        ]
-        collector = sumologic.Collector("collector", description="Just testing this")
-        kinesis_metrics_access_key = sumologic.KinesisMetricsSource("kinesisMetricsAccessKey",
-            authentication=sumologic.KinesisMetricsSourceAuthenticationArgs(
-                access_key="someKey",
-                secret_key="******",
-                type="S3BucketAuthentication",
-            ),
-            category="prod/kinesis/metrics",
-            collector_id=collector.id,
-            content_type="KinesisMetric",
-            description="Description for Kinesis Metrics Source",
-            path=sumologic.KinesisMetricsSourcePathArgs(
-                tag_filters=[
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="All",
-                        tags=["k3=v3"],
-                        type="TagFilters",
-                    ),
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="AWS/Route53",
-                        tags=["k1=v1"],
-                        type="TagFilters",
-                    ),
-                ],
-                type="KinesisMetricPath",
-            ))
-        kinesis_metrics_role_arn = sumologic.KinesisMetricsSource("kinesisMetricsRoleArn",
-            authentication=sumologic.KinesisMetricsSourceAuthenticationArgs(
-                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="prod/kinesis/metrics",
-            collector_id=collector.id,
-            content_type="KinesisMetric",
-            description="Description for Kinesis Metrics Source",
-            path=sumologic.KinesisMetricsSourcePathArgs(
-                tag_filters=[
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="All",
-                        tags=["k3=v3"],
-                        type="TagFilters",
-                    ),
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="AWS/Route53",
-                        tags=["k1=v1"],
-                        type="TagFilters",
-                    ),
-                ],
-                type="KinesisMetricPath",
-            ))
-        ```
-
         ## Import
 
         Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -663,8 +584,6 @@ class KinesisMetricsSource(pulumi.CustomResource):
         ```sh
          $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source
         ```
-
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -679,85 +598,6 @@ class KinesisMetricsSource(pulumi.CustomResource):
                  args: KinesisMetricsSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Sumologic Kinesis Metrics source. This source is used to ingest data from Cloudwatch Metrics Stream via Kinesis Firehose from AWS.
-
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tagfilters = [
-            {
-                "namespace": "All",
-                "tags": ["k3=v3"],
-                "type": "TagFilters",
-            },
-            {
-                "namespace": "AWS/Route53",
-                "tags": ["k1=v1"],
-                "type": "TagFilters",
-            },
-            {
-                "namespace": "AWS/S3",
-                "tags": ["k2=v2"],
-                "type": "TagFilters",
-            },
-        ]
-        collector = sumologic.Collector("collector", description="Just testing this")
-        kinesis_metrics_access_key = sumologic.KinesisMetricsSource("kinesisMetricsAccessKey",
-            authentication=sumologic.KinesisMetricsSourceAuthenticationArgs(
-                access_key="someKey",
-                secret_key="******",
-                type="S3BucketAuthentication",
-            ),
-            category="prod/kinesis/metrics",
-            collector_id=collector.id,
-            content_type="KinesisMetric",
-            description="Description for Kinesis Metrics Source",
-            path=sumologic.KinesisMetricsSourcePathArgs(
-                tag_filters=[
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="All",
-                        tags=["k3=v3"],
-                        type="TagFilters",
-                    ),
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="AWS/Route53",
-                        tags=["k1=v1"],
-                        type="TagFilters",
-                    ),
-                ],
-                type="KinesisMetricPath",
-            ))
-        kinesis_metrics_role_arn = sumologic.KinesisMetricsSource("kinesisMetricsRoleArn",
-            authentication=sumologic.KinesisMetricsSourceAuthenticationArgs(
-                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="prod/kinesis/metrics",
-            collector_id=collector.id,
-            content_type="KinesisMetric",
-            description="Description for Kinesis Metrics Source",
-            path=sumologic.KinesisMetricsSourcePathArgs(
-                tag_filters=[
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="All",
-                        tags=["k3=v3"],
-                        type="TagFilters",
-                    ),
-                    sumologic.KinesisMetricsSourcePathTagFilterArgs(
-                        namespace="AWS/Route53",
-                        tags=["k1=v1"],
-                        type="TagFilters",
-                    ),
-                ],
-                type="KinesisMetricPath",
-            ))
-        ```
-
         ## Import
 
         Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -771,8 +611,6 @@ class KinesisMetricsSource(pulumi.CustomResource):
         ```sh
          $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source
         ```
-
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 
         :param str resource_name: The name of the resource.
         :param KinesisMetricsSourceArgs args: The arguments to use to populate this resource's properties.
