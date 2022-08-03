@@ -225,6 +225,26 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
+// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+func (o RoleOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+// The description of the role.
+func (o RoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A search filter to restrict access to specific logs.
+func (o RoleOutput) FilterPredicate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.FilterPredicate }).(pulumi.StringPtrOutput)
+}
+
+// The name of the role.
+func (o RoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type RoleArrayOutput struct{ *pulumi.OutputState }
 
 func (RoleArrayOutput) ElementType() reflect.Type {

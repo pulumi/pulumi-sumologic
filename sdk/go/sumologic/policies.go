@@ -277,6 +277,36 @@ func (o PoliciesOutput) ToPoliciesOutputWithContext(ctx context.Context) Policie
 	return o
 }
 
+// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
+func (o PoliciesOutput) Audit() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Policies) pulumi.BoolOutput { return v.Audit }).(pulumi.BoolOutput)
+}
+
+// Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
+func (o PoliciesOutput) DataAccessLevel() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Policies) pulumi.BoolOutput { return v.DataAccessLevel }).(pulumi.BoolOutput)
+}
+
+// The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
+func (o PoliciesOutput) MaxUserSessionTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policies) pulumi.StringOutput { return v.MaxUserSessionTimeout }).(pulumi.StringOutput)
+}
+
+// Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
+func (o PoliciesOutput) SearchAudit() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Policies) pulumi.BoolOutput { return v.SearchAudit }).(pulumi.BoolOutput)
+}
+
+// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
+func (o PoliciesOutput) ShareDashboardsOutsideOrganization() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Policies) pulumi.BoolOutput { return v.ShareDashboardsOutsideOrganization }).(pulumi.BoolOutput)
+}
+
+// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+func (o PoliciesOutput) UserConcurrentSessionsLimit() PoliciesUserConcurrentSessionsLimitOutput {
+	return o.ApplyT(func(v *Policies) PoliciesUserConcurrentSessionsLimitOutput { return v.UserConcurrentSessionsLimit }).(PoliciesUserConcurrentSessionsLimitOutput)
+}
+
 type PoliciesArrayOutput struct{ *pulumi.OutputState }
 
 func (PoliciesArrayOutput) ElementType() reflect.Type {

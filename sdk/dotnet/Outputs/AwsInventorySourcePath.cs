@@ -44,6 +44,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
         /// </summary>
         public readonly string Type;
+        public readonly bool? UseVersionedApi;
 
         [OutputConstructor]
         private AwsInventorySourcePath(
@@ -63,7 +64,9 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<Outputs.AwsInventorySourcePathTagFilter> tagFilters,
 
-            string type)
+            string type,
+
+            bool? useVersionedApi)
         {
             BucketName = bucketName;
             CustomServices = customServices;
@@ -74,6 +77,7 @@ namespace Pulumi.SumoLogic.Outputs
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
+            UseVersionedApi = useVersionedApi;
         }
     }
 }

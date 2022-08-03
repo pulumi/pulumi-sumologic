@@ -222,6 +222,26 @@ func (o FieldOutput) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 	return o
 }
 
+// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
+func (o FieldOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Field) pulumi.StringPtrOutput { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Field identifier.
+func (o FieldOutput) FieldId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.FieldId }).(pulumi.StringOutput)
+}
+
+// Name of the field.
+func (o FieldOutput) FieldName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.FieldName }).(pulumi.StringOutput)
+}
+
+// State of the field (either `Enabled` or `Disabled`).
+func (o FieldOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Field) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+}
+
 type FieldArrayOutput struct{ *pulumi.OutputState }
 
 func (FieldArrayOutput) ElementType() reflect.Type {

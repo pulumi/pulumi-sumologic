@@ -256,6 +256,38 @@ func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
 }
 
+// The description of the token.
+func (o TokenOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encoded token for collector registration.
+func (o TokenOutput) EncodedTokenAndUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.EncodedTokenAndUrl }).(pulumi.StringOutput)
+}
+
+// Display name of the token. This must be unique across all of the tokens.
+func (o TokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status of the token. Valid values:
+// - `Active`
+// - `Inactive`
+func (o TokenOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of the token. Valid value:
+// - `CollectorRegistration`.
+func (o TokenOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o TokenOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *Token) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
 type TokenArrayOutput struct{ *pulumi.OutputState }
 
 func (TokenArrayOutput) ElementType() reflect.Type {

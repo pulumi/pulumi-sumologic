@@ -54,12 +54,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CseCustomInsight{}
 	case "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig":
 		r = &CseEntityCriticalityConfig{}
+	case "sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration":
+		r = &CseEntityEntityGroupConfiguration{}
 	case "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
 		r = &CseInsightsConfiguration{}
 	case "sumologic:index/cseInsightsResolution:CseInsightsResolution":
 		r = &CseInsightsResolution{}
 	case "sumologic:index/cseInsightsStatus:CseInsightsStatus":
 		r = &CseInsightsStatus{}
+	case "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration":
+		r = &CseInventoryEntityGroupConfiguration{}
 	case "sumologic:index/cseLogMapping:CseLogMapping":
 		r = &CseLogMapping{}
 	case "sumologic:index/cseMatchList:CseMatchList":
@@ -249,6 +253,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/cseEntityEntityGroupConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/cseInsightsConfiguration",
 		&module{version},
 	)
@@ -260,6 +269,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/cseInsightsStatus",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseInventoryEntityGroupConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

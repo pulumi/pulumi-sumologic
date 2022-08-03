@@ -257,6 +257,47 @@ func (o CseMatchListOutput) ToCseMatchListOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o CseMatchListOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o CseMatchListOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The default time to live for match list items added through the UI. Specified in seconds.
+func (o CseMatchListOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.IntPtrOutput { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+}
+
+// Match list item description.
+func (o CseMatchListOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// List of match list items. See matchListItem schema for details.
+func (o CseMatchListOutput) Items() CseMatchListItemArrayOutput {
+	return o.ApplyT(func(v *CseMatchList) CseMatchListItemArrayOutput { return v.Items }).(CseMatchListItemArrayOutput)
+}
+
+func (o CseMatchListOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o CseMatchListOutput) LastUpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.LastUpdatedBy }).(pulumi.StringOutput)
+}
+
+// Match list name.
+func (o CseMatchListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
+func (o CseMatchListOutput) TargetColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.TargetColumn }).(pulumi.StringOutput)
+}
+
 type CseMatchListArrayOutput struct{ *pulumi.OutputState }
 
 func (CseMatchListArrayOutput) ElementType() reflect.Type {

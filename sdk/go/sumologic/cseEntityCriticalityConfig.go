@@ -203,6 +203,16 @@ func (o CseEntityCriticalityConfigOutput) ToCseEntityCriticalityConfigOutputWith
 	return o
 }
 
+// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
+func (o CseEntityCriticalityConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseEntityCriticalityConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+func (o CseEntityCriticalityConfigOutput) SeverityExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseEntityCriticalityConfig) pulumi.StringOutput { return v.SeverityExpression }).(pulumi.StringOutput)
+}
+
 type CseEntityCriticalityConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (CseEntityCriticalityConfigArrayOutput) ElementType() reflect.Type {

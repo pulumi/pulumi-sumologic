@@ -309,6 +309,65 @@ func (o SloFolderOutput) ToSloFolderOutputWithContext(ctx context.Context) SloFo
 	return o
 }
 
+func (o SloFolderOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o SloFolderOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o SloFolderOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The description of the SLO folder.
+func (o SloFolderOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o SloFolderOutput) IsLocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.BoolPtrOutput { return v.IsLocked }).(pulumi.BoolPtrOutput)
+}
+
+func (o SloFolderOutput) IsMutable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.BoolOutput { return v.IsMutable }).(pulumi.BoolOutput)
+}
+
+func (o SloFolderOutput) IsSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.BoolOutput { return v.IsSystem }).(pulumi.BoolOutput)
+}
+
+func (o SloFolderOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+func (o SloFolderOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+// The name of the SLO folder. The name must be alphanumeric.
+func (o SloFolderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+func (o SloFolderOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
+}
+
+func (o SloFolderOutput) PostRequestMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringMapOutput { return v.PostRequestMap }).(pulumi.StringMapOutput)
+}
+
+func (o SloFolderOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o SloFolderOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *SloFolder) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
 type SloFolderArrayOutput struct{ *pulumi.OutputState }
 
 func (SloFolderArrayOutput) ElementType() reflect.Type {

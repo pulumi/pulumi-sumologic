@@ -362,6 +362,76 @@ func (o CseThresholdRuleOutput) ToCseThresholdRuleOutputWithContext(ctx context.
 	return o
 }
 
+// Whether to count distinct values of a field, as opposed to just counting the number of records
+func (o CseThresholdRuleOutput) CountDistinct() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.BoolPtrOutput { return v.CountDistinct }).(pulumi.BoolPtrOutput)
+}
+
+// The field to count if `countDistinct` is set to true
+func (o CseThresholdRuleOutput) CountField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringPtrOutput { return v.CountField }).(pulumi.StringPtrOutput)
+}
+
+// The description of the generated Signals
+func (o CseThresholdRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the rule should generate Signals
+func (o CseThresholdRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The entities to generate Signals on
+func (o CseThresholdRuleOutput) EntitySelectors() CseThresholdRuleEntitySelectorArrayOutput {
+	return o.ApplyT(func(v *CseThresholdRule) CseThresholdRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseThresholdRuleEntitySelectorArrayOutput)
+}
+
+// The expression for which records to match on
+func (o CseThresholdRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A list of fields to group records by
+func (o CseThresholdRuleOutput) GroupByFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringArrayOutput { return v.GroupByFields }).(pulumi.StringArrayOutput)
+}
+
+// Whether the generated Signals should be prototype Signals
+func (o CseThresholdRuleOutput) IsPrototype() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.BoolPtrOutput { return v.IsPrototype }).(pulumi.BoolPtrOutput)
+}
+
+// A Signal will be fired when this many records/distinct field values are matched
+func (o CseThresholdRuleOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.IntOutput { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The name of the Rule and the generated Signals
+func (o CseThresholdRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The severity of the generated Signals
+func (o CseThresholdRuleOutput) Severity() pulumi.IntOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.IntOutput { return v.Severity }).(pulumi.IntOutput)
+}
+
+// The summary of the generated Signals
+func (o CseThresholdRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
+}
+
+// The tags of the generated Signals
+func (o CseThresholdRuleOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+func (o CseThresholdRuleOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
+}
+
 type CseThresholdRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (CseThresholdRuleArrayOutput) ElementType() reflect.Type {

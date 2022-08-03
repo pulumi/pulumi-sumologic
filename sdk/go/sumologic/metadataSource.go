@@ -321,6 +321,100 @@ func (o MetadataSourceOutput) ToMetadataSourceOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Authentication details for AWS access.
+func (o MetadataSourceOutput) Authentication() MetadataSourceAuthenticationOutput {
+	return o.ApplyT(func(v *MetadataSource) MetadataSourceAuthenticationOutput { return v.Authentication }).(MetadataSourceAuthenticationOutput)
+}
+
+func (o MetadataSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o MetadataSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. For Metadata source this is `AwsMetadata`. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o MetadataSourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o MetadataSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o MetadataSourceOutput) DefaultDateFormats() MetadataSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *MetadataSource) MetadataSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(MetadataSourceDefaultDateFormatArrayOutput)
+}
+
+func (o MetadataSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o MetadataSourceOutput) Filters() MetadataSourceFilterArrayOutput {
+	return o.ApplyT(func(v *MetadataSource) MetadataSourceFilterArrayOutput { return v.Filters }).(MetadataSourceFilterArrayOutput)
+}
+
+func (o MetadataSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o MetadataSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o MetadataSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MetadataSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o MetadataSourceOutput) Path() MetadataSourcePathOutput {
+	return o.ApplyT(func(v *MetadataSource) MetadataSourcePathOutput { return v.Path }).(MetadataSourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o MetadataSourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o MetadataSourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o MetadataSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
+func (o MetadataSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o MetadataSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type MetadataSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (MetadataSourceArrayOutput) ElementType() reflect.Type {

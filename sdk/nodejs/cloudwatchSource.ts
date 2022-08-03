@@ -10,66 +10,6 @@ import * as utilities from "./utilities";
  *
  * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const filters = [{
- *     name: "Exclude Comments",
- *     filter_type: "Exclude",
- *     regexp: "#.*",
- * }];
- * const tagfilters = [
- *     {
- *         type: "TagFilters",
- *         namespace: "All",
- *         tags: ["k3=v3"],
- *     },
- *     {
- *         type: "TagFilters",
- *         namespace: "AWS/Route53",
- *         tags: ["k1=v1"],
- *     },
- *     {
- *         type: "TagFilters",
- *         namespace: "AWS/S3",
- *         tags: ["k2=v2"],
- *     },
- * ];
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const cloudwatchSource = new sumologic.CloudwatchSource("cloudwatchSource", {
- *     description: "My description",
- *     category: "aws/cw",
- *     contentType: "AwsCloudWatch",
- *     scanInterval: 300000,
- *     paused: false,
- *     collectorId: collector.id,
- *     authentication: {
- *         type: "AWSRoleBasedAuthentication",
- *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
- *     },
- *     path: {
- *         type: "CloudWatchPath",
- *         limitToRegions: ["us-west-2"],
- *         limitToNamespaces: [
- *             "AWS/Route53",
- *             "AWS/S3",
- *             "customNamespace",
- *         ],
- *         dynamic: [{
- *             forEach: tagfilters,
- *             content: [{
- *                 type: tag_filters.value.type,
- *                 namespace: tag_filters.value.namespace,
- *                 tags: tag_filters.value.tags,
- *             }],
- *         }],
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl

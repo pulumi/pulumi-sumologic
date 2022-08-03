@@ -37,8 +37,16 @@ import (
 // 			CustomHeaders: pulumi.StringMap{
 // 				"X-custom": pulumi.String("my-custom-header"),
 // 			},
-// 			DefaultPayload: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "{\n", "  \"client\" : \"Sumo Logic\",\n", "  \"eventType\" : \"{{Name}}\",\n", "  \"description\" : \"{{Description}}\",\n", "  \"search_url\" : \"{{QueryUrl}}\",\n", "  \"num_records\" : \"{{NumRawResults}}\",\n", "  \"search_results\" : \"{{AggregateResultsJson}}\"\n", "}\n")),
-// 			WebhookType:    pulumi.String("Webhook"),
+// 			DefaultPayload: pulumi.String(fmt.Sprintf(`{
+//   "client" : "Sumo Logic",
+//   "eventType" : "{{Name}}",
+//   "description" : "{{Description}}",
+//   "search_url" : "{{QueryUrl}}",
+//   "num_records" : "{{NumRawResults}}",
+//   "search_results" : "{{AggregateResultsJson}}"
+// }
+// `)),
+// 			WebhookType: pulumi.String("Webhook"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -74,7 +82,7 @@ type Connection struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// URL for the webhook connection.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType pulumi.StringPtrOutput `pulumi:"webhookType"`
 }
 
@@ -132,7 +140,7 @@ type connectionState struct {
 	Type *string `pulumi:"type"`
 	// URL for the webhook connection.
 	Url *string `pulumi:"url"`
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType *string `pulumi:"webhookType"`
 }
 
@@ -153,7 +161,7 @@ type ConnectionState struct {
 	Type pulumi.StringPtrInput
 	// URL for the webhook connection.
 	Url pulumi.StringPtrInput
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType pulumi.StringPtrInput
 }
 
@@ -178,7 +186,7 @@ type connectionArgs struct {
 	Type string `pulumi:"type"`
 	// URL for the webhook connection.
 	Url string `pulumi:"url"`
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType *string `pulumi:"webhookType"`
 }
 
@@ -200,7 +208,7 @@ type ConnectionArgs struct {
 	Type pulumi.StringInput
 	// URL for the webhook connection.
 	Url pulumi.StringInput
-	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+	// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
 	WebhookType pulumi.StringPtrInput
 }
 
@@ -289,6 +297,51 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+// The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
+func (o ConnectionOutput) ConnectionSubtype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ConnectionSubtype }).(pulumi.StringPtrOutput)
+}
+
+// Map of custom webhook headers
+func (o ConnectionOutput) CustomHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.CustomHeaders }).(pulumi.StringMapOutput)
+}
+
+// Default payload of the webhook.
+func (o ConnectionOutput) DefaultPayload() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DefaultPayload }).(pulumi.StringOutput)
+}
+
+// Description of the connection.
+func (o ConnectionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Map of access authorization headers.
+func (o ConnectionOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// Name of connection. Name should be a valid alphanumeric value.
+func (o ConnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of connection. Only `WebhookConnection` is implemented right now.
+func (o ConnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL for the webhook connection.
+func (o ConnectionOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+func (o ConnectionOutput) WebhookType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.WebhookType }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionArrayOutput struct{ *pulumi.OutputState }

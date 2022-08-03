@@ -268,6 +268,41 @@ func (o IngestBudgetOutput) ToIngestBudgetOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+func (o IngestBudgetOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Capacity of the ingest budget, in bytes.
+func (o IngestBudgetOutput) CapacityBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *IngestBudget) pulumi.IntOutput { return v.CapacityBytes }).(pulumi.IntOutput)
+}
+
+// Description of the ingest budget.
+func (o IngestBudgetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Custom field value that is used to assign Collectors to the ingest budget.
+func (o IngestBudgetOutput) FieldValue() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngestBudget) pulumi.StringOutput { return v.FieldValue }).(pulumi.StringOutput)
+}
+
+// Display name of the ingest budget. This must be unique across all of the ingest budgets
+func (o IngestBudgetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngestBudget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+func (o IngestBudgetOutput) ResetTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.ResetTime }).(pulumi.StringPtrOutput)
+}
+
+// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+func (o IngestBudgetOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
 type IngestBudgetArrayOutput struct{ *pulumi.OutputState }
 
 func (IngestBudgetArrayOutput) ElementType() reflect.Type {

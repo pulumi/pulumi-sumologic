@@ -583,7 +583,8 @@ type AwsInventorySourcePath struct {
 	SnsTopicOrSubscriptionArns []AwsInventorySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []AwsInventorySourcePathTagFilter                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // AwsInventorySourcePathInput is an input type that accepts AwsInventorySourcePathArgs and AwsInventorySourcePathOutput values.
@@ -622,7 +623,8 @@ type AwsInventorySourcePathArgs struct {
 	SnsTopicOrSubscriptionArns AwsInventorySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 AwsInventorySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (AwsInventorySourcePathArgs) ElementType() reflect.Type {
@@ -756,6 +758,10 @@ func (o AwsInventorySourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsInventorySourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o AwsInventorySourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsInventorySourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type AwsInventorySourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourcePathPtrOutput) ElementType() reflect.Type {
@@ -875,6 +881,15 @@ func (o AwsInventorySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AwsInventorySourcePathCustomService struct {
@@ -1753,7 +1768,8 @@ type AwsXraySourcePath struct {
 	SnsTopicOrSubscriptionArns []AwsXraySourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []AwsXraySourcePathTagFilter                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // AwsXraySourcePathInput is an input type that accepts AwsXraySourcePathArgs and AwsXraySourcePathOutput values.
@@ -1778,7 +1794,8 @@ type AwsXraySourcePathArgs struct {
 	SnsTopicOrSubscriptionArns AwsXraySourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 AwsXraySourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (AwsXraySourcePathArgs) ElementType() reflect.Type {
@@ -1898,6 +1915,10 @@ func (o AwsXraySourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsXraySourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o AwsXraySourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsXraySourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type AwsXraySourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourcePathPtrOutput) ElementType() reflect.Type {
@@ -2003,6 +2024,15 @@ func (o AwsXraySourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsXraySourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AwsXraySourcePathCustomService struct {
@@ -3099,7 +3129,8 @@ type CloudfrontSourcePath struct {
 	SnsTopicOrSubscriptionArns []CloudfrontSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []CloudfrontSourcePathTagFilter                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // CloudfrontSourcePathInput is an input type that accepts CloudfrontSourcePathArgs and CloudfrontSourcePathOutput values.
@@ -3126,7 +3157,8 @@ type CloudfrontSourcePathArgs struct {
 	SnsTopicOrSubscriptionArns CloudfrontSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 CloudfrontSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (CloudfrontSourcePathArgs) ElementType() reflect.Type {
@@ -3248,6 +3280,10 @@ func (o CloudfrontSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudfrontSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o CloudfrontSourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudfrontSourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type CloudfrontSourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourcePathPtrOutput) ElementType() reflect.Type {
@@ -3355,6 +3391,15 @@ func (o CloudfrontSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type CloudfrontSourcePathCustomService struct {
@@ -4239,7 +4284,8 @@ type CloudtrailSourcePath struct {
 	SnsTopicOrSubscriptionArns []CloudtrailSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []CloudtrailSourcePathTagFilter                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // CloudtrailSourcePathInput is an input type that accepts CloudtrailSourcePathArgs and CloudtrailSourcePathOutput values.
@@ -4266,7 +4312,8 @@ type CloudtrailSourcePathArgs struct {
 	SnsTopicOrSubscriptionArns CloudtrailSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 CloudtrailSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (CloudtrailSourcePathArgs) ElementType() reflect.Type {
@@ -4388,6 +4435,10 @@ func (o CloudtrailSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudtrailSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o CloudtrailSourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudtrailSourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type CloudtrailSourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (CloudtrailSourcePathPtrOutput) ElementType() reflect.Type {
@@ -4495,6 +4546,15 @@ func (o CloudtrailSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudtrailSourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type CloudtrailSourcePathCustomService struct {
@@ -5379,7 +5439,8 @@ type CloudwatchSourcePath struct {
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters []CloudwatchSourcePathTagFilter `pulumi:"tagFilters"`
 	// This value has to be set to `TagFilters`
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // CloudwatchSourcePathInput is an input type that accepts CloudwatchSourcePathArgs and CloudwatchSourcePathOutput values.
@@ -5406,7 +5467,8 @@ type CloudwatchSourcePathArgs struct {
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters CloudwatchSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
 	// This value has to be set to `TagFilters`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (CloudwatchSourcePathArgs) ElementType() reflect.Type {
@@ -5528,6 +5590,10 @@ func (o CloudwatchSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudwatchSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o CloudwatchSourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudwatchSourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type CloudwatchSourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (CloudwatchSourcePathPtrOutput) ElementType() reflect.Type {
@@ -5635,6 +5701,15 @@ func (o CloudwatchSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type CloudwatchSourcePathCustomService struct {
@@ -15520,7 +15595,8 @@ type ElbSourcePath struct {
 	SnsTopicOrSubscriptionArns []ElbSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []ElbSourcePathTagFilter                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // ElbSourcePathInput is an input type that accepts ElbSourcePathArgs and ElbSourcePathOutput values.
@@ -15547,7 +15623,8 @@ type ElbSourcePathArgs struct {
 	SnsTopicOrSubscriptionArns ElbSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 ElbSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (ElbSourcePathArgs) ElementType() reflect.Type {
@@ -15667,6 +15744,10 @@ func (o ElbSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElbSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o ElbSourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ElbSourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type ElbSourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (ElbSourcePathPtrOutput) ElementType() reflect.Type {
@@ -15774,6 +15855,15 @@ func (o ElbSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ElbSourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ElbSourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ElbSourcePathCustomService struct {
@@ -16678,7 +16768,8 @@ type GcpMetricsSourcePath struct {
 	SnsTopicOrSubscriptionArns []GcpMetricsSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []GcpMetricsSourcePathTagFilter                 `pulumi:"tagFilters"`
 	// Type of polling source. This has to be `GcpMetricsPath`.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // GcpMetricsSourcePathInput is an input type that accepts GcpMetricsSourcePathArgs and GcpMetricsSourcePathOutput values.
@@ -16705,7 +16796,8 @@ type GcpMetricsSourcePathArgs struct {
 	SnsTopicOrSubscriptionArns GcpMetricsSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 GcpMetricsSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// Type of polling source. This has to be `GcpMetricsPath`.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (GcpMetricsSourcePathArgs) ElementType() reflect.Type {
@@ -16827,6 +16919,10 @@ func (o GcpMetricsSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GcpMetricsSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o GcpMetricsSourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpMetricsSourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type GcpMetricsSourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (GcpMetricsSourcePathPtrOutput) ElementType() reflect.Type {
@@ -16934,6 +17030,15 @@ func (o GcpMetricsSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GcpMetricsSourcePathCustomService struct {
@@ -31242,6 +31347,139 @@ func (o MonitorNotificationNotificationOutput) TimeZone() pulumi.StringPtrOutput
 	return o.ApplyT(func(v MonitorNotificationNotification) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
+type MonitorObjPermission struct {
+	// A Set of Permissions. Valid Permission Values:
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	Permissions []string `pulumi:"permissions"`
+	// A Role ID or the Org ID of the account
+	SubjectId string `pulumi:"subjectId"`
+	// Valid values:
+	// - `role`
+	// - `org`
+	SubjectType string `pulumi:"subjectType"`
+}
+
+// MonitorObjPermissionInput is an input type that accepts MonitorObjPermissionArgs and MonitorObjPermissionOutput values.
+// You can construct a concrete instance of `MonitorObjPermissionInput` via:
+//
+//          MonitorObjPermissionArgs{...}
+type MonitorObjPermissionInput interface {
+	pulumi.Input
+
+	ToMonitorObjPermissionOutput() MonitorObjPermissionOutput
+	ToMonitorObjPermissionOutputWithContext(context.Context) MonitorObjPermissionOutput
+}
+
+type MonitorObjPermissionArgs struct {
+	// A Set of Permissions. Valid Permission Values:
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+	// A Role ID or the Org ID of the account
+	SubjectId pulumi.StringInput `pulumi:"subjectId"`
+	// Valid values:
+	// - `role`
+	// - `org`
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
+}
+
+func (MonitorObjPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorObjPermission)(nil)).Elem()
+}
+
+func (i MonitorObjPermissionArgs) ToMonitorObjPermissionOutput() MonitorObjPermissionOutput {
+	return i.ToMonitorObjPermissionOutputWithContext(context.Background())
+}
+
+func (i MonitorObjPermissionArgs) ToMonitorObjPermissionOutputWithContext(ctx context.Context) MonitorObjPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorObjPermissionOutput)
+}
+
+// MonitorObjPermissionArrayInput is an input type that accepts MonitorObjPermissionArray and MonitorObjPermissionArrayOutput values.
+// You can construct a concrete instance of `MonitorObjPermissionArrayInput` via:
+//
+//          MonitorObjPermissionArray{ MonitorObjPermissionArgs{...} }
+type MonitorObjPermissionArrayInput interface {
+	pulumi.Input
+
+	ToMonitorObjPermissionArrayOutput() MonitorObjPermissionArrayOutput
+	ToMonitorObjPermissionArrayOutputWithContext(context.Context) MonitorObjPermissionArrayOutput
+}
+
+type MonitorObjPermissionArray []MonitorObjPermissionInput
+
+func (MonitorObjPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorObjPermission)(nil)).Elem()
+}
+
+func (i MonitorObjPermissionArray) ToMonitorObjPermissionArrayOutput() MonitorObjPermissionArrayOutput {
+	return i.ToMonitorObjPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorObjPermissionArray) ToMonitorObjPermissionArrayOutputWithContext(ctx context.Context) MonitorObjPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorObjPermissionArrayOutput)
+}
+
+type MonitorObjPermissionOutput struct{ *pulumi.OutputState }
+
+func (MonitorObjPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorObjPermission)(nil)).Elem()
+}
+
+func (o MonitorObjPermissionOutput) ToMonitorObjPermissionOutput() MonitorObjPermissionOutput {
+	return o
+}
+
+func (o MonitorObjPermissionOutput) ToMonitorObjPermissionOutputWithContext(ctx context.Context) MonitorObjPermissionOutput {
+	return o
+}
+
+// A Set of Permissions. Valid Permission Values:
+// - `Read`
+// - `Update`
+// - `Delete`
+// - `Manage`
+func (o MonitorObjPermissionOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MonitorObjPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+// A Role ID or the Org ID of the account
+func (o MonitorObjPermissionOutput) SubjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorObjPermission) string { return v.SubjectId }).(pulumi.StringOutput)
+}
+
+// Valid values:
+// - `role`
+// - `org`
+func (o MonitorObjPermissionOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorObjPermission) string { return v.SubjectType }).(pulumi.StringOutput)
+}
+
+type MonitorObjPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorObjPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorObjPermission)(nil)).Elem()
+}
+
+func (o MonitorObjPermissionArrayOutput) ToMonitorObjPermissionArrayOutput() MonitorObjPermissionArrayOutput {
+	return o
+}
+
+func (o MonitorObjPermissionArrayOutput) ToMonitorObjPermissionArrayOutputWithContext(ctx context.Context) MonitorObjPermissionArrayOutput {
+	return o
+}
+
+func (o MonitorObjPermissionArrayOutput) Index(i pulumi.IntInput) MonitorObjPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorObjPermission {
+		return vs[0].([]MonitorObjPermission)[vs[1].(int)]
+	}).(MonitorObjPermissionOutput)
+}
+
 type MonitorQuery struct {
 	Query string `pulumi:"query"`
 	RowId string `pulumi:"rowId"`
@@ -37563,7 +37801,8 @@ type S3AuditSourcePath struct {
 	SnsTopicOrSubscriptionArns []S3AuditSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 []S3AuditSourcePathTagFilter                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
-	Type string `pulumi:"type"`
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
 }
 
 // S3AuditSourcePathInput is an input type that accepts S3AuditSourcePathArgs and S3AuditSourcePathOutput values.
@@ -37590,7 +37829,8 @@ type S3AuditSourcePathArgs struct {
 	SnsTopicOrSubscriptionArns S3AuditSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
 	TagFilters                 S3AuditSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (S3AuditSourcePathArgs) ElementType() reflect.Type {
@@ -37712,6 +37952,10 @@ func (o S3AuditSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3AuditSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+func (o S3AuditSourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v S3AuditSourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type S3AuditSourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (S3AuditSourcePathPtrOutput) ElementType() reflect.Type {
@@ -37819,6 +38063,15 @@ func (o S3AuditSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3AuditSourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3AuditSourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type S3AuditSourcePathCustomService struct {
@@ -38704,6 +38957,8 @@ type S3SourcePath struct {
 	TagFilters                 []S3SourcePathTagFilter                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 	Type string `pulumi:"type"`
+	// Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+	UseVersionedApi *bool `pulumi:"useVersionedApi"`
 }
 
 // S3SourcePathInput is an input type that accepts S3SourcePathArgs and S3SourcePathOutput values.
@@ -38731,6 +38986,8 @@ type S3SourcePathArgs struct {
 	TagFilters                 S3SourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
 	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
 }
 
 func (S3SourcePathArgs) ElementType() reflect.Type {
@@ -38850,6 +39107,11 @@ func (o S3SourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3SourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+func (o S3SourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v S3SourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
 type S3SourcePathPtrOutput struct{ *pulumi.OutputState }
 
 func (S3SourcePathPtrOutput) ElementType() reflect.Type {
@@ -38957,6 +39219,16 @@ func (o S3SourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+func (o S3SourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3SourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
 }
 
 type S3SourcePathCustomService struct {
@@ -41087,6 +41359,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationInput)(nil)).Elem(), MonitorNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationArrayInput)(nil)).Elem(), MonitorNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationNotificationInput)(nil)).Elem(), MonitorNotificationNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorObjPermissionInput)(nil)).Elem(), MonitorObjPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorObjPermissionArrayInput)(nil)).Elem(), MonitorObjPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorQueryInput)(nil)).Elem(), MonitorQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorQueryArrayInput)(nil)).Elem(), MonitorQueryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerInput)(nil)).Elem(), MonitorTriggerArgs{})
@@ -41642,6 +41916,8 @@ func init() {
 	pulumi.RegisterOutputType(MonitorNotificationOutput{})
 	pulumi.RegisterOutputType(MonitorNotificationArrayOutput{})
 	pulumi.RegisterOutputType(MonitorNotificationNotificationOutput{})
+	pulumi.RegisterOutputType(MonitorObjPermissionOutput{})
+	pulumi.RegisterOutputType(MonitorObjPermissionArrayOutput{})
 	pulumi.RegisterOutputType(MonitorQueryOutput{})
 	pulumi.RegisterOutputType(MonitorQueryArrayOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerOutput{})

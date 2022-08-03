@@ -338,6 +338,56 @@ func (o CseLogMappingOutput) ToCseLogMappingOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Enabled flag.
+func (o CseLogMappingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseLogMapping) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// List of fields for the new log mapping. See fieldSchema for details.
+func (o CseLogMappingOutput) Fields() CseLogMappingFieldArrayOutput {
+	return o.ApplyT(func(v *CseLogMapping) CseLogMappingFieldArrayOutput { return v.Fields }).(CseLogMappingFieldArrayOutput)
+}
+
+// Name of the field.
+func (o CseLogMappingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseLogMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The id of the parent log mapping.
+func (o CseLogMappingOutput) ParentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseLogMapping) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
+}
+
+// Product GUID.
+func (o CseLogMappingOutput) ProductGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseLogMapping) pulumi.StringOutput { return v.ProductGuid }).(pulumi.StringOutput)
+}
+
+// The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
+func (o CseLogMappingOutput) RecordType() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseLogMapping) pulumi.StringOutput { return v.RecordType }).(pulumi.StringOutput)
+}
+
+// Set to true to relate entities.
+func (o CseLogMappingOutput) RelatesEntities() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseLogMapping) pulumi.BoolPtrOutput { return v.RelatesEntities }).(pulumi.BoolPtrOutput)
+}
+
+// List of skipped values.
+func (o CseLogMappingOutput) SkippedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseLogMapping) pulumi.StringArrayOutput { return v.SkippedValues }).(pulumi.StringArrayOutput)
+}
+
+// List of structured inputs for the new log mapping. See structuredInputSchema for details.
+func (o CseLogMappingOutput) StructuredInputs() CseLogMappingStructuredInputArrayOutput {
+	return o.ApplyT(func(v *CseLogMapping) CseLogMappingStructuredInputArrayOutput { return v.StructuredInputs }).(CseLogMappingStructuredInputArrayOutput)
+}
+
+// Unstructured fields for the new log mapping. See unstructuredFieldSchema for details.
+func (o CseLogMappingOutput) UnstructuredFields() CseLogMappingUnstructuredFieldsPtrOutput {
+	return o.ApplyT(func(v *CseLogMapping) CseLogMappingUnstructuredFieldsPtrOutput { return v.UnstructuredFields }).(CseLogMappingUnstructuredFieldsPtrOutput)
+}
+
 type CseLogMappingArrayOutput struct{ *pulumi.OutputState }
 
 func (CseLogMappingArrayOutput) ElementType() reflect.Type {

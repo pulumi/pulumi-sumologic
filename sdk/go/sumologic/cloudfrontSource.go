@@ -365,6 +365,100 @@ func (o CloudfrontSourceOutput) ToCloudfrontSourceOutputWithContext(ctx context.
 	return o
 }
 
+// Authentication details for connecting to the S3 bucket.
+func (o CloudfrontSourceOutput) Authentication() CloudfrontSourceAuthenticationOutput {
+	return o.ApplyT(func(v *CloudfrontSource) CloudfrontSourceAuthenticationOutput { return v.Authentication }).(CloudfrontSourceAuthenticationOutput)
+}
+
+func (o CloudfrontSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o CloudfrontSourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o CloudfrontSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) DefaultDateFormats() CloudfrontSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *CloudfrontSource) CloudfrontSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(CloudfrontSourceDefaultDateFormatArrayOutput)
+}
+
+func (o CloudfrontSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o CloudfrontSourceOutput) Filters() CloudfrontSourceFilterArrayOutput {
+	return o.ApplyT(func(v *CloudfrontSource) CloudfrontSourceFilterArrayOutput { return v.Filters }).(CloudfrontSourceFilterArrayOutput)
+}
+
+func (o CloudfrontSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o CloudfrontSourceOutput) Path() CloudfrontSourcePathOutput {
+	return o.ApplyT(func(v *CloudfrontSource) CloudfrontSourcePathOutput { return v.Path }).(CloudfrontSourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o CloudfrontSourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o CloudfrontSourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o CloudfrontSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
+func (o CloudfrontSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o CloudfrontSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type CloudfrontSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourceArrayOutput) ElementType() reflect.Type {

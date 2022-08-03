@@ -315,6 +315,71 @@ func (o PasswordPolicyOutput) ToPasswordPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
+func (o PasswordPolicyOutput) AccountLockoutDurationInMins() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.IntPtrOutput { return v.AccountLockoutDurationInMins }).(pulumi.IntPtrOutput)
+}
+
+// Number of failed login attempts allowed before account is locked-out. Defaults to 6.
+func (o PasswordPolicyOutput) AccountLockoutThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.IntPtrOutput { return v.AccountLockoutThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
+func (o PasswordPolicyOutput) FailedLoginResetDurationInMins() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.IntPtrOutput { return v.FailedLoginResetDurationInMins }).(pulumi.IntPtrOutput)
+}
+
+// The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
+func (o PasswordPolicyOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.IntPtrOutput { return v.MaxLength }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
+func (o PasswordPolicyOutput) MaxPasswordAgeInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.IntPtrOutput { return v.MaxPasswordAgeInDays }).(pulumi.IntPtrOutput)
+}
+
+// The minimum length of the password. Defaults to 8.
+func (o PasswordPolicyOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.IntPtrOutput { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
+func (o PasswordPolicyOutput) MinUniquePasswords() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.IntPtrOutput { return v.MinUniquePasswords }).(pulumi.IntPtrOutput)
+}
+
+// If the password must contain digits. Defaults to true.
+func (o PasswordPolicyOutput) MustContainDigits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.BoolPtrOutput { return v.MustContainDigits }).(pulumi.BoolPtrOutput)
+}
+
+// If the password must contain lower case characters. Defaults to true.
+func (o PasswordPolicyOutput) MustContainLowercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.BoolPtrOutput { return v.MustContainLowercase }).(pulumi.BoolPtrOutput)
+}
+
+// If the password must contain special characters. Defaults to true.
+func (o PasswordPolicyOutput) MustContainSpecialChars() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.BoolPtrOutput { return v.MustContainSpecialChars }).(pulumi.BoolPtrOutput)
+}
+
+// If the password must contain upper case characters. Defaults to true.
+func (o PasswordPolicyOutput) MustContainUppercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.BoolPtrOutput { return v.MustContainUppercase }).(pulumi.BoolPtrOutput)
+}
+
+// If MFA should be remembered on the browser. Defaults to true.
+func (o PasswordPolicyOutput) RememberMfa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.BoolPtrOutput { return v.RememberMfa }).(pulumi.BoolPtrOutput)
+}
+
+// If MFA should be required to log in. Defaults to false.
+func (o PasswordPolicyOutput) RequireMfa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordPolicy) pulumi.BoolPtrOutput { return v.RequireMfa }).(pulumi.BoolPtrOutput)
+}
+
 type PasswordPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (PasswordPolicyArrayOutput) ElementType() reflect.Type {

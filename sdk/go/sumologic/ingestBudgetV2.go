@@ -283,6 +283,46 @@ func (o IngestBudgetV2Output) ToIngestBudgetV2OutputWithContext(ctx context.Cont
 	return o
 }
 
+// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+func (o IngestBudgetV2Output) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+func (o IngestBudgetV2Output) AuditThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.IntPtrOutput { return v.AuditThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Capacity of the ingest budget, in bytes.
+func (o IngestBudgetV2Output) CapacityBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.IntOutput { return v.CapacityBytes }).(pulumi.IntOutput)
+}
+
+// The description of the collector.
+func (o IngestBudgetV2Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the ingest budget. This must be unique across all of the ingest budgets
+func (o IngestBudgetV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+func (o IngestBudgetV2Output) ResetTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.StringOutput { return v.ResetTime }).(pulumi.StringOutput)
+}
+
+// A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
+func (o IngestBudgetV2Output) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+func (o IngestBudgetV2Output) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
+}
+
 type IngestBudgetV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (IngestBudgetV2ArrayOutput) ElementType() reflect.Type {

@@ -318,6 +318,99 @@ func (o GcpMetricsSourceOutput) ToGcpMetricsSourceOutputWithContext(ctx context.
 	return o
 }
 
+// Authentication details for connecting to the  GCP Monitoring using serviceAccount credentials.
+func (o GcpMetricsSourceOutput) Authentication() GcpMetricsSourceAuthenticationOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) GcpMetricsSourceAuthenticationOutput { return v.Authentication }).(GcpMetricsSourceAuthenticationOutput)
+}
+
+func (o GcpMetricsSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o GcpMetricsSourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o GcpMetricsSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) DefaultDateFormats() GcpMetricsSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) GcpMetricsSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(GcpMetricsSourceDefaultDateFormatArrayOutput)
+}
+
+func (o GcpMetricsSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o GcpMetricsSourceOutput) Filters() GcpMetricsSourceFilterArrayOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) GcpMetricsSourceFilterArrayOutput { return v.Filters }).(GcpMetricsSourceFilterArrayOutput)
+}
+
+func (o GcpMetricsSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Details about what data to ingest
+func (o GcpMetricsSourceOutput) Path() GcpMetricsSourcePathOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) GcpMetricsSourcePathOutput { return v.Path }).(GcpMetricsSourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o GcpMetricsSourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o GcpMetricsSourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o GcpMetricsSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o GcpMetricsSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type GcpMetricsSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (GcpMetricsSourceArrayOutput) ElementType() reflect.Type {

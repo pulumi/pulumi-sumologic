@@ -17,118 +17,6 @@ import (
 //
 // __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tagfilters := []map[string]interface{}{
-// 			map[string]interface{}{
-// 				"type":      "TagFilters",
-// 				"namespace": "All",
-// 				"tags": []string{
-// 					"k3=v3",
-// 				},
-// 			},
-// 			map[string]interface{}{
-// 				"type":      "TagFilters",
-// 				"namespace": "AWS/Route53",
-// 				"tags": []string{
-// 					"k1=v1",
-// 				},
-// 			},
-// 			map[string]interface{}{
-// 				"type":      "TagFilters",
-// 				"namespace": "AWS/S3",
-// 				"tags": []string{
-// 					"k2=v2",
-// 				},
-// 			},
-// 		}
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewPollingSource(ctx, "s3Audit", &sumologic.PollingSourceArgs{
-// 			Description:  pulumi.String("My description"),
-// 			Category:     pulumi.String("aws/s3audit"),
-// 			ContentType:  pulumi.String("AwsS3AuditBucket"),
-// 			ScanInterval: pulumi.Int(300000),
-// 			Paused:       pulumi.Bool(false),
-// 			CollectorId:  collector.ID(),
-// 			Filters: PollingSourceFilterArray{
-// 				&PollingSourceFilterArgs{
-// 					Name:       pulumi.String("Exclude Comments"),
-// 					FilterType: pulumi.String("Exclude"),
-// 					Regexp:     pulumi.String("#.*"),
-// 				},
-// 			},
-// 			Authentication: &PollingSourceAuthenticationArgs{
-// 				Type:      pulumi.String("S3BucketAuthentication"),
-// 				AccessKey: pulumi.String("someKey"),
-// 				SecretKey: pulumi.String("******"),
-// 			},
-// 			Path: &PollingSourcePathArgs{
-// 				Type:           pulumi.String("S3BucketPathExpression"),
-// 				BucketName:     pulumi.String("Bucket1"),
-// 				PathExpression: pulumi.String("*"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewPollingSource(ctx, "cwMetrics", &sumologic.PollingSourceArgs{
-// 			Description:  pulumi.String("My description"),
-// 			Category:     pulumi.String("aws/cw"),
-// 			ContentType:  pulumi.String("AwsCloudWatch"),
-// 			ScanInterval: pulumi.Int(300000),
-// 			Paused:       pulumi.Bool(false),
-// 			CollectorId:  collector.ID(),
-// 			Authentication: &PollingSourceAuthenticationArgs{
-// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
-// 				RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
-// 			},
-// 			Path: &PollingSourcePathArgs{
-// 				Type: pulumi.String("CloudWatchPath"),
-// 				LimitToRegions: pulumi.StringArray{
-// 					pulumi.String("us-west-2"),
-// 				},
-// 				LimitToNamespaces: pulumi.StringArray{
-// 					pulumi.String("AWS/Route53"),
-// 					pulumi.String("AWS/S3"),
-// 					pulumi.String("customNamespace"),
-// 				},
-// 				Dynamic: []map[string]interface{}{
-// 					map[string]interface{}{
-// 						"forEach": tagfilters,
-// 						"content": []map[string]interface{}{
-// 							map[string]interface{}{
-// 								"type":      tag_filters.Value.Type,
-// 								"namespace": tag_filters.Value.Namespace,
-// 								"tags":      tag_filters.Value.Tags,
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -433,6 +321,100 @@ func (o PollingSourceOutput) ToPollingSourceOutput() PollingSourceOutput {
 
 func (o PollingSourceOutput) ToPollingSourceOutputWithContext(ctx context.Context) PollingSourceOutput {
 	return o
+}
+
+// Authentication details for connecting to the S3 bucket.
+func (o PollingSourceOutput) Authentication() PollingSourceAuthenticationOutput {
+	return o.ApplyT(func(v *PollingSource) PollingSourceAuthenticationOutput { return v.Authentication }).(PollingSourceAuthenticationOutput)
+}
+
+func (o PollingSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o PollingSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o PollingSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o PollingSourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o PollingSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o PollingSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o PollingSourceOutput) DefaultDateFormats() PollingSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *PollingSource) PollingSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(PollingSourceDefaultDateFormatArrayOutput)
+}
+
+func (o PollingSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o PollingSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o PollingSourceOutput) Filters() PollingSourceFilterArrayOutput {
+	return o.ApplyT(func(v *PollingSource) PollingSourceFilterArrayOutput { return v.Filters }).(PollingSourceFilterArrayOutput)
+}
+
+func (o PollingSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o PollingSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o PollingSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o PollingSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o PollingSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o PollingSourceOutput) Path() PollingSourcePathOutput {
+	return o.ApplyT(func(v *PollingSource) PollingSourcePathOutput { return v.Path }).(PollingSourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o PollingSourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o PollingSourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o PollingSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
+func (o PollingSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o PollingSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PollingSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
 }
 
 type PollingSourceArrayOutput struct{ *pulumi.OutputState }

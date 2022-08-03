@@ -165,6 +165,14 @@ func (o CollectorIngestBudgetAssignmentOutput) ToCollectorIngestBudgetAssignment
 	return o
 }
 
+func (o CollectorIngestBudgetAssignmentOutput) CollectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CollectorIngestBudgetAssignment) pulumi.StringOutput { return v.CollectorId }).(pulumi.StringOutput)
+}
+
+func (o CollectorIngestBudgetAssignmentOutput) IngestBudgetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CollectorIngestBudgetAssignment) pulumi.StringOutput { return v.IngestBudgetId }).(pulumi.StringOutput)
+}
+
 type CollectorIngestBudgetAssignmentArrayOutput struct{ *pulumi.OutputState }
 
 func (CollectorIngestBudgetAssignmentArrayOutput) ElementType() reflect.Type {

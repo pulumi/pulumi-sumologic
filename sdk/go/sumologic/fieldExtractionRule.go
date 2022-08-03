@@ -238,6 +238,26 @@ func (o FieldExtractionRuleOutput) ToFieldExtractionRuleOutputWithContext(ctx co
 	return o
 }
 
+// Is the field extraction rule enabled.
+func (o FieldExtractionRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FieldExtractionRule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of the field extraction rule. Use a name that makes it easy to identify the rule.
+func (o FieldExtractionRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *FieldExtractionRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Describes the fields to be parsed.
+func (o FieldExtractionRuleOutput) ParseExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *FieldExtractionRule) pulumi.StringOutput { return v.ParseExpression }).(pulumi.StringOutput)
+}
+
+// Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
+func (o FieldExtractionRuleOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v *FieldExtractionRule) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+}
+
 type FieldExtractionRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (FieldExtractionRuleArrayOutput) ElementType() reflect.Type {

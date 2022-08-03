@@ -34,6 +34,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// This value has to be set to `TagFilters`
         /// </summary>
         public readonly string Type;
+        public readonly bool? UseVersionedApi;
 
         [OutputConstructor]
         private CloudwatchSourcePath(
@@ -53,7 +54,9 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<Outputs.CloudwatchSourcePathTagFilter> tagFilters,
 
-            string type)
+            string type,
+
+            bool? useVersionedApi)
         {
             BucketName = bucketName;
             CustomServices = customServices;
@@ -64,6 +67,7 @@ namespace Pulumi.SumoLogic.Outputs
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
+            UseVersionedApi = useVersionedApi;
         }
     }
 }

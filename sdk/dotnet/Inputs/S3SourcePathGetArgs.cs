@@ -82,6 +82,12 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+        /// </summary>
+        [Input("useVersionedApi")]
+        public Input<bool>? UseVersionedApi { get; set; }
+
         public S3SourcePathGetArgs()
         {
         }

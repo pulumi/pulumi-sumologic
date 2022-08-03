@@ -34,6 +34,10 @@ namespace Pulumi.SumoLogic.Outputs
         /// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+        /// </summary>
+        public readonly bool? UseVersionedApi;
 
         [OutputConstructor]
         private S3SourcePath(
@@ -53,7 +57,9 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<Outputs.S3SourcePathTagFilter> tagFilters,
 
-            string type)
+            string type,
+
+            bool? useVersionedApi)
         {
             BucketName = bucketName;
             CustomServices = customServices;
@@ -64,6 +70,7 @@ namespace Pulumi.SumoLogic.Outputs
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
+            UseVersionedApi = useVersionedApi;
         }
     }
 }

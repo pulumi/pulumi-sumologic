@@ -390,6 +390,83 @@ func (o CseAggregationRuleOutput) ToCseAggregationRuleOutputWithContext(ctx cont
 	return o
 }
 
+// One or more named aggregation functions
+func (o CseAggregationRuleOutput) AggregationFunctions() CseAggregationRuleAggregationFunctionArrayOutput {
+	return o.ApplyT(func(v *CseAggregationRule) CseAggregationRuleAggregationFunctionArrayOutput {
+		return v.AggregationFunctions
+	}).(CseAggregationRuleAggregationFunctionArrayOutput)
+}
+
+// The description of the generated Signals
+func (o CseAggregationRuleOutput) DescriptionExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.DescriptionExpression }).(pulumi.StringOutput)
+}
+
+// Whether the rule should generate Signals
+func (o CseAggregationRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The entities to generate Signals on
+func (o CseAggregationRuleOutput) EntitySelectors() CseAggregationRuleEntitySelectorArrayOutput {
+	return o.ApplyT(func(v *CseAggregationRule) CseAggregationRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseAggregationRuleEntitySelectorArrayOutput)
+}
+
+// Whether to group records by the specified entity fields
+func (o CseAggregationRuleOutput) GroupByEntity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.BoolPtrOutput { return v.GroupByEntity }).(pulumi.BoolPtrOutput)
+}
+
+// A list of fields to group records by
+func (o CseAggregationRuleOutput) GroupByFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringArrayOutput { return v.GroupByFields }).(pulumi.StringArrayOutput)
+}
+
+// Whether the generated Signals should be prototype Signals
+func (o CseAggregationRuleOutput) IsPrototype() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.BoolPtrOutput { return v.IsPrototype }).(pulumi.BoolPtrOutput)
+}
+
+// The expression for which records to match on
+func (o CseAggregationRuleOutput) MatchExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.MatchExpression }).(pulumi.StringOutput)
+}
+
+// The name of the Rule
+func (o CseAggregationRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the generated Signals
+func (o CseAggregationRuleOutput) NameExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.NameExpression }).(pulumi.StringOutput)
+}
+
+// The configuration of how the severity of the Signals should be mapped from the Records
+func (o CseAggregationRuleOutput) SeverityMapping() CseAggregationRuleSeverityMappingOutput {
+	return o.ApplyT(func(v *CseAggregationRule) CseAggregationRuleSeverityMappingOutput { return v.SeverityMapping }).(CseAggregationRuleSeverityMappingOutput)
+}
+
+// The summary of the generated Signals
+func (o CseAggregationRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
+}
+
+// The tags of the generated Signals
+func (o CseAggregationRuleOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The expression to determine whether a Signal should be created based on the aggregation results
+func (o CseAggregationRuleOutput) TriggerExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.TriggerExpression }).(pulumi.StringOutput)
+}
+
+// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+func (o CseAggregationRuleOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
+}
+
 type CseAggregationRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (CseAggregationRuleArrayOutput) ElementType() reflect.Type {

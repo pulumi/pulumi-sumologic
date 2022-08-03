@@ -254,6 +254,20 @@ func (o CloudToCloudSourceOutput) ToCloudToCloudSourceOutputWithContext(ctx cont
 	return o
 }
 
+func (o CloudToCloudSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudToCloudSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// This is a JSON object which contains the configuration parameters for the Source.
+func (o CloudToCloudSourceOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudToCloudSource) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
+}
+
+// Source schema details.
+func (o CloudToCloudSourceOutput) SchemaRef() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CloudToCloudSource) pulumi.StringMapOutput { return v.SchemaRef }).(pulumi.StringMapOutput)
+}
+
 type CloudToCloudSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (CloudToCloudSourceArrayOutput) ElementType() reflect.Type {

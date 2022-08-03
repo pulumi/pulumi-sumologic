@@ -293,6 +293,72 @@ func (o MonitorFolderOutput) ToMonitorFolderOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o MonitorFolderOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorFolderOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o MonitorFolderOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The description of the monitor folder.
+func (o MonitorFolderOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o MonitorFolderOutput) IsLocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.BoolPtrOutput { return v.IsLocked }).(pulumi.BoolPtrOutput)
+}
+
+func (o MonitorFolderOutput) IsMutable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.BoolOutput { return v.IsMutable }).(pulumi.BoolOutput)
+}
+
+func (o MonitorFolderOutput) IsSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.BoolOutput { return v.IsSystem }).(pulumi.BoolOutput)
+}
+
+func (o MonitorFolderOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+func (o MonitorFolderOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+// The name of the monitor folder. The name must be alphanumeric.
+func (o MonitorFolderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+func (o MonitorFolderOutput) ObjPermissions() MonitorFolderObjPermissionArrayOutput {
+	return o.ApplyT(func(v *MonitorFolder) MonitorFolderObjPermissionArrayOutput { return v.ObjPermissions }).(MonitorFolderObjPermissionArrayOutput)
+}
+
+// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
+func (o MonitorFolderOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
+}
+
+func (o MonitorFolderOutput) PostRequestMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringMapOutput { return v.PostRequestMap }).(pulumi.StringMapOutput)
+}
+
+// The type of object model. Valid value:
+// - `MonitorsLibraryFolder`
+func (o MonitorFolderOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorFolderOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *MonitorFolder) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
 type MonitorFolderArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorFolderArrayOutput) ElementType() reflect.Type {

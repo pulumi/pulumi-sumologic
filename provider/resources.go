@@ -170,6 +170,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"sumologic_slo":        {Tok: makeResource(mainMod, "Slo")},
 			"sumologic_slo_folder": {Tok: makeResource(mainMod, "SloFolder")},
+			"sumologic_cse_entity_entity_group_configuration": {
+				Tok: makeResource(mainMod, "CseEntityEntityGroupConfiguration"),
+			},
+			"sumologic_cse_inventory_entity_group_configuration": {
+				Tok: makeResource(mainMod, "CseInventoryEntityGroupConfiguration"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"sumologic_caller_identity": {Tok: makeDataSource(mainMod, "getCallerIdentity")},

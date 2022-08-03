@@ -400,6 +400,105 @@ func (o SamlConfigurationOutput) ToSamlConfigurationOutputWithContext(ctx contex
 	return o
 }
 
+func (o SamlConfigurationOutput) AssertionConsumerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringOutput { return v.AssertionConsumerUrl }).(pulumi.StringOutput)
+}
+
+// The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
+func (o SamlConfigurationOutput) AuthnRequestUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.AuthnRequestUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o SamlConfigurationOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// Name of the SSO policy or another name used to describe the policy internally.
+func (o SamlConfigurationOutput) ConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringOutput { return v.ConfigurationName }).(pulumi.StringOutput)
+}
+
+// True if additional details are included when a user fails to sign in. Defaults to false.
+func (o SamlConfigurationOutput) DebugMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.BoolPtrOutput { return v.DebugMode }).(pulumi.BoolPtrOutput)
+}
+
+// True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
+func (o SamlConfigurationOutput) DisableRequestedAuthnContext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.BoolPtrOutput { return v.DisableRequestedAuthnContext }).(pulumi.BoolPtrOutput)
+}
+
+// The email address of the new user account. Defaults to "".
+func (o SamlConfigurationOutput) EmailAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.EmailAttribute }).(pulumi.StringPtrOutput)
+}
+
+func (o SamlConfigurationOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// True if the SAML binding is of HTTP Redirect type. Defaults to false.
+func (o SamlConfigurationOutput) IsRedirectBinding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.BoolPtrOutput { return v.IsRedirectBinding }).(pulumi.BoolPtrOutput)
+}
+
+// The unique URL assigned to the organization by the SAML Identity Provider.
+func (o SamlConfigurationOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
+func (o SamlConfigurationOutput) LogoutEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.BoolPtrOutput { return v.LogoutEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
+func (o SamlConfigurationOutput) LogoutUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.LogoutUrl }).(pulumi.StringPtrOutput)
+}
+
+// The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+func (o SamlConfigurationOutput) OnDemandProvisioningEnabled() SamlConfigurationOnDemandProvisioningEnabledPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) SamlConfigurationOnDemandProvisioningEnabledPtrOutput {
+		return v.OnDemandProvisioningEnabled
+	}).(SamlConfigurationOnDemandProvisioningEnabledPtrOutput)
+}
+
+// The role that Sumo Logic will assign to users when they sign in. Defaults to "".
+func (o SamlConfigurationOutput) RolesAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.RolesAttribute }).(pulumi.StringPtrOutput)
+}
+
+// True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
+func (o SamlConfigurationOutput) SignAuthnRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.BoolPtrOutput { return v.SignAuthnRequest }).(pulumi.BoolPtrOutput)
+}
+
+// True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
+func (o SamlConfigurationOutput) SpInitiatedLoginEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.BoolPtrOutput { return v.SpInitiatedLoginEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The identifier used to generate a unique URL for user login. Defaults to "".
+func (o SamlConfigurationOutput) SpInitiatedLoginPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.SpInitiatedLoginPath }).(pulumi.StringPtrOutput)
+}
+
+// The certificate is used to verify the signature in SAML assertions.
+func (o SamlConfigurationOutput) X509cert1() pulumi.StringOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringOutput { return v.X509cert1 }).(pulumi.StringOutput)
+}
+
+// The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
+func (o SamlConfigurationOutput) X509cert2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.X509cert2 }).(pulumi.StringPtrOutput)
+}
+
+// The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
+func (o SamlConfigurationOutput) X509cert3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.X509cert3 }).(pulumi.StringPtrOutput)
+}
+
 type SamlConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (SamlConfigurationArrayOutput) ElementType() reflect.Type {

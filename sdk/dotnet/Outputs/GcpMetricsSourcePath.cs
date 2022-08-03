@@ -34,6 +34,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// Type of polling source. This has to be `GcpMetricsPath`.
         /// </summary>
         public readonly string Type;
+        public readonly bool? UseVersionedApi;
 
         [OutputConstructor]
         private GcpMetricsSourcePath(
@@ -53,7 +54,9 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<Outputs.GcpMetricsSourcePathTagFilter> tagFilters,
 
-            string type)
+            string type,
+
+            bool? useVersionedApi)
         {
             BucketName = bucketName;
             CustomServices = customServices;
@@ -64,6 +67,7 @@ namespace Pulumi.SumoLogic.Outputs
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
+            UseVersionedApi = useVersionedApi;
         }
     }
 }

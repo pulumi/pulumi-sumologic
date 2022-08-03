@@ -71,6 +71,7 @@ export interface AwsInventorySourcePath {
      * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface AwsInventorySourcePathCustomService {
@@ -149,6 +150,7 @@ export interface AwsXraySourcePath {
      * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface AwsXraySourcePathCustomService {
@@ -248,6 +250,7 @@ export interface CloudfrontSourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface CloudfrontSourcePathCustomService {
@@ -335,6 +338,7 @@ export interface CloudtrailSourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface CloudtrailSourcePathCustomService {
@@ -422,6 +426,7 @@ export interface CloudwatchSourcePath {
      * This value has to be set to `TagFilters`
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface CloudwatchSourcePathCustomService {
@@ -1058,6 +1063,7 @@ export interface ElbSourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface ElbSourcePathCustomService {
@@ -1160,6 +1166,7 @@ export interface GcpMetricsSourcePath {
      * Type of polling source. This has to be `GcpMetricsPath`.
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface GcpMetricsSourcePathCustomService {
@@ -2493,6 +2500,27 @@ export interface MonitorNotificationNotification {
     timeZone?: string;
 }
 
+export interface MonitorObjPermission {
+    /**
+     * A Set of Permissions. Valid Permission Values:
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     */
+    permissions: string[];
+    /**
+     * A Role ID or the Org ID of the account
+     */
+    subjectId: string;
+    /**
+     * Valid values:
+     * - `role`
+     * - `org`
+     */
+    subjectType: string;
+}
+
 export interface MonitorQuery {
     query: string;
     rowId: string;
@@ -2820,6 +2848,7 @@ export interface S3AuditSourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
      */
     type: string;
+    useVersionedApi?: boolean;
 }
 
 export interface S3AuditSourcePathCustomService {
@@ -2907,6 +2936,10 @@ export interface S3SourcePath {
      * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
      */
     type: string;
+    /**
+     * Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+     */
+    useVersionedApi?: boolean;
 }
 
 export interface S3SourcePathCustomService {

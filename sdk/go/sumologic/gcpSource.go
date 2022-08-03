@@ -307,6 +307,91 @@ func (o GcpSourceOutput) ToGcpSourceOutputWithContext(ctx context.Context) GcpSo
 	return o
 }
 
+func (o GcpSourceOutput) Authentication() GcpSourceAuthenticationPtrOutput {
+	return o.ApplyT(func(v *GcpSource) GcpSourceAuthenticationPtrOutput { return v.Authentication }).(GcpSourceAuthenticationPtrOutput)
+}
+
+func (o GcpSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+func (o GcpSourceOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o GcpSourceOutput) DefaultDateFormats() GcpSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *GcpSource) GcpSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(GcpSourceDefaultDateFormatArrayOutput)
+}
+
+func (o GcpSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o GcpSourceOutput) Filters() GcpSourceFilterArrayOutput {
+	return o.ApplyT(func(v *GcpSource) GcpSourceFilterArrayOutput { return v.Filters }).(GcpSourceFilterArrayOutput)
+}
+
+func (o GcpSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o GcpSourceOutput) MessagePerRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.BoolPtrOutput { return v.MessagePerRequest }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GcpSourceOutput) Path() GcpSourcePathPtrOutput {
+	return o.ApplyT(func(v *GcpSource) GcpSourcePathPtrOutput { return v.Path }).(GcpSourcePathPtrOutput)
+}
+
+func (o GcpSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to use for sending data to this source.
+func (o GcpSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o GcpSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type GcpSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (GcpSourceArrayOutput) ElementType() reflect.Type {

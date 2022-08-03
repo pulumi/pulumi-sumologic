@@ -202,6 +202,20 @@ func (o CseInsightsStatusOutput) ToCseInsightsStatusOutputWithContext(ctx contex
 	return o
 }
 
+// The description of the insights status.
+func (o CseInsightsStatusOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseInsightsStatus) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o CseInsightsStatusOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseInsightsStatus) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The name of the insights status.
+func (o CseInsightsStatusOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseInsightsStatus) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type CseInsightsStatusArrayOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsStatusArrayOutput) ElementType() reflect.Type {

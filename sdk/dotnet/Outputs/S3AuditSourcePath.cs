@@ -34,6 +34,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
         /// </summary>
         public readonly string Type;
+        public readonly bool? UseVersionedApi;
 
         [OutputConstructor]
         private S3AuditSourcePath(
@@ -53,7 +54,9 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<Outputs.S3AuditSourcePathTagFilter> tagFilters,
 
-            string type)
+            string type,
+
+            bool? useVersionedApi)
         {
             BucketName = bucketName;
             CustomServices = customServices;
@@ -64,6 +67,7 @@ namespace Pulumi.SumoLogic.Outputs
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
+            UseVersionedApi = useVersionedApi;
         }
     }
 }
