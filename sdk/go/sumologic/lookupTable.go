@@ -271,6 +271,40 @@ func (o LookupTableOutput) ToLookupTableOutputWithContext(ctx context.Context) L
 	return o
 }
 
+// The description of the lookup table.
+func (o LookupTableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *LookupTable) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The list of fields in the lookup table.
+func (o LookupTableOutput) Fields() LookupTableFieldArrayOutput {
+	return o.ApplyT(func(v *LookupTable) LookupTableFieldArrayOutput { return v.Fields }).(LookupTableFieldArrayOutput)
+}
+
+// The name of the lookup table.
+func (o LookupTableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LookupTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parent-folder-path identifier of the lookup table in the Library.
+func (o LookupTableOutput) ParentFolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LookupTable) pulumi.StringPtrOutput { return v.ParentFolderId }).(pulumi.StringPtrOutput)
+}
+
+// The primary key field names.
+func (o LookupTableOutput) PrimaryKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LookupTable) pulumi.StringArrayOutput { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupTableOutput) SizeLimitAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LookupTable) pulumi.StringPtrOutput { return v.SizeLimitAction }).(pulumi.StringPtrOutput)
+}
+
+// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+func (o LookupTableOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LookupTable) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
 type LookupTableArrayOutput struct{ *pulumi.OutputState }
 
 func (LookupTableArrayOutput) ElementType() reflect.Type {

@@ -360,6 +360,99 @@ func (o AwsXraySourceOutput) ToAwsXraySourceOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Authentication details for making `xray:Get*` calls.
+func (o AwsXraySourceOutput) Authentication() AwsXraySourceAuthenticationOutput {
+	return o.ApplyT(func(v *AwsXraySource) AwsXraySourceAuthenticationOutput { return v.Authentication }).(AwsXraySourceAuthenticationOutput)
+}
+
+func (o AwsXraySourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsXraySourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
+func (o AwsXraySourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o AwsXraySourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsXraySourceOutput) DefaultDateFormats() AwsXraySourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *AwsXraySource) AwsXraySourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(AwsXraySourceDefaultDateFormatArrayOutput)
+}
+
+func (o AwsXraySourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o AwsXraySourceOutput) Filters() AwsXraySourceFilterArrayOutput {
+	return o.ApplyT(func(v *AwsXraySource) AwsXraySourceFilterArrayOutput { return v.Filters }).(AwsXraySourceFilterArrayOutput)
+}
+
+func (o AwsXraySourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsXraySourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsXraySourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o AwsXraySourceOutput) Path() AwsXraySourcePathOutput {
+	return o.ApplyT(func(v *AwsXraySource) AwsXraySourcePathOutput { return v.Path }).(AwsXraySourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o AwsXraySourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
+func (o AwsXraySourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o AwsXraySourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsXraySourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o AwsXraySourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type AwsXraySourceArrayOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourceArrayOutput) ElementType() reflect.Type {

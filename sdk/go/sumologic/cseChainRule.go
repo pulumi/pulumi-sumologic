@@ -344,6 +344,66 @@ func (o CseChainRuleOutput) ToCseChainRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The description of the generated Signals
+func (o CseChainRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the rule should generate Signals
+func (o CseChainRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The entities to generate Signals on
+func (o CseChainRuleOutput) EntitySelectors() CseChainRuleEntitySelectorArrayOutput {
+	return o.ApplyT(func(v *CseChainRule) CseChainRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseChainRuleEntitySelectorArrayOutput)
+}
+
+// The list of expressions and associated limits to make up the conditions of the chain rule
+func (o CseChainRuleOutput) ExpressionsAndLimits() CseChainRuleExpressionsAndLimitArrayOutput {
+	return o.ApplyT(func(v *CseChainRule) CseChainRuleExpressionsAndLimitArrayOutput { return v.ExpressionsAndLimits }).(CseChainRuleExpressionsAndLimitArrayOutput)
+}
+
+// A list of fields to group records by
+func (o CseChainRuleOutput) GroupByFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.StringArrayOutput { return v.GroupByFields }).(pulumi.StringArrayOutput)
+}
+
+// Whether the generated Signals should be prototype Signals
+func (o CseChainRuleOutput) IsPrototype() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.BoolPtrOutput { return v.IsPrototype }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Rule and the generated SignalS
+func (o CseChainRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
+func (o CseChainRuleOutput) Ordered() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.BoolPtrOutput { return v.Ordered }).(pulumi.BoolPtrOutput)
+}
+
+// The severity of the generated Signals
+func (o CseChainRuleOutput) Severity() pulumi.IntOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.IntOutput { return v.Severity }).(pulumi.IntOutput)
+}
+
+// The summary of the generated Signals
+func (o CseChainRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
+}
+
+// The tags of the generated Signals
+func (o CseChainRuleOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+func (o CseChainRuleOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseChainRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
+}
+
 type CseChainRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (CseChainRuleArrayOutput) ElementType() reflect.Type {

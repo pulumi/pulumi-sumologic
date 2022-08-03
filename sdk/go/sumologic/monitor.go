@@ -12,6 +12,7 @@ import (
 )
 
 // Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
+// If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
 //
 // ## Example SLO Monitors
 //
@@ -316,7 +317,7 @@ import (
 //  $ pulumi import sumologic:index/monitor:Monitor test 1234567890
 // ```
 //
-//  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown
+//  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 type Monitor struct {
 	pulumi.CustomResourceState
 
@@ -346,8 +347,12 @@ type Monitor struct {
 	MonitorType pulumi.StringOutput `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	NotificationGroupFields pulumi.StringArrayOutput `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayOutput `pulumi:"notifications"`
+	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	ObjPermissions MonitorObjPermissionArrayOutput `pulumi:"objPermissions"`
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
 	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
@@ -434,8 +439,12 @@ type monitorState struct {
 	MonitorType *string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	NotificationGroupFields []string `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications []MonitorNotification `pulumi:"notifications"`
+	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	ObjPermissions []MonitorObjPermission `pulumi:"objPermissions"`
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId *string `pulumi:"parentId"`
 	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
@@ -491,8 +500,12 @@ type MonitorState struct {
 	MonitorType pulumi.StringPtrInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	NotificationGroupFields pulumi.StringArrayInput
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayInput
+	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	ObjPermissions MonitorObjPermissionArrayInput
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId pulumi.StringPtrInput
 	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
@@ -552,8 +565,12 @@ type monitorArgs struct {
 	MonitorType string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	NotificationGroupFields []string `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications []MonitorNotification `pulumi:"notifications"`
+	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	ObjPermissions []MonitorObjPermission `pulumi:"objPermissions"`
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId *string `pulumi:"parentId"`
 	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
@@ -610,8 +627,12 @@ type MonitorArgs struct {
 	MonitorType pulumi.StringInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	NotificationGroupFields pulumi.StringArrayInput
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayInput
+	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	ObjPermissions MonitorObjPermissionArrayInput
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId pulumi.StringPtrInput
 	// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
@@ -725,6 +746,148 @@ func (o MonitorOutput) ToMonitorOutput() MonitorOutput {
 
 func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput {
 	return o
+}
+
+// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+func (o MonitorOutput) AlertName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.AlertName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the content object. Valid value:
+// - `Monitor`
+func (o MonitorOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o MonitorOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The description of the monitor.
+func (o MonitorOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorOutput) EvaluationDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.EvaluationDelay }).(pulumi.StringOutput)
+}
+
+// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
+func (o MonitorOutput) GroupNotifications() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.BoolPtrOutput { return v.GroupNotifications }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
+func (o MonitorOutput) IsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.BoolPtrOutput { return v.IsDisabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MonitorOutput) IsLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.BoolOutput { return v.IsLocked }).(pulumi.BoolOutput)
+}
+
+func (o MonitorOutput) IsMutable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.BoolOutput { return v.IsMutable }).(pulumi.BoolOutput)
+}
+
+func (o MonitorOutput) IsSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.BoolOutput { return v.IsSystem }).(pulumi.BoolOutput)
+}
+
+func (o MonitorOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+func (o MonitorOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+// The type of monitor. Valid values:
+// - `Logs`: A logs query monitor.
+// - `Metrics`: A metrics query monitor.
+// - `Slo`: A SLO based monitor  (beta).
+func (o MonitorOutput) MonitorType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.MonitorType }).(pulumi.StringOutput)
+}
+
+// The name of the monitor. The name must be alphanumeric.
+func (o MonitorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+func (o MonitorOutput) NotificationGroupFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringArrayOutput { return v.NotificationGroupFields }).(pulumi.StringArrayOutput)
+}
+
+// The notifications the monitor will send when the respective trigger condition is met.
+func (o MonitorOutput) Notifications() MonitorNotificationArrayOutput {
+	return o.ApplyT(func(v *Monitor) MonitorNotificationArrayOutput { return v.Notifications }).(MonitorNotificationArrayOutput)
+}
+
+// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+func (o MonitorOutput) ObjPermissions() MonitorObjPermissionArrayOutput {
+	return o.ApplyT(func(v *Monitor) MonitorObjPermissionArrayOutput { return v.ObjPermissions }).(MonitorObjPermissionArrayOutput)
+}
+
+// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
+func (o MonitorOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
+func (o MonitorOutput) Playbook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.Playbook }).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorOutput) PostRequestMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringMapOutput { return v.PostRequestMap }).(pulumi.StringMapOutput)
+}
+
+// All queries from the monitor.
+func (o MonitorOutput) Queries() MonitorQueryArrayOutput {
+	return o.ApplyT(func(v *Monitor) MonitorQueryArrayOutput { return v.Queries }).(MonitorQueryArrayOutput)
+}
+
+// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
+func (o MonitorOutput) SloId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.SloId }).(pulumi.StringPtrOutput)
+}
+
+// The current status for this monitor. Values are:
+// - `Critical`
+// - `Warning`
+// - `MissingData`
+// - `Normal`
+// - `Disabled`
+func (o MonitorOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringArrayOutput { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
+func (o MonitorOutput) TriggerConditions() MonitorTriggerConditionsPtrOutput {
+	return o.ApplyT(func(v *Monitor) MonitorTriggerConditionsPtrOutput { return v.TriggerConditions }).(MonitorTriggerConditionsPtrOutput)
+}
+
+// Defines the conditions of when to send notifications.
+//
+// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+func (o MonitorOutput) Triggers() MonitorTriggerArrayOutput {
+	return o.ApplyT(func(v *Monitor) MonitorTriggerArrayOutput { return v.Triggers }).(MonitorTriggerArrayOutput)
+}
+
+// The type of object model. Valid value:
+// - `MonitorsLibraryMonitor`
+func (o MonitorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }
 
 type MonitorArrayOutput struct{ *pulumi.OutputState }

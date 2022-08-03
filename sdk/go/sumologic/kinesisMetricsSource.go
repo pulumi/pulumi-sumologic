@@ -294,6 +294,96 @@ func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourceOutputWithContext(ctx 
 	return o
 }
 
+// Authentication details for connecting to the S3 bucket.
+func (o KinesisMetricsSourceOutput) Authentication() KinesisMetricsSourceAuthenticationOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) KinesisMetricsSourceAuthenticationOutput { return v.Authentication }).(KinesisMetricsSourceAuthenticationOutput)
+}
+
+func (o KinesisMetricsSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o KinesisMetricsSourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o KinesisMetricsSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) DefaultDateFormats() KinesisMetricsSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) KinesisMetricsSourceDefaultDateFormatArrayOutput {
+		return v.DefaultDateFormats
+	}).(KinesisMetricsSourceDefaultDateFormatArrayOutput)
+}
+
+func (o KinesisMetricsSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o KinesisMetricsSourceOutput) Filters() KinesisMetricsSourceFilterArrayOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) KinesisMetricsSourceFilterArrayOutput { return v.Filters }).(KinesisMetricsSourceFilterArrayOutput)
+}
+
+func (o KinesisMetricsSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) MessagePerRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.BoolPtrOutput { return v.MessagePerRequest }).(pulumi.BoolPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o KinesisMetricsSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o KinesisMetricsSourceOutput) Path() KinesisMetricsSourcePathOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) KinesisMetricsSourcePathOutput { return v.Path }).(KinesisMetricsSourcePathOutput)
+}
+
+func (o KinesisMetricsSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to used while creating Kinesis Firehose on AWS.
+func (o KinesisMetricsSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o KinesisMetricsSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KinesisMetricsSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type KinesisMetricsSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (KinesisMetricsSourceArrayOutput) ElementType() reflect.Type {

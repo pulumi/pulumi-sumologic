@@ -22,9 +22,11 @@ from .cse_chain_rule import *
 from .cse_custom_entity_type import *
 from .cse_custom_insight import *
 from .cse_entity_criticality_config import *
+from .cse_entity_entity_group_configuration import *
 from .cse_insights_configuration import *
 from .cse_insights_resolution import *
 from .cse_insights_status import *
+from .cse_inventory_entity_group_configuration import *
 from .cse_log_mapping import *
 from .cse_match_list import *
 from .cse_match_rule import *
@@ -224,6 +226,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/cseEntityEntityGroupConfiguration",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration": "CseEntityEntityGroupConfiguration"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/cseInsightsConfiguration",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -244,6 +254,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/cseInsightsStatus:CseInsightsStatus": "CseInsightsStatus"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/cseInventoryEntityGroupConfiguration",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration": "CseInventoryEntityGroupConfiguration"
   }
  },
  {

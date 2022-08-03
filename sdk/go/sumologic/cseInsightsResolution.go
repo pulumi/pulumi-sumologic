@@ -210,6 +210,21 @@ func (o CseInsightsResolutionOutput) ToCseInsightsResolutionOutputWithContext(ct
 	return o
 }
 
+// The description of the insights resolution.
+func (o CseInsightsResolutionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseInsightsResolution) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the insights resolution.
+func (o CseInsightsResolutionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseInsightsResolution) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+func (o CseInsightsResolutionOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseInsightsResolution) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
 type CseInsightsResolutionArrayOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsResolutionArrayOutput) ElementType() reflect.Type {

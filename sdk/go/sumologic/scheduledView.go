@@ -238,6 +238,41 @@ func (o ScheduledViewOutput) ToScheduledViewOutputWithContext(ctx context.Contex
 	return o
 }
 
+// An optional ID of a data forwarding configuration to be used by the scheduled view.
+func (o ScheduledViewOutput) DataForwardingId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.StringPtrOutput { return v.DataForwardingId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the index (scheduled view).
+func (o ScheduledViewOutput) IndexName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.StringOutput { return v.IndexName }).(pulumi.StringOutput)
+}
+
+// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
+func (o ScheduledViewOutput) ParsingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.StringPtrOutput { return v.ParsingMode }).(pulumi.StringPtrOutput)
+}
+
+// Log query defining the scheduled view.
+func (o ScheduledViewOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.StringOutput { return v.Query }).(pulumi.StringOutput)
+}
+
+// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+func (o ScheduledViewOutput) ReduceRetentionPeriodImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.BoolPtrOutput { return v.ReduceRetentionPeriodImmediately }).(pulumi.BoolPtrOutput)
+}
+
+// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
+func (o ScheduledViewOutput) RetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.IntPtrOutput { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Start timestamp in UTC in RFC3339 format.
+func (o ScheduledViewOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
 type ScheduledViewArrayOutput struct{ *pulumi.OutputState }
 
 func (ScheduledViewArrayOutput) ElementType() reflect.Type {

@@ -200,6 +200,16 @@ func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationOutputWithCont
 	return o
 }
 
+// Detection window expressed in days.
+func (o CseInsightsConfigurationOutput) LookbackDays() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CseInsightsConfiguration) pulumi.Float64PtrOutput { return v.LookbackDays }).(pulumi.Float64PtrOutput)
+}
+
+// Detection threshold activity score.
+func (o CseInsightsConfigurationOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CseInsightsConfiguration) pulumi.Float64PtrOutput { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
 type CseInsightsConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsConfigurationArrayOutput) ElementType() reflect.Type {

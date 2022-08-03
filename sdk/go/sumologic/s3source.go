@@ -365,6 +365,100 @@ func (o S3SourceOutput) ToS3SourceOutputWithContext(ctx context.Context) S3Sourc
 	return o
 }
 
+// Authentication details for connecting to the S3 bucket.
+func (o S3SourceOutput) Authentication() S3SourceAuthenticationOutput {
+	return o.ApplyT(func(v *S3Source) S3SourceAuthenticationOutput { return v.Authentication }).(S3SourceAuthenticationOutput)
+}
+
+func (o S3SourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o S3SourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o S3SourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o S3SourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o S3SourceOutput) DefaultDateFormats() S3SourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *S3Source) S3SourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(S3SourceDefaultDateFormatArrayOutput)
+}
+
+func (o S3SourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o S3SourceOutput) Filters() S3SourceFilterArrayOutput {
+	return o.ApplyT(func(v *S3Source) S3SourceFilterArrayOutput { return v.Filters }).(S3SourceFilterArrayOutput)
+}
+
+func (o S3SourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o S3SourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o S3SourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o S3SourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o S3SourceOutput) Path() S3SourcePathOutput {
+	return o.ApplyT(func(v *S3Source) S3SourcePathOutput { return v.Path }).(S3SourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o S3SourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o S3SourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o S3SourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
+func (o S3SourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o S3SourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type S3SourceArrayOutput struct{ *pulumi.OutputState }
 
 func (S3SourceArrayOutput) ElementType() reflect.Type {

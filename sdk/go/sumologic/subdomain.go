@@ -192,6 +192,11 @@ func (o SubdomainOutput) ToSubdomainOutputWithContext(ctx context.Context) Subdo
 	return o
 }
 
+// The subdomain.
+func (o SubdomainOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subdomain) pulumi.StringOutput { return v.Subdomain }).(pulumi.StringOutput)
+}
+
 type SubdomainArrayOutput struct{ *pulumi.OutputState }
 
 func (SubdomainArrayOutput) ElementType() reflect.Type {

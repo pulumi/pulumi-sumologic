@@ -11,6 +11,7 @@ namespace Pulumi.SumoLogic
 {
     /// <summary>
     /// Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
+    /// If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
     /// 
     /// ## Example SLO Monitors
     /// 
@@ -325,7 +326,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/monitor:Monitor test 1234567890
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown
+    ///  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
     /// </summary>
     [SumoLogicResourceType("sumologic:index/monitor:Monitor")]
     public partial class Monitor : Pulumi.CustomResource
@@ -401,10 +402,22 @@ namespace Pulumi.SumoLogic
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+        /// </summary>
+        [Output("notificationGroupFields")]
+        public Output<ImmutableArray<string>> NotificationGroupFields { get; private set; } = null!;
+
+        /// <summary>
         /// The notifications the monitor will send when the respective trigger condition is met.
         /// </summary>
         [Output("notifications")]
         public Output<ImmutableArray<Outputs.MonitorNotification>> Notifications { get; private set; } = null!;
+
+        /// <summary>
+        /// `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        /// </summary>
+        [Output("objPermissions")]
+        public Output<ImmutableArray<Outputs.MonitorObjPermission>> ObjPermissions { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
@@ -582,6 +595,18 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("notificationGroupFields")]
+        private InputList<string>? _notificationGroupFields;
+
+        /// <summary>
+        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+        /// </summary>
+        public InputList<string> NotificationGroupFields
+        {
+            get => _notificationGroupFields ?? (_notificationGroupFields = new InputList<string>());
+            set => _notificationGroupFields = value;
+        }
+
         [Input("notifications")]
         private InputList<Inputs.MonitorNotificationArgs>? _notifications;
 
@@ -592,6 +617,18 @@ namespace Pulumi.SumoLogic
         {
             get => _notifications ?? (_notifications = new InputList<Inputs.MonitorNotificationArgs>());
             set => _notifications = value;
+        }
+
+        [Input("objPermissions")]
+        private InputList<Inputs.MonitorObjPermissionArgs>? _objPermissions;
+
+        /// <summary>
+        /// `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        /// </summary>
+        public InputList<Inputs.MonitorObjPermissionArgs> ObjPermissions
+        {
+            get => _objPermissions ?? (_objPermissions = new InputList<Inputs.MonitorObjPermissionArgs>());
+            set => _objPermissions = value;
         }
 
         /// <summary>
@@ -755,6 +792,18 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("notificationGroupFields")]
+        private InputList<string>? _notificationGroupFields;
+
+        /// <summary>
+        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+        /// </summary>
+        public InputList<string> NotificationGroupFields
+        {
+            get => _notificationGroupFields ?? (_notificationGroupFields = new InputList<string>());
+            set => _notificationGroupFields = value;
+        }
+
         [Input("notifications")]
         private InputList<Inputs.MonitorNotificationGetArgs>? _notifications;
 
@@ -765,6 +814,18 @@ namespace Pulumi.SumoLogic
         {
             get => _notifications ?? (_notifications = new InputList<Inputs.MonitorNotificationGetArgs>());
             set => _notifications = value;
+        }
+
+        [Input("objPermissions")]
+        private InputList<Inputs.MonitorObjPermissionGetArgs>? _objPermissions;
+
+        /// <summary>
+        /// `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        /// </summary>
+        public InputList<Inputs.MonitorObjPermissionGetArgs> ObjPermissions
+        {
+            get => _objPermissions ?? (_objPermissions = new InputList<Inputs.MonitorObjPermissionGetArgs>());
+            set => _objPermissions = value;
         }
 
         /// <summary>

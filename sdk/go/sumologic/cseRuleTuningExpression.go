@@ -275,6 +275,41 @@ func (o CseRuleTuningExpressionOutput) ToCseRuleTuningExpressionOutputWithContex
 	return o
 }
 
+// The description of the rule tuning expression.
+func (o CseRuleTuningExpressionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Enabled flag.
+func (o CseRuleTuningExpressionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
+func (o CseRuleTuningExpressionOutput) Exclude() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.BoolOutput { return v.Exclude }).(pulumi.BoolOutput)
+}
+
+// Expression to match.
+func (o CseRuleTuningExpressionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Set to true if this tuning expression should be applied to all rules.
+func (o CseRuleTuningExpressionOutput) IsGlobal() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.BoolOutput { return v.IsGlobal }).(pulumi.BoolOutput)
+}
+
+// The name of the rule tuning expression.
+func (o CseRuleTuningExpressionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+func (o CseRuleTuningExpressionOutput) RuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.StringArrayOutput { return v.RuleIds }).(pulumi.StringArrayOutput)
+}
+
 type CseRuleTuningExpressionArrayOutput struct{ *pulumi.OutputState }
 
 func (CseRuleTuningExpressionArrayOutput) ElementType() reflect.Type {

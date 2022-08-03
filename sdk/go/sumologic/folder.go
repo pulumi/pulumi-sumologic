@@ -213,6 +213,21 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+// The description of the folder.
+func (o FolderOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the folder. This is required, and has to be unique.
+func (o FolderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the folder in which you want to create the new folder.
+func (o FolderOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
+}
+
 type FolderArrayOutput struct{ *pulumi.OutputState }
 
 func (FolderArrayOutput) ElementType() reflect.Type {

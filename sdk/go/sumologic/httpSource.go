@@ -341,6 +341,85 @@ func (o HttpSourceOutput) ToHttpSourceOutputWithContext(ctx context.Context) Htt
 	return o
 }
 
+func (o HttpSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o HttpSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o HttpSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+func (o HttpSourceOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o HttpSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o HttpSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o HttpSourceOutput) DefaultDateFormats() HttpSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *HttpSource) HttpSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(HttpSourceDefaultDateFormatArrayOutput)
+}
+
+func (o HttpSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HttpSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o HttpSourceOutput) Filters() HttpSourceFilterArrayOutput {
+	return o.ApplyT(func(v *HttpSource) HttpSourceFilterArrayOutput { return v.Filters }).(HttpSourceFilterArrayOutput)
+}
+
+func (o HttpSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o HttpSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o HttpSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+// When set to `true`, will create one log message per HTTP request.
+func (o HttpSourceOutput) MessagePerRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.BoolPtrOutput { return v.MessagePerRequest }).(pulumi.BoolPtrOutput)
+}
+
+func (o HttpSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o HttpSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o HttpSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to use for sending data to this source.
+func (o HttpSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o HttpSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type HttpSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (HttpSourceArrayOutput) ElementType() reflect.Type {

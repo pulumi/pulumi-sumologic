@@ -24,7 +24,7 @@ namespace Pulumi.SumoLogic
     ///     {
     ///         var exampleSubdomain = new SumoLogic.Subdomain("exampleSubdomain", new SumoLogic.SubdomainArgs
     ///         {
-    ///             Subdomain = "my-company",
+    ///             SubdomainName = "my-company",
     ///         });
     ///     }
     /// 

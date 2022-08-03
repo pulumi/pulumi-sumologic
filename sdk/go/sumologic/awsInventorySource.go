@@ -364,6 +364,101 @@ func (o AwsInventorySourceOutput) ToAwsInventorySourceOutputWithContext(ctx cont
 	return o
 }
 
+// Authentication details to access AWS `Describe*` APIs.
+func (o AwsInventorySourceOutput) Authentication() AwsInventorySourceAuthenticationOutput {
+	return o.ApplyT(func(v *AwsInventorySource) AwsInventorySourceAuthenticationOutput { return v.Authentication }).(AwsInventorySourceAuthenticationOutput)
+}
+
+func (o AwsInventorySourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
+func (o AwsInventorySourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o AwsInventorySourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) DefaultDateFormats() AwsInventorySourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *AwsInventorySource) AwsInventorySourceDefaultDateFormatArrayOutput {
+		return v.DefaultDateFormats
+	}).(AwsInventorySourceDefaultDateFormatArrayOutput)
+}
+
+func (o AwsInventorySourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o AwsInventorySourceOutput) Filters() AwsInventorySourceFilterArrayOutput {
+	return o.ApplyT(func(v *AwsInventorySource) AwsInventorySourceFilterArrayOutput { return v.Filters }).(AwsInventorySourceFilterArrayOutput)
+}
+
+func (o AwsInventorySourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o AwsInventorySourceOutput) Path() AwsInventorySourcePathOutput {
+	return o.ApplyT(func(v *AwsInventorySource) AwsInventorySourcePathOutput { return v.Path }).(AwsInventorySourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o AwsInventorySourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
+func (o AwsInventorySourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o AwsInventorySourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+func (o AwsInventorySourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o AwsInventorySourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type AwsInventorySourceArrayOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourceArrayOutput) ElementType() reflect.Type {

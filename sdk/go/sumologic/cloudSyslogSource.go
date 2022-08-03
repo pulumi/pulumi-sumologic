@@ -295,6 +295,78 @@ func (o CloudSyslogSourceOutput) ToCloudSyslogSourceOutputWithContext(ctx contex
 	return o
 }
 
+func (o CloudSyslogSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+func (o CloudSyslogSourceOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) DefaultDateFormats() CloudSyslogSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) CloudSyslogSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(CloudSyslogSourceDefaultDateFormatArrayOutput)
+}
+
+func (o CloudSyslogSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o CloudSyslogSourceOutput) Filters() CloudSyslogSourceFilterArrayOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) CloudSyslogSourceFilterArrayOutput { return v.Filters }).(CloudSyslogSourceFilterArrayOutput)
+}
+
+func (o CloudSyslogSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o CloudSyslogSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+func (o CloudSyslogSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type CloudSyslogSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (CloudSyslogSourceArrayOutput) ElementType() reflect.Type {

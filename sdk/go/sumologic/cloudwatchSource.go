@@ -15,97 +15,6 @@ import (
 //
 // __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_ := []map[string]interface{}{
-// 			map[string]interface{}{
-// 				"name":        "Exclude Comments",
-// 				"filter_type": "Exclude",
-// 				"regexp":      "#.*",
-// 			},
-// 		}
-// 		tagfilters := []map[string]interface{}{
-// 			map[string]interface{}{
-// 				"type":      "TagFilters",
-// 				"namespace": "All",
-// 				"tags": []string{
-// 					"k3=v3",
-// 				},
-// 			},
-// 			map[string]interface{}{
-// 				"type":      "TagFilters",
-// 				"namespace": "AWS/Route53",
-// 				"tags": []string{
-// 					"k1=v1",
-// 				},
-// 			},
-// 			map[string]interface{}{
-// 				"type":      "TagFilters",
-// 				"namespace": "AWS/S3",
-// 				"tags": []string{
-// 					"k2=v2",
-// 				},
-// 			},
-// 		}
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewCloudwatchSource(ctx, "cloudwatchSource", &sumologic.CloudwatchSourceArgs{
-// 			Description:  pulumi.String("My description"),
-// 			Category:     pulumi.String("aws/cw"),
-// 			ContentType:  pulumi.String("AwsCloudWatch"),
-// 			ScanInterval: pulumi.Int(300000),
-// 			Paused:       pulumi.Bool(false),
-// 			CollectorId:  collector.ID(),
-// 			Authentication: &CloudwatchSourceAuthenticationArgs{
-// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
-// 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
-// 			},
-// 			Path: &CloudwatchSourcePathArgs{
-// 				Type: pulumi.String("CloudWatchPath"),
-// 				LimitToRegions: pulumi.StringArray{
-// 					pulumi.String("us-west-2"),
-// 				},
-// 				LimitToNamespaces: pulumi.StringArray{
-// 					pulumi.String("AWS/Route53"),
-// 					pulumi.String("AWS/S3"),
-// 					pulumi.String("customNamespace"),
-// 				},
-// 				Dynamic: []map[string]interface{}{
-// 					map[string]interface{}{
-// 						"forEach": tagfilters,
-// 						"content": []map[string]interface{}{
-// 							map[string]interface{}{
-// 								"type":      tag_filters.Value.Type,
-// 								"namespace": tag_filters.Value.Namespace,
-// 								"tags":      tag_filters.Value.Tags,
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
@@ -410,6 +319,100 @@ func (o CloudwatchSourceOutput) ToCloudwatchSourceOutput() CloudwatchSourceOutpu
 
 func (o CloudwatchSourceOutput) ToCloudwatchSourceOutputWithContext(ctx context.Context) CloudwatchSourceOutput {
 	return o
+}
+
+// Authentication details for connecting to the S3 bucket.
+func (o CloudwatchSourceOutput) Authentication() CloudwatchSourceAuthenticationOutput {
+	return o.ApplyT(func(v *CloudwatchSource) CloudwatchSourceAuthenticationOutput { return v.Authentication }).(CloudwatchSourceAuthenticationOutput)
+}
+
+func (o CloudwatchSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o CloudwatchSourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o CloudwatchSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) DefaultDateFormats() CloudwatchSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *CloudwatchSource) CloudwatchSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(CloudwatchSourceDefaultDateFormatArrayOutput)
+}
+
+func (o CloudwatchSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o CloudwatchSourceOutput) Filters() CloudwatchSourceFilterArrayOutput {
+	return o.ApplyT(func(v *CloudwatchSource) CloudwatchSourceFilterArrayOutput { return v.Filters }).(CloudwatchSourceFilterArrayOutput)
+}
+
+func (o CloudwatchSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudwatchSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location to scan for new data.
+func (o CloudwatchSourceOutput) Path() CloudwatchSourcePathOutput {
+	return o.ApplyT(func(v *CloudwatchSource) CloudwatchSourcePathOutput { return v.Path }).(CloudwatchSourcePathOutput)
+}
+
+// When set to true, the scanner is paused. To disable, set to false.
+func (o CloudwatchSourceOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o CloudwatchSourceOutput) ScanInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+}
+
+func (o CloudwatchSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
+func (o CloudwatchSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o CloudwatchSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudwatchSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
 }
 
 type CloudwatchSourceArrayOutput struct{ *pulumi.OutputState }

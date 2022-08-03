@@ -356,6 +356,94 @@ func (o KineisLogSourceOutput) ToKineisLogSourceOutputWithContext(ctx context.Co
 	return o
 }
 
+// Authentication details for connecting to the S3 bucket.
+func (o KineisLogSourceOutput) Authentication() KineisLogSourceAuthenticationPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) KineisLogSourceAuthenticationPtrOutput { return v.Authentication }).(KineisLogSourceAuthenticationPtrOutput)
+}
+
+func (o KineisLogSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
+}
+
+func (o KineisLogSourceOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o KineisLogSourceOutput) CollectorId() pulumi.IntOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
+}
+
+// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+func (o KineisLogSourceOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o KineisLogSourceOutput) CutoffRelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringPtrOutput { return v.CutoffRelativeTime }).(pulumi.StringPtrOutput)
+}
+
+func (o KineisLogSourceOutput) CutoffTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o KineisLogSourceOutput) DefaultDateFormats() KineisLogSourceDefaultDateFormatArrayOutput {
+	return o.ApplyT(func(v *KineisLogSource) KineisLogSourceDefaultDateFormatArrayOutput { return v.DefaultDateFormats }).(KineisLogSourceDefaultDateFormatArrayOutput)
+}
+
+func (o KineisLogSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o KineisLogSourceOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+func (o KineisLogSourceOutput) Filters() KineisLogSourceFilterArrayOutput {
+	return o.ApplyT(func(v *KineisLogSource) KineisLogSourceFilterArrayOutput { return v.Filters }).(KineisLogSourceFilterArrayOutput)
+}
+
+func (o KineisLogSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o KineisLogSourceOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o KineisLogSourceOutput) ManualPrefixRegexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringPtrOutput { return v.ManualPrefixRegexp }).(pulumi.StringPtrOutput)
+}
+
+func (o KineisLogSourceOutput) MessagePerRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.BoolPtrOutput { return v.MessagePerRequest }).(pulumi.BoolPtrOutput)
+}
+
+func (o KineisLogSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o KineisLogSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The location of S3 bucket for failed Kinesis log data.
+func (o KineisLogSourceOutput) Path() KineisLogSourcePathPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) KineisLogSourcePathPtrOutput { return v.Path }).(KineisLogSourcePathPtrOutput)
+}
+
+func (o KineisLogSourceOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
+func (o KineisLogSourceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o KineisLogSourceOutput) UseAutolineMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.BoolPtrOutput { return v.UseAutolineMatching }).(pulumi.BoolPtrOutput)
+}
+
 type KineisLogSourceArrayOutput struct{ *pulumi.OutputState }
 
 func (KineisLogSourceArrayOutput) ElementType() reflect.Type {

@@ -236,6 +236,52 @@ func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) Parti
 	return o
 }
 
+// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+func (o PartitionOutput) AnalyticsTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringPtrOutput { return v.AnalyticsTier }).(pulumi.StringPtrOutput)
+}
+
+func (o PartitionOutput) DataForwardingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.DataForwardingId }).(pulumi.StringOutput)
+}
+
+func (o PartitionOutput) IndexType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.IndexType }).(pulumi.StringOutput)
+}
+
+func (o PartitionOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Partition) pulumi.BoolOutput { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+func (o PartitionOutput) IsCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.BoolPtrOutput { return v.IsCompliant }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the partition.
+func (o PartitionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+func (o PartitionOutput) ReduceRetentionPeriodImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.BoolPtrOutput { return v.ReduceRetentionPeriodImmediately }).(pulumi.BoolPtrOutput)
+}
+
+// The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
+func (o PartitionOutput) RetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.IntPtrOutput { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The query that defines the data to be included in the partition.
+func (o PartitionOutput) RoutingExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringPtrOutput { return v.RoutingExpression }).(pulumi.StringPtrOutput)
+}
+
+func (o PartitionOutput) TotalBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *Partition) pulumi.IntOutput { return v.TotalBytes }).(pulumi.IntOutput)
+}
+
 type PartitionArrayOutput struct{ *pulumi.OutputState }
 
 func (PartitionArrayOutput) ElementType() reflect.Type {

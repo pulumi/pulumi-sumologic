@@ -229,6 +229,20 @@ func (o HierarchyOutput) ToHierarchyOutputWithContext(ctx context.Context) Hiera
 	return o
 }
 
+// An optional clause that a hierarchy requires to be matched.
+func (o HierarchyOutput) Filter() HierarchyFilterPtrOutput {
+	return o.ApplyT(func(v *Hierarchy) HierarchyFilterPtrOutput { return v.Filter }).(HierarchyFilterPtrOutput)
+}
+
+func (o HierarchyOutput) Levels() HierarchyLevelArrayOutput {
+	return o.ApplyT(func(v *Hierarchy) HierarchyLevelArrayOutput { return v.Levels }).(HierarchyLevelArrayOutput)
+}
+
+// Name of the hierarchy.
+func (o HierarchyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hierarchy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type HierarchyArrayOutput struct{ *pulumi.OutputState }
 
 func (HierarchyArrayOutput) ElementType() reflect.Type {

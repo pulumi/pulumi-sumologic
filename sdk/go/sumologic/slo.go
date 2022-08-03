@@ -318,6 +318,89 @@ func (o SloOutput) ToSloOutputWithContext(ctx context.Context) SloOutput {
 	return o
 }
 
+// Name of the application.
+// Defaults to true.
+func (o SloOutput) Application() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.Application }).(pulumi.StringOutput)
+}
+
+// The compliance settings for the SLO.
+func (o SloOutput) Compliances() SloComplianceArrayOutput {
+	return o.ApplyT(func(v *Slo) SloComplianceArrayOutput { return v.Compliances }).(SloComplianceArrayOutput)
+}
+
+func (o SloOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o SloOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The description of the SLO.
+func (o SloOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The service level indicator on which SLO is to be defined. more details on the difference
+// b/w them can be found on
+// the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
+// - windowBasedEvaluation - Evaluate SLI using successful/total windows.
+// - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
+//   events / total events over entire compliance period.
+func (o SloOutput) Indicator() SloIndicatorOutput {
+	return o.ApplyT(func(v *Slo) SloIndicatorOutput { return v.Indicator }).(SloIndicatorOutput)
+}
+
+func (o SloOutput) IsLocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Slo) pulumi.BoolPtrOutput { return v.IsLocked }).(pulumi.BoolPtrOutput)
+}
+
+func (o SloOutput) IsMutable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Slo) pulumi.BoolOutput { return v.IsMutable }).(pulumi.BoolOutput)
+}
+
+func (o SloOutput) IsSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Slo) pulumi.BoolOutput { return v.IsSystem }).(pulumi.BoolOutput)
+}
+
+func (o SloOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+func (o SloOutput) ModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+// The name of the SLO. The name must be alphanumeric.
+func (o SloOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
+func (o SloOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
+}
+
+func (o SloOutput) PostRequestMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringMapOutput { return v.PostRequestMap }).(pulumi.StringMapOutput)
+}
+
+// Name of the service.
+func (o SloOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
+// , `Other`. Defaults to `Latency`.
+func (o SloOutput) SignalType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.SignalType }).(pulumi.StringOutput)
+}
+
+func (o SloOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *Slo) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
 type SloArrayOutput struct{ *pulumi.OutputState }
 
 func (SloArrayOutput) ElementType() reflect.Type {

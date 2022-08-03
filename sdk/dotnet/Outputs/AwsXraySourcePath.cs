@@ -28,6 +28,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
         /// </summary>
         public readonly string Type;
+        public readonly bool? UseVersionedApi;
 
         [OutputConstructor]
         private AwsXraySourcePath(
@@ -47,7 +48,9 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<Outputs.AwsXraySourcePathTagFilter> tagFilters,
 
-            string type)
+            string type,
+
+            bool? useVersionedApi)
         {
             BucketName = bucketName;
             CustomServices = customServices;
@@ -58,6 +61,7 @@ namespace Pulumi.SumoLogic.Outputs
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;
+            UseVersionedApi = useVersionedApi;
         }
     }
 }

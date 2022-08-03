@@ -309,6 +309,28 @@ func (o ContentPermissionOutput) ToContentPermissionOutputWithContext(ctx contex
 	return o
 }
 
+// The identifier of the content item for which you want to update
+// permissions.
+func (o ContentPermissionOutput) ContentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentPermission) pulumi.StringOutput { return v.ContentId }).(pulumi.StringOutput)
+}
+
+// The notification message to send to the users.
+func (o ContentPermissionOutput) NotificationMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentPermission) pulumi.StringPtrOutput { return v.NotificationMessage }).(pulumi.StringPtrOutput)
+}
+
+// Boolean value. Set it to "true" to notify the recipients by email.
+func (o ContentPermissionOutput) NotifyRecipient() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ContentPermission) pulumi.BoolOutput { return v.NotifyRecipient }).(pulumi.BoolOutput)
+}
+
+// Permission block defining permission on the content. See
+// permission schema for details.
+func (o ContentPermissionOutput) Permissions() ContentPermissionPermissionArrayOutput {
+	return o.ApplyT(func(v *ContentPermission) ContentPermissionPermissionArrayOutput { return v.Permissions }).(ContentPermissionPermissionArrayOutput)
+}
+
 type ContentPermissionArrayOutput struct{ *pulumi.OutputState }
 
 func (ContentPermissionArrayOutput) ElementType() reflect.Type {

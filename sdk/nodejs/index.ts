@@ -22,9 +22,11 @@ export * from "./cseChainRule";
 export * from "./cseCustomEntityType";
 export * from "./cseCustomInsight";
 export * from "./cseEntityCriticalityConfig";
+export * from "./cseEntityEntityGroupConfiguration";
 export * from "./cseInsightsConfiguration";
 export * from "./cseInsightsResolution";
 export * from "./cseInsightsStatus";
+export * from "./cseInventoryEntityGroupConfiguration";
 export * from "./cseLogMapping";
 export * from "./cseMatchList";
 export * from "./cseMatchRule";
@@ -101,9 +103,11 @@ import { CseChainRule } from "./cseChainRule";
 import { CseCustomEntityType } from "./cseCustomEntityType";
 import { CseCustomInsight } from "./cseCustomInsight";
 import { CseEntityCriticalityConfig } from "./cseEntityCriticalityConfig";
+import { CseEntityEntityGroupConfiguration } from "./cseEntityEntityGroupConfiguration";
 import { CseInsightsConfiguration } from "./cseInsightsConfiguration";
 import { CseInsightsResolution } from "./cseInsightsResolution";
 import { CseInsightsStatus } from "./cseInsightsStatus";
+import { CseInventoryEntityGroupConfiguration } from "./cseInventoryEntityGroupConfiguration";
 import { CseLogMapping } from "./cseLogMapping";
 import { CseMatchList } from "./cseMatchList";
 import { CseMatchRule } from "./cseMatchRule";
@@ -180,12 +184,16 @@ const _module = {
                 return new CseCustomInsight(name, <any>undefined, { urn })
             case "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig":
                 return new CseEntityCriticalityConfig(name, <any>undefined, { urn })
+            case "sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration":
+                return new CseEntityEntityGroupConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
                 return new CseInsightsConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/cseInsightsResolution:CseInsightsResolution":
                 return new CseInsightsResolution(name, <any>undefined, { urn })
             case "sumologic:index/cseInsightsStatus:CseInsightsStatus":
                 return new CseInsightsStatus(name, <any>undefined, { urn })
+            case "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration":
+                return new CseInventoryEntityGroupConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/cseLogMapping:CseLogMapping":
                 return new CseLogMapping(name, <any>undefined, { urn })
             case "sumologic:index/cseMatchList:CseMatchList":
@@ -282,9 +290,11 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cseChainRule", _module
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomEntityType", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomInsight", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityCriticalityConfig", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityEntityGroupConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsResolution", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsStatus", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseInventoryEntityGroupConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseLogMapping", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchList", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchRule", _module)

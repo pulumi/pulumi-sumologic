@@ -226,6 +226,26 @@ func (o CseNetworkBlockOutput) ToCseNetworkBlockOutputWithContext(ctx context.Co
 	return o
 }
 
+// The address block.
+func (o CseNetworkBlockOutput) AddressBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseNetworkBlock) pulumi.StringOutput { return v.AddressBlock }).(pulumi.StringOutput)
+}
+
+// Internal flag.
+func (o CseNetworkBlockOutput) Internal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseNetworkBlock) pulumi.BoolPtrOutput { return v.Internal }).(pulumi.BoolPtrOutput)
+}
+
+// The displayable label of the address block.
+func (o CseNetworkBlockOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseNetworkBlock) pulumi.StringPtrOutput { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Suppresses signal flag.
+func (o CseNetworkBlockOutput) SuppressesSignals() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseNetworkBlock) pulumi.BoolPtrOutput { return v.SuppressesSignals }).(pulumi.BoolPtrOutput)
+}
+
 type CseNetworkBlockArrayOutput struct{ *pulumi.OutputState }
 
 func (CseNetworkBlockArrayOutput) ElementType() reflect.Type {

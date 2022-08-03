@@ -220,6 +220,21 @@ func (o CseCustomEntityTypeOutput) ToCseCustomEntityTypeOutputWithContext(ctx co
 	return o
 }
 
+// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+func (o CseCustomEntityTypeOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseCustomEntityType) pulumi.StringArrayOutput { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// Machine friendly and unique identifier. Example: "filehash".
+func (o CseCustomEntityTypeOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseCustomEntityType) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Human friend and unique name. Example: "File Hash".
+func (o CseCustomEntityTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseCustomEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type CseCustomEntityTypeArrayOutput struct{ *pulumi.OutputState }
 
 func (CseCustomEntityTypeArrayOutput) ElementType() reflect.Type {

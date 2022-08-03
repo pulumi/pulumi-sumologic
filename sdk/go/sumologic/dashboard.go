@@ -76,7 +76,7 @@ import (
 // 				"displayType":     "default",
 // 				"fillOpacity":     1,
 // 				"startAngle":      270,
-// 				"innerRadius":     fmt.Sprintf("%v%v", "40", "%"),
+// 				"innerRadius":     fmt.Sprintf("40%v", "%"),
 // 				"maxNumOfSlices":  10,
 // 				"aggregationType": "sum",
 // 			},
@@ -145,7 +145,14 @@ import (
 // 						Title:                                  pulumi.String("Api Health"),
 // 						VisualSettings:                         pulumi.String(json0),
 // 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-// 						Text:                                   pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "## Api Health Monitoring\n", "\n", "Use this dashboard to monitor API service health. It contains following panels:\n", "\n", "1. API errors: Errors in last 12 hours\n", "3. API 5xx: Count of 5xx response\n", "3. CPU utilization: CPU utilization in last 60 mins\n")),
+// 						Text: pulumi.String(fmt.Sprintf(`## Api Health Monitoring
+//
+// Use this dashboard to monitor API service health. It contains following panels:
+//
+// 1. API errors: Errors in last 12 hours
+// 3. API 5xx: Count of 5xx response
+// 3. CPU utilization: CPU utilization in last 60 mins
+// `)),
 // 					},
 // 				},
 // 				&DashboardPanelArgs{
@@ -723,6 +730,70 @@ func (o DashboardOutput) ToDashboardOutput() DashboardOutput {
 
 func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) DashboardOutput {
 	return o
+}
+
+func (o DashboardOutput) ColoringRules() DashboardColoringRuleArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardColoringRuleArrayOutput { return v.ColoringRules }).(DashboardColoringRuleArrayOutput)
+}
+
+// Description of the dashboard.
+func (o DashboardOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
+func (o DashboardOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the folder to save the dashboard in. By default it is saved in your
+// personal folder.
+func (o DashboardOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.FolderId }).(pulumi.StringPtrOutput)
+}
+
+// Layout of the dashboard. See layout schema for details.
+func (o DashboardOutput) Layout() DashboardLayoutPtrOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardLayoutPtrOutput { return v.Layout }).(DashboardLayoutPtrOutput)
+}
+
+// A list of panels in the dashboard. See panel schema for details.
+func (o DashboardOutput) Panels() DashboardPanelArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardPanelArrayOutput { return v.Panels }).(DashboardPanelArrayOutput)
+}
+
+// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
+func (o DashboardOutput) RefreshInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.IntPtrOutput { return v.RefreshInterval }).(pulumi.IntPtrOutput)
+}
+
+// Theme of the dashboard.
+func (o DashboardOutput) Theme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Theme }).(pulumi.StringPtrOutput)
+}
+
+// Time range of the dashboard. See time range schema
+// for details.
+func (o DashboardOutput) TimeRange() DashboardTimeRangeOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardTimeRangeOutput { return v.TimeRange }).(DashboardTimeRangeOutput)
+}
+
+// Title of the dashboard.
+func (o DashboardOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
+// Topology labels for the dashboard. See
+// topology label map schema
+// for details.
+func (o DashboardOutput) TopologyLabelMap() DashboardTopologyLabelMapPtrOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardTopologyLabelMapPtrOutput { return v.TopologyLabelMap }).(DashboardTopologyLabelMapPtrOutput)
+}
+
+// A list of variables for the dashboard. See variable schema
+// for details.
+func (o DashboardOutput) Variables() DashboardVariableArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardVariableArrayOutput { return v.Variables }).(DashboardVariableArrayOutput)
 }
 
 type DashboardArrayOutput struct{ *pulumi.OutputState }

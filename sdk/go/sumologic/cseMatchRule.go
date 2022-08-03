@@ -316,6 +316,56 @@ func (o CseMatchRuleOutput) ToCseMatchRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The description of the generated Signals
+func (o CseMatchRuleOutput) DescriptionExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.StringOutput { return v.DescriptionExpression }).(pulumi.StringOutput)
+}
+
+// Whether the rule should generate Signals
+func (o CseMatchRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The entities to generate Signals on
+func (o CseMatchRuleOutput) EntitySelectors() CseMatchRuleEntitySelectorArrayOutput {
+	return o.ApplyT(func(v *CseMatchRule) CseMatchRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseMatchRuleEntitySelectorArrayOutput)
+}
+
+// The expression for which records to match on
+func (o CseMatchRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Whether the generated Signals should be prototype Signals
+func (o CseMatchRuleOutput) IsPrototype() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.BoolPtrOutput { return v.IsPrototype }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Rule
+func (o CseMatchRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the generated Signals
+func (o CseMatchRuleOutput) NameExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.StringOutput { return v.NameExpression }).(pulumi.StringOutput)
+}
+
+// The configuration of how the severity of the Signals should be mapped from the Records
+func (o CseMatchRuleOutput) SeverityMapping() CseMatchRuleSeverityMappingOutput {
+	return o.ApplyT(func(v *CseMatchRule) CseMatchRuleSeverityMappingOutput { return v.SeverityMapping }).(CseMatchRuleSeverityMappingOutput)
+}
+
+// The summary of the generated Signals
+func (o CseMatchRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
+}
+
+// The tags of the generated Signals
+func (o CseMatchRuleOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type CseMatchRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (CseMatchRuleArrayOutput) ElementType() reflect.Type {

@@ -289,6 +289,46 @@ func (o CseCustomInsightOutput) ToCseCustomInsightOutputWithContext(ctx context.
 	return o
 }
 
+// The description of the generated Insights
+func (o CseCustomInsightOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the Custom Insight should generate Insights
+func (o CseCustomInsightOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The name of the Custom Insight and the generated Insights
+func (o CseCustomInsightOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
+func (o CseCustomInsightOutput) Ordered() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.BoolOutput { return v.Ordered }).(pulumi.BoolOutput)
+}
+
+// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+func (o CseCustomInsightOutput) RuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringArrayOutput { return v.RuleIds }).(pulumi.StringArrayOutput)
+}
+
+// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+func (o CseCustomInsightOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
+func (o CseCustomInsightOutput) SignalNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringArrayOutput { return v.SignalNames }).(pulumi.StringArrayOutput)
+}
+
+// The tags of the generated Insights
+func (o CseCustomInsightOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type CseCustomInsightArrayOutput struct{ *pulumi.OutputState }
 
 func (CseCustomInsightArrayOutput) ElementType() reflect.Type {

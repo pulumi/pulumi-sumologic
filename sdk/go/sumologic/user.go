@@ -285,6 +285,36 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// Email of the user.
+func (o UserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// First name of the user.
+func (o UserOutput) FirstName() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.FirstName }).(pulumi.StringOutput)
+}
+
+// This has the value true if the user is active and false if they have been deactivated.
+func (o UserOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+// Last name of the user.
+func (o UserOutput) LastName() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.LastName }).(pulumi.StringOutput)
+}
+
+// List of roleIds associated with the user.
+func (o UserOutput) RoleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.RoleIds }).(pulumi.StringArrayOutput)
+}
+
+// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+func (o UserOutput) TransferTo() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.TransferTo }).(pulumi.StringOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

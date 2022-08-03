@@ -76,6 +76,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        [Input("useVersionedApi")]
+        public Input<bool>? UseVersionedApi { get; set; }
+
         public AwsXraySourcePathGetArgs()
         {
         }
