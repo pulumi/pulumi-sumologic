@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudtrailSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class CloudtrailSourcePathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -88,5 +88,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudtrailSourcePathArgs()
         {
         }
+        public static new CloudtrailSourcePathArgs Empty => new CloudtrailSourcePathArgs();
     }
 }

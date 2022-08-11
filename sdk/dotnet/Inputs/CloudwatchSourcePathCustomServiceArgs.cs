@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudwatchSourcePathCustomServiceArgs : Pulumi.ResourceArgs
+    public sealed class CloudwatchSourcePathCustomServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefixes")]
         private InputList<string>? _prefixes;
@@ -26,5 +26,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudwatchSourcePathCustomServiceArgs()
         {
         }
+        public static new CloudwatchSourcePathCustomServiceArgs Empty => new CloudwatchSourcePathCustomServiceArgs();
     }
 }

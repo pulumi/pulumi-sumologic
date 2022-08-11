@@ -22,16 +22,20 @@ import (
 // Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/pollingSource:PollingSource test 123/456
+//
+//	$ pulumi import sumologic:index/pollingSource:PollingSource test 123/456
+//
 // ```
 //
-//  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/pollingSource:PollingSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/pollingSource:PollingSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 type PollingSource struct {
 	pulumi.CustomResourceState
 
@@ -262,7 +266,7 @@ func (i *PollingSource) ToPollingSourceOutputWithContext(ctx context.Context) Po
 // PollingSourceArrayInput is an input type that accepts PollingSourceArray and PollingSourceArrayOutput values.
 // You can construct a concrete instance of `PollingSourceArrayInput` via:
 //
-//          PollingSourceArray{ PollingSourceArgs{...} }
+//	PollingSourceArray{ PollingSourceArgs{...} }
 type PollingSourceArrayInput interface {
 	pulumi.Input
 
@@ -287,7 +291,7 @@ func (i PollingSourceArray) ToPollingSourceArrayOutputWithContext(ctx context.Co
 // PollingSourceMapInput is an input type that accepts PollingSourceMap and PollingSourceMapOutput values.
 // You can construct a concrete instance of `PollingSourceMapInput` via:
 //
-//          PollingSourceMap{ "key": PollingSourceArgs{...} }
+//	PollingSourceMap{ "key": PollingSourceArgs{...} }
 type PollingSourceMapInput interface {
 	pulumi.Input
 

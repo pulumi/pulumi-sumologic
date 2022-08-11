@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class S3AuditSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class S3AuditSourcePathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -88,5 +88,6 @@ namespace Pulumi.SumoLogic.Inputs
         public S3AuditSourcePathArgs()
         {
         }
+        public static new S3AuditSourcePathArgs Empty => new S3AuditSourcePathArgs();
     }
 }

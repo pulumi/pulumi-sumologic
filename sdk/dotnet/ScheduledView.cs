@@ -23,7 +23,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Scheduled-Views [2]https://api.sumologic.com/docs/#operation/listScheduledViews
     /// </summary>
     [SumoLogicResourceType("sumologic:index/scheduledView:ScheduledView")]
-    public partial class ScheduledView : Pulumi.CustomResource
+    public partial class ScheduledView : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional ID of a data forwarding configuration to be used by the scheduled view.
@@ -111,7 +111,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class ScheduledViewArgs : Pulumi.ResourceArgs
+    public sealed class ScheduledViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional ID of a data forwarding configuration to be used by the scheduled view.
@@ -158,9 +158,10 @@ namespace Pulumi.SumoLogic
         public ScheduledViewArgs()
         {
         }
+        public static new ScheduledViewArgs Empty => new ScheduledViewArgs();
     }
 
-    public sealed class ScheduledViewState : Pulumi.ResourceArgs
+    public sealed class ScheduledViewState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional ID of a data forwarding configuration to be used by the scheduled view.
@@ -207,5 +208,6 @@ namespace Pulumi.SumoLogic
         public ScheduledViewState()
         {
         }
+        public static new ScheduledViewState Empty => new ScheduledViewState();
     }
 }

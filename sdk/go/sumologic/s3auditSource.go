@@ -21,42 +21,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewS3AuditSource(ctx, "s3Audit", &sumologic.S3AuditSourceArgs{
-// 			Authentication: &S3AuditSourceAuthenticationArgs{
-// 				AccessKey: pulumi.String("someKey"),
-// 				SecretKey: pulumi.String("******"),
-// 				Type:      pulumi.String("S3BucketAuthentication"),
-// 			},
-// 			Category:    pulumi.String("aws/s3audit"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("AwsS3AuditBucket"),
-// 			Description: pulumi.String("My description"),
-// 			Path: &S3AuditSourcePathArgs{
-// 				BucketName:     pulumi.String("Bucket1"),
-// 				PathExpression: pulumi.String("*"),
-// 				Type:           pulumi.String("S3BucketPathExpression"),
-// 			},
-// 			Paused:       pulumi.Bool(false),
-// 			ScanInterval: pulumi.Int(300000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewS3AuditSource(ctx, "s3Audit", &sumologic.S3AuditSourceArgs{
+//				Authentication: &S3AuditSourceAuthenticationArgs{
+//					AccessKey: pulumi.String("someKey"),
+//					SecretKey: pulumi.String("******"),
+//					Type:      pulumi.String("S3BucketAuthentication"),
+//				},
+//				Category:    pulumi.String("aws/s3audit"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("AwsS3AuditBucket"),
+//				Description: pulumi.String("My description"),
+//				Path: &S3AuditSourcePathArgs{
+//					BucketName:     pulumi.String("Bucket1"),
+//					PathExpression: pulumi.String("*"),
+//					Type:           pulumi.String("S3BucketPathExpression"),
+//				},
+//				Paused:       pulumi.Bool(false),
+//				ScanInterval: pulumi.Int(300000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,16 +67,20 @@ import (
 // S3 Audit sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test 123/456
+//
+//	$ pulumi import sumologic:index/s3AuditSource:S3AuditSource test 123/456
+//
 // ```
 //
-//  S3 Audit sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	S3 Audit sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/s3AuditSource:S3AuditSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source
 type S3AuditSource struct {
 	pulumi.CustomResourceState
 
@@ -304,7 +311,7 @@ func (i *S3AuditSource) ToS3AuditSourceOutputWithContext(ctx context.Context) S3
 // S3AuditSourceArrayInput is an input type that accepts S3AuditSourceArray and S3AuditSourceArrayOutput values.
 // You can construct a concrete instance of `S3AuditSourceArrayInput` via:
 //
-//          S3AuditSourceArray{ S3AuditSourceArgs{...} }
+//	S3AuditSourceArray{ S3AuditSourceArgs{...} }
 type S3AuditSourceArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +336,7 @@ func (i S3AuditSourceArray) ToS3AuditSourceArrayOutputWithContext(ctx context.Co
 // S3AuditSourceMapInput is an input type that accepts S3AuditSourceMap and S3AuditSourceMapOutput values.
 // You can construct a concrete instance of `S3AuditSourceMapInput` via:
 //
-//          S3AuditSourceMap{ "key": S3AuditSourceArgs{...} }
+//	S3AuditSourceMap{ "key": S3AuditSourceArgs{...} }
 type S3AuditSourceMapInput interface {
 	pulumi.Input
 

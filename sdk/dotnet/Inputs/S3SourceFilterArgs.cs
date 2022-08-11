@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class S3SourceFilterArgs : Pulumi.ResourceArgs
+    public sealed class S3SourceFilterArgs : global::Pulumi.ResourceArgs
     {
         [Input("filterType", required: true)]
         public Input<string> FilterType { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public S3SourceFilterArgs()
         {
         }
+        public static new S3SourceFilterArgs Empty => new S3SourceFilterArgs();
     }
 }

@@ -18,29 +18,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseInsightsStatus(ctx, "insightsStatus", &sumologic.CseInsightsStatusArgs{
-// 			Description: pulumi.String("New description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseInsightsStatus(ctx, "insightsStatus", &sumologic.CseInsightsStatusArgs{
+//				Description: pulumi.String("New description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Insights Status can be imported using the field id, e.g.hcl
+// # Insights Status can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
+//
+//	$ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
+//
 // ```
 type CseInsightsStatus struct {
 	pulumi.CustomResourceState
@@ -141,7 +146,7 @@ func (i *CseInsightsStatus) ToCseInsightsStatusOutputWithContext(ctx context.Con
 // CseInsightsStatusArrayInput is an input type that accepts CseInsightsStatusArray and CseInsightsStatusArrayOutput values.
 // You can construct a concrete instance of `CseInsightsStatusArrayInput` via:
 //
-//          CseInsightsStatusArray{ CseInsightsStatusArgs{...} }
+//	CseInsightsStatusArray{ CseInsightsStatusArgs{...} }
 type CseInsightsStatusArrayInput interface {
 	pulumi.Input
 
@@ -166,7 +171,7 @@ func (i CseInsightsStatusArray) ToCseInsightsStatusArrayOutputWithContext(ctx co
 // CseInsightsStatusMapInput is an input type that accepts CseInsightsStatusMap and CseInsightsStatusMapOutput values.
 // You can construct a concrete instance of `CseInsightsStatusMapInput` via:
 //
-//          CseInsightsStatusMap{ "key": CseInsightsStatusArgs{...} }
+//	CseInsightsStatusMap{ "key": CseInsightsStatusArgs{...} }
 type CseInsightsStatusMapInput interface {
 	pulumi.Input
 

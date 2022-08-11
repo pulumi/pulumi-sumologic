@@ -21,42 +21,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewCloudfrontSource(ctx, "cloudfrontSource", &sumologic.CloudfrontSourceArgs{
-// 			Authentication: &CloudfrontSourceAuthenticationArgs{
-// 				AccessKey: pulumi.String("someKey"),
-// 				SecretKey: pulumi.String("******"),
-// 				Type:      pulumi.String("S3BucketAuthentication"),
-// 			},
-// 			Category:    pulumi.String("aws/cloudfront"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("AwsCloudFrontBucket"),
-// 			Description: pulumi.String("My description"),
-// 			Path: &CloudfrontSourcePathArgs{
-// 				BucketName:     pulumi.String("Bucket1"),
-// 				PathExpression: pulumi.String("*"),
-// 				Type:           pulumi.String("S3BucketPathExpression"),
-// 			},
-// 			Paused:       pulumi.Bool(false),
-// 			ScanInterval: pulumi.Int(300000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewCloudfrontSource(ctx, "cloudfrontSource", &sumologic.CloudfrontSourceArgs{
+//				Authentication: &CloudfrontSourceAuthenticationArgs{
+//					AccessKey: pulumi.String("someKey"),
+//					SecretKey: pulumi.String("******"),
+//					Type:      pulumi.String("S3BucketAuthentication"),
+//				},
+//				Category:    pulumi.String("aws/cloudfront"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("AwsCloudFrontBucket"),
+//				Description: pulumi.String("My description"),
+//				Path: &CloudfrontSourcePathArgs{
+//					BucketName:     pulumi.String("Bucket1"),
+//					PathExpression: pulumi.String("*"),
+//					Type:           pulumi.String("S3BucketPathExpression"),
+//				},
+//				Paused:       pulumi.Bool(false),
+//				ScanInterval: pulumi.Int(300000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,16 +67,20 @@ import (
 // CloudFront sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test 123/456
+//
+//	$ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test 123/456
+//
 // ```
 //
-//  CloudFront sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	CloudFront sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudFront-Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudFront-Source
 type CloudfrontSource struct {
 	pulumi.CustomResourceState
 
@@ -304,7 +311,7 @@ func (i *CloudfrontSource) ToCloudfrontSourceOutputWithContext(ctx context.Conte
 // CloudfrontSourceArrayInput is an input type that accepts CloudfrontSourceArray and CloudfrontSourceArrayOutput values.
 // You can construct a concrete instance of `CloudfrontSourceArrayInput` via:
 //
-//          CloudfrontSourceArray{ CloudfrontSourceArgs{...} }
+//	CloudfrontSourceArray{ CloudfrontSourceArgs{...} }
 type CloudfrontSourceArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +336,7 @@ func (i CloudfrontSourceArray) ToCloudfrontSourceArrayOutputWithContext(ctx cont
 // CloudfrontSourceMapInput is an input type that accepts CloudfrontSourceMap and CloudfrontSourceMapOutput values.
 // You can construct a concrete instance of `CloudfrontSourceMapInput` via:
 //
-//          CloudfrontSourceMap{ "key": CloudfrontSourceArgs{...} }
+//	CloudfrontSourceMap{ "key": CloudfrontSourceArgs{...} }
 type CloudfrontSourceMapInput interface {
 	pulumi.Input
 

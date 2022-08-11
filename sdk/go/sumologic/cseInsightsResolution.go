@@ -18,30 +18,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseInsightsResolution(ctx, "insightsResolution", &sumologic.CseInsightsResolutionArgs{
-// 			Description: pulumi.String("New description"),
-// 			Parent:      pulumi.String("No Action"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseInsightsResolution(ctx, "insightsResolution", &sumologic.CseInsightsResolutionArgs{
+//				Description: pulumi.String("New description"),
+//				Parent:      pulumi.String("No Action"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Insights Resolution can be imported using the field id, e.g.hcl
+// # Insights Resolution can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
+//
+//	$ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
+//
 // ```
 type CseInsightsResolution struct {
 	pulumi.CustomResourceState
@@ -149,7 +154,7 @@ func (i *CseInsightsResolution) ToCseInsightsResolutionOutputWithContext(ctx con
 // CseInsightsResolutionArrayInput is an input type that accepts CseInsightsResolutionArray and CseInsightsResolutionArrayOutput values.
 // You can construct a concrete instance of `CseInsightsResolutionArrayInput` via:
 //
-//          CseInsightsResolutionArray{ CseInsightsResolutionArgs{...} }
+//	CseInsightsResolutionArray{ CseInsightsResolutionArgs{...} }
 type CseInsightsResolutionArrayInput interface {
 	pulumi.Input
 
@@ -174,7 +179,7 @@ func (i CseInsightsResolutionArray) ToCseInsightsResolutionArrayOutputWithContex
 // CseInsightsResolutionMapInput is an input type that accepts CseInsightsResolutionMap and CseInsightsResolutionMapOutput values.
 // You can construct a concrete instance of `CseInsightsResolutionMapInput` via:
 //
-//          CseInsightsResolutionMap{ "key": CseInsightsResolutionArgs{...} }
+//	CseInsightsResolutionMap{ "key": CseInsightsResolutionArgs{...} }
 type CseInsightsResolutionMapInput interface {
 	pulumi.Input
 

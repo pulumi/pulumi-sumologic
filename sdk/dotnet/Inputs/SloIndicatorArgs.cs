@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class SloIndicatorArgs : Pulumi.ResourceArgs
+    public sealed class SloIndicatorArgs : global::Pulumi.ResourceArgs
     {
         [Input("requestBasedEvaluation")]
         public Input<Inputs.SloIndicatorRequestBasedEvaluationArgs>? RequestBasedEvaluation { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public SloIndicatorArgs()
         {
         }
+        public static new SloIndicatorArgs Empty => new SloIndicatorArgs();
     }
 }

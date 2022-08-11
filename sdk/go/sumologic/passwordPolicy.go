@@ -20,33 +20,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewPasswordPolicy(ctx, "examplePasswordPolicy", &sumologic.PasswordPolicyArgs{
-// 			AccountLockoutDurationInMins:   pulumi.Int(30),
-// 			AccountLockoutThreshold:        pulumi.Int(6),
-// 			FailedLoginResetDurationInMins: pulumi.Int(10),
-// 			MaxLength:                      pulumi.Int(128),
-// 			MaxPasswordAgeInDays:           pulumi.Int(365),
-// 			MinLength:                      pulumi.Int(8),
-// 			MinUniquePasswords:             pulumi.Int(10),
-// 			MustContainDigits:              pulumi.Bool(true),
-// 			MustContainLowercase:           pulumi.Bool(true),
-// 			MustContainSpecialChars:        pulumi.Bool(true),
-// 			MustContainUppercase:           pulumi.Bool(true),
-// 			RememberMfa:                    pulumi.Bool(true),
-// 			RequireMfa:                     pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewPasswordPolicy(ctx, "examplePasswordPolicy", &sumologic.PasswordPolicyArgs{
+//				AccountLockoutDurationInMins:   pulumi.Int(30),
+//				AccountLockoutThreshold:        pulumi.Int(6),
+//				FailedLoginResetDurationInMins: pulumi.Int(10),
+//				MaxLength:                      pulumi.Int(128),
+//				MaxPasswordAgeInDays:           pulumi.Int(365),
+//				MinLength:                      pulumi.Int(8),
+//				MinUniquePasswords:             pulumi.Int(10),
+//				MustContainDigits:              pulumi.Bool(true),
+//				MustContainLowercase:           pulumi.Bool(true),
+//				MustContainSpecialChars:        pulumi.Bool(true),
+//				MustContainUppercase:           pulumi.Bool(true),
+//				RememberMfa:                    pulumi.Bool(true),
+//				RequireMfa:                     pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type PasswordPolicy struct {
 	pulumi.CustomResourceState
@@ -254,7 +257,7 @@ func (i *PasswordPolicy) ToPasswordPolicyOutputWithContext(ctx context.Context) 
 // PasswordPolicyArrayInput is an input type that accepts PasswordPolicyArray and PasswordPolicyArrayOutput values.
 // You can construct a concrete instance of `PasswordPolicyArrayInput` via:
 //
-//          PasswordPolicyArray{ PasswordPolicyArgs{...} }
+//	PasswordPolicyArray{ PasswordPolicyArgs{...} }
 type PasswordPolicyArrayInput interface {
 	pulumi.Input
 
@@ -279,7 +282,7 @@ func (i PasswordPolicyArray) ToPasswordPolicyArrayOutputWithContext(ctx context.
 // PasswordPolicyMapInput is an input type that accepts PasswordPolicyMap and PasswordPolicyMapOutput values.
 // You can construct a concrete instance of `PasswordPolicyMapInput` via:
 //
-//          PasswordPolicyMap{ "key": PasswordPolicyArgs{...} }
+//	PasswordPolicyMap{ "key": PasswordPolicyArgs{...} }
 type PasswordPolicyMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MetadataSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class MetadataSourcePathArgs : global::Pulumi.ResourceArgs
     {
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
@@ -57,5 +57,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MetadataSourcePathArgs()
         {
         }
+        public static new MetadataSourcePathArgs Empty => new MetadataSourcePathArgs();
     }
 }

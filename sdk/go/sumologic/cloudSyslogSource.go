@@ -21,29 +21,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewCloudSyslogSource(ctx, "cloudsyslogSource", &sumologic.CloudSyslogSourceArgs{
-// 			Category:    pulumi.String("my/source/category"),
-// 			CollectorId: collector.ID(),
-// 			Description: pulumi.String("My description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewCloudSyslogSource(ctx, "cloudsyslogSource", &sumologic.CloudSyslogSourceArgs{
+//				Category:    pulumi.String("my/source/category"),
+//				CollectorId: collector.ID(),
+//				Description: pulumi.String("My description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -57,16 +60,20 @@ import (
 // Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
+//
+//	$ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
+//
 // ```
 //
-//  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
 type CloudSyslogSource struct {
 	pulumi.CustomResourceState
 
@@ -234,7 +241,7 @@ func (i *CloudSyslogSource) ToCloudSyslogSourceOutputWithContext(ctx context.Con
 // CloudSyslogSourceArrayInput is an input type that accepts CloudSyslogSourceArray and CloudSyslogSourceArrayOutput values.
 // You can construct a concrete instance of `CloudSyslogSourceArrayInput` via:
 //
-//          CloudSyslogSourceArray{ CloudSyslogSourceArgs{...} }
+//	CloudSyslogSourceArray{ CloudSyslogSourceArgs{...} }
 type CloudSyslogSourceArrayInput interface {
 	pulumi.Input
 
@@ -259,7 +266,7 @@ func (i CloudSyslogSourceArray) ToCloudSyslogSourceArrayOutputWithContext(ctx co
 // CloudSyslogSourceMapInput is an input type that accepts CloudSyslogSourceMap and CloudSyslogSourceMapOutput values.
 // You can construct a concrete instance of `CloudSyslogSourceMapInput` via:
 //
-//          CloudSyslogSourceMap{ "key": CloudSyslogSourceArgs{...} }
+//	CloudSyslogSourceMap{ "key": CloudSyslogSourceArgs{...} }
 type CloudSyslogSourceMapInput interface {
 	pulumi.Input
 

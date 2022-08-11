@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs : Pulumi.ResourceArgs
+    public sealed class GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs : global::Pulumi.ResourceArgs
     {
         [Input("arn")]
         public Input<string>? Arn { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs()
         {
         }
+        public static new GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs Empty => new GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs();
     }
 }

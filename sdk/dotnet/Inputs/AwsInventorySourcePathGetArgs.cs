@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class AwsInventorySourcePathGetArgs : Pulumi.ResourceArgs
+    public sealed class AwsInventorySourcePathGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
@@ -99,5 +99,6 @@ namespace Pulumi.SumoLogic.Inputs
         public AwsInventorySourcePathGetArgs()
         {
         }
+        public static new AwsInventorySourcePathGetArgs Empty => new AwsInventorySourcePathGetArgs();
     }
 }

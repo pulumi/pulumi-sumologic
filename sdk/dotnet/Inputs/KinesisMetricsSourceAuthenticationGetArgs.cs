@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class KinesisMetricsSourceAuthenticationGetArgs : Pulumi.ResourceArgs
+    public sealed class KinesisMetricsSourceAuthenticationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Your AWS access key if using type `S3BucketAuthentication`
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public KinesisMetricsSourceAuthenticationGetArgs()
         {
         }
+        public static new KinesisMetricsSourceAuthenticationGetArgs Empty => new KinesisMetricsSourceAuthenticationGetArgs();
     }
 }

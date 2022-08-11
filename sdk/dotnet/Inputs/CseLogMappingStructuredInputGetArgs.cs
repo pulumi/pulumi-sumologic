@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseLogMappingStructuredInputGetArgs : Pulumi.ResourceArgs
+    public sealed class CseLogMappingStructuredInputGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Event id pattern.
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseLogMappingStructuredInputGetArgs()
         {
         }
+        public static new CseLogMappingStructuredInputGetArgs Empty => new CseLogMappingStructuredInputGetArgs();
     }
 }

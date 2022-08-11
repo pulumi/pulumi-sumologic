@@ -13,29 +13,27 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration", new()
     ///     {
-    ///         var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration", new SumoLogic.CseInventoryEntityGroupConfigurationArgs
+    ///         Criticality = "HIGH",
+    ///         Description = "Inventory entity group description",
+    ///         Group = "admin",
+    ///         InventorySource = "Active Directory",
+    ///         InventoryType = "username",
+    ///         Suppressed = false,
+    ///         Tags = new[]
     ///         {
-    ///             Criticality = "HIGH",
-    ///             Description = "Inventory entity group description",
-    ///             Group = "admin",
-    ///             InventorySource = "Active Directory",
-    ///             InventoryType = "username",
-    ///             Suppressed = false,
-    ///             Tags = 
-    ///             {
-    ///                 "tag",
-    ///             },
-    ///         });
-    ///     }
+    ///             "tag",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration")]
-    public partial class CseInventoryEntityGroupConfiguration : Pulumi.CustomResource
+    public partial class CseInventoryEntityGroupConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -138,7 +136,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseInventoryEntityGroupConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class CseInventoryEntityGroupConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -194,9 +192,10 @@ namespace Pulumi.SumoLogic
         public CseInventoryEntityGroupConfigurationArgs()
         {
         }
+        public static new CseInventoryEntityGroupConfigurationArgs Empty => new CseInventoryEntityGroupConfigurationArgs();
     }
 
-    public sealed class CseInventoryEntityGroupConfigurationState : Pulumi.ResourceArgs
+    public sealed class CseInventoryEntityGroupConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -252,5 +251,6 @@ namespace Pulumi.SumoLogic
         public CseInventoryEntityGroupConfigurationState()
         {
         }
+        public static new CseInventoryEntityGroupConfigurationState Empty => new CseInventoryEntityGroupConfigurationState();
     }
 }

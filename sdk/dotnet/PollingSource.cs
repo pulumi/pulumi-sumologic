@@ -33,7 +33,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
     /// </summary>
     [SumoLogicResourceType("sumologic:index/pollingSource:PollingSource")]
-    public partial class PollingSource : Pulumi.CustomResource
+    public partial class PollingSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -163,7 +163,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class PollingSourceArgs : Pulumi.ResourceArgs
+    public sealed class PollingSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -261,9 +261,10 @@ namespace Pulumi.SumoLogic
         public PollingSourceArgs()
         {
         }
+        public static new PollingSourceArgs Empty => new PollingSourceArgs();
     }
 
-    public sealed class PollingSourceState : Pulumi.ResourceArgs
+    public sealed class PollingSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -367,5 +368,6 @@ namespace Pulumi.SumoLogic
         public PollingSourceState()
         {
         }
+        public static new PollingSourceState Empty => new PollingSourceState();
     }
 }

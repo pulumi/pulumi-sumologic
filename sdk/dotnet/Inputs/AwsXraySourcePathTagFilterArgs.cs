@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class AwsXraySourcePathTagFilterArgs : Pulumi.ResourceArgs
+    public sealed class AwsXraySourcePathTagFilterArgs : global::Pulumi.ResourceArgs
     {
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -32,5 +32,6 @@ namespace Pulumi.SumoLogic.Inputs
         public AwsXraySourcePathTagFilterArgs()
         {
         }
+        public static new AwsXraySourcePathTagFilterArgs Empty => new AwsXraySourcePathTagFilterArgs();
     }
 }

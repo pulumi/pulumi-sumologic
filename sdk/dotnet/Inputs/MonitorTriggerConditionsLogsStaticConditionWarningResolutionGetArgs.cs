@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsLogsStaticConditionWarningResolutionGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsLogsStaticConditionWarningResolutionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsLogsStaticConditionWarningResolutionGetArgs()
         {
         }
+        public static new MonitorTriggerConditionsLogsStaticConditionWarningResolutionGetArgs Empty => new MonitorTriggerConditionsLogsStaticConditionWarningResolutionGetArgs();
     }
 }

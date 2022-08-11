@@ -16,37 +16,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseEntityEntityGroupConfiguration(ctx, "entityEntityGroupConfiguration", &sumologic.CseEntityEntityGroupConfigurationArgs{
-// 			Criticality:     pulumi.String("HIGH"),
-// 			Description:     pulumi.String("Entity Group description"),
-// 			EntityNamespace: pulumi.String("namespace"),
-// 			EntityType:      pulumi.String("_hostname"),
-// 			Suffix:          pulumi.String("red.co"),
-// 			Suppressed:      pulumi.Bool(true),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("tag"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseEntityEntityGroupConfiguration(ctx, "entityEntityGroupConfiguration", &sumologic.CseEntityEntityGroupConfigurationArgs{
+//				Criticality:     pulumi.String("HIGH"),
+//				Description:     pulumi.String("Entity Group description"),
+//				EntityNamespace: pulumi.String("namespace"),
+//				EntityType:      pulumi.String("_hostname"),
+//				Suffix:          pulumi.String("red.co"),
+//				Suppressed:      pulumi.Bool(true),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Entity Entity Group Configuration can be imported using the field id, e.g.hcl
+// # Entity Entity Group Configuration can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration entity_entity_group_configuration id
+//
+//	$ pulumi import sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration entity_entity_group_configuration id
+//
 // ```
 type CseEntityEntityGroupConfiguration struct {
 	pulumi.CustomResourceState
@@ -219,7 +224,7 @@ func (i *CseEntityEntityGroupConfiguration) ToCseEntityEntityGroupConfigurationO
 // CseEntityEntityGroupConfigurationArrayInput is an input type that accepts CseEntityEntityGroupConfigurationArray and CseEntityEntityGroupConfigurationArrayOutput values.
 // You can construct a concrete instance of `CseEntityEntityGroupConfigurationArrayInput` via:
 //
-//          CseEntityEntityGroupConfigurationArray{ CseEntityEntityGroupConfigurationArgs{...} }
+//	CseEntityEntityGroupConfigurationArray{ CseEntityEntityGroupConfigurationArgs{...} }
 type CseEntityEntityGroupConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -244,7 +249,7 @@ func (i CseEntityEntityGroupConfigurationArray) ToCseEntityEntityGroupConfigurat
 // CseEntityEntityGroupConfigurationMapInput is an input type that accepts CseEntityEntityGroupConfigurationMap and CseEntityEntityGroupConfigurationMapOutput values.
 // You can construct a concrete instance of `CseEntityEntityGroupConfigurationMapInput` via:
 //
-//          CseEntityEntityGroupConfigurationMap{ "key": CseEntityEntityGroupConfigurationArgs{...} }
+//	CseEntityEntityGroupConfigurationMap{ "key": CseEntityEntityGroupConfigurationArgs{...} }
 type CseEntityEntityGroupConfigurationMapInput interface {
 	pulumi.Input
 

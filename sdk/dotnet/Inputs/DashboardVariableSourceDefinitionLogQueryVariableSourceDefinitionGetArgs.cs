@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionGetArgs()
         {
         }
+        public static new DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionGetArgs Empty => new DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionGetArgs();
     }
 }

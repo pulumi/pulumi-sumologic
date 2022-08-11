@@ -17,41 +17,40 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var s3Audit = new SumoLogic.S3AuditSource("s3Audit", new SumoLogic.S3AuditSourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.S3AuditSourceAuthenticationArgs
-    ///             {
-    ///                 AccessKey = "someKey",
-    ///                 SecretKey = "******",
-    ///                 Type = "S3BucketAuthentication",
-    ///             },
-    ///             Category = "aws/s3audit",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "AwsS3AuditBucket",
-    ///             Description = "My description",
-    ///             Path = new SumoLogic.Inputs.S3AuditSourcePathArgs
-    ///             {
-    ///                 BucketName = "Bucket1",
-    ///                 PathExpression = "*",
-    ///                 Type = "S3BucketPathExpression",
-    ///             },
-    ///             Paused = false,
-    ///             ScanInterval = 300000,
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var s3Audit = new SumoLogic.S3AuditSource("s3Audit", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.S3AuditSourceAuthenticationArgs
+    ///         {
+    ///             AccessKey = "someKey",
+    ///             SecretKey = "******",
+    ///             Type = "S3BucketAuthentication",
+    ///         },
+    ///         Category = "aws/s3audit",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "AwsS3AuditBucket",
+    ///         Description = "My description",
+    ///         Path = new SumoLogic.Inputs.S3AuditSourcePathArgs
+    ///         {
+    ///             BucketName = "Bucket1",
+    ///             PathExpression = "*",
+    ///             Type = "S3BucketPathExpression",
+    ///         },
+    ///         Paused = false,
+    ///         ScanInterval = 300000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +70,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/s3AuditSource:S3AuditSource")]
-    public partial class S3AuditSource : Pulumi.CustomResource
+    public partial class S3AuditSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -201,7 +200,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class S3AuditSourceArgs : Pulumi.ResourceArgs
+    public sealed class S3AuditSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -299,9 +298,10 @@ namespace Pulumi.SumoLogic
         public S3AuditSourceArgs()
         {
         }
+        public static new S3AuditSourceArgs Empty => new S3AuditSourceArgs();
     }
 
-    public sealed class S3AuditSourceState : Pulumi.ResourceArgs
+    public sealed class S3AuditSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -405,5 +405,6 @@ namespace Pulumi.SumoLogic
         public S3AuditSourceState()
         {
         }
+        public static new S3AuditSourceState Empty => new S3AuditSourceState();
     }
 }

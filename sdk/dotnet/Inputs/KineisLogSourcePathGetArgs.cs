@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class KineisLogSourcePathGetArgs : Pulumi.ResourceArgs
+    public sealed class KineisLogSourcePathGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket. This is needed if using type `KinesisLogPath`.
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public KineisLogSourcePathGetArgs()
         {
         }
+        public static new KineisLogSourcePathGetArgs Empty => new KineisLogSourcePathGetArgs();
     }
 }

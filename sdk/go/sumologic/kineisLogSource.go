@@ -21,60 +21,63 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogAccessKey", &sumologic.KineisLogSourceArgs{
-// 			Authentication: &KineisLogSourceAuthenticationArgs{
-// 				AccessKey: pulumi.String("someKey"),
-// 				SecretKey: pulumi.String("******"),
-// 				Type:      pulumi.String("S3BucketAuthentication"),
-// 			},
-// 			Category:    pulumi.String("prod/kinesis/log"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("KinesisLog"),
-// 			Description: pulumi.String("Description for Kinesis Log Source"),
-// 			Path: &KineisLogSourcePathArgs{
-// 				BucketName:     pulumi.String("testBucket"),
-// 				PathExpression: pulumi.String("http-endpoint-failed/*"),
-// 				ScanInterval:   pulumi.Int(30000),
-// 				Type:           pulumi.String("KinesisLogPath"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogRoleArn", &sumologic.KineisLogSourceArgs{
-// 			Authentication: &KineisLogSourceAuthenticationArgs{
-// 				RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
-// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
-// 			},
-// 			Category:    pulumi.String("prod/kinesis/log"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("KinesisLog"),
-// 			Description: pulumi.String("Description for Kinesis Log Source"),
-// 			Path: &KineisLogSourcePathArgs{
-// 				BucketName:     pulumi.String("testBucket"),
-// 				PathExpression: pulumi.String("http-endpoint-failed/*"),
-// 				ScanInterval:   pulumi.Int(30000),
-// 				Type:           pulumi.String("KinesisLogPath"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogAccessKey", &sumologic.KineisLogSourceArgs{
+//				Authentication: &KineisLogSourceAuthenticationArgs{
+//					AccessKey: pulumi.String("someKey"),
+//					SecretKey: pulumi.String("******"),
+//					Type:      pulumi.String("S3BucketAuthentication"),
+//				},
+//				Category:    pulumi.String("prod/kinesis/log"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("KinesisLog"),
+//				Description: pulumi.String("Description for Kinesis Log Source"),
+//				Path: &KineisLogSourcePathArgs{
+//					BucketName:     pulumi.String("testBucket"),
+//					PathExpression: pulumi.String("http-endpoint-failed/*"),
+//					ScanInterval:   pulumi.Int(30000),
+//					Type:           pulumi.String("KinesisLogPath"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogRoleArn", &sumologic.KineisLogSourceArgs{
+//				Authentication: &KineisLogSourceAuthenticationArgs{
+//					RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
+//					Type:    pulumi.String("AWSRoleBasedAuthentication"),
+//				},
+//				Category:    pulumi.String("prod/kinesis/log"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("KinesisLog"),
+//				Description: pulumi.String("Description for Kinesis Log Source"),
+//				Path: &KineisLogSourcePathArgs{
+//					BucketName:     pulumi.String("testBucket"),
+//					PathExpression: pulumi.String("http-endpoint-failed/*"),
+//					ScanInterval:   pulumi.Int(30000),
+//					Type:           pulumi.String("KinesisLogPath"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,16 +85,20 @@ import (
 // Kinesis Log sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test 123/456
+//
+//	$ pulumi import sumologic:index/kineisLogSource:KineisLogSource test 123/456
+//
 // ```
 //
-//  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
 type KineisLogSource struct {
 	pulumi.CustomResourceState
 
@@ -295,7 +302,7 @@ func (i *KineisLogSource) ToKineisLogSourceOutputWithContext(ctx context.Context
 // KineisLogSourceArrayInput is an input type that accepts KineisLogSourceArray and KineisLogSourceArrayOutput values.
 // You can construct a concrete instance of `KineisLogSourceArrayInput` via:
 //
-//          KineisLogSourceArray{ KineisLogSourceArgs{...} }
+//	KineisLogSourceArray{ KineisLogSourceArgs{...} }
 type KineisLogSourceArrayInput interface {
 	pulumi.Input
 
@@ -320,7 +327,7 @@ func (i KineisLogSourceArray) ToKineisLogSourceArrayOutputWithContext(ctx contex
 // KineisLogSourceMapInput is an input type that accepts KineisLogSourceMap and KineisLogSourceMapOutput values.
 // You can construct a concrete instance of `KineisLogSourceMapInput` via:
 //
-//          KineisLogSourceMap{ "key": KineisLogSourceArgs{...} }
+//	KineisLogSourceMap{ "key": KineisLogSourceArgs{...} }
 type KineisLogSourceMapInput interface {
 	pulumi.Input
 

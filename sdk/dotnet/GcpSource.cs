@@ -17,26 +17,25 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var gcpSource = new SumoLogic.GcpSource("gcpSource", new SumoLogic.GcpSourceArgs
-    ///         {
-    ///             Category = "gcp",
-    ///             CollectorId = collector.Id,
-    ///             Description = "My description",
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var gcpSource = new SumoLogic.GcpSource("gcpSource", new()
+    ///     {
+    ///         Category = "gcp",
+    ///         CollectorId = collector.Id,
+    ///         Description = "My description",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source [3]https://cloud.google.com/pubsub/docs/push
     /// </summary>
     [SumoLogicResourceType("sumologic:index/gcpSource:GcpSource")]
-    public partial class GcpSource : Pulumi.CustomResource
+    public partial class GcpSource : global::Pulumi.CustomResource
     {
         [Output("authentication")]
         public Output<Outputs.GcpSourceAuthentication?> Authentication { get; private set; } = null!;
@@ -168,7 +167,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class GcpSourceArgs : Pulumi.ResourceArgs
+    public sealed class GcpSourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("authentication")]
         public Input<Inputs.GcpSourceAuthenticationArgs>? Authentication { get; set; }
@@ -248,9 +247,10 @@ namespace Pulumi.SumoLogic
         public GcpSourceArgs()
         {
         }
+        public static new GcpSourceArgs Empty => new GcpSourceArgs();
     }
 
-    public sealed class GcpSourceState : Pulumi.ResourceArgs
+    public sealed class GcpSourceState : global::Pulumi.ResourceArgs
     {
         [Input("authentication")]
         public Input<Inputs.GcpSourceAuthenticationGetArgs>? Authentication { get; set; }
@@ -336,5 +336,6 @@ namespace Pulumi.SumoLogic
         public GcpSourceState()
         {
         }
+        public static new GcpSourceState Empty => new GcpSourceState();
     }
 }

@@ -15,24 +15,22 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
+    ///         Description = "Just testing this",
+    ///         Fields = 
     ///         {
-    ///             Description = "Just testing this",
-    ///             Fields = 
-    ///             {
-    ///                 { "environment", "production" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "environment", "production" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
     /// </summary>
     [SumoLogicResourceType("sumologic:index/collector:Collector")]
-    public partial class Collector : Pulumi.CustomResource
+    public partial class Collector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
@@ -128,7 +126,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CollectorArgs : Pulumi.ResourceArgs
+    public sealed class CollectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
@@ -169,9 +167,10 @@ namespace Pulumi.SumoLogic
         public CollectorArgs()
         {
         }
+        public static new CollectorArgs Empty => new CollectorArgs();
     }
 
-    public sealed class CollectorState : Pulumi.ResourceArgs
+    public sealed class CollectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
@@ -212,5 +211,6 @@ namespace Pulumi.SumoLogic
         public CollectorState()
         {
         }
+        public static new CollectorState Empty => new CollectorState();
     }
 }

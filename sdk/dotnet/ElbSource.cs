@@ -17,41 +17,40 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var elbSource = new SumoLogic.ElbSource("elbSource", new SumoLogic.ElbSourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.ElbSourceAuthenticationArgs
-    ///             {
-    ///                 AccessKey = "someKey",
-    ///                 SecretKey = "******",
-    ///                 Type = "S3BucketAuthentication",
-    ///             },
-    ///             Category = "aws/elb",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "AwsElbBucket",
-    ///             Description = "My description",
-    ///             Path = new SumoLogic.Inputs.ElbSourcePathArgs
-    ///             {
-    ///                 BucketName = "Bucket1",
-    ///                 PathExpression = "*",
-    ///                 Type = "S3BucketPathExpression",
-    ///             },
-    ///             Paused = false,
-    ///             ScanInterval = 300000,
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var elbSource = new SumoLogic.ElbSource("elbSource", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.ElbSourceAuthenticationArgs
+    ///         {
+    ///             AccessKey = "someKey",
+    ///             SecretKey = "******",
+    ///             Type = "S3BucketAuthentication",
+    ///         },
+    ///         Category = "aws/elb",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "AwsElbBucket",
+    ///         Description = "My description",
+    ///         Path = new SumoLogic.Inputs.ElbSourcePathArgs
+    ///         {
+    ///             BucketName = "Bucket1",
+    ///             PathExpression = "*",
+    ///             Type = "S3BucketPathExpression",
+    ///         },
+    ///         Paused = false,
+    ///         ScanInterval = 300000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +70,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Elastic-Load-Balancing-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/elbSource:ElbSource")]
-    public partial class ElbSource : Pulumi.CustomResource
+    public partial class ElbSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -201,7 +200,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class ElbSourceArgs : Pulumi.ResourceArgs
+    public sealed class ElbSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -299,9 +298,10 @@ namespace Pulumi.SumoLogic
         public ElbSourceArgs()
         {
         }
+        public static new ElbSourceArgs Empty => new ElbSourceArgs();
     }
 
-    public sealed class ElbSourceState : Pulumi.ResourceArgs
+    public sealed class ElbSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -405,5 +405,6 @@ namespace Pulumi.SumoLogic
         public ElbSourceState()
         {
         }
+        public static new ElbSourceState Empty => new ElbSourceState();
     }
 }

@@ -15,46 +15,44 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleHierarchy = new SumoLogic.Hierarchy("exampleHierarchy", new()
     ///     {
-    ///         var exampleHierarchy = new SumoLogic.Hierarchy("exampleHierarchy", new SumoLogic.HierarchyArgs
+    ///         Filter = new SumoLogic.Inputs.HierarchyFilterArgs
     ///         {
-    ///             Filter = new SumoLogic.Inputs.HierarchyFilterArgs
+    ///             Key = "_origin",
+    ///             Value = "kubernetes",
+    ///         },
+    ///         Levels = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.HierarchyLevelArgs
     ///             {
-    ///                 Key = "_origin",
-    ///                 Value = "kubernetes",
-    ///             },
-    ///             Levels = 
-    ///             {
-    ///                 new SumoLogic.Inputs.HierarchyLevelArgs
+    ///                 EntityType = "cluster",
+    ///                 NextLevel = new SumoLogic.Inputs.HierarchyLevelNextLevelArgs
     ///                 {
-    ///                     EntityType = "cluster",
-    ///                     NextLevel = new SumoLogic.Inputs.HierarchyLevelNextLevelArgs
+    ///                     EntityType = "node",
+    ///                 },
+    ///                 NextLevelsWithConditions = new[]
+    ///                 {
+    ///                     new SumoLogic.Inputs.HierarchyLevelNextLevelsWithConditionArgs
     ///                     {
-    ///                         EntityType = "node",
-    ///                     },
-    ///                     NextLevelsWithConditions = 
-    ///                     {
-    ///                         new SumoLogic.Inputs.HierarchyLevelNextLevelsWithConditionArgs
+    ///                         Condition = "testCondition",
+    ///                         Level = new SumoLogic.Inputs.HierarchyLevelNextLevelsWithConditionLevelArgs
     ///                         {
-    ///                             Condition = "testCondition",
-    ///                             Level = new SumoLogic.Inputs.HierarchyLevelNextLevelsWithConditionLevelArgs
-    ///                             {
-    ///                                 EntityType = "namespace",
-    ///                             },
+    ///                             EntityType = "namespace",
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +66,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Visualizations-and-Alerts/Explore
     /// </summary>
     [SumoLogicResourceType("sumologic:index/hierarchy:Hierarchy")]
-    public partial class Hierarchy : Pulumi.CustomResource
+    public partial class Hierarchy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional clause that a hierarchy requires to be matched.
@@ -129,7 +127,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class HierarchyArgs : Pulumi.ResourceArgs
+    public sealed class HierarchyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional clause that a hierarchy requires to be matched.
@@ -154,9 +152,10 @@ namespace Pulumi.SumoLogic
         public HierarchyArgs()
         {
         }
+        public static new HierarchyArgs Empty => new HierarchyArgs();
     }
 
-    public sealed class HierarchyState : Pulumi.ResourceArgs
+    public sealed class HierarchyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional clause that a hierarchy requires to be matched.
@@ -181,5 +180,6 @@ namespace Pulumi.SumoLogic
         public HierarchyState()
         {
         }
+        public static new HierarchyState Empty => new HierarchyState();
     }
 }

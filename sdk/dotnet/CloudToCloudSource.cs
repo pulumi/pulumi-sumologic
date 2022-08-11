@@ -26,37 +26,35 @@ namespace Pulumi.SumoLogic
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var oktaSource = new SumoLogic.CloudToCloudSource("oktaSource", new SumoLogic.CloudToCloudSourceArgs
-    ///         {
-    ///             CollectorId = collector.Id,
-    ///             SchemaRef = 
-    ///             {
-    ///                 { "type", "Okta" },
-    ///             },
-    ///             Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "name", "okta source" },
-    ///                 { "domain", "dev-xxx-admin.okta.com" },
-    ///                 { "collectAll", true },
-    ///                 { "apiKey", "xxx" },
-    ///                 { "fields", new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "_siemForward", false },
-    ///                 } },
-    ///                 { "pollingInterval", 30 },
-    ///             }),
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var oktaSource = new SumoLogic.CloudToCloudSource("oktaSource", new()
+    ///     {
+    ///         CollectorId = collector.Id,
+    ///         SchemaRef = 
+    ///         {
+    ///             { "type", "Okta" },
+    ///         },
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["name"] = "okta source",
+    ///             ["domain"] = "dev-xxx-admin.okta.com",
+    ///             ["collectAll"] = true,
+    ///             ["apiKey"] = "xxx",
+    ///             ["fields"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["_siemForward"] = false,
+    ///             },
+    ///             ["pollingInterval"] = 30,
+    ///         }),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +74,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cloudToCloudSource:CloudToCloudSource")]
-    public partial class CloudToCloudSource : Pulumi.CustomResource
+    public partial class CloudToCloudSource : global::Pulumi.CustomResource
     {
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
@@ -137,7 +135,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CloudToCloudSourceArgs : Pulumi.ResourceArgs
+    public sealed class CloudToCloudSourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
@@ -163,9 +161,10 @@ namespace Pulumi.SumoLogic
         public CloudToCloudSourceArgs()
         {
         }
+        public static new CloudToCloudSourceArgs Empty => new CloudToCloudSourceArgs();
     }
 
-    public sealed class CloudToCloudSourceState : Pulumi.ResourceArgs
+    public sealed class CloudToCloudSourceState : global::Pulumi.ResourceArgs
     {
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
@@ -191,5 +190,6 @@ namespace Pulumi.SumoLogic
         public CloudToCloudSourceState()
         {
         }
+        public static new CloudToCloudSourceState Empty => new CloudToCloudSourceState();
     }
 }

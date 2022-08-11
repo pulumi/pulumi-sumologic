@@ -19,7 +19,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetMyUserIdArgs : Pulumi.InvokeArgs
+    public sealed class GetMyUserIdArgs : global::Pulumi.InvokeArgs
     {
         [Input("id")]
         public string? Id { get; set; }
@@ -27,9 +27,10 @@ namespace Pulumi.SumoLogic
         public GetMyUserIdArgs()
         {
         }
+        public static new GetMyUserIdArgs Empty => new GetMyUserIdArgs();
     }
 
-    public sealed class GetMyUserIdInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMyUserIdInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -37,6 +38,7 @@ namespace Pulumi.SumoLogic
         public GetMyUserIdInvokeArgs()
         {
         }
+        public static new GetMyUserIdInvokeArgs Empty => new GetMyUserIdInvokeArgs();
     }
 
 

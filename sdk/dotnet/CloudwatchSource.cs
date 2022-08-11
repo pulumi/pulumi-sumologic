@@ -31,7 +31,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cloudwatchSource:CloudwatchSource")]
-    public partial class CloudwatchSource : Pulumi.CustomResource
+    public partial class CloudwatchSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -161,7 +161,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CloudwatchSourceArgs : Pulumi.ResourceArgs
+    public sealed class CloudwatchSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -259,9 +259,10 @@ namespace Pulumi.SumoLogic
         public CloudwatchSourceArgs()
         {
         }
+        public static new CloudwatchSourceArgs Empty => new CloudwatchSourceArgs();
     }
 
-    public sealed class CloudwatchSourceState : Pulumi.ResourceArgs
+    public sealed class CloudwatchSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -365,5 +366,6 @@ namespace Pulumi.SumoLogic
         public CloudwatchSourceState()
         {
         }
+        public static new CloudwatchSourceState Empty => new CloudwatchSourceState();
     }
 }

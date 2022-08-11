@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class ElbSourcePathCustomServiceArgs : Pulumi.ResourceArgs
+    public sealed class ElbSourcePathCustomServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefixes")]
         private InputList<string>? _prefixes;
@@ -26,5 +26,6 @@ namespace Pulumi.SumoLogic.Inputs
         public ElbSourcePathCustomServiceArgs()
         {
         }
+        public static new ElbSourcePathCustomServiceArgs Empty => new ElbSourcePathCustomServiceArgs();
     }
 }

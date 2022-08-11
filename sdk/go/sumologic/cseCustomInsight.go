@@ -19,43 +19,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseCustomInsight(ctx, "customInsight", &sumologic.CseCustomInsightArgs{
-// 			Description: pulumi.String("Insight description"),
-// 			Enabled:     pulumi.Bool(true),
-// 			Ordered:     pulumi.Bool(true),
-// 			RuleIds: pulumi.StringArray{
-// 				pulumi.String("MATCH-S00001"),
-// 				pulumi.String("THRESHOLD-U00005"),
-// 			},
-// 			Severity: pulumi.String("HIGH"),
-// 			SignalNames: pulumi.StringArray{
-// 				pulumi.String("Some Signal Name"),
-// 				pulumi.String("Wildcard Signal Name *"),
-// 			},
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("_mitreAttackTactic:TA0009"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseCustomInsight(ctx, "customInsight", &sumologic.CseCustomInsightArgs{
+//				Description: pulumi.String("Insight description"),
+//				Enabled:     pulumi.Bool(true),
+//				Ordered:     pulumi.Bool(true),
+//				RuleIds: pulumi.StringArray{
+//					pulumi.String("MATCH-S00001"),
+//					pulumi.String("THRESHOLD-U00005"),
+//				},
+//				Severity: pulumi.String("HIGH"),
+//				SignalNames: pulumi.StringArray{
+//					pulumi.String("Some Signal Name"),
+//					pulumi.String("Wildcard Signal Name *"),
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("_mitreAttackTactic:TA0009"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Custom Insights can be imported using the field id, e.g.hcl
+// # Custom Insights can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id
+//
+//	$ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id
+//
 // ```
 type CseCustomInsight struct {
 	pulumi.CustomResourceState
@@ -228,7 +233,7 @@ func (i *CseCustomInsight) ToCseCustomInsightOutputWithContext(ctx context.Conte
 // CseCustomInsightArrayInput is an input type that accepts CseCustomInsightArray and CseCustomInsightArrayOutput values.
 // You can construct a concrete instance of `CseCustomInsightArrayInput` via:
 //
-//          CseCustomInsightArray{ CseCustomInsightArgs{...} }
+//	CseCustomInsightArray{ CseCustomInsightArgs{...} }
 type CseCustomInsightArrayInput interface {
 	pulumi.Input
 
@@ -253,7 +258,7 @@ func (i CseCustomInsightArray) ToCseCustomInsightArrayOutputWithContext(ctx cont
 // CseCustomInsightMapInput is an input type that accepts CseCustomInsightMap and CseCustomInsightMapOutput values.
 // You can construct a concrete instance of `CseCustomInsightMapInput` via:
 //
-//          CseCustomInsightMap{ "key": CseCustomInsightArgs{...} }
+//	CseCustomInsightMap{ "key": CseCustomInsightArgs{...} }
 type CseCustomInsightMapInput interface {
 	pulumi.Input
 

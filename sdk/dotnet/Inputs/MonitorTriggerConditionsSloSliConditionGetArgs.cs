@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsSloSliConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsSloSliConditionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("critical")]
         public Input<Inputs.MonitorTriggerConditionsSloSliConditionCriticalGetArgs>? Critical { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsSloSliConditionGetArgs()
         {
         }
+        public static new MonitorTriggerConditionsSloSliConditionGetArgs Empty => new MonitorTriggerConditionsSloSliConditionGetArgs();
     }
 }

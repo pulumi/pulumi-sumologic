@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class SloIndicatorRequestBasedEvaluationGetArgs : Pulumi.ResourceArgs
+    public sealed class SloIndicatorRequestBasedEvaluationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
@@ -46,5 +46,6 @@ namespace Pulumi.SumoLogic.Inputs
         public SloIndicatorRequestBasedEvaluationGetArgs()
         {
         }
+        public static new SloIndicatorRequestBasedEvaluationGetArgs Empty => new SloIndicatorRequestBasedEvaluationGetArgs();
     }
 }

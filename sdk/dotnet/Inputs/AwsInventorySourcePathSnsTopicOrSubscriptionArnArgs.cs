@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs : Pulumi.ResourceArgs
+    public sealed class AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs : global::Pulumi.ResourceArgs
     {
         [Input("arn")]
         public Input<string>? Arn { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs()
         {
         }
+        public static new AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs Empty => new AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs();
     }
 }

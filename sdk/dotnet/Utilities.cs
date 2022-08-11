@@ -74,7 +74,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    internal sealed class SumoLogicResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class SumoLogicResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public SumoLogicResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

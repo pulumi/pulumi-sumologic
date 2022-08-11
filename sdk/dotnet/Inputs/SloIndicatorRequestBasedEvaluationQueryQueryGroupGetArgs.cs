@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class SloIndicatorRequestBasedEvaluationQueryQueryGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class SloIndicatorRequestBasedEvaluationQueryQueryGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field of log query output to compare against. To be used only for logs based data
@@ -40,5 +40,6 @@ namespace Pulumi.SumoLogic.Inputs
         public SloIndicatorRequestBasedEvaluationQueryQueryGroupGetArgs()
         {
         }
+        public static new SloIndicatorRequestBasedEvaluationQueryQueryGroupGetArgs Empty => new SloIndicatorRequestBasedEvaluationQueryQueryGroupGetArgs();
     }
 }

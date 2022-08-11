@@ -15,21 +15,19 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var insightsResolution = new SumoLogic.CseInsightsResolution("insightsResolution", new()
     ///     {
-    ///         var insightsResolution = new SumoLogic.CseInsightsResolution("insightsResolution", new SumoLogic.CseInsightsResolutionArgs
-    ///         {
-    ///             Description = "New description",
-    ///             Parent = "No Action",
-    ///         });
-    ///     }
+    ///         Description = "New description",
+    ///         Parent = "No Action",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseInsightsResolution:CseInsightsResolution")]
-    public partial class CseInsightsResolution : Pulumi.CustomResource
+    public partial class CseInsightsResolution : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the insights resolution.
@@ -105,7 +103,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseInsightsResolutionArgs : Pulumi.ResourceArgs
+    public sealed class CseInsightsResolutionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the insights resolution.
@@ -128,9 +126,10 @@ namespace Pulumi.SumoLogic
         public CseInsightsResolutionArgs()
         {
         }
+        public static new CseInsightsResolutionArgs Empty => new CseInsightsResolutionArgs();
     }
 
-    public sealed class CseInsightsResolutionState : Pulumi.ResourceArgs
+    public sealed class CseInsightsResolutionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the insights resolution.
@@ -153,5 +152,6 @@ namespace Pulumi.SumoLogic
         public CseInsightsResolutionState()
         {
         }
+        public static new CseInsightsResolutionState Empty => new CseInsightsResolutionState();
     }
 }

@@ -20,16 +20,20 @@ import (
 // GCP Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test 123/456
+//
+//	$ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test 123/456
+//
 // ```
 //
-//  GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 type GcpMetricsSource struct {
 	pulumi.CustomResourceState
 
@@ -257,7 +261,7 @@ func (i *GcpMetricsSource) ToGcpMetricsSourceOutputWithContext(ctx context.Conte
 // GcpMetricsSourceArrayInput is an input type that accepts GcpMetricsSourceArray and GcpMetricsSourceArrayOutput values.
 // You can construct a concrete instance of `GcpMetricsSourceArrayInput` via:
 //
-//          GcpMetricsSourceArray{ GcpMetricsSourceArgs{...} }
+//	GcpMetricsSourceArray{ GcpMetricsSourceArgs{...} }
 type GcpMetricsSourceArrayInput interface {
 	pulumi.Input
 
@@ -282,7 +286,7 @@ func (i GcpMetricsSourceArray) ToGcpMetricsSourceArrayOutputWithContext(ctx cont
 // GcpMetricsSourceMapInput is an input type that accepts GcpMetricsSourceMap and GcpMetricsSourceMapOutput values.
 // You can construct a concrete instance of `GcpMetricsSourceMapInput` via:
 //
-//          GcpMetricsSourceMap{ "key": GcpMetricsSourceArgs{...} }
+//	GcpMetricsSourceMap{ "key": GcpMetricsSourceArgs{...} }
 type GcpMetricsSourceMapInput interface {
 	pulumi.Input
 

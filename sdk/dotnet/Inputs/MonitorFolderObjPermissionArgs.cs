@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorFolderObjPermissionArgs : Pulumi.ResourceArgs
+    public sealed class MonitorFolderObjPermissionArgs : global::Pulumi.ResourceArgs
     {
         [Input("permissions", required: true)]
         private InputList<string>? _permissions;
@@ -41,5 +41,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorFolderObjPermissionArgs()
         {
         }
+        public static new MonitorFolderObjPermissionArgs Empty => new MonitorFolderObjPermissionArgs();
     }
 }

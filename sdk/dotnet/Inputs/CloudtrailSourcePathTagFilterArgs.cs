@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudtrailSourcePathTagFilterArgs : Pulumi.ResourceArgs
+    public sealed class CloudtrailSourcePathTagFilterArgs : global::Pulumi.ResourceArgs
     {
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -32,5 +32,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudtrailSourcePathTagFilterArgs()
         {
         }
+        public static new CloudtrailSourcePathTagFilterArgs Empty => new CloudtrailSourcePathTagFilterArgs();
     }
 }

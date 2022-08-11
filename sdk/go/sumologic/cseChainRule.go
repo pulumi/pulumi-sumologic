@@ -19,55 +19,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseChainRule(ctx, "chainRule", &sumologic.CseChainRuleArgs{
-// 			Description: pulumi.String("Signal description"),
-// 			Enabled:     pulumi.Bool(true),
-// 			EntitySelectors: CseChainRuleEntitySelectorArray{
-// 				&CseChainRuleEntitySelectorArgs{
-// 					EntityType: pulumi.String("_username"),
-// 					Expression: pulumi.String("user_username"),
-// 				},
-// 			},
-// 			ExpressionsAndLimits: CseChainRuleExpressionsAndLimitArray{
-// 				&CseChainRuleExpressionsAndLimitArgs{
-// 					Expression: pulumi.String("success = false"),
-// 					Limit:      pulumi.Int(5),
-// 				},
-// 				&CseChainRuleExpressionsAndLimitArgs{
-// 					Expression: pulumi.String("success = true"),
-// 					Limit:      pulumi.Int(1),
-// 				},
-// 			},
-// 			GroupByFields:     pulumi.StringArray{},
-// 			IsPrototype:       pulumi.Bool(false),
-// 			Ordered:           pulumi.Bool(true),
-// 			Severity:          pulumi.Int(5),
-// 			SummaryExpression: pulumi.String("Signal summary"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("_mitreAttackTactic:TA0009"),
-// 			},
-// 			WindowSize: pulumi.String("T30M"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseChainRule(ctx, "chainRule", &sumologic.CseChainRuleArgs{
+//				Description: pulumi.String("Signal description"),
+//				Enabled:     pulumi.Bool(true),
+//				EntitySelectors: CseChainRuleEntitySelectorArray{
+//					&CseChainRuleEntitySelectorArgs{
+//						EntityType: pulumi.String("_username"),
+//						Expression: pulumi.String("user_username"),
+//					},
+//				},
+//				ExpressionsAndLimits: CseChainRuleExpressionsAndLimitArray{
+//					&CseChainRuleExpressionsAndLimitArgs{
+//						Expression: pulumi.String("success = false"),
+//						Limit:      pulumi.Int(5),
+//					},
+//					&CseChainRuleExpressionsAndLimitArgs{
+//						Expression: pulumi.String("success = true"),
+//						Limit:      pulumi.Int(1),
+//					},
+//				},
+//				GroupByFields:     pulumi.StringArray{},
+//				IsPrototype:       pulumi.Bool(false),
+//				Ordered:           pulumi.Bool(true),
+//				Severity:          pulumi.Int(5),
+//				SummaryExpression: pulumi.String("Signal summary"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("_mitreAttackTactic:TA0009"),
+//				},
+//				WindowSize: pulumi.String("T30M"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Chain Rules can be imported using the field id, e.g.hcl
+// # Chain Rules can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
+//
+//	$ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
+//
 // ```
 type CseChainRule struct {
 	pulumi.CustomResourceState
@@ -283,7 +288,7 @@ func (i *CseChainRule) ToCseChainRuleOutputWithContext(ctx context.Context) CseC
 // CseChainRuleArrayInput is an input type that accepts CseChainRuleArray and CseChainRuleArrayOutput values.
 // You can construct a concrete instance of `CseChainRuleArrayInput` via:
 //
-//          CseChainRuleArray{ CseChainRuleArgs{...} }
+//	CseChainRuleArray{ CseChainRuleArgs{...} }
 type CseChainRuleArrayInput interface {
 	pulumi.Input
 
@@ -308,7 +313,7 @@ func (i CseChainRuleArray) ToCseChainRuleArrayOutputWithContext(ctx context.Cont
 // CseChainRuleMapInput is an input type that accepts CseChainRuleMap and CseChainRuleMapOutput values.
 // You can construct a concrete instance of `CseChainRuleMapInput` via:
 //
-//          CseChainRuleMap{ "key": CseChainRuleArgs{...} }
+//	CseChainRuleMap{ "key": CseChainRuleArgs{...} }
 type CseChainRuleMapInput interface {
 	pulumi.Input
 

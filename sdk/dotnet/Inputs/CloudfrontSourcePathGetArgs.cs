@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudfrontSourcePathGetArgs : Pulumi.ResourceArgs
+    public sealed class CloudfrontSourcePathGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
@@ -88,5 +88,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudfrontSourcePathGetArgs()
         {
         }
+        public static new CloudfrontSourcePathGetArgs Empty => new CloudfrontSourcePathGetArgs();
     }
 }

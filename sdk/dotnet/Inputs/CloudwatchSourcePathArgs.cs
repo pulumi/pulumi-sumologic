@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudwatchSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class CloudwatchSourcePathArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
@@ -90,5 +90,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudwatchSourcePathArgs()
         {
         }
+        public static new CloudwatchSourcePathArgs Empty => new CloudwatchSourcePathArgs();
     }
 }

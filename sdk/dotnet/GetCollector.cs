@@ -20,37 +20,33 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetCollector.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetCollector.InvokeAsync(new SumoLogic.GetCollectorArgs
-        ///         {
-        ///             Name = "MyCollector",
-        ///         }));
-        ///     }
+        ///         Name = "MyCollector",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var that = SumoLogic.GetCollector.Invoke(new()
         ///     {
-        ///         var that = Output.Create(SumoLogic.GetCollector.InvokeAsync(new SumoLogic.GetCollectorArgs
-        ///         {
-        ///             Id = 1234567890,
-        ///         }));
-        ///     }
+        ///         Id = 1234567890,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -80,37 +76,33 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetCollector.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetCollector.InvokeAsync(new SumoLogic.GetCollectorArgs
-        ///         {
-        ///             Name = "MyCollector",
-        ///         }));
-        ///     }
+        ///         Name = "MyCollector",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var that = SumoLogic.GetCollector.Invoke(new()
         ///     {
-        ///         var that = Output.Create(SumoLogic.GetCollector.InvokeAsync(new SumoLogic.GetCollectorArgs
-        ///         {
-        ///             Id = 1234567890,
-        ///         }));
-        ///     }
+        ///         Id = 1234567890,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -133,7 +125,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetCollectorArgs : Pulumi.InvokeArgs
+    public sealed class GetCollectorArgs : global::Pulumi.InvokeArgs
     {
         [Input("id")]
         public int? Id { get; set; }
@@ -144,9 +136,10 @@ namespace Pulumi.SumoLogic
         public GetCollectorArgs()
         {
         }
+        public static new GetCollectorArgs Empty => new GetCollectorArgs();
     }
 
-    public sealed class GetCollectorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCollectorInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("id")]
         public Input<int>? Id { get; set; }
@@ -157,6 +150,7 @@ namespace Pulumi.SumoLogic
         public GetCollectorInvokeArgs()
         {
         }
+        public static new GetCollectorInvokeArgs Empty => new GetCollectorInvokeArgs();
     }
 
 

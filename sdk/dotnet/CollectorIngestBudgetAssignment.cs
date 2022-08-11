@@ -11,7 +11,7 @@ namespace Pulumi.SumoLogic
 {
     [Obsolete(@"Use Collector.fields instead to assign an ingest bucket.")]
     [SumoLogicResourceType("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment")]
-    public partial class CollectorIngestBudgetAssignment : Pulumi.CustomResource
+    public partial class CollectorIngestBudgetAssignment : global::Pulumi.CustomResource
     {
         [Output("collectorId")]
         public Output<string> CollectorId { get; private set; } = null!;
@@ -63,7 +63,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CollectorIngestBudgetAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class CollectorIngestBudgetAssignmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("collectorId", required: true)]
         public Input<string> CollectorId { get; set; } = null!;
@@ -74,9 +74,10 @@ namespace Pulumi.SumoLogic
         public CollectorIngestBudgetAssignmentArgs()
         {
         }
+        public static new CollectorIngestBudgetAssignmentArgs Empty => new CollectorIngestBudgetAssignmentArgs();
     }
 
-    public sealed class CollectorIngestBudgetAssignmentState : Pulumi.ResourceArgs
+    public sealed class CollectorIngestBudgetAssignmentState : global::Pulumi.ResourceArgs
     {
         [Input("collectorId")]
         public Input<string>? CollectorId { get; set; }
@@ -87,5 +88,6 @@ namespace Pulumi.SumoLogic
         public CollectorIngestBudgetAssignmentState()
         {
         }
+        public static new CollectorIngestBudgetAssignmentState Empty => new CollectorIngestBudgetAssignmentState();
     }
 }

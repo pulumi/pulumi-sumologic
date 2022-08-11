@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardTimeRangeCompleteLiteralTimeRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardTimeRangeCompleteLiteralTimeRangeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("rangeName", required: true)]
         public Input<string> RangeName { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardTimeRangeCompleteLiteralTimeRangeGetArgs()
         {
         }
+        public static new DashboardTimeRangeCompleteLiteralTimeRangeGetArgs Empty => new DashboardTimeRangeCompleteLiteralTimeRangeGetArgs();
     }
 }

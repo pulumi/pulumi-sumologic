@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class GcpMetricsSourcePathCustomServiceGetArgs : Pulumi.ResourceArgs
+    public sealed class GcpMetricsSourcePathCustomServiceGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefixes")]
         private InputList<string>? _prefixes;
@@ -33,5 +33,6 @@ namespace Pulumi.SumoLogic.Inputs
         public GcpMetricsSourcePathCustomServiceGetArgs()
         {
         }
+        public static new GcpMetricsSourcePathCustomServiceGetArgs Empty => new GcpMetricsSourcePathCustomServiceGetArgs();
     }
 }

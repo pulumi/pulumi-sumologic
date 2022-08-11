@@ -17,41 +17,40 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var cloudfrontSource = new SumoLogic.CloudfrontSource("cloudfrontSource", new SumoLogic.CloudfrontSourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.CloudfrontSourceAuthenticationArgs
-    ///             {
-    ///                 AccessKey = "someKey",
-    ///                 SecretKey = "******",
-    ///                 Type = "S3BucketAuthentication",
-    ///             },
-    ///             Category = "aws/cloudfront",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "AwsCloudFrontBucket",
-    ///             Description = "My description",
-    ///             Path = new SumoLogic.Inputs.CloudfrontSourcePathArgs
-    ///             {
-    ///                 BucketName = "Bucket1",
-    ///                 PathExpression = "*",
-    ///                 Type = "S3BucketPathExpression",
-    ///             },
-    ///             Paused = false,
-    ///             ScanInterval = 300000,
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var cloudfrontSource = new SumoLogic.CloudfrontSource("cloudfrontSource", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.CloudfrontSourceAuthenticationArgs
+    ///         {
+    ///             AccessKey = "someKey",
+    ///             SecretKey = "******",
+    ///             Type = "S3BucketAuthentication",
+    ///         },
+    ///         Category = "aws/cloudfront",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "AwsCloudFrontBucket",
+    ///         Description = "My description",
+    ///         Path = new SumoLogic.Inputs.CloudfrontSourcePathArgs
+    ///         {
+    ///             BucketName = "Bucket1",
+    ///             PathExpression = "*",
+    ///             Type = "S3BucketPathExpression",
+    ///         },
+    ///         Paused = false,
+    ///         ScanInterval = 300000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +70,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudFront-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cloudfrontSource:CloudfrontSource")]
-    public partial class CloudfrontSource : Pulumi.CustomResource
+    public partial class CloudfrontSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -201,7 +200,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CloudfrontSourceArgs : Pulumi.ResourceArgs
+    public sealed class CloudfrontSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -299,9 +298,10 @@ namespace Pulumi.SumoLogic
         public CloudfrontSourceArgs()
         {
         }
+        public static new CloudfrontSourceArgs Empty => new CloudfrontSourceArgs();
     }
 
-    public sealed class CloudfrontSourceState : Pulumi.ResourceArgs
+    public sealed class CloudfrontSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -405,5 +405,6 @@ namespace Pulumi.SumoLogic
         public CloudfrontSourceState()
         {
         }
+        public static new CloudfrontSourceState Empty => new CloudfrontSourceState();
     }
 }

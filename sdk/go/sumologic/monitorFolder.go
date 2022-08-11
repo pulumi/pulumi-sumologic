@@ -22,32 +22,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewMonitorFolder(ctx, "tfMonitorFolder1", &sumologic.MonitorFolderArgs{
-// 			Description: pulumi.String("A folder for monitors managed by terraform."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewMonitorFolder(ctx, "tfMonitorFolder1", &sumologic.MonitorFolderArgs{
+//				Description: pulumi.String("A folder for monitors managed by terraform."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Monitor folders can be imported using the monitor folder identifier, such ashcl
+// # Monitor folders can be imported using the monitor folder identifier, such ashcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
+//
+//	$ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
+//
 // ```
 //
-//  [1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
+//	[1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
 type MonitorFolder struct {
 	pulumi.CustomResourceState
 
@@ -232,7 +237,7 @@ func (i *MonitorFolder) ToMonitorFolderOutputWithContext(ctx context.Context) Mo
 // MonitorFolderArrayInput is an input type that accepts MonitorFolderArray and MonitorFolderArrayOutput values.
 // You can construct a concrete instance of `MonitorFolderArrayInput` via:
 //
-//          MonitorFolderArray{ MonitorFolderArgs{...} }
+//	MonitorFolderArray{ MonitorFolderArgs{...} }
 type MonitorFolderArrayInput interface {
 	pulumi.Input
 
@@ -257,7 +262,7 @@ func (i MonitorFolderArray) ToMonitorFolderArrayOutputWithContext(ctx context.Co
 // MonitorFolderMapInput is an input type that accepts MonitorFolderMap and MonitorFolderMapOutput values.
 // You can construct a concrete instance of `MonitorFolderMapInput` via:
 //
-//          MonitorFolderMap{ "key": MonitorFolderArgs{...} }
+//	MonitorFolderMap{ "key": MonitorFolderArgs{...} }
 type MonitorFolderMapInput interface {
 	pulumi.Input
 

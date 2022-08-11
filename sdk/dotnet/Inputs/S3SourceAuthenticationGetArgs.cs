@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class S3SourceAuthenticationGetArgs : Pulumi.ResourceArgs
+    public sealed class S3SourceAuthenticationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Your AWS access key if using type `S3BucketAuthentication`.
@@ -72,5 +72,6 @@ namespace Pulumi.SumoLogic.Inputs
         public S3SourceAuthenticationGetArgs()
         {
         }
+        public static new S3SourceAuthenticationGetArgs Empty => new S3SourceAuthenticationGetArgs();
     }
 }

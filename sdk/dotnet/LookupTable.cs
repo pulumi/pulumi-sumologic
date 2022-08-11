@@ -15,40 +15,38 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var lookupTable = new SumoLogic.LookupTable("lookupTable", new()
     ///     {
-    ///         var lookupTable = new SumoLogic.LookupTable("lookupTable", new SumoLogic.LookupTableArgs
+    ///         Description = "some description",
+    ///         Fields = new[]
     ///         {
-    ///             Description = "some description",
-    ///             Fields = 
+    ///             new SumoLogic.Inputs.LookupTableFieldArgs
     ///             {
-    ///                 new SumoLogic.Inputs.LookupTableFieldArgs
-    ///                 {
-    ///                     FieldName = "FieldName1",
-    ///                     FieldType = "boolean",
-    ///                 },
-    ///                 new SumoLogic.Inputs.LookupTableFieldArgs
-    ///                 {
-    ///                     FieldName = "FieldName2",
-    ///                     FieldType = "string",
-    ///                 },
+    ///                 FieldName = "FieldName1",
+    ///                 FieldType = "boolean",
     ///             },
-    ///             ParentFolderId = "&lt;personal folder id&gt;",
-    ///             PrimaryKeys = 
+    ///             new SumoLogic.Inputs.LookupTableFieldArgs
     ///             {
-    ///                 "FieldName1",
+    ///                 FieldName = "FieldName2",
+    ///                 FieldType = "string",
     ///             },
-    ///             SizeLimitAction = "DeleteOldData",
-    ///             Ttl = 100,
-    ///         });
-    ///     }
+    ///         },
+    ///         ParentFolderId = "&lt;personal folder id&gt;",
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             "FieldName1",
+    ///         },
+    ///         SizeLimitAction = "DeleteOldData",
+    ///         Ttl = 100,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -67,7 +65,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/05Search/Lookup_Tables
     /// </summary>
     [SumoLogicResourceType("sumologic:index/lookupTable:LookupTable")]
-    public partial class LookupTable : Pulumi.CustomResource
+    public partial class LookupTable : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the lookup table.
@@ -152,7 +150,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class LookupTableArgs : Pulumi.ResourceArgs
+    public sealed class LookupTableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the lookup table.
@@ -208,9 +206,10 @@ namespace Pulumi.SumoLogic
         public LookupTableArgs()
         {
         }
+        public static new LookupTableArgs Empty => new LookupTableArgs();
     }
 
-    public sealed class LookupTableState : Pulumi.ResourceArgs
+    public sealed class LookupTableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the lookup table.
@@ -266,5 +265,6 @@ namespace Pulumi.SumoLogic
         public LookupTableState()
         {
         }
+        public static new LookupTableState Empty => new LookupTableState();
     }
 }

@@ -18,41 +18,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 			Fields: pulumi.StringMap{
-// 				"environment": pulumi.String("production"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//				Fields: pulumi.StringMap{
+//					"environment": pulumi.String("production"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Collectors can be imported using the collector id, e.g.hcl
+// # Collectors can be imported using the collector id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/collector:Collector test 1234567890
+//
+//	$ pulumi import sumologic:index/collector:Collector test 1234567890
+//
 // ```
 //
-//  Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl
+//	Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/collector:Collector test my_test_collector
+//
+//	$ pulumi import sumologic:index/collector:Collector test my_test_collector
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
+//	[1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
 type Collector struct {
 	pulumi.CustomResourceState
 
@@ -179,7 +186,7 @@ func (i *Collector) ToCollectorOutputWithContext(ctx context.Context) CollectorO
 // CollectorArrayInput is an input type that accepts CollectorArray and CollectorArrayOutput values.
 // You can construct a concrete instance of `CollectorArrayInput` via:
 //
-//          CollectorArray{ CollectorArgs{...} }
+//	CollectorArray{ CollectorArgs{...} }
 type CollectorArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +211,7 @@ func (i CollectorArray) ToCollectorArrayOutputWithContext(ctx context.Context) C
 // CollectorMapInput is an input type that accepts CollectorMap and CollectorMapOutput values.
 // You can construct a concrete instance of `CollectorMapInput` via:
 //
-//          CollectorMap{ "key": CollectorArgs{...} }
+//	CollectorMap{ "key": CollectorArgs{...} }
 type CollectorMapInput interface {
 	pulumi.Input
 

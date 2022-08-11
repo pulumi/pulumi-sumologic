@@ -15,22 +15,20 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fieldExtractionRule = new SumoLogic.FieldExtractionRule("fieldExtractionRule", new()
     ///     {
-    ///         var fieldExtractionRule = new SumoLogic.FieldExtractionRule("fieldExtractionRule", new SumoLogic.FieldExtractionRuleArgs
-    ///         {
-    ///             Enabled = true,
-    ///             ParseExpression = "csv _raw extract 1 as f1",
-    ///             Scope = "_sourceHost=127.0.0.1",
-    ///         });
-    ///     }
+    ///         Enabled = true,
+    ///         ParseExpression = "csv _raw extract 1 as f1",
+    ///         Scope = "_sourceHost=127.0.0.1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -49,7 +47,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Field-Extractions
     /// </summary>
     [SumoLogicResourceType("sumologic:index/fieldExtractionRule:FieldExtractionRule")]
-    public partial class FieldExtractionRule : Pulumi.CustomResource
+    public partial class FieldExtractionRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Is the field extraction rule enabled.
@@ -119,7 +117,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class FieldExtractionRuleArgs : Pulumi.ResourceArgs
+    public sealed class FieldExtractionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Is the field extraction rule enabled.
@@ -148,9 +146,10 @@ namespace Pulumi.SumoLogic
         public FieldExtractionRuleArgs()
         {
         }
+        public static new FieldExtractionRuleArgs Empty => new FieldExtractionRuleArgs();
     }
 
-    public sealed class FieldExtractionRuleState : Pulumi.ResourceArgs
+    public sealed class FieldExtractionRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Is the field extraction rule enabled.
@@ -179,5 +178,6 @@ namespace Pulumi.SumoLogic
         public FieldExtractionRuleState()
         {
         }
+        public static new FieldExtractionRuleState Empty => new FieldExtractionRuleState();
     }
 }

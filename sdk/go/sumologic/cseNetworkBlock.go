@@ -19,32 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseNetworkBlock(ctx, "networkBlock", &sumologic.CseNetworkBlockArgs{
-// 			AddressBlock:      pulumi.String("10.0.1.0/26"),
-// 			Internal:          pulumi.Bool(true),
-// 			Label:             pulumi.String("network block from terraform"),
-// 			SuppressesSignals: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseNetworkBlock(ctx, "networkBlock", &sumologic.CseNetworkBlockArgs{
+//				AddressBlock:      pulumi.String("10.0.1.0/26"),
+//				Internal:          pulumi.Bool(true),
+//				Label:             pulumi.String("network block from terraform"),
+//				SuppressesSignals: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Network Block can be imported using the field id, e.g.hcl
+// # Network Block can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
+//
+//	$ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
+//
 // ```
 type CseNetworkBlock struct {
 	pulumi.CustomResourceState
@@ -165,7 +170,7 @@ func (i *CseNetworkBlock) ToCseNetworkBlockOutputWithContext(ctx context.Context
 // CseNetworkBlockArrayInput is an input type that accepts CseNetworkBlockArray and CseNetworkBlockArrayOutput values.
 // You can construct a concrete instance of `CseNetworkBlockArrayInput` via:
 //
-//          CseNetworkBlockArray{ CseNetworkBlockArgs{...} }
+//	CseNetworkBlockArray{ CseNetworkBlockArgs{...} }
 type CseNetworkBlockArrayInput interface {
 	pulumi.Input
 
@@ -190,7 +195,7 @@ func (i CseNetworkBlockArray) ToCseNetworkBlockArrayOutputWithContext(ctx contex
 // CseNetworkBlockMapInput is an input type that accepts CseNetworkBlockMap and CseNetworkBlockMapOutput values.
 // You can construct a concrete instance of `CseNetworkBlockMapInput` via:
 //
-//          CseNetworkBlockMap{ "key": CseNetworkBlockArgs{...} }
+//	CseNetworkBlockMap{ "key": CseNetworkBlockArgs{...} }
 type CseNetworkBlockMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class PollingSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class PollingSourcePathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
@@ -69,5 +69,6 @@ namespace Pulumi.SumoLogic.Inputs
         public PollingSourcePathArgs()
         {
         }
+        public static new PollingSourcePathArgs Empty => new PollingSourcePathArgs();
     }
 }

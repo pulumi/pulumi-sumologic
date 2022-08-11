@@ -15,21 +15,19 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var field = new SumoLogic.Field("field", new()
     ///     {
-    ///         var field = new SumoLogic.Field("field", new SumoLogic.FieldArgs
-    ///         {
-    ///             DataType = "Int",
-    ///             FieldName = "int_field_1",
-    ///         });
-    ///     }
+    ///         DataType = "Int",
+    ///         FieldName = "int_field_1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Fields
     /// </summary>
     [SumoLogicResourceType("sumologic:index/field:Field")]
-    public partial class Field : Pulumi.CustomResource
+    public partial class Field : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
@@ -113,7 +111,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class FieldArgs : Pulumi.ResourceArgs
+    public sealed class FieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
@@ -136,9 +134,10 @@ namespace Pulumi.SumoLogic
         public FieldArgs()
         {
         }
+        public static new FieldArgs Empty => new FieldArgs();
     }
 
-    public sealed class FieldState : Pulumi.ResourceArgs
+    public sealed class FieldState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
@@ -167,5 +166,6 @@ namespace Pulumi.SumoLogic
         public FieldState()
         {
         }
+        public static new FieldState Empty => new FieldState();
     }
 }

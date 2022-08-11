@@ -15,43 +15,43 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleRole = new SumoLogic.Role("exampleRole", new()
     ///     {
-    ///         var exampleRole = new SumoLogic.Role("exampleRole", new SumoLogic.RoleArgs
-    ///         {
-    ///             Description = "Testing resource sumologic_role",
-    ///         });
-    ///         var exampleUser1 = new SumoLogic.User("exampleUser1", new SumoLogic.UserArgs
-    ///         {
-    ///             FirstName = "Jon",
-    ///             LastName = "Doe",
-    ///             Email = "jon.doe@gmail.com",
-    ///             IsActive = true,
-    ///             RoleIds = 
-    ///             {
-    ///                 exampleRole.Id,
-    ///             },
-    ///             TransferTo = "",
-    ///         });
-    ///         var exampleUser2 = new SumoLogic.User("exampleUser2", new SumoLogic.UserArgs
-    ///         {
-    ///             FirstName = "Jane",
-    ///             LastName = "Smith",
-    ///             Email = "jane.smith@gmail.com",
-    ///             RoleIds = 
-    ///             {
-    ///                 exampleRole.Id,
-    ///             },
-    ///             TransferTo = exampleUser1.Id,
-    ///         });
-    ///     }
+    ///         Description = "Testing resource sumologic_role",
+    ///     });
     /// 
-    /// }
+    ///     var exampleUser1 = new SumoLogic.User("exampleUser1", new()
+    ///     {
+    ///         FirstName = "Jon",
+    ///         LastName = "Doe",
+    ///         Email = "jon.doe@gmail.com",
+    ///         IsActive = true,
+    ///         RoleIds = new[]
+    ///         {
+    ///             exampleRole.Id,
+    ///         },
+    ///         TransferTo = "",
+    ///     });
+    /// 
+    ///     var exampleUser2 = new SumoLogic.User("exampleUser2", new()
+    ///     {
+    ///         FirstName = "Jane",
+    ///         LastName = "Smith",
+    ///         Email = "jane.smith@gmail.com",
+    ///         RoleIds = new[]
+    ///         {
+    ///             exampleRole.Id,
+    ///         },
+    ///         TransferTo = exampleUser1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +65,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
     /// </summary>
     [SumoLogicResourceType("sumologic:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Email of the user.
@@ -147,7 +147,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email of the user.
@@ -194,9 +194,10 @@ namespace Pulumi.SumoLogic
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email of the user.
@@ -243,5 +244,6 @@ namespace Pulumi.SumoLogic
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

@@ -15,61 +15,59 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var aggregationRule = new SumoLogic.CseAggregationRule("aggregationRule", new()
     ///     {
-    ///         var aggregationRule = new SumoLogic.CseAggregationRule("aggregationRule", new SumoLogic.CseAggregationRuleArgs
+    ///         AggregationFunctions = new[]
     ///         {
-    ///             AggregationFunctions = 
+    ///             new SumoLogic.Inputs.CseAggregationRuleAggregationFunctionArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseAggregationRuleAggregationFunctionArgs
+    ///                 Arguments = new[]
     ///                 {
-    ///                     Arguments = 
-    ///                     {
-    ///                         "metadata_deviceEventId",
-    ///                     },
-    ///                     Function = "count_distinct",
-    ///                     Name = "distinct_eventid_count",
+    ///                     "metadata_deviceEventId",
     ///                 },
+    ///                 Function = "count_distinct",
+    ///                 Name = "distinct_eventid_count",
     ///             },
-    ///             DescriptionExpression = "Signal description",
-    ///             Enabled = true,
-    ///             EntitySelectors = 
+    ///         },
+    ///         DescriptionExpression = "Signal description",
+    ///         Enabled = true,
+    ///         EntitySelectors = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.CseAggregationRuleEntitySelectorArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseAggregationRuleEntitySelectorArgs
-    ///                 {
-    ///                     EntityType = "_ip",
-    ///                     Expression = "srcDevice_ip",
-    ///                 },
+    ///                 EntityType = "_ip",
+    ///                 Expression = "srcDevice_ip",
     ///             },
-    ///             GroupByEntity = true,
-    ///             GroupByFields = 
-    ///             {
-    ///                 "dstDevice_hostname",
-    ///             },
-    ///             IsPrototype = false,
-    ///             MatchExpression = "objectType = \"Network\"",
-    ///             NameExpression = "Signal name",
-    ///             SeverityMapping = new SumoLogic.Inputs.CseAggregationRuleSeverityMappingArgs
-    ///             {
-    ///                 Default = 5,
-    ///                 Type = "constant",
-    ///             },
-    ///             SummaryExpression = "Signal summary",
-    ///             Tags = 
-    ///             {
-    ///                 "_mitreAttackTactic:TA0009",
-    ///             },
-    ///             TriggerExpression = "distinct_eventid_count &gt; 5",
-    ///             WindowSize = "T30M",
-    ///         });
-    ///     }
+    ///         },
+    ///         GroupByEntity = true,
+    ///         GroupByFields = new[]
+    ///         {
+    ///             "dstDevice_hostname",
+    ///         },
+    ///         IsPrototype = false,
+    ///         MatchExpression = "objectType = \"Network\"",
+    ///         NameExpression = "Signal name",
+    ///         SeverityMapping = new SumoLogic.Inputs.CseAggregationRuleSeverityMappingArgs
+    ///         {
+    ///             Default = 5,
+    ///             Type = "constant",
+    ///         },
+    ///         SummaryExpression = "Signal summary",
+    ///         Tags = new[]
+    ///         {
+    ///             "_mitreAttackTactic:TA0009",
+    ///         },
+    ///         TriggerExpression = "distinct_eventid_count &gt; 5",
+    ///         WindowSize = "T30M",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +79,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseAggregationRule:CseAggregationRule")]
-    public partial class CseAggregationRule : Pulumi.CustomResource
+    public partial class CseAggregationRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// One or more named aggregation functions
@@ -217,7 +215,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseAggregationRuleArgs : Pulumi.ResourceArgs
+    public sealed class CseAggregationRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("aggregationFunctions", required: true)]
         private InputList<Inputs.CseAggregationRuleAggregationFunctionArgs>? _aggregationFunctions;
@@ -336,9 +334,10 @@ namespace Pulumi.SumoLogic
         public CseAggregationRuleArgs()
         {
         }
+        public static new CseAggregationRuleArgs Empty => new CseAggregationRuleArgs();
     }
 
-    public sealed class CseAggregationRuleState : Pulumi.ResourceArgs
+    public sealed class CseAggregationRuleState : global::Pulumi.ResourceArgs
     {
         [Input("aggregationFunctions")]
         private InputList<Inputs.CseAggregationRuleAggregationFunctionGetArgs>? _aggregationFunctions;
@@ -457,5 +456,6 @@ namespace Pulumi.SumoLogic
         public CseAggregationRuleState()
         {
         }
+        public static new CseAggregationRuleState Empty => new CseAggregationRuleState();
     }
 }

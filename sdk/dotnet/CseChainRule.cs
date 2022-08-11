@@ -15,52 +15,50 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var chainRule = new SumoLogic.CseChainRule("chainRule", new()
     ///     {
-    ///         var chainRule = new SumoLogic.CseChainRule("chainRule", new SumoLogic.CseChainRuleArgs
+    ///         Description = "Signal description",
+    ///         Enabled = true,
+    ///         EntitySelectors = new[]
     ///         {
-    ///             Description = "Signal description",
-    ///             Enabled = true,
-    ///             EntitySelectors = 
+    ///             new SumoLogic.Inputs.CseChainRuleEntitySelectorArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseChainRuleEntitySelectorArgs
-    ///                 {
-    ///                     EntityType = "_username",
-    ///                     Expression = "user_username",
-    ///                 },
+    ///                 EntityType = "_username",
+    ///                 Expression = "user_username",
     ///             },
-    ///             ExpressionsAndLimits = 
+    ///         },
+    ///         ExpressionsAndLimits = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.CseChainRuleExpressionsAndLimitArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseChainRuleExpressionsAndLimitArgs
-    ///                 {
-    ///                     Expression = "success = false",
-    ///                     Limit = 5,
-    ///                 },
-    ///                 new SumoLogic.Inputs.CseChainRuleExpressionsAndLimitArgs
-    ///                 {
-    ///                     Expression = "success = true",
-    ///                     Limit = 1,
-    ///                 },
+    ///                 Expression = "success = false",
+    ///                 Limit = 5,
     ///             },
-    ///             GroupByFields = {},
-    ///             IsPrototype = false,
-    ///             Ordered = true,
-    ///             Severity = 5,
-    ///             SummaryExpression = "Signal summary",
-    ///             Tags = 
+    ///             new SumoLogic.Inputs.CseChainRuleExpressionsAndLimitArgs
     ///             {
-    ///                 "_mitreAttackTactic:TA0009",
+    ///                 Expression = "success = true",
+    ///                 Limit = 1,
     ///             },
-    ///             WindowSize = "T30M",
-    ///         });
-    ///     }
+    ///         },
+    ///         GroupByFields = new[] {},
+    ///         IsPrototype = false,
+    ///         Ordered = true,
+    ///         Severity = 5,
+    ///         SummaryExpression = "Signal summary",
+    ///         Tags = new[]
+    ///         {
+    ///             "_mitreAttackTactic:TA0009",
+    ///         },
+    ///         WindowSize = "T30M",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +70,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseChainRule:CseChainRule")]
-    public partial class CseChainRule : Pulumi.CustomResource
+    public partial class CseChainRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the generated Signals
@@ -190,7 +188,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseChainRuleArgs : Pulumi.ResourceArgs
+    public sealed class CseChainRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the generated Signals
@@ -291,9 +289,10 @@ namespace Pulumi.SumoLogic
         public CseChainRuleArgs()
         {
         }
+        public static new CseChainRuleArgs Empty => new CseChainRuleArgs();
     }
 
-    public sealed class CseChainRuleState : Pulumi.ResourceArgs
+    public sealed class CseChainRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the generated Signals
@@ -394,5 +393,6 @@ namespace Pulumi.SumoLogic
         public CseChainRuleState()
         {
         }
+        public static new CseChainRuleState Empty => new CseChainRuleState();
     }
 }

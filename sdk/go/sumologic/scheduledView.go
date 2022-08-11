@@ -18,10 +18,12 @@ import (
 // Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2]. hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/scheduledView:ScheduledView failed_connections 1234567890
+//
+//	$ pulumi import sumologic:index/scheduledView:ScheduledView failed_connections 1234567890
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Scheduled-Views [2]https://api.sumologic.com/docs/#operation/listScheduledViews
+//	[1]https://help.sumologic.com/Manage/Scheduled-Views [2]https://api.sumologic.com/docs/#operation/listScheduledViews
 type ScheduledView struct {
 	pulumi.CustomResourceState
 
@@ -177,7 +179,7 @@ func (i *ScheduledView) ToScheduledViewOutputWithContext(ctx context.Context) Sc
 // ScheduledViewArrayInput is an input type that accepts ScheduledViewArray and ScheduledViewArrayOutput values.
 // You can construct a concrete instance of `ScheduledViewArrayInput` via:
 //
-//          ScheduledViewArray{ ScheduledViewArgs{...} }
+//	ScheduledViewArray{ ScheduledViewArgs{...} }
 type ScheduledViewArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +204,7 @@ func (i ScheduledViewArray) ToScheduledViewArrayOutputWithContext(ctx context.Co
 // ScheduledViewMapInput is an input type that accepts ScheduledViewMap and ScheduledViewMapOutput values.
 // You can construct a concrete instance of `ScheduledViewMapInput` via:
 //
-//          ScheduledViewMap{ "key": ScheduledViewArgs{...} }
+//	ScheduledViewMap{ "key": ScheduledViewArgs{...} }
 type ScheduledViewMapInput interface {
 	pulumi.Input
 

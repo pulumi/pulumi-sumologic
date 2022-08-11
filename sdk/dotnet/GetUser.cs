@@ -17,37 +17,33 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetUser.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
-        ///         {
-        ///             Id = "1234567890",
-        ///         }));
-        ///     }
+        ///         Id = "1234567890",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var that = SumoLogic.GetUser.Invoke(new()
         ///     {
-        ///         var that = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
-        ///         {
-        ///             Email = "user@example.com",
-        ///         }));
-        ///     }
+        ///         Email = "user@example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -75,37 +71,33 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetUser.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
-        ///         {
-        ///             Id = "1234567890",
-        ///         }));
-        ///     }
+        ///         Id = "1234567890",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var that = SumoLogic.GetUser.Invoke(new()
         ///     {
-        ///         var that = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
-        ///         {
-        ///             Email = "user@example.com",
-        ///         }));
-        ///     }
+        ///         Email = "user@example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -129,7 +121,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetUserArgs : Pulumi.InvokeArgs
+    public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         [Input("email")]
         public string? Email { get; set; }
@@ -140,9 +132,10 @@ namespace Pulumi.SumoLogic
         public GetUserArgs()
         {
         }
+        public static new GetUserArgs Empty => new GetUserArgs();
     }
 
-    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -153,6 +146,7 @@ namespace Pulumi.SumoLogic
         public GetUserInvokeArgs()
         {
         }
+        public static new GetUserInvokeArgs Empty => new GetUserInvokeArgs();
     }
 
 

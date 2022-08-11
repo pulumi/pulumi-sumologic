@@ -15,27 +15,26 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var connection = new SumoLogic.Connection("connection", new()
     ///     {
-    ///         var connection = new SumoLogic.Connection("connection", new SumoLogic.ConnectionArgs
+    ///         Type = "WebhookConnection",
+    ///         Description = "My description",
+    ///         Url = "https://connection-endpoint.com",
+    ///         Headers = 
     ///         {
-    ///             Type = "WebhookConnection",
-    ///             Description = "My description",
-    ///             Url = "https://connection-endpoint.com",
-    ///             Headers = 
-    ///             {
-    ///                 { "X-Header", "my-header" },
-    ///             },
-    ///             CustomHeaders = 
-    ///             {
-    ///                 { "X-custom", "my-custom-header" },
-    ///             },
-    ///             DefaultPayload = @"{
+    ///             { "X-Header", "my-header" },
+    ///         },
+    ///         CustomHeaders = 
+    ///         {
+    ///             { "X-custom", "my-custom-header" },
+    ///         },
+    ///         DefaultPayload = @"{
     ///   ""client"" : ""Sumo Logic"",
     ///   ""eventType"" : ""{{Name}}"",
     ///   ""description"" : ""{{Description}}"",
@@ -44,11 +43,10 @@ namespace Pulumi.SumoLogic
     ///   ""search_results"" : ""{{AggregateResultsJson}}""
     /// }
     /// ",
-    ///             WebhookType = "Webhook",
-    ///         });
-    ///     }
+    ///         WebhookType = "Webhook",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
@@ -160,7 +158,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
@@ -231,9 +229,10 @@ namespace Pulumi.SumoLogic
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
@@ -304,5 +303,6 @@ namespace Pulumi.SumoLogic
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

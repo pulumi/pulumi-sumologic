@@ -28,29 +28,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewPolicies(ctx, "examplePolicies", &sumologic.PoliciesArgs{
-// 			Audit:                              pulumi.Bool(false),
-// 			DataAccessLevel:                    pulumi.Bool(false),
-// 			MaxUserSessionTimeout:              pulumi.String("7d"),
-// 			SearchAudit:                        pulumi.Bool(false),
-// 			ShareDashboardsOutsideOrganization: pulumi.Bool(false),
-// 			UserConcurrentSessionsLimit: &PoliciesUserConcurrentSessionsLimitArgs{
-// 				Enabled:               pulumi.Bool(false),
-// 				MaxConcurrentSessions: pulumi.Int(100),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewPolicies(ctx, "examplePolicies", &sumologic.PoliciesArgs{
+//				Audit:                              pulumi.Bool(false),
+//				DataAccessLevel:                    pulumi.Bool(false),
+//				MaxUserSessionTimeout:              pulumi.String("7d"),
+//				SearchAudit:                        pulumi.Bool(false),
+//				ShareDashboardsOutsideOrganization: pulumi.Bool(false),
+//				UserConcurrentSessionsLimit: &PoliciesUserConcurrentSessionsLimitArgs{
+//					Enabled:               pulumi.Bool(false),
+//					MaxConcurrentSessions: pulumi.Int(100),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,10 +61,12 @@ import (
 // Policies can be imported using the id `org-policies`. hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/policies:Policies example_policies org-policies
+//
+//	$ pulumi import sumologic:index/policies:Policies example_policies org-policies
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Security/Audit-Index [2]https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards [3]https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout [4]https://help.sumologic.com/Manage/Security/Search_Audit_Index [5]https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org [6]https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions
+//	[1]https://help.sumologic.com/Manage/Security/Audit-Index [2]https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards [3]https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout [4]https://help.sumologic.com/Manage/Security/Search_Audit_Index [5]https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org [6]https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions
 type Policies struct {
 	pulumi.CustomResourceState
 
@@ -216,7 +221,7 @@ func (i *Policies) ToPoliciesOutputWithContext(ctx context.Context) PoliciesOutp
 // PoliciesArrayInput is an input type that accepts PoliciesArray and PoliciesArrayOutput values.
 // You can construct a concrete instance of `PoliciesArrayInput` via:
 //
-//          PoliciesArray{ PoliciesArgs{...} }
+//	PoliciesArray{ PoliciesArgs{...} }
 type PoliciesArrayInput interface {
 	pulumi.Input
 
@@ -241,7 +246,7 @@ func (i PoliciesArray) ToPoliciesArrayOutputWithContext(ctx context.Context) Pol
 // PoliciesMapInput is an input type that accepts PoliciesMap and PoliciesMapOutput values.
 // You can construct a concrete instance of `PoliciesMapInput` via:
 //
-//          PoliciesMap{ "key": PoliciesArgs{...} }
+//	PoliciesMap{ "key": PoliciesArgs{...} }
 type PoliciesMapInput interface {
 	pulumi.Input
 

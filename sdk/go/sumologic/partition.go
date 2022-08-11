@@ -23,10 +23,12 @@ import (
 // Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2]. hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/partition:Partition partition 1234567890
+//
+//	$ pulumi import sumologic:index/partition:Partition partition 1234567890
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Partitions [2]https://api.sumologic.com/docs/#operation/listPartitions
+//	[1]https://help.sumologic.com/Manage/Partitions [2]https://api.sumologic.com/docs/#operation/listPartitions
 type Partition struct {
 	pulumi.CustomResourceState
 
@@ -175,7 +177,7 @@ func (i *Partition) ToPartitionOutputWithContext(ctx context.Context) PartitionO
 // PartitionArrayInput is an input type that accepts PartitionArray and PartitionArrayOutput values.
 // You can construct a concrete instance of `PartitionArrayInput` via:
 //
-//          PartitionArray{ PartitionArgs{...} }
+//	PartitionArray{ PartitionArgs{...} }
 type PartitionArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +202,7 @@ func (i PartitionArray) ToPartitionArrayOutputWithContext(ctx context.Context) P
 // PartitionMapInput is an input type that accepts PartitionMap and PartitionMapOutput values.
 // You can construct a concrete instance of `PartitionMapInput` via:
 //
-//          PartitionMap{ "key": PartitionArgs{...} }
+//	PartitionMap{ "key": PartitionArgs{...} }
 type PartitionMapInput interface {
 	pulumi.Input
 

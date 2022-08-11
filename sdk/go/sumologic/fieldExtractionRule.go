@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewFieldExtractionRule(ctx, "fieldExtractionRule", &sumologic.FieldExtractionRuleArgs{
-// 			Enabled:         pulumi.Bool(true),
-// 			ParseExpression: pulumi.String("csv _raw extract 1 as f1"),
-// 			Scope:           pulumi.String("_sourceHost=127.0.0.1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewFieldExtractionRule(ctx, "fieldExtractionRule", &sumologic.FieldExtractionRuleArgs{
+//				Enabled:         pulumi.Bool(true),
+//				ParseExpression: pulumi.String("csv _raw extract 1 as f1"),
+//				Scope:           pulumi.String("_sourceHost=127.0.0.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -45,13 +48,15 @@ import (
 //
 // ## Import
 //
-// Extraction Rules can be imported using the extraction rule id, e.g.hcl
+// # Extraction Rules can be imported using the extraction rule id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
+//
+//	$ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Field-Extractions
+//	[1]https://help.sumologic.com/Manage/Field-Extractions
 type FieldExtractionRule struct {
 	pulumi.CustomResourceState
 
@@ -177,7 +182,7 @@ func (i *FieldExtractionRule) ToFieldExtractionRuleOutputWithContext(ctx context
 // FieldExtractionRuleArrayInput is an input type that accepts FieldExtractionRuleArray and FieldExtractionRuleArrayOutput values.
 // You can construct a concrete instance of `FieldExtractionRuleArrayInput` via:
 //
-//          FieldExtractionRuleArray{ FieldExtractionRuleArgs{...} }
+//	FieldExtractionRuleArray{ FieldExtractionRuleArgs{...} }
 type FieldExtractionRuleArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +207,7 @@ func (i FieldExtractionRuleArray) ToFieldExtractionRuleArrayOutputWithContext(ct
 // FieldExtractionRuleMapInput is an input type that accepts FieldExtractionRuleMap and FieldExtractionRuleMapOutput values.
 // You can construct a concrete instance of `FieldExtractionRuleMapInput` via:
 //
-//          FieldExtractionRuleMap{ "key": FieldExtractionRuleArgs{...} }
+//	FieldExtractionRuleMap{ "key": FieldExtractionRuleArgs{...} }
 type FieldExtractionRuleMapInput interface {
 	pulumi.Input
 

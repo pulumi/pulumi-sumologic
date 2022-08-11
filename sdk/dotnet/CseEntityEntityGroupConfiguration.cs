@@ -13,29 +13,27 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var entityEntityGroupConfiguration = new SumoLogic.CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration", new()
     ///     {
-    ///         var entityEntityGroupConfiguration = new SumoLogic.CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration", new SumoLogic.CseEntityEntityGroupConfigurationArgs
+    ///         Criticality = "HIGH",
+    ///         Description = "Entity Group description",
+    ///         EntityNamespace = "namespace",
+    ///         EntityType = "_hostname",
+    ///         Suffix = "red.co",
+    ///         Suppressed = true,
+    ///         Tags = new[]
     ///         {
-    ///             Criticality = "HIGH",
-    ///             Description = "Entity Group description",
-    ///             EntityNamespace = "namespace",
-    ///             EntityType = "_hostname",
-    ///             Suffix = "red.co",
-    ///             Suppressed = true,
-    ///             Tags = 
-    ///             {
-    ///                 "tag",
-    ///             },
-    ///         });
-    ///     }
+    ///             "tag",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration")]
-    public partial class CseEntityEntityGroupConfiguration : Pulumi.CustomResource
+    public partial class CseEntityEntityGroupConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -150,7 +148,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseEntityEntityGroupConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class CseEntityEntityGroupConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -218,9 +216,10 @@ namespace Pulumi.SumoLogic
         public CseEntityEntityGroupConfigurationArgs()
         {
         }
+        public static new CseEntityEntityGroupConfigurationArgs Empty => new CseEntityEntityGroupConfigurationArgs();
     }
 
-    public sealed class CseEntityEntityGroupConfigurationState : Pulumi.ResourceArgs
+    public sealed class CseEntityEntityGroupConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -288,5 +287,6 @@ namespace Pulumi.SumoLogic
         public CseEntityEntityGroupConfigurationState()
         {
         }
+        public static new CseEntityEntityGroupConfigurationState Empty => new CseEntityEntityGroupConfigurationState();
     }
 }

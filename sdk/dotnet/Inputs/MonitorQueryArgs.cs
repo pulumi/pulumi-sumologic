@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorQueryArgs : Pulumi.ResourceArgs
+    public sealed class MonitorQueryArgs : global::Pulumi.ResourceArgs
     {
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorQueryArgs()
         {
         }
+        public static new MonitorQueryArgs Empty => new MonitorQueryArgs();
     }
 }

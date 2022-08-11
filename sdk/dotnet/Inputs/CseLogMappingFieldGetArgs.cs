@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseLogMappingFieldGetArgs : Pulumi.ResourceArgs
+    public sealed class CseLogMappingFieldGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("alternateValues")]
         private InputList<string>? _alternateValues;
@@ -135,5 +135,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseLogMappingFieldGetArgs()
         {
         }
+        public static new CseLogMappingFieldGetArgs Empty => new CseLogMappingFieldGetArgs();
     }
 }

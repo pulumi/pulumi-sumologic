@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardPanelArgs : Pulumi.ResourceArgs
+    public sealed class DashboardPanelArgs : global::Pulumi.ResourceArgs
     {
         [Input("sumoSearchPanel")]
         public Input<Inputs.DashboardPanelSumoSearchPanelArgs>? SumoSearchPanel { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardPanelArgs()
         {
         }
+        public static new DashboardPanelArgs Empty => new DashboardPanelArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs : Pulumi.ResourceArgs
+    public sealed class DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs : global::Pulumi.ResourceArgs
     {
         [Input("iso8601Time", required: true)]
         public Input<string> Iso8601Time { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs()
         {
         }
+        public static new DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs Empty => new DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs();
     }
 }

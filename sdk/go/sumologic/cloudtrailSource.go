@@ -21,42 +21,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewCloudtrailSource(ctx, "cloudtrailSource", &sumologic.CloudtrailSourceArgs{
-// 			Authentication: &CloudtrailSourceAuthenticationArgs{
-// 				AccessKey: pulumi.String("someKey"),
-// 				SecretKey: pulumi.String("******"),
-// 				Type:      pulumi.String("S3BucketAuthentication"),
-// 			},
-// 			Category:    pulumi.String("aws/cloudtrail"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("AwsCloudTrailBucket"),
-// 			Description: pulumi.String("My description"),
-// 			Path: &CloudtrailSourcePathArgs{
-// 				BucketName:     pulumi.String("Bucket1"),
-// 				PathExpression: pulumi.String("*"),
-// 				Type:           pulumi.String("S3BucketPathExpression"),
-// 			},
-// 			Paused:       pulumi.Bool(false),
-// 			ScanInterval: pulumi.Int(300000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewCloudtrailSource(ctx, "cloudtrailSource", &sumologic.CloudtrailSourceArgs{
+//				Authentication: &CloudtrailSourceAuthenticationArgs{
+//					AccessKey: pulumi.String("someKey"),
+//					SecretKey: pulumi.String("******"),
+//					Type:      pulumi.String("S3BucketAuthentication"),
+//				},
+//				Category:    pulumi.String("aws/cloudtrail"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("AwsCloudTrailBucket"),
+//				Description: pulumi.String("My description"),
+//				Path: &CloudtrailSourcePathArgs{
+//					BucketName:     pulumi.String("Bucket1"),
+//					PathExpression: pulumi.String("*"),
+//					Type:           pulumi.String("S3BucketPathExpression"),
+//				},
+//				Paused:       pulumi.Bool(false),
+//				ScanInterval: pulumi.Int(300000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,16 +67,20 @@ import (
 // CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test 123/456
+//
+//	$ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test 123/456
+//
 // ```
 //
-//  CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source
 type CloudtrailSource struct {
 	pulumi.CustomResourceState
 
@@ -304,7 +311,7 @@ func (i *CloudtrailSource) ToCloudtrailSourceOutputWithContext(ctx context.Conte
 // CloudtrailSourceArrayInput is an input type that accepts CloudtrailSourceArray and CloudtrailSourceArrayOutput values.
 // You can construct a concrete instance of `CloudtrailSourceArrayInput` via:
 //
-//          CloudtrailSourceArray{ CloudtrailSourceArgs{...} }
+//	CloudtrailSourceArray{ CloudtrailSourceArgs{...} }
 type CloudtrailSourceArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +336,7 @@ func (i CloudtrailSourceArray) ToCloudtrailSourceArrayOutputWithContext(ctx cont
 // CloudtrailSourceMapInput is an input type that accepts CloudtrailSourceMap and CloudtrailSourceMapOutput values.
 // You can construct a concrete instance of `CloudtrailSourceMapInput` via:
 //
-//          CloudtrailSourceMap{ "key": CloudtrailSourceArgs{...} }
+//	CloudtrailSourceMap{ "key": CloudtrailSourceArgs{...} }
 type CloudtrailSourceMapInput interface {
 	pulumi.Input
 

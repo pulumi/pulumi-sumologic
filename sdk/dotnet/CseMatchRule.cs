@@ -15,42 +15,40 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var matchRule = new SumoLogic.CseMatchRule("matchRule", new()
     ///     {
-    ///         var matchRule = new SumoLogic.CseMatchRule("matchRule", new SumoLogic.CseMatchRuleArgs
+    ///         DescriptionExpression = "Signal description",
+    ///         Enabled = true,
+    ///         EntitySelectors = new[]
     ///         {
-    ///             DescriptionExpression = "Signal description",
-    ///             Enabled = true,
-    ///             EntitySelectors = 
+    ///             new SumoLogic.Inputs.CseMatchRuleEntitySelectorArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseMatchRuleEntitySelectorArgs
-    ///                 {
-    ///                     EntityType = "_ip",
-    ///                     Expression = "srcDevice_ip",
-    ///                 },
+    ///                 EntityType = "_ip",
+    ///                 Expression = "srcDevice_ip",
     ///             },
-    ///             Expression = "objectType = \"Network\"",
-    ///             IsPrototype = false,
-    ///             NameExpression = "Signal name",
-    ///             SeverityMapping = new SumoLogic.Inputs.CseMatchRuleSeverityMappingArgs
-    ///             {
-    ///                 Default = 5,
-    ///                 Type = "constant",
-    ///             },
-    ///             SummaryExpression = "Signal summary",
-    ///             Tags = 
-    ///             {
-    ///                 "_mitreAttackTactic:TA0009",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Expression = "objectType = \"Network\"",
+    ///         IsPrototype = false,
+    ///         NameExpression = "Signal name",
+    ///         SeverityMapping = new SumoLogic.Inputs.CseMatchRuleSeverityMappingArgs
+    ///         {
+    ///             Default = 5,
+    ///             Type = "constant",
+    ///         },
+    ///         SummaryExpression = "Signal summary",
+    ///         Tags = new[]
+    ///         {
+    ///             "_mitreAttackTactic:TA0009",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +60,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseMatchRule:CseMatchRule")]
-    public partial class CseMatchRule : Pulumi.CustomResource
+    public partial class CseMatchRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the generated Signals
@@ -168,7 +166,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseMatchRuleArgs : Pulumi.ResourceArgs
+    public sealed class CseMatchRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the generated Signals
@@ -245,9 +243,10 @@ namespace Pulumi.SumoLogic
         public CseMatchRuleArgs()
         {
         }
+        public static new CseMatchRuleArgs Empty => new CseMatchRuleArgs();
     }
 
-    public sealed class CseMatchRuleState : Pulumi.ResourceArgs
+    public sealed class CseMatchRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the generated Signals
@@ -324,5 +323,6 @@ namespace Pulumi.SumoLogic
         public CseMatchRuleState()
         {
         }
+        public static new CseMatchRuleState Empty => new CseMatchRuleState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class PollingSourceDefaultDateFormatGetArgs : Pulumi.ResourceArgs
+    public sealed class PollingSourceDefaultDateFormatGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public PollingSourceDefaultDateFormatGetArgs()
         {
         }
+        public static new PollingSourceDefaultDateFormatGetArgs Empty => new PollingSourceDefaultDateFormatGetArgs();
     }
 }

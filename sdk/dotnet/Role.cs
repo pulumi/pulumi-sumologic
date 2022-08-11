@@ -15,25 +15,23 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleRole = new SumoLogic.Role("exampleRole", new()
     ///     {
-    ///         var exampleRole = new SumoLogic.Role("exampleRole", new SumoLogic.RoleArgs
+    ///         Capabilities = new[]
     ///         {
-    ///             Capabilities = 
-    ///             {
-    ///                 "manageCollectors",
-    ///             },
-    ///             Description = "Testing resource sumologic_role",
-    ///             FilterPredicate = "_sourceCategory=Test",
-    ///         });
-    ///     }
+    ///             "manageCollectors",
+    ///         },
+    ///         Description = "Testing resource sumologic_role",
+    ///         FilterPredicate = "_sourceCategory=Test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles [2]https://api.sumologic.com/docs/#operation/createRole
     /// </summary>
     [SumoLogicResourceType("sumologic:index/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
@@ -117,7 +115,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         [Input("capabilities")]
         private InputList<string>? _capabilities;
@@ -152,9 +150,10 @@ namespace Pulumi.SumoLogic
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         [Input("capabilities")]
         private InputList<string>? _capabilities;
@@ -189,5 +188,6 @@ namespace Pulumi.SumoLogic
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

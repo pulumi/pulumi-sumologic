@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseMatchListItemArgs : Pulumi.ResourceArgs
+    public sealed class CseMatchListItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Match list item description.
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseMatchListItemArgs()
         {
         }
+        public static new CseMatchListItemArgs Empty => new CseMatchListItemArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardTopologyLabelMapDataGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardTopologyLabelMapDataGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
@@ -26,5 +26,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardTopologyLabelMapDataGetArgs()
         {
         }
+        public static new DashboardTopologyLabelMapDataGetArgs Empty => new DashboardTopologyLabelMapDataGetArgs();
     }
 }

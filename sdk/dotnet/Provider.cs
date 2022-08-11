@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [SumoLogicResourceType("pulumi:providers:sumologic")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("accessId")]
         public Output<string> AccessId { get; private set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessId", required: true)]
         public Input<string> AccessId { get; set; } = null!;
@@ -78,5 +78,6 @@ namespace Pulumi.SumoLogic
             BaseUrl = Utilities.GetEnv("SUMOLOGIC_BASE_URL");
             Environment = Utilities.GetEnv("SUMOLOGIC_ENVIRONMENT");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

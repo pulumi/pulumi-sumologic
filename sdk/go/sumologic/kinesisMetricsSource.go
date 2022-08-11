@@ -16,13 +16,17 @@ import (
 // Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test 123/456
+//
+//	$ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test 123/456
+//
 // ```
 //
-//  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source
+//
 // ```
 type KinesisMetricsSource struct {
 	pulumi.CustomResourceState
@@ -233,7 +237,7 @@ func (i *KinesisMetricsSource) ToKinesisMetricsSourceOutputWithContext(ctx conte
 // KinesisMetricsSourceArrayInput is an input type that accepts KinesisMetricsSourceArray and KinesisMetricsSourceArrayOutput values.
 // You can construct a concrete instance of `KinesisMetricsSourceArrayInput` via:
 //
-//          KinesisMetricsSourceArray{ KinesisMetricsSourceArgs{...} }
+//	KinesisMetricsSourceArray{ KinesisMetricsSourceArgs{...} }
 type KinesisMetricsSourceArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +262,7 @@ func (i KinesisMetricsSourceArray) ToKinesisMetricsSourceArrayOutputWithContext(
 // KinesisMetricsSourceMapInput is an input type that accepts KinesisMetricsSourceMap and KinesisMetricsSourceMapOutput values.
 // You can construct a concrete instance of `KinesisMetricsSourceMapInput` via:
 //
-//          KinesisMetricsSourceMap{ "key": KinesisMetricsSourceArgs{...} }
+//	KinesisMetricsSourceMap{ "key": KinesisMetricsSourceArgs{...} }
 type KinesisMetricsSourceMapInput interface {
 	pulumi.Input
 

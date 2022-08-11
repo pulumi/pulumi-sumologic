@@ -19,50 +19,55 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseThresholdRule(ctx, "thresholdRule", &sumologic.CseThresholdRuleArgs{
-// 			CountDistinct: pulumi.Bool(true),
-// 			CountField:    pulumi.String("dstDevice_hostname"),
-// 			Description:   pulumi.String("Signal description"),
-// 			Enabled:       pulumi.Bool(true),
-// 			EntitySelectors: CseThresholdRuleEntitySelectorArray{
-// 				&CseThresholdRuleEntitySelectorArgs{
-// 					EntityType: pulumi.String("_ip"),
-// 					Expression: pulumi.String("srcDevice_ip"),
-// 				},
-// 			},
-// 			Expression: pulumi.String("objectType = \"Network\""),
-// 			GroupByFields: pulumi.StringArray{
-// 				pulumi.String("dstDevice_hostname"),
-// 			},
-// 			IsPrototype:       pulumi.Bool(false),
-// 			Limit:             pulumi.Int(1000),
-// 			Severity:          pulumi.Int(5),
-// 			SummaryExpression: pulumi.String("Signal summary"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("_mitreAttackTactic:TA0009"),
-// 			},
-// 			WindowSize: pulumi.String("T30M"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseThresholdRule(ctx, "thresholdRule", &sumologic.CseThresholdRuleArgs{
+//				CountDistinct: pulumi.Bool(true),
+//				CountField:    pulumi.String("dstDevice_hostname"),
+//				Description:   pulumi.String("Signal description"),
+//				Enabled:       pulumi.Bool(true),
+//				EntitySelectors: CseThresholdRuleEntitySelectorArray{
+//					&CseThresholdRuleEntitySelectorArgs{
+//						EntityType: pulumi.String("_ip"),
+//						Expression: pulumi.String("srcDevice_ip"),
+//					},
+//				},
+//				Expression: pulumi.String("objectType = \"Network\""),
+//				GroupByFields: pulumi.StringArray{
+//					pulumi.String("dstDevice_hostname"),
+//				},
+//				IsPrototype:       pulumi.Bool(false),
+//				Limit:             pulumi.Int(1000),
+//				Severity:          pulumi.Int(5),
+//				SummaryExpression: pulumi.String("Signal summary"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("_mitreAttackTactic:TA0009"),
+//				},
+//				WindowSize: pulumi.String("T30M"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Threshold Rules can be imported using the field id, e.g.hcl
+// # Threshold Rules can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
+//
+//	$ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
+//
 // ```
 type CseThresholdRule struct {
 	pulumi.CustomResourceState
@@ -301,7 +306,7 @@ func (i *CseThresholdRule) ToCseThresholdRuleOutputWithContext(ctx context.Conte
 // CseThresholdRuleArrayInput is an input type that accepts CseThresholdRuleArray and CseThresholdRuleArrayOutput values.
 // You can construct a concrete instance of `CseThresholdRuleArrayInput` via:
 //
-//          CseThresholdRuleArray{ CseThresholdRuleArgs{...} }
+//	CseThresholdRuleArray{ CseThresholdRuleArgs{...} }
 type CseThresholdRuleArrayInput interface {
 	pulumi.Input
 
@@ -326,7 +331,7 @@ func (i CseThresholdRuleArray) ToCseThresholdRuleArrayOutputWithContext(ctx cont
 // CseThresholdRuleMapInput is an input type that accepts CseThresholdRuleMap and CseThresholdRuleMapOutput values.
 // You can construct a concrete instance of `CseThresholdRuleMapInput` via:
 //
-//          CseThresholdRuleMap{ "key": CseThresholdRuleArgs{...} }
+//	CseThresholdRuleMap{ "key": CseThresholdRuleArgs{...} }
 type CseThresholdRuleMapInput interface {
 	pulumi.Input
 

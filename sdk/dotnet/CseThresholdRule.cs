@@ -15,45 +15,43 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var thresholdRule = new SumoLogic.CseThresholdRule("thresholdRule", new()
     ///     {
-    ///         var thresholdRule = new SumoLogic.CseThresholdRule("thresholdRule", new SumoLogic.CseThresholdRuleArgs
+    ///         CountDistinct = true,
+    ///         CountField = "dstDevice_hostname",
+    ///         Description = "Signal description",
+    ///         Enabled = true,
+    ///         EntitySelectors = new[]
     ///         {
-    ///             CountDistinct = true,
-    ///             CountField = "dstDevice_hostname",
-    ///             Description = "Signal description",
-    ///             Enabled = true,
-    ///             EntitySelectors = 
+    ///             new SumoLogic.Inputs.CseThresholdRuleEntitySelectorArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseThresholdRuleEntitySelectorArgs
-    ///                 {
-    ///                     EntityType = "_ip",
-    ///                     Expression = "srcDevice_ip",
-    ///                 },
+    ///                 EntityType = "_ip",
+    ///                 Expression = "srcDevice_ip",
     ///             },
-    ///             Expression = "objectType = \"Network\"",
-    ///             GroupByFields = 
-    ///             {
-    ///                 "dstDevice_hostname",
-    ///             },
-    ///             IsPrototype = false,
-    ///             Limit = 1000,
-    ///             Severity = 5,
-    ///             SummaryExpression = "Signal summary",
-    ///             Tags = 
-    ///             {
-    ///                 "_mitreAttackTactic:TA0009",
-    ///             },
-    ///             WindowSize = "T30M",
-    ///         });
-    ///     }
+    ///         },
+    ///         Expression = "objectType = \"Network\"",
+    ///         GroupByFields = new[]
+    ///         {
+    ///             "dstDevice_hostname",
+    ///         },
+    ///         IsPrototype = false,
+    ///         Limit = 1000,
+    ///         Severity = 5,
+    ///         SummaryExpression = "Signal summary",
+    ///         Tags = new[]
+    ///         {
+    ///             "_mitreAttackTactic:TA0009",
+    ///         },
+    ///         WindowSize = "T30M",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +63,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseThresholdRule:CseThresholdRule")]
-    public partial class CseThresholdRule : Pulumi.CustomResource
+    public partial class CseThresholdRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to count distinct values of a field, as opposed to just counting the number of records
@@ -195,7 +193,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseThresholdRuleArgs : Pulumi.ResourceArgs
+    public sealed class CseThresholdRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to count distinct values of a field, as opposed to just counting the number of records
@@ -302,9 +300,10 @@ namespace Pulumi.SumoLogic
         public CseThresholdRuleArgs()
         {
         }
+        public static new CseThresholdRuleArgs Empty => new CseThresholdRuleArgs();
     }
 
-    public sealed class CseThresholdRuleState : Pulumi.ResourceArgs
+    public sealed class CseThresholdRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to count distinct values of a field, as opposed to just counting the number of records
@@ -411,5 +410,6 @@ namespace Pulumi.SumoLogic
         public CseThresholdRuleState()
         {
         }
+        public static new CseThresholdRuleState Empty => new CseThresholdRuleState();
     }
 }

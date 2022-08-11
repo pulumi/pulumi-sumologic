@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class SloIndicatorWindowBasedEvaluationArgs : Pulumi.ResourceArgs
+    public sealed class SloIndicatorWindowBasedEvaluationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
@@ -60,5 +60,6 @@ namespace Pulumi.SumoLogic.Inputs
         public SloIndicatorWindowBasedEvaluationArgs()
         {
         }
+        public static new SloIndicatorWindowBasedEvaluationArgs Empty => new SloIndicatorWindowBasedEvaluationArgs();
     }
 }

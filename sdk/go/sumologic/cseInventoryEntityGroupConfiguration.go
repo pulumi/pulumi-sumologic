@@ -17,37 +17,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, "inventoryEntityGroupConfiguration", &sumologic.CseInventoryEntityGroupConfigurationArgs{
-// 			Criticality:     pulumi.String("HIGH"),
-// 			Description:     pulumi.String("Inventory entity group description"),
-// 			Group:           pulumi.String("admin"),
-// 			InventorySource: pulumi.String("Active Directory"),
-// 			InventoryType:   pulumi.String("username"),
-// 			Suppressed:      pulumi.Bool(false),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("tag"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, "inventoryEntityGroupConfiguration", &sumologic.CseInventoryEntityGroupConfigurationArgs{
+//				Criticality:     pulumi.String("HIGH"),
+//				Description:     pulumi.String("Inventory entity group description"),
+//				Group:           pulumi.String("admin"),
+//				InventorySource: pulumi.String("Active Directory"),
+//				InventoryType:   pulumi.String("username"),
+//				Suppressed:      pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Inventory Entity Group Configuration can be imported using the field id, e.g.hcl
+// # Inventory Entity Group Configuration can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
+//
+//	$ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
+//
 // ```
 type CseInventoryEntityGroupConfiguration struct {
 	pulumi.CustomResourceState
@@ -206,7 +211,7 @@ func (i *CseInventoryEntityGroupConfiguration) ToCseInventoryEntityGroupConfigur
 // CseInventoryEntityGroupConfigurationArrayInput is an input type that accepts CseInventoryEntityGroupConfigurationArray and CseInventoryEntityGroupConfigurationArrayOutput values.
 // You can construct a concrete instance of `CseInventoryEntityGroupConfigurationArrayInput` via:
 //
-//          CseInventoryEntityGroupConfigurationArray{ CseInventoryEntityGroupConfigurationArgs{...} }
+//	CseInventoryEntityGroupConfigurationArray{ CseInventoryEntityGroupConfigurationArgs{...} }
 type CseInventoryEntityGroupConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +236,7 @@ func (i CseInventoryEntityGroupConfigurationArray) ToCseInventoryEntityGroupConf
 // CseInventoryEntityGroupConfigurationMapInput is an input type that accepts CseInventoryEntityGroupConfigurationMap and CseInventoryEntityGroupConfigurationMapOutput values.
 // You can construct a concrete instance of `CseInventoryEntityGroupConfigurationMapInput` via:
 //
-//          CseInventoryEntityGroupConfigurationMap{ "key": CseInventoryEntityGroupConfigurationArgs{...} }
+//	CseInventoryEntityGroupConfigurationMap{ "key": CseInventoryEntityGroupConfigurationArgs{...} }
 type CseInventoryEntityGroupConfigurationMapInput interface {
 	pulumi.Input
 

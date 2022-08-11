@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewFolder(ctx, "folder", &sumologic.FolderArgs{
-// 			Description: pulumi.String("A test folder"),
-// 			ParentId:    pulumi.String("<personal folder id>"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewFolder(ctx, "folder", &sumologic.FolderArgs{
+//				Description: pulumi.String("A test folder"),
+//				ParentId:    pulumi.String("<personal folder id>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -152,7 +155,7 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 // FolderArrayInput is an input type that accepts FolderArray and FolderArrayOutput values.
 // You can construct a concrete instance of `FolderArrayInput` via:
 //
-//          FolderArray{ FolderArgs{...} }
+//	FolderArray{ FolderArgs{...} }
 type FolderArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +180,7 @@ func (i FolderArray) ToFolderArrayOutputWithContext(ctx context.Context) FolderA
 // FolderMapInput is an input type that accepts FolderMap and FolderMapOutput values.
 // You can construct a concrete instance of `FolderMapInput` via:
 //
-//          FolderMap{ "key": FolderArgs{...} }
+//	FolderMap{ "key": FolderArgs{...} }
 type FolderMapInput interface {
 	pulumi.Input
 

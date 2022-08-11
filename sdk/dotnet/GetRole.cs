@@ -20,37 +20,33 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetRole.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
-        ///         {
-        ///             Name = "MyRole",
-        ///         }));
-        ///     }
+        ///         Name = "MyRole",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var that = SumoLogic.GetRole.Invoke(new()
         ///     {
-        ///         var that = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
-        ///         {
-        ///             Id = "1234567890",
-        ///         }));
-        ///     }
+        ///         Id = "1234567890",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -80,37 +76,33 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetRole.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
-        ///         {
-        ///             Name = "MyRole",
-        ///         }));
-        ///     }
+        ///         Name = "MyRole",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var that = SumoLogic.GetRole.Invoke(new()
         ///     {
-        ///         var that = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
-        ///         {
-        ///             Id = "1234567890",
-        ///         }));
-        ///     }
+        ///         Id = "1234567890",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -133,7 +125,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
         [Input("id")]
         public string? Id { get; set; }
@@ -144,9 +136,10 @@ namespace Pulumi.SumoLogic
         public GetRoleArgs()
         {
         }
+        public static new GetRoleArgs Empty => new GetRoleArgs();
     }
 
-    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -157,6 +150,7 @@ namespace Pulumi.SumoLogic
         public GetRoleInvokeArgs()
         {
         }
+        public static new GetRoleInvokeArgs Empty => new GetRoleInvokeArgs();
     }
 
 

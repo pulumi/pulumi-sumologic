@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseAggregationRuleSeverityMappingMappingArgs : Pulumi.ResourceArgs
+    public sealed class CseAggregationRuleSeverityMappingMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The record value to map from
@@ -33,5 +33,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseAggregationRuleSeverityMappingMappingArgs()
         {
         }
+        public static new CseAggregationRuleSeverityMappingMappingArgs Empty => new CseAggregationRuleSeverityMappingMappingArgs();
     }
 }

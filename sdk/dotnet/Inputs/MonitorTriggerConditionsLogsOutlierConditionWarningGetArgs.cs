@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsLogsOutlierConditionWarningGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsLogsOutlierConditionWarningGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("consecutive")]
         public Input<int>? Consecutive { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsLogsOutlierConditionWarningGetArgs()
         {
         }
+        public static new MonitorTriggerConditionsLogsOutlierConditionWarningGetArgs Empty => new MonitorTriggerConditionsLogsOutlierConditionWarningGetArgs();
     }
 }

@@ -17,41 +17,40 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var cloudtrailSource = new SumoLogic.CloudtrailSource("cloudtrailSource", new SumoLogic.CloudtrailSourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.CloudtrailSourceAuthenticationArgs
-    ///             {
-    ///                 AccessKey = "someKey",
-    ///                 SecretKey = "******",
-    ///                 Type = "S3BucketAuthentication",
-    ///             },
-    ///             Category = "aws/cloudtrail",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "AwsCloudTrailBucket",
-    ///             Description = "My description",
-    ///             Path = new SumoLogic.Inputs.CloudtrailSourcePathArgs
-    ///             {
-    ///                 BucketName = "Bucket1",
-    ///                 PathExpression = "*",
-    ///                 Type = "S3BucketPathExpression",
-    ///             },
-    ///             Paused = false,
-    ///             ScanInterval = 300000,
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var cloudtrailSource = new SumoLogic.CloudtrailSource("cloudtrailSource", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.CloudtrailSourceAuthenticationArgs
+    ///         {
+    ///             AccessKey = "someKey",
+    ///             SecretKey = "******",
+    ///             Type = "S3BucketAuthentication",
+    ///         },
+    ///         Category = "aws/cloudtrail",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "AwsCloudTrailBucket",
+    ///         Description = "My description",
+    ///         Path = new SumoLogic.Inputs.CloudtrailSourcePathArgs
+    ///         {
+    ///             BucketName = "Bucket1",
+    ///             PathExpression = "*",
+    ///             Type = "S3BucketPathExpression",
+    ///         },
+    ///         Paused = false,
+    ///         ScanInterval = 300000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +70,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cloudtrailSource:CloudtrailSource")]
-    public partial class CloudtrailSource : Pulumi.CustomResource
+    public partial class CloudtrailSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -201,7 +200,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CloudtrailSourceArgs : Pulumi.ResourceArgs
+    public sealed class CloudtrailSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -299,9 +298,10 @@ namespace Pulumi.SumoLogic
         public CloudtrailSourceArgs()
         {
         }
+        public static new CloudtrailSourceArgs Empty => new CloudtrailSourceArgs();
     }
 
-    public sealed class CloudtrailSourceState : Pulumi.ResourceArgs
+    public sealed class CloudtrailSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -405,5 +405,6 @@ namespace Pulumi.SumoLogic
         public CloudtrailSourceState()
         {
         }
+        public static new CloudtrailSourceState Empty => new CloudtrailSourceState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MetadataSourceFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class MetadataSourceFilterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("filterType", required: true)]
         public Input<string> FilterType { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MetadataSourceFilterGetArgs()
         {
         }
+        public static new MetadataSourceFilterGetArgs Empty => new MetadataSourceFilterGetArgs();
     }
 }

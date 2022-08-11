@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseLogMappingUnstructuredFieldsArgs : Pulumi.ResourceArgs
+    public sealed class CseLogMappingUnstructuredFieldsArgs : global::Pulumi.ResourceArgs
     {
         [Input("patternNames", required: true)]
         private InputList<string>? _patternNames;
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseLogMappingUnstructuredFieldsArgs()
         {
         }
+        public static new CseLogMappingUnstructuredFieldsArgs Empty => new CseLogMappingUnstructuredFieldsArgs();
     }
 }

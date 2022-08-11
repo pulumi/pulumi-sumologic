@@ -257,7 +257,7 @@ func (i *Slo) ToSloOutputWithContext(ctx context.Context) SloOutput {
 // SloArrayInput is an input type that accepts SloArray and SloArrayOutput values.
 // You can construct a concrete instance of `SloArrayInput` via:
 //
-//          SloArray{ SloArgs{...} }
+//	SloArray{ SloArgs{...} }
 type SloArrayInput interface {
 	pulumi.Input
 
@@ -282,7 +282,7 @@ func (i SloArray) ToSloArrayOutputWithContext(ctx context.Context) SloArrayOutpu
 // SloMapInput is an input type that accepts SloMap and SloMapOutput values.
 // You can construct a concrete instance of `SloMapInput` via:
 //
-//          SloMap{ "key": SloArgs{...} }
+//	SloMap{ "key": SloArgs{...} }
 type SloMapInput interface {
 	pulumi.Input
 
@@ -345,9 +345,9 @@ func (o SloOutput) Description() pulumi.StringPtrOutput {
 // The service level indicator on which SLO is to be defined. more details on the difference
 // b/w them can be found on
 // the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
-// - windowBasedEvaluation - Evaluate SLI using successful/total windows.
-// - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
-//   events / total events over entire compliance period.
+//   - windowBasedEvaluation - Evaluate SLI using successful/total windows.
+//   - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
+//     events / total events over entire compliance period.
 func (o SloOutput) Indicator() SloIndicatorOutput {
 	return o.ApplyT(func(v *Slo) SloIndicatorOutput { return v.Indicator }).(SloIndicatorOutput)
 }

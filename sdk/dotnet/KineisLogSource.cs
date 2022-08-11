@@ -17,59 +17,59 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var kinesisLogAccessKey = new SumoLogic.KineisLogSource("kinesisLogAccessKey", new SumoLogic.KineisLogSourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
-    ///             {
-    ///                 AccessKey = "someKey",
-    ///                 SecretKey = "******",
-    ///                 Type = "S3BucketAuthentication",
-    ///             },
-    ///             Category = "prod/kinesis/log",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "KinesisLog",
-    ///             Description = "Description for Kinesis Log Source",
-    ///             Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
-    ///             {
-    ///                 BucketName = "testBucket",
-    ///                 PathExpression = "http-endpoint-failed/*",
-    ///                 ScanInterval = 30000,
-    ///                 Type = "KinesisLogPath",
-    ///             },
-    ///         });
-    ///         var kinesisLogRoleArn = new SumoLogic.KineisLogSource("kinesisLogRoleArn", new SumoLogic.KineisLogSourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
-    ///             {
-    ///                 RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
-    ///                 Type = "AWSRoleBasedAuthentication",
-    ///             },
-    ///             Category = "prod/kinesis/log",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "KinesisLog",
-    ///             Description = "Description for Kinesis Log Source",
-    ///             Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
-    ///             {
-    ///                 BucketName = "testBucket",
-    ///                 PathExpression = "http-endpoint-failed/*",
-    ///                 ScanInterval = 30000,
-    ///                 Type = "KinesisLogPath",
-    ///             },
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var kinesisLogAccessKey = new SumoLogic.KineisLogSource("kinesisLogAccessKey", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
+    ///         {
+    ///             AccessKey = "someKey",
+    ///             SecretKey = "******",
+    ///             Type = "S3BucketAuthentication",
+    ///         },
+    ///         Category = "prod/kinesis/log",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "KinesisLog",
+    ///         Description = "Description for Kinesis Log Source",
+    ///         Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
+    ///         {
+    ///             BucketName = "testBucket",
+    ///             PathExpression = "http-endpoint-failed/*",
+    ///             ScanInterval = 30000,
+    ///             Type = "KinesisLogPath",
+    ///         },
+    ///     });
+    /// 
+    ///     var kinesisLogRoleArn = new SumoLogic.KineisLogSource("kinesisLogRoleArn", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
+    ///         {
+    ///             RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+    ///             Type = "AWSRoleBasedAuthentication",
+    ///         },
+    ///         Category = "prod/kinesis/log",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "KinesisLog",
+    ///         Description = "Description for Kinesis Log Source",
+    ///         Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
+    ///         {
+    ///             BucketName = "testBucket",
+    ///             PathExpression = "http-endpoint-failed/*",
+    ///             ScanInterval = 30000,
+    ///             Type = "KinesisLogPath",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -89,7 +89,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/kineisLogSource:KineisLogSource")]
-    public partial class KineisLogSource : Pulumi.CustomResource
+    public partial class KineisLogSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -210,7 +210,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class KineisLogSourceArgs : Pulumi.ResourceArgs
+    public sealed class KineisLogSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -299,9 +299,10 @@ namespace Pulumi.SumoLogic
         public KineisLogSourceArgs()
         {
         }
+        public static new KineisLogSourceArgs Empty => new KineisLogSourceArgs();
     }
 
-    public sealed class KineisLogSourceState : Pulumi.ResourceArgs
+    public sealed class KineisLogSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -396,5 +397,6 @@ namespace Pulumi.SumoLogic
         public KineisLogSourceState()
         {
         }
+        public static new KineisLogSourceState Empty => new KineisLogSourceState();
     }
 }

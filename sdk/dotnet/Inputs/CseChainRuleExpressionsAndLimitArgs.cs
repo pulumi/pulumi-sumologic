@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseChainRuleExpressionsAndLimitArgs : Pulumi.ResourceArgs
+    public sealed class CseChainRuleExpressionsAndLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The expression for which records to match on
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseChainRuleExpressionsAndLimitArgs()
         {
         }
+        public static new CseChainRuleExpressionsAndLimitArgs Empty => new CseChainRuleExpressionsAndLimitArgs();
     }
 }

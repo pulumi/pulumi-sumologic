@@ -24,29 +24,27 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var examplePolicies = new SumoLogic.Policies("examplePolicies", new()
     ///     {
-    ///         var examplePolicies = new SumoLogic.Policies("examplePolicies", new SumoLogic.PoliciesArgs
+    ///         Audit = false,
+    ///         DataAccessLevel = false,
+    ///         MaxUserSessionTimeout = "7d",
+    ///         SearchAudit = false,
+    ///         ShareDashboardsOutsideOrganization = false,
+    ///         UserConcurrentSessionsLimit = new SumoLogic.Inputs.PoliciesUserConcurrentSessionsLimitArgs
     ///         {
-    ///             Audit = false,
-    ///             DataAccessLevel = false,
-    ///             MaxUserSessionTimeout = "7d",
-    ///             SearchAudit = false,
-    ///             ShareDashboardsOutsideOrganization = false,
-    ///             UserConcurrentSessionsLimit = new SumoLogic.Inputs.PoliciesUserConcurrentSessionsLimitArgs
-    ///             {
-    ///                 Enabled = false,
-    ///                 MaxConcurrentSessions = 100,
-    ///             },
-    ///         });
-    ///     }
+    ///             Enabled = false,
+    ///             MaxConcurrentSessions = 100,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Security/Audit-Index [2]https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards [3]https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout [4]https://help.sumologic.com/Manage/Security/Search_Audit_Index [5]https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org [6]https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions
     /// </summary>
     [SumoLogicResourceType("sumologic:index/policies:Policies")]
-    public partial class Policies : Pulumi.CustomResource
+    public partial class Policies : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
@@ -142,7 +140,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class PoliciesArgs : Pulumi.ResourceArgs
+    public sealed class PoliciesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
@@ -183,9 +181,10 @@ namespace Pulumi.SumoLogic
         public PoliciesArgs()
         {
         }
+        public static new PoliciesArgs Empty => new PoliciesArgs();
     }
 
-    public sealed class PoliciesState : Pulumi.ResourceArgs
+    public sealed class PoliciesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
@@ -226,5 +225,6 @@ namespace Pulumi.SumoLogic
         public PoliciesState()
         {
         }
+        public static new PoliciesState Empty => new PoliciesState();
     }
 }

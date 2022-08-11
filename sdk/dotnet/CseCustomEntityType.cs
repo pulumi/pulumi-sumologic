@@ -15,25 +15,23 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var customEntityType = new SumoLogic.CseCustomEntityType("customEntityType", new()
     ///     {
-    ///         var customEntityType = new SumoLogic.CseCustomEntityType("customEntityType", new SumoLogic.CseCustomEntityTypeArgs
+    ///         Fields = new[]
     ///         {
-    ///             Fields = 
-    ///             {
-    ///                 "file_hash_md5",
-    ///                 "file_hash_sha1",
-    ///             },
-    ///             Identifier = "identifier",
-    ///         });
-    ///     }
+    ///             "file_hash_md5",
+    ///             "file_hash_sha1",
+    ///         },
+    ///         Identifier = "identifier",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseCustomEntityType:CseCustomEntityType")]
-    public partial class CseCustomEntityType : Pulumi.CustomResource
+    public partial class CseCustomEntityType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
@@ -109,7 +107,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseCustomEntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class CseCustomEntityTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields", required: true)]
         private InputList<string>? _fields;
@@ -138,9 +136,10 @@ namespace Pulumi.SumoLogic
         public CseCustomEntityTypeArgs()
         {
         }
+        public static new CseCustomEntityTypeArgs Empty => new CseCustomEntityTypeArgs();
     }
 
-    public sealed class CseCustomEntityTypeState : Pulumi.ResourceArgs
+    public sealed class CseCustomEntityTypeState : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<string>? _fields;
@@ -169,5 +168,6 @@ namespace Pulumi.SumoLogic
         public CseCustomEntityTypeState()
         {
         }
+        public static new CseCustomEntityTypeState Empty => new CseCustomEntityTypeState();
     }
 }

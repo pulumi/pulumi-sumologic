@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class GcpSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class GcpSourcePathArgs : global::Pulumi.ResourceArgs
     {
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         public GcpSourcePathArgs()
         {
         }
+        public static new GcpSourcePathArgs Empty => new GcpSourcePathArgs();
     }
 }

@@ -20,77 +20,80 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewMonitor(ctx, "tfSloMonitor1", &sumologic.MonitorArgs{
-// 			ContentType:     pulumi.String("Monitor"),
-// 			EvaluationDelay: pulumi.String("5m"),
-// 			IsDisabled:      pulumi.Bool(false),
-// 			MonitorType:     pulumi.String("Slo"),
-// 			Notifications: MonitorNotificationArray{
-// 				&MonitorNotificationArgs{
-// 					Notification: &MonitorNotificationNotificationArgs{
-// 						ConnectionType: pulumi.String("Email"),
-// 						MessageBody:    pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
-// 						Recipients: pulumi.StringArray{
-// 							pulumi.String("abc@example.com"),
-// 						},
-// 						Subject:  pulumi.String("Monitor Alert: {{TriggerType}} on {{Name}}"),
-// 						TimeZone: pulumi.String("PST"),
-// 					},
-// 					RunForTriggerTypes: pulumi.StringArray{
-// 						pulumi.String("Critical"),
-// 						pulumi.String("ResolvedCritical"),
-// 					},
-// 				},
-// 			},
-// 			Playbook: pulumi.String("test playbook"),
-// 			SloId:    pulumi.String("0000000000000009"),
-// 			TriggerConditions: &MonitorTriggerConditionsArgs{
-// 				SloSliCondition: &MonitorTriggerConditionsSloSliConditionArgs{
-// 					Critical: &MonitorTriggerConditionsSloSliConditionCriticalArgs{
-// 						SliThreshold: pulumi.Float64(99.5),
-// 					},
-// 					Warning: &MonitorTriggerConditionsSloSliConditionWarningArgs{
-// 						SliThreshold: pulumi.Float64(99.9),
-// 					},
-// 				},
-// 			},
-// 			Type: pulumi.String("MonitorsLibraryMonitor"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewMonitor(ctx, "tfSloMonitor2", &sumologic.MonitorArgs{
-// 			ContentType:     pulumi.String("Monitor"),
-// 			EvaluationDelay: pulumi.String("5m"),
-// 			IsDisabled:      pulumi.Bool(false),
-// 			MonitorType:     pulumi.String("Slo"),
-// 			SloId:           pulumi.String("0000000000000009"),
-// 			TriggerConditions: &MonitorTriggerConditionsArgs{
-// 				SloBurnRateCondition: &MonitorTriggerConditionsSloBurnRateConditionArgs{
-// 					Critical: &MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{
-// 						BurnRateThreshold: pulumi.Float64(10),
-// 						TimeRange:         pulumi.String("1d"),
-// 					},
-// 					Warning: &MonitorTriggerConditionsSloBurnRateConditionWarningArgs{
-// 						BurnRateThreshold: pulumi.Float64(5),
-// 						TimeRange:         pulumi.String("1d"),
-// 					},
-// 				},
-// 			},
-// 			Type: pulumi.String("MonitorsLibraryMonitor"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewMonitor(ctx, "tfSloMonitor1", &sumologic.MonitorArgs{
+//				ContentType:     pulumi.String("Monitor"),
+//				EvaluationDelay: pulumi.String("5m"),
+//				IsDisabled:      pulumi.Bool(false),
+//				MonitorType:     pulumi.String("Slo"),
+//				Notifications: MonitorNotificationArray{
+//					&MonitorNotificationArgs{
+//						Notification: &MonitorNotificationNotificationArgs{
+//							ConnectionType: pulumi.String("Email"),
+//							MessageBody:    pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
+//							Recipients: pulumi.StringArray{
+//								pulumi.String("abc@example.com"),
+//							},
+//							Subject:  pulumi.String("Monitor Alert: {{TriggerType}} on {{Name}}"),
+//							TimeZone: pulumi.String("PST"),
+//						},
+//						RunForTriggerTypes: pulumi.StringArray{
+//							pulumi.String("Critical"),
+//							pulumi.String("ResolvedCritical"),
+//						},
+//					},
+//				},
+//				Playbook: pulumi.String("test playbook"),
+//				SloId:    pulumi.String("0000000000000009"),
+//				TriggerConditions: &MonitorTriggerConditionsArgs{
+//					SloSliCondition: &MonitorTriggerConditionsSloSliConditionArgs{
+//						Critical: &MonitorTriggerConditionsSloSliConditionCriticalArgs{
+//							SliThreshold: pulumi.Float64(99.5),
+//						},
+//						Warning: &MonitorTriggerConditionsSloSliConditionWarningArgs{
+//							SliThreshold: pulumi.Float64(99.9),
+//						},
+//					},
+//				},
+//				Type: pulumi.String("MonitorsLibraryMonitor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewMonitor(ctx, "tfSloMonitor2", &sumologic.MonitorArgs{
+//				ContentType:     pulumi.String("Monitor"),
+//				EvaluationDelay: pulumi.String("5m"),
+//				IsDisabled:      pulumi.Bool(false),
+//				MonitorType:     pulumi.String("Slo"),
+//				SloId:           pulumi.String("0000000000000009"),
+//				TriggerConditions: &MonitorTriggerConditionsArgs{
+//					SloBurnRateCondition: &MonitorTriggerConditionsSloBurnRateConditionArgs{
+//						Critical: &MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{
+//							BurnRateThreshold: pulumi.Float64(10),
+//							TimeRange:         pulumi.String("1d"),
+//						},
+//						Warning: &MonitorTriggerConditionsSloBurnRateConditionWarningArgs{
+//							BurnRateThreshold: pulumi.Float64(5),
+//							TimeRange:         pulumi.String("1d"),
+//						},
+//					},
+//				},
+//				Type: pulumi.String("MonitorsLibraryMonitor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Monitor Folders
@@ -102,21 +105,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewMonitorFolder(ctx, "tfMonitorFolder1", &sumologic.MonitorFolderArgs{
-// 			Description: pulumi.String("a folder for monitors"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewMonitorFolder(ctx, "tfMonitorFolder1", &sumologic.MonitorFolderArgs{
+//				Description: pulumi.String("a folder for monitors"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // =======
 // NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
@@ -130,14 +136,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Arguments
 // A `triggerConditions` block contains one or more subblocks of the following types:
@@ -154,77 +163,83 @@ import (
 // #### logsStaticCondition
 //   - `field`
 //   - `critical`
-//     - `timeRange` (Required)
-//     - `alert` (Required)
-//       - `threshold`
-//       - `thresholdType`
-//     - `resolution` (Required)
-//       - `threshold`
-//       - `thresholdType`
+//   - `timeRange` (Required)
+//   - `alert` (Required)
+//   - `threshold`
+//   - `thresholdType`
+//   - `resolution` (Required)
+//   - `threshold`
+//   - `thresholdType`
 //   - `warning`
-//     - `timeRange` (Required)
-//     - `alert` (Required)
-//       - `threshold`
-//       - `thresholdType`
-//     - `resolution` (Required)
-//       - `threshold`
-//       - `thresholdType`
+//   - `timeRange` (Required)
+//   - `alert` (Required)
+//   - `threshold`
+//   - `thresholdType`
+//   - `resolution` (Required)
+//   - `threshold`
+//   - `thresholdType`
+//
 // #### metricsStaticCondition
 //   - `critical`
-//     - `timeRange` (Required)
-//     - `occurrenceType` (Required)
-//     - `alert` (Required)
-//       - `threshold`
-//       - `thresholdType`
-//     - `resolution` (Required)
-//       - `threshold`
-//       - `thresholdType`
+//   - `timeRange` (Required)
+//   - `occurrenceType` (Required)
+//   - `alert` (Required)
+//   - `threshold`
+//   - `thresholdType`
+//   - `resolution` (Required)
+//   - `threshold`
+//   - `thresholdType`
 //   - `warning`
-//     - `timeRange` (Required)
-//     - `occurrenceType` (Required)
-//     - `alert` (Required)
-//       - `threshold`
-//       - `thresholdType`
-//     - `resolution` (Required)
-//       - `threshold`
-//       - `thresholdType`
+//   - `timeRange` (Required)
+//   - `occurrenceType` (Required)
+//   - `alert` (Required)
+//   - `threshold`
+//   - `thresholdType`
+//   - `resolution` (Required)
+//   - `threshold`
+//   - `thresholdType`
+//
 // #### logsOutlierCondition
 //   - `field`
 //   - `direction`
 //   - `critical`
-//      - `window`
-//      - `consecutive`
-//      - `threshold`
+//   - `window`
+//   - `consecutive`
+//   - `threshold`
 //   - `warning`
-//      - `window`
-//      - `consecutive`
-//      - `threshold`
+//   - `window`
+//   - `consecutive`
+//   - `threshold`
+//
 // #### metricsOutlierCondition
 //   - `direction`
 //   - `critical`
-//      - `baselineWindow`
-//      - `threshold`
+//   - `baselineWindow`
+//   - `threshold`
 //   - `warning`
-//     - `baselineWindow`
-//     - `threshold`
+//   - `baselineWindow`
+//   - `threshold`
+//
 // #### logsMissingDataCondition
 //   - `timeRange` (Required)
+//
 // #### metricsMissingDataCondition
 //   - `timeRange` (Required)
 //   - `triggerSource` (Required)
+//
 // #### sloSliCondition
 //   - `critical`
-//     - `sliThreshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
+//   - `sliThreshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
 //   - `warning`
-//     - `sliThreshold` (Required)
+//   - `sliThreshold` (Required)
 //
 // #### sloBurnRateCondition
 //   - `critical`
-//     - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.
-//     - `burnRateThreshold` (Required) : The burn rate percentage threshold.
+//   - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.
+//   - `burnRateThreshold` (Required) : The burn rate percentage threshold.
 //   - `warning`
-//     - `timeRange` (Required)
-//     - `burnRateThreshold` (Required)
+//   - `timeRange` (Required)
+//   - `burnRateThreshold` (Required)
 //
 // ## The `triggers` block
 //
@@ -235,89 +250,94 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewMonitor(ctx, "tfLogsMonitor1", &sumologic.MonitorArgs{
-// 			ContentType: pulumi.String("Monitor"),
-// 			Description: pulumi.String("tf logs monitor"),
-// 			IsDisabled:  pulumi.Bool(false),
-// 			MonitorType: pulumi.String("Logs"),
-// 			Notifications: MonitorNotificationArray{
-// 				&MonitorNotificationArgs{
-// 					Notification: &MonitorNotificationNotificationArgs{
-// 						ConnectionType: pulumi.String("Email"),
-// 						MessageBody:    pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
-// 						Recipients: pulumi.StringArray{
-// 							pulumi.String("abc@example.com"),
-// 						},
-// 						Subject:  pulumi.String("Monitor Alert: {{TriggerType}} on {{Name}}"),
-// 						TimeZone: pulumi.String("PST"),
-// 					},
-// 					RunForTriggerTypes: pulumi.StringArray{
-// 						pulumi.String("Critical"),
-// 						pulumi.String("ResolvedCritical"),
-// 					},
-// 				},
-// 				&MonitorNotificationArgs{
-// 					Notification: &MonitorNotificationNotificationArgs{
-// 						ConnectionId:   pulumi.String("0000000000ABC123"),
-// 						ConnectionType: pulumi.String("Webhook"),
-// 					},
-// 					RunForTriggerTypes: pulumi.StringArray{
-// 						pulumi.String("Critical"),
-// 						pulumi.String("ResolvedCritical"),
-// 					},
-// 				},
-// 			},
-// 			Queries: MonitorQueryArray{
-// 				&MonitorQueryArgs{
-// 					Query: pulumi.String("_sourceCategory=event-action info"),
-// 					RowId: pulumi.String("A"),
-// 				},
-// 			},
-// 			Triggers: MonitorTriggerArray{
-// 				&MonitorTriggerArgs{
-// 					DetectionMethod: pulumi.String("StaticCondition"),
-// 					OccurrenceType:  pulumi.String("ResultCount"),
-// 					Threshold:       pulumi.Float64(40),
-// 					ThresholdType:   pulumi.String("GreaterThan"),
-// 					TimeRange:       pulumi.String("15m"),
-// 					TriggerSource:   pulumi.String("AllResults"),
-// 					TriggerType:     pulumi.String("Critical"),
-// 				},
-// 				&MonitorTriggerArgs{
-// 					DetectionMethod: pulumi.String("StaticCondition"),
-// 					OccurrenceType:  pulumi.String("ResultCount"),
-// 					Threshold:       pulumi.Float64(40),
-// 					ThresholdType:   pulumi.String("LessThanOrEqual"),
-// 					TimeRange:       pulumi.String("15m"),
-// 					TriggerSource:   pulumi.String("AllResults"),
-// 					TriggerType:     pulumi.String("ResolvedCritical"),
-// 				},
-// 			},
-// 			Type: pulumi.String("MonitorsLibraryMonitor"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewMonitor(ctx, "tfLogsMonitor1", &sumologic.MonitorArgs{
+//				ContentType: pulumi.String("Monitor"),
+//				Description: pulumi.String("tf logs monitor"),
+//				IsDisabled:  pulumi.Bool(false),
+//				MonitorType: pulumi.String("Logs"),
+//				Notifications: MonitorNotificationArray{
+//					&MonitorNotificationArgs{
+//						Notification: &MonitorNotificationNotificationArgs{
+//							ConnectionType: pulumi.String("Email"),
+//							MessageBody:    pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
+//							Recipients: pulumi.StringArray{
+//								pulumi.String("abc@example.com"),
+//							},
+//							Subject:  pulumi.String("Monitor Alert: {{TriggerType}} on {{Name}}"),
+//							TimeZone: pulumi.String("PST"),
+//						},
+//						RunForTriggerTypes: pulumi.StringArray{
+//							pulumi.String("Critical"),
+//							pulumi.String("ResolvedCritical"),
+//						},
+//					},
+//					&MonitorNotificationArgs{
+//						Notification: &MonitorNotificationNotificationArgs{
+//							ConnectionId:   pulumi.String("0000000000ABC123"),
+//							ConnectionType: pulumi.String("Webhook"),
+//						},
+//						RunForTriggerTypes: pulumi.StringArray{
+//							pulumi.String("Critical"),
+//							pulumi.String("ResolvedCritical"),
+//						},
+//					},
+//				},
+//				Queries: MonitorQueryArray{
+//					&MonitorQueryArgs{
+//						Query: pulumi.String("_sourceCategory=event-action info"),
+//						RowId: pulumi.String("A"),
+//					},
+//				},
+//				Triggers: MonitorTriggerArray{
+//					&MonitorTriggerArgs{
+//						DetectionMethod: pulumi.String("StaticCondition"),
+//						OccurrenceType:  pulumi.String("ResultCount"),
+//						Threshold:       pulumi.Float64(40),
+//						ThresholdType:   pulumi.String("GreaterThan"),
+//						TimeRange:       pulumi.String("15m"),
+//						TriggerSource:   pulumi.String("AllResults"),
+//						TriggerType:     pulumi.String("Critical"),
+//					},
+//					&MonitorTriggerArgs{
+//						DetectionMethod: pulumi.String("StaticCondition"),
+//						OccurrenceType:  pulumi.String("ResultCount"),
+//						Threshold:       pulumi.Float64(40),
+//						ThresholdType:   pulumi.String("LessThanOrEqual"),
+//						TimeRange:       pulumi.String("15m"),
+//						TriggerSource:   pulumi.String("AllResults"),
+//						TriggerType:     pulumi.String("ResolvedCritical"),
+//					},
+//				},
+//				Type: pulumi.String("MonitorsLibraryMonitor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Monitors can be imported using the monitor ID, such ashcl
+// # Monitors can be imported using the monitor ID, such ashcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/monitor:Monitor test 1234567890
+//
+//	$ pulumi import sumologic:index/monitor:Monitor test 1234567890
+//
 // ```
 //
-//  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
+//	[1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 type Monitor struct {
 	pulumi.CustomResourceState
 
@@ -687,7 +707,7 @@ func (i *Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput 
 // MonitorArrayInput is an input type that accepts MonitorArray and MonitorArrayOutput values.
 // You can construct a concrete instance of `MonitorArrayInput` via:
 //
-//          MonitorArray{ MonitorArgs{...} }
+//	MonitorArray{ MonitorArgs{...} }
 type MonitorArrayInput interface {
 	pulumi.Input
 
@@ -712,7 +732,7 @@ func (i MonitorArray) ToMonitorArrayOutputWithContext(ctx context.Context) Monit
 // MonitorMapInput is an input type that accepts MonitorMap and MonitorMapOutput values.
 // You can construct a concrete instance of `MonitorMapInput` via:
 //
-//          MonitorMap{ "key": MonitorArgs{...} }
+//	MonitorMap{ "key": MonitorArgs{...} }
 type MonitorMapInput interface {
 	pulumi.Input
 
