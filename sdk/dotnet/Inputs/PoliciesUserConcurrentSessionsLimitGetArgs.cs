@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class PoliciesUserConcurrentSessionsLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class PoliciesUserConcurrentSessionsLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public PoliciesUserConcurrentSessionsLimitGetArgs()
         {
         }
+        public static new PoliciesUserConcurrentSessionsLimitGetArgs Empty => new PoliciesUserConcurrentSessionsLimitGetArgs();
     }
 }

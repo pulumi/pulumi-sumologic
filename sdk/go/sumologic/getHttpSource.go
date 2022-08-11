@@ -16,22 +16,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.LookupHttpSource(ctx, &GetHttpSourceArgs{
-// 			CollectorId: pulumi.IntRef(121212),
-// 			Name:        pulumi.StringRef("source_name"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.LookupHttpSource(ctx, &GetHttpSourceArgs{
+//				CollectorId: pulumi.IntRef(121212),
+//				Name:        pulumi.StringRef("source_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // A HTTP Source can be looked up by using a combination of `collectorId` & `name`.

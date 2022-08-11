@@ -19,47 +19,52 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseMatchRule(ctx, "matchRule", &sumologic.CseMatchRuleArgs{
-// 			DescriptionExpression: pulumi.String("Signal description"),
-// 			Enabled:               pulumi.Bool(true),
-// 			EntitySelectors: CseMatchRuleEntitySelectorArray{
-// 				&CseMatchRuleEntitySelectorArgs{
-// 					EntityType: pulumi.String("_ip"),
-// 					Expression: pulumi.String("srcDevice_ip"),
-// 				},
-// 			},
-// 			Expression:     pulumi.String("objectType = \"Network\""),
-// 			IsPrototype:    pulumi.Bool(false),
-// 			NameExpression: pulumi.String("Signal name"),
-// 			SeverityMapping: &CseMatchRuleSeverityMappingArgs{
-// 				Default: pulumi.Int(5),
-// 				Type:    pulumi.String("constant"),
-// 			},
-// 			SummaryExpression: pulumi.String("Signal summary"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("_mitreAttackTactic:TA0009"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseMatchRule(ctx, "matchRule", &sumologic.CseMatchRuleArgs{
+//				DescriptionExpression: pulumi.String("Signal description"),
+//				Enabled:               pulumi.Bool(true),
+//				EntitySelectors: CseMatchRuleEntitySelectorArray{
+//					&CseMatchRuleEntitySelectorArgs{
+//						EntityType: pulumi.String("_ip"),
+//						Expression: pulumi.String("srcDevice_ip"),
+//					},
+//				},
+//				Expression:     pulumi.String("objectType = \"Network\""),
+//				IsPrototype:    pulumi.Bool(false),
+//				NameExpression: pulumi.String("Signal name"),
+//				SeverityMapping: &CseMatchRuleSeverityMappingArgs{
+//					Default: pulumi.Int(5),
+//					Type:    pulumi.String("constant"),
+//				},
+//				SummaryExpression: pulumi.String("Signal summary"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("_mitreAttackTactic:TA0009"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Match Rules can be imported using the field id, e.g.hcl
+// # Match Rules can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
+//
+//	$ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
+//
 // ```
 type CseMatchRule struct {
 	pulumi.CustomResourceState
@@ -255,7 +260,7 @@ func (i *CseMatchRule) ToCseMatchRuleOutputWithContext(ctx context.Context) CseM
 // CseMatchRuleArrayInput is an input type that accepts CseMatchRuleArray and CseMatchRuleArrayOutput values.
 // You can construct a concrete instance of `CseMatchRuleArrayInput` via:
 //
-//          CseMatchRuleArray{ CseMatchRuleArgs{...} }
+//	CseMatchRuleArray{ CseMatchRuleArgs{...} }
 type CseMatchRuleArrayInput interface {
 	pulumi.Input
 
@@ -280,7 +285,7 @@ func (i CseMatchRuleArray) ToCseMatchRuleArrayOutputWithContext(ctx context.Cont
 // CseMatchRuleMapInput is an input type that accepts CseMatchRuleMap and CseMatchRuleMapOutput values.
 // You can construct a concrete instance of `CseMatchRuleMapInput` via:
 //
-//          CseMatchRuleMap{ "key": CseMatchRuleArgs{...} }
+//	CseMatchRuleMap{ "key": CseMatchRuleArgs{...} }
 type CseMatchRuleMapInput interface {
 	pulumi.Input
 

@@ -20,73 +20,72 @@ namespace Pulumi.SumoLogic
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
+    /// 
+    ///     var api_dashboard = new SumoLogic.Dashboard("api-dashboard", new()
     ///     {
-    ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
-    ///         var api_dashboard = new SumoLogic.Dashboard("api-dashboard", new SumoLogic.DashboardArgs
+    ///         Title = "Api Health Dashboard",
+    ///         Description = "Demo dashboard description",
+    ///         FolderId = personalFolder.Apply(getPersonalFolderResult =&gt; getPersonalFolderResult.Id),
+    ///         RefreshInterval = 120,
+    ///         Theme = "Dark",
+    ///         TimeRange = new SumoLogic.Inputs.DashboardTimeRangeArgs
     ///         {
-    ///             Title = "Api Health Dashboard",
-    ///             Description = "Demo dashboard description",
-    ///             FolderId = personalFolder.Apply(personalFolder =&gt; personalFolder.Id),
-    ///             RefreshInterval = 120,
-    ///             Theme = "Dark",
-    ///             TimeRange = new SumoLogic.Inputs.DashboardTimeRangeArgs
+    ///             BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardTimeRangeBeginBoundedTimeRangeArgs
     ///             {
-    ///                 BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardTimeRangeBeginBoundedTimeRangeArgs
+    ///                 From = new SumoLogic.Inputs.DashboardTimeRangeBeginBoundedTimeRangeFromArgs
     ///                 {
-    ///                     From = new SumoLogic.Inputs.DashboardTimeRangeBeginBoundedTimeRangeFromArgs
+    ///                     LiteralTimeRange = new SumoLogic.Inputs.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs
     ///                     {
-    ///                         LiteralTimeRange = new SumoLogic.Inputs.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs
-    ///                         {
-    ///                             RangeName = "today",
-    ///                         },
+    ///                         RangeName = "today",
     ///                     },
     ///                 },
     ///             },
-    ///             TopologyLabelMap = new SumoLogic.Inputs.DashboardTopologyLabelMapArgs
+    ///         },
+    ///         TopologyLabelMap = new SumoLogic.Inputs.DashboardTopologyLabelMapArgs
+    ///         {
+    ///             Datas = new[]
     ///             {
-    ///                 Datas = 
+    ///                 new SumoLogic.Inputs.DashboardTopologyLabelMapDataArgs
     ///                 {
-    ///                     new SumoLogic.Inputs.DashboardTopologyLabelMapDataArgs
+    ///                     Label = "cluster",
+    ///                     Values = new[]
     ///                     {
-    ///                         Label = "cluster",
-    ///                         Values = 
-    ///                         {
-    ///                             "api-prod",
-    ///                         },
+    ///                         "api-prod",
     ///                     },
-    ///                     new SumoLogic.Inputs.DashboardTopologyLabelMapDataArgs
+    ///                 },
+    ///                 new SumoLogic.Inputs.DashboardTopologyLabelMapDataArgs
+    ///                 {
+    ///                     Label = "namespace",
+    ///                     Values = new[]
     ///                     {
-    ///                         Label = "namespace",
-    ///                         Values = 
-    ///                         {
-    ///                             "default",
-    ///                         },
+    ///                         "default",
     ///                     },
     ///                 },
     ///             },
-    ///             Domain = "app",
-    ///             Panels = 
+    ///         },
+    ///         Domain = "app",
+    ///         Panels = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.DashboardPanelArgs
     ///             {
-    ///                 new SumoLogic.Inputs.DashboardPanelArgs
+    ///                 TextPanel = new SumoLogic.Inputs.DashboardPanelTextPanelArgs
     ///                 {
-    ///                     TextPanel = new SumoLogic.Inputs.DashboardPanelTextPanelArgs
+    ///                     Key = "text-panel-01",
+    ///                     Title = "Api Health",
+    ///                     VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                     {
-    ///                         Key = "text-panel-01",
-    ///                         Title = "Api Health",
-    ///                         VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                         ["text"] = new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             { "text", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "verticalAlignment", "top" },
-    ///                                 { "horizontalAlignment", "left" },
-    ///                                 { "fontSize", 12 },
-    ///                             } },
-    ///                         }),
-    ///                         KeepVisualSettingsConsistentWithParent = true,
-    ///                         Text = @"## Api Health Monitoring
+    ///                             ["verticalAlignment"] = "top",
+    ///                             ["horizontalAlignment"] = "left",
+    ///                             ["fontSize"] = 12,
+    ///                         },
+    ///                     }),
+    ///                     KeepVisualSettingsConsistentWithParent = true,
+    ///                     Text = @"## Api Health Monitoring
     /// 
     /// Use this dashboard to monitor API service health. It contains following panels:
     /// 
@@ -94,255 +93,254 @@ namespace Pulumi.SumoLogic
     /// 3. API 5xx: Count of 5xx response
     /// 3. CPU utilization: CPU utilization in last 60 mins
     /// ",
+    ///                 },
+    ///             },
+    ///             new SumoLogic.Inputs.DashboardPanelArgs
+    ///             {
+    ///                 SumoSearchPanel = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelArgs
+    ///                 {
+    ///                     Key = "search-panel-01",
+    ///                     Title = "Api Errors by Host",
+    ///                     Description = "Errors in api service since last 12 hours",
+    ///                     VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["general"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["mode"] = "timeSeries",
+    ///                             ["type"] = "area",
+    ///                             ["displayType"] = "stacked",
+    ///                             ["markerSize"] = 5,
+    ///                             ["lineDashType"] = "solid",
+    ///                             ["markerType"] = "square",
+    ///                             ["lineThickness"] = 1,
+    ///                         },
+    ///                         ["title"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["fontSize"] = 14,
+    ///                         },
+    ///                         ["legend"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["enabled"] = true,
+    ///                             ["verticalAlign"] = "bottom",
+    ///                             ["fontSize"] = 12,
+    ///                             ["maxHeight"] = 50,
+    ///                             ["showAsTable"] = false,
+    ///                             ["wrap"] = true,
+    ///                         },
+    ///                     }),
+    ///                     KeepVisualSettingsConsistentWithParent = true,
+    ///                     Queries = new[]
+    ///                     {
+    ///                         new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
+    ///                         {
+    ///                             QueryString = "_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost",
+    ///                             QueryType = "Logs",
+    ///                             QueryKey = "A",
+    ///                         },
+    ///                     },
+    ///                     TimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeArgs
+    ///                     {
+    ///                         BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs
+    ///                         {
+    ///                             From = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs
+    ///                             {
+    ///                                 RelativeTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs
+    ///                                 {
+    ///                                     RelativeTime = "-12h",
+    ///                                 },
+    ///                             },
+    ///                         },
     ///                     },
     ///                 },
-    ///                 new SumoLogic.Inputs.DashboardPanelArgs
+    ///             },
+    ///             new SumoLogic.Inputs.DashboardPanelArgs
+    ///             {
+    ///                 SumoSearchPanel = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelArgs
     ///                 {
-    ///                     SumoSearchPanel = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelArgs
+    ///                     Key = "metrics-panel-01",
+    ///                     Title = "Api 5xx Response Count",
+    ///                     Description = "Count of 5xx response from api service",
+    ///                     VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["general"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["mode"] = "distribution",
+    ///                             ["type"] = "pie",
+    ///                             ["displayType"] = "default",
+    ///                             ["fillOpacity"] = 1,
+    ///                             ["startAngle"] = 270,
+    ///                             ["innerRadius"] = "40%",
+    ///                             ["maxNumOfSlices"] = 10,
+    ///                             ["aggregationType"] = "sum",
+    ///                         },
+    ///                         ["title"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["fontSize"] = 14,
+    ///                         },
+    ///                     }),
+    ///                     KeepVisualSettingsConsistentWithParent = true,
+    ///                     Queries = new[]
+    ///                     {
+    ///                         new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
+    ///                         {
+    ///                             QueryString = "_sourceCategory=api metric=Api-5xx",
+    ///                             QueryType = "Metrics",
+    ///                             QueryKey = "A",
+    ///                             MetricsQueryMode = "Advanced",
+    ///                         },
+    ///                     },
+    ///                     TimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeArgs
+    ///                     {
+    ///                         BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs
+    ///                         {
+    ///                             From = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs
+    ///                             {
+    ///                                 LiteralTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs
+    ///                                 {
+    ///                                     RangeName = "today",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new SumoLogic.Inputs.DashboardPanelArgs
+    ///             {
+    ///                 SumoSearchPanel = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelArgs
+    ///                 {
+    ///                     Key = "metrics-panel-02",
+    ///                     Title = "CPU Utilization",
+    ///                     Description = "CPU utilization in api service",
+    ///                     VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["general"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["mode"] = "timeSeries",
+    ///                             ["type"] = "line",
+    ///                             ["displayType"] = "smooth",
+    ///                             ["markerSize"] = 5,
+    ///                             ["lineDashType"] = "dashDot",
+    ///                             ["markerType"] = "none",
+    ///                             ["lineThickness"] = 1,
+    ///                         },
+    ///                         ["title"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["fontSize"] = 14,
+    ///                         },
+    ///                     }),
+    ///                     KeepVisualSettingsConsistentWithParent = true,
+    ///                     Queries = new[]
+    ///                     {
+    ///                         new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
+    ///                         {
+    ///                             QueryString = "metric=Proc_CPU nite-api-1",
+    ///                             QueryType = "Metrics",
+    ///                             QueryKey = "A",
+    ///                             MetricsQueryMode = "Basic",
+    ///                             MetricsQueryData = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs
+    ///                             {
+    ///                                 Metric = "Proc_CPU",
+    ///                                 Filters = new[]
+    ///                                 {
+    ///                                     new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs
+    ///                                     {
+    ///                                         Key = "_sourcehost",
+    ///                                         Negation = false,
+    ///                                         Value = "nite-api-1",
+    ///                                     },
+    ///                                 },
+    ///                                 AggregationType = "None",
+    ///                             },
+    ///                         },
+    ///                         new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
+    ///                         {
+    ///                             QueryString = "metric=Proc_CPU nite-api-2",
+    ///                             QueryType = "Metrics",
+    ///                             QueryKey = "B",
+    ///                             MetricsQueryMode = "Basic",
+    ///                             MetricsQueryData = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs
+    ///                             {
+    ///                                 Metric = "Proc_CPU",
+    ///                                 Filters = new[]
+    ///                                 {
+    ///                                     new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs
+    ///                                     {
+    ///                                         Key = "_sourcehost",
+    ///                                         Negation = false,
+    ///                                         Value = "nite-api-2",
+    ///                                     },
+    ///                                 },
+    ///                                 AggregationType = "None",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     TimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeArgs
+    ///                     {
+    ///                         BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs
+    ///                         {
+    ///                             From = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs
+    ///                             {
+    ///                                 RelativeTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs
+    ///                                 {
+    ///                                     RelativeTime = "-1h",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Layout = new SumoLogic.Inputs.DashboardLayoutArgs
+    ///         {
+    ///             Grid = new SumoLogic.Inputs.DashboardLayoutGridArgs
+    ///             {
+    ///                 LayoutStructures = new[]
+    ///                 {
+    ///                     new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
+    ///                     {
+    ///                         Key = "text-panel-01",
+    ///                         Structure = "{\"height\":5,\"width\":24,\"x\":0,\"y\":0}",
+    ///                     },
+    ///                     new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
     ///                     {
     ///                         Key = "search-panel-01",
-    ///                         Title = "Api Errors by Host",
-    ///                         Description = "Errors in api service since last 12 hours",
-    ///                         VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "general", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "mode", "timeSeries" },
-    ///                                 { "type", "area" },
-    ///                                 { "displayType", "stacked" },
-    ///                                 { "markerSize", 5 },
-    ///                                 { "lineDashType", "solid" },
-    ///                                 { "markerType", "square" },
-    ///                                 { "lineThickness", 1 },
-    ///                             } },
-    ///                             { "title", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "fontSize", 14 },
-    ///                             } },
-    ///                             { "legend", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "enabled", true },
-    ///                                 { "verticalAlign", "bottom" },
-    ///                                 { "fontSize", 12 },
-    ///                                 { "maxHeight", 50 },
-    ///                                 { "showAsTable", false },
-    ///                                 { "wrap", true },
-    ///                             } },
-    ///                         }),
-    ///                         KeepVisualSettingsConsistentWithParent = true,
-    ///                         Queries = 
-    ///                         {
-    ///                             new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
-    ///                             {
-    ///                                 QueryString = "_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost",
-    ///                                 QueryType = "Logs",
-    ///                                 QueryKey = "A",
-    ///                             },
-    ///                         },
-    ///                         TimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeArgs
-    ///                         {
-    ///                             BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs
-    ///                             {
-    ///                                 From = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs
-    ///                                 {
-    ///                                     RelativeTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs
-    ///                                     {
-    ///                                         RelativeTime = "-12h",
-    ///                                     },
-    ///                                 },
-    ///                             },
-    ///                         },
+    ///                         Structure = "{\"height\":10,\"width\":12,\"x\":0,\"y\":5}",
     ///                     },
-    ///                 },
-    ///                 new SumoLogic.Inputs.DashboardPanelArgs
-    ///                 {
-    ///                     SumoSearchPanel = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelArgs
+    ///                     new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
     ///                     {
     ///                         Key = "metrics-panel-01",
-    ///                         Title = "Api 5xx Response Count",
-    ///                         Description = "Count of 5xx response from api service",
-    ///                         VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "general", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "mode", "distribution" },
-    ///                                 { "type", "pie" },
-    ///                                 { "displayType", "default" },
-    ///                                 { "fillOpacity", 1 },
-    ///                                 { "startAngle", 270 },
-    ///                                 { "innerRadius", "40%" },
-    ///                                 { "maxNumOfSlices", 10 },
-    ///                                 { "aggregationType", "sum" },
-    ///                             } },
-    ///                             { "title", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "fontSize", 14 },
-    ///                             } },
-    ///                         }),
-    ///                         KeepVisualSettingsConsistentWithParent = true,
-    ///                         Queries = 
-    ///                         {
-    ///                             new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
-    ///                             {
-    ///                                 QueryString = "_sourceCategory=api metric=Api-5xx",
-    ///                                 QueryType = "Metrics",
-    ///                                 QueryKey = "A",
-    ///                                 MetricsQueryMode = "Advanced",
-    ///                             },
-    ///                         },
-    ///                         TimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeArgs
-    ///                         {
-    ///                             BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs
-    ///                             {
-    ///                                 From = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs
-    ///                                 {
-    ///                                     LiteralTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs
-    ///                                     {
-    ///                                         RangeName = "today",
-    ///                                     },
-    ///                                 },
-    ///                             },
-    ///                         },
+    ///                         Structure = "{\"height\":10,\"width\":12,\"x\":12,\"y\":5}",
     ///                     },
-    ///                 },
-    ///                 new SumoLogic.Inputs.DashboardPanelArgs
-    ///                 {
-    ///                     SumoSearchPanel = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelArgs
+    ///                     new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
     ///                     {
     ///                         Key = "metrics-panel-02",
-    ///                         Title = "CPU Utilization",
-    ///                         Description = "CPU utilization in api service",
-    ///                         VisualSettings = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "general", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "mode", "timeSeries" },
-    ///                                 { "type", "line" },
-    ///                                 { "displayType", "smooth" },
-    ///                                 { "markerSize", 5 },
-    ///                                 { "lineDashType", "dashDot" },
-    ///                                 { "markerType", "none" },
-    ///                                 { "lineThickness", 1 },
-    ///                             } },
-    ///                             { "title", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "fontSize", 14 },
-    ///                             } },
-    ///                         }),
-    ///                         KeepVisualSettingsConsistentWithParent = true,
-    ///                         Queries = 
-    ///                         {
-    ///                             new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
-    ///                             {
-    ///                                 QueryString = "metric=Proc_CPU nite-api-1",
-    ///                                 QueryType = "Metrics",
-    ///                                 QueryKey = "A",
-    ///                                 MetricsQueryMode = "Basic",
-    ///                                 MetricsQueryData = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs
-    ///                                 {
-    ///                                     Metric = "Proc_CPU",
-    ///                                     Filters = 
-    ///                                     {
-    ///                                         new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs
-    ///                                         {
-    ///                                             Key = "_sourcehost",
-    ///                                             Negation = false,
-    ///                                             Value = "nite-api-1",
-    ///                                         },
-    ///                                     },
-    ///                                     AggregationType = "None",
-    ///                                 },
-    ///                             },
-    ///                             new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryArgs
-    ///                             {
-    ///                                 QueryString = "metric=Proc_CPU nite-api-2",
-    ///                                 QueryType = "Metrics",
-    ///                                 QueryKey = "B",
-    ///                                 MetricsQueryMode = "Basic",
-    ///                                 MetricsQueryData = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs
-    ///                                 {
-    ///                                     Metric = "Proc_CPU",
-    ///                                     Filters = 
-    ///                                     {
-    ///                                         new SumoLogic.Inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs
-    ///                                         {
-    ///                                             Key = "_sourcehost",
-    ///                                             Negation = false,
-    ///                                             Value = "nite-api-2",
-    ///                                         },
-    ///                                     },
-    ///                                     AggregationType = "None",
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                         TimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeArgs
-    ///                         {
-    ///                             BeginBoundedTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs
-    ///                             {
-    ///                                 From = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs
-    ///                                 {
-    ///                                     RelativeTimeRange = new SumoLogic.Inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs
-    ///                                     {
-    ///                                         RelativeTime = "-1h",
-    ///                                     },
-    ///                                 },
-    ///                             },
-    ///                         },
+    ///                         Structure = "{\"height\":10,\"width\":24,\"x\":0,\"y\":25}",
     ///                     },
     ///                 },
     ///             },
-    ///             Layout = new SumoLogic.Inputs.DashboardLayoutArgs
+    ///         },
+    ///         Variables = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.DashboardVariableArgs
     ///             {
-    ///                 Grid = new SumoLogic.Inputs.DashboardLayoutGridArgs
+    ///                 Name = "_sourceHost",
+    ///                 DisplayName = "Source Host",
+    ///                 DefaultValue = "nite-api-1",
+    ///                 SourceDefinition = new SumoLogic.Inputs.DashboardVariableSourceDefinitionArgs
     ///                 {
-    ///                     LayoutStructures = 
+    ///                     CsvVariableSourceDefinition = new SumoLogic.Inputs.DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs
     ///                     {
-    ///                         new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
-    ///                         {
-    ///                             Key = "text-panel-01",
-    ///                             Structure = "{\"height\":5,\"width\":24,\"x\":0,\"y\":0}",
-    ///                         },
-    ///                         new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
-    ///                         {
-    ///                             Key = "search-panel-01",
-    ///                             Structure = "{\"height\":10,\"width\":12,\"x\":0,\"y\":5}",
-    ///                         },
-    ///                         new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
-    ///                         {
-    ///                             Key = "metrics-panel-01",
-    ///                             Structure = "{\"height\":10,\"width\":12,\"x\":12,\"y\":5}",
-    ///                         },
-    ///                         new SumoLogic.Inputs.DashboardLayoutGridLayoutStructureArgs
-    ///                         {
-    ///                             Key = "metrics-panel-02",
-    ///                             Structure = "{\"height\":10,\"width\":24,\"x\":0,\"y\":25}",
-    ///                         },
+    ///                         Values = "nite-api-1,nite-api-2",
     ///                     },
     ///                 },
+    ///                 AllowMultiSelect = true,
+    ///                 IncludeAllOption = true,
+    ///                 HideFromUi = false,
     ///             },
-    ///             Variables = 
-    ///             {
-    ///                 new SumoLogic.Inputs.DashboardVariableArgs
-    ///                 {
-    ///                     Name = "_sourceHost",
-    ///                     DisplayName = "Source Host",
-    ///                     DefaultValue = "nite-api-1",
-    ///                     SourceDefinition = new SumoLogic.Inputs.DashboardVariableSourceDefinitionArgs
-    ///                     {
-    ///                         CsvVariableSourceDefinition = new SumoLogic.Inputs.DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs
-    ///                         {
-    ///                             Values = "nite-api-1,nite-api-2",
-    ///                         },
-    ///                     },
-    ///                     AllowMultiSelect = true,
-    ///                     IncludeAllOption = true,
-    ///                     HideFromUi = false,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -489,7 +487,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
     /// </summary>
     [SumoLogicResourceType("sumologic:index/dashboard:Dashboard")]
-    public partial class Dashboard : Pulumi.CustomResource
+    public partial class Dashboard : global::Pulumi.CustomResource
     {
         [Output("coloringRules")]
         public Output<ImmutableArray<Outputs.DashboardColoringRule>> ColoringRules { get; private set; } = null!;
@@ -609,7 +607,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class DashboardArgs : Pulumi.ResourceArgs
+    public sealed class DashboardArgs : global::Pulumi.ResourceArgs
     {
         [Input("coloringRules")]
         private InputList<Inputs.DashboardColoringRuleArgs>? _coloringRules;
@@ -705,9 +703,10 @@ namespace Pulumi.SumoLogic
         public DashboardArgs()
         {
         }
+        public static new DashboardArgs Empty => new DashboardArgs();
     }
 
-    public sealed class DashboardState : Pulumi.ResourceArgs
+    public sealed class DashboardState : global::Pulumi.ResourceArgs
     {
         [Input("coloringRules")]
         private InputList<Inputs.DashboardColoringRuleGetArgs>? _coloringRules;
@@ -803,5 +802,6 @@ namespace Pulumi.SumoLogic
         public DashboardState()
         {
         }
+        public static new DashboardState Empty => new DashboardState();
     }
 }

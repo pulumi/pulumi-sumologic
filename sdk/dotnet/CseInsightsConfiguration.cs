@@ -15,21 +15,19 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var insightsConfiguration = new SumoLogic.CseInsightsConfiguration("insightsConfiguration", new()
     ///     {
-    ///         var insightsConfiguration = new SumoLogic.CseInsightsConfiguration("insightsConfiguration", new SumoLogic.CseInsightsConfigurationArgs
-    ///         {
-    ///             LookbackDays = 13,
-    ///             Threshold = 12,
-    ///         });
-    ///     }
+    ///         LookbackDays = 13,
+    ///         Threshold = 12,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration")]
-    public partial class CseInsightsConfiguration : Pulumi.CustomResource
+    public partial class CseInsightsConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Detection window expressed in days.
@@ -99,7 +97,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseInsightsConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class CseInsightsConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Detection window expressed in days.
@@ -116,9 +114,10 @@ namespace Pulumi.SumoLogic
         public CseInsightsConfigurationArgs()
         {
         }
+        public static new CseInsightsConfigurationArgs Empty => new CseInsightsConfigurationArgs();
     }
 
-    public sealed class CseInsightsConfigurationState : Pulumi.ResourceArgs
+    public sealed class CseInsightsConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Detection window expressed in days.
@@ -135,5 +134,6 @@ namespace Pulumi.SumoLogic
         public CseInsightsConfigurationState()
         {
         }
+        public static new CseInsightsConfigurationState Empty => new CseInsightsConfigurationState();
     }
 }

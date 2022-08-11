@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class AwsInventorySourceDefaultDateFormatArgs : Pulumi.ResourceArgs
+    public sealed class AwsInventorySourceDefaultDateFormatArgs : global::Pulumi.ResourceArgs
     {
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public AwsInventorySourceDefaultDateFormatArgs()
         {
         }
+        public static new AwsInventorySourceDefaultDateFormatArgs Empty => new AwsInventorySourceDefaultDateFormatArgs();
     }
 }

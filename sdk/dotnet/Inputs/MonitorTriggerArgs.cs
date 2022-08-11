@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerArgs : global::Pulumi.ResourceArgs
     {
         [Input("detectionMethod")]
         public Input<string>? DetectionMethod { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerArgs()
         {
         }
+        public static new MonitorTriggerArgs Empty => new MonitorTriggerArgs();
     }
 }

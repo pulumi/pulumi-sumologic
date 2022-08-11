@@ -19,51 +19,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewHierarchy(ctx, "exampleHierarchy", &sumologic.HierarchyArgs{
-// 			Filter: &HierarchyFilterArgs{
-// 				Key:   pulumi.String("_origin"),
-// 				Value: pulumi.String("kubernetes"),
-// 			},
-// 			Levels: HierarchyLevelArray{
-// 				&HierarchyLevelArgs{
-// 					EntityType: pulumi.String("cluster"),
-// 					NextLevel: &HierarchyLevelNextLevelArgs{
-// 						EntityType: pulumi.String("node"),
-// 					},
-// 					NextLevelsWithConditions: HierarchyLevelNextLevelsWithConditionArray{
-// 						&HierarchyLevelNextLevelsWithConditionArgs{
-// 							Condition: pulumi.String("testCondition"),
-// 							Level: &HierarchyLevelNextLevelsWithConditionLevelArgs{
-// 								EntityType: pulumi.String("namespace"),
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewHierarchy(ctx, "exampleHierarchy", &sumologic.HierarchyArgs{
+//				Filter: &HierarchyFilterArgs{
+//					Key:   pulumi.String("_origin"),
+//					Value: pulumi.String("kubernetes"),
+//				},
+//				Levels: HierarchyLevelArray{
+//					&HierarchyLevelArgs{
+//						EntityType: pulumi.String("cluster"),
+//						NextLevel: &HierarchyLevelNextLevelArgs{
+//							EntityType: pulumi.String("node"),
+//						},
+//						NextLevelsWithConditions: HierarchyLevelNextLevelsWithConditionArray{
+//							&HierarchyLevelNextLevelsWithConditionArgs{
+//								Condition: pulumi.String("testCondition"),
+//								Level: &HierarchyLevelNextLevelsWithConditionLevelArgs{
+//									EntityType: pulumi.String("namespace"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Hierarchies can be imported using the id, e.g.hcl
+// # Hierarchies can be imported using the id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/hierarchy:Hierarchy test id
+//
+//	$ pulumi import sumologic:index/hierarchy:Hierarchy test id
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Visualizations-and-Alerts/Explore
+//	[1]https://help.sumologic.com/Visualizations-and-Alerts/Explore
 type Hierarchy struct {
 	pulumi.CustomResourceState
 
@@ -168,7 +173,7 @@ func (i *Hierarchy) ToHierarchyOutputWithContext(ctx context.Context) HierarchyO
 // HierarchyArrayInput is an input type that accepts HierarchyArray and HierarchyArrayOutput values.
 // You can construct a concrete instance of `HierarchyArrayInput` via:
 //
-//          HierarchyArray{ HierarchyArgs{...} }
+//	HierarchyArray{ HierarchyArgs{...} }
 type HierarchyArrayInput interface {
 	pulumi.Input
 
@@ -193,7 +198,7 @@ func (i HierarchyArray) ToHierarchyArrayOutputWithContext(ctx context.Context) H
 // HierarchyMapInput is an input type that accepts HierarchyMap and HierarchyMapOutput values.
 // You can construct a concrete instance of `HierarchyMapInput` via:
 //
-//          HierarchyMap{ "key": HierarchyArgs{...} }
+//	HierarchyMap{ "key": HierarchyArgs{...} }
 type HierarchyMapInput interface {
 	pulumi.Input
 

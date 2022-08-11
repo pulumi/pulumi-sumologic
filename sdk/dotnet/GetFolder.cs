@@ -59,7 +59,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetFolderArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderArgs : global::Pulumi.InvokeArgs
     {
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
@@ -67,9 +67,10 @@ namespace Pulumi.SumoLogic
         public GetFolderArgs()
         {
         }
+        public static new GetFolderArgs Empty => new GetFolderArgs();
     }
 
-    public sealed class GetFolderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -77,6 +78,7 @@ namespace Pulumi.SumoLogic
         public GetFolderInvokeArgs()
         {
         }
+        public static new GetFolderInvokeArgs Empty => new GetFolderInvokeArgs();
     }
 
 

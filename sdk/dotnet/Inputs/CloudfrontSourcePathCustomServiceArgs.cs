@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudfrontSourcePathCustomServiceArgs : Pulumi.ResourceArgs
+    public sealed class CloudfrontSourcePathCustomServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefixes")]
         private InputList<string>? _prefixes;
@@ -26,5 +26,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudfrontSourcePathCustomServiceArgs()
         {
         }
+        public static new CloudfrontSourcePathCustomServiceArgs Empty => new CloudfrontSourcePathCustomServiceArgs();
     }
 }

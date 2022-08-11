@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class GcpMetricsSourceAuthenticationGetArgs : Pulumi.ResourceArgs
+    public sealed class GcpMetricsSourceAuthenticationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -87,5 +87,6 @@ namespace Pulumi.SumoLogic.Inputs
         public GcpMetricsSourceAuthenticationGetArgs()
         {
         }
+        public static new GcpMetricsSourceAuthenticationGetArgs Empty => new GcpMetricsSourceAuthenticationGetArgs();
     }
 }

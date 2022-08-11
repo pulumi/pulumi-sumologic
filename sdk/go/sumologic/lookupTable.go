@@ -19,37 +19,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewLookupTable(ctx, "lookupTable", &sumologic.LookupTableArgs{
-// 			Description: pulumi.String("some description"),
-// 			Fields: LookupTableFieldArray{
-// 				&LookupTableFieldArgs{
-// 					FieldName: pulumi.String("FieldName1"),
-// 					FieldType: pulumi.String("boolean"),
-// 				},
-// 				&LookupTableFieldArgs{
-// 					FieldName: pulumi.String("FieldName2"),
-// 					FieldType: pulumi.String("string"),
-// 				},
-// 			},
-// 			ParentFolderId: pulumi.String("<personal folder id>"),
-// 			PrimaryKeys: pulumi.StringArray{
-// 				pulumi.String("FieldName1"),
-// 			},
-// 			SizeLimitAction: pulumi.String("DeleteOldData"),
-// 			Ttl:             pulumi.Int(100),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewLookupTable(ctx, "lookupTable", &sumologic.LookupTableArgs{
+//				Description: pulumi.String("some description"),
+//				Fields: LookupTableFieldArray{
+//					&LookupTableFieldArgs{
+//						FieldName: pulumi.String("FieldName1"),
+//						FieldType: pulumi.String("boolean"),
+//					},
+//					&LookupTableFieldArgs{
+//						FieldName: pulumi.String("FieldName2"),
+//						FieldType: pulumi.String("string"),
+//					},
+//				},
+//				ParentFolderId: pulumi.String("<personal folder id>"),
+//				PrimaryKeys: pulumi.StringArray{
+//					pulumi.String("FieldName1"),
+//				},
+//				SizeLimitAction: pulumi.String("DeleteOldData"),
+//				Ttl:             pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -59,13 +62,15 @@ import (
 //
 // ## Import
 //
-// Lookup Tables can be imported using the id, e.g.hcl
+// # Lookup Tables can be imported using the id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
+//
+//	$ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
+//
 // ```
 //
-//  [1]https://help.sumologic.com/05Search/Lookup_Tables
+//	[1]https://help.sumologic.com/05Search/Lookup_Tables
 type LookupTable struct {
 	pulumi.CustomResourceState
 
@@ -210,7 +215,7 @@ func (i *LookupTable) ToLookupTableOutputWithContext(ctx context.Context) Lookup
 // LookupTableArrayInput is an input type that accepts LookupTableArray and LookupTableArrayOutput values.
 // You can construct a concrete instance of `LookupTableArrayInput` via:
 //
-//          LookupTableArray{ LookupTableArgs{...} }
+//	LookupTableArray{ LookupTableArgs{...} }
 type LookupTableArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +240,7 @@ func (i LookupTableArray) ToLookupTableArrayOutputWithContext(ctx context.Contex
 // LookupTableMapInput is an input type that accepts LookupTableMap and LookupTableMapOutput values.
 // You can construct a concrete instance of `LookupTableMapInput` via:
 //
-//          LookupTableMap{ "key": LookupTableArgs{...} }
+//	LookupTableMap{ "key": LookupTableArgs{...} }
 type LookupTableMapInput interface {
 	pulumi.Input
 

@@ -17,42 +17,41 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var awsXraySource = new SumoLogic.AwsXraySource("awsXraySource", new SumoLogic.AwsXraySourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.AwsXraySourceAuthenticationArgs
-    ///             {
-    ///                 RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
-    ///                 Type = "AWSRoleBasedAuthentication",
-    ///             },
-    ///             Category = "aws/xray",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "AwsXRay",
-    ///             Description = "My description",
-    ///             Path = new SumoLogic.Inputs.AwsXraySourcePathArgs
-    ///             {
-    ///                 LimitToRegions = 
-    ///                 {
-    ///                     "us-west-2",
-    ///                 },
-    ///                 Type = "AwsXRayPath",
-    ///             },
-    ///             Paused = false,
-    ///             ScanInterval = 300000,
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var awsXraySource = new SumoLogic.AwsXraySource("awsXraySource", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.AwsXraySourceAuthenticationArgs
+    ///         {
+    ///             RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
+    ///             Type = "AWSRoleBasedAuthentication",
+    ///         },
+    ///         Category = "aws/xray",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "AwsXRay",
+    ///         Description = "My description",
+    ///         Path = new SumoLogic.Inputs.AwsXraySourcePathArgs
+    ///         {
+    ///             LimitToRegions = new[]
+    ///             {
+    ///                 "us-west-2",
+    ///             },
+    ///             Type = "AwsXRayPath",
+    ///         },
+    ///         Paused = false,
+    ///         ScanInterval = 300000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +69,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/awsXraySource:AwsXraySource")]
-    public partial class AwsXraySource : Pulumi.CustomResource
+    public partial class AwsXraySource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for making `xray:Get*` calls.
@@ -197,7 +196,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class AwsXraySourceArgs : Pulumi.ResourceArgs
+    public sealed class AwsXraySourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for making `xray:Get*` calls.
@@ -295,9 +294,10 @@ namespace Pulumi.SumoLogic
         public AwsXraySourceArgs()
         {
         }
+        public static new AwsXraySourceArgs Empty => new AwsXraySourceArgs();
     }
 
-    public sealed class AwsXraySourceState : Pulumi.ResourceArgs
+    public sealed class AwsXraySourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for making `xray:Get*` calls.
@@ -398,5 +398,6 @@ namespace Pulumi.SumoLogic
         public AwsXraySourceState()
         {
         }
+        public static new AwsXraySourceState Empty => new AwsXraySourceState();
     }
 }

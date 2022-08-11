@@ -19,33 +19,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewField(ctx, "field", &sumologic.FieldArgs{
-// 			DataType:  pulumi.String("Int"),
-// 			FieldName: pulumi.String("int_field_1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewField(ctx, "field", &sumologic.FieldArgs{
+//				DataType:  pulumi.String("Int"),
+//				FieldName: pulumi.String("int_field_1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Fields can be imported using the field id, e.g.hcl
+// # Fields can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/field:Field field 000000000ABC1234
+//
+//	$ pulumi import sumologic:index/field:Field field 000000000ABC1234
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Fields
+//	[1]https://help.sumologic.com/Manage/Fields
 type Field struct {
 	pulumi.CustomResourceState
 
@@ -161,7 +166,7 @@ func (i *Field) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 // FieldArrayInput is an input type that accepts FieldArray and FieldArrayOutput values.
 // You can construct a concrete instance of `FieldArrayInput` via:
 //
-//          FieldArray{ FieldArgs{...} }
+//	FieldArray{ FieldArgs{...} }
 type FieldArrayInput interface {
 	pulumi.Input
 
@@ -186,7 +191,7 @@ func (i FieldArray) ToFieldArrayOutputWithContext(ctx context.Context) FieldArra
 // FieldMapInput is an input type that accepts FieldMap and FieldMapOutput values.
 // You can construct a concrete instance of `FieldMapInput` via:
 //
-//          FieldMap{ "key": FieldArgs{...} }
+//	FieldMap{ "key": FieldArgs{...} }
 type FieldMapInput interface {
 	pulumi.Input
 

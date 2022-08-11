@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class GcpMetricsSourceDefaultDateFormatArgs : Pulumi.ResourceArgs
+    public sealed class GcpMetricsSourceDefaultDateFormatArgs : global::Pulumi.ResourceArgs
     {
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public GcpMetricsSourceDefaultDateFormatArgs()
         {
         }
+        public static new GcpMetricsSourceDefaultDateFormatArgs Empty => new GcpMetricsSourceDefaultDateFormatArgs();
     }
 }

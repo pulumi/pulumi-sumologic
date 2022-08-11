@@ -15,23 +15,21 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var networkBlock = new SumoLogic.CseNetworkBlock("networkBlock", new()
     ///     {
-    ///         var networkBlock = new SumoLogic.CseNetworkBlock("networkBlock", new SumoLogic.CseNetworkBlockArgs
-    ///         {
-    ///             AddressBlock = "10.0.1.0/26",
-    ///             Internal = true,
-    ///             Label = "network block from terraform",
-    ///             SuppressesSignals = false,
-    ///         });
-    ///     }
+    ///         AddressBlock = "10.0.1.0/26",
+    ///         Internal = true,
+    ///         Label = "network block from terraform",
+    ///         SuppressesSignals = false,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseNetworkBlock:CseNetworkBlock")]
-    public partial class CseNetworkBlock : Pulumi.CustomResource
+    public partial class CseNetworkBlock : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The address block.
@@ -113,7 +111,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseNetworkBlockArgs : Pulumi.ResourceArgs
+    public sealed class CseNetworkBlockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address block.
@@ -142,9 +140,10 @@ namespace Pulumi.SumoLogic
         public CseNetworkBlockArgs()
         {
         }
+        public static new CseNetworkBlockArgs Empty => new CseNetworkBlockArgs();
     }
 
-    public sealed class CseNetworkBlockState : Pulumi.ResourceArgs
+    public sealed class CseNetworkBlockState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address block.
@@ -173,5 +172,6 @@ namespace Pulumi.SumoLogic
         public CseNetworkBlockState()
         {
         }
+        public static new CseNetworkBlockState Empty => new CseNetworkBlockState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelGetArgs : Pulumi.ResourceArgs
+    public sealed class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
@@ -33,5 +33,6 @@ namespace Pulumi.SumoLogic.Inputs
         public HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelGetArgs()
         {
         }
+        public static new HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelGetArgs Empty => new HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelGetArgs();
     }
 }

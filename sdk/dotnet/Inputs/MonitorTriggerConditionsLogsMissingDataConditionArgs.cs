@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsLogsMissingDataConditionArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsLogsMissingDataConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("timeRange", required: true)]
         public Input<string> TimeRange { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsLogsMissingDataConditionArgs()
         {
         }
+        public static new MonitorTriggerConditionsLogsMissingDataConditionArgs Empty => new MonitorTriggerConditionsLogsMissingDataConditionArgs();
     }
 }

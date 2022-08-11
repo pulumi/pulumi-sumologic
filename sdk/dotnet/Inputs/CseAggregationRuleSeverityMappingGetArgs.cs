@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseAggregationRuleSeverityMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class CseAggregationRuleSeverityMappingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
@@ -45,5 +45,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseAggregationRuleSeverityMappingGetArgs()
         {
         }
+        public static new CseAggregationRuleSeverityMappingGetArgs Empty => new CseAggregationRuleSeverityMappingGetArgs();
     }
 }

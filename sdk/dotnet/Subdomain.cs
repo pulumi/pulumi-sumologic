@@ -15,20 +15,18 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleSubdomain = new SumoLogic.Subdomain("exampleSubdomain", new()
     ///     {
-    ///         var exampleSubdomain = new SumoLogic.Subdomain("exampleSubdomain", new SumoLogic.SubdomainArgs
-    ///         {
-    ///             SubdomainName = "my-company",
-    ///         });
-    ///     }
+    ///         SubdomainName = "my-company",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -39,7 +37,7 @@ namespace Pulumi.SumoLogic
     /// [1]: https://help.sumologic.com/Manage/01Account_Usage/05Manage_Organization#change-account-subdomain
     /// </summary>
     [SumoLogicResourceType("sumologic:index/subdomain:Subdomain")]
-    public partial class Subdomain : Pulumi.CustomResource
+    public partial class Subdomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The subdomain.
@@ -91,7 +89,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class SubdomainArgs : Pulumi.ResourceArgs
+    public sealed class SubdomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The subdomain.
@@ -102,9 +100,10 @@ namespace Pulumi.SumoLogic
         public SubdomainArgs()
         {
         }
+        public static new SubdomainArgs Empty => new SubdomainArgs();
     }
 
-    public sealed class SubdomainState : Pulumi.ResourceArgs
+    public sealed class SubdomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The subdomain.
@@ -115,5 +114,6 @@ namespace Pulumi.SumoLogic
         public SubdomainState()
         {
         }
+        public static new SubdomainState Empty => new SubdomainState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseLogMappingFieldLookupArgs : Pulumi.ResourceArgs
+    public sealed class CseLogMappingFieldLookupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Lookup key.
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseLogMappingFieldLookupArgs()
         {
         }
+        public static new CseLogMappingFieldLookupArgs Empty => new CseLogMappingFieldLookupArgs();
     }
 }

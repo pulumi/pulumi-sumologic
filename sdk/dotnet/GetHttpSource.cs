@@ -17,21 +17,19 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetHttpSource.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetHttpSource.InvokeAsync(new SumoLogic.GetHttpSourceArgs
-        ///         {
-        ///             CollectorId = 121212,
-        ///             Name = "source_name",
-        ///         }));
-        ///     }
+        ///         CollectorId = 121212,
+        ///         Name = "source_name",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -59,21 +57,19 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = SumoLogic.GetHttpSource.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(SumoLogic.GetHttpSource.InvokeAsync(new SumoLogic.GetHttpSourceArgs
-        ///         {
-        ///             CollectorId = 121212,
-        ///             Name = "source_name",
-        ///         }));
-        ///     }
+        ///         CollectorId = 121212,
+        ///         Name = "source_name",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -97,7 +93,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetHttpSourceArgs : Pulumi.InvokeArgs
+    public sealed class GetHttpSourceArgs : global::Pulumi.InvokeArgs
     {
         [Input("collectorId")]
         public int? CollectorId { get; set; }
@@ -111,9 +107,10 @@ namespace Pulumi.SumoLogic
         public GetHttpSourceArgs()
         {
         }
+        public static new GetHttpSourceArgs Empty => new GetHttpSourceArgs();
     }
 
-    public sealed class GetHttpSourceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHttpSourceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
@@ -127,6 +124,7 @@ namespace Pulumi.SumoLogic
         public GetHttpSourceInvokeArgs()
         {
         }
+        public static new GetHttpSourceInvokeArgs Empty => new GetHttpSourceInvokeArgs();
     }
 
 

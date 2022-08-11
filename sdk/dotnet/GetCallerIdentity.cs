@@ -20,17 +20,15 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(SumoLogic.GetCallerIdentity.InvokeAsync());
-        ///     }
+        ///     var current = SumoLogic.GetCallerIdentity.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}

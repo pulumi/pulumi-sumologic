@@ -15,21 +15,19 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var folder = new SumoLogic.Folder("folder", new()
     ///     {
-    ///         var folder = new SumoLogic.Folder("folder", new SumoLogic.FolderArgs
-    ///         {
-    ///             Description = "A test folder",
-    ///             ParentId = "&lt;personal folder id&gt;",
-    ///         });
-    ///     }
+    ///         Description = "A test folder",
+    ///         ParentId = "&lt;personal folder id&gt;",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -37,7 +35,7 @@ namespace Pulumi.SumoLogic
     /// ### Timeouts `sumologic_folder` provides the following [Timeouts](/docs/configuration/resources.html#timeouts) configuration options- `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful Additional data provided in state - `created_at` - (Computed) When the folder was created. - `created_by` - (Computed) Who created the folder. - `modified_at` - (Computed) When was the folder last modified. - `modified_by` - (Computed) The ID of the user who modified the folder last. - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder"). - `permissions` - (Computed) List of permissions the user has on the content item. - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
     /// </summary>
     [SumoLogicResourceType("sumologic:index/folder:Folder")]
-    public partial class Folder : Pulumi.CustomResource
+    public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the folder.
@@ -101,7 +99,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class FolderArgs : Pulumi.ResourceArgs
+    public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the folder.
@@ -124,9 +122,10 @@ namespace Pulumi.SumoLogic
         public FolderArgs()
         {
         }
+        public static new FolderArgs Empty => new FolderArgs();
     }
 
-    public sealed class FolderState : Pulumi.ResourceArgs
+    public sealed class FolderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the folder.
@@ -149,5 +148,6 @@ namespace Pulumi.SumoLogic
         public FolderState()
         {
         }
+        public static new FolderState Empty => new FolderState();
     }
 }

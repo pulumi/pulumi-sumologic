@@ -19,34 +19,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewToken(ctx, "exampleToken", &sumologic.TokenArgs{
-// 			Description: pulumi.String("Testing resource sumologic_token"),
-// 			Status:      pulumi.String("Active"),
-// 			Type:        pulumi.String("CollectorRegistration"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewToken(ctx, "exampleToken", &sumologic.TokenArgs{
+//				Description: pulumi.String("Testing resource sumologic_token"),
+//				Status:      pulumi.String("Active"),
+//				Type:        pulumi.String("CollectorRegistration"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Tokens can be imported using the name, e.g.hcl
+// # Tokens can be imported using the name, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/token:Token test id
+//
+//	$ pulumi import sumologic:index/token:Token test id
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Security/Installation_Tokens
+//	[1]https://help.sumologic.com/Manage/Security/Installation_Tokens
 type Token struct {
 	pulumi.CustomResourceState
 
@@ -195,7 +200,7 @@ func (i *Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 // TokenArrayInput is an input type that accepts TokenArray and TokenArrayOutput values.
 // You can construct a concrete instance of `TokenArrayInput` via:
 //
-//          TokenArray{ TokenArgs{...} }
+//	TokenArray{ TokenArgs{...} }
 type TokenArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +225,7 @@ func (i TokenArray) ToTokenArrayOutputWithContext(ctx context.Context) TokenArra
 // TokenMapInput is an input type that accepts TokenMap and TokenMapOutput values.
 // You can construct a concrete instance of `TokenMapInput` via:
 //
-//          TokenMap{ "key": TokenArgs{...} }
+//	TokenMap{ "key": TokenArgs{...} }
 type TokenMapInput interface {
 	pulumi.Input
 

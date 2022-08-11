@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardPanelSumoSearchPanelQueryMetricsQueryDataGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardPanelSumoSearchPanelQueryMetricsQueryDataGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("aggregationType")]
         public Input<string>? AggregationType { get; set; }
@@ -40,5 +40,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardPanelSumoSearchPanelQueryMetricsQueryDataGetArgs()
         {
         }
+        public static new DashboardPanelSumoSearchPanelQueryMetricsQueryDataGetArgs Empty => new DashboardPanelSumoSearchPanelQueryMetricsQueryDataGetArgs();
     }
 }

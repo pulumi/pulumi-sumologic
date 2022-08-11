@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class SloComplianceGetArgs : Pulumi.ResourceArgs
+    public sealed class SloComplianceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of compliance to use. Valid values are `Rolling` or `Calendar`.
@@ -48,5 +48,6 @@ namespace Pulumi.SumoLogic.Inputs
         public SloComplianceGetArgs()
         {
         }
+        public static new SloComplianceGetArgs Empty => new SloComplianceGetArgs();
     }
 }

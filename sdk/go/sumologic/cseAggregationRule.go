@@ -19,62 +19,67 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseAggregationRule(ctx, "aggregationRule", &sumologic.CseAggregationRuleArgs{
-// 			AggregationFunctions: CseAggregationRuleAggregationFunctionArray{
-// 				&CseAggregationRuleAggregationFunctionArgs{
-// 					Arguments: pulumi.StringArray{
-// 						pulumi.String("metadata_deviceEventId"),
-// 					},
-// 					Function: pulumi.String("count_distinct"),
-// 					Name:     pulumi.String("distinct_eventid_count"),
-// 				},
-// 			},
-// 			DescriptionExpression: pulumi.String("Signal description"),
-// 			Enabled:               pulumi.Bool(true),
-// 			EntitySelectors: CseAggregationRuleEntitySelectorArray{
-// 				&CseAggregationRuleEntitySelectorArgs{
-// 					EntityType: pulumi.String("_ip"),
-// 					Expression: pulumi.String("srcDevice_ip"),
-// 				},
-// 			},
-// 			GroupByEntity: pulumi.Bool(true),
-// 			GroupByFields: pulumi.StringArray{
-// 				pulumi.String("dstDevice_hostname"),
-// 			},
-// 			IsPrototype:     pulumi.Bool(false),
-// 			MatchExpression: pulumi.String("objectType = \"Network\""),
-// 			NameExpression:  pulumi.String("Signal name"),
-// 			SeverityMapping: &CseAggregationRuleSeverityMappingArgs{
-// 				Default: pulumi.Int(5),
-// 				Type:    pulumi.String("constant"),
-// 			},
-// 			SummaryExpression: pulumi.String("Signal summary"),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("_mitreAttackTactic:TA0009"),
-// 			},
-// 			TriggerExpression: pulumi.String("distinct_eventid_count > 5"),
-// 			WindowSize:        pulumi.String("T30M"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseAggregationRule(ctx, "aggregationRule", &sumologic.CseAggregationRuleArgs{
+//				AggregationFunctions: CseAggregationRuleAggregationFunctionArray{
+//					&CseAggregationRuleAggregationFunctionArgs{
+//						Arguments: pulumi.StringArray{
+//							pulumi.String("metadata_deviceEventId"),
+//						},
+//						Function: pulumi.String("count_distinct"),
+//						Name:     pulumi.String("distinct_eventid_count"),
+//					},
+//				},
+//				DescriptionExpression: pulumi.String("Signal description"),
+//				Enabled:               pulumi.Bool(true),
+//				EntitySelectors: CseAggregationRuleEntitySelectorArray{
+//					&CseAggregationRuleEntitySelectorArgs{
+//						EntityType: pulumi.String("_ip"),
+//						Expression: pulumi.String("srcDevice_ip"),
+//					},
+//				},
+//				GroupByEntity: pulumi.Bool(true),
+//				GroupByFields: pulumi.StringArray{
+//					pulumi.String("dstDevice_hostname"),
+//				},
+//				IsPrototype:     pulumi.Bool(false),
+//				MatchExpression: pulumi.String("objectType = \"Network\""),
+//				NameExpression:  pulumi.String("Signal name"),
+//				SeverityMapping: &CseAggregationRuleSeverityMappingArgs{
+//					Default: pulumi.Int(5),
+//					Type:    pulumi.String("constant"),
+//				},
+//				SummaryExpression: pulumi.String("Signal summary"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("_mitreAttackTactic:TA0009"),
+//				},
+//				TriggerExpression: pulumi.String("distinct_eventid_count > 5"),
+//				WindowSize:        pulumi.String("T30M"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Aggregation Rules can be imported using the field id, e.g.hcl
+// # Aggregation Rules can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseAggregationRule:CseAggregationRule aggregation_rule id
+//
+//	$ pulumi import sumologic:index/cseAggregationRule:CseAggregationRule aggregation_rule id
+//
 // ```
 type CseAggregationRule struct {
 	pulumi.CustomResourceState
@@ -329,7 +334,7 @@ func (i *CseAggregationRule) ToCseAggregationRuleOutputWithContext(ctx context.C
 // CseAggregationRuleArrayInput is an input type that accepts CseAggregationRuleArray and CseAggregationRuleArrayOutput values.
 // You can construct a concrete instance of `CseAggregationRuleArrayInput` via:
 //
-//          CseAggregationRuleArray{ CseAggregationRuleArgs{...} }
+//	CseAggregationRuleArray{ CseAggregationRuleArgs{...} }
 type CseAggregationRuleArrayInput interface {
 	pulumi.Input
 
@@ -354,7 +359,7 @@ func (i CseAggregationRuleArray) ToCseAggregationRuleArrayOutputWithContext(ctx 
 // CseAggregationRuleMapInput is an input type that accepts CseAggregationRuleMap and CseAggregationRuleMapOutput values.
 // You can construct a concrete instance of `CseAggregationRuleMapInput` via:
 //
-//          CseAggregationRuleMap{ "key": CseAggregationRuleArgs{...} }
+//	CseAggregationRuleMap{ "key": CseAggregationRuleArgs{...} }
 type CseAggregationRuleMapInput interface {
 	pulumi.Input
 

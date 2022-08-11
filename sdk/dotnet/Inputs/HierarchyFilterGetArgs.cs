@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class HierarchyFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class HierarchyFilterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Filtering key.
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public HierarchyFilterGetArgs()
         {
         }
+        public static new HierarchyFilterGetArgs Empty => new HierarchyFilterGetArgs();
     }
 }

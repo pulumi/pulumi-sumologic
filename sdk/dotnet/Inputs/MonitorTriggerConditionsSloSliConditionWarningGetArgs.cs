@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsSloSliConditionWarningGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsSloSliConditionWarningGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("sliThreshold", required: true)]
         public Input<double> SliThreshold { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsSloSliConditionWarningGetArgs()
         {
         }
+        public static new MonitorTriggerConditionsSloSliConditionWarningGetArgs Empty => new MonitorTriggerConditionsSloSliConditionWarningGetArgs();
     }
 }

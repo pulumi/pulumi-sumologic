@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class KinesisMetricsSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class KinesisMetricsSourcePathArgs : global::Pulumi.ResourceArgs
     {
         [Input("tagFilters")]
         private InputList<Inputs.KinesisMetricsSourcePathTagFilterArgs>? _tagFilters;
@@ -33,5 +33,6 @@ namespace Pulumi.SumoLogic.Inputs
         public KinesisMetricsSourcePathArgs()
         {
         }
+        public static new KinesisMetricsSourcePathArgs Empty => new KinesisMetricsSourcePathArgs();
     }
 }

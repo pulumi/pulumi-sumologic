@@ -21,42 +21,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewAwsXraySource(ctx, "awsXraySource", &sumologic.AwsXraySourceArgs{
-// 			Authentication: &AwsXraySourceAuthenticationArgs{
-// 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
-// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
-// 			},
-// 			Category:    pulumi.String("aws/xray"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("AwsXRay"),
-// 			Description: pulumi.String("My description"),
-// 			Path: &AwsXraySourcePathArgs{
-// 				LimitToRegions: pulumi.StringArray{
-// 					pulumi.String("us-west-2"),
-// 				},
-// 				Type: pulumi.String("AwsXRayPath"),
-// 			},
-// 			Paused:       pulumi.Bool(false),
-// 			ScanInterval: pulumi.Int(300000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewAwsXraySource(ctx, "awsXraySource", &sumologic.AwsXraySourceArgs{
+//				Authentication: &AwsXraySourceAuthenticationArgs{
+//					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
+//					Type:    pulumi.String("AWSRoleBasedAuthentication"),
+//				},
+//				Category:    pulumi.String("aws/xray"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("AwsXRay"),
+//				Description: pulumi.String("My description"),
+//				Path: &AwsXraySourcePathArgs{
+//					LimitToRegions: pulumi.StringArray{
+//						pulumi.String("us-west-2"),
+//					},
+//					Type: pulumi.String("AwsXRayPath"),
+//				},
+//				Paused:       pulumi.Bool(false),
+//				ScanInterval: pulumi.Int(300000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,13 +67,17 @@ import (
 // AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/awsXraySource:AwsXraySource test 123/456
+//
+//	$ pulumi import sumologic:index/awsXraySource:AwsXraySource test 123/456
+//
 // ```
 //
-//  AWS XRay sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	AWS XRay sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/awsXraySource:AwsXraySource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/awsXraySource:AwsXraySource test my-test-collector/my-test-source
+//
 // ```
 type AwsXraySource struct {
 	pulumi.CustomResourceState
@@ -299,7 +306,7 @@ func (i *AwsXraySource) ToAwsXraySourceOutputWithContext(ctx context.Context) Aw
 // AwsXraySourceArrayInput is an input type that accepts AwsXraySourceArray and AwsXraySourceArrayOutput values.
 // You can construct a concrete instance of `AwsXraySourceArrayInput` via:
 //
-//          AwsXraySourceArray{ AwsXraySourceArgs{...} }
+//	AwsXraySourceArray{ AwsXraySourceArgs{...} }
 type AwsXraySourceArrayInput interface {
 	pulumi.Input
 
@@ -324,7 +331,7 @@ func (i AwsXraySourceArray) ToAwsXraySourceArrayOutputWithContext(ctx context.Co
 // AwsXraySourceMapInput is an input type that accepts AwsXraySourceMap and AwsXraySourceMapOutput values.
 // You can construct a concrete instance of `AwsXraySourceMapInput` via:
 //
-//          AwsXraySourceMap{ "key": AwsXraySourceArgs{...} }
+//	AwsXraySourceMap{ "key": AwsXraySourceArgs{...} }
 type AwsXraySourceMapInput interface {
 	pulumi.Input
 

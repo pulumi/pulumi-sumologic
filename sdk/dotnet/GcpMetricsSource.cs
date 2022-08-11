@@ -31,7 +31,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
     /// </summary>
     [SumoLogicResourceType("sumologic:index/gcpMetricsSource:GcpMetricsSource")]
-    public partial class GcpMetricsSource : Pulumi.CustomResource
+    public partial class GcpMetricsSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the  GCP Monitoring using service_account credentials.
@@ -158,7 +158,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class GcpMetricsSourceArgs : Pulumi.ResourceArgs
+    public sealed class GcpMetricsSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the  GCP Monitoring using service_account credentials.
@@ -256,9 +256,10 @@ namespace Pulumi.SumoLogic
         public GcpMetricsSourceArgs()
         {
         }
+        public static new GcpMetricsSourceArgs Empty => new GcpMetricsSourceArgs();
     }
 
-    public sealed class GcpMetricsSourceState : Pulumi.ResourceArgs
+    public sealed class GcpMetricsSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the  GCP Monitoring using service_account credentials.
@@ -359,5 +360,6 @@ namespace Pulumi.SumoLogic
         public GcpMetricsSourceState()
         {
         }
+        public static new GcpMetricsSourceState Empty => new GcpMetricsSourceState();
     }
 }

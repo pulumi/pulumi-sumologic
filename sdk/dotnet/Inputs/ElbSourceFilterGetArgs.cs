@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class ElbSourceFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class ElbSourceFilterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("filterType", required: true)]
         public Input<string> FilterType { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public ElbSourceFilterGetArgs()
         {
         }
+        public static new ElbSourceFilterGetArgs Empty => new ElbSourceFilterGetArgs();
     }
 }

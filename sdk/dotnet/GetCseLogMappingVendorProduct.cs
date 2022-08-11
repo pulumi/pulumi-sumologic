@@ -17,21 +17,19 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var webGateway = SumoLogic.GetCseLogMappingVendorProduct.Invoke(new()
         ///     {
-        ///         var webGateway = Output.Create(SumoLogic.GetCseLogMappingVendorProduct.InvokeAsync(new SumoLogic.GetCseLogMappingVendorProductArgs
-        ///         {
-        ///             Product = "Web Gateway",
-        ///             Vendor = "McAfee",
-        ///         }));
-        ///     }
+        ///         Product = "Web Gateway",
+        ///         Vendor = "McAfee",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
@@ -55,21 +53,19 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var webGateway = SumoLogic.GetCseLogMappingVendorProduct.Invoke(new()
         ///     {
-        ///         var webGateway = Output.Create(SumoLogic.GetCseLogMappingVendorProduct.InvokeAsync(new SumoLogic.GetCseLogMappingVendorProductArgs
-        ///         {
-        ///             Product = "Web Gateway",
-        ///             Vendor = "McAfee",
-        ///         }));
-        ///     }
+        ///         Product = "Web Gateway",
+        ///         Vendor = "McAfee",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
@@ -89,7 +85,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetCseLogMappingVendorProductArgs : Pulumi.InvokeArgs
+    public sealed class GetCseLogMappingVendorProductArgs : global::Pulumi.InvokeArgs
     {
         [Input("guid")]
         public string? Guid { get; set; }
@@ -103,9 +99,10 @@ namespace Pulumi.SumoLogic
         public GetCseLogMappingVendorProductArgs()
         {
         }
+        public static new GetCseLogMappingVendorProductArgs Empty => new GetCseLogMappingVendorProductArgs();
     }
 
-    public sealed class GetCseLogMappingVendorProductInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCseLogMappingVendorProductInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("guid")]
         public Input<string>? Guid { get; set; }
@@ -119,6 +116,7 @@ namespace Pulumi.SumoLogic
         public GetCseLogMappingVendorProductInvokeArgs()
         {
         }
+        public static new GetCseLogMappingVendorProductInvokeArgs Empty => new GetCseLogMappingVendorProductInvokeArgs();
     }
 
 

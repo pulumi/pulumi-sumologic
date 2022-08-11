@@ -29,7 +29,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Partitions [2]https://api.sumologic.com/docs/#operation/listPartitions
     /// </summary>
     [SumoLogicResourceType("sumologic:index/partition:Partition")]
-    public partial class Partition : Pulumi.CustomResource
+    public partial class Partition : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
@@ -123,7 +123,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class PartitionArgs : Pulumi.ResourceArgs
+    public sealed class PartitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
@@ -164,9 +164,10 @@ namespace Pulumi.SumoLogic
         public PartitionArgs()
         {
         }
+        public static new PartitionArgs Empty => new PartitionArgs();
     }
 
-    public sealed class PartitionState : Pulumi.ResourceArgs
+    public sealed class PartitionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
@@ -219,5 +220,6 @@ namespace Pulumi.SumoLogic
         public PartitionState()
         {
         }
+        public static new PartitionState Empty => new PartitionState();
     }
 }

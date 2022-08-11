@@ -15,22 +15,20 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleToken = new SumoLogic.Token("exampleToken", new()
     ///     {
-    ///         var exampleToken = new SumoLogic.Token("exampleToken", new SumoLogic.TokenArgs
-    ///         {
-    ///             Description = "Testing resource sumologic_token",
-    ///             Status = "Active",
-    ///             Type = "CollectorRegistration",
-    ///         });
-    ///     }
+    ///         Description = "Testing resource sumologic_token",
+    ///         Status = "Active",
+    ///         Type = "CollectorRegistration",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Security/Installation_Tokens
     /// </summary>
     [SumoLogicResourceType("sumologic:index/token:Token")]
-    public partial class Token : Pulumi.CustomResource
+    public partial class Token : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the token.
@@ -126,7 +124,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class TokenArgs : Pulumi.ResourceArgs
+    public sealed class TokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the token.
@@ -161,9 +159,10 @@ namespace Pulumi.SumoLogic
         public TokenArgs()
         {
         }
+        public static new TokenArgs Empty => new TokenArgs();
     }
 
-    public sealed class TokenState : Pulumi.ResourceArgs
+    public sealed class TokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the token.
@@ -204,5 +203,6 @@ namespace Pulumi.SumoLogic
         public TokenState()
         {
         }
+        public static new TokenState Empty => new TokenState();
     }
 }

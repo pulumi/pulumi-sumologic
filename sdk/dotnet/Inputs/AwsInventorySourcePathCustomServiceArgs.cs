@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class AwsInventorySourcePathCustomServiceArgs : Pulumi.ResourceArgs
+    public sealed class AwsInventorySourcePathCustomServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefixes")]
         private InputList<string>? _prefixes;
@@ -26,5 +26,6 @@ namespace Pulumi.SumoLogic.Inputs
         public AwsInventorySourcePathCustomServiceArgs()
         {
         }
+        public static new AwsInventorySourcePathCustomServiceArgs Empty => new AwsInventorySourcePathCustomServiceArgs();
     }
 }

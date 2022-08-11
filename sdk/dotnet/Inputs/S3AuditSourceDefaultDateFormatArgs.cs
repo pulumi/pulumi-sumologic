@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class S3AuditSourceDefaultDateFormatArgs : Pulumi.ResourceArgs
+    public sealed class S3AuditSourceDefaultDateFormatArgs : global::Pulumi.ResourceArgs
     {
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public S3AuditSourceDefaultDateFormatArgs()
         {
         }
+        public static new S3AuditSourceDefaultDateFormatArgs Empty => new S3AuditSourceDefaultDateFormatArgs();
     }
 }

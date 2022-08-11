@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorNotificationNotificationGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorNotificationNotificationGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
@@ -44,5 +44,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorNotificationNotificationGetArgs()
         {
         }
+        public static new MonitorNotificationNotificationGetArgs Empty => new MonitorNotificationNotificationGetArgs();
     }
 }

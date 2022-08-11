@@ -21,42 +21,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewS3Source(ctx, "s3Source", &sumologic.S3SourceArgs{
-// 			Authentication: &S3SourceAuthenticationArgs{
-// 				AccessKey: pulumi.String("someKey"),
-// 				SecretKey: pulumi.String("******"),
-// 				Type:      pulumi.String("S3BucketAuthentication"),
-// 			},
-// 			Category:    pulumi.String("aws/s3"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("AwsS3Bucket"),
-// 			Description: pulumi.String("My description"),
-// 			Path: &S3SourcePathArgs{
-// 				BucketName:     pulumi.String("Bucket1"),
-// 				PathExpression: pulumi.String("*"),
-// 				Type:           pulumi.String("S3BucketPathExpression"),
-// 			},
-// 			Paused:       pulumi.Bool(false),
-// 			ScanInterval: pulumi.Int(300000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewS3Source(ctx, "s3Source", &sumologic.S3SourceArgs{
+//				Authentication: &S3SourceAuthenticationArgs{
+//					AccessKey: pulumi.String("someKey"),
+//					SecretKey: pulumi.String("******"),
+//					Type:      pulumi.String("S3BucketAuthentication"),
+//				},
+//				Category:    pulumi.String("aws/s3"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("AwsS3Bucket"),
+//				Description: pulumi.String("My description"),
+//				Path: &S3SourcePathArgs{
+//					BucketName:     pulumi.String("Bucket1"),
+//					PathExpression: pulumi.String("*"),
+//					Type:           pulumi.String("S3BucketPathExpression"),
+//				},
+//				Paused:       pulumi.Bool(false),
+//				ScanInterval: pulumi.Int(300000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,16 +67,20 @@ import (
 // S3 sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/s3Source:S3Source test 123/456
+//
+//	$ pulumi import sumologic:index/s3Source:S3Source test 123/456
+//
 // ```
 //
-//  S3 sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	S3 sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/s3Source:S3Source test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/s3Source:S3Source test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source
 type S3Source struct {
 	pulumi.CustomResourceState
 
@@ -304,7 +311,7 @@ func (i *S3Source) ToS3SourceOutputWithContext(ctx context.Context) S3SourceOutp
 // S3SourceArrayInput is an input type that accepts S3SourceArray and S3SourceArrayOutput values.
 // You can construct a concrete instance of `S3SourceArrayInput` via:
 //
-//          S3SourceArray{ S3SourceArgs{...} }
+//	S3SourceArray{ S3SourceArgs{...} }
 type S3SourceArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +336,7 @@ func (i S3SourceArray) ToS3SourceArrayOutputWithContext(ctx context.Context) S3S
 // S3SourceMapInput is an input type that accepts S3SourceMap and S3SourceMapOutput values.
 // You can construct a concrete instance of `S3SourceMapInput` via:
 //
-//          S3SourceMap{ "key": S3SourceArgs{...} }
+//	S3SourceMap{ "key": S3SourceArgs{...} }
 type S3SourceMapInput interface {
 	pulumi.Input
 

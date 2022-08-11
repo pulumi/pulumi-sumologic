@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudSyslogSourceFilterArgs : Pulumi.ResourceArgs
+    public sealed class CloudSyslogSourceFilterArgs : global::Pulumi.ResourceArgs
     {
         [Input("filterType", required: true)]
         public Input<string> FilterType { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudSyslogSourceFilterArgs()
         {
         }
+        public static new CloudSyslogSourceFilterArgs Empty => new CloudSyslogSourceFilterArgs();
     }
 }

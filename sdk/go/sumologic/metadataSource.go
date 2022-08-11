@@ -20,16 +20,20 @@ import (
 // Metadata sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/metadataSource:MetadataSource test 123/456
+//
+//	$ pulumi import sumologic:index/metadataSource:MetadataSource test 123/456
+//
 // ```
 //
-//  Metadata sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	Metadata sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/metadataSource:MetadataSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/metadataSource:MetadataSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
 type MetadataSource struct {
 	pulumi.CustomResourceState
 
@@ -260,7 +264,7 @@ func (i *MetadataSource) ToMetadataSourceOutputWithContext(ctx context.Context) 
 // MetadataSourceArrayInput is an input type that accepts MetadataSourceArray and MetadataSourceArrayOutput values.
 // You can construct a concrete instance of `MetadataSourceArrayInput` via:
 //
-//          MetadataSourceArray{ MetadataSourceArgs{...} }
+//	MetadataSourceArray{ MetadataSourceArgs{...} }
 type MetadataSourceArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +289,7 @@ func (i MetadataSourceArray) ToMetadataSourceArrayOutputWithContext(ctx context.
 // MetadataSourceMapInput is an input type that accepts MetadataSourceMap and MetadataSourceMapOutput values.
 // You can construct a concrete instance of `MetadataSourceMapInput` via:
 //
-//          MetadataSourceMap{ "key": MetadataSourceArgs{...} }
+//	MetadataSourceMap{ "key": MetadataSourceArgs{...} }
 type MetadataSourceMapInput interface {
 	pulumi.Input
 

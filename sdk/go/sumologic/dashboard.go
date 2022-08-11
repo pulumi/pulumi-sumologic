@@ -19,133 +19,135 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"text": map[string]interface{}{
-// 				"verticalAlignment":   "top",
-// 				"horizontalAlignment": "left",
-// 				"fontSize":            12,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
-// 			"general": map[string]interface{}{
-// 				"mode":          "timeSeries",
-// 				"type":          "area",
-// 				"displayType":   "stacked",
-// 				"markerSize":    5,
-// 				"lineDashType":  "solid",
-// 				"markerType":    "square",
-// 				"lineThickness": 1,
-// 			},
-// 			"title": map[string]interface{}{
-// 				"fontSize": 14,
-// 			},
-// 			"legend": map[string]interface{}{
-// 				"enabled":       true,
-// 				"verticalAlign": "bottom",
-// 				"fontSize":      12,
-// 				"maxHeight":     50,
-// 				"showAsTable":   false,
-// 				"wrap":          true,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json1 := string(tmpJSON1)
-// 		tmpJSON2, err := json.Marshal(map[string]interface{}{
-// 			"general": map[string]interface{}{
-// 				"mode":            "distribution",
-// 				"type":            "pie",
-// 				"displayType":     "default",
-// 				"fillOpacity":     1,
-// 				"startAngle":      270,
-// 				"innerRadius":     fmt.Sprintf("40%v", "%"),
-// 				"maxNumOfSlices":  10,
-// 				"aggregationType": "sum",
-// 			},
-// 			"title": map[string]interface{}{
-// 				"fontSize": 14,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json2 := string(tmpJSON2)
-// 		tmpJSON3, err := json.Marshal(map[string]interface{}{
-// 			"general": map[string]interface{}{
-// 				"mode":          "timeSeries",
-// 				"type":          "line",
-// 				"displayType":   "smooth",
-// 				"markerSize":    5,
-// 				"lineDashType":  "dashDot",
-// 				"markerType":    "none",
-// 				"lineThickness": 1,
-// 			},
-// 			"title": map[string]interface{}{
-// 				"fontSize": 14,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json3 := string(tmpJSON3)
-// 		_, err = sumologic.NewDashboard(ctx, "api-dashboard", &sumologic.DashboardArgs{
-// 			Title:           pulumi.String("Api Health Dashboard"),
-// 			Description:     pulumi.String("Demo dashboard description"),
-// 			FolderId:        pulumi.String(personalFolder.Id),
-// 			RefreshInterval: pulumi.Int(120),
-// 			Theme:           pulumi.String("Dark"),
-// 			TimeRange: &DashboardTimeRangeArgs{
-// 				BeginBoundedTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeArgs{
-// 					From: &DashboardTimeRangeBeginBoundedTimeRangeFromArgs{
-// 						LiteralTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
-// 							RangeName: pulumi.String("today"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			TopologyLabelMap: &DashboardTopologyLabelMapArgs{
-// 				Datas: DashboardTopologyLabelMapDataArray{
-// 					&DashboardTopologyLabelMapDataArgs{
-// 						Label: pulumi.String("cluster"),
-// 						Values: pulumi.StringArray{
-// 							pulumi.String("api-prod"),
-// 						},
-// 					},
-// 					&DashboardTopologyLabelMapDataArgs{
-// 						Label: pulumi.String("namespace"),
-// 						Values: pulumi.StringArray{
-// 							pulumi.String("default"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Domain: pulumi.String("app"),
-// 			Panels: DashboardPanelArray{
-// 				&DashboardPanelArgs{
-// 					TextPanel: &DashboardPanelTextPanelArgs{
-// 						Key:                                    pulumi.String("text-panel-01"),
-// 						Title:                                  pulumi.String("Api Health"),
-// 						VisualSettings:                         pulumi.String(json0),
-// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-// 						Text: pulumi.String(fmt.Sprintf(`## Api Health Monitoring
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"text": map[string]interface{}{
+//					"verticalAlignment":   "top",
+//					"horizontalAlignment": "left",
+//					"fontSize":            12,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"general": map[string]interface{}{
+//					"mode":          "timeSeries",
+//					"type":          "area",
+//					"displayType":   "stacked",
+//					"markerSize":    5,
+//					"lineDashType":  "solid",
+//					"markerType":    "square",
+//					"lineThickness": 1,
+//				},
+//				"title": map[string]interface{}{
+//					"fontSize": 14,
+//				},
+//				"legend": map[string]interface{}{
+//					"enabled":       true,
+//					"verticalAlign": "bottom",
+//					"fontSize":      12,
+//					"maxHeight":     50,
+//					"showAsTable":   false,
+//					"wrap":          true,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"general": map[string]interface{}{
+//					"mode":            "distribution",
+//					"type":            "pie",
+//					"displayType":     "default",
+//					"fillOpacity":     1,
+//					"startAngle":      270,
+//					"innerRadius":     fmt.Sprintf("40%v", "%"),
+//					"maxNumOfSlices":  10,
+//					"aggregationType": "sum",
+//				},
+//				"title": map[string]interface{}{
+//					"fontSize": 14,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"general": map[string]interface{}{
+//					"mode":          "timeSeries",
+//					"type":          "line",
+//					"displayType":   "smooth",
+//					"markerSize":    5,
+//					"lineDashType":  "dashDot",
+//					"markerType":    "none",
+//					"lineThickness": 1,
+//				},
+//				"title": map[string]interface{}{
+//					"fontSize": 14,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			_, err = sumologic.NewDashboard(ctx, "api-dashboard", &sumologic.DashboardArgs{
+//				Title:           pulumi.String("Api Health Dashboard"),
+//				Description:     pulumi.String("Demo dashboard description"),
+//				FolderId:        pulumi.String(personalFolder.Id),
+//				RefreshInterval: pulumi.Int(120),
+//				Theme:           pulumi.String("Dark"),
+//				TimeRange: &DashboardTimeRangeArgs{
+//					BeginBoundedTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeArgs{
+//						From: &DashboardTimeRangeBeginBoundedTimeRangeFromArgs{
+//							LiteralTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
+//								RangeName: pulumi.String("today"),
+//							},
+//						},
+//					},
+//				},
+//				TopologyLabelMap: &DashboardTopologyLabelMapArgs{
+//					Datas: DashboardTopologyLabelMapDataArray{
+//						&DashboardTopologyLabelMapDataArgs{
+//							Label: pulumi.String("cluster"),
+//							Values: pulumi.StringArray{
+//								pulumi.String("api-prod"),
+//							},
+//						},
+//						&DashboardTopologyLabelMapDataArgs{
+//							Label: pulumi.String("namespace"),
+//							Values: pulumi.StringArray{
+//								pulumi.String("default"),
+//							},
+//						},
+//					},
+//				},
+//				Domain: pulumi.String("app"),
+//				Panels: DashboardPanelArray{
+//					&DashboardPanelArgs{
+//						TextPanel: &DashboardPanelTextPanelArgs{
+//							Key:                                    pulumi.String("text-panel-01"),
+//							Title:                                  pulumi.String("Api Health"),
+//							VisualSettings:                         pulumi.String(json0),
+//							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+//							Text: pulumi.String(fmt.Sprintf(`## Api Health Monitoring
 //
 // Use this dashboard to monitor API service health. It contains following panels:
 //
@@ -153,158 +155,160 @@ import (
 // 3. API 5xx: Count of 5xx response
 // 3. CPU utilization: CPU utilization in last 60 mins
 // `)),
-// 					},
-// 				},
-// 				&DashboardPanelArgs{
-// 					SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
-// 						Key:                                    pulumi.String("search-panel-01"),
-// 						Title:                                  pulumi.String("Api Errors by Host"),
-// 						Description:                            pulumi.String("Errors in api service since last 12 hours"),
-// 						VisualSettings:                         pulumi.String(json1),
-// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-// 						Queries: DashboardPanelSumoSearchPanelQueryArray{
-// 							&DashboardPanelSumoSearchPanelQueryArgs{
-// 								QueryString: pulumi.String("_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost"),
-// 								QueryType:   pulumi.String("Logs"),
-// 								QueryKey:    pulumi.String("A"),
-// 							},
-// 						},
-// 						TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
-// 							BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
-// 								From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
-// 									RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
-// 										RelativeTime: pulumi.String("-12h"),
-// 									},
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 				&DashboardPanelArgs{
-// 					SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
-// 						Key:                                    pulumi.String("metrics-panel-01"),
-// 						Title:                                  pulumi.String("Api 5xx Response Count"),
-// 						Description:                            pulumi.String("Count of 5xx response from api service"),
-// 						VisualSettings:                         pulumi.String(json2),
-// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-// 						Queries: DashboardPanelSumoSearchPanelQueryArray{
-// 							&DashboardPanelSumoSearchPanelQueryArgs{
-// 								QueryString:      pulumi.String("_sourceCategory=api metric=Api-5xx"),
-// 								QueryType:        pulumi.String("Metrics"),
-// 								QueryKey:         pulumi.String("A"),
-// 								MetricsQueryMode: pulumi.String("Advanced"),
-// 							},
-// 						},
-// 						TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
-// 							BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
-// 								From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
-// 									LiteralTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
-// 										RangeName: pulumi.String("today"),
-// 									},
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 				&DashboardPanelArgs{
-// 					SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
-// 						Key:                                    pulumi.String("metrics-panel-02"),
-// 						Title:                                  pulumi.String("CPU Utilization"),
-// 						Description:                            pulumi.String("CPU utilization in api service"),
-// 						VisualSettings:                         pulumi.String(json3),
-// 						KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-// 						Queries: DashboardPanelSumoSearchPanelQueryArray{
-// 							&DashboardPanelSumoSearchPanelQueryArgs{
-// 								QueryString:      pulumi.String("metric=Proc_CPU nite-api-1"),
-// 								QueryType:        pulumi.String("Metrics"),
-// 								QueryKey:         pulumi.String("A"),
-// 								MetricsQueryMode: pulumi.String("Basic"),
-// 								MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
-// 									Metric: pulumi.String("Proc_CPU"),
-// 									Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
-// 										&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
-// 											Key:      pulumi.String("_sourcehost"),
-// 											Negation: pulumi.Bool(false),
-// 											Value:    pulumi.String("nite-api-1"),
-// 										},
-// 									},
-// 									AggregationType: pulumi.String("None"),
-// 								},
-// 							},
-// 							&DashboardPanelSumoSearchPanelQueryArgs{
-// 								QueryString:      pulumi.String("metric=Proc_CPU nite-api-2"),
-// 								QueryType:        pulumi.String("Metrics"),
-// 								QueryKey:         pulumi.String("B"),
-// 								MetricsQueryMode: pulumi.String("Basic"),
-// 								MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
-// 									Metric: pulumi.String("Proc_CPU"),
-// 									Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
-// 										&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
-// 											Key:      pulumi.String("_sourcehost"),
-// 											Negation: pulumi.Bool(false),
-// 											Value:    pulumi.String("nite-api-2"),
-// 										},
-// 									},
-// 									AggregationType: pulumi.String("None"),
-// 								},
-// 							},
-// 						},
-// 						TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
-// 							BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
-// 								From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
-// 									RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
-// 										RelativeTime: pulumi.String("-1h"),
-// 									},
-// 								},
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Layout: &DashboardLayoutArgs{
-// 				Grid: &DashboardLayoutGridArgs{
-// 					LayoutStructures: DashboardLayoutGridLayoutStructureArray{
-// 						&DashboardLayoutGridLayoutStructureArgs{
-// 							Key:       pulumi.String("text-panel-01"),
-// 							Structure: pulumi.String("{\"height\":5,\"width\":24,\"x\":0,\"y\":0}"),
-// 						},
-// 						&DashboardLayoutGridLayoutStructureArgs{
-// 							Key:       pulumi.String("search-panel-01"),
-// 							Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":0,\"y\":5}"),
-// 						},
-// 						&DashboardLayoutGridLayoutStructureArgs{
-// 							Key:       pulumi.String("metrics-panel-01"),
-// 							Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":12,\"y\":5}"),
-// 						},
-// 						&DashboardLayoutGridLayoutStructureArgs{
-// 							Key:       pulumi.String("metrics-panel-02"),
-// 							Structure: pulumi.String("{\"height\":10,\"width\":24,\"x\":0,\"y\":25}"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			Variables: DashboardVariableArray{
-// 				&DashboardVariableArgs{
-// 					Name:         pulumi.String("_sourceHost"),
-// 					DisplayName:  pulumi.String("Source Host"),
-// 					DefaultValue: pulumi.String("nite-api-1"),
-// 					SourceDefinition: &DashboardVariableSourceDefinitionArgs{
-// 						CsvVariableSourceDefinition: &DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs{
-// 							Values: pulumi.String("nite-api-1,nite-api-2"),
-// 						},
-// 					},
-// 					AllowMultiSelect: pulumi.Bool(true),
-// 					IncludeAllOption: pulumi.Bool(true),
-// 					HideFromUi:       pulumi.Bool(false),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//						},
+//					},
+//					&DashboardPanelArgs{
+//						SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+//							Key:                                    pulumi.String("search-panel-01"),
+//							Title:                                  pulumi.String("Api Errors by Host"),
+//							Description:                            pulumi.String("Errors in api service since last 12 hours"),
+//							VisualSettings:                         pulumi.String(json1),
+//							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+//							Queries: DashboardPanelSumoSearchPanelQueryArray{
+//								&DashboardPanelSumoSearchPanelQueryArgs{
+//									QueryString: pulumi.String("_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost"),
+//									QueryType:   pulumi.String("Logs"),
+//									QueryKey:    pulumi.String("A"),
+//								},
+//							},
+//							TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
+//								BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+//									From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+//										RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
+//											RelativeTime: pulumi.String("-12h"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&DashboardPanelArgs{
+//						SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+//							Key:                                    pulumi.String("metrics-panel-01"),
+//							Title:                                  pulumi.String("Api 5xx Response Count"),
+//							Description:                            pulumi.String("Count of 5xx response from api service"),
+//							VisualSettings:                         pulumi.String(json2),
+//							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+//							Queries: DashboardPanelSumoSearchPanelQueryArray{
+//								&DashboardPanelSumoSearchPanelQueryArgs{
+//									QueryString:      pulumi.String("_sourceCategory=api metric=Api-5xx"),
+//									QueryType:        pulumi.String("Metrics"),
+//									QueryKey:         pulumi.String("A"),
+//									MetricsQueryMode: pulumi.String("Advanced"),
+//								},
+//							},
+//							TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
+//								BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+//									From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+//										LiteralTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
+//											RangeName: pulumi.String("today"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&DashboardPanelArgs{
+//						SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+//							Key:                                    pulumi.String("metrics-panel-02"),
+//							Title:                                  pulumi.String("CPU Utilization"),
+//							Description:                            pulumi.String("CPU utilization in api service"),
+//							VisualSettings:                         pulumi.String(json3),
+//							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
+//							Queries: DashboardPanelSumoSearchPanelQueryArray{
+//								&DashboardPanelSumoSearchPanelQueryArgs{
+//									QueryString:      pulumi.String("metric=Proc_CPU nite-api-1"),
+//									QueryType:        pulumi.String("Metrics"),
+//									QueryKey:         pulumi.String("A"),
+//									MetricsQueryMode: pulumi.String("Basic"),
+//									MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
+//										Metric: pulumi.String("Proc_CPU"),
+//										Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
+//											&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
+//												Key:      pulumi.String("_sourcehost"),
+//												Negation: pulumi.Bool(false),
+//												Value:    pulumi.String("nite-api-1"),
+//											},
+//										},
+//										AggregationType: pulumi.String("None"),
+//									},
+//								},
+//								&DashboardPanelSumoSearchPanelQueryArgs{
+//									QueryString:      pulumi.String("metric=Proc_CPU nite-api-2"),
+//									QueryType:        pulumi.String("Metrics"),
+//									QueryKey:         pulumi.String("B"),
+//									MetricsQueryMode: pulumi.String("Basic"),
+//									MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
+//										Metric: pulumi.String("Proc_CPU"),
+//										Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
+//											&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
+//												Key:      pulumi.String("_sourcehost"),
+//												Negation: pulumi.Bool(false),
+//												Value:    pulumi.String("nite-api-2"),
+//											},
+//										},
+//										AggregationType: pulumi.String("None"),
+//									},
+//								},
+//							},
+//							TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
+//								BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+//									From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+//										RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
+//											RelativeTime: pulumi.String("-1h"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Layout: &DashboardLayoutArgs{
+//					Grid: &DashboardLayoutGridArgs{
+//						LayoutStructures: DashboardLayoutGridLayoutStructureArray{
+//							&DashboardLayoutGridLayoutStructureArgs{
+//								Key:       pulumi.String("text-panel-01"),
+//								Structure: pulumi.String("{\"height\":5,\"width\":24,\"x\":0,\"y\":0}"),
+//							},
+//							&DashboardLayoutGridLayoutStructureArgs{
+//								Key:       pulumi.String("search-panel-01"),
+//								Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":0,\"y\":5}"),
+//							},
+//							&DashboardLayoutGridLayoutStructureArgs{
+//								Key:       pulumi.String("metrics-panel-01"),
+//								Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":12,\"y\":5}"),
+//							},
+//							&DashboardLayoutGridLayoutStructureArgs{
+//								Key:       pulumi.String("metrics-panel-02"),
+//								Structure: pulumi.String("{\"height\":10,\"width\":24,\"x\":0,\"y\":25}"),
+//							},
+//						},
+//					},
+//				},
+//				Variables: DashboardVariableArray{
+//					&DashboardVariableArgs{
+//						Name:         pulumi.String("_sourceHost"),
+//						DisplayName:  pulumi.String("Source Host"),
+//						DefaultValue: pulumi.String("nite-api-1"),
+//						SourceDefinition: &DashboardVariableSourceDefinitionArgs{
+//							CsvVariableSourceDefinition: &DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs{
+//								Values: pulumi.String("nite-api-1,nite-api-2"),
+//							},
+//						},
+//						AllowMultiSelect: pulumi.Bool(true),
+//						IncludeAllOption: pulumi.Bool(true),
+//						HideFromUi:       pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -318,93 +322,96 @@ import (
 //   - - `values` - (Required) The values for the topology label.
 //
 // ### Schema for `timeRange`
-// - `completeLiteralTimeRange` - (Block List, Max: 1, Optional) Literal time range. See
-//   completeLiteralTimeRange schema for details.
-// - `beginBoundedTimeRange` - (Block List, Max: 1, Optional) Bounded time range. See
-//   beginBoundedTimeRange schema schema for details.
-//   schema for details.
+//   - `completeLiteralTimeRange` - (Block List, Max: 1, Optional) Literal time range. See
+//     completeLiteralTimeRange schema for details.
+//   - `beginBoundedTimeRange` - (Block List, Max: 1, Optional) Bounded time range. See
+//     beginBoundedTimeRange schema schema for details.
+//     schema for details.
 //
 // ### Schema for `completeLiteralTimeRange`
 // - `rangeName` - (Required) Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, `previousMonth`.
 //
 // ### Schema for `beginBoundedTimeRange`
-// - `from` - (Block List, Max: 1, Required) Start boundary of bounded time range. See
-//   timeRangeBoundary schema for details.
-// - `to` - (Block List, Max: 1, Optional) End boundary of bounded time range. See
-//   timeRangeBoundary schema for details.
+//   - `from` - (Block List, Max: 1, Required) Start boundary of bounded time range. See
+//     timeRangeBoundary schema for details.
+//   - `to` - (Block List, Max: 1, Optional) End boundary of bounded time range. See
+//     timeRangeBoundary schema for details.
 //
 // ### Schema for `timeRangeBoundary`
 // - `epochTimeRange` - (Block List, Optional) Time since the epoch.
-//     - `epochMillis` - (Required) Time as a number of milliseconds since the epoch.
+//   - `epochMillis` - (Required) Time as a number of milliseconds since the epoch.
 //
 // - `iso8601TimeRange` - (Block List, Optional) Time in ISO 8601 format.
-//     - `iso8601Time` - (Required) Time as a string in ISO 8601 format.
+//   - `iso8601Time` - (Required) Time as a string in ISO 8601 format.
 //
 // - `relativeTimeRange` - (Block List, Optional) Time in relative format.
-//     - `relativeTime` - (Required) Relative time as a string consisting of following elements:
-//       1. `-` (optional): minus sign indicates time in the past,
-//       2. `<number>`: number of time units,
-//       3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
 //
-//       Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+//   - `relativeTime` - (Required) Relative time as a string consisting of following elements:
+//     1. `-` (optional): minus sign indicates time in the past,
+//     2. `<number>`: number of time units,
+//     3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+//     Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+//
 // `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 //
 // - `literalTimeRange` - (Block List, Optional) Time in literal format.
-//     - `rangeName` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
+//   - `rangeName` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 //
 // ### Schema for `panel`
-// - `textPanel` - (Block List, Max: 1, Optional) A text panel. See textPanel schema for details.
-// - `sumoSearchPanel` - (Block List, Max: 1, Optional) A search panel. See sumoSearchPanel schema
-//   for details.
+//   - `textPanel` - (Block List, Max: 1, Optional) A text panel. See textPanel schema for details.
+//   - `sumoSearchPanel` - (Block List, Max: 1, Optional) A search panel. See sumoSearchPanel schema
+//     for details.
 //
 // ### Schema for `textPanel`
-// - `key` - (Required) Key for the panel. Used to create searches for the queries in the panel and configure the layout
-//   of the panel in the dashboard.
-// - `title` - (Optional) Title of the panel.
-// - `visualSettings` - (Optional) Visual settings of the panel.
-// - `keepVisualSettingsConsistentWithParent` - (Optional) Keeps the visual settings, like series colors, consistent
-//   with the settings of the parent panel.
-// - `text` - (Required) Text to display in the panel.
+//   - `key` - (Required) Key for the panel. Used to create searches for the queries in the panel and configure the layout
+//     of the panel in the dashboard.
+//   - `title` - (Optional) Title of the panel.
+//   - `visualSettings` - (Optional) Visual settings of the panel.
+//   - `keepVisualSettingsConsistentWithParent` - (Optional) Keeps the visual settings, like series colors, consistent
+//     with the settings of the parent panel.
+//   - `text` - (Required) Text to display in the panel.
 //
 // ### Schema for `sumoSearchPanel`
-// - `key` - (Required) Key for the panel. Used to create searches for the queries in the panel and configure the layout
-//   of the panel in the dashboard.
-// - `title` - (Optional) Title of the panel.
-// - `visualSettings` - (Optional) Visual settings of the panel.
-// - `keepVisualSettingsConsistentWithParent` - (Optional) Keeps the visual settings, like series colors, consistent
-//   with the settings of the parent panel.
-// - `query` - (Block List, Required) A list of queries for the panel. Can be log or metric query. See
-//   query schema for details.
-// - `description` - (Optional) Description of the panel.
-// - `timeRange` - (Block List, Max: 1, Optional) Time range of the panel. See timeRange schema
-//   for details.
-// - `linkedDashboard` - (Block List, Optional) A list of linked dashboards. See
-//   linkedDashboard schema for details.
+//   - `key` - (Required) Key for the panel. Used to create searches for the queries in the panel and configure the layout
+//     of the panel in the dashboard.
+//   - `title` - (Optional) Title of the panel.
+//   - `visualSettings` - (Optional) Visual settings of the panel.
+//   - `keepVisualSettingsConsistentWithParent` - (Optional) Keeps the visual settings, like series colors, consistent
+//     with the settings of the parent panel.
+//   - `query` - (Block List, Required) A list of queries for the panel. Can be log or metric query. See
+//     query schema for details.
+//   - `description` - (Optional) Description of the panel.
+//   - `timeRange` - (Block List, Max: 1, Optional) Time range of the panel. See timeRange schema
+//     for details.
+//   - `linkedDashboard` - (Block List, Optional) A list of linked dashboards. See
+//     linkedDashboard schema for details.
 //
 // ### Schema for `query`
-// - `queryString` - (Required) The metrics or logs query.
-// - `queryType` - (Required) The type of the query. One of `Metrics` or `Logs`.
-// - `queryKey` - (Required) The key for metric or log query. Used as an identifier for queries.
-// - `metricQueryMode` - (Optional) _Should only be specified for metric query_. The mode of the metric query.
-//   One of `Basic` or `Advanced`.
-// - `metricQueryData` - (Optional) _Should only be specified for metric query_. Data format for the metric query. See
-//   metricQueryData schema for details.
+//   - `queryString` - (Required) The metrics or logs query.
+//   - `queryType` - (Required) The type of the query. One of `Metrics` or `Logs`.
+//   - `queryKey` - (Required) The key for metric or log query. Used as an identifier for queries.
+//   - `metricQueryMode` - (Optional) _Should only be specified for metric query_. The mode of the metric query.
+//     One of `Basic` or `Advanced`.
+//   - `metricQueryData` - (Optional) _Should only be specified for metric query_. Data format for the metric query. See
+//     metricQueryData schema for details.
 //
 // ### Schema for `metricQueryData`
 // - `metric` - (Required) The metric of the query.
 // - `aggregationType` - (Optional) The type of aggregation. One of `Count`, `Minimum`, `Maximum`, `Sum`, `Average`, `None`.
 // - `groupBy` - The field to group the results by.
 // - `filter` - (Block List, Required) A list of filters for the metrics query.
-//     - `key` - (Required) The key of the metrics filter.
-//     - `value` - (Required) The value of the metrics filter.
-//     - `negation` - (Optional) Whether or not the metrics filter is negated.
+//   - `key` - (Required) The key of the metrics filter.
+//   - `value` - (Required) The value of the metrics filter.
+//   - `negation` - (Optional) Whether or not the metrics filter is negated.
+//
 // - `operator` - (Block List, Optional) A list of operator data for the metrics query.
 //
 // ### Schema for `operator`
 // - `operatorName` - (Required) The name of the metrics operator.
 // - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
-//     - `key` - (Required) The key of the operator parameter.
-//     - `value` - (Required) The value of the operator parameter.
+//   - `key` - (Required) The key of the operator parameter.
+//   - `value` - (Required) The value of the operator parameter.
 //
 // ### Schema for `linkedDashboard`
 // - `id` - (Required) Identifier of the linked dashboard.
@@ -417,38 +424,42 @@ import (
 //
 // ### Schema for `grid`
 // - `layoutStructure` - (Block List, Required) Layout structure for the panels in the dashboard.
-//     - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
-//     - `structure` - (Required) The structure of the panel.
+//   - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
+//   - `structure` - (Required) The structure of the panel.
 //
 // ### Schema for `variable`
-// - `name` - (Required) Name of the variable. The variable name is case-insensitive.
-// - `displayName` - (Optional) Display name of the variable shown in the UI. If this field is empty, the name field will be used.
-// - `defaultValue` - (Optional) Default value of the variable.
-// - `sourceDefinition` - (Required) Source definition for variable values. See
-//   sourceDefinition schema for details.
-// - `allowMultiSelect` - (Optional) Allow multiple selections in the values dropdown.
-// - `includeAllOption` - (Optional) Include an "All" option at the top of the variable's values dropdown. _Defaults to true._
-// - `hideFromUi` - (Optional) Hide the variable in the dashboard UI.
+//   - `name` - (Required) Name of the variable. The variable name is case-insensitive.
+//   - `displayName` - (Optional) Display name of the variable shown in the UI. If this field is empty, the name field will be used.
+//   - `defaultValue` - (Optional) Default value of the variable.
+//   - `sourceDefinition` - (Required) Source definition for variable values. See
+//     sourceDefinition schema for details.
+//   - `allowMultiSelect` - (Optional) Allow multiple selections in the values dropdown.
+//   - `includeAllOption` - (Optional) Include an "All" option at the top of the variable's values dropdown. _Defaults to true._
+//   - `hideFromUi` - (Optional) Hide the variable in the dashboard UI.
 //
 // ### Schema for `sourceDefinition`
 // - `logQueryVariableSourceDefinition` - (Optional) Variable values from a log query.
-//     - `query` - (Required) A log query.
-//     - `field` - (Required) A field in log query to populate the variable values
+//   - `query` - (Required) A log query.
+//   - `field` - (Required) A field in log query to populate the variable values
+//
 // - `metadataVariableSourceDefinition` - (Optional) Variable values from a metric query.
-//     - `filter` - (Required) Filter to search the catalog.
-//     - `key` - (Required) Return the values for this given key.
+//   - `filter` - (Required) Filter to search the catalog.
+//   - `key` - (Required) Return the values for this given key.
+//
 // - `csvVariableSourceDefinition` - (Optional) Variable values in csv format.
-//     - `values` - (Required) A comma separated values for the variable.
+//   - `values` - (Required) A comma separated values for the variable.
 //
 // ## Import
 //
-// Dashboard can be imported using the dashboard id, e.g.hcl
+// # Dashboard can be imported using the dashboard id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
+//
+//	$ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
+//	[1]https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
 type Dashboard struct {
 	pulumi.CustomResourceState
 
@@ -671,7 +682,7 @@ func (i *Dashboard) ToDashboardOutputWithContext(ctx context.Context) DashboardO
 // DashboardArrayInput is an input type that accepts DashboardArray and DashboardArrayOutput values.
 // You can construct a concrete instance of `DashboardArrayInput` via:
 //
-//          DashboardArray{ DashboardArgs{...} }
+//	DashboardArray{ DashboardArgs{...} }
 type DashboardArrayInput interface {
 	pulumi.Input
 
@@ -696,7 +707,7 @@ func (i DashboardArray) ToDashboardArrayOutputWithContext(ctx context.Context) D
 // DashboardMapInput is an input type that accepts DashboardMap and DashboardMapOutput values.
 // You can construct a concrete instance of `DashboardMapInput` via:
 //
-//          DashboardMap{ "key": DashboardArgs{...} }
+//	DashboardMap{ "key": DashboardArgs{...} }
 type DashboardMapInput interface {
 	pulumi.Input
 

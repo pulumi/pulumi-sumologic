@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class AwsInventorySourceAuthenticationArgs : Pulumi.ResourceArgs
+    public sealed class AwsInventorySourceAuthenticationArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -63,5 +63,6 @@ namespace Pulumi.SumoLogic.Inputs
         public AwsInventorySourceAuthenticationArgs()
         {
         }
+        public static new AwsInventorySourceAuthenticationArgs Empty => new AwsInventorySourceAuthenticationArgs();
     }
 }

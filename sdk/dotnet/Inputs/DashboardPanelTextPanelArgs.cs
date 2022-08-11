@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardPanelTextPanelArgs : Pulumi.ResourceArgs
+    public sealed class DashboardPanelTextPanelArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardPanelTextPanelArgs()
         {
         }
+        public static new DashboardPanelTextPanelArgs Empty => new DashboardPanelTextPanelArgs();
     }
 }

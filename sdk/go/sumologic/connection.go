@@ -19,49 +19,56 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewConnection(ctx, "connection", &sumologic.ConnectionArgs{
-// 			Type:        pulumi.String("WebhookConnection"),
-// 			Description: pulumi.String("My description"),
-// 			Url:         pulumi.String("https://connection-endpoint.com"),
-// 			Headers: pulumi.StringMap{
-// 				"X-Header": pulumi.String("my-header"),
-// 			},
-// 			CustomHeaders: pulumi.StringMap{
-// 				"X-custom": pulumi.String("my-custom-header"),
-// 			},
-// 			DefaultPayload: pulumi.String(fmt.Sprintf(`{
-//   "client" : "Sumo Logic",
-//   "eventType" : "{{Name}}",
-//   "description" : "{{Description}}",
-//   "search_url" : "{{QueryUrl}}",
-//   "num_records" : "{{NumRawResults}}",
-//   "search_results" : "{{AggregateResultsJson}}"
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewConnection(ctx, "connection", &sumologic.ConnectionArgs{
+//				Type:        pulumi.String("WebhookConnection"),
+//				Description: pulumi.String("My description"),
+//				Url:         pulumi.String("https://connection-endpoint.com"),
+//				Headers: pulumi.StringMap{
+//					"X-Header": pulumi.String("my-header"),
+//				},
+//				CustomHeaders: pulumi.StringMap{
+//					"X-custom": pulumi.String("my-custom-header"),
+//				},
+//				DefaultPayload: pulumi.String(fmt.Sprintf(`{
+//	  "client" : "Sumo Logic",
+//	  "eventType" : "{{Name}}",
+//	  "description" : "{{Description}}",
+//	  "search_url" : "{{QueryUrl}}",
+//	  "num_records" : "{{NumRawResults}}",
+//	  "search_results" : "{{AggregateResultsJson}}"
+//	}
+//
 // `)),
-// 			WebhookType: pulumi.String("Webhook"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				WebhookType: pulumi.String("Webhook"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Connections can be imported using the connection id, e.g.hcl
+// # Connections can be imported using the connection id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/connection:Connection test 1234567890
+//
+//	$ pulumi import sumologic:index/connection:Connection test 1234567890
+//
 // ```
 type Connection struct {
 	pulumi.CustomResourceState
@@ -238,7 +245,7 @@ func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) Connecti
 // ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
 // You can construct a concrete instance of `ConnectionArrayInput` via:
 //
-//          ConnectionArray{ ConnectionArgs{...} }
+//	ConnectionArray{ ConnectionArgs{...} }
 type ConnectionArrayInput interface {
 	pulumi.Input
 
@@ -263,7 +270,7 @@ func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context)
 // ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
 // You can construct a concrete instance of `ConnectionMapInput` via:
 //
-//          ConnectionMap{ "key": ConnectionArgs{...} }
+//	ConnectionMap{ "key": ConnectionArgs{...} }
 type ConnectionMapInput interface {
 	pulumi.Input
 

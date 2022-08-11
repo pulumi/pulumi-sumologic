@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudwatchSourcePathTagFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class CloudwatchSourcePathTagFilterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudwatchSourcePathTagFilterGetArgs()
         {
         }
+        public static new CloudwatchSourcePathTagFilterGetArgs Empty => new CloudwatchSourcePathTagFilterGetArgs();
     }
 }

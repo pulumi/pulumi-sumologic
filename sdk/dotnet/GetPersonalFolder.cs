@@ -20,17 +20,15 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
-        ///     }
+        ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -55,17 +53,15 @@ namespace Pulumi.SumoLogic
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SumoLogic = Pulumi.SumoLogic;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
-        ///     }
+        ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// {{% /example %}}
@@ -83,7 +79,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetPersonalFolderArgs : Pulumi.InvokeArgs
+    public sealed class GetPersonalFolderArgs : global::Pulumi.InvokeArgs
     {
         [Input("description")]
         public string? Description { get; set; }
@@ -97,9 +93,10 @@ namespace Pulumi.SumoLogic
         public GetPersonalFolderArgs()
         {
         }
+        public static new GetPersonalFolderArgs Empty => new GetPersonalFolderArgs();
     }
 
-    public sealed class GetPersonalFolderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPersonalFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -113,6 +110,7 @@ namespace Pulumi.SumoLogic
         public GetPersonalFolderInvokeArgs()
         {
         }
+        public static new GetPersonalFolderInvokeArgs Empty => new GetPersonalFolderInvokeArgs();
     }
 
 

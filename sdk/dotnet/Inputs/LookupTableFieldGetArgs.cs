@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class LookupTableFieldGetArgs : Pulumi.ResourceArgs
+    public sealed class LookupTableFieldGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("fieldName", required: true)]
         public Input<string> FieldName { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public LookupTableFieldGetArgs()
         {
         }
+        public static new LookupTableFieldGetArgs Empty => new LookupTableFieldGetArgs();
     }
 }

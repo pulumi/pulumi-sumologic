@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs : Pulumi.ResourceArgs
+    public sealed class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs()
         {
         }
+        public static new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs Empty => new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs();
     }
 }

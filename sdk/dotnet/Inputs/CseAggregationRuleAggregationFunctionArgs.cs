@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseAggregationRuleAggregationFunctionArgs : Pulumi.ResourceArgs
+    public sealed class CseAggregationRuleAggregationFunctionArgs : global::Pulumi.ResourceArgs
     {
         [Input("arguments", required: true)]
         private InputList<string>? _arguments;
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseAggregationRuleAggregationFunctionArgs()
         {
         }
+        public static new CseAggregationRuleAggregationFunctionArgs Empty => new CseAggregationRuleAggregationFunctionArgs();
     }
 }

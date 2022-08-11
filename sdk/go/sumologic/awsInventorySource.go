@@ -21,46 +21,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewAwsInventorySource(ctx, "awsInventorySource", &sumologic.AwsInventorySourceArgs{
-// 			Authentication: &AwsInventorySourceAuthenticationArgs{
-// 				RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
-// 				Type:    pulumi.String("AWSRoleBasedAuthentication"),
-// 			},
-// 			Category:    pulumi.String("aws/aws_inventory"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("AwsInventory"),
-// 			Description: pulumi.String("My description"),
-// 			Path: &AwsInventorySourcePathArgs{
-// 				LimitToNamespaces: pulumi.StringArray{
-// 					pulumi.String("AWS/RDS"),
-// 					pulumi.String("AWS/EC2"),
-// 				},
-// 				LimitToRegions: pulumi.StringArray{
-// 					pulumi.String("us-west-2"),
-// 				},
-// 				Type: pulumi.String("AwsInventoryPath"),
-// 			},
-// 			Paused:       pulumi.Bool(false),
-// 			ScanInterval: pulumi.Int(300000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewAwsInventorySource(ctx, "awsInventorySource", &sumologic.AwsInventorySourceArgs{
+//				Authentication: &AwsInventorySourceAuthenticationArgs{
+//					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
+//					Type:    pulumi.String("AWSRoleBasedAuthentication"),
+//				},
+//				Category:    pulumi.String("aws/aws_inventory"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("AwsInventory"),
+//				Description: pulumi.String("My description"),
+//				Path: &AwsInventorySourcePathArgs{
+//					LimitToNamespaces: pulumi.StringArray{
+//						pulumi.String("AWS/RDS"),
+//						pulumi.String("AWS/EC2"),
+//					},
+//					LimitToRegions: pulumi.StringArray{
+//						pulumi.String("us-west-2"),
+//					},
+//					Type: pulumi.String("AwsInventoryPath"),
+//				},
+//				Paused:       pulumi.Bool(false),
+//				ScanInterval: pulumi.Int(300000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -68,13 +71,17 @@ import (
 // AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456
+//
+//	$ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456
+//
 // ```
 //
-//  AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source
+//
 // ```
 type AwsInventorySource struct {
 	pulumi.CustomResourceState
@@ -303,7 +310,7 @@ func (i *AwsInventorySource) ToAwsInventorySourceOutputWithContext(ctx context.C
 // AwsInventorySourceArrayInput is an input type that accepts AwsInventorySourceArray and AwsInventorySourceArrayOutput values.
 // You can construct a concrete instance of `AwsInventorySourceArrayInput` via:
 //
-//          AwsInventorySourceArray{ AwsInventorySourceArgs{...} }
+//	AwsInventorySourceArray{ AwsInventorySourceArgs{...} }
 type AwsInventorySourceArrayInput interface {
 	pulumi.Input
 
@@ -328,7 +335,7 @@ func (i AwsInventorySourceArray) ToAwsInventorySourceArrayOutputWithContext(ctx 
 // AwsInventorySourceMapInput is an input type that accepts AwsInventorySourceMap and AwsInventorySourceMapOutput values.
 // You can construct a concrete instance of `AwsInventorySourceMapInput` via:
 //
-//          AwsInventorySourceMap{ "key": AwsInventorySourceArgs{...} }
+//	AwsInventorySourceMap{ "key": AwsInventorySourceArgs{...} }
 type AwsInventorySourceMapInput interface {
 	pulumi.Input
 

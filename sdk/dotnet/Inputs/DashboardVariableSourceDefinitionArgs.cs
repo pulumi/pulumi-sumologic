@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardVariableSourceDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class DashboardVariableSourceDefinitionArgs : global::Pulumi.ResourceArgs
     {
         [Input("csvVariableSourceDefinition")]
         public Input<Inputs.DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs>? CsvVariableSourceDefinition { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardVariableSourceDefinitionArgs()
         {
         }
+        public static new DashboardVariableSourceDefinitionArgs Empty => new DashboardVariableSourceDefinitionArgs();
     }
 }

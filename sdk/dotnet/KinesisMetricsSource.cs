@@ -25,7 +25,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/kinesisMetricsSource:KinesisMetricsSource")]
-    public partial class KinesisMetricsSource : Pulumi.CustomResource
+    public partial class KinesisMetricsSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -146,7 +146,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class KinesisMetricsSourceArgs : Pulumi.ResourceArgs
+    public sealed class KinesisMetricsSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -235,9 +235,10 @@ namespace Pulumi.SumoLogic
         public KinesisMetricsSourceArgs()
         {
         }
+        public static new KinesisMetricsSourceArgs Empty => new KinesisMetricsSourceArgs();
     }
 
-    public sealed class KinesisMetricsSourceState : Pulumi.ResourceArgs
+    public sealed class KinesisMetricsSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
@@ -332,5 +333,6 @@ namespace Pulumi.SumoLogic
         public KinesisMetricsSourceState()
         {
         }
+        public static new KinesisMetricsSourceState Empty => new KinesisMetricsSourceState();
     }
 }

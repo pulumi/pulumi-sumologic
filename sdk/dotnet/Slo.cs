@@ -13,7 +13,7 @@ namespace Pulumi.SumoLogic
     /// Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).
     /// </summary>
     [SumoLogicResourceType("sumologic:index/slo:Slo")]
-    public partial class Slo : Pulumi.CustomResource
+    public partial class Slo : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the application.
@@ -141,7 +141,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class SloArgs : Pulumi.ResourceArgs
+    public sealed class SloArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the application.
@@ -239,9 +239,10 @@ namespace Pulumi.SumoLogic
         public SloArgs()
         {
         }
+        public static new SloArgs Empty => new SloArgs();
     }
 
-    public sealed class SloState : Pulumi.ResourceArgs
+    public sealed class SloState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the application.
@@ -339,5 +340,6 @@ namespace Pulumi.SumoLogic
         public SloState()
         {
         }
+        public static new SloState Empty => new SloState();
     }
 }

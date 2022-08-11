@@ -19,21 +19,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewSubdomain(ctx, "exampleSubdomain", &sumologic.SubdomainArgs{
-// 			Subdomain: pulumi.String("my-company"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewSubdomain(ctx, "exampleSubdomain", &sumologic.SubdomainArgs{
+//				Subdomain: pulumi.String("my-company"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -131,7 +134,7 @@ func (i *Subdomain) ToSubdomainOutputWithContext(ctx context.Context) SubdomainO
 // SubdomainArrayInput is an input type that accepts SubdomainArray and SubdomainArrayOutput values.
 // You can construct a concrete instance of `SubdomainArrayInput` via:
 //
-//          SubdomainArray{ SubdomainArgs{...} }
+//	SubdomainArray{ SubdomainArgs{...} }
 type SubdomainArrayInput interface {
 	pulumi.Input
 
@@ -156,7 +159,7 @@ func (i SubdomainArray) ToSubdomainArrayOutputWithContext(ctx context.Context) S
 // SubdomainMapInput is an input type that accepts SubdomainMap and SubdomainMapOutput values.
 // You can construct a concrete instance of `SubdomainMapInput` via:
 //
-//          SubdomainMap{ "key": SubdomainArgs{...} }
+//	SubdomainMap{ "key": SubdomainArgs{...} }
 type SubdomainMapInput interface {
 	pulumi.Input
 

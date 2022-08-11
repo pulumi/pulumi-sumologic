@@ -18,20 +18,18 @@ namespace Pulumi.SumoLogic
     /// NOTE: Monitor folders are considered a different resource from Library content folders.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new()
     ///     {
-    ///         var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new SumoLogic.MonitorFolderArgs
-    ///         {
-    ///             Description = "A folder for monitors managed by terraform.",
-    ///         });
-    ///     }
+    ///         Description = "A folder for monitors managed by terraform.",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
     /// </summary>
     [SumoLogicResourceType("sumologic:index/monitorFolder:MonitorFolder")]
-    public partial class MonitorFolder : Pulumi.CustomResource
+    public partial class MonitorFolder : global::Pulumi.CustomResource
     {
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -152,7 +150,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class MonitorFolderArgs : Pulumi.ResourceArgs
+    public sealed class MonitorFolderArgs : global::Pulumi.ResourceArgs
     {
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -229,9 +227,10 @@ namespace Pulumi.SumoLogic
         public MonitorFolderArgs()
         {
         }
+        public static new MonitorFolderArgs Empty => new MonitorFolderArgs();
     }
 
-    public sealed class MonitorFolderState : Pulumi.ResourceArgs
+    public sealed class MonitorFolderState : global::Pulumi.ResourceArgs
     {
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -308,5 +307,6 @@ namespace Pulumi.SumoLogic
         public MonitorFolderState()
         {
         }
+        public static new MonitorFolderState Empty => new MonitorFolderState();
     }
 }

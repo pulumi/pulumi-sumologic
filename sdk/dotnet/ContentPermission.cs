@@ -31,71 +31,71 @@ namespace Pulumi.SumoLogic
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var personalFolder = Output.Create(SumoLogic.GetPersonalFolder.InvokeAsync());
-    ///         var permissionTestContent = new SumoLogic.Content("permissionTestContent", new SumoLogic.ContentArgs
-    ///         {
-    ///             ParentId = personalFolder.Apply(personalFolder =&gt; personalFolder.Id),
-    ///             Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "type", "FolderSyncDefinition" },
-    ///                 { "name", "test_permission_resource_folder" },
-    ///                 { "description", "" },
-    ///                 { "children", new[]
-    ///                     {
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///         var role = Output.Create(SumoLogic.GetRole.InvokeAsync(new SumoLogic.GetRoleArgs
-    ///         {
-    ///             Name = "test_role",
-    ///         }));
-    ///         var user = Output.Create(SumoLogic.GetUser.InvokeAsync(new SumoLogic.GetUserArgs
-    ///         {
-    ///             Email = "user@example.com",
-    ///         }));
-    ///         // Grant user `user@example.com` "Manage" permission and role `test_role`
-    ///         // "View" permission on the folder `test_permission_resource_folder`.
-    ///         var contentPermissionTest = new SumoLogic.ContentPermission("contentPermissionTest", new SumoLogic.ContentPermissionArgs
-    ///         {
-    ///             ContentId = permissionTestContent.Id,
-    ///             NotifyRecipient = true,
-    ///             NotificationMessage = "You now have the permission to access this content",
-    ///             Permissions = 
-    ///             {
-    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
-    ///                 {
-    ///                     PermissionName = "View",
-    ///                     SourceType = "role",
-    ///                     SourceId = role.Apply(role =&gt; role.Id),
-    ///                 },
-    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
-    ///                 {
-    ///                     PermissionName = "View",
-    ///                     SourceType = "user",
-    ///                     SourceId = user.Apply(user =&gt; user.Id),
-    ///                 },
-    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
-    ///                 {
-    ///                     PermissionName = "Edit",
-    ///                     SourceType = "user",
-    ///                     SourceId = user.Apply(user =&gt; user.Id),
-    ///                 },
-    ///                 new SumoLogic.Inputs.ContentPermissionPermissionArgs
-    ///                 {
-    ///                     PermissionName = "Manage",
-    ///                     SourceType = "user",
-    ///                     SourceId = user.Apply(user =&gt; user.Id),
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
     /// 
-    /// }
+    ///     var permissionTestContent = new SumoLogic.Content("permissionTestContent", new()
+    ///     {
+    ///         ParentId = personalFolder.Apply(getPersonalFolderResult =&gt; getPersonalFolderResult.Id),
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["type"] = "FolderSyncDefinition",
+    ///             ["name"] = "test_permission_resource_folder",
+    ///             ["description"] = "",
+    ///             ["children"] = new[]
+    ///             {
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var role = SumoLogic.GetRole.Invoke(new()
+    ///     {
+    ///         Name = "test_role",
+    ///     });
+    /// 
+    ///     var user = SumoLogic.GetUser.Invoke(new()
+    ///     {
+    ///         Email = "user@example.com",
+    ///     });
+    /// 
+    ///     // Grant user `user@example.com` "Manage" permission and role `test_role`
+    ///     // "View" permission on the folder `test_permission_resource_folder`.
+    ///     var contentPermissionTest = new SumoLogic.ContentPermission("contentPermissionTest", new()
+    ///     {
+    ///         ContentId = permissionTestContent.Id,
+    ///         NotifyRecipient = true,
+    ///         NotificationMessage = "You now have the permission to access this content",
+    ///         Permissions = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///             {
+    ///                 PermissionName = "View",
+    ///                 SourceType = "role",
+    ///                 SourceId = role.Apply(getRoleResult =&gt; getRoleResult.Id),
+    ///             },
+    ///             new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///             {
+    ///                 PermissionName = "View",
+    ///                 SourceType = "user",
+    ///                 SourceId = user.Apply(getUserResult =&gt; getUserResult.Id),
+    ///             },
+    ///             new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///             {
+    ///                 PermissionName = "Edit",
+    ///                 SourceType = "user",
+    ///                 SourceId = user.Apply(getUserResult =&gt; getUserResult.Id),
+    ///             },
+    ///             new SumoLogic.Inputs.ContentPermissionPermissionArgs
+    ///             {
+    ///                 PermissionName = "Manage",
+    ///                 SourceType = "user",
+    ///                 SourceId = user.Apply(getUserResult =&gt; getUserResult.Id),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -107,7 +107,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/contentPermission:ContentPermission")]
-    public partial class ContentPermission : Pulumi.CustomResource
+    public partial class ContentPermission : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The identifier of the content item for which you want to update
@@ -179,7 +179,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class ContentPermissionArgs : Pulumi.ResourceArgs
+    public sealed class ContentPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier of the content item for which you want to update
@@ -216,9 +216,10 @@ namespace Pulumi.SumoLogic
         public ContentPermissionArgs()
         {
         }
+        public static new ContentPermissionArgs Empty => new ContentPermissionArgs();
     }
 
-    public sealed class ContentPermissionState : Pulumi.ResourceArgs
+    public sealed class ContentPermissionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier of the content item for which you want to update
@@ -255,5 +256,6 @@ namespace Pulumi.SumoLogic
         public ContentPermissionState()
         {
         }
+        public static new ContentPermissionState Empty => new ContentPermissionState();
     }
 }

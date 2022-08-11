@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class SloIndicatorRequestBasedEvaluationQueryGetArgs : Pulumi.ResourceArgs
+    public sealed class SloIndicatorRequestBasedEvaluationQueryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
@@ -34,5 +34,6 @@ namespace Pulumi.SumoLogic.Inputs
         public SloIndicatorRequestBasedEvaluationQueryGetArgs()
         {
         }
+        public static new SloIndicatorRequestBasedEvaluationQueryGetArgs Empty => new SloIndicatorRequestBasedEvaluationQueryGetArgs();
     }
 }

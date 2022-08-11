@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CloudSyslogSourceDefaultDateFormatArgs : Pulumi.ResourceArgs
+    public sealed class CloudSyslogSourceDefaultDateFormatArgs : global::Pulumi.ResourceArgs
     {
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CloudSyslogSourceDefaultDateFormatArgs()
         {
         }
+        public static new CloudSyslogSourceDefaultDateFormatArgs Empty => new CloudSyslogSourceDefaultDateFormatArgs();
     }
 }

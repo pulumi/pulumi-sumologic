@@ -19,33 +19,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseCustomEntityType(ctx, "customEntityType", &sumologic.CseCustomEntityTypeArgs{
-// 			Fields: pulumi.StringArray{
-// 				pulumi.String("file_hash_md5"),
-// 				pulumi.String("file_hash_sha1"),
-// 			},
-// 			Identifier: pulumi.String("identifier"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseCustomEntityType(ctx, "customEntityType", &sumologic.CseCustomEntityTypeArgs{
+//				Fields: pulumi.StringArray{
+//					pulumi.String("file_hash_md5"),
+//					pulumi.String("file_hash_sha1"),
+//				},
+//				Identifier: pulumi.String("identifier"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Custom entity type can be imported using the field id, e.g.hcl
+// # Custom entity type can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseCustomEntityType:CseCustomEntityType custom_entity_type id
+//
+//	$ pulumi import sumologic:index/cseCustomEntityType:CseCustomEntityType custom_entity_type id
+//
 // ```
 type CseCustomEntityType struct {
 	pulumi.CustomResourceState
@@ -159,7 +164,7 @@ func (i *CseCustomEntityType) ToCseCustomEntityTypeOutputWithContext(ctx context
 // CseCustomEntityTypeArrayInput is an input type that accepts CseCustomEntityTypeArray and CseCustomEntityTypeArrayOutput values.
 // You can construct a concrete instance of `CseCustomEntityTypeArrayInput` via:
 //
-//          CseCustomEntityTypeArray{ CseCustomEntityTypeArgs{...} }
+//	CseCustomEntityTypeArray{ CseCustomEntityTypeArgs{...} }
 type CseCustomEntityTypeArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +189,7 @@ func (i CseCustomEntityTypeArray) ToCseCustomEntityTypeArrayOutputWithContext(ct
 // CseCustomEntityTypeMapInput is an input type that accepts CseCustomEntityTypeMap and CseCustomEntityTypeMapOutput values.
 // You can construct a concrete instance of `CseCustomEntityTypeMapInput` via:
 //
-//          CseCustomEntityTypeMap{ "key": CseCustomEntityTypeArgs{...} }
+//	CseCustomEntityTypeMap{ "key": CseCustomEntityTypeArgs{...} }
 type CseCustomEntityTypeMapInput interface {
 	pulumi.Input
 

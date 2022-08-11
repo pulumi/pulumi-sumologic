@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardPanelSumoSearchPanelColoringRuleColorThresholdGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardPanelSumoSearchPanelColoringRuleColorThresholdGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardPanelSumoSearchPanelColoringRuleColorThresholdGetArgs()
         {
         }
+        public static new DashboardPanelSumoSearchPanelColoringRuleColorThresholdGetArgs Empty => new DashboardPanelSumoSearchPanelColoringRuleColorThresholdGetArgs();
     }
 }

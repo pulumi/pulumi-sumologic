@@ -19,42 +19,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		budget, err := sumologic.NewIngestBudget(ctx, "budget", &sumologic.IngestBudgetArgs{
-// 			CapacityBytes: pulumi.Int(30000000000),
-// 			Description:   pulumi.String("For testing purposes"),
-// 			FieldValue:    pulumi.String("test"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Fields: pulumi.StringMap{
-// 				"_budget": budget.FieldValue,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			budget, err := sumologic.NewIngestBudget(ctx, "budget", &sumologic.IngestBudgetArgs{
+//				CapacityBytes: pulumi.Int(30000000000),
+//				Description:   pulumi.String("For testing purposes"),
+//				FieldValue:    pulumi.String("test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Fields: pulumi.StringMap{
+//					"_budget": budget.FieldValue,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Ingest budgets can be imported using the name, e.g.hcl
+// # Ingest budgets can be imported using the name, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
+//
+//	$ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
+//	[1]https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
 type IngestBudget struct {
 	pulumi.CustomResourceState
 
@@ -207,7 +212,7 @@ func (i *IngestBudget) ToIngestBudgetOutputWithContext(ctx context.Context) Inge
 // IngestBudgetArrayInput is an input type that accepts IngestBudgetArray and IngestBudgetArrayOutput values.
 // You can construct a concrete instance of `IngestBudgetArrayInput` via:
 //
-//          IngestBudgetArray{ IngestBudgetArgs{...} }
+//	IngestBudgetArray{ IngestBudgetArgs{...} }
 type IngestBudgetArrayInput interface {
 	pulumi.Input
 
@@ -232,7 +237,7 @@ func (i IngestBudgetArray) ToIngestBudgetArrayOutputWithContext(ctx context.Cont
 // IngestBudgetMapInput is an input type that accepts IngestBudgetMap and IngestBudgetMapOutput values.
 // You can construct a concrete instance of `IngestBudgetMapInput` via:
 //
-//          IngestBudgetMap{ "key": IngestBudgetArgs{...} }
+//	IngestBudgetMap{ "key": IngestBudgetArgs{...} }
 type IngestBudgetMapInput interface {
 	pulumi.Input
 

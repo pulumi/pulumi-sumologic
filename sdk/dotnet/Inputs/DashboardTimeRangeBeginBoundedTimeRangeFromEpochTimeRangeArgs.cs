@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs : Pulumi.ResourceArgs
+    public sealed class DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs : global::Pulumi.ResourceArgs
     {
         [Input("epochMillis", required: true)]
         public Input<int> EpochMillis { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs()
         {
         }
+        public static new DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs Empty => new DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs();
     }
 }

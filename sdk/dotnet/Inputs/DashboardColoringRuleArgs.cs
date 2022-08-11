@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardColoringRuleArgs : Pulumi.ResourceArgs
+    public sealed class DashboardColoringRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("colorThresholds")]
         private InputList<Inputs.DashboardColoringRuleColorThresholdArgs>? _colorThresholds;
@@ -32,5 +32,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardColoringRuleArgs()
         {
         }
+        public static new DashboardColoringRuleArgs Empty => new DashboardColoringRuleArgs();
     }
 }

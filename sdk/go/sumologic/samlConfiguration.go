@@ -19,43 +19,46 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewSamlConfiguration(ctx, "exampleSamlConfiguration", &sumologic.SamlConfigurationArgs{
-// 			AuthnRequestUrl:              pulumi.String(""),
-// 			ConfigurationName:            pulumi.String("SumoLogic"),
-// 			DebugMode:                    pulumi.Bool(false),
-// 			DisableRequestedAuthnContext: pulumi.Bool(false),
-// 			EmailAttribute:               pulumi.String(""),
-// 			IsRedirectBinding:            pulumi.Bool(false),
-// 			Issuer:                       pulumi.String("http://www.okta.com/abxcseyuiwelflkdjh"),
-// 			LogoutEnabled:                pulumi.Bool(false),
-// 			LogoutUrl:                    pulumi.String(""),
-// 			OnDemandProvisioningEnabled: &SamlConfigurationOnDemandProvisioningEnabledArgs{
-// 				FirstNameAttribute: pulumi.String("firstName"),
-// 				LastNameAttribute:  pulumi.String("lastName"),
-// 				OnDemandProvisioningRoles: pulumi.StringArray{
-// 					pulumi.String("Administrator"),
-// 				},
-// 			},
-// 			RolesAttribute:          pulumi.String("Administrator"),
-// 			SignAuthnRequest:        pulumi.Bool(false),
-// 			SpInitiatedLoginEnabled: pulumi.Bool(false),
-// 			SpInitiatedLoginPath:    pulumi.String(""),
-// 			X509cert1:               pulumi.String("string"),
-// 			X509cert2:               pulumi.String(""),
-// 			X509cert3:               pulumi.String(""),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewSamlConfiguration(ctx, "exampleSamlConfiguration", &sumologic.SamlConfigurationArgs{
+//				AuthnRequestUrl:              pulumi.String(""),
+//				ConfigurationName:            pulumi.String("SumoLogic"),
+//				DebugMode:                    pulumi.Bool(false),
+//				DisableRequestedAuthnContext: pulumi.Bool(false),
+//				EmailAttribute:               pulumi.String(""),
+//				IsRedirectBinding:            pulumi.Bool(false),
+//				Issuer:                       pulumi.String("http://www.okta.com/abxcseyuiwelflkdjh"),
+//				LogoutEnabled:                pulumi.Bool(false),
+//				LogoutUrl:                    pulumi.String(""),
+//				OnDemandProvisioningEnabled: &SamlConfigurationOnDemandProvisioningEnabledArgs{
+//					FirstNameAttribute: pulumi.String("firstName"),
+//					LastNameAttribute:  pulumi.String("lastName"),
+//					OnDemandProvisioningRoles: pulumi.StringArray{
+//						pulumi.String("Administrator"),
+//					},
+//				},
+//				RolesAttribute:          pulumi.String("Administrator"),
+//				SignAuthnRequest:        pulumi.Bool(false),
+//				SpInitiatedLoginEnabled: pulumi.Bool(false),
+//				SpInitiatedLoginPath:    pulumi.String(""),
+//				X509cert1:               pulumi.String("string"),
+//				X509cert2:               pulumi.String(""),
+//				X509cert3:               pulumi.String(""),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -68,13 +71,15 @@ import (
 //
 // ## Import
 //
-// SAML Configuration can be imported using the SAML configuration id, e.g.hcl
+// # SAML Configuration can be imported using the SAML configuration id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
+//
+//	$ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
+//	[1]https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
 type SamlConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -339,7 +344,7 @@ func (i *SamlConfiguration) ToSamlConfigurationOutputWithContext(ctx context.Con
 // SamlConfigurationArrayInput is an input type that accepts SamlConfigurationArray and SamlConfigurationArrayOutput values.
 // You can construct a concrete instance of `SamlConfigurationArrayInput` via:
 //
-//          SamlConfigurationArray{ SamlConfigurationArgs{...} }
+//	SamlConfigurationArray{ SamlConfigurationArgs{...} }
 type SamlConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -364,7 +369,7 @@ func (i SamlConfigurationArray) ToSamlConfigurationArrayOutputWithContext(ctx co
 // SamlConfigurationMapInput is an input type that accepts SamlConfigurationMap and SamlConfigurationMapOutput values.
 // You can construct a concrete instance of `SamlConfigurationMapInput` via:
 //
-//          SamlConfigurationMap{ "key": SamlConfigurationArgs{...} }
+//	SamlConfigurationMap{ "key": SamlConfigurationArgs{...} }
 type SamlConfigurationMapInput interface {
 	pulumi.Input
 

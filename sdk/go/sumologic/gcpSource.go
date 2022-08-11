@@ -21,29 +21,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewGcpSource(ctx, "gcpSource", &sumologic.GcpSourceArgs{
-// 			Category:    pulumi.String("gcp"),
-// 			CollectorId: collector.ID(),
-// 			Description: pulumi.String("My description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewGcpSource(ctx, "gcpSource", &sumologic.GcpSourceArgs{
+//				Category:    pulumi.String("gcp"),
+//				CollectorId: collector.ID(),
+//				Description: pulumi.String("My description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,16 +54,20 @@ import (
 // Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
+//
+//	$ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
+//
 // ```
 //
-//  Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source [3]https://cloud.google.com/pubsub/docs/push
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source [3]https://cloud.google.com/pubsub/docs/push
 type GcpSource struct {
 	pulumi.CustomResourceState
 
@@ -246,7 +253,7 @@ func (i *GcpSource) ToGcpSourceOutputWithContext(ctx context.Context) GcpSourceO
 // GcpSourceArrayInput is an input type that accepts GcpSourceArray and GcpSourceArrayOutput values.
 // You can construct a concrete instance of `GcpSourceArrayInput` via:
 //
-//          GcpSourceArray{ GcpSourceArgs{...} }
+//	GcpSourceArray{ GcpSourceArgs{...} }
 type GcpSourceArrayInput interface {
 	pulumi.Input
 
@@ -271,7 +278,7 @@ func (i GcpSourceArray) ToGcpSourceArrayOutputWithContext(ctx context.Context) G
 // GcpSourceMapInput is an input type that accepts GcpSourceMap and GcpSourceMapOutput values.
 // You can construct a concrete instance of `GcpSourceMapInput` via:
 //
-//          GcpSourceMap{ "key": GcpSourceArgs{...} }
+//	GcpSourceMap{ "key": GcpSourceArgs{...} }
 type GcpSourceMapInput interface {
 	pulumi.Input
 

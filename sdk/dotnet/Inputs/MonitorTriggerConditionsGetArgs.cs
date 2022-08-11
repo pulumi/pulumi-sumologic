@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("logsMissingDataCondition")]
         public Input<Inputs.MonitorTriggerConditionsLogsMissingDataConditionGetArgs>? LogsMissingDataCondition { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsGetArgs()
         {
         }
+        public static new MonitorTriggerConditionsGetArgs Empty => new MonitorTriggerConditionsGetArgs();
     }
 }

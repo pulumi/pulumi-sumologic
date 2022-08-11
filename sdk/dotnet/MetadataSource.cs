@@ -31,7 +31,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/metadataSource:MetadataSource")]
-    public partial class MetadataSource : Pulumi.CustomResource
+    public partial class MetadataSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for AWS access.
@@ -161,7 +161,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class MetadataSourceArgs : Pulumi.ResourceArgs
+    public sealed class MetadataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for AWS access.
@@ -259,9 +259,10 @@ namespace Pulumi.SumoLogic
         public MetadataSourceArgs()
         {
         }
+        public static new MetadataSourceArgs Empty => new MetadataSourceArgs();
     }
 
-    public sealed class MetadataSourceState : Pulumi.ResourceArgs
+    public sealed class MetadataSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for AWS access.
@@ -365,5 +366,6 @@ namespace Pulumi.SumoLogic
         public MetadataSourceState()
         {
         }
+        public static new MetadataSourceState Empty => new MetadataSourceState();
     }
 }

@@ -17,49 +17,47 @@ namespace Pulumi.SumoLogic
     /// NOTE: SLO folders are considered a different resource from Library content and monitor folders.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tfSloFolder = new SumoLogic.SloFolder("tfSloFolder", new()
     ///     {
-    ///         var tfSloFolder = new SumoLogic.SloFolder("tfSloFolder", new SumoLogic.SloFolderArgs
-    ///         {
-    ///             Description = "A folder for SLO's managed by terraform.",
-    ///         });
-    ///     }
+    ///         Description = "A folder for SLO's managed by terraform.",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Example Nested SLO Folders
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tfPaymentsTeamRootFolder = new SumoLogic.SloFolder("tfPaymentsTeamRootFolder", new()
     ///     {
-    ///         var tfPaymentsTeamRootFolder = new SumoLogic.SloFolder("tfPaymentsTeamRootFolder", new SumoLogic.SloFolderArgs
-    ///         {
-    ///             Description = "SLO's payments services.",
-    ///         });
-    ///         var tfPaymentsTeamProdFolder = new SumoLogic.SloFolder("tfPaymentsTeamProdFolder", new SumoLogic.SloFolderArgs
-    ///         {
-    ///             Description = "SLOs for the Payments service on Production Environment.",
-    ///             ParentId = tfPaymentsTeamRootFolder.Id,
-    ///         });
-    ///         var tfPaymentsTeamStagFolder = new SumoLogic.SloFolder("tfPaymentsTeamStagFolder", new SumoLogic.SloFolderArgs
-    ///         {
-    ///             Description = "SLOs for the payments service on Staging Environment.",
-    ///             ParentId = tfPaymentsTeamRootFolder.Id,
-    ///         });
-    ///     }
+    ///         Description = "SLO's payments services.",
+    ///     });
     /// 
-    /// }
+    ///     var tfPaymentsTeamProdFolder = new SumoLogic.SloFolder("tfPaymentsTeamProdFolder", new()
+    ///     {
+    ///         Description = "SLOs for the Payments service on Production Environment.",
+    ///         ParentId = tfPaymentsTeamRootFolder.Id,
+    ///     });
+    /// 
+    ///     var tfPaymentsTeamStagFolder = new SumoLogic.SloFolder("tfPaymentsTeamStagFolder", new()
+    ///     {
+    ///         Description = "SLOs for the payments service on Staging Environment.",
+    ///         ParentId = tfPaymentsTeamRootFolder.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +71,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/sloFolder:SloFolder")]
-    public partial class SloFolder : Pulumi.CustomResource
+    public partial class SloFolder : global::Pulumi.CustomResource
     {
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -170,7 +168,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class SloFolderArgs : Pulumi.ResourceArgs
+    public sealed class SloFolderArgs : global::Pulumi.ResourceArgs
     {
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -231,9 +229,10 @@ namespace Pulumi.SumoLogic
         public SloFolderArgs()
         {
         }
+        public static new SloFolderArgs Empty => new SloFolderArgs();
     }
 
-    public sealed class SloFolderState : Pulumi.ResourceArgs
+    public sealed class SloFolderState : global::Pulumi.ResourceArgs
     {
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -294,5 +293,6 @@ namespace Pulumi.SumoLogic
         public SloFolderState()
         {
         }
+        public static new SloFolderState Empty => new SloFolderState();
     }
 }

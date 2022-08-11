@@ -17,36 +17,34 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var examplePasswordPolicy = new SumoLogic.PasswordPolicy("examplePasswordPolicy", new()
     ///     {
-    ///         var examplePasswordPolicy = new SumoLogic.PasswordPolicy("examplePasswordPolicy", new SumoLogic.PasswordPolicyArgs
-    ///         {
-    ///             AccountLockoutDurationInMins = 30,
-    ///             AccountLockoutThreshold = 6,
-    ///             FailedLoginResetDurationInMins = 10,
-    ///             MaxLength = 128,
-    ///             MaxPasswordAgeInDays = 365,
-    ///             MinLength = 8,
-    ///             MinUniquePasswords = 10,
-    ///             MustContainDigits = true,
-    ///             MustContainLowercase = true,
-    ///             MustContainSpecialChars = true,
-    ///             MustContainUppercase = true,
-    ///             RememberMfa = true,
-    ///             RequireMfa = false,
-    ///         });
-    ///     }
+    ///         AccountLockoutDurationInMins = 30,
+    ///         AccountLockoutThreshold = 6,
+    ///         FailedLoginResetDurationInMins = 10,
+    ///         MaxLength = 128,
+    ///         MaxPasswordAgeInDays = 365,
+    ///         MinLength = 8,
+    ///         MinUniquePasswords = 10,
+    ///         MustContainDigits = true,
+    ///         MustContainLowercase = true,
+    ///         MustContainSpecialChars = true,
+    ///         MustContainUppercase = true,
+    ///         RememberMfa = true,
+    ///         RequireMfa = false,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/passwordPolicy:PasswordPolicy")]
-    public partial class PasswordPolicy : Pulumi.CustomResource
+    public partial class PasswordPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
@@ -170,7 +168,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class PasswordPolicyArgs : Pulumi.ResourceArgs
+    public sealed class PasswordPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
@@ -253,9 +251,10 @@ namespace Pulumi.SumoLogic
         public PasswordPolicyArgs()
         {
         }
+        public static new PasswordPolicyArgs Empty => new PasswordPolicyArgs();
     }
 
-    public sealed class PasswordPolicyState : Pulumi.ResourceArgs
+    public sealed class PasswordPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
@@ -338,5 +337,6 @@ namespace Pulumi.SumoLogic
         public PasswordPolicyState()
         {
         }
+        public static new PasswordPolicyState Empty => new PasswordPolicyState();
     }
 }

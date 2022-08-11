@@ -19,36 +19,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseRuleTuningExpression(ctx, "ruleTuningExpression", &sumologic.CseRuleTuningExpressionArgs{
-// 			Description: pulumi.String("New Rule Tuning Description"),
-// 			Enabled:     pulumi.Bool(true),
-// 			Exclude:     pulumi.Bool(true),
-// 			Expression:  pulumi.String("accountId = 1234"),
-// 			IsGlobal:    pulumi.Bool(false),
-// 			RuleIds: pulumi.StringArray{
-// 				pulumi.String("LEGACY-S00084"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseRuleTuningExpression(ctx, "ruleTuningExpression", &sumologic.CseRuleTuningExpressionArgs{
+//				Description: pulumi.String("New Rule Tuning Description"),
+//				Enabled:     pulumi.Bool(true),
+//				Exclude:     pulumi.Bool(true),
+//				Expression:  pulumi.String("accountId = 1234"),
+//				IsGlobal:    pulumi.Bool(false),
+//				RuleIds: pulumi.StringArray{
+//					pulumi.String("LEGACY-S00084"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Rule tuning expression can be imported using the field id, e.g.hcl
+// # Rule tuning expression can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
+//
+//	$ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
+//
 // ```
 type CseRuleTuningExpression struct {
 	pulumi.CustomResourceState
@@ -214,7 +219,7 @@ func (i *CseRuleTuningExpression) ToCseRuleTuningExpressionOutputWithContext(ctx
 // CseRuleTuningExpressionArrayInput is an input type that accepts CseRuleTuningExpressionArray and CseRuleTuningExpressionArrayOutput values.
 // You can construct a concrete instance of `CseRuleTuningExpressionArrayInput` via:
 //
-//          CseRuleTuningExpressionArray{ CseRuleTuningExpressionArgs{...} }
+//	CseRuleTuningExpressionArray{ CseRuleTuningExpressionArgs{...} }
 type CseRuleTuningExpressionArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +244,7 @@ func (i CseRuleTuningExpressionArray) ToCseRuleTuningExpressionArrayOutputWithCo
 // CseRuleTuningExpressionMapInput is an input type that accepts CseRuleTuningExpressionMap and CseRuleTuningExpressionMapOutput values.
 // You can construct a concrete instance of `CseRuleTuningExpressionMapInput` via:
 //
-//          CseRuleTuningExpressionMap{ "key": CseRuleTuningExpressionArgs{...} }
+//	CseRuleTuningExpressionMap{ "key": CseRuleTuningExpressionArgs{...} }
 type CseRuleTuningExpressionMapInput interface {
 	pulumi.Input
 

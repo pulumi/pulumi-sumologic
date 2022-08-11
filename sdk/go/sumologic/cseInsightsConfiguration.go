@@ -18,30 +18,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseInsightsConfiguration(ctx, "insightsConfiguration", &sumologic.CseInsightsConfigurationArgs{
-// 			LookbackDays: pulumi.Float64(13),
-// 			Threshold:    pulumi.Float64(12),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseInsightsConfiguration(ctx, "insightsConfiguration", &sumologic.CseInsightsConfigurationArgs{
+//				LookbackDays: pulumi.Float64(13),
+//				Threshold:    pulumi.Float64(12),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Insights Configuration can be imported using the id `cse-insights-configuration`hcl
+// # Insights Configuration can be imported using the id `cse-insights-configuration`hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
+//
+//	$ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
+//
 // ```
 type CseInsightsConfiguration struct {
 	pulumi.CustomResourceState
@@ -139,7 +144,7 @@ func (i *CseInsightsConfiguration) ToCseInsightsConfigurationOutputWithContext(c
 // CseInsightsConfigurationArrayInput is an input type that accepts CseInsightsConfigurationArray and CseInsightsConfigurationArrayOutput values.
 // You can construct a concrete instance of `CseInsightsConfigurationArrayInput` via:
 //
-//          CseInsightsConfigurationArray{ CseInsightsConfigurationArgs{...} }
+//	CseInsightsConfigurationArray{ CseInsightsConfigurationArgs{...} }
 type CseInsightsConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -164,7 +169,7 @@ func (i CseInsightsConfigurationArray) ToCseInsightsConfigurationArrayOutputWith
 // CseInsightsConfigurationMapInput is an input type that accepts CseInsightsConfigurationMap and CseInsightsConfigurationMapOutput values.
 // You can construct a concrete instance of `CseInsightsConfigurationMapInput` via:
 //
-//          CseInsightsConfigurationMap{ "key": CseInsightsConfigurationArgs{...} }
+//	CseInsightsConfigurationMap{ "key": CseInsightsConfigurationArgs{...} }
 type CseInsightsConfigurationMapInput interface {
 	pulumi.Input
 

@@ -104,7 +104,7 @@ func (i *CollectorIngestBudgetAssignment) ToCollectorIngestBudgetAssignmentOutpu
 // CollectorIngestBudgetAssignmentArrayInput is an input type that accepts CollectorIngestBudgetAssignmentArray and CollectorIngestBudgetAssignmentArrayOutput values.
 // You can construct a concrete instance of `CollectorIngestBudgetAssignmentArrayInput` via:
 //
-//          CollectorIngestBudgetAssignmentArray{ CollectorIngestBudgetAssignmentArgs{...} }
+//	CollectorIngestBudgetAssignmentArray{ CollectorIngestBudgetAssignmentArgs{...} }
 type CollectorIngestBudgetAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -129,7 +129,7 @@ func (i CollectorIngestBudgetAssignmentArray) ToCollectorIngestBudgetAssignmentA
 // CollectorIngestBudgetAssignmentMapInput is an input type that accepts CollectorIngestBudgetAssignmentMap and CollectorIngestBudgetAssignmentMapOutput values.
 // You can construct a concrete instance of `CollectorIngestBudgetAssignmentMapInput` via:
 //
-//          CollectorIngestBudgetAssignmentMap{ "key": CollectorIngestBudgetAssignmentArgs{...} }
+//	CollectorIngestBudgetAssignmentMap{ "key": CollectorIngestBudgetAssignmentArgs{...} }
 type CollectorIngestBudgetAssignmentMapInput interface {
 	pulumi.Input
 

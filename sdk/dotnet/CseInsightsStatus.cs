@@ -15,20 +15,18 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var insightsStatus = new SumoLogic.CseInsightsStatus("insightsStatus", new()
     ///     {
-    ///         var insightsStatus = new SumoLogic.CseInsightsStatus("insightsStatus", new SumoLogic.CseInsightsStatusArgs
-    ///         {
-    ///             Description = "New description",
-    ///         });
-    ///     }
+    ///         Description = "New description",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseInsightsStatus:CseInsightsStatus")]
-    public partial class CseInsightsStatus : Pulumi.CustomResource
+    public partial class CseInsightsStatus : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the insights status.
@@ -101,7 +99,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseInsightsStatusArgs : Pulumi.ResourceArgs
+    public sealed class CseInsightsStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the insights status.
@@ -118,9 +116,10 @@ namespace Pulumi.SumoLogic
         public CseInsightsStatusArgs()
         {
         }
+        public static new CseInsightsStatusArgs Empty => new CseInsightsStatusArgs();
     }
 
-    public sealed class CseInsightsStatusState : Pulumi.ResourceArgs
+    public sealed class CseInsightsStatusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the insights status.
@@ -140,5 +139,6 @@ namespace Pulumi.SumoLogic
         public CseInsightsStatusState()
         {
         }
+        public static new CseInsightsStatusState Empty => new CseInsightsStatusState();
     }
 }

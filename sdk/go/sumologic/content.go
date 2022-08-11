@@ -17,78 +17,81 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"type": "SavedSearchWithScheduleSyncDefinition",
-// 			"name": "test-333",
-// 			"search": map[string]interface{}{
-// 				"queryText":        "\"warn\"",
-// 				"defaultTimeRange": "-15m",
-// 				"byReceiptTime":    false,
-// 				"viewName":         "",
-// 				"viewStartTime":    "1970-01-01T00:00:00Z",
-// 				"queryParameters":  []interface{}{},
-// 				"parsingMode":      "Manual",
-// 			},
-// 			"searchSchedule": map[string]interface{}{
-// 				"cronExpression":       "0 0 * * * ? *",
-// 				"displayableTimeRange": "-10m",
-// 				"parseableTimeRange": map[string]interface{}{
-// 					"type": "BeginBoundedTimeRange",
-// 					"from": map[string]interface{}{
-// 						"type":         "RelativeTimeRangeBoundary",
-// 						"relativeTime": "-50m",
-// 					},
-// 					"to": nil,
-// 				},
-// 				"timeZone": "America/Los_Angeles",
-// 				"threshold": map[string]interface{}{
-// 					"thresholdType": "message",
-// 					"operator":      "gt",
-// 					"count":         0,
-// 				},
-// 				"notification": map[string]interface{}{
-// 					"taskType": "EmailSearchNotificationSyncDefinition",
-// 					"toList": []string{
-// 						"ops@acme.org",
-// 					},
-// 					"subjectTemplate":      "Search Results: {{Name}}",
-// 					"includeQuery":         true,
-// 					"includeResultSet":     true,
-// 					"includeHistogram":     false,
-// 					"includeCsvAttachment": false,
-// 				},
-// 				"scheduleType":    "1Hour",
-// 				"muteErrorEmails": false,
-// 				"parameters":      []interface{}{},
-// 			},
-// 			"description": "Runs every hour with timerange of 15m and sends email notifications",
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err = sumologic.NewContent(ctx, "test", &sumologic.ContentArgs{
-// 			ParentId: pulumi.String(personalFolder.Id),
-// 			Config:   pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type": "SavedSearchWithScheduleSyncDefinition",
+//				"name": "test-333",
+//				"search": map[string]interface{}{
+//					"queryText":        "\"warn\"",
+//					"defaultTimeRange": "-15m",
+//					"byReceiptTime":    false,
+//					"viewName":         "",
+//					"viewStartTime":    "1970-01-01T00:00:00Z",
+//					"queryParameters":  []interface{}{},
+//					"parsingMode":      "Manual",
+//				},
+//				"searchSchedule": map[string]interface{}{
+//					"cronExpression":       "0 0 * * * ? *",
+//					"displayableTimeRange": "-10m",
+//					"parseableTimeRange": map[string]interface{}{
+//						"type": "BeginBoundedTimeRange",
+//						"from": map[string]interface{}{
+//							"type":         "RelativeTimeRangeBoundary",
+//							"relativeTime": "-50m",
+//						},
+//						"to": nil,
+//					},
+//					"timeZone": "America/Los_Angeles",
+//					"threshold": map[string]interface{}{
+//						"thresholdType": "message",
+//						"operator":      "gt",
+//						"count":         0,
+//					},
+//					"notification": map[string]interface{}{
+//						"taskType": "EmailSearchNotificationSyncDefinition",
+//						"toList": []string{
+//							"ops@acme.org",
+//						},
+//						"subjectTemplate":      "Search Results: {{Name}}",
+//						"includeQuery":         true,
+//						"includeResultSet":     true,
+//						"includeHistogram":     false,
+//						"includeCsvAttachment": false,
+//					},
+//					"scheduleType":    "1Hour",
+//					"muteErrorEmails": false,
+//					"parameters":      []interface{}{},
+//				},
+//				"description": "Runs every hour with timerange of 15m and sends email notifications",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = sumologic.NewContent(ctx, "test", &sumologic.ContentArgs{
+//				ParentId: pulumi.String(personalFolder.Id),
+//				Config:   pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -199,7 +202,7 @@ func (i *Content) ToContentOutputWithContext(ctx context.Context) ContentOutput 
 // ContentArrayInput is an input type that accepts ContentArray and ContentArrayOutput values.
 // You can construct a concrete instance of `ContentArrayInput` via:
 //
-//          ContentArray{ ContentArgs{...} }
+//	ContentArray{ ContentArgs{...} }
 type ContentArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +227,7 @@ func (i ContentArray) ToContentArrayOutputWithContext(ctx context.Context) Conte
 // ContentMapInput is an input type that accepts ContentMap and ContentMapOutput values.
 // You can construct a concrete instance of `ContentMapInput` via:
 //
-//          ContentMap{ "key": ContentArgs{...} }
+//	ContentMap{ "key": ContentArgs{...} }
 type ContentMapInput interface {
 	pulumi.Input
 

@@ -30,80 +30,83 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"type":        "FolderSyncDefinition",
-// 			"name":        "test_permission_resource_folder",
-// 			"description": "",
-// 			"children":    []interface{}{},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		permissionTestContent, err := sumologic.NewContent(ctx, "permissionTestContent", &sumologic.ContentArgs{
-// 			ParentId: pulumi.String(personalFolder.Id),
-// 			Config:   pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		role, err := sumologic.LookupRole(ctx, &GetRoleArgs{
-// 			Name: pulumi.StringRef("test_role"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		user, err := sumologic.LookupUser(ctx, &GetUserArgs{
-// 			Email: pulumi.StringRef("user@example.com"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewContentPermission(ctx, "contentPermissionTest", &sumologic.ContentPermissionArgs{
-// 			ContentId:           permissionTestContent.ID(),
-// 			NotifyRecipient:     pulumi.Bool(true),
-// 			NotificationMessage: pulumi.String("You now have the permission to access this content"),
-// 			Permissions: ContentPermissionPermissionArray{
-// 				&ContentPermissionPermissionArgs{
-// 					PermissionName: pulumi.String("View"),
-// 					SourceType:     pulumi.String("role"),
-// 					SourceId:       pulumi.String(role.Id),
-// 				},
-// 				&ContentPermissionPermissionArgs{
-// 					PermissionName: pulumi.String("View"),
-// 					SourceType:     pulumi.String("user"),
-// 					SourceId:       pulumi.String(user.Id),
-// 				},
-// 				&ContentPermissionPermissionArgs{
-// 					PermissionName: pulumi.String("Edit"),
-// 					SourceType:     pulumi.String("user"),
-// 					SourceId:       pulumi.String(user.Id),
-// 				},
-// 				&ContentPermissionPermissionArgs{
-// 					PermissionName: pulumi.String("Manage"),
-// 					SourceType:     pulumi.String("user"),
-// 					SourceId:       pulumi.String(user.Id),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type":        "FolderSyncDefinition",
+//				"name":        "test_permission_resource_folder",
+//				"description": "",
+//				"children":    []interface{}{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			permissionTestContent, err := sumologic.NewContent(ctx, "permissionTestContent", &sumologic.ContentArgs{
+//				ParentId: pulumi.String(personalFolder.Id),
+//				Config:   pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			role, err := sumologic.LookupRole(ctx, &GetRoleArgs{
+//				Name: pulumi.StringRef("test_role"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sumologic.LookupUser(ctx, &GetUserArgs{
+//				Email: pulumi.StringRef("user@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewContentPermission(ctx, "contentPermissionTest", &sumologic.ContentPermissionArgs{
+//				ContentId:           permissionTestContent.ID(),
+//				NotifyRecipient:     pulumi.Bool(true),
+//				NotificationMessage: pulumi.String("You now have the permission to access this content"),
+//				Permissions: ContentPermissionPermissionArray{
+//					&ContentPermissionPermissionArgs{
+//						PermissionName: pulumi.String("View"),
+//						SourceType:     pulumi.String("role"),
+//						SourceId:       pulumi.String(role.Id),
+//					},
+//					&ContentPermissionPermissionArgs{
+//						PermissionName: pulumi.String("View"),
+//						SourceType:     pulumi.String("user"),
+//						SourceId:       pulumi.String(user.Id),
+//					},
+//					&ContentPermissionPermissionArgs{
+//						PermissionName: pulumi.String("Edit"),
+//						SourceType:     pulumi.String("user"),
+//						SourceId:       pulumi.String(user.Id),
+//					},
+//					&ContentPermissionPermissionArgs{
+//						PermissionName: pulumi.String("Manage"),
+//						SourceType:     pulumi.String("user"),
+//						SourceId:       pulumi.String(user.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -111,7 +114,9 @@ import (
 // Permisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E
 //
 // ```sh
-//  $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+//
+//	$ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+//
 // ```
 type ContentPermission struct {
 	pulumi.CustomResourceState
@@ -248,7 +253,7 @@ func (i *ContentPermission) ToContentPermissionOutputWithContext(ctx context.Con
 // ContentPermissionArrayInput is an input type that accepts ContentPermissionArray and ContentPermissionArrayOutput values.
 // You can construct a concrete instance of `ContentPermissionArrayInput` via:
 //
-//          ContentPermissionArray{ ContentPermissionArgs{...} }
+//	ContentPermissionArray{ ContentPermissionArgs{...} }
 type ContentPermissionArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +278,7 @@ func (i ContentPermissionArray) ToContentPermissionArrayOutputWithContext(ctx co
 // ContentPermissionMapInput is an input type that accepts ContentPermissionMap and ContentPermissionMapOutput values.
 // You can construct a concrete instance of `ContentPermissionMapInput` via:
 //
-//          ContentPermissionMap{ "key": ContentPermissionArgs{...} }
+//	ContentPermissionMap{ "key": ContentPermissionArgs{...} }
 type ContentPermissionMapInput interface {
 	pulumi.Input
 

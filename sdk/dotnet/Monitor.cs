@@ -16,87 +16,86 @@ namespace Pulumi.SumoLogic
     /// ## Example SLO Monitors
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tfSloMonitor1 = new SumoLogic.Monitor("tfSloMonitor1", new()
     ///     {
-    ///         var tfSloMonitor1 = new SumoLogic.Monitor("tfSloMonitor1", new SumoLogic.MonitorArgs
+    ///         ContentType = "Monitor",
+    ///         EvaluationDelay = "5m",
+    ///         IsDisabled = false,
+    ///         MonitorType = "Slo",
+    ///         Notifications = new[]
     ///         {
-    ///             ContentType = "Monitor",
-    ///             EvaluationDelay = "5m",
-    ///             IsDisabled = false,
-    ///             MonitorType = "Slo",
-    ///             Notifications = 
+    ///             new SumoLogic.Inputs.MonitorNotificationArgs
     ///             {
-    ///                 new SumoLogic.Inputs.MonitorNotificationArgs
+    ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
     ///                 {
-    ///                     Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
+    ///                     ConnectionType = "Email",
+    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+    ///                     Recipients = new[]
     ///                     {
-    ///                         ConnectionType = "Email",
-    ///                         MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-    ///                         Recipients = 
-    ///                         {
-    ///                             "abc@example.com",
-    ///                         },
-    ///                         Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
-    ///                         TimeZone = "PST",
+    ///                         "abc@example.com",
     ///                     },
-    ///                     RunForTriggerTypes = 
-    ///                     {
-    ///                         "Critical",
-    ///                         "ResolvedCritical",
-    ///                     },
+    ///                     Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
+    ///                     TimeZone = "PST",
+    ///                 },
+    ///                 RunForTriggerTypes = new[]
+    ///                 {
+    ///                     "Critical",
+    ///                     "ResolvedCritical",
     ///                 },
     ///             },
-    ///             Playbook = "test playbook",
-    ///             SloId = "0000000000000009",
-    ///             TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
-    ///             {
-    ///                 SloSliCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionArgs
-    ///                 {
-    ///                     Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs
-    ///                     {
-    ///                         SliThreshold = 99.5,
-    ///                     },
-    ///                     Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionWarningArgs
-    ///                     {
-    ///                         SliThreshold = 99.9,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Type = "MonitorsLibraryMonitor",
-    ///         });
-    ///         var tfSloMonitor2 = new SumoLogic.Monitor("tfSloMonitor2", new SumoLogic.MonitorArgs
+    ///         },
+    ///         Playbook = "test playbook",
+    ///         SloId = "0000000000000009",
+    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
     ///         {
-    ///             ContentType = "Monitor",
-    ///             EvaluationDelay = "5m",
-    ///             IsDisabled = false,
-    ///             MonitorType = "Slo",
-    ///             SloId = "0000000000000009",
-    ///             TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///             SloSliCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionArgs
     ///             {
-    ///                 SloBurnRateCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionArgs
+    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs
     ///                 {
-    ///                     Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs
-    ///                     {
-    ///                         BurnRateThreshold = 10,
-    ///                         TimeRange = "1d",
-    ///                     },
-    ///                     Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs
-    ///                     {
-    ///                         BurnRateThreshold = 5,
-    ///                         TimeRange = "1d",
-    ///                     },
+    ///                     SliThreshold = 99.5,
+    ///                 },
+    ///                 Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionWarningArgs
+    ///                 {
+    ///                     SliThreshold = 99.9,
     ///                 },
     ///             },
-    ///             Type = "MonitorsLibraryMonitor",
-    ///         });
-    ///     }
+    ///         },
+    ///         Type = "MonitorsLibraryMonitor",
+    ///     });
     /// 
-    /// }
+    ///     var tfSloMonitor2 = new SumoLogic.Monitor("tfSloMonitor2", new()
+    ///     {
+    ///         ContentType = "Monitor",
+    ///         EvaluationDelay = "5m",
+    ///         IsDisabled = false,
+    ///         MonitorType = "Slo",
+    ///         SloId = "0000000000000009",
+    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///         {
+    ///             SloBurnRateCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionArgs
+    ///             {
+    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs
+    ///                 {
+    ///                     BurnRateThreshold = 10,
+    ///                     TimeRange = "1d",
+    ///                 },
+    ///                 Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs
+    ///                 {
+    ///                     BurnRateThreshold = 5,
+    ///                     TimeRange = "1d",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Type = "MonitorsLibraryMonitor",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Monitor Folders
@@ -105,20 +104,18 @@ namespace Pulumi.SumoLogic
     /// NOTE: Monitor folders are considered a different resource from Library content folders.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new()
     ///     {
-    ///         var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new SumoLogic.MonitorFolderArgs
-    ///         {
-    ///             Description = "a folder for monitors",
-    ///         });
-    ///     }
+    ///         Description = "a folder for monitors",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// =======
     /// NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
@@ -129,15 +126,12 @@ namespace Pulumi.SumoLogic
     /// A `trigger_conditions` block configures conditions for sending notifications.
     /// ### Example
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// ### Arguments
     /// A `trigger_conditions` block contains one or more subblocks of the following types:
@@ -232,90 +226,88 @@ namespace Pulumi.SumoLogic
     /// 
     /// Here's an example logs monitor that uses `triggers` to specify trigger conditions:
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var tfLogsMonitor1 = new SumoLogic.Monitor("tfLogsMonitor1", new()
     ///     {
-    ///         var tfLogsMonitor1 = new SumoLogic.Monitor("tfLogsMonitor1", new SumoLogic.MonitorArgs
+    ///         ContentType = "Monitor",
+    ///         Description = "tf logs monitor",
+    ///         IsDisabled = false,
+    ///         MonitorType = "Logs",
+    ///         Notifications = new[]
     ///         {
-    ///             ContentType = "Monitor",
-    ///             Description = "tf logs monitor",
-    ///             IsDisabled = false,
-    ///             MonitorType = "Logs",
-    ///             Notifications = 
+    ///             new SumoLogic.Inputs.MonitorNotificationArgs
     ///             {
-    ///                 new SumoLogic.Inputs.MonitorNotificationArgs
+    ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
     ///                 {
-    ///                     Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
+    ///                     ConnectionType = "Email",
+    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+    ///                     Recipients = new[]
     ///                     {
-    ///                         ConnectionType = "Email",
-    ///                         MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-    ///                         Recipients = 
-    ///                         {
-    ///                             "abc@example.com",
-    ///                         },
-    ///                         Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
-    ///                         TimeZone = "PST",
+    ///                         "abc@example.com",
     ///                     },
-    ///                     RunForTriggerTypes = 
-    ///                     {
-    ///                         "Critical",
-    ///                         "ResolvedCritical",
-    ///                     },
+    ///                     Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
+    ///                     TimeZone = "PST",
     ///                 },
-    ///                 new SumoLogic.Inputs.MonitorNotificationArgs
+    ///                 RunForTriggerTypes = new[]
     ///                 {
-    ///                     Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
-    ///                     {
-    ///                         ConnectionId = "0000000000ABC123",
-    ///                         ConnectionType = "Webhook",
-    ///                     },
-    ///                     RunForTriggerTypes = 
-    ///                     {
-    ///                         "Critical",
-    ///                         "ResolvedCritical",
-    ///                     },
+    ///                     "Critical",
+    ///                     "ResolvedCritical",
     ///                 },
     ///             },
-    ///             Queries = 
+    ///             new SumoLogic.Inputs.MonitorNotificationArgs
     ///             {
-    ///                 new SumoLogic.Inputs.MonitorQueryArgs
+    ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
     ///                 {
-    ///                     Query = "_sourceCategory=event-action info",
-    ///                     RowId = "A",
+    ///                     ConnectionId = "0000000000ABC123",
+    ///                     ConnectionType = "Webhook",
+    ///                 },
+    ///                 RunForTriggerTypes = new[]
+    ///                 {
+    ///                     "Critical",
+    ///                     "ResolvedCritical",
     ///                 },
     ///             },
-    ///             Triggers = 
+    ///         },
+    ///         Queries = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorQueryArgs
     ///             {
-    ///                 new SumoLogic.Inputs.MonitorTriggerArgs
-    ///                 {
-    ///                     DetectionMethod = "StaticCondition",
-    ///                     OccurrenceType = "ResultCount",
-    ///                     Threshold = 40,
-    ///                     ThresholdType = "GreaterThan",
-    ///                     TimeRange = "15m",
-    ///                     TriggerSource = "AllResults",
-    ///                     TriggerType = "Critical",
-    ///                 },
-    ///                 new SumoLogic.Inputs.MonitorTriggerArgs
-    ///                 {
-    ///                     DetectionMethod = "StaticCondition",
-    ///                     OccurrenceType = "ResultCount",
-    ///                     Threshold = 40,
-    ///                     ThresholdType = "LessThanOrEqual",
-    ///                     TimeRange = "15m",
-    ///                     TriggerSource = "AllResults",
-    ///                     TriggerType = "ResolvedCritical",
-    ///                 },
+    ///                 Query = "_sourceCategory=event-action info",
+    ///                 RowId = "A",
     ///             },
-    ///             Type = "MonitorsLibraryMonitor",
-    ///         });
-    ///     }
+    ///         },
+    ///         Triggers = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorTriggerArgs
+    ///             {
+    ///                 DetectionMethod = "StaticCondition",
+    ///                 OccurrenceType = "ResultCount",
+    ///                 Threshold = 40,
+    ///                 ThresholdType = "GreaterThan",
+    ///                 TimeRange = "15m",
+    ///                 TriggerSource = "AllResults",
+    ///                 TriggerType = "Critical",
+    ///             },
+    ///             new SumoLogic.Inputs.MonitorTriggerArgs
+    ///             {
+    ///                 DetectionMethod = "StaticCondition",
+    ///                 OccurrenceType = "ResultCount",
+    ///                 Threshold = 40,
+    ///                 ThresholdType = "LessThanOrEqual",
+    ///                 TimeRange = "15m",
+    ///                 TriggerSource = "AllResults",
+    ///                 TriggerType = "ResolvedCritical",
+    ///             },
+    ///         },
+    ///         Type = "MonitorsLibraryMonitor",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -329,7 +321,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
     /// </summary>
     [SumoLogicResourceType("sumologic:index/monitor:Monitor")]
-    public partial class Monitor : Pulumi.CustomResource
+    public partial class Monitor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
@@ -523,7 +515,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class MonitorArgs : Pulumi.ResourceArgs
+    public sealed class MonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
@@ -718,9 +710,10 @@ namespace Pulumi.SumoLogic
         public MonitorArgs()
         {
         }
+        public static new MonitorArgs Empty => new MonitorArgs();
     }
 
-    public sealed class MonitorState : Pulumi.ResourceArgs
+    public sealed class MonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
@@ -915,5 +908,6 @@ namespace Pulumi.SumoLogic
         public MonitorState()
         {
         }
+        public static new MonitorState Empty => new MonitorState();
     }
 }

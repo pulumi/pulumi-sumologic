@@ -21,63 +21,66 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewHttpSource(ctx, "httpSource", &sumologic.HttpSourceArgs{
-// 			Category:    pulumi.String("my/source/category"),
-// 			CollectorId: collector.ID(),
-// 			Description: pulumi.String("My description"),
-// 			Filters: HttpSourceFilterArray{
-// 				&HttpSourceFilterArgs{
-// 					FilterType: pulumi.String("Exclude"),
-// 					Name:       pulumi.String("Test Exclude Debug"),
-// 					Regexp:     pulumi.String(".*DEBUG.*"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewHttpSource(ctx, "httpTracesSource", &sumologic.HttpSourceArgs{
-// 			Category:    pulumi.String("my/source/category"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("Zipkin"),
-// 			Description: pulumi.String("My description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewHttpSource(ctx, "kinesisLog", &sumologic.HttpSourceArgs{
-// 			Category:    pulumi.String("demo-category"),
-// 			CollectorId: pulumi.Any(sumologic_collector.Test.Id),
-// 			ContentType: pulumi.String("KinesisLog"),
-// 			Description: pulumi.String("demo-desc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewHttpSource(ctx, "httpOtlpSource", &sumologic.HttpSourceArgs{
-// 			Category:    pulumi.String("my/source/category"),
-// 			CollectorId: pulumi.Any(sumologic_collector.Test.Id),
-// 			ContentType: pulumi.String("Otlp"),
-// 			Description: pulumi.String("My description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewHttpSource(ctx, "httpSource", &sumologic.HttpSourceArgs{
+//				Category:    pulumi.String("my/source/category"),
+//				CollectorId: collector.ID(),
+//				Description: pulumi.String("My description"),
+//				Filters: HttpSourceFilterArray{
+//					&HttpSourceFilterArgs{
+//						FilterType: pulumi.String("Exclude"),
+//						Name:       pulumi.String("Test Exclude Debug"),
+//						Regexp:     pulumi.String(".*DEBUG.*"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewHttpSource(ctx, "httpTracesSource", &sumologic.HttpSourceArgs{
+//				Category:    pulumi.String("my/source/category"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("Zipkin"),
+//				Description: pulumi.String("My description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewHttpSource(ctx, "kinesisLog", &sumologic.HttpSourceArgs{
+//				Category:    pulumi.String("demo-category"),
+//				CollectorId: pulumi.Any(sumologic_collector.Test.Id),
+//				ContentType: pulumi.String("KinesisLog"),
+//				Description: pulumi.String("demo-desc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewHttpSource(ctx, "httpOtlpSource", &sumologic.HttpSourceArgs{
+//				Category:    pulumi.String("my/source/category"),
+//				CollectorId: pulumi.Any(sumologic_collector.Test.Id),
+//				ContentType: pulumi.String("Otlp"),
+//				Description: pulumi.String("My description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -85,16 +88,20 @@ import (
 // HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/httpSource:HttpSource test 123/456
+//
+//	$ pulumi import sumologic:index/httpSource:HttpSource test 123/456
+//
 // ```
 //
-//  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source [4]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/OTLP_HTTP_Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source [4]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/OTLP_HTTP_Source
 type HttpSource struct {
 	pulumi.CustomResourceState
 
@@ -280,7 +287,7 @@ func (i *HttpSource) ToHttpSourceOutputWithContext(ctx context.Context) HttpSour
 // HttpSourceArrayInput is an input type that accepts HttpSourceArray and HttpSourceArrayOutput values.
 // You can construct a concrete instance of `HttpSourceArrayInput` via:
 //
-//          HttpSourceArray{ HttpSourceArgs{...} }
+//	HttpSourceArray{ HttpSourceArgs{...} }
 type HttpSourceArrayInput interface {
 	pulumi.Input
 
@@ -305,7 +312,7 @@ func (i HttpSourceArray) ToHttpSourceArrayOutputWithContext(ctx context.Context)
 // HttpSourceMapInput is an input type that accepts HttpSourceMap and HttpSourceMapOutput values.
 // You can construct a concrete instance of `HttpSourceMapInput` via:
 //
-//          HttpSourceMap{ "key": HttpSourceArgs{...} }
+//	HttpSourceMap{ "key": HttpSourceArgs{...} }
 type HttpSourceMapInput interface {
 	pulumi.Input
 

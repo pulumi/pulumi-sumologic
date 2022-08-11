@@ -19,29 +19,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseEntityCriticalityConfig(ctx, "entityCriticalityConfig", &sumologic.CseEntityCriticalityConfigArgs{
-// 			SeverityExpression: pulumi.String("severity + 2"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseEntityCriticalityConfig(ctx, "entityCriticalityConfig", &sumologic.CseEntityCriticalityConfigArgs{
+//				SeverityExpression: pulumi.String("severity + 2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Entity criticality configuration can be imported using the field id, e.g.hcl
+// # Entity criticality configuration can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id
+//
+//	$ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id
+//
 // ```
 type CseEntityCriticalityConfig struct {
 	pulumi.CustomResourceState
@@ -142,7 +147,7 @@ func (i *CseEntityCriticalityConfig) ToCseEntityCriticalityConfigOutputWithConte
 // CseEntityCriticalityConfigArrayInput is an input type that accepts CseEntityCriticalityConfigArray and CseEntityCriticalityConfigArrayOutput values.
 // You can construct a concrete instance of `CseEntityCriticalityConfigArrayInput` via:
 //
-//          CseEntityCriticalityConfigArray{ CseEntityCriticalityConfigArgs{...} }
+//	CseEntityCriticalityConfigArray{ CseEntityCriticalityConfigArgs{...} }
 type CseEntityCriticalityConfigArrayInput interface {
 	pulumi.Input
 
@@ -167,7 +172,7 @@ func (i CseEntityCriticalityConfigArray) ToCseEntityCriticalityConfigArrayOutput
 // CseEntityCriticalityConfigMapInput is an input type that accepts CseEntityCriticalityConfigMap and CseEntityCriticalityConfigMapOutput values.
 // You can construct a concrete instance of `CseEntityCriticalityConfigMapInput` via:
 //
-//          CseEntityCriticalityConfigMap{ "key": CseEntityCriticalityConfigArgs{...} }
+//	CseEntityCriticalityConfigMap{ "key": CseEntityCriticalityConfigArgs{...} }
 type CseEntityCriticalityConfigMapInput interface {
 	pulumi.Input
 

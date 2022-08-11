@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs : Pulumi.ResourceArgs
+    public sealed class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Condition to be checked against for level.entityType value, for now full string match.
@@ -24,5 +24,6 @@ namespace Pulumi.SumoLogic.Inputs
         public HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs()
         {
         }
+        public static new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs Empty => new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs();
     }
 }

@@ -21,21 +21,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewSloFolder(ctx, "tfSloFolder", &sumologic.SloFolderArgs{
-// 			Description: pulumi.String("A folder for SLO's managed by terraform."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewSloFolder(ctx, "tfSloFolder", &sumologic.SloFolderArgs{
+//				Description: pulumi.String("A folder for SLO's managed by terraform."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Example Nested SLO Folders
@@ -44,35 +47,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tfPaymentsTeamRootFolder, err := sumologic.NewSloFolder(ctx, "tfPaymentsTeamRootFolder", &sumologic.SloFolderArgs{
-// 			Description: pulumi.String("SLO's payments services."),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewSloFolder(ctx, "tfPaymentsTeamProdFolder", &sumologic.SloFolderArgs{
-// 			Description: pulumi.String("SLOs for the Payments service on Production Environment."),
-// 			ParentId:    tfPaymentsTeamRootFolder.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewSloFolder(ctx, "tfPaymentsTeamStagFolder", &sumologic.SloFolderArgs{
-// 			Description: pulumi.String("SLOs for the payments service on Staging Environment."),
-// 			ParentId:    tfPaymentsTeamRootFolder.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfPaymentsTeamRootFolder, err := sumologic.NewSloFolder(ctx, "tfPaymentsTeamRootFolder", &sumologic.SloFolderArgs{
+//				Description: pulumi.String("SLO's payments services."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewSloFolder(ctx, "tfPaymentsTeamProdFolder", &sumologic.SloFolderArgs{
+//				Description: pulumi.String("SLOs for the Payments service on Production Environment."),
+//				ParentId:    tfPaymentsTeamRootFolder.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewSloFolder(ctx, "tfPaymentsTeamStagFolder", &sumologic.SloFolderArgs{
+//				Description: pulumi.String("SLOs for the payments service on Staging Environment."),
+//				ParentId:    tfPaymentsTeamRootFolder.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +88,9 @@ import (
 // shell
 //
 // ```sh
-//  $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
+//
+//	$ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
+//
 // ```
 type SloFolder struct {
 	pulumi.CustomResourceState
@@ -248,7 +256,7 @@ func (i *SloFolder) ToSloFolderOutputWithContext(ctx context.Context) SloFolderO
 // SloFolderArrayInput is an input type that accepts SloFolderArray and SloFolderArrayOutput values.
 // You can construct a concrete instance of `SloFolderArrayInput` via:
 //
-//          SloFolderArray{ SloFolderArgs{...} }
+//	SloFolderArray{ SloFolderArgs{...} }
 type SloFolderArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +281,7 @@ func (i SloFolderArray) ToSloFolderArrayOutputWithContext(ctx context.Context) S
 // SloFolderMapInput is an input type that accepts SloFolderMap and SloFolderMapOutput values.
 // You can construct a concrete instance of `SloFolderMapInput` via:
 //
-//          SloFolderMap{ "key": SloFolderArgs{...} }
+//	SloFolderMap{ "key": SloFolderArgs{...} }
 type SloFolderMapInput interface {
 	pulumi.Input
 

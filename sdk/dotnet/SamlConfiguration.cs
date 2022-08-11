@@ -15,44 +15,42 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleSamlConfiguration = new SumoLogic.SamlConfiguration("exampleSamlConfiguration", new()
     ///     {
-    ///         var exampleSamlConfiguration = new SumoLogic.SamlConfiguration("exampleSamlConfiguration", new SumoLogic.SamlConfigurationArgs
+    ///         AuthnRequestUrl = "",
+    ///         ConfigurationName = "SumoLogic",
+    ///         DebugMode = false,
+    ///         DisableRequestedAuthnContext = false,
+    ///         EmailAttribute = "",
+    ///         IsRedirectBinding = false,
+    ///         Issuer = "http://www.okta.com/abxcseyuiwelflkdjh",
+    ///         LogoutEnabled = false,
+    ///         LogoutUrl = "",
+    ///         OnDemandProvisioningEnabled = new SumoLogic.Inputs.SamlConfigurationOnDemandProvisioningEnabledArgs
     ///         {
-    ///             AuthnRequestUrl = "",
-    ///             ConfigurationName = "SumoLogic",
-    ///             DebugMode = false,
-    ///             DisableRequestedAuthnContext = false,
-    ///             EmailAttribute = "",
-    ///             IsRedirectBinding = false,
-    ///             Issuer = "http://www.okta.com/abxcseyuiwelflkdjh",
-    ///             LogoutEnabled = false,
-    ///             LogoutUrl = "",
-    ///             OnDemandProvisioningEnabled = new SumoLogic.Inputs.SamlConfigurationOnDemandProvisioningEnabledArgs
+    ///             FirstNameAttribute = "firstName",
+    ///             LastNameAttribute = "lastName",
+    ///             OnDemandProvisioningRoles = new[]
     ///             {
-    ///                 FirstNameAttribute = "firstName",
-    ///                 LastNameAttribute = "lastName",
-    ///                 OnDemandProvisioningRoles = 
-    ///                 {
-    ///                     "Administrator",
-    ///                 },
+    ///                 "Administrator",
     ///             },
-    ///             RolesAttribute = "Administrator",
-    ///             SignAuthnRequest = false,
-    ///             SpInitiatedLoginEnabled = false,
-    ///             SpInitiatedLoginPath = "",
-    ///             X509cert1 = "string",
-    ///             X509cert2 = "",
-    ///             X509cert3 = "",
-    ///         });
-    ///     }
+    ///         },
+    ///         RolesAttribute = "Administrator",
+    ///         SignAuthnRequest = false,
+    ///         SpInitiatedLoginEnabled = false,
+    ///         SpInitiatedLoginPath = "",
+    ///         X509cert1 = "string",
+    ///         X509cert2 = "",
+    ///         X509cert3 = "",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -74,7 +72,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
     /// </summary>
     [SumoLogicResourceType("sumologic:index/samlConfiguration:SamlConfiguration")]
-    public partial class SamlConfiguration : Pulumi.CustomResource
+    public partial class SamlConfiguration : global::Pulumi.CustomResource
     {
         [Output("assertionConsumerUrl")]
         public Output<string> AssertionConsumerUrl { get; private set; } = null!;
@@ -231,7 +229,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class SamlConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class SamlConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
@@ -338,9 +336,10 @@ namespace Pulumi.SumoLogic
         public SamlConfigurationArgs()
         {
         }
+        public static new SamlConfigurationArgs Empty => new SamlConfigurationArgs();
     }
 
-    public sealed class SamlConfigurationState : Pulumi.ResourceArgs
+    public sealed class SamlConfigurationState : global::Pulumi.ResourceArgs
     {
         [Input("assertionConsumerUrl")]
         public Input<string>? AssertionConsumerUrl { get; set; }
@@ -456,5 +455,6 @@ namespace Pulumi.SumoLogic
         public SamlConfigurationState()
         {
         }
+        public static new SamlConfigurationState Empty => new SamlConfigurationState();
     }
 }

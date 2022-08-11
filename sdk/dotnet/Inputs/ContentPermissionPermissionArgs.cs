@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class ContentPermissionPermissionArgs : Pulumi.ResourceArgs
+    public sealed class ContentPermissionPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Content permission name. Valid values are `View`, `GrantView`,
@@ -38,5 +38,6 @@ namespace Pulumi.SumoLogic.Inputs
         public ContentPermissionPermissionArgs()
         {
         }
+        public static new ContentPermissionPermissionArgs Empty => new ContentPermissionPermissionArgs();
     }
 }

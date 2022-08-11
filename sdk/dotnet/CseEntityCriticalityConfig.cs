@@ -15,20 +15,18 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var entityCriticalityConfig = new SumoLogic.CseEntityCriticalityConfig("entityCriticalityConfig", new()
     ///     {
-    ///         var entityCriticalityConfig = new SumoLogic.CseEntityCriticalityConfig("entityCriticalityConfig", new SumoLogic.CseEntityCriticalityConfigArgs
-    ///         {
-    ///             SeverityExpression = "severity + 2",
-    ///         });
-    ///     }
+    ///         SeverityExpression = "severity + 2",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig")]
-    public partial class CseEntityCriticalityConfig : Pulumi.CustomResource
+    public partial class CseEntityCriticalityConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
@@ -98,7 +96,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseEntityCriticalityConfigArgs : Pulumi.ResourceArgs
+    public sealed class CseEntityCriticalityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
@@ -115,9 +113,10 @@ namespace Pulumi.SumoLogic
         public CseEntityCriticalityConfigArgs()
         {
         }
+        public static new CseEntityCriticalityConfigArgs Empty => new CseEntityCriticalityConfigArgs();
     }
 
-    public sealed class CseEntityCriticalityConfigState : Pulumi.ResourceArgs
+    public sealed class CseEntityCriticalityConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
@@ -134,5 +133,6 @@ namespace Pulumi.SumoLogic
         public CseEntityCriticalityConfigState()
         {
         }
+        public static new CseEntityCriticalityConfigState Empty => new CseEntityCriticalityConfigState();
     }
 }

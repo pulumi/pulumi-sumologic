@@ -47,7 +47,7 @@ namespace Pulumi.SumoLogic
     }
 
 
-    public sealed class GetAdminRecommendedFolderArgs : Pulumi.InvokeArgs
+    public sealed class GetAdminRecommendedFolderArgs : global::Pulumi.InvokeArgs
     {
         [Input("description")]
         public string? Description { get; set; }
@@ -61,9 +61,10 @@ namespace Pulumi.SumoLogic
         public GetAdminRecommendedFolderArgs()
         {
         }
+        public static new GetAdminRecommendedFolderArgs Empty => new GetAdminRecommendedFolderArgs();
     }
 
-    public sealed class GetAdminRecommendedFolderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAdminRecommendedFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -77,6 +78,7 @@ namespace Pulumi.SumoLogic
         public GetAdminRecommendedFolderInvokeArgs()
         {
         }
+        public static new GetAdminRecommendedFolderInvokeArgs Empty => new GetAdminRecommendedFolderInvokeArgs();
     }
 
 

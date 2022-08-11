@@ -15,77 +15,75 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var logMapping = new SumoLogic.CseLogMapping("logMapping", new()
     ///     {
-    ///         var logMapping = new SumoLogic.CseLogMapping("logMapping", new SumoLogic.CseLogMappingArgs
+    ///         Enabled = true,
+    ///         Fields = new[]
     ///         {
-    ///             Enabled = true,
-    ///             Fields = 
+    ///             new SumoLogic.Inputs.CseLogMappingFieldArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseLogMappingFieldArgs
+    ///                 AlternateValues = new[]
     ///                 {
-    ///                     AlternateValues = 
-    ///                     {
-    ///                         "altValue",
-    ///                     },
-    ///                     CaseInsensitive = false,
-    ///                     DefaultValue = "",
-    ///                     FieldJoins = 
-    ///                     {
-    ///                         "and",
-    ///                     },
-    ///                     Format = "JSON",
-    ///                     FormatParameters = 
-    ///                     {
-    ///                         "param",
-    ///                     },
-    ///                     JoinDelimiter = "",
-    ///                     Lookups = 
-    ///                     {
-    ///                         new SumoLogic.Inputs.CseLogMappingFieldLookupArgs
-    ///                         {
-    ///                             Key = "tunnel-up",
-    ///                             Value = "true",
-    ///                         },
-    ///                     },
-    ///                     Name = "action",
-    ///                     SkippedValues = 
-    ///                     {
-    ///                         "-",
-    ///                     },
-    ///                     SplitDelimiter = ",",
-    ///                     SplitIndex = 0,
-    ///                     TimeZone = "UTC",
-    ///                     Value = "action",
-    ///                     ValueType = "constant",
+    ///                     "altValue",
     ///                 },
-    ///             },
-    ///             ProductGuid = "003d35b3-3ba8-4e93-8776-e5810b4e243e",
-    ///             RecordType = "Audit",
-    ///             RelatesEntities = true,
-    ///             SkippedValues = 
-    ///             {
-    ///                 "skipped",
-    ///             },
-    ///             StructuredInputs = 
-    ///             {
-    ///                 new SumoLogic.Inputs.CseLogMappingStructuredInputArgs
+    ///                 CaseInsensitive = false,
+    ///                 DefaultValue = "",
+    ///                 FieldJoins = new[]
     ///                 {
-    ///                     EventIdPattern = "vpn",
-    ///                     LogFormat = "JSON",
-    ///                     Product = "fortinate",
-    ///                     Vendor = "fortinate",
+    ///                     "and",
     ///                 },
+    ///                 Format = "JSON",
+    ///                 FormatParameters = new[]
+    ///                 {
+    ///                     "param",
+    ///                 },
+    ///                 JoinDelimiter = "",
+    ///                 Lookups = new[]
+    ///                 {
+    ///                     new SumoLogic.Inputs.CseLogMappingFieldLookupArgs
+    ///                     {
+    ///                         Key = "tunnel-up",
+    ///                         Value = "true",
+    ///                     },
+    ///                 },
+    ///                 Name = "action",
+    ///                 SkippedValues = new[]
+    ///                 {
+    ///                     "-",
+    ///                 },
+    ///                 SplitDelimiter = ",",
+    ///                 SplitIndex = 0,
+    ///                 TimeZone = "UTC",
+    ///                 Value = "action",
+    ///                 ValueType = "constant",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         ProductGuid = "003d35b3-3ba8-4e93-8776-e5810b4e243e",
+    ///         RecordType = "Audit",
+    ///         RelatesEntities = true,
+    ///         SkippedValues = new[]
+    ///         {
+    ///             "skipped",
+    ///         },
+    ///         StructuredInputs = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.CseLogMappingStructuredInputArgs
+    ///             {
+    ///                 EventIdPattern = "vpn",
+    ///                 LogFormat = "JSON",
+    ///                 Product = "fortinate",
+    ///                 Vendor = "fortinate",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -97,7 +95,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseLogMapping:CseLogMapping")]
-    public partial class CseLogMapping : Pulumi.CustomResource
+    public partial class CseLogMapping : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Enabled flag.
@@ -203,7 +201,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseLogMappingArgs : Pulumi.ResourceArgs
+    public sealed class CseLogMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enabled flag.
@@ -286,9 +284,10 @@ namespace Pulumi.SumoLogic
         public CseLogMappingArgs()
         {
         }
+        public static new CseLogMappingArgs Empty => new CseLogMappingArgs();
     }
 
-    public sealed class CseLogMappingState : Pulumi.ResourceArgs
+    public sealed class CseLogMappingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enabled flag.
@@ -371,5 +370,6 @@ namespace Pulumi.SumoLogic
         public CseLogMappingState()
         {
         }
+        public static new CseLogMappingState Empty => new CseLogMappingState();
     }
 }

@@ -21,42 +21,45 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sumologic.NewElbSource(ctx, "elbSource", &sumologic.ElbSourceArgs{
-// 			Authentication: &ElbSourceAuthenticationArgs{
-// 				AccessKey: pulumi.String("someKey"),
-// 				SecretKey: pulumi.String("******"),
-// 				Type:      pulumi.String("S3BucketAuthentication"),
-// 			},
-// 			Category:    pulumi.String("aws/elb"),
-// 			CollectorId: collector.ID(),
-// 			ContentType: pulumi.String("AwsElbBucket"),
-// 			Description: pulumi.String("My description"),
-// 			Path: &ElbSourcePathArgs{
-// 				BucketName:     pulumi.String("Bucket1"),
-// 				PathExpression: pulumi.String("*"),
-// 				Type:           pulumi.String("S3BucketPathExpression"),
-// 			},
-// 			Paused:       pulumi.Bool(false),
-// 			ScanInterval: pulumi.Int(300000),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewElbSource(ctx, "elbSource", &sumologic.ElbSourceArgs{
+//				Authentication: &ElbSourceAuthenticationArgs{
+//					AccessKey: pulumi.String("someKey"),
+//					SecretKey: pulumi.String("******"),
+//					Type:      pulumi.String("S3BucketAuthentication"),
+//				},
+//				Category:    pulumi.String("aws/elb"),
+//				CollectorId: collector.ID(),
+//				ContentType: pulumi.String("AwsElbBucket"),
+//				Description: pulumi.String("My description"),
+//				Path: &ElbSourcePathArgs{
+//					BucketName:     pulumi.String("Bucket1"),
+//					PathExpression: pulumi.String("*"),
+//					Type:           pulumi.String("S3BucketPathExpression"),
+//				},
+//				Paused:       pulumi.Bool(false),
+//				ScanInterval: pulumi.Int(300000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -64,16 +67,20 @@ import (
 // ELB sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/elbSource:ElbSource test 123/456
+//
+//	$ pulumi import sumologic:index/elbSource:ElbSource test 123/456
+//
 // ```
 //
-//  ELB sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	ELB sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/elbSource:ElbSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/elbSource:ElbSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Elastic-Load-Balancing-Source
+//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Elastic-Load-Balancing-Source
 type ElbSource struct {
 	pulumi.CustomResourceState
 
@@ -304,7 +311,7 @@ func (i *ElbSource) ToElbSourceOutputWithContext(ctx context.Context) ElbSourceO
 // ElbSourceArrayInput is an input type that accepts ElbSourceArray and ElbSourceArrayOutput values.
 // You can construct a concrete instance of `ElbSourceArrayInput` via:
 //
-//          ElbSourceArray{ ElbSourceArgs{...} }
+//	ElbSourceArray{ ElbSourceArgs{...} }
 type ElbSourceArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +336,7 @@ func (i ElbSourceArray) ToElbSourceArrayOutputWithContext(ctx context.Context) E
 // ElbSourceMapInput is an input type that accepts ElbSourceMap and ElbSourceMapOutput values.
 // You can construct a concrete instance of `ElbSourceMapInput` via:
 //
-//          ElbSourceMap{ "key": ElbSourceArgs{...} }
+//	ElbSourceMap{ "key": ElbSourceArgs{...} }
 type ElbSourceMapInput interface {
 	pulumi.Input
 

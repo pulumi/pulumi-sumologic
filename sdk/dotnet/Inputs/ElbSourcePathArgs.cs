@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class ElbSourcePathArgs : Pulumi.ResourceArgs
+    public sealed class ElbSourcePathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -88,5 +88,6 @@ namespace Pulumi.SumoLogic.Inputs
         public ElbSourcePathArgs()
         {
         }
+        public static new ElbSourcePathArgs Empty => new ElbSourcePathArgs();
     }
 }

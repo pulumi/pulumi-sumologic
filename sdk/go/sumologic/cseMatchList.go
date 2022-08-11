@@ -19,38 +19,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseMatchList(ctx, "matchList", &sumologic.CseMatchListArgs{
-// 			DefaultTtl:  pulumi.Int(10800),
-// 			Description: pulumi.String("Match list description"),
-// 			Items: CseMatchListItemArray{
-// 				&CseMatchListItemArgs{
-// 					Description: pulumi.String("IP address"),
-// 					Expiration:  pulumi.String("2022-02-27T04:00:00"),
-// 					Value:       pulumi.String("192.168.0.1"),
-// 				},
-// 			},
-// 			TargetColumn: pulumi.String("SrcIp"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseMatchList(ctx, "matchList", &sumologic.CseMatchListArgs{
+//				DefaultTtl:  pulumi.Int(10800),
+//				Description: pulumi.String("Match list description"),
+//				Items: CseMatchListItemArray{
+//					&CseMatchListItemArgs{
+//						Description: pulumi.String("IP address"),
+//						Expiration:  pulumi.String("2022-02-27T04:00:00"),
+//						Value:       pulumi.String("192.168.0.1"),
+//					},
+//				},
+//				TargetColumn: pulumi.String("SrcIp"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Match List can be imported using the field id, e.g.hcl
+// # Match List can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseMatchList:CseMatchList match_list id
+//
+//	$ pulumi import sumologic:index/cseMatchList:CseMatchList match_list id
+//
 // ```
 type CseMatchList struct {
 	pulumi.CustomResourceState
@@ -196,7 +201,7 @@ func (i *CseMatchList) ToCseMatchListOutputWithContext(ctx context.Context) CseM
 // CseMatchListArrayInput is an input type that accepts CseMatchListArray and CseMatchListArrayOutput values.
 // You can construct a concrete instance of `CseMatchListArrayInput` via:
 //
-//          CseMatchListArray{ CseMatchListArgs{...} }
+//	CseMatchListArray{ CseMatchListArgs{...} }
 type CseMatchListArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +226,7 @@ func (i CseMatchListArray) ToCseMatchListArrayOutputWithContext(ctx context.Cont
 // CseMatchListMapInput is an input type that accepts CseMatchListMap and CseMatchListMapOutput values.
 // You can construct a concrete instance of `CseMatchListMapInput` via:
 //
-//          CseMatchListMap{ "key": CseMatchListArgs{...} }
+//	CseMatchListMap{ "key": CseMatchListArgs{...} }
 type CseMatchListMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardLayoutArgs : Pulumi.ResourceArgs
+    public sealed class DashboardLayoutArgs : global::Pulumi.ResourceArgs
     {
         [Input("grid")]
         public Input<Inputs.DashboardLayoutGridArgs>? Grid { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardLayoutArgs()
         {
         }
+        public static new DashboardLayoutArgs Empty => new DashboardLayoutArgs();
     }
 }

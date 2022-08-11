@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class CseMatchRuleEntitySelectorArgs : Pulumi.ResourceArgs
+    public sealed class CseMatchRuleEntitySelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.SumoLogic.Inputs
         public CseMatchRuleEntitySelectorArgs()
         {
         }
+        public static new CseMatchRuleEntitySelectorArgs Empty => new CseMatchRuleEntitySelectorArgs();
     }
 }

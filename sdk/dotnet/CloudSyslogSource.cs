@@ -17,26 +17,25 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var cloudsyslogSource = new SumoLogic.CloudSyslogSource("cloudsyslogSource", new SumoLogic.CloudSyslogSourceArgs
-    ///         {
-    ///             Category = "my/source/category",
-    ///             CollectorId = collector.Id,
-    ///             Description = "My description",
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var cloudsyslogSource = new SumoLogic.CloudSyslogSource("cloudsyslogSource", new()
+    ///     {
+    ///         Category = "my/source/category",
+    ///         CollectorId = collector.Id,
+    ///         Description = "My description",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -62,7 +61,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cloudSyslogSource:CloudSyslogSource")]
-    public partial class CloudSyslogSource : Pulumi.CustomResource
+    public partial class CloudSyslogSource : global::Pulumi.CustomResource
     {
         [Output("automaticDateParsing")]
         public Output<bool?> AutomaticDateParsing { get; private set; } = null!;
@@ -162,7 +161,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CloudSyslogSourceArgs : Pulumi.ResourceArgs
+    public sealed class CloudSyslogSourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("automaticDateParsing")]
         public Input<bool>? AutomaticDateParsing { get; set; }
@@ -233,9 +232,10 @@ namespace Pulumi.SumoLogic
         public CloudSyslogSourceArgs()
         {
         }
+        public static new CloudSyslogSourceArgs Empty => new CloudSyslogSourceArgs();
     }
 
-    public sealed class CloudSyslogSourceState : Pulumi.ResourceArgs
+    public sealed class CloudSyslogSourceState : global::Pulumi.ResourceArgs
     {
         [Input("automaticDateParsing")]
         public Input<bool>? AutomaticDateParsing { get; set; }
@@ -309,5 +309,6 @@ namespace Pulumi.SumoLogic
         public CloudSyslogSourceState()
         {
         }
+        public static new CloudSyslogSourceState Empty => new CloudSyslogSourceState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsSloBurnRateConditionWarningGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsSloBurnRateConditionWarningGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("burnRateThreshold", required: true)]
         public Input<double> BurnRateThreshold { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsSloBurnRateConditionWarningGetArgs()
         {
         }
+        public static new MonitorTriggerConditionsSloBurnRateConditionWarningGetArgs Empty => new MonitorTriggerConditionsSloBurnRateConditionWarningGetArgs();
     }
 }

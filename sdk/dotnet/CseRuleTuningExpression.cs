@@ -15,28 +15,26 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ruleTuningExpression = new SumoLogic.CseRuleTuningExpression("ruleTuningExpression", new()
     ///     {
-    ///         var ruleTuningExpression = new SumoLogic.CseRuleTuningExpression("ruleTuningExpression", new SumoLogic.CseRuleTuningExpressionArgs
+    ///         Description = "New Rule Tuning Description",
+    ///         Enabled = true,
+    ///         Exclude = true,
+    ///         Expression = "accountId = 1234",
+    ///         IsGlobal = false,
+    ///         RuleIds = new[]
     ///         {
-    ///             Description = "New Rule Tuning Description",
-    ///             Enabled = true,
-    ///             Exclude = true,
-    ///             Expression = "accountId = 1234",
-    ///             IsGlobal = false,
-    ///             RuleIds = 
-    ///             {
-    ///                 "LEGACY-S00084",
-    ///             },
-    ///         });
-    ///     }
+    ///             "LEGACY-S00084",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression")]
-    public partial class CseRuleTuningExpression : Pulumi.CustomResource
+    public partial class CseRuleTuningExpression : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the rule tuning expression.
@@ -136,7 +134,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseRuleTuningExpressionArgs : Pulumi.ResourceArgs
+    public sealed class CseRuleTuningExpressionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the rule tuning expression.
@@ -189,9 +187,10 @@ namespace Pulumi.SumoLogic
         public CseRuleTuningExpressionArgs()
         {
         }
+        public static new CseRuleTuningExpressionArgs Empty => new CseRuleTuningExpressionArgs();
     }
 
-    public sealed class CseRuleTuningExpressionState : Pulumi.ResourceArgs
+    public sealed class CseRuleTuningExpressionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the rule tuning expression.
@@ -244,5 +243,6 @@ namespace Pulumi.SumoLogic
         public CseRuleTuningExpressionState()
         {
         }
+        public static new CseRuleTuningExpressionState Empty => new CseRuleTuningExpressionState();
     }
 }

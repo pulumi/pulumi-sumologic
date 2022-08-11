@@ -15,31 +15,29 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var matchList = new SumoLogic.CseMatchList("matchList", new()
     ///     {
-    ///         var matchList = new SumoLogic.CseMatchList("matchList", new SumoLogic.CseMatchListArgs
+    ///         DefaultTtl = 10800,
+    ///         Description = "Match list description",
+    ///         Items = new[]
     ///         {
-    ///             DefaultTtl = 10800,
-    ///             Description = "Match list description",
-    ///             Items = 
+    ///             new SumoLogic.Inputs.CseMatchListItemArgs
     ///             {
-    ///                 new SumoLogic.Inputs.CseMatchListItemArgs
-    ///                 {
-    ///                     Description = "IP address",
-    ///                     Expiration = "2022-02-27T04:00:00",
-    ///                     Value = "192.168.0.1",
-    ///                 },
+    ///                 Description = "IP address",
+    ///                 Expiration = "2022-02-27T04:00:00",
+    ///                 Value = "192.168.0.1",
     ///             },
-    ///             TargetColumn = "SrcIp",
-    ///         });
-    ///     }
+    ///         },
+    ///         TargetColumn = "SrcIp",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseMatchList:CseMatchList")]
-    public partial class CseMatchList : Pulumi.CustomResource
+    public partial class CseMatchList : global::Pulumi.CustomResource
     {
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -139,7 +137,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseMatchListArgs : Pulumi.ResourceArgs
+    public sealed class CseMatchListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default time to live for match list items added through the UI. Specified in seconds.
@@ -180,9 +178,10 @@ namespace Pulumi.SumoLogic
         public CseMatchListArgs()
         {
         }
+        public static new CseMatchListArgs Empty => new CseMatchListArgs();
     }
 
-    public sealed class CseMatchListState : Pulumi.ResourceArgs
+    public sealed class CseMatchListState : global::Pulumi.ResourceArgs
     {
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -235,5 +234,6 @@ namespace Pulumi.SumoLogic
         public CseMatchListState()
         {
         }
+        public static new CseMatchListState Empty => new CseMatchListState();
     }
 }

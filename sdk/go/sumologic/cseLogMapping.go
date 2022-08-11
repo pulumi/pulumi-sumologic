@@ -19,75 +19,80 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sumologic.NewCseLogMapping(ctx, "logMapping", &sumologic.CseLogMappingArgs{
-// 			Enabled: pulumi.Bool(true),
-// 			Fields: CseLogMappingFieldArray{
-// 				&CseLogMappingFieldArgs{
-// 					AlternateValues: pulumi.StringArray{
-// 						pulumi.String("altValue"),
-// 					},
-// 					CaseInsensitive: pulumi.Bool(false),
-// 					DefaultValue:    pulumi.String(""),
-// 					FieldJoins: pulumi.StringArray{
-// 						pulumi.String("and"),
-// 					},
-// 					Format: pulumi.String("JSON"),
-// 					FormatParameters: pulumi.StringArray{
-// 						pulumi.String("param"),
-// 					},
-// 					JoinDelimiter: pulumi.String(""),
-// 					Lookups: CseLogMappingFieldLookupArray{
-// 						&CseLogMappingFieldLookupArgs{
-// 							Key:   pulumi.String("tunnel-up"),
-// 							Value: pulumi.String("true"),
-// 						},
-// 					},
-// 					Name: pulumi.String("action"),
-// 					SkippedValues: pulumi.StringArray{
-// 						pulumi.String("-"),
-// 					},
-// 					SplitDelimiter: pulumi.String(","),
-// 					SplitIndex:     pulumi.Int(0),
-// 					TimeZone:       pulumi.String("UTC"),
-// 					Value:          pulumi.String("action"),
-// 					ValueType:      pulumi.String("constant"),
-// 				},
-// 			},
-// 			ProductGuid:     pulumi.String("003d35b3-3ba8-4e93-8776-e5810b4e243e"),
-// 			RecordType:      pulumi.String("Audit"),
-// 			RelatesEntities: pulumi.Bool(true),
-// 			SkippedValues: pulumi.StringArray{
-// 				pulumi.String("skipped"),
-// 			},
-// 			StructuredInputs: CseLogMappingStructuredInputArray{
-// 				&CseLogMappingStructuredInputArgs{
-// 					EventIdPattern: pulumi.String("vpn"),
-// 					LogFormat:      pulumi.String("JSON"),
-// 					Product:        pulumi.String("fortinate"),
-// 					Vendor:         pulumi.String("fortinate"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseLogMapping(ctx, "logMapping", &sumologic.CseLogMappingArgs{
+//				Enabled: pulumi.Bool(true),
+//				Fields: CseLogMappingFieldArray{
+//					&CseLogMappingFieldArgs{
+//						AlternateValues: pulumi.StringArray{
+//							pulumi.String("altValue"),
+//						},
+//						CaseInsensitive: pulumi.Bool(false),
+//						DefaultValue:    pulumi.String(""),
+//						FieldJoins: pulumi.StringArray{
+//							pulumi.String("and"),
+//						},
+//						Format: pulumi.String("JSON"),
+//						FormatParameters: pulumi.StringArray{
+//							pulumi.String("param"),
+//						},
+//						JoinDelimiter: pulumi.String(""),
+//						Lookups: CseLogMappingFieldLookupArray{
+//							&CseLogMappingFieldLookupArgs{
+//								Key:   pulumi.String("tunnel-up"),
+//								Value: pulumi.String("true"),
+//							},
+//						},
+//						Name: pulumi.String("action"),
+//						SkippedValues: pulumi.StringArray{
+//							pulumi.String("-"),
+//						},
+//						SplitDelimiter: pulumi.String(","),
+//						SplitIndex:     pulumi.Int(0),
+//						TimeZone:       pulumi.String("UTC"),
+//						Value:          pulumi.String("action"),
+//						ValueType:      pulumi.String("constant"),
+//					},
+//				},
+//				ProductGuid:     pulumi.String("003d35b3-3ba8-4e93-8776-e5810b4e243e"),
+//				RecordType:      pulumi.String("Audit"),
+//				RelatesEntities: pulumi.Bool(true),
+//				SkippedValues: pulumi.StringArray{
+//					pulumi.String("skipped"),
+//				},
+//				StructuredInputs: CseLogMappingStructuredInputArray{
+//					&CseLogMappingStructuredInputArgs{
+//						EventIdPattern: pulumi.String("vpn"),
+//						LogFormat:      pulumi.String("JSON"),
+//						Product:        pulumi.String("fortinate"),
+//						Vendor:         pulumi.String("fortinate"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// Log Mapping can be imported using the field id, e.g.hcl
+// # Log Mapping can be imported using the field id, e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
+//
+//	$ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
+//
 // ```
 type CseLogMapping struct {
 	pulumi.CustomResourceState
@@ -277,7 +282,7 @@ func (i *CseLogMapping) ToCseLogMappingOutputWithContext(ctx context.Context) Cs
 // CseLogMappingArrayInput is an input type that accepts CseLogMappingArray and CseLogMappingArrayOutput values.
 // You can construct a concrete instance of `CseLogMappingArrayInput` via:
 //
-//          CseLogMappingArray{ CseLogMappingArgs{...} }
+//	CseLogMappingArray{ CseLogMappingArgs{...} }
 type CseLogMappingArrayInput interface {
 	pulumi.Input
 
@@ -302,7 +307,7 @@ func (i CseLogMappingArray) ToCseLogMappingArrayOutputWithContext(ctx context.Co
 // CseLogMappingMapInput is an input type that accepts CseLogMappingMap and CseLogMappingMapOutput values.
 // You can construct a concrete instance of `CseLogMappingMapInput` via:
 //
-//          CseLogMappingMap{ "key": CseLogMappingArgs{...} }
+//	CseLogMappingMap{ "key": CseLogMappingArgs{...} }
 type CseLogMappingMapInput interface {
 	pulumi.Input
 

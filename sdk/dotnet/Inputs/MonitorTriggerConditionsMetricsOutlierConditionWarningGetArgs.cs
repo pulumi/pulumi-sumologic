@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class MonitorTriggerConditionsMetricsOutlierConditionWarningGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorTriggerConditionsMetricsOutlierConditionWarningGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("baselineWindow")]
         public Input<string>? BaselineWindow { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         public MonitorTriggerConditionsMetricsOutlierConditionWarningGetArgs()
         {
         }
+        public static new MonitorTriggerConditionsMetricsOutlierConditionWarningGetArgs Empty => new MonitorTriggerConditionsMetricsOutlierConditionWarningGetArgs();
     }
 }

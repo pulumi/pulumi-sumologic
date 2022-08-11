@@ -17,47 +17,46 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
-    ///         var collector = new SumoLogic.Collector("collector", new SumoLogic.CollectorArgs
-    ///         {
-    ///             Description = "Just testing this",
-    ///         });
-    ///         var awsInventorySource = new SumoLogic.AwsInventorySource("awsInventorySource", new SumoLogic.AwsInventorySourceArgs
-    ///         {
-    ///             Authentication = new SumoLogic.Inputs.AwsInventorySourceAuthenticationArgs
-    ///             {
-    ///                 RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
-    ///                 Type = "AWSRoleBasedAuthentication",
-    ///             },
-    ///             Category = "aws/aws_inventory",
-    ///             CollectorId = collector.Id,
-    ///             ContentType = "AwsInventory",
-    ///             Description = "My description",
-    ///             Path = new SumoLogic.Inputs.AwsInventorySourcePathArgs
-    ///             {
-    ///                 LimitToNamespaces = 
-    ///                 {
-    ///                     "AWS/RDS",
-    ///                     "AWS/EC2",
-    ///                 },
-    ///                 LimitToRegions = 
-    ///                 {
-    ///                     "us-west-2",
-    ///                 },
-    ///                 Type = "AwsInventoryPath",
-    ///             },
-    ///             Paused = false,
-    ///             ScanInterval = 300000,
-    ///         });
-    ///     }
+    ///         Description = "Just testing this",
+    ///     });
     /// 
-    /// }
+    ///     var awsInventorySource = new SumoLogic.AwsInventorySource("awsInventorySource", new()
+    ///     {
+    ///         Authentication = new SumoLogic.Inputs.AwsInventorySourceAuthenticationArgs
+    ///         {
+    ///             RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
+    ///             Type = "AWSRoleBasedAuthentication",
+    ///         },
+    ///         Category = "aws/aws_inventory",
+    ///         CollectorId = collector.Id,
+    ///         ContentType = "AwsInventory",
+    ///         Description = "My description",
+    ///         Path = new SumoLogic.Inputs.AwsInventorySourcePathArgs
+    ///         {
+    ///             LimitToNamespaces = new[]
+    ///             {
+    ///                 "AWS/RDS",
+    ///                 "AWS/EC2",
+    ///             },
+    ///             LimitToRegions = new[]
+    ///             {
+    ///                 "us-west-2",
+    ///             },
+    ///             Type = "AwsInventoryPath",
+    ///         },
+    ///         Paused = false,
+    ///         ScanInterval = 300000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,7 +74,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/awsInventorySource:AwsInventorySource")]
-    public partial class AwsInventorySource : Pulumi.CustomResource
+    public partial class AwsInventorySource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details to access AWS `Describe*` APIs.
@@ -202,7 +201,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class AwsInventorySourceArgs : Pulumi.ResourceArgs
+    public sealed class AwsInventorySourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details to access AWS `Describe*` APIs.
@@ -300,9 +299,10 @@ namespace Pulumi.SumoLogic
         public AwsInventorySourceArgs()
         {
         }
+        public static new AwsInventorySourceArgs Empty => new AwsInventorySourceArgs();
     }
 
-    public sealed class AwsInventorySourceState : Pulumi.ResourceArgs
+    public sealed class AwsInventorySourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details to access AWS `Describe*` APIs.
@@ -403,5 +403,6 @@ namespace Pulumi.SumoLogic
         public AwsInventorySourceState()
         {
         }
+        public static new AwsInventorySourceState Empty => new AwsInventorySourceState();
     }
 }

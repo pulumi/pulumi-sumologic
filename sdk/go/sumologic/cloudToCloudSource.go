@@ -25,47 +25,50 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
-// 			Description: pulumi.String("Just testing this"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"name":       "okta source",
-// 			"domain":     "dev-xxx-admin.okta.com",
-// 			"collectAll": true,
-// 			"apiKey":     "xxx",
-// 			"fields": map[string]interface{}{
-// 				"_siemForward": false,
-// 			},
-// 			"pollingInterval": 30,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err = sumologic.NewCloudToCloudSource(ctx, "oktaSource", &sumologic.CloudToCloudSourceArgs{
-// 			CollectorId: collector.ID(),
-// 			SchemaRef: pulumi.StringMap{
-// 				"type": pulumi.String("Okta"),
-// 			},
-// 			Config: pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Description: pulumi.String("Just testing this"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"name":       "okta source",
+//				"domain":     "dev-xxx-admin.okta.com",
+//				"collectAll": true,
+//				"apiKey":     "xxx",
+//				"fields": map[string]interface{}{
+//					"_siemForward": false,
+//				},
+//				"pollingInterval": 30,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = sumologic.NewCloudToCloudSource(ctx, "oktaSource", &sumologic.CloudToCloudSourceArgs{
+//				CollectorId: collector.ID(),
+//				SchemaRef: pulumi.StringMap{
+//					"type": pulumi.String("Okta"),
+//				},
+//				Config: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -73,16 +76,20 @@ import (
 // Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
+//
+//	$ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
+//
 // ```
 //
-//  Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
 //
 // ```sh
-//  $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
+//
+//	$ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
+//
 // ```
 //
-//  [1]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
+//	[1]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
 type CloudToCloudSource struct {
 	pulumi.CustomResourceState
 
@@ -193,7 +200,7 @@ func (i *CloudToCloudSource) ToCloudToCloudSourceOutputWithContext(ctx context.C
 // CloudToCloudSourceArrayInput is an input type that accepts CloudToCloudSourceArray and CloudToCloudSourceArrayOutput values.
 // You can construct a concrete instance of `CloudToCloudSourceArrayInput` via:
 //
-//          CloudToCloudSourceArray{ CloudToCloudSourceArgs{...} }
+//	CloudToCloudSourceArray{ CloudToCloudSourceArgs{...} }
 type CloudToCloudSourceArrayInput interface {
 	pulumi.Input
 
@@ -218,7 +225,7 @@ func (i CloudToCloudSourceArray) ToCloudToCloudSourceArrayOutputWithContext(ctx 
 // CloudToCloudSourceMapInput is an input type that accepts CloudToCloudSourceMap and CloudToCloudSourceMapOutput values.
 // You can construct a concrete instance of `CloudToCloudSourceMapInput` via:
 //
-//          CloudToCloudSourceMap{ "key": CloudToCloudSourceArgs{...} }
+//	CloudToCloudSourceMap{ "key": CloudToCloudSourceArgs{...} }
 type CloudToCloudSourceMapInput interface {
 	pulumi.Input
 

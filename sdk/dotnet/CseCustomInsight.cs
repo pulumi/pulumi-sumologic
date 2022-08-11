@@ -15,37 +15,35 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var customInsight = new SumoLogic.CseCustomInsight("customInsight", new()
     ///     {
-    ///         var customInsight = new SumoLogic.CseCustomInsight("customInsight", new SumoLogic.CseCustomInsightArgs
+    ///         Description = "Insight description",
+    ///         Enabled = true,
+    ///         Ordered = true,
+    ///         RuleIds = new[]
     ///         {
-    ///             Description = "Insight description",
-    ///             Enabled = true,
-    ///             Ordered = true,
-    ///             RuleIds = 
-    ///             {
-    ///                 "MATCH-S00001",
-    ///                 "THRESHOLD-U00005",
-    ///             },
-    ///             Severity = "HIGH",
-    ///             SignalNames = 
-    ///             {
-    ///                 "Some Signal Name",
-    ///                 "Wildcard Signal Name *",
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 "_mitreAttackTactic:TA0009",
-    ///             },
-    ///         });
-    ///     }
+    ///             "MATCH-S00001",
+    ///             "THRESHOLD-U00005",
+    ///         },
+    ///         Severity = "HIGH",
+    ///         SignalNames = new[]
+    ///         {
+    ///             "Some Signal Name",
+    ///             "Wildcard Signal Name *",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "_mitreAttackTactic:TA0009",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.SumoLogic
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseCustomInsight:CseCustomInsight")]
-    public partial class CseCustomInsight : Pulumi.CustomResource
+    public partial class CseCustomInsight : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the generated Insights
@@ -151,7 +149,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class CseCustomInsightArgs : Pulumi.ResourceArgs
+    public sealed class CseCustomInsightArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the generated Insights
@@ -222,9 +220,10 @@ namespace Pulumi.SumoLogic
         public CseCustomInsightArgs()
         {
         }
+        public static new CseCustomInsightArgs Empty => new CseCustomInsightArgs();
     }
 
-    public sealed class CseCustomInsightState : Pulumi.ResourceArgs
+    public sealed class CseCustomInsightState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the generated Insights
@@ -295,5 +294,6 @@ namespace Pulumi.SumoLogic
         public CseCustomInsightState()
         {
         }
+        public static new CseCustomInsightState Empty => new CseCustomInsightState();
     }
 }

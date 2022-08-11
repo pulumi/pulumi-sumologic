@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class DashboardVariableGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardVariableGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowMultiSelect")]
         public Input<bool>? AllowMultiSelect { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public DashboardVariableGetArgs()
         {
         }
+        public static new DashboardVariableGetArgs Empty => new DashboardVariableGetArgs();
     }
 }

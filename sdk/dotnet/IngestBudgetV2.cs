@@ -15,26 +15,24 @@ namespace Pulumi.SumoLogic
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var budget = new SumoLogic.IngestBudgetV2("budget", new()
     ///     {
-    ///         var budget = new SumoLogic.IngestBudgetV2("budget", new SumoLogic.IngestBudgetV2Args
-    ///         {
-    ///             Action = "keepCollecting",
-    ///             AuditThreshold = 85,
-    ///             CapacityBytes = 30000000000,
-    ///             Description = "For testing purposes",
-    ///             ResetTime = "00:00",
-    ///             Scope = "_sourceCategory=*prod*nginx*",
-    ///             Timezone = "Etc/UTC",
-    ///         });
-    ///     }
+    ///         Action = "keepCollecting",
+    ///         AuditThreshold = 85,
+    ///         CapacityBytes = 30000000000,
+    ///         Description = "For testing purposes",
+    ///         ResetTime = "00:00",
+    ///         Scope = "_sourceCategory=*prod*nginx*",
+    ///         Timezone = "Etc/UTC",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.SumoLogic
     ///  [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
     /// </summary>
     [SumoLogicResourceType("sumologic:index/ingestBudgetV2:IngestBudgetV2")]
-    public partial class IngestBudgetV2 : Pulumi.CustomResource
+    public partial class IngestBudgetV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
@@ -142,7 +140,7 @@ namespace Pulumi.SumoLogic
         }
     }
 
-    public sealed class IngestBudgetV2Args : Pulumi.ResourceArgs
+    public sealed class IngestBudgetV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
@@ -195,9 +193,10 @@ namespace Pulumi.SumoLogic
         public IngestBudgetV2Args()
         {
         }
+        public static new IngestBudgetV2Args Empty => new IngestBudgetV2Args();
     }
 
-    public sealed class IngestBudgetV2State : Pulumi.ResourceArgs
+    public sealed class IngestBudgetV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
@@ -250,5 +249,6 @@ namespace Pulumi.SumoLogic
         public IngestBudgetV2State()
         {
         }
+        public static new IngestBudgetV2State Empty => new IngestBudgetV2State();
     }
 }

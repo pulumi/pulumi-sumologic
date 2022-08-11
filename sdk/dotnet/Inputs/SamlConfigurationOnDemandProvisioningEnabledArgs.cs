@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic.Inputs
 {
 
-    public sealed class SamlConfigurationOnDemandProvisioningEnabledArgs : Pulumi.ResourceArgs
+    public sealed class SamlConfigurationOnDemandProvisioningEnabledArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// First name attribute of the new user account. Defaults to "".
@@ -39,5 +39,6 @@ namespace Pulumi.SumoLogic.Inputs
         public SamlConfigurationOnDemandProvisioningEnabledArgs()
         {
         }
+        public static new SamlConfigurationOnDemandProvisioningEnabledArgs Empty => new SamlConfigurationOnDemandProvisioningEnabledArgs();
     }
 }
