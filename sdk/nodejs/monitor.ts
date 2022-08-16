@@ -101,6 +101,8 @@ import * as utilities from "./utilities";
  * - `metricsOutlierCondition`
  * - `logsMissingDataCondition`
  * - `metricsMissingDataCondition`
+ * - `sloSliCondition`
+ * - `sloBurnRateCondition`
  *
  * Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
  *
@@ -286,7 +288,7 @@ export class Monitor extends pulumi.CustomResource {
     }
 
     /**
-     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
      */
     public readonly alertName!: pulumi.Output<string | undefined>;
     /**
@@ -465,7 +467,7 @@ export class Monitor extends pulumi.CustomResource {
  */
 export interface MonitorState {
     /**
-     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
      */
     alertName?: pulumi.Input<string>;
     /**
@@ -565,7 +567,7 @@ export interface MonitorState {
  */
 export interface MonitorArgs {
     /**
-     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
      */
     alertName?: pulumi.Input<string>;
     /**

@@ -54,6 +54,7 @@ from .hierarchy import *
 from .http_source import *
 from .ingest_budget import *
 from .ingest_budget_v2 import *
+from .installed_collector import *
 from .kineis_log_source import *
 from .kinesis_metrics_source import *
 from .lookup_table import *
@@ -398,6 +399,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/ingestBudgetV2:IngestBudgetV2": "IngestBudgetV2"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/installedCollector",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/installedCollector:InstalledCollector": "InstalledCollector"
   }
  },
  {
