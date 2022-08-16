@@ -65,6 +65,7 @@
         "index.ts",
         "ingestBudget.ts",
         "ingestBudgetV2.ts",
+        "installedCollector.ts",
         "kineisLogSource.ts",
         "kinesisMetricsSource.ts",
         "lookupTable.ts",

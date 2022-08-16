@@ -54,6 +54,7 @@ export * from "./hierarchy";
 export * from "./httpSource";
 export * from "./ingestBudget";
 export * from "./ingestBudgetV2";
+export * from "./installedCollector";
 export * from "./kineisLogSource";
 export * from "./kinesisMetricsSource";
 export * from "./lookupTable";
@@ -125,6 +126,7 @@ import { Hierarchy } from "./hierarchy";
 import { HttpSource } from "./httpSource";
 import { IngestBudget } from "./ingestBudget";
 import { IngestBudgetV2 } from "./ingestBudgetV2";
+import { InstalledCollector } from "./installedCollector";
 import { KineisLogSource } from "./kineisLogSource";
 import { KinesisMetricsSource } from "./kinesisMetricsSource";
 import { LookupTable } from "./lookupTable";
@@ -228,6 +230,8 @@ const _module = {
                 return new IngestBudget(name, <any>undefined, { urn })
             case "sumologic:index/ingestBudgetV2:IngestBudgetV2":
                 return new IngestBudgetV2(name, <any>undefined, { urn })
+            case "sumologic:index/installedCollector:InstalledCollector":
+                return new InstalledCollector(name, <any>undefined, { urn })
             case "sumologic:index/kineisLogSource:KineisLogSource":
                 return new KineisLogSource(name, <any>undefined, { urn })
             case "sumologic:index/kinesisMetricsSource:KinesisMetricsSource":
@@ -312,6 +316,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/hierarchy", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/httpSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudget", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudgetV2", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/installedCollector", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kineisLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kinesisMetricsSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/lookupTable", _module)

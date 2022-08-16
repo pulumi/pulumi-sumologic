@@ -141,6 +141,8 @@ namespace Pulumi.SumoLogic
     /// - `metrics_outlier_condition`
     /// - `logs_missing_data_condition`
     /// - `metrics_missing_data_condition`
+    /// - `slo_sli_condition`
+    /// - `slo_burn_rate_condition`
     /// 
     /// Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
     /// 
@@ -324,7 +326,7 @@ namespace Pulumi.SumoLogic
     public partial class Monitor : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         /// </summary>
         [Output("alertName")]
         public Output<string?> AlertName { get; private set; } = null!;
@@ -518,7 +520,7 @@ namespace Pulumi.SumoLogic
     public sealed class MonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         /// </summary>
         [Input("alertName")]
         public Input<string>? AlertName { get; set; }
@@ -716,7 +718,7 @@ namespace Pulumi.SumoLogic
     public sealed class MonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         /// </summary>
         [Input("alertName")]
         public Input<string>? AlertName { get; set; }

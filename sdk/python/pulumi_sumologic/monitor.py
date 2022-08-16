@@ -50,7 +50,7 @@ class MonitorArgs:
                - `Logs`: A logs query monitor.
                - `Metrics`: A metrics query monitor.
                - `Slo`: A SLO based monitor  (beta).
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -153,7 +153,7 @@ class MonitorArgs:
     @pulumi.getter(name="alertName")
     def alert_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         """
         return pulumi.get(self, "alert_name")
 
@@ -484,7 +484,7 @@ class _MonitorState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Monitor resources.
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -577,7 +577,7 @@ class _MonitorState:
     @pulumi.getter(name="alertName")
     def alert_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         """
         return pulumi.get(self, "alert_name")
 
@@ -1016,6 +1016,8 @@ class Monitor(pulumi.CustomResource):
         - `metrics_outlier_condition`
         - `logs_missing_data_condition`
         - `metrics_missing_data_condition`
+        - `slo_sli_condition`
+        - `slo_burn_rate_condition`
 
         Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
 
@@ -1173,7 +1175,7 @@ class Monitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -1300,6 +1302,8 @@ class Monitor(pulumi.CustomResource):
         - `metrics_outlier_condition`
         - `logs_missing_data_condition`
         - `metrics_missing_data_condition`
+        - `slo_sli_condition`
+        - `slo_burn_rate_condition`
 
         Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
 
@@ -1585,7 +1589,7 @@ class Monitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
                - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
@@ -1652,7 +1656,7 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter(name="alertName")
     def alert_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
         """
         return pulumi.get(self, "alert_name")
 

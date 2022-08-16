@@ -176,6 +176,7 @@ func Provider() tfbridge.ProviderInfo {
 			"sumologic_cse_inventory_entity_group_configuration": {
 				Tok: makeResource(mainMod, "CseInventoryEntityGroupConfiguration"),
 			},
+			"sumologic_installed_collector": {Tok: makeResource(mainMod, "InstalledCollector")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"sumologic_caller_identity": {Tok: makeDataSource(mainMod, "getCallerIdentity")},

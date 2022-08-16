@@ -156,6 +156,8 @@ import (
 // - `metricsOutlierCondition`
 // - `logsMissingDataCondition`
 // - `metricsMissingDataCondition`
+// - `sloSliCondition`
+// - `sloBurnRateCondition`
 //
 // Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
 //
@@ -341,7 +343,7 @@ import (
 type Monitor struct {
 	pulumi.CustomResourceState
 
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
 	AlertName pulumi.StringPtrOutput `pulumi:"alertName"`
 	// The type of the content object. Valid value:
 	// - `Monitor`
@@ -433,7 +435,7 @@ func GetMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Monitor resources.
 type monitorState struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
 	AlertName *string `pulumi:"alertName"`
 	// The type of the content object. Valid value:
 	// - `Monitor`
@@ -494,7 +496,7 @@ type monitorState struct {
 }
 
 type MonitorState struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
 	AlertName pulumi.StringPtrInput
 	// The type of the content object. Valid value:
 	// - `Monitor`
@@ -559,7 +561,7 @@ func (MonitorState) ElementType() reflect.Type {
 }
 
 type monitorArgs struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
 	AlertName *string `pulumi:"alertName"`
 	// The type of the content object. Valid value:
 	// - `Monitor`
@@ -621,7 +623,7 @@ type monitorArgs struct {
 
 // The set of arguments for constructing a Monitor resource.
 type MonitorArgs struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
 	AlertName pulumi.StringPtrInput
 	// The type of the content object. Valid value:
 	// - `Monitor`
@@ -768,7 +770,7 @@ func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOu
 	return o
 }
 
-// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}` and `{{ResultsJson}}`.
+// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
 func (o MonitorOutput) AlertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.AlertName }).(pulumi.StringPtrOutput)
 }

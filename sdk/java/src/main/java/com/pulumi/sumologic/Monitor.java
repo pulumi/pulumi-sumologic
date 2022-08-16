@@ -185,6 +185,8 @@ import javax.annotation.Nullable;
  * - `metrics_outlier_condition`
  * - `logs_missing_data_condition`
  * - `metrics_missing_data_condition`
+ * - `slo_sli_condition`
+ * - `slo_burn_rate_condition`
  * 
  * Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
  * 
@@ -365,14 +367,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/monitor:Monitor")
 public class Monitor extends com.pulumi.resources.CustomResource {
     /**
-     * The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
      * 
      */
     @Export(name="alertName", type=String.class, parameters={})
     private Output</* @Nullable */ String> alertName;
 
     /**
-     * @return The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}` and `{{ResultsJson}}`.
+     * @return The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
      * 
      */
     public Output<Optional<String>> alertName() {
