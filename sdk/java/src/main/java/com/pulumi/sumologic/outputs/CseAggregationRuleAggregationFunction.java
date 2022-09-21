@@ -14,28 +14,19 @@ public final class CseAggregationRuleAggregationFunction {
      * @return One or more expressions to pass as arguments to the function
      * 
      */
-    private final List<String> arguments;
+    private List<String> arguments;
     /**
      * @return The function to aggregate with
      * 
      */
-    private final String function;
+    private String function;
     /**
      * @return The name of the Rule
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private CseAggregationRuleAggregationFunction(
-        @CustomType.Parameter("arguments") List<String> arguments,
-        @CustomType.Parameter("function") String function,
-        @CustomType.Parameter("name") String name) {
-        this.arguments = arguments;
-        this.function = function;
-        this.name = name;
-    }
-
+    private CseAggregationRuleAggregationFunction() {}
     /**
      * @return One or more expressions to pass as arguments to the function
      * 
@@ -65,16 +56,12 @@ public final class CseAggregationRuleAggregationFunction {
     public static Builder builder(CseAggregationRuleAggregationFunction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> arguments;
         private String function;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseAggregationRuleAggregationFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arguments = defaults.arguments;
@@ -82,6 +69,7 @@ public final class CseAggregationRuleAggregationFunction {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder arguments(List<String> arguments) {
             this.arguments = Objects.requireNonNull(arguments);
             return this;
@@ -89,15 +77,22 @@ public final class CseAggregationRuleAggregationFunction {
         public Builder arguments(String... arguments) {
             return arguments(List.of(arguments));
         }
+        @CustomType.Setter
         public Builder function(String function) {
             this.function = Objects.requireNonNull(function);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public CseAggregationRuleAggregationFunction build() {
-            return new CseAggregationRuleAggregationFunction(arguments, function, name);
+        }
+        public CseAggregationRuleAggregationFunction build() {
+            final var o = new CseAggregationRuleAggregationFunction();
+            o.arguments = arguments;
+            o.function = function;
+            o.name = name;
+            return o;
         }
     }
 }

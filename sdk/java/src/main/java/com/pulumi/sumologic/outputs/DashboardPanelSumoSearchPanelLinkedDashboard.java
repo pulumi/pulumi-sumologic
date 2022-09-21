@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelLinkedDashboard {
-    private final String id;
-    private final @Nullable Boolean includeTimeRange;
-    private final @Nullable Boolean includeVariables;
-    private final @Nullable String relativePath;
+    private String id;
+    private @Nullable Boolean includeTimeRange;
+    private @Nullable Boolean includeVariables;
+    private @Nullable String relativePath;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelLinkedDashboard(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("includeTimeRange") @Nullable Boolean includeTimeRange,
-        @CustomType.Parameter("includeVariables") @Nullable Boolean includeVariables,
-        @CustomType.Parameter("relativePath") @Nullable String relativePath) {
-        this.id = id;
-        this.includeTimeRange = includeTimeRange;
-        this.includeVariables = includeVariables;
-        this.relativePath = relativePath;
-    }
-
+    private DashboardPanelSumoSearchPanelLinkedDashboard() {}
     public String id() {
         return this.id;
     }
@@ -49,17 +38,13 @@ public final class DashboardPanelSumoSearchPanelLinkedDashboard {
     public static Builder builder(DashboardPanelSumoSearchPanelLinkedDashboard defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable Boolean includeTimeRange;
         private @Nullable Boolean includeVariables;
         private @Nullable String relativePath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelLinkedDashboard defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,23 +53,33 @@ public final class DashboardPanelSumoSearchPanelLinkedDashboard {
     	      this.relativePath = defaults.relativePath;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder includeTimeRange(@Nullable Boolean includeTimeRange) {
             this.includeTimeRange = includeTimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder includeVariables(@Nullable Boolean includeVariables) {
             this.includeVariables = includeVariables;
             return this;
         }
+        @CustomType.Setter
         public Builder relativePath(@Nullable String relativePath) {
             this.relativePath = relativePath;
             return this;
-        }        public DashboardPanelSumoSearchPanelLinkedDashboard build() {
-            return new DashboardPanelSumoSearchPanelLinkedDashboard(id, includeTimeRange, includeVariables, relativePath);
+        }
+        public DashboardPanelSumoSearchPanelLinkedDashboard build() {
+            final var o = new DashboardPanelSumoSearchPanelLinkedDashboard();
+            o.id = id;
+            o.includeTimeRange = includeTimeRange;
+            o.includeVariables = includeVariables;
+            o.relativePath = relativePath;
+            return o;
         }
     }
 }

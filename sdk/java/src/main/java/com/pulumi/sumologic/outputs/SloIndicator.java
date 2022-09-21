@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SloIndicator {
-    private final @Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation;
-    private final @Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation;
+    private @Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation;
+    private @Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation;
 
-    @CustomType.Constructor
-    private SloIndicator(
-        @CustomType.Parameter("requestBasedEvaluation") @Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation,
-        @CustomType.Parameter("windowBasedEvaluation") @Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation) {
-        this.requestBasedEvaluation = requestBasedEvaluation;
-        this.windowBasedEvaluation = windowBasedEvaluation;
-    }
-
+    private SloIndicator() {}
     public Optional<SloIndicatorRequestBasedEvaluation> requestBasedEvaluation() {
         return Optional.ofNullable(this.requestBasedEvaluation);
     }
@@ -37,30 +30,32 @@ public final class SloIndicator {
     public static Builder builder(SloIndicator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation;
         private @Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloIndicator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.requestBasedEvaluation = defaults.requestBasedEvaluation;
     	      this.windowBasedEvaluation = defaults.windowBasedEvaluation;
         }
 
+        @CustomType.Setter
         public Builder requestBasedEvaluation(@Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation) {
             this.requestBasedEvaluation = requestBasedEvaluation;
             return this;
         }
+        @CustomType.Setter
         public Builder windowBasedEvaluation(@Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation) {
             this.windowBasedEvaluation = windowBasedEvaluation;
             return this;
-        }        public SloIndicator build() {
-            return new SloIndicator(requestBasedEvaluation, windowBasedEvaluation);
+        }
+        public SloIndicator build() {
+            final var o = new SloIndicator();
+            o.requestBasedEvaluation = requestBasedEvaluation;
+            o.windowBasedEvaluation = windowBasedEvaluation;
+            return o;
         }
     }
 }

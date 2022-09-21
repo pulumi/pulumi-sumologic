@@ -16,57 +16,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpMetricsSourcePath {
-    private final @Nullable String bucketName;
+    private @Nullable String bucketName;
     /**
      * @return Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      * 
      */
-    private final @Nullable List<GcpMetricsSourcePathCustomService> customServices;
-    private final @Nullable List<String> limitToNamespaces;
+    private @Nullable List<GcpMetricsSourcePathCustomService> customServices;
+    private @Nullable List<String> limitToNamespaces;
     /**
      * @return List of regions for which metrics would be collected (Empty to collect from all regions)
      * 
      */
-    private final @Nullable List<String> limitToRegions;
+    private @Nullable List<String> limitToRegions;
     /**
      * @return List of services from which metrics would be collected
      * 
      */
-    private final @Nullable List<String> limitToServices;
-    private final @Nullable String pathExpression;
-    private final @Nullable List<GcpMetricsSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
-    private final @Nullable List<GcpMetricsSourcePathTagFilter> tagFilters;
+    private @Nullable List<String> limitToServices;
+    private @Nullable String pathExpression;
+    private @Nullable List<GcpMetricsSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
+    private @Nullable List<GcpMetricsSourcePathTagFilter> tagFilters;
     /**
      * @return Type of polling source. This has to be `GcpMetricsPath`.
      * 
      */
-    private final String type;
-    private final @Nullable Boolean useVersionedApi;
+    private String type;
+    private @Nullable Boolean useVersionedApi;
 
-    @CustomType.Constructor
-    private GcpMetricsSourcePath(
-        @CustomType.Parameter("bucketName") @Nullable String bucketName,
-        @CustomType.Parameter("customServices") @Nullable List<GcpMetricsSourcePathCustomService> customServices,
-        @CustomType.Parameter("limitToNamespaces") @Nullable List<String> limitToNamespaces,
-        @CustomType.Parameter("limitToRegions") @Nullable List<String> limitToRegions,
-        @CustomType.Parameter("limitToServices") @Nullable List<String> limitToServices,
-        @CustomType.Parameter("pathExpression") @Nullable String pathExpression,
-        @CustomType.Parameter("snsTopicOrSubscriptionArns") @Nullable List<GcpMetricsSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
-        @CustomType.Parameter("tagFilters") @Nullable List<GcpMetricsSourcePathTagFilter> tagFilters,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("useVersionedApi") @Nullable Boolean useVersionedApi) {
-        this.bucketName = bucketName;
-        this.customServices = customServices;
-        this.limitToNamespaces = limitToNamespaces;
-        this.limitToRegions = limitToRegions;
-        this.limitToServices = limitToServices;
-        this.pathExpression = pathExpression;
-        this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
-        this.tagFilters = tagFilters;
-        this.type = type;
-        this.useVersionedApi = useVersionedApi;
-    }
-
+    private GcpMetricsSourcePath() {}
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
@@ -121,7 +98,7 @@ public final class GcpMetricsSourcePath {
     public static Builder builder(GcpMetricsSourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
         private @Nullable List<GcpMetricsSourcePathCustomService> customServices;
@@ -133,11 +110,7 @@ public final class GcpMetricsSourcePath {
         private @Nullable List<GcpMetricsSourcePathTagFilter> tagFilters;
         private String type;
         private @Nullable Boolean useVersionedApi;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GcpMetricsSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -152,10 +125,12 @@ public final class GcpMetricsSourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
             this.bucketName = bucketName;
             return this;
         }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<GcpMetricsSourcePathCustomService> customServices) {
             this.customServices = customServices;
             return this;
@@ -163,6 +138,7 @@ public final class GcpMetricsSourcePath {
         public Builder customServices(GcpMetricsSourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
         }
+        @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
             this.limitToNamespaces = limitToNamespaces;
             return this;
@@ -170,6 +146,7 @@ public final class GcpMetricsSourcePath {
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
+        @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
             this.limitToRegions = limitToRegions;
             return this;
@@ -177,6 +154,7 @@ public final class GcpMetricsSourcePath {
         public Builder limitToRegions(String... limitToRegions) {
             return limitToRegions(List.of(limitToRegions));
         }
+        @CustomType.Setter
         public Builder limitToServices(@Nullable List<String> limitToServices) {
             this.limitToServices = limitToServices;
             return this;
@@ -184,10 +162,12 @@ public final class GcpMetricsSourcePath {
         public Builder limitToServices(String... limitToServices) {
             return limitToServices(List.of(limitToServices));
         }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
             this.pathExpression = pathExpression;
             return this;
         }
+        @CustomType.Setter
         public Builder snsTopicOrSubscriptionArns(@Nullable List<GcpMetricsSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns) {
             this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             return this;
@@ -195,6 +175,7 @@ public final class GcpMetricsSourcePath {
         public Builder snsTopicOrSubscriptionArns(GcpMetricsSourcePathSnsTopicOrSubscriptionArn... snsTopicOrSubscriptionArns) {
             return snsTopicOrSubscriptionArns(List.of(snsTopicOrSubscriptionArns));
         }
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<GcpMetricsSourcePathTagFilter> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -202,15 +183,29 @@ public final class GcpMetricsSourcePath {
         public Builder tagFilters(GcpMetricsSourcePathTagFilter... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder useVersionedApi(@Nullable Boolean useVersionedApi) {
             this.useVersionedApi = useVersionedApi;
             return this;
-        }        public GcpMetricsSourcePath build() {
-            return new GcpMetricsSourcePath(bucketName, customServices, limitToNamespaces, limitToRegions, limitToServices, pathExpression, snsTopicOrSubscriptionArns, tagFilters, type, useVersionedApi);
+        }
+        public GcpMetricsSourcePath build() {
+            final var o = new GcpMetricsSourcePath();
+            o.bucketName = bucketName;
+            o.customServices = customServices;
+            o.limitToNamespaces = limitToNamespaces;
+            o.limitToRegions = limitToRegions;
+            o.limitToServices = limitToServices;
+            o.pathExpression = pathExpression;
+            o.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
+            o.tagFilters = tagFilters;
+            o.type = type;
+            o.useVersionedApi = useVersionedApi;
+            return o;
         }
     }
 }

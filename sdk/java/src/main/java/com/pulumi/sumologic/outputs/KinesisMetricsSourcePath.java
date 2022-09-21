@@ -16,21 +16,14 @@ public final class KinesisMetricsSourcePath {
      * @return Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
      * 
      */
-    private final @Nullable List<KinesisMetricsSourcePathTagFilter> tagFilters;
+    private @Nullable List<KinesisMetricsSourcePathTagFilter> tagFilters;
     /**
      * @return This value has to be set to `TagFilters`
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private KinesisMetricsSourcePath(
-        @CustomType.Parameter("tagFilters") @Nullable List<KinesisMetricsSourcePathTagFilter> tagFilters,
-        @CustomType.Parameter("type") String type) {
-        this.tagFilters = tagFilters;
-        this.type = type;
-    }
-
+    private KinesisMetricsSourcePath() {}
     /**
      * @return Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
      * 
@@ -53,21 +46,18 @@ public final class KinesisMetricsSourcePath {
     public static Builder builder(KinesisMetricsSourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<KinesisMetricsSourcePathTagFilter> tagFilters;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KinesisMetricsSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tagFilters = defaults.tagFilters;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<KinesisMetricsSourcePathTagFilter> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -75,11 +65,16 @@ public final class KinesisMetricsSourcePath {
         public Builder tagFilters(KinesisMetricsSourcePathTagFilter... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public KinesisMetricsSourcePath build() {
-            return new KinesisMetricsSourcePath(tagFilters, type);
+        }
+        public KinesisMetricsSourcePath build() {
+            final var o = new KinesisMetricsSourcePath();
+            o.tagFilters = tagFilters;
+            o.type = type;
+            return o;
         }
     }
 }

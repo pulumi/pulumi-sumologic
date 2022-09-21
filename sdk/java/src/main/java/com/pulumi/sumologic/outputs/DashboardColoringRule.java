@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardColoringRule {
-    private final @Nullable List<DashboardColoringRuleColorThreshold> colorThresholds;
-    private final String multipleSeriesAggregateFunction;
-    private final String scope;
-    private final String singleSeriesAggregateFunction;
+    private @Nullable List<DashboardColoringRuleColorThreshold> colorThresholds;
+    private String multipleSeriesAggregateFunction;
+    private String scope;
+    private String singleSeriesAggregateFunction;
 
-    @CustomType.Constructor
-    private DashboardColoringRule(
-        @CustomType.Parameter("colorThresholds") @Nullable List<DashboardColoringRuleColorThreshold> colorThresholds,
-        @CustomType.Parameter("multipleSeriesAggregateFunction") String multipleSeriesAggregateFunction,
-        @CustomType.Parameter("scope") String scope,
-        @CustomType.Parameter("singleSeriesAggregateFunction") String singleSeriesAggregateFunction) {
-        this.colorThresholds = colorThresholds;
-        this.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
-        this.scope = scope;
-        this.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
-    }
-
+    private DashboardColoringRule() {}
     public List<DashboardColoringRuleColorThreshold> colorThresholds() {
         return this.colorThresholds == null ? List.of() : this.colorThresholds;
     }
@@ -49,17 +38,13 @@ public final class DashboardColoringRule {
     public static Builder builder(DashboardColoringRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<DashboardColoringRuleColorThreshold> colorThresholds;
         private String multipleSeriesAggregateFunction;
         private String scope;
         private String singleSeriesAggregateFunction;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardColoringRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.colorThresholds = defaults.colorThresholds;
@@ -68,6 +53,7 @@ public final class DashboardColoringRule {
     	      this.singleSeriesAggregateFunction = defaults.singleSeriesAggregateFunction;
         }
 
+        @CustomType.Setter
         public Builder colorThresholds(@Nullable List<DashboardColoringRuleColorThreshold> colorThresholds) {
             this.colorThresholds = colorThresholds;
             return this;
@@ -75,19 +61,28 @@ public final class DashboardColoringRule {
         public Builder colorThresholds(DashboardColoringRuleColorThreshold... colorThresholds) {
             return colorThresholds(List.of(colorThresholds));
         }
+        @CustomType.Setter
         public Builder multipleSeriesAggregateFunction(String multipleSeriesAggregateFunction) {
             this.multipleSeriesAggregateFunction = Objects.requireNonNull(multipleSeriesAggregateFunction);
             return this;
         }
+        @CustomType.Setter
         public Builder scope(String scope) {
             this.scope = Objects.requireNonNull(scope);
             return this;
         }
+        @CustomType.Setter
         public Builder singleSeriesAggregateFunction(String singleSeriesAggregateFunction) {
             this.singleSeriesAggregateFunction = Objects.requireNonNull(singleSeriesAggregateFunction);
             return this;
-        }        public DashboardColoringRule build() {
-            return new DashboardColoringRule(colorThresholds, multipleSeriesAggregateFunction, scope, singleSeriesAggregateFunction);
+        }
+        public DashboardColoringRule build() {
+            final var o = new DashboardColoringRule();
+            o.colorThresholds = colorThresholds;
+            o.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
+            o.scope = scope;
+            o.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
+            return o;
         }
     }
 }

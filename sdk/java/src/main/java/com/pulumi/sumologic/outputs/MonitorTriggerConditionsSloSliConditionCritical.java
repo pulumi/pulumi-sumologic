@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorTriggerConditionsSloSliConditionCritical {
-    private final Double sliThreshold;
+    private Double sliThreshold;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsSloSliConditionCritical(@CustomType.Parameter("sliThreshold") Double sliThreshold) {
-        this.sliThreshold = sliThreshold;
-    }
-
+    private MonitorTriggerConditionsSloSliConditionCritical() {}
     public Double sliThreshold() {
         return this.sliThreshold;
     }
@@ -27,24 +23,24 @@ public final class MonitorTriggerConditionsSloSliConditionCritical {
     public static Builder builder(MonitorTriggerConditionsSloSliConditionCritical defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double sliThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsSloSliConditionCritical defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sliThreshold = defaults.sliThreshold;
         }
 
+        @CustomType.Setter
         public Builder sliThreshold(Double sliThreshold) {
             this.sliThreshold = Objects.requireNonNull(sliThreshold);
             return this;
-        }        public MonitorTriggerConditionsSloSliConditionCritical build() {
-            return new MonitorTriggerConditionsSloSliConditionCritical(sliThreshold);
+        }
+        public MonitorTriggerConditionsSloSliConditionCritical build() {
+            final var o = new MonitorTriggerConditionsSloSliConditionCritical();
+            o.sliThreshold = sliThreshold;
+            return o;
         }
     }
 }

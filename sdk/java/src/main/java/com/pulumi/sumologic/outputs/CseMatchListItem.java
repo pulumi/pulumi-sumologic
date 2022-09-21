@@ -15,35 +15,24 @@ public final class CseMatchListItem {
      * @return Match list item description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
      * 
      */
-    private final @Nullable String expiration;
+    private @Nullable String expiration;
     /**
      * @return The internal ID of the match list.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return Match list item value.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private CseMatchListItem(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("expiration") @Nullable String expiration,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("value") String value) {
-        this.description = description;
-        this.expiration = expiration;
-        this.id = id;
-        this.value = value;
-    }
-
+    private CseMatchListItem() {}
     /**
      * @return Match list item description.
      * 
@@ -80,17 +69,13 @@ public final class CseMatchListItem {
     public static Builder builder(CseMatchListItem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private @Nullable String expiration;
         private @Nullable String id;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseMatchListItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -99,23 +84,33 @@ public final class CseMatchListItem {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder expiration(@Nullable String expiration) {
             this.expiration = expiration;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public CseMatchListItem build() {
-            return new CseMatchListItem(description, expiration, id, value);
+        }
+        public CseMatchListItem build() {
+            final var o = new CseMatchListItem();
+            o.description = description;
+            o.expiration = expiration;
+            o.id = id;
+            o.value = value;
+            return o;
         }
     }
 }

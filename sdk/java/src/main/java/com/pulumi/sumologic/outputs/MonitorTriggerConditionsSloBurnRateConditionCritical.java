@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorTriggerConditionsSloBurnRateConditionCritical {
-    private final Double burnRateThreshold;
-    private final String timeRange;
+    private Double burnRateThreshold;
+    private String timeRange;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsSloBurnRateConditionCritical(
-        @CustomType.Parameter("burnRateThreshold") Double burnRateThreshold,
-        @CustomType.Parameter("timeRange") String timeRange) {
-        this.burnRateThreshold = burnRateThreshold;
-        this.timeRange = timeRange;
-    }
-
+    private MonitorTriggerConditionsSloBurnRateConditionCritical() {}
     public Double burnRateThreshold() {
         return this.burnRateThreshold;
     }
@@ -35,30 +28,32 @@ public final class MonitorTriggerConditionsSloBurnRateConditionCritical {
     public static Builder builder(MonitorTriggerConditionsSloBurnRateConditionCritical defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double burnRateThreshold;
         private String timeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsSloBurnRateConditionCritical defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.burnRateThreshold = defaults.burnRateThreshold;
     	      this.timeRange = defaults.timeRange;
         }
 
+        @CustomType.Setter
         public Builder burnRateThreshold(Double burnRateThreshold) {
             this.burnRateThreshold = Objects.requireNonNull(burnRateThreshold);
             return this;
         }
+        @CustomType.Setter
         public Builder timeRange(String timeRange) {
             this.timeRange = Objects.requireNonNull(timeRange);
             return this;
-        }        public MonitorTriggerConditionsSloBurnRateConditionCritical build() {
-            return new MonitorTriggerConditionsSloBurnRateConditionCritical(burnRateThreshold, timeRange);
+        }
+        public MonitorTriggerConditionsSloBurnRateConditionCritical build() {
+            final var o = new MonitorTriggerConditionsSloBurnRateConditionCritical();
+            o.burnRateThreshold = burnRateThreshold;
+            o.timeRange = timeRange;
+            return o;
         }
     }
 }

@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardLayoutGridLayoutStructure {
-    private final String key;
-    private final String structure;
+    private String key;
+    private String structure;
 
-    @CustomType.Constructor
-    private DashboardLayoutGridLayoutStructure(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("structure") String structure) {
-        this.key = key;
-        this.structure = structure;
-    }
-
+    private DashboardLayoutGridLayoutStructure() {}
     public String key() {
         return this.key;
     }
@@ -34,30 +27,32 @@ public final class DashboardLayoutGridLayoutStructure {
     public static Builder builder(DashboardLayoutGridLayoutStructure defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String structure;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardLayoutGridLayoutStructure defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.structure = defaults.structure;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder structure(String structure) {
             this.structure = Objects.requireNonNull(structure);
             return this;
-        }        public DashboardLayoutGridLayoutStructure build() {
-            return new DashboardLayoutGridLayoutStructure(key, structure);
+        }
+        public DashboardLayoutGridLayoutStructure build() {
+            final var o = new DashboardLayoutGridLayoutStructure();
+            o.key = key;
+            o.structure = structure;
+            return o;
         }
     }
 }

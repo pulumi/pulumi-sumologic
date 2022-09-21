@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
-    private final String relativeTime;
+    private String relativeTime;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(@CustomType.Parameter("relativeTime") String relativeTime) {
-        this.relativeTime = relativeTime;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange() {}
     public String relativeTime() {
         return this.relativeTime;
     }
@@ -27,24 +23,24 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String relativeTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.relativeTime = defaults.relativeTime;
         }
 
+        @CustomType.Setter
         public Builder relativeTime(String relativeTime) {
             this.relativeTime = Objects.requireNonNull(relativeTime);
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(relativeTime);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
+            o.relativeTime = relativeTime;
+            return o;
         }
     }
 }

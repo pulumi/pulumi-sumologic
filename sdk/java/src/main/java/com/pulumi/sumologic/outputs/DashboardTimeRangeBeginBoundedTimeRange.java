@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardTimeRangeBeginBoundedTimeRange {
-    private final DashboardTimeRangeBeginBoundedTimeRangeFrom from;
-    private final @Nullable DashboardTimeRangeBeginBoundedTimeRangeTo to;
+    private DashboardTimeRangeBeginBoundedTimeRangeFrom from;
+    private @Nullable DashboardTimeRangeBeginBoundedTimeRangeTo to;
 
-    @CustomType.Constructor
-    private DashboardTimeRangeBeginBoundedTimeRange(
-        @CustomType.Parameter("from") DashboardTimeRangeBeginBoundedTimeRangeFrom from,
-        @CustomType.Parameter("to") @Nullable DashboardTimeRangeBeginBoundedTimeRangeTo to) {
-        this.from = from;
-        this.to = to;
-    }
-
+    private DashboardTimeRangeBeginBoundedTimeRange() {}
     public DashboardTimeRangeBeginBoundedTimeRangeFrom from() {
         return this.from;
     }
@@ -37,30 +30,32 @@ public final class DashboardTimeRangeBeginBoundedTimeRange {
     public static Builder builder(DashboardTimeRangeBeginBoundedTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private DashboardTimeRangeBeginBoundedTimeRangeFrom from;
         private @Nullable DashboardTimeRangeBeginBoundedTimeRangeTo to;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRangeBeginBoundedTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.from = defaults.from;
     	      this.to = defaults.to;
         }
 
+        @CustomType.Setter
         public Builder from(DashboardTimeRangeBeginBoundedTimeRangeFrom from) {
             this.from = Objects.requireNonNull(from);
             return this;
         }
+        @CustomType.Setter
         public Builder to(@Nullable DashboardTimeRangeBeginBoundedTimeRangeTo to) {
             this.to = to;
             return this;
-        }        public DashboardTimeRangeBeginBoundedTimeRange build() {
-            return new DashboardTimeRangeBeginBoundedTimeRange(from, to);
+        }
+        public DashboardTimeRangeBeginBoundedTimeRange build() {
+            final var o = new DashboardTimeRangeBeginBoundedTimeRange();
+            o.from = from;
+            o.to = to;
+            return o;
         }
     }
 }

@@ -11,20 +11,11 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsStaticConditionWarning {
-    private final MonitorTriggerConditionsLogsStaticConditionWarningAlert alert;
-    private final MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution;
-    private final String timeRange;
+    private MonitorTriggerConditionsLogsStaticConditionWarningAlert alert;
+    private MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution;
+    private String timeRange;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsLogsStaticConditionWarning(
-        @CustomType.Parameter("alert") MonitorTriggerConditionsLogsStaticConditionWarningAlert alert,
-        @CustomType.Parameter("resolution") MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution,
-        @CustomType.Parameter("timeRange") String timeRange) {
-        this.alert = alert;
-        this.resolution = resolution;
-        this.timeRange = timeRange;
-    }
-
+    private MonitorTriggerConditionsLogsStaticConditionWarning() {}
     public MonitorTriggerConditionsLogsStaticConditionWarningAlert alert() {
         return this.alert;
     }
@@ -42,16 +33,12 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarning {
     public static Builder builder(MonitorTriggerConditionsLogsStaticConditionWarning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private MonitorTriggerConditionsLogsStaticConditionWarningAlert alert;
         private MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution;
         private String timeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsLogsStaticConditionWarning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alert = defaults.alert;
@@ -59,19 +46,27 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarning {
     	      this.timeRange = defaults.timeRange;
         }
 
+        @CustomType.Setter
         public Builder alert(MonitorTriggerConditionsLogsStaticConditionWarningAlert alert) {
             this.alert = Objects.requireNonNull(alert);
             return this;
         }
+        @CustomType.Setter
         public Builder resolution(MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution) {
             this.resolution = Objects.requireNonNull(resolution);
             return this;
         }
+        @CustomType.Setter
         public Builder timeRange(String timeRange) {
             this.timeRange = Objects.requireNonNull(timeRange);
             return this;
-        }        public MonitorTriggerConditionsLogsStaticConditionWarning build() {
-            return new MonitorTriggerConditionsLogsStaticConditionWarning(alert, resolution, timeRange);
+        }
+        public MonitorTriggerConditionsLogsStaticConditionWarning build() {
+            final var o = new MonitorTriggerConditionsLogsStaticConditionWarning();
+            o.alert = alert;
+            o.resolution = resolution;
+            o.timeRange = timeRange;
+            return o;
         }
     }
 }

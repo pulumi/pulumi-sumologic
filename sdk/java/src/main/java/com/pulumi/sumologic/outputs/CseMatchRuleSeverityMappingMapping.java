@@ -14,28 +14,19 @@ public final class CseMatchRuleSeverityMappingMapping {
      * @return The record value to map from
      * 
      */
-    private final String from;
+    private String from;
     /**
      * @return The severity value to map to
      * 
      */
-    private final Integer to;
+    private Integer to;
     /**
      * @return Must be set to &#34;eq&#34; currently
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private CseMatchRuleSeverityMappingMapping(
-        @CustomType.Parameter("from") String from,
-        @CustomType.Parameter("to") Integer to,
-        @CustomType.Parameter("type") String type) {
-        this.from = from;
-        this.to = to;
-        this.type = type;
-    }
-
+    private CseMatchRuleSeverityMappingMapping() {}
     /**
      * @return The record value to map from
      * 
@@ -65,16 +56,12 @@ public final class CseMatchRuleSeverityMappingMapping {
     public static Builder builder(CseMatchRuleSeverityMappingMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String from;
         private Integer to;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseMatchRuleSeverityMappingMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.from = defaults.from;
@@ -82,19 +69,27 @@ public final class CseMatchRuleSeverityMappingMapping {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder from(String from) {
             this.from = Objects.requireNonNull(from);
             return this;
         }
+        @CustomType.Setter
         public Builder to(Integer to) {
             this.to = Objects.requireNonNull(to);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public CseMatchRuleSeverityMappingMapping build() {
-            return new CseMatchRuleSeverityMappingMapping(from, to, type);
+        }
+        public CseMatchRuleSeverityMappingMapping build() {
+            final var o = new CseMatchRuleSeverityMappingMapping();
+            o.from = from;
+            o.to = to;
+            o.type = type;
+            return o;
         }
     }
 }

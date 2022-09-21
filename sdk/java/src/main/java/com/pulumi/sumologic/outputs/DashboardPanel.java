@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanel {
-    private final @Nullable DashboardPanelSumoSearchPanel sumoSearchPanel;
-    private final @Nullable DashboardPanelTextPanel textPanel;
+    private @Nullable DashboardPanelSumoSearchPanel sumoSearchPanel;
+    private @Nullable DashboardPanelTextPanel textPanel;
 
-    @CustomType.Constructor
-    private DashboardPanel(
-        @CustomType.Parameter("sumoSearchPanel") @Nullable DashboardPanelSumoSearchPanel sumoSearchPanel,
-        @CustomType.Parameter("textPanel") @Nullable DashboardPanelTextPanel textPanel) {
-        this.sumoSearchPanel = sumoSearchPanel;
-        this.textPanel = textPanel;
-    }
-
+    private DashboardPanel() {}
     public Optional<DashboardPanelSumoSearchPanel> sumoSearchPanel() {
         return Optional.ofNullable(this.sumoSearchPanel);
     }
@@ -37,30 +30,32 @@ public final class DashboardPanel {
     public static Builder builder(DashboardPanel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardPanelSumoSearchPanel sumoSearchPanel;
         private @Nullable DashboardPanelTextPanel textPanel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sumoSearchPanel = defaults.sumoSearchPanel;
     	      this.textPanel = defaults.textPanel;
         }
 
+        @CustomType.Setter
         public Builder sumoSearchPanel(@Nullable DashboardPanelSumoSearchPanel sumoSearchPanel) {
             this.sumoSearchPanel = sumoSearchPanel;
             return this;
         }
+        @CustomType.Setter
         public Builder textPanel(@Nullable DashboardPanelTextPanel textPanel) {
             this.textPanel = textPanel;
             return this;
-        }        public DashboardPanel build() {
-            return new DashboardPanel(sumoSearchPanel, textPanel);
+        }
+        public DashboardPanel build() {
+            final var o = new DashboardPanel();
+            o.sumoSearchPanel = sumoSearchPanel;
+            o.textPanel = textPanel;
+            return o;
         }
     }
 }

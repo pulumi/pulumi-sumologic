@@ -4,9 +4,12 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.sumologic.outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
+import com.pulumi.sumologic.outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -15,21 +18,19 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
      * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      * 
      */
-    private final String entityType;
+    private String entityType;
+    /**
+     * @return Next level without a condition.
+     * 
+     */
+    private @Nullable HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel nextLevel;
     /**
      * @return Zero or more next levels with conditions.
      * 
      */
-    private final @Nullable List<String> nextLevelsWithConditions;
+    private @Nullable List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions;
 
-    @CustomType.Constructor
-    private HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(
-        @CustomType.Parameter("entityType") String entityType,
-        @CustomType.Parameter("nextLevelsWithConditions") @Nullable List<String> nextLevelsWithConditions) {
-        this.entityType = entityType;
-        this.nextLevelsWithConditions = nextLevelsWithConditions;
-    }
-
+    private HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel() {}
     /**
      * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      * 
@@ -38,10 +39,17 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
         return this.entityType;
     }
     /**
+     * @return Next level without a condition.
+     * 
+     */
+    public Optional<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel> nextLevel() {
+        return Optional.ofNullable(this.nextLevel);
+    }
+    /**
      * @return Zero or more next levels with conditions.
      * 
      */
-    public List<String> nextLevelsWithConditions() {
+    public List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions() {
         return this.nextLevelsWithConditions == null ? List.of() : this.nextLevelsWithConditions;
     }
 
@@ -52,33 +60,43 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
     public static Builder builder(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String entityType;
-        private @Nullable List<String> nextLevelsWithConditions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        private @Nullable HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel nextLevel;
+        private @Nullable List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions;
+        public Builder() {}
         public Builder(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityType = defaults.entityType;
+    	      this.nextLevel = defaults.nextLevel;
     	      this.nextLevelsWithConditions = defaults.nextLevelsWithConditions;
         }
 
+        @CustomType.Setter
         public Builder entityType(String entityType) {
             this.entityType = Objects.requireNonNull(entityType);
             return this;
         }
-        public Builder nextLevelsWithConditions(@Nullable List<String> nextLevelsWithConditions) {
+        @CustomType.Setter
+        public Builder nextLevel(@Nullable HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel nextLevel) {
+            this.nextLevel = nextLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nextLevelsWithConditions(@Nullable List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions) {
             this.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }
-        public Builder nextLevelsWithConditions(String... nextLevelsWithConditions) {
+        public Builder nextLevelsWithConditions(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition... nextLevelsWithConditions) {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
-        }        public HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel build() {
-            return new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel(entityType, nextLevelsWithConditions);
+        }
+        public HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel build() {
+            final var o = new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel();
+            o.entityType = entityType;
+            o.nextLevel = nextLevel;
+            o.nextLevelsWithConditions = nextLevelsWithConditions;
+            return o;
         }
     }
 }

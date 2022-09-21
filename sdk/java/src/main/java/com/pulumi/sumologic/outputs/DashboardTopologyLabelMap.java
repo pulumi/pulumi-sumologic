@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardTopologyLabelMap {
-    private final List<DashboardTopologyLabelMapData> datas;
+    private List<DashboardTopologyLabelMapData> datas;
 
-    @CustomType.Constructor
-    private DashboardTopologyLabelMap(@CustomType.Parameter("datas") List<DashboardTopologyLabelMapData> datas) {
-        this.datas = datas;
-    }
-
+    private DashboardTopologyLabelMap() {}
     public List<DashboardTopologyLabelMapData> datas() {
         return this.datas;
     }
@@ -28,27 +24,27 @@ public final class DashboardTopologyLabelMap {
     public static Builder builder(DashboardTopologyLabelMap defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<DashboardTopologyLabelMapData> datas;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTopologyLabelMap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datas = defaults.datas;
         }
 
+        @CustomType.Setter
         public Builder datas(List<DashboardTopologyLabelMapData> datas) {
             this.datas = Objects.requireNonNull(datas);
             return this;
         }
         public Builder datas(DashboardTopologyLabelMapData... datas) {
             return datas(List.of(datas));
-        }        public DashboardTopologyLabelMap build() {
-            return new DashboardTopologyLabelMap(datas);
+        }
+        public DashboardTopologyLabelMap build() {
+            final var o = new DashboardTopologyLabelMap();
+            o.datas = datas;
+            return o;
         }
     }
 }

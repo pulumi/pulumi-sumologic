@@ -9,21 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class CseChainRuleEntitySelector {
-    private final String entityType;
+    private String entityType;
     /**
      * @return The expression for which records to match on
      * 
      */
-    private final String expression;
+    private String expression;
 
-    @CustomType.Constructor
-    private CseChainRuleEntitySelector(
-        @CustomType.Parameter("entityType") String entityType,
-        @CustomType.Parameter("expression") String expression) {
-        this.entityType = entityType;
-        this.expression = expression;
-    }
-
+    private CseChainRuleEntitySelector() {}
     public String entityType() {
         return this.entityType;
     }
@@ -42,30 +35,32 @@ public final class CseChainRuleEntitySelector {
     public static Builder builder(CseChainRuleEntitySelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String entityType;
         private String expression;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseChainRuleEntitySelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityType = defaults.entityType;
     	      this.expression = defaults.expression;
         }
 
+        @CustomType.Setter
         public Builder entityType(String entityType) {
             this.entityType = Objects.requireNonNull(entityType);
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
-        }        public CseChainRuleEntitySelector build() {
-            return new CseChainRuleEntitySelector(entityType, expression);
+        }
+        public CseChainRuleEntitySelector build() {
+            final var o = new CseChainRuleEntitySelector();
+            o.entityType = entityType;
+            o.expression = expression;
+            return o;
         }
     }
 }

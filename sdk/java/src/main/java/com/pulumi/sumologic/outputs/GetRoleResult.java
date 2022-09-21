@@ -10,26 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRoleResult {
-    private final List<String> capabilities;
-    private final String description;
-    private final String filterPredicate;
-    private final String id;
-    private final String name;
+    private List<String> capabilities;
+    private String description;
+    private String filterPredicate;
+    private String id;
+    private String name;
 
-    @CustomType.Constructor
-    private GetRoleResult(
-        @CustomType.Parameter("capabilities") List<String> capabilities,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("filterPredicate") String filterPredicate,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name) {
-        this.capabilities = capabilities;
-        this.description = description;
-        this.filterPredicate = filterPredicate;
-        this.id = id;
-        this.name = name;
-    }
-
+    private GetRoleResult() {}
     public List<String> capabilities() {
         return this.capabilities;
     }
@@ -53,18 +40,14 @@ public final class GetRoleResult {
     public static Builder builder(GetRoleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> capabilities;
         private String description;
         private String filterPredicate;
         private String id;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capabilities = defaults.capabilities;
@@ -74,6 +57,7 @@ public final class GetRoleResult {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder capabilities(List<String> capabilities) {
             this.capabilities = Objects.requireNonNull(capabilities);
             return this;
@@ -81,23 +65,34 @@ public final class GetRoleResult {
         public Builder capabilities(String... capabilities) {
             return capabilities(List.of(capabilities));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder filterPredicate(String filterPredicate) {
             this.filterPredicate = Objects.requireNonNull(filterPredicate);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetRoleResult build() {
-            return new GetRoleResult(capabilities, description, filterPredicate, id, name);
+        }
+        public GetRoleResult build() {
+            final var o = new GetRoleResult();
+            o.capabilities = capabilities;
+            o.description = description;
+            o.filterPredicate = filterPredicate;
+            o.id = id;
+            o.name = name;
+            return o;
         }
     }
 }

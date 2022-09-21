@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpSourceAuthentication {
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GcpSourceAuthentication(@CustomType.Parameter("type") @Nullable String type) {
-        this.type = type;
-    }
-
+    private GcpSourceAuthentication() {}
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -29,24 +25,24 @@ public final class GcpSourceAuthentication {
     public static Builder builder(GcpSourceAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GcpSourceAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GcpSourceAuthentication build() {
-            return new GcpSourceAuthentication(type);
+        }
+        public GcpSourceAuthentication build() {
+            final var o = new GcpSourceAuthentication();
+            o.type = type;
+            return o;
         }
     }
 }

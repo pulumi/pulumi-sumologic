@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorTriggerConditionsSloBurnRateConditionWarning {
-    private final Double burnRateThreshold;
-    private final String timeRange;
+    private Double burnRateThreshold;
+    private String timeRange;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsSloBurnRateConditionWarning(
-        @CustomType.Parameter("burnRateThreshold") Double burnRateThreshold,
-        @CustomType.Parameter("timeRange") String timeRange) {
-        this.burnRateThreshold = burnRateThreshold;
-        this.timeRange = timeRange;
-    }
-
+    private MonitorTriggerConditionsSloBurnRateConditionWarning() {}
     public Double burnRateThreshold() {
         return this.burnRateThreshold;
     }
@@ -35,30 +28,32 @@ public final class MonitorTriggerConditionsSloBurnRateConditionWarning {
     public static Builder builder(MonitorTriggerConditionsSloBurnRateConditionWarning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double burnRateThreshold;
         private String timeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsSloBurnRateConditionWarning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.burnRateThreshold = defaults.burnRateThreshold;
     	      this.timeRange = defaults.timeRange;
         }
 
+        @CustomType.Setter
         public Builder burnRateThreshold(Double burnRateThreshold) {
             this.burnRateThreshold = Objects.requireNonNull(burnRateThreshold);
             return this;
         }
+        @CustomType.Setter
         public Builder timeRange(String timeRange) {
             this.timeRange = Objects.requireNonNull(timeRange);
             return this;
-        }        public MonitorTriggerConditionsSloBurnRateConditionWarning build() {
-            return new MonitorTriggerConditionsSloBurnRateConditionWarning(burnRateThreshold, timeRange);
+        }
+        public MonitorTriggerConditionsSloBurnRateConditionWarning build() {
+            final var o = new MonitorTriggerConditionsSloBurnRateConditionWarning();
+            o.burnRateThreshold = burnRateThreshold;
+            o.timeRange = timeRange;
+            return o;
         }
     }
 }

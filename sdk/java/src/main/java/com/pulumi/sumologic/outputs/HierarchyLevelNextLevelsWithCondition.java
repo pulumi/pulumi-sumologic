@@ -14,17 +14,10 @@ public final class HierarchyLevelNextLevelsWithCondition {
      * @return Condition to be checked against for level.entityType value, for now full string match.
      * 
      */
-    private final String condition;
-    private final HierarchyLevelNextLevelsWithConditionLevel level;
+    private String condition;
+    private HierarchyLevelNextLevelsWithConditionLevel level;
 
-    @CustomType.Constructor
-    private HierarchyLevelNextLevelsWithCondition(
-        @CustomType.Parameter("condition") String condition,
-        @CustomType.Parameter("level") HierarchyLevelNextLevelsWithConditionLevel level) {
-        this.condition = condition;
-        this.level = level;
-    }
-
+    private HierarchyLevelNextLevelsWithCondition() {}
     /**
      * @return Condition to be checked against for level.entityType value, for now full string match.
      * 
@@ -43,30 +36,32 @@ public final class HierarchyLevelNextLevelsWithCondition {
     public static Builder builder(HierarchyLevelNextLevelsWithCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String condition;
         private HierarchyLevelNextLevelsWithConditionLevel level;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HierarchyLevelNextLevelsWithCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
     	      this.level = defaults.level;
         }
 
+        @CustomType.Setter
         public Builder condition(String condition) {
             this.condition = Objects.requireNonNull(condition);
             return this;
         }
+        @CustomType.Setter
         public Builder level(HierarchyLevelNextLevelsWithConditionLevel level) {
             this.level = Objects.requireNonNull(level);
             return this;
-        }        public HierarchyLevelNextLevelsWithCondition build() {
-            return new HierarchyLevelNextLevelsWithCondition(condition, level);
+        }
+        public HierarchyLevelNextLevelsWithCondition build() {
+            final var o = new HierarchyLevelNextLevelsWithCondition();
+            o.condition = condition;
+            o.level = level;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
-    private final Integer epochMillis;
+    private Integer epochMillis;
 
-    @CustomType.Constructor
-    private DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange(@CustomType.Parameter("epochMillis") Integer epochMillis) {
-        this.epochMillis = epochMillis;
-    }
-
+    private DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange() {}
     public Integer epochMillis() {
         return this.epochMillis;
     }
@@ -27,24 +23,24 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
     public static Builder builder(DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer epochMillis;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.epochMillis = defaults.epochMillis;
         }
 
+        @CustomType.Setter
         public Builder epochMillis(Integer epochMillis) {
             this.epochMillis = Objects.requireNonNull(epochMillis);
             return this;
-        }        public DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange build() {
-            return new DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange(epochMillis);
+        }
+        public DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange build() {
+            final var o = new DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange();
+            o.epochMillis = epochMillis;
+            return o;
         }
     }
 }

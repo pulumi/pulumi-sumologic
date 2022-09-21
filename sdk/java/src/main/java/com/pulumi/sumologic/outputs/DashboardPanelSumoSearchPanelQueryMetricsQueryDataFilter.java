@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter {
-    private final String key;
-    private final @Nullable Boolean negation;
-    private final String value;
+    private String key;
+    private @Nullable Boolean negation;
+    private String value;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("negation") @Nullable Boolean negation,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.negation = negation;
-        this.value = value;
-    }
-
+    private DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter() {}
     public String key() {
         return this.key;
     }
@@ -43,16 +34,12 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter {
     public static Builder builder(DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private @Nullable Boolean negation;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -60,19 +47,27 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder negation(@Nullable Boolean negation) {
             this.negation = negation;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter build() {
-            return new DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter(key, negation, value);
+        }
+        public DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter build() {
+            final var o = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter();
+            o.key = key;
+            o.negation = negation;
+            o.value = value;
+            return o;
         }
     }
 }

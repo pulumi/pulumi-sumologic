@@ -18,15 +18,21 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
 
+        /// <summary>
+        /// Next level without a condition.
+        /// </summary>
+        [Input("nextLevel")]
+        public Input<Inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs>? NextLevel { get; set; }
+
         [Input("nextLevelsWithConditions")]
-        private InputList<string>? _nextLevelsWithConditions;
+        private InputList<Inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs>? _nextLevelsWithConditions;
 
         /// <summary>
         /// Zero or more next levels with conditions.
         /// </summary>
-        public InputList<string> NextLevelsWithConditions
+        public InputList<Inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs> NextLevelsWithConditions
         {
-            get => _nextLevelsWithConditions ?? (_nextLevelsWithConditions = new InputList<string>());
+            get => _nextLevelsWithConditions ?? (_nextLevelsWithConditions = new InputList<Inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs>());
             set => _nextLevelsWithConditions = value;
         }
 

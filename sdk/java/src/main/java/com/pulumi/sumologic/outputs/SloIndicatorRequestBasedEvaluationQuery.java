@@ -16,21 +16,14 @@ public final class SloIndicatorRequestBasedEvaluationQuery {
      * , `Threshold`.
      * 
      */
-    private final String queryGroupType;
+    private String queryGroupType;
     /**
      * @return List of queries to use.
      * 
      */
-    private final List<SloIndicatorRequestBasedEvaluationQueryQueryGroup> queryGroups;
+    private List<SloIndicatorRequestBasedEvaluationQueryQueryGroup> queryGroups;
 
-    @CustomType.Constructor
-    private SloIndicatorRequestBasedEvaluationQuery(
-        @CustomType.Parameter("queryGroupType") String queryGroupType,
-        @CustomType.Parameter("queryGroups") List<SloIndicatorRequestBasedEvaluationQueryQueryGroup> queryGroups) {
-        this.queryGroupType = queryGroupType;
-        this.queryGroups = queryGroups;
-    }
-
+    private SloIndicatorRequestBasedEvaluationQuery() {}
     /**
      * @return The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
      * , `Threshold`.
@@ -54,33 +47,35 @@ public final class SloIndicatorRequestBasedEvaluationQuery {
     public static Builder builder(SloIndicatorRequestBasedEvaluationQuery defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String queryGroupType;
         private List<SloIndicatorRequestBasedEvaluationQueryQueryGroup> queryGroups;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloIndicatorRequestBasedEvaluationQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryGroupType = defaults.queryGroupType;
     	      this.queryGroups = defaults.queryGroups;
         }
 
+        @CustomType.Setter
         public Builder queryGroupType(String queryGroupType) {
             this.queryGroupType = Objects.requireNonNull(queryGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder queryGroups(List<SloIndicatorRequestBasedEvaluationQueryQueryGroup> queryGroups) {
             this.queryGroups = Objects.requireNonNull(queryGroups);
             return this;
         }
         public Builder queryGroups(SloIndicatorRequestBasedEvaluationQueryQueryGroup... queryGroups) {
             return queryGroups(List.of(queryGroups));
-        }        public SloIndicatorRequestBasedEvaluationQuery build() {
-            return new SloIndicatorRequestBasedEvaluationQuery(queryGroupType, queryGroups);
+        }
+        public SloIndicatorRequestBasedEvaluationQuery build() {
+            final var o = new SloIndicatorRequestBasedEvaluationQuery();
+            o.queryGroupType = queryGroupType;
+            o.queryGroups = queryGroups;
+            return o;
         }
     }
 }

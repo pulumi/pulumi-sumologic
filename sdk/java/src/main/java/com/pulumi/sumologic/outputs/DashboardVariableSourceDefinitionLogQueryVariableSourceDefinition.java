@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition {
-    private final String field;
-    private final String query;
+    private String field;
+    private String query;
 
-    @CustomType.Constructor
-    private DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition(
-        @CustomType.Parameter("field") String field,
-        @CustomType.Parameter("query") String query) {
-        this.field = field;
-        this.query = query;
-    }
-
+    private DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition() {}
     public String field() {
         return this.field;
     }
@@ -34,30 +27,32 @@ public final class DashboardVariableSourceDefinitionLogQueryVariableSourceDefini
     public static Builder builder(DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String field;
         private String query;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.field = defaults.field;
     	      this.query = defaults.query;
         }
 
+        @CustomType.Setter
         public Builder field(String field) {
             this.field = Objects.requireNonNull(field);
             return this;
         }
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
-        }        public DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition build() {
-            return new DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition(field, query);
+        }
+        public DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition build() {
+            final var o = new DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition();
+            o.field = field;
+            o.query = query;
+            return o;
         }
     }
 }

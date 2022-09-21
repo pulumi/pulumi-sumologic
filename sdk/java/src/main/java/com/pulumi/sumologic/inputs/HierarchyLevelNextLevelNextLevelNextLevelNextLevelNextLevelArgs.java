@@ -5,6 +5,8 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.sumologic.inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs;
+import com.pulumi.sumologic.inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,17 +34,32 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelAr
     }
 
     /**
+     * Next level without a condition.
+     * 
+     */
+    @Import(name="nextLevel")
+    private @Nullable Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs> nextLevel;
+
+    /**
+     * @return Next level without a condition.
+     * 
+     */
+    public Optional<Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs>> nextLevel() {
+        return Optional.ofNullable(this.nextLevel);
+    }
+
+    /**
      * Zero or more next levels with conditions.
      * 
      */
     @Import(name="nextLevelsWithConditions")
-    private @Nullable Output<List<String>> nextLevelsWithConditions;
+    private @Nullable Output<List<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions;
 
     /**
      * @return Zero or more next levels with conditions.
      * 
      */
-    public Optional<Output<List<String>>> nextLevelsWithConditions() {
+    public Optional<Output<List<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs>>> nextLevelsWithConditions() {
         return Optional.ofNullable(this.nextLevelsWithConditions);
     }
 
@@ -50,6 +67,7 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelAr
 
     private HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs(HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs $) {
         this.entityType = $.entityType;
+        this.nextLevel = $.nextLevel;
         this.nextLevelsWithConditions = $.nextLevelsWithConditions;
     }
 
@@ -93,12 +111,33 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelAr
         }
 
         /**
+         * @param nextLevel Next level without a condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextLevel(@Nullable Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs> nextLevel) {
+            $.nextLevel = nextLevel;
+            return this;
+        }
+
+        /**
+         * @param nextLevel Next level without a condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextLevel(HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs nextLevel) {
+            return nextLevel(Output.of(nextLevel));
+        }
+
+        /**
          * @param nextLevelsWithConditions Zero or more next levels with conditions.
          * 
          * @return builder
          * 
          */
-        public Builder nextLevelsWithConditions(@Nullable Output<List<String>> nextLevelsWithConditions) {
+        public Builder nextLevelsWithConditions(@Nullable Output<List<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions) {
             $.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }
@@ -109,7 +148,7 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelAr
          * @return builder
          * 
          */
-        public Builder nextLevelsWithConditions(List<String> nextLevelsWithConditions) {
+        public Builder nextLevelsWithConditions(List<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs> nextLevelsWithConditions) {
             return nextLevelsWithConditions(Output.of(nextLevelsWithConditions));
         }
 
@@ -119,7 +158,7 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelAr
          * @return builder
          * 
          */
-        public Builder nextLevelsWithConditions(String... nextLevelsWithConditions) {
+        public Builder nextLevelsWithConditions(HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs... nextLevelsWithConditions) {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
         }
 

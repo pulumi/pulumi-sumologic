@@ -20,57 +20,34 @@ public final class S3SourcePath {
      * @return The name of the bucket.
      * 
      */
-    private final @Nullable String bucketName;
-    private final @Nullable List<S3SourcePathCustomService> customServices;
-    private final @Nullable List<String> limitToNamespaces;
-    private final @Nullable List<String> limitToRegions;
-    private final @Nullable List<String> limitToServices;
+    private @Nullable String bucketName;
+    private @Nullable List<S3SourcePathCustomService> customServices;
+    private @Nullable List<String> limitToNamespaces;
+    private @Nullable List<String> limitToRegions;
+    private @Nullable List<String> limitToServices;
     /**
      * @return The path to the data.
      * 
      */
-    private final @Nullable String pathExpression;
+    private @Nullable String pathExpression;
     /**
      * @return This is a computed field for SNS topic/subscription ARN.
      * 
      */
-    private final @Nullable List<S3SourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
-    private final @Nullable List<S3SourcePathTagFilter> tagFilters;
+    private @Nullable List<S3SourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
+    private @Nullable List<S3SourcePathTagFilter> tagFilters;
     /**
      * @return type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Whether to Use AWS versioned APIs. Default is set to `true`. If you&#39;re collecting from a Cisco Umbrella bucket this must be set to `false`.
      * 
      */
-    private final @Nullable Boolean useVersionedApi;
+    private @Nullable Boolean useVersionedApi;
 
-    @CustomType.Constructor
-    private S3SourcePath(
-        @CustomType.Parameter("bucketName") @Nullable String bucketName,
-        @CustomType.Parameter("customServices") @Nullable List<S3SourcePathCustomService> customServices,
-        @CustomType.Parameter("limitToNamespaces") @Nullable List<String> limitToNamespaces,
-        @CustomType.Parameter("limitToRegions") @Nullable List<String> limitToRegions,
-        @CustomType.Parameter("limitToServices") @Nullable List<String> limitToServices,
-        @CustomType.Parameter("pathExpression") @Nullable String pathExpression,
-        @CustomType.Parameter("snsTopicOrSubscriptionArns") @Nullable List<S3SourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
-        @CustomType.Parameter("tagFilters") @Nullable List<S3SourcePathTagFilter> tagFilters,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("useVersionedApi") @Nullable Boolean useVersionedApi) {
-        this.bucketName = bucketName;
-        this.customServices = customServices;
-        this.limitToNamespaces = limitToNamespaces;
-        this.limitToRegions = limitToRegions;
-        this.limitToServices = limitToServices;
-        this.pathExpression = pathExpression;
-        this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
-        this.tagFilters = tagFilters;
-        this.type = type;
-        this.useVersionedApi = useVersionedApi;
-    }
-
+    private S3SourcePath() {}
     /**
      * @return The name of the bucket.
      * 
@@ -129,7 +106,7 @@ public final class S3SourcePath {
     public static Builder builder(S3SourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
         private @Nullable List<S3SourcePathCustomService> customServices;
@@ -141,11 +118,7 @@ public final class S3SourcePath {
         private @Nullable List<S3SourcePathTagFilter> tagFilters;
         private String type;
         private @Nullable Boolean useVersionedApi;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(S3SourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -160,10 +133,12 @@ public final class S3SourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
             this.bucketName = bucketName;
             return this;
         }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<S3SourcePathCustomService> customServices) {
             this.customServices = customServices;
             return this;
@@ -171,6 +146,7 @@ public final class S3SourcePath {
         public Builder customServices(S3SourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
         }
+        @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
             this.limitToNamespaces = limitToNamespaces;
             return this;
@@ -178,6 +154,7 @@ public final class S3SourcePath {
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
+        @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
             this.limitToRegions = limitToRegions;
             return this;
@@ -185,6 +162,7 @@ public final class S3SourcePath {
         public Builder limitToRegions(String... limitToRegions) {
             return limitToRegions(List.of(limitToRegions));
         }
+        @CustomType.Setter
         public Builder limitToServices(@Nullable List<String> limitToServices) {
             this.limitToServices = limitToServices;
             return this;
@@ -192,10 +170,12 @@ public final class S3SourcePath {
         public Builder limitToServices(String... limitToServices) {
             return limitToServices(List.of(limitToServices));
         }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
             this.pathExpression = pathExpression;
             return this;
         }
+        @CustomType.Setter
         public Builder snsTopicOrSubscriptionArns(@Nullable List<S3SourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns) {
             this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             return this;
@@ -203,6 +183,7 @@ public final class S3SourcePath {
         public Builder snsTopicOrSubscriptionArns(S3SourcePathSnsTopicOrSubscriptionArn... snsTopicOrSubscriptionArns) {
             return snsTopicOrSubscriptionArns(List.of(snsTopicOrSubscriptionArns));
         }
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<S3SourcePathTagFilter> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -210,15 +191,29 @@ public final class S3SourcePath {
         public Builder tagFilters(S3SourcePathTagFilter... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder useVersionedApi(@Nullable Boolean useVersionedApi) {
             this.useVersionedApi = useVersionedApi;
             return this;
-        }        public S3SourcePath build() {
-            return new S3SourcePath(bucketName, customServices, limitToNamespaces, limitToRegions, limitToServices, pathExpression, snsTopicOrSubscriptionArns, tagFilters, type, useVersionedApi);
+        }
+        public S3SourcePath build() {
+            final var o = new S3SourcePath();
+            o.bucketName = bucketName;
+            o.customServices = customServices;
+            o.limitToNamespaces = limitToNamespaces;
+            o.limitToRegions = limitToRegions;
+            o.limitToServices = limitToServices;
+            o.pathExpression = pathExpression;
+            o.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
+            o.tagFilters = tagFilters;
+            o.type = type;
+            o.useVersionedApi = useVersionedApi;
+            return o;
         }
     }
 }

@@ -18,28 +18,19 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel 
      * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      * 
      */
-    private final String entityType;
+    private String entityType;
     /**
      * @return Next level without a condition.
      * 
      */
-    private final @Nullable HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel nextLevel;
+    private @Nullable HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel nextLevel;
     /**
      * @return Zero or more next levels with conditions.
      * 
      */
-    private final @Nullable List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions;
+    private @Nullable List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions;
 
-    @CustomType.Constructor
-    private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel(
-        @CustomType.Parameter("entityType") String entityType,
-        @CustomType.Parameter("nextLevel") @Nullable HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel nextLevel,
-        @CustomType.Parameter("nextLevelsWithConditions") @Nullable List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions) {
-        this.entityType = entityType;
-        this.nextLevel = nextLevel;
-        this.nextLevelsWithConditions = nextLevelsWithConditions;
-    }
-
+    private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel() {}
     /**
      * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      * 
@@ -69,16 +60,12 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel 
     public static Builder builder(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String entityType;
         private @Nullable HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel nextLevel;
         private @Nullable List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityType = defaults.entityType;
@@ -86,22 +73,30 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel 
     	      this.nextLevelsWithConditions = defaults.nextLevelsWithConditions;
         }
 
+        @CustomType.Setter
         public Builder entityType(String entityType) {
             this.entityType = Objects.requireNonNull(entityType);
             return this;
         }
+        @CustomType.Setter
         public Builder nextLevel(@Nullable HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel nextLevel) {
             this.nextLevel = nextLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder nextLevelsWithConditions(@Nullable List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions) {
             this.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }
         public Builder nextLevelsWithConditions(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition... nextLevelsWithConditions) {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
-        }        public HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel build() {
-            return new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel(entityType, nextLevel, nextLevelsWithConditions);
+        }
+        public HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel build() {
+            final var o = new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel();
+            o.entityType = entityType;
+            o.nextLevel = nextLevel;
+            o.nextLevelsWithConditions = nextLevelsWithConditions;
+            return o;
         }
     }
 }

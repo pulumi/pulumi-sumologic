@@ -9,27 +9,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCseLogMappingVendorProductResult {
-    private final String guid;
+    private String guid;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String product;
-    private final String vendor;
+    private String id;
+    private String product;
+    private String vendor;
 
-    @CustomType.Constructor
-    private GetCseLogMappingVendorProductResult(
-        @CustomType.Parameter("guid") String guid,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("product") String product,
-        @CustomType.Parameter("vendor") String vendor) {
-        this.guid = guid;
-        this.id = id;
-        this.product = product;
-        this.vendor = vendor;
-    }
-
+    private GetCseLogMappingVendorProductResult() {}
     public String guid() {
         return this.guid;
     }
@@ -54,17 +43,13 @@ public final class GetCseLogMappingVendorProductResult {
     public static Builder builder(GetCseLogMappingVendorProductResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String guid;
         private String id;
         private String product;
         private String vendor;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCseLogMappingVendorProductResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.guid = defaults.guid;
@@ -73,23 +58,33 @@ public final class GetCseLogMappingVendorProductResult {
     	      this.vendor = defaults.vendor;
         }
 
+        @CustomType.Setter
         public Builder guid(String guid) {
             this.guid = Objects.requireNonNull(guid);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder product(String product) {
             this.product = Objects.requireNonNull(product);
             return this;
         }
+        @CustomType.Setter
         public Builder vendor(String vendor) {
             this.vendor = Objects.requireNonNull(vendor);
             return this;
-        }        public GetCseLogMappingVendorProductResult build() {
-            return new GetCseLogMappingVendorProductResult(guid, id, product, vendor);
+        }
+        public GetCseLogMappingVendorProductResult build() {
+            final var o = new GetCseLogMappingVendorProductResult();
+            o.guid = guid;
+            o.id = id;
+            o.product = product;
+            o.vendor = vendor;
+            return o;
         }
     }
 }

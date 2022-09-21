@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator {
-    private final String operatorName;
-    private final List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter> parameters;
+    private String operatorName;
+    private List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter> parameters;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator(
-        @CustomType.Parameter("operatorName") String operatorName,
-        @CustomType.Parameter("parameters") List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter> parameters) {
-        this.operatorName = operatorName;
-        this.parameters = parameters;
-    }
-
+    private DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator() {}
     public String operatorName() {
         return this.operatorName;
     }
@@ -36,33 +29,35 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator {
     public static Builder builder(DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String operatorName;
         private List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter> parameters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.operatorName = defaults.operatorName;
     	      this.parameters = defaults.parameters;
         }
 
+        @CustomType.Setter
         public Builder operatorName(String operatorName) {
             this.operatorName = Objects.requireNonNull(operatorName);
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
         }
         public Builder parameters(DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter... parameters) {
             return parameters(List.of(parameters));
-        }        public DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator build() {
-            return new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator(operatorName, parameters);
+        }
+        public DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator build() {
+            final var o = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator();
+            o.operatorName = operatorName;
+            o.parameters = parameters;
+            return o;
         }
     }
 }

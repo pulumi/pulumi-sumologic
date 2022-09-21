@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
-    private final String relativeTime;
+    private String relativeTime;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(@CustomType.Parameter("relativeTime") String relativeTime) {
-        this.relativeTime = relativeTime;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange() {}
     public String relativeTime() {
         return this.relativeTime;
     }
@@ -27,24 +23,24 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFr
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String relativeTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.relativeTime = defaults.relativeTime;
         }
 
+        @CustomType.Setter
         public Builder relativeTime(String relativeTime) {
             this.relativeTime = Objects.requireNonNull(relativeTime);
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(relativeTime);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange();
+            o.relativeTime = relativeTime;
+            return o;
         }
     }
 }

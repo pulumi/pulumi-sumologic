@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardTopologyLabelMapData {
-    private final String label;
-    private final List<String> values;
+    private String label;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private DashboardTopologyLabelMapData(
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("values") List<String> values) {
-        this.label = label;
-        this.values = values;
-    }
-
+    private DashboardTopologyLabelMapData() {}
     public String label() {
         return this.label;
     }
@@ -35,33 +28,35 @@ public final class DashboardTopologyLabelMapData {
     public static Builder builder(DashboardTopologyLabelMapData defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String label;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTopologyLabelMapData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.label = defaults.label;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public DashboardTopologyLabelMapData build() {
-            return new DashboardTopologyLabelMapData(label, values);
+        }
+        public DashboardTopologyLabelMapData build() {
+            final var o = new DashboardTopologyLabelMapData();
+            o.label = label;
+            o.values = values;
+            return o;
         }
     }
 }

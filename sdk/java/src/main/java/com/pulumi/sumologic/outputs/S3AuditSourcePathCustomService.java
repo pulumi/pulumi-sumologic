@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class S3AuditSourcePathCustomService {
-    private final @Nullable List<String> prefixes;
-    private final @Nullable String serviceName;
+    private @Nullable List<String> prefixes;
+    private @Nullable String serviceName;
 
-    @CustomType.Constructor
-    private S3AuditSourcePathCustomService(
-        @CustomType.Parameter("prefixes") @Nullable List<String> prefixes,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName) {
-        this.prefixes = prefixes;
-        this.serviceName = serviceName;
-    }
-
+    private S3AuditSourcePathCustomService() {}
     public List<String> prefixes() {
         return this.prefixes == null ? List.of() : this.prefixes;
     }
@@ -37,21 +30,18 @@ public final class S3AuditSourcePathCustomService {
     public static Builder builder(S3AuditSourcePathCustomService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> prefixes;
         private @Nullable String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(S3AuditSourcePathCustomService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prefixes = defaults.prefixes;
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder prefixes(@Nullable List<String> prefixes) {
             this.prefixes = prefixes;
             return this;
@@ -59,11 +49,16 @@ public final class S3AuditSourcePathCustomService {
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
-        }        public S3AuditSourcePathCustomService build() {
-            return new S3AuditSourcePathCustomService(prefixes, serviceName);
+        }
+        public S3AuditSourcePathCustomService build() {
+            final var o = new S3AuditSourcePathCustomService();
+            o.prefixes = prefixes;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

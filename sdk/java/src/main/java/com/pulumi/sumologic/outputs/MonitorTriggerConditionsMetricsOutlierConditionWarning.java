@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsOutlierConditionWarning {
-    private final @Nullable String baselineWindow;
-    private final @Nullable Double threshold;
+    private @Nullable String baselineWindow;
+    private @Nullable Double threshold;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsMetricsOutlierConditionWarning(
-        @CustomType.Parameter("baselineWindow") @Nullable String baselineWindow,
-        @CustomType.Parameter("threshold") @Nullable Double threshold) {
-        this.baselineWindow = baselineWindow;
-        this.threshold = threshold;
-    }
-
+    private MonitorTriggerConditionsMetricsOutlierConditionWarning() {}
     public Optional<String> baselineWindow() {
         return Optional.ofNullable(this.baselineWindow);
     }
@@ -37,30 +30,32 @@ public final class MonitorTriggerConditionsMetricsOutlierConditionWarning {
     public static Builder builder(MonitorTriggerConditionsMetricsOutlierConditionWarning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String baselineWindow;
         private @Nullable Double threshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsOutlierConditionWarning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baselineWindow = defaults.baselineWindow;
     	      this.threshold = defaults.threshold;
         }
 
+        @CustomType.Setter
         public Builder baselineWindow(@Nullable String baselineWindow) {
             this.baselineWindow = baselineWindow;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
             return this;
-        }        public MonitorTriggerConditionsMetricsOutlierConditionWarning build() {
-            return new MonitorTriggerConditionsMetricsOutlierConditionWarning(baselineWindow, threshold);
+        }
+        public MonitorTriggerConditionsMetricsOutlierConditionWarning build() {
+            final var o = new MonitorTriggerConditionsMetricsOutlierConditionWarning();
+            o.baselineWindow = baselineWindow;
+            o.threshold = threshold;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class S3SourcePathSnsTopicOrSubscriptionArn {
-    private final @Nullable String arn;
-    private final @Nullable Boolean isSuccess;
+    private @Nullable String arn;
+    private @Nullable Boolean isSuccess;
 
-    @CustomType.Constructor
-    private S3SourcePathSnsTopicOrSubscriptionArn(
-        @CustomType.Parameter("arn") @Nullable String arn,
-        @CustomType.Parameter("isSuccess") @Nullable Boolean isSuccess) {
-        this.arn = arn;
-        this.isSuccess = isSuccess;
-    }
-
+    private S3SourcePathSnsTopicOrSubscriptionArn() {}
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
@@ -37,30 +30,32 @@ public final class S3SourcePathSnsTopicOrSubscriptionArn {
     public static Builder builder(S3SourcePathSnsTopicOrSubscriptionArn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String arn;
         private @Nullable Boolean isSuccess;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(S3SourcePathSnsTopicOrSubscriptionArn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
     	      this.isSuccess = defaults.isSuccess;
         }
 
+        @CustomType.Setter
         public Builder arn(@Nullable String arn) {
             this.arn = arn;
             return this;
         }
+        @CustomType.Setter
         public Builder isSuccess(@Nullable Boolean isSuccess) {
             this.isSuccess = isSuccess;
             return this;
-        }        public S3SourcePathSnsTopicOrSubscriptionArn build() {
-            return new S3SourcePathSnsTopicOrSubscriptionArn(arn, isSuccess);
+        }
+        public S3SourcePathSnsTopicOrSubscriptionArn build() {
+            final var o = new S3SourcePathSnsTopicOrSubscriptionArn();
+            o.arn = arn;
+            o.isSuccess = isSuccess;
+            return o;
         }
     }
 }

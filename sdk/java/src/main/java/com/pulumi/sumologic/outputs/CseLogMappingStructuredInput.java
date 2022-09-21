@@ -13,35 +13,24 @@ public final class CseLogMappingStructuredInput {
      * @return Event id pattern.
      * 
      */
-    private final String eventIdPattern;
+    private String eventIdPattern;
     /**
      * @return Log format. (JSON, Windows, Syslog, CEF, LEEF )
      * 
      */
-    private final String logFormat;
+    private String logFormat;
     /**
      * @return Product name.
      * 
      */
-    private final String product;
+    private String product;
     /**
      * @return Vendor name.
      * 
      */
-    private final String vendor;
+    private String vendor;
 
-    @CustomType.Constructor
-    private CseLogMappingStructuredInput(
-        @CustomType.Parameter("eventIdPattern") String eventIdPattern,
-        @CustomType.Parameter("logFormat") String logFormat,
-        @CustomType.Parameter("product") String product,
-        @CustomType.Parameter("vendor") String vendor) {
-        this.eventIdPattern = eventIdPattern;
-        this.logFormat = logFormat;
-        this.product = product;
-        this.vendor = vendor;
-    }
-
+    private CseLogMappingStructuredInput() {}
     /**
      * @return Event id pattern.
      * 
@@ -78,17 +67,13 @@ public final class CseLogMappingStructuredInput {
     public static Builder builder(CseLogMappingStructuredInput defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String eventIdPattern;
         private String logFormat;
         private String product;
         private String vendor;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseLogMappingStructuredInput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventIdPattern = defaults.eventIdPattern;
@@ -97,23 +82,33 @@ public final class CseLogMappingStructuredInput {
     	      this.vendor = defaults.vendor;
         }
 
+        @CustomType.Setter
         public Builder eventIdPattern(String eventIdPattern) {
             this.eventIdPattern = Objects.requireNonNull(eventIdPattern);
             return this;
         }
+        @CustomType.Setter
         public Builder logFormat(String logFormat) {
             this.logFormat = Objects.requireNonNull(logFormat);
             return this;
         }
+        @CustomType.Setter
         public Builder product(String product) {
             this.product = Objects.requireNonNull(product);
             return this;
         }
+        @CustomType.Setter
         public Builder vendor(String vendor) {
             this.vendor = Objects.requireNonNull(vendor);
             return this;
-        }        public CseLogMappingStructuredInput build() {
-            return new CseLogMappingStructuredInput(eventIdPattern, logFormat, product, vendor);
+        }
+        public CseLogMappingStructuredInput build() {
+            final var o = new CseLogMappingStructuredInput();
+            o.eventIdPattern = eventIdPattern;
+            o.logFormat = logFormat;
+            o.product = product;
+            o.vendor = vendor;
+            return o;
         }
     }
 }

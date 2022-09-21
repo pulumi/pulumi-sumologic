@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudfrontSourcePathSnsTopicOrSubscriptionArn {
-    private final @Nullable String arn;
-    private final @Nullable Boolean isSuccess;
+    private @Nullable String arn;
+    private @Nullable Boolean isSuccess;
 
-    @CustomType.Constructor
-    private CloudfrontSourcePathSnsTopicOrSubscriptionArn(
-        @CustomType.Parameter("arn") @Nullable String arn,
-        @CustomType.Parameter("isSuccess") @Nullable Boolean isSuccess) {
-        this.arn = arn;
-        this.isSuccess = isSuccess;
-    }
-
+    private CloudfrontSourcePathSnsTopicOrSubscriptionArn() {}
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
@@ -37,30 +30,32 @@ public final class CloudfrontSourcePathSnsTopicOrSubscriptionArn {
     public static Builder builder(CloudfrontSourcePathSnsTopicOrSubscriptionArn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String arn;
         private @Nullable Boolean isSuccess;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudfrontSourcePathSnsTopicOrSubscriptionArn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
     	      this.isSuccess = defaults.isSuccess;
         }
 
+        @CustomType.Setter
         public Builder arn(@Nullable String arn) {
             this.arn = arn;
             return this;
         }
+        @CustomType.Setter
         public Builder isSuccess(@Nullable Boolean isSuccess) {
             this.isSuccess = isSuccess;
             return this;
-        }        public CloudfrontSourcePathSnsTopicOrSubscriptionArn build() {
-            return new CloudfrontSourcePathSnsTopicOrSubscriptionArn(arn, isSuccess);
+        }
+        public CloudfrontSourcePathSnsTopicOrSubscriptionArn build() {
+            final var o = new CloudfrontSourcePathSnsTopicOrSubscriptionArn();
+            o.arn = arn;
+            o.isSuccess = isSuccess;
+            return o;
         }
     }
 }

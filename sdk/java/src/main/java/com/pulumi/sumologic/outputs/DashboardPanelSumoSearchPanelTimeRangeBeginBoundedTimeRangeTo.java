@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo {
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo(
-        @CustomType.Parameter("epochTimeRange") @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange,
-        @CustomType.Parameter("iso8601TimeRange") @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange,
-        @CustomType.Parameter("literalTimeRange") @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange,
-        @CustomType.Parameter("relativeTimeRange") @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange) {
-        this.epochTimeRange = epochTimeRange;
-        this.iso8601TimeRange = iso8601TimeRange;
-        this.literalTimeRange = literalTimeRange;
-        this.relativeTimeRange = relativeTimeRange;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo() {}
     public Optional<DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange> epochTimeRange() {
         return Optional.ofNullable(this.epochTimeRange);
     }
@@ -51,17 +40,13 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
         private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
         private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
         private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.epochTimeRange = defaults.epochTimeRange;
@@ -70,23 +55,33 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
     	      this.relativeTimeRange = defaults.relativeTimeRange;
         }
 
+        @CustomType.Setter
         public Builder epochTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange) {
             this.epochTimeRange = epochTimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder iso8601TimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange) {
             this.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder literalTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange) {
             this.literalTimeRange = literalTimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder relativeTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange) {
             this.relativeTimeRange = relativeTimeRange;
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo(epochTimeRange, iso8601TimeRange, literalTimeRange, relativeTimeRange);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo();
+            o.epochTimeRange = epochTimeRange;
+            o.iso8601TimeRange = iso8601TimeRange;
+            o.literalTimeRange = literalTimeRange;
+            o.relativeTimeRange = relativeTimeRange;
+            return o;
         }
     }
 }

@@ -17,49 +17,34 @@ public final class PollingSourcePath {
      * @return The name of the bucket. This is needed if using type `S3BucketPathExpression`.
      * 
      */
-    private final @Nullable String bucketName;
+    private @Nullable String bucketName;
     /**
      * @return List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
      * 
      */
-    private final @Nullable List<String> limitToNamespaces;
+    private @Nullable List<String> limitToNamespaces;
     /**
      * @return List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
      * 
      */
-    private final @Nullable List<String> limitToRegions;
+    private @Nullable List<String> limitToRegions;
     /**
      * @return The path to the data. This is needed if using type `S3BucketPathExpression`.
      * 
      */
-    private final @Nullable String pathExpression;
+    private @Nullable String pathExpression;
     /**
      * @return Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
      * 
      */
-    private final @Nullable List<PollingSourcePathTagFilter> tagFilters;
+    private @Nullable List<PollingSourcePathTagFilter> tagFilters;
     /**
      * @return This value has to be set to `TagFilters`
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private PollingSourcePath(
-        @CustomType.Parameter("bucketName") @Nullable String bucketName,
-        @CustomType.Parameter("limitToNamespaces") @Nullable List<String> limitToNamespaces,
-        @CustomType.Parameter("limitToRegions") @Nullable List<String> limitToRegions,
-        @CustomType.Parameter("pathExpression") @Nullable String pathExpression,
-        @CustomType.Parameter("tagFilters") @Nullable List<PollingSourcePathTagFilter> tagFilters,
-        @CustomType.Parameter("type") String type) {
-        this.bucketName = bucketName;
-        this.limitToNamespaces = limitToNamespaces;
-        this.limitToRegions = limitToRegions;
-        this.pathExpression = pathExpression;
-        this.tagFilters = tagFilters;
-        this.type = type;
-    }
-
+    private PollingSourcePath() {}
     /**
      * @return The name of the bucket. This is needed if using type `S3BucketPathExpression`.
      * 
@@ -110,7 +95,7 @@ public final class PollingSourcePath {
     public static Builder builder(PollingSourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
         private @Nullable List<String> limitToNamespaces;
@@ -118,11 +103,7 @@ public final class PollingSourcePath {
         private @Nullable String pathExpression;
         private @Nullable List<PollingSourcePathTagFilter> tagFilters;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PollingSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -133,10 +114,12 @@ public final class PollingSourcePath {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
             this.bucketName = bucketName;
             return this;
         }
+        @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
             this.limitToNamespaces = limitToNamespaces;
             return this;
@@ -144,6 +127,7 @@ public final class PollingSourcePath {
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
+        @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
             this.limitToRegions = limitToRegions;
             return this;
@@ -151,10 +135,12 @@ public final class PollingSourcePath {
         public Builder limitToRegions(String... limitToRegions) {
             return limitToRegions(List.of(limitToRegions));
         }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
             this.pathExpression = pathExpression;
             return this;
         }
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<PollingSourcePathTagFilter> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -162,11 +148,20 @@ public final class PollingSourcePath {
         public Builder tagFilters(PollingSourcePathTagFilter... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public PollingSourcePath build() {
-            return new PollingSourcePath(bucketName, limitToNamespaces, limitToRegions, pathExpression, tagFilters, type);
+        }
+        public PollingSourcePath build() {
+            final var o = new PollingSourcePath();
+            o.bucketName = bucketName;
+            o.limitToNamespaces = limitToNamespaces;
+            o.limitToRegions = limitToRegions;
+            o.pathExpression = pathExpression;
+            o.tagFilters = tagFilters;
+            o.type = type;
+            return o;
         }
     }
 }

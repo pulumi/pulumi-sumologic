@@ -15,35 +15,24 @@ public final class KineisLogSourceAuthentication {
      * @return Your AWS access key if using type `S3BucketAuthentication`
      * 
      */
-    private final @Nullable String accessKey;
+    private @Nullable String accessKey;
     /**
      * @return Your AWS role ARN if using type `AWSRoleBasedAuthentication`
      * 
      */
-    private final @Nullable String roleArn;
+    private @Nullable String roleArn;
     /**
      * @return Your AWS secret key if using type `S3BucketAuthentication`
      * 
      */
-    private final @Nullable String secretKey;
+    private @Nullable String secretKey;
     /**
      * @return Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private KineisLogSourceAuthentication(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey,
-        @CustomType.Parameter("type") String type) {
-        this.accessKey = accessKey;
-        this.roleArn = roleArn;
-        this.secretKey = secretKey;
-        this.type = type;
-    }
-
+    private KineisLogSourceAuthentication() {}
     /**
      * @return Your AWS access key if using type `S3BucketAuthentication`
      * 
@@ -80,17 +69,13 @@ public final class KineisLogSourceAuthentication {
     public static Builder builder(KineisLogSourceAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private @Nullable String roleArn;
         private @Nullable String secretKey;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KineisLogSourceAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -99,23 +84,33 @@ public final class KineisLogSourceAuthentication {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public KineisLogSourceAuthentication build() {
-            return new KineisLogSourceAuthentication(accessKey, roleArn, secretKey, type);
+        }
+        public KineisLogSourceAuthentication build() {
+            final var o = new KineisLogSourceAuthentication();
+            o.accessKey = accessKey;
+            o.roleArn = roleArn;
+            o.secretKey = secretKey;
+            o.type = type;
+            return o;
         }
     }
 }

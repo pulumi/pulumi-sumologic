@@ -18,35 +18,16 @@ public final class MonitorNotificationNotification {
      * 
      */
     @Deprecated /* The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead. */
-    private final @Nullable String actionType;
-    private final @Nullable String connectionId;
-    private final @Nullable String connectionType;
-    private final @Nullable String messageBody;
-    private final @Nullable String payloadOverride;
-    private final @Nullable List<String> recipients;
-    private final @Nullable String subject;
-    private final @Nullable String timeZone;
+    private @Nullable String actionType;
+    private @Nullable String connectionId;
+    private @Nullable String connectionType;
+    private @Nullable String messageBody;
+    private @Nullable String payloadOverride;
+    private @Nullable List<String> recipients;
+    private @Nullable String subject;
+    private @Nullable String timeZone;
 
-    @CustomType.Constructor
-    private MonitorNotificationNotification(
-        @CustomType.Parameter("actionType") @Nullable String actionType,
-        @CustomType.Parameter("connectionId") @Nullable String connectionId,
-        @CustomType.Parameter("connectionType") @Nullable String connectionType,
-        @CustomType.Parameter("messageBody") @Nullable String messageBody,
-        @CustomType.Parameter("payloadOverride") @Nullable String payloadOverride,
-        @CustomType.Parameter("recipients") @Nullable List<String> recipients,
-        @CustomType.Parameter("subject") @Nullable String subject,
-        @CustomType.Parameter("timeZone") @Nullable String timeZone) {
-        this.actionType = actionType;
-        this.connectionId = connectionId;
-        this.connectionType = connectionType;
-        this.messageBody = messageBody;
-        this.payloadOverride = payloadOverride;
-        this.recipients = recipients;
-        this.subject = subject;
-        this.timeZone = timeZone;
-    }
-
+    private MonitorNotificationNotification() {}
     /**
      * @deprecated
      * The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.
@@ -85,7 +66,7 @@ public final class MonitorNotificationNotification {
     public static Builder builder(MonitorNotificationNotification defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String actionType;
         private @Nullable String connectionId;
@@ -95,11 +76,7 @@ public final class MonitorNotificationNotification {
         private @Nullable List<String> recipients;
         private @Nullable String subject;
         private @Nullable String timeZone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorNotificationNotification defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actionType = defaults.actionType;
@@ -112,26 +89,32 @@ public final class MonitorNotificationNotification {
     	      this.timeZone = defaults.timeZone;
         }
 
+        @CustomType.Setter
         public Builder actionType(@Nullable String actionType) {
             this.actionType = actionType;
             return this;
         }
+        @CustomType.Setter
         public Builder connectionId(@Nullable String connectionId) {
             this.connectionId = connectionId;
             return this;
         }
+        @CustomType.Setter
         public Builder connectionType(@Nullable String connectionType) {
             this.connectionType = connectionType;
             return this;
         }
+        @CustomType.Setter
         public Builder messageBody(@Nullable String messageBody) {
             this.messageBody = messageBody;
             return this;
         }
+        @CustomType.Setter
         public Builder payloadOverride(@Nullable String payloadOverride) {
             this.payloadOverride = payloadOverride;
             return this;
         }
+        @CustomType.Setter
         public Builder recipients(@Nullable List<String> recipients) {
             this.recipients = recipients;
             return this;
@@ -139,15 +122,27 @@ public final class MonitorNotificationNotification {
         public Builder recipients(String... recipients) {
             return recipients(List.of(recipients));
         }
+        @CustomType.Setter
         public Builder subject(@Nullable String subject) {
             this.subject = subject;
             return this;
         }
+        @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
             this.timeZone = timeZone;
             return this;
-        }        public MonitorNotificationNotification build() {
-            return new MonitorNotificationNotification(actionType, connectionId, connectionType, messageBody, payloadOverride, recipients, subject, timeZone);
+        }
+        public MonitorNotificationNotification build() {
+            final var o = new MonitorNotificationNotification();
+            o.actionType = actionType;
+            o.connectionId = connectionId;
+            o.connectionType = connectionType;
+            o.messageBody = messageBody;
+            o.payloadOverride = payloadOverride;
+            o.recipients = recipients;
+            o.subject = subject;
+            o.timeZone = timeZone;
+            return o;
         }
     }
 }

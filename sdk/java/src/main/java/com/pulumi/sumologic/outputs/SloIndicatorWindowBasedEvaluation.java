@@ -19,51 +19,36 @@ public final class SloIndicatorWindowBasedEvaluation {
      * , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
      * 
      */
-    private final @Nullable String aggregation;
+    private @Nullable String aggregation;
     /**
      * @return Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
      * , `GreaterThanOrEqual`.
      * 
      */
-    private final String op;
+    private String op;
     /**
      * @return The queries to use.
      * 
      */
-    private final List<SloIndicatorWindowBasedEvaluationQuery> queries;
+    private List<SloIndicatorWindowBasedEvaluationQuery> queries;
     /**
      * @return The type of query to use. Valid values are `Metrics` or `Logs`.
      * 
      */
-    private final String queryType;
+    private String queryType;
     /**
      * @return The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
      * based evaluation.
      * 
      */
-    private final String size;
+    private String size;
     /**
      * @return Compared against threshold query&#39;s raw data points to determine success criteria.
      * 
      */
-    private final Double threshold;
+    private Double threshold;
 
-    @CustomType.Constructor
-    private SloIndicatorWindowBasedEvaluation(
-        @CustomType.Parameter("aggregation") @Nullable String aggregation,
-        @CustomType.Parameter("op") String op,
-        @CustomType.Parameter("queries") List<SloIndicatorWindowBasedEvaluationQuery> queries,
-        @CustomType.Parameter("queryType") String queryType,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("threshold") Double threshold) {
-        this.aggregation = aggregation;
-        this.op = op;
-        this.queries = queries;
-        this.queryType = queryType;
-        this.size = size;
-        this.threshold = threshold;
-    }
-
+    private SloIndicatorWindowBasedEvaluation() {}
     /**
      * @return Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
      * , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
@@ -117,7 +102,7 @@ public final class SloIndicatorWindowBasedEvaluation {
     public static Builder builder(SloIndicatorWindowBasedEvaluation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aggregation;
         private String op;
@@ -125,11 +110,7 @@ public final class SloIndicatorWindowBasedEvaluation {
         private String queryType;
         private String size;
         private Double threshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloIndicatorWindowBasedEvaluation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregation = defaults.aggregation;
@@ -140,14 +121,17 @@ public final class SloIndicatorWindowBasedEvaluation {
     	      this.threshold = defaults.threshold;
         }
 
+        @CustomType.Setter
         public Builder aggregation(@Nullable String aggregation) {
             this.aggregation = aggregation;
             return this;
         }
+        @CustomType.Setter
         public Builder op(String op) {
             this.op = Objects.requireNonNull(op);
             return this;
         }
+        @CustomType.Setter
         public Builder queries(List<SloIndicatorWindowBasedEvaluationQuery> queries) {
             this.queries = Objects.requireNonNull(queries);
             return this;
@@ -155,19 +139,30 @@ public final class SloIndicatorWindowBasedEvaluation {
         public Builder queries(SloIndicatorWindowBasedEvaluationQuery... queries) {
             return queries(List.of(queries));
         }
+        @CustomType.Setter
         public Builder queryType(String queryType) {
             this.queryType = Objects.requireNonNull(queryType);
             return this;
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(Double threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
-        }        public SloIndicatorWindowBasedEvaluation build() {
-            return new SloIndicatorWindowBasedEvaluation(aggregation, op, queries, queryType, size, threshold);
+        }
+        public SloIndicatorWindowBasedEvaluation build() {
+            final var o = new SloIndicatorWindowBasedEvaluation();
+            o.aggregation = aggregation;
+            o.op = op;
+            o.queries = queries;
+            o.queryType = queryType;
+            o.size = size;
+            o.threshold = threshold;
+            return o;
         }
     }
 }

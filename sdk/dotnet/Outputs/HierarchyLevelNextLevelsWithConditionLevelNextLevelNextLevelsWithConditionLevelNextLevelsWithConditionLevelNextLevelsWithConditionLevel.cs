@@ -18,17 +18,24 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string EntityType;
         /// <summary>
+        /// Next level without a condition.
+        /// </summary>
+        public readonly Outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel? NextLevel;
+        /// <summary>
         /// Zero or more next levels with conditions.
         /// </summary>
-        public readonly ImmutableArray<string> NextLevelsWithConditions;
+        public readonly ImmutableArray<Outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition> NextLevelsWithConditions;
 
         [OutputConstructor]
         private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(
             string entityType,
 
-            ImmutableArray<string> nextLevelsWithConditions)
+            Outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel? nextLevel,
+
+            ImmutableArray<Outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition> nextLevelsWithConditions)
         {
             EntityType = entityType;
+            NextLevel = nextLevel;
             NextLevelsWithConditions = nextLevelsWithConditions;
         }
     }

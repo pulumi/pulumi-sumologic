@@ -18,35 +18,24 @@ public final class CseAggregationRuleSeverityMapping {
      * @return The severity to use in the &#34;constant&#34; case or to fall back to if the field used by &#34;fieldValue&#34;/&#34;fieldValueMapping&#34; is not populated.
      * 
      */
-    private final @Nullable Integer default_;
+    private @Nullable Integer default_;
     /**
      * @return The field to use in the &#34;fieldValue&#34;/&#34;fieldValueMapping&#34; cases.
      * 
      */
-    private final @Nullable String field;
+    private @Nullable String field;
     /**
      * @return The map of record values to severities to use in the &#34;fieldValueMapping&#34; case
      * 
      */
-    private final @Nullable List<CseAggregationRuleSeverityMappingMapping> mappings;
+    private @Nullable List<CseAggregationRuleSeverityMappingMapping> mappings;
     /**
      * @return Must be set to &#34;eq&#34; currently
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private CseAggregationRuleSeverityMapping(
-        @CustomType.Parameter("default") @Nullable Integer default_,
-        @CustomType.Parameter("field") @Nullable String field,
-        @CustomType.Parameter("mappings") @Nullable List<CseAggregationRuleSeverityMappingMapping> mappings,
-        @CustomType.Parameter("type") String type) {
-        this.default_ = default_;
-        this.field = field;
-        this.mappings = mappings;
-        this.type = type;
-    }
-
+    private CseAggregationRuleSeverityMapping() {}
     /**
      * @return The severity to use in the &#34;constant&#34; case or to fall back to if the field used by &#34;fieldValue&#34;/&#34;fieldValueMapping&#34; is not populated.
      * 
@@ -83,17 +72,13 @@ public final class CseAggregationRuleSeverityMapping {
     public static Builder builder(CseAggregationRuleSeverityMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer default_;
         private @Nullable String field;
         private @Nullable List<CseAggregationRuleSeverityMappingMapping> mappings;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseAggregationRuleSeverityMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -102,14 +87,17 @@ public final class CseAggregationRuleSeverityMapping {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(@Nullable Integer default_) {
             this.default_ = default_;
             return this;
         }
+        @CustomType.Setter
         public Builder field(@Nullable String field) {
             this.field = field;
             return this;
         }
+        @CustomType.Setter
         public Builder mappings(@Nullable List<CseAggregationRuleSeverityMappingMapping> mappings) {
             this.mappings = mappings;
             return this;
@@ -117,11 +105,18 @@ public final class CseAggregationRuleSeverityMapping {
         public Builder mappings(CseAggregationRuleSeverityMappingMapping... mappings) {
             return mappings(List.of(mappings));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public CseAggregationRuleSeverityMapping build() {
-            return new CseAggregationRuleSeverityMapping(default_, field, mappings, type);
+        }
+        public CseAggregationRuleSeverityMapping build() {
+            final var o = new CseAggregationRuleSeverityMapping();
+            o.default_ = default_;
+            o.field = field;
+            o.mappings = mappings;
+            o.type = type;
+            return o;
         }
     }
 }

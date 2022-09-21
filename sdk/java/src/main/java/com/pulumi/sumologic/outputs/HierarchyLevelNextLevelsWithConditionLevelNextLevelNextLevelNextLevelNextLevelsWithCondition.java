@@ -14,17 +14,10 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelN
      * @return Condition to be checked against for level.entityType value, for now full string match.
      * 
      */
-    private final String condition;
-    private final HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel level;
+    private String condition;
+    private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel level;
 
-    @CustomType.Constructor
-    private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(
-        @CustomType.Parameter("condition") String condition,
-        @CustomType.Parameter("level") HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel level) {
-        this.condition = condition;
-        this.level = level;
-    }
-
+    private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition() {}
     /**
      * @return Condition to be checked against for level.entityType value, for now full string match.
      * 
@@ -43,30 +36,32 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelN
     public static Builder builder(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String condition;
         private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel level;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
     	      this.level = defaults.level;
         }
 
+        @CustomType.Setter
         public Builder condition(String condition) {
             this.condition = Objects.requireNonNull(condition);
             return this;
         }
+        @CustomType.Setter
         public Builder level(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel level) {
             this.level = Objects.requireNonNull(level);
             return this;
-        }        public HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition build() {
-            return new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(condition, level);
+        }
+        public HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition build() {
+            final var o = new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition();
+            o.condition = condition;
+            o.level = level;
+            return o;
         }
     }
 }

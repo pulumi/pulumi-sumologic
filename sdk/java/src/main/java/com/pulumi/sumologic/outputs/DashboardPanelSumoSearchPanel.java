@@ -17,54 +17,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanel {
-    private final @Nullable DashboardPanelSumoSearchPanelColoringRule coloringRule;
+    private @Nullable DashboardPanelSumoSearchPanelColoringRule coloringRule;
     /**
      * @return Description of the dashboard.
      * 
      */
-    private final @Nullable String description;
-    private final @Nullable String id;
-    private final @Nullable Boolean keepVisualSettingsConsistentWithParent;
-    private final String key;
-    private final @Nullable DashboardPanelSumoSearchPanelLinkedDashboard linkedDashboard;
-    private final @Nullable List<DashboardPanelSumoSearchPanelQuery> queries;
+    private @Nullable String description;
+    private @Nullable String id;
+    private @Nullable Boolean keepVisualSettingsConsistentWithParent;
+    private String key;
+    private @Nullable DashboardPanelSumoSearchPanelLinkedDashboard linkedDashboard;
+    private @Nullable List<DashboardPanelSumoSearchPanelQuery> queries;
     /**
      * @return Time range of the dashboard. See time range schema
      * for details.
      * 
      */
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRange timeRange;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRange timeRange;
     /**
      * @return Title of the dashboard.
      * 
      */
-    private final @Nullable String title;
-    private final @Nullable String visualSettings;
+    private @Nullable String title;
+    private @Nullable String visualSettings;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanel(
-        @CustomType.Parameter("coloringRule") @Nullable DashboardPanelSumoSearchPanelColoringRule coloringRule,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("keepVisualSettingsConsistentWithParent") @Nullable Boolean keepVisualSettingsConsistentWithParent,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("linkedDashboard") @Nullable DashboardPanelSumoSearchPanelLinkedDashboard linkedDashboard,
-        @CustomType.Parameter("queries") @Nullable List<DashboardPanelSumoSearchPanelQuery> queries,
-        @CustomType.Parameter("timeRange") @Nullable DashboardPanelSumoSearchPanelTimeRange timeRange,
-        @CustomType.Parameter("title") @Nullable String title,
-        @CustomType.Parameter("visualSettings") @Nullable String visualSettings) {
-        this.coloringRule = coloringRule;
-        this.description = description;
-        this.id = id;
-        this.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
-        this.key = key;
-        this.linkedDashboard = linkedDashboard;
-        this.queries = queries;
-        this.timeRange = timeRange;
-        this.title = title;
-        this.visualSettings = visualSettings;
-    }
-
+    private DashboardPanelSumoSearchPanel() {}
     public Optional<DashboardPanelSumoSearchPanelColoringRule> coloringRule() {
         return Optional.ofNullable(this.coloringRule);
     }
@@ -116,7 +93,7 @@ public final class DashboardPanelSumoSearchPanel {
     public static Builder builder(DashboardPanelSumoSearchPanel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardPanelSumoSearchPanelColoringRule coloringRule;
         private @Nullable String description;
@@ -128,11 +105,7 @@ public final class DashboardPanelSumoSearchPanel {
         private @Nullable DashboardPanelSumoSearchPanelTimeRange timeRange;
         private @Nullable String title;
         private @Nullable String visualSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coloringRule = defaults.coloringRule;
@@ -147,30 +120,37 @@ public final class DashboardPanelSumoSearchPanel {
     	      this.visualSettings = defaults.visualSettings;
         }
 
+        @CustomType.Setter
         public Builder coloringRule(@Nullable DashboardPanelSumoSearchPanelColoringRule coloringRule) {
             this.coloringRule = coloringRule;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder keepVisualSettingsConsistentWithParent(@Nullable Boolean keepVisualSettingsConsistentWithParent) {
             this.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder linkedDashboard(@Nullable DashboardPanelSumoSearchPanelLinkedDashboard linkedDashboard) {
             this.linkedDashboard = linkedDashboard;
             return this;
         }
+        @CustomType.Setter
         public Builder queries(@Nullable List<DashboardPanelSumoSearchPanelQuery> queries) {
             this.queries = queries;
             return this;
@@ -178,19 +158,34 @@ public final class DashboardPanelSumoSearchPanel {
         public Builder queries(DashboardPanelSumoSearchPanelQuery... queries) {
             return queries(List.of(queries));
         }
+        @CustomType.Setter
         public Builder timeRange(@Nullable DashboardPanelSumoSearchPanelTimeRange timeRange) {
             this.timeRange = timeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder title(@Nullable String title) {
             this.title = title;
             return this;
         }
+        @CustomType.Setter
         public Builder visualSettings(@Nullable String visualSettings) {
             this.visualSettings = visualSettings;
             return this;
-        }        public DashboardPanelSumoSearchPanel build() {
-            return new DashboardPanelSumoSearchPanel(coloringRule, description, id, keepVisualSettingsConsistentWithParent, key, linkedDashboard, queries, timeRange, title, visualSettings);
+        }
+        public DashboardPanelSumoSearchPanel build() {
+            final var o = new DashboardPanelSumoSearchPanel();
+            o.coloringRule = coloringRule;
+            o.description = description;
+            o.id = id;
+            o.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
+            o.key = key;
+            o.linkedDashboard = linkedDashboard;
+            o.queries = queries;
+            o.timeRange = timeRange;
+            o.title = title;
+            o.visualSettings = visualSettings;
+            return o;
         }
     }
 }

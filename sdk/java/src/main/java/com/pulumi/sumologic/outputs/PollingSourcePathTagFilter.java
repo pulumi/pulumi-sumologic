@@ -16,28 +16,19 @@ public final class PollingSourcePathTagFilter {
      * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
      * 
      */
-    private final @Nullable String namespace;
+    private @Nullable String namespace;
     /**
      * @return List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return This value has to be set to `TagFilters`
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private PollingSourcePathTagFilter(
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.namespace = namespace;
-        this.tags = tags;
-        this.type = type;
-    }
-
+    private PollingSourcePathTagFilter() {}
     /**
      * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
      * 
@@ -67,16 +58,12 @@ public final class PollingSourcePathTagFilter {
     public static Builder builder(PollingSourcePathTagFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String namespace;
         private @Nullable List<String> tags;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PollingSourcePathTagFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespace = defaults.namespace;
@@ -84,10 +71,12 @@ public final class PollingSourcePathTagFilter {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -95,11 +84,17 @@ public final class PollingSourcePathTagFilter {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public PollingSourcePathTagFilter build() {
-            return new PollingSourcePathTagFilter(namespace, tags, type);
+        }
+        public PollingSourcePathTagFilter build() {
+            final var o = new PollingSourcePathTagFilter();
+            o.namespace = namespace;
+            o.tags = tags;
+            o.type = type;
+            return o;
         }
     }
 }

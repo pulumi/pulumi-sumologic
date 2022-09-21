@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
-    private final Integer epochMillis;
+    private Integer epochMillis;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(@CustomType.Parameter("epochMillis") Integer epochMillis) {
-        this.epochMillis = epochMillis;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange() {}
     public Integer epochMillis() {
         return this.epochMillis;
     }
@@ -27,24 +23,24 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFr
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer epochMillis;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.epochMillis = defaults.epochMillis;
         }
 
+        @CustomType.Setter
         public Builder epochMillis(Integer epochMillis) {
             this.epochMillis = Objects.requireNonNull(epochMillis);
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(epochMillis);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange();
+            o.epochMillis = epochMillis;
+            return o;
         }
     }
 }

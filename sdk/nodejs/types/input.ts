@@ -1306,6 +1306,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1320,6 +1422,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1359,6 +1563,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1373,6 +1679,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1427,6 +1835,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1441,6 +1951,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1480,6 +2092,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1494,6 +2208,108 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1563,6 +2379,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1577,6 +2495,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1616,6 +2636,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1630,6 +2752,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1684,6 +2908,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1698,6 +3024,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1737,6 +3165,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1751,6 +3281,108 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1835,6 +3467,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1849,6 +3583,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1888,6 +3724,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1902,6 +3840,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -1956,6 +3996,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1970,6 +4112,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -2009,6 +4253,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2023,6 +4369,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -2092,6 +4540,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2106,6 +4656,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -2145,6 +4797,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2159,6 +4913,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -2213,6 +5069,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2227,6 +5185,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */
@@ -2266,6 +5326,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      */
     entityType: pulumi.Input<string>;
     /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
      * Zero or more next levels with conditions.
      */
     nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2280,6 +5442,108 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Next level without a condition.
+     */
+    nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     */
+    entityType: pulumi.Input<string>;
+    /**
+     * Zero or more next levels with conditions.
+     */
+    nextLevelsWithConditions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     */
+    condition: pulumi.Input<string>;
+    level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
+}
+
+export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
     /**
      * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
      */

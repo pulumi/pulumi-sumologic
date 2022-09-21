@@ -9,21 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class CseAggregationRuleEntitySelector {
-    private final String entityType;
+    private String entityType;
     /**
      * @return The expression or field name to generate the Signal on.
      * 
      */
-    private final String expression;
+    private String expression;
 
-    @CustomType.Constructor
-    private CseAggregationRuleEntitySelector(
-        @CustomType.Parameter("entityType") String entityType,
-        @CustomType.Parameter("expression") String expression) {
-        this.entityType = entityType;
-        this.expression = expression;
-    }
-
+    private CseAggregationRuleEntitySelector() {}
     public String entityType() {
         return this.entityType;
     }
@@ -42,30 +35,32 @@ public final class CseAggregationRuleEntitySelector {
     public static Builder builder(CseAggregationRuleEntitySelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String entityType;
         private String expression;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseAggregationRuleEntitySelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityType = defaults.entityType;
     	      this.expression = defaults.expression;
         }
 
+        @CustomType.Setter
         public Builder entityType(String entityType) {
             this.entityType = Objects.requireNonNull(entityType);
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
-        }        public CseAggregationRuleEntitySelector build() {
-            return new CseAggregationRuleEntitySelector(entityType, expression);
+        }
+        public CseAggregationRuleEntitySelector build() {
+            final var o = new CseAggregationRuleEntitySelector();
+            o.entityType = entityType;
+            o.expression = expression;
+            return o;
         }
     }
 }

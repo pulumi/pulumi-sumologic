@@ -5,6 +5,8 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.sumologic.inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs;
+import com.pulumi.sumologic.inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,17 +34,32 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
     }
 
     /**
+     * Next level without a condition.
+     * 
+     */
+    @Import(name="nextLevel")
+    private @Nullable Output<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs> nextLevel;
+
+    /**
+     * @return Next level without a condition.
+     * 
+     */
+    public Optional<Output<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs>> nextLevel() {
+        return Optional.ofNullable(this.nextLevel);
+    }
+
+    /**
      * Zero or more next levels with conditions.
      * 
      */
     @Import(name="nextLevelsWithConditions")
-    private @Nullable Output<List<String>> nextLevelsWithConditions;
+    private @Nullable Output<List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions;
 
     /**
      * @return Zero or more next levels with conditions.
      * 
      */
-    public Optional<Output<List<String>>> nextLevelsWithConditions() {
+    public Optional<Output<List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs>>> nextLevelsWithConditions() {
         return Optional.ofNullable(this.nextLevelsWithConditions);
     }
 
@@ -50,6 +67,7 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
 
     private HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs $) {
         this.entityType = $.entityType;
+        this.nextLevel = $.nextLevel;
         this.nextLevelsWithConditions = $.nextLevelsWithConditions;
     }
 
@@ -93,12 +111,33 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
         }
 
         /**
+         * @param nextLevel Next level without a condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextLevel(@Nullable Output<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs> nextLevel) {
+            $.nextLevel = nextLevel;
+            return this;
+        }
+
+        /**
+         * @param nextLevel Next level without a condition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextLevel(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs nextLevel) {
+            return nextLevel(Output.of(nextLevel));
+        }
+
+        /**
          * @param nextLevelsWithConditions Zero or more next levels with conditions.
          * 
          * @return builder
          * 
          */
-        public Builder nextLevelsWithConditions(@Nullable Output<List<String>> nextLevelsWithConditions) {
+        public Builder nextLevelsWithConditions(@Nullable Output<List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions) {
             $.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }
@@ -109,7 +148,7 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
          * @return builder
          * 
          */
-        public Builder nextLevelsWithConditions(List<String> nextLevelsWithConditions) {
+        public Builder nextLevelsWithConditions(List<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs> nextLevelsWithConditions) {
             return nextLevelsWithConditions(Output.of(nextLevelsWithConditions));
         }
 
@@ -119,7 +158,7 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
          * @return builder
          * 
          */
-        public Builder nextLevelsWithConditions(String... nextLevelsWithConditions) {
+        public Builder nextLevelsWithConditions(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs... nextLevelsWithConditions) {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
         }
 

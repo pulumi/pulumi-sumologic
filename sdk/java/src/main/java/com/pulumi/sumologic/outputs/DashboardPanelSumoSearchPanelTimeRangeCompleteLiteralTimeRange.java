@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange {
-    private final String rangeName;
+    private String rangeName;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange(@CustomType.Parameter("rangeName") String rangeName) {
-        this.rangeName = rangeName;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange() {}
     public String rangeName() {
         return this.rangeName;
     }
@@ -27,24 +23,24 @@ public final class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRang
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String rangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rangeName = defaults.rangeName;
         }
 
+        @CustomType.Setter
         public Builder rangeName(String rangeName) {
             this.rangeName = Objects.requireNonNull(rangeName);
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange(rangeName);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange();
+            o.rangeName = rangeName;
+            return o;
         }
     }
 }

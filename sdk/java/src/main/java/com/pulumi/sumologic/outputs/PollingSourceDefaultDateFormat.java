@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PollingSourceDefaultDateFormat {
-    private final String format;
-    private final @Nullable String locator;
+    private String format;
+    private @Nullable String locator;
 
-    @CustomType.Constructor
-    private PollingSourceDefaultDateFormat(
-        @CustomType.Parameter("format") String format,
-        @CustomType.Parameter("locator") @Nullable String locator) {
-        this.format = format;
-        this.locator = locator;
-    }
-
+    private PollingSourceDefaultDateFormat() {}
     public String format() {
         return this.format;
     }
@@ -36,30 +29,32 @@ public final class PollingSourceDefaultDateFormat {
     public static Builder builder(PollingSourceDefaultDateFormat defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String format;
         private @Nullable String locator;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PollingSourceDefaultDateFormat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.format = defaults.format;
     	      this.locator = defaults.locator;
         }
 
+        @CustomType.Setter
         public Builder format(String format) {
             this.format = Objects.requireNonNull(format);
             return this;
         }
+        @CustomType.Setter
         public Builder locator(@Nullable String locator) {
             this.locator = locator;
             return this;
-        }        public PollingSourceDefaultDateFormat build() {
-            return new PollingSourceDefaultDateFormat(format, locator);
+        }
+        public PollingSourceDefaultDateFormat build() {
+            final var o = new PollingSourceDefaultDateFormat();
+            o.format = format;
+            o.locator = locator;
+            return o;
         }
     }
 }

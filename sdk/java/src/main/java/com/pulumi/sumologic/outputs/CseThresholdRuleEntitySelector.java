@@ -9,21 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class CseThresholdRuleEntitySelector {
-    private final String entityType;
+    private String entityType;
     /**
      * @return The expression for which records to match on
      * 
      */
-    private final String expression;
+    private String expression;
 
-    @CustomType.Constructor
-    private CseThresholdRuleEntitySelector(
-        @CustomType.Parameter("entityType") String entityType,
-        @CustomType.Parameter("expression") String expression) {
-        this.entityType = entityType;
-        this.expression = expression;
-    }
-
+    private CseThresholdRuleEntitySelector() {}
     public String entityType() {
         return this.entityType;
     }
@@ -42,30 +35,32 @@ public final class CseThresholdRuleEntitySelector {
     public static Builder builder(CseThresholdRuleEntitySelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String entityType;
         private String expression;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseThresholdRuleEntitySelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityType = defaults.entityType;
     	      this.expression = defaults.expression;
         }
 
+        @CustomType.Setter
         public Builder entityType(String entityType) {
             this.entityType = Objects.requireNonNull(entityType);
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
-        }        public CseThresholdRuleEntitySelector build() {
-            return new CseThresholdRuleEntitySelector(entityType, expression);
+        }
+        public CseThresholdRuleEntitySelector build() {
+            final var o = new CseThresholdRuleEntitySelector();
+            o.entityType = entityType;
+            o.expression = expression;
+            return o;
         }
     }
 }

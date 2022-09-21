@@ -16,49 +16,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsXraySourcePath {
-    private final @Nullable String bucketName;
-    private final @Nullable List<AwsXraySourcePathCustomService> customServices;
-    private final @Nullable List<String> limitToNamespaces;
+    private @Nullable String bucketName;
+    private @Nullable List<AwsXraySourcePathCustomService> customServices;
+    private @Nullable List<String> limitToNamespaces;
     /**
      * @return List of Amazon regions.
      * 
      */
-    private final @Nullable List<String> limitToRegions;
-    private final @Nullable List<String> limitToServices;
-    private final @Nullable String pathExpression;
-    private final @Nullable List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
-    private final @Nullable List<AwsXraySourcePathTagFilter> tagFilters;
+    private @Nullable List<String> limitToRegions;
+    private @Nullable List<String> limitToServices;
+    private @Nullable String pathExpression;
+    private @Nullable List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
+    private @Nullable List<AwsXraySourcePathTagFilter> tagFilters;
     /**
      * @return type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
      * 
      */
-    private final String type;
-    private final @Nullable Boolean useVersionedApi;
+    private String type;
+    private @Nullable Boolean useVersionedApi;
 
-    @CustomType.Constructor
-    private AwsXraySourcePath(
-        @CustomType.Parameter("bucketName") @Nullable String bucketName,
-        @CustomType.Parameter("customServices") @Nullable List<AwsXraySourcePathCustomService> customServices,
-        @CustomType.Parameter("limitToNamespaces") @Nullable List<String> limitToNamespaces,
-        @CustomType.Parameter("limitToRegions") @Nullable List<String> limitToRegions,
-        @CustomType.Parameter("limitToServices") @Nullable List<String> limitToServices,
-        @CustomType.Parameter("pathExpression") @Nullable String pathExpression,
-        @CustomType.Parameter("snsTopicOrSubscriptionArns") @Nullable List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
-        @CustomType.Parameter("tagFilters") @Nullable List<AwsXraySourcePathTagFilter> tagFilters,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("useVersionedApi") @Nullable Boolean useVersionedApi) {
-        this.bucketName = bucketName;
-        this.customServices = customServices;
-        this.limitToNamespaces = limitToNamespaces;
-        this.limitToRegions = limitToRegions;
-        this.limitToServices = limitToServices;
-        this.pathExpression = pathExpression;
-        this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
-        this.tagFilters = tagFilters;
-        this.type = type;
-        this.useVersionedApi = useVersionedApi;
-    }
-
+    private AwsXraySourcePath() {}
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
@@ -105,7 +82,7 @@ public final class AwsXraySourcePath {
     public static Builder builder(AwsXraySourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
         private @Nullable List<AwsXraySourcePathCustomService> customServices;
@@ -117,11 +94,7 @@ public final class AwsXraySourcePath {
         private @Nullable List<AwsXraySourcePathTagFilter> tagFilters;
         private String type;
         private @Nullable Boolean useVersionedApi;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsXraySourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -136,10 +109,12 @@ public final class AwsXraySourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
             this.bucketName = bucketName;
             return this;
         }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<AwsXraySourcePathCustomService> customServices) {
             this.customServices = customServices;
             return this;
@@ -147,6 +122,7 @@ public final class AwsXraySourcePath {
         public Builder customServices(AwsXraySourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
         }
+        @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
             this.limitToNamespaces = limitToNamespaces;
             return this;
@@ -154,6 +130,7 @@ public final class AwsXraySourcePath {
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
+        @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
             this.limitToRegions = limitToRegions;
             return this;
@@ -161,6 +138,7 @@ public final class AwsXraySourcePath {
         public Builder limitToRegions(String... limitToRegions) {
             return limitToRegions(List.of(limitToRegions));
         }
+        @CustomType.Setter
         public Builder limitToServices(@Nullable List<String> limitToServices) {
             this.limitToServices = limitToServices;
             return this;
@@ -168,10 +146,12 @@ public final class AwsXraySourcePath {
         public Builder limitToServices(String... limitToServices) {
             return limitToServices(List.of(limitToServices));
         }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
             this.pathExpression = pathExpression;
             return this;
         }
+        @CustomType.Setter
         public Builder snsTopicOrSubscriptionArns(@Nullable List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns) {
             this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             return this;
@@ -179,6 +159,7 @@ public final class AwsXraySourcePath {
         public Builder snsTopicOrSubscriptionArns(AwsXraySourcePathSnsTopicOrSubscriptionArn... snsTopicOrSubscriptionArns) {
             return snsTopicOrSubscriptionArns(List.of(snsTopicOrSubscriptionArns));
         }
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<AwsXraySourcePathTagFilter> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -186,15 +167,29 @@ public final class AwsXraySourcePath {
         public Builder tagFilters(AwsXraySourcePathTagFilter... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder useVersionedApi(@Nullable Boolean useVersionedApi) {
             this.useVersionedApi = useVersionedApi;
             return this;
-        }        public AwsXraySourcePath build() {
-            return new AwsXraySourcePath(bucketName, customServices, limitToNamespaces, limitToRegions, limitToServices, pathExpression, snsTopicOrSubscriptionArns, tagFilters, type, useVersionedApi);
+        }
+        public AwsXraySourcePath build() {
+            final var o = new AwsXraySourcePath();
+            o.bucketName = bucketName;
+            o.customServices = customServices;
+            o.limitToNamespaces = limitToNamespaces;
+            o.limitToRegions = limitToRegions;
+            o.limitToServices = limitToServices;
+            o.pathExpression = pathExpression;
+            o.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
+            o.tagFilters = tagFilters;
+            o.type = type;
+            o.useVersionedApi = useVersionedApi;
+            return o;
         }
     }
 }

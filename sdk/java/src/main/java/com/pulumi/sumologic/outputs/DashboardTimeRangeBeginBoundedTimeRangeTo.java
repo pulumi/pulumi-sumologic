@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardTimeRangeBeginBoundedTimeRangeTo {
-    private final @Nullable DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
-    private final @Nullable DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
-    private final @Nullable DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
-    private final @Nullable DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
+    private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
+    private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
+    private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
+    private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
 
-    @CustomType.Constructor
-    private DashboardTimeRangeBeginBoundedTimeRangeTo(
-        @CustomType.Parameter("epochTimeRange") @Nullable DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange,
-        @CustomType.Parameter("iso8601TimeRange") @Nullable DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange,
-        @CustomType.Parameter("literalTimeRange") @Nullable DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange,
-        @CustomType.Parameter("relativeTimeRange") @Nullable DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange) {
-        this.epochTimeRange = epochTimeRange;
-        this.iso8601TimeRange = iso8601TimeRange;
-        this.literalTimeRange = literalTimeRange;
-        this.relativeTimeRange = relativeTimeRange;
-    }
-
+    private DashboardTimeRangeBeginBoundedTimeRangeTo() {}
     public Optional<DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange> epochTimeRange() {
         return Optional.ofNullable(this.epochTimeRange);
     }
@@ -51,17 +40,13 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeTo {
     public static Builder builder(DashboardTimeRangeBeginBoundedTimeRangeTo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
         private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
         private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
         private @Nullable DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRangeBeginBoundedTimeRangeTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.epochTimeRange = defaults.epochTimeRange;
@@ -70,23 +55,33 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeTo {
     	      this.relativeTimeRange = defaults.relativeTimeRange;
         }
 
+        @CustomType.Setter
         public Builder epochTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange) {
             this.epochTimeRange = epochTimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder iso8601TimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange) {
             this.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder literalTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange) {
             this.literalTimeRange = literalTimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder relativeTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange) {
             this.relativeTimeRange = relativeTimeRange;
             return this;
-        }        public DashboardTimeRangeBeginBoundedTimeRangeTo build() {
-            return new DashboardTimeRangeBeginBoundedTimeRangeTo(epochTimeRange, iso8601TimeRange, literalTimeRange, relativeTimeRange);
+        }
+        public DashboardTimeRangeBeginBoundedTimeRangeTo build() {
+            final var o = new DashboardTimeRangeBeginBoundedTimeRangeTo();
+            o.epochTimeRange = epochTimeRange;
+            o.iso8601TimeRange = iso8601TimeRange;
+            o.literalTimeRange = literalTimeRange;
+            o.relativeTimeRange = relativeTimeRange;
+            return o;
         }
     }
 }

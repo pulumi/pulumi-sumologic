@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
-    private final String iso8601Time;
+    private String iso8601Time;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(@CustomType.Parameter("iso8601Time") String iso8601Time) {
-        this.iso8601Time = iso8601Time;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange() {}
     public String iso8601Time() {
         return this.iso8601Time;
     }
@@ -27,24 +23,24 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFr
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String iso8601Time;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iso8601Time = defaults.iso8601Time;
         }
 
+        @CustomType.Setter
         public Builder iso8601Time(String iso8601Time) {
             this.iso8601Time = Objects.requireNonNull(iso8601Time);
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(iso8601Time);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange();
+            o.iso8601Time = iso8601Time;
+            return o;
         }
     }
 }

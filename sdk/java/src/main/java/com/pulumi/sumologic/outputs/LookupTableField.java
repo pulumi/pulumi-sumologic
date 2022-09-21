@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class LookupTableField {
-    private final String fieldName;
-    private final String fieldType;
+    private String fieldName;
+    private String fieldType;
 
-    @CustomType.Constructor
-    private LookupTableField(
-        @CustomType.Parameter("fieldName") String fieldName,
-        @CustomType.Parameter("fieldType") String fieldType) {
-        this.fieldName = fieldName;
-        this.fieldType = fieldType;
-    }
-
+    private LookupTableField() {}
     public String fieldName() {
         return this.fieldName;
     }
@@ -34,30 +27,32 @@ public final class LookupTableField {
     public static Builder builder(LookupTableField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fieldName;
         private String fieldType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LookupTableField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fieldName = defaults.fieldName;
     	      this.fieldType = defaults.fieldType;
         }
 
+        @CustomType.Setter
         public Builder fieldName(String fieldName) {
             this.fieldName = Objects.requireNonNull(fieldName);
             return this;
         }
+        @CustomType.Setter
         public Builder fieldType(String fieldType) {
             this.fieldType = Objects.requireNonNull(fieldType);
             return this;
-        }        public LookupTableField build() {
-            return new LookupTableField(fieldName, fieldType);
+        }
+        public LookupTableField build() {
+            final var o = new LookupTableField();
+            o.fieldName = fieldName;
+            o.fieldType = fieldType;
+            return o;
         }
     }
 }

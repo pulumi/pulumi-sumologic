@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudwatchSourceFilter {
-    private final String filterType;
-    private final @Nullable String mask;
-    private final String name;
-    private final String regexp;
+    private String filterType;
+    private @Nullable String mask;
+    private String name;
+    private String regexp;
 
-    @CustomType.Constructor
-    private CloudwatchSourceFilter(
-        @CustomType.Parameter("filterType") String filterType,
-        @CustomType.Parameter("mask") @Nullable String mask,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("regexp") String regexp) {
-        this.filterType = filterType;
-        this.mask = mask;
-        this.name = name;
-        this.regexp = regexp;
-    }
-
+    private CloudwatchSourceFilter() {}
     public String filterType() {
         return this.filterType;
     }
@@ -48,17 +37,13 @@ public final class CloudwatchSourceFilter {
     public static Builder builder(CloudwatchSourceFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String filterType;
         private @Nullable String mask;
         private String name;
         private String regexp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudwatchSourceFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filterType = defaults.filterType;
@@ -67,23 +52,33 @@ public final class CloudwatchSourceFilter {
     	      this.regexp = defaults.regexp;
         }
 
+        @CustomType.Setter
         public Builder filterType(String filterType) {
             this.filterType = Objects.requireNonNull(filterType);
             return this;
         }
+        @CustomType.Setter
         public Builder mask(@Nullable String mask) {
             this.mask = mask;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder regexp(String regexp) {
             this.regexp = Objects.requireNonNull(regexp);
             return this;
-        }        public CloudwatchSourceFilter build() {
-            return new CloudwatchSourceFilter(filterType, mask, name, regexp);
+        }
+        public CloudwatchSourceFilter build() {
+            final var o = new CloudwatchSourceFilter();
+            o.filterType = filterType;
+            o.mask = mask;
+            o.name = name;
+            o.regexp = regexp;
+            return o;
         }
     }
 }

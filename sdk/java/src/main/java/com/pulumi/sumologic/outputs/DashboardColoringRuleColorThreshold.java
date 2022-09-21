@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardColoringRuleColorThreshold {
-    private final String color;
-    private final @Nullable Double max;
-    private final @Nullable Double min;
+    private String color;
+    private @Nullable Double max;
+    private @Nullable Double min;
 
-    @CustomType.Constructor
-    private DashboardColoringRuleColorThreshold(
-        @CustomType.Parameter("color") String color,
-        @CustomType.Parameter("max") @Nullable Double max,
-        @CustomType.Parameter("min") @Nullable Double min) {
-        this.color = color;
-        this.max = max;
-        this.min = min;
-    }
-
+    private DashboardColoringRuleColorThreshold() {}
     public String color() {
         return this.color;
     }
@@ -43,16 +34,12 @@ public final class DashboardColoringRuleColorThreshold {
     public static Builder builder(DashboardColoringRuleColorThreshold defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String color;
         private @Nullable Double max;
         private @Nullable Double min;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardColoringRuleColorThreshold defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.color = defaults.color;
@@ -60,19 +47,27 @@ public final class DashboardColoringRuleColorThreshold {
     	      this.min = defaults.min;
         }
 
+        @CustomType.Setter
         public Builder color(String color) {
             this.color = Objects.requireNonNull(color);
             return this;
         }
+        @CustomType.Setter
         public Builder max(@Nullable Double max) {
             this.max = max;
             return this;
         }
+        @CustomType.Setter
         public Builder min(@Nullable Double min) {
             this.min = min;
             return this;
-        }        public DashboardColoringRuleColorThreshold build() {
-            return new DashboardColoringRuleColorThreshold(color, max, min);
+        }
+        public DashboardColoringRuleColorThreshold build() {
+            final var o = new DashboardColoringRuleColorThreshold();
+            o.color = color;
+            o.max = max;
+            o.min = min;
+            return o;
         }
     }
 }

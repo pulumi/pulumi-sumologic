@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsMissingDataCondition {
-    private final String timeRange;
-    private final String triggerSource;
+    private String timeRange;
+    private String triggerSource;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsMetricsMissingDataCondition(
-        @CustomType.Parameter("timeRange") String timeRange,
-        @CustomType.Parameter("triggerSource") String triggerSource) {
-        this.timeRange = timeRange;
-        this.triggerSource = triggerSource;
-    }
-
+    private MonitorTriggerConditionsMetricsMissingDataCondition() {}
     public String timeRange() {
         return this.timeRange;
     }
@@ -34,30 +27,32 @@ public final class MonitorTriggerConditionsMetricsMissingDataCondition {
     public static Builder builder(MonitorTriggerConditionsMetricsMissingDataCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String timeRange;
         private String triggerSource;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsMissingDataCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.timeRange = defaults.timeRange;
     	      this.triggerSource = defaults.triggerSource;
         }
 
+        @CustomType.Setter
         public Builder timeRange(String timeRange) {
             this.timeRange = Objects.requireNonNull(timeRange);
             return this;
         }
+        @CustomType.Setter
         public Builder triggerSource(String triggerSource) {
             this.triggerSource = Objects.requireNonNull(triggerSource);
             return this;
-        }        public MonitorTriggerConditionsMetricsMissingDataCondition build() {
-            return new MonitorTriggerConditionsMetricsMissingDataCondition(timeRange, triggerSource);
+        }
+        public MonitorTriggerConditionsMetricsMissingDataCondition build() {
+            final var o = new MonitorTriggerConditionsMetricsMissingDataCondition();
+            o.timeRange = timeRange;
+            o.triggerSource = triggerSource;
+            return o;
         }
     }
 }

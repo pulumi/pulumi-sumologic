@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
-    private final @Nullable Double threshold;
-    private final @Nullable String thresholdType;
+    private @Nullable Double threshold;
+    private @Nullable String thresholdType;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsMetricsStaticConditionWarningAlert(
-        @CustomType.Parameter("threshold") @Nullable Double threshold,
-        @CustomType.Parameter("thresholdType") @Nullable String thresholdType) {
-        this.threshold = threshold;
-        this.thresholdType = thresholdType;
-    }
-
+    private MonitorTriggerConditionsMetricsStaticConditionWarningAlert() {}
     public Optional<Double> threshold() {
         return Optional.ofNullable(this.threshold);
     }
@@ -37,30 +30,32 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
     public static Builder builder(MonitorTriggerConditionsMetricsStaticConditionWarningAlert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double threshold;
         private @Nullable String thresholdType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsStaticConditionWarningAlert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.threshold = defaults.threshold;
     	      this.thresholdType = defaults.thresholdType;
         }
 
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdType(@Nullable String thresholdType) {
             this.thresholdType = thresholdType;
             return this;
-        }        public MonitorTriggerConditionsMetricsStaticConditionWarningAlert build() {
-            return new MonitorTriggerConditionsMetricsStaticConditionWarningAlert(threshold, thresholdType);
+        }
+        public MonitorTriggerConditionsMetricsStaticConditionWarningAlert build() {
+            final var o = new MonitorTriggerConditionsMetricsStaticConditionWarningAlert();
+            o.threshold = threshold;
+            o.thresholdType = thresholdType;
+            return o;
         }
     }
 }

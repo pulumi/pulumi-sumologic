@@ -14,13 +14,9 @@ public final class CseLogMappingUnstructuredFields {
      * @return List of grok pattern names.
      * 
      */
-    private final List<String> patternNames;
+    private List<String> patternNames;
 
-    @CustomType.Constructor
-    private CseLogMappingUnstructuredFields(@CustomType.Parameter("patternNames") List<String> patternNames) {
-        this.patternNames = patternNames;
-    }
-
+    private CseLogMappingUnstructuredFields() {}
     /**
      * @return List of grok pattern names.
      * 
@@ -36,27 +32,27 @@ public final class CseLogMappingUnstructuredFields {
     public static Builder builder(CseLogMappingUnstructuredFields defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> patternNames;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseLogMappingUnstructuredFields defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.patternNames = defaults.patternNames;
         }
 
+        @CustomType.Setter
         public Builder patternNames(List<String> patternNames) {
             this.patternNames = Objects.requireNonNull(patternNames);
             return this;
         }
         public Builder patternNames(String... patternNames) {
             return patternNames(List.of(patternNames));
-        }        public CseLogMappingUnstructuredFields build() {
-            return new CseLogMappingUnstructuredFields(patternNames);
+        }
+        public CseLogMappingUnstructuredFields build() {
+            final var o = new CseLogMappingUnstructuredFields();
+            o.patternNames = patternNames;
+            return o;
         }
     }
 }

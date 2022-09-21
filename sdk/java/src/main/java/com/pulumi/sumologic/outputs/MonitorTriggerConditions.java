@@ -18,35 +18,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditions {
-    private final @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition;
-    private final @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition;
-    private final @Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition;
-    private final @Nullable MonitorTriggerConditionsMetricsMissingDataCondition metricsMissingDataCondition;
-    private final @Nullable MonitorTriggerConditionsMetricsOutlierCondition metricsOutlierCondition;
-    private final @Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition;
-    private final @Nullable MonitorTriggerConditionsSloBurnRateCondition sloBurnRateCondition;
-    private final @Nullable MonitorTriggerConditionsSloSliCondition sloSliCondition;
+    private @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition;
+    private @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition;
+    private @Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition;
+    private @Nullable MonitorTriggerConditionsMetricsMissingDataCondition metricsMissingDataCondition;
+    private @Nullable MonitorTriggerConditionsMetricsOutlierCondition metricsOutlierCondition;
+    private @Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition;
+    private @Nullable MonitorTriggerConditionsSloBurnRateCondition sloBurnRateCondition;
+    private @Nullable MonitorTriggerConditionsSloSliCondition sloSliCondition;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditions(
-        @CustomType.Parameter("logsMissingDataCondition") @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition,
-        @CustomType.Parameter("logsOutlierCondition") @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition,
-        @CustomType.Parameter("logsStaticCondition") @Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition,
-        @CustomType.Parameter("metricsMissingDataCondition") @Nullable MonitorTriggerConditionsMetricsMissingDataCondition metricsMissingDataCondition,
-        @CustomType.Parameter("metricsOutlierCondition") @Nullable MonitorTriggerConditionsMetricsOutlierCondition metricsOutlierCondition,
-        @CustomType.Parameter("metricsStaticCondition") @Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition,
-        @CustomType.Parameter("sloBurnRateCondition") @Nullable MonitorTriggerConditionsSloBurnRateCondition sloBurnRateCondition,
-        @CustomType.Parameter("sloSliCondition") @Nullable MonitorTriggerConditionsSloSliCondition sloSliCondition) {
-        this.logsMissingDataCondition = logsMissingDataCondition;
-        this.logsOutlierCondition = logsOutlierCondition;
-        this.logsStaticCondition = logsStaticCondition;
-        this.metricsMissingDataCondition = metricsMissingDataCondition;
-        this.metricsOutlierCondition = metricsOutlierCondition;
-        this.metricsStaticCondition = metricsStaticCondition;
-        this.sloBurnRateCondition = sloBurnRateCondition;
-        this.sloSliCondition = sloSliCondition;
-    }
-
+    private MonitorTriggerConditions() {}
     public Optional<MonitorTriggerConditionsLogsMissingDataCondition> logsMissingDataCondition() {
         return Optional.ofNullable(this.logsMissingDataCondition);
     }
@@ -79,7 +60,7 @@ public final class MonitorTriggerConditions {
     public static Builder builder(MonitorTriggerConditions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition;
         private @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition;
@@ -89,11 +70,7 @@ public final class MonitorTriggerConditions {
         private @Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition;
         private @Nullable MonitorTriggerConditionsSloBurnRateCondition sloBurnRateCondition;
         private @Nullable MonitorTriggerConditionsSloSliCondition sloSliCondition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.logsMissingDataCondition = defaults.logsMissingDataCondition;
@@ -106,39 +83,57 @@ public final class MonitorTriggerConditions {
     	      this.sloSliCondition = defaults.sloSliCondition;
         }
 
+        @CustomType.Setter
         public Builder logsMissingDataCondition(@Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition) {
             this.logsMissingDataCondition = logsMissingDataCondition;
             return this;
         }
+        @CustomType.Setter
         public Builder logsOutlierCondition(@Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition) {
             this.logsOutlierCondition = logsOutlierCondition;
             return this;
         }
+        @CustomType.Setter
         public Builder logsStaticCondition(@Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition) {
             this.logsStaticCondition = logsStaticCondition;
             return this;
         }
+        @CustomType.Setter
         public Builder metricsMissingDataCondition(@Nullable MonitorTriggerConditionsMetricsMissingDataCondition metricsMissingDataCondition) {
             this.metricsMissingDataCondition = metricsMissingDataCondition;
             return this;
         }
+        @CustomType.Setter
         public Builder metricsOutlierCondition(@Nullable MonitorTriggerConditionsMetricsOutlierCondition metricsOutlierCondition) {
             this.metricsOutlierCondition = metricsOutlierCondition;
             return this;
         }
+        @CustomType.Setter
         public Builder metricsStaticCondition(@Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition) {
             this.metricsStaticCondition = metricsStaticCondition;
             return this;
         }
+        @CustomType.Setter
         public Builder sloBurnRateCondition(@Nullable MonitorTriggerConditionsSloBurnRateCondition sloBurnRateCondition) {
             this.sloBurnRateCondition = sloBurnRateCondition;
             return this;
         }
+        @CustomType.Setter
         public Builder sloSliCondition(@Nullable MonitorTriggerConditionsSloSliCondition sloSliCondition) {
             this.sloSliCondition = sloSliCondition;
             return this;
-        }        public MonitorTriggerConditions build() {
-            return new MonitorTriggerConditions(logsMissingDataCondition, logsOutlierCondition, logsStaticCondition, metricsMissingDataCondition, metricsOutlierCondition, metricsStaticCondition, sloBurnRateCondition, sloSliCondition);
+        }
+        public MonitorTriggerConditions build() {
+            final var o = new MonitorTriggerConditions();
+            o.logsMissingDataCondition = logsMissingDataCondition;
+            o.logsOutlierCondition = logsOutlierCondition;
+            o.logsStaticCondition = logsStaticCondition;
+            o.metricsMissingDataCondition = metricsMissingDataCondition;
+            o.metricsOutlierCondition = metricsOutlierCondition;
+            o.metricsStaticCondition = metricsStaticCondition;
+            o.sloBurnRateCondition = sloBurnRateCondition;
+            o.sloSliCondition = sloSliCondition;
+            return o;
         }
     }
 }

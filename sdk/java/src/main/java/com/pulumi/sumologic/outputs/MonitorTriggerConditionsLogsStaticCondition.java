@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsStaticCondition {
-    private final @Nullable MonitorTriggerConditionsLogsStaticConditionCritical critical;
-    private final @Nullable String field;
-    private final @Nullable MonitorTriggerConditionsLogsStaticConditionWarning warning;
+    private @Nullable MonitorTriggerConditionsLogsStaticConditionCritical critical;
+    private @Nullable String field;
+    private @Nullable MonitorTriggerConditionsLogsStaticConditionWarning warning;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsLogsStaticCondition(
-        @CustomType.Parameter("critical") @Nullable MonitorTriggerConditionsLogsStaticConditionCritical critical,
-        @CustomType.Parameter("field") @Nullable String field,
-        @CustomType.Parameter("warning") @Nullable MonitorTriggerConditionsLogsStaticConditionWarning warning) {
-        this.critical = critical;
-        this.field = field;
-        this.warning = warning;
-    }
-
+    private MonitorTriggerConditionsLogsStaticCondition() {}
     public Optional<MonitorTriggerConditionsLogsStaticConditionCritical> critical() {
         return Optional.ofNullable(this.critical);
     }
@@ -44,16 +35,12 @@ public final class MonitorTriggerConditionsLogsStaticCondition {
     public static Builder builder(MonitorTriggerConditionsLogsStaticCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MonitorTriggerConditionsLogsStaticConditionCritical critical;
         private @Nullable String field;
         private @Nullable MonitorTriggerConditionsLogsStaticConditionWarning warning;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsLogsStaticCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -61,19 +48,27 @@ public final class MonitorTriggerConditionsLogsStaticCondition {
     	      this.warning = defaults.warning;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsLogsStaticConditionCritical critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder field(@Nullable String field) {
             this.field = field;
             return this;
         }
+        @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsLogsStaticConditionWarning warning) {
             this.warning = warning;
             return this;
-        }        public MonitorTriggerConditionsLogsStaticCondition build() {
-            return new MonitorTriggerConditionsLogsStaticCondition(critical, field, warning);
+        }
+        public MonitorTriggerConditionsLogsStaticCondition build() {
+            final var o = new MonitorTriggerConditionsLogsStaticCondition();
+            o.critical = critical;
+            o.field = field;
+            o.warning = warning;
+            return o;
         }
     }
 }

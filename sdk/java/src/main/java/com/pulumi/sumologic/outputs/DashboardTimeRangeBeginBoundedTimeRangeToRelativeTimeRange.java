@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
-    private final String relativeTime;
+    private String relativeTime;
 
-    @CustomType.Constructor
-    private DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(@CustomType.Parameter("relativeTime") String relativeTime) {
-        this.relativeTime = relativeTime;
-    }
-
+    private DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange() {}
     public String relativeTime() {
         return this.relativeTime;
     }
@@ -27,24 +23,24 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
     public static Builder builder(DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String relativeTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.relativeTime = defaults.relativeTime;
         }
 
+        @CustomType.Setter
         public Builder relativeTime(String relativeTime) {
             this.relativeTime = Objects.requireNonNull(relativeTime);
             return this;
-        }        public DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange build() {
-            return new DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(relativeTime);
+        }
+        public DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange build() {
+            final var o = new DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
+            o.relativeTime = relativeTime;
+            return o;
         }
     }
 }

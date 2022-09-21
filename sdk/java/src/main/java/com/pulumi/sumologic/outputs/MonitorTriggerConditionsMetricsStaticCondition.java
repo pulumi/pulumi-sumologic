@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsStaticCondition {
-    private final @Nullable MonitorTriggerConditionsMetricsStaticConditionCritical critical;
-    private final @Nullable MonitorTriggerConditionsMetricsStaticConditionWarning warning;
+    private @Nullable MonitorTriggerConditionsMetricsStaticConditionCritical critical;
+    private @Nullable MonitorTriggerConditionsMetricsStaticConditionWarning warning;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsMetricsStaticCondition(
-        @CustomType.Parameter("critical") @Nullable MonitorTriggerConditionsMetricsStaticConditionCritical critical,
-        @CustomType.Parameter("warning") @Nullable MonitorTriggerConditionsMetricsStaticConditionWarning warning) {
-        this.critical = critical;
-        this.warning = warning;
-    }
-
+    private MonitorTriggerConditionsMetricsStaticCondition() {}
     public Optional<MonitorTriggerConditionsMetricsStaticConditionCritical> critical() {
         return Optional.ofNullable(this.critical);
     }
@@ -37,30 +30,32 @@ public final class MonitorTriggerConditionsMetricsStaticCondition {
     public static Builder builder(MonitorTriggerConditionsMetricsStaticCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MonitorTriggerConditionsMetricsStaticConditionCritical critical;
         private @Nullable MonitorTriggerConditionsMetricsStaticConditionWarning warning;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsStaticCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
     	      this.warning = defaults.warning;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsMetricsStaticConditionCritical critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsMetricsStaticConditionWarning warning) {
             this.warning = warning;
             return this;
-        }        public MonitorTriggerConditionsMetricsStaticCondition build() {
-            return new MonitorTriggerConditionsMetricsStaticCondition(critical, warning);
+        }
+        public MonitorTriggerConditionsMetricsStaticCondition build() {
+            final var o = new MonitorTriggerConditionsMetricsStaticCondition();
+            o.critical = critical;
+            o.warning = warning;
+            return o;
         }
     }
 }

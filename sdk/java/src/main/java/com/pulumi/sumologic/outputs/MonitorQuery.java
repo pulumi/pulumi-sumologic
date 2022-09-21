@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorQuery {
-    private final String query;
-    private final String rowId;
+    private String query;
+    private String rowId;
 
-    @CustomType.Constructor
-    private MonitorQuery(
-        @CustomType.Parameter("query") String query,
-        @CustomType.Parameter("rowId") String rowId) {
-        this.query = query;
-        this.rowId = rowId;
-    }
-
+    private MonitorQuery() {}
     public String query() {
         return this.query;
     }
@@ -34,30 +27,32 @@ public final class MonitorQuery {
     public static Builder builder(MonitorQuery defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String query;
         private String rowId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.query = defaults.query;
     	      this.rowId = defaults.rowId;
         }
 
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
         }
+        @CustomType.Setter
         public Builder rowId(String rowId) {
             this.rowId = Objects.requireNonNull(rowId);
             return this;
-        }        public MonitorQuery build() {
-            return new MonitorQuery(query, rowId);
+        }
+        public MonitorQuery build() {
+            final var o = new MonitorQuery();
+            o.query = query;
+            o.rowId = rowId;
+            return o;
         }
     }
 }

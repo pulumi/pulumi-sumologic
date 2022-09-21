@@ -15,35 +15,24 @@ public final class MetadataSourcePath {
      * @return List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
      * 
      */
-    private final @Nullable List<String> limitToNamespaces;
+    private @Nullable List<String> limitToNamespaces;
     /**
      * @return List of Amazon regions.
      * 
      */
-    private final @Nullable List<String> limitToRegions;
+    private @Nullable List<String> limitToRegions;
     /**
      * @return Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
      * 
      */
-    private final @Nullable List<String> tagFilters;
+    private @Nullable List<String> tagFilters;
     /**
      * @return type of polling source. Only allowed value is `AwsMetadataPath`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private MetadataSourcePath(
-        @CustomType.Parameter("limitToNamespaces") @Nullable List<String> limitToNamespaces,
-        @CustomType.Parameter("limitToRegions") @Nullable List<String> limitToRegions,
-        @CustomType.Parameter("tagFilters") @Nullable List<String> tagFilters,
-        @CustomType.Parameter("type") String type) {
-        this.limitToNamespaces = limitToNamespaces;
-        this.limitToRegions = limitToRegions;
-        this.tagFilters = tagFilters;
-        this.type = type;
-    }
-
+    private MetadataSourcePath() {}
     /**
      * @return List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
      * 
@@ -80,17 +69,13 @@ public final class MetadataSourcePath {
     public static Builder builder(MetadataSourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
         private @Nullable List<String> tagFilters;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetadataSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limitToNamespaces = defaults.limitToNamespaces;
@@ -99,6 +84,7 @@ public final class MetadataSourcePath {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
             this.limitToNamespaces = limitToNamespaces;
             return this;
@@ -106,6 +92,7 @@ public final class MetadataSourcePath {
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
+        @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
             this.limitToRegions = limitToRegions;
             return this;
@@ -113,6 +100,7 @@ public final class MetadataSourcePath {
         public Builder limitToRegions(String... limitToRegions) {
             return limitToRegions(List.of(limitToRegions));
         }
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<String> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -120,11 +108,18 @@ public final class MetadataSourcePath {
         public Builder tagFilters(String... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public MetadataSourcePath build() {
-            return new MetadataSourcePath(limitToNamespaces, limitToRegions, tagFilters, type);
+        }
+        public MetadataSourcePath build() {
+            final var o = new MetadataSourcePath();
+            o.limitToNamespaces = limitToNamespaces;
+            o.limitToRegions = limitToRegions;
+            o.tagFilters = tagFilters;
+            o.type = type;
+            return o;
         }
     }
 }

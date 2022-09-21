@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsSloSliCondition {
-    private final @Nullable MonitorTriggerConditionsSloSliConditionCritical critical;
-    private final @Nullable MonitorTriggerConditionsSloSliConditionWarning warning;
+    private @Nullable MonitorTriggerConditionsSloSliConditionCritical critical;
+    private @Nullable MonitorTriggerConditionsSloSliConditionWarning warning;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsSloSliCondition(
-        @CustomType.Parameter("critical") @Nullable MonitorTriggerConditionsSloSliConditionCritical critical,
-        @CustomType.Parameter("warning") @Nullable MonitorTriggerConditionsSloSliConditionWarning warning) {
-        this.critical = critical;
-        this.warning = warning;
-    }
-
+    private MonitorTriggerConditionsSloSliCondition() {}
     public Optional<MonitorTriggerConditionsSloSliConditionCritical> critical() {
         return Optional.ofNullable(this.critical);
     }
@@ -37,30 +30,32 @@ public final class MonitorTriggerConditionsSloSliCondition {
     public static Builder builder(MonitorTriggerConditionsSloSliCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MonitorTriggerConditionsSloSliConditionCritical critical;
         private @Nullable MonitorTriggerConditionsSloSliConditionWarning warning;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsSloSliCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
     	      this.warning = defaults.warning;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsSloSliConditionCritical critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsSloSliConditionWarning warning) {
             this.warning = warning;
             return this;
-        }        public MonitorTriggerConditionsSloSliCondition build() {
-            return new MonitorTriggerConditionsSloSliCondition(critical, warning);
+        }
+        public MonitorTriggerConditionsSloSliCondition build() {
+            final var o = new MonitorTriggerConditionsSloSliCondition();
+            o.critical = critical;
+            o.warning = warning;
+            return o;
         }
     }
 }

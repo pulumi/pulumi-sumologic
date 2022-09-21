@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardTimeRangeCompleteLiteralTimeRange {
-    private final String rangeName;
+    private String rangeName;
 
-    @CustomType.Constructor
-    private DashboardTimeRangeCompleteLiteralTimeRange(@CustomType.Parameter("rangeName") String rangeName) {
-        this.rangeName = rangeName;
-    }
-
+    private DashboardTimeRangeCompleteLiteralTimeRange() {}
     public String rangeName() {
         return this.rangeName;
     }
@@ -27,24 +23,24 @@ public final class DashboardTimeRangeCompleteLiteralTimeRange {
     public static Builder builder(DashboardTimeRangeCompleteLiteralTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String rangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRangeCompleteLiteralTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rangeName = defaults.rangeName;
         }
 
+        @CustomType.Setter
         public Builder rangeName(String rangeName) {
             this.rangeName = Objects.requireNonNull(rangeName);
             return this;
-        }        public DashboardTimeRangeCompleteLiteralTimeRange build() {
-            return new DashboardTimeRangeCompleteLiteralTimeRange(rangeName);
+        }
+        public DashboardTimeRangeCompleteLiteralTimeRange build() {
+            final var o = new DashboardTimeRangeCompleteLiteralTimeRange();
+            o.rangeName = rangeName;
+            return o;
         }
     }
 }

@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpSourcePath {
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GcpSourcePath(@CustomType.Parameter("type") @Nullable String type) {
-        this.type = type;
-    }
-
+    private GcpSourcePath() {}
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -29,24 +25,24 @@ public final class GcpSourcePath {
     public static Builder builder(GcpSourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GcpSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GcpSourcePath build() {
-            return new GcpSourcePath(type);
+        }
+        public GcpSourcePath build() {
+            final var o = new GcpSourcePath();
+            o.type = type;
+            return o;
         }
     }
 }
