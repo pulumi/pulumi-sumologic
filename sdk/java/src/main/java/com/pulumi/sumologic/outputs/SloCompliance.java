@@ -16,45 +16,32 @@ public final class SloCompliance {
      * @return The type of compliance to use. Valid values are `Rolling` or `Calendar`.
      * 
      */
-    private final String complianceType;
+    private String complianceType;
     /**
      * @return The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
      * based evaluation.
      * 
      */
-    private final String size;
+    private String size;
     /**
      * @return Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
      * Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
      * For `Month` it&#39;s not required and is set to first day of the month.
      * 
      */
-    private final @Nullable String startFrom;
+    private @Nullable String startFrom;
     /**
      * @return The target value to use, must be a number between 0 and 100.
      * 
      */
-    private final Double target;
+    private Double target;
     /**
      * @return Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
      * 
      */
-    private final String timezone;
+    private String timezone;
 
-    @CustomType.Constructor
-    private SloCompliance(
-        @CustomType.Parameter("complianceType") String complianceType,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("startFrom") @Nullable String startFrom,
-        @CustomType.Parameter("target") Double target,
-        @CustomType.Parameter("timezone") String timezone) {
-        this.complianceType = complianceType;
-        this.size = size;
-        this.startFrom = startFrom;
-        this.target = target;
-        this.timezone = timezone;
-    }
-
+    private SloCompliance() {}
     /**
      * @return The type of compliance to use. Valid values are `Rolling` or `Calendar`.
      * 
@@ -101,18 +88,14 @@ public final class SloCompliance {
     public static Builder builder(SloCompliance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String complianceType;
         private String size;
         private @Nullable String startFrom;
         private Double target;
         private String timezone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloCompliance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.complianceType = defaults.complianceType;
@@ -122,27 +105,39 @@ public final class SloCompliance {
     	      this.timezone = defaults.timezone;
         }
 
+        @CustomType.Setter
         public Builder complianceType(String complianceType) {
             this.complianceType = Objects.requireNonNull(complianceType);
             return this;
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder startFrom(@Nullable String startFrom) {
             this.startFrom = startFrom;
             return this;
         }
+        @CustomType.Setter
         public Builder target(Double target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
+        @CustomType.Setter
         public Builder timezone(String timezone) {
             this.timezone = Objects.requireNonNull(timezone);
             return this;
-        }        public SloCompliance build() {
-            return new SloCompliance(complianceType, size, startFrom, target, timezone);
+        }
+        public SloCompliance build() {
+            final var o = new SloCompliance();
+            o.complianceType = complianceType;
+            o.size = size;
+            o.startFrom = startFrom;
+            o.target = target;
+            o.timezone = timezone;
+            return o;
         }
     }
 }

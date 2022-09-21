@@ -9,24 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCallerIdentityResult {
-    private final String accessId;
-    private final String environment;
+    private String accessId;
+    private String environment;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetCallerIdentityResult(
-        @CustomType.Parameter("accessId") String accessId,
-        @CustomType.Parameter("environment") String environment,
-        @CustomType.Parameter("id") String id) {
-        this.accessId = accessId;
-        this.environment = environment;
-        this.id = id;
-    }
-
+    private GetCallerIdentityResult() {}
     public String accessId() {
         return this.accessId;
     }
@@ -48,16 +39,12 @@ public final class GetCallerIdentityResult {
     public static Builder builder(GetCallerIdentityResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessId;
         private String environment;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCallerIdentityResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessId = defaults.accessId;
@@ -65,19 +52,27 @@ public final class GetCallerIdentityResult {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder accessId(String accessId) {
             this.accessId = Objects.requireNonNull(accessId);
             return this;
         }
+        @CustomType.Setter
         public Builder environment(String environment) {
             this.environment = Objects.requireNonNull(environment);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetCallerIdentityResult build() {
-            return new GetCallerIdentityResult(accessId, environment, id);
+        }
+        public GetCallerIdentityResult build() {
+            final var o = new GetCallerIdentityResult();
+            o.accessId = accessId;
+            o.environment = environment;
+            o.id = id;
+            return o;
         }
     }
 }

@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardTimeRange {
-    private final @Nullable DashboardTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
-    private final @Nullable DashboardTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange;
+    private @Nullable DashboardTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
+    private @Nullable DashboardTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange;
 
-    @CustomType.Constructor
-    private DashboardTimeRange(
-        @CustomType.Parameter("beginBoundedTimeRange") @Nullable DashboardTimeRangeBeginBoundedTimeRange beginBoundedTimeRange,
-        @CustomType.Parameter("completeLiteralTimeRange") @Nullable DashboardTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange) {
-        this.beginBoundedTimeRange = beginBoundedTimeRange;
-        this.completeLiteralTimeRange = completeLiteralTimeRange;
-    }
-
+    private DashboardTimeRange() {}
     public Optional<DashboardTimeRangeBeginBoundedTimeRange> beginBoundedTimeRange() {
         return Optional.ofNullable(this.beginBoundedTimeRange);
     }
@@ -37,30 +30,32 @@ public final class DashboardTimeRange {
     public static Builder builder(DashboardTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
         private @Nullable DashboardTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.beginBoundedTimeRange = defaults.beginBoundedTimeRange;
     	      this.completeLiteralTimeRange = defaults.completeLiteralTimeRange;
         }
 
+        @CustomType.Setter
         public Builder beginBoundedTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRange beginBoundedTimeRange) {
             this.beginBoundedTimeRange = beginBoundedTimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder completeLiteralTimeRange(@Nullable DashboardTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange) {
             this.completeLiteralTimeRange = completeLiteralTimeRange;
             return this;
-        }        public DashboardTimeRange build() {
-            return new DashboardTimeRange(beginBoundedTimeRange, completeLiteralTimeRange);
+        }
+        public DashboardTimeRange build() {
+            final var o = new DashboardTimeRange();
+            o.beginBoundedTimeRange = beginBoundedTimeRange;
+            o.completeLiteralTimeRange = completeLiteralTimeRange;
+            return o;
         }
     }
 }

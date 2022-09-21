@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardVariableSourceDefinition {
-    private final @Nullable DashboardVariableSourceDefinitionCsvVariableSourceDefinition csvVariableSourceDefinition;
-    private final @Nullable DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition logQueryVariableSourceDefinition;
-    private final @Nullable DashboardVariableSourceDefinitionMetadataVariableSourceDefinition metadataVariableSourceDefinition;
+    private @Nullable DashboardVariableSourceDefinitionCsvVariableSourceDefinition csvVariableSourceDefinition;
+    private @Nullable DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition logQueryVariableSourceDefinition;
+    private @Nullable DashboardVariableSourceDefinitionMetadataVariableSourceDefinition metadataVariableSourceDefinition;
 
-    @CustomType.Constructor
-    private DashboardVariableSourceDefinition(
-        @CustomType.Parameter("csvVariableSourceDefinition") @Nullable DashboardVariableSourceDefinitionCsvVariableSourceDefinition csvVariableSourceDefinition,
-        @CustomType.Parameter("logQueryVariableSourceDefinition") @Nullable DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition logQueryVariableSourceDefinition,
-        @CustomType.Parameter("metadataVariableSourceDefinition") @Nullable DashboardVariableSourceDefinitionMetadataVariableSourceDefinition metadataVariableSourceDefinition) {
-        this.csvVariableSourceDefinition = csvVariableSourceDefinition;
-        this.logQueryVariableSourceDefinition = logQueryVariableSourceDefinition;
-        this.metadataVariableSourceDefinition = metadataVariableSourceDefinition;
-    }
-
+    private DashboardVariableSourceDefinition() {}
     public Optional<DashboardVariableSourceDefinitionCsvVariableSourceDefinition> csvVariableSourceDefinition() {
         return Optional.ofNullable(this.csvVariableSourceDefinition);
     }
@@ -44,16 +35,12 @@ public final class DashboardVariableSourceDefinition {
     public static Builder builder(DashboardVariableSourceDefinition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardVariableSourceDefinitionCsvVariableSourceDefinition csvVariableSourceDefinition;
         private @Nullable DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition logQueryVariableSourceDefinition;
         private @Nullable DashboardVariableSourceDefinitionMetadataVariableSourceDefinition metadataVariableSourceDefinition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardVariableSourceDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.csvVariableSourceDefinition = defaults.csvVariableSourceDefinition;
@@ -61,19 +48,27 @@ public final class DashboardVariableSourceDefinition {
     	      this.metadataVariableSourceDefinition = defaults.metadataVariableSourceDefinition;
         }
 
+        @CustomType.Setter
         public Builder csvVariableSourceDefinition(@Nullable DashboardVariableSourceDefinitionCsvVariableSourceDefinition csvVariableSourceDefinition) {
             this.csvVariableSourceDefinition = csvVariableSourceDefinition;
             return this;
         }
+        @CustomType.Setter
         public Builder logQueryVariableSourceDefinition(@Nullable DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition logQueryVariableSourceDefinition) {
             this.logQueryVariableSourceDefinition = logQueryVariableSourceDefinition;
             return this;
         }
+        @CustomType.Setter
         public Builder metadataVariableSourceDefinition(@Nullable DashboardVariableSourceDefinitionMetadataVariableSourceDefinition metadataVariableSourceDefinition) {
             this.metadataVariableSourceDefinition = metadataVariableSourceDefinition;
             return this;
-        }        public DashboardVariableSourceDefinition build() {
-            return new DashboardVariableSourceDefinition(csvVariableSourceDefinition, logQueryVariableSourceDefinition, metadataVariableSourceDefinition);
+        }
+        public DashboardVariableSourceDefinition build() {
+            final var o = new DashboardVariableSourceDefinition();
+            o.csvVariableSourceDefinition = csvVariableSourceDefinition;
+            o.logQueryVariableSourceDefinition = logQueryVariableSourceDefinition;
+            o.metadataVariableSourceDefinition = metadataVariableSourceDefinition;
+            return o;
         }
     }
 }

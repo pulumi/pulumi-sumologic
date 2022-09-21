@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpMetricsSourcePathSnsTopicOrSubscriptionArn {
-    private final @Nullable String arn;
-    private final @Nullable Boolean isSuccess;
+    private @Nullable String arn;
+    private @Nullable Boolean isSuccess;
 
-    @CustomType.Constructor
-    private GcpMetricsSourcePathSnsTopicOrSubscriptionArn(
-        @CustomType.Parameter("arn") @Nullable String arn,
-        @CustomType.Parameter("isSuccess") @Nullable Boolean isSuccess) {
-        this.arn = arn;
-        this.isSuccess = isSuccess;
-    }
-
+    private GcpMetricsSourcePathSnsTopicOrSubscriptionArn() {}
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
@@ -37,30 +30,32 @@ public final class GcpMetricsSourcePathSnsTopicOrSubscriptionArn {
     public static Builder builder(GcpMetricsSourcePathSnsTopicOrSubscriptionArn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String arn;
         private @Nullable Boolean isSuccess;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GcpMetricsSourcePathSnsTopicOrSubscriptionArn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
     	      this.isSuccess = defaults.isSuccess;
         }
 
+        @CustomType.Setter
         public Builder arn(@Nullable String arn) {
             this.arn = arn;
             return this;
         }
+        @CustomType.Setter
         public Builder isSuccess(@Nullable Boolean isSuccess) {
             this.isSuccess = isSuccess;
             return this;
-        }        public GcpMetricsSourcePathSnsTopicOrSubscriptionArn build() {
-            return new GcpMetricsSourcePathSnsTopicOrSubscriptionArn(arn, isSuccess);
+        }
+        public GcpMetricsSourcePathSnsTopicOrSubscriptionArn build() {
+            final var o = new GcpMetricsSourcePathSnsTopicOrSubscriptionArn();
+            o.arn = arn;
+            o.isSuccess = isSuccess;
+            return o;
         }
     }
 }

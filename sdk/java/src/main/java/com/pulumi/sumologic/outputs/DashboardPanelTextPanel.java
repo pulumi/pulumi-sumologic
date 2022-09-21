@@ -12,33 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelTextPanel {
-    private final @Nullable String id;
-    private final @Nullable Boolean keepVisualSettingsConsistentWithParent;
-    private final String key;
-    private final @Nullable String text;
+    private @Nullable String id;
+    private @Nullable Boolean keepVisualSettingsConsistentWithParent;
+    private String key;
+    private @Nullable String text;
     /**
      * @return Title of the dashboard.
      * 
      */
-    private final @Nullable String title;
-    private final @Nullable String visualSettings;
+    private @Nullable String title;
+    private @Nullable String visualSettings;
 
-    @CustomType.Constructor
-    private DashboardPanelTextPanel(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("keepVisualSettingsConsistentWithParent") @Nullable Boolean keepVisualSettingsConsistentWithParent,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("text") @Nullable String text,
-        @CustomType.Parameter("title") @Nullable String title,
-        @CustomType.Parameter("visualSettings") @Nullable String visualSettings) {
-        this.id = id;
-        this.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
-        this.key = key;
-        this.text = text;
-        this.title = title;
-        this.visualSettings = visualSettings;
-    }
-
+    private DashboardPanelTextPanel() {}
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
@@ -69,7 +54,7 @@ public final class DashboardPanelTextPanel {
     public static Builder builder(DashboardPanelTextPanel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private @Nullable Boolean keepVisualSettingsConsistentWithParent;
@@ -77,11 +62,7 @@ public final class DashboardPanelTextPanel {
         private @Nullable String text;
         private @Nullable String title;
         private @Nullable String visualSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelTextPanel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -92,31 +73,45 @@ public final class DashboardPanelTextPanel {
     	      this.visualSettings = defaults.visualSettings;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder keepVisualSettingsConsistentWithParent(@Nullable Boolean keepVisualSettingsConsistentWithParent) {
             this.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder text(@Nullable String text) {
             this.text = text;
             return this;
         }
+        @CustomType.Setter
         public Builder title(@Nullable String title) {
             this.title = title;
             return this;
         }
+        @CustomType.Setter
         public Builder visualSettings(@Nullable String visualSettings) {
             this.visualSettings = visualSettings;
             return this;
-        }        public DashboardPanelTextPanel build() {
-            return new DashboardPanelTextPanel(id, keepVisualSettingsConsistentWithParent, key, text, title, visualSettings);
+        }
+        public DashboardPanelTextPanel build() {
+            final var o = new DashboardPanelTextPanel();
+            o.id = id;
+            o.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
+            o.key = key;
+            o.text = text;
+            o.title = title;
+            o.visualSettings = visualSettings;
+            return o;
         }
     }
 }

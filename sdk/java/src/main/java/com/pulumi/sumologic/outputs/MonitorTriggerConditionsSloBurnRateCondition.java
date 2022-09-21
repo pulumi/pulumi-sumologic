@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsSloBurnRateCondition {
-    private final @Nullable MonitorTriggerConditionsSloBurnRateConditionCritical critical;
-    private final @Nullable MonitorTriggerConditionsSloBurnRateConditionWarning warning;
+    private @Nullable MonitorTriggerConditionsSloBurnRateConditionCritical critical;
+    private @Nullable MonitorTriggerConditionsSloBurnRateConditionWarning warning;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsSloBurnRateCondition(
-        @CustomType.Parameter("critical") @Nullable MonitorTriggerConditionsSloBurnRateConditionCritical critical,
-        @CustomType.Parameter("warning") @Nullable MonitorTriggerConditionsSloBurnRateConditionWarning warning) {
-        this.critical = critical;
-        this.warning = warning;
-    }
-
+    private MonitorTriggerConditionsSloBurnRateCondition() {}
     public Optional<MonitorTriggerConditionsSloBurnRateConditionCritical> critical() {
         return Optional.ofNullable(this.critical);
     }
@@ -37,30 +30,32 @@ public final class MonitorTriggerConditionsSloBurnRateCondition {
     public static Builder builder(MonitorTriggerConditionsSloBurnRateCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MonitorTriggerConditionsSloBurnRateConditionCritical critical;
         private @Nullable MonitorTriggerConditionsSloBurnRateConditionWarning warning;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsSloBurnRateCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
     	      this.warning = defaults.warning;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsSloBurnRateConditionCritical critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsSloBurnRateConditionWarning warning) {
             this.warning = warning;
             return this;
-        }        public MonitorTriggerConditionsSloBurnRateCondition build() {
-            return new MonitorTriggerConditionsSloBurnRateCondition(critical, warning);
+        }
+        public MonitorTriggerConditionsSloBurnRateCondition build() {
+            final var o = new MonitorTriggerConditionsSloBurnRateCondition();
+            o.critical = critical;
+            o.warning = warning;
+            return o;
         }
     }
 }

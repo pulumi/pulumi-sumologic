@@ -18,35 +18,24 @@ public final class CseMatchRuleSeverityMapping {
      * @return The severity to use in the &#34;constant&#34; case or to fall back to if the field used by &#34;fieldValue&#34;/&#34;fieldValueMapping&#34; is not populated.
      * 
      */
-    private final @Nullable Integer default_;
+    private @Nullable Integer default_;
     /**
      * @return The field to use in the &#34;fieldValue&#34;/&#34;fieldValueMapping&#34; cases.
      * 
      */
-    private final @Nullable String field;
+    private @Nullable String field;
     /**
      * @return The map of record values to severities to use in the &#34;fieldValueMapping&#34; case
      * 
      */
-    private final @Nullable List<CseMatchRuleSeverityMappingMapping> mappings;
+    private @Nullable List<CseMatchRuleSeverityMappingMapping> mappings;
     /**
      * @return Must be set to &#34;eq&#34; currently
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private CseMatchRuleSeverityMapping(
-        @CustomType.Parameter("default") @Nullable Integer default_,
-        @CustomType.Parameter("field") @Nullable String field,
-        @CustomType.Parameter("mappings") @Nullable List<CseMatchRuleSeverityMappingMapping> mappings,
-        @CustomType.Parameter("type") String type) {
-        this.default_ = default_;
-        this.field = field;
-        this.mappings = mappings;
-        this.type = type;
-    }
-
+    private CseMatchRuleSeverityMapping() {}
     /**
      * @return The severity to use in the &#34;constant&#34; case or to fall back to if the field used by &#34;fieldValue&#34;/&#34;fieldValueMapping&#34; is not populated.
      * 
@@ -83,17 +72,13 @@ public final class CseMatchRuleSeverityMapping {
     public static Builder builder(CseMatchRuleSeverityMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer default_;
         private @Nullable String field;
         private @Nullable List<CseMatchRuleSeverityMappingMapping> mappings;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseMatchRuleSeverityMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -102,14 +87,17 @@ public final class CseMatchRuleSeverityMapping {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(@Nullable Integer default_) {
             this.default_ = default_;
             return this;
         }
+        @CustomType.Setter
         public Builder field(@Nullable String field) {
             this.field = field;
             return this;
         }
+        @CustomType.Setter
         public Builder mappings(@Nullable List<CseMatchRuleSeverityMappingMapping> mappings) {
             this.mappings = mappings;
             return this;
@@ -117,11 +105,18 @@ public final class CseMatchRuleSeverityMapping {
         public Builder mappings(CseMatchRuleSeverityMappingMapping... mappings) {
             return mappings(List.of(mappings));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public CseMatchRuleSeverityMapping build() {
-            return new CseMatchRuleSeverityMapping(default_, field, mappings, type);
+        }
+        public CseMatchRuleSeverityMapping build() {
+            final var o = new CseMatchRuleSeverityMapping();
+            o.default_ = default_;
+            o.field = field;
+            o.mappings = mappings;
+            o.type = type;
+            return o;
         }
     }
 }

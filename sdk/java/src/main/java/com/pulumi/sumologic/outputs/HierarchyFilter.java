@@ -13,21 +13,14 @@ public final class HierarchyFilter {
      * @return Filtering key.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Value required for the filtering key.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private HierarchyFilter(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private HierarchyFilter() {}
     /**
      * @return Filtering key.
      * 
@@ -50,30 +43,32 @@ public final class HierarchyFilter {
     public static Builder builder(HierarchyFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HierarchyFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public HierarchyFilter build() {
-            return new HierarchyFilter(key, value);
+        }
+        public HierarchyFilter build() {
+            final var o = new HierarchyFilter();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

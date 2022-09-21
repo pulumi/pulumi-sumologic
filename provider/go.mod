@@ -10,7 +10,7 @@ require (
 )
 
 replace (
-	github.com/SumoLogic/terraform-provider-sumologic => github.com/pulumi/terraform-provider-sumologic v0.0.0-20220816124957-dfa7f9a57e9c
+	github.com/SumoLogic/terraform-provider-sumologic => github.com/pulumi/terraform-provider-sumologic v0.0.0-20220921191322-ccd8535bdcd2
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
 	github.com/spf13/afero => github.com/spf13/afero v1.2.2

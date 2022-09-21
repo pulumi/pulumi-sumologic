@@ -19,35 +19,24 @@ public final class SloIndicatorRequestBasedEvaluation {
      * , `GreaterThanOrEqual`.
      * 
      */
-    private final @Nullable String op;
+    private @Nullable String op;
     /**
      * @return The queries to use.
      * 
      */
-    private final List<SloIndicatorRequestBasedEvaluationQuery> queries;
+    private List<SloIndicatorRequestBasedEvaluationQuery> queries;
     /**
      * @return The type of query to use. Valid values are `Metrics` or `Logs`.
      * 
      */
-    private final String queryType;
+    private String queryType;
     /**
      * @return Compared against threshold query&#39;s raw data points to determine success criteria.
      * 
      */
-    private final @Nullable Double threshold;
+    private @Nullable Double threshold;
 
-    @CustomType.Constructor
-    private SloIndicatorRequestBasedEvaluation(
-        @CustomType.Parameter("op") @Nullable String op,
-        @CustomType.Parameter("queries") List<SloIndicatorRequestBasedEvaluationQuery> queries,
-        @CustomType.Parameter("queryType") String queryType,
-        @CustomType.Parameter("threshold") @Nullable Double threshold) {
-        this.op = op;
-        this.queries = queries;
-        this.queryType = queryType;
-        this.threshold = threshold;
-    }
-
+    private SloIndicatorRequestBasedEvaluation() {}
     /**
      * @return Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
      * , `GreaterThanOrEqual`.
@@ -85,17 +74,13 @@ public final class SloIndicatorRequestBasedEvaluation {
     public static Builder builder(SloIndicatorRequestBasedEvaluation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String op;
         private List<SloIndicatorRequestBasedEvaluationQuery> queries;
         private String queryType;
         private @Nullable Double threshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloIndicatorRequestBasedEvaluation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.op = defaults.op;
@@ -104,10 +89,12 @@ public final class SloIndicatorRequestBasedEvaluation {
     	      this.threshold = defaults.threshold;
         }
 
+        @CustomType.Setter
         public Builder op(@Nullable String op) {
             this.op = op;
             return this;
         }
+        @CustomType.Setter
         public Builder queries(List<SloIndicatorRequestBasedEvaluationQuery> queries) {
             this.queries = Objects.requireNonNull(queries);
             return this;
@@ -115,15 +102,23 @@ public final class SloIndicatorRequestBasedEvaluation {
         public Builder queries(SloIndicatorRequestBasedEvaluationQuery... queries) {
             return queries(List.of(queries));
         }
+        @CustomType.Setter
         public Builder queryType(String queryType) {
             this.queryType = Objects.requireNonNull(queryType);
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
             return this;
-        }        public SloIndicatorRequestBasedEvaluation build() {
-            return new SloIndicatorRequestBasedEvaluation(op, queries, queryType, threshold);
+        }
+        public SloIndicatorRequestBasedEvaluation build() {
+            final var o = new SloIndicatorRequestBasedEvaluation();
+            o.op = op;
+            o.queries = queries;
+            o.queryType = queryType;
+            o.threshold = threshold;
+            return o;
         }
     }
 }

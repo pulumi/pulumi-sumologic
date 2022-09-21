@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardLayoutGrid {
-    private final List<DashboardLayoutGridLayoutStructure> layoutStructures;
+    private List<DashboardLayoutGridLayoutStructure> layoutStructures;
 
-    @CustomType.Constructor
-    private DashboardLayoutGrid(@CustomType.Parameter("layoutStructures") List<DashboardLayoutGridLayoutStructure> layoutStructures) {
-        this.layoutStructures = layoutStructures;
-    }
-
+    private DashboardLayoutGrid() {}
     public List<DashboardLayoutGridLayoutStructure> layoutStructures() {
         return this.layoutStructures;
     }
@@ -28,27 +24,27 @@ public final class DashboardLayoutGrid {
     public static Builder builder(DashboardLayoutGrid defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<DashboardLayoutGridLayoutStructure> layoutStructures;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardLayoutGrid defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.layoutStructures = defaults.layoutStructures;
         }
 
+        @CustomType.Setter
         public Builder layoutStructures(List<DashboardLayoutGridLayoutStructure> layoutStructures) {
             this.layoutStructures = Objects.requireNonNull(layoutStructures);
             return this;
         }
         public Builder layoutStructures(DashboardLayoutGridLayoutStructure... layoutStructures) {
             return layoutStructures(List.of(layoutStructures));
-        }        public DashboardLayoutGrid build() {
-            return new DashboardLayoutGrid(layoutStructures);
+        }
+        public DashboardLayoutGrid build() {
+            final var o = new DashboardLayoutGrid();
+            o.layoutStructures = layoutStructures;
+            return o;
         }
     }
 }

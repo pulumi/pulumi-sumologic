@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardVariableSourceDefinitionCsvVariableSourceDefinition {
-    private final String values;
+    private String values;
 
-    @CustomType.Constructor
-    private DashboardVariableSourceDefinitionCsvVariableSourceDefinition(@CustomType.Parameter("values") String values) {
-        this.values = values;
-    }
-
+    private DashboardVariableSourceDefinitionCsvVariableSourceDefinition() {}
     public String values() {
         return this.values;
     }
@@ -27,24 +23,24 @@ public final class DashboardVariableSourceDefinitionCsvVariableSourceDefinition 
     public static Builder builder(DashboardVariableSourceDefinitionCsvVariableSourceDefinition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardVariableSourceDefinitionCsvVariableSourceDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder values(String values) {
             this.values = Objects.requireNonNull(values);
             return this;
-        }        public DashboardVariableSourceDefinitionCsvVariableSourceDefinition build() {
-            return new DashboardVariableSourceDefinitionCsvVariableSourceDefinition(values);
+        }
+        public DashboardVariableSourceDefinitionCsvVariableSourceDefinition build() {
+            final var o = new DashboardVariableSourceDefinitionCsvVariableSourceDefinition();
+            o.values = values;
+            return o;
         }
     }
 }

@@ -12,32 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTrigger {
-    private final @Nullable String detectionMethod;
-    private final @Nullable String occurrenceType;
-    private final @Nullable Double threshold;
-    private final @Nullable String thresholdType;
-    private final @Nullable String timeRange;
-    private final @Nullable String triggerSource;
-    private final @Nullable String triggerType;
+    private @Nullable String detectionMethod;
+    private @Nullable String occurrenceType;
+    private @Nullable Double threshold;
+    private @Nullable String thresholdType;
+    private @Nullable String timeRange;
+    private @Nullable String triggerSource;
+    private @Nullable String triggerType;
 
-    @CustomType.Constructor
-    private MonitorTrigger(
-        @CustomType.Parameter("detectionMethod") @Nullable String detectionMethod,
-        @CustomType.Parameter("occurrenceType") @Nullable String occurrenceType,
-        @CustomType.Parameter("threshold") @Nullable Double threshold,
-        @CustomType.Parameter("thresholdType") @Nullable String thresholdType,
-        @CustomType.Parameter("timeRange") @Nullable String timeRange,
-        @CustomType.Parameter("triggerSource") @Nullable String triggerSource,
-        @CustomType.Parameter("triggerType") @Nullable String triggerType) {
-        this.detectionMethod = detectionMethod;
-        this.occurrenceType = occurrenceType;
-        this.threshold = threshold;
-        this.thresholdType = thresholdType;
-        this.timeRange = timeRange;
-        this.triggerSource = triggerSource;
-        this.triggerType = triggerType;
-    }
-
+    private MonitorTrigger() {}
     public Optional<String> detectionMethod() {
         return Optional.ofNullable(this.detectionMethod);
     }
@@ -67,7 +50,7 @@ public final class MonitorTrigger {
     public static Builder builder(MonitorTrigger defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String detectionMethod;
         private @Nullable String occurrenceType;
@@ -76,11 +59,7 @@ public final class MonitorTrigger {
         private @Nullable String timeRange;
         private @Nullable String triggerSource;
         private @Nullable String triggerType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.detectionMethod = defaults.detectionMethod;
@@ -92,35 +71,51 @@ public final class MonitorTrigger {
     	      this.triggerType = defaults.triggerType;
         }
 
+        @CustomType.Setter
         public Builder detectionMethod(@Nullable String detectionMethod) {
             this.detectionMethod = detectionMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder occurrenceType(@Nullable String occurrenceType) {
             this.occurrenceType = occurrenceType;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdType(@Nullable String thresholdType) {
             this.thresholdType = thresholdType;
             return this;
         }
+        @CustomType.Setter
         public Builder timeRange(@Nullable String timeRange) {
             this.timeRange = timeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder triggerSource(@Nullable String triggerSource) {
             this.triggerSource = triggerSource;
             return this;
         }
+        @CustomType.Setter
         public Builder triggerType(@Nullable String triggerType) {
             this.triggerType = triggerType;
             return this;
-        }        public MonitorTrigger build() {
-            return new MonitorTrigger(detectionMethod, occurrenceType, threshold, thresholdType, timeRange, triggerSource, triggerType);
+        }
+        public MonitorTrigger build() {
+            final var o = new MonitorTrigger();
+            o.detectionMethod = detectionMethod;
+            o.occurrenceType = occurrenceType;
+            o.threshold = threshold;
+            o.thresholdType = thresholdType;
+            o.timeRange = timeRange;
+            o.triggerSource = triggerSource;
+            o.triggerType = triggerType;
+            return o;
         }
     }
 }

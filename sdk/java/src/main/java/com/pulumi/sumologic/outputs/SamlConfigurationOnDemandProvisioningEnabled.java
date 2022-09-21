@@ -16,28 +16,19 @@ public final class SamlConfigurationOnDemandProvisioningEnabled {
      * @return First name attribute of the new user account. Defaults to &#34;&#34;.
      * 
      */
-    private final @Nullable String firstNameAttribute;
+    private @Nullable String firstNameAttribute;
     /**
      * @return Last name attribute of the new user account. Defaults to &#34;&#34;.
      * 
      */
-    private final @Nullable String lastNameAttribute;
+    private @Nullable String lastNameAttribute;
     /**
      * @return List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
      * 
      */
-    private final List<String> onDemandProvisioningRoles;
+    private List<String> onDemandProvisioningRoles;
 
-    @CustomType.Constructor
-    private SamlConfigurationOnDemandProvisioningEnabled(
-        @CustomType.Parameter("firstNameAttribute") @Nullable String firstNameAttribute,
-        @CustomType.Parameter("lastNameAttribute") @Nullable String lastNameAttribute,
-        @CustomType.Parameter("onDemandProvisioningRoles") List<String> onDemandProvisioningRoles) {
-        this.firstNameAttribute = firstNameAttribute;
-        this.lastNameAttribute = lastNameAttribute;
-        this.onDemandProvisioningRoles = onDemandProvisioningRoles;
-    }
-
+    private SamlConfigurationOnDemandProvisioningEnabled() {}
     /**
      * @return First name attribute of the new user account. Defaults to &#34;&#34;.
      * 
@@ -67,16 +58,12 @@ public final class SamlConfigurationOnDemandProvisioningEnabled {
     public static Builder builder(SamlConfigurationOnDemandProvisioningEnabled defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String firstNameAttribute;
         private @Nullable String lastNameAttribute;
         private List<String> onDemandProvisioningRoles;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SamlConfigurationOnDemandProvisioningEnabled defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.firstNameAttribute = defaults.firstNameAttribute;
@@ -84,22 +71,30 @@ public final class SamlConfigurationOnDemandProvisioningEnabled {
     	      this.onDemandProvisioningRoles = defaults.onDemandProvisioningRoles;
         }
 
+        @CustomType.Setter
         public Builder firstNameAttribute(@Nullable String firstNameAttribute) {
             this.firstNameAttribute = firstNameAttribute;
             return this;
         }
+        @CustomType.Setter
         public Builder lastNameAttribute(@Nullable String lastNameAttribute) {
             this.lastNameAttribute = lastNameAttribute;
             return this;
         }
+        @CustomType.Setter
         public Builder onDemandProvisioningRoles(List<String> onDemandProvisioningRoles) {
             this.onDemandProvisioningRoles = Objects.requireNonNull(onDemandProvisioningRoles);
             return this;
         }
         public Builder onDemandProvisioningRoles(String... onDemandProvisioningRoles) {
             return onDemandProvisioningRoles(List.of(onDemandProvisioningRoles));
-        }        public SamlConfigurationOnDemandProvisioningEnabled build() {
-            return new SamlConfigurationOnDemandProvisioningEnabled(firstNameAttribute, lastNameAttribute, onDemandProvisioningRoles);
+        }
+        public SamlConfigurationOnDemandProvisioningEnabled build() {
+            final var o = new SamlConfigurationOnDemandProvisioningEnabled();
+            o.firstNameAttribute = firstNameAttribute;
+            o.lastNameAttribute = lastNameAttribute;
+            o.onDemandProvisioningRoles = onDemandProvisioningRoles;
+            return o;
         }
     }
 }

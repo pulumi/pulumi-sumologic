@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KinesisMetricsSourceDefaultDateFormat {
-    private final String format;
-    private final @Nullable String locator;
+    private String format;
+    private @Nullable String locator;
 
-    @CustomType.Constructor
-    private KinesisMetricsSourceDefaultDateFormat(
-        @CustomType.Parameter("format") String format,
-        @CustomType.Parameter("locator") @Nullable String locator) {
-        this.format = format;
-        this.locator = locator;
-    }
-
+    private KinesisMetricsSourceDefaultDateFormat() {}
     public String format() {
         return this.format;
     }
@@ -36,30 +29,32 @@ public final class KinesisMetricsSourceDefaultDateFormat {
     public static Builder builder(KinesisMetricsSourceDefaultDateFormat defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String format;
         private @Nullable String locator;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KinesisMetricsSourceDefaultDateFormat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.format = defaults.format;
     	      this.locator = defaults.locator;
         }
 
+        @CustomType.Setter
         public Builder format(String format) {
             this.format = Objects.requireNonNull(format);
             return this;
         }
+        @CustomType.Setter
         public Builder locator(@Nullable String locator) {
             this.locator = locator;
             return this;
-        }        public KinesisMetricsSourceDefaultDateFormat build() {
-            return new KinesisMetricsSourceDefaultDateFormat(format, locator);
+        }
+        public KinesisMetricsSourceDefaultDateFormat build() {
+            final var o = new KinesisMetricsSourceDefaultDateFormat();
+            o.format = format;
+            o.locator = locator;
+            return o;
         }
     }
 }

@@ -11,29 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCollectorResult {
-    private final String category;
-    private final String description;
-    private final Map<String,String> fields;
-    private final Integer id;
-    private final String name;
-    private final String timezone;
+    private String category;
+    private String description;
+    private Map<String,String> fields;
+    private Integer id;
+    private String name;
+    private String timezone;
 
-    @CustomType.Constructor
-    private GetCollectorResult(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("fields") Map<String,String> fields,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("timezone") String timezone) {
-        this.category = category;
-        this.description = description;
-        this.fields = fields;
-        this.id = id;
-        this.name = name;
-        this.timezone = timezone;
-    }
-
+    private GetCollectorResult() {}
     public String category() {
         return this.category;
     }
@@ -60,7 +45,7 @@ public final class GetCollectorResult {
     public static Builder builder(GetCollectorResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private String description;
@@ -68,11 +53,7 @@ public final class GetCollectorResult {
         private Integer id;
         private String name;
         private String timezone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCollectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -83,31 +64,45 @@ public final class GetCollectorResult {
     	      this.timezone = defaults.timezone;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder fields(Map<String,String> fields) {
             this.fields = Objects.requireNonNull(fields);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder timezone(String timezone) {
             this.timezone = Objects.requireNonNull(timezone);
             return this;
-        }        public GetCollectorResult build() {
-            return new GetCollectorResult(category, description, fields, id, name, timezone);
+        }
+        public GetCollectorResult build() {
+            final var o = new GetCollectorResult();
+            o.category = category;
+            o.description = description;
+            o.fields = fields;
+            o.id = id;
+            o.name = name;
+            o.timezone = timezone;
+            return o;
         }
     }
 }

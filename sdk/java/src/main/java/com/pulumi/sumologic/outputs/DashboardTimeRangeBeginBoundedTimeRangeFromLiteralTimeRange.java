@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
-    private final String rangeName;
+    private String rangeName;
 
-    @CustomType.Constructor
-    private DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(@CustomType.Parameter("rangeName") String rangeName) {
-        this.rangeName = rangeName;
-    }
-
+    private DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange() {}
     public String rangeName() {
         return this.rangeName;
     }
@@ -27,24 +23,24 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
     public static Builder builder(DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String rangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rangeName = defaults.rangeName;
         }
 
+        @CustomType.Setter
         public Builder rangeName(String rangeName) {
             this.rangeName = Objects.requireNonNull(rangeName);
             return this;
-        }        public DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange build() {
-            return new DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(rangeName);
+        }
+        public DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange build() {
+            final var o = new DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange();
+            o.rangeName = rangeName;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class GcpMetricsSourcePathCustomService {
      * @return List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
      * 
      */
-    private final @Nullable List<String> prefixes;
+    private @Nullable List<String> prefixes;
     /**
      * @return Name of the custom service you want to define.
      * 
      */
-    private final @Nullable String serviceName;
+    private @Nullable String serviceName;
 
-    @CustomType.Constructor
-    private GcpMetricsSourcePathCustomService(
-        @CustomType.Parameter("prefixes") @Nullable List<String> prefixes,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName) {
-        this.prefixes = prefixes;
-        this.serviceName = serviceName;
-    }
-
+    private GcpMetricsSourcePathCustomService() {}
     /**
      * @return List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
      * 
@@ -53,21 +46,18 @@ public final class GcpMetricsSourcePathCustomService {
     public static Builder builder(GcpMetricsSourcePathCustomService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> prefixes;
         private @Nullable String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GcpMetricsSourcePathCustomService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prefixes = defaults.prefixes;
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder prefixes(@Nullable List<String> prefixes) {
             this.prefixes = prefixes;
             return this;
@@ -75,11 +65,16 @@ public final class GcpMetricsSourcePathCustomService {
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
-        }        public GcpMetricsSourcePathCustomService build() {
-            return new GcpMetricsSourcePathCustomService(prefixes, serviceName);
+        }
+        public GcpMetricsSourcePathCustomService build() {
+            final var o = new GcpMetricsSourcePathCustomService();
+            o.prefixes = prefixes;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

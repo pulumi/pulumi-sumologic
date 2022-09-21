@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRange {
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRange(
-        @CustomType.Parameter("beginBoundedTimeRange") @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange beginBoundedTimeRange,
-        @CustomType.Parameter("completeLiteralTimeRange") @Nullable DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange) {
-        this.beginBoundedTimeRange = beginBoundedTimeRange;
-        this.completeLiteralTimeRange = completeLiteralTimeRange;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRange() {}
     public Optional<DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange> beginBoundedTimeRange() {
         return Optional.ofNullable(this.beginBoundedTimeRange);
     }
@@ -37,30 +30,32 @@ public final class DashboardPanelSumoSearchPanelTimeRange {
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
         private @Nullable DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.beginBoundedTimeRange = defaults.beginBoundedTimeRange;
     	      this.completeLiteralTimeRange = defaults.completeLiteralTimeRange;
         }
 
+        @CustomType.Setter
         public Builder beginBoundedTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange beginBoundedTimeRange) {
             this.beginBoundedTimeRange = beginBoundedTimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder completeLiteralTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange) {
             this.completeLiteralTimeRange = completeLiteralTimeRange;
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRange(beginBoundedTimeRange, completeLiteralTimeRange);
+        }
+        public DashboardPanelSumoSearchPanelTimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRange();
+            o.beginBoundedTimeRange = beginBoundedTimeRange;
+            o.completeLiteralTimeRange = completeLiteralTimeRange;
+            return o;
         }
     }
 }

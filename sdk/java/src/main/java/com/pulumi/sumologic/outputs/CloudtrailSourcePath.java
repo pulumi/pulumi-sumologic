@@ -20,53 +20,30 @@ public final class CloudtrailSourcePath {
      * @return The name of the bucket.
      * 
      */
-    private final @Nullable String bucketName;
-    private final @Nullable List<CloudtrailSourcePathCustomService> customServices;
-    private final @Nullable List<String> limitToNamespaces;
-    private final @Nullable List<String> limitToRegions;
-    private final @Nullable List<String> limitToServices;
+    private @Nullable String bucketName;
+    private @Nullable List<CloudtrailSourcePathCustomService> customServices;
+    private @Nullable List<String> limitToNamespaces;
+    private @Nullable List<String> limitToRegions;
+    private @Nullable List<String> limitToServices;
     /**
      * @return The path to the data.
      * 
      */
-    private final @Nullable String pathExpression;
+    private @Nullable String pathExpression;
     /**
      * @return This is a computed field for SNS topic/subscription ARN.
      * 
      */
-    private final @Nullable List<CloudtrailSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
-    private final @Nullable List<CloudtrailSourcePathTagFilter> tagFilters;
+    private @Nullable List<CloudtrailSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
+    private @Nullable List<CloudtrailSourcePathTagFilter> tagFilters;
     /**
      * @return type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
      * 
      */
-    private final String type;
-    private final @Nullable Boolean useVersionedApi;
+    private String type;
+    private @Nullable Boolean useVersionedApi;
 
-    @CustomType.Constructor
-    private CloudtrailSourcePath(
-        @CustomType.Parameter("bucketName") @Nullable String bucketName,
-        @CustomType.Parameter("customServices") @Nullable List<CloudtrailSourcePathCustomService> customServices,
-        @CustomType.Parameter("limitToNamespaces") @Nullable List<String> limitToNamespaces,
-        @CustomType.Parameter("limitToRegions") @Nullable List<String> limitToRegions,
-        @CustomType.Parameter("limitToServices") @Nullable List<String> limitToServices,
-        @CustomType.Parameter("pathExpression") @Nullable String pathExpression,
-        @CustomType.Parameter("snsTopicOrSubscriptionArns") @Nullable List<CloudtrailSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
-        @CustomType.Parameter("tagFilters") @Nullable List<CloudtrailSourcePathTagFilter> tagFilters,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("useVersionedApi") @Nullable Boolean useVersionedApi) {
-        this.bucketName = bucketName;
-        this.customServices = customServices;
-        this.limitToNamespaces = limitToNamespaces;
-        this.limitToRegions = limitToRegions;
-        this.limitToServices = limitToServices;
-        this.pathExpression = pathExpression;
-        this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
-        this.tagFilters = tagFilters;
-        this.type = type;
-        this.useVersionedApi = useVersionedApi;
-    }
-
+    private CloudtrailSourcePath() {}
     /**
      * @return The name of the bucket.
      * 
@@ -121,7 +98,7 @@ public final class CloudtrailSourcePath {
     public static Builder builder(CloudtrailSourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
         private @Nullable List<CloudtrailSourcePathCustomService> customServices;
@@ -133,11 +110,7 @@ public final class CloudtrailSourcePath {
         private @Nullable List<CloudtrailSourcePathTagFilter> tagFilters;
         private String type;
         private @Nullable Boolean useVersionedApi;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudtrailSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -152,10 +125,12 @@ public final class CloudtrailSourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
             this.bucketName = bucketName;
             return this;
         }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<CloudtrailSourcePathCustomService> customServices) {
             this.customServices = customServices;
             return this;
@@ -163,6 +138,7 @@ public final class CloudtrailSourcePath {
         public Builder customServices(CloudtrailSourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
         }
+        @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
             this.limitToNamespaces = limitToNamespaces;
             return this;
@@ -170,6 +146,7 @@ public final class CloudtrailSourcePath {
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
+        @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
             this.limitToRegions = limitToRegions;
             return this;
@@ -177,6 +154,7 @@ public final class CloudtrailSourcePath {
         public Builder limitToRegions(String... limitToRegions) {
             return limitToRegions(List.of(limitToRegions));
         }
+        @CustomType.Setter
         public Builder limitToServices(@Nullable List<String> limitToServices) {
             this.limitToServices = limitToServices;
             return this;
@@ -184,10 +162,12 @@ public final class CloudtrailSourcePath {
         public Builder limitToServices(String... limitToServices) {
             return limitToServices(List.of(limitToServices));
         }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
             this.pathExpression = pathExpression;
             return this;
         }
+        @CustomType.Setter
         public Builder snsTopicOrSubscriptionArns(@Nullable List<CloudtrailSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns) {
             this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             return this;
@@ -195,6 +175,7 @@ public final class CloudtrailSourcePath {
         public Builder snsTopicOrSubscriptionArns(CloudtrailSourcePathSnsTopicOrSubscriptionArn... snsTopicOrSubscriptionArns) {
             return snsTopicOrSubscriptionArns(List.of(snsTopicOrSubscriptionArns));
         }
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<CloudtrailSourcePathTagFilter> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -202,15 +183,29 @@ public final class CloudtrailSourcePath {
         public Builder tagFilters(CloudtrailSourcePathTagFilter... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder useVersionedApi(@Nullable Boolean useVersionedApi) {
             this.useVersionedApi = useVersionedApi;
             return this;
-        }        public CloudtrailSourcePath build() {
-            return new CloudtrailSourcePath(bucketName, customServices, limitToNamespaces, limitToRegions, limitToServices, pathExpression, snsTopicOrSubscriptionArns, tagFilters, type, useVersionedApi);
+        }
+        public CloudtrailSourcePath build() {
+            final var o = new CloudtrailSourcePath();
+            o.bucketName = bucketName;
+            o.customServices = customServices;
+            o.limitToNamespaces = limitToNamespaces;
+            o.limitToRegions = limitToRegions;
+            o.limitToServices = limitToServices;
+            o.pathExpression = pathExpression;
+            o.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
+            o.tagFilters = tagFilters;
+            o.type = type;
+            o.useVersionedApi = useVersionedApi;
+            return o;
         }
     }
 }

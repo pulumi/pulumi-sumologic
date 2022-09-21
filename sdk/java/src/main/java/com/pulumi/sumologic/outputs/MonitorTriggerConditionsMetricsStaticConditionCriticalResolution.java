@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
-    private final @Nullable String occurrenceType;
-    private final @Nullable Double threshold;
-    private final @Nullable String thresholdType;
+    private @Nullable String occurrenceType;
+    private @Nullable Double threshold;
+    private @Nullable String thresholdType;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(
-        @CustomType.Parameter("occurrenceType") @Nullable String occurrenceType,
-        @CustomType.Parameter("threshold") @Nullable Double threshold,
-        @CustomType.Parameter("thresholdType") @Nullable String thresholdType) {
-        this.occurrenceType = occurrenceType;
-        this.threshold = threshold;
-        this.thresholdType = thresholdType;
-    }
-
+    private MonitorTriggerConditionsMetricsStaticConditionCriticalResolution() {}
     public Optional<String> occurrenceType() {
         return Optional.ofNullable(this.occurrenceType);
     }
@@ -43,16 +34,12 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolut
     public static Builder builder(MonitorTriggerConditionsMetricsStaticConditionCriticalResolution defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String occurrenceType;
         private @Nullable Double threshold;
         private @Nullable String thresholdType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsStaticConditionCriticalResolution defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.occurrenceType = defaults.occurrenceType;
@@ -60,19 +47,27 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolut
     	      this.thresholdType = defaults.thresholdType;
         }
 
+        @CustomType.Setter
         public Builder occurrenceType(@Nullable String occurrenceType) {
             this.occurrenceType = occurrenceType;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdType(@Nullable String thresholdType) {
             this.thresholdType = thresholdType;
             return this;
-        }        public MonitorTriggerConditionsMetricsStaticConditionCriticalResolution build() {
-            return new MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(occurrenceType, threshold, thresholdType);
+        }
+        public MonitorTriggerConditionsMetricsStaticConditionCriticalResolution build() {
+            final var o = new MonitorTriggerConditionsMetricsStaticConditionCriticalResolution();
+            o.occurrenceType = occurrenceType;
+            o.threshold = threshold;
+            o.thresholdType = thresholdType;
+            return o;
         }
     }
 }

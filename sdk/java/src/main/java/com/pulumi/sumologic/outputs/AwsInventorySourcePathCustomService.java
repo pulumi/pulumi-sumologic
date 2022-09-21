@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsInventorySourcePathCustomService {
-    private final @Nullable List<String> prefixes;
-    private final @Nullable String serviceName;
+    private @Nullable List<String> prefixes;
+    private @Nullable String serviceName;
 
-    @CustomType.Constructor
-    private AwsInventorySourcePathCustomService(
-        @CustomType.Parameter("prefixes") @Nullable List<String> prefixes,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName) {
-        this.prefixes = prefixes;
-        this.serviceName = serviceName;
-    }
-
+    private AwsInventorySourcePathCustomService() {}
     public List<String> prefixes() {
         return this.prefixes == null ? List.of() : this.prefixes;
     }
@@ -37,21 +30,18 @@ public final class AwsInventorySourcePathCustomService {
     public static Builder builder(AwsInventorySourcePathCustomService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> prefixes;
         private @Nullable String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsInventorySourcePathCustomService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prefixes = defaults.prefixes;
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder prefixes(@Nullable List<String> prefixes) {
             this.prefixes = prefixes;
             return this;
@@ -59,11 +49,16 @@ public final class AwsInventorySourcePathCustomService {
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
-        }        public AwsInventorySourcePathCustomService build() {
-            return new AwsInventorySourcePathCustomService(prefixes, serviceName);
+        }
+        public AwsInventorySourcePathCustomService build() {
+            final var o = new AwsInventorySourcePathCustomService();
+            o.prefixes = prefixes;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

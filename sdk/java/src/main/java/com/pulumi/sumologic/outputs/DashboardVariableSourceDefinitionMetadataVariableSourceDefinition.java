@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardVariableSourceDefinitionMetadataVariableSourceDefinition {
-    private final String filter;
-    private final String key;
+    private String filter;
+    private String key;
 
-    @CustomType.Constructor
-    private DashboardVariableSourceDefinitionMetadataVariableSourceDefinition(
-        @CustomType.Parameter("filter") String filter,
-        @CustomType.Parameter("key") String key) {
-        this.filter = filter;
-        this.key = key;
-    }
-
+    private DashboardVariableSourceDefinitionMetadataVariableSourceDefinition() {}
     public String filter() {
         return this.filter;
     }
@@ -34,30 +27,32 @@ public final class DashboardVariableSourceDefinitionMetadataVariableSourceDefini
     public static Builder builder(DashboardVariableSourceDefinitionMetadataVariableSourceDefinition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String filter;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardVariableSourceDefinitionMetadataVariableSourceDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder filter(String filter) {
             this.filter = Objects.requireNonNull(filter);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public DashboardVariableSourceDefinitionMetadataVariableSourceDefinition build() {
-            return new DashboardVariableSourceDefinitionMetadataVariableSourceDefinition(filter, key);
+        }
+        public DashboardVariableSourceDefinitionMetadataVariableSourceDefinition build() {
+            final var o = new DashboardVariableSourceDefinitionMetadataVariableSourceDefinition();
+            o.filter = filter;
+            o.key = key;
+            return o;
         }
     }
 }

@@ -11,29 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUserResult {
-    private final String email;
-    private final String firstName;
-    private final String id;
-    private final Boolean isActive;
-    private final String lastName;
-    private final List<String> roleIds;
+    private String email;
+    private String firstName;
+    private String id;
+    private Boolean isActive;
+    private String lastName;
+    private List<String> roleIds;
 
-    @CustomType.Constructor
-    private GetUserResult(
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("firstName") String firstName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isActive") Boolean isActive,
-        @CustomType.Parameter("lastName") String lastName,
-        @CustomType.Parameter("roleIds") List<String> roleIds) {
-        this.email = email;
-        this.firstName = firstName;
-        this.id = id;
-        this.isActive = isActive;
-        this.lastName = lastName;
-        this.roleIds = roleIds;
-    }
-
+    private GetUserResult() {}
     public String email() {
         return this.email;
     }
@@ -60,7 +45,7 @@ public final class GetUserResult {
     public static Builder builder(GetUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String email;
         private String firstName;
@@ -68,11 +53,7 @@ public final class GetUserResult {
         private Boolean isActive;
         private String lastName;
         private List<String> roleIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
@@ -83,34 +64,48 @@ public final class GetUserResult {
     	      this.roleIds = defaults.roleIds;
         }
 
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder firstName(String firstName) {
             this.firstName = Objects.requireNonNull(firstName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isActive(Boolean isActive) {
             this.isActive = Objects.requireNonNull(isActive);
             return this;
         }
+        @CustomType.Setter
         public Builder lastName(String lastName) {
             this.lastName = Objects.requireNonNull(lastName);
             return this;
         }
+        @CustomType.Setter
         public Builder roleIds(List<String> roleIds) {
             this.roleIds = Objects.requireNonNull(roleIds);
             return this;
         }
         public Builder roleIds(String... roleIds) {
             return roleIds(List.of(roleIds));
-        }        public GetUserResult build() {
-            return new GetUserResult(email, firstName, id, isActive, lastName, roleIds);
+        }
+        public GetUserResult build() {
+            final var o = new GetUserResult();
+            o.email = email;
+            o.firstName = firstName;
+            o.id = id;
+            o.isActive = isActive;
+            o.lastName = lastName;
+            o.roleIds = roleIds;
+            return o;
         }
     }
 }

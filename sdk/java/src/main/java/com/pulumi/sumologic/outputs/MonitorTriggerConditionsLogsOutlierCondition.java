@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsOutlierCondition {
-    private final @Nullable MonitorTriggerConditionsLogsOutlierConditionCritical critical;
-    private final @Nullable String direction;
-    private final @Nullable String field;
-    private final @Nullable MonitorTriggerConditionsLogsOutlierConditionWarning warning;
+    private @Nullable MonitorTriggerConditionsLogsOutlierConditionCritical critical;
+    private @Nullable String direction;
+    private @Nullable String field;
+    private @Nullable MonitorTriggerConditionsLogsOutlierConditionWarning warning;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsLogsOutlierCondition(
-        @CustomType.Parameter("critical") @Nullable MonitorTriggerConditionsLogsOutlierConditionCritical critical,
-        @CustomType.Parameter("direction") @Nullable String direction,
-        @CustomType.Parameter("field") @Nullable String field,
-        @CustomType.Parameter("warning") @Nullable MonitorTriggerConditionsLogsOutlierConditionWarning warning) {
-        this.critical = critical;
-        this.direction = direction;
-        this.field = field;
-        this.warning = warning;
-    }
-
+    private MonitorTriggerConditionsLogsOutlierCondition() {}
     public Optional<MonitorTriggerConditionsLogsOutlierConditionCritical> critical() {
         return Optional.ofNullable(this.critical);
     }
@@ -50,17 +39,13 @@ public final class MonitorTriggerConditionsLogsOutlierCondition {
     public static Builder builder(MonitorTriggerConditionsLogsOutlierCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MonitorTriggerConditionsLogsOutlierConditionCritical critical;
         private @Nullable String direction;
         private @Nullable String field;
         private @Nullable MonitorTriggerConditionsLogsOutlierConditionWarning warning;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsLogsOutlierCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -69,23 +54,33 @@ public final class MonitorTriggerConditionsLogsOutlierCondition {
     	      this.warning = defaults.warning;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsLogsOutlierConditionCritical critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
+        @CustomType.Setter
         public Builder field(@Nullable String field) {
             this.field = field;
             return this;
         }
+        @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsLogsOutlierConditionWarning warning) {
             this.warning = warning;
             return this;
-        }        public MonitorTriggerConditionsLogsOutlierCondition build() {
-            return new MonitorTriggerConditionsLogsOutlierCondition(critical, direction, field, warning);
+        }
+        public MonitorTriggerConditionsLogsOutlierCondition build() {
+            final var o = new MonitorTriggerConditionsLogsOutlierCondition();
+            o.critical = critical;
+            o.direction = direction;
+            o.field = field;
+            o.warning = warning;
+            return o;
         }
     }
 }

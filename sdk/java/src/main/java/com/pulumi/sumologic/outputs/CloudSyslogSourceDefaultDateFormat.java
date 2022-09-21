@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudSyslogSourceDefaultDateFormat {
-    private final String format;
-    private final @Nullable String locator;
+    private String format;
+    private @Nullable String locator;
 
-    @CustomType.Constructor
-    private CloudSyslogSourceDefaultDateFormat(
-        @CustomType.Parameter("format") String format,
-        @CustomType.Parameter("locator") @Nullable String locator) {
-        this.format = format;
-        this.locator = locator;
-    }
-
+    private CloudSyslogSourceDefaultDateFormat() {}
     public String format() {
         return this.format;
     }
@@ -36,30 +29,32 @@ public final class CloudSyslogSourceDefaultDateFormat {
     public static Builder builder(CloudSyslogSourceDefaultDateFormat defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String format;
         private @Nullable String locator;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CloudSyslogSourceDefaultDateFormat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.format = defaults.format;
     	      this.locator = defaults.locator;
         }
 
+        @CustomType.Setter
         public Builder format(String format) {
             this.format = Objects.requireNonNull(format);
             return this;
         }
+        @CustomType.Setter
         public Builder locator(@Nullable String locator) {
             this.locator = locator;
             return this;
-        }        public CloudSyslogSourceDefaultDateFormat build() {
-            return new CloudSyslogSourceDefaultDateFormat(format, locator);
+        }
+        public CloudSyslogSourceDefaultDateFormat build() {
+            final var o = new CloudSyslogSourceDefaultDateFormat();
+            o.format = format;
+            o.locator = locator;
+            return o;
         }
     }
 }

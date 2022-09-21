@@ -13,35 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHttpSourceResult {
-    private final String category;
-    private final @Nullable Integer collectorId;
-    private final String description;
-    private final Integer id;
-    private final Boolean multiline;
-    private final @Nullable String name;
-    private final String timezone;
-    private final String url;
+    private String category;
+    private @Nullable Integer collectorId;
+    private String description;
+    private Integer id;
+    private Boolean multiline;
+    private @Nullable String name;
+    private String timezone;
+    private String url;
 
-    @CustomType.Constructor
-    private GetHttpSourceResult(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("collectorId") @Nullable Integer collectorId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("multiline") Boolean multiline,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("timezone") String timezone,
-        @CustomType.Parameter("url") String url) {
-        this.category = category;
-        this.collectorId = collectorId;
-        this.description = description;
-        this.id = id;
-        this.multiline = multiline;
-        this.name = name;
-        this.timezone = timezone;
-        this.url = url;
-    }
-
+    private GetHttpSourceResult() {}
     public String category() {
         return this.category;
     }
@@ -74,7 +55,7 @@ public final class GetHttpSourceResult {
     public static Builder builder(GetHttpSourceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private @Nullable Integer collectorId;
@@ -84,11 +65,7 @@ public final class GetHttpSourceResult {
         private @Nullable String name;
         private String timezone;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHttpSourceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -101,39 +78,57 @@ public final class GetHttpSourceResult {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder collectorId(@Nullable Integer collectorId) {
             this.collectorId = collectorId;
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder multiline(Boolean multiline) {
             this.multiline = Objects.requireNonNull(multiline);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder timezone(String timezone) {
             this.timezone = Objects.requireNonNull(timezone);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetHttpSourceResult build() {
-            return new GetHttpSourceResult(category, collectorId, description, id, multiline, name, timezone, url);
+        }
+        public GetHttpSourceResult build() {
+            final var o = new GetHttpSourceResult();
+            o.category = category;
+            o.collectorId = collectorId;
+            o.description = description;
+            o.id = id;
+            o.multiline = multiline;
+            o.name = name;
+            o.timezone = timezone;
+            o.url = url;
+            return o;
         }
     }
 }

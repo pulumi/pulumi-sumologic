@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelQuery {
-    private final @Nullable DashboardPanelSumoSearchPanelQueryMetricsQueryData metricsQueryData;
-    private final @Nullable String metricsQueryMode;
-    private final String queryKey;
-    private final String queryString;
-    private final String queryType;
+    private @Nullable DashboardPanelSumoSearchPanelQueryMetricsQueryData metricsQueryData;
+    private @Nullable String metricsQueryMode;
+    private String queryKey;
+    private String queryString;
+    private String queryType;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelQuery(
-        @CustomType.Parameter("metricsQueryData") @Nullable DashboardPanelSumoSearchPanelQueryMetricsQueryData metricsQueryData,
-        @CustomType.Parameter("metricsQueryMode") @Nullable String metricsQueryMode,
-        @CustomType.Parameter("queryKey") String queryKey,
-        @CustomType.Parameter("queryString") String queryString,
-        @CustomType.Parameter("queryType") String queryType) {
-        this.metricsQueryData = metricsQueryData;
-        this.metricsQueryMode = metricsQueryMode;
-        this.queryKey = queryKey;
-        this.queryString = queryString;
-        this.queryType = queryType;
-    }
-
+    private DashboardPanelSumoSearchPanelQuery() {}
     public Optional<DashboardPanelSumoSearchPanelQueryMetricsQueryData> metricsQueryData() {
         return Optional.ofNullable(this.metricsQueryData);
     }
@@ -55,18 +42,14 @@ public final class DashboardPanelSumoSearchPanelQuery {
     public static Builder builder(DashboardPanelSumoSearchPanelQuery defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardPanelSumoSearchPanelQueryMetricsQueryData metricsQueryData;
         private @Nullable String metricsQueryMode;
         private String queryKey;
         private String queryString;
         private String queryType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metricsQueryData = defaults.metricsQueryData;
@@ -76,27 +59,39 @@ public final class DashboardPanelSumoSearchPanelQuery {
     	      this.queryType = defaults.queryType;
         }
 
+        @CustomType.Setter
         public Builder metricsQueryData(@Nullable DashboardPanelSumoSearchPanelQueryMetricsQueryData metricsQueryData) {
             this.metricsQueryData = metricsQueryData;
             return this;
         }
+        @CustomType.Setter
         public Builder metricsQueryMode(@Nullable String metricsQueryMode) {
             this.metricsQueryMode = metricsQueryMode;
             return this;
         }
+        @CustomType.Setter
         public Builder queryKey(String queryKey) {
             this.queryKey = Objects.requireNonNull(queryKey);
             return this;
         }
+        @CustomType.Setter
         public Builder queryString(String queryString) {
             this.queryString = Objects.requireNonNull(queryString);
             return this;
         }
+        @CustomType.Setter
         public Builder queryType(String queryType) {
             this.queryType = Objects.requireNonNull(queryType);
             return this;
-        }        public DashboardPanelSumoSearchPanelQuery build() {
-            return new DashboardPanelSumoSearchPanelQuery(metricsQueryData, metricsQueryMode, queryKey, queryString, queryType);
+        }
+        public DashboardPanelSumoSearchPanelQuery build() {
+            final var o = new DashboardPanelSumoSearchPanelQuery();
+            o.metricsQueryData = metricsQueryData;
+            o.metricsQueryMode = metricsQueryMode;
+            o.queryKey = queryKey;
+            o.queryString = queryString;
+            o.queryType = queryType;
+            return o;
         }
     }
 }

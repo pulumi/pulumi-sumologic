@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KineisLogSourceDefaultDateFormat {
-    private final String format;
-    private final @Nullable String locator;
+    private String format;
+    private @Nullable String locator;
 
-    @CustomType.Constructor
-    private KineisLogSourceDefaultDateFormat(
-        @CustomType.Parameter("format") String format,
-        @CustomType.Parameter("locator") @Nullable String locator) {
-        this.format = format;
-        this.locator = locator;
-    }
-
+    private KineisLogSourceDefaultDateFormat() {}
     public String format() {
         return this.format;
     }
@@ -36,30 +29,32 @@ public final class KineisLogSourceDefaultDateFormat {
     public static Builder builder(KineisLogSourceDefaultDateFormat defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String format;
         private @Nullable String locator;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KineisLogSourceDefaultDateFormat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.format = defaults.format;
     	      this.locator = defaults.locator;
         }
 
+        @CustomType.Setter
         public Builder format(String format) {
             this.format = Objects.requireNonNull(format);
             return this;
         }
+        @CustomType.Setter
         public Builder locator(@Nullable String locator) {
             this.locator = locator;
             return this;
-        }        public KineisLogSourceDefaultDateFormat build() {
-            return new KineisLogSourceDefaultDateFormat(format, locator);
+        }
+        public KineisLogSourceDefaultDateFormat build() {
+            final var o = new KineisLogSourceDefaultDateFormat();
+            o.format = format;
+            o.locator = locator;
+            return o;
         }
     }
 }

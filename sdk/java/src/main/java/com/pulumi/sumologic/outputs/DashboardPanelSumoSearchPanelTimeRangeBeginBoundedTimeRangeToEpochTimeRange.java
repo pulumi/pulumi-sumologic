@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
-    private final Integer epochMillis;
+    private Integer epochMillis;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange(@CustomType.Parameter("epochMillis") Integer epochMillis) {
-        this.epochMillis = epochMillis;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange() {}
     public Integer epochMillis() {
         return this.epochMillis;
     }
@@ -27,24 +23,24 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer epochMillis;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.epochMillis = defaults.epochMillis;
         }
 
+        @CustomType.Setter
         public Builder epochMillis(Integer epochMillis) {
             this.epochMillis = Objects.requireNonNull(epochMillis);
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange(epochMillis);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange();
+            o.epochMillis = epochMillis;
+            return o;
         }
     }
 }

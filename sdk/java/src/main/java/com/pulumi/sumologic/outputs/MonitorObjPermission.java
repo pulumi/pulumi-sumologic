@@ -18,30 +18,21 @@ public final class MonitorObjPermission {
      * - `Manage`
      * 
      */
-    private final List<String> permissions;
+    private List<String> permissions;
     /**
      * @return A Role ID or the Org ID of the account
      * 
      */
-    private final String subjectId;
+    private String subjectId;
     /**
      * @return Valid values:
      * - `role`
      * - `org`
      * 
      */
-    private final String subjectType;
+    private String subjectType;
 
-    @CustomType.Constructor
-    private MonitorObjPermission(
-        @CustomType.Parameter("permissions") List<String> permissions,
-        @CustomType.Parameter("subjectId") String subjectId,
-        @CustomType.Parameter("subjectType") String subjectType) {
-        this.permissions = permissions;
-        this.subjectId = subjectId;
-        this.subjectType = subjectType;
-    }
-
+    private MonitorObjPermission() {}
     /**
      * @return A Set of Permissions. Valid Permission Values:
      * - `Read`
@@ -77,16 +68,12 @@ public final class MonitorObjPermission {
     public static Builder builder(MonitorObjPermission defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> permissions;
         private String subjectId;
         private String subjectType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorObjPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.permissions = defaults.permissions;
@@ -94,6 +81,7 @@ public final class MonitorObjPermission {
     	      this.subjectType = defaults.subjectType;
         }
 
+        @CustomType.Setter
         public Builder permissions(List<String> permissions) {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
@@ -101,15 +89,22 @@ public final class MonitorObjPermission {
         public Builder permissions(String... permissions) {
             return permissions(List.of(permissions));
         }
+        @CustomType.Setter
         public Builder subjectId(String subjectId) {
             this.subjectId = Objects.requireNonNull(subjectId);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectType(String subjectType) {
             this.subjectType = Objects.requireNonNull(subjectType);
             return this;
-        }        public MonitorObjPermission build() {
-            return new MonitorObjPermission(permissions, subjectId, subjectType);
+        }
+        public MonitorObjPermission build() {
+            final var o = new MonitorObjPermission();
+            o.permissions = permissions;
+            o.subjectId = subjectId;
+            o.subjectType = subjectType;
+            return o;
         }
     }
 }

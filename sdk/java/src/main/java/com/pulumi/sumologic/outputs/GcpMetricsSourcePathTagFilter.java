@@ -12,24 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpMetricsSourcePathTagFilter {
-    private final @Nullable String namespace;
-    private final @Nullable List<String> tags;
+    private @Nullable String namespace;
+    private @Nullable List<String> tags;
     /**
      * @return Type of polling source. This has to be `GcpMetricsPath`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GcpMetricsSourcePathTagFilter(
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.namespace = namespace;
-        this.tags = tags;
-        this.type = type;
-    }
-
+    private GcpMetricsSourcePathTagFilter() {}
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -51,16 +42,12 @@ public final class GcpMetricsSourcePathTagFilter {
     public static Builder builder(GcpMetricsSourcePathTagFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String namespace;
         private @Nullable List<String> tags;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GcpMetricsSourcePathTagFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespace = defaults.namespace;
@@ -68,10 +55,12 @@ public final class GcpMetricsSourcePathTagFilter {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -79,11 +68,17 @@ public final class GcpMetricsSourcePathTagFilter {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GcpMetricsSourcePathTagFilter build() {
-            return new GcpMetricsSourcePathTagFilter(namespace, tags, type);
+        }
+        public GcpMetricsSourcePathTagFilter build() {
+            final var o = new GcpMetricsSourcePathTagFilter();
+            o.namespace = namespace;
+            o.tags = tags;
+            o.type = type;
+            return o;
         }
     }
 }

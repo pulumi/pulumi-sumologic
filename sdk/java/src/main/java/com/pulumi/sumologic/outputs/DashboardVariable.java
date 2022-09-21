@@ -13,35 +13,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardVariable {
-    private final @Nullable Boolean allowMultiSelect;
-    private final @Nullable String defaultValue;
-    private final @Nullable String displayName;
-    private final @Nullable Boolean hideFromUi;
-    private final @Nullable String id;
-    private final @Nullable Boolean includeAllOption;
-    private final String name;
-    private final DashboardVariableSourceDefinition sourceDefinition;
+    private @Nullable Boolean allowMultiSelect;
+    private @Nullable String defaultValue;
+    private @Nullable String displayName;
+    private @Nullable Boolean hideFromUi;
+    private @Nullable String id;
+    private @Nullable Boolean includeAllOption;
+    private String name;
+    private DashboardVariableSourceDefinition sourceDefinition;
 
-    @CustomType.Constructor
-    private DashboardVariable(
-        @CustomType.Parameter("allowMultiSelect") @Nullable Boolean allowMultiSelect,
-        @CustomType.Parameter("defaultValue") @Nullable String defaultValue,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("hideFromUi") @Nullable Boolean hideFromUi,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("includeAllOption") @Nullable Boolean includeAllOption,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("sourceDefinition") DashboardVariableSourceDefinition sourceDefinition) {
-        this.allowMultiSelect = allowMultiSelect;
-        this.defaultValue = defaultValue;
-        this.displayName = displayName;
-        this.hideFromUi = hideFromUi;
-        this.id = id;
-        this.includeAllOption = includeAllOption;
-        this.name = name;
-        this.sourceDefinition = sourceDefinition;
-    }
-
+    private DashboardVariable() {}
     public Optional<Boolean> allowMultiSelect() {
         return Optional.ofNullable(this.allowMultiSelect);
     }
@@ -74,7 +55,7 @@ public final class DashboardVariable {
     public static Builder builder(DashboardVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowMultiSelect;
         private @Nullable String defaultValue;
@@ -84,11 +65,7 @@ public final class DashboardVariable {
         private @Nullable Boolean includeAllOption;
         private String name;
         private DashboardVariableSourceDefinition sourceDefinition;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowMultiSelect = defaults.allowMultiSelect;
@@ -101,39 +78,57 @@ public final class DashboardVariable {
     	      this.sourceDefinition = defaults.sourceDefinition;
         }
 
+        @CustomType.Setter
         public Builder allowMultiSelect(@Nullable Boolean allowMultiSelect) {
             this.allowMultiSelect = allowMultiSelect;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
             this.defaultValue = defaultValue;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder hideFromUi(@Nullable Boolean hideFromUi) {
             this.hideFromUi = hideFromUi;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder includeAllOption(@Nullable Boolean includeAllOption) {
             this.includeAllOption = includeAllOption;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDefinition(DashboardVariableSourceDefinition sourceDefinition) {
             this.sourceDefinition = Objects.requireNonNull(sourceDefinition);
             return this;
-        }        public DashboardVariable build() {
-            return new DashboardVariable(allowMultiSelect, defaultValue, displayName, hideFromUi, id, includeAllOption, name, sourceDefinition);
+        }
+        public DashboardVariable build() {
+            final var o = new DashboardVariable();
+            o.allowMultiSelect = allowMultiSelect;
+            o.defaultValue = defaultValue;
+            o.displayName = displayName;
+            o.hideFromUi = hideFromUi;
+            o.id = id;
+            o.includeAllOption = includeAllOption;
+            o.name = name;
+            o.sourceDefinition = sourceDefinition;
+            return o;
         }
     }
 }

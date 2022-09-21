@@ -15,31 +15,22 @@ public final class ContentPermissionPermission {
      * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
      * 
      */
-    private final String permissionName;
+    private String permissionName;
     /**
      * @return An identifier that belongs to the source type chosen above. For example,
      * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
      * content with (same goes for role and org source type).
      * 
      */
-    private final String sourceId;
+    private String sourceId;
     /**
      * @return Type of source for the permission. Valid values are `user`, `role`,
      * and `org`.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
 
-    @CustomType.Constructor
-    private ContentPermissionPermission(
-        @CustomType.Parameter("permissionName") String permissionName,
-        @CustomType.Parameter("sourceId") String sourceId,
-        @CustomType.Parameter("sourceType") String sourceType) {
-        this.permissionName = permissionName;
-        this.sourceId = sourceId;
-        this.sourceType = sourceType;
-    }
-
+    private ContentPermissionPermission() {}
     /**
      * @return Content permission name. Valid values are `View`, `GrantView`,
      * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
@@ -74,16 +65,12 @@ public final class ContentPermissionPermission {
     public static Builder builder(ContentPermissionPermission defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String permissionName;
         private String sourceId;
         private String sourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContentPermissionPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.permissionName = defaults.permissionName;
@@ -91,19 +78,27 @@ public final class ContentPermissionPermission {
     	      this.sourceType = defaults.sourceType;
         }
 
+        @CustomType.Setter
         public Builder permissionName(String permissionName) {
             this.permissionName = Objects.requireNonNull(permissionName);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceId(String sourceId) {
             this.sourceId = Objects.requireNonNull(sourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
-        }        public ContentPermissionPermission build() {
-            return new ContentPermissionPermission(permissionName, sourceId, sourceType);
+        }
+        public ContentPermissionPermission build() {
+            final var o = new ContentPermissionPermission();
+            o.permissionName = permissionName;
+            o.sourceId = sourceId;
+            o.sourceType = sourceType;
+            return o;
         }
     }
 }

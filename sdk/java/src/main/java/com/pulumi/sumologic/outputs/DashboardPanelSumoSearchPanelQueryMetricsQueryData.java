@@ -14,26 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelQueryMetricsQueryData {
-    private final @Nullable String aggregationType;
-    private final List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter> filters;
-    private final @Nullable String groupBy;
-    private final String metric;
-    private final @Nullable List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator> operators;
+    private @Nullable String aggregationType;
+    private List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter> filters;
+    private @Nullable String groupBy;
+    private String metric;
+    private @Nullable List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator> operators;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelQueryMetricsQueryData(
-        @CustomType.Parameter("aggregationType") @Nullable String aggregationType,
-        @CustomType.Parameter("filters") List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter> filters,
-        @CustomType.Parameter("groupBy") @Nullable String groupBy,
-        @CustomType.Parameter("metric") String metric,
-        @CustomType.Parameter("operators") @Nullable List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator> operators) {
-        this.aggregationType = aggregationType;
-        this.filters = filters;
-        this.groupBy = groupBy;
-        this.metric = metric;
-        this.operators = operators;
-    }
-
+    private DashboardPanelSumoSearchPanelQueryMetricsQueryData() {}
     public Optional<String> aggregationType() {
         return Optional.ofNullable(this.aggregationType);
     }
@@ -57,18 +44,14 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryData {
     public static Builder builder(DashboardPanelSumoSearchPanelQueryMetricsQueryData defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aggregationType;
         private List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter> filters;
         private @Nullable String groupBy;
         private String metric;
         private @Nullable List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator> operators;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelQueryMetricsQueryData defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregationType = defaults.aggregationType;
@@ -78,10 +61,12 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryData {
     	      this.operators = defaults.operators;
         }
 
+        @CustomType.Setter
         public Builder aggregationType(@Nullable String aggregationType) {
             this.aggregationType = aggregationType;
             return this;
         }
+        @CustomType.Setter
         public Builder filters(List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter> filters) {
             this.filters = Objects.requireNonNull(filters);
             return this;
@@ -89,22 +74,32 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryData {
         public Builder filters(DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder groupBy(@Nullable String groupBy) {
             this.groupBy = groupBy;
             return this;
         }
+        @CustomType.Setter
         public Builder metric(String metric) {
             this.metric = Objects.requireNonNull(metric);
             return this;
         }
+        @CustomType.Setter
         public Builder operators(@Nullable List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator> operators) {
             this.operators = operators;
             return this;
         }
         public Builder operators(DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator... operators) {
             return operators(List.of(operators));
-        }        public DashboardPanelSumoSearchPanelQueryMetricsQueryData build() {
-            return new DashboardPanelSumoSearchPanelQueryMetricsQueryData(aggregationType, filters, groupBy, metric, operators);
+        }
+        public DashboardPanelSumoSearchPanelQueryMetricsQueryData build() {
+            final var o = new DashboardPanelSumoSearchPanelQueryMetricsQueryData();
+            o.aggregationType = aggregationType;
+            o.filters = filters;
+            o.groupBy = groupBy;
+            o.metric = metric;
+            o.operators = operators;
+            return o;
         }
     }
 }

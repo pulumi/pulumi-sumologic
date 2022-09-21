@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsMissingDataCondition {
-    private final String timeRange;
+    private String timeRange;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsLogsMissingDataCondition(@CustomType.Parameter("timeRange") String timeRange) {
-        this.timeRange = timeRange;
-    }
-
+    private MonitorTriggerConditionsLogsMissingDataCondition() {}
     public String timeRange() {
         return this.timeRange;
     }
@@ -27,24 +23,24 @@ public final class MonitorTriggerConditionsLogsMissingDataCondition {
     public static Builder builder(MonitorTriggerConditionsLogsMissingDataCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String timeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsLogsMissingDataCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.timeRange = defaults.timeRange;
         }
 
+        @CustomType.Setter
         public Builder timeRange(String timeRange) {
             this.timeRange = Objects.requireNonNull(timeRange);
             return this;
-        }        public MonitorTriggerConditionsLogsMissingDataCondition build() {
-            return new MonitorTriggerConditionsLogsMissingDataCondition(timeRange);
+        }
+        public MonitorTriggerConditionsLogsMissingDataCondition build() {
+            final var o = new MonitorTriggerConditionsLogsMissingDataCondition();
+            o.timeRange = timeRange;
+            return o;
         }
     }
 }

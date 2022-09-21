@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardLayout {
-    private final @Nullable DashboardLayoutGrid grid;
+    private @Nullable DashboardLayoutGrid grid;
 
-    @CustomType.Constructor
-    private DashboardLayout(@CustomType.Parameter("grid") @Nullable DashboardLayoutGrid grid) {
-        this.grid = grid;
-    }
-
+    private DashboardLayout() {}
     public Optional<DashboardLayoutGrid> grid() {
         return Optional.ofNullable(this.grid);
     }
@@ -29,24 +25,24 @@ public final class DashboardLayout {
     public static Builder builder(DashboardLayout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DashboardLayoutGrid grid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardLayout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.grid = defaults.grid;
         }
 
+        @CustomType.Setter
         public Builder grid(@Nullable DashboardLayoutGrid grid) {
             this.grid = grid;
             return this;
-        }        public DashboardLayout build() {
-            return new DashboardLayout(grid);
+        }
+        public DashboardLayout build() {
+            final var o = new DashboardLayout();
+            o.grid = grid;
+            return o;
         }
     }
 }

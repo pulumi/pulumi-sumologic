@@ -13,21 +13,14 @@ public final class CseLogMappingFieldLookup {
      * @return Lookup key.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Lookup value.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private CseLogMappingFieldLookup(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private CseLogMappingFieldLookup() {}
     /**
      * @return Lookup key.
      * 
@@ -50,30 +43,32 @@ public final class CseLogMappingFieldLookup {
     public static Builder builder(CseLogMappingFieldLookup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseLogMappingFieldLookup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public CseLogMappingFieldLookup build() {
-            return new CseLogMappingFieldLookup(key, value);
+        }
+        public CseLogMappingFieldLookup build() {
+            final var o = new CseLogMappingFieldLookup();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

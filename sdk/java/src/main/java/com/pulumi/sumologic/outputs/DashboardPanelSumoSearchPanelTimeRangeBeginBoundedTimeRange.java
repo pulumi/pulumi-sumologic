@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange {
-    private final DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom from;
-    private final @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo to;
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom from;
+    private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo to;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange(
-        @CustomType.Parameter("from") DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom from,
-        @CustomType.Parameter("to") @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo to) {
-        this.from = from;
-        this.to = to;
-    }
-
+    private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange() {}
     public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom from() {
         return this.from;
     }
@@ -37,30 +30,32 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange {
     public static Builder builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom from;
         private @Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo to;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.from = defaults.from;
     	      this.to = defaults.to;
         }
 
+        @CustomType.Setter
         public Builder from(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom from) {
             this.from = Objects.requireNonNull(from);
             return this;
         }
+        @CustomType.Setter
         public Builder to(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo to) {
             this.to = to;
             return this;
-        }        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange build() {
-            return new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange(from, to);
+        }
+        public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange build() {
+            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange();
+            o.from = from;
+            o.to = to;
+            return o;
         }
     }
 }

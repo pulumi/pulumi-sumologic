@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorNotification {
-    private final MonitorNotificationNotification notification;
-    private final List<String> runForTriggerTypes;
+    private MonitorNotificationNotification notification;
+    private List<String> runForTriggerTypes;
 
-    @CustomType.Constructor
-    private MonitorNotification(
-        @CustomType.Parameter("notification") MonitorNotificationNotification notification,
-        @CustomType.Parameter("runForTriggerTypes") List<String> runForTriggerTypes) {
-        this.notification = notification;
-        this.runForTriggerTypes = runForTriggerTypes;
-    }
-
+    private MonitorNotification() {}
     public MonitorNotificationNotification notification() {
         return this.notification;
     }
@@ -36,33 +29,35 @@ public final class MonitorNotification {
     public static Builder builder(MonitorNotification defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private MonitorNotificationNotification notification;
         private List<String> runForTriggerTypes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorNotification defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.notification = defaults.notification;
     	      this.runForTriggerTypes = defaults.runForTriggerTypes;
         }
 
+        @CustomType.Setter
         public Builder notification(MonitorNotificationNotification notification) {
             this.notification = Objects.requireNonNull(notification);
             return this;
         }
+        @CustomType.Setter
         public Builder runForTriggerTypes(List<String> runForTriggerTypes) {
             this.runForTriggerTypes = Objects.requireNonNull(runForTriggerTypes);
             return this;
         }
         public Builder runForTriggerTypes(String... runForTriggerTypes) {
             return runForTriggerTypes(List.of(runForTriggerTypes));
-        }        public MonitorNotification build() {
-            return new MonitorNotification(notification, runForTriggerTypes);
+        }
+        public MonitorNotification build() {
+            final var o = new MonitorNotification();
+            o.notification = notification;
+            o.runForTriggerTypes = runForTriggerTypes;
+            return o;
         }
     }
 }

@@ -16,35 +16,24 @@ public final class KineisLogSourcePath {
      * @return The name of the bucket. This is needed if using type `KinesisLogPath`.
      * 
      */
-    private final @Nullable String bucketName;
+    private @Nullable String bucketName;
     /**
      * @return The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
      * 
      */
-    private final @Nullable String pathExpression;
+    private @Nullable String pathExpression;
     /**
      * @return The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
      * 
      */
-    private final @Nullable Integer scanInterval;
+    private @Nullable Integer scanInterval;
     /**
      * @return Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private KineisLogSourcePath(
-        @CustomType.Parameter("bucketName") @Nullable String bucketName,
-        @CustomType.Parameter("pathExpression") @Nullable String pathExpression,
-        @CustomType.Parameter("scanInterval") @Nullable Integer scanInterval,
-        @CustomType.Parameter("type") String type) {
-        this.bucketName = bucketName;
-        this.pathExpression = pathExpression;
-        this.scanInterval = scanInterval;
-        this.type = type;
-    }
-
+    private KineisLogSourcePath() {}
     /**
      * @return The name of the bucket. This is needed if using type `KinesisLogPath`.
      * 
@@ -81,17 +70,13 @@ public final class KineisLogSourcePath {
     public static Builder builder(KineisLogSourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
         private @Nullable String pathExpression;
         private @Nullable Integer scanInterval;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KineisLogSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -100,23 +85,33 @@ public final class KineisLogSourcePath {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
             this.bucketName = bucketName;
             return this;
         }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
             this.pathExpression = pathExpression;
             return this;
         }
+        @CustomType.Setter
         public Builder scanInterval(@Nullable Integer scanInterval) {
             this.scanInterval = scanInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public KineisLogSourcePath build() {
-            return new KineisLogSourcePath(bucketName, pathExpression, scanInterval, type);
+        }
+        public KineisLogSourcePath build() {
+            final var o = new KineisLogSourcePath();
+            o.bucketName = bucketName;
+            o.pathExpression = pathExpression;
+            o.scanInterval = scanInterval;
+            o.type = type;
+            return o;
         }
     }
 }

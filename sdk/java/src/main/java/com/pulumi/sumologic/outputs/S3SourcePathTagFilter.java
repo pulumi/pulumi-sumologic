@@ -12,24 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class S3SourcePathTagFilter {
-    private final @Nullable String namespace;
-    private final @Nullable List<String> tags;
+    private @Nullable String namespace;
+    private @Nullable List<String> tags;
     /**
      * @return type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private S3SourcePathTagFilter(
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.namespace = namespace;
-        this.tags = tags;
-        this.type = type;
-    }
-
+    private S3SourcePathTagFilter() {}
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -51,16 +42,12 @@ public final class S3SourcePathTagFilter {
     public static Builder builder(S3SourcePathTagFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String namespace;
         private @Nullable List<String> tags;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(S3SourcePathTagFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespace = defaults.namespace;
@@ -68,10 +55,12 @@ public final class S3SourcePathTagFilter {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -79,11 +68,17 @@ public final class S3SourcePathTagFilter {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public S3SourcePathTagFilter build() {
-            return new S3SourcePathTagFilter(namespace, tags, type);
+        }
+        public S3SourcePathTagFilter build() {
+            final var o = new S3SourcePathTagFilter();
+            o.namespace = namespace;
+            o.tags = tags;
+            o.type = type;
+            return o;
         }
     }
 }

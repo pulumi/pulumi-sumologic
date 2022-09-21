@@ -16,21 +16,14 @@ public final class PoliciesUserConcurrentSessionsLimit {
      * @return Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Maximum number of concurrent sessions a user may have. Defaults to `100`.
      * 
      */
-    private final @Nullable Integer maxConcurrentSessions;
+    private @Nullable Integer maxConcurrentSessions;
 
-    @CustomType.Constructor
-    private PoliciesUserConcurrentSessionsLimit(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("maxConcurrentSessions") @Nullable Integer maxConcurrentSessions) {
-        this.enabled = enabled;
-        this.maxConcurrentSessions = maxConcurrentSessions;
-    }
-
+    private PoliciesUserConcurrentSessionsLimit() {}
     /**
      * @return Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
      * 
@@ -53,30 +46,32 @@ public final class PoliciesUserConcurrentSessionsLimit {
     public static Builder builder(PoliciesUserConcurrentSessionsLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private @Nullable Integer maxConcurrentSessions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PoliciesUserConcurrentSessionsLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.maxConcurrentSessions = defaults.maxConcurrentSessions;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConcurrentSessions(@Nullable Integer maxConcurrentSessions) {
             this.maxConcurrentSessions = maxConcurrentSessions;
             return this;
-        }        public PoliciesUserConcurrentSessionsLimit build() {
-            return new PoliciesUserConcurrentSessionsLimit(enabled, maxConcurrentSessions);
+        }
+        public PoliciesUserConcurrentSessionsLimit build() {
+            final var o = new PoliciesUserConcurrentSessionsLimit();
+            o.enabled = enabled;
+            o.maxConcurrentSessions = maxConcurrentSessions;
+            return o;
         }
     }
 }

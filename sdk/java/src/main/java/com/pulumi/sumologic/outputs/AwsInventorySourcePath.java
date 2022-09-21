@@ -16,8 +16,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsInventorySourcePath {
-    private final @Nullable String bucketName;
-    private final @Nullable List<AwsInventorySourcePathCustomService> customServices;
+    private @Nullable String bucketName;
+    private @Nullable List<AwsInventorySourcePathCustomService> customServices;
     /**
      * @return List of namespaces. By default all namespaces are selected. You can also choose a subset from
      * + AWS/EC2
@@ -35,47 +35,24 @@ public final class AwsInventorySourcePath {
      * + AWS/Kinesis
      * 
      */
-    private final @Nullable List<String> limitToNamespaces;
+    private @Nullable List<String> limitToNamespaces;
     /**
      * @return List of Amazon regions.
      * 
      */
-    private final @Nullable List<String> limitToRegions;
-    private final @Nullable List<String> limitToServices;
-    private final @Nullable String pathExpression;
-    private final @Nullable List<AwsInventorySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
-    private final @Nullable List<AwsInventorySourcePathTagFilter> tagFilters;
+    private @Nullable List<String> limitToRegions;
+    private @Nullable List<String> limitToServices;
+    private @Nullable String pathExpression;
+    private @Nullable List<AwsInventorySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
+    private @Nullable List<AwsInventorySourcePathTagFilter> tagFilters;
     /**
      * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
      * 
      */
-    private final String type;
-    private final @Nullable Boolean useVersionedApi;
+    private String type;
+    private @Nullable Boolean useVersionedApi;
 
-    @CustomType.Constructor
-    private AwsInventorySourcePath(
-        @CustomType.Parameter("bucketName") @Nullable String bucketName,
-        @CustomType.Parameter("customServices") @Nullable List<AwsInventorySourcePathCustomService> customServices,
-        @CustomType.Parameter("limitToNamespaces") @Nullable List<String> limitToNamespaces,
-        @CustomType.Parameter("limitToRegions") @Nullable List<String> limitToRegions,
-        @CustomType.Parameter("limitToServices") @Nullable List<String> limitToServices,
-        @CustomType.Parameter("pathExpression") @Nullable String pathExpression,
-        @CustomType.Parameter("snsTopicOrSubscriptionArns") @Nullable List<AwsInventorySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
-        @CustomType.Parameter("tagFilters") @Nullable List<AwsInventorySourcePathTagFilter> tagFilters,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("useVersionedApi") @Nullable Boolean useVersionedApi) {
-        this.bucketName = bucketName;
-        this.customServices = customServices;
-        this.limitToNamespaces = limitToNamespaces;
-        this.limitToRegions = limitToRegions;
-        this.limitToServices = limitToServices;
-        this.pathExpression = pathExpression;
-        this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
-        this.tagFilters = tagFilters;
-        this.type = type;
-        this.useVersionedApi = useVersionedApi;
-    }
-
+    private AwsInventorySourcePath() {}
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
@@ -139,7 +116,7 @@ public final class AwsInventorySourcePath {
     public static Builder builder(AwsInventorySourcePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
         private @Nullable List<AwsInventorySourcePathCustomService> customServices;
@@ -151,11 +128,7 @@ public final class AwsInventorySourcePath {
         private @Nullable List<AwsInventorySourcePathTagFilter> tagFilters;
         private String type;
         private @Nullable Boolean useVersionedApi;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsInventorySourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -170,10 +143,12 @@ public final class AwsInventorySourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
             this.bucketName = bucketName;
             return this;
         }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<AwsInventorySourcePathCustomService> customServices) {
             this.customServices = customServices;
             return this;
@@ -181,6 +156,7 @@ public final class AwsInventorySourcePath {
         public Builder customServices(AwsInventorySourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
         }
+        @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
             this.limitToNamespaces = limitToNamespaces;
             return this;
@@ -188,6 +164,7 @@ public final class AwsInventorySourcePath {
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
+        @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
             this.limitToRegions = limitToRegions;
             return this;
@@ -195,6 +172,7 @@ public final class AwsInventorySourcePath {
         public Builder limitToRegions(String... limitToRegions) {
             return limitToRegions(List.of(limitToRegions));
         }
+        @CustomType.Setter
         public Builder limitToServices(@Nullable List<String> limitToServices) {
             this.limitToServices = limitToServices;
             return this;
@@ -202,10 +180,12 @@ public final class AwsInventorySourcePath {
         public Builder limitToServices(String... limitToServices) {
             return limitToServices(List.of(limitToServices));
         }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
             this.pathExpression = pathExpression;
             return this;
         }
+        @CustomType.Setter
         public Builder snsTopicOrSubscriptionArns(@Nullable List<AwsInventorySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns) {
             this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             return this;
@@ -213,6 +193,7 @@ public final class AwsInventorySourcePath {
         public Builder snsTopicOrSubscriptionArns(AwsInventorySourcePathSnsTopicOrSubscriptionArn... snsTopicOrSubscriptionArns) {
             return snsTopicOrSubscriptionArns(List.of(snsTopicOrSubscriptionArns));
         }
+        @CustomType.Setter
         public Builder tagFilters(@Nullable List<AwsInventorySourcePathTagFilter> tagFilters) {
             this.tagFilters = tagFilters;
             return this;
@@ -220,15 +201,29 @@ public final class AwsInventorySourcePath {
         public Builder tagFilters(AwsInventorySourcePathTagFilter... tagFilters) {
             return tagFilters(List.of(tagFilters));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder useVersionedApi(@Nullable Boolean useVersionedApi) {
             this.useVersionedApi = useVersionedApi;
             return this;
-        }        public AwsInventorySourcePath build() {
-            return new AwsInventorySourcePath(bucketName, customServices, limitToNamespaces, limitToRegions, limitToServices, pathExpression, snsTopicOrSubscriptionArns, tagFilters, type, useVersionedApi);
+        }
+        public AwsInventorySourcePath build() {
+            final var o = new AwsInventorySourcePath();
+            o.bucketName = bucketName;
+            o.customServices = customServices;
+            o.limitToNamespaces = limitToNamespaces;
+            o.limitToRegions = limitToRegions;
+            o.limitToServices = limitToServices;
+            o.pathExpression = pathExpression;
+            o.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
+            o.tagFilters = tagFilters;
+            o.type = type;
+            o.useVersionedApi = useVersionedApi;
+            return o;
         }
     }
 }

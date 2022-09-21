@@ -14,21 +14,14 @@ public final class CseChainRuleExpressionsAndLimit {
      * @return The expression for which records to match on
      * 
      */
-    private final String expression;
+    private String expression;
     /**
      * @return How many times this expression must match for the Signal to fire
      * 
      */
-    private final Integer limit;
+    private Integer limit;
 
-    @CustomType.Constructor
-    private CseChainRuleExpressionsAndLimit(
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("limit") Integer limit) {
-        this.expression = expression;
-        this.limit = limit;
-    }
-
+    private CseChainRuleExpressionsAndLimit() {}
     /**
      * @return The expression for which records to match on
      * 
@@ -51,30 +44,32 @@ public final class CseChainRuleExpressionsAndLimit {
     public static Builder builder(CseChainRuleExpressionsAndLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String expression;
         private Integer limit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseChainRuleExpressionsAndLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.limit = defaults.limit;
         }
 
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder limit(Integer limit) {
             this.limit = Objects.requireNonNull(limit);
             return this;
-        }        public CseChainRuleExpressionsAndLimit build() {
-            return new CseChainRuleExpressionsAndLimit(expression, limit);
+        }
+        public CseChainRuleExpressionsAndLimit build() {
+            final var o = new CseChainRuleExpressionsAndLimit();
+            o.expression = expression;
+            o.limit = limit;
+            return o;
         }
     }
 }

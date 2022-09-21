@@ -15,35 +15,24 @@ public final class MetadataSourceAuthentication {
      * @return Your AWS access key if using type `S3BucketAuthentication`
      * 
      */
-    private final @Nullable String accessKey;
+    private @Nullable String accessKey;
     /**
      * @return Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
      * 
      */
-    private final @Nullable String roleArn;
+    private @Nullable String roleArn;
     /**
      * @return Your AWS secret key if using type `S3BucketAuthentication`
      * 
      */
-    private final @Nullable String secretKey;
+    private @Nullable String secretKey;
     /**
      * @return type of polling source. Only allowed value is `AwsMetadataPath`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private MetadataSourceAuthentication(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey,
-        @CustomType.Parameter("type") String type) {
-        this.accessKey = accessKey;
-        this.roleArn = roleArn;
-        this.secretKey = secretKey;
-        this.type = type;
-    }
-
+    private MetadataSourceAuthentication() {}
     /**
      * @return Your AWS access key if using type `S3BucketAuthentication`
      * 
@@ -80,17 +69,13 @@ public final class MetadataSourceAuthentication {
     public static Builder builder(MetadataSourceAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private @Nullable String roleArn;
         private @Nullable String secretKey;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetadataSourceAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -99,23 +84,33 @@ public final class MetadataSourceAuthentication {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public MetadataSourceAuthentication build() {
-            return new MetadataSourceAuthentication(accessKey, roleArn, secretKey, type);
+        }
+        public MetadataSourceAuthentication build() {
+            final var o = new MetadataSourceAuthentication();
+            o.accessKey = accessKey;
+            o.roleArn = roleArn;
+            o.secretKey = secretKey;
+            o.type = type;
+            return o;
         }
     }
 }

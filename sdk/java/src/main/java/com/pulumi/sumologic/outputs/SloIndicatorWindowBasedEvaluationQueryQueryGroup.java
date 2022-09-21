@@ -17,35 +17,24 @@ public final class SloIndicatorWindowBasedEvaluationQueryQueryGroup {
      * type when `use_row_count` is false.
      * 
      */
-    private final @Nullable String field;
+    private @Nullable String field;
     /**
      * @return The query string to use.
      * 
      */
-    private final String query;
+    private String query;
     /**
      * @return The row ID to use.
      * 
      */
-    private final String rowId;
+    private String rowId;
     /**
      * @return Whether to use the row count. Defaults to false.
      * 
      */
-    private final Boolean useRowCount;
+    private Boolean useRowCount;
 
-    @CustomType.Constructor
-    private SloIndicatorWindowBasedEvaluationQueryQueryGroup(
-        @CustomType.Parameter("field") @Nullable String field,
-        @CustomType.Parameter("query") String query,
-        @CustomType.Parameter("rowId") String rowId,
-        @CustomType.Parameter("useRowCount") Boolean useRowCount) {
-        this.field = field;
-        this.query = query;
-        this.rowId = rowId;
-        this.useRowCount = useRowCount;
-    }
-
+    private SloIndicatorWindowBasedEvaluationQueryQueryGroup() {}
     /**
      * @return Field of log query output to compare against. To be used only for logs based data
      * type when `use_row_count` is false.
@@ -83,17 +72,13 @@ public final class SloIndicatorWindowBasedEvaluationQueryQueryGroup {
     public static Builder builder(SloIndicatorWindowBasedEvaluationQueryQueryGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String field;
         private String query;
         private String rowId;
         private Boolean useRowCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloIndicatorWindowBasedEvaluationQueryQueryGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.field = defaults.field;
@@ -102,23 +87,33 @@ public final class SloIndicatorWindowBasedEvaluationQueryQueryGroup {
     	      this.useRowCount = defaults.useRowCount;
         }
 
+        @CustomType.Setter
         public Builder field(@Nullable String field) {
             this.field = field;
             return this;
         }
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
         }
+        @CustomType.Setter
         public Builder rowId(String rowId) {
             this.rowId = Objects.requireNonNull(rowId);
             return this;
         }
+        @CustomType.Setter
         public Builder useRowCount(Boolean useRowCount) {
             this.useRowCount = Objects.requireNonNull(useRowCount);
             return this;
-        }        public SloIndicatorWindowBasedEvaluationQueryQueryGroup build() {
-            return new SloIndicatorWindowBasedEvaluationQueryQueryGroup(field, query, rowId, useRowCount);
+        }
+        public SloIndicatorWindowBasedEvaluationQueryQueryGroup build() {
+            final var o = new SloIndicatorWindowBasedEvaluationQueryQueryGroup();
+            o.field = field;
+            o.query = query;
+            o.rowId = rowId;
+            o.useRowCount = useRowCount;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMyUserIdResult {
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetMyUserIdResult(@CustomType.Parameter("id") String id) {
-        this.id = id;
-    }
-
+    private GetMyUserIdResult() {}
     public String id() {
         return this.id;
     }
@@ -27,24 +23,24 @@ public final class GetMyUserIdResult {
     public static Builder builder(GetMyUserIdResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMyUserIdResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetMyUserIdResult build() {
-            return new GetMyUserIdResult(id);
+        }
+        public GetMyUserIdResult build() {
+            final var o = new GetMyUserIdResult();
+            o.id = id;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
-    private final String iso8601Time;
+    private String iso8601Time;
 
-    @CustomType.Constructor
-    private DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(@CustomType.Parameter("iso8601Time") String iso8601Time) {
-        this.iso8601Time = iso8601Time;
-    }
-
+    private DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange() {}
     public String iso8601Time() {
         return this.iso8601Time;
     }
@@ -27,24 +23,24 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
     public static Builder builder(DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String iso8601Time;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iso8601Time = defaults.iso8601Time;
         }
 
+        @CustomType.Setter
         public Builder iso8601Time(String iso8601Time) {
             this.iso8601Time = Objects.requireNonNull(iso8601Time);
             return this;
-        }        public DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange build() {
-            return new DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(iso8601Time);
+        }
+        public DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange build() {
+            final var o = new DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange();
+            o.iso8601Time = iso8601Time;
+            return o;
         }
     }
 }

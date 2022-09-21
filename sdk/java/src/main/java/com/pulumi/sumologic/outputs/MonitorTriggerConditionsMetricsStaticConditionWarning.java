@@ -11,23 +11,12 @@ import java.util.Objects;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsStaticConditionWarning {
-    private final MonitorTriggerConditionsMetricsStaticConditionWarningAlert alert;
-    private final String occurrenceType;
-    private final MonitorTriggerConditionsMetricsStaticConditionWarningResolution resolution;
-    private final String timeRange;
+    private MonitorTriggerConditionsMetricsStaticConditionWarningAlert alert;
+    private String occurrenceType;
+    private MonitorTriggerConditionsMetricsStaticConditionWarningResolution resolution;
+    private String timeRange;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsMetricsStaticConditionWarning(
-        @CustomType.Parameter("alert") MonitorTriggerConditionsMetricsStaticConditionWarningAlert alert,
-        @CustomType.Parameter("occurrenceType") String occurrenceType,
-        @CustomType.Parameter("resolution") MonitorTriggerConditionsMetricsStaticConditionWarningResolution resolution,
-        @CustomType.Parameter("timeRange") String timeRange) {
-        this.alert = alert;
-        this.occurrenceType = occurrenceType;
-        this.resolution = resolution;
-        this.timeRange = timeRange;
-    }
-
+    private MonitorTriggerConditionsMetricsStaticConditionWarning() {}
     public MonitorTriggerConditionsMetricsStaticConditionWarningAlert alert() {
         return this.alert;
     }
@@ -48,17 +37,13 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarning {
     public static Builder builder(MonitorTriggerConditionsMetricsStaticConditionWarning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private MonitorTriggerConditionsMetricsStaticConditionWarningAlert alert;
         private String occurrenceType;
         private MonitorTriggerConditionsMetricsStaticConditionWarningResolution resolution;
         private String timeRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsStaticConditionWarning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alert = defaults.alert;
@@ -67,23 +52,33 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarning {
     	      this.timeRange = defaults.timeRange;
         }
 
+        @CustomType.Setter
         public Builder alert(MonitorTriggerConditionsMetricsStaticConditionWarningAlert alert) {
             this.alert = Objects.requireNonNull(alert);
             return this;
         }
+        @CustomType.Setter
         public Builder occurrenceType(String occurrenceType) {
             this.occurrenceType = Objects.requireNonNull(occurrenceType);
             return this;
         }
+        @CustomType.Setter
         public Builder resolution(MonitorTriggerConditionsMetricsStaticConditionWarningResolution resolution) {
             this.resolution = Objects.requireNonNull(resolution);
             return this;
         }
+        @CustomType.Setter
         public Builder timeRange(String timeRange) {
             this.timeRange = Objects.requireNonNull(timeRange);
             return this;
-        }        public MonitorTriggerConditionsMetricsStaticConditionWarning build() {
-            return new MonitorTriggerConditionsMetricsStaticConditionWarning(alert, occurrenceType, resolution, timeRange);
+        }
+        public MonitorTriggerConditionsMetricsStaticConditionWarning build() {
+            final var o = new MonitorTriggerConditionsMetricsStaticConditionWarning();
+            o.alert = alert;
+            o.occurrenceType = occurrenceType;
+            o.resolution = resolution;
+            o.timeRange = timeRange;
+            return o;
         }
     }
 }

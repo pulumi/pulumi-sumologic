@@ -19,112 +19,79 @@ public final class CseLogMappingField {
      * @return List of alternate values.
      * 
      */
-    private final @Nullable List<String> alternateValues;
+    private @Nullable List<String> alternateValues;
     /**
      * @return Case insensitive flag.
      * 
      */
-    private final @Nullable Boolean caseInsensitive;
+    private @Nullable Boolean caseInsensitive;
     /**
      * @return Default value of the field.
      * 
      */
-    private final @Nullable String defaultValue;
+    private @Nullable String defaultValue;
     /**
      * @return List of field join values.
      * 
      */
-    private final @Nullable List<String> fieldJoins;
+    private @Nullable List<String> fieldJoins;
     /**
      * @return Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
      * 
      */
-    private final @Nullable String format;
+    private @Nullable String format;
     /**
      * @return List of format parameters.
      * 
      */
-    private final @Nullable List<String> formatParameters;
+    private @Nullable List<String> formatParameters;
     /**
      * @return Join delimiter.
      * 
      */
-    private final @Nullable String joinDelimiter;
+    private @Nullable String joinDelimiter;
     /**
      * @return List of lookup key value pair for field. See lookup_schema for details.
      * 
      */
-    private final @Nullable List<CseLogMappingFieldLookup> lookups;
+    private @Nullable List<CseLogMappingFieldLookup> lookups;
     /**
      * @return Name of the field.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return List of skipped values.
      * 
      */
-    private final @Nullable List<String> skippedValues;
+    private @Nullable List<String> skippedValues;
     /**
      * @return Split delimiter to be used. (some example: &#34;,&#34;, &#34;-&#34;, &#34;|&#34;)
      * 
      */
-    private final @Nullable String splitDelimiter;
+    private @Nullable String splitDelimiter;
     /**
      * @return The index value to select (starting at zero)
      * 
      */
-    private final @Nullable Integer splitIndex;
+    private @Nullable Integer splitIndex;
     /**
      * @return Time zone.
      * 
      */
-    private final @Nullable String timeZone;
+    private @Nullable String timeZone;
     /**
      * @return Lookup value.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
     /**
      * @return The value type.
      * 
      */
-    private final @Nullable String valueType;
+    private @Nullable String valueType;
 
-    @CustomType.Constructor
-    private CseLogMappingField(
-        @CustomType.Parameter("alternateValues") @Nullable List<String> alternateValues,
-        @CustomType.Parameter("caseInsensitive") @Nullable Boolean caseInsensitive,
-        @CustomType.Parameter("defaultValue") @Nullable String defaultValue,
-        @CustomType.Parameter("fieldJoins") @Nullable List<String> fieldJoins,
-        @CustomType.Parameter("format") @Nullable String format,
-        @CustomType.Parameter("formatParameters") @Nullable List<String> formatParameters,
-        @CustomType.Parameter("joinDelimiter") @Nullable String joinDelimiter,
-        @CustomType.Parameter("lookups") @Nullable List<CseLogMappingFieldLookup> lookups,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("skippedValues") @Nullable List<String> skippedValues,
-        @CustomType.Parameter("splitDelimiter") @Nullable String splitDelimiter,
-        @CustomType.Parameter("splitIndex") @Nullable Integer splitIndex,
-        @CustomType.Parameter("timeZone") @Nullable String timeZone,
-        @CustomType.Parameter("value") @Nullable String value,
-        @CustomType.Parameter("valueType") @Nullable String valueType) {
-        this.alternateValues = alternateValues;
-        this.caseInsensitive = caseInsensitive;
-        this.defaultValue = defaultValue;
-        this.fieldJoins = fieldJoins;
-        this.format = format;
-        this.formatParameters = formatParameters;
-        this.joinDelimiter = joinDelimiter;
-        this.lookups = lookups;
-        this.name = name;
-        this.skippedValues = skippedValues;
-        this.splitDelimiter = splitDelimiter;
-        this.splitIndex = splitIndex;
-        this.timeZone = timeZone;
-        this.value = value;
-        this.valueType = valueType;
-    }
-
+    private CseLogMappingField() {}
     /**
      * @return List of alternate values.
      * 
@@ -238,7 +205,7 @@ public final class CseLogMappingField {
     public static Builder builder(CseLogMappingField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> alternateValues;
         private @Nullable Boolean caseInsensitive;
@@ -255,11 +222,7 @@ public final class CseLogMappingField {
         private @Nullable String timeZone;
         private @Nullable String value;
         private @Nullable String valueType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CseLogMappingField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alternateValues = defaults.alternateValues;
@@ -279,6 +242,7 @@ public final class CseLogMappingField {
     	      this.valueType = defaults.valueType;
         }
 
+        @CustomType.Setter
         public Builder alternateValues(@Nullable List<String> alternateValues) {
             this.alternateValues = alternateValues;
             return this;
@@ -286,14 +250,17 @@ public final class CseLogMappingField {
         public Builder alternateValues(String... alternateValues) {
             return alternateValues(List.of(alternateValues));
         }
+        @CustomType.Setter
         public Builder caseInsensitive(@Nullable Boolean caseInsensitive) {
             this.caseInsensitive = caseInsensitive;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
             this.defaultValue = defaultValue;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldJoins(@Nullable List<String> fieldJoins) {
             this.fieldJoins = fieldJoins;
             return this;
@@ -301,10 +268,12 @@ public final class CseLogMappingField {
         public Builder fieldJoins(String... fieldJoins) {
             return fieldJoins(List.of(fieldJoins));
         }
+        @CustomType.Setter
         public Builder format(@Nullable String format) {
             this.format = format;
             return this;
         }
+        @CustomType.Setter
         public Builder formatParameters(@Nullable List<String> formatParameters) {
             this.formatParameters = formatParameters;
             return this;
@@ -312,10 +281,12 @@ public final class CseLogMappingField {
         public Builder formatParameters(String... formatParameters) {
             return formatParameters(List.of(formatParameters));
         }
+        @CustomType.Setter
         public Builder joinDelimiter(@Nullable String joinDelimiter) {
             this.joinDelimiter = joinDelimiter;
             return this;
         }
+        @CustomType.Setter
         public Builder lookups(@Nullable List<CseLogMappingFieldLookup> lookups) {
             this.lookups = lookups;
             return this;
@@ -323,10 +294,12 @@ public final class CseLogMappingField {
         public Builder lookups(CseLogMappingFieldLookup... lookups) {
             return lookups(List.of(lookups));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder skippedValues(@Nullable List<String> skippedValues) {
             this.skippedValues = skippedValues;
             return this;
@@ -334,27 +307,49 @@ public final class CseLogMappingField {
         public Builder skippedValues(String... skippedValues) {
             return skippedValues(List.of(skippedValues));
         }
+        @CustomType.Setter
         public Builder splitDelimiter(@Nullable String splitDelimiter) {
             this.splitDelimiter = splitDelimiter;
             return this;
         }
+        @CustomType.Setter
         public Builder splitIndex(@Nullable Integer splitIndex) {
             this.splitIndex = splitIndex;
             return this;
         }
+        @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
             this.timeZone = timeZone;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
         }
+        @CustomType.Setter
         public Builder valueType(@Nullable String valueType) {
             this.valueType = valueType;
             return this;
-        }        public CseLogMappingField build() {
-            return new CseLogMappingField(alternateValues, caseInsensitive, defaultValue, fieldJoins, format, formatParameters, joinDelimiter, lookups, name, skippedValues, splitDelimiter, splitIndex, timeZone, value, valueType);
+        }
+        public CseLogMappingField build() {
+            final var o = new CseLogMappingField();
+            o.alternateValues = alternateValues;
+            o.caseInsensitive = caseInsensitive;
+            o.defaultValue = defaultValue;
+            o.fieldJoins = fieldJoins;
+            o.format = format;
+            o.formatParameters = formatParameters;
+            o.joinDelimiter = joinDelimiter;
+            o.lookups = lookups;
+            o.name = name;
+            o.skippedValues = skippedValues;
+            o.splitDelimiter = splitDelimiter;
+            o.splitIndex = splitIndex;
+            o.timeZone = timeZone;
+            o.value = value;
+            o.valueType = valueType;
+            return o;
         }
     }
 }

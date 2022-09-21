@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsOutlierConditionWarning {
-    private final @Nullable Integer consecutive;
-    private final @Nullable Double threshold;
-    private final @Nullable Integer window;
+    private @Nullable Integer consecutive;
+    private @Nullable Double threshold;
+    private @Nullable Integer window;
 
-    @CustomType.Constructor
-    private MonitorTriggerConditionsLogsOutlierConditionWarning(
-        @CustomType.Parameter("consecutive") @Nullable Integer consecutive,
-        @CustomType.Parameter("threshold") @Nullable Double threshold,
-        @CustomType.Parameter("window") @Nullable Integer window) {
-        this.consecutive = consecutive;
-        this.threshold = threshold;
-        this.window = window;
-    }
-
+    private MonitorTriggerConditionsLogsOutlierConditionWarning() {}
     public Optional<Integer> consecutive() {
         return Optional.ofNullable(this.consecutive);
     }
@@ -43,16 +34,12 @@ public final class MonitorTriggerConditionsLogsOutlierConditionWarning {
     public static Builder builder(MonitorTriggerConditionsLogsOutlierConditionWarning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer consecutive;
         private @Nullable Double threshold;
         private @Nullable Integer window;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorTriggerConditionsLogsOutlierConditionWarning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consecutive = defaults.consecutive;
@@ -60,19 +47,27 @@ public final class MonitorTriggerConditionsLogsOutlierConditionWarning {
     	      this.window = defaults.window;
         }
 
+        @CustomType.Setter
         public Builder consecutive(@Nullable Integer consecutive) {
             this.consecutive = consecutive;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
             return this;
         }
+        @CustomType.Setter
         public Builder window(@Nullable Integer window) {
             this.window = window;
             return this;
-        }        public MonitorTriggerConditionsLogsOutlierConditionWarning build() {
-            return new MonitorTriggerConditionsLogsOutlierConditionWarning(consecutive, threshold, window);
+        }
+        public MonitorTriggerConditionsLogsOutlierConditionWarning build() {
+            final var o = new MonitorTriggerConditionsLogsOutlierConditionWarning();
+            o.consecutive = consecutive;
+            o.threshold = threshold;
+            o.window = window;
+            return o;
         }
     }
 }

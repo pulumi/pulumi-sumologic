@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanelSumoSearchPanelColoringRule {
-    private final @Nullable List<DashboardPanelSumoSearchPanelColoringRuleColorThreshold> colorThresholds;
-    private final String multipleSeriesAggregateFunction;
-    private final String scope;
-    private final String singleSeriesAggregateFunction;
+    private @Nullable List<DashboardPanelSumoSearchPanelColoringRuleColorThreshold> colorThresholds;
+    private String multipleSeriesAggregateFunction;
+    private String scope;
+    private String singleSeriesAggregateFunction;
 
-    @CustomType.Constructor
-    private DashboardPanelSumoSearchPanelColoringRule(
-        @CustomType.Parameter("colorThresholds") @Nullable List<DashboardPanelSumoSearchPanelColoringRuleColorThreshold> colorThresholds,
-        @CustomType.Parameter("multipleSeriesAggregateFunction") String multipleSeriesAggregateFunction,
-        @CustomType.Parameter("scope") String scope,
-        @CustomType.Parameter("singleSeriesAggregateFunction") String singleSeriesAggregateFunction) {
-        this.colorThresholds = colorThresholds;
-        this.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
-        this.scope = scope;
-        this.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
-    }
-
+    private DashboardPanelSumoSearchPanelColoringRule() {}
     public List<DashboardPanelSumoSearchPanelColoringRuleColorThreshold> colorThresholds() {
         return this.colorThresholds == null ? List.of() : this.colorThresholds;
     }
@@ -49,17 +38,13 @@ public final class DashboardPanelSumoSearchPanelColoringRule {
     public static Builder builder(DashboardPanelSumoSearchPanelColoringRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<DashboardPanelSumoSearchPanelColoringRuleColorThreshold> colorThresholds;
         private String multipleSeriesAggregateFunction;
         private String scope;
         private String singleSeriesAggregateFunction;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPanelSumoSearchPanelColoringRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.colorThresholds = defaults.colorThresholds;
@@ -68,6 +53,7 @@ public final class DashboardPanelSumoSearchPanelColoringRule {
     	      this.singleSeriesAggregateFunction = defaults.singleSeriesAggregateFunction;
         }
 
+        @CustomType.Setter
         public Builder colorThresholds(@Nullable List<DashboardPanelSumoSearchPanelColoringRuleColorThreshold> colorThresholds) {
             this.colorThresholds = colorThresholds;
             return this;
@@ -75,19 +61,28 @@ public final class DashboardPanelSumoSearchPanelColoringRule {
         public Builder colorThresholds(DashboardPanelSumoSearchPanelColoringRuleColorThreshold... colorThresholds) {
             return colorThresholds(List.of(colorThresholds));
         }
+        @CustomType.Setter
         public Builder multipleSeriesAggregateFunction(String multipleSeriesAggregateFunction) {
             this.multipleSeriesAggregateFunction = Objects.requireNonNull(multipleSeriesAggregateFunction);
             return this;
         }
+        @CustomType.Setter
         public Builder scope(String scope) {
             this.scope = Objects.requireNonNull(scope);
             return this;
         }
+        @CustomType.Setter
         public Builder singleSeriesAggregateFunction(String singleSeriesAggregateFunction) {
             this.singleSeriesAggregateFunction = Objects.requireNonNull(singleSeriesAggregateFunction);
             return this;
-        }        public DashboardPanelSumoSearchPanelColoringRule build() {
-            return new DashboardPanelSumoSearchPanelColoringRule(colorThresholds, multipleSeriesAggregateFunction, scope, singleSeriesAggregateFunction);
+        }
+        public DashboardPanelSumoSearchPanelColoringRule build() {
+            final var o = new DashboardPanelSumoSearchPanelColoringRule();
+            o.colorThresholds = colorThresholds;
+            o.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
+            o.scope = scope;
+            o.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
+            return o;
         }
     }
 }

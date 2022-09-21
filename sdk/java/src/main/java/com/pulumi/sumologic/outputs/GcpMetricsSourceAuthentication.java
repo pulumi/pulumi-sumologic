@@ -11,93 +11,62 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpMetricsSourceAuthentication {
-    private final @Nullable String accessKey;
+    private @Nullable String accessKey;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String authProviderX509CertUrl;
+    private @Nullable String authProviderX509CertUrl;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String authUri;
+    private @Nullable String authUri;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String clientEmail;
+    private @Nullable String clientEmail;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String clientId;
+    private @Nullable String clientId;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String clientX509CertUrl;
+    private @Nullable String clientX509CertUrl;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String privateKey;
+    private @Nullable String privateKey;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String privateKeyId;
+    private @Nullable String privateKeyId;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String projectId;
-    private final @Nullable String region;
-    private final @Nullable String roleArn;
-    private final @Nullable String secretKey;
+    private @Nullable String projectId;
+    private @Nullable String region;
+    private @Nullable String roleArn;
+    private @Nullable String secretKey;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
      */
-    private final @Nullable String tokenUri;
+    private @Nullable String tokenUri;
     /**
      * @return Type of polling source. This has to be `GcpMetricsPath`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GcpMetricsSourceAuthentication(
-        @CustomType.Parameter("accessKey") @Nullable String accessKey,
-        @CustomType.Parameter("authProviderX509CertUrl") @Nullable String authProviderX509CertUrl,
-        @CustomType.Parameter("authUri") @Nullable String authUri,
-        @CustomType.Parameter("clientEmail") @Nullable String clientEmail,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clientX509CertUrl") @Nullable String clientX509CertUrl,
-        @CustomType.Parameter("privateKey") @Nullable String privateKey,
-        @CustomType.Parameter("privateKeyId") @Nullable String privateKeyId,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn,
-        @CustomType.Parameter("secretKey") @Nullable String secretKey,
-        @CustomType.Parameter("tokenUri") @Nullable String tokenUri,
-        @CustomType.Parameter("type") String type) {
-        this.accessKey = accessKey;
-        this.authProviderX509CertUrl = authProviderX509CertUrl;
-        this.authUri = authUri;
-        this.clientEmail = clientEmail;
-        this.clientId = clientId;
-        this.clientX509CertUrl = clientX509CertUrl;
-        this.privateKey = privateKey;
-        this.privateKeyId = privateKeyId;
-        this.projectId = projectId;
-        this.region = region;
-        this.roleArn = roleArn;
-        this.secretKey = secretKey;
-        this.tokenUri = tokenUri;
-        this.type = type;
-    }
-
+    private GcpMetricsSourceAuthentication() {}
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
@@ -188,7 +157,7 @@ public final class GcpMetricsSourceAuthentication {
     public static Builder builder(GcpMetricsSourceAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKey;
         private @Nullable String authProviderX509CertUrl;
@@ -204,11 +173,7 @@ public final class GcpMetricsSourceAuthentication {
         private @Nullable String secretKey;
         private @Nullable String tokenUri;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GcpMetricsSourceAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -227,63 +192,93 @@ public final class GcpMetricsSourceAuthentication {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
             this.accessKey = accessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder authProviderX509CertUrl(@Nullable String authProviderX509CertUrl) {
             this.authProviderX509CertUrl = authProviderX509CertUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder authUri(@Nullable String authUri) {
             this.authUri = authUri;
             return this;
         }
+        @CustomType.Setter
         public Builder clientEmail(@Nullable String clientEmail) {
             this.clientEmail = clientEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clientX509CertUrl(@Nullable String clientX509CertUrl) {
             this.clientX509CertUrl = clientX509CertUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
             this.privateKey = privateKey;
             return this;
         }
+        @CustomType.Setter
         public Builder privateKeyId(@Nullable String privateKeyId) {
             this.privateKeyId = privateKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
         }
+        @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
             this.secretKey = secretKey;
             return this;
         }
+        @CustomType.Setter
         public Builder tokenUri(@Nullable String tokenUri) {
             this.tokenUri = tokenUri;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GcpMetricsSourceAuthentication build() {
-            return new GcpMetricsSourceAuthentication(accessKey, authProviderX509CertUrl, authUri, clientEmail, clientId, clientX509CertUrl, privateKey, privateKeyId, projectId, region, roleArn, secretKey, tokenUri, type);
+        }
+        public GcpMetricsSourceAuthentication build() {
+            final var o = new GcpMetricsSourceAuthentication();
+            o.accessKey = accessKey;
+            o.authProviderX509CertUrl = authProviderX509CertUrl;
+            o.authUri = authUri;
+            o.clientEmail = clientEmail;
+            o.clientId = clientId;
+            o.clientX509CertUrl = clientX509CertUrl;
+            o.privateKey = privateKey;
+            o.privateKeyId = privateKeyId;
+            o.projectId = projectId;
+            o.region = region;
+            o.roleArn = roleArn;
+            o.secretKey = secretKey;
+            o.tokenUri = tokenUri;
+            o.type = type;
+            return o;
         }
     }
 }
