@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic
         /// - `description` - The description of the Admin Recommended Folder.
         /// </summary>
         public static Task<GetAdminRecommendedFolderResult> InvokeAsync(GetAdminRecommendedFolderArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides an easy way to retrieve the Admin Recommended Folder.
@@ -43,7 +43,7 @@ namespace Pulumi.SumoLogic
         /// - `description` - The description of the Admin Recommended Folder.
         /// </summary>
         public static Output<GetAdminRecommendedFolderResult> Invoke(GetAdminRecommendedFolderInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -12,10 +12,6 @@ import java.util.Objects;
 public final class MonitorObjPermission {
     /**
      * @return A Set of Permissions. Valid Permission Values:
-     * - `Read`
-     * - `Update`
-     * - `Delete`
-     * - `Manage`
      * 
      */
     private List<String> permissions;
@@ -26,8 +22,6 @@ public final class MonitorObjPermission {
     private String subjectId;
     /**
      * @return Valid values:
-     * - `role`
-     * - `org`
      * 
      */
     private String subjectType;
@@ -35,10 +29,6 @@ public final class MonitorObjPermission {
     private MonitorObjPermission() {}
     /**
      * @return A Set of Permissions. Valid Permission Values:
-     * - `Read`
-     * - `Update`
-     * - `Delete`
-     * - `Manage`
      * 
      */
     public List<String> permissions() {
@@ -53,8 +43,6 @@ public final class MonitorObjPermission {
     }
     /**
      * @return Valid values:
-     * - `role`
-     * - `org`
      * 
      */
     public String subjectType() {

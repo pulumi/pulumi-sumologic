@@ -85,7 +85,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// Name of the field.
+        /// The name of the log mapping.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// Lookup value.
+        /// Value of the field.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

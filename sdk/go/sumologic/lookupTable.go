@@ -29,12 +29,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewLookupTable(ctx, "lookupTable", &sumologic.LookupTableArgs{
 //				Description: pulumi.String("some description"),
-//				Fields: LookupTableFieldArray{
-//					&LookupTableFieldArgs{
+//				Fields: sumologic.LookupTableFieldArray{
+//					&sumologic.LookupTableFieldArgs{
 //						FieldName: pulumi.String("FieldName1"),
 //						FieldType: pulumi.String("boolean"),
 //					},
-//					&LookupTableFieldArgs{
+//					&sumologic.LookupTableFieldArgs{
 //						FieldName: pulumi.String("FieldName2"),
 //						FieldType: pulumi.String("string"),
 //					},

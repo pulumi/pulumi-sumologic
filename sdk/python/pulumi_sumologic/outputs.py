@@ -55,6 +55,7 @@ __all__ = [
     'CseAggregationRuleSeverityMappingMapping',
     'CseChainRuleEntitySelector',
     'CseChainRuleExpressionsAndLimit',
+    'CseEntityNormalizationConfigurationDomainMapping',
     'CseLogMappingField',
     'CseLogMappingFieldLookup',
     'CseLogMappingStructuredInput',
@@ -3479,6 +3480,54 @@ class CseChainRuleExpressionsAndLimit(dict):
 
 
 @pulumi.output_type
+class CseEntityNormalizationConfigurationDomainMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "normalizedDomain":
+            suggest = "normalized_domain"
+        elif key == "rawDomain":
+            suggest = "raw_domain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseEntityNormalizationConfigurationDomainMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseEntityNormalizationConfigurationDomainMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseEntityNormalizationConfigurationDomainMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 normalized_domain: str,
+                 raw_domain: str):
+        """
+        :param str normalized_domain: The normalized domain.
+        :param str raw_domain: The raw domain to be normalized.
+        """
+        pulumi.set(__self__, "normalized_domain", normalized_domain)
+        pulumi.set(__self__, "raw_domain", raw_domain)
+
+    @property
+    @pulumi.getter(name="normalizedDomain")
+    def normalized_domain(self) -> str:
+        """
+        The normalized domain.
+        """
+        return pulumi.get(self, "normalized_domain")
+
+    @property
+    @pulumi.getter(name="rawDomain")
+    def raw_domain(self) -> str:
+        """
+        The raw domain to be normalized.
+        """
+        return pulumi.get(self, "raw_domain")
+
+
+@pulumi.output_type
 class CseLogMappingField(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3534,7 +3583,7 @@ class CseLogMappingField(dict):
                  value: Optional[str] = None,
                  value_type: Optional[str] = None):
         """
-        :param str name: Name of the field.
+        :param str name: The name of the log mapping.
         :param Sequence[str] alternate_values: List of alternate values.
         :param bool case_insensitive: Case insensitive flag.
         :param str default_value: Default value of the field.
@@ -3547,7 +3596,7 @@ class CseLogMappingField(dict):
         :param str split_delimiter: Split delimiter to be used. (some example: ",", "-", "|")
         :param int split_index: The index value to select (starting at zero)
         :param str time_zone: Time zone.
-        :param str value: Lookup value.
+        :param str value: Value of the field.
         :param str value_type: The value type.
         """
         pulumi.set(__self__, "name", name)
@@ -3584,7 +3633,7 @@ class CseLogMappingField(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the field.
+        The name of the log mapping.
         """
         return pulumi.get(self, "name")
 
@@ -3688,7 +3737,7 @@ class CseLogMappingField(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Lookup value.
+        Value of the field.
         """
         return pulumi.get(self, "value")
 
@@ -3708,7 +3757,7 @@ class CseLogMappingFieldLookup(dict):
                  value: str):
         """
         :param str key: Lookup key.
-        :param str value: Lookup value.
+        :param str value: Value of the field.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -3725,7 +3774,7 @@ class CseLogMappingFieldLookup(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Lookup value.
+        Value of the field.
         """
         return pulumi.get(self, "value")
 
@@ -3843,7 +3892,7 @@ class CseMatchListItem(dict):
                  expiration: Optional[str] = None,
                  id: Optional[str] = None):
         """
-        :param str description: Match list item description.
+        :param str description: Match list description.
         :param str value: Match list item value.
         :param str expiration: Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
         :param str id: The internal ID of the match list.
@@ -3859,7 +3908,7 @@ class CseMatchListItem(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Match list item description.
+        Match list description.
         """
         return pulumi.get(self, "description")
 
@@ -25366,9 +25415,7 @@ class MonitorFolderObjPermission(dict):
                  subject_id: str,
                  subject_type: str):
         """
-        :param Sequence[str] permissions: A Set of Permissions. Valid Permission Values: 
-               - `Create`
-               - `Read`
+        :param Sequence[str] permissions: A Set of Permissions. Valid Permission Values:
         :param str subject_id: A Role ID or the Org ID of the account
         :param str subject_type: Valid values:
         """
@@ -25380,9 +25427,7 @@ class MonitorFolderObjPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[str]:
         """
-        A Set of Permissions. Valid Permission Values: 
-        - `Create`
-        - `Read`
+        A Set of Permissions. Valid Permission Values:
         """
         return pulumi.get(self, "permissions")
 
@@ -25562,14 +25607,8 @@ class MonitorObjPermission(dict):
                  subject_type: str):
         """
         :param Sequence[str] permissions: A Set of Permissions. Valid Permission Values:
-               - `Read`
-               - `Update`
-               - `Delete`
-               - `Manage`
         :param str subject_id: A Role ID or the Org ID of the account
         :param str subject_type: Valid values:
-               - `role`
-               - `org`
         """
         pulumi.set(__self__, "permissions", permissions)
         pulumi.set(__self__, "subject_id", subject_id)
@@ -25580,10 +25619,6 @@ class MonitorObjPermission(dict):
     def permissions(self) -> Sequence[str]:
         """
         A Set of Permissions. Valid Permission Values:
-        - `Read`
-        - `Update`
-        - `Delete`
-        - `Manage`
         """
         return pulumi.get(self, "permissions")
 
@@ -25600,8 +25635,6 @@ class MonitorObjPermission(dict):
     def subject_type(self) -> str:
         """
         Valid values:
-        - `role`
-        - `org`
         """
         return pulumi.get(self, "subject_type")
 
@@ -25651,6 +25684,8 @@ class MonitorTrigger(dict):
             suggest = "detection_method"
         elif key == "occurrenceType":
             suggest = "occurrence_type"
+        elif key == "resolutionWindow":
+            suggest = "resolution_window"
         elif key == "thresholdType":
             suggest = "threshold_type"
         elif key == "timeRange":
@@ -25674,15 +25709,21 @@ class MonitorTrigger(dict):
     def __init__(__self__, *,
                  detection_method: Optional[str] = None,
                  occurrence_type: Optional[str] = None,
+                 resolution_window: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None,
                  time_range: Optional[str] = None,
                  trigger_source: Optional[str] = None,
                  trigger_type: Optional[str] = None):
+        """
+        :param str resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
         if detection_method is not None:
             pulumi.set(__self__, "detection_method", detection_method)
         if occurrence_type is not None:
             pulumi.set(__self__, "occurrence_type", occurrence_type)
+        if resolution_window is not None:
+            pulumi.set(__self__, "resolution_window", resolution_window)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
@@ -25703,6 +25744,14 @@ class MonitorTrigger(dict):
     @pulumi.getter(name="occurrenceType")
     def occurrence_type(self) -> Optional[str]:
         return pulumi.get(self, "occurrence_type")
+
+    @property
+    @pulumi.getter(name="resolutionWindow")
+    def resolution_window(self) -> Optional[str]:
+        """
+        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        return pulumi.get(self, "resolution_window")
 
     @property
     @pulumi.getter
@@ -26069,7 +26118,9 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalResolution(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "thresholdType":
+        if key == "resolutionWindow":
+            suggest = "resolution_window"
+        elif key == "thresholdType":
             suggest = "threshold_type"
 
         if suggest:
@@ -26084,12 +26135,26 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalResolution(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 resolution_window: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        """
+        :param str resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        if resolution_window is not None:
+            pulumi.set(__self__, "resolution_window", resolution_window)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="resolutionWindow")
+    def resolution_window(self) -> Optional[str]:
+        """
+        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        return pulumi.get(self, "resolution_window")
 
     @property
     @pulumi.getter
@@ -26188,7 +26253,9 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolution(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "thresholdType":
+        if key == "resolutionWindow":
+            suggest = "resolution_window"
+        elif key == "thresholdType":
             suggest = "threshold_type"
 
         if suggest:
@@ -26203,12 +26270,26 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolution(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 resolution_window: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        """
+        :param str resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        if resolution_window is not None:
+            pulumi.set(__self__, "resolution_window", resolution_window)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="resolutionWindow")
+    def resolution_window(self) -> Optional[str]:
+        """
+        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        return pulumi.get(self, "resolution_window")
 
     @property
     @pulumi.getter
@@ -28260,9 +28341,10 @@ class SloCompliance(dict):
                  start_from: Optional[str] = None):
         """
         :param str compliance_type: The type of compliance to use. Valid values are `Rolling` or `Calendar`.
-        :param str size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-               based evaluation.
-        :param float target: The target value to use, must be a number between 0 and 100.
+        :param str size: The size of the compliance period to use.
+               - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+               - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
+        :param float target: Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
         :param str timezone: Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
         :param str start_from: Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
                Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
@@ -28287,8 +28369,9 @@ class SloCompliance(dict):
     @pulumi.getter
     def size(self) -> str:
         """
-        The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-        based evaluation.
+        The size of the compliance period to use.
+        - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+        - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
         """
         return pulumi.get(self, "size")
 
@@ -28296,7 +28379,7 @@ class SloCompliance(dict):
     @pulumi.getter
     def target(self) -> float:
         """
-        The target value to use, must be a number between 0 and 100.
+        Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
         """
         return pulumi.get(self, "target")
 
@@ -28458,6 +28541,7 @@ class SloIndicatorRequestBasedEvaluationQuery(dict):
         """
         :param str query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
                , `Threshold`.
+               , `Threshold`.
         :param Sequence['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs'] query_groups: List of queries to use.
         """
         pulumi.set(__self__, "query_group_type", query_group_type)
@@ -28468,6 +28552,7 @@ class SloIndicatorRequestBasedEvaluationQuery(dict):
     def query_group_type(self) -> str:
         """
         The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
         , `Threshold`.
         """
         return pulumi.get(self, "query_group_type")
@@ -28513,6 +28598,7 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
         :param bool use_row_count: Whether to use the row count. Defaults to false.
         :param str field: Field of log query output to compare against. To be used only for logs based data
                type when `use_row_count` is false.
+               type when `use_row_count` is false.
         """
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "row_id", row_id)
@@ -28550,6 +28636,7 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
         """
         Field of log query output to compare against. To be used only for logs based data
         type when `use_row_count` is false.
+        type when `use_row_count` is false.
         """
         return pulumi.get(self, "field")
 
@@ -28581,13 +28668,15 @@ class SloIndicatorWindowBasedEvaluation(dict):
                  threshold: float,
                  aggregation: Optional[str] = None):
         """
-        :param str op: Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        :param str op: The operator used to define a successful window. Valid values are `LessThan`
+               , `LessThanOrEqual`, `GreaterThan`
                , `GreaterThanOrEqual`.
         :param Sequence['SloIndicatorWindowBasedEvaluationQueryArgs'] queries: The queries to use.
         :param str query_type: The type of query to use. Valid values are `Metrics` or `Logs`.
         :param str size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
                based evaluation.
-        :param float threshold: Compared against threshold query's raw data points to determine success criteria.
+        :param float threshold: Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+               for `(good windows / total windows) * 100`.
         :param str aggregation: Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
                , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
         """
@@ -28603,7 +28692,8 @@ class SloIndicatorWindowBasedEvaluation(dict):
     @pulumi.getter
     def op(self) -> str:
         """
-        Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        The operator used to define a successful window. Valid values are `LessThan`
+        , `LessThanOrEqual`, `GreaterThan`
         , `GreaterThanOrEqual`.
         """
         return pulumi.get(self, "op")
@@ -28637,7 +28727,8 @@ class SloIndicatorWindowBasedEvaluation(dict):
     @pulumi.getter
     def threshold(self) -> float:
         """
-        Compared against threshold query's raw data points to determine success criteria.
+        Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+        for `(good windows / total windows) * 100`.
         """
         return pulumi.get(self, "threshold")
 
@@ -28678,6 +28769,7 @@ class SloIndicatorWindowBasedEvaluationQuery(dict):
         """
         :param str query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
                , `Threshold`.
+               , `Threshold`.
         :param Sequence['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs'] query_groups: List of queries to use.
         """
         pulumi.set(__self__, "query_group_type", query_group_type)
@@ -28688,6 +28780,7 @@ class SloIndicatorWindowBasedEvaluationQuery(dict):
     def query_group_type(self) -> str:
         """
         The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
         , `Threshold`.
         """
         return pulumi.get(self, "query_group_type")
@@ -28733,6 +28826,7 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
         :param bool use_row_count: Whether to use the row count. Defaults to false.
         :param str field: Field of log query output to compare against. To be used only for logs based data
                type when `use_row_count` is false.
+               type when `use_row_count` is false.
         """
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "row_id", row_id)
@@ -28769,6 +28863,7 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
     def field(self) -> Optional[str]:
         """
         Field of log query output to compare against. To be used only for logs based data
+        type when `use_row_count` is false.
         type when `use_row_count` is false.
         """
         return pulumi.get(self, "field")

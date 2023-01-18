@@ -107,8 +107,6 @@ public class Token extends com.pulumi.resources.CustomResource {
     }
     /**
      * Status of the token. Valid values:
-     * - `Active`
-     * - `Inactive`
      * 
      */
     @Export(name="status", type=String.class, parameters={})
@@ -116,8 +114,6 @@ public class Token extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Status of the token. Valid values:
-     * - `Active`
-     * - `Inactive`
      * 
      */
     public Output<String> status() {
@@ -125,7 +121,6 @@ public class Token extends com.pulumi.resources.CustomResource {
     }
     /**
      * Type of the token. Valid value:
-     * - `CollectorRegistration`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -133,7 +128,6 @@ public class Token extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Type of the token. Valid value:
-     * - `CollectorRegistration`.
      * 
      */
     public Output<String> type() {

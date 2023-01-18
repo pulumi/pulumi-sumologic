@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewCloudfrontSource(ctx, "cloudfrontSource", &sumologic.CloudfrontSourceArgs{
-//				Authentication: &CloudfrontSourceAuthenticationArgs{
+//				Authentication: &sumologic.CloudfrontSourceAuthenticationArgs{
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
 //					Type:      pulumi.String("S3BucketAuthentication"),
@@ -45,7 +45,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("AwsCloudFrontBucket"),
 //				Description: pulumi.String("My description"),
-//				Path: &CloudfrontSourcePathArgs{
+//				Path: &sumologic.CloudfrontSourcePathArgs{
 //					BucketName:     pulumi.String("Bucket1"),
 //					PathExpression: pulumi.String("*"),
 //					Type:           pulumi.String("S3BucketPathExpression"),

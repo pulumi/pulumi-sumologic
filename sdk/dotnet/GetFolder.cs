@@ -32,7 +32,7 @@ namespace Pulumi.SumoLogic
         /// - `name` - The name of the folder.
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides an easy way to retrieve a folder.
@@ -55,7 +55,7 @@ namespace Pulumi.SumoLogic
         /// - `name` - The name of the folder.
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
     }
 
 

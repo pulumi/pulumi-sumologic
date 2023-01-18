@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const insightsResolution = new sumologic.CseInsightsResolution("insights_resolution", {
+ * const insightsResolution = new sumologic.CseInsightsResolution("insightsResolution", {
  *     description: "New description",
  *     parent: "No Action",
  * });

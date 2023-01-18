@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewCloudtrailSource(ctx, "cloudtrailSource", &sumologic.CloudtrailSourceArgs{
-//				Authentication: &CloudtrailSourceAuthenticationArgs{
+//				Authentication: &sumologic.CloudtrailSourceAuthenticationArgs{
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
 //					Type:      pulumi.String("S3BucketAuthentication"),
@@ -45,7 +45,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("AwsCloudTrailBucket"),
 //				Description: pulumi.String("My description"),
-//				Path: &CloudtrailSourcePathArgs{
+//				Path: &sumologic.CloudtrailSourcePathArgs{
 //					BucketName:     pulumi.String("Bucket1"),
 //					PathExpression: pulumi.String("*"),
 //					Type:           pulumi.String("S3BucketPathExpression"),

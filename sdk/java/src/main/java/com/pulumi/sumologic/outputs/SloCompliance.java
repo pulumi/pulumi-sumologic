@@ -18,8 +18,9 @@ public final class SloCompliance {
      */
     private String complianceType;
     /**
-     * @return The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * @return The size of the compliance period to use.
+     * - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+     * - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
      * 
      */
     private String size;
@@ -31,7 +32,7 @@ public final class SloCompliance {
      */
     private @Nullable String startFrom;
     /**
-     * @return The target value to use, must be a number between 0 and 100.
+     * @return Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
      * 
      */
     private Double target;
@@ -50,8 +51,9 @@ public final class SloCompliance {
         return this.complianceType;
     }
     /**
-     * @return The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * @return The size of the compliance period to use.
+     * - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+     * - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
      * 
      */
     public String size() {
@@ -67,7 +69,7 @@ public final class SloCompliance {
         return Optional.ofNullable(this.startFrom);
     }
     /**
-     * @return The target value to use, must be a number between 0 and 100.
+     * @return Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
      * 
      */
     public Double target() {

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const exampleToken = new sumologic.Token("example_token", {
+ * const exampleToken = new sumologic.Token("exampleToken", {
  *     description: "Testing resource sumologic_token",
  *     status: "Active",
  *     type: "CollectorRegistration",
@@ -72,13 +72,10 @@ export class Token extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Status of the token. Valid values:
-     * - `Active`
-     * - `Inactive`
      */
     public readonly status!: pulumi.Output<string>;
     /**
      * Type of the token. Valid value:
-     * - `CollectorRegistration`.
      */
     public readonly type!: pulumi.Output<string>;
     public readonly version!: pulumi.Output<number>;
@@ -140,13 +137,10 @@ export interface TokenState {
     name?: pulumi.Input<string>;
     /**
      * Status of the token. Valid values:
-     * - `Active`
-     * - `Inactive`
      */
     status?: pulumi.Input<string>;
     /**
      * Type of the token. Valid value:
-     * - `CollectorRegistration`.
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
@@ -166,13 +160,10 @@ export interface TokenArgs {
     name?: pulumi.Input<string>;
     /**
      * Status of the token. Valid values:
-     * - `Active`
-     * - `Inactive`
      */
     status: pulumi.Input<string>;
     /**
      * Type of the token. Valid value:
-     * - `CollectorRegistration`.
      */
     type: pulumi.Input<string>;
     version?: pulumi.Input<number>;

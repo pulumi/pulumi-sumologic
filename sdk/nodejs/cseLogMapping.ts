@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const logMapping = new sumologic.CseLogMapping("log_mapping", {
+ * const logMapping = new sumologic.CseLogMapping("logMapping", {
  *     enabled: true,
  *     fields: [{
  *         alternateValues: ["altValue"],
@@ -94,7 +95,7 @@ export class CseLogMapping extends pulumi.CustomResource {
      */
     public readonly fields!: pulumi.Output<outputs.CseLogMappingField[]>;
     /**
-     * Name of the field.
+     * The name of the log mapping.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -192,7 +193,7 @@ export interface CseLogMappingState {
      */
     fields?: pulumi.Input<pulumi.Input<inputs.CseLogMappingField>[]>;
     /**
-     * Name of the field.
+     * The name of the log mapping.
      */
     name?: pulumi.Input<string>;
     /**
@@ -238,7 +239,7 @@ export interface CseLogMappingArgs {
      */
     fields: pulumi.Input<pulumi.Input<inputs.CseLogMappingField>[]>;
     /**
-     * Name of the field.
+     * The name of the log mapping.
      */
     name?: pulumi.Input<string>;
     /**

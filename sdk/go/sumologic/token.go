@@ -62,11 +62,8 @@ type Token struct {
 	// Display name of the token. This must be unique across all of the tokens.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Status of the token. Valid values:
-	// - `Active`
-	// - `Inactive`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Type of the token. Valid value:
-	// - `CollectorRegistration`.
 	Type    pulumi.StringOutput `pulumi:"type"`
 	Version pulumi.IntOutput    `pulumi:"version"`
 }
@@ -113,11 +110,8 @@ type tokenState struct {
 	// Display name of the token. This must be unique across all of the tokens.
 	Name *string `pulumi:"name"`
 	// Status of the token. Valid values:
-	// - `Active`
-	// - `Inactive`
 	Status *string `pulumi:"status"`
 	// Type of the token. Valid value:
-	// - `CollectorRegistration`.
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
@@ -130,11 +124,8 @@ type TokenState struct {
 	// Display name of the token. This must be unique across all of the tokens.
 	Name pulumi.StringPtrInput
 	// Status of the token. Valid values:
-	// - `Active`
-	// - `Inactive`
 	Status pulumi.StringPtrInput
 	// Type of the token. Valid value:
-	// - `CollectorRegistration`.
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -149,11 +140,8 @@ type tokenArgs struct {
 	// Display name of the token. This must be unique across all of the tokens.
 	Name *string `pulumi:"name"`
 	// Status of the token. Valid values:
-	// - `Active`
-	// - `Inactive`
 	Status string `pulumi:"status"`
 	// Type of the token. Valid value:
-	// - `CollectorRegistration`.
 	Type    string `pulumi:"type"`
 	Version *int   `pulumi:"version"`
 }
@@ -165,11 +153,8 @@ type TokenArgs struct {
 	// Display name of the token. This must be unique across all of the tokens.
 	Name pulumi.StringPtrInput
 	// Status of the token. Valid values:
-	// - `Active`
-	// - `Inactive`
 	Status pulumi.StringInput
 	// Type of the token. Valid value:
-	// - `CollectorRegistration`.
 	Type    pulumi.StringInput
 	Version pulumi.IntPtrInput
 }
@@ -277,14 +262,11 @@ func (o TokenOutput) Name() pulumi.StringOutput {
 }
 
 // Status of the token. Valid values:
-// - `Active`
-// - `Inactive`
 func (o TokenOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Type of the token. Valid value:
-// - `CollectorRegistration`.
 func (o TokenOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

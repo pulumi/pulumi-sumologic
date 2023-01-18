@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,12 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {
- *     description: "Just testing this",
- * });
- * const cloudsyslogSource = new sumologic.CloudSyslogSource("cloudsyslog_source", {
+ * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
+ * const cloudsyslogSource = new sumologic.CloudSyslogSource("cloudsyslogSource", {
  *     category: "my/source/category",
- *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     collectorId: collector.id,
  *     description: "My description",
  * });
  * ```

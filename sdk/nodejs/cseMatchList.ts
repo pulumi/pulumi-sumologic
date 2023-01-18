@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const matchList = new sumologic.CseMatchList("match_list", {
+ * const matchList = new sumologic.CseMatchList("matchList", {
  *     defaultTtl: 10800,
  *     description: "Match list description",
  *     items: [{
@@ -69,7 +70,7 @@ export class CseMatchList extends pulumi.CustomResource {
      */
     public readonly defaultTtl!: pulumi.Output<number | undefined>;
     /**
-     * Match list item description.
+     * Match list description.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -143,7 +144,7 @@ export interface CseMatchListState {
      */
     defaultTtl?: pulumi.Input<number>;
     /**
-     * Match list item description.
+     * Match list description.
      */
     description?: pulumi.Input<string>;
     /**
@@ -171,7 +172,7 @@ export interface CseMatchListArgs {
      */
     defaultTtl?: pulumi.Input<number>;
     /**
-     * Match list item description.
+     * Match list description.
      */
     description: pulumi.Input<string>;
     /**

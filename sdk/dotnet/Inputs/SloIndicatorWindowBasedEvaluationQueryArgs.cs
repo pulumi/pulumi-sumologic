@@ -15,6 +15,7 @@ namespace Pulumi.SumoLogic.Inputs
         /// <summary>
         /// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
         /// , `Threshold`.
+        /// , `Threshold`.
         /// </summary>
         [Input("queryGroupType", required: true)]
         public Input<string> QueryGroupType { get; set; } = null!;

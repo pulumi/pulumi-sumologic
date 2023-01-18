@@ -7,25 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const failedConnections = new sumologic.ScheduledView("failed_connections", {
- *     indexName: "failed_connections",
- *     query: `_view=connections connectionStats
- * | parse "connectionStats.CS *" as body
- * | json field=body "exitCode", "isHttp2"
- * | lookup org_name from shared/partners on partner_id=partnerid
- * | timeslice 10m
- * `,
- *     retentionPeriod: 365,
- *     startTime: "2019-09-01T00:00:00Z",
- * });
- * ```
- *
  * ## Import
  *
  * Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2]. hcl

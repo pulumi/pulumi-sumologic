@@ -19,7 +19,8 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? Aggregation;
         /// <summary>
-        /// Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        /// The operator used to define a successful window. Valid values are `LessThan`
+        /// , `LessThanOrEqual`, `GreaterThan`
         /// , `GreaterThanOrEqual`.
         /// </summary>
         public readonly string Op;
@@ -37,7 +38,8 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string Size;
         /// <summary>
-        /// Compared against threshold query's raw data points to determine success criteria.
+        /// Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+        /// for `(good windows / total windows) * 100`.
         /// </summary>
         public readonly double Threshold;
 

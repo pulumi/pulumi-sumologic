@@ -30,18 +30,18 @@ import (
 //			_, err := sumologic.NewCseChainRule(ctx, "chainRule", &sumologic.CseChainRuleArgs{
 //				Description: pulumi.String("Signal description"),
 //				Enabled:     pulumi.Bool(true),
-//				EntitySelectors: CseChainRuleEntitySelectorArray{
-//					&CseChainRuleEntitySelectorArgs{
+//				EntitySelectors: sumologic.CseChainRuleEntitySelectorArray{
+//					&sumologic.CseChainRuleEntitySelectorArgs{
 //						EntityType: pulumi.String("_username"),
 //						Expression: pulumi.String("user_username"),
 //					},
 //				},
-//				ExpressionsAndLimits: CseChainRuleExpressionsAndLimitArray{
-//					&CseChainRuleExpressionsAndLimitArgs{
+//				ExpressionsAndLimits: sumologic.CseChainRuleExpressionsAndLimitArray{
+//					&sumologic.CseChainRuleExpressionsAndLimitArgs{
 //						Expression: pulumi.String("success = false"),
 //						Limit:      pulumi.Int(5),
 //					},
-//					&CseChainRuleExpressionsAndLimitArgs{
+//					&sumologic.CseChainRuleExpressionsAndLimitArgs{
 //						Expression: pulumi.String("success = true"),
 //						Limit:      pulumi.Int(1),
 //					},

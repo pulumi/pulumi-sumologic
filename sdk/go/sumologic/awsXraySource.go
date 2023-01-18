@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewAwsXraySource(ctx, "awsXraySource", &sumologic.AwsXraySourceArgs{
-//				Authentication: &AwsXraySourceAuthenticationArgs{
+//				Authentication: &sumologic.AwsXraySourceAuthenticationArgs{
 //					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 //					Type:    pulumi.String("AWSRoleBasedAuthentication"),
 //				},
@@ -44,7 +44,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("AwsXRay"),
 //				Description: pulumi.String("My description"),
-//				Path: &AwsXraySourcePathArgs{
+//				Path: &sumologic.AwsXraySourcePathArgs{
 //					LimitToRegions: pulumi.StringArray{
 //						pulumi.String("us-west-2"),
 //					},

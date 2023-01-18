@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AwsInventorySourceAuthentication {
     accessKey?: pulumi.Input<string>;
@@ -550,6 +551,17 @@ export interface CseChainRuleExpressionsAndLimit {
     limit: pulumi.Input<number>;
 }
 
+export interface CseEntityNormalizationConfigurationDomainMapping {
+    /**
+     * The normalized domain.
+     */
+    normalizedDomain: pulumi.Input<string>;
+    /**
+     * The raw domain to be normalized.
+     */
+    rawDomain: pulumi.Input<string>;
+}
+
 export interface CseLogMappingField {
     /**
      * List of alternate values.
@@ -584,7 +596,7 @@ export interface CseLogMappingField {
      */
     lookups?: pulumi.Input<pulumi.Input<inputs.CseLogMappingFieldLookup>[]>;
     /**
-     * Name of the field.
+     * The name of the log mapping.
      */
     name: pulumi.Input<string>;
     /**
@@ -604,7 +616,7 @@ export interface CseLogMappingField {
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * Lookup value.
+     * Value of the field.
      */
     value?: pulumi.Input<string>;
     /**
@@ -619,7 +631,7 @@ export interface CseLogMappingFieldLookup {
      */
     key: pulumi.Input<string>;
     /**
-     * Lookup value.
+     * Value of the field.
      */
     value: pulumi.Input<string>;
 }
@@ -652,7 +664,7 @@ export interface CseLogMappingUnstructuredFields {
 
 export interface CseMatchListItem {
     /**
-     * Match list item description.
+     * Match list description.
      */
     description: pulumi.Input<string>;
     /**
@@ -5730,9 +5742,7 @@ export interface MetadataSourcePath {
 
 export interface MonitorFolderObjPermission {
     /**
-     * A Set of Permissions. Valid Permission Values: 
-     * - `Create`
-     * - `Read`
+     * A Set of Permissions. Valid Permission Values:
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -5767,10 +5777,6 @@ export interface MonitorNotificationNotification {
 export interface MonitorObjPermission {
     /**
      * A Set of Permissions. Valid Permission Values:
-     * - `Read`
-     * - `Update`
-     * - `Delete`
-     * - `Manage`
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -5779,8 +5785,6 @@ export interface MonitorObjPermission {
     subjectId: pulumi.Input<string>;
     /**
      * Valid values:
-     * - `role`
-     * - `org`
      */
     subjectType: pulumi.Input<string>;
 }
@@ -5793,6 +5797,10 @@ export interface MonitorQuery {
 export interface MonitorTrigger {
     detectionMethod?: pulumi.Input<string>;
     occurrenceType?: pulumi.Input<string>;
+    /**
+     * The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     */
+    resolutionWindow?: pulumi.Input<string>;
     threshold?: pulumi.Input<number>;
     thresholdType?: pulumi.Input<string>;
     timeRange?: pulumi.Input<string>;
@@ -5852,6 +5860,10 @@ export interface MonitorTriggerConditionsLogsStaticConditionCriticalAlert {
 }
 
 export interface MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
+    /**
+     * The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     */
+    resolutionWindow?: pulumi.Input<string>;
     threshold?: pulumi.Input<number>;
     thresholdType?: pulumi.Input<string>;
 }
@@ -5868,6 +5880,10 @@ export interface MonitorTriggerConditionsLogsStaticConditionWarningAlert {
 }
 
 export interface MonitorTriggerConditionsLogsStaticConditionWarningResolution {
+    /**
+     * The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     */
+    resolutionWindow?: pulumi.Input<string>;
     threshold?: pulumi.Input<number>;
     thresholdType?: pulumi.Input<string>;
 }
@@ -6246,8 +6262,9 @@ export interface SloCompliance {
      */
     complianceType: pulumi.Input<string>;
     /**
-     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * The size of the compliance period to use.
+     * - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+     * - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
      */
     size: pulumi.Input<string>;
     /**
@@ -6257,7 +6274,7 @@ export interface SloCompliance {
      */
     startFrom?: pulumi.Input<string>;
     /**
-     * The target value to use, must be a number between 0 and 100.
+     * Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
      */
     target: pulumi.Input<number>;
     /**
@@ -6295,6 +6312,7 @@ export interface SloIndicatorRequestBasedEvaluationQuery {
     /**
      * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
      * , `Threshold`.
+     * , `Threshold`.
      */
     queryGroupType: pulumi.Input<string>;
     /**
@@ -6306,6 +6324,7 @@ export interface SloIndicatorRequestBasedEvaluationQuery {
 export interface SloIndicatorRequestBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
      * type when `useRowCount` is false.
      */
     field?: pulumi.Input<string>;
@@ -6330,7 +6349,8 @@ export interface SloIndicatorWindowBasedEvaluation {
      */
     aggregation?: pulumi.Input<string>;
     /**
-     * Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * The operator used to define a successful window. Valid values are `LessThan`
+     * , `LessThanOrEqual`, `GreaterThan`
      * , `GreaterThanOrEqual`.
      */
     op: pulumi.Input<string>;
@@ -6348,7 +6368,8 @@ export interface SloIndicatorWindowBasedEvaluation {
      */
     size: pulumi.Input<string>;
     /**
-     * Compared against threshold query's raw data points to determine success criteria.
+     * Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+     * for `(good windows / total windows) * 100`.
      */
     threshold: pulumi.Input<number>;
 }
@@ -6356,6 +6377,7 @@ export interface SloIndicatorWindowBasedEvaluation {
 export interface SloIndicatorWindowBasedEvaluationQuery {
     /**
      * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+     * , `Threshold`.
      * , `Threshold`.
      */
     queryGroupType: pulumi.Input<string>;
@@ -6368,6 +6390,7 @@ export interface SloIndicatorWindowBasedEvaluationQuery {
 export interface SloIndicatorWindowBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
      * type when `useRowCount` is false.
      */
     field?: pulumi.Input<string>;

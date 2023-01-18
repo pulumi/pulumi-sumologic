@@ -43,14 +43,22 @@ public final class HttpSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+     * This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+     * - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+     * - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+     * - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+     * - When configuring a RUM Source, set this property to `Rum`.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+     * @return This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+     * - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+     * - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+     * - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+     * - When configuring a RUM Source, set this property to `Rum`.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -232,7 +240,11 @@ public final class HttpSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+         * @param contentType This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+         * - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+         * - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+         * - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+         * - When configuring a RUM Source, set this property to `Rum`.
          * 
          * @return builder
          * 
@@ -243,7 +255,11 @@ public final class HttpSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+         * @param contentType This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+         * - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+         * - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+         * - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+         * - When configuring a RUM Source, set this property to `Rum`.
          * 
          * @return builder
          * 

@@ -56,7 +56,7 @@ public final class CseLogMappingField {
      */
     private @Nullable List<CseLogMappingFieldLookup> lookups;
     /**
-     * @return Name of the field.
+     * @return The name of the log mapping.
      * 
      */
     private String name;
@@ -81,7 +81,7 @@ public final class CseLogMappingField {
      */
     private @Nullable String timeZone;
     /**
-     * @return Lookup value.
+     * @return Value of the field.
      * 
      */
     private @Nullable String value;
@@ -149,7 +149,7 @@ public final class CseLogMappingField {
         return this.lookups == null ? List.of() : this.lookups;
     }
     /**
-     * @return Name of the field.
+     * @return The name of the log mapping.
      * 
      */
     public String name() {
@@ -184,7 +184,7 @@ public final class CseLogMappingField {
         return Optional.ofNullable(this.timeZone);
     }
     /**
-     * @return Lookup value.
+     * @return Value of the field.
      * 
      */
     public Optional<String> value() {

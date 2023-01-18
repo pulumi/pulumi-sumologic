@@ -32,7 +32,7 @@ class CseLogMappingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]] fields: List of fields for the new log mapping. See field_schema for details.
         :param pulumi.Input[str] product_guid: Product GUID.
         :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
-        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] name: The name of the log mapping.
         :param pulumi.Input[str] parent_id: The id of the parent log mapping.
         :param pulumi.Input[bool] relates_entities: Set to true to relate entities.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
@@ -108,7 +108,7 @@ class CseLogMappingArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the field.
+        The name of the log mapping.
         """
         return pulumi.get(self, "name")
 
@@ -194,7 +194,7 @@ class _CseLogMappingState:
         Input properties used for looking up and filtering CseLogMapping resources.
         :param pulumi.Input[bool] enabled: Enabled flag.
         :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]] fields: List of fields for the new log mapping. See field_schema for details.
-        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] name: The name of the log mapping.
         :param pulumi.Input[str] parent_id: The id of the parent log mapping.
         :param pulumi.Input[str] product_guid: Product GUID.
         :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
@@ -252,7 +252,7 @@ class _CseLogMappingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the field.
+        The name of the log mapping.
         """
         return pulumi.get(self, "name")
 
@@ -416,7 +416,7 @@ class CseLogMapping(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Enabled flag.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]] fields: List of fields for the new log mapping. See field_schema for details.
-        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] name: The name of the log mapping.
         :param pulumi.Input[str] parent_id: The id of the parent log mapping.
         :param pulumi.Input[str] product_guid: Product GUID.
         :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
@@ -563,7 +563,7 @@ class CseLogMapping(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Enabled flag.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]] fields: List of fields for the new log mapping. See field_schema for details.
-        :param pulumi.Input[str] name: Name of the field.
+        :param pulumi.Input[str] name: The name of the log mapping.
         :param pulumi.Input[str] parent_id: The id of the parent log mapping.
         :param pulumi.Input[str] product_guid: Product GUID.
         :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
@@ -608,7 +608,7 @@ class CseLogMapping(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the field.
+        The name of the log mapping.
         """
         return pulumi.get(self, "name")
 

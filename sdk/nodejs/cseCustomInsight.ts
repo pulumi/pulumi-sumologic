@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const customInsight = new sumologic.CseCustomInsight("custom_insight", {
+ * const customInsight = new sumologic.CseCustomInsight("customInsight", {
  *     description: "Insight description",
  *     enabled: true,
  *     ordered: true,

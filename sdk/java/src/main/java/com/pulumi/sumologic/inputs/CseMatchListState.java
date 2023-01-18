@@ -48,14 +48,14 @@ public final class CseMatchListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Match list item description.
+     * Match list description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Match list item description.
+     * @return Match list description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -193,7 +193,7 @@ public final class CseMatchListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Match list item description.
+         * @param description Match list description.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class CseMatchListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Match list item description.
+         * @param description Match list description.
          * 
          * @return builder
          * 

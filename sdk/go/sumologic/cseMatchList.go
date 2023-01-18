@@ -30,8 +30,8 @@ import (
 //			_, err := sumologic.NewCseMatchList(ctx, "matchList", &sumologic.CseMatchListArgs{
 //				DefaultTtl:  pulumi.Int(10800),
 //				Description: pulumi.String("Match list description"),
-//				Items: CseMatchListItemArray{
-//					&CseMatchListItemArgs{
+//				Items: sumologic.CseMatchListItemArray{
+//					&sumologic.CseMatchListItemArgs{
 //						Description: pulumi.String("IP address"),
 //						Expiration:  pulumi.String("2022-02-27T04:00:00"),
 //						Value:       pulumi.String("192.168.0.1"),
@@ -64,7 +64,7 @@ type CseMatchList struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl pulumi.IntPtrOutput `pulumi:"defaultTtl"`
-	// Match list item description.
+	// Match list description.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// List of match list items. See matchListItem schema for details.
 	Items         CseMatchListItemArrayOutput `pulumi:"items"`
@@ -115,7 +115,7 @@ type cseMatchListState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// Match list item description.
+	// Match list description.
 	Description *string `pulumi:"description"`
 	// List of match list items. See matchListItem schema for details.
 	Items         []CseMatchListItem `pulumi:"items"`
@@ -132,7 +132,7 @@ type CseMatchListState struct {
 	CreatedBy pulumi.StringPtrInput
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl pulumi.IntPtrInput
-	// Match list item description.
+	// Match list description.
 	Description pulumi.StringPtrInput
 	// List of match list items. See matchListItem schema for details.
 	Items         CseMatchListItemArrayInput
@@ -151,7 +151,7 @@ func (CseMatchListState) ElementType() reflect.Type {
 type cseMatchListArgs struct {
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// Match list item description.
+	// Match list description.
 	Description string `pulumi:"description"`
 	// List of match list items. See matchListItem schema for details.
 	Items []CseMatchListItem `pulumi:"items"`
@@ -165,7 +165,7 @@ type cseMatchListArgs struct {
 type CseMatchListArgs struct {
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl pulumi.IntPtrInput
-	// Match list item description.
+	// Match list description.
 	Description pulumi.StringInput
 	// List of match list items. See matchListItem schema for details.
 	Items CseMatchListItemArrayInput
@@ -275,7 +275,7 @@ func (o CseMatchListOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CseMatchList) pulumi.IntPtrOutput { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
-// Match list item description.
+// Match list description.
 func (o CseMatchListOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }

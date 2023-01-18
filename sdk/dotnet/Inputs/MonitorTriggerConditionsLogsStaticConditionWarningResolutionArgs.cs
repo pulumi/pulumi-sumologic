@@ -12,6 +12,12 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        /// </summary>
+        [Input("resolutionWindow")]
+        public Input<string>? ResolutionWindow { get; set; }
+
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
 

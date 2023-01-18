@@ -11,10 +11,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const webGateway = pulumi.output(sumologic.getCseLogMappingVendorProduct({
+ * const webGateway = sumologic.getCseLogMappingVendorProduct({
  *     product: "Web Gateway",
  *     vendor: "McAfee",
- * }));
+ * });
  * ```
  *
  * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
@@ -28,11 +28,8 @@ import * as utilities from "./utilities";
  * - `vendor` - The name of the vendor.
  */
 export function getCseLogMappingVendorProduct(args: GetCseLogMappingVendorProductArgs, opts?: pulumi.InvokeOptions): Promise<GetCseLogMappingVendorProductResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", {
         "guid": args.guid,
         "product": args.product,
@@ -61,9 +58,31 @@ export interface GetCseLogMappingVendorProductResult {
     readonly product: string;
     readonly vendor: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const webGateway = sumologic.getCseLogMappingVendorProduct({
+ *     product: "Web Gateway",
+ *     vendor: "McAfee",
+ * });
+ * ```
+ *
+ * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
+ * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `guid` - The internal GUID of the log mapping vendor product.
+ * - `product` - The name of the product.
+ * - `vendor` - The name of the vendor.
+ */
 export function getCseLogMappingVendorProductOutput(args: GetCseLogMappingVendorProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCseLogMappingVendorProductResult> {
-    return pulumi.output(args).apply(a => getCseLogMappingVendorProduct(a, opts))
+    return pulumi.output(args).apply((a: any) => getCseLogMappingVendorProduct(a, opts))
 }
 
 /**

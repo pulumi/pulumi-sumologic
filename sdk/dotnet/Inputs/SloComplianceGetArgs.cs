@@ -19,8 +19,9 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string> ComplianceType { get; set; } = null!;
 
         /// <summary>
-        /// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-        /// based evaluation.
+        /// The size of the compliance period to use.
+        /// - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+        /// - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
         /// </summary>
         [Input("size", required: true)]
         public Input<string> Size { get; set; } = null!;
@@ -34,7 +35,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? StartFrom { get; set; }
 
         /// <summary>
-        /// The target value to use, must be a number between 0 and 100.
+        /// Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
         /// </summary>
         [Input("target", required: true)]
         public Input<double> Target { get; set; } = null!;

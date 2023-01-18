@@ -13,7 +13,7 @@ namespace Pulumi.SumoLogic.Inputs
     public sealed class CseMatchListItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Match list item description.
+        /// Match list description.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;

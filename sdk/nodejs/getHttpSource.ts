@@ -11,10 +11,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const thisHttpSource = pulumi.output(sumologic.getHttpSource({
+ * const this = sumologic.getHttpSource({
  *     collectorId: 121212,
  *     name: "source_name",
- * }));
+ * });
  * ```
  *
  * A HTTP Source can be looked up by using a combination of `collectorId` & `name`.
@@ -33,11 +33,8 @@ import * as utilities from "./utilities";
  */
 export function getHttpSource(args?: GetHttpSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpSourceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getHttpSource:getHttpSource", {
         "collectorId": args.collectorId,
         "id": args.id,
@@ -67,9 +64,35 @@ export interface GetHttpSourceResult {
     readonly timezone: string;
     readonly url: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const this = sumologic.getHttpSource({
+ *     collectorId: 121212,
+ *     name: "source_name",
+ * });
+ * ```
+ *
+ * A HTTP Source can be looked up by using a combination of `collectorId` & `name`.
+ * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+ * - `name` - The name of the collector.
+ * - `description` - The description of the collector.
+ * - `category` - The default source category for any source attached to this collector.
+ * - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+ * - `multiline` - Multiline processing enabled or not.
+ * - `url` - The HTTP endpoint to use for sending data to this source.
+ */
 export function getHttpSourceOutput(args?: GetHttpSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHttpSourceResult> {
-    return pulumi.output(args).apply(a => getHttpSource(a, opts))
+    return pulumi.output(args).apply((a: any) => getHttpSource(a, opts))
 }
 
 /**

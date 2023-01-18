@@ -12,8 +12,6 @@ import java.util.Objects;
 public final class MonitorFolderObjPermission {
     /**
      * @return A Set of Permissions. Valid Permission Values:
-     * - `Create`
-     * - `Read`
      * 
      */
     private List<String> permissions;
@@ -31,8 +29,6 @@ public final class MonitorFolderObjPermission {
     private MonitorFolderObjPermission() {}
     /**
      * @return A Set of Permissions. Valid Permission Values:
-     * - `Create`
-     * - `Read`
      * 
      */
     public List<String> permissions() {

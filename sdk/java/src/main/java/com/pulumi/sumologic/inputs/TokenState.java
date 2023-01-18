@@ -63,8 +63,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Status of the token. Valid values:
-     * - `Active`
-     * - `Inactive`
      * 
      */
     @Import(name="status")
@@ -72,8 +70,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Status of the token. Valid values:
-     * - `Active`
-     * - `Inactive`
      * 
      */
     public Optional<Output<String>> status() {
@@ -82,7 +78,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Type of the token. Valid value:
-     * - `CollectorRegistration`.
      * 
      */
     @Import(name="type")
@@ -90,7 +85,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Type of the token. Valid value:
-     * - `CollectorRegistration`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -198,8 +192,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the token. Valid values:
-         * - `Active`
-         * - `Inactive`
          * 
          * @return builder
          * 
@@ -211,8 +203,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the token. Valid values:
-         * - `Active`
-         * - `Inactive`
          * 
          * @return builder
          * 
@@ -223,7 +213,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Type of the token. Valid value:
-         * - `CollectorRegistration`.
          * 
          * @return builder
          * 
@@ -235,7 +224,6 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Type of the token. Valid value:
-         * - `CollectorRegistration`.
          * 
          * @return builder
          * 

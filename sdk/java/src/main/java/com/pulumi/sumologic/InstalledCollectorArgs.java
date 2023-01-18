@@ -85,9 +85,17 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.fields);
     }
 
+    /**
+     * Host name of the Collector. The hostname can be a maximum of 128 characters.
+     * 
+     */
     @Import(name="hostName")
     private @Nullable Output<String> hostName;
 
+    /**
+     * @return Host name of the Collector. The hostname can be a maximum of 128 characters.
+     * 
+     */
     public Optional<Output<String>> hostName() {
         return Optional.ofNullable(this.hostName);
     }
@@ -107,16 +115,32 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     * 
+     */
     @Import(name="sourceSyncMode")
     private @Nullable Output<String> sourceSyncMode;
 
+    /**
+     * @return For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     * 
+     */
     public Optional<Output<String>> sourceSyncMode() {
         return Optional.ofNullable(this.sourceSyncMode);
     }
 
+    /**
+     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     * 
+     */
     @Import(name="targetCpu")
     private @Nullable Output<Integer> targetCpu;
 
+    /**
+     * @return When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     * 
+     */
     public Optional<Output<Integer>> targetCpu() {
         return Optional.ofNullable(this.targetCpu);
     }
@@ -262,11 +286,23 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
             return fields(Output.of(fields));
         }
 
+        /**
+         * @param hostName Host name of the Collector. The hostname can be a maximum of 128 characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostName(@Nullable Output<String> hostName) {
             $.hostName = hostName;
             return this;
         }
 
+        /**
+         * @param hostName Host name of the Collector. The hostname can be a maximum of 128 characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostName(String hostName) {
             return hostName(Output.of(hostName));
         }
@@ -292,20 +328,44 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
             return name(Output.of(name));
         }
 
+        /**
+         * @param sourceSyncMode For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceSyncMode(@Nullable Output<String> sourceSyncMode) {
             $.sourceSyncMode = sourceSyncMode;
             return this;
         }
 
+        /**
+         * @param sourceSyncMode For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceSyncMode(String sourceSyncMode) {
             return sourceSyncMode(Output.of(sourceSyncMode));
         }
 
+        /**
+         * @param targetCpu When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCpu(@Nullable Output<Integer> targetCpu) {
             $.targetCpu = targetCpu;
             return this;
         }
 
+        /**
+         * @param targetCpu When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCpu(Integer targetCpu) {
             return targetCpu(Output.of(targetCpu));
         }

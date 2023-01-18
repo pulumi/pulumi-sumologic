@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.LookupHttpSource(ctx, &GetHttpSourceArgs{
+//			_, err := sumologic.LookupHttpSource(ctx, &sumologic.LookupHttpSourceArgs{
 //				CollectorId: pulumi.IntRef(121212),
 //				Name:        pulumi.StringRef("source_name"),
 //			}, nil)

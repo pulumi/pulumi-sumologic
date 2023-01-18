@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfSloMonitor1 = new sumologic.Monitor("tf_slo_monitor_1", {
+ * const tfSloMonitor1 = new sumologic.Monitor("tfSloMonitor1", {
  *     contentType: "Monitor",
  *     evaluationDelay: "5m",
  *     isDisabled: false,
@@ -47,7 +48,7 @@ import * as utilities from "./utilities";
  *     },
  *     type: "MonitorsLibraryMonitor",
  * });
- * const tfSloMonitor2 = new sumologic.Monitor("tf_slo_monitor_2", {
+ * const tfSloMonitor2 = new sumologic.Monitor("tfSloMonitor2", {
  *     contentType: "Monitor",
  *     evaluationDelay: "5m",
  *     isDisabled: false,
@@ -78,9 +79,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfMonitorFolder1 = new sumologic.MonitorFolder("tf_monitor_folder_1", {
- *     description: "a folder for monitors",
- * });
+ * const tfMonitorFolder1 = new sumologic.MonitorFolder("tfMonitorFolder1", {description: "a folder for monitors"});
  * ```
  * =======
  * NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
@@ -110,24 +109,26 @@ import * as utilities from "./utilities";
  * #### logsStaticCondition
  *   - `field`
  *   - `critical`
- *     - `timeRange` (Required)
+ *     - `timeRange` (Required) : Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `alert` (Required)
  *       - `threshold`
  *       - `thresholdType`
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `thresholdType`
+ *       - `resolutionWindow` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
  *   - `warning`
- *     - `timeRange` (Required)
+ *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `alert` (Required)
  *       - `threshold`
  *       - `thresholdType`
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `thresholdType`
+ *       - `resolutionWindow` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
  * #### metricsStaticCondition
  *   - `critical`
- *     - `timeRange` (Required)
+ *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `occurrenceType` (Required)
  *     - `alert` (Required)
  *       - `threshold`
@@ -136,7 +137,7 @@ import * as utilities from "./utilities";
  *       - `threshold`
  *       - `thresholdType`
  *   - `warning`
- *     - `timeRange` (Required)
+ *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `occurrenceType` (Required)
  *     - `alert` (Required)
  *       - `threshold`
@@ -164,10 +165,9 @@ import * as utilities from "./utilities";
  *     - `baselineWindow`
  *     - `threshold`
  * #### logsMissingDataCondition
- *   - `timeRange` (Required)
+ *   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  * #### metricsMissingDataCondition
- *   - `timeRange` (Required)
- *   - `triggerSource` (Required)
+ *   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  * #### sloSliCondition
  *   - `critical`
  *     - `sliThreshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
@@ -176,10 +176,10 @@ import * as utilities from "./utilities";
  *
  * #### sloBurnRateCondition
  *   - `critical`
- *     - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.
+ *     - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `burnRateThreshold` (Required) : The burn rate percentage threshold.
  *   - `warning`
- *     - `timeRange` (Required)
+ *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `burnRateThreshold` (Required)
  *
  * ## The `triggers` block
@@ -191,7 +191,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfLogsMonitor1 = new sumologic.Monitor("tf_logs_monitor_1", {
+ * const tfLogsMonitor1 = new sumologic.Monitor("tfLogsMonitor1", {
  *     contentType: "Monitor",
  *     description: "tf logs monitor",
  *     isDisabled: false,
@@ -238,6 +238,7 @@ import * as utilities from "./utilities";
  *         {
  *             detectionMethod: "StaticCondition",
  *             occurrenceType: "ResultCount",
+ *             resolutionWindow: "5m",
  *             threshold: 40,
  *             thresholdType: "LessThanOrEqual",
  *             timeRange: "15m",
@@ -288,12 +289,11 @@ export class Monitor extends pulumi.CustomResource {
     }
 
     /**
-     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      */
     public readonly alertName!: pulumi.Output<string | undefined>;
     /**
      * The type of the content object. Valid value:
-     * - `Monitor`
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly createdAt!: pulumi.Output<string>;
@@ -302,6 +302,11 @@ export class Monitor extends pulumi.CustomResource {
      * The description of the monitor.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Evaluation delay as a string consists of the following elements:
+     * 1. `<number>`: number of time units,
+     * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     */
     public readonly evaluationDelay!: pulumi.Output<string>;
     /**
      * Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
@@ -318,9 +323,6 @@ export class Monitor extends pulumi.CustomResource {
     public readonly modifiedBy!: pulumi.Output<string>;
     /**
      * The type of monitor. Valid values:
-     * - `Logs`: A logs query monitor.
-     * - `Metrics`: A metrics query monitor.
-     * - `Slo`: A SLO based monitor  (beta).
      */
     public readonly monitorType!: pulumi.Output<string>;
     /**
@@ -358,11 +360,6 @@ export class Monitor extends pulumi.CustomResource {
     public readonly sloId!: pulumi.Output<string | undefined>;
     /**
      * The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
      */
     public readonly statuses!: pulumi.Output<string[]>;
     /**
@@ -377,7 +374,6 @@ export class Monitor extends pulumi.CustomResource {
     public readonly triggers!: pulumi.Output<outputs.MonitorTrigger[] | undefined>;
     /**
      * The type of object model. Valid value:
-     * - `MonitorsLibraryMonitor`
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
@@ -467,12 +463,11 @@ export class Monitor extends pulumi.CustomResource {
  */
 export interface MonitorState {
     /**
-     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      */
     alertName?: pulumi.Input<string>;
     /**
      * The type of the content object. Valid value:
-     * - `Monitor`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
@@ -481,6 +476,11 @@ export interface MonitorState {
      * The description of the monitor.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Evaluation delay as a string consists of the following elements:
+     * 1. `<number>`: number of time units,
+     * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     */
     evaluationDelay?: pulumi.Input<string>;
     /**
      * Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
@@ -497,9 +497,6 @@ export interface MonitorState {
     modifiedBy?: pulumi.Input<string>;
     /**
      * The type of monitor. Valid values:
-     * - `Logs`: A logs query monitor.
-     * - `Metrics`: A metrics query monitor.
-     * - `Slo`: A SLO based monitor  (beta).
      */
     monitorType?: pulumi.Input<string>;
     /**
@@ -537,11 +534,6 @@ export interface MonitorState {
     sloId?: pulumi.Input<string>;
     /**
      * The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
      */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -556,7 +548,6 @@ export interface MonitorState {
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     /**
      * The type of object model. Valid value:
-     * - `MonitorsLibraryMonitor`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
@@ -567,12 +558,11 @@ export interface MonitorState {
  */
 export interface MonitorArgs {
     /**
-     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      */
     alertName?: pulumi.Input<string>;
     /**
      * The type of the content object. Valid value:
-     * - `Monitor`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
@@ -581,6 +571,11 @@ export interface MonitorArgs {
      * The description of the monitor.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Evaluation delay as a string consists of the following elements:
+     * 1. `<number>`: number of time units,
+     * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     */
     evaluationDelay?: pulumi.Input<string>;
     /**
      * Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
@@ -597,9 +592,6 @@ export interface MonitorArgs {
     modifiedBy?: pulumi.Input<string>;
     /**
      * The type of monitor. Valid values:
-     * - `Logs`: A logs query monitor.
-     * - `Metrics`: A metrics query monitor.
-     * - `Slo`: A SLO based monitor  (beta).
      */
     monitorType: pulumi.Input<string>;
     /**
@@ -637,11 +629,6 @@ export interface MonitorArgs {
     sloId?: pulumi.Input<string>;
     /**
      * The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
      */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -656,7 +643,6 @@ export interface MonitorArgs {
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     /**
      * The type of object model. Valid value:
-     * - `MonitorsLibraryMonitor`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;

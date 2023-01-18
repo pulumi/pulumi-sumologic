@@ -140,14 +140,14 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the field.
+     * The name of the log mapping.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the field.
+     * @return The name of the log mapping.
      * 
      */
     public Output<String> name() {
@@ -215,14 +215,14 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Lookup value.
+     * Value of the field.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Lookup value.
+     * @return Value of the field.
      * 
      */
     public Optional<Output<String>> value() {
@@ -491,7 +491,7 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of the field.
+         * @param name The name of the log mapping.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of the field.
+         * @param name The name of the log mapping.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value Lookup value.
+         * @param value Value of the field.
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value Lookup value.
+         * @param value Value of the field.
          * 
          * @return builder
          * 

@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.GetCseLogMappingVendorProduct(ctx, &GetCseLogMappingVendorProductArgs{
+//			_, err := sumologic.GetCseLogMappingVendorProduct(ctx, &sumologic.GetCseLogMappingVendorProductArgs{
 //				Product: "Web Gateway",
 //				Vendor:  "McAfee",
 //			}, nil)

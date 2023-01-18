@@ -65,7 +65,7 @@ namespace Pulumi.SumoLogic
         /// - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
         /// </summary>
         public static Task<GetCollectorResult> InvokeAsync(GetCollectorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCollectorResult>("sumologic:index/getCollector:getCollector", args ?? new GetCollectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCollectorResult>("sumologic:index/getCollector:getCollector", args ?? new GetCollectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
@@ -121,7 +121,7 @@ namespace Pulumi.SumoLogic
         /// - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
         /// </summary>
         public static Output<GetCollectorResult> Invoke(GetCollectorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCollectorResult>("sumologic:index/getCollector:getCollector", args ?? new GetCollectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCollectorResult>("sumologic:index/getCollector:getCollector", args ?? new GetCollectorInvokeArgs(), options.WithDefaults());
     }
 
 

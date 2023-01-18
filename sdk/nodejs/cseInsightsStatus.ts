@@ -13,9 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const insightsStatus = new sumologic.CseInsightsStatus("insights_status", {
- *     description: "New description",
- * });
+ * const insightsStatus = new sumologic.CseInsightsStatus("insightsStatus", {description: "New description"});
  * ```
  *
  * ## Import

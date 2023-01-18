@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -23,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const examplePolicies = new sumologic.Policies("example_policies", {
+ * const examplePolicies = new sumologic.Policies("examplePolicies", {
  *     audit: false,
  *     dataAccessLevel: false,
  *     maxUserSessionTimeout: "7d",

@@ -33,9 +33,9 @@ import (
 //				EvaluationDelay: pulumi.String("5m"),
 //				IsDisabled:      pulumi.Bool(false),
 //				MonitorType:     pulumi.String("Slo"),
-//				Notifications: MonitorNotificationArray{
-//					&MonitorNotificationArgs{
-//						Notification: &MonitorNotificationNotificationArgs{
+//				Notifications: sumologic.MonitorNotificationArray{
+//					&sumologic.MonitorNotificationArgs{
+//						Notification: &sumologic.MonitorNotificationNotificationArgs{
 //							ConnectionType: pulumi.String("Email"),
 //							MessageBody:    pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
 //							Recipients: pulumi.StringArray{
@@ -52,12 +52,12 @@ import (
 //				},
 //				Playbook: pulumi.String("test playbook"),
 //				SloId:    pulumi.String("0000000000000009"),
-//				TriggerConditions: &MonitorTriggerConditionsArgs{
-//					SloSliCondition: &MonitorTriggerConditionsSloSliConditionArgs{
-//						Critical: &MonitorTriggerConditionsSloSliConditionCriticalArgs{
+//				TriggerConditions: &sumologic.MonitorTriggerConditionsArgs{
+//					SloSliCondition: &sumologic.MonitorTriggerConditionsSloSliConditionArgs{
+//						Critical: &sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs{
 //							SliThreshold: pulumi.Float64(99.5),
 //						},
-//						Warning: &MonitorTriggerConditionsSloSliConditionWarningArgs{
+//						Warning: &sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs{
 //							SliThreshold: pulumi.Float64(99.9),
 //						},
 //					},
@@ -73,13 +73,13 @@ import (
 //				IsDisabled:      pulumi.Bool(false),
 //				MonitorType:     pulumi.String("Slo"),
 //				SloId:           pulumi.String("0000000000000009"),
-//				TriggerConditions: &MonitorTriggerConditionsArgs{
-//					SloBurnRateCondition: &MonitorTriggerConditionsSloBurnRateConditionArgs{
-//						Critical: &MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{
+//				TriggerConditions: &sumologic.MonitorTriggerConditionsArgs{
+//					SloBurnRateCondition: &sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs{
+//						Critical: &sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{
 //							BurnRateThreshold: pulumi.Float64(10),
 //							TimeRange:         pulumi.String("1d"),
 //						},
-//						Warning: &MonitorTriggerConditionsSloBurnRateConditionWarningArgs{
+//						Warning: &sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs{
 //							BurnRateThreshold: pulumi.Float64(5),
 //							TimeRange:         pulumi.String("1d"),
 //						},
@@ -165,25 +165,27 @@ import (
 // #### logsStaticCondition
 //   - `field`
 //   - `critical`
-//   - `timeRange` (Required)
+//   - `timeRange` (Required) : Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //   - `alert` (Required)
 //   - `threshold`
 //   - `thresholdType`
 //   - `resolution` (Required)
 //   - `threshold`
 //   - `thresholdType`
+//   - `resolutionWindow` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
 //   - `warning`
-//   - `timeRange` (Required)
+//   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //   - `alert` (Required)
 //   - `threshold`
 //   - `thresholdType`
 //   - `resolution` (Required)
 //   - `threshold`
 //   - `thresholdType`
+//   - `resolutionWindow` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
 //
 // #### metricsStaticCondition
 //   - `critical`
-//   - `timeRange` (Required)
+//   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //   - `occurrenceType` (Required)
 //   - `alert` (Required)
 //   - `threshold`
@@ -192,7 +194,7 @@ import (
 //   - `threshold`
 //   - `thresholdType`
 //   - `warning`
-//   - `timeRange` (Required)
+//   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //   - `occurrenceType` (Required)
 //   - `alert` (Required)
 //   - `threshold`
@@ -223,11 +225,10 @@ import (
 //   - `threshold`
 //
 // #### logsMissingDataCondition
-//   - `timeRange` (Required)
+//   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //
 // #### metricsMissingDataCondition
-//   - `timeRange` (Required)
-//   - `triggerSource` (Required)
+//   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //
 // #### sloSliCondition
 //   - `critical`
@@ -237,10 +238,10 @@ import (
 //
 // #### sloBurnRateCondition
 //   - `critical`
-//   - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.
+//   - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //   - `burnRateThreshold` (Required) : The burn rate percentage threshold.
 //   - `warning`
-//   - `timeRange` (Required)
+//   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //   - `burnRateThreshold` (Required)
 //
 // ## The `triggers` block
@@ -265,9 +266,9 @@ import (
 //				Description: pulumi.String("tf logs monitor"),
 //				IsDisabled:  pulumi.Bool(false),
 //				MonitorType: pulumi.String("Logs"),
-//				Notifications: MonitorNotificationArray{
-//					&MonitorNotificationArgs{
-//						Notification: &MonitorNotificationNotificationArgs{
+//				Notifications: sumologic.MonitorNotificationArray{
+//					&sumologic.MonitorNotificationArgs{
+//						Notification: &sumologic.MonitorNotificationNotificationArgs{
 //							ConnectionType: pulumi.String("Email"),
 //							MessageBody:    pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
 //							Recipients: pulumi.StringArray{
@@ -281,8 +282,8 @@ import (
 //							pulumi.String("ResolvedCritical"),
 //						},
 //					},
-//					&MonitorNotificationArgs{
-//						Notification: &MonitorNotificationNotificationArgs{
+//					&sumologic.MonitorNotificationArgs{
+//						Notification: &sumologic.MonitorNotificationNotificationArgs{
 //							ConnectionId:   pulumi.String("0000000000ABC123"),
 //							ConnectionType: pulumi.String("Webhook"),
 //						},
@@ -292,14 +293,14 @@ import (
 //						},
 //					},
 //				},
-//				Queries: MonitorQueryArray{
-//					&MonitorQueryArgs{
+//				Queries: sumologic.MonitorQueryArray{
+//					&sumologic.MonitorQueryArgs{
 //						Query: pulumi.String("_sourceCategory=event-action info"),
 //						RowId: pulumi.String("A"),
 //					},
 //				},
-//				Triggers: MonitorTriggerArray{
-//					&MonitorTriggerArgs{
+//				Triggers: sumologic.MonitorTriggerArray{
+//					&sumologic.MonitorTriggerArgs{
 //						DetectionMethod: pulumi.String("StaticCondition"),
 //						OccurrenceType:  pulumi.String("ResultCount"),
 //						Threshold:       pulumi.Float64(40),
@@ -308,14 +309,15 @@ import (
 //						TriggerSource:   pulumi.String("AllResults"),
 //						TriggerType:     pulumi.String("Critical"),
 //					},
-//					&MonitorTriggerArgs{
-//						DetectionMethod: pulumi.String("StaticCondition"),
-//						OccurrenceType:  pulumi.String("ResultCount"),
-//						Threshold:       pulumi.Float64(40),
-//						ThresholdType:   pulumi.String("LessThanOrEqual"),
-//						TimeRange:       pulumi.String("15m"),
-//						TriggerSource:   pulumi.String("AllResults"),
-//						TriggerType:     pulumi.String("ResolvedCritical"),
+//					&sumologic.MonitorTriggerArgs{
+//						DetectionMethod:  pulumi.String("StaticCondition"),
+//						OccurrenceType:   pulumi.String("ResultCount"),
+//						ResolutionWindow: pulumi.String("5m"),
+//						Threshold:        pulumi.Float64(40),
+//						ThresholdType:    pulumi.String("LessThanOrEqual"),
+//						TimeRange:        pulumi.String("15m"),
+//						TriggerSource:    pulumi.String("AllResults"),
+//						TriggerType:      pulumi.String("ResolvedCritical"),
 //					},
 //				},
 //				Type: pulumi.String("MonitorsLibraryMonitor"),
@@ -343,16 +345,18 @@ import (
 type Monitor struct {
 	pulumi.CustomResourceState
 
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName pulumi.StringPtrOutput `pulumi:"alertName"`
 	// The type of the content object. Valid value:
-	// - `Monitor`
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
 	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
 	// The description of the monitor.
-	Description     pulumi.StringPtrOutput `pulumi:"description"`
-	EvaluationDelay pulumi.StringOutput    `pulumi:"evaluationDelay"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Evaluation delay as a string consists of the following elements:
+	// 1. `<number>`: number of time units,
+	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+	EvaluationDelay pulumi.StringOutput `pulumi:"evaluationDelay"`
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrOutput `pulumi:"groupNotifications"`
 	// Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
@@ -363,9 +367,6 @@ type Monitor struct {
 	ModifiedAt pulumi.StringOutput  `pulumi:"modifiedAt"`
 	ModifiedBy pulumi.StringOutput  `pulumi:"modifiedBy"`
 	// The type of monitor. Valid values:
-	// - `Logs`: A logs query monitor.
-	// - `Metrics`: A metrics query monitor.
-	// - `Slo`: A SLO based monitor  (beta).
 	MonitorType pulumi.StringOutput `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -385,11 +386,6 @@ type Monitor struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId pulumi.StringPtrOutput `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
-	// - `Critical`
-	// - `Warning`
-	// - `MissingData`
-	// - `Normal`
-	// - `Disabled`
 	Statuses pulumi.StringArrayOutput `pulumi:"statuses"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrOutput `pulumi:"triggerConditions"`
@@ -398,7 +394,6 @@ type Monitor struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayOutput `pulumi:"triggers"`
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryMonitor`
 	Type    pulumi.StringPtrOutput `pulumi:"type"`
 	Version pulumi.IntOutput       `pulumi:"version"`
 }
@@ -435,15 +430,17 @@ func GetMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Monitor resources.
 type monitorState struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName *string `pulumi:"alertName"`
 	// The type of the content object. Valid value:
-	// - `Monitor`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
 	// The description of the monitor.
-	Description     *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// Evaluation delay as a string consists of the following elements:
+	// 1. `<number>`: number of time units,
+	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
 	EvaluationDelay *string `pulumi:"evaluationDelay"`
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications *bool `pulumi:"groupNotifications"`
@@ -455,9 +452,6 @@ type monitorState struct {
 	ModifiedAt *string `pulumi:"modifiedAt"`
 	ModifiedBy *string `pulumi:"modifiedBy"`
 	// The type of monitor. Valid values:
-	// - `Logs`: A logs query monitor.
-	// - `Metrics`: A metrics query monitor.
-	// - `Slo`: A SLO based monitor  (beta).
 	MonitorType *string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
@@ -477,11 +471,6 @@ type monitorState struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId *string `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
-	// - `Critical`
-	// - `Warning`
-	// - `MissingData`
-	// - `Normal`
-	// - `Disabled`
 	Statuses []string `pulumi:"statuses"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
@@ -490,21 +479,22 @@ type monitorState struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryMonitor`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
 
 type MonitorState struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName pulumi.StringPtrInput
 	// The type of the content object. Valid value:
-	// - `Monitor`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
 	// The description of the monitor.
-	Description     pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Evaluation delay as a string consists of the following elements:
+	// 1. `<number>`: number of time units,
+	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
 	EvaluationDelay pulumi.StringPtrInput
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrInput
@@ -516,9 +506,6 @@ type MonitorState struct {
 	ModifiedAt pulumi.StringPtrInput
 	ModifiedBy pulumi.StringPtrInput
 	// The type of monitor. Valid values:
-	// - `Logs`: A logs query monitor.
-	// - `Metrics`: A metrics query monitor.
-	// - `Slo`: A SLO based monitor  (beta).
 	MonitorType pulumi.StringPtrInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
@@ -538,11 +525,6 @@ type MonitorState struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId pulumi.StringPtrInput
 	// The current status for this monitor. Values are:
-	// - `Critical`
-	// - `Warning`
-	// - `MissingData`
-	// - `Normal`
-	// - `Disabled`
 	Statuses pulumi.StringArrayInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
@@ -551,7 +533,6 @@ type MonitorState struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayInput
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryMonitor`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -561,15 +542,17 @@ func (MonitorState) ElementType() reflect.Type {
 }
 
 type monitorArgs struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName *string `pulumi:"alertName"`
 	// The type of the content object. Valid value:
-	// - `Monitor`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
 	// The description of the monitor.
-	Description     *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// Evaluation delay as a string consists of the following elements:
+	// 1. `<number>`: number of time units,
+	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
 	EvaluationDelay *string `pulumi:"evaluationDelay"`
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications *bool `pulumi:"groupNotifications"`
@@ -581,9 +564,6 @@ type monitorArgs struct {
 	ModifiedAt *string `pulumi:"modifiedAt"`
 	ModifiedBy *string `pulumi:"modifiedBy"`
 	// The type of monitor. Valid values:
-	// - `Logs`: A logs query monitor.
-	// - `Metrics`: A metrics query monitor.
-	// - `Slo`: A SLO based monitor  (beta).
 	MonitorType string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
@@ -603,11 +583,6 @@ type monitorArgs struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId *string `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
-	// - `Critical`
-	// - `Warning`
-	// - `MissingData`
-	// - `Normal`
-	// - `Disabled`
 	Statuses []string `pulumi:"statuses"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
@@ -616,22 +591,23 @@ type monitorArgs struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryMonitor`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Monitor resource.
 type MonitorArgs struct {
-	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName pulumi.StringPtrInput
 	// The type of the content object. Valid value:
-	// - `Monitor`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
 	// The description of the monitor.
-	Description     pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Evaluation delay as a string consists of the following elements:
+	// 1. `<number>`: number of time units,
+	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
 	EvaluationDelay pulumi.StringPtrInput
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrInput
@@ -643,9 +619,6 @@ type MonitorArgs struct {
 	ModifiedAt pulumi.StringPtrInput
 	ModifiedBy pulumi.StringPtrInput
 	// The type of monitor. Valid values:
-	// - `Logs`: A logs query monitor.
-	// - `Metrics`: A metrics query monitor.
-	// - `Slo`: A SLO based monitor  (beta).
 	MonitorType pulumi.StringInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
@@ -665,11 +638,6 @@ type MonitorArgs struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId pulumi.StringPtrInput
 	// The current status for this monitor. Values are:
-	// - `Critical`
-	// - `Warning`
-	// - `MissingData`
-	// - `Normal`
-	// - `Disabled`
 	Statuses pulumi.StringArrayInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
@@ -678,7 +646,6 @@ type MonitorArgs struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayInput
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryMonitor`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -770,13 +737,12 @@ func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOu
 	return o
 }
 
-// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 func (o MonitorOutput) AlertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.AlertName }).(pulumi.StringPtrOutput)
 }
 
 // The type of the content object. Valid value:
-// - `Monitor`
 func (o MonitorOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -794,6 +760,9 @@ func (o MonitorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Evaluation delay as a string consists of the following elements:
+// 1. `<number>`: number of time units,
+// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
 func (o MonitorOutput) EvaluationDelay() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.EvaluationDelay }).(pulumi.StringOutput)
 }
@@ -829,9 +798,6 @@ func (o MonitorOutput) ModifiedBy() pulumi.StringOutput {
 }
 
 // The type of monitor. Valid values:
-// - `Logs`: A logs query monitor.
-// - `Metrics`: A metrics query monitor.
-// - `Slo`: A SLO based monitor  (beta).
 func (o MonitorOutput) MonitorType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.MonitorType }).(pulumi.StringOutput)
 }
@@ -881,11 +847,6 @@ func (o MonitorOutput) SloId() pulumi.StringPtrOutput {
 }
 
 // The current status for this monitor. Values are:
-// - `Critical`
-// - `Warning`
-// - `MissingData`
-// - `Normal`
-// - `Disabled`
 func (o MonitorOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringArrayOutput { return v.Statuses }).(pulumi.StringArrayOutput)
 }
@@ -903,7 +864,6 @@ func (o MonitorOutput) Triggers() MonitorTriggerArrayOutput {
 }
 
 // The type of object model. Valid value:
-// - `MonitorsLibraryMonitor`
 func (o MonitorOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

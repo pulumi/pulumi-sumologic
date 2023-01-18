@@ -194,24 +194,26 @@ import javax.annotation.Nullable;
  * #### logs_static_condition
  *   - `field`
  *   - `critical`
- *     - `time_range` (Required)
+ *     - `time_range` (Required) : Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `alert` (Required)
  *       - `threshold`
  *       - `threshold_type`
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `threshold_type`
+ *       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
  *   - `warning`
- *     - `time_range` (Required)
+ *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `alert` (Required)
  *       - `threshold`
  *       - `threshold_type`
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `threshold_type`
+ *       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
  * #### metrics_static_condition
  *   - `critical`
- *     - `time_range` (Required)
+ *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `occurrence_type` (Required)
  *     - `alert` (Required)
  *       - `threshold`
@@ -220,7 +222,7 @@ import javax.annotation.Nullable;
  *       - `threshold`
  *       - `threshold_type`
  *   - `warning`
- *     - `time_range` (Required)
+ *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `occurrence_type` (Required)
  *     - `alert` (Required)
  *       - `threshold`
@@ -248,10 +250,9 @@ import javax.annotation.Nullable;
  *     - `baseline_window`
  *     - `threshold`
  * #### logs_missing_data_condition
- *   - `time_range` (Required)
+ *   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  * #### metrics_missing_data_condition
- *   - `time_range` (Required)
- *   - `trigger_source` (Required)
+ *   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  * #### slo_sli_condition
  *   - `critical`
  *     - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
@@ -260,10 +261,10 @@ import javax.annotation.Nullable;
  * 
  * #### slo_burn_rate_condition
  *   - `critical`
- *     - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.
+ *     - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
  *   - `warning`
- *     - `time_range` (Required)
+ *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `burn_rate_threshold` (Required)
  * 
  * ## The `triggers` block
@@ -340,6 +341,7 @@ import javax.annotation.Nullable;
  *                 MonitorTriggerArgs.builder()
  *                     .detectionMethod(&#34;StaticCondition&#34;)
  *                     .occurrenceType(&#34;ResultCount&#34;)
+ *                     .resolutionWindow(&#34;5m&#34;)
  *                     .threshold(40)
  *                     .thresholdType(&#34;LessThanOrEqual&#34;)
  *                     .timeRange(&#34;15m&#34;)
@@ -367,14 +369,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/monitor:Monitor")
 public class Monitor extends com.pulumi.resources.CustomResource {
     /**
-     * The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      * 
      */
     @Export(name="alertName", type=String.class, parameters={})
     private Output</* @Nullable */ String> alertName;
 
     /**
-     * @return The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+     * @return The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      * 
      */
     public Output<Optional<String>> alertName() {
@@ -382,7 +384,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the content object. Valid value:
-     * - `Monitor`
      * 
      */
     @Export(name="contentType", type=String.class, parameters={})
@@ -390,7 +391,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the content object. Valid value:
-     * - `Monitor`
      * 
      */
     public Output<Optional<String>> contentType() {
@@ -422,9 +422,21 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Evaluation delay as a string consists of the following elements:
+     * 1. `&lt;number&gt;`: number of time units,
+     * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     * 
+     */
     @Export(name="evaluationDelay", type=String.class, parameters={})
     private Output<String> evaluationDelay;
 
+    /**
+     * @return Evaluation delay as a string consists of the following elements:
+     * 1. `&lt;number&gt;`: number of time units,
+     * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     * 
+     */
     public Output<String> evaluationDelay() {
         return this.evaluationDelay;
     }
@@ -488,9 +500,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of monitor. Valid values:
-     * - `Logs`: A logs query monitor.
-     * - `Metrics`: A metrics query monitor.
-     * - `Slo`: A SLO based monitor  (beta).
      * 
      */
     @Export(name="monitorType", type=String.class, parameters={})
@@ -498,9 +507,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of monitor. Valid values:
-     * - `Logs`: A logs query monitor.
-     * - `Metrics`: A metrics query monitor.
-     * - `Slo`: A SLO based monitor  (beta).
      * 
      */
     public Output<String> monitorType() {
@@ -626,11 +632,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
      * 
      */
     @Export(name="statuses", type=List.class, parameters={String.class})
@@ -638,11 +639,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
      * 
      */
     public Output<List<String>> statuses() {
@@ -682,7 +678,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of object model. Valid value:
-     * - `MonitorsLibraryMonitor`
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -690,7 +685,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of object model. Valid value:
-     * - `MonitorsLibraryMonitor`
      * 
      */
     public Output<Optional<String>> type() {

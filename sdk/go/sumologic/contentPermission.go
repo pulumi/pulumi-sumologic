@@ -55,19 +55,19 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			permissionTestContent, err := sumologic.NewContent(ctx, "permissionTestContent", &sumologic.ContentArgs{
-//				ParentId: pulumi.String(personalFolder.Id),
+//				ParentId: *pulumi.String(personalFolder.Id),
 //				Config:   pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			role, err := sumologic.LookupRole(ctx, &GetRoleArgs{
+//			role, err := sumologic.LookupRole(ctx, &sumologic.LookupRoleArgs{
 //				Name: pulumi.StringRef("test_role"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			user, err := sumologic.LookupUser(ctx, &GetUserArgs{
+//			user, err := sumologic.LookupUser(ctx, &sumologic.LookupUserArgs{
 //				Email: pulumi.StringRef("user@example.com"),
 //			}, nil)
 //			if err != nil {
@@ -77,26 +77,26 @@ import (
 //				ContentId:           permissionTestContent.ID(),
 //				NotifyRecipient:     pulumi.Bool(true),
 //				NotificationMessage: pulumi.String("You now have the permission to access this content"),
-//				Permissions: ContentPermissionPermissionArray{
-//					&ContentPermissionPermissionArgs{
+//				Permissions: sumologic.ContentPermissionPermissionArray{
+//					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("View"),
 //						SourceType:     pulumi.String("role"),
-//						SourceId:       pulumi.String(role.Id),
+//						SourceId:       *pulumi.String(role.Id),
 //					},
-//					&ContentPermissionPermissionArgs{
+//					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("View"),
 //						SourceType:     pulumi.String("user"),
-//						SourceId:       pulumi.String(user.Id),
+//						SourceId:       *pulumi.String(user.Id),
 //					},
-//					&ContentPermissionPermissionArgs{
+//					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("Edit"),
 //						SourceType:     pulumi.String("user"),
-//						SourceId:       pulumi.String(user.Id),
+//						SourceId:       *pulumi.String(user.Id),
 //					},
-//					&ContentPermissionPermissionArgs{
+//					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("Manage"),
 //						SourceType:     pulumi.String("user"),
-//						SourceId:       pulumi.String(user.Id),
+//						SourceId:       *pulumi.String(user.Id),
 //					},
 //				},
 //			})

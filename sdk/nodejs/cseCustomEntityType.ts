@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const customEntityType = new sumologic.CseCustomEntityType("custom_entity_type", {
+ * const customEntityType = new sumologic.CseCustomEntityType("customEntityType", {
  *     fields: [
  *         "file_hash_md5",
  *         "file_hash_sha1",

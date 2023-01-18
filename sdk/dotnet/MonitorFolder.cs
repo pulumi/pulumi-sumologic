@@ -98,7 +98,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
-        /// - `MonitorsLibraryFolder`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -216,7 +215,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
-        /// - `MonitorsLibraryFolder`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -296,7 +294,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
-        /// - `MonitorsLibraryFolder`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

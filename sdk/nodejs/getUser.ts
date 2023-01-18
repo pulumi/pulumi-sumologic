@@ -11,18 +11,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const thisUser = pulumi.output(sumologic.getUser({
+ * const this = sumologic.getUser({
  *     id: "1234567890",
- * }));
+ * });
  * ```
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const that = pulumi.output(sumologic.getUser({
+ * const that = sumologic.getUser({
  *     email: "user@example.com",
- * }));
+ * });
  * ```
  *
  * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -41,11 +41,8 @@ import * as utilities from "./utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getUser:getUser", {
         "email": args.email,
         "id": args.id,
@@ -71,9 +68,43 @@ export interface GetUserResult {
     readonly lastName: string;
     readonly roleIds: string[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const this = sumologic.getUser({
+ *     id: "1234567890",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const that = sumologic.getUser({
+ *     email: "user@example.com",
+ * });
+ * ```
+ *
+ * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
+ *
+ * If both `id` and `email` have been specified, `id` takes precedence.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The internal ID of the user.
+ * - `email` - (Required) Email of the user.
+ * - `firstName` - (Required) First name of the user.
+ * - `lastName` - (Required) Last name of the user.
+ * - `isActive` - (Required) This has the value true if the user is active and false if they have been deactivated.
+ * - `roleIds` - (Required) List of roleIds associated with the user.
+ */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply(a => getUser(a, opts))
+    return pulumi.output(args).apply((a: any) => getUser(a, opts))
 }
 
 /**

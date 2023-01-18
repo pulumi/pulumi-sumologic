@@ -96,14 +96,14 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultTtl);
     }
     /**
-     * Match list item description.
+     * Match list description.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return Match list item description.
+     * @return Match list description.
      * 
      */
     public Output<String> description() {

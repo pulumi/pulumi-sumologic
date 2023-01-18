@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.LookupCollector(ctx, &GetCollectorArgs{
+//			_, err := sumologic.LookupCollector(ctx, &sumologic.LookupCollectorArgs{
 //				Name: pulumi.StringRef("MyCollector"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.LookupCollector(ctx, &GetCollectorArgs{
+//			_, err := sumologic.LookupCollector(ctx, &sumologic.LookupCollectorArgs{
 //				Id: pulumi.IntRef(1234567890),
 //			}, nil)
 //			if err != nil {

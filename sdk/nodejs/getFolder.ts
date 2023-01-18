@@ -24,11 +24,8 @@ import * as utilities from "./utilities";
  * - `name` - The name of the folder.
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getFolder:getFolder", {
         "path": args.path,
     }, opts);
@@ -49,9 +46,27 @@ export interface GetFolderResult {
     readonly name: string;
     readonly path: string;
 }
-
+/**
+ * Provides an easy way to retrieve a folder.
+ *
+ * You must specify the absolute path of the folder to retrieve. The content library has "Library"
+ * folder at the root level. For items in "Personal" folder, the base path is "/Library/Users/user@sumologic.com"
+ * where "user@sumologic.com" is the email address of the user. For example, if a user with email address
+ * `wile@acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
+ * `/Library/Users/wile@acme.com/Rockets`.
+ *
+ * For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
+ * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
+ *
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The ID of the folder.
+ * - `name` - The name of the folder.
+ */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
-    return pulumi.output(args).apply(a => getFolder(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolder(a, opts))
 }
 
 /**

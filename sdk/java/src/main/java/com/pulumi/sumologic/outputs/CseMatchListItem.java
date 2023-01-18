@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CseMatchListItem {
     /**
-     * @return Match list item description.
+     * @return Match list description.
      * 
      */
     private String description;
@@ -34,7 +34,7 @@ public final class CseMatchListItem {
 
     private CseMatchListItem() {}
     /**
-     * @return Match list item description.
+     * @return Match list description.
      * 
      */
     public String description() {

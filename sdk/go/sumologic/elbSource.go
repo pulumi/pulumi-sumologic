@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewElbSource(ctx, "elbSource", &sumologic.ElbSourceArgs{
-//				Authentication: &ElbSourceAuthenticationArgs{
+//				Authentication: &sumologic.ElbSourceAuthenticationArgs{
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
 //					Type:      pulumi.String("S3BucketAuthentication"),
@@ -45,7 +45,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("AwsElbBucket"),
 //				Description: pulumi.String("My description"),
-//				Path: &ElbSourcePathArgs{
+//				Path: &sumologic.ElbSourcePathArgs{
 //					BucketName:     pulumi.String("Bucket1"),
 //					PathExpression: pulumi.String("*"),
 //					Type:           pulumi.String("S3BucketPathExpression"),
