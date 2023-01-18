@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const current = pulumi.output(sumologic.getCallerIdentity());
+ * const current = sumologic.getCallerIdentity({});
  * ```
  * ## Attributes reference
  *
@@ -23,11 +23,8 @@ import * as utilities from "./utilities";
  * - `environment` - API endpoint environment.
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getCallerIdentity:getCallerIdentity", {
     }, opts);
 }

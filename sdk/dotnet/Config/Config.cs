@@ -30,7 +30,7 @@ namespace Pulumi.SumoLogic
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("sumologic");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("sumologic");
 
         private static readonly __Value<string?> _accessId = new __Value<string?>(() => __config.Get("accessId"));
         public static string? AccessId

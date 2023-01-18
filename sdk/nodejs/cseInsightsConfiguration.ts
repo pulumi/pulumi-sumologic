@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const insightsConfiguration = new sumologic.CseInsightsConfiguration("insights_configuration", {
+ * const insightsConfiguration = new sumologic.CseInsightsConfiguration("insightsConfiguration", {
  *     lookbackDays: 13,
  *     threshold: 12,
  * });

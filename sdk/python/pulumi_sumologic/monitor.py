@@ -47,13 +47,12 @@ class MonitorArgs:
         """
         The set of arguments for constructing a Monitor resource.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
-               - `Logs`: A logs query monitor.
-               - `Metrics`: A metrics query monitor.
-               - `Slo`: A SLO based monitor  (beta).
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-               - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
+               1. `<number>`: number of time units,
+               2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
@@ -65,15 +64,9 @@ class MonitorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
-               - `Critical`
-               - `Warning`
-               - `MissingData`
-               - `Normal`
-               - `Disabled`
         :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
-               - `MonitorsLibraryMonitor`
         """
         pulumi.set(__self__, "monitor_type", monitor_type)
         if alert_name is not None:
@@ -139,9 +132,6 @@ class MonitorArgs:
     def monitor_type(self) -> pulumi.Input[str]:
         """
         The type of monitor. Valid values:
-        - `Logs`: A logs query monitor.
-        - `Metrics`: A metrics query monitor.
-        - `Slo`: A SLO based monitor  (beta).
         """
         return pulumi.get(self, "monitor_type")
 
@@ -153,7 +143,7 @@ class MonitorArgs:
     @pulumi.getter(name="alertName")
     def alert_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         """
         return pulumi.get(self, "alert_name")
 
@@ -166,7 +156,6 @@ class MonitorArgs:
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the content object. Valid value:
-        - `Monitor`
         """
         return pulumi.get(self, "content_type")
 
@@ -207,6 +196,11 @@ class MonitorArgs:
     @property
     @pulumi.getter(name="evaluationDelay")
     def evaluation_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Evaluation delay as a string consists of the following elements:
+        1. `<number>`: number of time units,
+        2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        """
         return pulumi.get(self, "evaluation_delay")
 
     @evaluation_delay.setter
@@ -392,11 +386,6 @@ class MonitorArgs:
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The current status for this monitor. Values are:
-        - `Critical`
-        - `Warning`
-        - `MissingData`
-        - `Normal`
-        - `Disabled`
         """
         return pulumi.get(self, "statuses")
 
@@ -433,7 +422,6 @@ class MonitorArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of object model. Valid value:
-        - `MonitorsLibraryMonitor`
         """
         return pulumi.get(self, "type")
 
@@ -484,16 +472,15 @@ class _MonitorState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Monitor resources.
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-               - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
+               1. `<number>`: number of time units,
+               2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
-               - `Logs`: A logs query monitor.
-               - `Metrics`: A metrics query monitor.
-               - `Slo`: A SLO based monitor  (beta).
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
@@ -503,15 +490,9 @@ class _MonitorState:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
-               - `Critical`
-               - `Warning`
-               - `MissingData`
-               - `Normal`
-               - `Disabled`
         :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
-               - `MonitorsLibraryMonitor`
         """
         if alert_name is not None:
             pulumi.set(__self__, "alert_name", alert_name)
@@ -577,7 +558,7 @@ class _MonitorState:
     @pulumi.getter(name="alertName")
     def alert_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         """
         return pulumi.get(self, "alert_name")
 
@@ -590,7 +571,6 @@ class _MonitorState:
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the content object. Valid value:
-        - `Monitor`
         """
         return pulumi.get(self, "content_type")
 
@@ -631,6 +611,11 @@ class _MonitorState:
     @property
     @pulumi.getter(name="evaluationDelay")
     def evaluation_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Evaluation delay as a string consists of the following elements:
+        1. `<number>`: number of time units,
+        2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        """
         return pulumi.get(self, "evaluation_delay")
 
     @evaluation_delay.setter
@@ -711,9 +696,6 @@ class _MonitorState:
     def monitor_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of monitor. Valid values:
-        - `Logs`: A logs query monitor.
-        - `Metrics`: A metrics query monitor.
-        - `Slo`: A SLO based monitor  (beta).
         """
         return pulumi.get(self, "monitor_type")
 
@@ -831,11 +813,6 @@ class _MonitorState:
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The current status for this monitor. Values are:
-        - `Critical`
-        - `Warning`
-        - `MissingData`
-        - `Normal`
-        - `Disabled`
         """
         return pulumi.get(self, "statuses")
 
@@ -872,7 +849,6 @@ class _MonitorState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of object model. Valid value:
-        - `MonitorsLibraryMonitor`
         """
         return pulumi.get(self, "type")
 
@@ -1025,24 +1001,26 @@ class Monitor(pulumi.CustomResource):
         #### logs_static_condition
           - `field`
           - `critical`
-            - `time_range` (Required)
+            - `time_range` (Required) : Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
+              - `resolution_window` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
           - `warning`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
+              - `resolution_window` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
         #### metrics_static_condition
           - `critical`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `occurrence_type` (Required)
             - `alert` (Required)
               - `threshold`
@@ -1051,7 +1029,7 @@ class Monitor(pulumi.CustomResource):
               - `threshold`
               - `threshold_type`
           - `warning`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `occurrence_type` (Required)
             - `alert` (Required)
               - `threshold`
@@ -1079,10 +1057,9 @@ class Monitor(pulumi.CustomResource):
             - `baseline_window`
             - `threshold`
         #### logs_missing_data_condition
-          - `time_range` (Required)
+          - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
         #### metrics_missing_data_condition
-          - `time_range` (Required)
-          - `trigger_source` (Required)
+          - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
         #### slo_sli_condition
           - `critical`
             - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
@@ -1091,10 +1068,10 @@ class Monitor(pulumi.CustomResource):
 
         #### slo_burn_rate_condition
           - `critical`
-            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.
+            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
           - `warning`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Required)
 
         ## The `triggers` block
@@ -1153,6 +1130,7 @@ class Monitor(pulumi.CustomResource):
                 sumologic.MonitorTriggerArgs(
                     detection_method="StaticCondition",
                     occurrence_type="ResultCount",
+                    resolution_window="5m",
                     threshold=40,
                     threshold_type="LessThanOrEqual",
                     time_range="15m",
@@ -1175,16 +1153,15 @@ class Monitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-               - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
+               1. `<number>`: number of time units,
+               2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
-               - `Logs`: A logs query monitor.
-               - `Metrics`: A metrics query monitor.
-               - `Slo`: A SLO based monitor  (beta).
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
@@ -1194,15 +1171,9 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
-               - `Critical`
-               - `Warning`
-               - `MissingData`
-               - `Normal`
-               - `Disabled`
         :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
-               - `MonitorsLibraryMonitor`
         """
         ...
     @overload
@@ -1311,24 +1282,26 @@ class Monitor(pulumi.CustomResource):
         #### logs_static_condition
           - `field`
           - `critical`
-            - `time_range` (Required)
+            - `time_range` (Required) : Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
+              - `resolution_window` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
           - `warning`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
+              - `resolution_window` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
         #### metrics_static_condition
           - `critical`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `occurrence_type` (Required)
             - `alert` (Required)
               - `threshold`
@@ -1337,7 +1310,7 @@ class Monitor(pulumi.CustomResource):
               - `threshold`
               - `threshold_type`
           - `warning`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `occurrence_type` (Required)
             - `alert` (Required)
               - `threshold`
@@ -1365,10 +1338,9 @@ class Monitor(pulumi.CustomResource):
             - `baseline_window`
             - `threshold`
         #### logs_missing_data_condition
-          - `time_range` (Required)
+          - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
         #### metrics_missing_data_condition
-          - `time_range` (Required)
-          - `trigger_source` (Required)
+          - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
         #### slo_sli_condition
           - `critical`
             - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
@@ -1377,10 +1349,10 @@ class Monitor(pulumi.CustomResource):
 
         #### slo_burn_rate_condition
           - `critical`
-            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.
+            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
           - `warning`
-            - `time_range` (Required)
+            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Required)
 
         ## The `triggers` block
@@ -1439,6 +1411,7 @@ class Monitor(pulumi.CustomResource):
                 sumologic.MonitorTriggerArgs(
                     detection_method="StaticCondition",
                     occurrence_type="ResultCount",
+                    resolution_window="5m",
                     threshold=40,
                     threshold_type="LessThanOrEqual",
                     time_range="15m",
@@ -1589,16 +1562,15 @@ class Monitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        :param pulumi.Input[str] alert_name: The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-               - `Monitor`
         :param pulumi.Input[str] description: The description of the monitor.
+        :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
+               1. `<number>`: number of time units,
+               2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
-               - `Logs`: A logs query monitor.
-               - `Metrics`: A metrics query monitor.
-               - `Slo`: A SLO based monitor  (beta).
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
@@ -1608,15 +1580,9 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
-               - `Critical`
-               - `Warning`
-               - `MissingData`
-               - `Normal`
-               - `Disabled`
         :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
-               - `MonitorsLibraryMonitor`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1656,7 +1622,7 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter(name="alertName")
     def alert_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         """
         return pulumi.get(self, "alert_name")
 
@@ -1665,7 +1631,6 @@ class Monitor(pulumi.CustomResource):
     def content_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the content object. Valid value:
-        - `Monitor`
         """
         return pulumi.get(self, "content_type")
 
@@ -1690,6 +1655,11 @@ class Monitor(pulumi.CustomResource):
     @property
     @pulumi.getter(name="evaluationDelay")
     def evaluation_delay(self) -> pulumi.Output[str]:
+        """
+        Evaluation delay as a string consists of the following elements:
+        1. `<number>`: number of time units,
+        2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        """
         return pulumi.get(self, "evaluation_delay")
 
     @property
@@ -1738,9 +1708,6 @@ class Monitor(pulumi.CustomResource):
     def monitor_type(self) -> pulumi.Output[str]:
         """
         The type of monitor. Valid values:
-        - `Logs`: A logs query monitor.
-        - `Metrics`: A metrics query monitor.
-        - `Slo`: A SLO based monitor  (beta).
         """
         return pulumi.get(self, "monitor_type")
 
@@ -1818,11 +1785,6 @@ class Monitor(pulumi.CustomResource):
     def statuses(self) -> pulumi.Output[Sequence[str]]:
         """
         The current status for this monitor. Values are:
-        - `Critical`
-        - `Warning`
-        - `MissingData`
-        - `Normal`
-        - `Disabled`
         """
         return pulumi.get(self, "statuses")
 
@@ -1847,7 +1809,6 @@ class Monitor(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of object model. Valid value:
-        - `MonitorsLibraryMonitor`
         """
         return pulumi.get(self, "type")
 

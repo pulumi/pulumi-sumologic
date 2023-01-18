@@ -45,7 +45,7 @@ namespace Pulumi.SumoLogic
         /// - `vendor` - The name of the vendor.
         /// </summary>
         public static Task<GetCseLogMappingVendorProductResult> InvokeAsync(GetCseLogMappingVendorProductArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -81,7 +81,7 @@ namespace Pulumi.SumoLogic
         /// - `vendor` - The name of the vendor.
         /// </summary>
         public static Output<GetCseLogMappingVendorProductResult> Invoke(GetCseLogMappingVendorProductInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -13,18 +13,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const thisCollector = pulumi.output(sumologic.getCollector({
+ * const this = sumologic.getCollector({
  *     name: "MyCollector",
- * }));
+ * });
  * ```
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const that = pulumi.output(sumologic.getCollector({
+ * const that = sumologic.getCollector({
  *     id: 1234567890,
- * }));
+ * });
  * ```
  *
  * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -42,11 +42,8 @@ import * as utilities from "./utilities";
  */
 export function getCollector(args?: GetCollectorArgs, opts?: pulumi.InvokeOptions): Promise<GetCollectorResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getCollector:getCollector", {
         "id": args.id,
         "name": args.name,
@@ -72,9 +69,44 @@ export interface GetCollectorResult {
     readonly name: string;
     readonly timezone: string;
 }
-
+/**
+ * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const this = sumologic.getCollector({
+ *     name: "MyCollector",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const that = sumologic.getCollector({
+ *     id: 1234567890,
+ * });
+ * ```
+ *
+ * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+ *
+ * If both `id` and `name` have been specified, `id` takes precedence.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The internal ID of the collector. This can be used to attach sources to the collector.
+ * - `name` - The name of the collector.
+ * - `description` - The description of the collector.
+ * - `category` - The default source category for any source attached to this collector.
+ * - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
+ */
 export function getCollectorOutput(args?: GetCollectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollectorResult> {
-    return pulumi.output(args).apply(a => getCollector(a, opts))
+    return pulumi.output(args).apply((a: any) => getCollector(a, opts))
 }
 
 /**

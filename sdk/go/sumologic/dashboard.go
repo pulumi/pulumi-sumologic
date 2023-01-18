@@ -111,27 +111,27 @@ import (
 //			_, err = sumologic.NewDashboard(ctx, "api-dashboard", &sumologic.DashboardArgs{
 //				Title:           pulumi.String("Api Health Dashboard"),
 //				Description:     pulumi.String("Demo dashboard description"),
-//				FolderId:        pulumi.String(personalFolder.Id),
+//				FolderId:        *pulumi.String(personalFolder.Id),
 //				RefreshInterval: pulumi.Int(120),
 //				Theme:           pulumi.String("Dark"),
-//				TimeRange: &DashboardTimeRangeArgs{
-//					BeginBoundedTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeArgs{
-//						From: &DashboardTimeRangeBeginBoundedTimeRangeFromArgs{
-//							LiteralTimeRange: &DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
+//				TimeRange: &sumologic.DashboardTimeRangeArgs{
+//					BeginBoundedTimeRange: &sumologic.DashboardTimeRangeBeginBoundedTimeRangeArgs{
+//						From: &sumologic.DashboardTimeRangeBeginBoundedTimeRangeFromArgs{
+//							LiteralTimeRange: &sumologic.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
 //								RangeName: pulumi.String("today"),
 //							},
 //						},
 //					},
 //				},
-//				TopologyLabelMap: &DashboardTopologyLabelMapArgs{
-//					Datas: DashboardTopologyLabelMapDataArray{
-//						&DashboardTopologyLabelMapDataArgs{
+//				TopologyLabelMap: &sumologic.DashboardTopologyLabelMapArgs{
+//					Datas: sumologic.DashboardTopologyLabelMapDataArray{
+//						&sumologic.DashboardTopologyLabelMapDataArgs{
 //							Label: pulumi.String("cluster"),
 //							Values: pulumi.StringArray{
 //								pulumi.String("api-prod"),
 //							},
 //						},
-//						&DashboardTopologyLabelMapDataArgs{
+//						&sumologic.DashboardTopologyLabelMapDataArgs{
 //							Label: pulumi.String("namespace"),
 //							Values: pulumi.StringArray{
 //								pulumi.String("default"),
@@ -140,9 +140,9 @@ import (
 //					},
 //				},
 //				Domain: pulumi.String("app"),
-//				Panels: DashboardPanelArray{
-//					&DashboardPanelArgs{
-//						TextPanel: &DashboardPanelTextPanelArgs{
+//				Panels: sumologic.DashboardPanelArray{
+//					&sumologic.DashboardPanelArgs{
+//						TextPanel: &sumologic.DashboardPanelTextPanelArgs{
 //							Key:                                    pulumi.String("text-panel-01"),
 //							Title:                                  pulumi.String("Api Health"),
 //							VisualSettings:                         pulumi.String(json0),
@@ -158,24 +158,24 @@ import (
 //
 //						},
 //					},
-//					&DashboardPanelArgs{
-//						SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+//					&sumologic.DashboardPanelArgs{
+//						SumoSearchPanel: &sumologic.DashboardPanelSumoSearchPanelArgs{
 //							Key:                                    pulumi.String("search-panel-01"),
 //							Title:                                  pulumi.String("Api Errors by Host"),
 //							Description:                            pulumi.String("Errors in api service since last 12 hours"),
 //							VisualSettings:                         pulumi.String(json1),
 //							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-//							Queries: DashboardPanelSumoSearchPanelQueryArray{
-//								&DashboardPanelSumoSearchPanelQueryArgs{
+//							Queries: sumologic.DashboardPanelSumoSearchPanelQueryArray{
+//								&sumologic.DashboardPanelSumoSearchPanelQueryArgs{
 //									QueryString: pulumi.String("_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost"),
 //									QueryType:   pulumi.String("Logs"),
 //									QueryKey:    pulumi.String("A"),
 //								},
 //							},
-//							TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
-//								BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
-//									From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
-//										RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
+//							TimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs{
+//								BeginBoundedTimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+//									From: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+//										RelativeTimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
 //											RelativeTime: pulumi.String("-12h"),
 //										},
 //									},
@@ -183,25 +183,25 @@ import (
 //							},
 //						},
 //					},
-//					&DashboardPanelArgs{
-//						SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+//					&sumologic.DashboardPanelArgs{
+//						SumoSearchPanel: &sumologic.DashboardPanelSumoSearchPanelArgs{
 //							Key:                                    pulumi.String("metrics-panel-01"),
 //							Title:                                  pulumi.String("Api 5xx Response Count"),
 //							Description:                            pulumi.String("Count of 5xx response from api service"),
 //							VisualSettings:                         pulumi.String(json2),
 //							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-//							Queries: DashboardPanelSumoSearchPanelQueryArray{
-//								&DashboardPanelSumoSearchPanelQueryArgs{
+//							Queries: sumologic.DashboardPanelSumoSearchPanelQueryArray{
+//								&sumologic.DashboardPanelSumoSearchPanelQueryArgs{
 //									QueryString:      pulumi.String("_sourceCategory=api metric=Api-5xx"),
 //									QueryType:        pulumi.String("Metrics"),
 //									QueryKey:         pulumi.String("A"),
 //									MetricsQueryMode: pulumi.String("Advanced"),
 //								},
 //							},
-//							TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
-//								BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
-//									From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
-//										LiteralTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
+//							TimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs{
+//								BeginBoundedTimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+//									From: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+//										LiteralTimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{
 //											RangeName: pulumi.String("today"),
 //										},
 //									},
@@ -209,23 +209,23 @@ import (
 //							},
 //						},
 //					},
-//					&DashboardPanelArgs{
-//						SumoSearchPanel: &DashboardPanelSumoSearchPanelArgs{
+//					&sumologic.DashboardPanelArgs{
+//						SumoSearchPanel: &sumologic.DashboardPanelSumoSearchPanelArgs{
 //							Key:                                    pulumi.String("metrics-panel-02"),
 //							Title:                                  pulumi.String("CPU Utilization"),
 //							Description:                            pulumi.String("CPU utilization in api service"),
 //							VisualSettings:                         pulumi.String(json3),
 //							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-//							Queries: DashboardPanelSumoSearchPanelQueryArray{
-//								&DashboardPanelSumoSearchPanelQueryArgs{
+//							Queries: sumologic.DashboardPanelSumoSearchPanelQueryArray{
+//								&sumologic.DashboardPanelSumoSearchPanelQueryArgs{
 //									QueryString:      pulumi.String("metric=Proc_CPU nite-api-1"),
 //									QueryType:        pulumi.String("Metrics"),
 //									QueryKey:         pulumi.String("A"),
 //									MetricsQueryMode: pulumi.String("Basic"),
-//									MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
+//									MetricsQueryData: &sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
 //										Metric: pulumi.String("Proc_CPU"),
-//										Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
-//											&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
+//										Filters: sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
+//											&sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
 //												Key:      pulumi.String("_sourcehost"),
 //												Negation: pulumi.Bool(false),
 //												Value:    pulumi.String("nite-api-1"),
@@ -234,15 +234,15 @@ import (
 //										AggregationType: pulumi.String("None"),
 //									},
 //								},
-//								&DashboardPanelSumoSearchPanelQueryArgs{
+//								&sumologic.DashboardPanelSumoSearchPanelQueryArgs{
 //									QueryString:      pulumi.String("metric=Proc_CPU nite-api-2"),
 //									QueryType:        pulumi.String("Metrics"),
 //									QueryKey:         pulumi.String("B"),
 //									MetricsQueryMode: pulumi.String("Basic"),
-//									MetricsQueryData: &DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
+//									MetricsQueryData: &sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs{
 //										Metric: pulumi.String("Proc_CPU"),
-//										Filters: DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
-//											&DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
+//										Filters: sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArray{
+//											&sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs{
 //												Key:      pulumi.String("_sourcehost"),
 //												Negation: pulumi.Bool(false),
 //												Value:    pulumi.String("nite-api-2"),
@@ -252,10 +252,10 @@ import (
 //									},
 //								},
 //							},
-//							TimeRange: &DashboardPanelSumoSearchPanelTimeRangeArgs{
-//								BeginBoundedTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
-//									From: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
-//										RelativeTimeRange: &DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
+//							TimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs{
+//								BeginBoundedTimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs{
+//									From: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs{
+//										RelativeTimeRange: &sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{
 //											RelativeTime: pulumi.String("-1h"),
 //										},
 //									},
@@ -264,35 +264,35 @@ import (
 //						},
 //					},
 //				},
-//				Layout: &DashboardLayoutArgs{
-//					Grid: &DashboardLayoutGridArgs{
-//						LayoutStructures: DashboardLayoutGridLayoutStructureArray{
-//							&DashboardLayoutGridLayoutStructureArgs{
+//				Layout: &sumologic.DashboardLayoutArgs{
+//					Grid: &sumologic.DashboardLayoutGridArgs{
+//						LayoutStructures: sumologic.DashboardLayoutGridLayoutStructureArray{
+//							&sumologic.DashboardLayoutGridLayoutStructureArgs{
 //								Key:       pulumi.String("text-panel-01"),
 //								Structure: pulumi.String("{\"height\":5,\"width\":24,\"x\":0,\"y\":0}"),
 //							},
-//							&DashboardLayoutGridLayoutStructureArgs{
+//							&sumologic.DashboardLayoutGridLayoutStructureArgs{
 //								Key:       pulumi.String("search-panel-01"),
 //								Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":0,\"y\":5}"),
 //							},
-//							&DashboardLayoutGridLayoutStructureArgs{
+//							&sumologic.DashboardLayoutGridLayoutStructureArgs{
 //								Key:       pulumi.String("metrics-panel-01"),
 //								Structure: pulumi.String("{\"height\":10,\"width\":12,\"x\":12,\"y\":5}"),
 //							},
-//							&DashboardLayoutGridLayoutStructureArgs{
+//							&sumologic.DashboardLayoutGridLayoutStructureArgs{
 //								Key:       pulumi.String("metrics-panel-02"),
 //								Structure: pulumi.String("{\"height\":10,\"width\":24,\"x\":0,\"y\":25}"),
 //							},
 //						},
 //					},
 //				},
-//				Variables: DashboardVariableArray{
-//					&DashboardVariableArgs{
+//				Variables: sumologic.DashboardVariableArray{
+//					&sumologic.DashboardVariableArgs{
 //						Name:         pulumi.String("_sourceHost"),
 //						DisplayName:  pulumi.String("Source Host"),
 //						DefaultValue: pulumi.String("nite-api-1"),
-//						SourceDefinition: &DashboardVariableSourceDefinitionArgs{
-//							CsvVariableSourceDefinition: &DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs{
+//						SourceDefinition: &sumologic.DashboardVariableSourceDefinitionArgs{
+//							CsvVariableSourceDefinition: &sumologic.DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs{
 //								Values: pulumi.String("nite-api-1,nite-api-2"),
 //							},
 //						},
@@ -346,7 +346,7 @@ import (
 //
 // - `relativeTimeRange` - (Block List, Optional) Time in relative format.
 //
-//   - `relativeTime` - (Required) Relative time as a string consisting of following elements:
+//   - `relativeTime` - (Required) Relative time as a string consists of following elements:
 //     1. `-` (optional): minus sign indicates time in the past,
 //     2. `<number>`: number of time units,
 //     3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).

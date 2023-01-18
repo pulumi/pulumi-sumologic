@@ -29,8 +29,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewCseLogMapping(ctx, "logMapping", &sumologic.CseLogMappingArgs{
 //				Enabled: pulumi.Bool(true),
-//				Fields: CseLogMappingFieldArray{
-//					&CseLogMappingFieldArgs{
+//				Fields: sumologic.CseLogMappingFieldArray{
+//					&sumologic.CseLogMappingFieldArgs{
 //						AlternateValues: pulumi.StringArray{
 //							pulumi.String("altValue"),
 //						},
@@ -44,8 +44,8 @@ import (
 //							pulumi.String("param"),
 //						},
 //						JoinDelimiter: pulumi.String(""),
-//						Lookups: CseLogMappingFieldLookupArray{
-//							&CseLogMappingFieldLookupArgs{
+//						Lookups: sumologic.CseLogMappingFieldLookupArray{
+//							&sumologic.CseLogMappingFieldLookupArgs{
 //								Key:   pulumi.String("tunnel-up"),
 //								Value: pulumi.String("true"),
 //							},
@@ -67,8 +67,8 @@ import (
 //				SkippedValues: pulumi.StringArray{
 //					pulumi.String("skipped"),
 //				},
-//				StructuredInputs: CseLogMappingStructuredInputArray{
-//					&CseLogMappingStructuredInputArgs{
+//				StructuredInputs: sumologic.CseLogMappingStructuredInputArray{
+//					&sumologic.CseLogMappingStructuredInputArgs{
 //						EventIdPattern: pulumi.String("vpn"),
 //						LogFormat:      pulumi.String("JSON"),
 //						Product:        pulumi.String("fortinate"),
@@ -101,7 +101,7 @@ type CseLogMapping struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// List of fields for the new log mapping. See fieldSchema for details.
 	Fields CseLogMappingFieldArrayOutput `pulumi:"fields"`
-	// Name of the field.
+	// The name of the log mapping.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The id of the parent log mapping.
 	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
@@ -164,7 +164,7 @@ type cseLogMappingState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// List of fields for the new log mapping. See fieldSchema for details.
 	Fields []CseLogMappingField `pulumi:"fields"`
-	// Name of the field.
+	// The name of the log mapping.
 	Name *string `pulumi:"name"`
 	// The id of the parent log mapping.
 	ParentId *string `pulumi:"parentId"`
@@ -187,7 +187,7 @@ type CseLogMappingState struct {
 	Enabled pulumi.BoolPtrInput
 	// List of fields for the new log mapping. See fieldSchema for details.
 	Fields CseLogMappingFieldArrayInput
-	// Name of the field.
+	// The name of the log mapping.
 	Name pulumi.StringPtrInput
 	// The id of the parent log mapping.
 	ParentId pulumi.StringPtrInput
@@ -214,7 +214,7 @@ type cseLogMappingArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// List of fields for the new log mapping. See fieldSchema for details.
 	Fields []CseLogMappingField `pulumi:"fields"`
-	// Name of the field.
+	// The name of the log mapping.
 	Name *string `pulumi:"name"`
 	// The id of the parent log mapping.
 	ParentId *string `pulumi:"parentId"`
@@ -238,7 +238,7 @@ type CseLogMappingArgs struct {
 	Enabled pulumi.BoolInput
 	// List of fields for the new log mapping. See fieldSchema for details.
 	Fields CseLogMappingFieldArrayInput
-	// Name of the field.
+	// The name of the log mapping.
 	Name pulumi.StringPtrInput
 	// The id of the parent log mapping.
 	ParentId pulumi.StringPtrInput
@@ -353,7 +353,7 @@ func (o CseLogMappingOutput) Fields() CseLogMappingFieldArrayOutput {
 	return o.ApplyT(func(v *CseLogMapping) CseLogMappingFieldArrayOutput { return v.Fields }).(CseLogMappingFieldArrayOutput)
 }
 
-// Name of the field.
+// The name of the log mapping.
 func (o CseLogMappingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseLogMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

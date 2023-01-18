@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogAccessKey", &sumologic.KineisLogSourceArgs{
-//				Authentication: &KineisLogSourceAuthenticationArgs{
+//				Authentication: &sumologic.KineisLogSourceAuthenticationArgs{
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
 //					Type:      pulumi.String("S3BucketAuthentication"),
@@ -45,7 +45,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("KinesisLog"),
 //				Description: pulumi.String("Description for Kinesis Log Source"),
-//				Path: &KineisLogSourcePathArgs{
+//				Path: &sumologic.KineisLogSourcePathArgs{
 //					BucketName:     pulumi.String("testBucket"),
 //					PathExpression: pulumi.String("http-endpoint-failed/*"),
 //					ScanInterval:   pulumi.Int(30000),
@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogRoleArn", &sumologic.KineisLogSourceArgs{
-//				Authentication: &KineisLogSourceAuthenticationArgs{
+//				Authentication: &sumologic.KineisLogSourceAuthenticationArgs{
 //					RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
 //					Type:    pulumi.String("AWSRoleBasedAuthentication"),
 //				},
@@ -64,7 +64,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("KinesisLog"),
 //				Description: pulumi.String("Description for Kinesis Log Source"),
-//				Path: &KineisLogSourcePathArgs{
+//				Path: &sumologic.KineisLogSourcePathArgs{
 //					BucketName:     pulumi.String("testBucket"),
 //					PathExpression: pulumi.String("http-endpoint-failed/*"),
 //					ScanInterval:   pulumi.Int(30000),

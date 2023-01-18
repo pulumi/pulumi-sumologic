@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source), [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source) and [Sumologic HTTP_OTLP_source][4]. To start using Traces contact your Sumo account representative to activate.
+// Provides a [Sumologic HTTP source](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics), [Sumologic HTTP Traces source](https://help.sumologic.com/docs/apm/traces/get-started-transaction-tracing/http-traces-source/), [Sumologic Kinesis Log source](https://help.sumologic.com/docs/send-data/hosted-collectors/amazon-aws/aws-kinesis-firehose-logs-source/), [Sumologic HTTP_OTLP_source][4] and [Sumologic RUM source](https://help.sumologic.com/docs/apm/real-user-monitoring/#step-1-create-a-rum-http-traces-source). To start using Traces contact your Sumo account representative to activate.
 //
 // __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
 //
@@ -39,8 +39,8 @@ import (
 //				Category:    pulumi.String("my/source/category"),
 //				CollectorId: collector.ID(),
 //				Description: pulumi.String("My description"),
-//				Filters: HttpSourceFilterArray{
-//					&HttpSourceFilterArgs{
+//				Filters: sumologic.HttpSourceFilterArray{
+//					&sumologic.HttpSourceFilterArgs{
 //						FilterType: pulumi.String("Exclude"),
 //						Name:       pulumi.String("Test Exclude Debug"),
 //						Regexp:     pulumi.String(".*DEBUG.*"),
@@ -101,14 +101,18 @@ import (
 //
 // ```
 //
-//	[1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source [4]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/OTLP_HTTP_Source
+//	[1]https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics [2]https://help.sumologic.com/docs/apm/traces/get-started-transaction-tracing/http-traces-source/ [3]https://help.sumologic.com/docs/send-data/hosted-collectors/amazon-aws/aws-kinesis-firehose-logs-source/ [4]https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/otlp/ [5]https://help.sumologic.com/docs/apm/real-user-monitoring/#step-1-create-a-rum-http-traces-source
 type HttpSource struct {
 	pulumi.CustomResourceState
 
 	AutomaticDateParsing pulumi.BoolPtrOutput   `pulumi:"automaticDateParsing"`
 	Category             pulumi.StringPtrOutput `pulumi:"category"`
 	CollectorId          pulumi.IntOutput       `pulumi:"collectorId"`
-	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+	// This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+	// - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+	// - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+	// - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+	// - When configuring a RUM Source, set this property to `Rum`.
 	ContentType        pulumi.StringPtrOutput                 `pulumi:"contentType"`
 	CutoffRelativeTime pulumi.StringPtrOutput                 `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp    pulumi.IntPtrOutput                    `pulumi:"cutoffTimestamp"`
@@ -164,7 +168,11 @@ type httpSourceState struct {
 	AutomaticDateParsing *bool   `pulumi:"automaticDateParsing"`
 	Category             *string `pulumi:"category"`
 	CollectorId          *int    `pulumi:"collectorId"`
-	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+	// This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+	// - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+	// - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+	// - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+	// - When configuring a RUM Source, set this property to `Rum`.
 	ContentType        *string                       `pulumi:"contentType"`
 	CutoffRelativeTime *string                       `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp    *int                          `pulumi:"cutoffTimestamp"`
@@ -189,7 +197,11 @@ type HttpSourceState struct {
 	AutomaticDateParsing pulumi.BoolPtrInput
 	Category             pulumi.StringPtrInput
 	CollectorId          pulumi.IntPtrInput
-	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+	// This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+	// - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+	// - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+	// - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+	// - When configuring a RUM Source, set this property to `Rum`.
 	ContentType        pulumi.StringPtrInput
 	CutoffRelativeTime pulumi.StringPtrInput
 	CutoffTimestamp    pulumi.IntPtrInput
@@ -218,7 +230,11 @@ type httpSourceArgs struct {
 	AutomaticDateParsing *bool   `pulumi:"automaticDateParsing"`
 	Category             *string `pulumi:"category"`
 	CollectorId          int     `pulumi:"collectorId"`
-	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+	// This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+	// - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+	// - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+	// - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+	// - When configuring a RUM Source, set this property to `Rum`.
 	ContentType        *string                       `pulumi:"contentType"`
 	CutoffRelativeTime *string                       `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp    *int                          `pulumi:"cutoffTimestamp"`
@@ -242,7 +258,11 @@ type HttpSourceArgs struct {
 	AutomaticDateParsing pulumi.BoolPtrInput
 	Category             pulumi.StringPtrInput
 	CollectorId          pulumi.IntInput
-	// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+	// This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+	// - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+	// - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+	// - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+	// - When configuring a RUM Source, set this property to `Rum`.
 	ContentType        pulumi.StringPtrInput
 	CutoffRelativeTime pulumi.StringPtrInput
 	CutoffTimestamp    pulumi.IntPtrInput
@@ -360,7 +380,11 @@ func (o HttpSourceOutput) CollectorId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
 }
 
-// When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+// This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+// - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+// - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+// - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+// - When configuring a RUM Source, set this property to `Rum`.
 func (o HttpSourceOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }

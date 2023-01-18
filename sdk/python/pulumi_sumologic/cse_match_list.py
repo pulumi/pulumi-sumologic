@@ -23,7 +23,7 @@ class CseMatchListArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseMatchList resource.
-        :param pulumi.Input[str] description: Match list item description.
+        :param pulumi.Input[str] description: Match list description.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
         :param pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]] items: List of match list items. See match_list_item schema for details.
@@ -42,7 +42,7 @@ class CseMatchListArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        Match list item description.
+        Match list description.
         """
         return pulumi.get(self, "description")
 
@@ -114,7 +114,7 @@ class _CseMatchListState:
         """
         Input properties used for looking up and filtering CseMatchList resources.
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
-        :param pulumi.Input[str] description: Match list item description.
+        :param pulumi.Input[str] description: Match list description.
         :param pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]] items: List of match list items. See match_list_item schema for details.
         :param pulumi.Input[str] name: Match list name.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
@@ -172,7 +172,7 @@ class _CseMatchListState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Match list item description.
+        Match list description.
         """
         return pulumi.get(self, "description")
 
@@ -277,7 +277,7 @@ class CseMatchList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
-        :param pulumi.Input[str] description: Match list item description.
+        :param pulumi.Input[str] description: Match list description.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchListItemArgs']]]] items: List of match list items. See match_list_item schema for details.
         :param pulumi.Input[str] name: Match list name.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
@@ -385,7 +385,7 @@ class CseMatchList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
-        :param pulumi.Input[str] description: Match list item description.
+        :param pulumi.Input[str] description: Match list description.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchListItemArgs']]]] items: List of match list items. See match_list_item schema for details.
         :param pulumi.Input[str] name: Match list name.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
@@ -427,7 +427,7 @@ class CseMatchList(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Match list item description.
+        Match list description.
         """
         return pulumi.get(self, "description")
 

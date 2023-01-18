@@ -15,9 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfSloFolder = new sumologic.SloFolder("tf_slo_folder", {
- *     description: "A folder for SLO's managed by terraform.",
- * });
+ * const tfSloFolder = new sumologic.SloFolder("tfSloFolder", {description: "A folder for SLO's managed by terraform."});
  * ```
  *
  * ## Example Nested SLO Folders

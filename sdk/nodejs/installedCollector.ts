@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const installedCollector = new sumologic.InstalledCollector("installed_collector", {
+ * const installedCollector = new sumologic.InstalledCollector("installedCollector", {
  *     category: "macos/test",
  *     ephemeral: true,
  *     fields: {
@@ -83,13 +83,22 @@ export class InstalledCollector extends pulumi.CustomResource {
      * Map containing [key/value pairs][3].
      */
     public readonly fields!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Host name of the Collector. The hostname can be a maximum of 128 characters.
+     */
     public readonly hostName!: pulumi.Output<string | undefined>;
     public /*out*/ readonly lastSeenAlive!: pulumi.Output<number>;
     /**
      * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     */
     public readonly sourceSyncMode!: pulumi.Output<string | undefined>;
+    /**
+     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     */
     public readonly targetCpu!: pulumi.Output<number | undefined>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
@@ -169,13 +178,22 @@ export interface InstalledCollectorState {
      * Map containing [key/value pairs][3].
      */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Host name of the Collector. The hostname can be a maximum of 128 characters.
+     */
     hostName?: pulumi.Input<string>;
     lastSeenAlive?: pulumi.Input<number>;
     /**
      * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
      */
     name?: pulumi.Input<string>;
+    /**
+     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     */
     sourceSyncMode?: pulumi.Input<string>;
+    /**
+     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     */
     targetCpu?: pulumi.Input<number>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
@@ -204,12 +222,21 @@ export interface InstalledCollectorArgs {
      * Map containing [key/value pairs][3].
      */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Host name of the Collector. The hostname can be a maximum of 128 characters.
+     */
     hostName?: pulumi.Input<string>;
     /**
      * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
      */
     name?: pulumi.Input<string>;
+    /**
+     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     */
     sourceSyncMode?: pulumi.Input<string>;
+    /**
+     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     */
     targetCpu?: pulumi.Input<number>;
     /**
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.

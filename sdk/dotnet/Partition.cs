@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
+    /// Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
     /// 
     /// ## Attributes reference
     /// 
@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/partition:Partition partition 1234567890
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Manage/Partitions [2]https://api.sumologic.com/docs/#operation/listPartitions
+    ///  [1]https://help.sumologic.com/docs/manage/partitions-data-tiers/ [2]https://api.sumologic.com/docs/#operation/listPartitions
     /// </summary>
     [SumoLogicResourceType("sumologic:index/partition:Partition")]
     public partial class Partition : global::Pulumi.CustomResource

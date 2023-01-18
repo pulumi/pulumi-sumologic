@@ -74,7 +74,6 @@ type MonitorFolder struct {
 	ParentId       pulumi.StringOutput    `pulumi:"parentId"`
 	PostRequestMap pulumi.StringMapOutput `pulumi:"postRequestMap"`
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryFolder`
 	Type    pulumi.StringPtrOutput `pulumi:"type"`
 	Version pulumi.IntOutput       `pulumi:"version"`
 }
@@ -129,7 +128,6 @@ type monitorFolderState struct {
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryFolder`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
@@ -153,7 +151,6 @@ type MonitorFolderState struct {
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryFolder`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -181,7 +178,6 @@ type monitorFolderArgs struct {
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryFolder`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
@@ -206,7 +202,6 @@ type MonitorFolderArgs struct {
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput
 	// The type of object model. Valid value:
-	// - `MonitorsLibraryFolder`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -355,7 +350,6 @@ func (o MonitorFolderOutput) PostRequestMap() pulumi.StringMapOutput {
 }
 
 // The type of object model. Valid value:
-// - `MonitorsLibraryFolder`
 func (o MonitorFolderOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MonitorFolder) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

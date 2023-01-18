@@ -41,7 +41,7 @@ namespace Pulumi.SumoLogic
         /// - `environment` - API endpoint environment.
         /// </summary>
         public static Task<GetCallerIdentityResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("sumologic:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("sumologic:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

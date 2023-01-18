@@ -150,24 +150,26 @@ namespace Pulumi.SumoLogic
     /// #### logs_static_condition
     ///   - `field`
     ///   - `critical`
-    ///     - `time_range` (Required)
+    ///     - `time_range` (Required) : Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `alert` (Required)
     ///       - `threshold`
     ///       - `threshold_type`
     ///     - `resolution` (Required)
     ///       - `threshold`
     ///       - `threshold_type`
+    ///       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
     ///   - `warning`
-    ///     - `time_range` (Required)
+    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `alert` (Required)
     ///       - `threshold`
     ///       - `threshold_type`
     ///     - `resolution` (Required)
     ///       - `threshold`
     ///       - `threshold_type`
+    ///       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
     /// #### metrics_static_condition
     ///   - `critical`
-    ///     - `time_range` (Required)
+    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `occurrence_type` (Required)
     ///     - `alert` (Required)
     ///       - `threshold`
@@ -176,7 +178,7 @@ namespace Pulumi.SumoLogic
     ///       - `threshold`
     ///       - `threshold_type`
     ///   - `warning`
-    ///     - `time_range` (Required)
+    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `occurrence_type` (Required)
     ///     - `alert` (Required)
     ///       - `threshold`
@@ -204,10 +206,9 @@ namespace Pulumi.SumoLogic
     ///     - `baseline_window`
     ///     - `threshold`
     /// #### logs_missing_data_condition
-    ///   - `time_range` (Required)
+    ///   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     /// #### metrics_missing_data_condition
-    ///   - `time_range` (Required)
-    ///   - `trigger_source` (Required)
+    ///   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     /// #### slo_sli_condition
     ///   - `critical`
     ///     - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
@@ -216,10 +217,10 @@ namespace Pulumi.SumoLogic
     /// 
     /// #### slo_burn_rate_condition
     ///   - `critical`
-    ///     - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.
+    ///     - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
     ///   - `warning`
-    ///     - `time_range` (Required)
+    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `burn_rate_threshold` (Required)
     /// 
     /// ## The `triggers` block
@@ -299,6 +300,7 @@ namespace Pulumi.SumoLogic
     ///             {
     ///                 DetectionMethod = "StaticCondition",
     ///                 OccurrenceType = "ResultCount",
+    ///                 ResolutionWindow = "5m",
     ///                 Threshold = 40,
     ///                 ThresholdType = "LessThanOrEqual",
     ///                 TimeRange = "15m",
@@ -326,14 +328,13 @@ namespace Pulumi.SumoLogic
     public partial class Monitor : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         /// </summary>
         [Output("alertName")]
         public Output<string?> AlertName { get; private set; } = null!;
 
         /// <summary>
         /// The type of the content object. Valid value:
-        /// - `Monitor`
         /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -350,6 +351,11 @@ namespace Pulumi.SumoLogic
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Evaluation delay as a string consists of the following elements:
+        /// 1. `&lt;number&gt;`: number of time units,
+        /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        /// </summary>
         [Output("evaluationDelay")]
         public Output<string> EvaluationDelay { get; private set; } = null!;
 
@@ -382,9 +388,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of monitor. Valid values:
-        /// - `Logs`: A logs query monitor.
-        /// - `Metrics`: A metrics query monitor.
-        /// - `Slo`: A SLO based monitor  (beta).
         /// </summary>
         [Output("monitorType")]
         public Output<string> MonitorType { get; private set; } = null!;
@@ -442,11 +445,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The current status for this monitor. Values are:
-        /// - `Critical`
-        /// - `Warning`
-        /// - `MissingData`
-        /// - `Normal`
-        /// - `Disabled`
         /// </summary>
         [Output("statuses")]
         public Output<ImmutableArray<string>> Statuses { get; private set; } = null!;
@@ -465,7 +463,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
-        /// - `MonitorsLibraryMonitor`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -520,14 +517,13 @@ namespace Pulumi.SumoLogic
     public sealed class MonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         /// </summary>
         [Input("alertName")]
         public Input<string>? AlertName { get; set; }
 
         /// <summary>
         /// The type of the content object. Valid value:
-        /// - `Monitor`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -544,6 +540,11 @@ namespace Pulumi.SumoLogic
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Evaluation delay as a string consists of the following elements:
+        /// 1. `&lt;number&gt;`: number of time units,
+        /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        /// </summary>
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }
 
@@ -576,9 +577,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of monitor. Valid values:
-        /// - `Logs`: A logs query monitor.
-        /// - `Metrics`: A metrics query monitor.
-        /// - `Slo`: A SLO based monitor  (beta).
         /// </summary>
         [Input("monitorType", required: true)]
         public Input<string> MonitorType { get; set; } = null!;
@@ -668,11 +666,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The current status for this monitor. Values are:
-        /// - `Critical`
-        /// - `Warning`
-        /// - `MissingData`
-        /// - `Normal`
-        /// - `Disabled`
         /// </summary>
         public InputList<string> Statuses
         {
@@ -701,7 +694,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
-        /// - `MonitorsLibraryMonitor`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -718,14 +710,13 @@ namespace Pulumi.SumoLogic
     public sealed class MonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+        /// The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
         /// </summary>
         [Input("alertName")]
         public Input<string>? AlertName { get; set; }
 
         /// <summary>
         /// The type of the content object. Valid value:
-        /// - `Monitor`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -742,6 +733,11 @@ namespace Pulumi.SumoLogic
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Evaluation delay as a string consists of the following elements:
+        /// 1. `&lt;number&gt;`: number of time units,
+        /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        /// </summary>
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }
 
@@ -774,9 +770,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of monitor. Valid values:
-        /// - `Logs`: A logs query monitor.
-        /// - `Metrics`: A metrics query monitor.
-        /// - `Slo`: A SLO based monitor  (beta).
         /// </summary>
         [Input("monitorType")]
         public Input<string>? MonitorType { get; set; }
@@ -866,11 +859,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The current status for this monitor. Values are:
-        /// - `Critical`
-        /// - `Warning`
-        /// - `MissingData`
-        /// - `Normal`
-        /// - `Disabled`
         /// </summary>
         public InputList<string> Statuses
         {
@@ -899,7 +887,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
-        /// - `MonitorsLibraryMonitor`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

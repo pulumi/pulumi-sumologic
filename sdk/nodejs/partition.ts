@@ -5,20 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
+ * Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const examplePartition = new sumologic.Partition("examplePartition", {
- *     analyticsTier: "continuous",
- *     isCompliant: false,
- *     routingExpression: "_sourcecategory=*&#47;IAC",
- * });
- * ```
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -33,7 +21,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import sumologic:index/partition:Partition partition 1234567890
  * ```
  *
- *  [1]https://help.sumologic.com/Manage/Partitions [2]https://api.sumologic.com/docs/#operation/listPartitions
+ *  [1]https://help.sumologic.com/docs/manage/partitions-data-tiers/ [2]https://api.sumologic.com/docs/#operation/listPartitions
  */
 export class Partition extends pulumi.CustomResource {
     /**

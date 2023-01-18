@@ -21,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [Sumologic HTTP source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source), [Sumologic HTTP Traces source](https://help.sumologic.com/Traces/HTTP_Traces_Source), [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source) and [Sumologic HTTP_OTLP_source][4]. To start using Traces contact your Sumo account representative to activate.
+ * Provides a [Sumologic HTTP source](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics), [Sumologic HTTP Traces source](https://help.sumologic.com/docs/apm/traces/get-started-transaction-tracing/http-traces-source/), [Sumologic Kinesis Log source](https://help.sumologic.com/docs/send-data/hosted-collectors/amazon-aws/aws-kinesis-firehose-logs-source/), [Sumologic HTTP_OTLP_source][4] and [Sumologic RUM source](https://help.sumologic.com/docs/apm/real-user-monitoring/#step-1-create-a-rum-http-traces-source). To start using Traces contact your Sumo account representative to activate.
  * 
  * __IMPORTANT:__ The endpoint is stored in plain-text in the state. This is a potential security issue.
  * 
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *  $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
  * ```
  * 
- *  [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/HTTP_Source [2]https://help.sumologic.com/Traces/HTTP_Traces_Source [3]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source [4]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/OTLP_HTTP_Source
+ *  [1]https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics [2]https://help.sumologic.com/docs/apm/traces/get-started-transaction-tracing/http-traces-source/ [3]https://help.sumologic.com/docs/send-data/hosted-collectors/amazon-aws/aws-kinesis-firehose-logs-source/ [4]https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/otlp/ [5]https://help.sumologic.com/docs/apm/real-user-monitoring/#step-1-create-a-rum-http-traces-source
  * 
  */
 @ResourceType(type="sumologic:index/httpSource:HttpSource")
@@ -128,14 +128,22 @@ public class HttpSource extends com.pulumi.resources.CustomResource {
         return this.collectorId;
     }
     /**
-     * When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+     * This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+     * - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+     * - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+     * - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+     * - When configuring a RUM Source, set this property to `Rum`.
      * 
      */
     @Export(name="contentType", type=String.class, parameters={})
     private Output</* @Nullable */ String> contentType;
 
     /**
-     * @return When configuring a HTTP Traces Source, set this property to `Zipkin`. When configuring a Kinesis Logs Source, set this property to `KinesisLog`. When configuring a HTTP OTLP Source, set this property to `Otlp`. This should only be used when creating a Traces, Kinesis Log or HTTP OTLP source.
+     * @return This should only be used when creating a Traces, Kinesis Log, HTTP OTLP or a RUM source.
+     * - When configuring a HTTP Traces Source, set this property to `Zipkin`.
+     * - When configuring a Kinesis Logs Source, set this property to `KinesisLog`.
+     * - When configuring a HTTP OTLP Source, set this property to `Otlp`.
+     * - When configuring a RUM Source, set this property to `Rum`.
      * 
      */
     public Output<Optional<String>> contentType() {

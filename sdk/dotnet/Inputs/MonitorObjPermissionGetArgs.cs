@@ -17,10 +17,6 @@ namespace Pulumi.SumoLogic.Inputs
 
         /// <summary>
         /// A Set of Permissions. Valid Permission Values:
-        /// - `Read`
-        /// - `Update`
-        /// - `Delete`
-        /// - `Manage`
         /// </summary>
         public InputList<string> Permissions
         {
@@ -36,8 +32,6 @@ namespace Pulumi.SumoLogic.Inputs
 
         /// <summary>
         /// Valid values:
-        /// - `role`
-        /// - `org`
         /// </summary>
         [Input("subjectType", required: true)]
         public Input<string> SubjectType { get; set; } = null!;

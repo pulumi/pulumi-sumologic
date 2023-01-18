@@ -21,7 +21,8 @@ public final class SloIndicatorWindowBasedEvaluation {
      */
     private @Nullable String aggregation;
     /**
-     * @return Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * @return The operator used to define a successful window. Valid values are `LessThan`
+     * , `LessThanOrEqual`, `GreaterThan`
      * , `GreaterThanOrEqual`.
      * 
      */
@@ -43,7 +44,8 @@ public final class SloIndicatorWindowBasedEvaluation {
      */
     private String size;
     /**
-     * @return Compared against threshold query&#39;s raw data points to determine success criteria.
+     * @return Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+     * for `(good windows / total windows) * 100`.
      * 
      */
     private Double threshold;
@@ -58,7 +60,8 @@ public final class SloIndicatorWindowBasedEvaluation {
         return Optional.ofNullable(this.aggregation);
     }
     /**
-     * @return Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * @return The operator used to define a successful window. Valid values are `LessThan`
+     * , `LessThanOrEqual`, `GreaterThan`
      * , `GreaterThanOrEqual`.
      * 
      */
@@ -88,7 +91,8 @@ public final class SloIndicatorWindowBasedEvaluation {
         return this.size;
     }
     /**
-     * @return Compared against threshold query&#39;s raw data points to determine success criteria.
+     * @return Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+     * for `(good windows / total windows) * 100`.
      * 
      */
     public Double threshold() {

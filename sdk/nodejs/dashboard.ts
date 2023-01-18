@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -284,7 +285,7 @@ import * as utilities from "./utilities";
  *     - `iso8601Time` - (Required) Time as a string in ISO 8601 format.
  *
  * - `relativeTimeRange` - (Block List, Optional) Time in relative format.
- *     - `relativeTime` - (Required) Relative time as a string consisting of following elements:
+ *     - `relativeTime` - (Required) Relative time as a string consists of following elements:
  *       1. `-` (optional): minus sign indicates time in the past,
  *       2. `<number>`: number of time units,
  *       3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).

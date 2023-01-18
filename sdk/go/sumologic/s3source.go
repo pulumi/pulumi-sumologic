@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewS3Source(ctx, "s3Source", &sumologic.S3SourceArgs{
-//				Authentication: &S3SourceAuthenticationArgs{
+//				Authentication: &sumologic.S3SourceAuthenticationArgs{
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
 //					Type:      pulumi.String("S3BucketAuthentication"),
@@ -45,7 +45,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("AwsS3Bucket"),
 //				Description: pulumi.String("My description"),
-//				Path: &S3SourcePathArgs{
+//				Path: &sumologic.S3SourcePathArgs{
 //					BucketName:     pulumi.String("Bucket1"),
 //					PathExpression: pulumi.String("*"),
 //					Type:           pulumi.String("S3BucketPathExpression"),

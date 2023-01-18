@@ -280,7 +280,7 @@ class Partition(pulumi.CustomResource):
                  routing_expression: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
+        Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
 
         ## Attributes reference
 
@@ -296,7 +296,7 @@ class Partition(pulumi.CustomResource):
          $ pulumi import sumologic:index/partition:Partition partition 1234567890
         ```
 
-         [1]https://help.sumologic.com/Manage/Partitions [2]https://api.sumologic.com/docs/#operation/listPartitions
+         [1]https://help.sumologic.com/docs/manage/partitions-data-tiers/ [2]https://api.sumologic.com/docs/#operation/listPartitions
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -314,7 +314,7 @@ class Partition(pulumi.CustomResource):
                  args: Optional[PartitionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic Partition](https://help.sumologic.com/Manage/Partitions).
+        Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
 
         ## Attributes reference
 
@@ -330,7 +330,7 @@ class Partition(pulumi.CustomResource):
          $ pulumi import sumologic:index/partition:Partition partition 1234567890
         ```
 
-         [1]https://help.sumologic.com/Manage/Partitions [2]https://api.sumologic.com/docs/#operation/listPartitions
+         [1]https://help.sumologic.com/docs/manage/partitions-data-tiers/ [2]https://api.sumologic.com/docs/#operation/listPartitions
 
         :param str resource_name: The name of the resource.
         :param PartitionArgs args: The arguments to use to populate this resource's properties.

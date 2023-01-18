@@ -21,8 +21,10 @@ from .cse_aggregation_rule import *
 from .cse_chain_rule import *
 from .cse_custom_entity_type import *
 from .cse_custom_insight import *
+from .cse_custom_match_list_column import *
 from .cse_entity_criticality_config import *
 from .cse_entity_entity_group_configuration import *
+from .cse_entity_normalization_configuration import *
 from .cse_insights_configuration import *
 from .cse_insights_resolution import *
 from .cse_insights_status import *
@@ -219,6 +221,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/cseCustomMatchListColumn",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn": "CseCustomMatchListColumn"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/cseEntityCriticalityConfig",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -231,6 +241,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration": "CseEntityEntityGroupConfiguration"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/cseEntityNormalizationConfiguration",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration": "CseEntityNormalizationConfiguration"
   }
  },
  {

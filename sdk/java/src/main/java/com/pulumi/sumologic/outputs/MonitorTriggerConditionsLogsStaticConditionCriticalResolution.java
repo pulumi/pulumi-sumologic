@@ -12,10 +12,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
+    /**
+     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     * 
+     */
+    private @Nullable String resolutionWindow;
     private @Nullable Double threshold;
     private @Nullable String thresholdType;
 
     private MonitorTriggerConditionsLogsStaticConditionCriticalResolution() {}
+    /**
+     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     * 
+     */
+    public Optional<String> resolutionWindow() {
+        return Optional.ofNullable(this.resolutionWindow);
+    }
     public Optional<Double> threshold() {
         return Optional.ofNullable(this.threshold);
     }
@@ -32,15 +44,22 @@ public final class MonitorTriggerConditionsLogsStaticConditionCriticalResolution
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String resolutionWindow;
         private @Nullable Double threshold;
         private @Nullable String thresholdType;
         public Builder() {}
         public Builder(MonitorTriggerConditionsLogsStaticConditionCriticalResolution defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.resolutionWindow = defaults.resolutionWindow;
     	      this.threshold = defaults.threshold;
     	      this.thresholdType = defaults.thresholdType;
         }
 
+        @CustomType.Setter
+        public Builder resolutionWindow(@Nullable String resolutionWindow) {
+            this.resolutionWindow = resolutionWindow;
+            return this;
+        }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
@@ -53,6 +72,7 @@ public final class MonitorTriggerConditionsLogsStaticConditionCriticalResolution
         }
         public MonitorTriggerConditionsLogsStaticConditionCriticalResolution build() {
             final var o = new MonitorTriggerConditionsLogsStaticConditionCriticalResolution();
+            o.resolutionWindow = resolutionWindow;
             o.threshold = threshold;
             o.thresholdType = thresholdType;
             return o;

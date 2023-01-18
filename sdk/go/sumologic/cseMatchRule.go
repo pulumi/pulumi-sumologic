@@ -30,8 +30,8 @@ import (
 //			_, err := sumologic.NewCseMatchRule(ctx, "matchRule", &sumologic.CseMatchRuleArgs{
 //				DescriptionExpression: pulumi.String("Signal description"),
 //				Enabled:               pulumi.Bool(true),
-//				EntitySelectors: CseMatchRuleEntitySelectorArray{
-//					&CseMatchRuleEntitySelectorArgs{
+//				EntitySelectors: sumologic.CseMatchRuleEntitySelectorArray{
+//					&sumologic.CseMatchRuleEntitySelectorArgs{
 //						EntityType: pulumi.String("_ip"),
 //						Expression: pulumi.String("srcDevice_ip"),
 //					},
@@ -39,7 +39,7 @@ import (
 //				Expression:     pulumi.String("objectType = \"Network\""),
 //				IsPrototype:    pulumi.Bool(false),
 //				NameExpression: pulumi.String("Signal name"),
-//				SeverityMapping: &CseMatchRuleSeverityMappingArgs{
+//				SeverityMapping: &sumologic.CseMatchRuleSeverityMappingArgs{
 //					Default: pulumi.Int(5),
 //					Type:    pulumi.String("constant"),
 //				},

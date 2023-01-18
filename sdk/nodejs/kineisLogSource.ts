@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,17 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {
- *     description: "Just testing this",
- * });
- * const kinesisLogAccessKey = new sumologic.KineisLogSource("kinesis_log_access_key", {
+ * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
+ * const kinesisLogAccessKey = new sumologic.KineisLogSource("kinesisLogAccessKey", {
  *     authentication: {
  *         accessKey: "someKey",
  *         secretKey: "******",
  *         type: "S3BucketAuthentication",
  *     },
  *     category: "prod/kinesis/log",
- *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     collectorId: collector.id,
  *     contentType: "KinesisLog",
  *     description: "Description for Kinesis Log Source",
  *     path: {
@@ -36,13 +35,13 @@ import * as utilities from "./utilities";
  *         type: "KinesisLogPath",
  *     },
  * });
- * const kinesisLogRoleArn = new sumologic.KineisLogSource("kinesis_log_role_arn", {
+ * const kinesisLogRoleArn = new sumologic.KineisLogSource("kinesisLogRoleArn", {
  *     authentication: {
  *         roleArn: "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
  *         type: "AWSRoleBasedAuthentication",
  *     },
  *     category: "prod/kinesis/log",
- *     collectorId: collector.id.apply(id => Number.parseFloat(id)),
+ *     collectorId: collector.id,
  *     contentType: "KinesisLog",
  *     description: "Description for Kinesis Log Source",
  *     path: {

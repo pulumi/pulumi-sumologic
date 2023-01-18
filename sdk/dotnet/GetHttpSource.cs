@@ -49,7 +49,7 @@ namespace Pulumi.SumoLogic
         /// - `url` - The HTTP endpoint to use for sending data to this source.
         /// </summary>
         public static Task<GetHttpSourceResult> InvokeAsync(GetHttpSourceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -89,7 +89,7 @@ namespace Pulumi.SumoLogic
         /// - `url` - The HTTP endpoint to use for sending data to this source.
         /// </summary>
         public static Output<GetHttpSourceResult> Invoke(GetHttpSourceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceInvokeArgs(), options.WithDefaults());
     }
 
 

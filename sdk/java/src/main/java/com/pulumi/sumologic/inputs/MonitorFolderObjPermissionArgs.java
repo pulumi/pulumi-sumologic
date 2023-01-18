@@ -16,8 +16,6 @@ public final class MonitorFolderObjPermissionArgs extends com.pulumi.resources.R
 
     /**
      * A Set of Permissions. Valid Permission Values:
-     * - `Create`
-     * - `Read`
      * 
      */
     @Import(name="permissions", required=true)
@@ -25,8 +23,6 @@ public final class MonitorFolderObjPermissionArgs extends com.pulumi.resources.R
 
     /**
      * @return A Set of Permissions. Valid Permission Values:
-     * - `Create`
-     * - `Read`
      * 
      */
     public Output<List<String>> permissions() {
@@ -91,8 +87,6 @@ public final class MonitorFolderObjPermissionArgs extends com.pulumi.resources.R
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
-         * - `Create`
-         * - `Read`
          * 
          * @return builder
          * 
@@ -104,8 +98,6 @@ public final class MonitorFolderObjPermissionArgs extends com.pulumi.resources.R
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
-         * - `Create`
-         * - `Read`
          * 
          * @return builder
          * 
@@ -116,8 +108,6 @@ public final class MonitorFolderObjPermissionArgs extends com.pulumi.resources.R
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
-         * - `Create`
-         * - `Read`
          * 
          * @return builder
          * 

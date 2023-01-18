@@ -110,7 +110,7 @@ namespace Pulumi.SumoLogic
         public Output<ImmutableArray<Outputs.CseLogMappingField>> Fields { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the field.
+        /// The name of the log mapping.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// Name of the field.
+        /// The name of the log mapping.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// Name of the field.
+        /// The name of the log mapping.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

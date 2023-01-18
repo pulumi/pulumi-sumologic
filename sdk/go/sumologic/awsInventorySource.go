@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewAwsInventorySource(ctx, "awsInventorySource", &sumologic.AwsInventorySourceArgs{
-//				Authentication: &AwsInventorySourceAuthenticationArgs{
+//				Authentication: &sumologic.AwsInventorySourceAuthenticationArgs{
 //					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 //					Type:    pulumi.String("AWSRoleBasedAuthentication"),
 //				},
@@ -44,7 +44,7 @@ import (
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("AwsInventory"),
 //				Description: pulumi.String("My description"),
-//				Path: &AwsInventorySourcePathArgs{
+//				Path: &sumologic.AwsInventorySourcePathArgs{
 //					LimitToNamespaces: pulumi.StringArray{
 //						pulumi.String("AWS/RDS"),
 //						pulumi.String("AWS/EC2"),

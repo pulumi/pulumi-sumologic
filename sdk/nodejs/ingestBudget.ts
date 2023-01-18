@@ -18,11 +18,9 @@ import * as utilities from "./utilities";
  *     description: "For testing purposes",
  *     fieldValue: "test",
  * });
- * const collector = new sumologic.Collector("collector", {
- *     fields: {
- *         _budget: budget.fieldValue,
- *     },
- * });
+ * const collector = new sumologic.Collector("collector", {fields: {
+ *     _budget: budget.fieldValue,
+ * }});
  * ```
  *
  * ## Import

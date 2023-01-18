@@ -28,20 +28,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewHierarchy(ctx, "exampleHierarchy", &sumologic.HierarchyArgs{
-//				Filter: &HierarchyFilterArgs{
+//				Filter: &sumologic.HierarchyFilterArgs{
 //					Key:   pulumi.String("_origin"),
 //					Value: pulumi.String("kubernetes"),
 //				},
-//				Levels: HierarchyLevelArray{
-//					&HierarchyLevelArgs{
+//				Levels: sumologic.HierarchyLevelArray{
+//					&sumologic.HierarchyLevelArgs{
 //						EntityType: pulumi.String("cluster"),
-//						NextLevel: &HierarchyLevelNextLevelArgs{
+//						NextLevel: &sumologic.HierarchyLevelNextLevelArgs{
 //							EntityType: pulumi.String("node"),
 //						},
-//						NextLevelsWithConditions: HierarchyLevelNextLevelsWithConditionArray{
-//							&HierarchyLevelNextLevelsWithConditionArgs{
+//						NextLevelsWithConditions: sumologic.HierarchyLevelNextLevelsWithConditionArray{
+//							&sumologic.HierarchyLevelNextLevelsWithConditionArgs{
 //								Condition: pulumi.String("testCondition"),
-//								Level: &HierarchyLevelNextLevelsWithConditionLevelArgs{
+//								Level: &sumologic.HierarchyLevelNextLevelsWithConditionLevelArgs{
 //									EntityType: pulumi.String("namespace"),
 //								},
 //							},

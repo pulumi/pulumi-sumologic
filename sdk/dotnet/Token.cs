@@ -64,15 +64,12 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Status of the token. Valid values:
-        /// - `Active`
-        /// - `Inactive`
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// Type of the token. Valid value:
-        /// - `CollectorRegistration`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -140,15 +137,12 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Status of the token. Valid values:
-        /// - `Active`
-        /// - `Inactive`
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
         /// <summary>
         /// Type of the token. Valid value:
-        /// - `CollectorRegistration`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -184,15 +178,12 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Status of the token. Valid values:
-        /// - `Active`
-        /// - `Inactive`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Type of the token. Valid value:
-        /// - `CollectorRegistration`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -46,7 +46,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CseLogMappingFieldLookup> Lookups;
         /// <summary>
-        /// Name of the field.
+        /// The name of the log mapping.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? TimeZone;
         /// <summary>
-        /// Lookup value.
+        /// Value of the field.
         /// </summary>
         public readonly string? Value;
         /// <summary>

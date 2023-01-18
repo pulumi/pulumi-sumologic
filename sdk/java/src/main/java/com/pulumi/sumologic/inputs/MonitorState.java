@@ -25,14 +25,14 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
     public static final MonitorState Empty = new MonitorState();
 
     /**
-     * The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+     * The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      * 
      */
     @Import(name="alertName")
     private @Nullable Output<String> alertName;
 
     /**
-     * @return The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+     * @return The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      * 
      */
     public Optional<Output<String>> alertName() {
@@ -41,7 +41,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the content object. Valid value:
-     * - `Monitor`
      * 
      */
     @Import(name="contentType")
@@ -49,7 +48,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the content object. Valid value:
-     * - `Monitor`
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -85,9 +83,21 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Evaluation delay as a string consists of the following elements:
+     * 1. `&lt;number&gt;`: number of time units,
+     * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     * 
+     */
     @Import(name="evaluationDelay")
     private @Nullable Output<String> evaluationDelay;
 
+    /**
+     * @return Evaluation delay as a string consists of the following elements:
+     * 1. `&lt;number&gt;`: number of time units,
+     * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     * 
+     */
     public Optional<Output<String>> evaluationDelay() {
         return Optional.ofNullable(this.evaluationDelay);
     }
@@ -159,9 +169,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of monitor. Valid values:
-     * - `Logs`: A logs query monitor.
-     * - `Metrics`: A metrics query monitor.
-     * - `Slo`: A SLO based monitor  (beta).
      * 
      */
     @Import(name="monitorType")
@@ -169,9 +176,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of monitor. Valid values:
-     * - `Logs`: A logs query monitor.
-     * - `Metrics`: A metrics query monitor.
-     * - `Slo`: A SLO based monitor  (beta).
      * 
      */
     public Optional<Output<String>> monitorType() {
@@ -307,11 +311,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
      * 
      */
     @Import(name="statuses")
@@ -319,11 +318,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
      * 
      */
     public Optional<Output<List<String>>> statuses() {
@@ -370,7 +364,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of object model. Valid value:
-     * - `MonitorsLibraryMonitor`
      * 
      */
     @Import(name="type")
@@ -378,7 +371,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of object model. Valid value:
-     * - `MonitorsLibraryMonitor`
      * 
      */
     public Optional<Output<String>> type() {
@@ -444,7 +436,7 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertName The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+         * @param alertName The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
          * 
          * @return builder
          * 
@@ -455,7 +447,7 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertName The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}` and `{{ResultsJson}}`.
+         * @param alertName The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
          * 
          * @return builder
          * 
@@ -466,7 +458,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param contentType The type of the content object. Valid value:
-         * - `Monitor`
          * 
          * @return builder
          * 
@@ -478,7 +469,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param contentType The type of the content object. Valid value:
-         * - `Monitor`
          * 
          * @return builder
          * 
@@ -526,11 +516,27 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param evaluationDelay Evaluation delay as a string consists of the following elements:
+         * 1. `&lt;number&gt;`: number of time units,
+         * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationDelay(@Nullable Output<String> evaluationDelay) {
             $.evaluationDelay = evaluationDelay;
             return this;
         }
 
+        /**
+         * @param evaluationDelay Evaluation delay as a string consists of the following elements:
+         * 1. `&lt;number&gt;`: number of time units,
+         * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationDelay(String evaluationDelay) {
             return evaluationDelay(Output.of(evaluationDelay));
         }
@@ -624,9 +630,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param monitorType The type of monitor. Valid values:
-         * - `Logs`: A logs query monitor.
-         * - `Metrics`: A metrics query monitor.
-         * - `Slo`: A SLO based monitor  (beta).
          * 
          * @return builder
          * 
@@ -638,9 +641,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param monitorType The type of monitor. Valid values:
-         * - `Logs`: A logs query monitor.
-         * - `Metrics`: A metrics query monitor.
-         * - `Slo`: A SLO based monitor  (beta).
          * 
          * @return builder
          * 
@@ -868,11 +868,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The current status for this monitor. Values are:
-         * - `Critical`
-         * - `Warning`
-         * - `MissingData`
-         * - `Normal`
-         * - `Disabled`
          * 
          * @return builder
          * 
@@ -884,11 +879,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The current status for this monitor. Values are:
-         * - `Critical`
-         * - `Warning`
-         * - `MissingData`
-         * - `Normal`
-         * - `Disabled`
          * 
          * @return builder
          * 
@@ -899,11 +889,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The current status for this monitor. Values are:
-         * - `Critical`
-         * - `Warning`
-         * - `MissingData`
-         * - `Normal`
-         * - `Disabled`
          * 
          * @return builder
          * 
@@ -978,7 +963,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of object model. Valid value:
-         * - `MonitorsLibraryMonitor`
          * 
          * @return builder
          * 
@@ -990,7 +974,6 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of object model. Valid value:
-         * - `MonitorsLibraryMonitor`
          * 
          * @return builder
          * 

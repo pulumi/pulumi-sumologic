@@ -16,10 +16,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
     /**
      * A Set of Permissions. Valid Permission Values:
-     * - `Read`
-     * - `Update`
-     * - `Delete`
-     * - `Manage`
      * 
      */
     @Import(name="permissions", required=true)
@@ -27,10 +23,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return A Set of Permissions. Valid Permission Values:
-     * - `Read`
-     * - `Update`
-     * - `Delete`
-     * - `Manage`
      * 
      */
     public Output<List<String>> permissions() {
@@ -54,8 +46,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
     /**
      * Valid values:
-     * - `role`
-     * - `org`
      * 
      */
     @Import(name="subjectType", required=true)
@@ -63,8 +53,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Valid values:
-     * - `role`
-     * - `org`
      * 
      */
     public Output<String> subjectType() {
@@ -99,10 +87,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
-         * - `Read`
-         * - `Update`
-         * - `Delete`
-         * - `Manage`
          * 
          * @return builder
          * 
@@ -114,10 +98,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
-         * - `Read`
-         * - `Update`
-         * - `Delete`
-         * - `Manage`
          * 
          * @return builder
          * 
@@ -128,10 +108,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
-         * - `Read`
-         * - `Update`
-         * - `Delete`
-         * - `Manage`
          * 
          * @return builder
          * 
@@ -163,8 +139,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param subjectType Valid values:
-         * - `role`
-         * - `org`
          * 
          * @return builder
          * 
@@ -176,8 +150,6 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param subjectType Valid values:
-         * - `role`
-         * - `org`
          * 
          * @return builder
          * 

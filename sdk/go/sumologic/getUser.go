@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.LookupUser(ctx, &GetUserArgs{
+//			_, err := sumologic.LookupUser(ctx, &sumologic.LookupUserArgs{
 //				Id: pulumi.StringRef("1234567890"),
 //			}, nil)
 //			if err != nil {
@@ -48,7 +48,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.LookupUser(ctx, &GetUserArgs{
+//			_, err := sumologic.LookupUser(ctx, &sumologic.LookupUserArgs{
 //				Email: pulumi.StringRef("user@example.com"),
 //			}, nil)
 //			if err != nil {

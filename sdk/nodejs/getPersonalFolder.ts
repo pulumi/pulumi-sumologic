@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const personalFolder = pulumi.output(sumologic.getPersonalFolder());
+ * const personalFolder = sumologic.getPersonalFolder({});
  * ```
  * ## Attributes reference
  *
@@ -25,11 +25,8 @@ import * as utilities from "./utilities";
  */
 export function getPersonalFolder(args?: GetPersonalFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetPersonalFolderResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getPersonalFolder:getPersonalFolder", {
         "description": args.description,
         "id": args.id,
@@ -54,9 +51,27 @@ export interface GetPersonalFolderResult {
     readonly id: string;
     readonly name: string;
 }
-
+/**
+ * Provides an easy way to retrieve the Personal Folder.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const personalFolder = sumologic.getPersonalFolder({});
+ * ```
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The ID of the Personal Folder.
+ * - `name` - The name of the Personal Folder.
+ * - `description` - The description of the Personal Folder.
+ */
 export function getPersonalFolderOutput(args?: GetPersonalFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPersonalFolderResult> {
-    return pulumi.output(args).apply(a => getPersonalFolder(a, opts))
+    return pulumi.output(args).apply((a: any) => getPersonalFolder(a, opts))
 }
 
 /**

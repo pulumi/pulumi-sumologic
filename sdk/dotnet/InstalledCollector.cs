@@ -84,6 +84,9 @@ namespace Pulumi.SumoLogic
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
 
+        /// <summary>
+        /// Host name of the Collector. The hostname can be a maximum of 128 characters.
+        /// </summary>
         [Output("hostName")]
         public Output<string?> HostName { get; private set; } = null!;
 
@@ -96,9 +99,15 @@ namespace Pulumi.SumoLogic
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        /// </summary>
         [Output("sourceSyncMode")]
         public Output<string?> SourceSyncMode { get; private set; } = null!;
 
+        /// <summary>
+        /// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+        /// </summary>
         [Output("targetCpu")]
         public Output<int?> TargetCpu { get; private set; } = null!;
 
@@ -187,6 +196,9 @@ namespace Pulumi.SumoLogic
             set => _fields = value;
         }
 
+        /// <summary>
+        /// Host name of the Collector. The hostname can be a maximum of 128 characters.
+        /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
@@ -196,9 +208,15 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        /// </summary>
         [Input("sourceSyncMode")]
         public Input<string>? SourceSyncMode { get; set; }
 
+        /// <summary>
+        /// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+        /// </summary>
         [Input("targetCpu")]
         public Input<int>? TargetCpu { get; set; }
 
@@ -255,6 +273,9 @@ namespace Pulumi.SumoLogic
             set => _fields = value;
         }
 
+        /// <summary>
+        /// Host name of the Collector. The hostname can be a maximum of 128 characters.
+        /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
@@ -267,9 +288,15 @@ namespace Pulumi.SumoLogic
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        /// </summary>
         [Input("sourceSyncMode")]
         public Input<string>? SourceSyncMode { get; set; }
 
+        /// <summary>
+        /// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+        /// </summary>
         [Input("targetCpu")]
         public Input<int>? TargetCpu { get; set; }
 

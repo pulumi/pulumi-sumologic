@@ -36,7 +36,8 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
     }
 
     /**
-     * Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * The operator used to define a successful window. Valid values are `LessThan`
+     * , `LessThanOrEqual`, `GreaterThan`
      * , `GreaterThanOrEqual`.
      * 
      */
@@ -44,7 +45,8 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
     private Output<String> op;
 
     /**
-     * @return Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+     * @return The operator used to define a successful window. Valid values are `LessThan`
+     * , `LessThanOrEqual`, `GreaterThan`
      * , `GreaterThanOrEqual`.
      * 
      */
@@ -100,14 +102,16 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
     }
 
     /**
-     * Compared against threshold query&#39;s raw data points to determine success criteria.
+     * Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+     * for `(good windows / total windows) * 100`.
      * 
      */
     @Import(name="threshold", required=true)
     private Output<Double> threshold;
 
     /**
-     * @return Compared against threshold query&#39;s raw data points to determine success criteria.
+     * @return Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+     * for `(good windows / total windows) * 100`.
      * 
      */
     public Output<Double> threshold() {
@@ -167,7 +171,8 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param op Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+         * @param op The operator used to define a successful window. Valid values are `LessThan`
+         * , `LessThanOrEqual`, `GreaterThan`
          * , `GreaterThanOrEqual`.
          * 
          * @return builder
@@ -179,7 +184,8 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param op Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+         * @param op The operator used to define a successful window. Valid values are `LessThan`
+         * , `LessThanOrEqual`, `GreaterThan`
          * , `GreaterThanOrEqual`.
          * 
          * @return builder
@@ -265,7 +271,8 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param threshold Compared against threshold query&#39;s raw data points to determine success criteria.
+         * @param threshold Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+         * for `(good windows / total windows) * 100`.
          * 
          * @return builder
          * 
@@ -276,7 +283,8 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param threshold Compared against threshold query&#39;s raw data points to determine success criteria.
+         * @param threshold Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+         * for `(good windows / total windows) * 100`.
          * 
          * @return builder
          * 

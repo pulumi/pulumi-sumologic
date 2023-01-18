@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const matchRule = new sumologic.CseMatchRule("match_rule", {
+ * const matchRule = new sumologic.CseMatchRule("matchRule", {
  *     descriptionExpression: "Signal description",
  *     enabled: true,
  *     entitySelectors: [{
@@ -25,7 +26,7 @@ import * as utilities from "./utilities";
  *     isPrototype: false,
  *     nameExpression: "Signal name",
  *     severityMapping: {
- *         default: 5,
+ *         "default": 5,
  *         type: "constant",
  *     },
  *     summaryExpression: "Signal summary",

@@ -32,8 +32,8 @@ import (
 //				CountField:    pulumi.String("dstDevice_hostname"),
 //				Description:   pulumi.String("Signal description"),
 //				Enabled:       pulumi.Bool(true),
-//				EntitySelectors: CseThresholdRuleEntitySelectorArray{
-//					&CseThresholdRuleEntitySelectorArgs{
+//				EntitySelectors: sumologic.CseThresholdRuleEntitySelectorArray{
+//					&sumologic.CseThresholdRuleEntitySelectorArgs{
 //						EntityType: pulumi.String("_ip"),
 //						Expression: pulumi.String("srcDevice_ip"),
 //					},

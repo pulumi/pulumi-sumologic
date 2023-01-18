@@ -18,6 +18,12 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("occurrenceType")]
         public Input<string>? OccurrenceType { get; set; }
 
+        /// <summary>
+        /// The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        /// </summary>
+        [Input("resolutionWindow")]
+        public Input<string>? ResolutionWindow { get; set; }
+
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
 

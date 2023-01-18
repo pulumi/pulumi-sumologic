@@ -37,7 +37,7 @@ import (
 //				Issuer:                       pulumi.String("http://www.okta.com/abxcseyuiwelflkdjh"),
 //				LogoutEnabled:                pulumi.Bool(false),
 //				LogoutUrl:                    pulumi.String(""),
-//				OnDemandProvisioningEnabled: &SamlConfigurationOnDemandProvisioningEnabledArgs{
+//				OnDemandProvisioningEnabled: &sumologic.SamlConfigurationOnDemandProvisioningEnabledArgs{
 //					FirstNameAttribute: pulumi.String("firstName"),
 //					LastNameAttribute:  pulumi.String("lastName"),
 //					OnDemandProvisioningRoles: pulumi.StringArray{

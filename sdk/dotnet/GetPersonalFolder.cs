@@ -42,7 +42,7 @@ namespace Pulumi.SumoLogic
         /// - `description` - The description of the Personal Folder.
         /// </summary>
         public static Task<GetPersonalFolderResult> InvokeAsync(GetPersonalFolderArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides an easy way to retrieve the Personal Folder.
@@ -75,7 +75,7 @@ namespace Pulumi.SumoLogic
         /// - `description` - The description of the Personal Folder.
         /// </summary>
         public static Output<GetPersonalFolderResult> Invoke(GetPersonalFolderInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -117,12 +117,13 @@ func Provider() tfbridge.ProviderInfo {
 			"sumologic_cse_chain_rule":                {Tok: makeResource(mainMod, "CseChainRule")},
 			"sumologic_cse_custom_entity_type":        {Tok: makeResource(mainMod, "CseCustomEntityType")},
 			"sumologic_cse_custom_insight":            {Tok: makeResource(mainMod, "CseCustomInsight")},
+			"sumologic_cse_custom_match_list_column":  {Tok: makeResource(mainMod, "CseCustomMatchListColumn")},
 			"sumologic_cse_entity_criticality_config": {Tok: makeResource(mainMod, "CseEntityCriticalityConfig")},
 			"sumologic_cse_entity_entity_group_configuration": {
 				Tok: makeResource(mainMod, "CseEntityEntityGroupConfiguration"),
 			},
-			"sumologic_cse_entity_normalization_config": {
-				Tok: makeResource(mainMod, "CseEntityNormalizationConfig"),
+			"sumologic_cse_entity_normalization_configuration": {
+				Tok: makeResource(mainMod, "CseEntityNormalizationConfiguration"),
 			},
 			"sumologic_cse_inventory_entity_group_configuration": {
 				Tok: makeResource(mainMod, "CseInventoryEntityGroupConfiguration"),

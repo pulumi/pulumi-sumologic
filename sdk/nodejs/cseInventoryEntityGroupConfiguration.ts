@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const inventoryEntityGroupConfiguration = new sumologic.CseInventoryEntityGroupConfiguration("inventory_entity_group_configuration", {
+ * const inventoryEntityGroupConfiguration = new sumologic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration", {
  *     criticality: "HIGH",
  *     description: "Inventory entity group description",
  *     group: "admin",

@@ -34,14 +34,14 @@ public final class CseMatchListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Match list item description.
+     * Match list description.
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return Match list item description.
+     * @return Match list description.
      * 
      */
     public Output<String> description() {
@@ -143,7 +143,7 @@ public final class CseMatchListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Match list item description.
+         * @param description Match list description.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class CseMatchListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Match list item description.
+         * @param description Match list description.
          * 
          * @return builder
          * 

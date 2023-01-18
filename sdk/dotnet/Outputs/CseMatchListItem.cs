@@ -14,7 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class CseMatchListItem
     {
         /// <summary>
-        /// Match list item description.
+        /// Match list description.
         /// </summary>
         public readonly string Description;
         /// <summary>

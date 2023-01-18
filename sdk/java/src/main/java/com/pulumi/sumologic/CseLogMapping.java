@@ -124,14 +124,14 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
         return this.fields;
     }
     /**
-     * Name of the field.
+     * The name of the log mapping.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the field.
+     * @return The name of the log mapping.
      * 
      */
     public Output<String> name() {

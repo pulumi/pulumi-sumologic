@@ -13,15 +13,22 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MonitorTriggerConditionsLogsStaticConditionWarningResolution
     {
+        /// <summary>
+        /// The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        /// </summary>
+        public readonly string? ResolutionWindow;
         public readonly double? Threshold;
         public readonly string? ThresholdType;
 
         [OutputConstructor]
         private MonitorTriggerConditionsLogsStaticConditionWarningResolution(
+            string? resolutionWindow,
+
             double? threshold,
 
             string? thresholdType)
         {
+            ResolutionWindow = resolutionWindow;
             Threshold = threshold;
             ThresholdType = thresholdType;
         }

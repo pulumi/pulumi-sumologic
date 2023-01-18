@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// <summary>
         /// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
         /// , `Threshold`.
+        /// , `Threshold`.
         /// </summary>
         public readonly string QueryGroupType;
         /// <summary>

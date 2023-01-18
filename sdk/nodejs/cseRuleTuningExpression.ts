@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const ruleTuningExpression = new sumologic.CseRuleTuningExpression("rule_tuning_expression", {
+ * const ruleTuningExpression = new sumologic.CseRuleTuningExpression("ruleTuningExpression", {
  *     description: "New Rule Tuning Description",
  *     enabled: true,
  *     exclude: true,

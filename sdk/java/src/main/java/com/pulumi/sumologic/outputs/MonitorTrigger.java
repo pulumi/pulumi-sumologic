@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 public final class MonitorTrigger {
     private @Nullable String detectionMethod;
     private @Nullable String occurrenceType;
+    /**
+     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     * 
+     */
+    private @Nullable String resolutionWindow;
     private @Nullable Double threshold;
     private @Nullable String thresholdType;
     private @Nullable String timeRange;
@@ -26,6 +31,13 @@ public final class MonitorTrigger {
     }
     public Optional<String> occurrenceType() {
         return Optional.ofNullable(this.occurrenceType);
+    }
+    /**
+     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     * 
+     */
+    public Optional<String> resolutionWindow() {
+        return Optional.ofNullable(this.resolutionWindow);
     }
     public Optional<Double> threshold() {
         return Optional.ofNullable(this.threshold);
@@ -54,6 +66,7 @@ public final class MonitorTrigger {
     public static final class Builder {
         private @Nullable String detectionMethod;
         private @Nullable String occurrenceType;
+        private @Nullable String resolutionWindow;
         private @Nullable Double threshold;
         private @Nullable String thresholdType;
         private @Nullable String timeRange;
@@ -64,6 +77,7 @@ public final class MonitorTrigger {
     	      Objects.requireNonNull(defaults);
     	      this.detectionMethod = defaults.detectionMethod;
     	      this.occurrenceType = defaults.occurrenceType;
+    	      this.resolutionWindow = defaults.resolutionWindow;
     	      this.threshold = defaults.threshold;
     	      this.thresholdType = defaults.thresholdType;
     	      this.timeRange = defaults.timeRange;
@@ -79,6 +93,11 @@ public final class MonitorTrigger {
         @CustomType.Setter
         public Builder occurrenceType(@Nullable String occurrenceType) {
             this.occurrenceType = occurrenceType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resolutionWindow(@Nullable String resolutionWindow) {
+            this.resolutionWindow = resolutionWindow;
             return this;
         }
         @CustomType.Setter
@@ -110,6 +129,7 @@ public final class MonitorTrigger {
             final var o = new MonitorTrigger();
             o.detectionMethod = detectionMethod;
             o.occurrenceType = occurrenceType;
+            o.resolutionWindow = resolutionWindow;
             o.threshold = threshold;
             o.thresholdType = thresholdType;
             o.timeRange = timeRange;

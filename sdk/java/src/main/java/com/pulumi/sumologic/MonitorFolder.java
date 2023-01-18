@@ -180,7 +180,6 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of object model. Valid value:
-     * - `MonitorsLibraryFolder`
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -188,7 +187,6 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of object model. Valid value:
-     * - `MonitorsLibraryFolder`
      * 
      */
     public Output<Optional<String>> type() {

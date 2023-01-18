@@ -16,14 +16,14 @@ public final class CseMatchListItemArgs extends com.pulumi.resources.ResourceArg
     public static final CseMatchListItemArgs Empty = new CseMatchListItemArgs();
 
     /**
-     * Match list item description.
+     * Match list description.
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return Match list item description.
+     * @return Match list description.
      * 
      */
     public Output<String> description() {
@@ -103,7 +103,7 @@ public final class CseMatchListItemArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Match list item description.
+         * @param description Match list description.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class CseMatchListItemArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Match list item description.
+         * @param description Match list description.
          * 
          * @return builder
          * 

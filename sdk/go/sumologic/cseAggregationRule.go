@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewCseAggregationRule(ctx, "aggregationRule", &sumologic.CseAggregationRuleArgs{
-//				AggregationFunctions: CseAggregationRuleAggregationFunctionArray{
-//					&CseAggregationRuleAggregationFunctionArgs{
+//				AggregationFunctions: sumologic.CseAggregationRuleAggregationFunctionArray{
+//					&sumologic.CseAggregationRuleAggregationFunctionArgs{
 //						Arguments: pulumi.StringArray{
 //							pulumi.String("metadata_deviceEventId"),
 //						},
@@ -39,8 +39,8 @@ import (
 //				},
 //				DescriptionExpression: pulumi.String("Signal description"),
 //				Enabled:               pulumi.Bool(true),
-//				EntitySelectors: CseAggregationRuleEntitySelectorArray{
-//					&CseAggregationRuleEntitySelectorArgs{
+//				EntitySelectors: sumologic.CseAggregationRuleEntitySelectorArray{
+//					&sumologic.CseAggregationRuleEntitySelectorArgs{
 //						EntityType: pulumi.String("_ip"),
 //						Expression: pulumi.String("srcDevice_ip"),
 //					},
@@ -52,7 +52,7 @@ import (
 //				IsPrototype:     pulumi.Bool(false),
 //				MatchExpression: pulumi.String("objectType = \"Network\""),
 //				NameExpression:  pulumi.String("Signal name"),
-//				SeverityMapping: &CseAggregationRuleSeverityMappingArgs{
+//				SeverityMapping: &sumologic.CseAggregationRuleSeverityMappingArgs{
 //					Default: pulumi.Int(5),
 //					Type:    pulumi.String("constant"),
 //				},

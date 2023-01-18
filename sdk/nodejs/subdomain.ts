@@ -13,9 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const exampleSubdomain = new sumologic.Subdomain("exampleSubdomain", {
- *     subdomain: "my-company",
- * });
+ * const exampleSubdomain = new sumologic.Subdomain("exampleSubdomain", {subdomain: "my-company"});
  * ```
  * ## Attributes reference
  *

@@ -30,7 +30,10 @@ class InstalledCollectorArgs:
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+        :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        :param pulumi.Input[int] target_cpu: When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         pulumi.set(__self__, "ephemeral", ephemeral)
@@ -113,6 +116,9 @@ class InstalledCollectorArgs:
     @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name of the Collector. The hostname can be a maximum of 128 characters.
+        """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
@@ -134,6 +140,9 @@ class InstalledCollectorArgs:
     @property
     @pulumi.getter(name="sourceSyncMode")
     def source_sync_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        """
         return pulumi.get(self, "source_sync_mode")
 
     @source_sync_mode.setter
@@ -143,6 +152,9 @@ class InstalledCollectorArgs:
     @property
     @pulumi.getter(name="targetCpu")
     def target_cpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+        """
         return pulumi.get(self, "target_cpu")
 
     @target_cpu.setter
@@ -184,7 +196,10 @@ class _InstalledCollectorState:
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+        :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        :param pulumi.Input[int] target_cpu: When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         if alive is not None:
@@ -292,6 +307,9 @@ class _InstalledCollectorState:
     @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name of the Collector. The hostname can be a maximum of 128 characters.
+        """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
@@ -322,6 +340,9 @@ class _InstalledCollectorState:
     @property
     @pulumi.getter(name="sourceSyncMode")
     def source_sync_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        """
         return pulumi.get(self, "source_sync_mode")
 
     @source_sync_mode.setter
@@ -331,6 +352,9 @@ class _InstalledCollectorState:
     @property
     @pulumi.getter(name="targetCpu")
     def target_cpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+        """
         return pulumi.get(self, "target_cpu")
 
     @target_cpu.setter
@@ -403,7 +427,10 @@ class InstalledCollector(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+        :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        :param pulumi.Input[int] target_cpu: When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         ...
@@ -526,7 +553,10 @@ class InstalledCollector(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+        :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        :param pulumi.Input[int] target_cpu: When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -598,6 +628,9 @@ class InstalledCollector(pulumi.CustomResource):
     @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Host name of the Collector. The hostname can be a maximum of 128 characters.
+        """
         return pulumi.get(self, "host_name")
 
     @property
@@ -616,11 +649,17 @@ class InstalledCollector(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sourceSyncMode")
     def source_sync_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+        """
         return pulumi.get(self, "source_sync_mode")
 
     @property
     @pulumi.getter(name="targetCpu")
     def target_cpu(self) -> pulumi.Output[Optional[int]]:
+        """
+        When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+        """
         return pulumi.get(self, "target_cpu")
 
     @property

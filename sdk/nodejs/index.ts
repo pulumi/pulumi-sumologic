@@ -5,77 +5,370 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./awsInventorySource";
-export * from "./awsXraySource";
-export * from "./cloudSyslogSource";
-export * from "./cloudToCloudSource";
-export * from "./cloudfrontSource";
-export * from "./cloudtrailSource";
-export * from "./cloudwatchSource";
-export * from "./collector";
-export * from "./collectorIngestBudgetAssignment";
-export * from "./connection";
-export * from "./content";
-export * from "./contentPermission";
-export * from "./cseAggregationRule";
-export * from "./cseChainRule";
-export * from "./cseCustomEntityType";
-export * from "./cseCustomInsight";
-export * from "./cseEntityCriticalityConfig";
-export * from "./cseEntityEntityGroupConfiguration";
-export * from "./cseInsightsConfiguration";
-export * from "./cseInsightsResolution";
-export * from "./cseInsightsStatus";
-export * from "./cseInventoryEntityGroupConfiguration";
-export * from "./cseLogMapping";
-export * from "./cseMatchList";
-export * from "./cseMatchRule";
-export * from "./cseNetworkBlock";
-export * from "./cseRuleTuningExpression";
-export * from "./cseThresholdRule";
-export * from "./dashboard";
-export * from "./elbSource";
-export * from "./field";
-export * from "./fieldExtractionRule";
-export * from "./folder";
-export * from "./gcpMetricsSource";
-export * from "./gcpSource";
-export * from "./getAdminRecommendedFolder";
-export * from "./getCallerIdentity";
-export * from "./getCollector";
-export * from "./getCseLogMappingVendorProduct";
-export * from "./getFolder";
-export * from "./getHttpSource";
-export * from "./getMyUserId";
-export * from "./getPersonalFolder";
-export * from "./getRole";
-export * from "./getUser";
-export * from "./hierarchy";
-export * from "./httpSource";
-export * from "./ingestBudget";
-export * from "./ingestBudgetV2";
-export * from "./installedCollector";
-export * from "./kineisLogSource";
-export * from "./kinesisMetricsSource";
-export * from "./lookupTable";
-export * from "./metadataSource";
-export * from "./monitor";
-export * from "./monitorFolder";
-export * from "./partition";
-export * from "./passwordPolicy";
-export * from "./policies";
-export * from "./pollingSource";
-export * from "./provider";
-export * from "./role";
-export * from "./s3auditSource";
-export * from "./s3source";
-export * from "./samlConfiguration";
-export * from "./scheduledView";
-export * from "./slo";
-export * from "./sloFolder";
-export * from "./subdomain";
-export * from "./token";
-export * from "./user";
+export { AwsInventorySourceArgs, AwsInventorySourceState } from "./awsInventorySource";
+export type AwsInventorySource = import("./awsInventorySource").AwsInventorySource;
+export const AwsInventorySource: typeof import("./awsInventorySource").AwsInventorySource = null as any;
+utilities.lazyLoad(exports, ["AwsInventorySource"], () => require("./awsInventorySource"));
+
+export { AwsXraySourceArgs, AwsXraySourceState } from "./awsXraySource";
+export type AwsXraySource = import("./awsXraySource").AwsXraySource;
+export const AwsXraySource: typeof import("./awsXraySource").AwsXraySource = null as any;
+utilities.lazyLoad(exports, ["AwsXraySource"], () => require("./awsXraySource"));
+
+export { CloudSyslogSourceArgs, CloudSyslogSourceState } from "./cloudSyslogSource";
+export type CloudSyslogSource = import("./cloudSyslogSource").CloudSyslogSource;
+export const CloudSyslogSource: typeof import("./cloudSyslogSource").CloudSyslogSource = null as any;
+utilities.lazyLoad(exports, ["CloudSyslogSource"], () => require("./cloudSyslogSource"));
+
+export { CloudToCloudSourceArgs, CloudToCloudSourceState } from "./cloudToCloudSource";
+export type CloudToCloudSource = import("./cloudToCloudSource").CloudToCloudSource;
+export const CloudToCloudSource: typeof import("./cloudToCloudSource").CloudToCloudSource = null as any;
+utilities.lazyLoad(exports, ["CloudToCloudSource"], () => require("./cloudToCloudSource"));
+
+export { CloudfrontSourceArgs, CloudfrontSourceState } from "./cloudfrontSource";
+export type CloudfrontSource = import("./cloudfrontSource").CloudfrontSource;
+export const CloudfrontSource: typeof import("./cloudfrontSource").CloudfrontSource = null as any;
+utilities.lazyLoad(exports, ["CloudfrontSource"], () => require("./cloudfrontSource"));
+
+export { CloudtrailSourceArgs, CloudtrailSourceState } from "./cloudtrailSource";
+export type CloudtrailSource = import("./cloudtrailSource").CloudtrailSource;
+export const CloudtrailSource: typeof import("./cloudtrailSource").CloudtrailSource = null as any;
+utilities.lazyLoad(exports, ["CloudtrailSource"], () => require("./cloudtrailSource"));
+
+export { CloudwatchSourceArgs, CloudwatchSourceState } from "./cloudwatchSource";
+export type CloudwatchSource = import("./cloudwatchSource").CloudwatchSource;
+export const CloudwatchSource: typeof import("./cloudwatchSource").CloudwatchSource = null as any;
+utilities.lazyLoad(exports, ["CloudwatchSource"], () => require("./cloudwatchSource"));
+
+export { CollectorArgs, CollectorState } from "./collector";
+export type Collector = import("./collector").Collector;
+export const Collector: typeof import("./collector").Collector = null as any;
+utilities.lazyLoad(exports, ["Collector"], () => require("./collector"));
+
+export { CollectorIngestBudgetAssignmentArgs, CollectorIngestBudgetAssignmentState } from "./collectorIngestBudgetAssignment";
+export type CollectorIngestBudgetAssignment = import("./collectorIngestBudgetAssignment").CollectorIngestBudgetAssignment;
+export const CollectorIngestBudgetAssignment: typeof import("./collectorIngestBudgetAssignment").CollectorIngestBudgetAssignment = null as any;
+utilities.lazyLoad(exports, ["CollectorIngestBudgetAssignment"], () => require("./collectorIngestBudgetAssignment"));
+
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { ContentArgs, ContentState } from "./content";
+export type Content = import("./content").Content;
+export const Content: typeof import("./content").Content = null as any;
+utilities.lazyLoad(exports, ["Content"], () => require("./content"));
+
+export { ContentPermissionArgs, ContentPermissionState } from "./contentPermission";
+export type ContentPermission = import("./contentPermission").ContentPermission;
+export const ContentPermission: typeof import("./contentPermission").ContentPermission = null as any;
+utilities.lazyLoad(exports, ["ContentPermission"], () => require("./contentPermission"));
+
+export { CseAggregationRuleArgs, CseAggregationRuleState } from "./cseAggregationRule";
+export type CseAggregationRule = import("./cseAggregationRule").CseAggregationRule;
+export const CseAggregationRule: typeof import("./cseAggregationRule").CseAggregationRule = null as any;
+utilities.lazyLoad(exports, ["CseAggregationRule"], () => require("./cseAggregationRule"));
+
+export { CseChainRuleArgs, CseChainRuleState } from "./cseChainRule";
+export type CseChainRule = import("./cseChainRule").CseChainRule;
+export const CseChainRule: typeof import("./cseChainRule").CseChainRule = null as any;
+utilities.lazyLoad(exports, ["CseChainRule"], () => require("./cseChainRule"));
+
+export { CseCustomEntityTypeArgs, CseCustomEntityTypeState } from "./cseCustomEntityType";
+export type CseCustomEntityType = import("./cseCustomEntityType").CseCustomEntityType;
+export const CseCustomEntityType: typeof import("./cseCustomEntityType").CseCustomEntityType = null as any;
+utilities.lazyLoad(exports, ["CseCustomEntityType"], () => require("./cseCustomEntityType"));
+
+export { CseCustomInsightArgs, CseCustomInsightState } from "./cseCustomInsight";
+export type CseCustomInsight = import("./cseCustomInsight").CseCustomInsight;
+export const CseCustomInsight: typeof import("./cseCustomInsight").CseCustomInsight = null as any;
+utilities.lazyLoad(exports, ["CseCustomInsight"], () => require("./cseCustomInsight"));
+
+export { CseCustomMatchListColumnArgs, CseCustomMatchListColumnState } from "./cseCustomMatchListColumn";
+export type CseCustomMatchListColumn = import("./cseCustomMatchListColumn").CseCustomMatchListColumn;
+export const CseCustomMatchListColumn: typeof import("./cseCustomMatchListColumn").CseCustomMatchListColumn = null as any;
+utilities.lazyLoad(exports, ["CseCustomMatchListColumn"], () => require("./cseCustomMatchListColumn"));
+
+export { CseEntityCriticalityConfigArgs, CseEntityCriticalityConfigState } from "./cseEntityCriticalityConfig";
+export type CseEntityCriticalityConfig = import("./cseEntityCriticalityConfig").CseEntityCriticalityConfig;
+export const CseEntityCriticalityConfig: typeof import("./cseEntityCriticalityConfig").CseEntityCriticalityConfig = null as any;
+utilities.lazyLoad(exports, ["CseEntityCriticalityConfig"], () => require("./cseEntityCriticalityConfig"));
+
+export { CseEntityEntityGroupConfigurationArgs, CseEntityEntityGroupConfigurationState } from "./cseEntityEntityGroupConfiguration";
+export type CseEntityEntityGroupConfiguration = import("./cseEntityEntityGroupConfiguration").CseEntityEntityGroupConfiguration;
+export const CseEntityEntityGroupConfiguration: typeof import("./cseEntityEntityGroupConfiguration").CseEntityEntityGroupConfiguration = null as any;
+utilities.lazyLoad(exports, ["CseEntityEntityGroupConfiguration"], () => require("./cseEntityEntityGroupConfiguration"));
+
+export { CseEntityNormalizationConfigurationArgs, CseEntityNormalizationConfigurationState } from "./cseEntityNormalizationConfiguration";
+export type CseEntityNormalizationConfiguration = import("./cseEntityNormalizationConfiguration").CseEntityNormalizationConfiguration;
+export const CseEntityNormalizationConfiguration: typeof import("./cseEntityNormalizationConfiguration").CseEntityNormalizationConfiguration = null as any;
+utilities.lazyLoad(exports, ["CseEntityNormalizationConfiguration"], () => require("./cseEntityNormalizationConfiguration"));
+
+export { CseInsightsConfigurationArgs, CseInsightsConfigurationState } from "./cseInsightsConfiguration";
+export type CseInsightsConfiguration = import("./cseInsightsConfiguration").CseInsightsConfiguration;
+export const CseInsightsConfiguration: typeof import("./cseInsightsConfiguration").CseInsightsConfiguration = null as any;
+utilities.lazyLoad(exports, ["CseInsightsConfiguration"], () => require("./cseInsightsConfiguration"));
+
+export { CseInsightsResolutionArgs, CseInsightsResolutionState } from "./cseInsightsResolution";
+export type CseInsightsResolution = import("./cseInsightsResolution").CseInsightsResolution;
+export const CseInsightsResolution: typeof import("./cseInsightsResolution").CseInsightsResolution = null as any;
+utilities.lazyLoad(exports, ["CseInsightsResolution"], () => require("./cseInsightsResolution"));
+
+export { CseInsightsStatusArgs, CseInsightsStatusState } from "./cseInsightsStatus";
+export type CseInsightsStatus = import("./cseInsightsStatus").CseInsightsStatus;
+export const CseInsightsStatus: typeof import("./cseInsightsStatus").CseInsightsStatus = null as any;
+utilities.lazyLoad(exports, ["CseInsightsStatus"], () => require("./cseInsightsStatus"));
+
+export { CseInventoryEntityGroupConfigurationArgs, CseInventoryEntityGroupConfigurationState } from "./cseInventoryEntityGroupConfiguration";
+export type CseInventoryEntityGroupConfiguration = import("./cseInventoryEntityGroupConfiguration").CseInventoryEntityGroupConfiguration;
+export const CseInventoryEntityGroupConfiguration: typeof import("./cseInventoryEntityGroupConfiguration").CseInventoryEntityGroupConfiguration = null as any;
+utilities.lazyLoad(exports, ["CseInventoryEntityGroupConfiguration"], () => require("./cseInventoryEntityGroupConfiguration"));
+
+export { CseLogMappingArgs, CseLogMappingState } from "./cseLogMapping";
+export type CseLogMapping = import("./cseLogMapping").CseLogMapping;
+export const CseLogMapping: typeof import("./cseLogMapping").CseLogMapping = null as any;
+utilities.lazyLoad(exports, ["CseLogMapping"], () => require("./cseLogMapping"));
+
+export { CseMatchListArgs, CseMatchListState } from "./cseMatchList";
+export type CseMatchList = import("./cseMatchList").CseMatchList;
+export const CseMatchList: typeof import("./cseMatchList").CseMatchList = null as any;
+utilities.lazyLoad(exports, ["CseMatchList"], () => require("./cseMatchList"));
+
+export { CseMatchRuleArgs, CseMatchRuleState } from "./cseMatchRule";
+export type CseMatchRule = import("./cseMatchRule").CseMatchRule;
+export const CseMatchRule: typeof import("./cseMatchRule").CseMatchRule = null as any;
+utilities.lazyLoad(exports, ["CseMatchRule"], () => require("./cseMatchRule"));
+
+export { CseNetworkBlockArgs, CseNetworkBlockState } from "./cseNetworkBlock";
+export type CseNetworkBlock = import("./cseNetworkBlock").CseNetworkBlock;
+export const CseNetworkBlock: typeof import("./cseNetworkBlock").CseNetworkBlock = null as any;
+utilities.lazyLoad(exports, ["CseNetworkBlock"], () => require("./cseNetworkBlock"));
+
+export { CseRuleTuningExpressionArgs, CseRuleTuningExpressionState } from "./cseRuleTuningExpression";
+export type CseRuleTuningExpression = import("./cseRuleTuningExpression").CseRuleTuningExpression;
+export const CseRuleTuningExpression: typeof import("./cseRuleTuningExpression").CseRuleTuningExpression = null as any;
+utilities.lazyLoad(exports, ["CseRuleTuningExpression"], () => require("./cseRuleTuningExpression"));
+
+export { CseThresholdRuleArgs, CseThresholdRuleState } from "./cseThresholdRule";
+export type CseThresholdRule = import("./cseThresholdRule").CseThresholdRule;
+export const CseThresholdRule: typeof import("./cseThresholdRule").CseThresholdRule = null as any;
+utilities.lazyLoad(exports, ["CseThresholdRule"], () => require("./cseThresholdRule"));
+
+export { DashboardArgs, DashboardState } from "./dashboard";
+export type Dashboard = import("./dashboard").Dashboard;
+export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
+utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
+
+export { ElbSourceArgs, ElbSourceState } from "./elbSource";
+export type ElbSource = import("./elbSource").ElbSource;
+export const ElbSource: typeof import("./elbSource").ElbSource = null as any;
+utilities.lazyLoad(exports, ["ElbSource"], () => require("./elbSource"));
+
+export { FieldArgs, FieldState } from "./field";
+export type Field = import("./field").Field;
+export const Field: typeof import("./field").Field = null as any;
+utilities.lazyLoad(exports, ["Field"], () => require("./field"));
+
+export { FieldExtractionRuleArgs, FieldExtractionRuleState } from "./fieldExtractionRule";
+export type FieldExtractionRule = import("./fieldExtractionRule").FieldExtractionRule;
+export const FieldExtractionRule: typeof import("./fieldExtractionRule").FieldExtractionRule = null as any;
+utilities.lazyLoad(exports, ["FieldExtractionRule"], () => require("./fieldExtractionRule"));
+
+export { FolderArgs, FolderState } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+
+export { GcpMetricsSourceArgs, GcpMetricsSourceState } from "./gcpMetricsSource";
+export type GcpMetricsSource = import("./gcpMetricsSource").GcpMetricsSource;
+export const GcpMetricsSource: typeof import("./gcpMetricsSource").GcpMetricsSource = null as any;
+utilities.lazyLoad(exports, ["GcpMetricsSource"], () => require("./gcpMetricsSource"));
+
+export { GcpSourceArgs, GcpSourceState } from "./gcpSource";
+export type GcpSource = import("./gcpSource").GcpSource;
+export const GcpSource: typeof import("./gcpSource").GcpSource = null as any;
+utilities.lazyLoad(exports, ["GcpSource"], () => require("./gcpSource"));
+
+export { GetAdminRecommendedFolderArgs, GetAdminRecommendedFolderResult, GetAdminRecommendedFolderOutputArgs } from "./getAdminRecommendedFolder";
+export const getAdminRecommendedFolder: typeof import("./getAdminRecommendedFolder").getAdminRecommendedFolder = null as any;
+export const getAdminRecommendedFolderOutput: typeof import("./getAdminRecommendedFolder").getAdminRecommendedFolderOutput = null as any;
+utilities.lazyLoad(exports, ["getAdminRecommendedFolder","getAdminRecommendedFolderOutput"], () => require("./getAdminRecommendedFolder"));
+
+export { GetCallerIdentityResult } from "./getCallerIdentity";
+export const getCallerIdentity: typeof import("./getCallerIdentity").getCallerIdentity = null as any;
+utilities.lazyLoad(exports, ["getCallerIdentity"], () => require("./getCallerIdentity"));
+
+export { GetCollectorArgs, GetCollectorResult, GetCollectorOutputArgs } from "./getCollector";
+export const getCollector: typeof import("./getCollector").getCollector = null as any;
+export const getCollectorOutput: typeof import("./getCollector").getCollectorOutput = null as any;
+utilities.lazyLoad(exports, ["getCollector","getCollectorOutput"], () => require("./getCollector"));
+
+export { GetCseLogMappingVendorProductArgs, GetCseLogMappingVendorProductResult, GetCseLogMappingVendorProductOutputArgs } from "./getCseLogMappingVendorProduct";
+export const getCseLogMappingVendorProduct: typeof import("./getCseLogMappingVendorProduct").getCseLogMappingVendorProduct = null as any;
+export const getCseLogMappingVendorProductOutput: typeof import("./getCseLogMappingVendorProduct").getCseLogMappingVendorProductOutput = null as any;
+utilities.lazyLoad(exports, ["getCseLogMappingVendorProduct","getCseLogMappingVendorProductOutput"], () => require("./getCseLogMappingVendorProduct"));
+
+export { GetFolderArgs, GetFolderResult, GetFolderOutputArgs } from "./getFolder";
+export const getFolder: typeof import("./getFolder").getFolder = null as any;
+export const getFolderOutput: typeof import("./getFolder").getFolderOutput = null as any;
+utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
+
+export { GetHttpSourceArgs, GetHttpSourceResult, GetHttpSourceOutputArgs } from "./getHttpSource";
+export const getHttpSource: typeof import("./getHttpSource").getHttpSource = null as any;
+export const getHttpSourceOutput: typeof import("./getHttpSource").getHttpSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getHttpSource","getHttpSourceOutput"], () => require("./getHttpSource"));
+
+export { GetMyUserIdArgs, GetMyUserIdResult, GetMyUserIdOutputArgs } from "./getMyUserId";
+export const getMyUserId: typeof import("./getMyUserId").getMyUserId = null as any;
+export const getMyUserIdOutput: typeof import("./getMyUserId").getMyUserIdOutput = null as any;
+utilities.lazyLoad(exports, ["getMyUserId","getMyUserIdOutput"], () => require("./getMyUserId"));
+
+export { GetPersonalFolderArgs, GetPersonalFolderResult, GetPersonalFolderOutputArgs } from "./getPersonalFolder";
+export const getPersonalFolder: typeof import("./getPersonalFolder").getPersonalFolder = null as any;
+export const getPersonalFolderOutput: typeof import("./getPersonalFolder").getPersonalFolderOutput = null as any;
+utilities.lazyLoad(exports, ["getPersonalFolder","getPersonalFolderOutput"], () => require("./getPersonalFolder"));
+
+export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
+export const getRole: typeof import("./getRole").getRole = null as any;
+export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { HierarchyArgs, HierarchyState } from "./hierarchy";
+export type Hierarchy = import("./hierarchy").Hierarchy;
+export const Hierarchy: typeof import("./hierarchy").Hierarchy = null as any;
+utilities.lazyLoad(exports, ["Hierarchy"], () => require("./hierarchy"));
+
+export { HttpSourceArgs, HttpSourceState } from "./httpSource";
+export type HttpSource = import("./httpSource").HttpSource;
+export const HttpSource: typeof import("./httpSource").HttpSource = null as any;
+utilities.lazyLoad(exports, ["HttpSource"], () => require("./httpSource"));
+
+export { IngestBudgetArgs, IngestBudgetState } from "./ingestBudget";
+export type IngestBudget = import("./ingestBudget").IngestBudget;
+export const IngestBudget: typeof import("./ingestBudget").IngestBudget = null as any;
+utilities.lazyLoad(exports, ["IngestBudget"], () => require("./ingestBudget"));
+
+export { IngestBudgetV2Args, IngestBudgetV2State } from "./ingestBudgetV2";
+export type IngestBudgetV2 = import("./ingestBudgetV2").IngestBudgetV2;
+export const IngestBudgetV2: typeof import("./ingestBudgetV2").IngestBudgetV2 = null as any;
+utilities.lazyLoad(exports, ["IngestBudgetV2"], () => require("./ingestBudgetV2"));
+
+export { InstalledCollectorArgs, InstalledCollectorState } from "./installedCollector";
+export type InstalledCollector = import("./installedCollector").InstalledCollector;
+export const InstalledCollector: typeof import("./installedCollector").InstalledCollector = null as any;
+utilities.lazyLoad(exports, ["InstalledCollector"], () => require("./installedCollector"));
+
+export { KineisLogSourceArgs, KineisLogSourceState } from "./kineisLogSource";
+export type KineisLogSource = import("./kineisLogSource").KineisLogSource;
+export const KineisLogSource: typeof import("./kineisLogSource").KineisLogSource = null as any;
+utilities.lazyLoad(exports, ["KineisLogSource"], () => require("./kineisLogSource"));
+
+export { KinesisMetricsSourceArgs, KinesisMetricsSourceState } from "./kinesisMetricsSource";
+export type KinesisMetricsSource = import("./kinesisMetricsSource").KinesisMetricsSource;
+export const KinesisMetricsSource: typeof import("./kinesisMetricsSource").KinesisMetricsSource = null as any;
+utilities.lazyLoad(exports, ["KinesisMetricsSource"], () => require("./kinesisMetricsSource"));
+
+export { LookupTableArgs, LookupTableState } from "./lookupTable";
+export type LookupTable = import("./lookupTable").LookupTable;
+export const LookupTable: typeof import("./lookupTable").LookupTable = null as any;
+utilities.lazyLoad(exports, ["LookupTable"], () => require("./lookupTable"));
+
+export { MetadataSourceArgs, MetadataSourceState } from "./metadataSource";
+export type MetadataSource = import("./metadataSource").MetadataSource;
+export const MetadataSource: typeof import("./metadataSource").MetadataSource = null as any;
+utilities.lazyLoad(exports, ["MetadataSource"], () => require("./metadataSource"));
+
+export { MonitorArgs, MonitorState } from "./monitor";
+export type Monitor = import("./monitor").Monitor;
+export const Monitor: typeof import("./monitor").Monitor = null as any;
+utilities.lazyLoad(exports, ["Monitor"], () => require("./monitor"));
+
+export { MonitorFolderArgs, MonitorFolderState } from "./monitorFolder";
+export type MonitorFolder = import("./monitorFolder").MonitorFolder;
+export const MonitorFolder: typeof import("./monitorFolder").MonitorFolder = null as any;
+utilities.lazyLoad(exports, ["MonitorFolder"], () => require("./monitorFolder"));
+
+export { PartitionArgs, PartitionState } from "./partition";
+export type Partition = import("./partition").Partition;
+export const Partition: typeof import("./partition").Partition = null as any;
+utilities.lazyLoad(exports, ["Partition"], () => require("./partition"));
+
+export { PasswordPolicyArgs, PasswordPolicyState } from "./passwordPolicy";
+export type PasswordPolicy = import("./passwordPolicy").PasswordPolicy;
+export const PasswordPolicy: typeof import("./passwordPolicy").PasswordPolicy = null as any;
+utilities.lazyLoad(exports, ["PasswordPolicy"], () => require("./passwordPolicy"));
+
+export { PoliciesArgs, PoliciesState } from "./policies";
+export type Policies = import("./policies").Policies;
+export const Policies: typeof import("./policies").Policies = null as any;
+utilities.lazyLoad(exports, ["Policies"], () => require("./policies"));
+
+export { PollingSourceArgs, PollingSourceState } from "./pollingSource";
+export type PollingSource = import("./pollingSource").PollingSource;
+export const PollingSource: typeof import("./pollingSource").PollingSource = null as any;
+utilities.lazyLoad(exports, ["PollingSource"], () => require("./pollingSource"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { S3AuditSourceArgs, S3AuditSourceState } from "./s3auditSource";
+export type S3AuditSource = import("./s3auditSource").S3AuditSource;
+export const S3AuditSource: typeof import("./s3auditSource").S3AuditSource = null as any;
+utilities.lazyLoad(exports, ["S3AuditSource"], () => require("./s3auditSource"));
+
+export { S3SourceArgs, S3SourceState } from "./s3source";
+export type S3Source = import("./s3source").S3Source;
+export const S3Source: typeof import("./s3source").S3Source = null as any;
+utilities.lazyLoad(exports, ["S3Source"], () => require("./s3source"));
+
+export { SamlConfigurationArgs, SamlConfigurationState } from "./samlConfiguration";
+export type SamlConfiguration = import("./samlConfiguration").SamlConfiguration;
+export const SamlConfiguration: typeof import("./samlConfiguration").SamlConfiguration = null as any;
+utilities.lazyLoad(exports, ["SamlConfiguration"], () => require("./samlConfiguration"));
+
+export { ScheduledViewArgs, ScheduledViewState } from "./scheduledView";
+export type ScheduledView = import("./scheduledView").ScheduledView;
+export const ScheduledView: typeof import("./scheduledView").ScheduledView = null as any;
+utilities.lazyLoad(exports, ["ScheduledView"], () => require("./scheduledView"));
+
+export { SloArgs, SloState } from "./slo";
+export type Slo = import("./slo").Slo;
+export const Slo: typeof import("./slo").Slo = null as any;
+utilities.lazyLoad(exports, ["Slo"], () => require("./slo"));
+
+export { SloFolderArgs, SloFolderState } from "./sloFolder";
+export type SloFolder = import("./sloFolder").SloFolder;
+export const SloFolder: typeof import("./sloFolder").SloFolder = null as any;
+utilities.lazyLoad(exports, ["SloFolder"], () => require("./sloFolder"));
+
+export { SubdomainArgs, SubdomainState } from "./subdomain";
+export type Subdomain = import("./subdomain").Subdomain;
+export const Subdomain: typeof import("./subdomain").Subdomain = null as any;
+utilities.lazyLoad(exports, ["Subdomain"], () => require("./subdomain"));
+
+export { TokenArgs, TokenState } from "./token";
+export type Token = import("./token").Token;
+export const Token: typeof import("./token").Token = null as any;
+utilities.lazyLoad(exports, ["Token"], () => require("./token"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -85,68 +378,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { AwsInventorySource } from "./awsInventorySource";
-import { AwsXraySource } from "./awsXraySource";
-import { CloudSyslogSource } from "./cloudSyslogSource";
-import { CloudToCloudSource } from "./cloudToCloudSource";
-import { CloudfrontSource } from "./cloudfrontSource";
-import { CloudtrailSource } from "./cloudtrailSource";
-import { CloudwatchSource } from "./cloudwatchSource";
-import { Collector } from "./collector";
-import { CollectorIngestBudgetAssignment } from "./collectorIngestBudgetAssignment";
-import { Connection } from "./connection";
-import { Content } from "./content";
-import { ContentPermission } from "./contentPermission";
-import { CseAggregationRule } from "./cseAggregationRule";
-import { CseChainRule } from "./cseChainRule";
-import { CseCustomEntityType } from "./cseCustomEntityType";
-import { CseCustomInsight } from "./cseCustomInsight";
-import { CseEntityCriticalityConfig } from "./cseEntityCriticalityConfig";
-import { CseEntityEntityGroupConfiguration } from "./cseEntityEntityGroupConfiguration";
-import { CseInsightsConfiguration } from "./cseInsightsConfiguration";
-import { CseInsightsResolution } from "./cseInsightsResolution";
-import { CseInsightsStatus } from "./cseInsightsStatus";
-import { CseInventoryEntityGroupConfiguration } from "./cseInventoryEntityGroupConfiguration";
-import { CseLogMapping } from "./cseLogMapping";
-import { CseMatchList } from "./cseMatchList";
-import { CseMatchRule } from "./cseMatchRule";
-import { CseNetworkBlock } from "./cseNetworkBlock";
-import { CseRuleTuningExpression } from "./cseRuleTuningExpression";
-import { CseThresholdRule } from "./cseThresholdRule";
-import { Dashboard } from "./dashboard";
-import { ElbSource } from "./elbSource";
-import { Field } from "./field";
-import { FieldExtractionRule } from "./fieldExtractionRule";
-import { Folder } from "./folder";
-import { GcpMetricsSource } from "./gcpMetricsSource";
-import { GcpSource } from "./gcpSource";
-import { Hierarchy } from "./hierarchy";
-import { HttpSource } from "./httpSource";
-import { IngestBudget } from "./ingestBudget";
-import { IngestBudgetV2 } from "./ingestBudgetV2";
-import { InstalledCollector } from "./installedCollector";
-import { KineisLogSource } from "./kineisLogSource";
-import { KinesisMetricsSource } from "./kinesisMetricsSource";
-import { LookupTable } from "./lookupTable";
-import { MetadataSource } from "./metadataSource";
-import { Monitor } from "./monitor";
-import { MonitorFolder } from "./monitorFolder";
-import { Partition } from "./partition";
-import { PasswordPolicy } from "./passwordPolicy";
-import { Policies } from "./policies";
-import { PollingSource } from "./pollingSource";
-import { Role } from "./role";
-import { S3AuditSource } from "./s3auditSource";
-import { S3Source } from "./s3source";
-import { SamlConfiguration } from "./samlConfiguration";
-import { ScheduledView } from "./scheduledView";
-import { Slo } from "./slo";
-import { SloFolder } from "./sloFolder";
-import { Subdomain } from "./subdomain";
-import { Token } from "./token";
-import { User } from "./user";
 
 const _module = {
     version: utilities.getVersion(),
@@ -184,10 +415,14 @@ const _module = {
                 return new CseCustomEntityType(name, <any>undefined, { urn })
             case "sumologic:index/cseCustomInsight:CseCustomInsight":
                 return new CseCustomInsight(name, <any>undefined, { urn })
+            case "sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn":
+                return new CseCustomMatchListColumn(name, <any>undefined, { urn })
             case "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig":
                 return new CseEntityCriticalityConfig(name, <any>undefined, { urn })
             case "sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration":
                 return new CseEntityEntityGroupConfiguration(name, <any>undefined, { urn })
+            case "sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration":
+                return new CseEntityNormalizationConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
                 return new CseInsightsConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/cseInsightsResolution:CseInsightsResolution":
@@ -293,8 +528,10 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cseAggregationRule", _
 pulumi.runtime.registerResourceModule("sumologic", "index/cseChainRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomEntityType", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomInsight", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomMatchListColumn", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityCriticalityConfig", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityEntityGroupConfiguration", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityNormalizationConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsResolution", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsStatus", _module)
@@ -337,9 +574,6 @@ pulumi.runtime.registerResourceModule("sumologic", "index/sloFolder", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/subdomain", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/token", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/user", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("sumologic", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

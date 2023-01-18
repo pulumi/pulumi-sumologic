@@ -13,18 +13,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const thisRole = pulumi.output(sumologic.getRole({
+ * const this = sumologic.getRole({
  *     name: "MyRole",
- * }));
+ * });
  * ```
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const that = pulumi.output(sumologic.getRole({
+ * const that = sumologic.getRole({
  *     id: "1234567890",
- * }));
+ * });
  * ```
  *
  * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -42,11 +42,8 @@ import * as utilities from "./utilities";
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getRole:getRole", {
         "id": args.id,
         "name": args.name,
@@ -71,9 +68,44 @@ export interface GetRoleResult {
     readonly id: string;
     readonly name: string;
 }
-
+/**
+ * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const this = sumologic.getRole({
+ *     name: "MyRole",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const that = sumologic.getRole({
+ *     id: "1234567890",
+ * });
+ * ```
+ *
+ * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+ *
+ * If both `id` and `name` have been specified, `id` takes precedence.
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - The internal ID of the role. This can be used to create users having that role.
+ * - `name` - The name of the role.
+ * - `description` - The description of the role.
+ * - `filterPredicate` - The search filter to restrict access to specific logs.
+ * - `capabilities` - The list of capabilities associated with the role.
+ */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
-    return pulumi.output(args).apply(a => getRole(a, opts))
+    return pulumi.output(args).apply((a: any) => getRole(a, opts))
 }
 
 /**

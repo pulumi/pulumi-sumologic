@@ -143,9 +143,17 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
+    /**
+     * Host name of the Collector. The hostname can be a maximum of 128 characters.
+     * 
+     */
     @Export(name="hostName", type=String.class, parameters={})
     private Output</* @Nullable */ String> hostName;
 
+    /**
+     * @return Host name of the Collector. The hostname can be a maximum of 128 characters.
+     * 
+     */
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
@@ -169,15 +177,31 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     * 
+     */
     @Export(name="sourceSyncMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceSyncMode;
 
+    /**
+     * @return For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     * 
+     */
     public Output<Optional<String>> sourceSyncMode() {
         return Codegen.optional(this.sourceSyncMode);
     }
+    /**
+     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     * 
+     */
     @Export(name="targetCpu", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> targetCpu;
 
+    /**
+     * @return When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     * 
+     */
     public Output<Optional<Integer>> targetCpu() {
         return Codegen.optional(this.targetCpu);
     }

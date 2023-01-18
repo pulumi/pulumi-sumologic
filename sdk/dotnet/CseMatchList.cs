@@ -64,7 +64,7 @@ namespace Pulumi.SumoLogic
         public Output<int?> DefaultTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Match list item description.
+        /// Match list description.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.SumoLogic
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// Match list item description.
+        /// Match list description.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.SumoLogic
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// Match list item description.
+        /// Match list description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

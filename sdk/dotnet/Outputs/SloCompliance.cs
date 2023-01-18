@@ -18,8 +18,9 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string ComplianceType;
         /// <summary>
-        /// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-        /// based evaluation.
+        /// The size of the compliance period to use.
+        /// - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+        /// - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
         /// </summary>
         public readonly string Size;
         /// <summary>
@@ -29,7 +30,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? StartFrom;
         /// <summary>
-        /// The target value to use, must be a number between 0 and 100.
+        /// Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
         /// </summary>
         public readonly double Target;
         /// <summary>

@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 

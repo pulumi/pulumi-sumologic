@@ -42,7 +42,7 @@ import (
 //				MaxUserSessionTimeout:              pulumi.String("7d"),
 //				SearchAudit:                        pulumi.Bool(false),
 //				ShareDashboardsOutsideOrganization: pulumi.Bool(false),
-//				UserConcurrentSessionsLimit: &PoliciesUserConcurrentSessionsLimitArgs{
+//				UserConcurrentSessionsLimit: &sumologic.PoliciesUserConcurrentSessionsLimitArgs{
 //					Enabled:               pulumi.Bool(false),
 //					MaxConcurrentSessions: pulumi.Int(100),
 //				},
