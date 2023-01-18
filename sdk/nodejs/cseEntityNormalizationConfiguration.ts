@@ -143,8 +143,6 @@ export class CseEntityNormalizationConfiguration extends pulumi.CustomResource {
             resourceInputs["windowsNormalizationEnabled"] = args ? args.windowsNormalizationEnabled : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "sumologic:index/cseEntityNormalizationConfig:CseEntityNormalizationConfig" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CseEntityNormalizationConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }

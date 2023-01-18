@@ -124,14 +124,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"sumologic_cse_entity_normalization_configuration": {
 				Tok: makeResource(mainMod, "CseEntityNormalizationConfiguration"),
-				Aliases: []tfbridge.AliasInfo{
-					{
-						Type: func() *string {
-							x := "sumologic:index/cseEntityNormalizationConfig:CseEntityNormalizationConfig"
-							return &x
-						}(),
-					},
-				},
 			},
 			"sumologic_cse_inventory_entity_group_configuration": {
 				Tok: makeResource(mainMod, "CseInventoryEntityGroupConfiguration"),

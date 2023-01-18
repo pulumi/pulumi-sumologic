@@ -103,12 +103,6 @@ func NewCseEntityNormalizationConfiguration(ctx *pulumi.Context,
 	if args.WindowsNormalizationEnabled == nil {
 		return nil, errors.New("invalid value for required argument 'WindowsNormalizationEnabled'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("sumologic:index/cseEntityNormalizationConfig:CseEntityNormalizationConfig"),
-		},
-	})
-	opts = append(opts, aliases)
 	var resource CseEntityNormalizationConfiguration
 	err := ctx.RegisterResource("sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration", name, args, &resource, opts...)
 	if err != nil {

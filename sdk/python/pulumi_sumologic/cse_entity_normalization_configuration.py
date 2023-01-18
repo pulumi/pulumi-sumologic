@@ -386,8 +386,6 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
             if windows_normalization_enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'windows_normalization_enabled'")
             __props__.__dict__["windows_normalization_enabled"] = windows_normalization_enabled
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="sumologic:index/cseEntityNormalizationConfig:CseEntityNormalizationConfig")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(CseEntityNormalizationConfiguration, __self__).__init__(
             'sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration',
             resource_name,
