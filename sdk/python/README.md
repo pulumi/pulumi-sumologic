@@ -50,7 +50,7 @@ The following configuration points are available:
   from the `SUMOLOGIC_ACCESSID` environment variable.
 - `sumologic:accessKey` - (Required) This is the Sumo Logic Access Key. It must be provided, but it can also be 
   sourced from the `SUMOLOGIC_ACCESSKEY` variable.
-- `sumologic:accessKey` - (Required) This is the API endpoint to use. See the [Sumo Logic documentation](https://help.sumologic.com/APIs/General_API_Information/Sumo_Logic_Endpoints_and_Firewall_Security) for details on 
+- `sumologic:environment` - (Required) This is the API endpoint to use. See the [Sumo Logic documentation](https://help.sumologic.com/APIs/General_API_Information/Sumo_Logic_Endpoints_and_Firewall_Security) for details on 
   which environment you should use. It must be provided, but it can be sourced from the `SUMOLOGIC_ENVIRONMENT` variable.
 
 ## Reference
