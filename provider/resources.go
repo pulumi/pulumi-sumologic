@@ -71,14 +71,15 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "sumologic",
-		Description: "A Pulumi package for creating and managing sumologic cloud resources.",
-		Keywords:    []string{"pulumi", "sumologic"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-sumologic",
-		GitHubOrg:   "SumoLogic",
+		P:                p,
+		Name:             "sumologic",
+		Description:      "A Pulumi package for creating and managing sumologic cloud resources.",
+		Keywords:         []string{"pulumi", "sumologic"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-sumologic",
+		GitHubOrg:        "SumoLogic",
+		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
