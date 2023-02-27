@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,10 +37,10 @@ func NewProvider(ctx *pulumi.Context,
 	if args.AccessKey == nil {
 		return nil, errors.New("invalid value for required argument 'AccessKey'")
 	}
-	if isZero(args.BaseUrl) {
+	if args.BaseUrl == nil {
 		args.BaseUrl = pulumi.StringPtr(getEnvOrDefault("", nil, "SUMOLOGIC_BASE_URL").(string))
 	}
-	if isZero(args.Environment) {
+	if args.Environment == nil {
 		args.Environment = pulumi.StringPtr(getEnvOrDefault("", nil, "SUMOLOGIC_ENVIRONMENT").(string))
 	}
 	var resource Provider
