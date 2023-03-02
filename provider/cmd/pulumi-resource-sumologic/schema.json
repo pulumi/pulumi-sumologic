@@ -2387,6 +2387,32 @@
                 "rawDomain"
             ]
         },
+        "sumologic:index/CseFirstSeenRuleEntitySelector:CseFirstSeenRuleEntitySelector": {
+            "properties": {
+                "entityType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "The expression or field name to generate the Signal on\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "entityType",
+                "expression"
+            ]
+        },
         "sumologic:index/CseLogMappingField:CseLogMappingField": {
             "properties": {
                 "alternateValues": {
@@ -17154,7 +17180,7 @@
                 },
                 "pathExpression": {
                     "type": "string",
-                    "description": "The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.\n",
+                    "description": "The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17771,6 +17797,14 @@
                         }
                     }
                 },
+                "minDataPoints": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "occurrenceType": {
                     "type": "string",
                     "language": {
@@ -17829,7 +17863,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "minDataPoints"
+                    ]
+                }
+            }
         },
         "sumologic:index/MonitorTriggerConditions:MonitorTriggerConditions": {
             "properties": {
@@ -18372,6 +18413,14 @@
         },
         "sumologic:index/MonitorTriggerConditionsMetricsStaticConditionCriticalAlert:MonitorTriggerConditionsMetricsStaticConditionCriticalAlert": {
             "properties": {
+                "minDataPoints": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "threshold": {
                     "type": "number",
                     "language": {
@@ -18389,10 +18438,25 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "minDataPoints"
+                    ]
+                }
+            }
         },
         "sumologic:index/MonitorTriggerConditionsMetricsStaticConditionCriticalResolution:MonitorTriggerConditionsMetricsStaticConditionCriticalResolution": {
             "properties": {
+                "minDataPoints": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "occurrenceType": {
                     "type": "string",
                     "language": {
@@ -18418,7 +18482,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "minDataPoints"
+                    ]
+                }
+            }
         },
         "sumologic:index/MonitorTriggerConditionsMetricsStaticConditionWarning:MonitorTriggerConditionsMetricsStaticConditionWarning": {
             "properties": {
@@ -18465,6 +18536,14 @@
         },
         "sumologic:index/MonitorTriggerConditionsMetricsStaticConditionWarningAlert:MonitorTriggerConditionsMetricsStaticConditionWarningAlert": {
             "properties": {
+                "minDataPoints": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "threshold": {
                     "type": "number",
                     "language": {
@@ -18482,10 +18561,25 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "minDataPoints"
+                    ]
+                }
+            }
         },
         "sumologic:index/MonitorTriggerConditionsMetricsStaticConditionWarningResolution:MonitorTriggerConditionsMetricsStaticConditionWarningResolution": {
             "properties": {
+                "minDataPoints": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "occurrenceType": {
                     "type": "string",
                     "language": {
@@ -18511,7 +18605,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "minDataPoints"
+                    ]
+                }
+            }
         },
         "sumologic:index/MonitorTriggerConditionsSloBurnRateCondition:MonitorTriggerConditionsSloBurnRateCondition": {
             "properties": {
@@ -19766,6 +19867,14 @@
         },
         "sumologic:index/SloIndicator:SloIndicator": {
             "properties": {
+                "monitorBasedEvaluation": {
+                    "$ref": "#/types/sumologic:index/SloIndicatorMonitorBasedEvaluation:SloIndicatorMonitorBasedEvaluation",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "requestBasedEvaluation": {
                     "$ref": "#/types/sumologic:index/SloIndicatorRequestBasedEvaluation:SloIndicatorRequestBasedEvaluation",
                     "language": {
@@ -19784,6 +19893,50 @@
                 }
             },
             "type": "object"
+        },
+        "sumologic:index/SloIndicatorMonitorBasedEvaluation:SloIndicatorMonitorBasedEvaluation": {
+            "properties": {
+                "monitorTriggers": {
+                    "$ref": "#/types/sumologic:index/SloIndicatorMonitorBasedEvaluationMonitorTriggers:SloIndicatorMonitorBasedEvaluationMonitorTriggers",
+                    "description": "Monitor details on which SLO will be based. Only single monitor is supported here.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "monitorTriggers"
+            ]
+        },
+        "sumologic:index/SloIndicatorMonitorBasedEvaluationMonitorTriggers:SloIndicatorMonitorBasedEvaluationMonitorTriggers": {
+            "properties": {
+                "monitorId": {
+                    "type": "string",
+                    "description": "ID of the monitor. Ex: `0000000000BCB3A4`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "triggerTypes": {
+                    "type": "string",
+                    "description": "Type of monitor trigger which will attribute towards a successful or unsuccessful SLO \nwindow. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "monitorId",
+                "triggerTypes"
+            ]
         },
         "sumologic:index/SloIndicatorRequestBasedEvaluation:SloIndicatorRequestBasedEvaluation": {
             "properties": {
@@ -21786,7 +21939,7 @@
             }
         },
         "sumologic:index/collector:Collector": {
-            "description": "Provides a [Sumologic (Hosted) Collector][1].\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst collector = new sumologic.Collector(\"collector\", {\n    description: \"Just testing this\",\n    fields: {\n        environment: \"production\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncollector = sumologic.Collector(\"collector\",\n    description=\"Just testing this\",\n    fields={\n        \"environment\": \"production\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var collector = new SumoLogic.Collector(\"collector\", new()\n    {\n        Description = \"Just testing this\",\n        Fields = \n        {\n            { \"environment\", \"production\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCollector(ctx, \"collector\", \u0026sumologic.CollectorArgs{\n\t\t\tDescription: pulumi.String(\"Just testing this\"),\n\t\t\tFields: pulumi.StringMap{\n\t\t\t\t\"environment\": pulumi.String(\"production\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Collector;\nimport com.pulumi.sumologic.CollectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var collector = new Collector(\"collector\", CollectorArgs.builder()        \n            .description(\"Just testing this\")\n            .fields(Map.of(\"environment\", \"production\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  collector:\n    type: sumologic:Collector\n    properties:\n      description: Just testing this\n      fields:\n        environment: production\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCollectors can be imported using the collector id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/collector:Collector test 1234567890\n```\n\n Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/collector:Collector test my_test_collector\n```\n\n [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields ",
+            "description": "Provides a [Sumologic (Hosted) Collector][1].\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst collector = new sumologic.Collector(\"collector\", {\n    description: \"Just testing this\",\n    fields: {\n        environment: \"production\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncollector = sumologic.Collector(\"collector\",\n    description=\"Just testing this\",\n    fields={\n        \"environment\": \"production\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var collector = new SumoLogic.Collector(\"collector\", new()\n    {\n        Description = \"Just testing this\",\n        Fields = \n        {\n            { \"environment\", \"production\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCollector(ctx, \"collector\", \u0026sumologic.CollectorArgs{\n\t\t\tDescription: pulumi.String(\"Just testing this\"),\n\t\t\tFields: pulumi.StringMap{\n\t\t\t\t\"environment\": pulumi.String(\"production\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Collector;\nimport com.pulumi.sumologic.CollectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var collector = new Collector(\"collector\", CollectorArgs.builder()        \n            .description(\"Just testing this\")\n            .fields(Map.of(\"environment\", \"production\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  collector:\n    type: sumologic:Collector\n    properties:\n      description: Just testing this\n      fields:\n        environment: production\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCollectors can be imported using the collector id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/collector:Collector test 1234567890\n```\n\n Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/collector:Collector test my_test_collector\n```\n\n [1]https://help.sumologic.com/docs/send-data/hosted-collectors/ [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields ",
             "properties": {
                 "category": {
                     "type": "string",
@@ -22439,6 +22592,121 @@
                     "windowSize": {
                         "type": "string",
                         "description": "How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/cseAutomation:CseAutomation": {
+            "description": "Provides a Sumologic CSE Automation.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst insightAutomation = new sumologic.CseAutomation(\"insightAutomation\", {\n    cseResourceType: \"INSIGHT\",\n    executionTypes: [\n        \"NEW_INSIGHT\",\n        \"INSIGHT_CLOSED\",\n    ],\n    playbookId: \"638079aedb99cafada1e80a0\",\n});\nconst entityAutomation = new sumologic.CseAutomation(\"entityAutomation\", {\n    cseResourceSubTypes: [\"_ip\"],\n    cseResourceType: \"ENTITY\",\n    executionTypes: [\"ON_DEMAND\"],\n    playbookId: \"638079aedb99cafada1e80a0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ninsight_automation = sumologic.CseAutomation(\"insightAutomation\",\n    cse_resource_type=\"INSIGHT\",\n    execution_types=[\n        \"NEW_INSIGHT\",\n        \"INSIGHT_CLOSED\",\n    ],\n    playbook_id=\"638079aedb99cafada1e80a0\")\nentity_automation = sumologic.CseAutomation(\"entityAutomation\",\n    cse_resource_sub_types=[\"_ip\"],\n    cse_resource_type=\"ENTITY\",\n    execution_types=[\"ON_DEMAND\"],\n    playbook_id=\"638079aedb99cafada1e80a0\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var insightAutomation = new SumoLogic.CseAutomation(\"insightAutomation\", new()\n    {\n        CseResourceType = \"INSIGHT\",\n        ExecutionTypes = new[]\n        {\n            \"NEW_INSIGHT\",\n            \"INSIGHT_CLOSED\",\n        },\n        PlaybookId = \"638079aedb99cafada1e80a0\",\n    });\n\n    var entityAutomation = new SumoLogic.CseAutomation(\"entityAutomation\", new()\n    {\n        CseResourceSubTypes = new[]\n        {\n            \"_ip\",\n        },\n        CseResourceType = \"ENTITY\",\n        ExecutionTypes = new[]\n        {\n            \"ON_DEMAND\",\n        },\n        PlaybookId = \"638079aedb99cafada1e80a0\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseAutomation(ctx, \"insightAutomation\", \u0026sumologic.CseAutomationArgs{\n\t\t\tCseResourceType: pulumi.String(\"INSIGHT\"),\n\t\t\tExecutionTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"NEW_INSIGHT\"),\n\t\t\t\tpulumi.String(\"INSIGHT_CLOSED\"),\n\t\t\t},\n\t\t\tPlaybookId: pulumi.String(\"638079aedb99cafada1e80a0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewCseAutomation(ctx, \"entityAutomation\", \u0026sumologic.CseAutomationArgs{\n\t\t\tCseResourceSubTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"_ip\"),\n\t\t\t},\n\t\t\tCseResourceType: pulumi.String(\"ENTITY\"),\n\t\t\tExecutionTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ON_DEMAND\"),\n\t\t\t},\n\t\t\tPlaybookId: pulumi.String(\"638079aedb99cafada1e80a0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseAutomation;\nimport com.pulumi.sumologic.CseAutomationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var insightAutomation = new CseAutomation(\"insightAutomation\", CseAutomationArgs.builder()        \n            .cseResourceType(\"INSIGHT\")\n            .executionTypes(            \n                \"NEW_INSIGHT\",\n                \"INSIGHT_CLOSED\")\n            .playbookId(\"638079aedb99cafada1e80a0\")\n            .build());\n\n        var entityAutomation = new CseAutomation(\"entityAutomation\", CseAutomationArgs.builder()        \n            .cseResourceSubTypes(\"_ip\")\n            .cseResourceType(\"ENTITY\")\n            .executionTypes(\"ON_DEMAND\")\n            .playbookId(\"638079aedb99cafada1e80a0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  insightAutomation:\n    type: sumologic:CseAutomation\n    properties:\n      cseResourceType: INSIGHT\n      executionTypes:\n        - NEW_INSIGHT\n        - INSIGHT_CLOSED\n      playbookId: 638079aedb99cafada1e80a0\n  entityAutomation:\n    type: sumologic:CseAutomation\n    properties:\n      cseResourceSubTypes:\n        - _ip\n      cseResourceType: ENTITY\n      executionTypes:\n        - ON_DEMAND\n      playbookId: 638079aedb99cafada1e80a0\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAutomation can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id\n```\n\n ",
+            "properties": {
+                "cseResourceSubTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "CSE Resource sub-type when cse_resource_type is specified as \"ENTITY\". Examples: \"_ip\", \"_mac\".\n"
+                },
+                "cseResourceType": {
+                    "type": "string",
+                    "description": "CSE Resource type for automation. Valid values: \"INSIGHT\", \"ENTITY\".\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Automation description.\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "executionTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Automation execution type. Valid values: \"NEW_INSIGHT\", \"INSIGHT_CLOSED\", \"ON_DEMAND\".\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Automation name.\n"
+                },
+                "playbookId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cseResourceType",
+                "description",
+                "enabled",
+                "executionTypes",
+                "name",
+                "playbookId"
+            ],
+            "inputProperties": {
+                "cseResourceSubTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "CSE Resource sub-type when cse_resource_type is specified as \"ENTITY\". Examples: \"_ip\", \"_mac\".\n"
+                },
+                "cseResourceType": {
+                    "type": "string",
+                    "description": "CSE Resource type for automation. Valid values: \"INSIGHT\", \"ENTITY\".\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "executionTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Automation execution type. Valid values: \"NEW_INSIGHT\", \"INSIGHT_CLOSED\", \"ON_DEMAND\".\n"
+                },
+                "playbookId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "cseResourceType",
+                "enabled",
+                "executionTypes",
+                "playbookId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CseAutomation resources.\n",
+                "properties": {
+                    "cseResourceSubTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "CSE Resource sub-type when cse_resource_type is specified as \"ENTITY\". Examples: \"_ip\", \"_mac\".\n"
+                    },
+                    "cseResourceType": {
+                        "type": "string",
+                        "description": "CSE Resource type for automation. Valid values: \"INSIGHT\", \"ENTITY\".\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Automation description.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "executionTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Automation execution type. Valid values: \"NEW_INSIGHT\", \"INSIGHT_CLOSED\", \"ON_DEMAND\".\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Automation name.\n"
+                    },
+                    "playbookId": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -23228,6 +23496,260 @@
                     "windowsNormalizationEnabled": {
                         "type": "boolean",
                         "description": "Normalize active directory domains username and hostname formats.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/cseFirstSeenRule:CseFirstSeenRule": {
+            "description": "Provides a Sumo Logic CSE [First Seen Rule](https://help.sumologic.com/docs/cse/rules/write-first-seen-rule/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst firstSeenRule = new sumologic.CseFirstSeenRule(\"firstSeenRule\", {\n    baselineType: \"PER_ENTITY\",\n    baselineWindowSize: \"35000\",\n    descriptionExpression: \"First User Login - {{ user_username }}\",\n    enabled: true,\n    entitySelectors: [\n        {\n            entityType: \"_username\",\n            expression: \"user_username\",\n        },\n        {\n            entityType: \"_hostname\",\n            expression: \"dstDevice_hostname\",\n        },\n    ],\n    filterExpression: \"objectType=\\\"Network\\\"\",\n    groupByFields: [\"user_username\"],\n    isPrototype: false,\n    nameExpression: \"First User Login - {{ user_username }}\",\n    retentionWindowSize: \"86400000\",\n    severity: 1,\n    valueFields: [\"dstDevice_hostname\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nfirst_seen_rule = sumologic.CseFirstSeenRule(\"firstSeenRule\",\n    baseline_type=\"PER_ENTITY\",\n    baseline_window_size=\"35000\",\n    description_expression=\"First User Login - {{ user_username }}\",\n    enabled=True,\n    entity_selectors=[\n        sumologic.CseFirstSeenRuleEntitySelectorArgs(\n            entity_type=\"_username\",\n            expression=\"user_username\",\n        ),\n        sumologic.CseFirstSeenRuleEntitySelectorArgs(\n            entity_type=\"_hostname\",\n            expression=\"dstDevice_hostname\",\n        ),\n    ],\n    filter_expression=\"objectType=\\\"Network\\\"\",\n    group_by_fields=[\"user_username\"],\n    is_prototype=False,\n    name_expression=\"First User Login - {{ user_username }}\",\n    retention_window_size=\"86400000\",\n    severity=1,\n    value_fields=[\"dstDevice_hostname\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var firstSeenRule = new SumoLogic.CseFirstSeenRule(\"firstSeenRule\", new()\n    {\n        BaselineType = \"PER_ENTITY\",\n        BaselineWindowSize = \"35000\",\n        DescriptionExpression = \"First User Login - {{ user_username }}\",\n        Enabled = true,\n        EntitySelectors = new[]\n        {\n            new SumoLogic.Inputs.CseFirstSeenRuleEntitySelectorArgs\n            {\n                EntityType = \"_username\",\n                Expression = \"user_username\",\n            },\n            new SumoLogic.Inputs.CseFirstSeenRuleEntitySelectorArgs\n            {\n                EntityType = \"_hostname\",\n                Expression = \"dstDevice_hostname\",\n            },\n        },\n        FilterExpression = \"objectType=\\\"Network\\\"\",\n        GroupByFields = new[]\n        {\n            \"user_username\",\n        },\n        IsPrototype = false,\n        NameExpression = \"First User Login - {{ user_username }}\",\n        RetentionWindowSize = \"86400000\",\n        Severity = 1,\n        ValueFields = new[]\n        {\n            \"dstDevice_hostname\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseFirstSeenRule(ctx, \"firstSeenRule\", \u0026sumologic.CseFirstSeenRuleArgs{\n\t\t\tBaselineType:          pulumi.String(\"PER_ENTITY\"),\n\t\t\tBaselineWindowSize:    pulumi.String(\"35000\"),\n\t\t\tDescriptionExpression: pulumi.String(\"First User Login - {{ user_username }}\"),\n\t\t\tEnabled:               pulumi.Bool(true),\n\t\t\tEntitySelectors: sumologic.CseFirstSeenRuleEntitySelectorArray{\n\t\t\t\t\u0026sumologic.CseFirstSeenRuleEntitySelectorArgs{\n\t\t\t\t\tEntityType: pulumi.String(\"_username\"),\n\t\t\t\t\tExpression: pulumi.String(\"user_username\"),\n\t\t\t\t},\n\t\t\t\t\u0026sumologic.CseFirstSeenRuleEntitySelectorArgs{\n\t\t\t\t\tEntityType: pulumi.String(\"_hostname\"),\n\t\t\t\t\tExpression: pulumi.String(\"dstDevice_hostname\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilterExpression: pulumi.String(\"objectType=\\\"Network\\\"\"),\n\t\t\tGroupByFields: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user_username\"),\n\t\t\t},\n\t\t\tIsPrototype:         pulumi.Bool(false),\n\t\t\tNameExpression:      pulumi.String(\"First User Login - {{ user_username }}\"),\n\t\t\tRetentionWindowSize: pulumi.String(\"86400000\"),\n\t\t\tSeverity:            pulumi.Int(1),\n\t\t\tValueFields: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dstDevice_hostname\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseFirstSeenRule;\nimport com.pulumi.sumologic.CseFirstSeenRuleArgs;\nimport com.pulumi.sumologic.inputs.CseFirstSeenRuleEntitySelectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var firstSeenRule = new CseFirstSeenRule(\"firstSeenRule\", CseFirstSeenRuleArgs.builder()        \n            .baselineType(\"PER_ENTITY\")\n            .baselineWindowSize(\"35000\")\n            .descriptionExpression(\"First User Login - {{ user_username }}\")\n            .enabled(true)\n            .entitySelectors(            \n                CseFirstSeenRuleEntitySelectorArgs.builder()\n                    .entityType(\"_username\")\n                    .expression(\"user_username\")\n                    .build(),\n                CseFirstSeenRuleEntitySelectorArgs.builder()\n                    .entityType(\"_hostname\")\n                    .expression(\"dstDevice_hostname\")\n                    .build())\n            .filterExpression(\"objectType=\\\"Network\\\"\")\n            .groupByFields(\"user_username\")\n            .isPrototype(false)\n            .nameExpression(\"First User Login - {{ user_username }}\")\n            .retentionWindowSize(\"86400000\")\n            .severity(1)\n            .valueFields(\"dstDevice_hostname\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  firstSeenRule:\n    type: sumologic:CseFirstSeenRule\n    properties:\n      baselineType: PER_ENTITY\n      baselineWindowSize: '35000'\n      descriptionExpression: First User Login - {{ user_username }}\n      enabled: true\n      entitySelectors:\n        - entityType: _username\n          expression: user_username\n        - entityType: _hostname\n          expression: dstDevice_hostname\n      filterExpression: objectType=\"Network\"\n      groupByFields:\n        - user_username\n      isPrototype: false\n      nameExpression: First User Login - {{ user_username }}\n      retentionWindowSize: '86400000'\n      severity: 1\n      valueFields:\n        - dstDevice_hostname\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirst Seen Rules can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseFirstSeenRule:CseFirstSeenRule first_seen_rule id\n```\n\n ",
+            "properties": {
+                "baselineType": {
+                    "type": "string",
+                    "description": "The baseline type. Current acceptable values are GLOBAL or PER_ENTITY\n"
+                },
+                "baselineWindowSize": {
+                    "type": "string",
+                    "description": "The baseline window size in milliseconds\n"
+                },
+                "descriptionExpression": {
+                    "type": "string",
+                    "description": "The description of the generated Signals\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the rule should generate Signals\n"
+                },
+                "entitySelectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseFirstSeenRuleEntitySelector:CseFirstSeenRuleEntitySelector"
+                    },
+                    "description": "The entities to generate Signals on\n"
+                },
+                "filterExpression": {
+                    "type": "string",
+                    "description": "The expression for which records to match on\n"
+                },
+                "groupByFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of fields to group records by\n"
+                },
+                "isPrototype": {
+                    "type": "boolean",
+                    "description": "Whether the generated Signals should be prototype Signals\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Rule\n"
+                },
+                "nameExpression": {
+                    "type": "string",
+                    "description": "The name of the generated Signals\n"
+                },
+                "retentionWindowSize": {
+                    "type": "string",
+                    "description": "The retention window size in milliseconds\n"
+                },
+                "severity": {
+                    "type": "integer",
+                    "description": "The severity of the generated Signals\n"
+                },
+                "summaryExpression": {
+                    "type": "string",
+                    "description": "The summary of the generated Signals\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags of the generated Signals\n"
+                },
+                "valueFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The value fields\n"
+                }
+            },
+            "required": [
+                "baselineType",
+                "baselineWindowSize",
+                "descriptionExpression",
+                "enabled",
+                "entitySelectors",
+                "filterExpression",
+                "name",
+                "nameExpression",
+                "retentionWindowSize",
+                "severity",
+                "valueFields"
+            ],
+            "inputProperties": {
+                "baselineType": {
+                    "type": "string",
+                    "description": "The baseline type. Current acceptable values are GLOBAL or PER_ENTITY\n"
+                },
+                "baselineWindowSize": {
+                    "type": "string",
+                    "description": "The baseline window size in milliseconds\n"
+                },
+                "descriptionExpression": {
+                    "type": "string",
+                    "description": "The description of the generated Signals\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the rule should generate Signals\n"
+                },
+                "entitySelectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseFirstSeenRuleEntitySelector:CseFirstSeenRuleEntitySelector"
+                    },
+                    "description": "The entities to generate Signals on\n"
+                },
+                "filterExpression": {
+                    "type": "string",
+                    "description": "The expression for which records to match on\n"
+                },
+                "groupByFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of fields to group records by\n"
+                },
+                "isPrototype": {
+                    "type": "boolean",
+                    "description": "Whether the generated Signals should be prototype Signals\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Rule\n"
+                },
+                "nameExpression": {
+                    "type": "string",
+                    "description": "The name of the generated Signals\n"
+                },
+                "retentionWindowSize": {
+                    "type": "string",
+                    "description": "The retention window size in milliseconds\n"
+                },
+                "severity": {
+                    "type": "integer",
+                    "description": "The severity of the generated Signals\n"
+                },
+                "summaryExpression": {
+                    "type": "string",
+                    "description": "The summary of the generated Signals\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags of the generated Signals\n"
+                },
+                "valueFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The value fields\n"
+                }
+            },
+            "requiredInputs": [
+                "baselineType",
+                "baselineWindowSize",
+                "descriptionExpression",
+                "enabled",
+                "entitySelectors",
+                "filterExpression",
+                "nameExpression",
+                "retentionWindowSize",
+                "severity",
+                "valueFields"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CseFirstSeenRule resources.\n",
+                "properties": {
+                    "baselineType": {
+                        "type": "string",
+                        "description": "The baseline type. Current acceptable values are GLOBAL or PER_ENTITY\n"
+                    },
+                    "baselineWindowSize": {
+                        "type": "string",
+                        "description": "The baseline window size in milliseconds\n"
+                    },
+                    "descriptionExpression": {
+                        "type": "string",
+                        "description": "The description of the generated Signals\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the rule should generate Signals\n"
+                    },
+                    "entitySelectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/CseFirstSeenRuleEntitySelector:CseFirstSeenRuleEntitySelector"
+                        },
+                        "description": "The entities to generate Signals on\n"
+                    },
+                    "filterExpression": {
+                        "type": "string",
+                        "description": "The expression for which records to match on\n"
+                    },
+                    "groupByFields": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of fields to group records by\n"
+                    },
+                    "isPrototype": {
+                        "type": "boolean",
+                        "description": "Whether the generated Signals should be prototype Signals\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Rule\n"
+                    },
+                    "nameExpression": {
+                        "type": "string",
+                        "description": "The name of the generated Signals\n"
+                    },
+                    "retentionWindowSize": {
+                        "type": "string",
+                        "description": "The retention window size in milliseconds\n"
+                    },
+                    "severity": {
+                        "type": "integer",
+                        "description": "The severity of the generated Signals\n"
+                    },
+                    "summaryExpression": {
+                        "type": "string",
+                        "description": "The summary of the generated Signals\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The tags of the generated Signals\n"
+                    },
+                    "valueFields": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The value fields\n"
                     }
                 },
                 "type": "object"
@@ -27168,7 +27690,7 @@
             }
         },
         "sumologic:index/monitor:Monitor": {
-            "description": "Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).\nIf Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).\n\n## Example SLO Monitors\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst tfSloMonitor1 = new sumologic.Monitor(\"tfSloMonitor1\", {\n    contentType: \"Monitor\",\n    evaluationDelay: \"5m\",\n    isDisabled: false,\n    monitorType: \"Slo\",\n    notifications: [{\n        notification: {\n            connectionType: \"Email\",\n            messageBody: \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n            recipients: [\"abc@example.com\"],\n            subject: \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n            timeZone: \"PST\",\n        },\n        runForTriggerTypes: [\n            \"Critical\",\n            \"ResolvedCritical\",\n        ],\n    }],\n    playbook: \"test playbook\",\n    sloId: \"0000000000000009\",\n    triggerConditions: {\n        sloSliCondition: {\n            critical: {\n                sliThreshold: 99.5,\n            },\n            warning: {\n                sliThreshold: 99.9,\n            },\n        },\n    },\n    type: \"MonitorsLibraryMonitor\",\n});\nconst tfSloMonitor2 = new sumologic.Monitor(\"tfSloMonitor2\", {\n    contentType: \"Monitor\",\n    evaluationDelay: \"5m\",\n    isDisabled: false,\n    monitorType: \"Slo\",\n    sloId: \"0000000000000009\",\n    triggerConditions: {\n        sloBurnRateCondition: {\n            critical: {\n                burnRateThreshold: 10,\n                timeRange: \"1d\",\n            },\n            warning: {\n                burnRateThreshold: 5,\n                timeRange: \"1d\",\n            },\n        },\n    },\n    type: \"MonitorsLibraryMonitor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntf_slo_monitor1 = sumologic.Monitor(\"tfSloMonitor1\",\n    content_type=\"Monitor\",\n    evaluation_delay=\"5m\",\n    is_disabled=False,\n    monitor_type=\"Slo\",\n    notifications=[sumologic.MonitorNotificationArgs(\n        notification=sumologic.MonitorNotificationNotificationArgs(\n            connection_type=\"Email\",\n            message_body=\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n            recipients=[\"abc@example.com\"],\n            subject=\"Monitor Alert: {{TriggerType}} on {{Name}}\",\n            time_zone=\"PST\",\n        ),\n        run_for_trigger_types=[\n            \"Critical\",\n            \"ResolvedCritical\",\n        ],\n    )],\n    playbook=\"test playbook\",\n    slo_id=\"0000000000000009\",\n    trigger_conditions=sumologic.MonitorTriggerConditionsArgs(\n        slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(\n            critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(\n                sli_threshold=99.5,\n            ),\n            warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(\n                sli_threshold=99.9,\n            ),\n        ),\n    ),\n    type=\"MonitorsLibraryMonitor\")\ntf_slo_monitor2 = sumologic.Monitor(\"tfSloMonitor2\",\n    content_type=\"Monitor\",\n    evaluation_delay=\"5m\",\n    is_disabled=False,\n    monitor_type=\"Slo\",\n    slo_id=\"0000000000000009\",\n    trigger_conditions=sumologic.MonitorTriggerConditionsArgs(\n        slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(\n            critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(\n                burn_rate_threshold=10,\n                time_range=\"1d\",\n            ),\n            warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(\n                burn_rate_threshold=5,\n                time_range=\"1d\",\n            ),\n        ),\n    ),\n    type=\"MonitorsLibraryMonitor\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfSloMonitor1 = new SumoLogic.Monitor(\"tfSloMonitor1\", new()\n    {\n        ContentType = \"Monitor\",\n        EvaluationDelay = \"5m\",\n        IsDisabled = false,\n        MonitorType = \"Slo\",\n        Notifications = new[]\n        {\n            new SumoLogic.Inputs.MonitorNotificationArgs\n            {\n                Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs\n                {\n                    ConnectionType = \"Email\",\n                    MessageBody = \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                    Recipients = new[]\n                    {\n                        \"abc@example.com\",\n                    },\n                    Subject = \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                    TimeZone = \"PST\",\n                },\n                RunForTriggerTypes = new[]\n                {\n                    \"Critical\",\n                    \"ResolvedCritical\",\n                },\n            },\n        },\n        Playbook = \"test playbook\",\n        SloId = \"0000000000000009\",\n        TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs\n        {\n            SloSliCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionArgs\n            {\n                Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs\n                {\n                    SliThreshold = 99.5,\n                },\n                Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionWarningArgs\n                {\n                    SliThreshold = 99.9,\n                },\n            },\n        },\n        Type = \"MonitorsLibraryMonitor\",\n    });\n\n    var tfSloMonitor2 = new SumoLogic.Monitor(\"tfSloMonitor2\", new()\n    {\n        ContentType = \"Monitor\",\n        EvaluationDelay = \"5m\",\n        IsDisabled = false,\n        MonitorType = \"Slo\",\n        SloId = \"0000000000000009\",\n        TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs\n        {\n            SloBurnRateCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionArgs\n            {\n                Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs\n                {\n                    BurnRateThreshold = 10,\n                    TimeRange = \"1d\",\n                },\n                Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs\n                {\n                    BurnRateThreshold = 5,\n                    TimeRange = \"1d\",\n                },\n            },\n        },\n        Type = \"MonitorsLibraryMonitor\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMonitor(ctx, \"tfSloMonitor1\", \u0026sumologic.MonitorArgs{\n\t\t\tContentType:     pulumi.String(\"Monitor\"),\n\t\t\tEvaluationDelay: pulumi.String(\"5m\"),\n\t\t\tIsDisabled:      pulumi.Bool(false),\n\t\t\tMonitorType:     pulumi.String(\"Slo\"),\n\t\t\tNotifications: sumologic.MonitorNotificationArray{\n\t\t\t\t\u0026sumologic.MonitorNotificationArgs{\n\t\t\t\t\tNotification: \u0026sumologic.MonitorNotificationNotificationArgs{\n\t\t\t\t\t\tConnectionType: pulumi.String(\"Email\"),\n\t\t\t\t\t\tMessageBody:    pulumi.String(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\"),\n\t\t\t\t\t\tRecipients: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"abc@example.com\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tSubject:  pulumi.String(\"Monitor Alert: {{TriggerType}} on {{Name}}\"),\n\t\t\t\t\t\tTimeZone: pulumi.String(\"PST\"),\n\t\t\t\t\t},\n\t\t\t\t\tRunForTriggerTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"Critical\"),\n\t\t\t\t\t\tpulumi.String(\"ResolvedCritical\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tPlaybook: pulumi.String(\"test playbook\"),\n\t\t\tSloId:    pulumi.String(\"0000000000000009\"),\n\t\t\tTriggerConditions: \u0026sumologic.MonitorTriggerConditionsArgs{\n\t\t\t\tSloSliCondition: \u0026sumologic.MonitorTriggerConditionsSloSliConditionArgs{\n\t\t\t\t\tCritical: \u0026sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs{\n\t\t\t\t\t\tSliThreshold: pulumi.Float64(99.5),\n\t\t\t\t\t},\n\t\t\t\t\tWarning: \u0026sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs{\n\t\t\t\t\t\tSliThreshold: pulumi.Float64(99.9),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"MonitorsLibraryMonitor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewMonitor(ctx, \"tfSloMonitor2\", \u0026sumologic.MonitorArgs{\n\t\t\tContentType:     pulumi.String(\"Monitor\"),\n\t\t\tEvaluationDelay: pulumi.String(\"5m\"),\n\t\t\tIsDisabled:      pulumi.Bool(false),\n\t\t\tMonitorType:     pulumi.String(\"Slo\"),\n\t\t\tSloId:           pulumi.String(\"0000000000000009\"),\n\t\t\tTriggerConditions: \u0026sumologic.MonitorTriggerConditionsArgs{\n\t\t\t\tSloBurnRateCondition: \u0026sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs{\n\t\t\t\t\tCritical: \u0026sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{\n\t\t\t\t\t\tBurnRateThreshold: pulumi.Float64(10),\n\t\t\t\t\t\tTimeRange:         pulumi.String(\"1d\"),\n\t\t\t\t\t},\n\t\t\t\t\tWarning: \u0026sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs{\n\t\t\t\t\t\tBurnRateThreshold: pulumi.Float64(5),\n\t\t\t\t\t\tTimeRange:         pulumi.String(\"1d\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"MonitorsLibraryMonitor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Monitor;\nimport com.pulumi.sumologic.MonitorArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionWarningArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfSloMonitor1 = new Monitor(\"tfSloMonitor1\", MonitorArgs.builder()        \n            .contentType(\"Monitor\")\n            .evaluationDelay(\"5m\")\n            .isDisabled(false)\n            .monitorType(\"Slo\")\n            .notifications(MonitorNotificationArgs.builder()\n                .notification(MonitorNotificationNotificationArgs.builder()\n                    .connectionType(\"Email\")\n                    .messageBody(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\")\n                    .recipients(\"abc@example.com\")\n                    .subject(\"Monitor Alert: {{TriggerType}} on {{Name}}\")\n                    .timeZone(\"PST\")\n                    .build())\n                .runForTriggerTypes(                \n                    \"Critical\",\n                    \"ResolvedCritical\")\n                .build())\n            .playbook(\"test playbook\")\n            .sloId(\"0000000000000009\")\n            .triggerConditions(MonitorTriggerConditionsArgs.builder()\n                .sloSliCondition(MonitorTriggerConditionsSloSliConditionArgs.builder()\n                    .critical(MonitorTriggerConditionsSloSliConditionCriticalArgs.builder()\n                        .sliThreshold(99.5)\n                        .build())\n                    .warning(MonitorTriggerConditionsSloSliConditionWarningArgs.builder()\n                        .sliThreshold(99.9)\n                        .build())\n                    .build())\n                .build())\n            .type(\"MonitorsLibraryMonitor\")\n            .build());\n\n        var tfSloMonitor2 = new Monitor(\"tfSloMonitor2\", MonitorArgs.builder()        \n            .contentType(\"Monitor\")\n            .evaluationDelay(\"5m\")\n            .isDisabled(false)\n            .monitorType(\"Slo\")\n            .sloId(\"0000000000000009\")\n            .triggerConditions(MonitorTriggerConditionsArgs.builder()\n                .sloBurnRateCondition(MonitorTriggerConditionsSloBurnRateConditionArgs.builder()\n                    .critical(MonitorTriggerConditionsSloBurnRateConditionCriticalArgs.builder()\n                        .burnRateThreshold(10)\n                        .timeRange(\"1d\")\n                        .build())\n                    .warning(MonitorTriggerConditionsSloBurnRateConditionWarningArgs.builder()\n                        .burnRateThreshold(5)\n                        .timeRange(\"1d\")\n                        .build())\n                    .build())\n                .build())\n            .type(\"MonitorsLibraryMonitor\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfSloMonitor1:\n    type: sumologic:Monitor\n    properties:\n      contentType: Monitor\n      evaluationDelay: 5m\n      isDisabled: false\n      monitorType: Slo\n      notifications:\n        - notification:\n            connectionType: Email\n            messageBody: 'Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}'\n            recipients:\n              - abc@example.com\n            subject: 'Monitor Alert: {{TriggerType}} on {{Name}}'\n            timeZone: PST\n          runForTriggerTypes:\n            - Critical\n            - ResolvedCritical\n      playbook: test playbook\n      sloId: '0000000000000009'\n      triggerConditions:\n        sloSliCondition:\n          critical:\n            sliThreshold: 99.5\n          warning:\n            sliThreshold: 99.9\n      type: MonitorsLibraryMonitor\n  tfSloMonitor2:\n    type: sumologic:Monitor\n    properties:\n      contentType: Monitor\n      evaluationDelay: 5m\n      isDisabled: false\n      monitorType: Slo\n      sloId: '0000000000000009'\n      triggerConditions:\n        sloBurnRateCondition:\n          critical:\n            burnRateThreshold: 10\n            timeRange: 1d\n          warning:\n            burnRateThreshold: 5\n            timeRange: 1d\n      type: MonitorsLibraryMonitor\n```\n\n## Monitor Folders\n\n\u003c\u003c\u003c\u003c\u003c\u003c\u003c HEAD\nNOTE: Monitor folders are considered a different resource from Library content folders.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst tfMonitorFolder1 = new sumologic.MonitorFolder(\"tfMonitorFolder1\", {description: \"a folder for monitors\"});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntf_monitor_folder1 = sumologic.MonitorFolder(\"tfMonitorFolder1\", description=\"a folder for monitors\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfMonitorFolder1 = new SumoLogic.MonitorFolder(\"tfMonitorFolder1\", new()\n    {\n        Description = \"a folder for monitors\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMonitorFolder(ctx, \"tfMonitorFolder1\", \u0026sumologic.MonitorFolderArgs{\n\t\t\tDescription: pulumi.String(\"a folder for monitors\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MonitorFolder;\nimport com.pulumi.sumologic.MonitorFolderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfMonitorFolder1 = new MonitorFolder(\"tfMonitorFolder1\", MonitorFolderArgs.builder()        \n            .description(\"a folder for monitors\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfMonitorFolder1:\n    type: sumologic:MonitorFolder\n    properties:\n      description: a folder for monitors\n```\n=======\nNOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.\n\u003e\u003e\u003e\u003e\u003e\u003e\u003e v2.11.0\n\n## The `trigger_conditions` block\n\nA `trigger_conditions` block configures conditions for sending notifications.\n### Example\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n### Arguments\nA `trigger_conditions` block contains one or more subblocks of the following types:\n- `logs_static_condition`\n- `metrics_static_condition`\n- `logs_outlier_condition`\n- `metrics_outlier_condition`\n- `logs_missing_data_condition`\n- `metrics_missing_data_condition`\n- `slo_sli_condition`\n- `slo_burn_rate_condition`\n\nSubblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.\n\nHere is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):\n#### logs_static_condition\n  - `field`\n  - `critical`\n    - `time_range` (Required) : Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `resolution_window` Accepted format: `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.\n  - `warning`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `resolution_window` Accepted format: `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.\n#### metrics_static_condition\n  - `critical`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `occurrence_type` (Required)\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n  - `warning`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `occurrence_type` (Required)\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n#### logs_outlier_condition\n  - `field`\n  - `direction`\n  - `critical`\n     - `window`\n     - `consecutive`\n     - `threshold`\n  - `warning`\n     - `window`\n     - `consecutive`\n     - `threshold`\n#### metrics_outlier_condition\n  - `direction`\n  - `critical`\n     - `baseline_window`\n     - `threshold`\n  - `warning`\n    - `baseline_window`\n    - `threshold`\n#### logs_missing_data_condition\n  - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n#### metrics_missing_data_condition\n  - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n#### slo_sli_condition\n  - `critical`\n    - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).\n  - `warning`\n    - `sli_threshold` (Required)\n  \n#### slo_burn_rate_condition\n  - `critical`\n    - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `burn_rate_threshold` (Required) : The burn rate percentage threshold.\n  - `warning`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `burn_rate_threshold` (Required)\n\n## The `triggers` block\n\nThe `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.\n\nHere's an example logs monitor that uses `triggers` to specify trigger conditions:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst tfLogsMonitor1 = new sumologic.Monitor(\"tfLogsMonitor1\", {\n    contentType: \"Monitor\",\n    description: \"tf logs monitor\",\n    isDisabled: false,\n    monitorType: \"Logs\",\n    notifications: [\n        {\n            notification: {\n                connectionType: \"Email\",\n                messageBody: \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                recipients: [\"abc@example.com\"],\n                subject: \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                timeZone: \"PST\",\n            },\n            runForTriggerTypes: [\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        },\n        {\n            notification: {\n                connectionId: \"0000000000ABC123\",\n                connectionType: \"Webhook\",\n            },\n            runForTriggerTypes: [\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        },\n    ],\n    queries: [{\n        query: \"_sourceCategory=event-action info\",\n        rowId: \"A\",\n    }],\n    triggers: [\n        {\n            detectionMethod: \"StaticCondition\",\n            occurrenceType: \"ResultCount\",\n            threshold: 40,\n            thresholdType: \"GreaterThan\",\n            timeRange: \"15m\",\n            triggerSource: \"AllResults\",\n            triggerType: \"Critical\",\n        },\n        {\n            detectionMethod: \"StaticCondition\",\n            occurrenceType: \"ResultCount\",\n            resolutionWindow: \"5m\",\n            threshold: 40,\n            thresholdType: \"LessThanOrEqual\",\n            timeRange: \"15m\",\n            triggerSource: \"AllResults\",\n            triggerType: \"ResolvedCritical\",\n        },\n    ],\n    type: \"MonitorsLibraryMonitor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntf_logs_monitor1 = sumologic.Monitor(\"tfLogsMonitor1\",\n    content_type=\"Monitor\",\n    description=\"tf logs monitor\",\n    is_disabled=False,\n    monitor_type=\"Logs\",\n    notifications=[\n        sumologic.MonitorNotificationArgs(\n            notification=sumologic.MonitorNotificationNotificationArgs(\n                connection_type=\"Email\",\n                message_body=\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                recipients=[\"abc@example.com\"],\n                subject=\"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                time_zone=\"PST\",\n            ),\n            run_for_trigger_types=[\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        ),\n        sumologic.MonitorNotificationArgs(\n            notification=sumologic.MonitorNotificationNotificationArgs(\n                connection_id=\"0000000000ABC123\",\n                connection_type=\"Webhook\",\n            ),\n            run_for_trigger_types=[\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        ),\n    ],\n    queries=[sumologic.MonitorQueryArgs(\n        query=\"_sourceCategory=event-action info\",\n        row_id=\"A\",\n    )],\n    triggers=[\n        sumologic.MonitorTriggerArgs(\n            detection_method=\"StaticCondition\",\n            occurrence_type=\"ResultCount\",\n            threshold=40,\n            threshold_type=\"GreaterThan\",\n            time_range=\"15m\",\n            trigger_source=\"AllResults\",\n            trigger_type=\"Critical\",\n        ),\n        sumologic.MonitorTriggerArgs(\n            detection_method=\"StaticCondition\",\n            occurrence_type=\"ResultCount\",\n            resolution_window=\"5m\",\n            threshold=40,\n            threshold_type=\"LessThanOrEqual\",\n            time_range=\"15m\",\n            trigger_source=\"AllResults\",\n            trigger_type=\"ResolvedCritical\",\n        ),\n    ],\n    type=\"MonitorsLibraryMonitor\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfLogsMonitor1 = new SumoLogic.Monitor(\"tfLogsMonitor1\", new()\n    {\n        ContentType = \"Monitor\",\n        Description = \"tf logs monitor\",\n        IsDisabled = false,\n        MonitorType = \"Logs\",\n        Notifications = new[]\n        {\n            new SumoLogic.Inputs.MonitorNotificationArgs\n            {\n                Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs\n                {\n                    ConnectionType = \"Email\",\n                    MessageBody = \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                    Recipients = new[]\n                    {\n                        \"abc@example.com\",\n                    },\n                    Subject = \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                    TimeZone = \"PST\",\n                },\n                RunForTriggerTypes = new[]\n                {\n                    \"Critical\",\n                    \"ResolvedCritical\",\n                },\n            },\n            new SumoLogic.Inputs.MonitorNotificationArgs\n            {\n                Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs\n                {\n                    ConnectionId = \"0000000000ABC123\",\n                    ConnectionType = \"Webhook\",\n                },\n                RunForTriggerTypes = new[]\n                {\n                    \"Critical\",\n                    \"ResolvedCritical\",\n                },\n            },\n        },\n        Queries = new[]\n        {\n            new SumoLogic.Inputs.MonitorQueryArgs\n            {\n                Query = \"_sourceCategory=event-action info\",\n                RowId = \"A\",\n            },\n        },\n        Triggers = new[]\n        {\n            new SumoLogic.Inputs.MonitorTriggerArgs\n            {\n                DetectionMethod = \"StaticCondition\",\n                OccurrenceType = \"ResultCount\",\n                Threshold = 40,\n                ThresholdType = \"GreaterThan\",\n                TimeRange = \"15m\",\n                TriggerSource = \"AllResults\",\n                TriggerType = \"Critical\",\n            },\n            new SumoLogic.Inputs.MonitorTriggerArgs\n            {\n                DetectionMethod = \"StaticCondition\",\n                OccurrenceType = \"ResultCount\",\n                ResolutionWindow = \"5m\",\n                Threshold = 40,\n                ThresholdType = \"LessThanOrEqual\",\n                TimeRange = \"15m\",\n                TriggerSource = \"AllResults\",\n                TriggerType = \"ResolvedCritical\",\n            },\n        },\n        Type = \"MonitorsLibraryMonitor\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMonitor(ctx, \"tfLogsMonitor1\", \u0026sumologic.MonitorArgs{\n\t\t\tContentType: pulumi.String(\"Monitor\"),\n\t\t\tDescription: pulumi.String(\"tf logs monitor\"),\n\t\t\tIsDisabled:  pulumi.Bool(false),\n\t\t\tMonitorType: pulumi.String(\"Logs\"),\n\t\t\tNotifications: sumologic.MonitorNotificationArray{\n\t\t\t\t\u0026sumologic.MonitorNotificationArgs{\n\t\t\t\t\tNotification: \u0026sumologic.MonitorNotificationNotificationArgs{\n\t\t\t\t\t\tConnectionType: pulumi.String(\"Email\"),\n\t\t\t\t\t\tMessageBody:    pulumi.String(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\"),\n\t\t\t\t\t\tRecipients: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"abc@example.com\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tSubject:  pulumi.String(\"Monitor Alert: {{TriggerType}} on {{Name}}\"),\n\t\t\t\t\t\tTimeZone: pulumi.String(\"PST\"),\n\t\t\t\t\t},\n\t\t\t\t\tRunForTriggerTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"Critical\"),\n\t\t\t\t\t\tpulumi.String(\"ResolvedCritical\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026sumologic.MonitorNotificationArgs{\n\t\t\t\t\tNotification: \u0026sumologic.MonitorNotificationNotificationArgs{\n\t\t\t\t\t\tConnectionId:   pulumi.String(\"0000000000ABC123\"),\n\t\t\t\t\t\tConnectionType: pulumi.String(\"Webhook\"),\n\t\t\t\t\t},\n\t\t\t\t\tRunForTriggerTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"Critical\"),\n\t\t\t\t\t\tpulumi.String(\"ResolvedCritical\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tQueries: sumologic.MonitorQueryArray{\n\t\t\t\t\u0026sumologic.MonitorQueryArgs{\n\t\t\t\t\tQuery: pulumi.String(\"_sourceCategory=event-action info\"),\n\t\t\t\t\tRowId: pulumi.String(\"A\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTriggers: sumologic.MonitorTriggerArray{\n\t\t\t\t\u0026sumologic.MonitorTriggerArgs{\n\t\t\t\t\tDetectionMethod: pulumi.String(\"StaticCondition\"),\n\t\t\t\t\tOccurrenceType:  pulumi.String(\"ResultCount\"),\n\t\t\t\t\tThreshold:       pulumi.Float64(40),\n\t\t\t\t\tThresholdType:   pulumi.String(\"GreaterThan\"),\n\t\t\t\t\tTimeRange:       pulumi.String(\"15m\"),\n\t\t\t\t\tTriggerSource:   pulumi.String(\"AllResults\"),\n\t\t\t\t\tTriggerType:     pulumi.String(\"Critical\"),\n\t\t\t\t},\n\t\t\t\t\u0026sumologic.MonitorTriggerArgs{\n\t\t\t\t\tDetectionMethod:  pulumi.String(\"StaticCondition\"),\n\t\t\t\t\tOccurrenceType:   pulumi.String(\"ResultCount\"),\n\t\t\t\t\tResolutionWindow: pulumi.String(\"5m\"),\n\t\t\t\t\tThreshold:        pulumi.Float64(40),\n\t\t\t\t\tThresholdType:    pulumi.String(\"LessThanOrEqual\"),\n\t\t\t\t\tTimeRange:        pulumi.String(\"15m\"),\n\t\t\t\t\tTriggerSource:    pulumi.String(\"AllResults\"),\n\t\t\t\t\tTriggerType:      pulumi.String(\"ResolvedCritical\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"MonitorsLibraryMonitor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Monitor;\nimport com.pulumi.sumologic.MonitorArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorQueryArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfLogsMonitor1 = new Monitor(\"tfLogsMonitor1\", MonitorArgs.builder()        \n            .contentType(\"Monitor\")\n            .description(\"tf logs monitor\")\n            .isDisabled(false)\n            .monitorType(\"Logs\")\n            .notifications(            \n                MonitorNotificationArgs.builder()\n                    .notification(MonitorNotificationNotificationArgs.builder()\n                        .connectionType(\"Email\")\n                        .messageBody(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\")\n                        .recipients(\"abc@example.com\")\n                        .subject(\"Monitor Alert: {{TriggerType}} on {{Name}}\")\n                        .timeZone(\"PST\")\n                        .build())\n                    .runForTriggerTypes(                    \n                        \"Critical\",\n                        \"ResolvedCritical\")\n                    .build(),\n                MonitorNotificationArgs.builder()\n                    .notification(MonitorNotificationNotificationArgs.builder()\n                        .connectionId(\"0000000000ABC123\")\n                        .connectionType(\"Webhook\")\n                        .build())\n                    .runForTriggerTypes(                    \n                        \"Critical\",\n                        \"ResolvedCritical\")\n                    .build())\n            .queries(MonitorQueryArgs.builder()\n                .query(\"_sourceCategory=event-action info\")\n                .rowId(\"A\")\n                .build())\n            .triggers(            \n                MonitorTriggerArgs.builder()\n                    .detectionMethod(\"StaticCondition\")\n                    .occurrenceType(\"ResultCount\")\n                    .threshold(40)\n                    .thresholdType(\"GreaterThan\")\n                    .timeRange(\"15m\")\n                    .triggerSource(\"AllResults\")\n                    .triggerType(\"Critical\")\n                    .build(),\n                MonitorTriggerArgs.builder()\n                    .detectionMethod(\"StaticCondition\")\n                    .occurrenceType(\"ResultCount\")\n                    .resolutionWindow(\"5m\")\n                    .threshold(40)\n                    .thresholdType(\"LessThanOrEqual\")\n                    .timeRange(\"15m\")\n                    .triggerSource(\"AllResults\")\n                    .triggerType(\"ResolvedCritical\")\n                    .build())\n            .type(\"MonitorsLibraryMonitor\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfLogsMonitor1:\n    type: sumologic:Monitor\n    properties:\n      contentType: Monitor\n      description: tf logs monitor\n      isDisabled: false\n      monitorType: Logs\n      notifications:\n        - notification:\n            connectionType: Email\n            messageBody: 'Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}'\n            recipients:\n              - abc@example.com\n            subject: 'Monitor Alert: {{TriggerType}} on {{Name}}'\n            timeZone: PST\n          runForTriggerTypes:\n            - Critical\n            - ResolvedCritical\n        - notification:\n            connectionId: 0000000000ABC123\n            connectionType: Webhook\n          runForTriggerTypes:\n            - Critical\n            - ResolvedCritical\n      queries:\n        - query: _sourceCategory=event-action info\n          rowId: A\n      triggers:\n        - detectionMethod: StaticCondition\n          occurrenceType: ResultCount\n          threshold: 40\n          thresholdType: GreaterThan\n          timeRange: 15m\n          triggerSource: AllResults\n          triggerType: Critical\n        - detectionMethod: StaticCondition\n          occurrenceType: ResultCount\n          resolutionWindow: 5m\n          threshold: 40\n          thresholdType: LessThanOrEqual\n          timeRange: 15m\n          triggerSource: AllResults\n          triggerType: ResolvedCritical\n      type: MonitorsLibraryMonitor\n```\n\n\n## Import\n\nMonitors can be imported using the monitor ID, such ashcl\n\n```sh\n $ pulumi import sumologic:index/monitor:Monitor test 1234567890\n```\n\n [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor ",
+            "description": "Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).\nIf Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).\n\n## Example SLO Monitors\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst tfSloMonitor1 = new sumologic.Monitor(\"tfSloMonitor1\", {\n    contentType: \"Monitor\",\n    evaluationDelay: \"5m\",\n    isDisabled: false,\n    monitorType: \"Slo\",\n    notifications: [{\n        notification: {\n            connectionType: \"Email\",\n            messageBody: \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n            recipients: [\"abc@example.com\"],\n            subject: \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n            timeZone: \"PST\",\n        },\n        runForTriggerTypes: [\n            \"Critical\",\n            \"ResolvedCritical\",\n        ],\n    }],\n    playbook: \"test playbook\",\n    sloId: \"0000000000000009\",\n    triggerConditions: {\n        sloSliCondition: {\n            critical: {\n                sliThreshold: 99.5,\n            },\n            warning: {\n                sliThreshold: 99.9,\n            },\n        },\n    },\n    type: \"MonitorsLibraryMonitor\",\n});\nconst tfSloMonitor2 = new sumologic.Monitor(\"tfSloMonitor2\", {\n    contentType: \"Monitor\",\n    evaluationDelay: \"5m\",\n    isDisabled: false,\n    monitorType: \"Slo\",\n    sloId: \"0000000000000009\",\n    triggerConditions: {\n        sloBurnRateCondition: {\n            critical: {\n                burnRateThreshold: 10,\n                timeRange: \"1d\",\n            },\n            warning: {\n                burnRateThreshold: 5,\n                timeRange: \"1d\",\n            },\n        },\n    },\n    type: \"MonitorsLibraryMonitor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntf_slo_monitor1 = sumologic.Monitor(\"tfSloMonitor1\",\n    content_type=\"Monitor\",\n    evaluation_delay=\"5m\",\n    is_disabled=False,\n    monitor_type=\"Slo\",\n    notifications=[sumologic.MonitorNotificationArgs(\n        notification=sumologic.MonitorNotificationNotificationArgs(\n            connection_type=\"Email\",\n            message_body=\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n            recipients=[\"abc@example.com\"],\n            subject=\"Monitor Alert: {{TriggerType}} on {{Name}}\",\n            time_zone=\"PST\",\n        ),\n        run_for_trigger_types=[\n            \"Critical\",\n            \"ResolvedCritical\",\n        ],\n    )],\n    playbook=\"test playbook\",\n    slo_id=\"0000000000000009\",\n    trigger_conditions=sumologic.MonitorTriggerConditionsArgs(\n        slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(\n            critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(\n                sli_threshold=99.5,\n            ),\n            warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(\n                sli_threshold=99.9,\n            ),\n        ),\n    ),\n    type=\"MonitorsLibraryMonitor\")\ntf_slo_monitor2 = sumologic.Monitor(\"tfSloMonitor2\",\n    content_type=\"Monitor\",\n    evaluation_delay=\"5m\",\n    is_disabled=False,\n    monitor_type=\"Slo\",\n    slo_id=\"0000000000000009\",\n    trigger_conditions=sumologic.MonitorTriggerConditionsArgs(\n        slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(\n            critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(\n                burn_rate_threshold=10,\n                time_range=\"1d\",\n            ),\n            warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(\n                burn_rate_threshold=5,\n                time_range=\"1d\",\n            ),\n        ),\n    ),\n    type=\"MonitorsLibraryMonitor\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfSloMonitor1 = new SumoLogic.Monitor(\"tfSloMonitor1\", new()\n    {\n        ContentType = \"Monitor\",\n        EvaluationDelay = \"5m\",\n        IsDisabled = false,\n        MonitorType = \"Slo\",\n        Notifications = new[]\n        {\n            new SumoLogic.Inputs.MonitorNotificationArgs\n            {\n                Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs\n                {\n                    ConnectionType = \"Email\",\n                    MessageBody = \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                    Recipients = new[]\n                    {\n                        \"abc@example.com\",\n                    },\n                    Subject = \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                    TimeZone = \"PST\",\n                },\n                RunForTriggerTypes = new[]\n                {\n                    \"Critical\",\n                    \"ResolvedCritical\",\n                },\n            },\n        },\n        Playbook = \"test playbook\",\n        SloId = \"0000000000000009\",\n        TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs\n        {\n            SloSliCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionArgs\n            {\n                Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs\n                {\n                    SliThreshold = 99.5,\n                },\n                Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionWarningArgs\n                {\n                    SliThreshold = 99.9,\n                },\n            },\n        },\n        Type = \"MonitorsLibraryMonitor\",\n    });\n\n    var tfSloMonitor2 = new SumoLogic.Monitor(\"tfSloMonitor2\", new()\n    {\n        ContentType = \"Monitor\",\n        EvaluationDelay = \"5m\",\n        IsDisabled = false,\n        MonitorType = \"Slo\",\n        SloId = \"0000000000000009\",\n        TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs\n        {\n            SloBurnRateCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionArgs\n            {\n                Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs\n                {\n                    BurnRateThreshold = 10,\n                    TimeRange = \"1d\",\n                },\n                Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs\n                {\n                    BurnRateThreshold = 5,\n                    TimeRange = \"1d\",\n                },\n            },\n        },\n        Type = \"MonitorsLibraryMonitor\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMonitor(ctx, \"tfSloMonitor1\", \u0026sumologic.MonitorArgs{\n\t\t\tContentType:     pulumi.String(\"Monitor\"),\n\t\t\tEvaluationDelay: pulumi.String(\"5m\"),\n\t\t\tIsDisabled:      pulumi.Bool(false),\n\t\t\tMonitorType:     pulumi.String(\"Slo\"),\n\t\t\tNotifications: sumologic.MonitorNotificationArray{\n\t\t\t\t\u0026sumologic.MonitorNotificationArgs{\n\t\t\t\t\tNotification: \u0026sumologic.MonitorNotificationNotificationArgs{\n\t\t\t\t\t\tConnectionType: pulumi.String(\"Email\"),\n\t\t\t\t\t\tMessageBody:    pulumi.String(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\"),\n\t\t\t\t\t\tRecipients: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"abc@example.com\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tSubject:  pulumi.String(\"Monitor Alert: {{TriggerType}} on {{Name}}\"),\n\t\t\t\t\t\tTimeZone: pulumi.String(\"PST\"),\n\t\t\t\t\t},\n\t\t\t\t\tRunForTriggerTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"Critical\"),\n\t\t\t\t\t\tpulumi.String(\"ResolvedCritical\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tPlaybook: pulumi.String(\"test playbook\"),\n\t\t\tSloId:    pulumi.String(\"0000000000000009\"),\n\t\t\tTriggerConditions: \u0026sumologic.MonitorTriggerConditionsArgs{\n\t\t\t\tSloSliCondition: \u0026sumologic.MonitorTriggerConditionsSloSliConditionArgs{\n\t\t\t\t\tCritical: \u0026sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs{\n\t\t\t\t\t\tSliThreshold: pulumi.Float64(99.5),\n\t\t\t\t\t},\n\t\t\t\t\tWarning: \u0026sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs{\n\t\t\t\t\t\tSliThreshold: pulumi.Float64(99.9),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"MonitorsLibraryMonitor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewMonitor(ctx, \"tfSloMonitor2\", \u0026sumologic.MonitorArgs{\n\t\t\tContentType:     pulumi.String(\"Monitor\"),\n\t\t\tEvaluationDelay: pulumi.String(\"5m\"),\n\t\t\tIsDisabled:      pulumi.Bool(false),\n\t\t\tMonitorType:     pulumi.String(\"Slo\"),\n\t\t\tSloId:           pulumi.String(\"0000000000000009\"),\n\t\t\tTriggerConditions: \u0026sumologic.MonitorTriggerConditionsArgs{\n\t\t\t\tSloBurnRateCondition: \u0026sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs{\n\t\t\t\t\tCritical: \u0026sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{\n\t\t\t\t\t\tBurnRateThreshold: pulumi.Float64(10),\n\t\t\t\t\t\tTimeRange:         pulumi.String(\"1d\"),\n\t\t\t\t\t},\n\t\t\t\t\tWarning: \u0026sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs{\n\t\t\t\t\t\tBurnRateThreshold: pulumi.Float64(5),\n\t\t\t\t\t\tTimeRange:         pulumi.String(\"1d\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"MonitorsLibraryMonitor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Monitor;\nimport com.pulumi.sumologic.MonitorArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionWarningArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfSloMonitor1 = new Monitor(\"tfSloMonitor1\", MonitorArgs.builder()        \n            .contentType(\"Monitor\")\n            .evaluationDelay(\"5m\")\n            .isDisabled(false)\n            .monitorType(\"Slo\")\n            .notifications(MonitorNotificationArgs.builder()\n                .notification(MonitorNotificationNotificationArgs.builder()\n                    .connectionType(\"Email\")\n                    .messageBody(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\")\n                    .recipients(\"abc@example.com\")\n                    .subject(\"Monitor Alert: {{TriggerType}} on {{Name}}\")\n                    .timeZone(\"PST\")\n                    .build())\n                .runForTriggerTypes(                \n                    \"Critical\",\n                    \"ResolvedCritical\")\n                .build())\n            .playbook(\"test playbook\")\n            .sloId(\"0000000000000009\")\n            .triggerConditions(MonitorTriggerConditionsArgs.builder()\n                .sloSliCondition(MonitorTriggerConditionsSloSliConditionArgs.builder()\n                    .critical(MonitorTriggerConditionsSloSliConditionCriticalArgs.builder()\n                        .sliThreshold(99.5)\n                        .build())\n                    .warning(MonitorTriggerConditionsSloSliConditionWarningArgs.builder()\n                        .sliThreshold(99.9)\n                        .build())\n                    .build())\n                .build())\n            .type(\"MonitorsLibraryMonitor\")\n            .build());\n\n        var tfSloMonitor2 = new Monitor(\"tfSloMonitor2\", MonitorArgs.builder()        \n            .contentType(\"Monitor\")\n            .evaluationDelay(\"5m\")\n            .isDisabled(false)\n            .monitorType(\"Slo\")\n            .sloId(\"0000000000000009\")\n            .triggerConditions(MonitorTriggerConditionsArgs.builder()\n                .sloBurnRateCondition(MonitorTriggerConditionsSloBurnRateConditionArgs.builder()\n                    .critical(MonitorTriggerConditionsSloBurnRateConditionCriticalArgs.builder()\n                        .burnRateThreshold(10)\n                        .timeRange(\"1d\")\n                        .build())\n                    .warning(MonitorTriggerConditionsSloBurnRateConditionWarningArgs.builder()\n                        .burnRateThreshold(5)\n                        .timeRange(\"1d\")\n                        .build())\n                    .build())\n                .build())\n            .type(\"MonitorsLibraryMonitor\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfSloMonitor1:\n    type: sumologic:Monitor\n    properties:\n      contentType: Monitor\n      evaluationDelay: 5m\n      isDisabled: false\n      monitorType: Slo\n      notifications:\n        - notification:\n            connectionType: Email\n            messageBody: 'Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}'\n            recipients:\n              - abc@example.com\n            subject: 'Monitor Alert: {{TriggerType}} on {{Name}}'\n            timeZone: PST\n          runForTriggerTypes:\n            - Critical\n            - ResolvedCritical\n      playbook: test playbook\n      sloId: '0000000000000009'\n      triggerConditions:\n        sloSliCondition:\n          critical:\n            sliThreshold: 99.5\n          warning:\n            sliThreshold: 99.9\n      type: MonitorsLibraryMonitor\n  tfSloMonitor2:\n    type: sumologic:Monitor\n    properties:\n      contentType: Monitor\n      evaluationDelay: 5m\n      isDisabled: false\n      monitorType: Slo\n      sloId: '0000000000000009'\n      triggerConditions:\n        sloBurnRateCondition:\n          critical:\n            burnRateThreshold: 10\n            timeRange: 1d\n          warning:\n            burnRateThreshold: 5\n            timeRange: 1d\n      type: MonitorsLibraryMonitor\n```\n\n## Monitor Folders\n\n\u003c\u003c\u003c\u003c\u003c\u003c\u003c HEAD\nNOTE: Monitor folders are considered a different resource from Library content folders.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst tfMonitorFolder1 = new sumologic.MonitorFolder(\"tfMonitorFolder1\", {description: \"a folder for monitors\"});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntf_monitor_folder1 = sumologic.MonitorFolder(\"tfMonitorFolder1\", description=\"a folder for monitors\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfMonitorFolder1 = new SumoLogic.MonitorFolder(\"tfMonitorFolder1\", new()\n    {\n        Description = \"a folder for monitors\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMonitorFolder(ctx, \"tfMonitorFolder1\", \u0026sumologic.MonitorFolderArgs{\n\t\t\tDescription: pulumi.String(\"a folder for monitors\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MonitorFolder;\nimport com.pulumi.sumologic.MonitorFolderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfMonitorFolder1 = new MonitorFolder(\"tfMonitorFolder1\", MonitorFolderArgs.builder()        \n            .description(\"a folder for monitors\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfMonitorFolder1:\n    type: sumologic:MonitorFolder\n    properties:\n      description: a folder for monitors\n```\n=======\nNOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.\n\u003e\u003e\u003e\u003e\u003e\u003e\u003e v2.11.0\n\n## The `trigger_conditions` block\n\nA `trigger_conditions` block configures conditions for sending notifications.\n### Example\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n### Arguments\nA `trigger_conditions` block contains one or more subblocks of the following types:\n- `logs_static_condition`\n- `metrics_static_condition`\n- `logs_outlier_condition`\n- `metrics_outlier_condition`\n- `logs_missing_data_condition`\n- `metrics_missing_data_condition`\n- `slo_sli_condition`\n- `slo_burn_rate_condition`\n\nSubblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.\n\nHere is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):\n#### logs_static_condition\n  - `field`\n  - `critical`\n    - `time_range` (Required) : Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `resolution_window` Accepted format: `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.\n  - `warning`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `resolution_window` Accepted format: `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.\n#### metrics_static_condition\n  - `critical`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `occurrence_type` (Required)\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `min_data_points` (Optional)\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `min_data_points` (Optional)\n    - `warning`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `occurrence_type` (Required)\n    - `alert` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `min_data_points` (Optional)\n    - `resolution` (Required)\n      - `threshold`\n      - `threshold_type`\n      - `min_data_points` (Optional)\n#### logs_outlier_condition\n  - `field`\n  - `direction`\n  - `critical`\n     - `window`\n     - `consecutive`\n     - `threshold`\n  - `warning`\n     - `window`\n     - `consecutive`\n     - `threshold`\n#### metrics_outlier_condition\n  - `direction`\n  - `critical`\n     - `baseline_window`\n     - `threshold`\n  - `warning`\n    - `baseline_window`\n    - `threshold`\n#### logs_missing_data_condition\n  - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n#### metrics_missing_data_condition\n  - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n#### slo_sli_condition\n  - `critical`\n    - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).\n  - `warning`\n    - `sli_threshold` (Required)\n  \n#### slo_burn_rate_condition\n  - `critical`\n    - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `burn_rate_threshold` (Required) : The burn rate percentage threshold.\n  - `warning`\n    - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `\u003cnumber\u003e` followed by a `\u003ctime_unit\u003e` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.\n    - `burn_rate_threshold` (Required)\n\n## The `triggers` block\n\nThe `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.\n\nHere's an example logs monitor that uses `triggers` to specify trigger conditions:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst tfLogsMonitor1 = new sumologic.Monitor(\"tfLogsMonitor1\", {\n    contentType: \"Monitor\",\n    description: \"tf logs monitor\",\n    isDisabled: false,\n    monitorType: \"Logs\",\n    notifications: [\n        {\n            notification: {\n                connectionType: \"Email\",\n                messageBody: \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                recipients: [\"abc@example.com\"],\n                subject: \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                timeZone: \"PST\",\n            },\n            runForTriggerTypes: [\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        },\n        {\n            notification: {\n                connectionId: \"0000000000ABC123\",\n                connectionType: \"Webhook\",\n            },\n            runForTriggerTypes: [\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        },\n    ],\n    queries: [{\n        query: \"_sourceCategory=event-action info\",\n        rowId: \"A\",\n    }],\n    triggers: [\n        {\n            detectionMethod: \"StaticCondition\",\n            occurrenceType: \"ResultCount\",\n            threshold: 40,\n            thresholdType: \"GreaterThan\",\n            timeRange: \"15m\",\n            triggerSource: \"AllResults\",\n            triggerType: \"Critical\",\n        },\n        {\n            detectionMethod: \"StaticCondition\",\n            occurrenceType: \"ResultCount\",\n            resolutionWindow: \"5m\",\n            threshold: 40,\n            thresholdType: \"LessThanOrEqual\",\n            timeRange: \"15m\",\n            triggerSource: \"AllResults\",\n            triggerType: \"ResolvedCritical\",\n        },\n    ],\n    type: \"MonitorsLibraryMonitor\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntf_logs_monitor1 = sumologic.Monitor(\"tfLogsMonitor1\",\n    content_type=\"Monitor\",\n    description=\"tf logs monitor\",\n    is_disabled=False,\n    monitor_type=\"Logs\",\n    notifications=[\n        sumologic.MonitorNotificationArgs(\n            notification=sumologic.MonitorNotificationNotificationArgs(\n                connection_type=\"Email\",\n                message_body=\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                recipients=[\"abc@example.com\"],\n                subject=\"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                time_zone=\"PST\",\n            ),\n            run_for_trigger_types=[\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        ),\n        sumologic.MonitorNotificationArgs(\n            notification=sumologic.MonitorNotificationNotificationArgs(\n                connection_id=\"0000000000ABC123\",\n                connection_type=\"Webhook\",\n            ),\n            run_for_trigger_types=[\n                \"Critical\",\n                \"ResolvedCritical\",\n            ],\n        ),\n    ],\n    queries=[sumologic.MonitorQueryArgs(\n        query=\"_sourceCategory=event-action info\",\n        row_id=\"A\",\n    )],\n    triggers=[\n        sumologic.MonitorTriggerArgs(\n            detection_method=\"StaticCondition\",\n            occurrence_type=\"ResultCount\",\n            threshold=40,\n            threshold_type=\"GreaterThan\",\n            time_range=\"15m\",\n            trigger_source=\"AllResults\",\n            trigger_type=\"Critical\",\n        ),\n        sumologic.MonitorTriggerArgs(\n            detection_method=\"StaticCondition\",\n            occurrence_type=\"ResultCount\",\n            resolution_window=\"5m\",\n            threshold=40,\n            threshold_type=\"LessThanOrEqual\",\n            time_range=\"15m\",\n            trigger_source=\"AllResults\",\n            trigger_type=\"ResolvedCritical\",\n        ),\n    ],\n    type=\"MonitorsLibraryMonitor\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfLogsMonitor1 = new SumoLogic.Monitor(\"tfLogsMonitor1\", new()\n    {\n        ContentType = \"Monitor\",\n        Description = \"tf logs monitor\",\n        IsDisabled = false,\n        MonitorType = \"Logs\",\n        Notifications = new[]\n        {\n            new SumoLogic.Inputs.MonitorNotificationArgs\n            {\n                Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs\n                {\n                    ConnectionType = \"Email\",\n                    MessageBody = \"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\",\n                    Recipients = new[]\n                    {\n                        \"abc@example.com\",\n                    },\n                    Subject = \"Monitor Alert: {{TriggerType}} on {{Name}}\",\n                    TimeZone = \"PST\",\n                },\n                RunForTriggerTypes = new[]\n                {\n                    \"Critical\",\n                    \"ResolvedCritical\",\n                },\n            },\n            new SumoLogic.Inputs.MonitorNotificationArgs\n            {\n                Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs\n                {\n                    ConnectionId = \"0000000000ABC123\",\n                    ConnectionType = \"Webhook\",\n                },\n                RunForTriggerTypes = new[]\n                {\n                    \"Critical\",\n                    \"ResolvedCritical\",\n                },\n            },\n        },\n        Queries = new[]\n        {\n            new SumoLogic.Inputs.MonitorQueryArgs\n            {\n                Query = \"_sourceCategory=event-action info\",\n                RowId = \"A\",\n            },\n        },\n        Triggers = new[]\n        {\n            new SumoLogic.Inputs.MonitorTriggerArgs\n            {\n                DetectionMethod = \"StaticCondition\",\n                OccurrenceType = \"ResultCount\",\n                Threshold = 40,\n                ThresholdType = \"GreaterThan\",\n                TimeRange = \"15m\",\n                TriggerSource = \"AllResults\",\n                TriggerType = \"Critical\",\n            },\n            new SumoLogic.Inputs.MonitorTriggerArgs\n            {\n                DetectionMethod = \"StaticCondition\",\n                OccurrenceType = \"ResultCount\",\n                ResolutionWindow = \"5m\",\n                Threshold = 40,\n                ThresholdType = \"LessThanOrEqual\",\n                TimeRange = \"15m\",\n                TriggerSource = \"AllResults\",\n                TriggerType = \"ResolvedCritical\",\n            },\n        },\n        Type = \"MonitorsLibraryMonitor\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMonitor(ctx, \"tfLogsMonitor1\", \u0026sumologic.MonitorArgs{\n\t\t\tContentType: pulumi.String(\"Monitor\"),\n\t\t\tDescription: pulumi.String(\"tf logs monitor\"),\n\t\t\tIsDisabled:  pulumi.Bool(false),\n\t\t\tMonitorType: pulumi.String(\"Logs\"),\n\t\t\tNotifications: sumologic.MonitorNotificationArray{\n\t\t\t\t\u0026sumologic.MonitorNotificationArgs{\n\t\t\t\t\tNotification: \u0026sumologic.MonitorNotificationNotificationArgs{\n\t\t\t\t\t\tConnectionType: pulumi.String(\"Email\"),\n\t\t\t\t\t\tMessageBody:    pulumi.String(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\"),\n\t\t\t\t\t\tRecipients: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"abc@example.com\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tSubject:  pulumi.String(\"Monitor Alert: {{TriggerType}} on {{Name}}\"),\n\t\t\t\t\t\tTimeZone: pulumi.String(\"PST\"),\n\t\t\t\t\t},\n\t\t\t\t\tRunForTriggerTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"Critical\"),\n\t\t\t\t\t\tpulumi.String(\"ResolvedCritical\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026sumologic.MonitorNotificationArgs{\n\t\t\t\t\tNotification: \u0026sumologic.MonitorNotificationNotificationArgs{\n\t\t\t\t\t\tConnectionId:   pulumi.String(\"0000000000ABC123\"),\n\t\t\t\t\t\tConnectionType: pulumi.String(\"Webhook\"),\n\t\t\t\t\t},\n\t\t\t\t\tRunForTriggerTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"Critical\"),\n\t\t\t\t\t\tpulumi.String(\"ResolvedCritical\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tQueries: sumologic.MonitorQueryArray{\n\t\t\t\t\u0026sumologic.MonitorQueryArgs{\n\t\t\t\t\tQuery: pulumi.String(\"_sourceCategory=event-action info\"),\n\t\t\t\t\tRowId: pulumi.String(\"A\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTriggers: sumologic.MonitorTriggerArray{\n\t\t\t\t\u0026sumologic.MonitorTriggerArgs{\n\t\t\t\t\tDetectionMethod: pulumi.String(\"StaticCondition\"),\n\t\t\t\t\tOccurrenceType:  pulumi.String(\"ResultCount\"),\n\t\t\t\t\tThreshold:       pulumi.Float64(40),\n\t\t\t\t\tThresholdType:   pulumi.String(\"GreaterThan\"),\n\t\t\t\t\tTimeRange:       pulumi.String(\"15m\"),\n\t\t\t\t\tTriggerSource:   pulumi.String(\"AllResults\"),\n\t\t\t\t\tTriggerType:     pulumi.String(\"Critical\"),\n\t\t\t\t},\n\t\t\t\t\u0026sumologic.MonitorTriggerArgs{\n\t\t\t\t\tDetectionMethod:  pulumi.String(\"StaticCondition\"),\n\t\t\t\t\tOccurrenceType:   pulumi.String(\"ResultCount\"),\n\t\t\t\t\tResolutionWindow: pulumi.String(\"5m\"),\n\t\t\t\t\tThreshold:        pulumi.Float64(40),\n\t\t\t\t\tThresholdType:    pulumi.String(\"LessThanOrEqual\"),\n\t\t\t\t\tTimeRange:        pulumi.String(\"15m\"),\n\t\t\t\t\tTriggerSource:    pulumi.String(\"AllResults\"),\n\t\t\t\t\tTriggerType:      pulumi.String(\"ResolvedCritical\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"MonitorsLibraryMonitor\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Monitor;\nimport com.pulumi.sumologic.MonitorArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;\nimport com.pulumi.sumologic.inputs.MonitorQueryArgs;\nimport com.pulumi.sumologic.inputs.MonitorTriggerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfLogsMonitor1 = new Monitor(\"tfLogsMonitor1\", MonitorArgs.builder()        \n            .contentType(\"Monitor\")\n            .description(\"tf logs monitor\")\n            .isDisabled(false)\n            .monitorType(\"Logs\")\n            .notifications(            \n                MonitorNotificationArgs.builder()\n                    .notification(MonitorNotificationNotificationArgs.builder()\n                        .connectionType(\"Email\")\n                        .messageBody(\"Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}\")\n                        .recipients(\"abc@example.com\")\n                        .subject(\"Monitor Alert: {{TriggerType}} on {{Name}}\")\n                        .timeZone(\"PST\")\n                        .build())\n                    .runForTriggerTypes(                    \n                        \"Critical\",\n                        \"ResolvedCritical\")\n                    .build(),\n                MonitorNotificationArgs.builder()\n                    .notification(MonitorNotificationNotificationArgs.builder()\n                        .connectionId(\"0000000000ABC123\")\n                        .connectionType(\"Webhook\")\n                        .build())\n                    .runForTriggerTypes(                    \n                        \"Critical\",\n                        \"ResolvedCritical\")\n                    .build())\n            .queries(MonitorQueryArgs.builder()\n                .query(\"_sourceCategory=event-action info\")\n                .rowId(\"A\")\n                .build())\n            .triggers(            \n                MonitorTriggerArgs.builder()\n                    .detectionMethod(\"StaticCondition\")\n                    .occurrenceType(\"ResultCount\")\n                    .threshold(40)\n                    .thresholdType(\"GreaterThan\")\n                    .timeRange(\"15m\")\n                    .triggerSource(\"AllResults\")\n                    .triggerType(\"Critical\")\n                    .build(),\n                MonitorTriggerArgs.builder()\n                    .detectionMethod(\"StaticCondition\")\n                    .occurrenceType(\"ResultCount\")\n                    .resolutionWindow(\"5m\")\n                    .threshold(40)\n                    .thresholdType(\"LessThanOrEqual\")\n                    .timeRange(\"15m\")\n                    .triggerSource(\"AllResults\")\n                    .triggerType(\"ResolvedCritical\")\n                    .build())\n            .type(\"MonitorsLibraryMonitor\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfLogsMonitor1:\n    type: sumologic:Monitor\n    properties:\n      contentType: Monitor\n      description: tf logs monitor\n      isDisabled: false\n      monitorType: Logs\n      notifications:\n        - notification:\n            connectionType: Email\n            messageBody: 'Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}'\n            recipients:\n              - abc@example.com\n            subject: 'Monitor Alert: {{TriggerType}} on {{Name}}'\n            timeZone: PST\n          runForTriggerTypes:\n            - Critical\n            - ResolvedCritical\n        - notification:\n            connectionId: 0000000000ABC123\n            connectionType: Webhook\n          runForTriggerTypes:\n            - Critical\n            - ResolvedCritical\n      queries:\n        - query: _sourceCategory=event-action info\n          rowId: A\n      triggers:\n        - detectionMethod: StaticCondition\n          occurrenceType: ResultCount\n          threshold: 40\n          thresholdType: GreaterThan\n          timeRange: 15m\n          triggerSource: AllResults\n          triggerType: Critical\n        - detectionMethod: StaticCondition\n          occurrenceType: ResultCount\n          resolutionWindow: 5m\n          threshold: 40\n          thresholdType: LessThanOrEqual\n          timeRange: 15m\n          triggerSource: AllResults\n          triggerType: ResolvedCritical\n      type: MonitorsLibraryMonitor\n```\n\n\n## Import\n\nMonitors can be imported using the monitor ID, such ashcl\n\n```sh\n $ pulumi import sumologic:index/monitor:Monitor test 1234567890\n```\n\n [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor ",
             "properties": {
                 "alertName": {
                     "type": "string",
@@ -27774,7 +28296,7 @@
             "properties": {
                 "analyticsTier": {
                     "type": "string",
-                    "description": "The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`\n"
+                    "description": "The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : \"frequent\" and \"infrequent\".\n"
                 },
                 "dataForwardingId": {
                     "type": "string"
@@ -27819,7 +28341,7 @@
             "inputProperties": {
                 "analyticsTier": {
                     "type": "string",
-                    "description": "The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`\n"
+                    "description": "The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : \"frequent\" and \"infrequent\".\n"
                 },
                 "isCompliant": {
                     "type": "boolean",
@@ -27848,7 +28370,7 @@
                 "properties": {
                     "analyticsTier": {
                         "type": "string",
-                        "description": "The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`\n"
+                        "description": "The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : \"frequent\" and \"infrequent\".\n"
                     },
                     "dataForwardingId": {
                         "type": "string"
@@ -29434,7 +29956,7 @@
             }
         },
         "sumologic:index/slo:Slo": {
-            "description": "Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).\n",
+            "description": "Provides the ability to create, read, delete, and update SLOs.\n",
             "properties": {
                 "application": {
                     "type": "string",
