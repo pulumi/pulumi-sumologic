@@ -19,7 +19,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
-        /// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+        /// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
         /// </summary>
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }

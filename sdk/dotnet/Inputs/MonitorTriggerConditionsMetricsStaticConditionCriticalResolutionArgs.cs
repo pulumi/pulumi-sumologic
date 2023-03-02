@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs : global::Pulumi.ResourceArgs
     {
+        [Input("minDataPoints")]
+        public Input<int>? MinDataPoints { get; set; }
+
         [Input("occurrenceType")]
         public Input<string>? OccurrenceType { get; set; }
 

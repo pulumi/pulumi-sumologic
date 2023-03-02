@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).
+// Provides the ability to create, read, delete, and update SLOs.
 type Slo struct {
 	pulumi.CustomResourceState
 

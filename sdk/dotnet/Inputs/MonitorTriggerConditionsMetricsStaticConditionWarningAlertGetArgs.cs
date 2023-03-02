@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MonitorTriggerConditionsMetricsStaticConditionWarningAlertGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("minDataPoints")]
+        public Input<int>? MinDataPoints { get; set; }
+
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
 

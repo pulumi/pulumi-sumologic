@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).
+ * Provides the ability to create, read, delete, and update SLOs.
  */
 export class Slo extends pulumi.CustomResource {
     /**

@@ -52,7 +52,7 @@ export class Partition extends pulumi.CustomResource {
     }
 
     /**
-     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
      */
     public readonly analyticsTier!: pulumi.Output<string | undefined>;
     public /*out*/ readonly dataForwardingId!: pulumi.Output<string>;
@@ -126,7 +126,7 @@ export class Partition extends pulumi.CustomResource {
  */
 export interface PartitionState {
     /**
-     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
      */
     analyticsTier?: pulumi.Input<string>;
     dataForwardingId?: pulumi.Input<string>;
@@ -160,7 +160,7 @@ export interface PartitionState {
  */
 export interface PartitionArgs {
     /**
-     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
      */
     analyticsTier?: pulumi.Input<string>;
     /**

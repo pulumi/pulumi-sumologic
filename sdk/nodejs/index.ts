@@ -70,6 +70,11 @@ export type CseAggregationRule = import("./cseAggregationRule").CseAggregationRu
 export const CseAggregationRule: typeof import("./cseAggregationRule").CseAggregationRule = null as any;
 utilities.lazyLoad(exports, ["CseAggregationRule"], () => require("./cseAggregationRule"));
 
+export { CseAutomationArgs, CseAutomationState } from "./cseAutomation";
+export type CseAutomation = import("./cseAutomation").CseAutomation;
+export const CseAutomation: typeof import("./cseAutomation").CseAutomation = null as any;
+utilities.lazyLoad(exports, ["CseAutomation"], () => require("./cseAutomation"));
+
 export { CseChainRuleArgs, CseChainRuleState } from "./cseChainRule";
 export type CseChainRule = import("./cseChainRule").CseChainRule;
 export const CseChainRule: typeof import("./cseChainRule").CseChainRule = null as any;
@@ -104,6 +109,11 @@ export { CseEntityNormalizationConfigurationArgs, CseEntityNormalizationConfigur
 export type CseEntityNormalizationConfiguration = import("./cseEntityNormalizationConfiguration").CseEntityNormalizationConfiguration;
 export const CseEntityNormalizationConfiguration: typeof import("./cseEntityNormalizationConfiguration").CseEntityNormalizationConfiguration = null as any;
 utilities.lazyLoad(exports, ["CseEntityNormalizationConfiguration"], () => require("./cseEntityNormalizationConfiguration"));
+
+export { CseFirstSeenRuleArgs, CseFirstSeenRuleState } from "./cseFirstSeenRule";
+export type CseFirstSeenRule = import("./cseFirstSeenRule").CseFirstSeenRule;
+export const CseFirstSeenRule: typeof import("./cseFirstSeenRule").CseFirstSeenRule = null as any;
+utilities.lazyLoad(exports, ["CseFirstSeenRule"], () => require("./cseFirstSeenRule"));
 
 export { CseInsightsConfigurationArgs, CseInsightsConfigurationState } from "./cseInsightsConfiguration";
 export type CseInsightsConfiguration = import("./cseInsightsConfiguration").CseInsightsConfiguration;
@@ -409,6 +419,8 @@ const _module = {
                 return new ContentPermission(name, <any>undefined, { urn })
             case "sumologic:index/cseAggregationRule:CseAggregationRule":
                 return new CseAggregationRule(name, <any>undefined, { urn })
+            case "sumologic:index/cseAutomation:CseAutomation":
+                return new CseAutomation(name, <any>undefined, { urn })
             case "sumologic:index/cseChainRule:CseChainRule":
                 return new CseChainRule(name, <any>undefined, { urn })
             case "sumologic:index/cseCustomEntityType:CseCustomEntityType":
@@ -423,6 +435,8 @@ const _module = {
                 return new CseEntityEntityGroupConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration":
                 return new CseEntityNormalizationConfiguration(name, <any>undefined, { urn })
+            case "sumologic:index/cseFirstSeenRule:CseFirstSeenRule":
+                return new CseFirstSeenRule(name, <any>undefined, { urn })
             case "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
                 return new CseInsightsConfiguration(name, <any>undefined, { urn })
             case "sumologic:index/cseInsightsResolution:CseInsightsResolution":
@@ -525,6 +539,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/connection", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/content", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/contentPermission", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseAggregationRule", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseAutomation", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseChainRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomEntityType", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomInsight", _module)
@@ -532,6 +547,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomMatchListColu
 pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityCriticalityConfig", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityEntityGroupConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseEntityNormalizationConfiguration", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseFirstSeenRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsConfiguration", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsResolution", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseInsightsStatus", _module)

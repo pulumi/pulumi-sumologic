@@ -32,7 +32,7 @@ import (
 type Partition struct {
 	pulumi.CustomResourceState
 
-	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
 	AnalyticsTier    pulumi.StringPtrOutput `pulumi:"analyticsTier"`
 	DataForwardingId pulumi.StringOutput    `pulumi:"dataForwardingId"`
 	IndexType        pulumi.StringOutput    `pulumi:"indexType"`
@@ -79,7 +79,7 @@ func GetPartition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Partition resources.
 type partitionState struct {
-	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
 	AnalyticsTier    *string `pulumi:"analyticsTier"`
 	DataForwardingId *string `pulumi:"dataForwardingId"`
 	IndexType        *string `pulumi:"indexType"`
@@ -98,7 +98,7 @@ type partitionState struct {
 }
 
 type PartitionState struct {
-	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
 	AnalyticsTier    pulumi.StringPtrInput
 	DataForwardingId pulumi.StringPtrInput
 	IndexType        pulumi.StringPtrInput
@@ -121,7 +121,7 @@ func (PartitionState) ElementType() reflect.Type {
 }
 
 type partitionArgs struct {
-	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
 	AnalyticsTier *string `pulumi:"analyticsTier"`
 	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 	IsCompliant *bool `pulumi:"isCompliant"`
@@ -137,7 +137,7 @@ type partitionArgs struct {
 
 // The set of arguments for constructing a Partition resource.
 type PartitionArgs struct {
-	// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
 	AnalyticsTier pulumi.StringPtrInput
 	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 	IsCompliant pulumi.BoolPtrInput
@@ -238,7 +238,7 @@ func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) Parti
 	return o
 }
 
-// The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
 func (o PartitionOutput) AnalyticsTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Partition) pulumi.StringPtrOutput { return v.AnalyticsTier }).(pulumi.StringPtrOutput)
 }

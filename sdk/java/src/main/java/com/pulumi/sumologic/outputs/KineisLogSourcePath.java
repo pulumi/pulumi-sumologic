@@ -18,7 +18,7 @@ public final class KineisLogSourcePath {
      */
     private @Nullable String bucketName;
     /**
-     * @return The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+     * @return The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
      * 
      */
     private @Nullable String pathExpression;
@@ -42,7 +42,7 @@ public final class KineisLogSourcePath {
         return Optional.ofNullable(this.bucketName);
     }
     /**
-     * @return The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+     * @return The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
      * 
      */
     public Optional<String> pathExpression() {

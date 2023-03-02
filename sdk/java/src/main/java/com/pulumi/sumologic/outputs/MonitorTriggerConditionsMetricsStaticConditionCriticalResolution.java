@@ -5,6 +5,7 @@ package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,11 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
+    private @Nullable Integer minDataPoints;
     private @Nullable String occurrenceType;
     private @Nullable Double threshold;
     private @Nullable String thresholdType;
 
     private MonitorTriggerConditionsMetricsStaticConditionCriticalResolution() {}
+    public Optional<Integer> minDataPoints() {
+        return Optional.ofNullable(this.minDataPoints);
+    }
     public Optional<String> occurrenceType() {
         return Optional.ofNullable(this.occurrenceType);
     }
@@ -36,17 +41,24 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolut
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer minDataPoints;
         private @Nullable String occurrenceType;
         private @Nullable Double threshold;
         private @Nullable String thresholdType;
         public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsStaticConditionCriticalResolution defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.minDataPoints = defaults.minDataPoints;
     	      this.occurrenceType = defaults.occurrenceType;
     	      this.threshold = defaults.threshold;
     	      this.thresholdType = defaults.thresholdType;
         }
 
+        @CustomType.Setter
+        public Builder minDataPoints(@Nullable Integer minDataPoints) {
+            this.minDataPoints = minDataPoints;
+            return this;
+        }
         @CustomType.Setter
         public Builder occurrenceType(@Nullable String occurrenceType) {
             this.occurrenceType = occurrenceType;
@@ -64,6 +76,7 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolut
         }
         public MonitorTriggerConditionsMetricsStaticConditionCriticalResolution build() {
             final var o = new MonitorTriggerConditionsMetricsStaticConditionCriticalResolution();
+            o.minDataPoints = minDataPoints;
             o.occurrenceType = occurrenceType;
             o.threshold = threshold;
             o.thresholdType = thresholdType;

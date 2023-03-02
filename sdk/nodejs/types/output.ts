@@ -562,6 +562,14 @@ export interface CseEntityNormalizationConfigurationDomainMapping {
     rawDomain: string;
 }
 
+export interface CseFirstSeenRuleEntitySelector {
+    entityType: string;
+    /**
+     * The expression or field name to generate the Signal on
+     */
+    expression: string;
+}
+
 export interface CseLogMappingField {
     /**
      * List of alternate values.
@@ -5615,7 +5623,7 @@ export interface KineisLogSourcePath {
      */
     bucketName?: string;
     /**
-     * The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+     * The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
      */
     pathExpression?: string;
     /**
@@ -5796,6 +5804,7 @@ export interface MonitorQuery {
 
 export interface MonitorTrigger {
     detectionMethod?: string;
+    minDataPoints: number;
     occurrenceType?: string;
     /**
      * The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
@@ -5922,11 +5931,13 @@ export interface MonitorTriggerConditionsMetricsStaticConditionCritical {
 }
 
 export interface MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
+    minDataPoints: number;
     threshold?: number;
     thresholdType?: string;
 }
 
 export interface MonitorTriggerConditionsMetricsStaticConditionCriticalResolution {
+    minDataPoints: number;
     occurrenceType?: string;
     threshold?: number;
     thresholdType?: string;
@@ -5940,11 +5951,13 @@ export interface MonitorTriggerConditionsMetricsStaticConditionWarning {
 }
 
 export interface MonitorTriggerConditionsMetricsStaticConditionWarningAlert {
+    minDataPoints: number;
     threshold?: number;
     thresholdType?: string;
 }
 
 export interface MonitorTriggerConditionsMetricsStaticConditionWarningResolution {
+    minDataPoints: number;
     occurrenceType?: string;
     threshold?: number;
     thresholdType?: string;
@@ -6284,8 +6297,28 @@ export interface SloCompliance {
 }
 
 export interface SloIndicator {
+    monitorBasedEvaluation?: outputs.SloIndicatorMonitorBasedEvaluation;
     requestBasedEvaluation?: outputs.SloIndicatorRequestBasedEvaluation;
     windowBasedEvaluation?: outputs.SloIndicatorWindowBasedEvaluation;
+}
+
+export interface SloIndicatorMonitorBasedEvaluation {
+    /**
+     * Monitor details on which SLO will be based. Only single monitor is supported here.
+     */
+    monitorTriggers: outputs.SloIndicatorMonitorBasedEvaluationMonitorTriggers;
+}
+
+export interface SloIndicatorMonitorBasedEvaluationMonitorTriggers {
+    /**
+     * ID of the monitor. Ex: `0000000000BCB3A4`
+     */
+    monitorId: string;
+    /**
+     * Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
+     * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+     */
+    triggerTypes: string;
 }
 
 export interface SloIndicatorRequestBasedEvaluation {

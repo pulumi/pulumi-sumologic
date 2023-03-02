@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("detectionMethod")]
         public Input<string>? DetectionMethod { get; set; }
 
+        [Input("minDataPoints")]
+        public Input<int>? MinDataPoints { get; set; }
+
         [Input("occurrenceType")]
         public Input<string>? OccurrenceType { get; set; }
 

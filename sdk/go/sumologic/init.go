@@ -46,6 +46,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContentPermission{}
 	case "sumologic:index/cseAggregationRule:CseAggregationRule":
 		r = &CseAggregationRule{}
+	case "sumologic:index/cseAutomation:CseAutomation":
+		r = &CseAutomation{}
 	case "sumologic:index/cseChainRule:CseChainRule":
 		r = &CseChainRule{}
 	case "sumologic:index/cseCustomEntityType:CseCustomEntityType":
@@ -60,6 +62,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CseEntityEntityGroupConfiguration{}
 	case "sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration":
 		r = &CseEntityNormalizationConfiguration{}
+	case "sumologic:index/cseFirstSeenRule:CseFirstSeenRule":
+		r = &CseFirstSeenRule{}
 	case "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration":
 		r = &CseInsightsConfiguration{}
 	case "sumologic:index/cseInsightsResolution:CseInsightsResolution":
@@ -239,6 +243,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/cseAutomation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/cseChainRule",
 		&module{version},
 	)
@@ -270,6 +279,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/cseEntityNormalizationConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseFirstSeenRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -550,7 +550,7 @@ class Slo(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).
+        Provides the ability to create, read, delete, and update SLOs.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -577,7 +577,7 @@ class Slo(pulumi.CustomResource):
                  args: SloArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).
+        Provides the ability to create, read, delete, and update SLOs.
 
         :param str resource_name: The name of the resource.
         :param SloArgs args: The arguments to use to populate this resource's properties.

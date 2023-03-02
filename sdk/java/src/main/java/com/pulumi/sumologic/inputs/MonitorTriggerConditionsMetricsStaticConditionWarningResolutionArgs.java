@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs Empty = new MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs();
+
+    @Import(name="minDataPoints")
+    private @Nullable Output<Integer> minDataPoints;
+
+    public Optional<Output<Integer>> minDataPoints() {
+        return Optional.ofNullable(this.minDataPoints);
+    }
 
     @Import(name="occurrenceType")
     private @Nullable Output<String> occurrenceType;
@@ -40,6 +48,7 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarningResoluti
     private MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs() {}
 
     private MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs $) {
+        this.minDataPoints = $.minDataPoints;
         this.occurrenceType = $.occurrenceType;
         this.threshold = $.threshold;
         this.thresholdType = $.thresholdType;
@@ -61,6 +70,15 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarningResoluti
 
         public Builder(MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs defaults) {
             $ = new MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder minDataPoints(@Nullable Output<Integer> minDataPoints) {
+            $.minDataPoints = minDataPoints;
+            return this;
+        }
+
+        public Builder minDataPoints(Integer minDataPoints) {
+            return minDataPoints(Output.of(minDataPoints));
         }
 
         public Builder occurrenceType(@Nullable Output<String> occurrenceType) {

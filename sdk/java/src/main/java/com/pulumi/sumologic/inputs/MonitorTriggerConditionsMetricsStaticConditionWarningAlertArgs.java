@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs Empty = new MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs();
+
+    @Import(name="minDataPoints")
+    private @Nullable Output<Integer> minDataPoints;
+
+    public Optional<Output<Integer>> minDataPoints() {
+        return Optional.ofNullable(this.minDataPoints);
+    }
 
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
@@ -33,6 +41,7 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArg
     private MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs() {}
 
     private MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs(MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs $) {
+        this.minDataPoints = $.minDataPoints;
         this.threshold = $.threshold;
         this.thresholdType = $.thresholdType;
     }
@@ -53,6 +62,15 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArg
 
         public Builder(MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs defaults) {
             $ = new MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder minDataPoints(@Nullable Output<Integer> minDataPoints) {
+            $.minDataPoints = minDataPoints;
+            return this;
+        }
+
+        public Builder minDataPoints(Integer minDataPoints) {
+            return minDataPoints(Output.of(minDataPoints));
         }
 
         public Builder threshold(@Nullable Output<Double> threshold) {

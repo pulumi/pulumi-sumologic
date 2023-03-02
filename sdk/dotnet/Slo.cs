@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).
+    /// Provides the ability to create, read, delete, and update SLOs.
     /// </summary>
     [SumoLogicResourceType("sumologic:index/slo:Slo")]
     public partial class Slo : global::Pulumi.CustomResource

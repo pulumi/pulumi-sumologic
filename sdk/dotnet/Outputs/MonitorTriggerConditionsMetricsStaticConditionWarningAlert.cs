@@ -13,15 +13,19 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MonitorTriggerConditionsMetricsStaticConditionWarningAlert
     {
+        public readonly int? MinDataPoints;
         public readonly double? Threshold;
         public readonly string? ThresholdType;
 
         [OutputConstructor]
         private MonitorTriggerConditionsMetricsStaticConditionWarningAlert(
+            int? minDataPoints,
+
             double? threshold,
 
             string? thresholdType)
         {
+            MinDataPoints = minDataPoints;
             Threshold = threshold;
             ThresholdType = thresholdType;
         }

@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/SumoLogic/terraform-provider-sumologic v0.0.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.40.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.41.0
 	github.com/pulumi/pulumi/sdk/v3 v3.55.0
 )
 

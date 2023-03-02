@@ -5,6 +5,7 @@ package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,10 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
+    private @Nullable Integer minDataPoints;
     private @Nullable Double threshold;
     private @Nullable String thresholdType;
 
     private MonitorTriggerConditionsMetricsStaticConditionCriticalAlert() {}
+    public Optional<Integer> minDataPoints() {
+        return Optional.ofNullable(this.minDataPoints);
+    }
     public Optional<Double> threshold() {
         return Optional.ofNullable(this.threshold);
     }
@@ -32,15 +37,22 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer minDataPoints;
         private @Nullable Double threshold;
         private @Nullable String thresholdType;
         public Builder() {}
         public Builder(MonitorTriggerConditionsMetricsStaticConditionCriticalAlert defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.minDataPoints = defaults.minDataPoints;
     	      this.threshold = defaults.threshold;
     	      this.thresholdType = defaults.thresholdType;
         }
 
+        @CustomType.Setter
+        public Builder minDataPoints(@Nullable Integer minDataPoints) {
+            this.minDataPoints = minDataPoints;
+            return this;
+        }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
@@ -53,6 +65,7 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
         }
         public MonitorTriggerConditionsMetricsStaticConditionCriticalAlert build() {
             final var o = new MonitorTriggerConditionsMetricsStaticConditionCriticalAlert();
+            o.minDataPoints = minDataPoints;
             o.threshold = threshold;
             o.thresholdType = thresholdType;
             return o;

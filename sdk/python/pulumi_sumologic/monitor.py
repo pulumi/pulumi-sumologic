@@ -1025,18 +1025,22 @@ class Monitor(pulumi.CustomResource):
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
+              - `min_data_points` (Optional)
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
-          - `warning`
+              - `min_data_points` (Optional)
+            - `warning`
             - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `occurrence_type` (Required)
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
+              - `min_data_points` (Optional)
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
+              - `min_data_points` (Optional)
         #### logs_outlier_condition
           - `field`
           - `direction`
@@ -1306,18 +1310,22 @@ class Monitor(pulumi.CustomResource):
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
+              - `min_data_points` (Optional)
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
-          - `warning`
+              - `min_data_points` (Optional)
+            - `warning`
             - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `occurrence_type` (Required)
             - `alert` (Required)
               - `threshold`
               - `threshold_type`
+              - `min_data_points` (Optional)
             - `resolution` (Required)
               - `threshold`
               - `threshold_type`
+              - `min_data_points` (Optional)
         #### logs_outlier_condition
           - `field`
           - `direction`
