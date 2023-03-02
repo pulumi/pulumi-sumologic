@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,13 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
 
     public Optional<Output<String>> detectionMethod() {
         return Optional.ofNullable(this.detectionMethod);
+    }
+
+    @Import(name="minDataPoints")
+    private @Nullable Output<Integer> minDataPoints;
+
+    public Optional<Output<Integer>> minDataPoints() {
+        return Optional.ofNullable(this.minDataPoints);
     }
 
     @Import(name="occurrenceType")
@@ -84,6 +92,7 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
 
     private MonitorTriggerArgs(MonitorTriggerArgs $) {
         this.detectionMethod = $.detectionMethod;
+        this.minDataPoints = $.minDataPoints;
         this.occurrenceType = $.occurrenceType;
         this.resolutionWindow = $.resolutionWindow;
         this.threshold = $.threshold;
@@ -118,6 +127,15 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder detectionMethod(String detectionMethod) {
             return detectionMethod(Output.of(detectionMethod));
+        }
+
+        public Builder minDataPoints(@Nullable Output<Integer> minDataPoints) {
+            $.minDataPoints = minDataPoints;
+            return this;
+        }
+
+        public Builder minDataPoints(Integer minDataPoints) {
+            return minDataPoints(Output.of(minDataPoints));
         }
 
         public Builder occurrenceType(@Nullable Output<String> occurrenceType) {

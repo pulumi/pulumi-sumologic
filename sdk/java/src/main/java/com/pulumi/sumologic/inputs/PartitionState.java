@@ -18,14 +18,14 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
     public static final PartitionState Empty = new PartitionState();
 
     /**
-     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
      * 
      */
     @Import(name="analyticsTier")
     private @Nullable Output<String> analyticsTier;
 
     /**
-     * @return The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     * @return The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
      * 
      */
     public Optional<Output<String>> analyticsTier() {
@@ -169,7 +169,7 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param analyticsTier The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+         * @param analyticsTier The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param analyticsTier The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+         * @param analyticsTier The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
          * 
          * @return builder
          * 

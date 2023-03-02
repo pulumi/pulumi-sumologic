@@ -218,18 +218,22 @@ import javax.annotation.Nullable;
  *     - `alert` (Required)
  *       - `threshold`
  *       - `threshold_type`
+ *       - `min_data_points` (Optional)
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `threshold_type`
- *   - `warning`
+ *       - `min_data_points` (Optional)
+ *     - `warning`
  *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `occurrence_type` (Required)
  *     - `alert` (Required)
  *       - `threshold`
  *       - `threshold_type`
+ *       - `min_data_points` (Optional)
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `threshold_type`
+ *       - `min_data_points` (Optional)
  * #### logs_outlier_condition
  *   - `field`
  *   - `direction`

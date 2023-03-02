@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.sumologic.outputs.SloIndicatorMonitorBasedEvaluation;
 import com.pulumi.sumologic.outputs.SloIndicatorRequestBasedEvaluation;
 import com.pulumi.sumologic.outputs.SloIndicatorWindowBasedEvaluation;
 import java.util.Objects;
@@ -12,10 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SloIndicator {
+    private @Nullable SloIndicatorMonitorBasedEvaluation monitorBasedEvaluation;
     private @Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation;
     private @Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation;
 
     private SloIndicator() {}
+    public Optional<SloIndicatorMonitorBasedEvaluation> monitorBasedEvaluation() {
+        return Optional.ofNullable(this.monitorBasedEvaluation);
+    }
     public Optional<SloIndicatorRequestBasedEvaluation> requestBasedEvaluation() {
         return Optional.ofNullable(this.requestBasedEvaluation);
     }
@@ -32,15 +37,22 @@ public final class SloIndicator {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable SloIndicatorMonitorBasedEvaluation monitorBasedEvaluation;
         private @Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation;
         private @Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation;
         public Builder() {}
         public Builder(SloIndicator defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.monitorBasedEvaluation = defaults.monitorBasedEvaluation;
     	      this.requestBasedEvaluation = defaults.requestBasedEvaluation;
     	      this.windowBasedEvaluation = defaults.windowBasedEvaluation;
         }
 
+        @CustomType.Setter
+        public Builder monitorBasedEvaluation(@Nullable SloIndicatorMonitorBasedEvaluation monitorBasedEvaluation) {
+            this.monitorBasedEvaluation = monitorBasedEvaluation;
+            return this;
+        }
         @CustomType.Setter
         public Builder requestBasedEvaluation(@Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation) {
             this.requestBasedEvaluation = requestBasedEvaluation;
@@ -53,6 +65,7 @@ public final class SloIndicator {
         }
         public SloIndicator build() {
             final var o = new SloIndicator();
+            o.monitorBasedEvaluation = monitorBasedEvaluation;
             o.requestBasedEvaluation = requestBasedEvaluation;
             o.windowBasedEvaluation = windowBasedEvaluation;
             return o;

@@ -55,6 +55,7 @@ __all__ = [
     'CseChainRuleEntitySelectorArgs',
     'CseChainRuleExpressionsAndLimitArgs',
     'CseEntityNormalizationConfigurationDomainMappingArgs',
+    'CseFirstSeenRuleEntitySelectorArgs',
     'CseLogMappingFieldArgs',
     'CseLogMappingFieldLookupArgs',
     'CseLogMappingStructuredInputArgs',
@@ -588,6 +589,8 @@ __all__ = [
     'SamlConfigurationOnDemandProvisioningEnabledArgs',
     'SloComplianceArgs',
     'SloIndicatorArgs',
+    'SloIndicatorMonitorBasedEvaluationArgs',
+    'SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs',
     'SloIndicatorRequestBasedEvaluationArgs',
     'SloIndicatorRequestBasedEvaluationQueryArgs',
     'SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs',
@@ -3649,6 +3652,39 @@ class CseEntityNormalizationConfigurationDomainMappingArgs:
     @raw_domain.setter
     def raw_domain(self, value: pulumi.Input[str]):
         pulumi.set(self, "raw_domain", value)
+
+
+@pulumi.input_type
+class CseFirstSeenRuleEntitySelectorArgs:
+    def __init__(__self__, *,
+                 entity_type: pulumi.Input[str],
+                 expression: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] expression: The expression or field name to generate the Signal on
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entity_type")
+
+    @entity_type.setter
+    def entity_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_type", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        The expression or field name to generate the Signal on
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
 
 
 @pulumi.input_type
@@ -23274,7 +23310,7 @@ class KineisLogSourcePathArgs:
         """
         :param pulumi.Input[str] type: Must be either `KinesisLogPath` or `NoPathExpression`
         :param pulumi.Input[str] bucket_name: The name of the bucket. This is needed if using type `KinesisLogPath`.
-        :param pulumi.Input[str] path_expression: The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+        :param pulumi.Input[str] path_expression: The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
         :param pulumi.Input[int] scan_interval: The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         pulumi.set(__self__, "type", type)
@@ -23313,7 +23349,7 @@ class KineisLogSourcePathArgs:
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
         """
         return pulumi.get(self, "path_expression")
 
@@ -24086,6 +24122,7 @@ class MonitorQueryArgs:
 class MonitorTriggerArgs:
     def __init__(__self__, *,
                  detection_method: Optional[pulumi.Input[str]] = None,
+                 min_data_points: Optional[pulumi.Input[int]] = None,
                  occurrence_type: Optional[pulumi.Input[str]] = None,
                  resolution_window: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
@@ -24098,6 +24135,8 @@ class MonitorTriggerArgs:
         """
         if detection_method is not None:
             pulumi.set(__self__, "detection_method", detection_method)
+        if min_data_points is not None:
+            pulumi.set(__self__, "min_data_points", min_data_points)
         if occurrence_type is not None:
             pulumi.set(__self__, "occurrence_type", occurrence_type)
         if resolution_window is not None:
@@ -24121,6 +24160,15 @@ class MonitorTriggerArgs:
     @detection_method.setter
     def detection_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "detection_method", value)
+
+    @property
+    @pulumi.getter(name="minDataPoints")
+    def min_data_points(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_data_points")
+
+    @min_data_points.setter
+    def min_data_points(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_data_points", value)
 
     @property
     @pulumi.getter(name="occurrenceType")
@@ -24917,12 +24965,24 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalArgs:
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgs:
     def __init__(__self__, *,
+                 min_data_points: Optional[pulumi.Input[int]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None):
+        if min_data_points is not None:
+            pulumi.set(__self__, "min_data_points", min_data_points)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="minDataPoints")
+    def min_data_points(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_data_points")
+
+    @min_data_points.setter
+    def min_data_points(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_data_points", value)
 
     @property
     @pulumi.getter
@@ -24946,15 +25006,27 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgs:
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs:
     def __init__(__self__, *,
+                 min_data_points: Optional[pulumi.Input[int]] = None,
                  occurrence_type: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None):
+        if min_data_points is not None:
+            pulumi.set(__self__, "min_data_points", min_data_points)
         if occurrence_type is not None:
             pulumi.set(__self__, "occurrence_type", occurrence_type)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="minDataPoints")
+    def min_data_points(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_data_points")
+
+    @min_data_points.setter
+    def min_data_points(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_data_points", value)
 
     @property
     @pulumi.getter(name="occurrenceType")
@@ -25036,12 +25108,24 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningArgs:
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs:
     def __init__(__self__, *,
+                 min_data_points: Optional[pulumi.Input[int]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None):
+        if min_data_points is not None:
+            pulumi.set(__self__, "min_data_points", min_data_points)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="minDataPoints")
+    def min_data_points(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_data_points")
+
+    @min_data_points.setter
+    def min_data_points(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_data_points", value)
 
     @property
     @pulumi.getter
@@ -25065,15 +25149,27 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs:
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs:
     def __init__(__self__, *,
+                 min_data_points: Optional[pulumi.Input[int]] = None,
                  occurrence_type: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None):
+        if min_data_points is not None:
+            pulumi.set(__self__, "min_data_points", min_data_points)
         if occurrence_type is not None:
             pulumi.set(__self__, "occurrence_type", occurrence_type)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter(name="minDataPoints")
+    def min_data_points(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_data_points")
+
+    @min_data_points.setter
+    def min_data_points(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_data_points", value)
 
     @property
     @pulumi.getter(name="occurrenceType")
@@ -26780,12 +26876,24 @@ class SloComplianceArgs:
 @pulumi.input_type
 class SloIndicatorArgs:
     def __init__(__self__, *,
+                 monitor_based_evaluation: Optional[pulumi.Input['SloIndicatorMonitorBasedEvaluationArgs']] = None,
                  request_based_evaluation: Optional[pulumi.Input['SloIndicatorRequestBasedEvaluationArgs']] = None,
                  window_based_evaluation: Optional[pulumi.Input['SloIndicatorWindowBasedEvaluationArgs']] = None):
+        if monitor_based_evaluation is not None:
+            pulumi.set(__self__, "monitor_based_evaluation", monitor_based_evaluation)
         if request_based_evaluation is not None:
             pulumi.set(__self__, "request_based_evaluation", request_based_evaluation)
         if window_based_evaluation is not None:
             pulumi.set(__self__, "window_based_evaluation", window_based_evaluation)
+
+    @property
+    @pulumi.getter(name="monitorBasedEvaluation")
+    def monitor_based_evaluation(self) -> Optional[pulumi.Input['SloIndicatorMonitorBasedEvaluationArgs']]:
+        return pulumi.get(self, "monitor_based_evaluation")
+
+    @monitor_based_evaluation.setter
+    def monitor_based_evaluation(self, value: Optional[pulumi.Input['SloIndicatorMonitorBasedEvaluationArgs']]):
+        pulumi.set(self, "monitor_based_evaluation", value)
 
     @property
     @pulumi.getter(name="requestBasedEvaluation")
@@ -26804,6 +26912,67 @@ class SloIndicatorArgs:
     @window_based_evaluation.setter
     def window_based_evaluation(self, value: Optional[pulumi.Input['SloIndicatorWindowBasedEvaluationArgs']]):
         pulumi.set(self, "window_based_evaluation", value)
+
+
+@pulumi.input_type
+class SloIndicatorMonitorBasedEvaluationArgs:
+    def __init__(__self__, *,
+                 monitor_triggers: pulumi.Input['SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs']):
+        """
+        :param pulumi.Input['SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs'] monitor_triggers: Monitor details on which SLO will be based. Only single monitor is supported here.
+        """
+        pulumi.set(__self__, "monitor_triggers", monitor_triggers)
+
+    @property
+    @pulumi.getter(name="monitorTriggers")
+    def monitor_triggers(self) -> pulumi.Input['SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs']:
+        """
+        Monitor details on which SLO will be based. Only single monitor is supported here.
+        """
+        return pulumi.get(self, "monitor_triggers")
+
+    @monitor_triggers.setter
+    def monitor_triggers(self, value: pulumi.Input['SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs']):
+        pulumi.set(self, "monitor_triggers", value)
+
+
+@pulumi.input_type
+class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs:
+    def __init__(__self__, *,
+                 monitor_id: pulumi.Input[str],
+                 trigger_types: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] monitor_id: ID of the monitor. Ex: `0000000000BCB3A4`
+        :param pulumi.Input[str] trigger_types: Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
+               window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+        """
+        pulumi.set(__self__, "monitor_id", monitor_id)
+        pulumi.set(__self__, "trigger_types", trigger_types)
+
+    @property
+    @pulumi.getter(name="monitorId")
+    def monitor_id(self) -> pulumi.Input[str]:
+        """
+        ID of the monitor. Ex: `0000000000BCB3A4`
+        """
+        return pulumi.get(self, "monitor_id")
+
+    @monitor_id.setter
+    def monitor_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "monitor_id", value)
+
+    @property
+    @pulumi.getter(name="triggerTypes")
+    def trigger_types(self) -> pulumi.Input[str]:
+        """
+        Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
+        window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+        """
+        return pulumi.get(self, "trigger_types")
+
+    @trigger_types.setter
+    def trigger_types(self, value: pulumi.Input[str]):
+        pulumi.set(self, "trigger_types", value)
 
 
 @pulumi.input_type

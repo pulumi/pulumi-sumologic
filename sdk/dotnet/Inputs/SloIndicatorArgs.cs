@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class SloIndicatorArgs : global::Pulumi.ResourceArgs
     {
+        [Input("monitorBasedEvaluation")]
+        public Input<Inputs.SloIndicatorMonitorBasedEvaluationArgs>? MonitorBasedEvaluation { get; set; }
+
         [Input("requestBasedEvaluation")]
         public Input<Inputs.SloIndicatorRequestBasedEvaluationArgs>? RequestBasedEvaluation { get; set; }
 

@@ -133,18 +133,22 @@ import * as utilities from "./utilities";
  *     - `alert` (Required)
  *       - `threshold`
  *       - `thresholdType`
+ *       - `minDataPoints` (Optional)
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `thresholdType`
- *   - `warning`
+ *       - `minDataPoints` (Optional)
+ *     - `warning`
  *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `occurrenceType` (Required)
  *     - `alert` (Required)
  *       - `threshold`
  *       - `thresholdType`
+ *       - `minDataPoints` (Optional)
  *     - `resolution` (Required)
  *       - `threshold`
  *       - `thresholdType`
+ *       - `minDataPoints` (Optional)
  * #### logsOutlierCondition
  *   - `field`
  *   - `direction`

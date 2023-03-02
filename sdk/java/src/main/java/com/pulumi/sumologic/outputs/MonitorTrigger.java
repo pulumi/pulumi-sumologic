@@ -5,6 +5,7 @@ package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MonitorTrigger {
     private @Nullable String detectionMethod;
+    private @Nullable Integer minDataPoints;
     private @Nullable String occurrenceType;
     /**
      * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
@@ -28,6 +30,9 @@ public final class MonitorTrigger {
     private MonitorTrigger() {}
     public Optional<String> detectionMethod() {
         return Optional.ofNullable(this.detectionMethod);
+    }
+    public Optional<Integer> minDataPoints() {
+        return Optional.ofNullable(this.minDataPoints);
     }
     public Optional<String> occurrenceType() {
         return Optional.ofNullable(this.occurrenceType);
@@ -65,6 +70,7 @@ public final class MonitorTrigger {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String detectionMethod;
+        private @Nullable Integer minDataPoints;
         private @Nullable String occurrenceType;
         private @Nullable String resolutionWindow;
         private @Nullable Double threshold;
@@ -76,6 +82,7 @@ public final class MonitorTrigger {
         public Builder(MonitorTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.detectionMethod = defaults.detectionMethod;
+    	      this.minDataPoints = defaults.minDataPoints;
     	      this.occurrenceType = defaults.occurrenceType;
     	      this.resolutionWindow = defaults.resolutionWindow;
     	      this.threshold = defaults.threshold;
@@ -88,6 +95,11 @@ public final class MonitorTrigger {
         @CustomType.Setter
         public Builder detectionMethod(@Nullable String detectionMethod) {
             this.detectionMethod = detectionMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minDataPoints(@Nullable Integer minDataPoints) {
+            this.minDataPoints = minDataPoints;
             return this;
         }
         @CustomType.Setter
@@ -128,6 +140,7 @@ public final class MonitorTrigger {
         public MonitorTrigger build() {
             final var o = new MonitorTrigger();
             o.detectionMethod = detectionMethod;
+            o.minDataPoints = minDataPoints;
             o.occurrenceType = occurrenceType;
             o.resolutionWindow = resolutionWindow;
             o.threshold = threshold;

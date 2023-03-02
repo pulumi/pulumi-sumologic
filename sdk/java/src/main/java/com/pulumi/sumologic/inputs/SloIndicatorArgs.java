@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.sumologic.inputs.SloIndicatorMonitorBasedEvaluationArgs;
 import com.pulumi.sumologic.inputs.SloIndicatorRequestBasedEvaluationArgs;
 import com.pulumi.sumologic.inputs.SloIndicatorWindowBasedEvaluationArgs;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class SloIndicatorArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SloIndicatorArgs Empty = new SloIndicatorArgs();
+
+    @Import(name="monitorBasedEvaluation")
+    private @Nullable Output<SloIndicatorMonitorBasedEvaluationArgs> monitorBasedEvaluation;
+
+    public Optional<Output<SloIndicatorMonitorBasedEvaluationArgs>> monitorBasedEvaluation() {
+        return Optional.ofNullable(this.monitorBasedEvaluation);
+    }
 
     @Import(name="requestBasedEvaluation")
     private @Nullable Output<SloIndicatorRequestBasedEvaluationArgs> requestBasedEvaluation;
@@ -33,6 +41,7 @@ public final class SloIndicatorArgs extends com.pulumi.resources.ResourceArgs {
     private SloIndicatorArgs() {}
 
     private SloIndicatorArgs(SloIndicatorArgs $) {
+        this.monitorBasedEvaluation = $.monitorBasedEvaluation;
         this.requestBasedEvaluation = $.requestBasedEvaluation;
         this.windowBasedEvaluation = $.windowBasedEvaluation;
     }
@@ -53,6 +62,15 @@ public final class SloIndicatorArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SloIndicatorArgs defaults) {
             $ = new SloIndicatorArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder monitorBasedEvaluation(@Nullable Output<SloIndicatorMonitorBasedEvaluationArgs> monitorBasedEvaluation) {
+            $.monitorBasedEvaluation = monitorBasedEvaluation;
+            return this;
+        }
+
+        public Builder monitorBasedEvaluation(SloIndicatorMonitorBasedEvaluationArgs monitorBasedEvaluation) {
+            return monitorBasedEvaluation(Output.of(monitorBasedEvaluation));
         }
 
         public Builder requestBasedEvaluation(@Nullable Output<SloIndicatorRequestBasedEvaluationArgs> requestBasedEvaluation) {

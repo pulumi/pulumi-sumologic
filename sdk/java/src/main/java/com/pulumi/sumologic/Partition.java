@@ -72,14 +72,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/partition:Partition")
 public class Partition extends com.pulumi.resources.CustomResource {
     /**
-     * The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
      * 
      */
     @Export(name="analyticsTier", type=String.class, parameters={})
     private Output</* @Nullable */ String> analyticsTier;
 
     /**
-     * @return The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+     * @return The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
      * 
      */
     public Output<Optional<String>> analyticsTier() {

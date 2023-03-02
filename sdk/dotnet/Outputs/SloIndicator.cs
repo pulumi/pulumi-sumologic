@@ -13,15 +13,19 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class SloIndicator
     {
+        public readonly Outputs.SloIndicatorMonitorBasedEvaluation? MonitorBasedEvaluation;
         public readonly Outputs.SloIndicatorRequestBasedEvaluation? RequestBasedEvaluation;
         public readonly Outputs.SloIndicatorWindowBasedEvaluation? WindowBasedEvaluation;
 
         [OutputConstructor]
         private SloIndicator(
+            Outputs.SloIndicatorMonitorBasedEvaluation? monitorBasedEvaluation,
+
             Outputs.SloIndicatorRequestBasedEvaluation? requestBasedEvaluation,
 
             Outputs.SloIndicatorWindowBasedEvaluation? windowBasedEvaluation)
         {
+            MonitorBasedEvaluation = monitorBasedEvaluation;
             RequestBasedEvaluation = requestBasedEvaluation;
             WindowBasedEvaluation = windowBasedEvaluation;
         }

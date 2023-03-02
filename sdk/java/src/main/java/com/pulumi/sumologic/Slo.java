@@ -21,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides the ability to create, read, delete, and update [SLOs](https://help.sumologic.com/Beta/SLO_Reliability_Management).
+ * Provides the ability to create, read, delete, and update SLOs.
  * 
  */
 @ResourceType(type="sumologic:index/slo:Slo")

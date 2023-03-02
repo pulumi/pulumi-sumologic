@@ -13,18 +13,22 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution
     {
+        public readonly int? MinDataPoints;
         public readonly string? OccurrenceType;
         public readonly double? Threshold;
         public readonly string? ThresholdType;
 
         [OutputConstructor]
         private MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(
+            int? minDataPoints,
+
             string? occurrenceType,
 
             double? threshold,
 
             string? thresholdType)
         {
+            MinDataPoints = minDataPoints;
             OccurrenceType = occurrenceType;
             Threshold = threshold;
             ThresholdType = thresholdType;

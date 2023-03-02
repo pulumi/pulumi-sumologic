@@ -32,14 +32,14 @@ public final class KineisLogSourcePathArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+     * The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
      * 
      */
     @Import(name="pathExpression")
     private @Nullable Output<String> pathExpression;
 
     /**
-     * @return The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+     * @return The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
      * 
      */
     public Optional<Output<String>> pathExpression() {
@@ -125,7 +125,7 @@ public final class KineisLogSourcePathArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pathExpression The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+         * @param pathExpression The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class KineisLogSourcePathArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pathExpression The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must includes `http-endpoint-failed/`.
+         * @param pathExpression The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
          * 
          * @return builder
          * 

@@ -22,7 +22,7 @@ class PartitionArgs:
                  routing_expression: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Partition resource.
-        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -46,7 +46,7 @@ class PartitionArgs:
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
         """
         return pulumi.get(self, "analytics_tier")
 
@@ -130,7 +130,7 @@ class _PartitionState:
                  total_bytes: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Partition resources.
-        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -162,7 +162,7 @@ class _PartitionState:
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
         """
         return pulumi.get(self, "analytics_tier")
 
@@ -300,7 +300,7 @@ class Partition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -399,7 +399,7 @@ class Partition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] analytics_tier: The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -426,7 +426,7 @@ class Partition(pulumi.CustomResource):
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> pulumi.Output[Optional[str]]:
         """
-        The Cloud Flex analytics tier for your data; only relevant if your account has basic analytics enabled. Possible values are: `continuous`, `frequent`, `infrequent`
+        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
         """
         return pulumi.get(self, "analytics_tier")
 

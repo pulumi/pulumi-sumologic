@@ -18,6 +18,7 @@ from .connection import *
 from .content import *
 from .content_permission import *
 from .cse_aggregation_rule import *
+from .cse_automation import *
 from .cse_chain_rule import *
 from .cse_custom_entity_type import *
 from .cse_custom_insight import *
@@ -25,6 +26,7 @@ from .cse_custom_match_list_column import *
 from .cse_entity_criticality_config import *
 from .cse_entity_entity_group_configuration import *
 from .cse_entity_normalization_configuration import *
+from .cse_first_seen_rule import *
 from .cse_insights_configuration import *
 from .cse_insights_resolution import *
 from .cse_insights_status import *
@@ -197,6 +199,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/cseAutomation",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseAutomation:CseAutomation": "CseAutomation"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/cseChainRule",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -249,6 +259,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration": "CseEntityNormalizationConfiguration"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/cseFirstSeenRule",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseFirstSeenRule:CseFirstSeenRule": "CseFirstSeenRule"
   }
  },
  {

@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class MonitorTrigger
     {
         public readonly string? DetectionMethod;
+        public readonly int? MinDataPoints;
         public readonly string? OccurrenceType;
         /// <summary>
         /// The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
@@ -28,6 +29,8 @@ namespace Pulumi.SumoLogic.Outputs
         [OutputConstructor]
         private MonitorTrigger(
             string? detectionMethod,
+
+            int? minDataPoints,
 
             string? occurrenceType,
 
@@ -44,6 +47,7 @@ namespace Pulumi.SumoLogic.Outputs
             string? triggerType)
         {
             DetectionMethod = detectionMethod;
+            MinDataPoints = minDataPoints;
             OccurrenceType = occurrenceType;
             ResolutionWindow = resolutionWindow;
             Threshold = threshold;

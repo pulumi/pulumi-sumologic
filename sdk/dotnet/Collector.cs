@@ -47,7 +47,7 @@ namespace Pulumi.SumoLogic
     ///  $ pulumi import sumologic:index/collector:Collector test my_test_collector
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Send_Data/Hosted_Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
+    ///  [1]https://help.sumologic.com/docs/send-data/hosted-collectors/ [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
     /// </summary>
     [SumoLogicResourceType("sumologic:index/collector:Collector")]
     public partial class Collector : global::Pulumi.CustomResource
