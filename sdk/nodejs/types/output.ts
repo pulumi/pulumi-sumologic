@@ -5693,6 +5693,21 @@ export interface KinesisMetricsSourcePathTagFilter {
     type?: string;
 }
 
+export interface LocalFileSourceDefaultDateFormat {
+    format: string;
+    locator?: string;
+}
+
+export interface LocalFileSourceFilter {
+    filterType: string;
+    mask?: string;
+    /**
+     * The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     */
+    name: string;
+    regexp: string;
+}
+
 export interface LookupTableField {
     fieldName: string;
     fieldType: string;
@@ -5778,6 +5793,7 @@ export interface MonitorNotificationNotification {
     messageBody?: string;
     payloadOverride?: string;
     recipients?: string[];
+    resolutionPayloadOverride?: string;
     subject?: string;
     timeZone?: string;
 }
@@ -5969,11 +5985,23 @@ export interface MonitorTriggerConditionsSloBurnRateCondition {
 }
 
 export interface MonitorTriggerConditionsSloBurnRateConditionCritical {
+    burnRateThreshold?: number;
+    burnRates?: outputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate[];
+    timeRange?: string;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate {
     burnRateThreshold: number;
     timeRange: string;
 }
 
 export interface MonitorTriggerConditionsSloBurnRateConditionWarning {
+    burnRateThreshold?: number;
+    burnRates?: outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate[];
+    timeRange?: string;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate {
     burnRateThreshold: number;
     timeRange: string;
 }
@@ -6396,8 +6424,7 @@ export interface SloIndicatorWindowBasedEvaluation {
      */
     queryType: string;
     /**
-     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * The size of the window to use, minimum of `1m` and maximum of `1h`.
      */
     size: string;
     /**

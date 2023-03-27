@@ -526,6 +526,8 @@ __all__ = [
     'KinesisMetricsSourceFilterArgs',
     'KinesisMetricsSourcePathArgs',
     'KinesisMetricsSourcePathTagFilterArgs',
+    'LocalFileSourceDefaultDateFormatArgs',
+    'LocalFileSourceFilterArgs',
     'LookupTableFieldArgs',
     'MetadataSourceAuthenticationArgs',
     'MetadataSourceDefaultDateFormatArgs',
@@ -562,7 +564,9 @@ __all__ = [
     'MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs',
     'MonitorTriggerConditionsSloBurnRateConditionArgs',
     'MonitorTriggerConditionsSloBurnRateConditionCriticalArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs',
     'MonitorTriggerConditionsSloBurnRateConditionWarningArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs',
     'MonitorTriggerConditionsSloSliConditionArgs',
     'MonitorTriggerConditionsSloSliConditionCriticalArgs',
     'MonitorTriggerConditionsSloSliConditionWarningArgs',
@@ -23612,6 +23616,90 @@ class KinesisMetricsSourcePathTagFilterArgs:
 
 
 @pulumi.input_type
+class LocalFileSourceDefaultDateFormatArgs:
+    def __init__(__self__, *,
+                 format: pulumi.Input[str],
+                 locator: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "locator")
+
+    @locator.setter
+    def locator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locator", value)
+
+
+@pulumi.input_type
+class LocalFileSourceFilterArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 regexp: pulumi.Input[str],
+                 mask: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regexp")
+
+    @regexp.setter
+    def regexp(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regexp", value)
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mask")
+
+    @mask.setter
+    def mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mask", value)
+
+
+@pulumi.input_type
 class LookupTableFieldArgs:
     def __init__(__self__, *,
                  field_name: pulumi.Input[str],
@@ -23944,6 +24032,7 @@ class MonitorNotificationNotificationArgs:
                  message_body: Optional[pulumi.Input[str]] = None,
                  payload_override: Optional[pulumi.Input[str]] = None,
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resolution_payload_override: Optional[pulumi.Input[str]] = None,
                  subject: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         if action_type is not None:
@@ -23961,6 +24050,8 @@ class MonitorNotificationNotificationArgs:
             pulumi.set(__self__, "payload_override", payload_override)
         if recipients is not None:
             pulumi.set(__self__, "recipients", recipients)
+        if resolution_payload_override is not None:
+            pulumi.set(__self__, "resolution_payload_override", resolution_payload_override)
         if subject is not None:
             pulumi.set(__self__, "subject", subject)
         if time_zone is not None:
@@ -24019,6 +24110,15 @@ class MonitorNotificationNotificationArgs:
     @recipients.setter
     def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "recipients", value)
+
+    @property
+    @pulumi.getter(name="resolutionPayloadOverride")
+    def resolution_payload_override(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resolution_payload_override")
+
+    @resolution_payload_override.setter
+    def resolution_payload_override(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resolution_payload_override", value)
 
     @property
     @pulumi.getter
@@ -25231,6 +25331,47 @@ class MonitorTriggerConditionsSloBurnRateConditionArgs:
 @pulumi.input_type
 class MonitorTriggerConditionsSloBurnRateConditionCriticalArgs:
     def __init__(__self__, *,
+                 burn_rate_threshold: Optional[pulumi.Input[float]] = None,
+                 burn_rates: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs']]]] = None,
+                 time_range: Optional[pulumi.Input[str]] = None):
+        if burn_rate_threshold is not None:
+            pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        if burn_rates is not None:
+            pulumi.set(__self__, "burn_rates", burn_rates)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @burn_rate_threshold.setter
+    def burn_rate_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "burn_rate_threshold", value)
+
+    @property
+    @pulumi.getter(name="burnRates")
+    def burn_rates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs']]]]:
+        return pulumi.get(self, "burn_rates")
+
+    @burn_rates.setter
+    def burn_rates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs']]]]):
+        pulumi.set(self, "burn_rates", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_range", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs:
+    def __init__(__self__, *,
                  burn_rate_threshold: pulumi.Input[float],
                  time_range: pulumi.Input[str]):
         pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
@@ -25257,6 +25398,47 @@ class MonitorTriggerConditionsSloBurnRateConditionCriticalArgs:
 
 @pulumi.input_type
 class MonitorTriggerConditionsSloBurnRateConditionWarningArgs:
+    def __init__(__self__, *,
+                 burn_rate_threshold: Optional[pulumi.Input[float]] = None,
+                 burn_rates: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs']]]] = None,
+                 time_range: Optional[pulumi.Input[str]] = None):
+        if burn_rate_threshold is not None:
+            pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        if burn_rates is not None:
+            pulumi.set(__self__, "burn_rates", burn_rates)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @burn_rate_threshold.setter
+    def burn_rate_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "burn_rate_threshold", value)
+
+    @property
+    @pulumi.getter(name="burnRates")
+    def burn_rates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs']]]]:
+        return pulumi.get(self, "burn_rates")
+
+    @burn_rates.setter
+    def burn_rates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs']]]]):
+        pulumi.set(self, "burn_rates", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_range", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs:
     def __init__(__self__, *,
                  burn_rate_threshold: pulumi.Input[float],
                  time_range: pulumi.Input[str]):
@@ -27174,8 +27356,7 @@ class SloIndicatorWindowBasedEvaluationArgs:
                , `GreaterThanOrEqual`.
         :param pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryArgs']]] queries: The queries to use.
         :param pulumi.Input[str] query_type: The type of query to use. Valid values are `Metrics` or `Logs`.
-        :param pulumi.Input[str] size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-               based evaluation.
+        :param pulumi.Input[str] size: The size of the window to use, minimum of `1m` and maximum of `1h`.
         :param pulumi.Input[float] threshold: Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
                for `(good windows / total windows) * 100`.
         :param pulumi.Input[str] aggregation: Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
@@ -27231,8 +27412,7 @@ class SloIndicatorWindowBasedEvaluationArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[str]:
         """
-        The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-        based evaluation.
+        The size of the window to use, minimum of `1m` and maximum of `1h`.
         """
         return pulumi.get(self, "size")
 

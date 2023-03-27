@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -39,18 +37,9 @@ import (
 //				CustomHeaders: pulumi.StringMap{
 //					"X-custom": pulumi.String("my-custom-header"),
 //				},
-//				DefaultPayload: pulumi.String(fmt.Sprintf(`{
-//	  "client" : "Sumo Logic",
-//	  "eventType" : "{{Name}}",
-//	  "description" : "{{Description}}",
-//	  "search_url" : "{{QueryUrl}}",
-//	  "num_records" : "{{NumRawResults}}",
-//	  "search_results" : "{{AggregateResultsJson}}"
-//	}
-//
-// `)),
-//
-//				WebhookType: pulumi.String("Webhook"),
+//				DefaultPayload:    pulumi.String("{\n  \"client\" : \"Sumo Logic\",\n  \"eventType\" : \"{{Name}}\",\n  \"description\" : \"{{Description}}\",\n  \"search_url\" : \"{{QueryUrl}}\",\n  \"num_records\" : \"{{NumRawResults}}\",\n  \"search_results\" : \"{{AggregateResultsJson}}\"\n}\n"),
+//				ResolutionPayload: pulumi.String("{\n  \"client\" : \"Sumo Logic\",\n  \"eventType\" : \"{{Name}}\",\n  \"description\" : \"{{Description}}\",\n  \"search_url\" : \"{{QueryUrl}}\",\n}\n"),
+//				WebhookType:       pulumi.String("Webhook"),
 //			})
 //			if err != nil {
 //				return err
@@ -85,6 +74,8 @@ type Connection struct {
 	Headers pulumi.StringMapOutput `pulumi:"headers"`
 	// Name of connection. Name should be a valid alphanumeric value.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Resolution payload of the webhook.
+	ResolutionPayload pulumi.StringOutput `pulumi:"resolutionPayload"`
 	// Type of connection. Only `WebhookConnection` is implemented right now.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// URL for the webhook connection.
@@ -143,6 +134,8 @@ type connectionState struct {
 	Headers map[string]string `pulumi:"headers"`
 	// Name of connection. Name should be a valid alphanumeric value.
 	Name *string `pulumi:"name"`
+	// Resolution payload of the webhook.
+	ResolutionPayload *string `pulumi:"resolutionPayload"`
 	// Type of connection. Only `WebhookConnection` is implemented right now.
 	Type *string `pulumi:"type"`
 	// URL for the webhook connection.
@@ -164,6 +157,8 @@ type ConnectionState struct {
 	Headers pulumi.StringMapInput
 	// Name of connection. Name should be a valid alphanumeric value.
 	Name pulumi.StringPtrInput
+	// Resolution payload of the webhook.
+	ResolutionPayload pulumi.StringPtrInput
 	// Type of connection. Only `WebhookConnection` is implemented right now.
 	Type pulumi.StringPtrInput
 	// URL for the webhook connection.
@@ -189,6 +184,8 @@ type connectionArgs struct {
 	Headers map[string]string `pulumi:"headers"`
 	// Name of connection. Name should be a valid alphanumeric value.
 	Name *string `pulumi:"name"`
+	// Resolution payload of the webhook.
+	ResolutionPayload *string `pulumi:"resolutionPayload"`
 	// Type of connection. Only `WebhookConnection` is implemented right now.
 	Type string `pulumi:"type"`
 	// URL for the webhook connection.
@@ -211,6 +208,8 @@ type ConnectionArgs struct {
 	Headers pulumi.StringMapInput
 	// Name of connection. Name should be a valid alphanumeric value.
 	Name pulumi.StringPtrInput
+	// Resolution payload of the webhook.
+	ResolutionPayload pulumi.StringPtrInput
 	// Type of connection. Only `WebhookConnection` is implemented right now.
 	Type pulumi.StringInput
 	// URL for the webhook connection.
@@ -334,6 +333,11 @@ func (o ConnectionOutput) Headers() pulumi.StringMapOutput {
 // Name of connection. Name should be a valid alphanumeric value.
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Resolution payload of the webhook.
+func (o ConnectionOutput) ResolutionPayload() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ResolutionPayload }).(pulumi.StringOutput)
 }
 
 // Type of connection. Only `WebhookConnection` is implemented right now.

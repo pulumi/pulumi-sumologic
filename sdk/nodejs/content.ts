@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  *             },
  *             timeZone: "America/Los_Angeles",
  *             threshold: {
- *                 thresholdType: "message",
  *                 operator: "gt",
  *                 count: 0,
  *             },

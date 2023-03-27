@@ -24,6 +24,7 @@ public final class MonitorNotificationNotification {
     private @Nullable String messageBody;
     private @Nullable String payloadOverride;
     private @Nullable List<String> recipients;
+    private @Nullable String resolutionPayloadOverride;
     private @Nullable String subject;
     private @Nullable String timeZone;
 
@@ -52,6 +53,9 @@ public final class MonitorNotificationNotification {
     public List<String> recipients() {
         return this.recipients == null ? List.of() : this.recipients;
     }
+    public Optional<String> resolutionPayloadOverride() {
+        return Optional.ofNullable(this.resolutionPayloadOverride);
+    }
     public Optional<String> subject() {
         return Optional.ofNullable(this.subject);
     }
@@ -74,6 +78,7 @@ public final class MonitorNotificationNotification {
         private @Nullable String messageBody;
         private @Nullable String payloadOverride;
         private @Nullable List<String> recipients;
+        private @Nullable String resolutionPayloadOverride;
         private @Nullable String subject;
         private @Nullable String timeZone;
         public Builder() {}
@@ -85,6 +90,7 @@ public final class MonitorNotificationNotification {
     	      this.messageBody = defaults.messageBody;
     	      this.payloadOverride = defaults.payloadOverride;
     	      this.recipients = defaults.recipients;
+    	      this.resolutionPayloadOverride = defaults.resolutionPayloadOverride;
     	      this.subject = defaults.subject;
     	      this.timeZone = defaults.timeZone;
         }
@@ -123,6 +129,11 @@ public final class MonitorNotificationNotification {
             return recipients(List.of(recipients));
         }
         @CustomType.Setter
+        public Builder resolutionPayloadOverride(@Nullable String resolutionPayloadOverride) {
+            this.resolutionPayloadOverride = resolutionPayloadOverride;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subject(@Nullable String subject) {
             this.subject = subject;
             return this;
@@ -140,6 +151,7 @@ public final class MonitorNotificationNotification {
             o.messageBody = messageBody;
             o.payloadOverride = payloadOverride;
             o.recipients = recipients;
+            o.resolutionPayloadOverride = resolutionPayloadOverride;
             o.subject = subject;
             o.timeZone = timeZone;
             return o;

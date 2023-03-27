@@ -23,7 +23,6 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Name of the application.
-     * Defaults to true.
      * 
      */
     @Import(name="application")
@@ -31,7 +30,6 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Name of the application.
-     * Defaults to true.
      * 
      */
     public Optional<Output<String>> application() {
@@ -89,6 +87,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
      * - window_based_evaluation - Evaluate SLI using successful/total windows.
      * - request_based_evaluation - Evaluate SLI based on occurrence of successful
      *   events / total events over entire compliance period.
+     * - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      * 
      */
     @Import(name="indicator", required=true)
@@ -101,6 +100,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
      * - window_based_evaluation - Evaluate SLI using successful/total windows.
      * - request_based_evaluation - Evaluate SLI based on occurrence of successful
      *   events / total events over entire compliance period.
+     * - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      * 
      */
     public Output<SloIndicatorArgs> indicator() {
@@ -260,7 +260,6 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param application Name of the application.
-         * Defaults to true.
          * 
          * @return builder
          * 
@@ -272,7 +271,6 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param application Name of the application.
-         * Defaults to true.
          * 
          * @return builder
          * 
@@ -358,6 +356,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
          * - window_based_evaluation - Evaluate SLI using successful/total windows.
          * - request_based_evaluation - Evaluate SLI based on occurrence of successful
          *   events / total events over entire compliance period.
+         * - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
          * 
          * @return builder
          * 
@@ -374,6 +373,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
          * - window_based_evaluation - Evaluate SLI using successful/total windows.
          * - request_based_evaluation - Evaluate SLI based on occurrence of successful
          *   events / total events over entire compliance period.
+         * - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
          * 
          * @return builder
          * 

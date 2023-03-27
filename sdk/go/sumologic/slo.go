@@ -16,7 +16,6 @@ type Slo struct {
 	pulumi.CustomResourceState
 
 	// Name of the application.
-	// Defaults to true.
 	Application pulumi.StringOutput `pulumi:"application"`
 	// The compliance settings for the SLO.
 	Compliances SloComplianceArrayOutput `pulumi:"compliances"`
@@ -30,6 +29,7 @@ type Slo struct {
 	// - windowBasedEvaluation - Evaluate SLI using successful/total windows.
 	// - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
 	//   events / total events over entire compliance period.
+	// - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
 	Indicator  SloIndicatorOutput   `pulumi:"indicator"`
 	IsLocked   pulumi.BoolPtrOutput `pulumi:"isLocked"`
 	IsMutable  pulumi.BoolOutput    `pulumi:"isMutable"`
@@ -88,7 +88,6 @@ func GetSlo(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Slo resources.
 type sloState struct {
 	// Name of the application.
-	// Defaults to true.
 	Application *string `pulumi:"application"`
 	// The compliance settings for the SLO.
 	Compliances []SloCompliance `pulumi:"compliances"`
@@ -102,6 +101,7 @@ type sloState struct {
 	// - windowBasedEvaluation - Evaluate SLI using successful/total windows.
 	// - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
 	//   events / total events over entire compliance period.
+	// - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
 	Indicator  *SloIndicator `pulumi:"indicator"`
 	IsLocked   *bool         `pulumi:"isLocked"`
 	IsMutable  *bool         `pulumi:"isMutable"`
@@ -123,7 +123,6 @@ type sloState struct {
 
 type SloState struct {
 	// Name of the application.
-	// Defaults to true.
 	Application pulumi.StringPtrInput
 	// The compliance settings for the SLO.
 	Compliances SloComplianceArrayInput
@@ -137,6 +136,7 @@ type SloState struct {
 	// - windowBasedEvaluation - Evaluate SLI using successful/total windows.
 	// - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
 	//   events / total events over entire compliance period.
+	// - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
 	Indicator  SloIndicatorPtrInput
 	IsLocked   pulumi.BoolPtrInput
 	IsMutable  pulumi.BoolPtrInput
@@ -162,7 +162,6 @@ func (SloState) ElementType() reflect.Type {
 
 type sloArgs struct {
 	// Name of the application.
-	// Defaults to true.
 	Application *string `pulumi:"application"`
 	// The compliance settings for the SLO.
 	Compliances []SloCompliance `pulumi:"compliances"`
@@ -176,6 +175,7 @@ type sloArgs struct {
 	// - windowBasedEvaluation - Evaluate SLI using successful/total windows.
 	// - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
 	//   events / total events over entire compliance period.
+	// - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
 	Indicator  SloIndicator `pulumi:"indicator"`
 	IsLocked   *bool        `pulumi:"isLocked"`
 	IsMutable  *bool        `pulumi:"isMutable"`
@@ -198,7 +198,6 @@ type sloArgs struct {
 // The set of arguments for constructing a Slo resource.
 type SloArgs struct {
 	// Name of the application.
-	// Defaults to true.
 	Application pulumi.StringPtrInput
 	// The compliance settings for the SLO.
 	Compliances SloComplianceArrayInput
@@ -212,6 +211,7 @@ type SloArgs struct {
 	// - windowBasedEvaluation - Evaluate SLI using successful/total windows.
 	// - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
 	//   events / total events over entire compliance period.
+	// - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
 	Indicator  SloIndicatorInput
 	IsLocked   pulumi.BoolPtrInput
 	IsMutable  pulumi.BoolPtrInput
@@ -319,7 +319,6 @@ func (o SloOutput) ToSloOutputWithContext(ctx context.Context) SloOutput {
 }
 
 // Name of the application.
-// Defaults to true.
 func (o SloOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.Application }).(pulumi.StringOutput)
 }
@@ -348,6 +347,7 @@ func (o SloOutput) Description() pulumi.StringPtrOutput {
 //   - windowBasedEvaluation - Evaluate SLI using successful/total windows.
 //   - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
 //     events / total events over entire compliance period.
+//   - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
 func (o SloOutput) Indicator() SloIndicatorOutput {
 	return o.ApplyT(func(v *Slo) SloIndicatorOutput { return v.Indicator }).(SloIndicatorOutput)
 }

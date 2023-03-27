@@ -10,66 +10,6 @@ import * as utilities from "./utilities";
  * Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
  * If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
  *
- * ## Example SLO Monitors
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const tfSloMonitor1 = new sumologic.Monitor("tfSloMonitor1", {
- *     contentType: "Monitor",
- *     evaluationDelay: "5m",
- *     isDisabled: false,
- *     monitorType: "Slo",
- *     notifications: [{
- *         notification: {
- *             connectionType: "Email",
- *             messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
- *             recipients: ["abc@example.com"],
- *             subject: "Monitor Alert: {{TriggerType}} on {{Name}}",
- *             timeZone: "PST",
- *         },
- *         runForTriggerTypes: [
- *             "Critical",
- *             "ResolvedCritical",
- *         ],
- *     }],
- *     playbook: "test playbook",
- *     sloId: "0000000000000009",
- *     triggerConditions: {
- *         sloSliCondition: {
- *             critical: {
- *                 sliThreshold: 99.5,
- *             },
- *             warning: {
- *                 sliThreshold: 99.9,
- *             },
- *         },
- *     },
- *     type: "MonitorsLibraryMonitor",
- * });
- * const tfSloMonitor2 = new sumologic.Monitor("tfSloMonitor2", {
- *     contentType: "Monitor",
- *     evaluationDelay: "5m",
- *     isDisabled: false,
- *     monitorType: "Slo",
- *     sloId: "0000000000000009",
- *     triggerConditions: {
- *         sloBurnRateCondition: {
- *             critical: {
- *                 burnRateThreshold: 10,
- *                 timeRange: "1d",
- *             },
- *             warning: {
- *                 burnRateThreshold: 5,
- *                 timeRange: "1d",
- *             },
- *         },
- *     },
- *     type: "MonitorsLibraryMonitor",
- * });
- * ```
- *
  * ## Monitor Folders
  *
  * <<<<<<< HEAD
@@ -180,11 +120,17 @@ import * as utilities from "./utilities";
  *
  * #### sloBurnRateCondition
  *   - `critical`
- *     - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burnRateThreshold` (Required) : The burn rate percentage threshold.
+ *     - `timeRange` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+ *     - `burnRateThreshold` (Deprecated) : The burn rate percentage threshold.
+ *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+ *       - `burnRateThreshold` (Required): The burn rate percentage threshold.
+ *       - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *   - `warning`
- *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burnRateThreshold` (Required)
+ *     - `timeRange` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+ *     - `burnRateThreshold` (Deprecated)
+ *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+ *       - `burnRateThreshold` (Required): The burn rate percentage threshold.
+ *       - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *
  * ## The `triggers` block
  *

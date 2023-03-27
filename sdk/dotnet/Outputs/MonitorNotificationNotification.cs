@@ -19,6 +19,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? MessageBody;
         public readonly string? PayloadOverride;
         public readonly ImmutableArray<string> Recipients;
+        public readonly string? ResolutionPayloadOverride;
         public readonly string? Subject;
         public readonly string? TimeZone;
 
@@ -36,6 +37,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<string> recipients,
 
+            string? resolutionPayloadOverride,
+
             string? subject,
 
             string? timeZone)
@@ -46,6 +49,7 @@ namespace Pulumi.SumoLogic.Outputs
             MessageBody = messageBody;
             PayloadOverride = payloadOverride;
             Recipients = recipients;
+            ResolutionPayloadOverride = resolutionPayloadOverride;
             Subject = subject;
             TimeZone = timeZone;
         }

@@ -17,7 +17,6 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// Name of the application.
-        /// Defaults to true.
         /// </summary>
         [Output("application")]
         public Output<string> Application { get; private set; } = null!;
@@ -47,6 +46,7 @@ namespace Pulumi.SumoLogic
         /// - window_based_evaluation - Evaluate SLI using successful/total windows.
         /// - request_based_evaluation - Evaluate SLI based on occurrence of successful
         /// events / total events over entire compliance period.
+        /// - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         /// </summary>
         [Output("indicator")]
         public Output<Outputs.SloIndicator> Indicator { get; private set; } = null!;
@@ -145,7 +145,6 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// Name of the application.
-        /// Defaults to true.
         /// </summary>
         [Input("application")]
         public Input<string>? Application { get; set; }
@@ -181,6 +180,7 @@ namespace Pulumi.SumoLogic
         /// - window_based_evaluation - Evaluate SLI using successful/total windows.
         /// - request_based_evaluation - Evaluate SLI based on occurrence of successful
         /// events / total events over entire compliance period.
+        /// - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         /// </summary>
         [Input("indicator", required: true)]
         public Input<Inputs.SloIndicatorArgs> Indicator { get; set; } = null!;
@@ -246,7 +246,6 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// Name of the application.
-        /// Defaults to true.
         /// </summary>
         [Input("application")]
         public Input<string>? Application { get; set; }
@@ -282,6 +281,7 @@ namespace Pulumi.SumoLogic
         /// - window_based_evaluation - Evaluate SLI using successful/total windows.
         /// - request_based_evaluation - Evaluate SLI based on occurrence of successful
         /// events / total events over entire compliance period.
+        /// - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         /// </summary>
         [Input("indicator")]
         public Input<Inputs.SloIndicatorGetArgs>? Indicator { get; set; }

@@ -35,6 +35,9 @@ namespace Pulumi.SumoLogic.Inputs
             set => _recipients = value;
         }
 
+        [Input("resolutionPayloadOverride")]
+        public Input<string>? ResolutionPayloadOverride { get; set; }
+
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 

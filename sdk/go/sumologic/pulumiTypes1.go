@@ -2014,6 +2014,221 @@ func (o KinesisMetricsSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) K
 	}).(KinesisMetricsSourcePathTagFilterOutput)
 }
 
+type LocalFileSourceDefaultDateFormat struct {
+	Format  string  `pulumi:"format"`
+	Locator *string `pulumi:"locator"`
+}
+
+// LocalFileSourceDefaultDateFormatInput is an input type that accepts LocalFileSourceDefaultDateFormatArgs and LocalFileSourceDefaultDateFormatOutput values.
+// You can construct a concrete instance of `LocalFileSourceDefaultDateFormatInput` via:
+//
+//	LocalFileSourceDefaultDateFormatArgs{...}
+type LocalFileSourceDefaultDateFormatInput interface {
+	pulumi.Input
+
+	ToLocalFileSourceDefaultDateFormatOutput() LocalFileSourceDefaultDateFormatOutput
+	ToLocalFileSourceDefaultDateFormatOutputWithContext(context.Context) LocalFileSourceDefaultDateFormatOutput
+}
+
+type LocalFileSourceDefaultDateFormatArgs struct {
+	Format  pulumi.StringInput    `pulumi:"format"`
+	Locator pulumi.StringPtrInput `pulumi:"locator"`
+}
+
+func (LocalFileSourceDefaultDateFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalFileSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i LocalFileSourceDefaultDateFormatArgs) ToLocalFileSourceDefaultDateFormatOutput() LocalFileSourceDefaultDateFormatOutput {
+	return i.ToLocalFileSourceDefaultDateFormatOutputWithContext(context.Background())
+}
+
+func (i LocalFileSourceDefaultDateFormatArgs) ToLocalFileSourceDefaultDateFormatOutputWithContext(ctx context.Context) LocalFileSourceDefaultDateFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalFileSourceDefaultDateFormatOutput)
+}
+
+// LocalFileSourceDefaultDateFormatArrayInput is an input type that accepts LocalFileSourceDefaultDateFormatArray and LocalFileSourceDefaultDateFormatArrayOutput values.
+// You can construct a concrete instance of `LocalFileSourceDefaultDateFormatArrayInput` via:
+//
+//	LocalFileSourceDefaultDateFormatArray{ LocalFileSourceDefaultDateFormatArgs{...} }
+type LocalFileSourceDefaultDateFormatArrayInput interface {
+	pulumi.Input
+
+	ToLocalFileSourceDefaultDateFormatArrayOutput() LocalFileSourceDefaultDateFormatArrayOutput
+	ToLocalFileSourceDefaultDateFormatArrayOutputWithContext(context.Context) LocalFileSourceDefaultDateFormatArrayOutput
+}
+
+type LocalFileSourceDefaultDateFormatArray []LocalFileSourceDefaultDateFormatInput
+
+func (LocalFileSourceDefaultDateFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalFileSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i LocalFileSourceDefaultDateFormatArray) ToLocalFileSourceDefaultDateFormatArrayOutput() LocalFileSourceDefaultDateFormatArrayOutput {
+	return i.ToLocalFileSourceDefaultDateFormatArrayOutputWithContext(context.Background())
+}
+
+func (i LocalFileSourceDefaultDateFormatArray) ToLocalFileSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) LocalFileSourceDefaultDateFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalFileSourceDefaultDateFormatArrayOutput)
+}
+
+type LocalFileSourceDefaultDateFormatOutput struct{ *pulumi.OutputState }
+
+func (LocalFileSourceDefaultDateFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalFileSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o LocalFileSourceDefaultDateFormatOutput) ToLocalFileSourceDefaultDateFormatOutput() LocalFileSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o LocalFileSourceDefaultDateFormatOutput) ToLocalFileSourceDefaultDateFormatOutputWithContext(ctx context.Context) LocalFileSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o LocalFileSourceDefaultDateFormatOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalFileSourceDefaultDateFormat) string { return v.Format }).(pulumi.StringOutput)
+}
+
+func (o LocalFileSourceDefaultDateFormatOutput) Locator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocalFileSourceDefaultDateFormat) *string { return v.Locator }).(pulumi.StringPtrOutput)
+}
+
+type LocalFileSourceDefaultDateFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (LocalFileSourceDefaultDateFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalFileSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o LocalFileSourceDefaultDateFormatArrayOutput) ToLocalFileSourceDefaultDateFormatArrayOutput() LocalFileSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o LocalFileSourceDefaultDateFormatArrayOutput) ToLocalFileSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) LocalFileSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o LocalFileSourceDefaultDateFormatArrayOutput) Index(i pulumi.IntInput) LocalFileSourceDefaultDateFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalFileSourceDefaultDateFormat {
+		return vs[0].([]LocalFileSourceDefaultDateFormat)[vs[1].(int)]
+	}).(LocalFileSourceDefaultDateFormatOutput)
+}
+
+type LocalFileSourceFilter struct {
+	FilterType string  `pulumi:"filterType"`
+	Mask       *string `pulumi:"mask"`
+	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+	Name   string `pulumi:"name"`
+	Regexp string `pulumi:"regexp"`
+}
+
+// LocalFileSourceFilterInput is an input type that accepts LocalFileSourceFilterArgs and LocalFileSourceFilterOutput values.
+// You can construct a concrete instance of `LocalFileSourceFilterInput` via:
+//
+//	LocalFileSourceFilterArgs{...}
+type LocalFileSourceFilterInput interface {
+	pulumi.Input
+
+	ToLocalFileSourceFilterOutput() LocalFileSourceFilterOutput
+	ToLocalFileSourceFilterOutputWithContext(context.Context) LocalFileSourceFilterOutput
+}
+
+type LocalFileSourceFilterArgs struct {
+	FilterType pulumi.StringInput    `pulumi:"filterType"`
+	Mask       pulumi.StringPtrInput `pulumi:"mask"`
+	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+	Name   pulumi.StringInput `pulumi:"name"`
+	Regexp pulumi.StringInput `pulumi:"regexp"`
+}
+
+func (LocalFileSourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalFileSourceFilter)(nil)).Elem()
+}
+
+func (i LocalFileSourceFilterArgs) ToLocalFileSourceFilterOutput() LocalFileSourceFilterOutput {
+	return i.ToLocalFileSourceFilterOutputWithContext(context.Background())
+}
+
+func (i LocalFileSourceFilterArgs) ToLocalFileSourceFilterOutputWithContext(ctx context.Context) LocalFileSourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalFileSourceFilterOutput)
+}
+
+// LocalFileSourceFilterArrayInput is an input type that accepts LocalFileSourceFilterArray and LocalFileSourceFilterArrayOutput values.
+// You can construct a concrete instance of `LocalFileSourceFilterArrayInput` via:
+//
+//	LocalFileSourceFilterArray{ LocalFileSourceFilterArgs{...} }
+type LocalFileSourceFilterArrayInput interface {
+	pulumi.Input
+
+	ToLocalFileSourceFilterArrayOutput() LocalFileSourceFilterArrayOutput
+	ToLocalFileSourceFilterArrayOutputWithContext(context.Context) LocalFileSourceFilterArrayOutput
+}
+
+type LocalFileSourceFilterArray []LocalFileSourceFilterInput
+
+func (LocalFileSourceFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalFileSourceFilter)(nil)).Elem()
+}
+
+func (i LocalFileSourceFilterArray) ToLocalFileSourceFilterArrayOutput() LocalFileSourceFilterArrayOutput {
+	return i.ToLocalFileSourceFilterArrayOutputWithContext(context.Background())
+}
+
+func (i LocalFileSourceFilterArray) ToLocalFileSourceFilterArrayOutputWithContext(ctx context.Context) LocalFileSourceFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalFileSourceFilterArrayOutput)
+}
+
+type LocalFileSourceFilterOutput struct{ *pulumi.OutputState }
+
+func (LocalFileSourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalFileSourceFilter)(nil)).Elem()
+}
+
+func (o LocalFileSourceFilterOutput) ToLocalFileSourceFilterOutput() LocalFileSourceFilterOutput {
+	return o
+}
+
+func (o LocalFileSourceFilterOutput) ToLocalFileSourceFilterOutputWithContext(ctx context.Context) LocalFileSourceFilterOutput {
+	return o
+}
+
+func (o LocalFileSourceFilterOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalFileSourceFilter) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+func (o LocalFileSourceFilterOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocalFileSourceFilter) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+func (o LocalFileSourceFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalFileSourceFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LocalFileSourceFilterOutput) Regexp() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalFileSourceFilter) string { return v.Regexp }).(pulumi.StringOutput)
+}
+
+type LocalFileSourceFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (LocalFileSourceFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalFileSourceFilter)(nil)).Elem()
+}
+
+func (o LocalFileSourceFilterArrayOutput) ToLocalFileSourceFilterArrayOutput() LocalFileSourceFilterArrayOutput {
+	return o
+}
+
+func (o LocalFileSourceFilterArrayOutput) ToLocalFileSourceFilterArrayOutputWithContext(ctx context.Context) LocalFileSourceFilterArrayOutput {
+	return o
+}
+
+func (o LocalFileSourceFilterArrayOutput) Index(i pulumi.IntInput) LocalFileSourceFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalFileSourceFilter {
+		return vs[0].([]LocalFileSourceFilter)[vs[1].(int)]
+	}).(LocalFileSourceFilterOutput)
+}
+
 type LookupTableField struct {
 	FieldName string `pulumi:"fieldName"`
 	FieldType string `pulumi:"fieldType"`
@@ -2931,14 +3146,15 @@ func (o MonitorNotificationArrayOutput) Index(i pulumi.IntInput) MonitorNotifica
 
 type MonitorNotificationNotification struct {
 	// Deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.
-	ActionType      *string  `pulumi:"actionType"`
-	ConnectionId    *string  `pulumi:"connectionId"`
-	ConnectionType  *string  `pulumi:"connectionType"`
-	MessageBody     *string  `pulumi:"messageBody"`
-	PayloadOverride *string  `pulumi:"payloadOverride"`
-	Recipients      []string `pulumi:"recipients"`
-	Subject         *string  `pulumi:"subject"`
-	TimeZone        *string  `pulumi:"timeZone"`
+	ActionType                *string  `pulumi:"actionType"`
+	ConnectionId              *string  `pulumi:"connectionId"`
+	ConnectionType            *string  `pulumi:"connectionType"`
+	MessageBody               *string  `pulumi:"messageBody"`
+	PayloadOverride           *string  `pulumi:"payloadOverride"`
+	Recipients                []string `pulumi:"recipients"`
+	ResolutionPayloadOverride *string  `pulumi:"resolutionPayloadOverride"`
+	Subject                   *string  `pulumi:"subject"`
+	TimeZone                  *string  `pulumi:"timeZone"`
 }
 
 // MonitorNotificationNotificationInput is an input type that accepts MonitorNotificationNotificationArgs and MonitorNotificationNotificationOutput values.
@@ -2954,14 +3170,15 @@ type MonitorNotificationNotificationInput interface {
 
 type MonitorNotificationNotificationArgs struct {
 	// Deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.
-	ActionType      pulumi.StringPtrInput   `pulumi:"actionType"`
-	ConnectionId    pulumi.StringPtrInput   `pulumi:"connectionId"`
-	ConnectionType  pulumi.StringPtrInput   `pulumi:"connectionType"`
-	MessageBody     pulumi.StringPtrInput   `pulumi:"messageBody"`
-	PayloadOverride pulumi.StringPtrInput   `pulumi:"payloadOverride"`
-	Recipients      pulumi.StringArrayInput `pulumi:"recipients"`
-	Subject         pulumi.StringPtrInput   `pulumi:"subject"`
-	TimeZone        pulumi.StringPtrInput   `pulumi:"timeZone"`
+	ActionType                pulumi.StringPtrInput   `pulumi:"actionType"`
+	ConnectionId              pulumi.StringPtrInput   `pulumi:"connectionId"`
+	ConnectionType            pulumi.StringPtrInput   `pulumi:"connectionType"`
+	MessageBody               pulumi.StringPtrInput   `pulumi:"messageBody"`
+	PayloadOverride           pulumi.StringPtrInput   `pulumi:"payloadOverride"`
+	Recipients                pulumi.StringArrayInput `pulumi:"recipients"`
+	ResolutionPayloadOverride pulumi.StringPtrInput   `pulumi:"resolutionPayloadOverride"`
+	Subject                   pulumi.StringPtrInput   `pulumi:"subject"`
+	TimeZone                  pulumi.StringPtrInput   `pulumi:"timeZone"`
 }
 
 func (MonitorNotificationNotificationArgs) ElementType() reflect.Type {
@@ -3013,6 +3230,10 @@ func (o MonitorNotificationNotificationOutput) PayloadOverride() pulumi.StringPt
 
 func (o MonitorNotificationNotificationOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MonitorNotificationNotification) []string { return v.Recipients }).(pulumi.StringArrayOutput)
+}
+
+func (o MonitorNotificationNotificationOutput) ResolutionPayloadOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorNotificationNotification) *string { return v.ResolutionPayloadOverride }).(pulumi.StringPtrOutput)
 }
 
 func (o MonitorNotificationNotificationOutput) Subject() pulumi.StringPtrOutput {
@@ -7381,8 +7602,9 @@ func (o MonitorTriggerConditionsSloBurnRateConditionPtrOutput) Warning() Monitor
 }
 
 type MonitorTriggerConditionsSloBurnRateConditionCritical struct {
-	BurnRateThreshold float64 `pulumi:"burnRateThreshold"`
-	TimeRange         string  `pulumi:"timeRange"`
+	BurnRateThreshold *float64                                                       `pulumi:"burnRateThreshold"`
+	BurnRates         []MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate `pulumi:"burnRates"`
+	TimeRange         *string                                                        `pulumi:"timeRange"`
 }
 
 // MonitorTriggerConditionsSloBurnRateConditionCriticalInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionCriticalArgs and MonitorTriggerConditionsSloBurnRateConditionCriticalOutput values.
@@ -7397,8 +7619,9 @@ type MonitorTriggerConditionsSloBurnRateConditionCriticalInput interface {
 }
 
 type MonitorTriggerConditionsSloBurnRateConditionCriticalArgs struct {
-	BurnRateThreshold pulumi.Float64Input `pulumi:"burnRateThreshold"`
-	TimeRange         pulumi.StringInput  `pulumi:"timeRange"`
+	BurnRateThreshold pulumi.Float64PtrInput                                                 `pulumi:"burnRateThreshold"`
+	BurnRates         MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayInput `pulumi:"burnRates"`
+	TimeRange         pulumi.StringPtrInput                                                  `pulumi:"timeRange"`
 }
 
 func (MonitorTriggerConditionsSloBurnRateConditionCriticalArgs) ElementType() reflect.Type {
@@ -7478,12 +7701,18 @@ func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) ToMonitorTri
 	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput)
 }
 
-func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) BurnRateThreshold() pulumi.Float64Output {
-	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCritical) float64 { return v.BurnRateThreshold }).(pulumi.Float64Output)
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) BurnRateThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCritical) *float64 { return v.BurnRateThreshold }).(pulumi.Float64PtrOutput)
 }
 
-func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) TimeRange() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCritical) string { return v.TimeRange }).(pulumi.StringOutput)
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) BurnRates() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCritical) []MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate {
+		return v.BurnRates
+	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCritical) *string { return v.TimeRange }).(pulumi.StringPtrOutput)
 }
 
 type MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput struct{ *pulumi.OutputState }
@@ -7515,8 +7744,17 @@ func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) BurnRateT
 		if v == nil {
 			return nil
 		}
-		return &v.BurnRateThreshold
+		return v.BurnRateThreshold
 	}).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) BurnRates() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionCritical) []MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate {
+		if v == nil {
+			return nil
+		}
+		return v.BurnRates
+	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput)
 }
 
 func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) TimeRange() pulumi.StringPtrOutput {
@@ -7524,13 +7762,116 @@ func (o MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput) TimeRange
 		if v == nil {
 			return nil
 		}
-		return &v.TimeRange
+		return v.TimeRange
 	}).(pulumi.StringPtrOutput)
 }
 
-type MonitorTriggerConditionsSloBurnRateConditionWarning struct {
+type MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate struct {
 	BurnRateThreshold float64 `pulumi:"burnRateThreshold"`
 	TimeRange         string  `pulumi:"timeRange"`
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs and MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateInput` via:
+//
+//	MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs{...}
+type MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs struct {
+	BurnRateThreshold pulumi.Float64Input `pulumi:"burnRateThreshold"`
+	TimeRange         pulumi.StringInput  `pulumi:"timeRange"`
+}
+
+func (MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput)
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArray and MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayInput` via:
+//
+//	MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArray{ MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs{...} }
+type MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArray []MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateInput
+
+func (MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArray) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArray) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput) BurnRateThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate) float64 {
+		return v.BurnRateThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput) TimeRange() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate) string { return v.TimeRange }).(pulumi.StringOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput() MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput) ToMonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput) Index(i pulumi.IntInput) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate {
+		return vs[0].([]MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate)[vs[1].(int)]
+	}).(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarning struct {
+	BurnRateThreshold *float64                                                      `pulumi:"burnRateThreshold"`
+	BurnRates         []MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate `pulumi:"burnRates"`
+	TimeRange         *string                                                       `pulumi:"timeRange"`
 }
 
 // MonitorTriggerConditionsSloBurnRateConditionWarningInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionWarningArgs and MonitorTriggerConditionsSloBurnRateConditionWarningOutput values.
@@ -7545,8 +7886,9 @@ type MonitorTriggerConditionsSloBurnRateConditionWarningInput interface {
 }
 
 type MonitorTriggerConditionsSloBurnRateConditionWarningArgs struct {
-	BurnRateThreshold pulumi.Float64Input `pulumi:"burnRateThreshold"`
-	TimeRange         pulumi.StringInput  `pulumi:"timeRange"`
+	BurnRateThreshold pulumi.Float64PtrInput                                                `pulumi:"burnRateThreshold"`
+	BurnRates         MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayInput `pulumi:"burnRates"`
+	TimeRange         pulumi.StringPtrInput                                                 `pulumi:"timeRange"`
 }
 
 func (MonitorTriggerConditionsSloBurnRateConditionWarningArgs) ElementType() reflect.Type {
@@ -7626,12 +7968,18 @@ func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) ToMonitorTrig
 	}).(MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput)
 }
 
-func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) BurnRateThreshold() pulumi.Float64Output {
-	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarning) float64 { return v.BurnRateThreshold }).(pulumi.Float64Output)
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) BurnRateThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarning) *float64 { return v.BurnRateThreshold }).(pulumi.Float64PtrOutput)
 }
 
-func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) TimeRange() pulumi.StringOutput {
-	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarning) string { return v.TimeRange }).(pulumi.StringOutput)
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) BurnRates() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarning) []MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate {
+		return v.BurnRates
+	}).(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarning) *string { return v.TimeRange }).(pulumi.StringPtrOutput)
 }
 
 type MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput struct{ *pulumi.OutputState }
@@ -7663,8 +8011,17 @@ func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) BurnRateTh
 		if v == nil {
 			return nil
 		}
-		return &v.BurnRateThreshold
+		return v.BurnRateThreshold
 	}).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) BurnRates() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsSloBurnRateConditionWarning) []MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate {
+		if v == nil {
+			return nil
+		}
+		return v.BurnRates
+	}).(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput)
 }
 
 func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) TimeRange() pulumi.StringPtrOutput {
@@ -7672,8 +8029,110 @@ func (o MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput) TimeRange(
 		if v == nil {
 			return nil
 		}
-		return &v.TimeRange
+		return v.TimeRange
 	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate struct {
+	BurnRateThreshold float64 `pulumi:"burnRateThreshold"`
+	TimeRange         string  `pulumi:"timeRange"`
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs and MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateInput` via:
+//
+//	MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs{...}
+type MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs struct {
+	BurnRateThreshold pulumi.Float64Input `pulumi:"burnRateThreshold"`
+	TimeRange         pulumi.StringInput  `pulumi:"timeRange"`
+}
+
+func (MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput)
+}
+
+// MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayInput is an input type that accepts MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArray and MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayInput` via:
+//
+//	MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArray{ MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs{...} }
+type MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput
+	ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutputWithContext(context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArray []MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateInput
+
+func (MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArray) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput {
+	return i.ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArray) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput) BurnRateThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate) float64 {
+		return v.BurnRateThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput) TimeRange() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate) string { return v.TimeRange }).(pulumi.StringOutput)
+}
+
+type MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput() MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput) ToMonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutputWithContext(ctx context.Context) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput) Index(i pulumi.IntInput) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate {
+		return vs[0].([]MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate)[vs[1].(int)]
+	}).(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput)
 }
 
 type MonitorTriggerConditionsSloSliCondition struct {
@@ -12551,8 +13010,7 @@ type SloIndicatorWindowBasedEvaluation struct {
 	Queries []SloIndicatorWindowBasedEvaluationQuery `pulumi:"queries"`
 	// The type of query to use. Valid values are `Metrics` or `Logs`.
 	QueryType string `pulumi:"queryType"`
-	// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-	// based evaluation.
+	// The size of the window to use, minimum of `1m` and maximum of `1h`.
 	Size string `pulumi:"size"`
 	// Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
 	// for `(good windows / total windows) * 100`.
@@ -12582,8 +13040,7 @@ type SloIndicatorWindowBasedEvaluationArgs struct {
 	Queries SloIndicatorWindowBasedEvaluationQueryArrayInput `pulumi:"queries"`
 	// The type of query to use. Valid values are `Metrics` or `Logs`.
 	QueryType pulumi.StringInput `pulumi:"queryType"`
-	// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-	// based evaluation.
+	// The size of the window to use, minimum of `1m` and maximum of `1h`.
 	Size pulumi.StringInput `pulumi:"size"`
 	// Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
 	// for `(good windows / total windows) * 100`.
@@ -12690,8 +13147,7 @@ func (o SloIndicatorWindowBasedEvaluationOutput) QueryType() pulumi.StringOutput
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) string { return v.QueryType }).(pulumi.StringOutput)
 }
 
-// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-// based evaluation.
+// The size of the window to use, minimum of `1m` and maximum of `1h`.
 func (o SloIndicatorWindowBasedEvaluationOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluation) string { return v.Size }).(pulumi.StringOutput)
 }
@@ -12769,8 +13225,7 @@ func (o SloIndicatorWindowBasedEvaluationPtrOutput) QueryType() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-// based evaluation.
+// The size of the window to use, minimum of `1m` and maximum of `1h`.
 func (o SloIndicatorWindowBasedEvaluationPtrOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloIndicatorWindowBasedEvaluation) *string {
 		if v == nil {
@@ -13066,6 +13521,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePathPtrInput)(nil)).Elem(), KinesisMetricsSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePathTagFilterInput)(nil)).Elem(), KinesisMetricsSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourcePathTagFilterArrayInput)(nil)).Elem(), KinesisMetricsSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalFileSourceDefaultDateFormatInput)(nil)).Elem(), LocalFileSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalFileSourceDefaultDateFormatArrayInput)(nil)).Elem(), LocalFileSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalFileSourceFilterInput)(nil)).Elem(), LocalFileSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalFileSourceFilterArrayInput)(nil)).Elem(), LocalFileSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableFieldInput)(nil)).Elem(), LookupTableFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableFieldArrayInput)(nil)).Elem(), LookupTableFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceAuthenticationInput)(nil)).Elem(), MetadataSourceAuthenticationArgs{})
@@ -13137,8 +13596,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionWarningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayInput)(nil)).Elem(), MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionCriticalArgs{})
@@ -13237,6 +13700,10 @@ func init() {
 	pulumi.RegisterOutputType(KinesisMetricsSourcePathPtrOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourcePathTagFilterArrayOutput{})
+	pulumi.RegisterOutputType(LocalFileSourceDefaultDateFormatOutput{})
+	pulumi.RegisterOutputType(LocalFileSourceDefaultDateFormatArrayOutput{})
+	pulumi.RegisterOutputType(LocalFileSourceFilterOutput{})
+	pulumi.RegisterOutputType(LocalFileSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(LookupTableFieldOutput{})
 	pulumi.RegisterOutputType(LookupTableFieldArrayOutput{})
 	pulumi.RegisterOutputType(MetadataSourceAuthenticationOutput{})
@@ -13308,8 +13775,12 @@ func init() {
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionCriticalOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionCriticalPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArrayOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionWarningOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionWarningPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArrayOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionCriticalOutput{})

@@ -284,6 +284,11 @@ export type KinesisMetricsSource = import("./kinesisMetricsSource").KinesisMetri
 export const KinesisMetricsSource: typeof import("./kinesisMetricsSource").KinesisMetricsSource = null as any;
 utilities.lazyLoad(exports, ["KinesisMetricsSource"], () => require("./kinesisMetricsSource"));
 
+export { LocalFileSourceArgs, LocalFileSourceState } from "./localFileSource";
+export type LocalFileSource = import("./localFileSource").LocalFileSource;
+export const LocalFileSource: typeof import("./localFileSource").LocalFileSource = null as any;
+utilities.lazyLoad(exports, ["LocalFileSource"], () => require("./localFileSource"));
+
 export { LookupTableArgs, LookupTableState } from "./lookupTable";
 export type LookupTable = import("./lookupTable").LookupTable;
 export const LookupTable: typeof import("./lookupTable").LookupTable = null as any;
@@ -485,6 +490,8 @@ const _module = {
                 return new KineisLogSource(name, <any>undefined, { urn })
             case "sumologic:index/kinesisMetricsSource:KinesisMetricsSource":
                 return new KinesisMetricsSource(name, <any>undefined, { urn })
+            case "sumologic:index/localFileSource:LocalFileSource":
+                return new LocalFileSource(name, <any>undefined, { urn })
             case "sumologic:index/lookupTable:LookupTable":
                 return new LookupTable(name, <any>undefined, { urn })
             case "sumologic:index/metadataSource:MetadataSource":
@@ -572,6 +579,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudgetV2", _modu
 pulumi.runtime.registerResourceModule("sumologic", "index/installedCollector", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kineisLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kinesisMetricsSource", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/localFileSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/lookupTable", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/metadataSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitor", _module)

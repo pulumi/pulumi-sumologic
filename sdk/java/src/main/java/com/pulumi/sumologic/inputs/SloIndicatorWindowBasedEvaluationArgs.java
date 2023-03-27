@@ -85,16 +85,14 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
     }
 
     /**
-     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * The size of the window to use, minimum of `1m` and maximum of `1h`.
      * 
      */
     @Import(name="size", required=true)
     private Output<String> size;
 
     /**
-     * @return The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * @return The size of the window to use, minimum of `1m` and maximum of `1h`.
      * 
      */
     public Output<String> size() {
@@ -248,8 +246,7 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-         * based evaluation.
+         * @param size The size of the window to use, minimum of `1m` and maximum of `1h`.
          * 
          * @return builder
          * 
@@ -260,8 +257,7 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-         * based evaluation.
+         * @param size The size of the window to use, minimum of `1m` and maximum of `1h`.
          * 
          * @return builder
          * 

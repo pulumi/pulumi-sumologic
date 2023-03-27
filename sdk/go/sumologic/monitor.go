@@ -14,88 +14,6 @@ import (
 // Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
 // If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
 //
-// ## Example SLO Monitors
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewMonitor(ctx, "tfSloMonitor1", &sumologic.MonitorArgs{
-//				ContentType:     pulumi.String("Monitor"),
-//				EvaluationDelay: pulumi.String("5m"),
-//				IsDisabled:      pulumi.Bool(false),
-//				MonitorType:     pulumi.String("Slo"),
-//				Notifications: sumologic.MonitorNotificationArray{
-//					&sumologic.MonitorNotificationArgs{
-//						Notification: &sumologic.MonitorNotificationNotificationArgs{
-//							ConnectionType: pulumi.String("Email"),
-//							MessageBody:    pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
-//							Recipients: pulumi.StringArray{
-//								pulumi.String("abc@example.com"),
-//							},
-//							Subject:  pulumi.String("Monitor Alert: {{TriggerType}} on {{Name}}"),
-//							TimeZone: pulumi.String("PST"),
-//						},
-//						RunForTriggerTypes: pulumi.StringArray{
-//							pulumi.String("Critical"),
-//							pulumi.String("ResolvedCritical"),
-//						},
-//					},
-//				},
-//				Playbook: pulumi.String("test playbook"),
-//				SloId:    pulumi.String("0000000000000009"),
-//				TriggerConditions: &sumologic.MonitorTriggerConditionsArgs{
-//					SloSliCondition: &sumologic.MonitorTriggerConditionsSloSliConditionArgs{
-//						Critical: &sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs{
-//							SliThreshold: pulumi.Float64(99.5),
-//						},
-//						Warning: &sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs{
-//							SliThreshold: pulumi.Float64(99.9),
-//						},
-//					},
-//				},
-//				Type: pulumi.String("MonitorsLibraryMonitor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sumologic.NewMonitor(ctx, "tfSloMonitor2", &sumologic.MonitorArgs{
-//				ContentType:     pulumi.String("Monitor"),
-//				EvaluationDelay: pulumi.String("5m"),
-//				IsDisabled:      pulumi.Bool(false),
-//				MonitorType:     pulumi.String("Slo"),
-//				SloId:           pulumi.String("0000000000000009"),
-//				TriggerConditions: &sumologic.MonitorTriggerConditionsArgs{
-//					SloBurnRateCondition: &sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs{
-//						Critical: &sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs{
-//							BurnRateThreshold: pulumi.Float64(10),
-//							TimeRange:         pulumi.String("1d"),
-//						},
-//						Warning: &sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs{
-//							BurnRateThreshold: pulumi.Float64(5),
-//							TimeRange:         pulumi.String("1d"),
-//						},
-//					},
-//				},
-//				Type: pulumi.String("MonitorsLibraryMonitor"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Monitor Folders
 //
 // <<<<<<< HEAD
@@ -242,11 +160,17 @@ import (
 //
 // #### sloBurnRateCondition
 //   - `critical`
-//   - `timeRange` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-//   - `burnRateThreshold` (Required) : The burn rate percentage threshold.
+//   - `timeRange` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+//   - `burnRateThreshold` (Deprecated) : The burn rate percentage threshold.
+//   - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+//   - `burnRateThreshold` (Required): The burn rate percentage threshold.
+//   - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //   - `warning`
-//   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-//   - `burnRateThreshold` (Required)
+//   - `timeRange` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+//   - `burnRateThreshold` (Deprecated)
+//   - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+//   - `burnRateThreshold` (Required): The burn rate percentage threshold.
+//   - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 //
 // ## The `triggers` block
 //

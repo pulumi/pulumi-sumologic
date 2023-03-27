@@ -33,8 +33,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string QueryType;
         /// <summary>
-        /// The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-        /// based evaluation.
+        /// The size of the window to use, minimum of `1m` and maximum of `1h`.
         /// </summary>
         public readonly string Size;
         /// <summary>

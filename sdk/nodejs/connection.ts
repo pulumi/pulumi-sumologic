@@ -32,6 +32,13 @@ import * as utilities from "./utilities";
  *   "search_results" : "{{AggregateResultsJson}}"
  * }
  * `,
+ *     resolutionPayload: `{
+ *   "client" : "Sumo Logic",
+ *   "eventType" : "{{Name}}",
+ *   "description" : "{{Description}}",
+ *   "search_url" : "{{QueryUrl}}",
+ * }
+ * `,
  *     webhookType: "Webhook",
  * });
  * ```
@@ -97,6 +104,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Resolution payload of the webhook.
+     */
+    public readonly resolutionPayload!: pulumi.Output<string>;
+    /**
      * Type of connection. Only `WebhookConnection` is implemented right now.
      */
     public readonly type!: pulumi.Output<string>;
@@ -128,6 +139,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["headers"] = state ? state.headers : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resolutionPayload"] = state ? state.resolutionPayload : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["webhookType"] = state ? state.webhookType : undefined;
@@ -148,6 +160,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["headers"] = args ? args.headers : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resolutionPayload"] = args ? args.resolutionPayload : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["webhookType"] = args ? args.webhookType : undefined;
@@ -185,6 +198,10 @@ export interface ConnectionState {
      * Name of connection. Name should be a valid alphanumeric value.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Resolution payload of the webhook.
+     */
+    resolutionPayload?: pulumi.Input<string>;
     /**
      * Type of connection. Only `WebhookConnection` is implemented right now.
      */
@@ -227,6 +244,10 @@ export interface ConnectionArgs {
      * Name of connection. Name should be a valid alphanumeric value.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Resolution payload of the webhook.
+     */
+    resolutionPayload?: pulumi.Input<string>;
     /**
      * Type of connection. Only `WebhookConnection` is implemented right now.
      */

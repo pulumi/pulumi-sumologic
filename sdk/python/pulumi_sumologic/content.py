@@ -133,7 +133,6 @@ class Content(pulumi.CustomResource):
                     },
                     "timeZone": "America/Los_Angeles",
                     "threshold": {
-                        "thresholdType": "message",
                         "operator": "gt",
                         "count": 0,
                     },
@@ -208,7 +207,6 @@ class Content(pulumi.CustomResource):
                     },
                     "timeZone": "America/Los_Angeles",
                     "threshold": {
-                        "thresholdType": "message",
                         "operator": "gt",
                         "count": 0,
                     },

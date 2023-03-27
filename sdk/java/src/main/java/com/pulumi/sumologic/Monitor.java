@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one&#39;s Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
  * 
  * ## Example SLO Monitors
+ * 
  * ```java
  * package generated_program;
  * 
@@ -99,12 +100,12 @@ import javax.annotation.Nullable;
  *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
  *                 .sloBurnRateCondition(MonitorTriggerConditionsSloBurnRateConditionArgs.builder()
  *                     .critical(MonitorTriggerConditionsSloBurnRateConditionCriticalArgs.builder()
- *                         .burnRateThreshold(10)
- *                         .timeRange(&#34;1d&#34;)
+ *                         .burnRate(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                         .build())
  *                     .warning(MonitorTriggerConditionsSloBurnRateConditionWarningArgs.builder()
- *                         .burnRateThreshold(5)
- *                         .timeRange(&#34;1d&#34;)
+ *                         .burnRate(                        
+ *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                         .build())
  *                     .build())
  *                 .build())
@@ -265,11 +266,17 @@ import javax.annotation.Nullable;
  * 
  * #### slo_burn_rate_condition
  *   - `critical`
- *     - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
+ *     - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+ *     - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
+ *     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+ *       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+ *       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *   - `warning`
- *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burn_rate_threshold` (Required)
+ *     - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+ *     - `burn_rate_threshold` (Deprecated)
+ *     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+ *       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+ *       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  * 
  * ## The `triggers` block
  * 

@@ -56,6 +56,14 @@ import javax.annotation.Nullable;
  *   &#34;search_results&#34; : &#34;{{AggregateResultsJson}}&#34;
  * }
  *             &#34;&#34;&#34;)
+ *             .resolutionPayload(&#34;&#34;&#34;
+ * {
+ *   &#34;client&#34; : &#34;Sumo Logic&#34;,
+ *   &#34;eventType&#34; : &#34;{{Name}}&#34;,
+ *   &#34;description&#34; : &#34;{{Description}}&#34;,
+ *   &#34;search_url&#34; : &#34;{{QueryUrl}}&#34;,
+ * }
+ *             &#34;&#34;&#34;)
  *             .webhookType(&#34;Webhook&#34;)
  *             .build());
  * 
@@ -157,6 +165,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Resolution payload of the webhook.
+     * 
+     */
+    @Export(name="resolutionPayload", type=String.class, parameters={})
+    private Output<String> resolutionPayload;
+
+    /**
+     * @return Resolution payload of the webhook.
+     * 
+     */
+    public Output<String> resolutionPayload() {
+        return this.resolutionPayload;
     }
     /**
      * Type of connection. Only `WebhookConnection` is implemented right now.

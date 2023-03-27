@@ -904,64 +904,6 @@ class Monitor(pulumi.CustomResource):
         Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
         If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
 
-        ## Example SLO Monitors
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_slo_monitor1 = sumologic.Monitor("tfSloMonitor1",
-            content_type="Monitor",
-            evaluation_delay="5m",
-            is_disabled=False,
-            monitor_type="Slo",
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    recipients=["abc@example.com"],
-                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                    time_zone="PST",
-                ),
-                run_for_trigger_types=[
-                    "Critical",
-                    "ResolvedCritical",
-                ],
-            )],
-            playbook="test playbook",
-            slo_id="0000000000000009",
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(
-                        sli_threshold=99.5,
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(
-                        sli_threshold=99.9,
-                    ),
-                ),
-            ),
-            type="MonitorsLibraryMonitor")
-        tf_slo_monitor2 = sumologic.Monitor("tfSloMonitor2",
-            content_type="Monitor",
-            evaluation_delay="5m",
-            is_disabled=False,
-            monitor_type="Slo",
-            slo_id="0000000000000009",
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(
-                        burn_rate_threshold=10,
-                        time_range="1d",
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(
-                        burn_rate_threshold=5,
-                        time_range="1d",
-                    ),
-                ),
-            ),
-            type="MonitorsLibraryMonitor")
-        ```
-
         ## Monitor Folders
 
         <<<<<<< HEAD
@@ -1072,11 +1014,17 @@ class Monitor(pulumi.CustomResource):
 
         #### slo_burn_rate_condition
           - `critical`
-            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-            - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
+            - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+            - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+              - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+              - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
           - `warning`
-            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-            - `burn_rate_threshold` (Required)
+            - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+            - `burn_rate_threshold` (Deprecated)
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+              - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+              - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 
         ## The `triggers` block
 
@@ -1189,64 +1137,6 @@ class Monitor(pulumi.CustomResource):
         Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
         If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
 
-        ## Example SLO Monitors
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        tf_slo_monitor1 = sumologic.Monitor("tfSloMonitor1",
-            content_type="Monitor",
-            evaluation_delay="5m",
-            is_disabled=False,
-            monitor_type="Slo",
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    recipients=["abc@example.com"],
-                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                    time_zone="PST",
-                ),
-                run_for_trigger_types=[
-                    "Critical",
-                    "ResolvedCritical",
-                ],
-            )],
-            playbook="test playbook",
-            slo_id="0000000000000009",
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(
-                        sli_threshold=99.5,
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(
-                        sli_threshold=99.9,
-                    ),
-                ),
-            ),
-            type="MonitorsLibraryMonitor")
-        tf_slo_monitor2 = sumologic.Monitor("tfSloMonitor2",
-            content_type="Monitor",
-            evaluation_delay="5m",
-            is_disabled=False,
-            monitor_type="Slo",
-            slo_id="0000000000000009",
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(
-                        burn_rate_threshold=10,
-                        time_range="1d",
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(
-                        burn_rate_threshold=5,
-                        time_range="1d",
-                    ),
-                ),
-            ),
-            type="MonitorsLibraryMonitor")
-        ```
-
         ## Monitor Folders
 
         <<<<<<< HEAD
@@ -1357,11 +1247,17 @@ class Monitor(pulumi.CustomResource):
 
         #### slo_burn_rate_condition
           - `critical`
-            - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-            - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
+            - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+            - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+              - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+              - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
           - `warning`
-            - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-            - `burn_rate_threshold` (Required)
+            - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+            - `burn_rate_threshold` (Deprecated)
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+              - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+              - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 
         ## The `triggers` block
 

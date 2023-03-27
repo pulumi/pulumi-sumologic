@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
 public class Slo extends com.pulumi.resources.CustomResource {
     /**
      * Name of the application.
-     * Defaults to true.
      * 
      */
     @Export(name="application", type=String.class, parameters={})
@@ -36,7 +35,6 @@ public class Slo extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Name of the application.
-     * Defaults to true.
      * 
      */
     public Output<String> application() {
@@ -89,6 +87,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * - window_based_evaluation - Evaluate SLI using successful/total windows.
      * - request_based_evaluation - Evaluate SLI based on occurrence of successful
      *   events / total events over entire compliance period.
+     * - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      * 
      */
     @Export(name="indicator", type=SloIndicator.class, parameters={})
@@ -101,6 +100,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * - window_based_evaluation - Evaluate SLI using successful/total windows.
      * - request_based_evaluation - Evaluate SLI based on occurrence of successful
      *   events / total events over entire compliance period.
+     * - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      * 
      */
     public Output<SloIndicator> indicator() {

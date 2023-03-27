@@ -70,6 +70,13 @@ public final class MonitorNotificationNotificationArgs extends com.pulumi.resour
         return Optional.ofNullable(this.recipients);
     }
 
+    @Import(name="resolutionPayloadOverride")
+    private @Nullable Output<String> resolutionPayloadOverride;
+
+    public Optional<Output<String>> resolutionPayloadOverride() {
+        return Optional.ofNullable(this.resolutionPayloadOverride);
+    }
+
     @Import(name="subject")
     private @Nullable Output<String> subject;
 
@@ -93,6 +100,7 @@ public final class MonitorNotificationNotificationArgs extends com.pulumi.resour
         this.messageBody = $.messageBody;
         this.payloadOverride = $.payloadOverride;
         this.recipients = $.recipients;
+        this.resolutionPayloadOverride = $.resolutionPayloadOverride;
         this.subject = $.subject;
         this.timeZone = $.timeZone;
     }
@@ -187,6 +195,15 @@ public final class MonitorNotificationNotificationArgs extends com.pulumi.resour
 
         public Builder recipients(String... recipients) {
             return recipients(List.of(recipients));
+        }
+
+        public Builder resolutionPayloadOverride(@Nullable Output<String> resolutionPayloadOverride) {
+            $.resolutionPayloadOverride = resolutionPayloadOverride;
+            return this;
+        }
+
+        public Builder resolutionPayloadOverride(String resolutionPayloadOverride) {
+            return resolutionPayloadOverride(Output.of(resolutionPayloadOverride));
         }
 
         public Builder subject(@Nullable Output<String> subject) {
