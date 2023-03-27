@@ -13,16 +13,20 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MonitorTriggerConditionsSloBurnRateConditionWarning
     {
-        public readonly double BurnRateThreshold;
-        public readonly string TimeRange;
+        public readonly double? BurnRateThreshold;
+        public readonly ImmutableArray<Outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate> BurnRates;
+        public readonly string? TimeRange;
 
         [OutputConstructor]
         private MonitorTriggerConditionsSloBurnRateConditionWarning(
-            double burnRateThreshold,
+            double? burnRateThreshold,
 
-            string timeRange)
+            ImmutableArray<Outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate> burnRates,
+
+            string? timeRange)
         {
             BurnRateThreshold = burnRateThreshold;
+            BurnRates = burnRates;
             TimeRange = timeRange;
         }
     }

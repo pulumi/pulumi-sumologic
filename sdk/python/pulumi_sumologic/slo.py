@@ -42,10 +42,10 @@ class SloArgs:
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
                events / total events over entire compliance period.
+               - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] signal_type: The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
                , `Other`. Defaults to `Latency`.
         :param pulumi.Input[str] application: Name of the application.
-               Defaults to true.
         :param pulumi.Input[str] description: The description of the SLO.
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
@@ -105,6 +105,7 @@ class SloArgs:
         - window_based_evaluation - Evaluate SLI using successful/total windows.
         - request_based_evaluation - Evaluate SLI based on occurrence of successful
         events / total events over entire compliance period.
+        - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         """
         return pulumi.get(self, "indicator")
 
@@ -130,7 +131,6 @@ class SloArgs:
     def application(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the application.
-        Defaults to true.
         """
         return pulumi.get(self, "application")
 
@@ -291,7 +291,6 @@ class _SloState:
         """
         Input properties used for looking up and filtering Slo resources.
         :param pulumi.Input[str] application: Name of the application.
-               Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input['SloComplianceArgs']]] compliances: The compliance settings for the SLO.
         :param pulumi.Input[str] description: The description of the SLO.
         :param pulumi.Input['SloIndicatorArgs'] indicator: The service level indicator on which SLO is to be defined. more details on the difference
@@ -300,6 +299,7 @@ class _SloState:
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
                events / total events over entire compliance period.
+               - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
         :param pulumi.Input[str] service: Name of the service.
@@ -346,7 +346,6 @@ class _SloState:
     def application(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the application.
-        Defaults to true.
         """
         return pulumi.get(self, "application")
 
@@ -406,6 +405,7 @@ class _SloState:
         - window_based_evaluation - Evaluate SLI using successful/total windows.
         - request_based_evaluation - Evaluate SLI based on occurrence of successful
         events / total events over entire compliance period.
+        - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         """
         return pulumi.get(self, "indicator")
 
@@ -555,7 +555,6 @@ class Slo(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application: Name of the application.
-               Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SloComplianceArgs']]]] compliances: The compliance settings for the SLO.
         :param pulumi.Input[str] description: The description of the SLO.
         :param pulumi.Input[pulumi.InputType['SloIndicatorArgs']] indicator: The service level indicator on which SLO is to be defined. more details on the difference
@@ -564,6 +563,7 @@ class Slo(pulumi.CustomResource):
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
                events / total events over entire compliance period.
+               - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
         :param pulumi.Input[str] service: Name of the service.
@@ -678,7 +678,6 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application: Name of the application.
-               Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SloComplianceArgs']]]] compliances: The compliance settings for the SLO.
         :param pulumi.Input[str] description: The description of the SLO.
         :param pulumi.Input[pulumi.InputType['SloIndicatorArgs']] indicator: The service level indicator on which SLO is to be defined. more details on the difference
@@ -687,6 +686,7 @@ class Slo(pulumi.CustomResource):
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
                events / total events over entire compliance period.
+               - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
         :param pulumi.Input[str] service: Name of the service.
@@ -721,7 +721,6 @@ class Slo(pulumi.CustomResource):
     def application(self) -> pulumi.Output[str]:
         """
         Name of the application.
-        Defaults to true.
         """
         return pulumi.get(self, "application")
 
@@ -761,6 +760,7 @@ class Slo(pulumi.CustomResource):
         - window_based_evaluation - Evaluate SLI using successful/total windows.
         - request_based_evaluation - Evaluate SLI based on occurrence of successful
         events / total events over entire compliance period.
+        - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         """
         return pulumi.get(self, "indicator")
 

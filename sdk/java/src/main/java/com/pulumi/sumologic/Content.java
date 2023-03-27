@@ -70,7 +70,6 @@ import javax.annotation.Nullable;
  *                         )),
  *                         jsonProperty(&#34;timeZone&#34;, &#34;America/Los_Angeles&#34;),
  *                         jsonProperty(&#34;threshold&#34;, jsonObject(
- *                             jsonProperty(&#34;thresholdType&#34;, &#34;message&#34;),
  *                             jsonProperty(&#34;operator&#34;, &#34;gt&#34;),
  *                             jsonProperty(&#34;count&#34;, 0)
  *                         )),

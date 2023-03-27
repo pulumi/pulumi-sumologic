@@ -58,7 +58,6 @@ namespace Pulumi.SumoLogic
     ///                 ["timeZone"] = "America/Los_Angeles",
     ///                 ["threshold"] = new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     ["thresholdType"] = "message",
     ///                     ["operator"] = "gt",
     ///                     ["count"] = 0,
     ///                 },

@@ -4,21 +4,29 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.sumologic.outputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsSloBurnRateConditionCritical {
-    private Double burnRateThreshold;
-    private String timeRange;
+    private @Nullable Double burnRateThreshold;
+    private @Nullable List<MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate> burnRates;
+    private @Nullable String timeRange;
 
     private MonitorTriggerConditionsSloBurnRateConditionCritical() {}
-    public Double burnRateThreshold() {
-        return this.burnRateThreshold;
+    public Optional<Double> burnRateThreshold() {
+        return Optional.ofNullable(this.burnRateThreshold);
     }
-    public String timeRange() {
-        return this.timeRange;
+    public List<MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate> burnRates() {
+        return this.burnRates == null ? List.of() : this.burnRates;
+    }
+    public Optional<String> timeRange() {
+        return Optional.ofNullable(this.timeRange);
     }
 
     public static Builder builder() {
@@ -30,28 +38,39 @@ public final class MonitorTriggerConditionsSloBurnRateConditionCritical {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Double burnRateThreshold;
-        private String timeRange;
+        private @Nullable Double burnRateThreshold;
+        private @Nullable List<MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate> burnRates;
+        private @Nullable String timeRange;
         public Builder() {}
         public Builder(MonitorTriggerConditionsSloBurnRateConditionCritical defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.burnRateThreshold = defaults.burnRateThreshold;
+    	      this.burnRates = defaults.burnRates;
     	      this.timeRange = defaults.timeRange;
         }
 
         @CustomType.Setter
-        public Builder burnRateThreshold(Double burnRateThreshold) {
-            this.burnRateThreshold = Objects.requireNonNull(burnRateThreshold);
+        public Builder burnRateThreshold(@Nullable Double burnRateThreshold) {
+            this.burnRateThreshold = burnRateThreshold;
             return this;
         }
         @CustomType.Setter
-        public Builder timeRange(String timeRange) {
-            this.timeRange = Objects.requireNonNull(timeRange);
+        public Builder burnRates(@Nullable List<MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate> burnRates) {
+            this.burnRates = burnRates;
+            return this;
+        }
+        public Builder burnRates(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate... burnRates) {
+            return burnRates(List.of(burnRates));
+        }
+        @CustomType.Setter
+        public Builder timeRange(@Nullable String timeRange) {
+            this.timeRange = timeRange;
             return this;
         }
         public MonitorTriggerConditionsSloBurnRateConditionCritical build() {
             final var o = new MonitorTriggerConditionsSloBurnRateConditionCritical();
             o.burnRateThreshold = burnRateThreshold;
+            o.burnRates = burnRates;
             o.timeRange = timeRange;
             return o;
         }

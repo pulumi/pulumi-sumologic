@@ -72,6 +72,7 @@
         "installedCollector.ts",
         "kineisLogSource.ts",
         "kinesisMetricsSource.ts",
+        "localFileSource.ts",
         "lookupTable.ts",
         "metadataSource.ts",
         "monitor.ts",

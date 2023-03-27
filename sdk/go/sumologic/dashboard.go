@@ -21,7 +21,6 @@ import (
 // import (
 //
 //	"encoding/json"
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -78,7 +77,7 @@ import (
 //					"displayType":     "default",
 //					"fillOpacity":     1,
 //					"startAngle":      270,
-//					"innerRadius":     fmt.Sprintf("40%v", "%"),
+//					"innerRadius":     "40%",
 //					"maxNumOfSlices":  10,
 //					"aggregationType": "sum",
 //				},
@@ -147,15 +146,7 @@ import (
 //							Title:                                  pulumi.String("Api Health"),
 //							VisualSettings:                         pulumi.String(json0),
 //							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-//							Text: pulumi.String(fmt.Sprintf(`## Api Health Monitoring
-//
-// Use this dashboard to monitor API service health. It contains following panels:
-//
-// 1. API errors: Errors in last 12 hours
-// 3. API 5xx: Count of 5xx response
-// 3. CPU utilization: CPU utilization in last 60 mins
-// `)),
-//
+//							Text:                                   pulumi.String("## Api Health Monitoring\n\nUse this dashboard to monitor API service health. It contains following panels:\n\n1. API errors: Errors in last 12 hours\n3. API 5xx: Count of 5xx response\n3. CPU utilization: CPU utilization in last 60 mins\n"),
 //						},
 //					},
 //					&sumologic.DashboardPanelArgs{

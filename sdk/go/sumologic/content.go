@@ -56,9 +56,8 @@ import (
 //					},
 //					"timeZone": "America/Los_Angeles",
 //					"threshold": map[string]interface{}{
-//						"thresholdType": "message",
-//						"operator":      "gt",
-//						"count":         0,
+//						"operator": "gt",
+//						"count":    0,
 //					},
 //					"notification": map[string]interface{}{
 //						"taskType": "EmailSearchNotificationSyncDefinition",

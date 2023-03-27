@@ -38,8 +38,7 @@ public final class SloIndicatorWindowBasedEvaluation {
      */
     private String queryType;
     /**
-     * @return The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * @return The size of the window to use, minimum of `1m` and maximum of `1h`.
      * 
      */
     private String size;
@@ -83,8 +82,7 @@ public final class SloIndicatorWindowBasedEvaluation {
         return this.queryType;
     }
     /**
-     * @return The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * @return The size of the window to use, minimum of `1m` and maximum of `1h`.
      * 
      */
     public String size() {

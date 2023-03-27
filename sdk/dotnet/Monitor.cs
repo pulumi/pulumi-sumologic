@@ -13,91 +13,6 @@ namespace Pulumi.SumoLogic
     /// Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
     /// If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
     /// 
-    /// ## Example SLO Monitors
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using SumoLogic = Pulumi.SumoLogic;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var tfSloMonitor1 = new SumoLogic.Monitor("tfSloMonitor1", new()
-    ///     {
-    ///         ContentType = "Monitor",
-    ///         EvaluationDelay = "5m",
-    ///         IsDisabled = false,
-    ///         MonitorType = "Slo",
-    ///         Notifications = new[]
-    ///         {
-    ///             new SumoLogic.Inputs.MonitorNotificationArgs
-    ///             {
-    ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
-    ///                 {
-    ///                     ConnectionType = "Email",
-    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-    ///                     Recipients = new[]
-    ///                     {
-    ///                         "abc@example.com",
-    ///                     },
-    ///                     Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
-    ///                     TimeZone = "PST",
-    ///                 },
-    ///                 RunForTriggerTypes = new[]
-    ///                 {
-    ///                     "Critical",
-    ///                     "ResolvedCritical",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Playbook = "test playbook",
-    ///         SloId = "0000000000000009",
-    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
-    ///         {
-    ///             SloSliCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionArgs
-    ///             {
-    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs
-    ///                 {
-    ///                     SliThreshold = 99.5,
-    ///                 },
-    ///                 Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionWarningArgs
-    ///                 {
-    ///                     SliThreshold = 99.9,
-    ///                 },
-    ///             },
-    ///         },
-    ///         Type = "MonitorsLibraryMonitor",
-    ///     });
-    /// 
-    ///     var tfSloMonitor2 = new SumoLogic.Monitor("tfSloMonitor2", new()
-    ///     {
-    ///         ContentType = "Monitor",
-    ///         EvaluationDelay = "5m",
-    ///         IsDisabled = false,
-    ///         MonitorType = "Slo",
-    ///         SloId = "0000000000000009",
-    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
-    ///         {
-    ///             SloBurnRateCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionArgs
-    ///             {
-    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs
-    ///                 {
-    ///                     BurnRateThreshold = 10,
-    ///                     TimeRange = "1d",
-    ///                 },
-    ///                 Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs
-    ///                 {
-    ///                     BurnRateThreshold = 5,
-    ///                     TimeRange = "1d",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Type = "MonitorsLibraryMonitor",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Monitor Folders
     /// 
     /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -221,11 +136,17 @@ namespace Pulumi.SumoLogic
     /// 
     /// #### slo_burn_rate_condition
     ///   - `critical`
-    ///     - `time_range` (Required) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `burn_rate_threshold` (Required) : The burn rate percentage threshold.
+    ///     - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+    ///     - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
+    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+    ///       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+    ///       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///   - `warning`
-    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `burn_rate_threshold` (Required)
+    ///     - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
+    ///     - `burn_rate_threshold` (Deprecated)
+    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+    ///       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
+    ///       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     /// 
     /// ## The `triggers` block
     /// 

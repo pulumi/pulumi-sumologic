@@ -43,6 +43,13 @@ namespace Pulumi.SumoLogic
     ///   ""search_results"" : ""{{AggregateResultsJson}}""
     /// }
     /// ",
+    ///         ResolutionPayload = @"{
+    ///   ""client"" : ""Sumo Logic"",
+    ///   ""eventType"" : ""{{Name}}"",
+    ///   ""description"" : ""{{Description}}"",
+    ///   ""search_url"" : ""{{QueryUrl}}"",
+    /// }
+    /// ",
     ///         WebhookType = "Webhook",
     ///     });
     /// 
@@ -95,6 +102,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Resolution payload of the webhook.
+        /// </summary>
+        [Output("resolutionPayload")]
+        public Output<string> ResolutionPayload { get; private set; } = null!;
 
         /// <summary>
         /// Type of connection. Only `WebhookConnection` is implemented right now.
@@ -209,6 +222,12 @@ namespace Pulumi.SumoLogic
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Resolution payload of the webhook.
+        /// </summary>
+        [Input("resolutionPayload")]
+        public Input<string>? ResolutionPayload { get; set; }
+
+        /// <summary>
         /// Type of connection. Only `WebhookConnection` is implemented right now.
         /// </summary>
         [Input("type", required: true)]
@@ -281,6 +300,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Resolution payload of the webhook.
+        /// </summary>
+        [Input("resolutionPayload")]
+        public Input<string>? ResolutionPayload { get; set; }
 
         /// <summary>
         /// Type of connection. Only `WebhookConnection` is implemented right now.

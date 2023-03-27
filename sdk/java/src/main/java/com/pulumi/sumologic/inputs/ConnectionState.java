@@ -107,6 +107,21 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resolution payload of the webhook.
+     * 
+     */
+    @Import(name="resolutionPayload")
+    private @Nullable Output<String> resolutionPayload;
+
+    /**
+     * @return Resolution payload of the webhook.
+     * 
+     */
+    public Optional<Output<String>> resolutionPayload() {
+        return Optional.ofNullable(this.resolutionPayload);
+    }
+
+    /**
      * Type of connection. Only `WebhookConnection` is implemented right now.
      * 
      */
@@ -160,6 +175,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.headers = $.headers;
         this.name = $.name;
+        this.resolutionPayload = $.resolutionPayload;
         this.type = $.type;
         this.url = $.url;
         this.webhookType = $.webhookType;
@@ -307,6 +323,27 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param resolutionPayload Resolution payload of the webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolutionPayload(@Nullable Output<String> resolutionPayload) {
+            $.resolutionPayload = resolutionPayload;
+            return this;
+        }
+
+        /**
+         * @param resolutionPayload Resolution payload of the webhook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolutionPayload(String resolutionPayload) {
+            return resolutionPayload(Output.of(resolutionPayload));
         }
 
         /**

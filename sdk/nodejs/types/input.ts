@@ -5693,6 +5693,21 @@ export interface KinesisMetricsSourcePathTagFilter {
     type?: pulumi.Input<string>;
 }
 
+export interface LocalFileSourceDefaultDateFormat {
+    format: pulumi.Input<string>;
+    locator?: pulumi.Input<string>;
+}
+
+export interface LocalFileSourceFilter {
+    filterType: pulumi.Input<string>;
+    mask?: pulumi.Input<string>;
+    /**
+     * The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     */
+    name: pulumi.Input<string>;
+    regexp: pulumi.Input<string>;
+}
+
 export interface LookupTableField {
     fieldName: pulumi.Input<string>;
     fieldType: pulumi.Input<string>;
@@ -5778,6 +5793,7 @@ export interface MonitorNotificationNotification {
     messageBody?: pulumi.Input<string>;
     payloadOverride?: pulumi.Input<string>;
     recipients?: pulumi.Input<pulumi.Input<string>[]>;
+    resolutionPayloadOverride?: pulumi.Input<string>;
     subject?: pulumi.Input<string>;
     timeZone?: pulumi.Input<string>;
 }
@@ -5969,11 +5985,23 @@ export interface MonitorTriggerConditionsSloBurnRateCondition {
 }
 
 export interface MonitorTriggerConditionsSloBurnRateConditionCritical {
+    burnRateThreshold?: pulumi.Input<number>;
+    burnRates?: pulumi.Input<pulumi.Input<inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate>[]>;
+    timeRange?: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate {
     burnRateThreshold: pulumi.Input<number>;
     timeRange: pulumi.Input<string>;
 }
 
 export interface MonitorTriggerConditionsSloBurnRateConditionWarning {
+    burnRateThreshold?: pulumi.Input<number>;
+    burnRates?: pulumi.Input<pulumi.Input<inputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate>[]>;
+    timeRange?: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate {
     burnRateThreshold: pulumi.Input<number>;
     timeRange: pulumi.Input<string>;
 }
@@ -6396,8 +6424,7 @@ export interface SloIndicatorWindowBasedEvaluation {
      */
     queryType: pulumi.Input<string>;
     /**
-     * The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-     * based evaluation.
+     * The size of the window to use, minimum of `1m` and maximum of `1h`.
      */
     size: pulumi.Input<string>;
     /**

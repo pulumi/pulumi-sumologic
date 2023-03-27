@@ -5,33 +5,45 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MonitorTriggerConditionsSloBurnRateConditionWarningArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MonitorTriggerConditionsSloBurnRateConditionWarningArgs Empty = new MonitorTriggerConditionsSloBurnRateConditionWarningArgs();
 
-    @Import(name="burnRateThreshold", required=true)
-    private Output<Double> burnRateThreshold;
+    @Import(name="burnRateThreshold")
+    private @Nullable Output<Double> burnRateThreshold;
 
-    public Output<Double> burnRateThreshold() {
-        return this.burnRateThreshold;
+    public Optional<Output<Double>> burnRateThreshold() {
+        return Optional.ofNullable(this.burnRateThreshold);
     }
 
-    @Import(name="timeRange", required=true)
-    private Output<String> timeRange;
+    @Import(name="burnRates")
+    private @Nullable Output<List<MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs>> burnRates;
 
-    public Output<String> timeRange() {
-        return this.timeRange;
+    public Optional<Output<List<MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs>>> burnRates() {
+        return Optional.ofNullable(this.burnRates);
+    }
+
+    @Import(name="timeRange")
+    private @Nullable Output<String> timeRange;
+
+    public Optional<Output<String>> timeRange() {
+        return Optional.ofNullable(this.timeRange);
     }
 
     private MonitorTriggerConditionsSloBurnRateConditionWarningArgs() {}
 
     private MonitorTriggerConditionsSloBurnRateConditionWarningArgs(MonitorTriggerConditionsSloBurnRateConditionWarningArgs $) {
         this.burnRateThreshold = $.burnRateThreshold;
+        this.burnRates = $.burnRates;
         this.timeRange = $.timeRange;
     }
 
@@ -53,7 +65,7 @@ public final class MonitorTriggerConditionsSloBurnRateConditionWarningArgs exten
             $ = new MonitorTriggerConditionsSloBurnRateConditionWarningArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder burnRateThreshold(Output<Double> burnRateThreshold) {
+        public Builder burnRateThreshold(@Nullable Output<Double> burnRateThreshold) {
             $.burnRateThreshold = burnRateThreshold;
             return this;
         }
@@ -62,7 +74,20 @@ public final class MonitorTriggerConditionsSloBurnRateConditionWarningArgs exten
             return burnRateThreshold(Output.of(burnRateThreshold));
         }
 
-        public Builder timeRange(Output<String> timeRange) {
+        public Builder burnRates(@Nullable Output<List<MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs>> burnRates) {
+            $.burnRates = burnRates;
+            return this;
+        }
+
+        public Builder burnRates(List<MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs> burnRates) {
+            return burnRates(Output.of(burnRates));
+        }
+
+        public Builder burnRates(MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs... burnRates) {
+            return burnRates(List.of(burnRates));
+        }
+
+        public Builder timeRange(@Nullable Output<String> timeRange) {
             $.timeRange = timeRange;
             return this;
         }
@@ -72,8 +97,6 @@ public final class MonitorTriggerConditionsSloBurnRateConditionWarningArgs exten
         }
 
         public MonitorTriggerConditionsSloBurnRateConditionWarningArgs build() {
-            $.burnRateThreshold = Objects.requireNonNull($.burnRateThreshold, "expected parameter 'burnRateThreshold' to be non-null");
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
             return $;
         }
     }

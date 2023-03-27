@@ -22,6 +22,7 @@ class ConnectionArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resolution_payload: Optional[pulumi.Input[str]] = None,
                  webhook_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
@@ -33,6 +34,7 @@ class ConnectionArgs:
         :param pulumi.Input[str] description: Description of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
         :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] resolution_payload: Resolution payload of the webhook.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
         """
         pulumi.set(__self__, "default_payload", default_payload)
@@ -48,6 +50,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "headers", headers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if resolution_payload is not None:
+            pulumi.set(__self__, "resolution_payload", resolution_payload)
         if webhook_type is not None:
             pulumi.set(__self__, "webhook_type", webhook_type)
 
@@ -148,6 +152,18 @@ class ConnectionArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="resolutionPayload")
+    def resolution_payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resolution payload of the webhook.
+        """
+        return pulumi.get(self, "resolution_payload")
+
+    @resolution_payload.setter
+    def resolution_payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resolution_payload", value)
+
+    @property
     @pulumi.getter(name="webhookType")
     def webhook_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -169,6 +185,7 @@ class _ConnectionState:
                  description: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resolution_payload: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  webhook_type: Optional[pulumi.Input[str]] = None):
@@ -180,6 +197,7 @@ class _ConnectionState:
         :param pulumi.Input[str] description: Description of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
         :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] resolution_payload: Resolution payload of the webhook.
         :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
         :param pulumi.Input[str] url: URL for the webhook connection.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
@@ -196,6 +214,8 @@ class _ConnectionState:
             pulumi.set(__self__, "headers", headers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if resolution_payload is not None:
+            pulumi.set(__self__, "resolution_payload", resolution_payload)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if url is not None:
@@ -276,6 +296,18 @@ class _ConnectionState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="resolutionPayload")
+    def resolution_payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resolution payload of the webhook.
+        """
+        return pulumi.get(self, "resolution_payload")
+
+    @resolution_payload.setter
+    def resolution_payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resolution_payload", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -323,6 +355,7 @@ class Connection(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resolution_payload: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  webhook_type: Optional[pulumi.Input[str]] = None,
@@ -355,6 +388,13 @@ class Connection(pulumi.CustomResource):
           "search_results" : "{{AggregateResultsJson}}"
         }
         \"\"\",
+            resolution_payload=\"\"\"{
+          "client" : "Sumo Logic",
+          "eventType" : "{{Name}}",
+          "description" : "{{Description}}",
+          "search_url" : "{{QueryUrl}}",
+        }
+        \"\"\",
             webhook_type="Webhook")
         ```
 
@@ -374,6 +414,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
         :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] resolution_payload: Resolution payload of the webhook.
         :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
         :param pulumi.Input[str] url: URL for the webhook connection.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
@@ -412,6 +453,13 @@ class Connection(pulumi.CustomResource):
           "search_results" : "{{AggregateResultsJson}}"
         }
         \"\"\",
+            resolution_payload=\"\"\"{
+          "client" : "Sumo Logic",
+          "eventType" : "{{Name}}",
+          "description" : "{{Description}}",
+          "search_url" : "{{QueryUrl}}",
+        }
+        \"\"\",
             webhook_type="Webhook")
         ```
 
@@ -444,6 +492,7 @@ class Connection(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resolution_payload: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  webhook_type: Optional[pulumi.Input[str]] = None,
@@ -464,6 +513,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["headers"] = headers
             __props__.__dict__["name"] = name
+            __props__.__dict__["resolution_payload"] = resolution_payload
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -487,6 +537,7 @@ class Connection(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            resolution_payload: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             webhook_type: Optional[pulumi.Input[str]] = None) -> 'Connection':
@@ -503,6 +554,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: Map of access authorization headers.
         :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
+        :param pulumi.Input[str] resolution_payload: Resolution payload of the webhook.
         :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
         :param pulumi.Input[str] url: URL for the webhook connection.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
@@ -517,6 +569,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["headers"] = headers
         __props__.__dict__["name"] = name
+        __props__.__dict__["resolution_payload"] = resolution_payload
         __props__.__dict__["type"] = type
         __props__.__dict__["url"] = url
         __props__.__dict__["webhook_type"] = webhook_type
@@ -569,6 +622,14 @@ class Connection(pulumi.CustomResource):
         Name of connection. Name should be a valid alphanumeric value.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resolutionPayload")
+    def resolution_payload(self) -> pulumi.Output[str]:
+        """
+        Resolution payload of the webhook.
+        """
+        return pulumi.get(self, "resolution_payload")
 
     @property
     @pulumi.getter

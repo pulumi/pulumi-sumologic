@@ -527,6 +527,8 @@ __all__ = [
     'KinesisMetricsSourceFilter',
     'KinesisMetricsSourcePath',
     'KinesisMetricsSourcePathTagFilter',
+    'LocalFileSourceDefaultDateFormat',
+    'LocalFileSourceFilter',
     'LookupTableField',
     'MetadataSourceAuthentication',
     'MetadataSourceDefaultDateFormat',
@@ -563,7 +565,9 @@ __all__ = [
     'MonitorTriggerConditionsMetricsStaticConditionWarningResolution',
     'MonitorTriggerConditionsSloBurnRateCondition',
     'MonitorTriggerConditionsSloBurnRateConditionCritical',
+    'MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate',
     'MonitorTriggerConditionsSloBurnRateConditionWarning',
+    'MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate',
     'MonitorTriggerConditionsSloSliCondition',
     'MonitorTriggerConditionsSloSliConditionCritical',
     'MonitorTriggerConditionsSloSliConditionWarning',
@@ -25176,6 +25180,83 @@ class KinesisMetricsSourcePathTagFilter(dict):
 
 
 @pulumi.output_type
+class LocalFileSourceDefaultDateFormat(dict):
+    def __init__(__self__, *,
+                 format: str,
+                 locator: Optional[str] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[str]:
+        return pulumi.get(self, "locator")
+
+
+@pulumi.output_type
+class LocalFileSourceFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterType":
+            suggest = "filter_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocalFileSourceFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocalFileSourceFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocalFileSourceFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_type: str,
+                 name: str,
+                 regexp: str,
+                 mask: Optional[str] = None):
+        """
+        :param str name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> str:
+        return pulumi.get(self, "filter_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> str:
+        return pulumi.get(self, "regexp")
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[str]:
+        return pulumi.get(self, "mask")
+
+
+@pulumi.output_type
 class LookupTableField(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -25544,6 +25625,8 @@ class MonitorNotificationNotification(dict):
             suggest = "message_body"
         elif key == "payloadOverride":
             suggest = "payload_override"
+        elif key == "resolutionPayloadOverride":
+            suggest = "resolution_payload_override"
         elif key == "timeZone":
             suggest = "time_zone"
 
@@ -25565,6 +25648,7 @@ class MonitorNotificationNotification(dict):
                  message_body: Optional[str] = None,
                  payload_override: Optional[str] = None,
                  recipients: Optional[Sequence[str]] = None,
+                 resolution_payload_override: Optional[str] = None,
                  subject: Optional[str] = None,
                  time_zone: Optional[str] = None):
         if action_type is not None:
@@ -25579,6 +25663,8 @@ class MonitorNotificationNotification(dict):
             pulumi.set(__self__, "payload_override", payload_override)
         if recipients is not None:
             pulumi.set(__self__, "recipients", recipients)
+        if resolution_payload_override is not None:
+            pulumi.set(__self__, "resolution_payload_override", resolution_payload_override)
         if subject is not None:
             pulumi.set(__self__, "subject", subject)
         if time_zone is not None:
@@ -25613,6 +25699,11 @@ class MonitorNotificationNotification(dict):
     @pulumi.getter
     def recipients(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "recipients")
+
+    @property
+    @pulumi.getter(name="resolutionPayloadOverride")
+    def resolution_payload_override(self) -> Optional[str]:
+        return pulumi.get(self, "resolution_payload_override")
 
     @property
     @pulumi.getter
@@ -26865,6 +26956,8 @@ class MonitorTriggerConditionsSloBurnRateConditionCritical(dict):
         suggest = None
         if key == "burnRateThreshold":
             suggest = "burn_rate_threshold"
+        elif key == "burnRates":
+            suggest = "burn_rates"
         elif key == "timeRange":
             suggest = "time_range"
 
@@ -26877,6 +26970,54 @@ class MonitorTriggerConditionsSloBurnRateConditionCritical(dict):
 
     def get(self, key: str, default = None) -> Any:
         MonitorTriggerConditionsSloBurnRateConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 burn_rate_threshold: Optional[float] = None,
+                 burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate']] = None,
+                 time_range: Optional[str] = None):
+        if burn_rate_threshold is not None:
+            pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        if burn_rates is not None:
+            pulumi.set(__self__, "burn_rates", burn_rates)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> Optional[float]:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @property
+    @pulumi.getter(name="burnRates")
+    def burn_rates(self) -> Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate']]:
+        return pulumi.get(self, "burn_rates")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[str]:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "burnRateThreshold":
+            suggest = "burn_rate_threshold"
+        elif key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -26903,6 +27044,8 @@ class MonitorTriggerConditionsSloBurnRateConditionWarning(dict):
         suggest = None
         if key == "burnRateThreshold":
             suggest = "burn_rate_threshold"
+        elif key == "burnRates":
+            suggest = "burn_rates"
         elif key == "timeRange":
             suggest = "time_range"
 
@@ -26915,6 +27058,54 @@ class MonitorTriggerConditionsSloBurnRateConditionWarning(dict):
 
     def get(self, key: str, default = None) -> Any:
         MonitorTriggerConditionsSloBurnRateConditionWarning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 burn_rate_threshold: Optional[float] = None,
+                 burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate']] = None,
+                 time_range: Optional[str] = None):
+        if burn_rate_threshold is not None:
+            pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+        if burn_rates is not None:
+            pulumi.set(__self__, "burn_rates", burn_rates)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold")
+    def burn_rate_threshold(self) -> Optional[float]:
+        return pulumi.get(self, "burn_rate_threshold")
+
+    @property
+    @pulumi.getter(name="burnRates")
+    def burn_rates(self) -> Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate']]:
+        return pulumi.get(self, "burn_rates")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[str]:
+        return pulumi.get(self, "time_range")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "burnRateThreshold":
+            suggest = "burn_rate_threshold"
+        elif key == "timeRange":
+            suggest = "time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -28863,8 +29054,7 @@ class SloIndicatorWindowBasedEvaluation(dict):
                , `GreaterThanOrEqual`.
         :param Sequence['SloIndicatorWindowBasedEvaluationQueryArgs'] queries: The queries to use.
         :param str query_type: The type of query to use. Valid values are `Metrics` or `Logs`.
-        :param str size: The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-               based evaluation.
+        :param str size: The size of the window to use, minimum of `1m` and maximum of `1h`.
         :param float threshold: Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
                for `(good windows / total windows) * 100`.
         :param str aggregation: Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
@@ -28908,8 +29098,7 @@ class SloIndicatorWindowBasedEvaluation(dict):
     @pulumi.getter
     def size(self) -> str:
         """
-        The size of the window to use, minimum of `1m` and maximum of `1h`. Only applicable for Window
-        based evaluation.
+        The size of the window to use, minimum of `1m` and maximum of `1h`.
         """
         return pulumi.get(self, "size")
 

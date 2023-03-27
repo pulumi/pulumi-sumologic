@@ -39,7 +39,6 @@ export class Slo extends pulumi.CustomResource {
 
     /**
      * Name of the application.
-     * Defaults to true.
      */
     public readonly application!: pulumi.Output<string>;
     /**
@@ -59,6 +58,7 @@ export class Slo extends pulumi.CustomResource {
      * - windowBasedEvaluation - Evaluate SLI using successful/total windows.
      * - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
      * events / total events over entire compliance period.
+     * - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      */
     public readonly indicator!: pulumi.Output<outputs.SloIndicator>;
     public readonly isLocked!: pulumi.Output<boolean | undefined>;
@@ -156,7 +156,6 @@ export class Slo extends pulumi.CustomResource {
 export interface SloState {
     /**
      * Name of the application.
-     * Defaults to true.
      */
     application?: pulumi.Input<string>;
     /**
@@ -176,6 +175,7 @@ export interface SloState {
      * - windowBasedEvaluation - Evaluate SLI using successful/total windows.
      * - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
      * events / total events over entire compliance period.
+     * - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      */
     indicator?: pulumi.Input<inputs.SloIndicator>;
     isLocked?: pulumi.Input<boolean>;
@@ -210,7 +210,6 @@ export interface SloState {
 export interface SloArgs {
     /**
      * Name of the application.
-     * Defaults to true.
      */
     application?: pulumi.Input<string>;
     /**
@@ -230,6 +229,7 @@ export interface SloArgs {
      * - windowBasedEvaluation - Evaluate SLI using successful/total windows.
      * - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
      * events / total events over entire compliance period.
+     * - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      */
     indicator: pulumi.Input<inputs.SloIndicator>;
     isLocked?: pulumi.Input<boolean>;

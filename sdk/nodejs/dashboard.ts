@@ -123,7 +123,7 @@ import * as utilities from "./utilities";
  *                         displayType: "default",
  *                         fillOpacity: 1,
  *                         startAngle: 270,
- *                         innerRadius: `40%`,
+ *                         innerRadius: "40%",
  *                         maxNumOfSlices: 10,
  *                         aggregationType: "sum",
  *                     },

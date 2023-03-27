@@ -12,11 +12,19 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MonitorTriggerConditionsSloBurnRateConditionWarningGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("burnRateThreshold", required: true)]
-        public Input<double> BurnRateThreshold { get; set; } = null!;
+        [Input("burnRateThreshold")]
+        public Input<double>? BurnRateThreshold { get; set; }
 
-        [Input("timeRange", required: true)]
-        public Input<string> TimeRange { get; set; } = null!;
+        [Input("burnRates")]
+        private InputList<Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateGetArgs>? _burnRates;
+        public InputList<Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateGetArgs> BurnRates
+        {
+            get => _burnRates ?? (_burnRates = new InputList<Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateGetArgs>());
+            set => _burnRates = value;
+        }
+
+        [Input("timeRange")]
+        public Input<string>? TimeRange { get; set; }
 
         public MonitorTriggerConditionsSloBurnRateConditionWarningGetArgs()
         {
