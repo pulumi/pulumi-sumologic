@@ -61,6 +61,8 @@ type CseNetworkBlock struct {
 	// The displayable label of the address block.
 	Label pulumi.StringPtrOutput `pulumi:"label"`
 	// Suppresses signal flag.
+	//
+	// The following attributes are exported:
 	SuppressesSignals pulumi.BoolPtrOutput `pulumi:"suppressesSignals"`
 }
 
@@ -103,6 +105,8 @@ type cseNetworkBlockState struct {
 	// The displayable label of the address block.
 	Label *string `pulumi:"label"`
 	// Suppresses signal flag.
+	//
+	// The following attributes are exported:
 	SuppressesSignals *bool `pulumi:"suppressesSignals"`
 }
 
@@ -114,6 +118,8 @@ type CseNetworkBlockState struct {
 	// The displayable label of the address block.
 	Label pulumi.StringPtrInput
 	// Suppresses signal flag.
+	//
+	// The following attributes are exported:
 	SuppressesSignals pulumi.BoolPtrInput
 }
 
@@ -129,6 +135,8 @@ type cseNetworkBlockArgs struct {
 	// The displayable label of the address block.
 	Label *string `pulumi:"label"`
 	// Suppresses signal flag.
+	//
+	// The following attributes are exported:
 	SuppressesSignals *bool `pulumi:"suppressesSignals"`
 }
 
@@ -141,6 +149,8 @@ type CseNetworkBlockArgs struct {
 	// The displayable label of the address block.
 	Label pulumi.StringPtrInput
 	// Suppresses signal flag.
+	//
+	// The following attributes are exported:
 	SuppressesSignals pulumi.BoolPtrInput
 }
 
@@ -247,6 +257,8 @@ func (o CseNetworkBlockOutput) Label() pulumi.StringPtrOutput {
 }
 
 // Suppresses signal flag.
+//
+// The following attributes are exported:
 func (o CseNetworkBlockOutput) SuppressesSignals() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CseNetworkBlock) pulumi.BoolPtrOutput { return v.SuppressesSignals }).(pulumi.BoolPtrOutput)
 }

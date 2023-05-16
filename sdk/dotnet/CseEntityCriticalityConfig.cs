@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -48,6 +49,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("severityExpression")]
         public Output<string> SeverityExpression { get; private set; } = null!;
@@ -106,6 +110,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("severityExpression", required: true)]
         public Input<string> SeverityExpression { get; set; } = null!;
@@ -126,6 +133,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("severityExpression")]
         public Input<string>? SeverityExpression { get; set; }

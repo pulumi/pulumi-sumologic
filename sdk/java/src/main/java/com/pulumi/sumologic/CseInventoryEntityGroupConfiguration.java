@@ -157,12 +157,16 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
     /**
      * The entity group configuration tags list.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The entity group configuration tags list.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<List<String>>> tags() {

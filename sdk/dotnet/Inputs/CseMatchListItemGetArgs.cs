@@ -20,6 +20,8 @@ namespace Pulumi.SumoLogic.Inputs
 
         /// <summary>
         /// Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }

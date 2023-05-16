@@ -96,12 +96,16 @@ public final class CseEntityNormalizationConfigurationState extends com.pulumi.r
     /**
      * If username normalization is enabled.
      * 
+     * - The following attributes are exported:
+     * 
      */
     @Import(name="normalizeUsernames")
     private @Nullable Output<Boolean> normalizeUsernames;
 
     /**
      * @return If username normalization is enabled.
+     * 
+     * - The following attributes are exported:
      * 
      */
     public Optional<Output<Boolean>> normalizeUsernames() {
@@ -271,6 +275,8 @@ public final class CseEntityNormalizationConfigurationState extends com.pulumi.r
         /**
          * @param normalizeUsernames If username normalization is enabled.
          * 
+         * - The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -281,6 +287,8 @@ public final class CseEntityNormalizationConfigurationState extends com.pulumi.r
 
         /**
          * @param normalizeUsernames If username normalization is enabled.
+         * 
+         * - The following attributes are exported:
          * 
          * @return builder
          * 

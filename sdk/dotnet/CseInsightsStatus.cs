@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -42,6 +43,9 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// The description of the insights status.
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -103,6 +107,9 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// The description of the insights status.
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -123,6 +130,9 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// The description of the insights status.
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

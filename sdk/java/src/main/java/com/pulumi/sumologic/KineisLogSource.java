@@ -120,14 +120,14 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="authentication", type=KineisLogSourceAuthentication.class, parameters={})
-    private Output</* @Nullable */ KineisLogSourceAuthentication> authentication;
+    private Output<KineisLogSourceAuthentication> authentication;
 
     /**
      * @return Authentication details for connecting to the S3 bucket.
      * 
      */
-    public Output<Optional<KineisLogSourceAuthentication>> authentication() {
-        return Codegen.optional(this.authentication);
+    public Output<KineisLogSourceAuthentication> authentication() {
+        return this.authentication;
     }
     @Export(name="automaticDateParsing", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> automaticDateParsing;
@@ -238,14 +238,14 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="path", type=KineisLogSourcePath.class, parameters={})
-    private Output</* @Nullable */ KineisLogSourcePath> path;
+    private Output<KineisLogSourcePath> path;
 
     /**
      * @return The location of S3 bucket for failed Kinesis log data.
      * 
      */
-    public Output<Optional<KineisLogSourcePath>> path() {
-        return Codegen.optional(this.path);
+    public Output<KineisLogSourcePath> path() {
+        return this.path;
     }
     @Export(name="timezone", type=String.class, parameters={})
     private Output</* @Nullable */ String> timezone;

@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -86,6 +87,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("ruleIds")]
         public Output<ImmutableArray<string>> RuleIds { get; private set; } = null!;
@@ -177,6 +181,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> RuleIds
         {
@@ -233,6 +240,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> RuleIds
         {

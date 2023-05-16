@@ -154,12 +154,16 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     /**
      * Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
      * 
+     * Additional data provided in state
+     * 
      */
     @Import(name="webhookType")
     private @Nullable Output<String> webhookType;
 
     /**
      * @return Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+     * 
+     * Additional data provided in state
      * 
      */
     public Optional<Output<String>> webhookType() {
@@ -391,6 +395,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookType Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
          * 
+         * Additional data provided in state
+         * 
          * @return builder
          * 
          */
@@ -401,6 +407,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param webhookType Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+         * 
+         * Additional data provided in state
          * 
          * @return builder
          * 

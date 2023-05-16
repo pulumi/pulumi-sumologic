@@ -51,6 +51,8 @@ type CseInsightsStatus struct {
 	pulumi.CustomResourceState
 
 	// The description of the insights status.
+	//
+	// The following attributes are exported:
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	DisplayName pulumi.StringOutput    `pulumi:"displayName"`
 	// The name of the insights status.
@@ -87,6 +89,8 @@ func GetCseInsightsStatus(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CseInsightsStatus resources.
 type cseInsightsStatusState struct {
 	// The description of the insights status.
+	//
+	// The following attributes are exported:
 	Description *string `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the insights status.
@@ -95,6 +99,8 @@ type cseInsightsStatusState struct {
 
 type CseInsightsStatusState struct {
 	// The description of the insights status.
+	//
+	// The following attributes are exported:
 	Description pulumi.StringPtrInput
 	DisplayName pulumi.StringPtrInput
 	// The name of the insights status.
@@ -107,6 +113,8 @@ func (CseInsightsStatusState) ElementType() reflect.Type {
 
 type cseInsightsStatusArgs struct {
 	// The description of the insights status.
+	//
+	// The following attributes are exported:
 	Description *string `pulumi:"description"`
 	// The name of the insights status.
 	Name *string `pulumi:"name"`
@@ -115,6 +123,8 @@ type cseInsightsStatusArgs struct {
 // The set of arguments for constructing a CseInsightsStatus resource.
 type CseInsightsStatusArgs struct {
 	// The description of the insights status.
+	//
+	// The following attributes are exported:
 	Description pulumi.StringPtrInput
 	// The name of the insights status.
 	Name pulumi.StringPtrInput
@@ -208,6 +218,8 @@ func (o CseInsightsStatusOutput) ToCseInsightsStatusOutputWithContext(ctx contex
 }
 
 // The description of the insights status.
+//
+// The following attributes are exported:
 func (o CseInsightsStatusOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseInsightsStatus) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

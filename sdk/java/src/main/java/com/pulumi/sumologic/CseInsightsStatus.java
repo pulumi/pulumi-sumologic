@@ -61,12 +61,16 @@ public class CseInsightsStatus extends com.pulumi.resources.CustomResource {
     /**
      * The description of the insights status.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
      * @return The description of the insights status.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<String>> description() {

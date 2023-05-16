@@ -107,12 +107,16 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
     /**
      * Suppresses signal flag.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="suppressesSignals", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> suppressesSignals;
 
     /**
      * @return Suppresses signal flag.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<Boolean>> suppressesSignals() {

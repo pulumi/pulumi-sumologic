@@ -43,6 +43,8 @@ class CseFirstSeenRuleArgs:
         :param pulumi.Input[str] retention_window_size: The retention window size in milliseconds
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] value_fields: The value fields
+               
+               The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
@@ -183,6 +185,8 @@ class CseFirstSeenRuleArgs:
     def value_fields(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The value fields
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "value_fields")
 
@@ -286,6 +290,8 @@ class _CseFirstSeenRuleState:
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] value_fields: The value fields
+               
+               The following attributes are exported:
         """
         if baseline_type is not None:
             pulumi.set(__self__, "baseline_type", baseline_type)
@@ -491,6 +497,8 @@ class _CseFirstSeenRuleState:
     def value_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The value fields
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "value_fields")
 
@@ -578,6 +586,8 @@ class CseFirstSeenRule(pulumi.CustomResource):
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] value_fields: The value fields
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -747,6 +757,8 @@ class CseFirstSeenRule(pulumi.CustomResource):
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] value_fields: The value fields
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -886,6 +898,8 @@ class CseFirstSeenRule(pulumi.CustomResource):
     def value_fields(self) -> pulumi.Output[Sequence[str]]:
         """
         The value fields
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "value_fields")
 

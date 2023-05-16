@@ -20,6 +20,8 @@ namespace Pulumi.SumoLogic.Inputs
 
         /// <summary>
         /// Next level without a condition.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("nextLevel")]
         public Input<Inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs>? NextLevel { get; set; }

@@ -24,6 +24,8 @@ class CseNetworkBlockArgs:
         :param pulumi.Input[bool] internal: Internal flag.
         :param pulumi.Input[str] label: The displayable label of the address block.
         :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
+               
+               The following attributes are exported:
         """
         pulumi.set(__self__, "address_block", address_block)
         if internal is not None:
@@ -74,6 +76,8 @@ class CseNetworkBlockArgs:
     def suppresses_signals(self) -> Optional[pulumi.Input[bool]]:
         """
         Suppresses signal flag.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "suppresses_signals")
 
@@ -95,6 +99,8 @@ class _CseNetworkBlockState:
         :param pulumi.Input[bool] internal: Internal flag.
         :param pulumi.Input[str] label: The displayable label of the address block.
         :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
+               
+               The following attributes are exported:
         """
         if address_block is not None:
             pulumi.set(__self__, "address_block", address_block)
@@ -146,6 +152,8 @@ class _CseNetworkBlockState:
     def suppresses_signals(self) -> Optional[pulumi.Input[bool]]:
         """
         Suppresses signal flag.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "suppresses_signals")
 
@@ -194,6 +202,8 @@ class CseNetworkBlock(pulumi.CustomResource):
         :param pulumi.Input[bool] internal: Internal flag.
         :param pulumi.Input[str] label: The displayable label of the address block.
         :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -284,6 +294,8 @@ class CseNetworkBlock(pulumi.CustomResource):
         :param pulumi.Input[bool] internal: Internal flag.
         :param pulumi.Input[str] label: The displayable label of the address block.
         :param pulumi.Input[bool] suppresses_signals: Suppresses signal flag.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -324,6 +336,8 @@ class CseNetworkBlock(pulumi.CustomResource):
     def suppresses_signals(self) -> pulumi.Output[Optional[bool]]:
         """
         Suppresses signal flag.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "suppresses_signals")
 

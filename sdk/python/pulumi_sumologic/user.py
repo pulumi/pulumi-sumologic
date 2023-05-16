@@ -28,6 +28,8 @@ class UserArgs:
         :param pulumi.Input[str] last_name: Last name of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
         :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+               
+               The following attributes are exported:
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "first_name", first_name)
@@ -101,6 +103,8 @@ class UserArgs:
     def transfer_to(self) -> pulumi.Input[str]:
         """
         UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "transfer_to")
 
@@ -126,6 +130,8 @@ class _UserState:
         :param pulumi.Input[str] last_name: Last name of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
         :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+               
+               The following attributes are exported:
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -205,6 +211,8 @@ class _UserState:
     def transfer_to(self) -> Optional[pulumi.Input[str]]:
         """
         UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "transfer_to")
 
@@ -268,6 +276,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] last_name: Last name of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
         :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -387,6 +397,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] last_name: Last name of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of roleIds associated with the user.
         :param pulumi.Input[str] transfer_to: UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -445,6 +457,8 @@ class User(pulumi.CustomResource):
     def transfer_to(self) -> pulumi.Output[str]:
         """
         UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "transfer_to")
 

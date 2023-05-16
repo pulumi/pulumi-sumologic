@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -44,7 +45,9 @@ namespace Pulumi.SumoLogic
     public partial class CseCustomMatchListColumn : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Custom Match List Column fields.
+        /// Custom Match List Column fields. 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<string>> Fields { get; private set; } = null!;
@@ -105,7 +108,9 @@ namespace Pulumi.SumoLogic
         private InputList<string>? _fields;
 
         /// <summary>
-        /// Custom Match List Column fields.
+        /// Custom Match List Column fields. 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Fields
         {
@@ -131,7 +136,9 @@ namespace Pulumi.SumoLogic
         private InputList<string>? _fields;
 
         /// <summary>
-        /// Custom Match List Column fields.
+        /// Custom Match List Column fields. 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Fields
         {

@@ -108,6 +108,8 @@ export class CseMatchRule extends pulumi.CustomResource {
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
     /**
      * The tags of the generated Signals
+     *
+     * The following attributes are exported:
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -212,6 +214,8 @@ export interface CseMatchRuleState {
     summaryExpression?: pulumi.Input<string>;
     /**
      * The tags of the generated Signals
+     *
+     * The following attributes are exported:
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -258,6 +262,8 @@ export interface CseMatchRuleArgs {
     summaryExpression?: pulumi.Input<string>;
     /**
      * The tags of the generated Signals
+     *
+     * The following attributes are exported:
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

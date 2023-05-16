@@ -36,6 +36,8 @@ class CseChainRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule and the generated SignalS
@@ -127,6 +129,8 @@ class CseChainRuleArgs:
     def window_size(self) -> pulumi.Input[str]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -236,6 +240,8 @@ class _CseChainRuleState:
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -399,6 +405,8 @@ class _CseChainRuleState:
     def window_size(self) -> Optional[pulumi.Input[str]]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -482,6 +490,8 @@ class CseChainRule(pulumi.CustomResource):
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -633,6 +643,8 @@ class CseChainRule(pulumi.CustomResource):
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -745,6 +757,8 @@ class CseChainRule(pulumi.CustomResource):
     def window_size(self) -> pulumi.Output[str]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 

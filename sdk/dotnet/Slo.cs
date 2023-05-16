@@ -94,6 +94,12 @@ namespace Pulumi.SumoLogic
         [Output("signalType")]
         public Output<string> SignalType { get; private set; } = null!;
 
+        /// <summary>
+        /// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
 
@@ -233,6 +239,18 @@ namespace Pulumi.SumoLogic
         [Input("signalType", required: true)]
         public Input<string> SignalType { get; set; } = null!;
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         [Input("version")]
         public Input<int>? Version { get; set; }
 
@@ -333,6 +351,18 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("signalType")]
         public Input<string>? SignalType { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         [Input("version")]
         public Input<int>? Version { get; set; }

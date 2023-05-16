@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -62,6 +63,8 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("cseResourceSubTypes")]
         public Output<ImmutableArray<string>> CseResourceSubTypes { get; private set; } = null!;
@@ -147,6 +150,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> CseResourceSubTypes
         {
@@ -191,6 +196,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> CseResourceSubTypes
         {

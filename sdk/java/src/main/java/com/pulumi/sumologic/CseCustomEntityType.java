@@ -64,12 +64,16 @@ public class CseCustomEntityType extends com.pulumi.resources.CustomResource {
     /**
      * Record schema fields. Examples: &#34;file_hash_md5&#34;, &#34;file_hash_sha1&#34;.&#34;.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="fields", type=List.class, parameters={String.class})
     private Output<List<String>> fields;
 
     /**
      * @return Record schema fields. Examples: &#34;file_hash_md5&#34;, &#34;file_hash_sha1&#34;.&#34;.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<List<String>> fields() {

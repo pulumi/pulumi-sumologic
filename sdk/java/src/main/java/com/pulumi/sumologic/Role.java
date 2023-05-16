@@ -66,12 +66,16 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="capabilities", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> capabilities;
 
     /**
      * @return List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<List<String>>> capabilities() {

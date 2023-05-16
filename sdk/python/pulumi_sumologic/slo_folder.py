@@ -33,6 +33,8 @@ class SloFolderArgs:
         :param pulumi.Input[str] description: The description of the SLO folder.
         :param pulumi.Input[str] name: The name of the SLO folder. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+               
+               Additional data provided in state:
         """
         pulumi.set(__self__, "description", description)
         if content_type is not None:
@@ -163,6 +165,8 @@ class SloFolderArgs:
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
         The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+
+        Additional data provided in state:
         """
         return pulumi.get(self, "parent_id")
 
@@ -220,6 +224,8 @@ class _SloFolderState:
         :param pulumi.Input[str] description: The description of the SLO folder.
         :param pulumi.Input[str] name: The name of the SLO folder. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+               
+               Additional data provided in state:
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -351,6 +357,8 @@ class _SloFolderState:
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
         The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+
+        Additional data provided in state:
         """
         return pulumi.get(self, "parent_id")
 
@@ -450,6 +458,8 @@ class SloFolder(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the SLO folder.
         :param pulumi.Input[str] name: The name of the SLO folder. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+               
+               Additional data provided in state:
         """
         ...
     @overload
@@ -584,6 +594,8 @@ class SloFolder(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the SLO folder.
         :param pulumi.Input[str] name: The name of the SLO folder. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+               
+               Additional data provided in state:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -666,6 +678,8 @@ class SloFolder(pulumi.CustomResource):
     def parent_id(self) -> pulumi.Output[str]:
         """
         The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+
+        Additional data provided in state:
         """
         return pulumi.get(self, "parent_id")
 

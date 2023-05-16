@@ -10,12 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides a [Sumologic Ingest Budget v2][1].This API is in private beta and is not available until given access. To participate in the beta program contact your Sumo Logic account representative.
+    /// Provides a [Sumologic Ingest Budget v2][1].
     /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -56,6 +57,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("auditThreshold")]
         public Output<int?> AuditThreshold { get; private set; } = null!;
@@ -150,6 +153,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("auditThreshold")]
         public Input<int>? AuditThreshold { get; set; }
@@ -206,6 +211,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("auditThreshold")]
         public Input<int>? AuditThreshold { get; set; }

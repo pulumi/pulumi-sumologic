@@ -17,12 +17,16 @@ public final class CseLogMappingUnstructuredFieldsArgs extends com.pulumi.resour
     /**
      * List of grok pattern names.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="patternNames", required=true)
     private Output<List<String>> patternNames;
 
     /**
      * @return List of grok pattern names.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<List<String>> patternNames() {
@@ -56,6 +60,8 @@ public final class CseLogMappingUnstructuredFieldsArgs extends com.pulumi.resour
         /**
          * @param patternNames List of grok pattern names.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -67,6 +73,8 @@ public final class CseLogMappingUnstructuredFieldsArgs extends com.pulumi.resour
         /**
          * @param patternNames List of grok pattern names.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -76,6 +84,8 @@ public final class CseLogMappingUnstructuredFieldsArgs extends com.pulumi.resour
 
         /**
          * @param patternNames List of grok pattern names.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

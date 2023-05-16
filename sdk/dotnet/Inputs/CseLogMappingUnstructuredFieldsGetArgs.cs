@@ -17,6 +17,9 @@ namespace Pulumi.SumoLogic.Inputs
 
         /// <summary>
         /// List of grok pattern names.
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> PatternNames
         {

@@ -84,6 +84,10 @@ export class Slo extends pulumi.CustomResource {
      * , `Other`. Defaults to `Latency`.
      */
     public readonly signalType!: pulumi.Output<string>;
+    /**
+     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly version!: pulumi.Output<number>;
 
     /**
@@ -115,6 +119,7 @@ export class Slo extends pulumi.CustomResource {
             resourceInputs["postRequestMap"] = state ? state.postRequestMap : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
             resourceInputs["signalType"] = state ? state.signalType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as SloArgs | undefined;
@@ -143,6 +148,7 @@ export class Slo extends pulumi.CustomResource {
             resourceInputs["postRequestMap"] = args ? args.postRequestMap : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["signalType"] = args ? args.signalType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -201,6 +207,10 @@ export interface SloState {
      * , `Other`. Defaults to `Latency`.
      */
     signalType?: pulumi.Input<string>;
+    /**
+     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     version?: pulumi.Input<number>;
 }
 
@@ -255,5 +265,9 @@ export interface SloArgs {
      * , `Other`. Defaults to `Latency`.
      */
     signalType: pulumi.Input<string>;
+    /**
+     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     version?: pulumi.Input<number>;
 }

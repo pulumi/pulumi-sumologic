@@ -125,6 +125,8 @@ export class CseThresholdRule extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     *
+     * The following attributes are exported:
      */
     public readonly windowSize!: pulumi.Output<string>;
 
@@ -256,6 +258,8 @@ export interface CseThresholdRuleState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     *
+     * The following attributes are exported:
      */
     windowSize?: pulumi.Input<string>;
 }
@@ -318,6 +322,8 @@ export interface CseThresholdRuleArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     *
+     * The following attributes are exported:
      */
     windowSize: pulumi.Input<string>;
 }

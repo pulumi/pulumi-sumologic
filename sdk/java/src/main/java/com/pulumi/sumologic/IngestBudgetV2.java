@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [Sumologic Ingest Budget v2][1].This API is in private beta and is not available until given access. To participate in the beta program contact your Sumo Logic account representative.
+ * Provides a [Sumologic Ingest Budget v2][1].
  * 
  * ## Example Usage
  * ```java
@@ -84,12 +84,16 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
     /**
      * The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="auditThreshold", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> auditThreshold;
 
     /**
      * @return The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<Integer>> auditThreshold() {

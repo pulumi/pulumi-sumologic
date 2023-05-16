@@ -64,12 +64,16 @@ public final class CseNetworkBlockArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Suppresses signal flag.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="suppressesSignals")
     private @Nullable Output<Boolean> suppressesSignals;
 
     /**
      * @return Suppresses signal flag.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<Boolean>> suppressesSignals() {
@@ -169,6 +173,8 @@ public final class CseNetworkBlockArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param suppressesSignals Suppresses signal flag.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -179,6 +185,8 @@ public final class CseNetworkBlockArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param suppressesSignals Suppresses signal flag.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

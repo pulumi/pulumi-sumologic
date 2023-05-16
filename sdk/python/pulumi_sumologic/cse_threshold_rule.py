@@ -39,6 +39,8 @@ class CseThresholdRuleArgs:
         :param pulumi.Input[int] limit: A Signal will be fired when this many records/distinct field values are matched
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         :param pulumi.Input[bool] count_distinct: Whether to count distinct values of a field, as opposed to just counting the number of records
         :param pulumi.Input[str] count_field: The field to count if `count_distinct` is set to true
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
@@ -146,6 +148,8 @@ class CseThresholdRuleArgs:
     def window_size(self) -> pulumi.Input[str]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -271,6 +275,8 @@ class _CseThresholdRuleState:
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         if count_distinct is not None:
             pulumi.set(__self__, "count_distinct", count_distinct)
@@ -462,6 +468,8 @@ class _CseThresholdRuleState:
     def window_size(self) -> Optional[pulumi.Input[str]]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -542,6 +550,8 @@ class CseThresholdRule(pulumi.CustomResource):
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -696,6 +706,8 @@ class CseThresholdRule(pulumi.CustomResource):
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -826,6 +838,8 @@ class CseThresholdRule(pulumi.CustomResource):
     def window_size(self) -> pulumi.Output[str]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 

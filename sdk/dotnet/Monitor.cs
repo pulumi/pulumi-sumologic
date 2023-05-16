@@ -20,6 +20,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -42,6 +43,7 @@ namespace Pulumi.SumoLogic
     /// ### Example
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -138,13 +140,13 @@ namespace Pulumi.SumoLogic
     ///   - `critical`
     ///     - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
-    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
     ///       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
     ///       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///   - `warning`
     ///     - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     ///     - `burn_rate_threshold` (Deprecated)
-    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
     ///       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
     ///       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
     /// 
@@ -155,6 +157,7 @@ namespace Pulumi.SumoLogic
     /// Here's an example logs monitor that uses `triggers` to specify trigger conditions:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -280,6 +283,9 @@ namespace Pulumi.SumoLogic
         /// Evaluation delay as a string consists of the following elements:
         /// 1. `&lt;number&gt;`: number of time units,
         /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        /// 
+        /// Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
+        /// `2m50s` means 2 minutes and 50 seconds.
         /// </summary>
         [Output("evaluationDelay")]
         public Output<string> EvaluationDelay { get; private set; } = null!;
@@ -469,6 +475,9 @@ namespace Pulumi.SumoLogic
         /// Evaluation delay as a string consists of the following elements:
         /// 1. `&lt;number&gt;`: number of time units,
         /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        /// 
+        /// Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
+        /// `2m50s` means 2 minutes and 50 seconds.
         /// </summary>
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }
@@ -662,6 +671,9 @@ namespace Pulumi.SumoLogic
         /// Evaluation delay as a string consists of the following elements:
         /// 1. `&lt;number&gt;`: number of time units,
         /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+        /// 
+        /// Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
+        /// `2m50s` means 2 minutes and 50 seconds.
         /// </summary>
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }

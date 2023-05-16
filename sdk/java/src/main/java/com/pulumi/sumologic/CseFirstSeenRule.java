@@ -281,12 +281,16 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
     /**
      * The value fields
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="valueFields", type=List.class, parameters={String.class})
     private Output<List<String>> valueFields;
 
     /**
      * @return The value fields
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<List<String>> valueFields() {

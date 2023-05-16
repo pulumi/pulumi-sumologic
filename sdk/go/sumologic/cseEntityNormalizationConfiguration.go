@@ -73,6 +73,8 @@ type CseEntityNormalizationConfiguration struct {
 	// If hostname normalization is enabled.
 	NormalizeHostnames pulumi.BoolOutput `pulumi:"normalizeHostnames"`
 	// If username normalization is enabled.
+	//
+	// - The following attributes are exported:
 	NormalizeUsernames pulumi.BoolOutput `pulumi:"normalizeUsernames"`
 	// Normalize active directory domains username and hostname formats.
 	WindowsNormalizationEnabled pulumi.BoolOutput `pulumi:"windowsNormalizationEnabled"`
@@ -136,6 +138,8 @@ type cseEntityNormalizationConfigurationState struct {
 	// If hostname normalization is enabled.
 	NormalizeHostnames *bool `pulumi:"normalizeHostnames"`
 	// If username normalization is enabled.
+	//
+	// - The following attributes are exported:
 	NormalizeUsernames *bool `pulumi:"normalizeUsernames"`
 	// Normalize active directory domains username and hostname formats.
 	WindowsNormalizationEnabled *bool `pulumi:"windowsNormalizationEnabled"`
@@ -153,6 +157,8 @@ type CseEntityNormalizationConfigurationState struct {
 	// If hostname normalization is enabled.
 	NormalizeHostnames pulumi.BoolPtrInput
 	// If username normalization is enabled.
+	//
+	// - The following attributes are exported:
 	NormalizeUsernames pulumi.BoolPtrInput
 	// Normalize active directory domains username and hostname formats.
 	WindowsNormalizationEnabled pulumi.BoolPtrInput
@@ -174,6 +180,8 @@ type cseEntityNormalizationConfigurationArgs struct {
 	// If hostname normalization is enabled.
 	NormalizeHostnames bool `pulumi:"normalizeHostnames"`
 	// If username normalization is enabled.
+	//
+	// - The following attributes are exported:
 	NormalizeUsernames bool `pulumi:"normalizeUsernames"`
 	// Normalize active directory domains username and hostname formats.
 	WindowsNormalizationEnabled bool `pulumi:"windowsNormalizationEnabled"`
@@ -192,6 +200,8 @@ type CseEntityNormalizationConfigurationArgs struct {
 	// If hostname normalization is enabled.
 	NormalizeHostnames pulumi.BoolInput
 	// If username normalization is enabled.
+	//
+	// - The following attributes are exported:
 	NormalizeUsernames pulumi.BoolInput
 	// Normalize active directory domains username and hostname formats.
 	WindowsNormalizationEnabled pulumi.BoolInput
@@ -312,6 +322,8 @@ func (o CseEntityNormalizationConfigurationOutput) NormalizeHostnames() pulumi.B
 }
 
 // If username normalization is enabled.
+//
+// - The following attributes are exported:
 func (o CseEntityNormalizationConfigurationOutput) NormalizeUsernames() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CseEntityNormalizationConfiguration) pulumi.BoolOutput { return v.NormalizeUsernames }).(pulumi.BoolOutput)
 }

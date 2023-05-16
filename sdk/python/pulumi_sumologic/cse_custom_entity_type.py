@@ -20,6 +20,9 @@ class CseCustomEntityTypeArgs:
         """
         The set of arguments for constructing a CseCustomEntityType resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
         :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
@@ -33,6 +36,9 @@ class CseCustomEntityTypeArgs:
     def fields(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "fields")
 
@@ -74,6 +80,9 @@ class _CseCustomEntityTypeState:
         """
         Input properties used for looking up and filtering CseCustomEntityType resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
         :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
@@ -89,6 +98,9 @@ class _CseCustomEntityTypeState:
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "fields")
 
@@ -158,6 +170,9 @@ class CseCustomEntityType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
         :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
@@ -247,6 +262,9 @@ class CseCustomEntityType(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] identifier: Machine friendly and unique identifier. Example: "filehash".
         :param pulumi.Input[str] name: Human friend and unique name. Example: "File Hash".
         """
@@ -264,6 +282,9 @@ class CseCustomEntityType(pulumi.CustomResource):
     def fields(self) -> pulumi.Output[Sequence[str]]:
         """
         Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "fields")
 

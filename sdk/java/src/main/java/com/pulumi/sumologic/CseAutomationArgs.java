@@ -20,12 +20,16 @@ public final class CseAutomationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * CSE Resource sub-type when cse_resource_type is specified as &#34;ENTITY&#34;. Examples: &#34;_ip&#34;, &#34;_mac&#34;.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="cseResourceSubTypes")
     private @Nullable Output<List<String>> cseResourceSubTypes;
 
     /**
      * @return CSE Resource sub-type when cse_resource_type is specified as &#34;ENTITY&#34;. Examples: &#34;_ip&#34;, &#34;_mac&#34;.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> cseResourceSubTypes() {
@@ -107,6 +111,8 @@ public final class CseAutomationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cseResourceSubTypes CSE Resource sub-type when cse_resource_type is specified as &#34;ENTITY&#34;. Examples: &#34;_ip&#34;, &#34;_mac&#34;.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -118,6 +124,8 @@ public final class CseAutomationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cseResourceSubTypes CSE Resource sub-type when cse_resource_type is specified as &#34;ENTITY&#34;. Examples: &#34;_ip&#34;, &#34;_mac&#34;.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -127,6 +135,8 @@ public final class CseAutomationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cseResourceSubTypes CSE Resource sub-type when cse_resource_type is specified as &#34;ENTITY&#34;. Examples: &#34;_ip&#34;, &#34;_mac&#34;.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

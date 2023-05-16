@@ -33,12 +33,16 @@ public final class CseMatchListItemArgs extends com.pulumi.resources.ResourceArg
     /**
      * Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="expiration")
     private @Nullable Output<String> expiration;
 
     /**
      * @return Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<String>> expiration() {
@@ -126,6 +130,8 @@ public final class CseMatchListItemArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param expiration Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -136,6 +142,8 @@ public final class CseMatchListItemArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param expiration Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

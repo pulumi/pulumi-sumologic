@@ -35,6 +35,8 @@ class CseEntityEntityGroupConfigurationArgs:
         :param pulumi.Input[str] prefix: The entity group configuration prefix value.
         :param pulumi.Input[str] suffix: The entity group configuration suffix value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         if criticality is not None:
             pulumi.set(__self__, "criticality", criticality)
@@ -167,6 +169,8 @@ class CseEntityEntityGroupConfigurationArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The entity group configuration tags list.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -199,6 +203,8 @@ class _CseEntityEntityGroupConfigurationState:
         :param pulumi.Input[str] prefix: The entity group configuration prefix value.
         :param pulumi.Input[str] suffix: The entity group configuration suffix value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         if criticality is not None:
             pulumi.set(__self__, "criticality", criticality)
@@ -331,6 +337,8 @@ class _CseEntityEntityGroupConfigurationState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The entity group configuration tags list.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -391,6 +399,8 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] prefix: The entity group configuration prefix value.
         :param pulumi.Input[str] suffix: The entity group configuration suffix value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -503,6 +513,8 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] prefix: The entity group configuration prefix value.
         :param pulumi.Input[str] suffix: The entity group configuration suffix value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -594,6 +606,8 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The entity group configuration tags list.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 

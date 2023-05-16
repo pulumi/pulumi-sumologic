@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [Sumologic Ingest Budget v2][1].This API is in private beta and is not available until given access. To participate in the beta program contact your Sumo Logic account representative.
+ * Provides a [Sumologic Ingest Budget v2][1].
  *
  * ## Example Usage
  *
@@ -68,6 +68,8 @@ export class IngestBudgetV2 extends pulumi.CustomResource {
     public readonly action!: pulumi.Output<string>;
     /**
      * The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+     *
+     * The following attributes are exported:
      */
     public readonly auditThreshold!: pulumi.Output<number | undefined>;
     /**
@@ -157,6 +159,8 @@ export interface IngestBudgetV2State {
     action?: pulumi.Input<string>;
     /**
      * The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+     *
+     * The following attributes are exported:
      */
     auditThreshold?: pulumi.Input<number>;
     /**
@@ -195,6 +199,8 @@ export interface IngestBudgetV2Args {
     action: pulumi.Input<string>;
     /**
      * The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+     *
+     * The following attributes are exported:
      */
     auditThreshold?: pulumi.Input<number>;
     /**

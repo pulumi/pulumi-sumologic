@@ -80,6 +80,8 @@ type CseCustomInsight struct {
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayOutput `pulumi:"signalNames"`
 	// The tags of the generated Insights
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -142,6 +144,8 @@ type cseCustomInsightState struct {
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
 	// The tags of the generated Insights
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -161,6 +165,8 @@ type CseCustomInsightState struct {
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
 	// The tags of the generated Insights
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -184,6 +190,8 @@ type cseCustomInsightArgs struct {
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
 	// The tags of the generated Insights
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -204,6 +212,8 @@ type CseCustomInsightArgs struct {
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
 	// The tags of the generated Insights
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -330,6 +340,8 @@ func (o CseCustomInsightOutput) SignalNames() pulumi.StringArrayOutput {
 }
 
 // The tags of the generated Insights
+//
+// The following attributes are exported:
 func (o CseCustomInsightOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

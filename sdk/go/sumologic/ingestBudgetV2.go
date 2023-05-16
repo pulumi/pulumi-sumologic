@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [Sumologic Ingest Budget v2][1].This API is in private beta and is not available until given access. To participate in the beta program contact your Sumo Logic account representative.
+// Provides a [Sumologic Ingest Budget v2][1].
 //
 // ## Example Usage
 //
@@ -62,6 +62,8 @@ type IngestBudgetV2 struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+	//
+	// The following attributes are exported:
 	AuditThreshold pulumi.IntPtrOutput `pulumi:"auditThreshold"`
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntOutput `pulumi:"capacityBytes"`
@@ -124,6 +126,8 @@ type ingestBudgetV2State struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
 	Action *string `pulumi:"action"`
 	// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+	//
+	// The following attributes are exported:
 	AuditThreshold *int `pulumi:"auditThreshold"`
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes *int `pulumi:"capacityBytes"`
@@ -143,6 +147,8 @@ type IngestBudgetV2State struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
 	Action pulumi.StringPtrInput
 	// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+	//
+	// The following attributes are exported:
 	AuditThreshold pulumi.IntPtrInput
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntPtrInput
@@ -166,6 +172,8 @@ type ingestBudgetV2Args struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
 	Action string `pulumi:"action"`
 	// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+	//
+	// The following attributes are exported:
 	AuditThreshold *int `pulumi:"auditThreshold"`
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes int `pulumi:"capacityBytes"`
@@ -186,6 +194,8 @@ type IngestBudgetV2Args struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
 	Action pulumi.StringInput
 	// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+	//
+	// The following attributes are exported:
 	AuditThreshold pulumi.IntPtrInput
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntInput
@@ -294,6 +304,8 @@ func (o IngestBudgetV2Output) Action() pulumi.StringOutput {
 }
 
 // The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+//
+// The following attributes are exported:
 func (o IngestBudgetV2Output) AuditThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IngestBudgetV2) pulumi.IntPtrOutput { return v.AuditThreshold }).(pulumi.IntPtrOutput)
 }

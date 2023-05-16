@@ -54,6 +54,9 @@ export class CseInsightsStatus extends pulumi.CustomResource {
 
     /**
      * The description of the insights status.
+     *
+     *
+     * The following attributes are exported:
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly displayName!: pulumi.Output<string>;
@@ -95,6 +98,9 @@ export class CseInsightsStatus extends pulumi.CustomResource {
 export interface CseInsightsStatusState {
     /**
      * The description of the insights status.
+     *
+     *
+     * The following attributes are exported:
      */
     description?: pulumi.Input<string>;
     displayName?: pulumi.Input<string>;
@@ -110,6 +116,9 @@ export interface CseInsightsStatusState {
 export interface CseInsightsStatusArgs {
     /**
      * The description of the insights status.
+     *
+     *
+     * The following attributes are exported:
      */
     description?: pulumi.Input<string>;
     /**

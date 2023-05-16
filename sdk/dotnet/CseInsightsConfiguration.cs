@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -49,6 +50,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Detection threshold activity score.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("threshold")]
         public Output<double?> Threshold { get; private set; } = null!;
@@ -107,6 +110,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Detection threshold activity score.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
@@ -127,6 +132,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Detection threshold activity score.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }

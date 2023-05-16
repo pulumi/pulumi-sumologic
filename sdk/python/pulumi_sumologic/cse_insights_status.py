@@ -19,6 +19,9 @@ class CseInsightsStatusArgs:
         """
         The set of arguments for constructing a CseInsightsStatus resource.
         :param pulumi.Input[str] description: The description of the insights status.
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
         """
         if description is not None:
@@ -31,6 +34,9 @@ class CseInsightsStatusArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the insights status.
+
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "description")
 
@@ -60,6 +66,9 @@ class _CseInsightsStatusState:
         """
         Input properties used for looking up and filtering CseInsightsStatus resources.
         :param pulumi.Input[str] description: The description of the insights status.
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
         """
         if description is not None:
@@ -74,6 +83,9 @@ class _CseInsightsStatusState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the insights status.
+
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "description")
 
@@ -134,6 +146,9 @@ class CseInsightsStatus(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the insights status.
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
         """
         ...
@@ -212,6 +227,9 @@ class CseInsightsStatus(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the insights status.
+               
+               
+               The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -228,6 +246,9 @@ class CseInsightsStatus(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the insights status.
+
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "description")
 

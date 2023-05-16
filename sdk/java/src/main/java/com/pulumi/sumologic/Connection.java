@@ -211,12 +211,16 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
      * 
+     * Additional data provided in state
+     * 
      */
     @Export(name="webhookType", type=String.class, parameters={})
     private Output</* @Nullable */ String> webhookType;
 
     /**
      * @return Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+     * 
+     * Additional data provided in state
      * 
      */
     public Output<Optional<String>> webhookType() {

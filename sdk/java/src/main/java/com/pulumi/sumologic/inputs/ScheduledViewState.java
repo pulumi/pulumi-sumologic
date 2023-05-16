@@ -80,12 +80,16 @@ public final class ScheduledViewState extends com.pulumi.resources.ResourceArgs 
     /**
      * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="reduceRetentionPeriodImmediately")
     private @Nullable Output<Boolean> reduceRetentionPeriodImmediately;
 
     /**
      * @return This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<Boolean>> reduceRetentionPeriodImmediately() {
@@ -239,6 +243,8 @@ public final class ScheduledViewState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param reduceRetentionPeriodImmediately This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -249,6 +255,8 @@ public final class ScheduledViewState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param reduceRetentionPeriodImmediately This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

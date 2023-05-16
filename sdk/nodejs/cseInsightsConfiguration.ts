@@ -61,6 +61,8 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
     public readonly lookbackDays!: pulumi.Output<number | undefined>;
     /**
      * Detection threshold activity score.
+     *
+     * The following attributes are exported:
      */
     public readonly threshold!: pulumi.Output<number | undefined>;
 
@@ -99,6 +101,8 @@ export interface CseInsightsConfigurationState {
     lookbackDays?: pulumi.Input<number>;
     /**
      * Detection threshold activity score.
+     *
+     * The following attributes are exported:
      */
     threshold?: pulumi.Input<number>;
 }
@@ -113,6 +117,8 @@ export interface CseInsightsConfigurationArgs {
     lookbackDays?: pulumi.Input<number>;
     /**
      * Detection threshold activity score.
+     *
+     * The following attributes are exported:
      */
     threshold?: pulumi.Input<number>;
 }

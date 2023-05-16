@@ -19,6 +19,8 @@ public final class CseMatchListItem {
     /**
      * @return Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
      * 
+     * The following attributes are exported:
+     * 
      */
     private @Nullable String expiration;
     /**
@@ -42,6 +44,8 @@ public final class CseMatchListItem {
     }
     /**
      * @return Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<String> expiration() {

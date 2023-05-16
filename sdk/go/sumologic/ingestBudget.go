@@ -64,6 +64,8 @@ type IngestBudget struct {
 	pulumi.CustomResourceState
 
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntOutput `pulumi:"capacityBytes"`
@@ -115,6 +117,8 @@ func GetIngestBudget(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IngestBudget resources.
 type ingestBudgetState struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
 	Action *string `pulumi:"action"`
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes *int `pulumi:"capacityBytes"`
@@ -132,6 +136,8 @@ type ingestBudgetState struct {
 
 type IngestBudgetState struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
 	Action pulumi.StringPtrInput
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntPtrInput
@@ -153,6 +159,8 @@ func (IngestBudgetState) ElementType() reflect.Type {
 
 type ingestBudgetArgs struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
 	Action *string `pulumi:"action"`
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes int `pulumi:"capacityBytes"`
@@ -171,6 +179,8 @@ type ingestBudgetArgs struct {
 // The set of arguments for constructing a IngestBudget resource.
 type IngestBudgetArgs struct {
 	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
 	Action pulumi.StringPtrInput
 	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntInput
@@ -274,6 +284,8 @@ func (o IngestBudgetOutput) ToIngestBudgetOutputWithContext(ctx context.Context)
 }
 
 // Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+//
+// The following attributes are exported:
 func (o IngestBudgetOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
 }

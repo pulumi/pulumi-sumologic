@@ -107,12 +107,16 @@ public final class SloFolderState extends com.pulumi.resources.ResourceArgs {
     /**
      * The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
      * 
+     * Additional data provided in state:
+     * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
      * @return The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+     * 
+     * Additional data provided in state:
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -294,6 +298,8 @@ public final class SloFolderState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parentId The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
          * 
+         * Additional data provided in state:
+         * 
          * @return builder
          * 
          */
@@ -304,6 +310,8 @@ public final class SloFolderState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parentId The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+         * 
+         * Additional data provided in state:
          * 
          * @return builder
          * 

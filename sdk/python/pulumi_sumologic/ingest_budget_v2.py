@@ -30,6 +30,8 @@ class IngestBudgetV2Args:
         :param pulumi.Input[str] scope: A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+               
+               The following attributes are exported:
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         """
@@ -110,6 +112,8 @@ class IngestBudgetV2Args:
     def audit_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "audit_threshold")
 
@@ -157,6 +161,8 @@ class _IngestBudgetV2State:
         Input properties used for looking up and filtering IngestBudgetV2 resources.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+               
+               The following attributes are exported:
         :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
@@ -198,6 +204,8 @@ class _IngestBudgetV2State:
     def audit_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "audit_threshold")
 
@@ -293,7 +301,7 @@ class IngestBudgetV2(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic Ingest Budget v2][1].This API is in private beta and is not available until given access. To participate in the beta program contact your Sumo Logic account representative.
+        Provides a [Sumologic Ingest Budget v2][1].
 
         ## Example Usage
 
@@ -325,6 +333,8 @@ class IngestBudgetV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+               
+               The following attributes are exported:
         :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
@@ -339,7 +349,7 @@ class IngestBudgetV2(pulumi.CustomResource):
                  args: IngestBudgetV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic Ingest Budget v2][1].This API is in private beta and is not available until given access. To participate in the beta program contact your Sumo Logic account representative.
+        Provides a [Sumologic Ingest Budget v2][1].
 
         ## Example Usage
 
@@ -444,6 +454,8 @@ class IngestBudgetV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+               
+               The following attributes are exported:
         :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
@@ -478,6 +490,8 @@ class IngestBudgetV2(pulumi.CustomResource):
     def audit_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "audit_threshold")
 

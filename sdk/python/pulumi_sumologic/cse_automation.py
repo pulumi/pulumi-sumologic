@@ -24,6 +24,8 @@ class CseAutomationArgs:
         :param pulumi.Input[str] cse_resource_type: CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] execution_types: Automation execution type. Valid values: "NEW_INSIGHT", "INSIGHT_CLOSED", "ON_DEMAND".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cse_resource_sub_types: CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+               
+               The following attributes are exported:
         """
         pulumi.set(__self__, "cse_resource_type", cse_resource_type)
         pulumi.set(__self__, "enabled", enabled)
@@ -79,6 +81,8 @@ class CseAutomationArgs:
     def cse_resource_sub_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "cse_resource_sub_types")
 
@@ -100,6 +104,8 @@ class _CseAutomationState:
         """
         Input properties used for looking up and filtering CseAutomation resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cse_resource_sub_types: CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+               
+               The following attributes are exported:
         :param pulumi.Input[str] cse_resource_type: CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
         :param pulumi.Input[str] description: Automation description.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] execution_types: Automation execution type. Valid values: "NEW_INSIGHT", "INSIGHT_CLOSED", "ON_DEMAND".
@@ -125,6 +131,8 @@ class _CseAutomationState:
     def cse_resource_sub_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "cse_resource_sub_types")
 
@@ -244,6 +252,8 @@ class CseAutomation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cse_resource_sub_types: CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+               
+               The following attributes are exported:
         :param pulumi.Input[str] cse_resource_type: CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] execution_types: Automation execution type. Valid values: "NEW_INSIGHT", "INSIGHT_CLOSED", "ON_DEMAND".
         """
@@ -353,6 +363,8 @@ class CseAutomation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cse_resource_sub_types: CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+               
+               The following attributes are exported:
         :param pulumi.Input[str] cse_resource_type: CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
         :param pulumi.Input[str] description: Automation description.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] execution_types: Automation execution type. Valid values: "NEW_INSIGHT", "INSIGHT_CLOSED", "ON_DEMAND".
@@ -376,6 +388,8 @@ class CseAutomation(pulumi.CustomResource):
     def cse_resource_sub_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         CSE Resource sub-type when cse_resource_type is specified as "ENTITY". Examples: "_ip", "_mac".
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "cse_resource_sub_types")
 

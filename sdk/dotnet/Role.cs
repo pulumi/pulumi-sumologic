@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -49,6 +50,8 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("capabilities")]
         public Output<ImmutableArray<string>> Capabilities { get; private set; } = null!;
@@ -122,6 +125,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Capabilities
         {
@@ -160,6 +165,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Capabilities
         {

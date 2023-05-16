@@ -33,12 +33,16 @@ public final class CseInsightsConfigurationArgs extends com.pulumi.resources.Res
     /**
      * Detection threshold activity score.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
 
     /**
      * @return Detection threshold activity score.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<Double>> threshold() {
@@ -94,6 +98,8 @@ public final class CseInsightsConfigurationArgs extends com.pulumi.resources.Res
         /**
          * @param threshold Detection threshold activity score.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class CseInsightsConfigurationArgs extends com.pulumi.resources.Res
 
         /**
          * @param threshold Detection threshold activity score.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

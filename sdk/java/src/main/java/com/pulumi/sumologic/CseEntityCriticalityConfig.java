@@ -74,12 +74,16 @@ public class CseEntityCriticalityConfig extends com.pulumi.resources.CustomResou
     /**
      * Algebraic expression representing this entity\&#39;s criticality. Examples: &#34;severity * 2&#34;, &#34;severity - 5&#34;, &#34;severity / 3&#34;.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="severityExpression", type=String.class, parameters={})
     private Output<String> severityExpression;
 
     /**
      * @return Algebraic expression representing this entity\&#39;s criticality. Examples: &#34;severity * 2&#34;, &#34;severity - 5&#34;, &#34;severity / 3&#34;.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<String> severityExpression() {

@@ -53,6 +53,9 @@ class MonitorArgs:
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided. For example,
+               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
@@ -200,6 +203,9 @@ class MonitorArgs:
         Evaluation delay as a string consists of the following elements:
         1. `<number>`: number of time units,
         2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided. For example,
+        `2m50s` means 2 minutes and 50 seconds.
         """
         return pulumi.get(self, "evaluation_delay")
 
@@ -478,6 +484,9 @@ class _MonitorState:
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided. For example,
+               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
@@ -615,6 +624,9 @@ class _MonitorState:
         Evaluation delay as a string consists of the following elements:
         1. `<number>`: number of time units,
         2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided. For example,
+        `2m50s` means 2 minutes and 50 seconds.
         """
         return pulumi.get(self, "evaluation_delay")
 
@@ -1016,13 +1028,13 @@ class Monitor(pulumi.CustomResource):
           - `critical`
             - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
-            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
               - `burn_rate_threshold` (Required): The burn rate percentage threshold.
               - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
           - `warning`
             - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Deprecated)
-            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
               - `burn_rate_threshold` (Required): The burn rate percentage threshold.
               - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 
@@ -1111,6 +1123,9 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided. For example,
+               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
@@ -1249,13 +1264,13 @@ class Monitor(pulumi.CustomResource):
           - `critical`
             - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
-            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
               - `burn_rate_threshold` (Required): The burn rate percentage threshold.
               - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
           - `warning`
             - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
             - `burn_rate_threshold` (Deprecated)
-            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+            - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
               - `burn_rate_threshold` (Required): The burn rate percentage threshold.
               - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
 
@@ -1472,6 +1487,9 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided. For example,
+               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
@@ -1563,6 +1581,9 @@ class Monitor(pulumi.CustomResource):
         Evaluation delay as a string consists of the following elements:
         1. `<number>`: number of time units,
         2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided. For example,
+        `2m50s` means 2 minutes and 50 seconds.
         """
         return pulumi.get(self, "evaluation_delay")
 

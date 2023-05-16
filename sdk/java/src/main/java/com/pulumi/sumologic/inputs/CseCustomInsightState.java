@@ -125,12 +125,16 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
     /**
      * The tags of the generated Insights
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The tags of the generated Insights
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -338,6 +342,8 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
         /**
          * @param tags The tags of the generated Insights
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -349,6 +355,8 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
         /**
          * @param tags The tags of the generated Insights
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -358,6 +366,8 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param tags The tags of the generated Insights
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

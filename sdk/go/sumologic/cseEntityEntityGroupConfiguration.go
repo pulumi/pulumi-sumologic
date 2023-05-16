@@ -74,6 +74,8 @@ type CseEntityEntityGroupConfiguration struct {
 	Suffix     pulumi.StringPtrOutput `pulumi:"suffix"`
 	Suppressed pulumi.BoolPtrOutput   `pulumi:"suppressed"`
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -124,6 +126,8 @@ type cseEntityEntityGroupConfigurationState struct {
 	Suffix     *string `pulumi:"suffix"`
 	Suppressed *bool   `pulumi:"suppressed"`
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -146,6 +150,8 @@ type CseEntityEntityGroupConfigurationState struct {
 	Suffix     pulumi.StringPtrInput
 	Suppressed pulumi.BoolPtrInput
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -172,6 +178,8 @@ type cseEntityEntityGroupConfigurationArgs struct {
 	Suffix     *string `pulumi:"suffix"`
 	Suppressed *bool   `pulumi:"suppressed"`
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -195,6 +203,8 @@ type CseEntityEntityGroupConfigurationArgs struct {
 	Suffix     pulumi.StringPtrInput
 	Suppressed pulumi.BoolPtrInput
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -330,6 +340,8 @@ func (o CseEntityEntityGroupConfigurationOutput) Suppressed() pulumi.BoolPtrOutp
 }
 
 // The entity group configuration tags list.
+//
+// The following attributes are exported:
 func (o CseEntityEntityGroupConfigurationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseEntityEntityGroupConfiguration) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

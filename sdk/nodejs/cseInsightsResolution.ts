@@ -65,6 +65,9 @@ export class CseInsightsResolution extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+     *
+     *
+     * The following attributes are exported:
      */
     public readonly parent!: pulumi.Output<string | undefined>;
 
@@ -109,6 +112,9 @@ export interface CseInsightsResolutionState {
     name?: pulumi.Input<string>;
     /**
      * The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+     *
+     *
+     * The following attributes are exported:
      */
     parent?: pulumi.Input<string>;
 }
@@ -127,6 +133,9 @@ export interface CseInsightsResolutionArgs {
     name?: pulumi.Input<string>;
     /**
      * The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+     *
+     *
+     * The following attributes are exported:
      */
     parent?: pulumi.Input<string>;
 }

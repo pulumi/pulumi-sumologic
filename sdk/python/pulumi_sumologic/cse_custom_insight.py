@@ -29,6 +29,8 @@ class CseCustomInsightArgs:
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
         :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
+               
+               The following attributes are exported:
         :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
@@ -98,6 +100,8 @@ class CseCustomInsightArgs:
     def tags(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The tags of the generated Insights
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -163,6 +167,8 @@ class _CseCustomInsightState:
         :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
+               
+               The following attributes are exported:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -270,6 +276,8 @@ class _CseCustomInsightState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The tags of the generated Insights
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -335,6 +343,8 @@ class CseCustomInsight(pulumi.CustomResource):
         :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -458,6 +468,8 @@ class CseCustomInsight(pulumi.CustomResource):
         :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -534,6 +546,8 @@ class CseCustomInsight(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Sequence[str]]:
         """
         The tags of the generated Insights
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 

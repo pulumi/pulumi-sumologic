@@ -19,12 +19,16 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
     /**
      * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="capabilities")
     private @Nullable Output<List<String>> capabilities;
 
     /**
      * @return List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> capabilities() {
@@ -106,6 +110,8 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param capabilities List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -117,6 +123,8 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param capabilities List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -126,6 +134,8 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param capabilities List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

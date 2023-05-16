@@ -71,6 +71,8 @@ type CseInventoryEntityGroupConfiguration struct {
 	Name       pulumi.StringOutput  `pulumi:"name"`
 	Suppressed pulumi.BoolPtrOutput `pulumi:"suppressed"`
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -123,6 +125,8 @@ type cseInventoryEntityGroupConfigurationState struct {
 	Name       *string `pulumi:"name"`
 	Suppressed *bool   `pulumi:"suppressed"`
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -141,6 +145,8 @@ type CseInventoryEntityGroupConfigurationState struct {
 	Name       pulumi.StringPtrInput
 	Suppressed pulumi.BoolPtrInput
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -163,6 +169,8 @@ type cseInventoryEntityGroupConfigurationArgs struct {
 	Name       *string `pulumi:"name"`
 	Suppressed *bool   `pulumi:"suppressed"`
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -182,6 +190,8 @@ type CseInventoryEntityGroupConfigurationArgs struct {
 	Name       pulumi.StringPtrInput
 	Suppressed pulumi.BoolPtrInput
 	// The entity group configuration tags list.
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -307,6 +317,8 @@ func (o CseInventoryEntityGroupConfigurationOutput) Suppressed() pulumi.BoolPtrO
 }
 
 // The entity group configuration tags list.
+//
+// The following attributes are exported:
 func (o CseInventoryEntityGroupConfigurationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

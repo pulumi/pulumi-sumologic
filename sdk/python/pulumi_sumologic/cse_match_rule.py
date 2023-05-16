@@ -38,6 +38,8 @@ class CseMatchRuleArgs:
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+               
+               The following attributes are exported:
         """
         pulumi.set(__self__, "description_expression", description_expression)
         pulumi.set(__self__, "enabled", enabled)
@@ -167,6 +169,8 @@ class CseMatchRuleArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The tags of the generated Signals
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -200,6 +204,8 @@ class _CseMatchRuleState:
         :param pulumi.Input['CseMatchRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+               
+               The following attributes are exported:
         """
         if description_expression is not None:
             pulumi.set(__self__, "description_expression", description_expression)
@@ -335,6 +341,8 @@ class _CseMatchRuleState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The tags of the generated Signals
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -406,6 +414,8 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -541,6 +551,8 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -635,6 +647,8 @@ class CseMatchRule(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The tags of the generated Signals
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 

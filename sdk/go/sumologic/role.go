@@ -57,6 +57,8 @@ type Role struct {
 	pulumi.CustomResourceState
 
 	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	//
+	// The following attributes are exported:
 	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
 	// The description of the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -96,6 +98,8 @@ func GetRole(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
 	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	//
+	// The following attributes are exported:
 	Capabilities []string `pulumi:"capabilities"`
 	// The description of the role.
 	Description *string `pulumi:"description"`
@@ -107,6 +111,8 @@ type roleState struct {
 
 type RoleState struct {
 	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	//
+	// The following attributes are exported:
 	Capabilities pulumi.StringArrayInput
 	// The description of the role.
 	Description pulumi.StringPtrInput
@@ -122,6 +128,8 @@ func (RoleState) ElementType() reflect.Type {
 
 type roleArgs struct {
 	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	//
+	// The following attributes are exported:
 	Capabilities []string `pulumi:"capabilities"`
 	// The description of the role.
 	Description *string `pulumi:"description"`
@@ -134,6 +142,8 @@ type roleArgs struct {
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
 	// List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+	//
+	// The following attributes are exported:
 	Capabilities pulumi.StringArrayInput
 	// The description of the role.
 	Description pulumi.StringPtrInput
@@ -231,6 +241,8 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 }
 
 // List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+//
+// The following attributes are exported:
 func (o RoleOutput) Capabilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
