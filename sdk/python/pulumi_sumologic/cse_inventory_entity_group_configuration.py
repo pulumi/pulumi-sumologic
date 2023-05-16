@@ -31,6 +31,8 @@ class CseInventoryEntityGroupConfigurationArgs:
         :param pulumi.Input[str] group: The entity group configuration inventory group.
         :param pulumi.Input[str] name: The entity group configuration name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         pulumi.set(__self__, "inventory_source", inventory_source)
         pulumi.set(__self__, "inventory_type", inventory_type)
@@ -133,6 +135,8 @@ class CseInventoryEntityGroupConfigurationArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The entity group configuration tags list.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -161,6 +165,8 @@ class _CseInventoryEntityGroupConfigurationState:
         :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
         :param pulumi.Input[str] name: The entity group configuration name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         if criticality is not None:
             pulumi.set(__self__, "criticality", criticality)
@@ -265,6 +271,8 @@ class _CseInventoryEntityGroupConfigurationState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The entity group configuration tags list.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -321,6 +329,8 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
         :param pulumi.Input[str] name: The entity group configuration name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -429,6 +439,8 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
         :param pulumi.Input[str] name: The entity group configuration name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -502,6 +514,8 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The entity group configuration tags list.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 

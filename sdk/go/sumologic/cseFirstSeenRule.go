@@ -104,6 +104,8 @@ type CseFirstSeenRule struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The value fields
+	//
+	// The following attributes are exported:
 	ValueFields pulumi.StringArrayOutput `pulumi:"valueFields"`
 }
 
@@ -195,6 +197,8 @@ type cseFirstSeenRuleState struct {
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The value fields
+	//
+	// The following attributes are exported:
 	ValueFields []string `pulumi:"valueFields"`
 }
 
@@ -228,6 +232,8 @@ type CseFirstSeenRuleState struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The value fields
+	//
+	// The following attributes are exported:
 	ValueFields pulumi.StringArrayInput
 }
 
@@ -265,6 +271,8 @@ type cseFirstSeenRuleArgs struct {
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The value fields
+	//
+	// The following attributes are exported:
 	ValueFields []string `pulumi:"valueFields"`
 }
 
@@ -299,6 +307,8 @@ type CseFirstSeenRuleArgs struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The value fields
+	//
+	// The following attributes are exported:
 	ValueFields pulumi.StringArrayInput
 }
 
@@ -460,6 +470,8 @@ func (o CseFirstSeenRuleOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // The value fields
+//
+// The following attributes are exported:
 func (o CseFirstSeenRuleOutput) ValueFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseFirstSeenRule) pulumi.StringArrayOutput { return v.ValueFields }).(pulumi.StringArrayOutput)
 }

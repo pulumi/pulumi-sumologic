@@ -103,10 +103,10 @@ type KineisLogSource struct {
 	pulumi.CustomResourceState
 
 	// Authentication details for connecting to the S3 bucket.
-	Authentication       KineisLogSourceAuthenticationPtrOutput `pulumi:"authentication"`
-	AutomaticDateParsing pulumi.BoolPtrOutput                   `pulumi:"automaticDateParsing"`
-	Category             pulumi.StringPtrOutput                 `pulumi:"category"`
-	CollectorId          pulumi.IntOutput                       `pulumi:"collectorId"`
+	Authentication       KineisLogSourceAuthenticationOutput `pulumi:"authentication"`
+	AutomaticDateParsing pulumi.BoolPtrOutput                `pulumi:"automaticDateParsing"`
+	Category             pulumi.StringPtrOutput              `pulumi:"category"`
+	CollectorId          pulumi.IntOutput                    `pulumi:"collectorId"`
 	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                pulumi.StringOutput                         `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                      `pulumi:"cutoffRelativeTime"`
@@ -122,8 +122,8 @@ type KineisLogSource struct {
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                        `pulumi:"multilineProcessingEnabled"`
 	Name                       pulumi.StringOutput                         `pulumi:"name"`
 	// The location of S3 bucket for failed Kinesis log data.
-	Path     KineisLogSourcePathPtrOutput `pulumi:"path"`
-	Timezone pulumi.StringPtrOutput       `pulumi:"timezone"`
+	Path     KineisLogSourcePathOutput `pulumi:"path"`
+	Timezone pulumi.StringPtrOutput    `pulumi:"timezone"`
 	// The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
 	Url                 pulumi.StringOutput  `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput `pulumi:"useAutolineMatching"`
@@ -136,11 +136,17 @@ func NewKineisLogSource(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Authentication == nil {
+		return nil, errors.New("invalid value for required argument 'Authentication'")
+	}
 	if args.CollectorId == nil {
 		return nil, errors.New("invalid value for required argument 'CollectorId'")
 	}
 	if args.ContentType == nil {
 		return nil, errors.New("invalid value for required argument 'ContentType'")
+	}
+	if args.Path == nil {
+		return nil, errors.New("invalid value for required argument 'Path'")
 	}
 	var resource KineisLogSource
 	err := ctx.RegisterResource("sumologic:index/kineisLogSource:KineisLogSource", name, args, &resource, opts...)
@@ -225,10 +231,10 @@ func (KineisLogSourceState) ElementType() reflect.Type {
 
 type kineisLogSourceArgs struct {
 	// Authentication details for connecting to the S3 bucket.
-	Authentication       *KineisLogSourceAuthentication `pulumi:"authentication"`
-	AutomaticDateParsing *bool                          `pulumi:"automaticDateParsing"`
-	Category             *string                        `pulumi:"category"`
-	CollectorId          int                            `pulumi:"collectorId"`
+	Authentication       KineisLogSourceAuthentication `pulumi:"authentication"`
+	AutomaticDateParsing *bool                         `pulumi:"automaticDateParsing"`
+	Category             *string                       `pulumi:"category"`
+	CollectorId          int                           `pulumi:"collectorId"`
 	// The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
 	ContentType                string                             `pulumi:"contentType"`
 	CutoffRelativeTime         *string                            `pulumi:"cutoffRelativeTime"`
@@ -244,15 +250,15 @@ type kineisLogSourceArgs struct {
 	MultilineProcessingEnabled *bool                              `pulumi:"multilineProcessingEnabled"`
 	Name                       *string                            `pulumi:"name"`
 	// The location of S3 bucket for failed Kinesis log data.
-	Path                *KineisLogSourcePath `pulumi:"path"`
-	Timezone            *string              `pulumi:"timezone"`
-	UseAutolineMatching *bool                `pulumi:"useAutolineMatching"`
+	Path                KineisLogSourcePath `pulumi:"path"`
+	Timezone            *string             `pulumi:"timezone"`
+	UseAutolineMatching *bool               `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a KineisLogSource resource.
 type KineisLogSourceArgs struct {
 	// Authentication details for connecting to the S3 bucket.
-	Authentication       KineisLogSourceAuthenticationPtrInput
+	Authentication       KineisLogSourceAuthenticationInput
 	AutomaticDateParsing pulumi.BoolPtrInput
 	Category             pulumi.StringPtrInput
 	CollectorId          pulumi.IntInput
@@ -271,7 +277,7 @@ type KineisLogSourceArgs struct {
 	MultilineProcessingEnabled pulumi.BoolPtrInput
 	Name                       pulumi.StringPtrInput
 	// The location of S3 bucket for failed Kinesis log data.
-	Path                KineisLogSourcePathPtrInput
+	Path                KineisLogSourcePathInput
 	Timezone            pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
 }
@@ -364,8 +370,8 @@ func (o KineisLogSourceOutput) ToKineisLogSourceOutputWithContext(ctx context.Co
 }
 
 // Authentication details for connecting to the S3 bucket.
-func (o KineisLogSourceOutput) Authentication() KineisLogSourceAuthenticationPtrOutput {
-	return o.ApplyT(func(v *KineisLogSource) KineisLogSourceAuthenticationPtrOutput { return v.Authentication }).(KineisLogSourceAuthenticationPtrOutput)
+func (o KineisLogSourceOutput) Authentication() KineisLogSourceAuthenticationOutput {
+	return o.ApplyT(func(v *KineisLogSource) KineisLogSourceAuthenticationOutput { return v.Authentication }).(KineisLogSourceAuthenticationOutput)
 }
 
 func (o KineisLogSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
@@ -434,8 +440,8 @@ func (o KineisLogSourceOutput) Name() pulumi.StringOutput {
 }
 
 // The location of S3 bucket for failed Kinesis log data.
-func (o KineisLogSourceOutput) Path() KineisLogSourcePathPtrOutput {
-	return o.ApplyT(func(v *KineisLogSource) KineisLogSourcePathPtrOutput { return v.Path }).(KineisLogSourcePathPtrOutput)
+func (o KineisLogSourceOutput) Path() KineisLogSourcePathOutput {
+	return o.ApplyT(func(v *KineisLogSource) KineisLogSourcePathOutput { return v.Path }).(KineisLogSourcePathOutput)
 }
 
 func (o KineisLogSourceOutput) Timezone() pulumi.StringPtrOutput {

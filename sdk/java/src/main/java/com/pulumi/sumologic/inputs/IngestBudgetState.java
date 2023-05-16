@@ -19,12 +19,16 @@ public final class IngestBudgetState extends com.pulumi.resources.ResourceArgs {
     /**
      * Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
      * @return Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<String>> action() {
@@ -154,6 +158,8 @@ public final class IngestBudgetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param action Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -164,6 +170,8 @@ public final class IngestBudgetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param action Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

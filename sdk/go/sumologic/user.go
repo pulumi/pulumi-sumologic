@@ -89,6 +89,8 @@ type User struct {
 	// List of roleIds associated with the user.
 	RoleIds pulumi.StringArrayOutput `pulumi:"roleIds"`
 	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	//
+	// The following attributes are exported:
 	TransferTo pulumi.StringOutput `pulumi:"transferTo"`
 }
 
@@ -150,6 +152,8 @@ type userState struct {
 	// List of roleIds associated with the user.
 	RoleIds []string `pulumi:"roleIds"`
 	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	//
+	// The following attributes are exported:
 	TransferTo *string `pulumi:"transferTo"`
 }
 
@@ -165,6 +169,8 @@ type UserState struct {
 	// List of roleIds associated with the user.
 	RoleIds pulumi.StringArrayInput
 	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	//
+	// The following attributes are exported:
 	TransferTo pulumi.StringPtrInput
 }
 
@@ -184,6 +190,8 @@ type userArgs struct {
 	// List of roleIds associated with the user.
 	RoleIds []string `pulumi:"roleIds"`
 	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	//
+	// The following attributes are exported:
 	TransferTo string `pulumi:"transferTo"`
 }
 
@@ -200,6 +208,8 @@ type UserArgs struct {
 	// List of roleIds associated with the user.
 	RoleIds pulumi.StringArrayInput
 	// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+	//
+	// The following attributes are exported:
 	TransferTo pulumi.StringInput
 }
 
@@ -316,6 +326,8 @@ func (o UserOutput) RoleIds() pulumi.StringArrayOutput {
 }
 
 // UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+//
+// The following attributes are exported:
 func (o UserOutput) TransferTo() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.TransferTo }).(pulumi.StringOutput)
 }

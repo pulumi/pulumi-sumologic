@@ -90,12 +90,16 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
     /**
      * The name of the built-in parent insights resolution. Supported values: &#34;Resolved&#34;, &#34;False Positive&#34;, &#34;No Action&#34;, &#34;Duplicate&#34;
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="parent", type=String.class, parameters={})
     private Output</* @Nullable */ String> parent;
 
     /**
      * @return The name of the built-in parent insights resolution. Supported values: &#34;Resolved&#34;, &#34;False Positive&#34;, &#34;No Action&#34;, &#34;Duplicate&#34;
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<String>> parent() {

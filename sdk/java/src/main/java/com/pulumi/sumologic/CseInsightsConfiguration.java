@@ -76,12 +76,16 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
     /**
      * Detection threshold activity score.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="threshold", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> threshold;
 
     /**
      * @return Detection threshold activity score.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<Double>> threshold() {

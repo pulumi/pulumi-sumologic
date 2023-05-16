@@ -48,12 +48,16 @@ public final class CseInsightsResolutionArgs extends com.pulumi.resources.Resour
     /**
      * The name of the built-in parent insights resolution. Supported values: &#34;Resolved&#34;, &#34;False Positive&#34;, &#34;No Action&#34;, &#34;Duplicate&#34;
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
      * @return The name of the built-in parent insights resolution. Supported values: &#34;Resolved&#34;, &#34;False Positive&#34;, &#34;No Action&#34;, &#34;Duplicate&#34;
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<String>> parent() {
@@ -131,6 +135,8 @@ public final class CseInsightsResolutionArgs extends com.pulumi.resources.Resour
         /**
          * @param parent The name of the built-in parent insights resolution. Supported values: &#34;Resolved&#34;, &#34;False Positive&#34;, &#34;No Action&#34;, &#34;Duplicate&#34;
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -141,6 +147,8 @@ public final class CseInsightsResolutionArgs extends com.pulumi.resources.Resour
 
         /**
          * @param parent The name of the built-in parent insights resolution. Supported values: &#34;Resolved&#34;, &#34;False Positive&#34;, &#34;No Action&#34;, &#34;Duplicate&#34;
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

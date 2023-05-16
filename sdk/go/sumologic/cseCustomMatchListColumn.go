@@ -54,6 +54,8 @@ type CseCustomMatchListColumn struct {
 	pulumi.CustomResourceState
 
 	// Custom Match List Column fields.
+	//
+	// The following attributes are exported:
 	Fields pulumi.StringArrayOutput `pulumi:"fields"`
 	// Custom Match List Column name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -92,6 +94,8 @@ func GetCseCustomMatchListColumn(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CseCustomMatchListColumn resources.
 type cseCustomMatchListColumnState struct {
 	// Custom Match List Column fields.
+	//
+	// The following attributes are exported:
 	Fields []string `pulumi:"fields"`
 	// Custom Match List Column name.
 	Name *string `pulumi:"name"`
@@ -99,6 +103,8 @@ type cseCustomMatchListColumnState struct {
 
 type CseCustomMatchListColumnState struct {
 	// Custom Match List Column fields.
+	//
+	// The following attributes are exported:
 	Fields pulumi.StringArrayInput
 	// Custom Match List Column name.
 	Name pulumi.StringPtrInput
@@ -110,6 +116,8 @@ func (CseCustomMatchListColumnState) ElementType() reflect.Type {
 
 type cseCustomMatchListColumnArgs struct {
 	// Custom Match List Column fields.
+	//
+	// The following attributes are exported:
 	Fields []string `pulumi:"fields"`
 	// Custom Match List Column name.
 	Name *string `pulumi:"name"`
@@ -118,6 +126,8 @@ type cseCustomMatchListColumnArgs struct {
 // The set of arguments for constructing a CseCustomMatchListColumn resource.
 type CseCustomMatchListColumnArgs struct {
 	// Custom Match List Column fields.
+	//
+	// The following attributes are exported:
 	Fields pulumi.StringArrayInput
 	// Custom Match List Column name.
 	Name pulumi.StringPtrInput
@@ -211,6 +221,8 @@ func (o CseCustomMatchListColumnOutput) ToCseCustomMatchListColumnOutputWithCont
 }
 
 // Custom Match List Column fields.
+//
+// The following attributes are exported:
 func (o CseCustomMatchListColumnOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseCustomMatchListColumn) pulumi.StringArrayOutput { return v.Fields }).(pulumi.StringArrayOutput)
 }

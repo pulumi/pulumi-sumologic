@@ -100,6 +100,8 @@ type CseChainRule struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
 }
 
@@ -173,6 +175,8 @@ type cseChainRuleState struct {
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize *string `pulumi:"windowSize"`
 }
 
@@ -200,6 +204,8 @@ type CseChainRuleState struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize pulumi.StringPtrInput
 }
 
@@ -231,6 +237,8 @@ type cseChainRuleArgs struct {
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize string `pulumi:"windowSize"`
 }
 
@@ -259,6 +267,8 @@ type CseChainRuleArgs struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize pulumi.StringInput
 }
 
@@ -405,6 +415,8 @@ func (o CseChainRuleOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+//
+// The following attributes are exported:
 func (o CseChainRuleOutput) WindowSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseChainRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
 }

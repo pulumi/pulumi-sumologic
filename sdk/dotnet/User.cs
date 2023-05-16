@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -99,6 +100,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("transferTo")]
         public Output<string> TransferTo { get; private set; } = null!;
@@ -187,6 +190,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("transferTo", required: true)]
         public Input<string> TransferTo { get; set; } = null!;
@@ -237,6 +242,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("transferTo")]
         public Input<string>? TransferTo { get; set; }

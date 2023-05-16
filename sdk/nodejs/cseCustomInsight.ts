@@ -96,6 +96,8 @@ export class CseCustomInsight extends pulumi.CustomResource {
     public readonly signalNames!: pulumi.Output<string[] | undefined>;
     /**
      * The tags of the generated Insights
+     *
+     * The following attributes are exported:
      */
     public readonly tags!: pulumi.Output<string[]>;
 
@@ -185,6 +187,8 @@ export interface CseCustomInsightState {
     signalNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The tags of the generated Insights
+     *
+     * The following attributes are exported:
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -223,6 +227,8 @@ export interface CseCustomInsightArgs {
     signalNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The tags of the generated Insights
+     *
+     * The following attributes are exported:
      */
     tags: pulumi.Input<pulumi.Input<string>[]>;
 }

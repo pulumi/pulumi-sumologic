@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -63,6 +64,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Suppresses signal flag.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("suppressesSignals")]
         public Output<bool?> SuppressesSignals { get; private set; } = null!;
@@ -133,6 +136,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Suppresses signal flag.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("suppressesSignals")]
         public Input<bool>? SuppressesSignals { get; set; }
@@ -165,6 +170,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Suppresses signal flag.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("suppressesSignals")]
         public Input<bool>? SuppressesSignals { get; set; }

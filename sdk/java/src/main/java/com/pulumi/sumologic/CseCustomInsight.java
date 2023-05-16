@@ -171,12 +171,16 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
     /**
      * The tags of the generated Insights
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output<List<String>> tags;
 
     /**
      * @return The tags of the generated Insights
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<List<String>> tags() {

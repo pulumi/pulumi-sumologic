@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -47,6 +48,9 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<string>> Fields { get; private set; } = null!;
@@ -114,6 +118,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Fields
         {
@@ -146,6 +153,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Fields
         {

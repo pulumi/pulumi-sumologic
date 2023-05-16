@@ -19,12 +19,16 @@ public final class CseCustomMatchListColumnState extends com.pulumi.resources.Re
     /**
      * Custom Match List Column fields.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="fields")
     private @Nullable Output<List<String>> fields;
 
     /**
      * @return Custom Match List Column fields.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> fields() {
@@ -74,6 +78,8 @@ public final class CseCustomMatchListColumnState extends com.pulumi.resources.Re
         /**
          * @param fields Custom Match List Column fields.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -85,6 +91,8 @@ public final class CseCustomMatchListColumnState extends com.pulumi.resources.Re
         /**
          * @param fields Custom Match List Column fields.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -94,6 +102,8 @@ public final class CseCustomMatchListColumnState extends com.pulumi.resources.Re
 
         /**
          * @param fields Custom Match List Column fields.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

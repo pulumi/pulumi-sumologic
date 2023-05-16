@@ -54,6 +54,8 @@ type CseEntityCriticalityConfig struct {
 	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+	//
+	// The following attributes are exported:
 	SeverityExpression pulumi.StringOutput `pulumi:"severityExpression"`
 }
 
@@ -92,6 +94,8 @@ type cseEntityCriticalityConfigState struct {
 	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
 	Name *string `pulumi:"name"`
 	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+	//
+	// The following attributes are exported:
 	SeverityExpression *string `pulumi:"severityExpression"`
 }
 
@@ -99,6 +103,8 @@ type CseEntityCriticalityConfigState struct {
 	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
 	Name pulumi.StringPtrInput
 	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+	//
+	// The following attributes are exported:
 	SeverityExpression pulumi.StringPtrInput
 }
 
@@ -110,6 +116,8 @@ type cseEntityCriticalityConfigArgs struct {
 	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
 	Name *string `pulumi:"name"`
 	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+	//
+	// The following attributes are exported:
 	SeverityExpression string `pulumi:"severityExpression"`
 }
 
@@ -118,6 +126,8 @@ type CseEntityCriticalityConfigArgs struct {
 	// Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
 	Name pulumi.StringPtrInput
 	// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+	//
+	// The following attributes are exported:
 	SeverityExpression pulumi.StringInput
 }
 
@@ -214,6 +224,8 @@ func (o CseEntityCriticalityConfigOutput) Name() pulumi.StringOutput {
 }
 
 // Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
+//
+// The following attributes are exported:
 func (o CseEntityCriticalityConfigOutput) SeverityExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseEntityCriticalityConfig) pulumi.StringOutput { return v.SeverityExpression }).(pulumi.StringOutput)
 }

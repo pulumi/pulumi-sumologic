@@ -207,12 +207,16 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
     /**
      * The tags of the generated Signals
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The tags of the generated Signals
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<List<String>>> tags() {

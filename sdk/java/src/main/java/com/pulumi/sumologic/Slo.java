@@ -200,6 +200,20 @@ public class Slo extends com.pulumi.resources.CustomResource {
     public Output<String> signalType() {
         return this.signalType;
     }
+    /**
+     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
     @Export(name="version", type=Integer.class, parameters={})
     private Output<Integer> version;
 

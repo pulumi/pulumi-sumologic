@@ -91,6 +91,8 @@ export class SloFolder extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+     *
+     * Additional data provided in state:
      */
     public readonly parentId!: pulumi.Output<string>;
     public readonly postRequestMap!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -171,6 +173,8 @@ export interface SloFolderState {
     name?: pulumi.Input<string>;
     /**
      * The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+     *
+     * Additional data provided in state:
      */
     parentId?: pulumi.Input<string>;
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -200,6 +204,8 @@ export interface SloFolderArgs {
     name?: pulumi.Input<string>;
     /**
      * The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+     *
+     * Additional data provided in state:
      */
     parentId?: pulumi.Input<string>;
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

@@ -22,6 +22,8 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevel {
     /**
      * @return Next level without a condition.
      * 
+     * The following attributes are exported:
+     * 
      */
     private @Nullable HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel nextLevel;
     /**
@@ -40,6 +42,8 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevel {
     }
     /**
      * @return Next level without a condition.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel> nextLevel() {

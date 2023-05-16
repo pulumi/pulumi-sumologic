@@ -93,6 +93,8 @@ export class CseEntityEntityGroupConfiguration extends pulumi.CustomResource {
     public readonly suppressed!: pulumi.Output<boolean | undefined>;
     /**
      * The entity group configuration tags list.
+     *
+     * The following attributes are exported:
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -176,6 +178,8 @@ export interface CseEntityEntityGroupConfigurationState {
     suppressed?: pulumi.Input<boolean>;
     /**
      * The entity group configuration tags list.
+     *
+     * The following attributes are exported:
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -219,6 +223,8 @@ export interface CseEntityEntityGroupConfigurationArgs {
     suppressed?: pulumi.Input<boolean>;
     /**
      * The entity group configuration tags list.
+     *
+     * The following attributes are exported:
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -88,6 +88,8 @@ type CseMatchRule struct {
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
 	// The tags of the generated Signals
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -157,6 +159,8 @@ type cseMatchRuleState struct {
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
 	// The tags of the generated Signals
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -180,6 +184,8 @@ type CseMatchRuleState struct {
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
 	// The tags of the generated Signals
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -207,6 +213,8 @@ type cseMatchRuleArgs struct {
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
 	// The tags of the generated Signals
+	//
+	// The following attributes are exported:
 	Tags []string `pulumi:"tags"`
 }
 
@@ -231,6 +239,8 @@ type CseMatchRuleArgs struct {
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
 	// The tags of the generated Signals
+	//
+	// The following attributes are exported:
 	Tags pulumi.StringArrayInput
 }
 
@@ -367,6 +377,8 @@ func (o CseMatchRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
 }
 
 // The tags of the generated Signals
+//
+// The following attributes are exported:
 func (o CseMatchRuleOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseMatchRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

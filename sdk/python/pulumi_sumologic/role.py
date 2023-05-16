@@ -21,6 +21,8 @@ class RoleArgs:
         """
         The set of arguments for constructing a Role resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+               
+               The following attributes are exported:
         :param pulumi.Input[str] description: The description of the role.
         :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
         :param pulumi.Input[str] name: The name of the role.
@@ -39,6 +41,8 @@ class RoleArgs:
     def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "capabilities")
 
@@ -93,6 +97,8 @@ class _RoleState:
         """
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+               
+               The following attributes are exported:
         :param pulumi.Input[str] description: The description of the role.
         :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
         :param pulumi.Input[str] name: The name of the role.
@@ -111,6 +117,8 @@ class _RoleState:
     def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "capabilities")
 
@@ -193,6 +201,8 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+               
+               The following attributes are exported:
         :param pulumi.Input[str] description: The description of the role.
         :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
         :param pulumi.Input[str] name: The name of the role.
@@ -282,6 +292,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+               
+               The following attributes are exported:
         :param pulumi.Input[str] description: The description of the role.
         :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
         :param pulumi.Input[str] name: The name of the role.
@@ -301,6 +313,8 @@ class Role(pulumi.CustomResource):
     def capabilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "capabilities")
 

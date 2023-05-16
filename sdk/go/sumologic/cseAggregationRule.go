@@ -113,6 +113,8 @@ type CseAggregationRule struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringOutput `pulumi:"triggerExpression"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
 }
 
@@ -201,6 +203,8 @@ type cseAggregationRuleState struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression *string `pulumi:"triggerExpression"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize *string `pulumi:"windowSize"`
 }
 
@@ -234,6 +238,8 @@ type CseAggregationRuleState struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringPtrInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize pulumi.StringPtrInput
 }
 
@@ -271,6 +277,8 @@ type cseAggregationRuleArgs struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression string `pulumi:"triggerExpression"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize string `pulumi:"windowSize"`
 }
 
@@ -305,6 +313,8 @@ type CseAggregationRuleArgs struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	//
+	// The following attributes are exported:
 	WindowSize pulumi.StringInput
 }
 
@@ -468,6 +478,8 @@ func (o CseAggregationRuleOutput) TriggerExpression() pulumi.StringOutput {
 }
 
 // How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+//
+// The following attributes are exported:
 func (o CseAggregationRuleOutput) WindowSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
 }

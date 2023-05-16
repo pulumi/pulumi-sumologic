@@ -54,6 +54,8 @@ type CseInsightsConfiguration struct {
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrOutput `pulumi:"lookbackDays"`
 	// Detection threshold activity score.
+	//
+	// The following attributes are exported:
 	Threshold pulumi.Float64PtrOutput `pulumi:"threshold"`
 }
 
@@ -89,6 +91,8 @@ type cseInsightsConfigurationState struct {
 	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
 	// Detection threshold activity score.
+	//
+	// The following attributes are exported:
 	Threshold *float64 `pulumi:"threshold"`
 }
 
@@ -96,6 +100,8 @@ type CseInsightsConfigurationState struct {
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
 	// Detection threshold activity score.
+	//
+	// The following attributes are exported:
 	Threshold pulumi.Float64PtrInput
 }
 
@@ -107,6 +113,8 @@ type cseInsightsConfigurationArgs struct {
 	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
 	// Detection threshold activity score.
+	//
+	// The following attributes are exported:
 	Threshold *float64 `pulumi:"threshold"`
 }
 
@@ -115,6 +123,8 @@ type CseInsightsConfigurationArgs struct {
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
 	// Detection threshold activity score.
+	//
+	// The following attributes are exported:
 	Threshold pulumi.Float64PtrInput
 }
 
@@ -211,6 +221,8 @@ func (o CseInsightsConfigurationOutput) LookbackDays() pulumi.Float64PtrOutput {
 }
 
 // Detection threshold activity score.
+//
+// The following attributes are exported:
 func (o CseInsightsConfigurationOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *CseInsightsConfiguration) pulumi.Float64PtrOutput { return v.Threshold }).(pulumi.Float64PtrOutput)
 }

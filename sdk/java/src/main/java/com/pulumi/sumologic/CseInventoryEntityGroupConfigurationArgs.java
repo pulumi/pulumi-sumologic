@@ -117,12 +117,16 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
     /**
      * The entity group configuration tags list.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The entity group configuration tags list.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -298,6 +302,8 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
         /**
          * @param tags The entity group configuration tags list.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -309,6 +315,8 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
         /**
          * @param tags The entity group configuration tags list.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -318,6 +326,8 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
 
         /**
          * @param tags The entity group configuration tags list.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

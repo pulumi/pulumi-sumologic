@@ -42,6 +42,8 @@ class CseAggregationRuleArgs:
         :param pulumi.Input['CseAggregationRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -172,6 +174,8 @@ class CseAggregationRuleArgs:
     def window_size(self) -> pulumi.Input[str]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -287,6 +291,8 @@ class _CseAggregationRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         if aggregation_functions is not None:
             pulumi.set(__self__, "aggregation_functions", aggregation_functions)
@@ -492,6 +498,8 @@ class _CseAggregationRuleState:
     def window_size(self) -> Optional[pulumi.Input[str]]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -582,6 +590,8 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -752,6 +762,8 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -891,6 +903,8 @@ class CseAggregationRule(pulumi.CustomResource):
     def window_size(self) -> pulumi.Output[str]:
         """
         How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 

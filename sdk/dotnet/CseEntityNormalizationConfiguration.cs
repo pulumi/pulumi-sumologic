@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -85,6 +86,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// If username normalization is enabled.
+        /// 
+        /// - The following attributes are exported:
         /// </summary>
         [Output("normalizeUsernames")]
         public Output<bool> NormalizeUsernames { get; private set; } = null!;
@@ -179,6 +182,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// If username normalization is enabled.
+        /// 
+        /// - The following attributes are exported:
         /// </summary>
         [Input("normalizeUsernames", required: true)]
         public Input<bool> NormalizeUsernames { get; set; } = null!;
@@ -235,6 +240,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// If username normalization is enabled.
+        /// 
+        /// - The following attributes are exported:
         /// </summary>
         [Input("normalizeUsernames")]
         public Input<bool>? NormalizeUsernames { get; set; }

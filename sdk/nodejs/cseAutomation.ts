@@ -67,6 +67,8 @@ export class CseAutomation extends pulumi.CustomResource {
 
     /**
      * CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+     *
+     * The following attributes are exported:
      */
     public readonly cseResourceSubTypes!: pulumi.Output<string[] | undefined>;
     /**
@@ -141,6 +143,8 @@ export class CseAutomation extends pulumi.CustomResource {
 export interface CseAutomationState {
     /**
      * CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+     *
+     * The following attributes are exported:
      */
     cseResourceSubTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -169,6 +173,8 @@ export interface CseAutomationState {
 export interface CseAutomationArgs {
     /**
      * CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+     *
+     * The following attributes are exported:
      */
     cseResourceSubTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -74,12 +74,16 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
     /**
      * CSE Resource sub-type when cse_resource_type is specified as &#34;ENTITY&#34;. Examples: &#34;_ip&#34;, &#34;_mac&#34;.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="cseResourceSubTypes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> cseResourceSubTypes;
 
     /**
      * @return CSE Resource sub-type when cse_resource_type is specified as &#34;ENTITY&#34;. Examples: &#34;_ip&#34;, &#34;_mac&#34;.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<List<String>>> cseResourceSubTypes() {

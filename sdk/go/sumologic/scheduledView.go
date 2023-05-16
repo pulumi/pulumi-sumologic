@@ -36,6 +36,8 @@ type ScheduledView struct {
 	// Log query defining the scheduled view.
 	Query pulumi.StringOutput `pulumi:"query"`
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	//
+	// The following attributes are exported:
 	ReduceRetentionPeriodImmediately pulumi.BoolPtrOutput `pulumi:"reduceRetentionPeriodImmediately"`
 	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
 	RetentionPeriod pulumi.IntPtrOutput `pulumi:"retentionPeriod"`
@@ -90,6 +92,8 @@ type scheduledViewState struct {
 	// Log query defining the scheduled view.
 	Query *string `pulumi:"query"`
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	//
+	// The following attributes are exported:
 	ReduceRetentionPeriodImmediately *bool `pulumi:"reduceRetentionPeriodImmediately"`
 	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
@@ -107,6 +111,8 @@ type ScheduledViewState struct {
 	// Log query defining the scheduled view.
 	Query pulumi.StringPtrInput
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	//
+	// The following attributes are exported:
 	ReduceRetentionPeriodImmediately pulumi.BoolPtrInput
 	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
 	RetentionPeriod pulumi.IntPtrInput
@@ -128,6 +134,8 @@ type scheduledViewArgs struct {
 	// Log query defining the scheduled view.
 	Query string `pulumi:"query"`
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	//
+	// The following attributes are exported:
 	ReduceRetentionPeriodImmediately *bool `pulumi:"reduceRetentionPeriodImmediately"`
 	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
@@ -146,6 +154,8 @@ type ScheduledViewArgs struct {
 	// Log query defining the scheduled view.
 	Query pulumi.StringInput
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+	//
+	// The following attributes are exported:
 	ReduceRetentionPeriodImmediately pulumi.BoolPtrInput
 	// The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
 	RetentionPeriod pulumi.IntPtrInput
@@ -261,6 +271,8 @@ func (o ScheduledViewOutput) Query() pulumi.StringOutput {
 }
 
 // This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+//
+// The following attributes are exported:
 func (o ScheduledViewOutput) ReduceRetentionPeriodImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScheduledView) pulumi.BoolPtrOutput { return v.ReduceRetentionPeriodImmediately }).(pulumi.BoolPtrOutput)
 }

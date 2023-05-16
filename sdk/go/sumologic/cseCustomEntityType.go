@@ -56,6 +56,8 @@ type CseCustomEntityType struct {
 	pulumi.CustomResourceState
 
 	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	//
+	// The following attributes are exported:
 	Fields pulumi.StringArrayOutput `pulumi:"fields"`
 	// Machine friendly and unique identifier. Example: "filehash".
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -99,6 +101,8 @@ func GetCseCustomEntityType(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CseCustomEntityType resources.
 type cseCustomEntityTypeState struct {
 	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	//
+	// The following attributes are exported:
 	Fields []string `pulumi:"fields"`
 	// Machine friendly and unique identifier. Example: "filehash".
 	Identifier *string `pulumi:"identifier"`
@@ -108,6 +112,8 @@ type cseCustomEntityTypeState struct {
 
 type CseCustomEntityTypeState struct {
 	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	//
+	// The following attributes are exported:
 	Fields pulumi.StringArrayInput
 	// Machine friendly and unique identifier. Example: "filehash".
 	Identifier pulumi.StringPtrInput
@@ -121,6 +127,8 @@ func (CseCustomEntityTypeState) ElementType() reflect.Type {
 
 type cseCustomEntityTypeArgs struct {
 	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	//
+	// The following attributes are exported:
 	Fields []string `pulumi:"fields"`
 	// Machine friendly and unique identifier. Example: "filehash".
 	Identifier string `pulumi:"identifier"`
@@ -131,6 +139,8 @@ type cseCustomEntityTypeArgs struct {
 // The set of arguments for constructing a CseCustomEntityType resource.
 type CseCustomEntityTypeArgs struct {
 	// Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+	//
+	// The following attributes are exported:
 	Fields pulumi.StringArrayInput
 	// Machine friendly and unique identifier. Example: "filehash".
 	Identifier pulumi.StringInput
@@ -226,6 +236,8 @@ func (o CseCustomEntityTypeOutput) ToCseCustomEntityTypeOutputWithContext(ctx co
 }
 
 // Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
+//
+// The following attributes are exported:
 func (o CseCustomEntityTypeOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseCustomEntityType) pulumi.StringArrayOutput { return v.Fields }).(pulumi.StringArrayOutput)
 }

@@ -71,6 +71,8 @@ export class CseNetworkBlock extends pulumi.CustomResource {
     public readonly label!: pulumi.Output<string | undefined>;
     /**
      * Suppresses signal flag.
+     *
+     * The following attributes are exported:
      */
     public readonly suppressesSignals!: pulumi.Output<boolean | undefined>;
 
@@ -124,6 +126,8 @@ export interface CseNetworkBlockState {
     label?: pulumi.Input<string>;
     /**
      * Suppresses signal flag.
+     *
+     * The following attributes are exported:
      */
     suppressesSignals?: pulumi.Input<boolean>;
 }
@@ -146,6 +150,8 @@ export interface CseNetworkBlockArgs {
     label?: pulumi.Input<string>;
     /**
      * Suppresses signal flag.
+     *
+     * The following attributes are exported:
      */
     suppressesSignals?: pulumi.Input<boolean>;
 }

@@ -211,6 +211,21 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.signalType);
     }
 
+    /**
+     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
@@ -237,6 +252,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
         this.postRequestMap = $.postRequestMap;
         this.service = $.service;
         this.signalType = $.signalType;
+        this.tags = $.tags;
         this.version = $.version;
     }
 
@@ -520,6 +536,27 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder signalType(String signalType) {
             return signalType(Output.of(signalType));
+        }
+
+        /**
+         * @param tags A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public Builder version(@Nullable Output<Integer> version) {

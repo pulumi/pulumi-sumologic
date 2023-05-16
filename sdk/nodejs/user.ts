@@ -91,6 +91,8 @@ export class User extends pulumi.CustomResource {
     public readonly roleIds!: pulumi.Output<string[]>;
     /**
      * UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     *
+     * The following attributes are exported:
      */
     public readonly transferTo!: pulumi.Output<string>;
 
@@ -171,6 +173,8 @@ export interface UserState {
     roleIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     *
+     * The following attributes are exported:
      */
     transferTo?: pulumi.Input<string>;
 }
@@ -201,6 +205,8 @@ export interface UserArgs {
     roleIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * UserId of user to transfer this user's content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     *
+     * The following attributes are exported:
      */
     transferTo: pulumi.Input<string>;
 }

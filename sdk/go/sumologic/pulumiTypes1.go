@@ -121,6 +121,8 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 	// Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
 	EntityType string `pulumi:"entityType"`
 	// Next level without a condition.
+	//
+	// The following attributes are exported:
 	NextLevel *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel `pulumi:"nextLevel"`
 	// Zero or more next levels with conditions.
 	NextLevelsWithConditions []HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition `pulumi:"nextLevelsWithConditions"`
@@ -141,6 +143,8 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 	// Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Next level without a condition.
+	//
+	// The following attributes are exported:
 	NextLevel HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrInput `pulumi:"nextLevel"`
 	// Zero or more next levels with conditions.
 	NextLevelsWithConditions HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArrayInput `pulumi:"nextLevelsWithConditions"`
@@ -180,6 +184,8 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 // Next level without a condition.
+//
+// The following attributes are exported:
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelOutput) NextLevel() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelPtrOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel) *HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
 		return v.NextLevel
@@ -12401,6 +12407,12 @@ type SloIndicatorMonitorBasedEvaluationMonitorTriggers struct {
 	MonitorId string `pulumi:"monitorId"`
 	// Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 	// window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+	//
+	// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+	//
+	// [2]: slo_folder.html.markdown
+	//
+	// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 	TriggerTypes string `pulumi:"triggerTypes"`
 }
 
@@ -12420,6 +12432,12 @@ type SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs struct {
 	MonitorId pulumi.StringInput `pulumi:"monitorId"`
 	// Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 	// window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+	//
+	// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+	//
+	// [2]: slo_folder.html.markdown
+	//
+	// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 	TriggerTypes pulumi.StringInput `pulumi:"triggerTypes"`
 }
 
@@ -12507,6 +12525,11 @@ func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersOutput) MonitorId() pul
 
 // Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 // window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+//
+// [2]: slo_folder.html.markdown
+//
+// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersOutput) TriggerTypes() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorMonitorBasedEvaluationMonitorTriggers) string { return v.TriggerTypes }).(pulumi.StringOutput)
 }
@@ -12547,6 +12570,11 @@ func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersPtrOutput) MonitorId() 
 
 // Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 // window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+//
+// [2]: slo_folder.html.markdown
+//
+// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersPtrOutput) TriggerTypes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloIndicatorMonitorBasedEvaluationMonitorTriggers) *string {
 		if v == nil {
@@ -12871,6 +12899,7 @@ func (o SloIndicatorRequestBasedEvaluationQueryArrayOutput) Index(i pulumi.IntIn
 type SloIndicatorRequestBasedEvaluationQueryQueryGroup struct {
 	// Field of log query output to compare against. To be used only for logs based data
 	// type when `useRowCount` is false.
+	//
 	// type when `useRowCount` is false.
 	Field *string `pulumi:"field"`
 	// The query string to use.
@@ -12895,6 +12924,7 @@ type SloIndicatorRequestBasedEvaluationQueryQueryGroupInput interface {
 type SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs struct {
 	// Field of log query output to compare against. To be used only for logs based data
 	// type when `useRowCount` is false.
+	//
 	// type when `useRowCount` is false.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// The query string to use.
@@ -12958,6 +12988,7 @@ func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorR
 
 // Field of log query output to compare against. To be used only for logs based data
 // type when `useRowCount` is false.
+//
 // type when `useRowCount` is false.
 func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)
@@ -13363,6 +13394,7 @@ func (o SloIndicatorWindowBasedEvaluationQueryArrayOutput) Index(i pulumi.IntInp
 type SloIndicatorWindowBasedEvaluationQueryQueryGroup struct {
 	// Field of log query output to compare against. To be used only for logs based data
 	// type when `useRowCount` is false.
+	//
 	// type when `useRowCount` is false.
 	Field *string `pulumi:"field"`
 	// The query string to use.
@@ -13387,6 +13419,7 @@ type SloIndicatorWindowBasedEvaluationQueryQueryGroupInput interface {
 type SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs struct {
 	// Field of log query output to compare against. To be used only for logs based data
 	// type when `useRowCount` is false.
+	//
 	// type when `useRowCount` is false.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// The query string to use.
@@ -13450,6 +13483,7 @@ func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorWi
 
 // Field of log query output to compare against. To be used only for logs based data
 // type when `useRowCount` is false.
+//
 // type when `useRowCount` is false.
 func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)

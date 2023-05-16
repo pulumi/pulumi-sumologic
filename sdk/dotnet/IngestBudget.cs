@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -54,6 +55,8 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("action")]
         public Output<string?> Action { get; private set; } = null!;
@@ -142,6 +145,8 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -192,6 +197,8 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

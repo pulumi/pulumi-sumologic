@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -55,6 +56,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
@@ -119,6 +123,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -145,6 +152,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+        /// 
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

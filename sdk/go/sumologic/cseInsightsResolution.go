@@ -56,6 +56,8 @@ type CseInsightsResolution struct {
 	// The name of the insights resolution.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	//
+	// The following attributes are exported:
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 }
 
@@ -93,6 +95,8 @@ type cseInsightsResolutionState struct {
 	// The name of the insights resolution.
 	Name *string `pulumi:"name"`
 	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	//
+	// The following attributes are exported:
 	Parent *string `pulumi:"parent"`
 }
 
@@ -102,6 +106,8 @@ type CseInsightsResolutionState struct {
 	// The name of the insights resolution.
 	Name pulumi.StringPtrInput
 	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	//
+	// The following attributes are exported:
 	Parent pulumi.StringPtrInput
 }
 
@@ -115,6 +121,8 @@ type cseInsightsResolutionArgs struct {
 	// The name of the insights resolution.
 	Name *string `pulumi:"name"`
 	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	//
+	// The following attributes are exported:
 	Parent *string `pulumi:"parent"`
 }
 
@@ -125,6 +133,8 @@ type CseInsightsResolutionArgs struct {
 	// The name of the insights resolution.
 	Name pulumi.StringPtrInput
 	// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+	//
+	// The following attributes are exported:
 	Parent pulumi.StringPtrInput
 }
 
@@ -226,6 +236,8 @@ func (o CseInsightsResolutionOutput) Name() pulumi.StringOutput {
 }
 
 // The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
+//
+// The following attributes are exported:
 func (o CseInsightsResolutionOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseInsightsResolution) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }

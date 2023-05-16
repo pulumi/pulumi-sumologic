@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -123,6 +124,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+        /// 
+        /// Additional data provided in state
         /// </summary>
         [Output("webhookType")]
         public Output<string?> WebhookType { get; private set; } = null!;
@@ -241,6 +244,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+        /// 
+        /// Additional data provided in state
         /// </summary>
         [Input("webhookType")]
         public Input<string>? WebhookType { get; set; }
@@ -321,6 +326,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+        /// 
+        /// Additional data provided in state
         /// </summary>
         [Input("webhookType")]
         public Input<string>? WebhookType { get; set; }

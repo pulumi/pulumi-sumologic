@@ -63,6 +63,8 @@ export class ScheduledView extends pulumi.CustomResource {
     public readonly query!: pulumi.Output<string>;
     /**
      * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     *
+     * The following attributes are exported:
      */
     public readonly reduceRetentionPeriodImmediately!: pulumi.Output<boolean | undefined>;
     /**
@@ -140,6 +142,8 @@ export interface ScheduledViewState {
     query?: pulumi.Input<string>;
     /**
      * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     *
+     * The following attributes are exported:
      */
     reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
     /**
@@ -174,6 +178,8 @@ export interface ScheduledViewArgs {
     query: pulumi.Input<string>;
     /**
      * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+     *
+     * The following attributes are exported:
      */
     reduceRetentionPeriodImmediately?: pulumi.Input<boolean>;
     /**

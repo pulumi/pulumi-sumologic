@@ -106,6 +106,8 @@ export class PasswordPolicy extends pulumi.CustomResource {
     public readonly mustContainUppercase!: pulumi.Output<boolean | undefined>;
     /**
      * If MFA should be remembered on the browser. Defaults to true.
+     *
+     * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
      */
     public readonly rememberMfa!: pulumi.Output<boolean | undefined>;
     /**
@@ -210,6 +212,8 @@ export interface PasswordPolicyState {
     mustContainUppercase?: pulumi.Input<boolean>;
     /**
      * If MFA should be remembered on the browser. Defaults to true.
+     *
+     * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
      */
     rememberMfa?: pulumi.Input<boolean>;
     /**
@@ -268,6 +272,8 @@ export interface PasswordPolicyArgs {
     mustContainUppercase?: pulumi.Input<boolean>;
     /**
      * If MFA should be remembered on the browser. Defaults to true.
+     *
+     * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
      */
     rememberMfa?: pulumi.Input<boolean>;
     /**

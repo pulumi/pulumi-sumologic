@@ -70,6 +70,8 @@ type CseAutomation struct {
 	pulumi.CustomResourceState
 
 	// CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+	//
+	// The following attributes are exported:
 	CseResourceSubTypes pulumi.StringArrayOutput `pulumi:"cseResourceSubTypes"`
 	// CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
 	CseResourceType pulumi.StringOutput `pulumi:"cseResourceType"`
@@ -125,6 +127,8 @@ func GetCseAutomation(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CseAutomation resources.
 type cseAutomationState struct {
 	// CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+	//
+	// The following attributes are exported:
 	CseResourceSubTypes []string `pulumi:"cseResourceSubTypes"`
 	// CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
 	CseResourceType *string `pulumi:"cseResourceType"`
@@ -140,6 +144,8 @@ type cseAutomationState struct {
 
 type CseAutomationState struct {
 	// CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+	//
+	// The following attributes are exported:
 	CseResourceSubTypes pulumi.StringArrayInput
 	// CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
 	CseResourceType pulumi.StringPtrInput
@@ -159,6 +165,8 @@ func (CseAutomationState) ElementType() reflect.Type {
 
 type cseAutomationArgs struct {
 	// CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+	//
+	// The following attributes are exported:
 	CseResourceSubTypes []string `pulumi:"cseResourceSubTypes"`
 	// CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
 	CseResourceType string `pulumi:"cseResourceType"`
@@ -171,6 +179,8 @@ type cseAutomationArgs struct {
 // The set of arguments for constructing a CseAutomation resource.
 type CseAutomationArgs struct {
 	// CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+	//
+	// The following attributes are exported:
 	CseResourceSubTypes pulumi.StringArrayInput
 	// CSE Resource type for automation. Valid values: "INSIGHT", "ENTITY".
 	CseResourceType pulumi.StringInput
@@ -268,6 +278,8 @@ func (o CseAutomationOutput) ToCseAutomationOutputWithContext(ctx context.Contex
 }
 
 // CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
+//
+// The following attributes are exported:
 func (o CseAutomationOutput) CseResourceSubTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseAutomation) pulumi.StringArrayOutput { return v.CseResourceSubTypes }).(pulumi.StringArrayOutput)
 }

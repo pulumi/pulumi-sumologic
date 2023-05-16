@@ -232,12 +232,16 @@ public final class CseFirstSeenRuleArgs extends com.pulumi.resources.ResourceArg
     /**
      * The value fields
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="valueFields", required=true)
     private Output<List<String>> valueFields;
 
     /**
      * @return The value fields
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<List<String>> valueFields() {
@@ -609,6 +613,8 @@ public final class CseFirstSeenRuleArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param valueFields The value fields
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -620,6 +626,8 @@ public final class CseFirstSeenRuleArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param valueFields The value fields
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -629,6 +637,8 @@ public final class CseFirstSeenRuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param valueFields The value fields
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

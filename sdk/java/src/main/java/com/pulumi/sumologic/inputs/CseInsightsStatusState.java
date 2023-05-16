@@ -18,12 +18,16 @@ public final class CseInsightsStatusState extends com.pulumi.resources.ResourceA
     /**
      * The description of the insights status.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return The description of the insights status.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<String>> description() {
@@ -81,6 +85,8 @@ public final class CseInsightsStatusState extends com.pulumi.resources.ResourceA
         /**
          * @param description The description of the insights status.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -91,6 +97,8 @@ public final class CseInsightsStatusState extends com.pulumi.resources.ResourceA
 
         /**
          * @param description The description of the insights status.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

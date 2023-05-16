@@ -184,12 +184,16 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
     /**
      * The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
      * 
+     * Additional data provided in state:
+     * 
      */
     @Export(name="parentId", type=String.class, parameters={})
     private Output<String> parentId;
 
     /**
      * @return The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+     * 
+     * Additional data provided in state:
      * 
      */
     public Output<String> parentId() {

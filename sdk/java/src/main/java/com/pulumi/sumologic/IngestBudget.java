@@ -72,12 +72,16 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
     /**
      * Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="action", type=String.class, parameters={})
     private Output</* @Nullable */ String> action;
 
     /**
      * @return Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<Optional<String>> action() {

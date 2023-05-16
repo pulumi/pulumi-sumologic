@@ -34,12 +34,16 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
     /**
      * The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="auditThreshold")
     private @Nullable Output<Integer> auditThreshold;
 
     /**
      * @return The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<Integer>> auditThreshold() {
@@ -191,6 +195,8 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
         /**
          * @param auditThreshold The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -201,6 +207,8 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param auditThreshold The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

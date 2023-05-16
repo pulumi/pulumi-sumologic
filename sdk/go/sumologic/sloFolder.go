@@ -108,6 +108,8 @@ type SloFolder struct {
 	// The name of the SLO folder. The name must be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+	//
+	// Additional data provided in state:
 	ParentId       pulumi.StringOutput    `pulumi:"parentId"`
 	PostRequestMap pulumi.StringMapOutput `pulumi:"postRequestMap"`
 	Type           pulumi.StringPtrOutput `pulumi:"type"`
@@ -159,6 +161,8 @@ type sloFolderState struct {
 	// The name of the SLO folder. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
 	// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+	//
+	// Additional data provided in state:
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
 	Type           *string           `pulumi:"type"`
@@ -179,6 +183,8 @@ type SloFolderState struct {
 	// The name of the SLO folder. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
 	// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+	//
+	// Additional data provided in state:
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput
 	Type           pulumi.StringPtrInput
@@ -203,6 +209,8 @@ type sloFolderArgs struct {
 	// The name of the SLO folder. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
 	// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+	//
+	// Additional data provided in state:
 	ParentId       *string           `pulumi:"parentId"`
 	PostRequestMap map[string]string `pulumi:"postRequestMap"`
 	Type           *string           `pulumi:"type"`
@@ -224,6 +232,8 @@ type SloFolderArgs struct {
 	// The name of the SLO folder. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
 	// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+	//
+	// Additional data provided in state:
 	ParentId       pulumi.StringPtrInput
 	PostRequestMap pulumi.StringMapInput
 	Type           pulumi.StringPtrInput
@@ -360,6 +370,8 @@ func (o SloFolderOutput) Name() pulumi.StringOutput {
 }
 
 // The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+//
+// Additional data provided in state:
 func (o SloFolderOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SloFolder) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }

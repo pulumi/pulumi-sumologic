@@ -134,6 +134,8 @@ export class CseFirstSeenRule extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The value fields
+     *
+     * The following attributes are exported:
      */
     public readonly valueFields!: pulumi.Output<string[]>;
 
@@ -280,6 +282,8 @@ export interface CseFirstSeenRuleState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The value fields
+     *
+     * The following attributes are exported:
      */
     valueFields?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -346,6 +350,8 @@ export interface CseFirstSeenRuleArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The value fields
+     *
+     * The following attributes are exported:
      */
     valueFields: pulumi.Input<pulumi.Input<string>[]>;
 }

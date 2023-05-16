@@ -60,6 +60,8 @@ export class Role extends pulumi.CustomResource {
 
     /**
      * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     *
+     * The following attributes are exported:
      */
     public readonly capabilities!: pulumi.Output<string[] | undefined>;
     /**
@@ -110,6 +112,8 @@ export class Role extends pulumi.CustomResource {
 export interface RoleState {
     /**
      * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     *
+     * The following attributes are exported:
      */
     capabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -132,6 +136,8 @@ export interface RoleState {
 export interface RoleArgs {
     /**
      * List of capabilities associated with this role. For a complete list of capability names, please see `capabilities` field in the request of [CreateRole](https://api.sumologic.com/docs/#operation/createRole) endpoint.
+     *
+     * The following attributes are exported:
      */
     capabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**

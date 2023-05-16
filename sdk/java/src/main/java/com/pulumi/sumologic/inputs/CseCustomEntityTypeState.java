@@ -19,12 +19,16 @@ public final class CseCustomEntityTypeState extends com.pulumi.resources.Resourc
     /**
      * Record schema fields. Examples: &#34;file_hash_md5&#34;, &#34;file_hash_sha1&#34;.&#34;.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="fields")
     private @Nullable Output<List<String>> fields;
 
     /**
      * @return Record schema fields. Examples: &#34;file_hash_md5&#34;, &#34;file_hash_sha1&#34;.&#34;.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> fields() {
@@ -90,6 +94,8 @@ public final class CseCustomEntityTypeState extends com.pulumi.resources.Resourc
         /**
          * @param fields Record schema fields. Examples: &#34;file_hash_md5&#34;, &#34;file_hash_sha1&#34;.&#34;.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -101,6 +107,8 @@ public final class CseCustomEntityTypeState extends com.pulumi.resources.Resourc
         /**
          * @param fields Record schema fields. Examples: &#34;file_hash_md5&#34;, &#34;file_hash_sha1&#34;.&#34;.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -110,6 +118,8 @@ public final class CseCustomEntityTypeState extends com.pulumi.resources.Resourc
 
         /**
          * @param fields Record schema fields. Examples: &#34;file_hash_md5&#34;, &#34;file_hash_sha1&#34;.&#34;.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

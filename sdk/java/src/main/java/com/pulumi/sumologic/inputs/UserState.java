@@ -95,12 +95,16 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     /**
      * UserId of user to transfer this user&#39;s content to on deletion, can be empty. Must be applied prior to deletion to take effect.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="transferTo")
     private @Nullable Output<String> transferTo;
 
     /**
      * @return UserId of user to transfer this user&#39;s content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<String>> transferTo() {
@@ -254,6 +258,8 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param transferTo UserId of user to transfer this user&#39;s content to on deletion, can be empty. Must be applied prior to deletion to take effect.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -264,6 +270,8 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param transferTo UserId of user to transfer this user&#39;s content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

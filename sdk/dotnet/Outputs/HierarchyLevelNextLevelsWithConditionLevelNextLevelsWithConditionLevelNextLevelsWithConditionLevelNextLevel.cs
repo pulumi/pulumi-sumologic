@@ -19,6 +19,8 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string EntityType;
         /// <summary>
         /// Next level without a condition.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public readonly Outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel? NextLevel;
         /// <summary>

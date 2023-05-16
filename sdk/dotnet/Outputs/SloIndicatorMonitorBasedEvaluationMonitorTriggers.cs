@@ -20,6 +20,12 @@ namespace Pulumi.SumoLogic.Outputs
         /// <summary>
         /// Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
         /// window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+        /// 
+        /// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+        /// 
+        /// [2]: slo_folder.html.markdown
+        /// 
+        /// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
         /// </summary>
         public readonly string TriggerTypes;
 

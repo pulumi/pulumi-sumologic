@@ -36,12 +36,16 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelA
     /**
      * Next level without a condition.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="nextLevel")
     private @Nullable Output<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs> nextLevel;
 
     /**
      * @return Next level without a condition.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs>> nextLevel() {
@@ -113,6 +117,8 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelA
         /**
          * @param nextLevel Next level without a condition.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -123,6 +129,8 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelA
 
         /**
          * @param nextLevel Next level without a condition.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

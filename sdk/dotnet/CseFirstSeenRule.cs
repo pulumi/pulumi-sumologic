@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -155,6 +156,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The value fields
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("valueFields")]
         public Output<ImmutableArray<string>> ValueFields { get; private set; } = null!;
@@ -312,6 +315,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The value fields
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> ValueFields
         {
@@ -434,6 +439,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The value fields
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> ValueFields
         {

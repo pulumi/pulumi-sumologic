@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -118,6 +119,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The tags of the generated Signals
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -233,6 +236,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The tags of the generated Signals
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Tags
         {
@@ -313,6 +318,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The tags of the generated Signals
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Tags
         {

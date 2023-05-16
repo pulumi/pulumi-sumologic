@@ -88,6 +88,9 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
      * 1. `&lt;number&gt;`: number of time units,
      * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
      * 
+     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
+     * `2m50s` means 2 minutes and 50 seconds.
+     * 
      */
     @Import(name="evaluationDelay")
     private @Nullable Output<String> evaluationDelay;
@@ -96,6 +99,9 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
      * @return Evaluation delay as a string consists of the following elements:
      * 1. `&lt;number&gt;`: number of time units,
      * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     * 
+     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
+     * `2m50s` means 2 minutes and 50 seconds.
      * 
      */
     public Optional<Output<String>> evaluationDelay() {
@@ -521,6 +527,9 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
          * 1. `&lt;number&gt;`: number of time units,
          * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
          * 
+         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
+         * `2m50s` means 2 minutes and 50 seconds.
+         * 
          * @return builder
          * 
          */
@@ -533,6 +542,9 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
          * @param evaluationDelay Evaluation delay as a string consists of the following elements:
          * 1. `&lt;number&gt;`: number of time units,
          * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+         * 
+         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
+         * `2m50s` means 2 minutes and 50 seconds.
          * 
          * @return builder
          * 

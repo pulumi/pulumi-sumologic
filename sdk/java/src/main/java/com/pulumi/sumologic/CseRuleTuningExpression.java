@@ -151,12 +151,16 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
     /**
      * List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="ruleIds", type=List.class, parameters={String.class})
     private Output<List<String>> ruleIds;
 
     /**
      * @return List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<List<String>> ruleIds() {

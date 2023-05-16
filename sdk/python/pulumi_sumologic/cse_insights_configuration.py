@@ -20,6 +20,8 @@ class CseInsightsConfigurationArgs:
         The set of arguments for constructing a CseInsightsConfiguration resource.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
+               
+               The following attributes are exported:
         """
         if lookback_days is not None:
             pulumi.set(__self__, "lookback_days", lookback_days)
@@ -43,6 +45,8 @@ class CseInsightsConfigurationArgs:
     def threshold(self) -> Optional[pulumi.Input[float]]:
         """
         Detection threshold activity score.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "threshold")
 
@@ -60,6 +64,8 @@ class _CseInsightsConfigurationState:
         Input properties used for looking up and filtering CseInsightsConfiguration resources.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
+               
+               The following attributes are exported:
         """
         if lookback_days is not None:
             pulumi.set(__self__, "lookback_days", lookback_days)
@@ -83,6 +89,8 @@ class _CseInsightsConfigurationState:
     def threshold(self) -> Optional[pulumi.Input[float]]:
         """
         Detection threshold activity score.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "threshold")
 
@@ -125,6 +133,8 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
+               
+               The following attributes are exported:
         """
         ...
     @overload
@@ -203,6 +213,8 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
+               
+               The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -225,6 +237,8 @@ class CseInsightsConfiguration(pulumi.CustomResource):
     def threshold(self) -> pulumi.Output[Optional[float]]:
         """
         Detection threshold activity score.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "threshold")
 

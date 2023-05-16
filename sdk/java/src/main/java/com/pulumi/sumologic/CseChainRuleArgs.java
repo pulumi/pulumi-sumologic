@@ -188,12 +188,16 @@ public final class CseChainRuleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="windowSize", required=true)
     private Output<String> windowSize;
 
     /**
      * @return How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<String> windowSize() {
@@ -509,6 +513,8 @@ public final class CseChainRuleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param windowSize How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -519,6 +525,8 @@ public final class CseChainRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param windowSize How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

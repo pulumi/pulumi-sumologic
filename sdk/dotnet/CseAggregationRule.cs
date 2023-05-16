@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -167,6 +168,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("windowSize")]
         public Output<string> WindowSize { get; private set; } = null!;
@@ -327,6 +330,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("windowSize", required: true)]
         public Input<string> WindowSize { get; set; } = null!;
@@ -449,6 +454,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("windowSize")]
         public Input<string>? WindowSize { get; set; }

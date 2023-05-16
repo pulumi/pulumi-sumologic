@@ -63,6 +63,8 @@ export class IngestBudget extends pulumi.CustomResource {
 
     /**
      * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     *
+     * The following attributes are exported:
      */
     public readonly action!: pulumi.Output<string | undefined>;
     /**
@@ -137,6 +139,8 @@ export class IngestBudget extends pulumi.CustomResource {
 export interface IngestBudgetState {
     /**
      * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     *
+     * The following attributes are exported:
      */
     action?: pulumi.Input<string>;
     /**
@@ -171,6 +175,8 @@ export interface IngestBudgetState {
 export interface IngestBudgetArgs {
     /**
      * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     *
+     * The following attributes are exported:
      */
     action?: pulumi.Input<string>;
     /**

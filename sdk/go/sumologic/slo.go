@@ -46,7 +46,9 @@ type Slo struct {
 	// The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
 	// , `Other`. Defaults to `Latency`.
 	SignalType pulumi.StringOutput `pulumi:"signalType"`
-	Version    pulumi.IntOutput    `pulumi:"version"`
+	// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+	Tags    pulumi.StringMapOutput `pulumi:"tags"`
+	Version pulumi.IntOutput       `pulumi:"version"`
 }
 
 // NewSlo registers a new resource with the given unique name, arguments, and options.
@@ -118,7 +120,9 @@ type sloState struct {
 	// The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
 	// , `Other`. Defaults to `Latency`.
 	SignalType *string `pulumi:"signalType"`
-	Version    *int    `pulumi:"version"`
+	// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+	Tags    map[string]string `pulumi:"tags"`
+	Version *int              `pulumi:"version"`
 }
 
 type SloState struct {
@@ -153,7 +157,9 @@ type SloState struct {
 	// The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
 	// , `Other`. Defaults to `Latency`.
 	SignalType pulumi.StringPtrInput
-	Version    pulumi.IntPtrInput
+	// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+	Tags    pulumi.StringMapInput
+	Version pulumi.IntPtrInput
 }
 
 func (SloState) ElementType() reflect.Type {
@@ -192,7 +198,9 @@ type sloArgs struct {
 	// The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
 	// , `Other`. Defaults to `Latency`.
 	SignalType string `pulumi:"signalType"`
-	Version    *int   `pulumi:"version"`
+	// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+	Tags    map[string]string `pulumi:"tags"`
+	Version *int              `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Slo resource.
@@ -228,7 +236,9 @@ type SloArgs struct {
 	// The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
 	// , `Other`. Defaults to `Latency`.
 	SignalType pulumi.StringInput
-	Version    pulumi.IntPtrInput
+	// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+	Tags    pulumi.StringMapInput
+	Version pulumi.IntPtrInput
 }
 
 func (SloArgs) ElementType() reflect.Type {
@@ -395,6 +405,11 @@ func (o SloOutput) Service() pulumi.StringOutput {
 // , `Other`. Defaults to `Latency`.
 func (o SloOutput) SignalType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.SignalType }).(pulumi.StringOutput)
+}
+
+// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+func (o SloOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o SloOutput) Version() pulumi.IntOutput {

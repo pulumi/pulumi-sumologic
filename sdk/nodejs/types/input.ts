@@ -666,6 +666,9 @@ export interface CseLogMappingStructuredInput {
 export interface CseLogMappingUnstructuredFields {
     /**
      * List of grok pattern names.
+     *
+     *
+     * The following attributes are exported:
      */
     patternNames: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -677,6 +680,8 @@ export interface CseMatchListItem {
     description: pulumi.Input<string>;
     /**
      * Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+     *
+     * The following attributes are exported:
      */
     expiration?: pulumi.Input<string>;
     /**
@@ -1252,6 +1257,8 @@ export interface HierarchyLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevel>;
     /**
@@ -1267,6 +1274,8 @@ export interface HierarchyLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevel>;
     /**
@@ -1282,6 +1291,8 @@ export interface HierarchyLevelNextLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1297,6 +1308,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1312,6 +1325,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1327,6 +1342,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1342,6 +1359,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1395,6 +1414,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1448,6 +1469,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1463,6 +1486,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -1516,6 +1541,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1569,6 +1596,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1584,6 +1613,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -1599,6 +1630,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1652,6 +1685,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1705,6 +1740,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1720,6 +1757,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -1773,6 +1812,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1826,6 +1867,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1841,6 +1884,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -1856,6 +1901,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1871,6 +1918,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -1924,6 +1973,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1977,6 +2028,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -1992,6 +2045,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2045,6 +2100,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2098,6 +2155,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2113,6 +2172,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2128,6 +2189,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -2181,6 +2244,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2234,6 +2299,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2249,6 +2316,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2302,6 +2371,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2355,6 +2426,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2370,6 +2443,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2385,6 +2460,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -2400,6 +2477,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -2415,6 +2494,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -2468,6 +2549,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2521,6 +2604,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2536,6 +2621,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2589,6 +2676,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2642,6 +2731,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2657,6 +2748,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2672,6 +2765,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -2725,6 +2820,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2778,6 +2875,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2793,6 +2892,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2846,6 +2947,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2899,6 +3002,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -2914,6 +3019,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -2929,6 +3036,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -2944,6 +3053,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -2997,6 +3108,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3050,6 +3163,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3065,6 +3180,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -3118,6 +3235,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3171,6 +3290,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3186,6 +3307,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -3201,6 +3324,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -3254,6 +3379,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3307,6 +3434,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3322,6 +3451,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -3375,6 +3506,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3428,6 +3561,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3443,6 +3578,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -3458,6 +3595,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel {
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -3473,6 +3612,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -3488,6 +3629,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -3503,6 +3646,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -3556,6 +3701,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3609,6 +3756,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3624,6 +3773,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -3677,6 +3828,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3730,6 +3883,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3745,6 +3900,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -3760,6 +3917,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -3813,6 +3972,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3866,6 +4027,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3881,6 +4044,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -3934,6 +4099,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -3987,6 +4154,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4002,6 +4171,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -4017,6 +4188,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -4032,6 +4205,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -4085,6 +4260,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4138,6 +4315,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4153,6 +4332,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -4206,6 +4387,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4259,6 +4442,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4274,6 +4459,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -4289,6 +4476,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -4342,6 +4531,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4395,6 +4586,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4410,6 +4603,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -4463,6 +4658,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4516,6 +4713,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4531,6 +4730,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -4546,6 +4747,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -4561,6 +4764,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -4576,6 +4781,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -4629,6 +4836,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4682,6 +4891,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4697,6 +4908,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -4750,6 +4963,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4803,6 +5018,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4818,6 +5035,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -4833,6 +5052,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -4886,6 +5107,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4939,6 +5162,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -4954,6 +5179,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -5007,6 +5234,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5060,6 +5289,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5075,6 +5306,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -5090,6 +5323,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -5105,6 +5340,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel>;
     /**
@@ -5158,6 +5395,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5211,6 +5450,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5226,6 +5467,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -5279,6 +5522,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5332,6 +5577,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5347,6 +5594,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -5362,6 +5611,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel>;
     /**
@@ -5415,6 +5666,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5468,6 +5721,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -5483,6 +5738,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel>;
     /**
@@ -5536,6 +5793,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: pulumi.Input<string>;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel>;
     /**
@@ -6345,6 +6604,12 @@ export interface SloIndicatorMonitorBasedEvaluationMonitorTriggers {
     /**
      * Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
      * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+     *
+     * [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+     *
+     * [2]: slo_folder.html.markdown
+     *
+     * [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
      */
     triggerTypes: pulumi.Input<string>;
 }
@@ -6386,6 +6651,7 @@ export interface SloIndicatorRequestBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
      * type when `useRowCount` is false.
+     *
      * type when `useRowCount` is false.
      */
     field?: pulumi.Input<string>;
@@ -6451,6 +6717,7 @@ export interface SloIndicatorWindowBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
      * type when `useRowCount` is false.
+     *
      * type when `useRowCount` is false.
      */
     field?: pulumi.Input<string>;

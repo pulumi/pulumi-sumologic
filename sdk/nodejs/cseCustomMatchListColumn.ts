@@ -53,7 +53,9 @@ export class CseCustomMatchListColumn extends pulumi.CustomResource {
     }
 
     /**
-     * Custom Match List Column fields.
+     * Custom Match List Column fields. 
+     *
+     * The following attributes are exported:
      */
     public readonly fields!: pulumi.Output<string[]>;
     /**
@@ -94,7 +96,9 @@ export class CseCustomMatchListColumn extends pulumi.CustomResource {
  */
 export interface CseCustomMatchListColumnState {
     /**
-     * Custom Match List Column fields.
+     * Custom Match List Column fields. 
+     *
+     * The following attributes are exported:
      */
     fields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -108,7 +112,9 @@ export interface CseCustomMatchListColumnState {
  */
 export interface CseCustomMatchListColumnArgs {
     /**
-     * Custom Match List Column fields.
+     * Custom Match List Column fields. 
+     *
+     * The following attributes are exported:
      */
     fields: pulumi.Input<pulumi.Input<string>[]>;
     /**

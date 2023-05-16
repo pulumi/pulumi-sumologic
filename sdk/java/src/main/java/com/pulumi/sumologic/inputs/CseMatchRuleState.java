@@ -157,12 +157,16 @@ public final class CseMatchRuleState extends com.pulumi.resources.ResourceArgs {
     /**
      * The tags of the generated Signals
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The tags of the generated Signals
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -404,6 +408,8 @@ public final class CseMatchRuleState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The tags of the generated Signals
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -415,6 +421,8 @@ public final class CseMatchRuleState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The tags of the generated Signals
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -424,6 +432,8 @@ public final class CseMatchRuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags The tags of the generated Signals
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

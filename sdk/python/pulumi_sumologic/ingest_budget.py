@@ -26,6 +26,8 @@ class IngestBudgetArgs:
         :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
         :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+               
+               The following attributes are exported:
         :param pulumi.Input[str] description: Description of the ingest budget.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
@@ -73,6 +75,8 @@ class IngestBudgetArgs:
     def action(self) -> Optional[pulumi.Input[str]]:
         """
         Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "action")
 
@@ -142,6 +146,8 @@ class _IngestBudgetState:
         """
         Input properties used for looking up and filtering IngestBudget resources.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+               
+               The following attributes are exported:
         :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
         :param pulumi.Input[str] description: Description of the ingest budget.
         :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
@@ -169,6 +175,8 @@ class _IngestBudgetState:
     def action(self) -> Optional[pulumi.Input[str]]:
         """
         Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "action")
 
@@ -293,6 +301,8 @@ class IngestBudget(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+               
+               The following attributes are exported:
         :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
         :param pulumi.Input[str] description: Description of the ingest budget.
         :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
@@ -401,6 +411,8 @@ class IngestBudget(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+               
+               The following attributes are exported:
         :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
         :param pulumi.Input[str] description: Description of the ingest budget.
         :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
@@ -426,6 +438,8 @@ class IngestBudget(pulumi.CustomResource):
     def action(self) -> pulumi.Output[Optional[str]]:
         """
         Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "action")
 

@@ -666,6 +666,9 @@ export interface CseLogMappingStructuredInput {
 export interface CseLogMappingUnstructuredFields {
     /**
      * List of grok pattern names.
+     *
+     *
+     * The following attributes are exported:
      */
     patternNames: string[];
 }
@@ -677,6 +680,8 @@ export interface CseMatchListItem {
     description: string;
     /**
      * Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+     *
+     * The following attributes are exported:
      */
     expiration?: string;
     /**
@@ -1252,6 +1257,8 @@ export interface HierarchyLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevel;
     /**
@@ -1267,6 +1274,8 @@ export interface HierarchyLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevel;
     /**
@@ -1282,6 +1291,8 @@ export interface HierarchyLevelNextLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevel;
     /**
@@ -1297,6 +1308,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -1312,6 +1325,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -1327,6 +1342,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -1342,6 +1359,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -1395,6 +1414,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1448,6 +1469,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1463,6 +1486,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -1516,6 +1541,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1569,6 +1596,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1584,6 +1613,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -1599,6 +1630,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -1652,6 +1685,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1705,6 +1740,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1720,6 +1757,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -1773,6 +1812,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1826,6 +1867,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1841,6 +1884,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -1856,6 +1901,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -1871,6 +1918,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -1924,6 +1973,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1977,6 +2028,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -1992,6 +2045,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2045,6 +2100,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2098,6 +2155,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2113,6 +2172,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2128,6 +2189,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -2181,6 +2244,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2234,6 +2299,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2249,6 +2316,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2302,6 +2371,8 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2355,6 +2426,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2370,6 +2443,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2385,6 +2460,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -2400,6 +2477,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -2415,6 +2494,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -2468,6 +2549,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2521,6 +2604,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2536,6 +2621,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2589,6 +2676,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2642,6 +2731,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2657,6 +2748,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2672,6 +2765,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -2725,6 +2820,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2778,6 +2875,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2793,6 +2892,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2846,6 +2947,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2899,6 +3002,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -2914,6 +3019,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -2929,6 +3036,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -2944,6 +3053,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -2997,6 +3108,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3050,6 +3163,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3065,6 +3180,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -3118,6 +3235,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3171,6 +3290,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3186,6 +3307,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -3201,6 +3324,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -3254,6 +3379,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3307,6 +3434,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3322,6 +3451,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -3375,6 +3506,8 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3428,6 +3561,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3443,6 +3578,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -3458,6 +3595,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel {
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -3473,6 +3612,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -3488,6 +3629,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -3503,6 +3646,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -3556,6 +3701,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3609,6 +3756,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3624,6 +3773,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -3677,6 +3828,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3730,6 +3883,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3745,6 +3900,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -3760,6 +3917,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -3813,6 +3972,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3866,6 +4027,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3881,6 +4044,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -3934,6 +4099,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -3987,6 +4154,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4002,6 +4171,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -4017,6 +4188,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -4032,6 +4205,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -4085,6 +4260,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4138,6 +4315,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4153,6 +4332,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -4206,6 +4387,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4259,6 +4442,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4274,6 +4459,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -4289,6 +4476,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -4342,6 +4531,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4395,6 +4586,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4410,6 +4603,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -4463,6 +4658,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4516,6 +4713,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4531,6 +4730,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -4546,6 +4747,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -4561,6 +4764,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -4576,6 +4781,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -4629,6 +4836,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4682,6 +4891,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4697,6 +4908,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -4750,6 +4963,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4803,6 +5018,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4818,6 +5035,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -4833,6 +5052,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -4886,6 +5107,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4939,6 +5162,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -4954,6 +5179,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -5007,6 +5234,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5060,6 +5289,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5075,6 +5306,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -5090,6 +5323,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -5105,6 +5340,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel;
     /**
@@ -5158,6 +5395,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5211,6 +5450,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5226,6 +5467,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -5279,6 +5522,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5332,6 +5577,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5347,6 +5594,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -5362,6 +5611,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel;
     /**
@@ -5415,6 +5666,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5468,6 +5721,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -5483,6 +5738,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel;
     /**
@@ -5536,6 +5793,8 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
     entityType: string;
     /**
      * Next level without a condition.
+     *
+     * The following attributes are exported:
      */
     nextLevel?: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
     /**
@@ -6345,6 +6604,12 @@ export interface SloIndicatorMonitorBasedEvaluationMonitorTriggers {
     /**
      * Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
      * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+     *
+     * [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+     *
+     * [2]: slo_folder.html.markdown
+     *
+     * [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
      */
     triggerTypes: string;
 }
@@ -6386,6 +6651,7 @@ export interface SloIndicatorRequestBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
      * type when `useRowCount` is false.
+     *
      * type when `useRowCount` is false.
      */
     field?: string;
@@ -6451,6 +6717,7 @@ export interface SloIndicatorWindowBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
      * type when `useRowCount` is false.
+     *
      * type when `useRowCount` is false.
      */
     field?: string;

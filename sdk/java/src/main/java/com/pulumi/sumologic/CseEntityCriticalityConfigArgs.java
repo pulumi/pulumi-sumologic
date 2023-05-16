@@ -33,12 +33,16 @@ public final class CseEntityCriticalityConfigArgs extends com.pulumi.resources.R
     /**
      * Algebraic expression representing this entity\&#39;s criticality. Examples: &#34;severity * 2&#34;, &#34;severity - 5&#34;, &#34;severity / 3&#34;.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="severityExpression", required=true)
     private Output<String> severityExpression;
 
     /**
      * @return Algebraic expression representing this entity\&#39;s criticality. Examples: &#34;severity * 2&#34;, &#34;severity - 5&#34;, &#34;severity / 3&#34;.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<String> severityExpression() {
@@ -94,6 +98,8 @@ public final class CseEntityCriticalityConfigArgs extends com.pulumi.resources.R
         /**
          * @param severityExpression Algebraic expression representing this entity\&#39;s criticality. Examples: &#34;severity * 2&#34;, &#34;severity - 5&#34;, &#34;severity / 3&#34;.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class CseEntityCriticalityConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param severityExpression Algebraic expression representing this entity\&#39;s criticality. Examples: &#34;severity * 2&#34;, &#34;severity - 5&#34;, &#34;severity / 3&#34;.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

@@ -18,6 +18,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -35,6 +36,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SumoLogic = Pulumi.SumoLogic;
     /// 
@@ -111,6 +113,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+        /// 
+        /// Additional data provided in state:
         /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
@@ -208,6 +212,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+        /// 
+        /// Additional data provided in state:
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
@@ -272,6 +278,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The identifier of the SLO Folder that contains this SLO Folder. Defaults to the root folder.
+        /// 
+        /// Additional data provided in state:
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }

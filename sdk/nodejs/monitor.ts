@@ -122,13 +122,13 @@ import * as utilities from "./utilities";
  *   - `critical`
  *     - `timeRange` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `burnRateThreshold` (Deprecated) : The burn rate percentage threshold.
- *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+ *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
  *       - `burnRateThreshold` (Required): The burn rate percentage threshold.
  *       - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *   - `warning`
  *     - `timeRange` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *     - `burnRateThreshold` (Deprecated)
- *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition. This field is in private beta and is not available until given access. To participate in the beta program, contact Sumo Logic support.
+ *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
  *       - `burnRateThreshold` (Required): The burn rate percentage threshold.
  *       - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
  *
@@ -256,6 +256,9 @@ export class Monitor extends pulumi.CustomResource {
      * Evaluation delay as a string consists of the following elements:
      * 1. `<number>`: number of time units,
      * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided. For example,
+     * `2m50s` means 2 minutes and 50 seconds.
      */
     public readonly evaluationDelay!: pulumi.Output<string>;
     /**
@@ -430,6 +433,9 @@ export interface MonitorState {
      * Evaluation delay as a string consists of the following elements:
      * 1. `<number>`: number of time units,
      * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided. For example,
+     * `2m50s` means 2 minutes and 50 seconds.
      */
     evaluationDelay?: pulumi.Input<string>;
     /**
@@ -525,6 +531,9 @@ export interface MonitorArgs {
      * Evaluation delay as a string consists of the following elements:
      * 1. `<number>`: number of time units,
      * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided. For example,
+     * `2m50s` means 2 minutes and 50 seconds.
      */
     evaluationDelay?: pulumi.Input<string>;
     /**

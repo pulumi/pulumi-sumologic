@@ -51,6 +51,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("reduceRetentionPeriodImmediately")]
         public Output<bool?> ReduceRetentionPeriodImmediately { get; private set; } = null!;
@@ -139,6 +141,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("reduceRetentionPeriodImmediately")]
         public Input<bool>? ReduceRetentionPeriodImmediately { get; set; }
@@ -189,6 +193,8 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("reduceRetentionPeriodImmediately")]
         public Input<bool>? ReduceRetentionPeriodImmediately { get; set; }

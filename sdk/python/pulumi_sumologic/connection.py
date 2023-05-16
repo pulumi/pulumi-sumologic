@@ -36,6 +36,8 @@ class ConnectionArgs:
         :param pulumi.Input[str] name: Name of connection. Name should be a valid alphanumeric value.
         :param pulumi.Input[str] resolution_payload: Resolution payload of the webhook.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+               
+               Additional data provided in state
         """
         pulumi.set(__self__, "default_payload", default_payload)
         pulumi.set(__self__, "type", type)
@@ -168,6 +170,8 @@ class ConnectionArgs:
     def webhook_type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+
+        Additional data provided in state
         """
         return pulumi.get(self, "webhook_type")
 
@@ -201,6 +205,8 @@ class _ConnectionState:
         :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
         :param pulumi.Input[str] url: URL for the webhook connection.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+               
+               Additional data provided in state
         """
         if connection_subtype is not None:
             pulumi.set(__self__, "connection_subtype", connection_subtype)
@@ -336,6 +342,8 @@ class _ConnectionState:
     def webhook_type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+
+        Additional data provided in state
         """
         return pulumi.get(self, "webhook_type")
 
@@ -418,6 +426,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
         :param pulumi.Input[str] url: URL for the webhook connection.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+               
+               Additional data provided in state
         """
         ...
     @overload
@@ -558,6 +568,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] type: Type of connection. Only `WebhookConnection` is implemented right now.
         :param pulumi.Input[str] url: URL for the webhook connection.
         :param pulumi.Input[str] webhook_type: Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+               
+               Additional data provided in state
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -652,6 +664,8 @@ class Connection(pulumi.CustomResource):
     def webhook_type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of webhook. Valid values are `AWSLambda`, `Azure`, `Datadog`, `HipChat`, `Jira`, `PagerDuty`, `Slack`, `Webhook`, `NewRelic`, `MicrosoftTeams`, `ServiceNow`, and `SumoCloudSOAR`. Default: `Webhook`
+
+        Additional data provided in state
         """
         return pulumi.get(self, "webhook_type")
 

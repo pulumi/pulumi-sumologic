@@ -153,12 +153,16 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * UserId of user to transfer this user&#39;s content to on deletion, can be empty. Must be applied prior to deletion to take effect.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="transferTo", type=String.class, parameters={})
     private Output<String> transferTo;
 
     /**
      * @return UserId of user to transfer this user&#39;s content to on deletion, can be empty. Must be applied prior to deletion to take effect.
+     * 
+     * The following attributes are exported:
      * 
      */
     public Output<String> transferTo() {

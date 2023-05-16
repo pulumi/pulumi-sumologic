@@ -19,6 +19,8 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string Description;
         /// <summary>
         /// Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         public readonly string? Expiration;
         /// <summary>

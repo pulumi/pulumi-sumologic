@@ -3921,6 +3921,9 @@ class CseLogMappingUnstructuredFields(dict):
                  pattern_names: Sequence[str]):
         """
         :param Sequence[str] pattern_names: List of grok pattern names.
+               
+               
+               The following attributes are exported:
         """
         pulumi.set(__self__, "pattern_names", pattern_names)
 
@@ -3929,6 +3932,9 @@ class CseLogMappingUnstructuredFields(dict):
     def pattern_names(self) -> Sequence[str]:
         """
         List of grok pattern names.
+
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "pattern_names")
 
@@ -3944,6 +3950,8 @@ class CseMatchListItem(dict):
         :param str description: Match list description.
         :param str value: Match list item value.
         :param str expiration: Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+               
+               The following attributes are exported:
         :param str id: The internal ID of the match list.
         """
         pulumi.set(__self__, "description", description)
@@ -3974,6 +3982,8 @@ class CseMatchListItem(dict):
     def expiration(self) -> Optional[str]:
         """
         Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "expiration")
 
@@ -7233,6 +7243,8 @@ class HierarchyLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7254,6 +7266,8 @@ class HierarchyLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -7296,6 +7310,8 @@ class HierarchyLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7317,6 +7333,8 @@ class HierarchyLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -7359,6 +7377,8 @@ class HierarchyLevelNextLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7380,6 +7400,8 @@ class HierarchyLevelNextLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -7422,6 +7444,8 @@ class HierarchyLevelNextLevelNextLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7443,6 +7467,8 @@ class HierarchyLevelNextLevelNextLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -7485,6 +7511,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7506,6 +7534,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -7548,6 +7578,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7569,6 +7601,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -7611,6 +7645,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict)
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7632,6 +7668,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict)
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -7822,6 +7860,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -7843,6 +7883,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -8033,6 +8075,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -8054,6 +8098,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -8096,6 +8142,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -8117,6 +8165,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -8307,6 +8357,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -8328,6 +8380,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -8518,6 +8572,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -8539,6 +8595,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -8581,6 +8639,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -8602,6 +8662,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -8644,6 +8706,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -8665,6 +8729,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -8855,6 +8921,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -8876,6 +8944,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9066,6 +9136,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9087,6 +9159,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9129,6 +9203,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9150,6 +9226,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9340,6 +9418,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9361,6 +9441,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9551,6 +9633,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9572,6 +9656,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9614,6 +9700,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9635,6 +9723,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9677,6 +9767,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9698,6 +9790,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9740,6 +9834,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9761,6 +9857,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -9951,6 +10049,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -9972,6 +10072,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -10162,6 +10264,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -10183,6 +10287,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -10225,6 +10331,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -10246,6 +10354,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -10436,6 +10546,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -10457,6 +10569,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -10647,6 +10761,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -10668,6 +10784,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -10710,6 +10828,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -10731,6 +10851,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -10773,6 +10895,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -10794,6 +10918,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -10984,6 +11110,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11005,6 +11133,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11195,6 +11325,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11216,6 +11348,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11258,6 +11392,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11279,6 +11415,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11469,6 +11607,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11490,6 +11630,8 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11680,6 +11822,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11701,6 +11845,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11743,6 +11889,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11764,6 +11912,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11806,6 +11956,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11827,6 +11979,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11869,6 +12023,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11890,6 +12046,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -11932,6 +12090,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -11953,6 +12113,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -12143,6 +12305,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -12164,6 +12328,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -12354,6 +12520,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -12375,6 +12543,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -12417,6 +12587,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -12438,6 +12610,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -12628,6 +12802,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -12649,6 +12825,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -12839,6 +13017,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -12860,6 +13040,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -12902,6 +13084,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -12923,6 +13107,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -12965,6 +13151,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -12986,6 +13174,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -13176,6 +13366,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -13197,6 +13389,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -13387,6 +13581,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -13408,6 +13604,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -13450,6 +13648,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -13471,6 +13671,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -13661,6 +13863,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -13682,6 +13886,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -13872,6 +14078,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -13893,6 +14101,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -13935,6 +14145,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -13956,6 +14168,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -13998,6 +14212,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -14019,6 +14235,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -14061,6 +14279,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -14082,6 +14302,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -14272,6 +14494,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -14293,6 +14517,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -14483,6 +14709,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -14504,6 +14732,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -14546,6 +14776,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -14567,6 +14799,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -14757,6 +14991,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -14778,6 +15014,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -14968,6 +15206,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -14989,6 +15229,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -15031,6 +15273,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -15052,6 +15296,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -15094,6 +15340,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -15115,6 +15363,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -15305,6 +15555,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -15326,6 +15578,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -15516,6 +15770,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -15537,6 +15793,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -15579,6 +15837,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -15600,6 +15860,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -15790,6 +16052,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -15811,6 +16075,8 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16001,6 +16267,8 @@ class HierarchyLevelNextLevelsWithConditionLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16022,6 +16290,8 @@ class HierarchyLevelNextLevelsWithConditionLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16064,6 +16334,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16085,6 +16357,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16127,6 +16401,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16148,6 +16424,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16190,6 +16468,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel(dict
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16211,6 +16491,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel(dict
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16253,6 +16535,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16274,6 +16558,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16316,6 +16602,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16337,6 +16625,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16527,6 +16817,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16548,6 +16840,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16738,6 +17032,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16759,6 +17055,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -16801,6 +17099,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -16822,6 +17122,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -17012,6 +17314,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -17033,6 +17337,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -17223,6 +17529,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -17244,6 +17552,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -17286,6 +17596,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -17307,6 +17619,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -17349,6 +17663,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -17370,6 +17686,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -17560,6 +17878,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -17581,6 +17901,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -17771,6 +18093,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -17792,6 +18116,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -17834,6 +18160,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -17855,6 +18183,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18045,6 +18375,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18066,6 +18398,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18256,6 +18590,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18277,6 +18613,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18319,6 +18657,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18340,6 +18680,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18382,6 +18724,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18403,6 +18747,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18445,6 +18791,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18466,6 +18814,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18656,6 +19006,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18677,6 +19029,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18867,6 +19221,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18888,6 +19244,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -18930,6 +19288,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -18951,6 +19311,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -19141,6 +19503,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -19162,6 +19526,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -19352,6 +19718,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -19373,6 +19741,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -19415,6 +19785,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -19436,6 +19808,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -19478,6 +19852,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -19499,6 +19875,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -19689,6 +20067,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -19710,6 +20090,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -19900,6 +20282,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -19921,6 +20305,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -19963,6 +20349,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -19984,6 +20372,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -20174,6 +20564,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -20195,6 +20587,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -20385,6 +20779,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dic
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -20406,6 +20802,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dic
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -20448,6 +20846,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -20469,6 +20869,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -20511,6 +20913,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -20532,6 +20936,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -20574,6 +20980,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -20595,6 +21003,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -20637,6 +21047,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -20658,6 +21070,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -20848,6 +21262,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -20869,6 +21285,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -21059,6 +21477,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -21080,6 +21500,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -21122,6 +21544,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -21143,6 +21567,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -21333,6 +21759,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -21354,6 +21782,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -21544,6 +21974,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -21565,6 +21997,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -21607,6 +22041,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -21628,6 +22064,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -21670,6 +22108,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -21691,6 +22131,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -21881,6 +22323,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -21902,6 +22346,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22092,6 +22538,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22113,6 +22561,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22155,6 +22605,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22176,6 +22628,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22366,6 +22820,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22387,6 +22843,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22577,6 +23035,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22598,6 +23058,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22640,6 +23102,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22661,6 +23125,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22703,6 +23169,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22724,6 +23192,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22766,6 +23236,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22787,6 +23259,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -22977,6 +23451,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -22998,6 +23474,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -23188,6 +23666,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -23209,6 +23689,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -23251,6 +23733,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -23272,6 +23756,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -23462,6 +23948,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -23483,6 +23971,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -23673,6 +24163,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -23694,6 +24186,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -23736,6 +24230,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -23757,6 +24253,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -23799,6 +24297,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -23820,6 +24320,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -24010,6 +24512,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -24031,6 +24535,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -24221,6 +24727,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -24242,6 +24750,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -24284,6 +24794,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -24305,6 +24817,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -24495,6 +25009,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param 'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs' next_level: Next level without a condition.
+               
+               The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
         pulumi.set(__self__, "entity_type", entity_type)
@@ -24516,6 +25032,8 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_level(self) -> Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel']:
         """
         Next level without a condition.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "next_level")
 
@@ -28801,6 +29319,12 @@ class SloIndicatorMonitorBasedEvaluationMonitorTriggers(dict):
         :param str monitor_id: ID of the monitor. Ex: `0000000000BCB3A4`
         :param str trigger_types: Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
                window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+               
+               [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+               
+               [2]: slo_folder.html.markdown
+               
+               [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
         """
         pulumi.set(__self__, "monitor_id", monitor_id)
         pulumi.set(__self__, "trigger_types", trigger_types)
@@ -28819,6 +29343,12 @@ class SloIndicatorMonitorBasedEvaluationMonitorTriggers(dict):
         """
         Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
         window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+
+        [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+
+        [2]: slo_folder.html.markdown
+
+        [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
         """
         return pulumi.get(self, "trigger_types")
 
@@ -28979,6 +29509,7 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
         :param bool use_row_count: Whether to use the row count. Defaults to false.
         :param str field: Field of log query output to compare against. To be used only for logs based data
                type when `use_row_count` is false.
+               
                type when `use_row_count` is false.
         """
         pulumi.set(__self__, "query", query)
@@ -29017,6 +29548,7 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
         """
         Field of log query output to compare against. To be used only for logs based data
         type when `use_row_count` is false.
+
         type when `use_row_count` is false.
         """
         return pulumi.get(self, "field")
@@ -29205,6 +29737,7 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
         :param bool use_row_count: Whether to use the row count. Defaults to false.
         :param str field: Field of log query output to compare against. To be used only for logs based data
                type when `use_row_count` is false.
+               
                type when `use_row_count` is false.
         """
         pulumi.set(__self__, "query", query)
@@ -29243,6 +29776,7 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
         """
         Field of log query output to compare against. To be used only for logs based data
         type when `use_row_count` is false.
+
         type when `use_row_count` is false.
         """
         return pulumi.get(self, "field")

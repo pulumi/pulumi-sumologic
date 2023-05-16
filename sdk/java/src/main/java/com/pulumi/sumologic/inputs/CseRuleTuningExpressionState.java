@@ -110,12 +110,16 @@ public final class CseRuleTuningExpressionState extends com.pulumi.resources.Res
     /**
      * List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="ruleIds")
     private @Nullable Output<List<String>> ruleIds;
 
     /**
      * @return List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+     * 
+     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> ruleIds() {
@@ -281,6 +285,8 @@ public final class CseRuleTuningExpressionState extends com.pulumi.resources.Res
         /**
          * @param ruleIds List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -292,6 +298,8 @@ public final class CseRuleTuningExpressionState extends com.pulumi.resources.Res
         /**
          * @param ruleIds List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -301,6 +309,8 @@ public final class CseRuleTuningExpressionState extends com.pulumi.resources.Res
 
         /**
          * @param ruleIds List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 

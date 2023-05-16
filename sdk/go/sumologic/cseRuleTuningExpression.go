@@ -71,6 +71,8 @@ type CseRuleTuningExpression struct {
 	// The name of the rule tuning expression.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	//
+	// The following attributes are exported:
 	RuleIds pulumi.StringArrayOutput `pulumi:"ruleIds"`
 }
 
@@ -134,6 +136,8 @@ type cseRuleTuningExpressionState struct {
 	// The name of the rule tuning expression.
 	Name *string `pulumi:"name"`
 	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	//
+	// The following attributes are exported:
 	RuleIds []string `pulumi:"ruleIds"`
 }
 
@@ -151,6 +155,8 @@ type CseRuleTuningExpressionState struct {
 	// The name of the rule tuning expression.
 	Name pulumi.StringPtrInput
 	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	//
+	// The following attributes are exported:
 	RuleIds pulumi.StringArrayInput
 }
 
@@ -172,6 +178,8 @@ type cseRuleTuningExpressionArgs struct {
 	// The name of the rule tuning expression.
 	Name *string `pulumi:"name"`
 	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	//
+	// The following attributes are exported:
 	RuleIds []string `pulumi:"ruleIds"`
 }
 
@@ -190,6 +198,8 @@ type CseRuleTuningExpressionArgs struct {
 	// The name of the rule tuning expression.
 	Name pulumi.StringPtrInput
 	// List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+	//
+	// The following attributes are exported:
 	RuleIds pulumi.StringArrayInput
 }
 
@@ -311,6 +321,8 @@ func (o CseRuleTuningExpressionOutput) Name() pulumi.StringOutput {
 }
 
 // List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
+//
+// The following attributes are exported:
 func (o CseRuleTuningExpressionOutput) RuleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseRuleTuningExpression) pulumi.StringArrayOutput { return v.RuleIds }).(pulumi.StringArrayOutput)
 }
