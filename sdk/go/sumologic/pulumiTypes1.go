@@ -2235,6 +2235,6480 @@ func (o LocalFileSourceFilterArrayOutput) Index(i pulumi.IntInput) LocalFileSour
 	}).(LocalFileSourceFilterOutput)
 }
 
+type LogSearchQueryParameter struct {
+	DataType string `pulumi:"dataType"`
+	// Description of the search.
+	Description *string `pulumi:"description"`
+	// Name of the search.
+	Name string `pulumi:"name"`
+	// Value of scheduled search parameter.
+	Value string `pulumi:"value"`
+}
+
+// LogSearchQueryParameterInput is an input type that accepts LogSearchQueryParameterArgs and LogSearchQueryParameterOutput values.
+// You can construct a concrete instance of `LogSearchQueryParameterInput` via:
+//
+//	LogSearchQueryParameterArgs{...}
+type LogSearchQueryParameterInput interface {
+	pulumi.Input
+
+	ToLogSearchQueryParameterOutput() LogSearchQueryParameterOutput
+	ToLogSearchQueryParameterOutputWithContext(context.Context) LogSearchQueryParameterOutput
+}
+
+type LogSearchQueryParameterArgs struct {
+	DataType pulumi.StringInput `pulumi:"dataType"`
+	// Description of the search.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the search.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of scheduled search parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LogSearchQueryParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchQueryParameter)(nil)).Elem()
+}
+
+func (i LogSearchQueryParameterArgs) ToLogSearchQueryParameterOutput() LogSearchQueryParameterOutput {
+	return i.ToLogSearchQueryParameterOutputWithContext(context.Background())
+}
+
+func (i LogSearchQueryParameterArgs) ToLogSearchQueryParameterOutputWithContext(ctx context.Context) LogSearchQueryParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchQueryParameterOutput)
+}
+
+// LogSearchQueryParameterArrayInput is an input type that accepts LogSearchQueryParameterArray and LogSearchQueryParameterArrayOutput values.
+// You can construct a concrete instance of `LogSearchQueryParameterArrayInput` via:
+//
+//	LogSearchQueryParameterArray{ LogSearchQueryParameterArgs{...} }
+type LogSearchQueryParameterArrayInput interface {
+	pulumi.Input
+
+	ToLogSearchQueryParameterArrayOutput() LogSearchQueryParameterArrayOutput
+	ToLogSearchQueryParameterArrayOutputWithContext(context.Context) LogSearchQueryParameterArrayOutput
+}
+
+type LogSearchQueryParameterArray []LogSearchQueryParameterInput
+
+func (LogSearchQueryParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogSearchQueryParameter)(nil)).Elem()
+}
+
+func (i LogSearchQueryParameterArray) ToLogSearchQueryParameterArrayOutput() LogSearchQueryParameterArrayOutput {
+	return i.ToLogSearchQueryParameterArrayOutputWithContext(context.Background())
+}
+
+func (i LogSearchQueryParameterArray) ToLogSearchQueryParameterArrayOutputWithContext(ctx context.Context) LogSearchQueryParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchQueryParameterArrayOutput)
+}
+
+type LogSearchQueryParameterOutput struct{ *pulumi.OutputState }
+
+func (LogSearchQueryParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchQueryParameter)(nil)).Elem()
+}
+
+func (o LogSearchQueryParameterOutput) ToLogSearchQueryParameterOutput() LogSearchQueryParameterOutput {
+	return o
+}
+
+func (o LogSearchQueryParameterOutput) ToLogSearchQueryParameterOutputWithContext(ctx context.Context) LogSearchQueryParameterOutput {
+	return o
+}
+
+func (o LogSearchQueryParameterOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// Description of the search.
+func (o LogSearchQueryParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogSearchQueryParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the search.
+func (o LogSearchQueryParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of scheduled search parameter.
+func (o LogSearchQueryParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LogSearchQueryParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (LogSearchQueryParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogSearchQueryParameter)(nil)).Elem()
+}
+
+func (o LogSearchQueryParameterArrayOutput) ToLogSearchQueryParameterArrayOutput() LogSearchQueryParameterArrayOutput {
+	return o
+}
+
+func (o LogSearchQueryParameterArrayOutput) ToLogSearchQueryParameterArrayOutputWithContext(ctx context.Context) LogSearchQueryParameterArrayOutput {
+	return o
+}
+
+func (o LogSearchQueryParameterArrayOutput) Index(i pulumi.IntInput) LogSearchQueryParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSearchQueryParameter {
+		return vs[0].([]LogSearchQueryParameter)[vs[1].(int)]
+	}).(LogSearchQueryParameterOutput)
+}
+
+type LogSearchSchedule struct {
+	// Cron-like expression specifying the search's schedule. `scheduleType` must be set
+	// to "Custom", otherwise, `scheduleType` takes precedence over `cronExpression`.
+	CronExpression *string `pulumi:"cronExpression"`
+	// If enabled, emails are not sent out in case of errors with the search.
+	MuteErrorEmails *bool `pulumi:"muteErrorEmails"`
+	// Notification of the log search. See
+	// notification schema
+	Notification LogSearchScheduleNotification `pulumi:"notification"`
+	Parameters   []LogSearchScheduleParameter  `pulumi:"parameters"`
+	// Time range of the scheduled log search. See
+	// time range schema
+	ParseableTimeRange LogSearchScheduleParseableTimeRange `pulumi:"parseableTimeRange"`
+	// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+	// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+	// `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+	//
+	// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+	// to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+	ScheduleType string `pulumi:"scheduleType"`
+	// Threshold for when to send notification. See
+	// threshold schema
+	Threshold *LogSearchScheduleThreshold `pulumi:"threshold"`
+	// Time zone for the scheduled log search. Either an abbreviation such as "PST",
+	// a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+	// abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// LogSearchScheduleInput is an input type that accepts LogSearchScheduleArgs and LogSearchScheduleOutput values.
+// You can construct a concrete instance of `LogSearchScheduleInput` via:
+//
+//	LogSearchScheduleArgs{...}
+type LogSearchScheduleInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleOutput() LogSearchScheduleOutput
+	ToLogSearchScheduleOutputWithContext(context.Context) LogSearchScheduleOutput
+}
+
+type LogSearchScheduleArgs struct {
+	// Cron-like expression specifying the search's schedule. `scheduleType` must be set
+	// to "Custom", otherwise, `scheduleType` takes precedence over `cronExpression`.
+	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
+	// If enabled, emails are not sent out in case of errors with the search.
+	MuteErrorEmails pulumi.BoolPtrInput `pulumi:"muteErrorEmails"`
+	// Notification of the log search. See
+	// notification schema
+	Notification LogSearchScheduleNotificationInput   `pulumi:"notification"`
+	Parameters   LogSearchScheduleParameterArrayInput `pulumi:"parameters"`
+	// Time range of the scheduled log search. See
+	// time range schema
+	ParseableTimeRange LogSearchScheduleParseableTimeRangeInput `pulumi:"parseableTimeRange"`
+	// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+	// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+	// `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+	//
+	// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+	// to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+	ScheduleType pulumi.StringInput `pulumi:"scheduleType"`
+	// Threshold for when to send notification. See
+	// threshold schema
+	Threshold LogSearchScheduleThresholdPtrInput `pulumi:"threshold"`
+	// Time zone for the scheduled log search. Either an abbreviation such as "PST",
+	// a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+	// abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (LogSearchScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchSchedule)(nil)).Elem()
+}
+
+func (i LogSearchScheduleArgs) ToLogSearchScheduleOutput() LogSearchScheduleOutput {
+	return i.ToLogSearchScheduleOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleArgs) ToLogSearchScheduleOutputWithContext(ctx context.Context) LogSearchScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleOutput)
+}
+
+func (i LogSearchScheduleArgs) ToLogSearchSchedulePtrOutput() LogSearchSchedulePtrOutput {
+	return i.ToLogSearchSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleArgs) ToLogSearchSchedulePtrOutputWithContext(ctx context.Context) LogSearchSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleOutput).ToLogSearchSchedulePtrOutputWithContext(ctx)
+}
+
+// LogSearchSchedulePtrInput is an input type that accepts LogSearchScheduleArgs, LogSearchSchedulePtr and LogSearchSchedulePtrOutput values.
+// You can construct a concrete instance of `LogSearchSchedulePtrInput` via:
+//
+//	        LogSearchScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchSchedulePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchSchedulePtrOutput() LogSearchSchedulePtrOutput
+	ToLogSearchSchedulePtrOutputWithContext(context.Context) LogSearchSchedulePtrOutput
+}
+
+type logSearchSchedulePtrType LogSearchScheduleArgs
+
+func LogSearchSchedulePtr(v *LogSearchScheduleArgs) LogSearchSchedulePtrInput {
+	return (*logSearchSchedulePtrType)(v)
+}
+
+func (*logSearchSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchSchedule)(nil)).Elem()
+}
+
+func (i *logSearchSchedulePtrType) ToLogSearchSchedulePtrOutput() LogSearchSchedulePtrOutput {
+	return i.ToLogSearchSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchSchedulePtrType) ToLogSearchSchedulePtrOutputWithContext(ctx context.Context) LogSearchSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchSchedulePtrOutput)
+}
+
+type LogSearchScheduleOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchSchedule)(nil)).Elem()
+}
+
+func (o LogSearchScheduleOutput) ToLogSearchScheduleOutput() LogSearchScheduleOutput {
+	return o
+}
+
+func (o LogSearchScheduleOutput) ToLogSearchScheduleOutputWithContext(ctx context.Context) LogSearchScheduleOutput {
+	return o
+}
+
+func (o LogSearchScheduleOutput) ToLogSearchSchedulePtrOutput() LogSearchSchedulePtrOutput {
+	return o.ToLogSearchSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleOutput) ToLogSearchSchedulePtrOutputWithContext(ctx context.Context) LogSearchSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchSchedule) *LogSearchSchedule {
+		return &v
+	}).(LogSearchSchedulePtrOutput)
+}
+
+// Cron-like expression specifying the search's schedule. `scheduleType` must be set
+// to "Custom", otherwise, `scheduleType` takes precedence over `cronExpression`.
+func (o LogSearchScheduleOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogSearchSchedule) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+}
+
+// If enabled, emails are not sent out in case of errors with the search.
+func (o LogSearchScheduleOutput) MuteErrorEmails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogSearchSchedule) *bool { return v.MuteErrorEmails }).(pulumi.BoolPtrOutput)
+}
+
+// Notification of the log search. See
+// notification schema
+func (o LogSearchScheduleOutput) Notification() LogSearchScheduleNotificationOutput {
+	return o.ApplyT(func(v LogSearchSchedule) LogSearchScheduleNotification { return v.Notification }).(LogSearchScheduleNotificationOutput)
+}
+
+func (o LogSearchScheduleOutput) Parameters() LogSearchScheduleParameterArrayOutput {
+	return o.ApplyT(func(v LogSearchSchedule) []LogSearchScheduleParameter { return v.Parameters }).(LogSearchScheduleParameterArrayOutput)
+}
+
+// Time range of the scheduled log search. See
+// time range schema
+func (o LogSearchScheduleOutput) ParseableTimeRange() LogSearchScheduleParseableTimeRangeOutput {
+	return o.ApplyT(func(v LogSearchSchedule) LogSearchScheduleParseableTimeRange { return v.ParseableTimeRange }).(LogSearchScheduleParseableTimeRangeOutput)
+}
+
+// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+// `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+//
+// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+// to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+func (o LogSearchScheduleOutput) ScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchSchedule) string { return v.ScheduleType }).(pulumi.StringOutput)
+}
+
+// Threshold for when to send notification. See
+// threshold schema
+func (o LogSearchScheduleOutput) Threshold() LogSearchScheduleThresholdPtrOutput {
+	return o.ApplyT(func(v LogSearchSchedule) *LogSearchScheduleThreshold { return v.Threshold }).(LogSearchScheduleThresholdPtrOutput)
+}
+
+// Time zone for the scheduled log search. Either an abbreviation such as "PST",
+// a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+// abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+func (o LogSearchScheduleOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchSchedule) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type LogSearchSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchSchedule)(nil)).Elem()
+}
+
+func (o LogSearchSchedulePtrOutput) ToLogSearchSchedulePtrOutput() LogSearchSchedulePtrOutput {
+	return o
+}
+
+func (o LogSearchSchedulePtrOutput) ToLogSearchSchedulePtrOutputWithContext(ctx context.Context) LogSearchSchedulePtrOutput {
+	return o
+}
+
+func (o LogSearchSchedulePtrOutput) Elem() LogSearchScheduleOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) LogSearchSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchSchedule
+		return ret
+	}).(LogSearchScheduleOutput)
+}
+
+// Cron-like expression specifying the search's schedule. `scheduleType` must be set
+// to "Custom", otherwise, `scheduleType` takes precedence over `cronExpression`.
+func (o LogSearchSchedulePtrOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CronExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// If enabled, emails are not sent out in case of errors with the search.
+func (o LogSearchSchedulePtrOutput) MuteErrorEmails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MuteErrorEmails
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Notification of the log search. See
+// notification schema
+func (o LogSearchSchedulePtrOutput) Notification() LogSearchScheduleNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) *LogSearchScheduleNotification {
+		if v == nil {
+			return nil
+		}
+		return &v.Notification
+	}).(LogSearchScheduleNotificationPtrOutput)
+}
+
+func (o LogSearchSchedulePtrOutput) Parameters() LogSearchScheduleParameterArrayOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) []LogSearchScheduleParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(LogSearchScheduleParameterArrayOutput)
+}
+
+// Time range of the scheduled log search. See
+// time range schema
+func (o LogSearchSchedulePtrOutput) ParseableTimeRange() LogSearchScheduleParseableTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) *LogSearchScheduleParseableTimeRange {
+		if v == nil {
+			return nil
+		}
+		return &v.ParseableTimeRange
+	}).(LogSearchScheduleParseableTimeRangePtrOutput)
+}
+
+// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+// `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+//
+// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+// to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+func (o LogSearchSchedulePtrOutput) ScheduleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScheduleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Threshold for when to send notification. See
+// threshold schema
+func (o LogSearchSchedulePtrOutput) Threshold() LogSearchScheduleThresholdPtrOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) *LogSearchScheduleThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(LogSearchScheduleThresholdPtrOutput)
+}
+
+// Time zone for the scheduled log search. Either an abbreviation such as "PST",
+// a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+// abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+func (o LogSearchSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleNotification struct {
+	// Run an script action. See
+	// alertSearchNotification schema for details.
+	AlertSearchNotification *LogSearchScheduleNotificationAlertSearchNotification `pulumi:"alertSearchNotification"`
+	// Create a CSE signal with a scheduled search.
+	// See cseSignalNotification schema schema for details.
+	CseSignalNotification *LogSearchScheduleNotificationCseSignalNotification `pulumi:"cseSignalNotification"`
+	// Send an alert via email. See
+	// emailSearchNotification schema schema for details.
+	EmailSearchNotification *LogSearchScheduleNotificationEmailSearchNotification `pulumi:"emailSearchNotification"`
+	// Save results to a Lookup Table. See
+	// saveToLookupNotification schema schema for details.
+	SaveToLookupNotification *LogSearchScheduleNotificationSaveToLookupNotification `pulumi:"saveToLookupNotification"`
+	// Save results to an index. See
+	// saveToViewNotification schema schema for details.
+	SaveToViewNotification *LogSearchScheduleNotificationSaveToViewNotification `pulumi:"saveToViewNotification"`
+	// Send results to Service Now. See
+	// serviceNowSearchNotification schema schema for details.
+	ServiceNowSearchNotification *LogSearchScheduleNotificationServiceNowSearchNotification `pulumi:"serviceNowSearchNotification"`
+	// Send an alert via Webhook. See
+	// webhookSearchNotification schema schema for details.
+	WebhookSearchNotification *LogSearchScheduleNotificationWebhookSearchNotification `pulumi:"webhookSearchNotification"`
+}
+
+// LogSearchScheduleNotificationInput is an input type that accepts LogSearchScheduleNotificationArgs and LogSearchScheduleNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationInput` via:
+//
+//	LogSearchScheduleNotificationArgs{...}
+type LogSearchScheduleNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationOutput() LogSearchScheduleNotificationOutput
+	ToLogSearchScheduleNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationOutput
+}
+
+type LogSearchScheduleNotificationArgs struct {
+	// Run an script action. See
+	// alertSearchNotification schema for details.
+	AlertSearchNotification LogSearchScheduleNotificationAlertSearchNotificationPtrInput `pulumi:"alertSearchNotification"`
+	// Create a CSE signal with a scheduled search.
+	// See cseSignalNotification schema schema for details.
+	CseSignalNotification LogSearchScheduleNotificationCseSignalNotificationPtrInput `pulumi:"cseSignalNotification"`
+	// Send an alert via email. See
+	// emailSearchNotification schema schema for details.
+	EmailSearchNotification LogSearchScheduleNotificationEmailSearchNotificationPtrInput `pulumi:"emailSearchNotification"`
+	// Save results to a Lookup Table. See
+	// saveToLookupNotification schema schema for details.
+	SaveToLookupNotification LogSearchScheduleNotificationSaveToLookupNotificationPtrInput `pulumi:"saveToLookupNotification"`
+	// Save results to an index. See
+	// saveToViewNotification schema schema for details.
+	SaveToViewNotification LogSearchScheduleNotificationSaveToViewNotificationPtrInput `pulumi:"saveToViewNotification"`
+	// Send results to Service Now. See
+	// serviceNowSearchNotification schema schema for details.
+	ServiceNowSearchNotification LogSearchScheduleNotificationServiceNowSearchNotificationPtrInput `pulumi:"serviceNowSearchNotification"`
+	// Send an alert via Webhook. See
+	// webhookSearchNotification schema schema for details.
+	WebhookSearchNotification LogSearchScheduleNotificationWebhookSearchNotificationPtrInput `pulumi:"webhookSearchNotification"`
+}
+
+func (LogSearchScheduleNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationArgs) ToLogSearchScheduleNotificationOutput() LogSearchScheduleNotificationOutput {
+	return i.ToLogSearchScheduleNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationArgs) ToLogSearchScheduleNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationArgs) ToLogSearchScheduleNotificationPtrOutput() LogSearchScheduleNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationArgs) ToLogSearchScheduleNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationOutput).ToLogSearchScheduleNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationArgs, LogSearchScheduleNotificationPtr and LogSearchScheduleNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationPtrOutput() LogSearchScheduleNotificationPtrOutput
+	ToLogSearchScheduleNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationPtrType LogSearchScheduleNotificationArgs
+
+func LogSearchScheduleNotificationPtr(v *LogSearchScheduleNotificationArgs) LogSearchScheduleNotificationPtrInput {
+	return (*logSearchScheduleNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationPtrType) ToLogSearchScheduleNotificationPtrOutput() LogSearchScheduleNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationPtrType) ToLogSearchScheduleNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationOutput) ToLogSearchScheduleNotificationOutput() LogSearchScheduleNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationOutput) ToLogSearchScheduleNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationOutput) ToLogSearchScheduleNotificationPtrOutput() LogSearchScheduleNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationOutput) ToLogSearchScheduleNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotification) *LogSearchScheduleNotification {
+		return &v
+	}).(LogSearchScheduleNotificationPtrOutput)
+}
+
+// Run an script action. See
+// alertSearchNotification schema for details.
+func (o LogSearchScheduleNotificationOutput) AlertSearchNotification() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationAlertSearchNotification {
+		return v.AlertSearchNotification
+	}).(LogSearchScheduleNotificationAlertSearchNotificationPtrOutput)
+}
+
+// Create a CSE signal with a scheduled search.
+// See cseSignalNotification schema schema for details.
+func (o LogSearchScheduleNotificationOutput) CseSignalNotification() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationCseSignalNotification {
+		return v.CseSignalNotification
+	}).(LogSearchScheduleNotificationCseSignalNotificationPtrOutput)
+}
+
+// Send an alert via email. See
+// emailSearchNotification schema schema for details.
+func (o LogSearchScheduleNotificationOutput) EmailSearchNotification() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationEmailSearchNotification {
+		return v.EmailSearchNotification
+	}).(LogSearchScheduleNotificationEmailSearchNotificationPtrOutput)
+}
+
+// Save results to a Lookup Table. See
+// saveToLookupNotification schema schema for details.
+func (o LogSearchScheduleNotificationOutput) SaveToLookupNotification() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToLookupNotification {
+		return v.SaveToLookupNotification
+	}).(LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput)
+}
+
+// Save results to an index. See
+// saveToViewNotification schema schema for details.
+func (o LogSearchScheduleNotificationOutput) SaveToViewNotification() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToViewNotification {
+		return v.SaveToViewNotification
+	}).(LogSearchScheduleNotificationSaveToViewNotificationPtrOutput)
+}
+
+// Send results to Service Now. See
+// serviceNowSearchNotification schema schema for details.
+func (o LogSearchScheduleNotificationOutput) ServiceNowSearchNotification() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationServiceNowSearchNotification {
+		return v.ServiceNowSearchNotification
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput)
+}
+
+// Send an alert via Webhook. See
+// webhookSearchNotification schema schema for details.
+func (o LogSearchScheduleNotificationOutput) WebhookSearchNotification() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationWebhookSearchNotification {
+		return v.WebhookSearchNotification
+	}).(LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationPtrOutput) ToLogSearchScheduleNotificationPtrOutput() LogSearchScheduleNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationPtrOutput) ToLogSearchScheduleNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationPtrOutput) Elem() LogSearchScheduleNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) LogSearchScheduleNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotification
+		return ret
+	}).(LogSearchScheduleNotificationOutput)
+}
+
+// Run an script action. See
+// alertSearchNotification schema for details.
+func (o LogSearchScheduleNotificationPtrOutput) AlertSearchNotification() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationAlertSearchNotification {
+		if v == nil {
+			return nil
+		}
+		return v.AlertSearchNotification
+	}).(LogSearchScheduleNotificationAlertSearchNotificationPtrOutput)
+}
+
+// Create a CSE signal with a scheduled search.
+// See cseSignalNotification schema schema for details.
+func (o LogSearchScheduleNotificationPtrOutput) CseSignalNotification() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationCseSignalNotification {
+		if v == nil {
+			return nil
+		}
+		return v.CseSignalNotification
+	}).(LogSearchScheduleNotificationCseSignalNotificationPtrOutput)
+}
+
+// Send an alert via email. See
+// emailSearchNotification schema schema for details.
+func (o LogSearchScheduleNotificationPtrOutput) EmailSearchNotification() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationEmailSearchNotification {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSearchNotification
+	}).(LogSearchScheduleNotificationEmailSearchNotificationPtrOutput)
+}
+
+// Save results to a Lookup Table. See
+// saveToLookupNotification schema schema for details.
+func (o LogSearchScheduleNotificationPtrOutput) SaveToLookupNotification() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToLookupNotification {
+		if v == nil {
+			return nil
+		}
+		return v.SaveToLookupNotification
+	}).(LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput)
+}
+
+// Save results to an index. See
+// saveToViewNotification schema schema for details.
+func (o LogSearchScheduleNotificationPtrOutput) SaveToViewNotification() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToViewNotification {
+		if v == nil {
+			return nil
+		}
+		return v.SaveToViewNotification
+	}).(LogSearchScheduleNotificationSaveToViewNotificationPtrOutput)
+}
+
+// Send results to Service Now. See
+// serviceNowSearchNotification schema schema for details.
+func (o LogSearchScheduleNotificationPtrOutput) ServiceNowSearchNotification() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationServiceNowSearchNotification {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceNowSearchNotification
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput)
+}
+
+// Send an alert via Webhook. See
+// webhookSearchNotification schema schema for details.
+func (o LogSearchScheduleNotificationPtrOutput) WebhookSearchNotification() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationWebhookSearchNotification {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookSearchNotification
+	}).(LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationAlertSearchNotification struct {
+	// Identifier of the collector's source.
+	SourceId string `pulumi:"sourceId"`
+}
+
+// LogSearchScheduleNotificationAlertSearchNotificationInput is an input type that accepts LogSearchScheduleNotificationAlertSearchNotificationArgs and LogSearchScheduleNotificationAlertSearchNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationAlertSearchNotificationInput` via:
+//
+//	LogSearchScheduleNotificationAlertSearchNotificationArgs{...}
+type LogSearchScheduleNotificationAlertSearchNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationAlertSearchNotificationOutput() LogSearchScheduleNotificationAlertSearchNotificationOutput
+	ToLogSearchScheduleNotificationAlertSearchNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationAlertSearchNotificationOutput
+}
+
+type LogSearchScheduleNotificationAlertSearchNotificationArgs struct {
+	// Identifier of the collector's source.
+	SourceId pulumi.StringInput `pulumi:"sourceId"`
+}
+
+func (LogSearchScheduleNotificationAlertSearchNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationAlertSearchNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationAlertSearchNotificationArgs) ToLogSearchScheduleNotificationAlertSearchNotificationOutput() LogSearchScheduleNotificationAlertSearchNotificationOutput {
+	return i.ToLogSearchScheduleNotificationAlertSearchNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationAlertSearchNotificationArgs) ToLogSearchScheduleNotificationAlertSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationAlertSearchNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationAlertSearchNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationAlertSearchNotificationArgs) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutput() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationAlertSearchNotificationArgs) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationAlertSearchNotificationOutput).ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationAlertSearchNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationAlertSearchNotificationArgs, LogSearchScheduleNotificationAlertSearchNotificationPtr and LogSearchScheduleNotificationAlertSearchNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationAlertSearchNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationAlertSearchNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationAlertSearchNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutput() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput
+	ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationAlertSearchNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationAlertSearchNotificationPtrType LogSearchScheduleNotificationAlertSearchNotificationArgs
+
+func LogSearchScheduleNotificationAlertSearchNotificationPtr(v *LogSearchScheduleNotificationAlertSearchNotificationArgs) LogSearchScheduleNotificationAlertSearchNotificationPtrInput {
+	return (*logSearchScheduleNotificationAlertSearchNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationAlertSearchNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationAlertSearchNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationAlertSearchNotificationPtrType) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutput() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationAlertSearchNotificationPtrType) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationAlertSearchNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationAlertSearchNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationAlertSearchNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationAlertSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationAlertSearchNotificationOutput) ToLogSearchScheduleNotificationAlertSearchNotificationOutput() LogSearchScheduleNotificationAlertSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationAlertSearchNotificationOutput) ToLogSearchScheduleNotificationAlertSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationAlertSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationAlertSearchNotificationOutput) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutput() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationAlertSearchNotificationOutput) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationAlertSearchNotification) *LogSearchScheduleNotificationAlertSearchNotification {
+		return &v
+	}).(LogSearchScheduleNotificationAlertSearchNotificationPtrOutput)
+}
+
+// Identifier of the collector's source.
+func (o LogSearchScheduleNotificationAlertSearchNotificationOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationAlertSearchNotification) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleNotificationAlertSearchNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationAlertSearchNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationAlertSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationAlertSearchNotificationPtrOutput) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutput() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationAlertSearchNotificationPtrOutput) ToLogSearchScheduleNotificationAlertSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationAlertSearchNotificationPtrOutput) Elem() LogSearchScheduleNotificationAlertSearchNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationAlertSearchNotification) LogSearchScheduleNotificationAlertSearchNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationAlertSearchNotification
+		return ret
+	}).(LogSearchScheduleNotificationAlertSearchNotificationOutput)
+}
+
+// Identifier of the collector's source.
+func (o LogSearchScheduleNotificationAlertSearchNotificationPtrOutput) SourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationAlertSearchNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleNotificationCseSignalNotification struct {
+	// Name of the Cloud SIEM Enterprise Record to be created.
+	RecordType string `pulumi:"recordType"`
+}
+
+// LogSearchScheduleNotificationCseSignalNotificationInput is an input type that accepts LogSearchScheduleNotificationCseSignalNotificationArgs and LogSearchScheduleNotificationCseSignalNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationCseSignalNotificationInput` via:
+//
+//	LogSearchScheduleNotificationCseSignalNotificationArgs{...}
+type LogSearchScheduleNotificationCseSignalNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationCseSignalNotificationOutput() LogSearchScheduleNotificationCseSignalNotificationOutput
+	ToLogSearchScheduleNotificationCseSignalNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationCseSignalNotificationOutput
+}
+
+type LogSearchScheduleNotificationCseSignalNotificationArgs struct {
+	// Name of the Cloud SIEM Enterprise Record to be created.
+	RecordType pulumi.StringInput `pulumi:"recordType"`
+}
+
+func (LogSearchScheduleNotificationCseSignalNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationCseSignalNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationCseSignalNotificationArgs) ToLogSearchScheduleNotificationCseSignalNotificationOutput() LogSearchScheduleNotificationCseSignalNotificationOutput {
+	return i.ToLogSearchScheduleNotificationCseSignalNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationCseSignalNotificationArgs) ToLogSearchScheduleNotificationCseSignalNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationCseSignalNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationCseSignalNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationCseSignalNotificationArgs) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutput() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationCseSignalNotificationArgs) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationCseSignalNotificationOutput).ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationCseSignalNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationCseSignalNotificationArgs, LogSearchScheduleNotificationCseSignalNotificationPtr and LogSearchScheduleNotificationCseSignalNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationCseSignalNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationCseSignalNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationCseSignalNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationCseSignalNotificationPtrOutput() LogSearchScheduleNotificationCseSignalNotificationPtrOutput
+	ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationCseSignalNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationCseSignalNotificationPtrType LogSearchScheduleNotificationCseSignalNotificationArgs
+
+func LogSearchScheduleNotificationCseSignalNotificationPtr(v *LogSearchScheduleNotificationCseSignalNotificationArgs) LogSearchScheduleNotificationCseSignalNotificationPtrInput {
+	return (*logSearchScheduleNotificationCseSignalNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationCseSignalNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationCseSignalNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationCseSignalNotificationPtrType) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutput() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationCseSignalNotificationPtrType) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationCseSignalNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationCseSignalNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationCseSignalNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationCseSignalNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationCseSignalNotificationOutput) ToLogSearchScheduleNotificationCseSignalNotificationOutput() LogSearchScheduleNotificationCseSignalNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationCseSignalNotificationOutput) ToLogSearchScheduleNotificationCseSignalNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationCseSignalNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationCseSignalNotificationOutput) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutput() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationCseSignalNotificationOutput) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationCseSignalNotification) *LogSearchScheduleNotificationCseSignalNotification {
+		return &v
+	}).(LogSearchScheduleNotificationCseSignalNotificationPtrOutput)
+}
+
+// Name of the Cloud SIEM Enterprise Record to be created.
+func (o LogSearchScheduleNotificationCseSignalNotificationOutput) RecordType() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationCseSignalNotification) string { return v.RecordType }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleNotificationCseSignalNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationCseSignalNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationCseSignalNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationCseSignalNotificationPtrOutput) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutput() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationCseSignalNotificationPtrOutput) ToLogSearchScheduleNotificationCseSignalNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationCseSignalNotificationPtrOutput) Elem() LogSearchScheduleNotificationCseSignalNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationCseSignalNotification) LogSearchScheduleNotificationCseSignalNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationCseSignalNotification
+		return ret
+	}).(LogSearchScheduleNotificationCseSignalNotificationOutput)
+}
+
+// Name of the Cloud SIEM Enterprise Record to be created.
+func (o LogSearchScheduleNotificationCseSignalNotificationPtrOutput) RecordType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationCseSignalNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RecordType
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleNotificationEmailSearchNotification struct {
+	// If the search results should be included in the notification email
+	// as a CSV attachment.
+	IncludeCsvAttachment *bool `pulumi:"includeCsvAttachment"`
+	// If the search result histogram should be included in the notification email.
+	IncludeHistogram *bool `pulumi:"includeHistogram"`
+	// If the search query should be included in the notification email.
+	IncludeQuery *bool `pulumi:"includeQuery"`
+	// If the search result set should be included in the notification email.
+	IncludeResultSet *bool `pulumi:"includeResultSet"`
+	// Subject of the email. If the notification is scheduled with a threshold,
+	// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+	// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+	SubjectTemplate *string `pulumi:"subjectTemplate"`
+	// A list of email recipients.
+	ToLists []string `pulumi:"toLists"`
+}
+
+// LogSearchScheduleNotificationEmailSearchNotificationInput is an input type that accepts LogSearchScheduleNotificationEmailSearchNotificationArgs and LogSearchScheduleNotificationEmailSearchNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationEmailSearchNotificationInput` via:
+//
+//	LogSearchScheduleNotificationEmailSearchNotificationArgs{...}
+type LogSearchScheduleNotificationEmailSearchNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationEmailSearchNotificationOutput() LogSearchScheduleNotificationEmailSearchNotificationOutput
+	ToLogSearchScheduleNotificationEmailSearchNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationEmailSearchNotificationOutput
+}
+
+type LogSearchScheduleNotificationEmailSearchNotificationArgs struct {
+	// If the search results should be included in the notification email
+	// as a CSV attachment.
+	IncludeCsvAttachment pulumi.BoolPtrInput `pulumi:"includeCsvAttachment"`
+	// If the search result histogram should be included in the notification email.
+	IncludeHistogram pulumi.BoolPtrInput `pulumi:"includeHistogram"`
+	// If the search query should be included in the notification email.
+	IncludeQuery pulumi.BoolPtrInput `pulumi:"includeQuery"`
+	// If the search result set should be included in the notification email.
+	IncludeResultSet pulumi.BoolPtrInput `pulumi:"includeResultSet"`
+	// Subject of the email. If the notification is scheduled with a threshold,
+	// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+	// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+	SubjectTemplate pulumi.StringPtrInput `pulumi:"subjectTemplate"`
+	// A list of email recipients.
+	ToLists pulumi.StringArrayInput `pulumi:"toLists"`
+}
+
+func (LogSearchScheduleNotificationEmailSearchNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationEmailSearchNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationEmailSearchNotificationArgs) ToLogSearchScheduleNotificationEmailSearchNotificationOutput() LogSearchScheduleNotificationEmailSearchNotificationOutput {
+	return i.ToLogSearchScheduleNotificationEmailSearchNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationEmailSearchNotificationArgs) ToLogSearchScheduleNotificationEmailSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationEmailSearchNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationEmailSearchNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationEmailSearchNotificationArgs) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutput() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationEmailSearchNotificationArgs) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationEmailSearchNotificationOutput).ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationEmailSearchNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationEmailSearchNotificationArgs, LogSearchScheduleNotificationEmailSearchNotificationPtr and LogSearchScheduleNotificationEmailSearchNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationEmailSearchNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationEmailSearchNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationEmailSearchNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutput() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput
+	ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationEmailSearchNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationEmailSearchNotificationPtrType LogSearchScheduleNotificationEmailSearchNotificationArgs
+
+func LogSearchScheduleNotificationEmailSearchNotificationPtr(v *LogSearchScheduleNotificationEmailSearchNotificationArgs) LogSearchScheduleNotificationEmailSearchNotificationPtrInput {
+	return (*logSearchScheduleNotificationEmailSearchNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationEmailSearchNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationEmailSearchNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationEmailSearchNotificationPtrType) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutput() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationEmailSearchNotificationPtrType) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationEmailSearchNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationEmailSearchNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationEmailSearchNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationEmailSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) ToLogSearchScheduleNotificationEmailSearchNotificationOutput() LogSearchScheduleNotificationEmailSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) ToLogSearchScheduleNotificationEmailSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationEmailSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutput() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationEmailSearchNotification) *LogSearchScheduleNotificationEmailSearchNotification {
+		return &v
+	}).(LogSearchScheduleNotificationEmailSearchNotificationPtrOutput)
+}
+
+// If the search results should be included in the notification email
+// as a CSV attachment.
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) IncludeCsvAttachment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) *bool { return v.IncludeCsvAttachment }).(pulumi.BoolPtrOutput)
+}
+
+// If the search result histogram should be included in the notification email.
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) IncludeHistogram() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) *bool { return v.IncludeHistogram }).(pulumi.BoolPtrOutput)
+}
+
+// If the search query should be included in the notification email.
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) IncludeQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) *bool { return v.IncludeQuery }).(pulumi.BoolPtrOutput)
+}
+
+// If the search result set should be included in the notification email.
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) IncludeResultSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) *bool { return v.IncludeResultSet }).(pulumi.BoolPtrOutput)
+}
+
+// Subject of the email. If the notification is scheduled with a threshold,
+// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) SubjectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) *string { return v.SubjectTemplate }).(pulumi.StringPtrOutput)
+}
+
+// A list of email recipients.
+func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) ToLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) []string { return v.ToLists }).(pulumi.StringArrayOutput)
+}
+
+type LogSearchScheduleNotificationEmailSearchNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationEmailSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutput() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) ToLogSearchScheduleNotificationEmailSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) Elem() LogSearchScheduleNotificationEmailSearchNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) LogSearchScheduleNotificationEmailSearchNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationEmailSearchNotification
+		return ret
+	}).(LogSearchScheduleNotificationEmailSearchNotificationOutput)
+}
+
+// If the search results should be included in the notification email
+// as a CSV attachment.
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) IncludeCsvAttachment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeCsvAttachment
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the search result histogram should be included in the notification email.
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) IncludeHistogram() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeHistogram
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the search query should be included in the notification email.
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) IncludeQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the search result set should be included in the notification email.
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) IncludeResultSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeResultSet
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Subject of the email. If the notification is scheduled with a threshold,
+// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) SubjectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of email recipients.
+func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) ToLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ToLists
+	}).(pulumi.StringArrayOutput)
+}
+
+type LogSearchScheduleNotificationSaveToLookupNotification struct {
+	// Whether to merge the file contents with existing data in the lookup table.
+	IsLookupMergeOperation bool `pulumi:"isLookupMergeOperation"`
+	// Path of the lookup table to save the results to.
+	LookupFilePath string `pulumi:"lookupFilePath"`
+}
+
+// LogSearchScheduleNotificationSaveToLookupNotificationInput is an input type that accepts LogSearchScheduleNotificationSaveToLookupNotificationArgs and LogSearchScheduleNotificationSaveToLookupNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationSaveToLookupNotificationInput` via:
+//
+//	LogSearchScheduleNotificationSaveToLookupNotificationArgs{...}
+type LogSearchScheduleNotificationSaveToLookupNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationSaveToLookupNotificationOutput() LogSearchScheduleNotificationSaveToLookupNotificationOutput
+	ToLogSearchScheduleNotificationSaveToLookupNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationSaveToLookupNotificationOutput
+}
+
+type LogSearchScheduleNotificationSaveToLookupNotificationArgs struct {
+	// Whether to merge the file contents with existing data in the lookup table.
+	IsLookupMergeOperation pulumi.BoolInput `pulumi:"isLookupMergeOperation"`
+	// Path of the lookup table to save the results to.
+	LookupFilePath pulumi.StringInput `pulumi:"lookupFilePath"`
+}
+
+func (LogSearchScheduleNotificationSaveToLookupNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationSaveToLookupNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationSaveToLookupNotificationArgs) ToLogSearchScheduleNotificationSaveToLookupNotificationOutput() LogSearchScheduleNotificationSaveToLookupNotificationOutput {
+	return i.ToLogSearchScheduleNotificationSaveToLookupNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationSaveToLookupNotificationArgs) ToLogSearchScheduleNotificationSaveToLookupNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToLookupNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationSaveToLookupNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationSaveToLookupNotificationArgs) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutput() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationSaveToLookupNotificationArgs) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationSaveToLookupNotificationOutput).ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationSaveToLookupNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationSaveToLookupNotificationArgs, LogSearchScheduleNotificationSaveToLookupNotificationPtr and LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationSaveToLookupNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationSaveToLookupNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationSaveToLookupNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutput() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput
+	ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationSaveToLookupNotificationPtrType LogSearchScheduleNotificationSaveToLookupNotificationArgs
+
+func LogSearchScheduleNotificationSaveToLookupNotificationPtr(v *LogSearchScheduleNotificationSaveToLookupNotificationArgs) LogSearchScheduleNotificationSaveToLookupNotificationPtrInput {
+	return (*logSearchScheduleNotificationSaveToLookupNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationSaveToLookupNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationSaveToLookupNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationSaveToLookupNotificationPtrType) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutput() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationSaveToLookupNotificationPtrType) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationSaveToLookupNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationSaveToLookupNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationSaveToLookupNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationSaveToLookupNotificationOutput) ToLogSearchScheduleNotificationSaveToLookupNotificationOutput() LogSearchScheduleNotificationSaveToLookupNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToLookupNotificationOutput) ToLogSearchScheduleNotificationSaveToLookupNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToLookupNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToLookupNotificationOutput) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutput() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationSaveToLookupNotificationOutput) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationSaveToLookupNotification) *LogSearchScheduleNotificationSaveToLookupNotification {
+		return &v
+	}).(LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput)
+}
+
+// Whether to merge the file contents with existing data in the lookup table.
+func (o LogSearchScheduleNotificationSaveToLookupNotificationOutput) IsLookupMergeOperation() pulumi.BoolOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationSaveToLookupNotification) bool { return v.IsLookupMergeOperation }).(pulumi.BoolOutput)
+}
+
+// Path of the lookup table to save the results to.
+func (o LogSearchScheduleNotificationSaveToLookupNotificationOutput) LookupFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationSaveToLookupNotification) string { return v.LookupFilePath }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationSaveToLookupNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutput() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput) ToLogSearchScheduleNotificationSaveToLookupNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput) Elem() LogSearchScheduleNotificationSaveToLookupNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationSaveToLookupNotification) LogSearchScheduleNotificationSaveToLookupNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationSaveToLookupNotification
+		return ret
+	}).(LogSearchScheduleNotificationSaveToLookupNotificationOutput)
+}
+
+// Whether to merge the file contents with existing data in the lookup table.
+func (o LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput) IsLookupMergeOperation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationSaveToLookupNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsLookupMergeOperation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Path of the lookup table to save the results to.
+func (o LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput) LookupFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationSaveToLookupNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LookupFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleNotificationSaveToViewNotification struct {
+	// Name of the View(Index) to save the results to.
+	ViewName string `pulumi:"viewName"`
+}
+
+// LogSearchScheduleNotificationSaveToViewNotificationInput is an input type that accepts LogSearchScheduleNotificationSaveToViewNotificationArgs and LogSearchScheduleNotificationSaveToViewNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationSaveToViewNotificationInput` via:
+//
+//	LogSearchScheduleNotificationSaveToViewNotificationArgs{...}
+type LogSearchScheduleNotificationSaveToViewNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationSaveToViewNotificationOutput() LogSearchScheduleNotificationSaveToViewNotificationOutput
+	ToLogSearchScheduleNotificationSaveToViewNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationSaveToViewNotificationOutput
+}
+
+type LogSearchScheduleNotificationSaveToViewNotificationArgs struct {
+	// Name of the View(Index) to save the results to.
+	ViewName pulumi.StringInput `pulumi:"viewName"`
+}
+
+func (LogSearchScheduleNotificationSaveToViewNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationSaveToViewNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationSaveToViewNotificationArgs) ToLogSearchScheduleNotificationSaveToViewNotificationOutput() LogSearchScheduleNotificationSaveToViewNotificationOutput {
+	return i.ToLogSearchScheduleNotificationSaveToViewNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationSaveToViewNotificationArgs) ToLogSearchScheduleNotificationSaveToViewNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToViewNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationSaveToViewNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationSaveToViewNotificationArgs) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutput() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationSaveToViewNotificationArgs) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationSaveToViewNotificationOutput).ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationSaveToViewNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationSaveToViewNotificationArgs, LogSearchScheduleNotificationSaveToViewNotificationPtr and LogSearchScheduleNotificationSaveToViewNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationSaveToViewNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationSaveToViewNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationSaveToViewNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutput() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput
+	ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationSaveToViewNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationSaveToViewNotificationPtrType LogSearchScheduleNotificationSaveToViewNotificationArgs
+
+func LogSearchScheduleNotificationSaveToViewNotificationPtr(v *LogSearchScheduleNotificationSaveToViewNotificationArgs) LogSearchScheduleNotificationSaveToViewNotificationPtrInput {
+	return (*logSearchScheduleNotificationSaveToViewNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationSaveToViewNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationSaveToViewNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationSaveToViewNotificationPtrType) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutput() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationSaveToViewNotificationPtrType) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationSaveToViewNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationSaveToViewNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationSaveToViewNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationSaveToViewNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationSaveToViewNotificationOutput) ToLogSearchScheduleNotificationSaveToViewNotificationOutput() LogSearchScheduleNotificationSaveToViewNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToViewNotificationOutput) ToLogSearchScheduleNotificationSaveToViewNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToViewNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToViewNotificationOutput) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutput() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationSaveToViewNotificationOutput) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationSaveToViewNotification) *LogSearchScheduleNotificationSaveToViewNotification {
+		return &v
+	}).(LogSearchScheduleNotificationSaveToViewNotificationPtrOutput)
+}
+
+// Name of the View(Index) to save the results to.
+func (o LogSearchScheduleNotificationSaveToViewNotificationOutput) ViewName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationSaveToViewNotification) string { return v.ViewName }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleNotificationSaveToViewNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationSaveToViewNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationSaveToViewNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationSaveToViewNotificationPtrOutput) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutput() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToViewNotificationPtrOutput) ToLogSearchScheduleNotificationSaveToViewNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationSaveToViewNotificationPtrOutput) Elem() LogSearchScheduleNotificationSaveToViewNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationSaveToViewNotification) LogSearchScheduleNotificationSaveToViewNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationSaveToViewNotification
+		return ret
+	}).(LogSearchScheduleNotificationSaveToViewNotificationOutput)
+}
+
+// Name of the View(Index) to save the results to.
+func (o LogSearchScheduleNotificationSaveToViewNotificationPtrOutput) ViewName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationSaveToViewNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ViewName
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotification struct {
+	// Service Now Identifier.
+	ExternalId string `pulumi:"externalId"`
+	// Service Now fields.
+	Fields *LogSearchScheduleNotificationServiceNowSearchNotificationFields `pulumi:"fields"`
+}
+
+// LogSearchScheduleNotificationServiceNowSearchNotificationInput is an input type that accepts LogSearchScheduleNotificationServiceNowSearchNotificationArgs and LogSearchScheduleNotificationServiceNowSearchNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationServiceNowSearchNotificationInput` via:
+//
+//	LogSearchScheduleNotificationServiceNowSearchNotificationArgs{...}
+type LogSearchScheduleNotificationServiceNowSearchNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationOutput() LogSearchScheduleNotificationServiceNowSearchNotificationOutput
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationOutput
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotificationArgs struct {
+	// Service Now Identifier.
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// Service Now fields.
+	Fields LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrInput `pulumi:"fields"`
+}
+
+func (LogSearchScheduleNotificationServiceNowSearchNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationOutput() LogSearchScheduleNotificationServiceNowSearchNotificationOutput {
+	return i.ToLogSearchScheduleNotificationServiceNowSearchNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationServiceNowSearchNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationServiceNowSearchNotificationOutput).ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationServiceNowSearchNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationServiceNowSearchNotificationArgs, LogSearchScheduleNotificationServiceNowSearchNotificationPtr and LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationServiceNowSearchNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationServiceNowSearchNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationServiceNowSearchNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationServiceNowSearchNotificationPtrType LogSearchScheduleNotificationServiceNowSearchNotificationArgs
+
+func LogSearchScheduleNotificationServiceNowSearchNotificationPtr(v *LogSearchScheduleNotificationServiceNowSearchNotificationArgs) LogSearchScheduleNotificationServiceNowSearchNotificationPtrInput {
+	return (*logSearchScheduleNotificationServiceNowSearchNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationServiceNowSearchNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationServiceNowSearchNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationServiceNowSearchNotificationPtrType) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationServiceNowSearchNotificationPtrType) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationServiceNowSearchNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationOutput() LogSearchScheduleNotificationServiceNowSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationServiceNowSearchNotification) *LogSearchScheduleNotificationServiceNowSearchNotification {
+		return &v
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput)
+}
+
+// Service Now Identifier.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotification) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// Service Now fields.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) Fields() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotification) *LogSearchScheduleNotificationServiceNowSearchNotificationFields {
+		return v.Fields
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput)
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationServiceNowSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) Elem() LogSearchScheduleNotificationServiceNowSearchNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotification) LogSearchScheduleNotificationServiceNowSearchNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationServiceNowSearchNotification
+		return ret
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationOutput)
+}
+
+// Service Now Identifier.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Now fields.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) Fields() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotification) *LogSearchScheduleNotificationServiceNowSearchNotificationFields {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput)
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotificationFields struct {
+	// The category that the event source uses to identify the event.
+	EventType *string `pulumi:"eventType"`
+	// The physical or virtual device on which the event occurred.
+	Node *string `pulumi:"node"`
+	// The component on the node to which the event applies.
+	Resource *string `pulumi:"resource"`
+	// An integer value representing the severity of the alert. Supported values are:
+	// * 0 for Clear
+	// * 1 for Critical
+	// * 2 for Major
+	// * 3 for Minor
+	// * 4 for Warning
+	Severity *int `pulumi:"severity"`
+}
+
+// LogSearchScheduleNotificationServiceNowSearchNotificationFieldsInput is an input type that accepts LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs and LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationServiceNowSearchNotificationFieldsInput` via:
+//
+//	LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs{...}
+type LogSearchScheduleNotificationServiceNowSearchNotificationFieldsInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutputWithContext(context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs struct {
+	// The category that the event source uses to identify the event.
+	EventType pulumi.StringPtrInput `pulumi:"eventType"`
+	// The physical or virtual device on which the event occurred.
+	Node pulumi.StringPtrInput `pulumi:"node"`
+	// The component on the node to which the event applies.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// An integer value representing the severity of the alert. Supported values are:
+	// * 0 for Clear
+	// * 1 for Critical
+	// * 2 for Major
+	// * 3 for Minor
+	// * 4 for Warning
+	Severity pulumi.IntPtrInput `pulumi:"severity"`
+}
+
+func (LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotificationFields)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput {
+	return i.ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput)
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return i.ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput).ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrInput is an input type that accepts LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs, LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtr and LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrInput` via:
+//
+//	        LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput
+	ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput
+}
+
+type logSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrType LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs
+
+func LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtr(v *LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrInput {
+	return (*logSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationServiceNowSearchNotificationFields)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrType) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return i.ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrType) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput)
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotificationFields)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return o.ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationServiceNowSearchNotificationFields) *LogSearchScheduleNotificationServiceNowSearchNotificationFields {
+		return &v
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput)
+}
+
+// The category that the event source uses to identify the event.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotificationFields) *string { return v.EventType }).(pulumi.StringPtrOutput)
+}
+
+// The physical or virtual device on which the event occurred.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) Node() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotificationFields) *string { return v.Node }).(pulumi.StringPtrOutput)
+}
+
+// The component on the node to which the event applies.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotificationFields) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// An integer value representing the severity of the alert. Supported values are:
+// * 0 for Clear
+// * 1 for Critical
+// * 2 for Major
+// * 3 for Minor
+// * 4 for Warning
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput) Severity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotificationFields) *int { return v.Severity }).(pulumi.IntPtrOutput)
+}
+
+type LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationServiceNowSearchNotificationFields)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) ToLogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) Elem() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotificationFields) LogSearchScheduleNotificationServiceNowSearchNotificationFields {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationServiceNowSearchNotificationFields
+		return ret
+	}).(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput)
+}
+
+// The category that the event source uses to identify the event.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotificationFields) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The physical or virtual device on which the event occurred.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) Node() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotificationFields) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Node
+	}).(pulumi.StringPtrOutput)
+}
+
+// The component on the node to which the event applies.
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotificationFields) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// An integer value representing the severity of the alert. Supported values are:
+// * 0 for Clear
+// * 1 for Critical
+// * 2 for Major
+// * 3 for Minor
+// * 4 for Warning
+func (o LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput) Severity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotificationFields) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(pulumi.IntPtrOutput)
+}
+
+type LogSearchScheduleNotificationWebhookSearchNotification struct {
+	// If set to true, one webhook per result will be sent when the trigger conditions are met.
+	ItemizeAlerts *bool `pulumi:"itemizeAlerts"`
+	// The maximum number of results for which we send separate alerts.
+	MaxItemizedAlerts *int `pulumi:"maxItemizedAlerts"`
+	// A JSON object in the format required by the target WebHook URL.
+	Payload *string `pulumi:"payload"`
+	// Identifier of the webhook connection.
+	WebhookId string `pulumi:"webhookId"`
+}
+
+// LogSearchScheduleNotificationWebhookSearchNotificationInput is an input type that accepts LogSearchScheduleNotificationWebhookSearchNotificationArgs and LogSearchScheduleNotificationWebhookSearchNotificationOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationWebhookSearchNotificationInput` via:
+//
+//	LogSearchScheduleNotificationWebhookSearchNotificationArgs{...}
+type LogSearchScheduleNotificationWebhookSearchNotificationInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationWebhookSearchNotificationOutput() LogSearchScheduleNotificationWebhookSearchNotificationOutput
+	ToLogSearchScheduleNotificationWebhookSearchNotificationOutputWithContext(context.Context) LogSearchScheduleNotificationWebhookSearchNotificationOutput
+}
+
+type LogSearchScheduleNotificationWebhookSearchNotificationArgs struct {
+	// If set to true, one webhook per result will be sent when the trigger conditions are met.
+	ItemizeAlerts pulumi.BoolPtrInput `pulumi:"itemizeAlerts"`
+	// The maximum number of results for which we send separate alerts.
+	MaxItemizedAlerts pulumi.IntPtrInput `pulumi:"maxItemizedAlerts"`
+	// A JSON object in the format required by the target WebHook URL.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Identifier of the webhook connection.
+	WebhookId pulumi.StringInput `pulumi:"webhookId"`
+}
+
+func (LogSearchScheduleNotificationWebhookSearchNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationWebhookSearchNotification)(nil)).Elem()
+}
+
+func (i LogSearchScheduleNotificationWebhookSearchNotificationArgs) ToLogSearchScheduleNotificationWebhookSearchNotificationOutput() LogSearchScheduleNotificationWebhookSearchNotificationOutput {
+	return i.ToLogSearchScheduleNotificationWebhookSearchNotificationOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationWebhookSearchNotificationArgs) ToLogSearchScheduleNotificationWebhookSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationWebhookSearchNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationWebhookSearchNotificationOutput)
+}
+
+func (i LogSearchScheduleNotificationWebhookSearchNotificationArgs) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutput() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleNotificationWebhookSearchNotificationArgs) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationWebhookSearchNotificationOutput).ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleNotificationWebhookSearchNotificationPtrInput is an input type that accepts LogSearchScheduleNotificationWebhookSearchNotificationArgs, LogSearchScheduleNotificationWebhookSearchNotificationPtr and LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleNotificationWebhookSearchNotificationPtrInput` via:
+//
+//	        LogSearchScheduleNotificationWebhookSearchNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleNotificationWebhookSearchNotificationPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutput() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput
+	ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(context.Context) LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput
+}
+
+type logSearchScheduleNotificationWebhookSearchNotificationPtrType LogSearchScheduleNotificationWebhookSearchNotificationArgs
+
+func LogSearchScheduleNotificationWebhookSearchNotificationPtr(v *LogSearchScheduleNotificationWebhookSearchNotificationArgs) LogSearchScheduleNotificationWebhookSearchNotificationPtrInput {
+	return (*logSearchScheduleNotificationWebhookSearchNotificationPtrType)(v)
+}
+
+func (*logSearchScheduleNotificationWebhookSearchNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationWebhookSearchNotification)(nil)).Elem()
+}
+
+func (i *logSearchScheduleNotificationWebhookSearchNotificationPtrType) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutput() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return i.ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleNotificationWebhookSearchNotificationPtrType) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput)
+}
+
+type LogSearchScheduleNotificationWebhookSearchNotificationOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationWebhookSearchNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleNotificationWebhookSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) ToLogSearchScheduleNotificationWebhookSearchNotificationOutput() LogSearchScheduleNotificationWebhookSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) ToLogSearchScheduleNotificationWebhookSearchNotificationOutputWithContext(ctx context.Context) LogSearchScheduleNotificationWebhookSearchNotificationOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutput() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return o.ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleNotificationWebhookSearchNotification) *LogSearchScheduleNotificationWebhookSearchNotification {
+		return &v
+	}).(LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput)
+}
+
+// If set to true, one webhook per result will be sent when the trigger conditions are met.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) ItemizeAlerts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationWebhookSearchNotification) *bool { return v.ItemizeAlerts }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of results for which we send separate alerts.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) MaxItemizedAlerts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationWebhookSearchNotification) *int { return v.MaxItemizedAlerts }).(pulumi.IntPtrOutput)
+}
+
+// A JSON object in the format required by the target WebHook URL.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationWebhookSearchNotification) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the webhook connection.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationOutput) WebhookId() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleNotificationWebhookSearchNotification) string { return v.WebhookId }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleNotificationWebhookSearchNotification)(nil)).Elem()
+}
+
+func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutput() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) ToLogSearchScheduleNotificationWebhookSearchNotificationPtrOutputWithContext(ctx context.Context) LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) Elem() LogSearchScheduleNotificationWebhookSearchNotificationOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationWebhookSearchNotification) LogSearchScheduleNotificationWebhookSearchNotification {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleNotificationWebhookSearchNotification
+		return ret
+	}).(LogSearchScheduleNotificationWebhookSearchNotificationOutput)
+}
+
+// If set to true, one webhook per result will be sent when the trigger conditions are met.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) ItemizeAlerts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationWebhookSearchNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ItemizeAlerts
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of results for which we send separate alerts.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) MaxItemizedAlerts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationWebhookSearchNotification) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxItemizedAlerts
+	}).(pulumi.IntPtrOutput)
+}
+
+// A JSON object in the format required by the target WebHook URL.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationWebhookSearchNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Payload
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the webhook connection.
+func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) WebhookId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleNotificationWebhookSearchNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookId
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleParameter struct {
+	// Name of the search.
+	Name string `pulumi:"name"`
+	// Value of scheduled search parameter.
+	Value string `pulumi:"value"`
+}
+
+// LogSearchScheduleParameterInput is an input type that accepts LogSearchScheduleParameterArgs and LogSearchScheduleParameterOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParameterInput` via:
+//
+//	LogSearchScheduleParameterArgs{...}
+type LogSearchScheduleParameterInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParameterOutput() LogSearchScheduleParameterOutput
+	ToLogSearchScheduleParameterOutputWithContext(context.Context) LogSearchScheduleParameterOutput
+}
+
+type LogSearchScheduleParameterArgs struct {
+	// Name of the search.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of scheduled search parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (LogSearchScheduleParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParameter)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParameterArgs) ToLogSearchScheduleParameterOutput() LogSearchScheduleParameterOutput {
+	return i.ToLogSearchScheduleParameterOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParameterArgs) ToLogSearchScheduleParameterOutputWithContext(ctx context.Context) LogSearchScheduleParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParameterOutput)
+}
+
+// LogSearchScheduleParameterArrayInput is an input type that accepts LogSearchScheduleParameterArray and LogSearchScheduleParameterArrayOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParameterArrayInput` via:
+//
+//	LogSearchScheduleParameterArray{ LogSearchScheduleParameterArgs{...} }
+type LogSearchScheduleParameterArrayInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParameterArrayOutput() LogSearchScheduleParameterArrayOutput
+	ToLogSearchScheduleParameterArrayOutputWithContext(context.Context) LogSearchScheduleParameterArrayOutput
+}
+
+type LogSearchScheduleParameterArray []LogSearchScheduleParameterInput
+
+func (LogSearchScheduleParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogSearchScheduleParameter)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParameterArray) ToLogSearchScheduleParameterArrayOutput() LogSearchScheduleParameterArrayOutput {
+	return i.ToLogSearchScheduleParameterArrayOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParameterArray) ToLogSearchScheduleParameterArrayOutputWithContext(ctx context.Context) LogSearchScheduleParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParameterArrayOutput)
+}
+
+type LogSearchScheduleParameterOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParameter)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParameterOutput) ToLogSearchScheduleParameterOutput() LogSearchScheduleParameterOutput {
+	return o
+}
+
+func (o LogSearchScheduleParameterOutput) ToLogSearchScheduleParameterOutputWithContext(ctx context.Context) LogSearchScheduleParameterOutput {
+	return o
+}
+
+// Name of the search.
+func (o LogSearchScheduleParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of scheduled search parameter.
+func (o LogSearchScheduleParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogSearchScheduleParameter)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParameterArrayOutput) ToLogSearchScheduleParameterArrayOutput() LogSearchScheduleParameterArrayOutput {
+	return o
+}
+
+func (o LogSearchScheduleParameterArrayOutput) ToLogSearchScheduleParameterArrayOutputWithContext(ctx context.Context) LogSearchScheduleParameterArrayOutput {
+	return o
+}
+
+func (o LogSearchScheduleParameterArrayOutput) Index(i pulumi.IntInput) LogSearchScheduleParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSearchScheduleParameter {
+		return vs[0].([]LogSearchScheduleParameter)[vs[1].(int)]
+	}).(LogSearchScheduleParameterOutput)
+}
+
+type LogSearchScheduleParseableTimeRange struct {
+	// Bounded time range. See
+	// beginBoundedTimeRange schema schema for details.
+	BeginBoundedTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange `pulumi:"beginBoundedTimeRange"`
+	// Literal time range. See
+	// completeLiteralTimeRange schema for details.
+	CompleteLiteralTimeRange *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange `pulumi:"completeLiteralTimeRange"`
+}
+
+// LogSearchScheduleParseableTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeArgs and LogSearchScheduleParseableTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeOutput() LogSearchScheduleParseableTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeArgs struct {
+	// Bounded time range. See
+	// beginBoundedTimeRange schema schema for details.
+	BeginBoundedTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrInput `pulumi:"beginBoundedTimeRange"`
+	// Literal time range. See
+	// completeLiteralTimeRange schema for details.
+	CompleteLiteralTimeRange LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrInput `pulumi:"completeLiteralTimeRange"`
+}
+
+func (LogSearchScheduleParseableTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeOutput() LogSearchScheduleParseableTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeArgs) ToLogSearchScheduleParseableTimeRangePtrOutput() LogSearchScheduleParseableTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeArgs) ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeOutput).ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeArgs, LogSearchScheduleParseableTimeRangePtr and LogSearchScheduleParseableTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangePtrOutput() LogSearchScheduleParseableTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangePtrType LogSearchScheduleParseableTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangePtr(v *LogSearchScheduleParseableTimeRangeArgs) LogSearchScheduleParseableTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangePtrType) ToLogSearchScheduleParseableTimeRangePtrOutput() LogSearchScheduleParseableTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangePtrType) ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeOutput() LogSearchScheduleParseableTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeOutput) ToLogSearchScheduleParseableTimeRangePtrOutput() LogSearchScheduleParseableTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeOutput) ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangePtrOutput)
+}
+
+// Bounded time range. See
+// beginBoundedTimeRange schema schema for details.
+func (o LogSearchScheduleParseableTimeRangeOutput) BeginBoundedTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
+		return v.BeginBoundedTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Literal time range. See
+// completeLiteralTimeRange schema for details.
+func (o LogSearchScheduleParseableTimeRangeOutput) CompleteLiteralTimeRange() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
+		return v.CompleteLiteralTimeRange
+	}).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangePtrOutput() LogSearchScheduleParseableTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRange) LogSearchScheduleParseableTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeOutput)
+}
+
+// Bounded time range. See
+// beginBoundedTimeRange schema schema for details.
+func (o LogSearchScheduleParseableTimeRangePtrOutput) BeginBoundedTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.BeginBoundedTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Literal time range. See
+// completeLiteralTimeRange schema for details.
+func (o LogSearchScheduleParseableTimeRangePtrOutput) CompleteLiteralTimeRange() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.CompleteLiteralTimeRange
+	}).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange struct {
+	// Start boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	From LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom `pulumi:"from"`
+	// End boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	To *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo `pulumi:"to"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs struct {
+	// Start boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	From LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromInput `pulumi:"from"`
+	// End boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	To LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrInput `pulumi:"to"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Start boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) From() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
+		return v.From
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+// End boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) To() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
+		return v.To
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput)
+}
+
+// Start boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) From() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
+		if v == nil {
+			return nil
+		}
+		return &v.From
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+// End boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) To() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
+		if v == nil {
+			return nil
+		}
+		return v.To
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom struct {
+	// Time since the epoch.
+	EpochTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange `pulumi:"relativeTimeRange"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs struct {
+	// Time since the epoch.
+	EpochTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		return v.EpochTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		return v.Iso8601TimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		return v.LiteralTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		return v.RelativeTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.EpochTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.Iso8601TimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis int `pulumi:"epochMillis"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis pulumi.IntInput `pulumi:"epochMillis"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) int {
+		return v.EpochMillis
+	}).(pulumi.IntOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) EpochMillis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EpochMillis
+	}).(pulumi.IntPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time string `pulumi:"iso8601Time"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time pulumi.StringInput `pulumi:"iso8601Time"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) string {
+		return v.Iso8601Time
+	}).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Iso8601Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Iso8601Time
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName string `pulumi:"rangeName"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string {
+		return v.RangeName
+	}).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime string `pulumi:"relativeTime"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string {
+		return v.RelativeTime
+	}).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RelativeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo struct {
+	// Time since the epoch.
+	EpochTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange `pulumi:"relativeTimeRange"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs struct {
+	// Time since the epoch.
+	EpochTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		return v.EpochTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		return v.Iso8601TimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		return v.LiteralTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		return v.RelativeTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.EpochTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.Iso8601TimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeTimeRange
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis int `pulumi:"epochMillis"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis pulumi.IntInput `pulumi:"epochMillis"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange) int {
+		return v.EpochMillis
+	}).(pulumi.IntOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) EpochMillis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EpochMillis
+	}).(pulumi.IntPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time string `pulumi:"iso8601Time"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time pulumi.StringInput `pulumi:"iso8601Time"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) string {
+		return v.Iso8601Time
+	}).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Iso8601Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Iso8601Time
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName string `pulumi:"rangeName"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string {
+		return v.RangeName
+	}).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime string `pulumi:"relativeTime"`
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
+}
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs, LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtr and LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtr(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string {
+		return v.RelativeTime
+	}).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RelativeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName string `pulumi:"rangeName"`
+}
+
+// LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeInput is an input type that accepts LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs and LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeInput` via:
+//
+//	LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs{...}
+type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput
+	ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput
+}
+
+type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput)
+}
+
+func (i LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput).ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrInput is an input type that accepts LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs, LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtr and LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrInput` via:
+//
+//	        LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput
+	ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput
+}
+
+type logSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrType LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs
+
+func LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtr(v *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrInput {
+	return (*logSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrType)(v)
+}
+
+func (*logSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return i.ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrType) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange) *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
+		return &v
+	}).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput) ToLogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput) Elem() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange) LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange
+		return ret
+	}).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchScheduleThreshold struct {
+	// Expected result count.
+	Count int `pulumi:"count"`
+	// Criterion to be applied when comparing actual result count with expected count. Possible
+	// values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+	Operator string `pulumi:"operator"`
+	// Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+	// Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+	// to `message`.
+	ThresholdType string `pulumi:"thresholdType"`
+}
+
+// LogSearchScheduleThresholdInput is an input type that accepts LogSearchScheduleThresholdArgs and LogSearchScheduleThresholdOutput values.
+// You can construct a concrete instance of `LogSearchScheduleThresholdInput` via:
+//
+//	LogSearchScheduleThresholdArgs{...}
+type LogSearchScheduleThresholdInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleThresholdOutput() LogSearchScheduleThresholdOutput
+	ToLogSearchScheduleThresholdOutputWithContext(context.Context) LogSearchScheduleThresholdOutput
+}
+
+type LogSearchScheduleThresholdArgs struct {
+	// Expected result count.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Criterion to be applied when comparing actual result count with expected count. Possible
+	// values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+	// Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+	// to `message`.
+	ThresholdType pulumi.StringInput `pulumi:"thresholdType"`
+}
+
+func (LogSearchScheduleThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleThreshold)(nil)).Elem()
+}
+
+func (i LogSearchScheduleThresholdArgs) ToLogSearchScheduleThresholdOutput() LogSearchScheduleThresholdOutput {
+	return i.ToLogSearchScheduleThresholdOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleThresholdArgs) ToLogSearchScheduleThresholdOutputWithContext(ctx context.Context) LogSearchScheduleThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleThresholdOutput)
+}
+
+func (i LogSearchScheduleThresholdArgs) ToLogSearchScheduleThresholdPtrOutput() LogSearchScheduleThresholdPtrOutput {
+	return i.ToLogSearchScheduleThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchScheduleThresholdArgs) ToLogSearchScheduleThresholdPtrOutputWithContext(ctx context.Context) LogSearchScheduleThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleThresholdOutput).ToLogSearchScheduleThresholdPtrOutputWithContext(ctx)
+}
+
+// LogSearchScheduleThresholdPtrInput is an input type that accepts LogSearchScheduleThresholdArgs, LogSearchScheduleThresholdPtr and LogSearchScheduleThresholdPtrOutput values.
+// You can construct a concrete instance of `LogSearchScheduleThresholdPtrInput` via:
+//
+//	        LogSearchScheduleThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchScheduleThresholdPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchScheduleThresholdPtrOutput() LogSearchScheduleThresholdPtrOutput
+	ToLogSearchScheduleThresholdPtrOutputWithContext(context.Context) LogSearchScheduleThresholdPtrOutput
+}
+
+type logSearchScheduleThresholdPtrType LogSearchScheduleThresholdArgs
+
+func LogSearchScheduleThresholdPtr(v *LogSearchScheduleThresholdArgs) LogSearchScheduleThresholdPtrInput {
+	return (*logSearchScheduleThresholdPtrType)(v)
+}
+
+func (*logSearchScheduleThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleThreshold)(nil)).Elem()
+}
+
+func (i *logSearchScheduleThresholdPtrType) ToLogSearchScheduleThresholdPtrOutput() LogSearchScheduleThresholdPtrOutput {
+	return i.ToLogSearchScheduleThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchScheduleThresholdPtrType) ToLogSearchScheduleThresholdPtrOutputWithContext(ctx context.Context) LogSearchScheduleThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchScheduleThresholdPtrOutput)
+}
+
+type LogSearchScheduleThresholdOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchScheduleThreshold)(nil)).Elem()
+}
+
+func (o LogSearchScheduleThresholdOutput) ToLogSearchScheduleThresholdOutput() LogSearchScheduleThresholdOutput {
+	return o
+}
+
+func (o LogSearchScheduleThresholdOutput) ToLogSearchScheduleThresholdOutputWithContext(ctx context.Context) LogSearchScheduleThresholdOutput {
+	return o
+}
+
+func (o LogSearchScheduleThresholdOutput) ToLogSearchScheduleThresholdPtrOutput() LogSearchScheduleThresholdPtrOutput {
+	return o.ToLogSearchScheduleThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchScheduleThresholdOutput) ToLogSearchScheduleThresholdPtrOutputWithContext(ctx context.Context) LogSearchScheduleThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchScheduleThreshold) *LogSearchScheduleThreshold {
+		return &v
+	}).(LogSearchScheduleThresholdPtrOutput)
+}
+
+// Expected result count.
+func (o LogSearchScheduleThresholdOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v LogSearchScheduleThreshold) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Criterion to be applied when comparing actual result count with expected count. Possible
+// values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+func (o LogSearchScheduleThresholdOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleThreshold) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+// Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+// to `message`.
+func (o LogSearchScheduleThresholdOutput) ThresholdType() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchScheduleThreshold) string { return v.ThresholdType }).(pulumi.StringOutput)
+}
+
+type LogSearchScheduleThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchScheduleThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchScheduleThreshold)(nil)).Elem()
+}
+
+func (o LogSearchScheduleThresholdPtrOutput) ToLogSearchScheduleThresholdPtrOutput() LogSearchScheduleThresholdPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleThresholdPtrOutput) ToLogSearchScheduleThresholdPtrOutputWithContext(ctx context.Context) LogSearchScheduleThresholdPtrOutput {
+	return o
+}
+
+func (o LogSearchScheduleThresholdPtrOutput) Elem() LogSearchScheduleThresholdOutput {
+	return o.ApplyT(func(v *LogSearchScheduleThreshold) LogSearchScheduleThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchScheduleThreshold
+		return ret
+	}).(LogSearchScheduleThresholdOutput)
+}
+
+// Expected result count.
+func (o LogSearchScheduleThresholdPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// Criterion to be applied when comparing actual result count with expected count. Possible
+// values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+func (o LogSearchScheduleThresholdPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+// Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+// to `message`.
+func (o LogSearchScheduleThresholdPtrOutput) ThresholdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchScheduleThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ThresholdType
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchTimeRange struct {
+	// Bounded time range. See
+	// beginBoundedTimeRange schema schema for details.
+	BeginBoundedTimeRange *LogSearchTimeRangeBeginBoundedTimeRange `pulumi:"beginBoundedTimeRange"`
+	// Literal time range. See
+	// completeLiteralTimeRange schema for details.
+	CompleteLiteralTimeRange *LogSearchTimeRangeCompleteLiteralTimeRange `pulumi:"completeLiteralTimeRange"`
+}
+
+// LogSearchTimeRangeInput is an input type that accepts LogSearchTimeRangeArgs and LogSearchTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeInput` via:
+//
+//	LogSearchTimeRangeArgs{...}
+type LogSearchTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeOutput() LogSearchTimeRangeOutput
+	ToLogSearchTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeOutput
+}
+
+type LogSearchTimeRangeArgs struct {
+	// Bounded time range. See
+	// beginBoundedTimeRange schema schema for details.
+	BeginBoundedTimeRange LogSearchTimeRangeBeginBoundedTimeRangePtrInput `pulumi:"beginBoundedTimeRange"`
+	// Literal time range. See
+	// completeLiteralTimeRange schema for details.
+	CompleteLiteralTimeRange LogSearchTimeRangeCompleteLiteralTimeRangePtrInput `pulumi:"completeLiteralTimeRange"`
+}
+
+func (LogSearchTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeArgs) ToLogSearchTimeRangeOutput() LogSearchTimeRangeOutput {
+	return i.ToLogSearchTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeArgs) ToLogSearchTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeArgs) ToLogSearchTimeRangePtrOutput() LogSearchTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeArgs) ToLogSearchTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeOutput).ToLogSearchTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangePtrInput is an input type that accepts LogSearchTimeRangeArgs, LogSearchTimeRangePtr and LogSearchTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangePtrOutput() LogSearchTimeRangePtrOutput
+	ToLogSearchTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangePtrOutput
+}
+
+type logSearchTimeRangePtrType LogSearchTimeRangeArgs
+
+func LogSearchTimeRangePtr(v *LogSearchTimeRangeArgs) LogSearchTimeRangePtrInput {
+	return (*logSearchTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangePtrType) ToLogSearchTimeRangePtrOutput() LogSearchTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangePtrType) ToLogSearchTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeOutput) ToLogSearchTimeRangeOutput() LogSearchTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeOutput) ToLogSearchTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeOutput) ToLogSearchTimeRangePtrOutput() LogSearchTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeOutput) ToLogSearchTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRange) *LogSearchTimeRange {
+		return &v
+	}).(LogSearchTimeRangePtrOutput)
+}
+
+// Bounded time range. See
+// beginBoundedTimeRange schema schema for details.
+func (o LogSearchTimeRangeOutput) BeginBoundedTimeRange() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRange) *LogSearchTimeRangeBeginBoundedTimeRange { return v.BeginBoundedTimeRange }).(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Literal time range. See
+// completeLiteralTimeRange schema for details.
+func (o LogSearchTimeRangeOutput) CompleteLiteralTimeRange() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRange) *LogSearchTimeRangeCompleteLiteralTimeRange {
+		return v.CompleteLiteralTimeRange
+	}).(LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangePtrOutput) ToLogSearchTimeRangePtrOutput() LogSearchTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangePtrOutput) ToLogSearchTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangePtrOutput) Elem() LogSearchTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRange) LogSearchTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRange
+		return ret
+	}).(LogSearchTimeRangeOutput)
+}
+
+// Bounded time range. See
+// beginBoundedTimeRange schema schema for details.
+func (o LogSearchTimeRangePtrOutput) BeginBoundedTimeRange() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRange) *LogSearchTimeRangeBeginBoundedTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.BeginBoundedTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Literal time range. See
+// completeLiteralTimeRange schema for details.
+func (o LogSearchTimeRangePtrOutput) CompleteLiteralTimeRange() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRange) *LogSearchTimeRangeCompleteLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.CompleteLiteralTimeRange
+	}).(LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRange struct {
+	// Start boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	From LogSearchTimeRangeBeginBoundedTimeRangeFrom `pulumi:"from"`
+	// End boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	To *LogSearchTimeRangeBeginBoundedTimeRangeTo `pulumi:"to"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeArgs struct {
+	// Start boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	From LogSearchTimeRangeBeginBoundedTimeRangeFromInput `pulumi:"from"`
+	// End boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	To LogSearchTimeRangeBeginBoundedTimeRangeToPtrInput `pulumi:"to"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRange) *LogSearchTimeRangeBeginBoundedTimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Start boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) From() LogSearchTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeFrom {
+		return v.From
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+// End boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) To() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeTo {
+		return v.To
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRange) LogSearchTimeRangeBeginBoundedTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeOutput)
+}
+
+// Start boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) From() LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeFrom {
+		if v == nil {
+			return nil
+		}
+		return &v.From
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+// End boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) To() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeTo {
+		if v == nil {
+			return nil
+		}
+		return v.To
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFrom struct {
+	// Time since the epoch.
+	EpochTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange `pulumi:"relativeTimeRange"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromArgs and LogSearchTimeRangeBeginBoundedTimeRangeFromOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeFromArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeFromInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromArgs struct {
+	// Time since the epoch.
+	EpochTimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromPtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromArgs, LogSearchTimeRangeBeginBoundedTimeRangeFromPtr and LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromPtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeFromPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeFromPtrType LogSearchTimeRangeBeginBoundedTimeRangeFromArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeFromPtr(v *LogSearchTimeRangeBeginBoundedTimeRangeFromArgs) LogSearchTimeRangeBeginBoundedTimeRangeFromPtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeFromPtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromPtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromPtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFrom {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		return v.EpochTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		return v.Iso8601TimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		return v.LiteralTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		return v.RelativeTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeFromOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) LogSearchTimeRangeBeginBoundedTimeRangeFrom {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeFrom
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.EpochTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.Iso8601TimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis int `pulumi:"epochMillis"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis pulumi.IntInput `pulumi:"epochMillis"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) int { return v.EpochMillis }).(pulumi.IntOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) EpochMillis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EpochMillis
+	}).(pulumi.IntPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time string `pulumi:"iso8601Time"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time pulumi.StringInput `pulumi:"iso8601Time"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) string { return v.Iso8601Time }).(pulumi.StringOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Iso8601Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Iso8601Time
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName string `pulumi:"rangeName"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime string `pulumi:"relativeTime"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RelativeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeTo struct {
+	// Time since the epoch.
+	EpochTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange `pulumi:"relativeTimeRange"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToArgs and LogSearchTimeRangeBeginBoundedTimeRangeToOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeToArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeToInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToOutput() LogSearchTimeRangeBeginBoundedTimeRangeToOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToArgs struct {
+	// Time since the epoch.
+	EpochTimeRange LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToOutput() LogSearchTimeRangeBeginBoundedTimeRangeToOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToPtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToArgs, LogSearchTimeRangeBeginBoundedTimeRangeToPtr and LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToPtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeToArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeToPtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeToPtrType LogSearchTimeRangeBeginBoundedTimeRangeToArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeToPtr(v *LogSearchTimeRangeBeginBoundedTimeRangeToArgs) LogSearchTimeRangeBeginBoundedTimeRangeToPtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeToPtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToPtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToPtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToOutput() LogSearchTimeRangeBeginBoundedTimeRangeToOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeTo {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		return v.EpochTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		return v.Iso8601TimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		return v.LiteralTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		return v.RelativeTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeToOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) LogSearchTimeRangeBeginBoundedTimeRangeTo {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeTo
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToOutput)
+}
+
+// Time since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.EpochTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.Iso8601TimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeTimeRange
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis int `pulumi:"epochMillis"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis pulumi.IntInput `pulumi:"epochMillis"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange) int { return v.EpochMillis }).(pulumi.IntOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) EpochMillis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EpochMillis
+	}).(pulumi.IntPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time string `pulumi:"iso8601Time"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time pulumi.StringInput `pulumi:"iso8601Time"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) string { return v.Iso8601Time }).(pulumi.StringOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Iso8601Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Iso8601Time
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName string `pulumi:"rangeName"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime string `pulumi:"relativeTime"`
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs and LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput` via:
+//
+//	LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{...}
+type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
+}
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput).ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput is an input type that accepts LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs, LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtr and LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput
+	ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput
+}
+
+type logSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs
+
+func LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtr(v *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput {
+	return (*logSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		return &v
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
+}
+
+type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ToLogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) Elem() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange
+		return ret
+	}).(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RelativeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type LogSearchTimeRangeCompleteLiteralTimeRange struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName string `pulumi:"rangeName"`
+}
+
+// LogSearchTimeRangeCompleteLiteralTimeRangeInput is an input type that accepts LogSearchTimeRangeCompleteLiteralTimeRangeArgs and LogSearchTimeRangeCompleteLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeCompleteLiteralTimeRangeInput` via:
+//
+//	LogSearchTimeRangeCompleteLiteralTimeRangeArgs{...}
+type LogSearchTimeRangeCompleteLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeCompleteLiteralTimeRangeOutput() LogSearchTimeRangeCompleteLiteralTimeRangeOutput
+	ToLogSearchTimeRangeCompleteLiteralTimeRangeOutputWithContext(context.Context) LogSearchTimeRangeCompleteLiteralTimeRangeOutput
+}
+
+type LogSearchTimeRangeCompleteLiteralTimeRangeArgs struct {
+	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+	// `previousMonth`.
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (LogSearchTimeRangeCompleteLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (i LogSearchTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchTimeRangeCompleteLiteralTimeRangeOutput() LogSearchTimeRangeCompleteLiteralTimeRangeOutput {
+	return i.ToLogSearchTimeRangeCompleteLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchTimeRangeCompleteLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeCompleteLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeCompleteLiteralTimeRangeOutput)
+}
+
+func (i LogSearchTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i LogSearchTimeRangeCompleteLiteralTimeRangeArgs) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeCompleteLiteralTimeRangeOutput).ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// LogSearchTimeRangeCompleteLiteralTimeRangePtrInput is an input type that accepts LogSearchTimeRangeCompleteLiteralTimeRangeArgs, LogSearchTimeRangeCompleteLiteralTimeRangePtr and LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `LogSearchTimeRangeCompleteLiteralTimeRangePtrInput` via:
+//
+//	        LogSearchTimeRangeCompleteLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogSearchTimeRangeCompleteLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput
+	ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Context) LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput
+}
+
+type logSearchTimeRangeCompleteLiteralTimeRangePtrType LogSearchTimeRangeCompleteLiteralTimeRangeArgs
+
+func LogSearchTimeRangeCompleteLiteralTimeRangePtr(v *LogSearchTimeRangeCompleteLiteralTimeRangeArgs) LogSearchTimeRangeCompleteLiteralTimeRangePtrInput {
+	return (*logSearchTimeRangeCompleteLiteralTimeRangePtrType)(v)
+}
+
+func (*logSearchTimeRangeCompleteLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *logSearchTimeRangeCompleteLiteralTimeRangePtrType) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return i.ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *logSearchTimeRangeCompleteLiteralTimeRangePtrType) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type LogSearchTimeRangeCompleteLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeCompleteLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogSearchTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchTimeRangeCompleteLiteralTimeRangeOutput() LogSearchTimeRangeCompleteLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchTimeRangeCompleteLiteralTimeRangeOutputWithContext(ctx context.Context) LogSearchTimeRangeCompleteLiteralTimeRangeOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o LogSearchTimeRangeCompleteLiteralTimeRangeOutput) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogSearchTimeRangeCompleteLiteralTimeRange) *LogSearchTimeRangeCompleteLiteralTimeRange {
+		return &v
+	}).(LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchTimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogSearchTimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+type LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSearchTimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (o LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutput() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput) ToLogSearchTimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput) Elem() LogSearchTimeRangeCompleteLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeCompleteLiteralTimeRange) LogSearchTimeRangeCompleteLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret LogSearchTimeRangeCompleteLiteralTimeRange
+		return ret
+	}).(LogSearchTimeRangeCompleteLiteralTimeRangeOutput)
+}
+
+// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+// `previousMonth`.
+func (o LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogSearchTimeRangeCompleteLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
 type LookupTableField struct {
 	FieldName string `pulumi:"fieldName"`
 	FieldType string `pulumi:"fieldType"`
@@ -9468,6 +15942,1157 @@ func (o PollingSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) PollingS
 	}).(PollingSourcePathTagFilterOutput)
 }
 
+type S3ArchiveSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
+	AccessKey               *string `pulumi:"accessKey"`
+	AuthProviderX509CertUrl *string `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 *string `pulumi:"authUri"`
+	ClientEmail             *string `pulumi:"clientEmail"`
+	ClientId                *string `pulumi:"clientId"`
+	ClientX509CertUrl       *string `pulumi:"clientX509CertUrl"`
+	PrivateKey              *string `pulumi:"privateKey"`
+	PrivateKeyId            *string `pulumi:"privateKeyId"`
+	ProjectId               *string `pulumi:"projectId"`
+	// Your AWS Bucket region.
+	Region *string `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
+	SecretKey *string `pulumi:"secretKey"`
+	TokenUri  *string `pulumi:"tokenUri"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type string `pulumi:"type"`
+}
+
+// S3ArchiveSourceAuthenticationInput is an input type that accepts S3ArchiveSourceAuthenticationArgs and S3ArchiveSourceAuthenticationOutput values.
+// You can construct a concrete instance of `S3ArchiveSourceAuthenticationInput` via:
+//
+//	S3ArchiveSourceAuthenticationArgs{...}
+type S3ArchiveSourceAuthenticationInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourceAuthenticationOutput() S3ArchiveSourceAuthenticationOutput
+	ToS3ArchiveSourceAuthenticationOutputWithContext(context.Context) S3ArchiveSourceAuthenticationOutput
+}
+
+type S3ArchiveSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`.
+	AccessKey               pulumi.StringPtrInput `pulumi:"accessKey"`
+	AuthProviderX509CertUrl pulumi.StringPtrInput `pulumi:"authProviderX509CertUrl"`
+	AuthUri                 pulumi.StringPtrInput `pulumi:"authUri"`
+	ClientEmail             pulumi.StringPtrInput `pulumi:"clientEmail"`
+	ClientId                pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientX509CertUrl       pulumi.StringPtrInput `pulumi:"clientX509CertUrl"`
+	PrivateKey              pulumi.StringPtrInput `pulumi:"privateKey"`
+	PrivateKeyId            pulumi.StringPtrInput `pulumi:"privateKeyId"`
+	ProjectId               pulumi.StringPtrInput `pulumi:"projectId"`
+	// Your AWS Bucket region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`.
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (S3ArchiveSourceAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourceAuthentication)(nil)).Elem()
+}
+
+func (i S3ArchiveSourceAuthenticationArgs) ToS3ArchiveSourceAuthenticationOutput() S3ArchiveSourceAuthenticationOutput {
+	return i.ToS3ArchiveSourceAuthenticationOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourceAuthenticationArgs) ToS3ArchiveSourceAuthenticationOutputWithContext(ctx context.Context) S3ArchiveSourceAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourceAuthenticationOutput)
+}
+
+func (i S3ArchiveSourceAuthenticationArgs) ToS3ArchiveSourceAuthenticationPtrOutput() S3ArchiveSourceAuthenticationPtrOutput {
+	return i.ToS3ArchiveSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourceAuthenticationArgs) ToS3ArchiveSourceAuthenticationPtrOutputWithContext(ctx context.Context) S3ArchiveSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourceAuthenticationOutput).ToS3ArchiveSourceAuthenticationPtrOutputWithContext(ctx)
+}
+
+// S3ArchiveSourceAuthenticationPtrInput is an input type that accepts S3ArchiveSourceAuthenticationArgs, S3ArchiveSourceAuthenticationPtr and S3ArchiveSourceAuthenticationPtrOutput values.
+// You can construct a concrete instance of `S3ArchiveSourceAuthenticationPtrInput` via:
+//
+//	        S3ArchiveSourceAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type S3ArchiveSourceAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourceAuthenticationPtrOutput() S3ArchiveSourceAuthenticationPtrOutput
+	ToS3ArchiveSourceAuthenticationPtrOutputWithContext(context.Context) S3ArchiveSourceAuthenticationPtrOutput
+}
+
+type s3archiveSourceAuthenticationPtrType S3ArchiveSourceAuthenticationArgs
+
+func S3ArchiveSourceAuthenticationPtr(v *S3ArchiveSourceAuthenticationArgs) S3ArchiveSourceAuthenticationPtrInput {
+	return (*s3archiveSourceAuthenticationPtrType)(v)
+}
+
+func (*s3archiveSourceAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3ArchiveSourceAuthentication)(nil)).Elem()
+}
+
+func (i *s3archiveSourceAuthenticationPtrType) ToS3ArchiveSourceAuthenticationPtrOutput() S3ArchiveSourceAuthenticationPtrOutput {
+	return i.ToS3ArchiveSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *s3archiveSourceAuthenticationPtrType) ToS3ArchiveSourceAuthenticationPtrOutputWithContext(ctx context.Context) S3ArchiveSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourceAuthenticationPtrOutput)
+}
+
+type S3ArchiveSourceAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourceAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourceAuthentication)(nil)).Elem()
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ToS3ArchiveSourceAuthenticationOutput() S3ArchiveSourceAuthenticationOutput {
+	return o
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ToS3ArchiveSourceAuthenticationOutputWithContext(ctx context.Context) S3ArchiveSourceAuthenticationOutput {
+	return o
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ToS3ArchiveSourceAuthenticationPtrOutput() S3ArchiveSourceAuthenticationPtrOutput {
+	return o.ToS3ArchiveSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ToS3ArchiveSourceAuthenticationPtrOutputWithContext(ctx context.Context) S3ArchiveSourceAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3ArchiveSourceAuthentication) *S3ArchiveSourceAuthentication {
+		return &v
+	}).(S3ArchiveSourceAuthenticationPtrOutput)
+}
+
+// Your AWS access key if using type `S3BucketAuthentication`.
+func (o S3ArchiveSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.AuthProviderX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.ClientX509CertUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.PrivateKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Your AWS Bucket region.
+func (o S3ArchiveSourceAuthenticationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+func (o S3ArchiveSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Your AWS secret key if using type `S3BucketAuthentication`.
+func (o S3ArchiveSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
+}
+
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+func (o S3ArchiveSourceAuthenticationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v S3ArchiveSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type S3ArchiveSourceAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourceAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3ArchiveSourceAuthentication)(nil)).Elem()
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) ToS3ArchiveSourceAuthenticationPtrOutput() S3ArchiveSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) ToS3ArchiveSourceAuthenticationPtrOutputWithContext(ctx context.Context) S3ArchiveSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) Elem() S3ArchiveSourceAuthenticationOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) S3ArchiveSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret S3ArchiveSourceAuthentication
+		return ret
+	}).(S3ArchiveSourceAuthenticationOutput)
+}
+
+// Your AWS access key if using type `S3BucketAuthentication`.
+func (o S3ArchiveSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) AuthProviderX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthProviderX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) AuthUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) ClientEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) ClientX509CertUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientX509CertUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your AWS Bucket region.
+func (o S3ArchiveSourceAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+func (o S3ArchiveSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your AWS secret key if using type `S3BucketAuthentication`.
+func (o S3ArchiveSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+func (o S3ArchiveSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type S3ArchiveSourceDefaultDateFormat struct {
+	Format  string  `pulumi:"format"`
+	Locator *string `pulumi:"locator"`
+}
+
+// S3ArchiveSourceDefaultDateFormatInput is an input type that accepts S3ArchiveSourceDefaultDateFormatArgs and S3ArchiveSourceDefaultDateFormatOutput values.
+// You can construct a concrete instance of `S3ArchiveSourceDefaultDateFormatInput` via:
+//
+//	S3ArchiveSourceDefaultDateFormatArgs{...}
+type S3ArchiveSourceDefaultDateFormatInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourceDefaultDateFormatOutput() S3ArchiveSourceDefaultDateFormatOutput
+	ToS3ArchiveSourceDefaultDateFormatOutputWithContext(context.Context) S3ArchiveSourceDefaultDateFormatOutput
+}
+
+type S3ArchiveSourceDefaultDateFormatArgs struct {
+	Format  pulumi.StringInput    `pulumi:"format"`
+	Locator pulumi.StringPtrInput `pulumi:"locator"`
+}
+
+func (S3ArchiveSourceDefaultDateFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i S3ArchiveSourceDefaultDateFormatArgs) ToS3ArchiveSourceDefaultDateFormatOutput() S3ArchiveSourceDefaultDateFormatOutput {
+	return i.ToS3ArchiveSourceDefaultDateFormatOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourceDefaultDateFormatArgs) ToS3ArchiveSourceDefaultDateFormatOutputWithContext(ctx context.Context) S3ArchiveSourceDefaultDateFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourceDefaultDateFormatOutput)
+}
+
+// S3ArchiveSourceDefaultDateFormatArrayInput is an input type that accepts S3ArchiveSourceDefaultDateFormatArray and S3ArchiveSourceDefaultDateFormatArrayOutput values.
+// You can construct a concrete instance of `S3ArchiveSourceDefaultDateFormatArrayInput` via:
+//
+//	S3ArchiveSourceDefaultDateFormatArray{ S3ArchiveSourceDefaultDateFormatArgs{...} }
+type S3ArchiveSourceDefaultDateFormatArrayInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourceDefaultDateFormatArrayOutput() S3ArchiveSourceDefaultDateFormatArrayOutput
+	ToS3ArchiveSourceDefaultDateFormatArrayOutputWithContext(context.Context) S3ArchiveSourceDefaultDateFormatArrayOutput
+}
+
+type S3ArchiveSourceDefaultDateFormatArray []S3ArchiveSourceDefaultDateFormatInput
+
+func (S3ArchiveSourceDefaultDateFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i S3ArchiveSourceDefaultDateFormatArray) ToS3ArchiveSourceDefaultDateFormatArrayOutput() S3ArchiveSourceDefaultDateFormatArrayOutput {
+	return i.ToS3ArchiveSourceDefaultDateFormatArrayOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourceDefaultDateFormatArray) ToS3ArchiveSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) S3ArchiveSourceDefaultDateFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourceDefaultDateFormatArrayOutput)
+}
+
+type S3ArchiveSourceDefaultDateFormatOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourceDefaultDateFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o S3ArchiveSourceDefaultDateFormatOutput) ToS3ArchiveSourceDefaultDateFormatOutput() S3ArchiveSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o S3ArchiveSourceDefaultDateFormatOutput) ToS3ArchiveSourceDefaultDateFormatOutputWithContext(ctx context.Context) S3ArchiveSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o S3ArchiveSourceDefaultDateFormatOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v S3ArchiveSourceDefaultDateFormat) string { return v.Format }).(pulumi.StringOutput)
+}
+
+func (o S3ArchiveSourceDefaultDateFormatOutput) Locator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceDefaultDateFormat) *string { return v.Locator }).(pulumi.StringPtrOutput)
+}
+
+type S3ArchiveSourceDefaultDateFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourceDefaultDateFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o S3ArchiveSourceDefaultDateFormatArrayOutput) ToS3ArchiveSourceDefaultDateFormatArrayOutput() S3ArchiveSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourceDefaultDateFormatArrayOutput) ToS3ArchiveSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) S3ArchiveSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourceDefaultDateFormatArrayOutput) Index(i pulumi.IntInput) S3ArchiveSourceDefaultDateFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3ArchiveSourceDefaultDateFormat {
+		return vs[0].([]S3ArchiveSourceDefaultDateFormat)[vs[1].(int)]
+	}).(S3ArchiveSourceDefaultDateFormatOutput)
+}
+
+type S3ArchiveSourceFilter struct {
+	FilterType string  `pulumi:"filterType"`
+	Mask       *string `pulumi:"mask"`
+	Name       string  `pulumi:"name"`
+	Regexp     string  `pulumi:"regexp"`
+}
+
+// S3ArchiveSourceFilterInput is an input type that accepts S3ArchiveSourceFilterArgs and S3ArchiveSourceFilterOutput values.
+// You can construct a concrete instance of `S3ArchiveSourceFilterInput` via:
+//
+//	S3ArchiveSourceFilterArgs{...}
+type S3ArchiveSourceFilterInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourceFilterOutput() S3ArchiveSourceFilterOutput
+	ToS3ArchiveSourceFilterOutputWithContext(context.Context) S3ArchiveSourceFilterOutput
+}
+
+type S3ArchiveSourceFilterArgs struct {
+	FilterType pulumi.StringInput    `pulumi:"filterType"`
+	Mask       pulumi.StringPtrInput `pulumi:"mask"`
+	Name       pulumi.StringInput    `pulumi:"name"`
+	Regexp     pulumi.StringInput    `pulumi:"regexp"`
+}
+
+func (S3ArchiveSourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourceFilter)(nil)).Elem()
+}
+
+func (i S3ArchiveSourceFilterArgs) ToS3ArchiveSourceFilterOutput() S3ArchiveSourceFilterOutput {
+	return i.ToS3ArchiveSourceFilterOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourceFilterArgs) ToS3ArchiveSourceFilterOutputWithContext(ctx context.Context) S3ArchiveSourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourceFilterOutput)
+}
+
+// S3ArchiveSourceFilterArrayInput is an input type that accepts S3ArchiveSourceFilterArray and S3ArchiveSourceFilterArrayOutput values.
+// You can construct a concrete instance of `S3ArchiveSourceFilterArrayInput` via:
+//
+//	S3ArchiveSourceFilterArray{ S3ArchiveSourceFilterArgs{...} }
+type S3ArchiveSourceFilterArrayInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourceFilterArrayOutput() S3ArchiveSourceFilterArrayOutput
+	ToS3ArchiveSourceFilterArrayOutputWithContext(context.Context) S3ArchiveSourceFilterArrayOutput
+}
+
+type S3ArchiveSourceFilterArray []S3ArchiveSourceFilterInput
+
+func (S3ArchiveSourceFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourceFilter)(nil)).Elem()
+}
+
+func (i S3ArchiveSourceFilterArray) ToS3ArchiveSourceFilterArrayOutput() S3ArchiveSourceFilterArrayOutput {
+	return i.ToS3ArchiveSourceFilterArrayOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourceFilterArray) ToS3ArchiveSourceFilterArrayOutputWithContext(ctx context.Context) S3ArchiveSourceFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourceFilterArrayOutput)
+}
+
+type S3ArchiveSourceFilterOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourceFilter)(nil)).Elem()
+}
+
+func (o S3ArchiveSourceFilterOutput) ToS3ArchiveSourceFilterOutput() S3ArchiveSourceFilterOutput {
+	return o
+}
+
+func (o S3ArchiveSourceFilterOutput) ToS3ArchiveSourceFilterOutputWithContext(ctx context.Context) S3ArchiveSourceFilterOutput {
+	return o
+}
+
+func (o S3ArchiveSourceFilterOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v S3ArchiveSourceFilter) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+func (o S3ArchiveSourceFilterOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourceFilter) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourceFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v S3ArchiveSourceFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o S3ArchiveSourceFilterOutput) Regexp() pulumi.StringOutput {
+	return o.ApplyT(func(v S3ArchiveSourceFilter) string { return v.Regexp }).(pulumi.StringOutput)
+}
+
+type S3ArchiveSourceFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourceFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourceFilter)(nil)).Elem()
+}
+
+func (o S3ArchiveSourceFilterArrayOutput) ToS3ArchiveSourceFilterArrayOutput() S3ArchiveSourceFilterArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourceFilterArrayOutput) ToS3ArchiveSourceFilterArrayOutputWithContext(ctx context.Context) S3ArchiveSourceFilterArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourceFilterArrayOutput) Index(i pulumi.IntInput) S3ArchiveSourceFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3ArchiveSourceFilter {
+		return vs[0].([]S3ArchiveSourceFilter)[vs[1].(int)]
+	}).(S3ArchiveSourceFilterOutput)
+}
+
+type S3ArchiveSourcePath struct {
+	// The name of the bucket.
+	BucketName        *string                            `pulumi:"bucketName"`
+	CustomServices    []S3ArchiveSourcePathCustomService `pulumi:"customServices"`
+	LimitToNamespaces []string                           `pulumi:"limitToNamespaces"`
+	LimitToRegions    []string                           `pulumi:"limitToRegions"`
+	LimitToServices   []string                           `pulumi:"limitToServices"`
+	// The path to the data.
+	PathExpression             *string                                        `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns []S3ArchiveSourcePathSnsTopicOrSubscriptionArn `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 []S3ArchiveSourcePathTagFilter                 `pulumi:"tagFilters"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type            string `pulumi:"type"`
+	UseVersionedApi *bool  `pulumi:"useVersionedApi"`
+}
+
+// S3ArchiveSourcePathInput is an input type that accepts S3ArchiveSourcePathArgs and S3ArchiveSourcePathOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathInput` via:
+//
+//	S3ArchiveSourcePathArgs{...}
+type S3ArchiveSourcePathInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathOutput() S3ArchiveSourcePathOutput
+	ToS3ArchiveSourcePathOutputWithContext(context.Context) S3ArchiveSourcePathOutput
+}
+
+type S3ArchiveSourcePathArgs struct {
+	// The name of the bucket.
+	BucketName        pulumi.StringPtrInput                      `pulumi:"bucketName"`
+	CustomServices    S3ArchiveSourcePathCustomServiceArrayInput `pulumi:"customServices"`
+	LimitToNamespaces pulumi.StringArrayInput                    `pulumi:"limitToNamespaces"`
+	LimitToRegions    pulumi.StringArrayInput                    `pulumi:"limitToRegions"`
+	LimitToServices   pulumi.StringArrayInput                    `pulumi:"limitToServices"`
+	// The path to the data.
+	PathExpression             pulumi.StringPtrInput                                  `pulumi:"pathExpression"`
+	SnsTopicOrSubscriptionArns S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayInput `pulumi:"snsTopicOrSubscriptionArns"`
+	TagFilters                 S3ArchiveSourcePathTagFilterArrayInput                 `pulumi:"tagFilters"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type            pulumi.StringInput  `pulumi:"type"`
+	UseVersionedApi pulumi.BoolPtrInput `pulumi:"useVersionedApi"`
+}
+
+func (S3ArchiveSourcePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePath)(nil)).Elem()
+}
+
+func (i S3ArchiveSourcePathArgs) ToS3ArchiveSourcePathOutput() S3ArchiveSourcePathOutput {
+	return i.ToS3ArchiveSourcePathOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathArgs) ToS3ArchiveSourcePathOutputWithContext(ctx context.Context) S3ArchiveSourcePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathOutput)
+}
+
+func (i S3ArchiveSourcePathArgs) ToS3ArchiveSourcePathPtrOutput() S3ArchiveSourcePathPtrOutput {
+	return i.ToS3ArchiveSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathArgs) ToS3ArchiveSourcePathPtrOutputWithContext(ctx context.Context) S3ArchiveSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathOutput).ToS3ArchiveSourcePathPtrOutputWithContext(ctx)
+}
+
+// S3ArchiveSourcePathPtrInput is an input type that accepts S3ArchiveSourcePathArgs, S3ArchiveSourcePathPtr and S3ArchiveSourcePathPtrOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathPtrInput` via:
+//
+//	        S3ArchiveSourcePathArgs{...}
+//
+//	or:
+//
+//	        nil
+type S3ArchiveSourcePathPtrInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathPtrOutput() S3ArchiveSourcePathPtrOutput
+	ToS3ArchiveSourcePathPtrOutputWithContext(context.Context) S3ArchiveSourcePathPtrOutput
+}
+
+type s3archiveSourcePathPtrType S3ArchiveSourcePathArgs
+
+func S3ArchiveSourcePathPtr(v *S3ArchiveSourcePathArgs) S3ArchiveSourcePathPtrInput {
+	return (*s3archiveSourcePathPtrType)(v)
+}
+
+func (*s3archiveSourcePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3ArchiveSourcePath)(nil)).Elem()
+}
+
+func (i *s3archiveSourcePathPtrType) ToS3ArchiveSourcePathPtrOutput() S3ArchiveSourcePathPtrOutput {
+	return i.ToS3ArchiveSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i *s3archiveSourcePathPtrType) ToS3ArchiveSourcePathPtrOutputWithContext(ctx context.Context) S3ArchiveSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathPtrOutput)
+}
+
+type S3ArchiveSourcePathOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePath)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathOutput) ToS3ArchiveSourcePathOutput() S3ArchiveSourcePathOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathOutput) ToS3ArchiveSourcePathOutputWithContext(ctx context.Context) S3ArchiveSourcePathOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathOutput) ToS3ArchiveSourcePathPtrOutput() S3ArchiveSourcePathPtrOutput {
+	return o.ToS3ArchiveSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (o S3ArchiveSourcePathOutput) ToS3ArchiveSourcePathPtrOutputWithContext(ctx context.Context) S3ArchiveSourcePathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3ArchiveSourcePath) *S3ArchiveSourcePath {
+		return &v
+	}).(S3ArchiveSourcePathPtrOutput)
+}
+
+// The name of the bucket.
+func (o S3ArchiveSourcePathOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourcePathOutput) CustomServices() S3ArchiveSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) []S3ArchiveSourcePathCustomService { return v.CustomServices }).(S3ArchiveSourcePathCustomServiceArrayOutput)
+}
+
+func (o S3ArchiveSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
+}
+
+func (o S3ArchiveSourcePathOutput) LimitToRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) []string { return v.LimitToRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o S3ArchiveSourcePathOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) []string { return v.LimitToServices }).(pulumi.StringArrayOutput)
+}
+
+// The path to the data.
+func (o S3ArchiveSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourcePathOutput) SnsTopicOrSubscriptionArns() S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) []S3ArchiveSourcePathSnsTopicOrSubscriptionArn {
+		return v.SnsTopicOrSubscriptionArns
+	}).(S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+func (o S3ArchiveSourcePathOutput) TagFilters() S3ArchiveSourcePathTagFilterArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) []S3ArchiveSourcePathTagFilter { return v.TagFilters }).(S3ArchiveSourcePathTagFilterArrayOutput)
+}
+
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+func (o S3ArchiveSourcePathOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o S3ArchiveSourcePathOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePath) *bool { return v.UseVersionedApi }).(pulumi.BoolPtrOutput)
+}
+
+type S3ArchiveSourcePathPtrOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3ArchiveSourcePath)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathPtrOutput) ToS3ArchiveSourcePathPtrOutput() S3ArchiveSourcePathPtrOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathPtrOutput) ToS3ArchiveSourcePathPtrOutputWithContext(ctx context.Context) S3ArchiveSourcePathPtrOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathPtrOutput) Elem() S3ArchiveSourcePathOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) S3ArchiveSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret S3ArchiveSourcePath
+		return ret
+	}).(S3ArchiveSourcePathOutput)
+}
+
+// The name of the bucket.
+func (o S3ArchiveSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourcePathPtrOutput) CustomServices() S3ArchiveSourcePathCustomServiceArrayOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) []S3ArchiveSourcePathCustomService {
+		if v == nil {
+			return nil
+		}
+		return v.CustomServices
+	}).(S3ArchiveSourcePathCustomServiceArrayOutput)
+}
+
+func (o S3ArchiveSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o S3ArchiveSourcePathPtrOutput) LimitToRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o S3ArchiveSourcePathPtrOutput) LimitToServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitToServices
+	}).(pulumi.StringArrayOutput)
+}
+
+// The path to the data.
+func (o S3ArchiveSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourcePathPtrOutput) SnsTopicOrSubscriptionArns() S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) []S3ArchiveSourcePathSnsTopicOrSubscriptionArn {
+		if v == nil {
+			return nil
+		}
+		return v.SnsTopicOrSubscriptionArns
+	}).(S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+func (o S3ArchiveSourcePathPtrOutput) TagFilters() S3ArchiveSourcePathTagFilterArrayOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) []S3ArchiveSourcePathTagFilter {
+		if v == nil {
+			return nil
+		}
+		return v.TagFilters
+	}).(S3ArchiveSourcePathTagFilterArrayOutput)
+}
+
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+func (o S3ArchiveSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourcePathPtrOutput) UseVersionedApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3ArchiveSourcePath) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseVersionedApi
+	}).(pulumi.BoolPtrOutput)
+}
+
+type S3ArchiveSourcePathCustomService struct {
+	Prefixes    []string `pulumi:"prefixes"`
+	ServiceName *string  `pulumi:"serviceName"`
+}
+
+// S3ArchiveSourcePathCustomServiceInput is an input type that accepts S3ArchiveSourcePathCustomServiceArgs and S3ArchiveSourcePathCustomServiceOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathCustomServiceInput` via:
+//
+//	S3ArchiveSourcePathCustomServiceArgs{...}
+type S3ArchiveSourcePathCustomServiceInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathCustomServiceOutput() S3ArchiveSourcePathCustomServiceOutput
+	ToS3ArchiveSourcePathCustomServiceOutputWithContext(context.Context) S3ArchiveSourcePathCustomServiceOutput
+}
+
+type S3ArchiveSourcePathCustomServiceArgs struct {
+	Prefixes    pulumi.StringArrayInput `pulumi:"prefixes"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+}
+
+func (S3ArchiveSourcePathCustomServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePathCustomService)(nil)).Elem()
+}
+
+func (i S3ArchiveSourcePathCustomServiceArgs) ToS3ArchiveSourcePathCustomServiceOutput() S3ArchiveSourcePathCustomServiceOutput {
+	return i.ToS3ArchiveSourcePathCustomServiceOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathCustomServiceArgs) ToS3ArchiveSourcePathCustomServiceOutputWithContext(ctx context.Context) S3ArchiveSourcePathCustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathCustomServiceOutput)
+}
+
+// S3ArchiveSourcePathCustomServiceArrayInput is an input type that accepts S3ArchiveSourcePathCustomServiceArray and S3ArchiveSourcePathCustomServiceArrayOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathCustomServiceArrayInput` via:
+//
+//	S3ArchiveSourcePathCustomServiceArray{ S3ArchiveSourcePathCustomServiceArgs{...} }
+type S3ArchiveSourcePathCustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathCustomServiceArrayOutput() S3ArchiveSourcePathCustomServiceArrayOutput
+	ToS3ArchiveSourcePathCustomServiceArrayOutputWithContext(context.Context) S3ArchiveSourcePathCustomServiceArrayOutput
+}
+
+type S3ArchiveSourcePathCustomServiceArray []S3ArchiveSourcePathCustomServiceInput
+
+func (S3ArchiveSourcePathCustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourcePathCustomService)(nil)).Elem()
+}
+
+func (i S3ArchiveSourcePathCustomServiceArray) ToS3ArchiveSourcePathCustomServiceArrayOutput() S3ArchiveSourcePathCustomServiceArrayOutput {
+	return i.ToS3ArchiveSourcePathCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathCustomServiceArray) ToS3ArchiveSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) S3ArchiveSourcePathCustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathCustomServiceArrayOutput)
+}
+
+type S3ArchiveSourcePathCustomServiceOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathCustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePathCustomService)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathCustomServiceOutput) ToS3ArchiveSourcePathCustomServiceOutput() S3ArchiveSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathCustomServiceOutput) ToS3ArchiveSourcePathCustomServiceOutputWithContext(ctx context.Context) S3ArchiveSourcePathCustomServiceOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathCustomServiceOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePathCustomService) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o S3ArchiveSourcePathCustomServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePathCustomService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type S3ArchiveSourcePathCustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathCustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourcePathCustomService)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathCustomServiceArrayOutput) ToS3ArchiveSourcePathCustomServiceArrayOutput() S3ArchiveSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathCustomServiceArrayOutput) ToS3ArchiveSourcePathCustomServiceArrayOutputWithContext(ctx context.Context) S3ArchiveSourcePathCustomServiceArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathCustomServiceArrayOutput) Index(i pulumi.IntInput) S3ArchiveSourcePathCustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3ArchiveSourcePathCustomService {
+		return vs[0].([]S3ArchiveSourcePathCustomService)[vs[1].(int)]
+	}).(S3ArchiveSourcePathCustomServiceOutput)
+}
+
+type S3ArchiveSourcePathSnsTopicOrSubscriptionArn struct {
+	Arn       *string `pulumi:"arn"`
+	IsSuccess *bool   `pulumi:"isSuccess"`
+}
+
+// S3ArchiveSourcePathSnsTopicOrSubscriptionArnInput is an input type that accepts S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs and S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathSnsTopicOrSubscriptionArnInput` via:
+//
+//	S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs{...}
+type S3ArchiveSourcePathSnsTopicOrSubscriptionArnInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput() S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput
+	ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Context) S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput
+}
+
+type S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs struct {
+	Arn       pulumi.StringPtrInput `pulumi:"arn"`
+	IsSuccess pulumi.BoolPtrInput   `pulumi:"isSuccess"`
+}
+
+func (S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput() S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput {
+	return i.ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+// S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayInput is an input type that accepts S3ArchiveSourcePathSnsTopicOrSubscriptionArnArray and S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayInput` via:
+//
+//	S3ArchiveSourcePathSnsTopicOrSubscriptionArnArray{ S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs{...} }
+type S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput() S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput
+	ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Context) S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput
+}
+
+type S3ArchiveSourcePathSnsTopicOrSubscriptionArnArray []S3ArchiveSourcePathSnsTopicOrSubscriptionArnInput
+
+func (S3ArchiveSourcePathSnsTopicOrSubscriptionArnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (i S3ArchiveSourcePathSnsTopicOrSubscriptionArnArray) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput() S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return i.ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathSnsTopicOrSubscriptionArnArray) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput)
+}
+
+type S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput() S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnOutputWithContext(ctx context.Context) S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePathSnsTopicOrSubscriptionArn) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput) IsSuccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePathSnsTopicOrSubscriptionArn) *bool { return v.IsSuccess }).(pulumi.BoolPtrOutput)
+}
+
+type S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourcePathSnsTopicOrSubscriptionArn)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput() S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput) ToS3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutputWithContext(ctx context.Context) S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInput) S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3ArchiveSourcePathSnsTopicOrSubscriptionArn {
+		return vs[0].([]S3ArchiveSourcePathSnsTopicOrSubscriptionArn)[vs[1].(int)]
+	}).(S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput)
+}
+
+type S3ArchiveSourcePathTagFilter struct {
+	Namespace *string  `pulumi:"namespace"`
+	Tags      []string `pulumi:"tags"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type *string `pulumi:"type"`
+}
+
+// S3ArchiveSourcePathTagFilterInput is an input type that accepts S3ArchiveSourcePathTagFilterArgs and S3ArchiveSourcePathTagFilterOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathTagFilterInput` via:
+//
+//	S3ArchiveSourcePathTagFilterArgs{...}
+type S3ArchiveSourcePathTagFilterInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathTagFilterOutput() S3ArchiveSourcePathTagFilterOutput
+	ToS3ArchiveSourcePathTagFilterOutputWithContext(context.Context) S3ArchiveSourcePathTagFilterOutput
+}
+
+type S3ArchiveSourcePathTagFilterArgs struct {
+	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
+	Tags      pulumi.StringArrayInput `pulumi:"tags"`
+	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (S3ArchiveSourcePathTagFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePathTagFilter)(nil)).Elem()
+}
+
+func (i S3ArchiveSourcePathTagFilterArgs) ToS3ArchiveSourcePathTagFilterOutput() S3ArchiveSourcePathTagFilterOutput {
+	return i.ToS3ArchiveSourcePathTagFilterOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathTagFilterArgs) ToS3ArchiveSourcePathTagFilterOutputWithContext(ctx context.Context) S3ArchiveSourcePathTagFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathTagFilterOutput)
+}
+
+// S3ArchiveSourcePathTagFilterArrayInput is an input type that accepts S3ArchiveSourcePathTagFilterArray and S3ArchiveSourcePathTagFilterArrayOutput values.
+// You can construct a concrete instance of `S3ArchiveSourcePathTagFilterArrayInput` via:
+//
+//	S3ArchiveSourcePathTagFilterArray{ S3ArchiveSourcePathTagFilterArgs{...} }
+type S3ArchiveSourcePathTagFilterArrayInput interface {
+	pulumi.Input
+
+	ToS3ArchiveSourcePathTagFilterArrayOutput() S3ArchiveSourcePathTagFilterArrayOutput
+	ToS3ArchiveSourcePathTagFilterArrayOutputWithContext(context.Context) S3ArchiveSourcePathTagFilterArrayOutput
+}
+
+type S3ArchiveSourcePathTagFilterArray []S3ArchiveSourcePathTagFilterInput
+
+func (S3ArchiveSourcePathTagFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourcePathTagFilter)(nil)).Elem()
+}
+
+func (i S3ArchiveSourcePathTagFilterArray) ToS3ArchiveSourcePathTagFilterArrayOutput() S3ArchiveSourcePathTagFilterArrayOutput {
+	return i.ToS3ArchiveSourcePathTagFilterArrayOutputWithContext(context.Background())
+}
+
+func (i S3ArchiveSourcePathTagFilterArray) ToS3ArchiveSourcePathTagFilterArrayOutputWithContext(ctx context.Context) S3ArchiveSourcePathTagFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3ArchiveSourcePathTagFilterArrayOutput)
+}
+
+type S3ArchiveSourcePathTagFilterOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathTagFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3ArchiveSourcePathTagFilter)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathTagFilterOutput) ToS3ArchiveSourcePathTagFilterOutput() S3ArchiveSourcePathTagFilterOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathTagFilterOutput) ToS3ArchiveSourcePathTagFilterOutputWithContext(ctx context.Context) S3ArchiveSourcePathTagFilterOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathTagFilterOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePathTagFilter) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ArchiveSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+func (o S3ArchiveSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3ArchiveSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type S3ArchiveSourcePathTagFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (S3ArchiveSourcePathTagFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3ArchiveSourcePathTagFilter)(nil)).Elem()
+}
+
+func (o S3ArchiveSourcePathTagFilterArrayOutput) ToS3ArchiveSourcePathTagFilterArrayOutput() S3ArchiveSourcePathTagFilterArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathTagFilterArrayOutput) ToS3ArchiveSourcePathTagFilterArrayOutputWithContext(ctx context.Context) S3ArchiveSourcePathTagFilterArrayOutput {
+	return o
+}
+
+func (o S3ArchiveSourcePathTagFilterArrayOutput) Index(i pulumi.IntInput) S3ArchiveSourcePathTagFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3ArchiveSourcePathTagFilter {
+		return vs[0].([]S3ArchiveSourcePathTagFilter)[vs[1].(int)]
+	}).(S3ArchiveSourcePathTagFilterOutput)
+}
+
 type S3AuditSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`.
 	AccessKey               *string `pulumi:"accessKey"`
@@ -13559,6 +21184,84 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalFileSourceDefaultDateFormatArrayInput)(nil)).Elem(), LocalFileSourceDefaultDateFormatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalFileSourceFilterInput)(nil)).Elem(), LocalFileSourceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalFileSourceFilterArrayInput)(nil)).Elem(), LocalFileSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchQueryParameterInput)(nil)).Elem(), LogSearchQueryParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchQueryParameterArrayInput)(nil)).Elem(), LogSearchQueryParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleInput)(nil)).Elem(), LogSearchScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchSchedulePtrInput)(nil)).Elem(), LogSearchScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationAlertSearchNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationAlertSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationAlertSearchNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationAlertSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationCseSignalNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationCseSignalNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationCseSignalNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationCseSignalNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationEmailSearchNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationEmailSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationEmailSearchNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationEmailSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationSaveToLookupNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationSaveToLookupNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationSaveToLookupNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationSaveToLookupNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationSaveToViewNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationSaveToViewNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationSaveToViewNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationSaveToViewNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationServiceNowSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationServiceNowSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotificationFieldsInput)(nil)).Elem(), LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrInput)(nil)).Elem(), LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationWebhookSearchNotificationInput)(nil)).Elem(), LogSearchScheduleNotificationWebhookSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleNotificationWebhookSearchNotificationPtrInput)(nil)).Elem(), LogSearchScheduleNotificationWebhookSearchNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParameterInput)(nil)).Elem(), LogSearchScheduleParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParameterArrayInput)(nil)).Elem(), LogSearchScheduleParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrInput)(nil)).Elem(), LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleThresholdInput)(nil)).Elem(), LogSearchScheduleThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchScheduleThresholdPtrInput)(nil)).Elem(), LogSearchScheduleThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromPtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToPtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeCompleteLiteralTimeRangeInput)(nil)).Elem(), LogSearchTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogSearchTimeRangeCompleteLiteralTimeRangePtrInput)(nil)).Elem(), LogSearchTimeRangeCompleteLiteralTimeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableFieldInput)(nil)).Elem(), LookupTableFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LookupTableFieldArrayInput)(nil)).Elem(), LookupTableFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataSourceAuthenticationInput)(nil)).Elem(), MetadataSourceAuthenticationArgs{})
@@ -13654,6 +21357,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePathPtrInput)(nil)).Elem(), PollingSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePathTagFilterInput)(nil)).Elem(), PollingSourcePathTagFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourcePathTagFilterArrayInput)(nil)).Elem(), PollingSourcePathTagFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourceAuthenticationInput)(nil)).Elem(), S3ArchiveSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourceAuthenticationPtrInput)(nil)).Elem(), S3ArchiveSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourceDefaultDateFormatInput)(nil)).Elem(), S3ArchiveSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourceDefaultDateFormatArrayInput)(nil)).Elem(), S3ArchiveSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourceFilterInput)(nil)).Elem(), S3ArchiveSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourceFilterArrayInput)(nil)).Elem(), S3ArchiveSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathInput)(nil)).Elem(), S3ArchiveSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathPtrInput)(nil)).Elem(), S3ArchiveSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathCustomServiceInput)(nil)).Elem(), S3ArchiveSourcePathCustomServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathCustomServiceArrayInput)(nil)).Elem(), S3ArchiveSourcePathCustomServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathSnsTopicOrSubscriptionArnInput)(nil)).Elem(), S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayInput)(nil)).Elem(), S3ArchiveSourcePathSnsTopicOrSubscriptionArnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathTagFilterInput)(nil)).Elem(), S3ArchiveSourcePathTagFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3ArchiveSourcePathTagFilterArrayInput)(nil)).Elem(), S3ArchiveSourcePathTagFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceAuthenticationInput)(nil)).Elem(), S3AuditSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceAuthenticationPtrInput)(nil)).Elem(), S3AuditSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3AuditSourceDefaultDateFormatInput)(nil)).Elem(), S3AuditSourceDefaultDateFormatArgs{})
@@ -13738,6 +21455,84 @@ func init() {
 	pulumi.RegisterOutputType(LocalFileSourceDefaultDateFormatArrayOutput{})
 	pulumi.RegisterOutputType(LocalFileSourceFilterOutput{})
 	pulumi.RegisterOutputType(LocalFileSourceFilterArrayOutput{})
+	pulumi.RegisterOutputType(LogSearchQueryParameterOutput{})
+	pulumi.RegisterOutputType(LogSearchQueryParameterArrayOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleOutput{})
+	pulumi.RegisterOutputType(LogSearchSchedulePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationAlertSearchNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationAlertSearchNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationCseSignalNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationCseSignalNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationEmailSearchNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationEmailSearchNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationSaveToLookupNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationSaveToViewNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationSaveToViewNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationServiceNowSearchNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationWebhookSearchNotificationOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParameterOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParameterArrayOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleThresholdOutput{})
+	pulumi.RegisterOutputType(LogSearchScheduleThresholdPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeCompleteLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput{})
 	pulumi.RegisterOutputType(LookupTableFieldOutput{})
 	pulumi.RegisterOutputType(LookupTableFieldArrayOutput{})
 	pulumi.RegisterOutputType(MetadataSourceAuthenticationOutput{})
@@ -13833,6 +21628,20 @@ func init() {
 	pulumi.RegisterOutputType(PollingSourcePathPtrOutput{})
 	pulumi.RegisterOutputType(PollingSourcePathTagFilterOutput{})
 	pulumi.RegisterOutputType(PollingSourcePathTagFilterArrayOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourceAuthenticationOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourceAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourceDefaultDateFormatOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourceDefaultDateFormatArrayOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourceFilterOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourceFilterArrayOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathCustomServiceOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathCustomServiceArrayOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathSnsTopicOrSubscriptionArnOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathTagFilterOutput{})
+	pulumi.RegisterOutputType(S3ArchiveSourcePathTagFilterArrayOutput{})
 	pulumi.RegisterOutputType(S3AuditSourceAuthenticationOutput{})
 	pulumi.RegisterOutputType(S3AuditSourceAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(S3AuditSourceDefaultDateFormatOutput{})

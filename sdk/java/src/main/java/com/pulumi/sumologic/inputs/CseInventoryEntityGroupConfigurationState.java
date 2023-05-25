@@ -78,14 +78,14 @@ public final class CseInventoryEntityGroupConfigurationState extends com.pulumi.
     }
 
     /**
-     * The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
+     * The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
      * 
      */
     @Import(name="inventoryType")
     private @Nullable Output<String> inventoryType;
 
     /**
-     * @return The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
+     * @return The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
      * 
      */
     public Optional<Output<String>> inventoryType() {
@@ -249,7 +249,7 @@ public final class CseInventoryEntityGroupConfigurationState extends com.pulumi.
         }
 
         /**
-         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
+         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class CseInventoryEntityGroupConfigurationState extends com.pulumi.
         }
 
         /**
-         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
+         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
          * 
          * @return builder
          * 

@@ -30,7 +30,7 @@ import (
 //				Description:     pulumi.String("Inventory entity group description"),
 //				Group:           pulumi.String("admin"),
 //				InventorySource: pulumi.String("Active Directory"),
-//				InventoryType:   pulumi.String("username"),
+//				InventoryType:   pulumi.String("user"),
 //				Suppressed:      pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("tag"),
@@ -65,7 +65,7 @@ type CseInventoryEntityGroupConfiguration struct {
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource pulumi.StringOutput `pulumi:"inventorySource"`
-	// The inventory type Examples: "computer", "username".
+	// The inventory type Examples: "computer", "user".
 	InventoryType pulumi.StringOutput `pulumi:"inventoryType"`
 	// The entity group configuration name.
 	Name       pulumi.StringOutput  `pulumi:"name"`
@@ -119,7 +119,7 @@ type cseInventoryEntityGroupConfigurationState struct {
 	Group *string `pulumi:"group"`
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource *string `pulumi:"inventorySource"`
-	// The inventory type Examples: "computer", "username".
+	// The inventory type Examples: "computer", "user".
 	InventoryType *string `pulumi:"inventoryType"`
 	// The entity group configuration name.
 	Name       *string `pulumi:"name"`
@@ -139,7 +139,7 @@ type CseInventoryEntityGroupConfigurationState struct {
 	Group pulumi.StringPtrInput
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource pulumi.StringPtrInput
-	// The inventory type Examples: "computer", "username".
+	// The inventory type Examples: "computer", "user".
 	InventoryType pulumi.StringPtrInput
 	// The entity group configuration name.
 	Name       pulumi.StringPtrInput
@@ -163,7 +163,7 @@ type cseInventoryEntityGroupConfigurationArgs struct {
 	Group *string `pulumi:"group"`
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource string `pulumi:"inventorySource"`
-	// The inventory type Examples: "computer", "username".
+	// The inventory type Examples: "computer", "user".
 	InventoryType string `pulumi:"inventoryType"`
 	// The entity group configuration name.
 	Name       *string `pulumi:"name"`
@@ -184,7 +184,7 @@ type CseInventoryEntityGroupConfigurationArgs struct {
 	Group pulumi.StringPtrInput
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource pulumi.StringInput
-	// The inventory type Examples: "computer", "username".
+	// The inventory type Examples: "computer", "user".
 	InventoryType pulumi.StringInput
 	// The entity group configuration name.
 	Name       pulumi.StringPtrInput
@@ -302,7 +302,7 @@ func (o CseInventoryEntityGroupConfigurationOutput) InventorySource() pulumi.Str
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringOutput { return v.InventorySource }).(pulumi.StringOutput)
 }
 
-// The inventory type Examples: "computer", "username".
+// The inventory type Examples: "computer", "user".
 func (o CseInventoryEntityGroupConfigurationOutput) InventoryType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringOutput { return v.InventoryType }).(pulumi.StringOutput)
 }

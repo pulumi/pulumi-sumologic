@@ -5967,6 +5967,532 @@ export interface LocalFileSourceFilter {
     regexp: string;
 }
 
+export interface LogSearchQueryParameter {
+    dataType: string;
+    /**
+     * Description of the search.
+     */
+    description?: string;
+    /**
+     * Name of the search.
+     */
+    name: string;
+    /**
+     * Value of scheduled search parameter.
+     */
+    value: string;
+}
+
+export interface LogSearchSchedule {
+    /**
+     * Cron-like expression specifying the search's schedule. `scheduleType` must be set
+     * to "Custom", otherwise, `scheduleType` takes precedence over `cronExpression`.
+     */
+    cronExpression?: string;
+    /**
+     * If enabled, emails are not sent out in case of errors with the search.
+     */
+    muteErrorEmails?: boolean;
+    /**
+     * Notification of the log search. See
+     * notification schema
+     */
+    notification: outputs.LogSearchScheduleNotification;
+    parameters?: outputs.LogSearchScheduleParameter[];
+    /**
+     * Time range of the scheduled log search. See
+     * time range schema
+     */
+    parseableTimeRange: outputs.LogSearchScheduleParseableTimeRange;
+    /**
+     * Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+     * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+     * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+     *
+     * > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+     * to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+     */
+    scheduleType: string;
+    /**
+     * Threshold for when to send notification. See
+     * threshold schema
+     */
+    threshold?: outputs.LogSearchScheduleThreshold;
+    /**
+     * Time zone for the scheduled log search. Either an abbreviation such as "PST",
+     * a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+     * abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+     */
+    timeZone: string;
+}
+
+export interface LogSearchScheduleNotification {
+    /**
+     * Run an script action. See
+     * alertSearchNotification schema for details.
+     */
+    alertSearchNotification?: outputs.LogSearchScheduleNotificationAlertSearchNotification;
+    /**
+     * Create a CSE signal with a scheduled search.
+     * See cseSignalNotification schema schema for details.
+     */
+    cseSignalNotification?: outputs.LogSearchScheduleNotificationCseSignalNotification;
+    /**
+     * Send an alert via email. See
+     * emailSearchNotification schema schema for details.
+     */
+    emailSearchNotification?: outputs.LogSearchScheduleNotificationEmailSearchNotification;
+    /**
+     * Save results to a Lookup Table. See
+     * saveToLookupNotification schema schema for details.
+     */
+    saveToLookupNotification?: outputs.LogSearchScheduleNotificationSaveToLookupNotification;
+    /**
+     * Save results to an index. See
+     * saveToViewNotification schema schema for details.
+     */
+    saveToViewNotification?: outputs.LogSearchScheduleNotificationSaveToViewNotification;
+    /**
+     * Send results to Service Now. See
+     * serviceNowSearchNotification schema schema for details.
+     */
+    serviceNowSearchNotification?: outputs.LogSearchScheduleNotificationServiceNowSearchNotification;
+    /**
+     * Send an alert via Webhook. See
+     * webhookSearchNotification schema schema for details.
+     */
+    webhookSearchNotification?: outputs.LogSearchScheduleNotificationWebhookSearchNotification;
+}
+
+export interface LogSearchScheduleNotificationAlertSearchNotification {
+    /**
+     * Identifier of the collector's source.
+     */
+    sourceId: string;
+}
+
+export interface LogSearchScheduleNotificationCseSignalNotification {
+    /**
+     * Name of the Cloud SIEM Enterprise Record to be created.
+     */
+    recordType: string;
+}
+
+export interface LogSearchScheduleNotificationEmailSearchNotification {
+    /**
+     * If the search results should be included in the notification email
+     * as a CSV attachment.
+     */
+    includeCsvAttachment?: boolean;
+    /**
+     * If the search result histogram should be included in the notification email.
+     */
+    includeHistogram?: boolean;
+    /**
+     * If the search query should be included in the notification email.
+     */
+    includeQuery?: boolean;
+    /**
+     * If the search result set should be included in the notification email.
+     */
+    includeResultSet?: boolean;
+    /**
+     * Subject of the email. If the notification is scheduled with a threshold,
+     * the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+     * For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+     */
+    subjectTemplate?: string;
+    /**
+     * A list of email recipients.
+     */
+    toLists: string[];
+}
+
+export interface LogSearchScheduleNotificationSaveToLookupNotification {
+    /**
+     * Whether to merge the file contents with existing data in the lookup table.
+     */
+    isLookupMergeOperation: boolean;
+    /**
+     * Path of the lookup table to save the results to.
+     */
+    lookupFilePath: string;
+}
+
+export interface LogSearchScheduleNotificationSaveToViewNotification {
+    /**
+     * Name of the View(Index) to save the results to.
+     */
+    viewName: string;
+}
+
+export interface LogSearchScheduleNotificationServiceNowSearchNotification {
+    /**
+     * Service Now Identifier.
+     */
+    externalId: string;
+    /**
+     * Service Now fields.
+     */
+    fields?: outputs.LogSearchScheduleNotificationServiceNowSearchNotificationFields;
+}
+
+export interface LogSearchScheduleNotificationServiceNowSearchNotificationFields {
+    /**
+     * The category that the event source uses to identify the event.
+     */
+    eventType?: string;
+    /**
+     * The physical or virtual device on which the event occurred.
+     */
+    node?: string;
+    /**
+     * The component on the node to which the event applies.
+     */
+    resource?: string;
+    /**
+     * An integer value representing the severity of the alert. Supported values are:
+     * * 0 for Clear
+     * * 1 for Critical
+     * * 2 for Major
+     * * 3 for Minor
+     * * 4 for Warning
+     */
+    severity?: number;
+}
+
+export interface LogSearchScheduleNotificationWebhookSearchNotification {
+    /**
+     * If set to true, one webhook per result will be sent when the trigger conditions are met.
+     */
+    itemizeAlerts?: boolean;
+    /**
+     * The maximum number of results for which we send separate alerts.
+     */
+    maxItemizedAlerts?: number;
+    /**
+     * A JSON object in the format required by the target WebHook URL.
+     */
+    payload?: string;
+    /**
+     * Identifier of the webhook connection.
+     */
+    webhookId: string;
+}
+
+export interface LogSearchScheduleParameter {
+    /**
+     * Name of the search.
+     */
+    name: string;
+    /**
+     * Value of scheduled search parameter.
+     */
+    value: string;
+}
+
+export interface LogSearchScheduleParseableTimeRange {
+    /**
+     * Bounded time range. See
+     * beginBoundedTimeRange schema schema for details.
+     */
+    beginBoundedTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange;
+    /**
+     * Literal time range. See
+     * completeLiteralTimeRange schema for details.
+     */
+    completeLiteralTimeRange?: outputs.LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
+    /**
+     * Start boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    from: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom;
+    /**
+     * End boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    to?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: number;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: string;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: string;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: string;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: number;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: string;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: string;
+}
+
+export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: string;
+}
+
+export interface LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: string;
+}
+
+export interface LogSearchScheduleThreshold {
+    /**
+     * Expected result count.
+     */
+    count: number;
+    /**
+     * Criterion to be applied when comparing actual result count with expected count. Possible
+     * values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+     */
+    operator: string;
+    /**
+     * Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+     * Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+     * to `message`.
+     */
+    thresholdType: string;
+}
+
+export interface LogSearchTimeRange {
+    /**
+     * Bounded time range. See
+     * beginBoundedTimeRange schema schema for details.
+     */
+    beginBoundedTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRange;
+    /**
+     * Literal time range. See
+     * completeLiteralTimeRange schema for details.
+     */
+    completeLiteralTimeRange?: outputs.LogSearchTimeRangeCompleteLiteralTimeRange;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRange {
+    /**
+     * Start boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    from: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFrom;
+    /**
+     * End boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    to?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeTo;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeFrom {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: number;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: string;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: string;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: string;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeTo {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: number;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: string;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: string;
+}
+
+export interface LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: string;
+}
+
+export interface LogSearchTimeRangeCompleteLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: string;
+}
+
 export interface LookupTableField {
     fieldName: string;
     fieldType: string;
@@ -6358,6 +6884,91 @@ export interface PollingSourcePathTagFilter {
     tags?: string[];
     /**
      * This value has to be set to `TagFilters`
+     */
+    type?: string;
+}
+
+export interface S3ArchiveSourceAuthentication {
+    /**
+     * Your AWS access key if using type `S3BucketAuthentication`.
+     */
+    accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
+    /**
+     * Your AWS Bucket region.
+     */
+    region?: string;
+    /**
+     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+     */
+    roleArn?: string;
+    /**
+     * Your AWS secret key if using type `S3BucketAuthentication`.
+     */
+    secretKey?: string;
+    tokenUri?: string;
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
+    type: string;
+}
+
+export interface S3ArchiveSourceDefaultDateFormat {
+    format: string;
+    locator?: string;
+}
+
+export interface S3ArchiveSourceFilter {
+    filterType: string;
+    mask?: string;
+    name: string;
+    regexp: string;
+}
+
+export interface S3ArchiveSourcePath {
+    /**
+     * The name of the bucket.
+     */
+    bucketName?: string;
+    customServices?: outputs.S3ArchiveSourcePathCustomService[];
+    limitToNamespaces?: string[];
+    limitToRegions?: string[];
+    limitToServices?: string[];
+    /**
+     * The path to the data.
+     */
+    pathExpression?: string;
+    snsTopicOrSubscriptionArns: outputs.S3ArchiveSourcePathSnsTopicOrSubscriptionArn[];
+    tagFilters?: outputs.S3ArchiveSourcePathTagFilter[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     */
+    type: string;
+    useVersionedApi?: boolean;
+}
+
+export interface S3ArchiveSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
+}
+
+export interface S3ArchiveSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
+}
+
+export interface S3ArchiveSourcePathTagFilter {
+    namespace?: string;
+    tags?: string[];
+    /**
+     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
      */
     type?: string;
 }

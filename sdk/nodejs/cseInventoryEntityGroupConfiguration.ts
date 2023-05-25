@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *     description: "Inventory entity group description",
  *     group: "admin",
  *     inventorySource: "Active Directory",
- *     inventoryType: "username",
+ *     inventoryType: "user",
  *     suppressed: false,
  *     tags: ["tag"],
  * });
@@ -75,7 +75,7 @@ export class CseInventoryEntityGroupConfiguration extends pulumi.CustomResource 
      */
     public readonly inventorySource!: pulumi.Output<string>;
     /**
-     * The inventory type Examples: "computer", "username".
+     * The inventory type Examples: "computer", "user".
      */
     public readonly inventoryType!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export interface CseInventoryEntityGroupConfigurationState {
      */
     inventorySource?: pulumi.Input<string>;
     /**
-     * The inventory type Examples: "computer", "username".
+     * The inventory type Examples: "computer", "user".
      */
     inventoryType?: pulumi.Input<string>;
     /**
@@ -191,7 +191,7 @@ export interface CseInventoryEntityGroupConfigurationArgs {
      */
     inventorySource: pulumi.Input<string>;
     /**
-     * The inventory type Examples: "computer", "username".
+     * The inventory type Examples: "computer", "user".
      */
     inventoryType: pulumi.Input<string>;
     /**

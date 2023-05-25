@@ -10527,6 +10527,655 @@
                 "regexp"
             ]
         },
+        "sumologic:index/LogSearchQueryParameter:LogSearchQueryParameter": {
+            "properties": {
+                "dataType": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the search.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the search.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of scheduled search parameter.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dataType",
+                "name",
+                "value"
+            ]
+        },
+        "sumologic:index/LogSearchSchedule:LogSearchSchedule": {
+            "properties": {
+                "cronExpression": {
+                    "type": "string",
+                    "description": "Cron-like expression specifying the search's schedule. `schedule_type` must be set\nto \"Custom\", otherwise, `schedule_type` takes precedence over `cron_expression`.\n"
+                },
+                "muteErrorEmails": {
+                    "type": "boolean",
+                    "description": "If enabled, emails are not sent out in case of errors with the search.\n"
+                },
+                "notification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotification:LogSearchScheduleNotification",
+                    "description": "Notification of the log search. See\nnotification schema\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/LogSearchScheduleParameter:LogSearchScheduleParameter"
+                    }
+                },
+                "parseableTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRange:LogSearchScheduleParseableTimeRange",
+                    "description": "Time range of the scheduled log search. See\ntime range schema\n"
+                },
+                "scheduleType": {
+                    "type": "string",
+                    "description": "Run schedule of the scheduled search. Set to \"Custom\" to specify the schedule with\na CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,\n`8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.\n\n\u003e With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression\nto determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.\n"
+                },
+                "threshold": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleThreshold:LogSearchScheduleThreshold",
+                    "description": "Threshold for when to send notification. See\nthreshold schema\n"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": "Time zone for the scheduled log search. Either an abbreviation such as \"PST\",\na full name such as \"America/Los_Angeles\", or a custom ID such as \"GMT-8:00\". Note that the support of\nabbreviations is for JDK 1.1.x compatibility only and full names should be used.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "notification",
+                "parseableTimeRange",
+                "scheduleType",
+                "timeZone"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleNotification:LogSearchScheduleNotification": {
+            "properties": {
+                "alertSearchNotification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationAlertSearchNotification:LogSearchScheduleNotificationAlertSearchNotification",
+                    "description": "Run an script action. See\nalert_search_notification schema for details.\n"
+                },
+                "cseSignalNotification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationCseSignalNotification:LogSearchScheduleNotificationCseSignalNotification",
+                    "description": "Create a CSE signal with a scheduled search.\nSee cse_signal_notification schema schema for details.\n"
+                },
+                "emailSearchNotification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationEmailSearchNotification:LogSearchScheduleNotificationEmailSearchNotification",
+                    "description": "Send an alert via email. See\nemail_search_notification schema schema for details.\n"
+                },
+                "saveToLookupNotification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationSaveToLookupNotification:LogSearchScheduleNotificationSaveToLookupNotification",
+                    "description": "Save results to a Lookup Table. See\nsave_to_lookup_notification schema schema for details.\n"
+                },
+                "saveToViewNotification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationSaveToViewNotification:LogSearchScheduleNotificationSaveToViewNotification",
+                    "description": "Save results to an index. See\nsave_to_view_notification schema schema for details.\n"
+                },
+                "serviceNowSearchNotification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationServiceNowSearchNotification:LogSearchScheduleNotificationServiceNowSearchNotification",
+                    "description": "Send results to Service Now. See\nservice_now_search_notification schema schema for details.\n"
+                },
+                "webhookSearchNotification": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationWebhookSearchNotification:LogSearchScheduleNotificationWebhookSearchNotification",
+                    "description": "Send an alert via Webhook. See\nwebhook_search_notification schema schema for details.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchScheduleNotificationAlertSearchNotification:LogSearchScheduleNotificationAlertSearchNotification": {
+            "properties": {
+                "sourceId": {
+                    "type": "string",
+                    "description": "Identifier of the collector's source.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceId"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleNotificationCseSignalNotification:LogSearchScheduleNotificationCseSignalNotification": {
+            "properties": {
+                "recordType": {
+                    "type": "string",
+                    "description": "Name of the Cloud SIEM Enterprise Record to be created.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "recordType"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleNotificationEmailSearchNotification:LogSearchScheduleNotificationEmailSearchNotification": {
+            "properties": {
+                "includeCsvAttachment": {
+                    "type": "boolean",
+                    "description": "If the search results should be included in the notification email\nas a CSV attachment.\n"
+                },
+                "includeHistogram": {
+                    "type": "boolean",
+                    "description": "If the search result histogram should be included in the notification email.\n"
+                },
+                "includeQuery": {
+                    "type": "boolean",
+                    "description": "If the search query should be included in the notification email.\n"
+                },
+                "includeResultSet": {
+                    "type": "boolean",
+                    "description": "If the search result set should be included in the notification email.\n"
+                },
+                "subjectTemplate": {
+                    "type": "string",
+                    "description": "Subject of the email. If the notification is scheduled with a threshold,\nthe default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.\nFor email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.\n"
+                },
+                "toLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email recipients.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "toLists"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleNotificationSaveToLookupNotification:LogSearchScheduleNotificationSaveToLookupNotification": {
+            "properties": {
+                "isLookupMergeOperation": {
+                    "type": "boolean",
+                    "description": "Whether to merge the file contents with existing data in the lookup table.\n"
+                },
+                "lookupFilePath": {
+                    "type": "string",
+                    "description": "Path of the lookup table to save the results to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "isLookupMergeOperation",
+                "lookupFilePath"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleNotificationSaveToViewNotification:LogSearchScheduleNotificationSaveToViewNotification": {
+            "properties": {
+                "viewName": {
+                    "type": "string",
+                    "description": "Name of the View(Index) to save the results to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "viewName"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleNotificationServiceNowSearchNotification:LogSearchScheduleNotificationServiceNowSearchNotification": {
+            "properties": {
+                "externalId": {
+                    "type": "string",
+                    "description": "Service Now Identifier.\n"
+                },
+                "fields": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleNotificationServiceNowSearchNotificationFields:LogSearchScheduleNotificationServiceNowSearchNotificationFields",
+                    "description": "Service Now fields.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "externalId"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleNotificationServiceNowSearchNotificationFields:LogSearchScheduleNotificationServiceNowSearchNotificationFields": {
+            "properties": {
+                "eventType": {
+                    "type": "string",
+                    "description": "The category that the event source uses to identify the event.\n"
+                },
+                "node": {
+                    "type": "string",
+                    "description": "The physical or virtual device on which the event occurred.\n"
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "The component on the node to which the event applies.\n"
+                },
+                "severity": {
+                    "type": "integer",
+                    "description": "An integer value representing the severity of the alert. Supported values are:\n* 0 for Clear\n* 1 for Critical\n* 2 for Major\n* 3 for Minor\n* 4 for Warning\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchScheduleNotificationWebhookSearchNotification:LogSearchScheduleNotificationWebhookSearchNotification": {
+            "properties": {
+                "itemizeAlerts": {
+                    "type": "boolean",
+                    "description": "If set to true, one webhook per result will be sent when the trigger conditions are met.\n"
+                },
+                "maxItemizedAlerts": {
+                    "type": "integer",
+                    "description": "The maximum number of results for which we send separate alerts.\n"
+                },
+                "payload": {
+                    "type": "string",
+                    "description": "A JSON object in the format required by the target WebHook URL.\n"
+                },
+                "webhookId": {
+                    "type": "string",
+                    "description": "Identifier of the webhook connection.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "webhookId"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParameter:LogSearchScheduleParameter": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the search.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of scheduled search parameter.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRange:LogSearchScheduleParseableTimeRange": {
+            "properties": {
+                "beginBoundedTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange",
+                    "description": "Bounded time range. See\nbegin_bounded_time_range schema schema for details.\n"
+                },
+                "completeLiteralTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange:LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange",
+                    "description": "Literal time range. See\ncomplete_literal_time_range schema for details.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange": {
+            "properties": {
+                "from": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom",
+                    "description": "Start boundary of bounded time range. See\ntime_range_boundary schema for details.\n"
+                },
+                "to": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo",
+                    "description": "End boundary of bounded time range. See\ntime_range_boundary schema for details.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "from"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom": {
+            "properties": {
+                "epochTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange",
+                    "description": "Time since the epoch.\n"
+                },
+                "iso8601TimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange",
+                    "description": "Time in ISO 8601 format.\n"
+                },
+                "literalTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange",
+                    "description": "Time in literal format.\n"
+                },
+                "relativeTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange",
+                    "description": "Time in relative format.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange": {
+            "properties": {
+                "epochMillis": {
+                    "type": "integer",
+                    "description": "Time as a number of milliseconds since the epoch.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "epochMillis"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange": {
+            "properties": {
+                "iso8601Time": {
+                    "type": "string",
+                    "description": "Time as a string in ISO 8601 format.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iso8601Time"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string",
+                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange": {
+            "properties": {
+                "relativeTime": {
+                    "type": "string",
+                    "description": "Relative time as a string consisting of following elements:\n1. `-` (optional): minus sign indicates time in the past,\n2. `\u003cnumber\u003e`: number of time units,\n3. `\u003ctime_unit\u003e`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).\n\nMultiple pairs of `\u003cnumber\u003e\u003ctime_unit\u003e` may be provided, and they may be in any order. For example,\n`-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "relativeTime"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo": {
+            "properties": {
+                "epochTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange",
+                    "description": "Time since the epoch.\n"
+                },
+                "iso8601TimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange",
+                    "description": "Time in ISO 8601 format.\n"
+                },
+                "literalTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange",
+                    "description": "Time in literal format.\n"
+                },
+                "relativeTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange",
+                    "description": "Time in relative format.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange": {
+            "properties": {
+                "epochMillis": {
+                    "type": "integer",
+                    "description": "Time as a number of milliseconds since the epoch.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "epochMillis"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange": {
+            "properties": {
+                "iso8601Time": {
+                    "type": "string",
+                    "description": "Time as a string in ISO 8601 format.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iso8601Time"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string",
+                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange:LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange": {
+            "properties": {
+                "relativeTime": {
+                    "type": "string",
+                    "description": "Relative time as a string consisting of following elements:\n1. `-` (optional): minus sign indicates time in the past,\n2. `\u003cnumber\u003e`: number of time units,\n3. `\u003ctime_unit\u003e`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).\n\nMultiple pairs of `\u003cnumber\u003e\u003ctime_unit\u003e` may be provided, and they may be in any order. For example,\n`-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "relativeTime"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange:LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string",
+                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
+        "sumologic:index/LogSearchScheduleThreshold:LogSearchScheduleThreshold": {
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "Expected result count.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Criterion to be applied when comparing actual result count with expected count. Possible\nvalues are: `eq`, `gt`, `ge`, `lt`, and `le`.\n"
+                },
+                "thresholdType": {
+                    "type": "string",
+                    "description": "Threshold type for the scheduled log search. Possible values are: `message` and `group`.\nUse `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it\nto `message`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "count",
+                "operator",
+                "thresholdType"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRange:LogSearchTimeRange": {
+            "properties": {
+                "beginBoundedTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRange:LogSearchTimeRangeBeginBoundedTimeRange",
+                    "description": "Bounded time range. See\nbegin_bounded_time_range schema schema for details.\n"
+                },
+                "completeLiteralTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeCompleteLiteralTimeRange:LogSearchTimeRangeCompleteLiteralTimeRange",
+                    "description": "Literal time range. See\ncomplete_literal_time_range schema for details.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRange:LogSearchTimeRangeBeginBoundedTimeRange": {
+            "properties": {
+                "from": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFrom:LogSearchTimeRangeBeginBoundedTimeRangeFrom",
+                    "description": "Start boundary of bounded time range. See\ntime_range_boundary schema for details.\n"
+                },
+                "to": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeTo:LogSearchTimeRangeBeginBoundedTimeRangeTo",
+                    "description": "End boundary of bounded time range. See\ntime_range_boundary schema for details.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "from"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFrom:LogSearchTimeRangeBeginBoundedTimeRangeFrom": {
+            "properties": {
+                "epochTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange",
+                    "description": "Time since the epoch.\n"
+                },
+                "iso8601TimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange",
+                    "description": "Time in ISO 8601 format.\n"
+                },
+                "literalTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange",
+                    "description": "Time in literal format.\n"
+                },
+                "relativeTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange",
+                    "description": "Time in relative format.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange": {
+            "properties": {
+                "epochMillis": {
+                    "type": "integer",
+                    "description": "Time as a number of milliseconds since the epoch.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "epochMillis"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange": {
+            "properties": {
+                "iso8601Time": {
+                    "type": "string",
+                    "description": "Time as a string in ISO 8601 format.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iso8601Time"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string",
+                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange": {
+            "properties": {
+                "relativeTime": {
+                    "type": "string",
+                    "description": "Relative time as a string consisting of following elements:\n1. `-` (optional): minus sign indicates time in the past,\n2. `\u003cnumber\u003e`: number of time units,\n3. `\u003ctime_unit\u003e`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).\n\nMultiple pairs of `\u003cnumber\u003e\u003ctime_unit\u003e` may be provided, and they may be in any order. For example,\n`-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "relativeTime"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeTo:LogSearchTimeRangeBeginBoundedTimeRangeTo": {
+            "properties": {
+                "epochTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange",
+                    "description": "Time since the epoch.\n"
+                },
+                "iso8601TimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange",
+                    "description": "Time in ISO 8601 format.\n"
+                },
+                "literalTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange",
+                    "description": "Time in literal format.\n"
+                },
+                "relativeTimeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange",
+                    "description": "Time in relative format.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange": {
+            "properties": {
+                "epochMillis": {
+                    "type": "integer",
+                    "description": "Time as a number of milliseconds since the epoch.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "epochMillis"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange": {
+            "properties": {
+                "iso8601Time": {
+                    "type": "string",
+                    "description": "Time as a string in ISO 8601 format.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iso8601Time"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string",
+                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange:LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange": {
+            "properties": {
+                "relativeTime": {
+                    "type": "string",
+                    "description": "Relative time as a string consisting of following elements:\n1. `-` (optional): minus sign indicates time in the past,\n2. `\u003cnumber\u003e`: number of time units,\n3. `\u003ctime_unit\u003e`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).\n\nMultiple pairs of `\u003cnumber\u003e\u003ctime_unit\u003e` may be provided, and they may be in any order. For example,\n`-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "relativeTime"
+            ]
+        },
+        "sumologic:index/LogSearchTimeRangeCompleteLiteralTimeRange:LogSearchTimeRangeCompleteLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string",
+                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
         "sumologic:index/LookupTableField:LookupTableField": {
             "properties": {
                 "fieldName": {
@@ -11430,6 +12079,215 @@
                 "type": {
                     "type": "string",
                     "description": "This value has to be set to `TagFilters`\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/S3ArchiveSourceAuthentication:S3ArchiveSourceAuthentication": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "Your AWS access key if using type `S3BucketAuthentication`.\n"
+                },
+                "authProviderX509CertUrl": {
+                    "type": "string"
+                },
+                "authUri": {
+                    "type": "string"
+                },
+                "clientEmail": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "clientX509CertUrl": {
+                    "type": "string"
+                },
+                "privateKey": {
+                    "type": "string"
+                },
+                "privateKeyId": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Your AWS Bucket region.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.\n"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "Your AWS secret key if using type `S3BucketAuthentication`.\n"
+                },
+                "tokenUri": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/S3ArchiveSourceDefaultDateFormat:S3ArchiveSourceDefaultDateFormat": {
+            "properties": {
+                "format": {
+                    "type": "string"
+                },
+                "locator": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "format"
+            ]
+        },
+        "sumologic:index/S3ArchiveSourceFilter:S3ArchiveSourceFilter": {
+            "properties": {
+                "filterType": {
+                    "type": "string"
+                },
+                "mask": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "regexp": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "filterType",
+                "name",
+                "regexp"
+            ]
+        },
+        "sumologic:index/S3ArchiveSourcePath:S3ArchiveSourcePath": {
+            "properties": {
+                "bucketName": {
+                    "type": "string",
+                    "description": "The name of the bucket.\n"
+                },
+                "customServices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourcePathCustomService:S3ArchiveSourcePathCustomService"
+                    }
+                },
+                "limitToNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "limitToRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "limitToServices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pathExpression": {
+                    "type": "string",
+                    "description": "The path to the data.\n"
+                },
+                "snsTopicOrSubscriptionArns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourcePathSnsTopicOrSubscriptionArn:S3ArchiveSourcePathSnsTopicOrSubscriptionArn"
+                    }
+                },
+                "tagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourcePathTagFilter:S3ArchiveSourcePathTagFilter"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.\n"
+                },
+                "useVersionedApi": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "snsTopicOrSubscriptionArns",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "sumologic:index/S3ArchiveSourcePathCustomService:S3ArchiveSourcePathCustomService": {
+            "properties": {
+                "prefixes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "serviceName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/S3ArchiveSourcePathSnsTopicOrSubscriptionArn:S3ArchiveSourcePathSnsTopicOrSubscriptionArn": {
+            "properties": {
+                "arn": {
+                    "type": "string"
+                },
+                "isSuccess": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "arn",
+                        "isSuccess"
+                    ]
+                }
+            }
+        },
+        "sumologic:index/S3ArchiveSourcePathTagFilter:S3ArchiveSourcePathTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.\n"
                 }
             },
             "type": "object"
@@ -15809,7 +16667,7 @@
             }
         },
         "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst inventoryEntityGroupConfiguration = new sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", {\n    criticality: \"HIGH\",\n    description: \"Inventory entity group description\",\n    group: \"admin\",\n    inventorySource: \"Active Directory\",\n    inventoryType: \"username\",\n    suppressed: false,\n    tags: [\"tag\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ninventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\",\n    criticality=\"HIGH\",\n    description=\"Inventory entity group description\",\n    group=\"admin\",\n    inventory_source=\"Active Directory\",\n    inventory_type=\"username\",\n    suppressed=False,\n    tags=[\"tag\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", new()\n    {\n        Criticality = \"HIGH\",\n        Description = \"Inventory entity group description\",\n        Group = \"admin\",\n        InventorySource = \"Active Directory\",\n        InventoryType = \"username\",\n        Suppressed = false,\n        Tags = new[]\n        {\n            \"tag\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, \"inventoryEntityGroupConfiguration\", \u0026sumologic.CseInventoryEntityGroupConfigurationArgs{\n\t\t\tCriticality:     pulumi.String(\"HIGH\"),\n\t\t\tDescription:     pulumi.String(\"Inventory entity group description\"),\n\t\t\tGroup:           pulumi.String(\"admin\"),\n\t\t\tInventorySource: pulumi.String(\"Active Directory\"),\n\t\t\tInventoryType:   pulumi.String(\"username\"),\n\t\t\tSuppressed:      pulumi.Bool(false),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfiguration;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", CseInventoryEntityGroupConfigurationArgs.builder()        \n            .criticality(\"HIGH\")\n            .description(\"Inventory entity group description\")\n            .group(\"admin\")\n            .inventorySource(\"Active Directory\")\n            .inventoryType(\"username\")\n            .suppressed(false)\n            .tags(\"tag\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inventoryEntityGroupConfiguration:\n    type: sumologic:CseInventoryEntityGroupConfiguration\n    properties:\n      criticality: HIGH\n      description: Inventory entity group description\n      group: admin\n      inventorySource: Active Directory\n      inventoryType: username\n      suppressed: false\n      tags:\n        - tag\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInventory Entity Group Configuration can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst inventoryEntityGroupConfiguration = new sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", {\n    criticality: \"HIGH\",\n    description: \"Inventory entity group description\",\n    group: \"admin\",\n    inventorySource: \"Active Directory\",\n    inventoryType: \"user\",\n    suppressed: false,\n    tags: [\"tag\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ninventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\",\n    criticality=\"HIGH\",\n    description=\"Inventory entity group description\",\n    group=\"admin\",\n    inventory_source=\"Active Directory\",\n    inventory_type=\"user\",\n    suppressed=False,\n    tags=[\"tag\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", new()\n    {\n        Criticality = \"HIGH\",\n        Description = \"Inventory entity group description\",\n        Group = \"admin\",\n        InventorySource = \"Active Directory\",\n        InventoryType = \"user\",\n        Suppressed = false,\n        Tags = new[]\n        {\n            \"tag\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, \"inventoryEntityGroupConfiguration\", \u0026sumologic.CseInventoryEntityGroupConfigurationArgs{\n\t\t\tCriticality:     pulumi.String(\"HIGH\"),\n\t\t\tDescription:     pulumi.String(\"Inventory entity group description\"),\n\t\t\tGroup:           pulumi.String(\"admin\"),\n\t\t\tInventorySource: pulumi.String(\"Active Directory\"),\n\t\t\tInventoryType:   pulumi.String(\"user\"),\n\t\t\tSuppressed:      pulumi.Bool(false),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfiguration;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", CseInventoryEntityGroupConfigurationArgs.builder()        \n            .criticality(\"HIGH\")\n            .description(\"Inventory entity group description\")\n            .group(\"admin\")\n            .inventorySource(\"Active Directory\")\n            .inventoryType(\"user\")\n            .suppressed(false)\n            .tags(\"tag\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inventoryEntityGroupConfiguration:\n    type: sumologic:CseInventoryEntityGroupConfiguration\n    properties:\n      criticality: HIGH\n      description: Inventory entity group description\n      group: admin\n      inventorySource: Active Directory\n      inventoryType: user\n      suppressed: false\n      tags:\n        - tag\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInventory Entity Group Configuration can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id\n```\n\n ",
             "properties": {
                 "criticality": {
                     "type": "string",
@@ -15829,7 +16687,7 @@
                 },
                 "inventoryType": {
                     "type": "string",
-                    "description": "The inventory type Examples: \"computer\", \"username\".\n"
+                    "description": "The inventory type Examples: \"computer\", \"user\".\n"
                 },
                 "name": {
                     "type": "string",
@@ -15870,7 +16728,7 @@
                 },
                 "inventoryType": {
                     "type": "string",
-                    "description": "The inventory type Examples: \"computer\", \"username\".\n"
+                    "description": "The inventory type Examples: \"computer\", \"user\".\n"
                 },
                 "name": {
                     "type": "string",
@@ -15912,7 +16770,7 @@
                     },
                     "inventoryType": {
                         "type": "string",
-                        "description": "The inventory type Examples: \"computer\", \"username\".\n"
+                        "description": "The inventory type Examples: \"computer\", \"user\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -19463,6 +20321,144 @@
                 "type": "object"
             }
         },
+        "sumologic:index/logSearch:LogSearch": {
+            "description": "Provides a Sumologic Log Search.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst personalFolder = sumologic.getPersonalFolder({});\nconst exampleLogSearch = new sumologic.LogSearch(\"exampleLogSearch\", {\n    description: \"Demo search description\",\n    parentId: personalFolder.then(personalFolder =\u003e personalFolder.id),\n    queryString: \"_sourceCategory=api error | count by _sourceHost\",\n    parsingMode: \"AutoParse\",\n    runByReceiptTime: true,\n    timeRange: {\n        beginBoundedTimeRange: {\n            from: {\n                relativeTimeRange: {\n                    relativeTime: \"-30m\",\n                },\n            },\n        },\n    },\n    schedule: {\n        cronExpression: \"0 0 * * * ? *\",\n        muteErrorEmails: false,\n        notification: {\n            emailSearchNotification: {\n                includeCsvAttachment: false,\n                includeHistogram: false,\n                includeQuery: true,\n                includeResultSet: true,\n                subjectTemplate: \"Search Alert: {{TriggerCondition}} found for {{SearchName}}\",\n                toLists: [\"will@acme.com\"],\n            },\n        },\n        parseableTimeRange: {\n            beginBoundedTimeRange: {\n                from: {\n                    relativeTimeRange: {\n                        relativeTime: \"-15m\",\n                    },\n                },\n            },\n        },\n        scheduleType: \"1Week\",\n        threshold: {\n            count: 10,\n            operator: \"gt\",\n            thresholdType: \"group\",\n        },\n        timeZone: \"America/Los_Angeles\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\npersonal_folder = sumologic.get_personal_folder()\nexample_log_search = sumologic.LogSearch(\"exampleLogSearch\",\n    description=\"Demo search description\",\n    parent_id=personal_folder.id,\n    query_string=\"_sourceCategory=api error | count by _sourceHost\",\n    parsing_mode=\"AutoParse\",\n    run_by_receipt_time=True,\n    time_range=sumologic.LogSearchTimeRangeArgs(\n        begin_bounded_time_range=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeArgs(\n            from_=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs(\n                relative_time_range=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(\n                    relative_time=\"-30m\",\n                ),\n            ),\n        ),\n    ),\n    schedule=sumologic.LogSearchScheduleArgs(\n        cron_expression=\"0 0 * * * ? *\",\n        mute_error_emails=False,\n        notification=sumologic.LogSearchScheduleNotificationArgs(\n            email_search_notification=sumologic.LogSearchScheduleNotificationEmailSearchNotificationArgs(\n                include_csv_attachment=False,\n                include_histogram=False,\n                include_query=True,\n                include_result_set=True,\n                subject_template=\"Search Alert: {{TriggerCondition}} found for {{SearchName}}\",\n                to_lists=[\"will@acme.com\"],\n            ),\n        ),\n        parseable_time_range=sumologic.LogSearchScheduleParseableTimeRangeArgs(\n            begin_bounded_time_range=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs(\n                from_=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs(\n                    relative_time_range=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(\n                        relative_time=\"-15m\",\n                    ),\n                ),\n            ),\n        ),\n        schedule_type=\"1Week\",\n        threshold=sumologic.LogSearchScheduleThresholdArgs(\n            count=10,\n            operator=\"gt\",\n            threshold_type=\"group\",\n        ),\n        time_zone=\"America/Los_Angeles\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var personalFolder = SumoLogic.GetPersonalFolder.Invoke();\n\n    var exampleLogSearch = new SumoLogic.LogSearch(\"exampleLogSearch\", new()\n    {\n        Description = \"Demo search description\",\n        ParentId = personalFolder.Apply(getPersonalFolderResult =\u003e getPersonalFolderResult.Id),\n        QueryString = \"_sourceCategory=api error | count by _sourceHost\",\n        ParsingMode = \"AutoParse\",\n        RunByReceiptTime = true,\n        TimeRange = new SumoLogic.Inputs.LogSearchTimeRangeArgs\n        {\n            BeginBoundedTimeRange = new SumoLogic.Inputs.LogSearchTimeRangeBeginBoundedTimeRangeArgs\n            {\n                From = new SumoLogic.Inputs.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs\n                {\n                    RelativeTimeRange = new SumoLogic.Inputs.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs\n                    {\n                        RelativeTime = \"-30m\",\n                    },\n                },\n            },\n        },\n        Schedule = new SumoLogic.Inputs.LogSearchScheduleArgs\n        {\n            CronExpression = \"0 0 * * * ? *\",\n            MuteErrorEmails = false,\n            Notification = new SumoLogic.Inputs.LogSearchScheduleNotificationArgs\n            {\n                EmailSearchNotification = new SumoLogic.Inputs.LogSearchScheduleNotificationEmailSearchNotificationArgs\n                {\n                    IncludeCsvAttachment = false,\n                    IncludeHistogram = false,\n                    IncludeQuery = true,\n                    IncludeResultSet = true,\n                    SubjectTemplate = \"Search Alert: {{TriggerCondition}} found for {{SearchName}}\",\n                    ToLists = new[]\n                    {\n                        \"will@acme.com\",\n                    },\n                },\n            },\n            ParseableTimeRange = new SumoLogic.Inputs.LogSearchScheduleParseableTimeRangeArgs\n            {\n                BeginBoundedTimeRange = new SumoLogic.Inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs\n                {\n                    From = new SumoLogic.Inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs\n                    {\n                        RelativeTimeRange = new SumoLogic.Inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs\n                        {\n                            RelativeTime = \"-15m\",\n                        },\n                    },\n                },\n            },\n            ScheduleType = \"1Week\",\n            Threshold = new SumoLogic.Inputs.LogSearchScheduleThresholdArgs\n            {\n                Count = 10,\n                Operator = \"gt\",\n                ThresholdType = \"group\",\n            },\n            TimeZone = \"America/Los_Angeles\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpersonalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewLogSearch(ctx, \"exampleLogSearch\", \u0026sumologic.LogSearchArgs{\n\t\t\tDescription:      pulumi.String(\"Demo search description\"),\n\t\t\tParentId:         *pulumi.String(personalFolder.Id),\n\t\t\tQueryString:      pulumi.String(\"_sourceCategory=api error | count by _sourceHost\"),\n\t\t\tParsingMode:      pulumi.String(\"AutoParse\"),\n\t\t\tRunByReceiptTime: pulumi.Bool(true),\n\t\t\tTimeRange: \u0026sumologic.LogSearchTimeRangeArgs{\n\t\t\t\tBeginBoundedTimeRange: \u0026sumologic.LogSearchTimeRangeBeginBoundedTimeRangeArgs{\n\t\t\t\t\tFrom: \u0026sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs{\n\t\t\t\t\t\tRelativeTimeRange: \u0026sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{\n\t\t\t\t\t\t\tRelativeTime: pulumi.String(\"-30m\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.LogSearchScheduleArgs{\n\t\t\t\tCronExpression:  pulumi.String(\"0 0 * * * ? *\"),\n\t\t\t\tMuteErrorEmails: pulumi.Bool(false),\n\t\t\t\tNotification: \u0026sumologic.LogSearchScheduleNotificationArgs{\n\t\t\t\t\tEmailSearchNotification: \u0026sumologic.LogSearchScheduleNotificationEmailSearchNotificationArgs{\n\t\t\t\t\t\tIncludeCsvAttachment: pulumi.Bool(false),\n\t\t\t\t\t\tIncludeHistogram:     pulumi.Bool(false),\n\t\t\t\t\t\tIncludeQuery:         pulumi.Bool(true),\n\t\t\t\t\t\tIncludeResultSet:     pulumi.Bool(true),\n\t\t\t\t\t\tSubjectTemplate:      pulumi.String(\"Search Alert: {{TriggerCondition}} found for {{SearchName}}\"),\n\t\t\t\t\t\tToLists: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"will@acme.com\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tParseableTimeRange: \u0026sumologic.LogSearchScheduleParseableTimeRangeArgs{\n\t\t\t\t\tBeginBoundedTimeRange: \u0026sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs{\n\t\t\t\t\t\tFrom: \u0026sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs{\n\t\t\t\t\t\t\tRelativeTimeRange: \u0026sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{\n\t\t\t\t\t\t\t\tRelativeTime: pulumi.String(\"-15m\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tScheduleType: pulumi.String(\"1Week\"),\n\t\t\t\tThreshold: \u0026sumologic.LogSearchScheduleThresholdArgs{\n\t\t\t\t\tCount:         pulumi.Int(10),\n\t\t\t\t\tOperator:      pulumi.String(\"gt\"),\n\t\t\t\t\tThresholdType: pulumi.String(\"group\"),\n\t\t\t\t},\n\t\t\t\tTimeZone: pulumi.String(\"America/Los_Angeles\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetPersonalFolderArgs;\nimport com.pulumi.sumologic.LogSearch;\nimport com.pulumi.sumologic.LogSearchArgs;\nimport com.pulumi.sumologic.inputs.LogSearchTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.LogSearchTimeRangeBeginBoundedTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs;\nimport com.pulumi.sumologic.inputs.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleNotificationArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleNotificationEmailSearchNotificationArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleParseableTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.LogSearchScheduleThresholdArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var personalFolder = SumologicFunctions.getPersonalFolder();\n\n        var exampleLogSearch = new LogSearch(\"exampleLogSearch\", LogSearchArgs.builder()        \n            .description(\"Demo search description\")\n            .parentId(personalFolder.applyValue(getPersonalFolderResult -\u003e getPersonalFolderResult.id()))\n            .queryString(\"_sourceCategory=api error | count by _sourceHost\")\n            .parsingMode(\"AutoParse\")\n            .runByReceiptTime(true)\n            .timeRange(LogSearchTimeRangeArgs.builder()\n                .beginBoundedTimeRange(LogSearchTimeRangeBeginBoundedTimeRangeArgs.builder()\n                    .from(LogSearchTimeRangeBeginBoundedTimeRangeFromArgs.builder()\n                        .relativeTimeRange(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()\n                            .relativeTime(\"-30m\")\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .schedule(LogSearchScheduleArgs.builder()\n                .cronExpression(\"0 0 * * * ? *\")\n                .muteErrorEmails(false)\n                .notification(LogSearchScheduleNotificationArgs.builder()\n                    .emailSearchNotification(LogSearchScheduleNotificationEmailSearchNotificationArgs.builder()\n                        .includeCsvAttachment(false)\n                        .includeHistogram(false)\n                        .includeQuery(true)\n                        .includeResultSet(true)\n                        .subjectTemplate(\"Search Alert: {{TriggerCondition}} found for {{SearchName}}\")\n                        .toLists(\"will@acme.com\")\n                        .build())\n                    .build())\n                .parseableTimeRange(LogSearchScheduleParseableTimeRangeArgs.builder()\n                    .beginBoundedTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs.builder()\n                        .from(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs.builder()\n                            .relativeTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()\n                                .relativeTime(\"-15m\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n                .scheduleType(\"1Week\")\n                .threshold(LogSearchScheduleThresholdArgs.builder()\n                    .count(10)\n                    .operator(\"gt\")\n                    .thresholdType(\"group\")\n                    .build())\n                .timeZone(\"America/Los_Angeles\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleLogSearch:\n    type: sumologic:LogSearch\n    properties:\n      description: Demo search description\n      parentId: ${personalFolder.id}\n      queryString: _sourceCategory=api error | count by _sourceHost\n      parsingMode: AutoParse\n      runByReceiptTime: true\n      timeRange:\n        beginBoundedTimeRange:\n          from:\n            relativeTimeRange:\n              relativeTime: -30m\n      schedule:\n        cronExpression: 0 0 * * * ? *\n        muteErrorEmails: false\n        notification:\n          emailSearchNotification:\n            includeCsvAttachment: false\n            includeHistogram: false\n            includeQuery: true\n            includeResultSet: true\n            subjectTemplate: 'Search Alert: {{TriggerCondition}} found for {{SearchName}}'\n            toLists:\n              - will@acme.com\n        parseableTimeRange:\n          beginBoundedTimeRange:\n            from:\n              relativeTimeRange:\n                relativeTime: -15m\n        scheduleType: 1Week\n        threshold:\n          count: 10\n          operator: gt\n          thresholdType: group\n        timeZone: America/Los_Angeles\nvariables:\n  personalFolder:\n    fn::invoke:\n      Function: sumologic:getPersonalFolder\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes reference\n\nIn addition to all arguments above, the following attributes are exported:\n\n- `id` - The ID of the log search.\n\n\n## Import\n\nA log search can be imported using it's identifier, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the search.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the search.\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "The identifier of the folder to create the log search in.\n"
+                },
+                "parsingMode": {
+                    "type": "string",
+                    "description": "Define the parsing mode to scan the JSON format log messages. Possible values are:\n`AutoParse` and  `Manual`. Default value is `Manual`.\n\nIn `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in\nthe `Manual` mode, no fields are parsed out automatically. For more information see\n[Dynamic Parsing](https://help.sumologic.com/?cid=0011).\n"
+                },
+                "queryParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/LogSearchQueryParameter:LogSearchQueryParameter"
+                    }
+                },
+                "queryString": {
+                    "type": "string",
+                    "description": "Log query to perform.\n"
+                },
+                "runByReceiptTime": {
+                    "type": "boolean",
+                    "description": "This has the value `true` if the search is to be run by receipt time and\n`false` if it is to be run by message time. Default value is `false`.\n"
+                },
+                "schedule": {
+                    "$ref": "#/types/sumologic:index/LogSearchSchedule:LogSearchSchedule",
+                    "description": "Schedule of the log search. See schedule schema\n"
+                },
+                "timeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRange:LogSearchTimeRange",
+                    "description": "Time range of the log search. See time range schema\n"
+                }
+            },
+            "required": [
+                "name",
+                "parentId",
+                "queryString",
+                "timeRange"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the search.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the search.\n"
+                },
+                "parentId": {
+                    "type": "string",
+                    "description": "The identifier of the folder to create the log search in.\n"
+                },
+                "parsingMode": {
+                    "type": "string",
+                    "description": "Define the parsing mode to scan the JSON format log messages. Possible values are:\n`AutoParse` and  `Manual`. Default value is `Manual`.\n\nIn `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in\nthe `Manual` mode, no fields are parsed out automatically. For more information see\n[Dynamic Parsing](https://help.sumologic.com/?cid=0011).\n"
+                },
+                "queryParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/LogSearchQueryParameter:LogSearchQueryParameter"
+                    }
+                },
+                "queryString": {
+                    "type": "string",
+                    "description": "Log query to perform.\n"
+                },
+                "runByReceiptTime": {
+                    "type": "boolean",
+                    "description": "This has the value `true` if the search is to be run by receipt time and\n`false` if it is to be run by message time. Default value is `false`.\n"
+                },
+                "schedule": {
+                    "$ref": "#/types/sumologic:index/LogSearchSchedule:LogSearchSchedule",
+                    "description": "Schedule of the log search. See schedule schema\n"
+                },
+                "timeRange": {
+                    "$ref": "#/types/sumologic:index/LogSearchTimeRange:LogSearchTimeRange",
+                    "description": "Time range of the log search. See time range schema\n"
+                }
+            },
+            "requiredInputs": [
+                "parentId",
+                "queryString",
+                "timeRange"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LogSearch resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the search.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the search.\n"
+                    },
+                    "parentId": {
+                        "type": "string",
+                        "description": "The identifier of the folder to create the log search in.\n"
+                    },
+                    "parsingMode": {
+                        "type": "string",
+                        "description": "Define the parsing mode to scan the JSON format log messages. Possible values are:\n`AutoParse` and  `Manual`. Default value is `Manual`.\n\nIn `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in\nthe `Manual` mode, no fields are parsed out automatically. For more information see\n[Dynamic Parsing](https://help.sumologic.com/?cid=0011).\n"
+                    },
+                    "queryParameters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/LogSearchQueryParameter:LogSearchQueryParameter"
+                        }
+                    },
+                    "queryString": {
+                        "type": "string",
+                        "description": "Log query to perform.\n"
+                    },
+                    "runByReceiptTime": {
+                        "type": "boolean",
+                        "description": "This has the value `true` if the search is to be run by receipt time and\n`false` if it is to be run by message time. Default value is `false`.\n"
+                    },
+                    "schedule": {
+                        "$ref": "#/types/sumologic:index/LogSearchSchedule:LogSearchSchedule",
+                        "description": "Schedule of the log search. See schedule schema\n"
+                    },
+                    "timeRange": {
+                        "$ref": "#/types/sumologic:index/LogSearchTimeRange:LogSearchTimeRange",
+                        "description": "Time range of the log search. See time range schema\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sumologic:index/lookupTable:LookupTable": {
             "description": "Provides a [Sumologic Lookup Table](https://help.sumologic.com/05Search/Lookup_Tables).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst lookupTable = new sumologic.LookupTable(\"lookupTable\", {\n    description: \"some description\",\n    fields: [\n        {\n            fieldName: \"FieldName1\",\n            fieldType: \"boolean\",\n        },\n        {\n            fieldName: \"FieldName2\",\n            fieldType: \"string\",\n        },\n    ],\n    parentFolderId: \"\u003cpersonal folder id\u003e\",\n    primaryKeys: [\"FieldName1\"],\n    sizeLimitAction: \"DeleteOldData\",\n    ttl: 100,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nlookup_table = sumologic.LookupTable(\"lookupTable\",\n    description=\"some description\",\n    fields=[\n        sumologic.LookupTableFieldArgs(\n            field_name=\"FieldName1\",\n            field_type=\"boolean\",\n        ),\n        sumologic.LookupTableFieldArgs(\n            field_name=\"FieldName2\",\n            field_type=\"string\",\n        ),\n    ],\n    parent_folder_id=\"\u003cpersonal folder id\u003e\",\n    primary_keys=[\"FieldName1\"],\n    size_limit_action=\"DeleteOldData\",\n    ttl=100)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lookupTable = new SumoLogic.LookupTable(\"lookupTable\", new()\n    {\n        Description = \"some description\",\n        Fields = new[]\n        {\n            new SumoLogic.Inputs.LookupTableFieldArgs\n            {\n                FieldName = \"FieldName1\",\n                FieldType = \"boolean\",\n            },\n            new SumoLogic.Inputs.LookupTableFieldArgs\n            {\n                FieldName = \"FieldName2\",\n                FieldType = \"string\",\n            },\n        },\n        ParentFolderId = \"\u003cpersonal folder id\u003e\",\n        PrimaryKeys = new[]\n        {\n            \"FieldName1\",\n        },\n        SizeLimitAction = \"DeleteOldData\",\n        Ttl = 100,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewLookupTable(ctx, \"lookupTable\", \u0026sumologic.LookupTableArgs{\n\t\t\tDescription: pulumi.String(\"some description\"),\n\t\t\tFields: sumologic.LookupTableFieldArray{\n\t\t\t\t\u0026sumologic.LookupTableFieldArgs{\n\t\t\t\t\tFieldName: pulumi.String(\"FieldName1\"),\n\t\t\t\t\tFieldType: pulumi.String(\"boolean\"),\n\t\t\t\t},\n\t\t\t\t\u0026sumologic.LookupTableFieldArgs{\n\t\t\t\t\tFieldName: pulumi.String(\"FieldName2\"),\n\t\t\t\t\tFieldType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tParentFolderId: pulumi.String(\"\u003cpersonal folder id\u003e\"),\n\t\t\tPrimaryKeys: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"FieldName1\"),\n\t\t\t},\n\t\t\tSizeLimitAction: pulumi.String(\"DeleteOldData\"),\n\t\t\tTtl:             pulumi.Int(100),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.LookupTable;\nimport com.pulumi.sumologic.LookupTableArgs;\nimport com.pulumi.sumologic.inputs.LookupTableFieldArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var lookupTable = new LookupTable(\"lookupTable\", LookupTableArgs.builder()        \n            .description(\"some description\")\n            .fields(            \n                LookupTableFieldArgs.builder()\n                    .fieldName(\"FieldName1\")\n                    .fieldType(\"boolean\")\n                    .build(),\n                LookupTableFieldArgs.builder()\n                    .fieldName(\"FieldName2\")\n                    .fieldType(\"string\")\n                    .build())\n            .parentFolderId(\"\u003cpersonal folder id\u003e\")\n            .primaryKeys(\"FieldName1\")\n            .sizeLimitAction(\"DeleteOldData\")\n            .ttl(100)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  lookupTable:\n    type: sumologic:LookupTable\n    properties:\n      description: some description\n      fields:\n        - fieldName: FieldName1\n          fieldType: boolean\n        - fieldName: FieldName2\n          fieldType: string\n      parentFolderId: \u003cpersonal folder id\u003e\n      primaryKeys:\n        - FieldName1\n      sizeLimitAction: DeleteOldData\n      ttl: 100\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes reference\n\nThe following attributes are exported:\n\n- `id` - Unique identifier for the partition.\n\n\n## Import\n\nLookup Tables can be imported using the id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890\n```\n\n [1]https://help.sumologic.com/05Search/Lookup_Tables ",
             "properties": {
@@ -21208,6 +22204,286 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the role.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/s3ArchiveSource:S3ArchiveSource": {
+            "description": "Provides a [Sumologic AWS S3 Archive Source][2].\n\n__IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst collector = new sumologic.Collector(\"collector\", {description: \"Just testing this\"});\nconst terraformS3ArchiveSource = new sumologic.S3ArchiveSource(\"terraformS3ArchiveSource\", {\n    authentication: {\n        accessKey: \"someKey\",\n        secretKey: \"******\",\n        type: \"S3BucketAuthentication\",\n    },\n    category: \"aws/s3\",\n    collectorId: collector.id,\n    contentType: \"AwsS3Bucket\",\n    description: \"My description\",\n    path: {\n        bucketName: \"Bucket1\",\n        pathExpression: \"*\",\n        type: \"S3BucketPathExpression\",\n    },\n    paused: false,\n    scanInterval: 300000,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncollector = sumologic.Collector(\"collector\", description=\"Just testing this\")\nterraform_s3_archive_source = sumologic.S3ArchiveSource(\"terraformS3ArchiveSource\",\n    authentication=sumologic.S3ArchiveSourceAuthenticationArgs(\n        access_key=\"someKey\",\n        secret_key=\"******\",\n        type=\"S3BucketAuthentication\",\n    ),\n    category=\"aws/s3\",\n    collector_id=collector.id,\n    content_type=\"AwsS3Bucket\",\n    description=\"My description\",\n    path=sumologic.S3ArchiveSourcePathArgs(\n        bucket_name=\"Bucket1\",\n        path_expression=\"*\",\n        type=\"S3BucketPathExpression\",\n    ),\n    paused=False,\n    scan_interval=300000)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var collector = new SumoLogic.Collector(\"collector\", new()\n    {\n        Description = \"Just testing this\",\n    });\n\n    var terraformS3ArchiveSource = new SumoLogic.S3ArchiveSource(\"terraformS3ArchiveSource\", new()\n    {\n        Authentication = new SumoLogic.Inputs.S3ArchiveSourceAuthenticationArgs\n        {\n            AccessKey = \"someKey\",\n            SecretKey = \"******\",\n            Type = \"S3BucketAuthentication\",\n        },\n        Category = \"aws/s3\",\n        CollectorId = collector.Id,\n        ContentType = \"AwsS3Bucket\",\n        Description = \"My description\",\n        Path = new SumoLogic.Inputs.S3ArchiveSourcePathArgs\n        {\n            BucketName = \"Bucket1\",\n            PathExpression = \"*\",\n            Type = \"S3BucketPathExpression\",\n        },\n        Paused = false,\n        ScanInterval = 300000,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcollector, err := sumologic.NewCollector(ctx, \"collector\", \u0026sumologic.CollectorArgs{\n\t\t\tDescription: pulumi.String(\"Just testing this\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewS3ArchiveSource(ctx, \"terraformS3ArchiveSource\", \u0026sumologic.S3ArchiveSourceArgs{\n\t\t\tAuthentication: \u0026sumologic.S3ArchiveSourceAuthenticationArgs{\n\t\t\t\tAccessKey: pulumi.String(\"someKey\"),\n\t\t\t\tSecretKey: pulumi.String(\"******\"),\n\t\t\t\tType:      pulumi.String(\"S3BucketAuthentication\"),\n\t\t\t},\n\t\t\tCategory:    pulumi.String(\"aws/s3\"),\n\t\t\tCollectorId: collector.ID(),\n\t\t\tContentType: pulumi.String(\"AwsS3Bucket\"),\n\t\t\tDescription: pulumi.String(\"My description\"),\n\t\t\tPath: \u0026sumologic.S3ArchiveSourcePathArgs{\n\t\t\t\tBucketName:     pulumi.String(\"Bucket1\"),\n\t\t\t\tPathExpression: pulumi.String(\"*\"),\n\t\t\t\tType:           pulumi.String(\"S3BucketPathExpression\"),\n\t\t\t},\n\t\t\tPaused:       pulumi.Bool(false),\n\t\t\tScanInterval: pulumi.Int(300000),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Collector;\nimport com.pulumi.sumologic.CollectorArgs;\nimport com.pulumi.sumologic.S3ArchiveSource;\nimport com.pulumi.sumologic.S3ArchiveSourceArgs;\nimport com.pulumi.sumologic.inputs.S3ArchiveSourceAuthenticationArgs;\nimport com.pulumi.sumologic.inputs.S3ArchiveSourcePathArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var collector = new Collector(\"collector\", CollectorArgs.builder()        \n            .description(\"Just testing this\")\n            .build());\n\n        var terraformS3ArchiveSource = new S3ArchiveSource(\"terraformS3ArchiveSource\", S3ArchiveSourceArgs.builder()        \n            .authentication(S3ArchiveSourceAuthenticationArgs.builder()\n                .accessKey(\"someKey\")\n                .secretKey(\"******\")\n                .type(\"S3BucketAuthentication\")\n                .build())\n            .category(\"aws/s3\")\n            .collectorId(collector.id())\n            .contentType(\"AwsS3Bucket\")\n            .description(\"My description\")\n            .path(S3ArchiveSourcePathArgs.builder()\n                .bucketName(\"Bucket1\")\n                .pathExpression(\"*\")\n                .type(\"S3BucketPathExpression\")\n                .build())\n            .paused(false)\n            .scanInterval(300000)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  terraformS3ArchiveSource:\n    type: sumologic:S3ArchiveSource\n    properties:\n      authentication:\n        accessKey: someKey\n        secretKey: '******'\n        type: S3BucketAuthentication\n      category: aws/s3\n      collectorId: ${collector.id}\n      contentType: AwsS3Bucket\n      description: My description\n      path:\n        bucketName: Bucket1\n        pathExpression: '*'\n        type: S3BucketPathExpression\n      paused: false\n      scanInterval: 300000\n  collector:\n    type: sumologic:Collector\n    properties:\n      description: Just testing this\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nS3 sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/s3ArchiveSource:S3ArchiveSource test 123/456\n```\n\n S3 sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/s3ArchiveSource:S3ArchiveSource test my-test-collector/my-test-source\n```\n\n [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/docs/manage/archive/#create-an-aws-s3-archivesource ",
+            "properties": {
+                "authentication": {
+                    "$ref": "#/types/sumologic:index/S3ArchiveSourceAuthentication:S3ArchiveSourceAuthentication",
+                    "description": "Authentication details for connecting to the S3 bucket.\n"
+                },
+                "automaticDateParsing": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "collectorId": {
+                    "type": "integer"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "The content-type of the collected data. It should be `AwsS3ArchiveBucket` for archive source. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).\n"
+                },
+                "cutoffRelativeTime": {
+                    "type": "string"
+                },
+                "cutoffTimestamp": {
+                    "type": "integer"
+                },
+                "defaultDateFormats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourceDefaultDateFormat:S3ArchiveSourceDefaultDateFormat"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourceFilter:S3ArchiveSourceFilter"
+                    }
+                },
+                "forceTimezone": {
+                    "type": "boolean"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "manualPrefixRegexp": {
+                    "type": "string"
+                },
+                "multilineProcessingEnabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "$ref": "#/types/sumologic:index/S3ArchiveSourcePath:S3ArchiveSourcePath",
+                    "description": "The location to scan for new data.\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "When set to true, the scanner is paused. To disable, set to false.\n"
+                },
+                "scanInterval": {
+                    "type": "integer",
+                    "description": "Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.\n"
+                },
+                "timezone": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).\n"
+                },
+                "useAutolineMatching": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "authentication",
+                "collectorId",
+                "contentType",
+                "name",
+                "path",
+                "paused",
+                "scanInterval",
+                "url"
+            ],
+            "inputProperties": {
+                "authentication": {
+                    "$ref": "#/types/sumologic:index/S3ArchiveSourceAuthentication:S3ArchiveSourceAuthentication",
+                    "description": "Authentication details for connecting to the S3 bucket.\n",
+                    "willReplaceOnChanges": true
+                },
+                "automaticDateParsing": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "collectorId": {
+                    "type": "integer",
+                    "willReplaceOnChanges": true
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "The content-type of the collected data. It should be `AwsS3ArchiveBucket` for archive source. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).\n",
+                    "willReplaceOnChanges": true
+                },
+                "cutoffRelativeTime": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "cutoffTimestamp": {
+                    "type": "integer"
+                },
+                "defaultDateFormats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourceDefaultDateFormat:S3ArchiveSourceDefaultDateFormat"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourceFilter:S3ArchiveSourceFilter"
+                    }
+                },
+                "forceTimezone": {
+                    "type": "boolean"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "manualPrefixRegexp": {
+                    "type": "string"
+                },
+                "multilineProcessingEnabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "$ref": "#/types/sumologic:index/S3ArchiveSourcePath:S3ArchiveSourcePath",
+                    "description": "The location to scan for new data.\n",
+                    "willReplaceOnChanges": true
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "When set to true, the scanner is paused. To disable, set to false.\n"
+                },
+                "scanInterval": {
+                    "type": "integer",
+                    "description": "Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.\n"
+                },
+                "timezone": {
+                    "type": "string"
+                },
+                "useAutolineMatching": {
+                    "type": "boolean"
+                }
+            },
+            "requiredInputs": [
+                "authentication",
+                "collectorId",
+                "contentType",
+                "path",
+                "paused",
+                "scanInterval"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering S3ArchiveSource resources.\n",
+                "properties": {
+                    "authentication": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourceAuthentication:S3ArchiveSourceAuthentication",
+                        "description": "Authentication details for connecting to the S3 bucket.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "automaticDateParsing": {
+                        "type": "boolean"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "collectorId": {
+                        "type": "integer",
+                        "willReplaceOnChanges": true
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "description": "The content-type of the collected data. It should be `AwsS3ArchiveBucket` for archive source. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "cutoffRelativeTime": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "cutoffTimestamp": {
+                        "type": "integer"
+                    },
+                    "defaultDateFormats": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/S3ArchiveSourceDefaultDateFormat:S3ArchiveSourceDefaultDateFormat"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "fields": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/S3ArchiveSourceFilter:S3ArchiveSourceFilter"
+                        }
+                    },
+                    "forceTimezone": {
+                        "type": "boolean"
+                    },
+                    "hostName": {
+                        "type": "string"
+                    },
+                    "manualPrefixRegexp": {
+                        "type": "string"
+                    },
+                    "multilineProcessingEnabled": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourcePath:S3ArchiveSourcePath",
+                        "description": "The location to scan for new data.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "paused": {
+                        "type": "boolean",
+                        "description": "When set to true, the scanner is paused. To disable, set to false.\n"
+                    },
+                    "scanInterval": {
+                        "type": "integer",
+                        "description": "Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.\n"
+                    },
+                    "timezone": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).\n"
+                    },
+                    "useAutolineMatching": {
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
