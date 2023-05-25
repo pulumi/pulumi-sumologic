@@ -528,6 +528,45 @@ __all__ = [
     'KinesisMetricsSourcePathTagFilterArgs',
     'LocalFileSourceDefaultDateFormatArgs',
     'LocalFileSourceFilterArgs',
+    'LogSearchQueryParameterArgs',
+    'LogSearchScheduleArgs',
+    'LogSearchScheduleNotificationArgs',
+    'LogSearchScheduleNotificationAlertSearchNotificationArgs',
+    'LogSearchScheduleNotificationCseSignalNotificationArgs',
+    'LogSearchScheduleNotificationEmailSearchNotificationArgs',
+    'LogSearchScheduleNotificationSaveToLookupNotificationArgs',
+    'LogSearchScheduleNotificationSaveToViewNotificationArgs',
+    'LogSearchScheduleNotificationServiceNowSearchNotificationArgs',
+    'LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs',
+    'LogSearchScheduleNotificationWebhookSearchNotificationArgs',
+    'LogSearchScheduleParameterArgs',
+    'LogSearchScheduleParseableTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs',
+    'LogSearchScheduleThresholdArgs',
+    'LogSearchTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'LogSearchTimeRangeCompleteLiteralTimeRangeArgs',
     'LookupTableFieldArgs',
     'MetadataSourceAuthenticationArgs',
     'MetadataSourceDefaultDateFormatArgs',
@@ -576,6 +615,13 @@ __all__ = [
     'PollingSourceFilterArgs',
     'PollingSourcePathArgs',
     'PollingSourcePathTagFilterArgs',
+    'S3ArchiveSourceAuthenticationArgs',
+    'S3ArchiveSourceDefaultDateFormatArgs',
+    'S3ArchiveSourceFilterArgs',
+    'S3ArchiveSourcePathArgs',
+    'S3ArchiveSourcePathCustomServiceArgs',
+    'S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs',
+    'S3ArchiveSourcePathTagFilterArgs',
     'S3AuditSourceAuthenticationArgs',
     'S3AuditSourceDefaultDateFormatArgs',
     'S3AuditSourceFilterArgs',
@@ -24218,6 +24264,1757 @@ class LocalFileSourceFilterArgs:
 
 
 @pulumi.input_type
+class LogSearchQueryParameterArgs:
+    def __init__(__self__, *,
+                 data_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the search.
+        :param pulumi.Input[str] value: Value of scheduled search parameter.
+        :param pulumi.Input[str] description: Description of the search.
+        """
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the search.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value of scheduled search parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the search.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleArgs:
+    def __init__(__self__, *,
+                 notification: pulumi.Input['LogSearchScheduleNotificationArgs'],
+                 parseable_time_range: pulumi.Input['LogSearchScheduleParseableTimeRangeArgs'],
+                 schedule_type: pulumi.Input[str],
+                 time_zone: pulumi.Input[str],
+                 cron_expression: Optional[pulumi.Input[str]] = None,
+                 mute_error_emails: Optional[pulumi.Input[bool]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchScheduleParameterArgs']]]] = None,
+                 threshold: Optional[pulumi.Input['LogSearchScheduleThresholdArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchScheduleNotificationArgs'] notification: Notification of the log search. See
+               notification schema
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeArgs'] parseable_time_range: Time range of the scheduled log search. See
+               time range schema
+        :param pulumi.Input[str] schedule_type: Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+               a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+               `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+               
+               > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+               to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+        :param pulumi.Input[str] time_zone: Time zone for the scheduled log search. Either an abbreviation such as "PST",
+               a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+               abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+        :param pulumi.Input[str] cron_expression: Cron-like expression specifying the search's schedule. `schedule_type` must be set
+               to "Custom", otherwise, `schedule_type` takes precedence over `cron_expression`.
+        :param pulumi.Input[bool] mute_error_emails: If enabled, emails are not sent out in case of errors with the search.
+        :param pulumi.Input['LogSearchScheduleThresholdArgs'] threshold: Threshold for when to send notification. See
+               threshold schema
+        """
+        pulumi.set(__self__, "notification", notification)
+        pulumi.set(__self__, "parseable_time_range", parseable_time_range)
+        pulumi.set(__self__, "schedule_type", schedule_type)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if cron_expression is not None:
+            pulumi.set(__self__, "cron_expression", cron_expression)
+        if mute_error_emails is not None:
+            pulumi.set(__self__, "mute_error_emails", mute_error_emails)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def notification(self) -> pulumi.Input['LogSearchScheduleNotificationArgs']:
+        """
+        Notification of the log search. See
+        notification schema
+        """
+        return pulumi.get(self, "notification")
+
+    @notification.setter
+    def notification(self, value: pulumi.Input['LogSearchScheduleNotificationArgs']):
+        pulumi.set(self, "notification", value)
+
+    @property
+    @pulumi.getter(name="parseableTimeRange")
+    def parseable_time_range(self) -> pulumi.Input['LogSearchScheduleParseableTimeRangeArgs']:
+        """
+        Time range of the scheduled log search. See
+        time range schema
+        """
+        return pulumi.get(self, "parseable_time_range")
+
+    @parseable_time_range.setter
+    def parseable_time_range(self, value: pulumi.Input['LogSearchScheduleParseableTimeRangeArgs']):
+        pulumi.set(self, "parseable_time_range", value)
+
+    @property
+    @pulumi.getter(name="scheduleType")
+    def schedule_type(self) -> pulumi.Input[str]:
+        """
+        Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+        a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+        `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+
+        > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+        to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+        """
+        return pulumi.get(self, "schedule_type")
+
+    @schedule_type.setter
+    def schedule_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schedule_type", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[str]:
+        """
+        Time zone for the scheduled log search. Either an abbreviation such as "PST",
+        a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+        abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cron-like expression specifying the search's schedule. `schedule_type` must be set
+        to "Custom", otherwise, `schedule_type` takes precedence over `cron_expression`.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter(name="muteErrorEmails")
+    def mute_error_emails(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, emails are not sent out in case of errors with the search.
+        """
+        return pulumi.get(self, "mute_error_emails")
+
+    @mute_error_emails.setter
+    def mute_error_emails(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mute_error_emails", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchScheduleParameterArgs']]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchScheduleParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input['LogSearchScheduleThresholdArgs']]:
+        """
+        Threshold for when to send notification. See
+        threshold schema
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input['LogSearchScheduleThresholdArgs']]):
+        pulumi.set(self, "threshold", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationArgs:
+    def __init__(__self__, *,
+                 alert_search_notification: Optional[pulumi.Input['LogSearchScheduleNotificationAlertSearchNotificationArgs']] = None,
+                 cse_signal_notification: Optional[pulumi.Input['LogSearchScheduleNotificationCseSignalNotificationArgs']] = None,
+                 email_search_notification: Optional[pulumi.Input['LogSearchScheduleNotificationEmailSearchNotificationArgs']] = None,
+                 save_to_lookup_notification: Optional[pulumi.Input['LogSearchScheduleNotificationSaveToLookupNotificationArgs']] = None,
+                 save_to_view_notification: Optional[pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgs']] = None,
+                 service_now_search_notification: Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgs']] = None,
+                 webhook_search_notification: Optional[pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchScheduleNotificationAlertSearchNotificationArgs'] alert_search_notification: Run an script action. See
+               alert_search_notification schema for details.
+        :param pulumi.Input['LogSearchScheduleNotificationCseSignalNotificationArgs'] cse_signal_notification: Create a CSE signal with a scheduled search.
+               See cse_signal_notification schema schema for details.
+        :param pulumi.Input['LogSearchScheduleNotificationEmailSearchNotificationArgs'] email_search_notification: Send an alert via email. See
+               email_search_notification schema schema for details.
+        :param pulumi.Input['LogSearchScheduleNotificationSaveToLookupNotificationArgs'] save_to_lookup_notification: Save results to a Lookup Table. See
+               save_to_lookup_notification schema schema for details.
+        :param pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgs'] save_to_view_notification: Save results to an index. See
+               save_to_view_notification schema schema for details.
+        :param pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgs'] service_now_search_notification: Send results to Service Now. See
+               service_now_search_notification schema schema for details.
+        :param pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgs'] webhook_search_notification: Send an alert via Webhook. See
+               webhook_search_notification schema schema for details.
+        """
+        if alert_search_notification is not None:
+            pulumi.set(__self__, "alert_search_notification", alert_search_notification)
+        if cse_signal_notification is not None:
+            pulumi.set(__self__, "cse_signal_notification", cse_signal_notification)
+        if email_search_notification is not None:
+            pulumi.set(__self__, "email_search_notification", email_search_notification)
+        if save_to_lookup_notification is not None:
+            pulumi.set(__self__, "save_to_lookup_notification", save_to_lookup_notification)
+        if save_to_view_notification is not None:
+            pulumi.set(__self__, "save_to_view_notification", save_to_view_notification)
+        if service_now_search_notification is not None:
+            pulumi.set(__self__, "service_now_search_notification", service_now_search_notification)
+        if webhook_search_notification is not None:
+            pulumi.set(__self__, "webhook_search_notification", webhook_search_notification)
+
+    @property
+    @pulumi.getter(name="alertSearchNotification")
+    def alert_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationAlertSearchNotificationArgs']]:
+        """
+        Run an script action. See
+        alert_search_notification schema for details.
+        """
+        return pulumi.get(self, "alert_search_notification")
+
+    @alert_search_notification.setter
+    def alert_search_notification(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationAlertSearchNotificationArgs']]):
+        pulumi.set(self, "alert_search_notification", value)
+
+    @property
+    @pulumi.getter(name="cseSignalNotification")
+    def cse_signal_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationCseSignalNotificationArgs']]:
+        """
+        Create a CSE signal with a scheduled search.
+        See cse_signal_notification schema schema for details.
+        """
+        return pulumi.get(self, "cse_signal_notification")
+
+    @cse_signal_notification.setter
+    def cse_signal_notification(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationCseSignalNotificationArgs']]):
+        pulumi.set(self, "cse_signal_notification", value)
+
+    @property
+    @pulumi.getter(name="emailSearchNotification")
+    def email_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationEmailSearchNotificationArgs']]:
+        """
+        Send an alert via email. See
+        email_search_notification schema schema for details.
+        """
+        return pulumi.get(self, "email_search_notification")
+
+    @email_search_notification.setter
+    def email_search_notification(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationEmailSearchNotificationArgs']]):
+        pulumi.set(self, "email_search_notification", value)
+
+    @property
+    @pulumi.getter(name="saveToLookupNotification")
+    def save_to_lookup_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationSaveToLookupNotificationArgs']]:
+        """
+        Save results to a Lookup Table. See
+        save_to_lookup_notification schema schema for details.
+        """
+        return pulumi.get(self, "save_to_lookup_notification")
+
+    @save_to_lookup_notification.setter
+    def save_to_lookup_notification(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationSaveToLookupNotificationArgs']]):
+        pulumi.set(self, "save_to_lookup_notification", value)
+
+    @property
+    @pulumi.getter(name="saveToViewNotification")
+    def save_to_view_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgs']]:
+        """
+        Save results to an index. See
+        save_to_view_notification schema schema for details.
+        """
+        return pulumi.get(self, "save_to_view_notification")
+
+    @save_to_view_notification.setter
+    def save_to_view_notification(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgs']]):
+        pulumi.set(self, "save_to_view_notification", value)
+
+    @property
+    @pulumi.getter(name="serviceNowSearchNotification")
+    def service_now_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgs']]:
+        """
+        Send results to Service Now. See
+        service_now_search_notification schema schema for details.
+        """
+        return pulumi.get(self, "service_now_search_notification")
+
+    @service_now_search_notification.setter
+    def service_now_search_notification(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgs']]):
+        pulumi.set(self, "service_now_search_notification", value)
+
+    @property
+    @pulumi.getter(name="webhookSearchNotification")
+    def webhook_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgs']]:
+        """
+        Send an alert via Webhook. See
+        webhook_search_notification schema schema for details.
+        """
+        return pulumi.get(self, "webhook_search_notification")
+
+    @webhook_search_notification.setter
+    def webhook_search_notification(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgs']]):
+        pulumi.set(self, "webhook_search_notification", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationAlertSearchNotificationArgs:
+    def __init__(__self__, *,
+                 source_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] source_id: Identifier of the collector's source.
+        """
+        pulumi.set(__self__, "source_id", source_id)
+
+    @property
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> pulumi.Input[str]:
+        """
+        Identifier of the collector's source.
+        """
+        return pulumi.get(self, "source_id")
+
+    @source_id.setter
+    def source_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_id", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationCseSignalNotificationArgs:
+    def __init__(__self__, *,
+                 record_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] record_type: Name of the Cloud SIEM Enterprise Record to be created.
+        """
+        pulumi.set(__self__, "record_type", record_type)
+
+    @property
+    @pulumi.getter(name="recordType")
+    def record_type(self) -> pulumi.Input[str]:
+        """
+        Name of the Cloud SIEM Enterprise Record to be created.
+        """
+        return pulumi.get(self, "record_type")
+
+    @record_type.setter
+    def record_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "record_type", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationEmailSearchNotificationArgs:
+    def __init__(__self__, *,
+                 to_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 include_csv_attachment: Optional[pulumi.Input[bool]] = None,
+                 include_histogram: Optional[pulumi.Input[bool]] = None,
+                 include_query: Optional[pulumi.Input[bool]] = None,
+                 include_result_set: Optional[pulumi.Input[bool]] = None,
+                 subject_template: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] to_lists: A list of email recipients.
+        :param pulumi.Input[bool] include_csv_attachment: If the search results should be included in the notification email
+               as a CSV attachment.
+        :param pulumi.Input[bool] include_histogram: If the search result histogram should be included in the notification email.
+        :param pulumi.Input[bool] include_query: If the search query should be included in the notification email.
+        :param pulumi.Input[bool] include_result_set: If the search result set should be included in the notification email.
+        :param pulumi.Input[str] subject_template: Subject of the email. If the notification is scheduled with a threshold,
+               the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+               For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+        """
+        pulumi.set(__self__, "to_lists", to_lists)
+        if include_csv_attachment is not None:
+            pulumi.set(__self__, "include_csv_attachment", include_csv_attachment)
+        if include_histogram is not None:
+            pulumi.set(__self__, "include_histogram", include_histogram)
+        if include_query is not None:
+            pulumi.set(__self__, "include_query", include_query)
+        if include_result_set is not None:
+            pulumi.set(__self__, "include_result_set", include_result_set)
+        if subject_template is not None:
+            pulumi.set(__self__, "subject_template", subject_template)
+
+    @property
+    @pulumi.getter(name="toLists")
+    def to_lists(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of email recipients.
+        """
+        return pulumi.get(self, "to_lists")
+
+    @to_lists.setter
+    def to_lists(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "to_lists", value)
+
+    @property
+    @pulumi.getter(name="includeCsvAttachment")
+    def include_csv_attachment(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the search results should be included in the notification email
+        as a CSV attachment.
+        """
+        return pulumi.get(self, "include_csv_attachment")
+
+    @include_csv_attachment.setter
+    def include_csv_attachment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_csv_attachment", value)
+
+    @property
+    @pulumi.getter(name="includeHistogram")
+    def include_histogram(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the search result histogram should be included in the notification email.
+        """
+        return pulumi.get(self, "include_histogram")
+
+    @include_histogram.setter
+    def include_histogram(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_histogram", value)
+
+    @property
+    @pulumi.getter(name="includeQuery")
+    def include_query(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the search query should be included in the notification email.
+        """
+        return pulumi.get(self, "include_query")
+
+    @include_query.setter
+    def include_query(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_query", value)
+
+    @property
+    @pulumi.getter(name="includeResultSet")
+    def include_result_set(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the search result set should be included in the notification email.
+        """
+        return pulumi.get(self, "include_result_set")
+
+    @include_result_set.setter
+    def include_result_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_result_set", value)
+
+    @property
+    @pulumi.getter(name="subjectTemplate")
+    def subject_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subject of the email. If the notification is scheduled with a threshold,
+        the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+        For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+        """
+        return pulumi.get(self, "subject_template")
+
+    @subject_template.setter
+    def subject_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject_template", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationSaveToLookupNotificationArgs:
+    def __init__(__self__, *,
+                 is_lookup_merge_operation: pulumi.Input[bool],
+                 lookup_file_path: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] is_lookup_merge_operation: Whether to merge the file contents with existing data in the lookup table.
+        :param pulumi.Input[str] lookup_file_path: Path of the lookup table to save the results to.
+        """
+        pulumi.set(__self__, "is_lookup_merge_operation", is_lookup_merge_operation)
+        pulumi.set(__self__, "lookup_file_path", lookup_file_path)
+
+    @property
+    @pulumi.getter(name="isLookupMergeOperation")
+    def is_lookup_merge_operation(self) -> pulumi.Input[bool]:
+        """
+        Whether to merge the file contents with existing data in the lookup table.
+        """
+        return pulumi.get(self, "is_lookup_merge_operation")
+
+    @is_lookup_merge_operation.setter
+    def is_lookup_merge_operation(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_lookup_merge_operation", value)
+
+    @property
+    @pulumi.getter(name="lookupFilePath")
+    def lookup_file_path(self) -> pulumi.Input[str]:
+        """
+        Path of the lookup table to save the results to.
+        """
+        return pulumi.get(self, "lookup_file_path")
+
+    @lookup_file_path.setter
+    def lookup_file_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lookup_file_path", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationSaveToViewNotificationArgs:
+    def __init__(__self__, *,
+                 view_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] view_name: Name of the View(Index) to save the results to.
+        """
+        pulumi.set(__self__, "view_name", view_name)
+
+    @property
+    @pulumi.getter(name="viewName")
+    def view_name(self) -> pulumi.Input[str]:
+        """
+        Name of the View(Index) to save the results to.
+        """
+        return pulumi.get(self, "view_name")
+
+    @view_name.setter
+    def view_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "view_name", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationServiceNowSearchNotificationArgs:
+    def __init__(__self__, *,
+                 external_id: pulumi.Input[str],
+                 fields: Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs']] = None):
+        """
+        :param pulumi.Input[str] external_id: Service Now Identifier.
+        :param pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs'] fields: Service Now fields.
+        """
+        pulumi.set(__self__, "external_id", external_id)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> pulumi.Input[str]:
+        """
+        Service Now Identifier.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs']]:
+        """
+        Service Now fields.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs']]):
+        pulumi.set(self, "fields", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
+    def __init__(__self__, *,
+                 event_type: Optional[pulumi.Input[str]] = None,
+                 node: Optional[pulumi.Input[str]] = None,
+                 resource: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] event_type: The category that the event source uses to identify the event.
+        :param pulumi.Input[str] node: The physical or virtual device on which the event occurred.
+        :param pulumi.Input[str] resource: The component on the node to which the event applies.
+        :param pulumi.Input[int] severity: An integer value representing the severity of the alert. Supported values are:
+               * 0 for Clear
+               * 1 for Critical
+               * 2 for Major
+               * 3 for Minor
+               * 4 for Warning
+        """
+        if event_type is not None:
+            pulumi.set(__self__, "event_type", event_type)
+        if node is not None:
+            pulumi.set(__self__, "node", node)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The category that the event source uses to identify the event.
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter
+    def node(self) -> Optional[pulumi.Input[str]]:
+        """
+        The physical or virtual device on which the event occurred.
+        """
+        return pulumi.get(self, "node")
+
+    @node.setter
+    def node(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The component on the node to which the event applies.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input[int]]:
+        """
+        An integer value representing the severity of the alert. Supported values are:
+        * 0 for Clear
+        * 1 for Critical
+        * 2 for Major
+        * 3 for Minor
+        * 4 for Warning
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "severity", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
+    def __init__(__self__, *,
+                 webhook_id: pulumi.Input[str],
+                 itemize_alerts: Optional[pulumi.Input[bool]] = None,
+                 max_itemized_alerts: Optional[pulumi.Input[int]] = None,
+                 payload: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] webhook_id: Identifier of the webhook connection.
+        :param pulumi.Input[bool] itemize_alerts: If set to true, one webhook per result will be sent when the trigger conditions are met.
+        :param pulumi.Input[int] max_itemized_alerts: The maximum number of results for which we send separate alerts.
+        :param pulumi.Input[str] payload: A JSON object in the format required by the target WebHook URL.
+        """
+        pulumi.set(__self__, "webhook_id", webhook_id)
+        if itemize_alerts is not None:
+            pulumi.set(__self__, "itemize_alerts", itemize_alerts)
+        if max_itemized_alerts is not None:
+            pulumi.set(__self__, "max_itemized_alerts", max_itemized_alerts)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+
+    @property
+    @pulumi.getter(name="webhookId")
+    def webhook_id(self) -> pulumi.Input[str]:
+        """
+        Identifier of the webhook connection.
+        """
+        return pulumi.get(self, "webhook_id")
+
+    @webhook_id.setter
+    def webhook_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "webhook_id", value)
+
+    @property
+    @pulumi.getter(name="itemizeAlerts")
+    def itemize_alerts(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, one webhook per result will be sent when the trigger conditions are met.
+        """
+        return pulumi.get(self, "itemize_alerts")
+
+    @itemize_alerts.setter
+    def itemize_alerts(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "itemize_alerts", value)
+
+    @property
+    @pulumi.getter(name="maxItemizedAlerts")
+    def max_itemized_alerts(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of results for which we send separate alerts.
+        """
+        return pulumi.get(self, "max_itemized_alerts")
+
+    @max_itemized_alerts.setter
+    def max_itemized_alerts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_itemized_alerts", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON object in the format required by the target WebHook URL.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParameterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the search.
+        :param pulumi.Input[str] value: Value of scheduled search parameter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the search.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value of scheduled search parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeArgs:
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs']] = None,
+                 complete_literal_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs'] begin_bounded_time_range: Bounded time range. See
+               begin_bounded_time_range schema schema for details.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs'] complete_literal_time_range: Literal time range. See
+               complete_literal_time_range schema for details.
+        """
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs']]:
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @begin_bounded_time_range.setter
+    def begin_bounded_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs']]):
+        pulumi.set(self, "begin_bounded_time_range", value)
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs']]:
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+        return pulumi.get(self, "complete_literal_time_range")
+
+    @complete_literal_time_range.setter
+    def complete_literal_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs']]):
+        pulumi.set(self, "complete_literal_time_range", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs'],
+                 to: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs'] from_: Start boundary of bounded time range. See
+               time_range_boundary schema for details.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs'] to: End boundary of bounded time range. See
+               time_range_boundary schema for details.
+        """
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs']:
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs']):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs']]:
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs']]):
+        pulumi.set(self, "to", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class LogSearchScheduleThresholdArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[int],
+                 operator: pulumi.Input[str],
+                 threshold_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] count: Expected result count.
+        :param pulumi.Input[str] operator: Criterion to be applied when comparing actual result count with expected count. Possible
+               values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+        :param pulumi.Input[str] threshold_type: Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+               Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+               to `message`.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "threshold_type", threshold_type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[int]:
+        """
+        Expected result count.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        Criterion to be applied when comparing actual result count with expected count. Possible
+        values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> pulumi.Input[str]:
+        """
+        Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+        Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+        to `message`.
+        """
+        return pulumi.get(self, "threshold_type")
+
+    @threshold_type.setter
+    def threshold_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "threshold_type", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeArgs:
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgs']] = None,
+                 complete_literal_time_range: Optional[pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgs'] begin_bounded_time_range: Bounded time range. See
+               begin_bounded_time_range schema schema for details.
+        :param pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgs'] complete_literal_time_range: Literal time range. See
+               complete_literal_time_range schema for details.
+        """
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgs']]:
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @begin_bounded_time_range.setter
+    def begin_bounded_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgs']]):
+        pulumi.set(self, "begin_bounded_time_range", value)
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgs']]:
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+        return pulumi.get(self, "complete_literal_time_range")
+
+    @complete_literal_time_range.setter
+    def complete_literal_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgs']]):
+        pulumi.set(self, "complete_literal_time_range", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgs'],
+                 to: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgs'] from_: Start boundary of bounded time range. See
+               time_range_boundary schema for details.
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs'] to: End boundary of bounded time range. See
+               time_range_boundary schema for details.
+        """
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgs']:
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgs']):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs']]:
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs']]):
+        pulumi.set(self, "to", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class LogSearchTimeRangeCompleteLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
 class LookupTableFieldArgs:
     def __init__(__self__, *,
                  field_name: pulumi.Input[str],
@@ -26378,6 +28175,521 @@ class PollingSourcePathTagFilterArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         This value has to be set to `TagFilters`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class S3ArchiveSourceAuthenticationArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 auth_provider_x509_cert_url: Optional[pulumi.Input[str]] = None,
+                 auth_uri: Optional[pulumi.Input[str]] = None,
+                 client_email: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_x509_cert_url: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 private_key_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 token_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`.
+        :param pulumi.Input[str] region: Your AWS Bucket region.
+        :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
+        """
+        pulumi.set(__self__, "type", type)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @auth_provider_x509_cert_url.setter
+    def auth_provider_x509_cert_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_provider_x509_cert_url", value)
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_uri")
+
+    @auth_uri.setter
+    def auth_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_uri", value)
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_email")
+
+    @client_email.setter
+    def client_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_email", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @client_x509_cert_url.setter
+    def client_x509_cert_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_x509_cert_url", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key_id")
+
+    @private_key_id.setter
+    def private_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your AWS Bucket region.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_uri")
+
+    @token_uri.setter
+    def token_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_uri", value)
+
+
+@pulumi.input_type
+class S3ArchiveSourceDefaultDateFormatArgs:
+    def __init__(__self__, *,
+                 format: pulumi.Input[str],
+                 locator: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "locator")
+
+    @locator.setter
+    def locator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locator", value)
+
+
+@pulumi.input_type
+class S3ArchiveSourceFilterArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 regexp: pulumi.Input[str],
+                 mask: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regexp")
+
+    @regexp.setter
+    def regexp(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regexp", value)
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mask")
+
+    @mask.setter
+    def mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mask", value)
+
+
+@pulumi.input_type
+class S3ArchiveSourcePathArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]] = None,
+                 limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 path_expression: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
+                 tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathTagFilterArgs']]]] = None,
+                 use_versioned_api: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        :param pulumi.Input[str] bucket_name: The name of the bucket.
+        :param pulumi.Input[str] path_expression: The path to the data.
+        """
+        pulumi.set(__self__, "type", type)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
+        if limit_to_namespaces is not None:
+            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+        if limit_to_regions is not None:
+            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if path_expression is not None:
+            pulumi.set(__self__, "path_expression", path_expression)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+        if tag_filters is not None:
+            pulumi.set(__self__, "tag_filters", tag_filters)
+        if use_versioned_api is not None:
+            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]]:
+        return pulumi.get(self, "custom_services")
+
+    @custom_services.setter
+    def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]]):
+        pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="limitToNamespaces")
+    def limit_to_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_namespaces")
+
+    @limit_to_namespaces.setter
+    def limit_to_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_namespaces", value)
+
+    @property
+    @pulumi.getter(name="limitToRegions")
+    def limit_to_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_regions")
+
+    @limit_to_regions.setter
+    def limit_to_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_regions", value)
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_services")
+
+    @limit_to_services.setter
+    def limit_to_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_services", value)
+
+    @property
+    @pulumi.getter(name="pathExpression")
+    def path_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the data.
+        """
+        return pulumi.get(self, "path_expression")
+
+    @path_expression.setter
+    def path_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
+    @pulumi.getter(name="tagFilters")
+    def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathTagFilterArgs']]]]:
+        return pulumi.get(self, "tag_filters")
+
+    @tag_filters.setter
+    def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathTagFilterArgs']]]]):
+        pulumi.set(self, "tag_filters", value)
+
+    @property
+    @pulumi.getter(name="useVersionedApi")
+    def use_versioned_api(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_versioned_api")
+
+    @use_versioned_api.setter
+    def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_versioned_api", value)
+
+
+@pulumi.input_type
+class S3ArchiveSourcePathCustomServiceArgs:
+    def __init__(__self__, *,
+                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "prefixes")
+
+    @prefixes.setter
+    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "prefixes", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
+
+
+@pulumi.input_type
+class S3ArchiveSourcePathTagFilterArgs:
+    def __init__(__self__, *,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
         """
         return pulumi.get(self, "type")
 

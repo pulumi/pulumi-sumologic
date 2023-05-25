@@ -289,6 +289,11 @@ export type LocalFileSource = import("./localFileSource").LocalFileSource;
 export const LocalFileSource: typeof import("./localFileSource").LocalFileSource = null as any;
 utilities.lazyLoad(exports, ["LocalFileSource"], () => require("./localFileSource"));
 
+export { LogSearchArgs, LogSearchState } from "./logSearch";
+export type LogSearch = import("./logSearch").LogSearch;
+export const LogSearch: typeof import("./logSearch").LogSearch = null as any;
+utilities.lazyLoad(exports, ["LogSearch"], () => require("./logSearch"));
+
 export { LookupTableArgs, LookupTableState } from "./lookupTable";
 export type LookupTable = import("./lookupTable").LookupTable;
 export const LookupTable: typeof import("./lookupTable").LookupTable = null as any;
@@ -338,6 +343,11 @@ export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { S3ArchiveSourceArgs, S3ArchiveSourceState } from "./s3archiveSource";
+export type S3ArchiveSource = import("./s3archiveSource").S3ArchiveSource;
+export const S3ArchiveSource: typeof import("./s3archiveSource").S3ArchiveSource = null as any;
+utilities.lazyLoad(exports, ["S3ArchiveSource"], () => require("./s3archiveSource"));
 
 export { S3AuditSourceArgs, S3AuditSourceState } from "./s3auditSource";
 export type S3AuditSource = import("./s3auditSource").S3AuditSource;
@@ -492,6 +502,8 @@ const _module = {
                 return new KinesisMetricsSource(name, <any>undefined, { urn })
             case "sumologic:index/localFileSource:LocalFileSource":
                 return new LocalFileSource(name, <any>undefined, { urn })
+            case "sumologic:index/logSearch:LogSearch":
+                return new LogSearch(name, <any>undefined, { urn })
             case "sumologic:index/lookupTable:LookupTable":
                 return new LookupTable(name, <any>undefined, { urn })
             case "sumologic:index/metadataSource:MetadataSource":
@@ -510,6 +522,8 @@ const _module = {
                 return new PollingSource(name, <any>undefined, { urn })
             case "sumologic:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "sumologic:index/s3ArchiveSource:S3ArchiveSource":
+                return new S3ArchiveSource(name, <any>undefined, { urn })
             case "sumologic:index/s3AuditSource:S3AuditSource":
                 return new S3AuditSource(name, <any>undefined, { urn })
             case "sumologic:index/s3Source:S3Source":
@@ -580,6 +594,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/installedCollector", _
 pulumi.runtime.registerResourceModule("sumologic", "index/kineisLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kinesisMetricsSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/localFileSource", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/logSearch", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/lookupTable", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/metadataSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitor", _module)
@@ -589,6 +604,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/passwordPolicy", _modu
 pulumi.runtime.registerResourceModule("sumologic", "index/policies", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/pollingSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/role", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/s3ArchiveSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3AuditSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3Source", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/samlConfiguration", _module)

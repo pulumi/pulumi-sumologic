@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;Inventory entity group description&#34;)
  *             .group(&#34;admin&#34;)
  *             .inventorySource(&#34;Active Directory&#34;)
- *             .inventoryType(&#34;username&#34;)
+ *             .inventoryType(&#34;user&#34;)
  *             .suppressed(false)
  *             .tags(&#34;tag&#34;)
  *             .build());
@@ -121,14 +121,14 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
         return this.inventorySource;
     }
     /**
-     * The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
+     * The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
      * 
      */
     @Export(name="inventoryType", type=String.class, parameters={})
     private Output<String> inventoryType;
 
     /**
-     * @return The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
+     * @return The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
      * 
      */
     public Output<String> inventoryType() {

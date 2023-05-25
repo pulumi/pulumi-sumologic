@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic
     ///         Description = "Inventory entity group description",
     ///         Group = "admin",
     ///         InventorySource = "Active Directory",
-    ///         InventoryType = "username",
+    ///         InventoryType = "user",
     ///         Suppressed = false,
     ///         Tags = new[]
     ///         {
@@ -73,7 +73,7 @@ namespace Pulumi.SumoLogic
         public Output<string> InventorySource { get; private set; } = null!;
 
         /// <summary>
-        /// The inventory type Examples: "computer", "username".
+        /// The inventory type Examples: "computer", "user".
         /// </summary>
         [Output("inventoryType")]
         public Output<string> InventoryType { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.SumoLogic
         public Input<string> InventorySource { get; set; } = null!;
 
         /// <summary>
-        /// The inventory type Examples: "computer", "username".
+        /// The inventory type Examples: "computer", "user".
         /// </summary>
         [Input("inventoryType", required: true)]
         public Input<string> InventoryType { get; set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? InventorySource { get; set; }
 
         /// <summary>
-        /// The inventory type Examples: "computer", "username".
+        /// The inventory type Examples: "computer", "user".
         /// </summary>
         [Input("inventoryType")]
         public Input<string>? InventoryType { get; set; }

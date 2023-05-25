@@ -114,6 +114,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KinesisMetricsSource{}
 	case "sumologic:index/localFileSource:LocalFileSource":
 		r = &LocalFileSource{}
+	case "sumologic:index/logSearch:LogSearch":
+		r = &LogSearch{}
 	case "sumologic:index/lookupTable:LookupTable":
 		r = &LookupTable{}
 	case "sumologic:index/metadataSource:MetadataSource":
@@ -132,6 +134,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PollingSource{}
 	case "sumologic:index/role:Role":
 		r = &Role{}
+	case "sumologic:index/s3ArchiveSource:S3ArchiveSource":
+		r = &S3ArchiveSource{}
 	case "sumologic:index/s3AuditSource:S3AuditSource":
 		r = &S3AuditSource{}
 	case "sumologic:index/s3Source:S3Source":
@@ -415,6 +419,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/logSearch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/lookupTable",
 		&module{version},
 	)
@@ -456,6 +465,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/role",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/s3ArchiveSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

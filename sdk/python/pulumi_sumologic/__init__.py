@@ -62,6 +62,7 @@ from .installed_collector import *
 from .kineis_log_source import *
 from .kinesis_metrics_source import *
 from .local_file_source import *
+from .log_search import *
 from .lookup_table import *
 from .metadata_source import *
 from .monitor import *
@@ -72,6 +73,7 @@ from .policies import *
 from .polling_source import *
 from .provider import *
 from .role import *
+from .s3_archive_source import *
 from .s3_audit_source import *
 from .s3_source import *
 from .saml_configuration import *
@@ -472,6 +474,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/logSearch",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/logSearch:LogSearch": "LogSearch"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/lookupTable",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -540,6 +550,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/s3ArchiveSource",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/s3ArchiveSource:S3ArchiveSource": "S3ArchiveSource"
   }
  },
  {

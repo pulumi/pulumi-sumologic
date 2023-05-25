@@ -25,7 +25,7 @@ class CseInventoryEntityGroupConfigurationArgs:
         """
         The set of arguments for constructing a CseInventoryEntityGroupConfiguration resource.
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
         :param pulumi.Input[str] criticality: The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
         :param pulumi.Input[str] description: The entity group configuration description.
         :param pulumi.Input[str] group: The entity group configuration inventory group.
@@ -65,7 +65,7 @@ class CseInventoryEntityGroupConfigurationArgs:
     @pulumi.getter(name="inventoryType")
     def inventory_type(self) -> pulumi.Input[str]:
         """
-        The inventory type Examples: "computer", "username".
+        The inventory type Examples: "computer", "user".
         """
         return pulumi.get(self, "inventory_type")
 
@@ -162,7 +162,7 @@ class _CseInventoryEntityGroupConfigurationState:
         :param pulumi.Input[str] description: The entity group configuration description.
         :param pulumi.Input[str] group: The entity group configuration inventory group.
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
         :param pulumi.Input[str] name: The entity group configuration name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
                
@@ -237,7 +237,7 @@ class _CseInventoryEntityGroupConfigurationState:
     @pulumi.getter(name="inventoryType")
     def inventory_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The inventory type Examples: "computer", "username".
+        The inventory type Examples: "computer", "user".
         """
         return pulumi.get(self, "inventory_type")
 
@@ -307,7 +307,7 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
             description="Inventory entity group description",
             group="admin",
             inventory_source="Active Directory",
-            inventory_type="username",
+            inventory_type="user",
             suppressed=False,
             tags=["tag"])
         ```
@@ -326,7 +326,7 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] description: The entity group configuration description.
         :param pulumi.Input[str] group: The entity group configuration inventory group.
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
         :param pulumi.Input[str] name: The entity group configuration name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
                
@@ -350,7 +350,7 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
             description="Inventory entity group description",
             group="admin",
             inventory_source="Active Directory",
-            inventory_type="username",
+            inventory_type="user",
             suppressed=False,
             tags=["tag"])
         ```
@@ -436,7 +436,7 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] description: The entity group configuration description.
         :param pulumi.Input[str] group: The entity group configuration inventory group.
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
         :param pulumi.Input[str] name: The entity group configuration name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
                
@@ -492,7 +492,7 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="inventoryType")
     def inventory_type(self) -> pulumi.Output[str]:
         """
-        The inventory type Examples: "computer", "username".
+        The inventory type Examples: "computer", "user".
         """
         return pulumi.get(self, "inventory_type")
 
