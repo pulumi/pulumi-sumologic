@@ -22,12 +22,20 @@ func GetBaseUrl(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "SUMOLOGIC_BASE_URL").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_BASE_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetEnvironment(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "sumologic:environment")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "SUMOLOGIC_ENVIRONMENT").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_ENVIRONMENT"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
