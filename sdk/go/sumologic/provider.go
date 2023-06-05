@@ -38,10 +38,14 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'AccessKey'")
 	}
 	if args.BaseUrl == nil {
-		args.BaseUrl = pulumi.StringPtr(getEnvOrDefault("", nil, "SUMOLOGIC_BASE_URL").(string))
+		if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_BASE_URL"); d != nil {
+			args.BaseUrl = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Environment == nil {
-		args.Environment = pulumi.StringPtr(getEnvOrDefault("", nil, "SUMOLOGIC_ENVIRONMENT").(string))
+		if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_ENVIRONMENT"); d != nil {
+			args.Environment = pulumi.StringPtr(d.(string))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:sumologic", name, args, &resource, opts...)
