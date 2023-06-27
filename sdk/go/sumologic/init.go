@@ -80,6 +80,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CseMatchRule{}
 	case "sumologic:index/cseNetworkBlock:CseNetworkBlock":
 		r = &CseNetworkBlock{}
+	case "sumologic:index/cseOutlierRule:CseOutlierRule":
+		r = &CseOutlierRule{}
 	case "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression":
 		r = &CseRuleTuningExpression{}
 	case "sumologic:index/cseThresholdRule:CseThresholdRule":
@@ -330,6 +332,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/cseNetworkBlock",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseOutlierRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

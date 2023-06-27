@@ -736,6 +736,29 @@ export interface CseMatchRuleSeverityMappingMapping {
     type: string;
 }
 
+export interface CseOutlierRuleAggregationFunctions {
+    /**
+     * One or more expressions to pass as arguments to the function
+     */
+    arguments: string[];
+    /**
+     * The function to aggregate with
+     */
+    function: string;
+    /**
+     * The name of the Rule
+     */
+    name: string;
+}
+
+export interface CseOutlierRuleEntitySelector {
+    entityType: string;
+    /**
+     * The expression or field name to generate the Signal on
+     */
+    expression: string;
+}
+
 export interface CseThresholdRuleEntitySelector {
     entityType: string;
     /**
@@ -5861,7 +5884,7 @@ export interface KineisLogSourceAuthentication {
     /**
      * Must be either `KinesisLogPath` or `NoPathExpression`
      */
-    type: string;
+    type?: string;
 }
 
 export interface KineisLogSourceDefaultDateFormat {
@@ -5892,7 +5915,7 @@ export interface KineisLogSourcePath {
     /**
      * Must be either `KinesisLogPath` or `NoPathExpression`
      */
-    type: string;
+    type?: string;
 }
 
 export interface KinesisMetricsSourceAuthentication {

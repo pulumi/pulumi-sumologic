@@ -155,6 +155,11 @@ export type CseNetworkBlock = import("./cseNetworkBlock").CseNetworkBlock;
 export const CseNetworkBlock: typeof import("./cseNetworkBlock").CseNetworkBlock = null as any;
 utilities.lazyLoad(exports, ["CseNetworkBlock"], () => require("./cseNetworkBlock"));
 
+export { CseOutlierRuleArgs, CseOutlierRuleState } from "./cseOutlierRule";
+export type CseOutlierRule = import("./cseOutlierRule").CseOutlierRule;
+export const CseOutlierRule: typeof import("./cseOutlierRule").CseOutlierRule = null as any;
+utilities.lazyLoad(exports, ["CseOutlierRule"], () => require("./cseOutlierRule"));
+
 export { CseRuleTuningExpressionArgs, CseRuleTuningExpressionState } from "./cseRuleTuningExpression";
 export type CseRuleTuningExpression = import("./cseRuleTuningExpression").CseRuleTuningExpression;
 export const CseRuleTuningExpression: typeof import("./cseRuleTuningExpression").CseRuleTuningExpression = null as any;
@@ -468,6 +473,8 @@ const _module = {
                 return new CseMatchRule(name, <any>undefined, { urn })
             case "sumologic:index/cseNetworkBlock:CseNetworkBlock":
                 return new CseNetworkBlock(name, <any>undefined, { urn })
+            case "sumologic:index/cseOutlierRule:CseOutlierRule":
+                return new CseOutlierRule(name, <any>undefined, { urn })
             case "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression":
                 return new CseRuleTuningExpression(name, <any>undefined, { urn })
             case "sumologic:index/cseThresholdRule:CseThresholdRule":
@@ -577,6 +584,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cseLogMapping", _modul
 pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchList", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseNetworkBlock", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseOutlierRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseRuleTuningExpression", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseThresholdRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/dashboard", _module)

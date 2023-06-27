@@ -45,6 +45,7 @@
         "cseMatchList.ts",
         "cseMatchRule.ts",
         "cseNetworkBlock.ts",
+        "cseOutlierRule.ts",
         "cseRuleTuningExpression.ts",
         "cseThresholdRule.ts",
         "dashboard.ts",

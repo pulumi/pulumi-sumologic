@@ -27,8 +27,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewCseInsightsConfiguration(ctx, "insightsConfiguration", &sumologic.CseInsightsConfigurationArgs{
-//				LookbackDays: pulumi.Float64(13),
-//				Threshold:    pulumi.Float64(12),
+//				GlobalSignalSuppressionWindow: pulumi.Float64(48),
+//				LookbackDays:                  pulumi.Float64(13),
+//				Threshold:                     pulumi.Float64(12),
 //			})
 //			if err != nil {
 //				return err
@@ -51,11 +52,13 @@ import (
 type CseInsightsConfiguration struct {
 	pulumi.CustomResourceState
 
+	// Detection global signal suppression window expressed in hours.
+	//
+	// The following attributes are exported:
+	GlobalSignalSuppressionWindow pulumi.Float64PtrOutput `pulumi:"globalSignalSuppressionWindow"`
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrOutput `pulumi:"lookbackDays"`
 	// Detection threshold activity score.
-	//
-	// The following attributes are exported:
 	Threshold pulumi.Float64PtrOutput `pulumi:"threshold"`
 }
 
@@ -88,20 +91,24 @@ func GetCseInsightsConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CseInsightsConfiguration resources.
 type cseInsightsConfigurationState struct {
+	// Detection global signal suppression window expressed in hours.
+	//
+	// The following attributes are exported:
+	GlobalSignalSuppressionWindow *float64 `pulumi:"globalSignalSuppressionWindow"`
 	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
 	// Detection threshold activity score.
-	//
-	// The following attributes are exported:
 	Threshold *float64 `pulumi:"threshold"`
 }
 
 type CseInsightsConfigurationState struct {
+	// Detection global signal suppression window expressed in hours.
+	//
+	// The following attributes are exported:
+	GlobalSignalSuppressionWindow pulumi.Float64PtrInput
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
 	// Detection threshold activity score.
-	//
-	// The following attributes are exported:
 	Threshold pulumi.Float64PtrInput
 }
 
@@ -110,21 +117,25 @@ func (CseInsightsConfigurationState) ElementType() reflect.Type {
 }
 
 type cseInsightsConfigurationArgs struct {
+	// Detection global signal suppression window expressed in hours.
+	//
+	// The following attributes are exported:
+	GlobalSignalSuppressionWindow *float64 `pulumi:"globalSignalSuppressionWindow"`
 	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
 	// Detection threshold activity score.
-	//
-	// The following attributes are exported:
 	Threshold *float64 `pulumi:"threshold"`
 }
 
 // The set of arguments for constructing a CseInsightsConfiguration resource.
 type CseInsightsConfigurationArgs struct {
+	// Detection global signal suppression window expressed in hours.
+	//
+	// The following attributes are exported:
+	GlobalSignalSuppressionWindow pulumi.Float64PtrInput
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
 	// Detection threshold activity score.
-	//
-	// The following attributes are exported:
 	Threshold pulumi.Float64PtrInput
 }
 
@@ -215,14 +226,19 @@ func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationOutputWithCont
 	return o
 }
 
+// Detection global signal suppression window expressed in hours.
+//
+// The following attributes are exported:
+func (o CseInsightsConfigurationOutput) GlobalSignalSuppressionWindow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CseInsightsConfiguration) pulumi.Float64PtrOutput { return v.GlobalSignalSuppressionWindow }).(pulumi.Float64PtrOutput)
+}
+
 // Detection window expressed in days.
 func (o CseInsightsConfigurationOutput) LookbackDays() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *CseInsightsConfiguration) pulumi.Float64PtrOutput { return v.LookbackDays }).(pulumi.Float64PtrOutput)
 }
 
 // Detection threshold activity score.
-//
-// The following attributes are exported:
 func (o CseInsightsConfigurationOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *CseInsightsConfiguration) pulumi.Float64PtrOutput { return v.Threshold }).(pulumi.Float64PtrOutput)
 }

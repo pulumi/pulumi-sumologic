@@ -35,6 +35,7 @@ from .cse_log_mapping import *
 from .cse_match_list import *
 from .cse_match_rule import *
 from .cse_network_block import *
+from .cse_outlier_rule import *
 from .cse_rule_tuning_expression import *
 from .cse_threshold_rule import *
 from .dashboard import *
@@ -334,6 +335,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/cseNetworkBlock:CseNetworkBlock": "CseNetworkBlock"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/cseOutlierRule",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseOutlierRule:CseOutlierRule": "CseOutlierRule"
   }
  },
  {

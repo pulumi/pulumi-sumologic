@@ -27,15 +27,15 @@ public final class KineisLogSourceArgs extends com.pulumi.resources.ResourceArgs
      * Authentication details for connecting to the S3 bucket.
      * 
      */
-    @Import(name="authentication", required=true)
-    private Output<KineisLogSourceAuthenticationArgs> authentication;
+    @Import(name="authentication")
+    private @Nullable Output<KineisLogSourceAuthenticationArgs> authentication;
 
     /**
      * @return Authentication details for connecting to the S3 bucket.
      * 
      */
-    public Output<KineisLogSourceAuthenticationArgs> authentication() {
-        return this.authentication;
+    public Optional<Output<KineisLogSourceAuthenticationArgs>> authentication() {
+        return Optional.ofNullable(this.authentication);
     }
 
     @Import(name="automaticDateParsing")
@@ -162,15 +162,15 @@ public final class KineisLogSourceArgs extends com.pulumi.resources.ResourceArgs
      * The location of S3 bucket for failed Kinesis log data.
      * 
      */
-    @Import(name="path", required=true)
-    private Output<KineisLogSourcePathArgs> path;
+    @Import(name="path")
+    private @Nullable Output<KineisLogSourcePathArgs> path;
 
     /**
      * @return The location of S3 bucket for failed Kinesis log data.
      * 
      */
-    public Output<KineisLogSourcePathArgs> path() {
-        return this.path;
+    public Optional<Output<KineisLogSourcePathArgs>> path() {
+        return Optional.ofNullable(this.path);
     }
 
     @Import(name="timezone")
@@ -236,7 +236,7 @@ public final class KineisLogSourceArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder authentication(Output<KineisLogSourceAuthenticationArgs> authentication) {
+        public Builder authentication(@Nullable Output<KineisLogSourceAuthenticationArgs> authentication) {
             $.authentication = authentication;
             return this;
         }
@@ -421,7 +421,7 @@ public final class KineisLogSourceArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder path(Output<KineisLogSourcePathArgs> path) {
+        public Builder path(@Nullable Output<KineisLogSourcePathArgs> path) {
             $.path = path;
             return this;
         }
@@ -455,10 +455,8 @@ public final class KineisLogSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public KineisLogSourceArgs build() {
-            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
             $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
             $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
             return $;
         }
     }

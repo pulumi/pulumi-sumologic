@@ -16,10 +16,9 @@ __all__ = ['KineisLogSourceArgs', 'KineisLogSource']
 @pulumi.input_type
 class KineisLogSourceArgs:
     def __init__(__self__, *,
-                 authentication: pulumi.Input['KineisLogSourceAuthenticationArgs'],
                  collector_id: pulumi.Input[int],
                  content_type: pulumi.Input[str],
-                 path: pulumi.Input['KineisLogSourcePathArgs'],
+                 authentication: Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
@@ -34,18 +33,19 @@ class KineisLogSourceArgs:
                  message_per_request: Optional[pulumi.Input[bool]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input['KineisLogSourcePathArgs']] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a KineisLogSource resource.
-        :param pulumi.Input['KineisLogSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
+        :param pulumi.Input['KineisLogSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input['KineisLogSourcePathArgs'] path: The location of S3 bucket for failed Kinesis log data.
         """
-        pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
         pulumi.set(__self__, "content_type", content_type)
-        pulumi.set(__self__, "path", path)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
         if automatic_date_parsing is not None:
             pulumi.set(__self__, "automatic_date_parsing", automatic_date_parsing)
         if category is not None:
@@ -74,22 +74,12 @@ class KineisLogSourceArgs:
             pulumi.set(__self__, "multiline_processing_enabled", multiline_processing_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if use_autoline_matching is not None:
             pulumi.set(__self__, "use_autoline_matching", use_autoline_matching)
-
-    @property
-    @pulumi.getter
-    def authentication(self) -> pulumi.Input['KineisLogSourceAuthenticationArgs']:
-        """
-        Authentication details for connecting to the S3 bucket.
-        """
-        return pulumi.get(self, "authentication")
-
-    @authentication.setter
-    def authentication(self, value: pulumi.Input['KineisLogSourceAuthenticationArgs']):
-        pulumi.set(self, "authentication", value)
 
     @property
     @pulumi.getter(name="collectorId")
@@ -114,15 +104,15 @@ class KineisLogSourceArgs:
 
     @property
     @pulumi.getter
-    def path(self) -> pulumi.Input['KineisLogSourcePathArgs']:
+    def authentication(self) -> Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']]:
         """
-        The location of S3 bucket for failed Kinesis log data.
+        Authentication details for connecting to the S3 bucket.
         """
-        return pulumi.get(self, "path")
+        return pulumi.get(self, "authentication")
 
-    @path.setter
-    def path(self, value: pulumi.Input['KineisLogSourcePathArgs']):
-        pulumi.set(self, "path", value)
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']]):
+        pulumi.set(self, "authentication", value)
 
     @property
     @pulumi.getter(name="automaticDateParsing")
@@ -249,6 +239,18 @@ class KineisLogSourceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input['KineisLogSourcePathArgs']]:
+        """
+        The location of S3 bucket for failed Kinesis log data.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input['KineisLogSourcePathArgs']]):
+        pulumi.set(self, "path", value)
 
     @property
     @pulumi.getter
@@ -749,8 +751,6 @@ class KineisLogSource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KineisLogSourceArgs.__new__(KineisLogSourceArgs)
 
-            if authentication is None and not opts.urn:
-                raise TypeError("Missing required property 'authentication'")
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["automatic_date_parsing"] = automatic_date_parsing
             __props__.__dict__["category"] = category
@@ -772,8 +772,6 @@ class KineisLogSource(pulumi.CustomResource):
             __props__.__dict__["message_per_request"] = message_per_request
             __props__.__dict__["multiline_processing_enabled"] = multiline_processing_enabled
             __props__.__dict__["name"] = name
-            if path is None and not opts.urn:
-                raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["use_autoline_matching"] = use_autoline_matching
@@ -850,7 +848,7 @@ class KineisLogSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def authentication(self) -> pulumi.Output['outputs.KineisLogSourceAuthentication']:
+    def authentication(self) -> pulumi.Output[Optional['outputs.KineisLogSourceAuthentication']]:
         """
         Authentication details for connecting to the S3 bucket.
         """
@@ -941,7 +939,7 @@ class KineisLogSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> pulumi.Output['outputs.KineisLogSourcePath']:
+    def path(self) -> pulumi.Output[Optional['outputs.KineisLogSourcePath']]:
         """
         The location of S3 bucket for failed Kinesis log data.
         """

@@ -212,14 +212,14 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * A map defining tag keys and tag values for the SLO.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * @return A map defining tag keys and tag values for the SLO.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -539,7 +539,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+         * @param tags A map defining tag keys and tag values for the SLO.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+         * @param tags A map defining tag keys and tag values for the SLO.
          * 
          * @return builder
          * 

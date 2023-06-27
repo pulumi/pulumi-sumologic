@@ -96,7 +96,7 @@ namespace Pulumi.SumoLogic
         /// Authentication details for connecting to the S3 bucket.
         /// </summary>
         [Output("authentication")]
-        public Output<Outputs.KineisLogSourceAuthentication> Authentication { get; private set; } = null!;
+        public Output<Outputs.KineisLogSourceAuthentication?> Authentication { get; private set; } = null!;
 
         [Output("automaticDateParsing")]
         public Output<bool?> AutomaticDateParsing { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.SumoLogic
         /// The location of S3 bucket for failed Kinesis log data.
         /// </summary>
         [Output("path")]
-        public Output<Outputs.KineisLogSourcePath> Path { get; private set; } = null!;
+        public Output<Outputs.KineisLogSourcePath?> Path { get; private set; } = null!;
 
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -216,8 +216,8 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
         /// </summary>
-        [Input("authentication", required: true)]
-        public Input<Inputs.KineisLogSourceAuthenticationArgs> Authentication { get; set; } = null!;
+        [Input("authentication")]
+        public Input<Inputs.KineisLogSourceAuthenticationArgs>? Authentication { get; set; }
 
         [Input("automaticDateParsing")]
         public Input<bool>? AutomaticDateParsing { get; set; }
@@ -288,8 +288,8 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// The location of S3 bucket for failed Kinesis log data.
         /// </summary>
-        [Input("path", required: true)]
-        public Input<Inputs.KineisLogSourcePathArgs> Path { get; set; } = null!;
+        [Input("path")]
+        public Input<Inputs.KineisLogSourcePathArgs>? Path { get; set; }
 
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

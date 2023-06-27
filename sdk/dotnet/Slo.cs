@@ -95,7 +95,7 @@ namespace Pulumi.SumoLogic
         public Output<string> SignalType { get; private set; } = null!;
 
         /// <summary>
-        /// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        /// A map defining tag keys and tag values for the SLO.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        /// A map defining tag keys and tag values for the SLO.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -356,7 +356,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        /// A map defining tag keys and tag values for the SLO.
         /// </summary>
         public InputMap<string> Tags
         {

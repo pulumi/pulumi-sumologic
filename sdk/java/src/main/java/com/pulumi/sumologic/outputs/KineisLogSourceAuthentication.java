@@ -30,7 +30,7 @@ public final class KineisLogSourceAuthentication {
      * @return Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private KineisLogSourceAuthentication() {}
     /**
@@ -58,8 +58,8 @@ public final class KineisLogSourceAuthentication {
      * @return Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -74,7 +74,7 @@ public final class KineisLogSourceAuthentication {
         private @Nullable String accessKey;
         private @Nullable String roleArn;
         private @Nullable String secretKey;
-        private String type;
+        private @Nullable String type;
         public Builder() {}
         public Builder(KineisLogSourceAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,8 @@ public final class KineisLogSourceAuthentication {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         public KineisLogSourceAuthentication build() {

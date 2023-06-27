@@ -100,7 +100,7 @@ export class KineisLogSource extends pulumi.CustomResource {
     /**
      * Authentication details for connecting to the S3 bucket.
      */
-    public readonly authentication!: pulumi.Output<outputs.KineisLogSourceAuthentication>;
+    public readonly authentication!: pulumi.Output<outputs.KineisLogSourceAuthentication | undefined>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
@@ -123,7 +123,7 @@ export class KineisLogSource extends pulumi.CustomResource {
     /**
      * The location of S3 bucket for failed Kinesis log data.
      */
-    public readonly path!: pulumi.Output<outputs.KineisLogSourcePath>;
+    public readonly path!: pulumi.Output<outputs.KineisLogSourcePath | undefined>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
      * The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
@@ -167,17 +167,11 @@ export class KineisLogSource extends pulumi.CustomResource {
             resourceInputs["useAutolineMatching"] = state ? state.useAutolineMatching : undefined;
         } else {
             const args = argsOrState as KineisLogSourceArgs | undefined;
-            if ((!args || args.authentication === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'authentication'");
-            }
             if ((!args || args.collectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'collectorId'");
             }
             if ((!args || args.contentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'contentType'");
-            }
-            if ((!args || args.path === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'path'");
             }
             resourceInputs["authentication"] = args ? args.authentication : undefined;
             resourceInputs["automaticDateParsing"] = args ? args.automaticDateParsing : undefined;
@@ -252,7 +246,7 @@ export interface KineisLogSourceArgs {
     /**
      * Authentication details for connecting to the S3 bucket.
      */
-    authentication: pulumi.Input<inputs.KineisLogSourceAuthentication>;
+    authentication?: pulumi.Input<inputs.KineisLogSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
@@ -275,7 +269,7 @@ export interface KineisLogSourceArgs {
     /**
      * The location of S3 bucket for failed Kinesis log data.
      */
-    path: pulumi.Input<inputs.KineisLogSourcePath>;
+    path?: pulumi.Input<inputs.KineisLogSourcePath>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;
 }

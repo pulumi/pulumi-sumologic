@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var insightsConfiguration = new CseInsightsConfiguration(&#34;insightsConfiguration&#34;, CseInsightsConfigurationArgs.builder()        
+ *             .globalSignalSuppressionWindow(48)
  *             .lookbackDays(13)
  *             .threshold(12)
  *             .build());
@@ -60,6 +61,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration")
 public class CseInsightsConfiguration extends com.pulumi.resources.CustomResource {
     /**
+     * Detection global signal suppression window expressed in hours.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Export(name="globalSignalSuppressionWindow", type=Double.class, parameters={})
+    private Output</* @Nullable */ Double> globalSignalSuppressionWindow;
+
+    /**
+     * @return Detection global signal suppression window expressed in hours.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Output<Optional<Double>> globalSignalSuppressionWindow() {
+        return Codegen.optional(this.globalSignalSuppressionWindow);
+    }
+    /**
      * Detection window expressed in days.
      * 
      */
@@ -76,16 +95,12 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
     /**
      * Detection threshold activity score.
      * 
-     * The following attributes are exported:
-     * 
      */
     @Export(name="threshold", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> threshold;
 
     /**
      * @return Detection threshold activity score.
-     * 
-     * The following attributes are exported:
      * 
      */
     public Output<Optional<Double>> threshold() {

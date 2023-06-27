@@ -33,8 +33,8 @@ namespace Pulumi.SumoLogic.Inputs
         /// <summary>
         /// Must be either `KinesisLogPath` or `NoPathExpression`
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public KineisLogSourcePathArgs()
         {
