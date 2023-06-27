@@ -51,7 +51,7 @@ class SloArgs:
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
         :param pulumi.Input[str] service: Name of the service.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO.
         """
         pulumi.set(__self__, "compliances", compliances)
         pulumi.set(__self__, "indicator", indicator)
@@ -266,7 +266,7 @@ class SloArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        A map defining tag keys and tag values for the SLO.
         """
         return pulumi.get(self, "tags")
 
@@ -322,7 +322,7 @@ class _SloState:
         :param pulumi.Input[str] service: Name of the service.
         :param pulumi.Input[str] signal_type: The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
                , `Other`. Defaults to `Latency`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO.
         """
         if application is not None:
             pulumi.set(__self__, "application", application)
@@ -540,7 +540,7 @@ class _SloState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        A map defining tag keys and tag values for the SLO.
         """
         return pulumi.get(self, "tags")
 
@@ -602,7 +602,7 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[str] service: Name of the service.
         :param pulumi.Input[str] signal_type: The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
                , `Other`. Defaults to `Latency`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO.
         """
         ...
     @overload
@@ -729,7 +729,7 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[str] service: Name of the service.
         :param pulumi.Input[str] signal_type: The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
                , `Other`. Defaults to `Latency`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -870,7 +870,7 @@ class Slo(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+        A map defining tag keys and tag values for the SLO.
         """
         return pulumi.get(self, "tags")
 

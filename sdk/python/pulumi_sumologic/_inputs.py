@@ -64,6 +64,8 @@ __all__ = [
     'CseMatchRuleEntitySelectorArgs',
     'CseMatchRuleSeverityMappingArgs',
     'CseMatchRuleSeverityMappingMappingArgs',
+    'CseOutlierRuleAggregationFunctionsArgs',
+    'CseOutlierRuleEntitySelectorArgs',
     'CseThresholdRuleEntitySelectorArgs',
     'DashboardColoringRuleArgs',
     'DashboardColoringRuleColorThresholdArgs',
@@ -4341,6 +4343,91 @@ class CseMatchRuleSeverityMappingMappingArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class CseOutlierRuleAggregationFunctionsArgs:
+    def __init__(__self__, *,
+                 arguments: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 function: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] arguments: One or more expressions to pass as arguments to the function
+        :param pulumi.Input[str] function: The function to aggregate with
+        :param pulumi.Input[str] name: The name of the Rule
+        """
+        pulumi.set(__self__, "arguments", arguments)
+        pulumi.set(__self__, "function", function)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def arguments(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        One or more expressions to pass as arguments to the function
+        """
+        return pulumi.get(self, "arguments")
+
+    @arguments.setter
+    def arguments(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "arguments", value)
+
+    @property
+    @pulumi.getter
+    def function(self) -> pulumi.Input[str]:
+        """
+        The function to aggregate with
+        """
+        return pulumi.get(self, "function")
+
+    @function.setter
+    def function(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the Rule
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class CseOutlierRuleEntitySelectorArgs:
+    def __init__(__self__, *,
+                 entity_type: pulumi.Input[str],
+                 expression: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] expression: The expression or field name to generate the Signal on
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entity_type")
+
+    @entity_type.setter
+    def entity_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_type", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        The expression or field name to generate the Signal on
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
 
 
 @pulumi.input_type
@@ -23723,35 +23810,24 @@ class HttpSourceFilterArgs:
 @pulumi.input_type
 class KineisLogSourceAuthenticationArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input[str],
                  access_key: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
-                 secret_key: Optional[pulumi.Input[str]] = None):
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: Must be either `KinesisLogPath` or `NoPathExpression`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        :param pulumi.Input[str] type: Must be either `KinesisLogPath` or `NoPathExpression`
         """
-        pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -23788,6 +23864,18 @@ class KineisLogSourceAuthenticationArgs:
     @secret_key.setter
     def secret_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -23871,35 +23959,24 @@ class KineisLogSourceFilterArgs:
 @pulumi.input_type
 class KineisLogSourcePathArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
-                 scan_interval: Optional[pulumi.Input[int]] = None):
+                 scan_interval: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: Must be either `KinesisLogPath` or `NoPathExpression`
         :param pulumi.Input[str] bucket_name: The name of the bucket. This is needed if using type `KinesisLogPath`.
         :param pulumi.Input[str] path_expression: The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
         :param pulumi.Input[int] scan_interval: The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        :param pulumi.Input[str] type: Must be either `KinesisLogPath` or `NoPathExpression`
         """
-        pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if scan_interval is not None:
             pulumi.set(__self__, "scan_interval", scan_interval)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -23936,6 +24013,18 @@ class KineisLogSourcePathArgs:
     @scan_interval.setter
     def scan_interval(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "scan_interval", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

@@ -736,6 +736,29 @@ export interface CseMatchRuleSeverityMappingMapping {
     type: pulumi.Input<string>;
 }
 
+export interface CseOutlierRuleAggregationFunctions {
+    /**
+     * One or more expressions to pass as arguments to the function
+     */
+    arguments: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The function to aggregate with
+     */
+    function: pulumi.Input<string>;
+    /**
+     * The name of the Rule
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface CseOutlierRuleEntitySelector {
+    entityType: pulumi.Input<string>;
+    /**
+     * The expression or field name to generate the Signal on
+     */
+    expression: pulumi.Input<string>;
+}
+
 export interface CseThresholdRuleEntitySelector {
     entityType: pulumi.Input<string>;
     /**
@@ -5861,7 +5884,7 @@ export interface KineisLogSourceAuthentication {
     /**
      * Must be either `KinesisLogPath` or `NoPathExpression`
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 export interface KineisLogSourceDefaultDateFormat {
@@ -5892,7 +5915,7 @@ export interface KineisLogSourcePath {
     /**
      * Must be either `KinesisLogPath` or `NoPathExpression`
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 export interface KinesisMetricsSourceAuthentication {

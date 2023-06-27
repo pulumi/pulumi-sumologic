@@ -28,7 +28,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// <summary>
         /// Must be either `KinesisLogPath` or `NoPathExpression`
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
 
         [OutputConstructor]
         private KineisLogSourceAuthentication(
@@ -38,7 +38,7 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? secretKey,
 
-            string type)
+            string? type)
         {
             AccessKey = accessKey;
             RoleArn = roleArn;

@@ -16,6 +16,25 @@ public final class CseInsightsConfigurationState extends com.pulumi.resources.Re
     public static final CseInsightsConfigurationState Empty = new CseInsightsConfigurationState();
 
     /**
+     * Detection global signal suppression window expressed in hours.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Import(name="globalSignalSuppressionWindow")
+    private @Nullable Output<Double> globalSignalSuppressionWindow;
+
+    /**
+     * @return Detection global signal suppression window expressed in hours.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Optional<Output<Double>> globalSignalSuppressionWindow() {
+        return Optional.ofNullable(this.globalSignalSuppressionWindow);
+    }
+
+    /**
      * Detection window expressed in days.
      * 
      */
@@ -33,16 +52,12 @@ public final class CseInsightsConfigurationState extends com.pulumi.resources.Re
     /**
      * Detection threshold activity score.
      * 
-     * The following attributes are exported:
-     * 
      */
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
 
     /**
      * @return Detection threshold activity score.
-     * 
-     * The following attributes are exported:
      * 
      */
     public Optional<Output<Double>> threshold() {
@@ -52,6 +67,7 @@ public final class CseInsightsConfigurationState extends com.pulumi.resources.Re
     private CseInsightsConfigurationState() {}
 
     private CseInsightsConfigurationState(CseInsightsConfigurationState $) {
+        this.globalSignalSuppressionWindow = $.globalSignalSuppressionWindow;
         this.lookbackDays = $.lookbackDays;
         this.threshold = $.threshold;
     }
@@ -72,6 +88,31 @@ public final class CseInsightsConfigurationState extends com.pulumi.resources.Re
 
         public Builder(CseInsightsConfigurationState defaults) {
             $ = new CseInsightsConfigurationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param globalSignalSuppressionWindow Detection global signal suppression window expressed in hours.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSignalSuppressionWindow(@Nullable Output<Double> globalSignalSuppressionWindow) {
+            $.globalSignalSuppressionWindow = globalSignalSuppressionWindow;
+            return this;
+        }
+
+        /**
+         * @param globalSignalSuppressionWindow Detection global signal suppression window expressed in hours.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSignalSuppressionWindow(Double globalSignalSuppressionWindow) {
+            return globalSignalSuppressionWindow(Output.of(globalSignalSuppressionWindow));
         }
 
         /**
@@ -98,8 +139,6 @@ public final class CseInsightsConfigurationState extends com.pulumi.resources.Re
         /**
          * @param threshold Detection threshold activity score.
          * 
-         * The following attributes are exported:
-         * 
          * @return builder
          * 
          */
@@ -110,8 +149,6 @@ public final class CseInsightsConfigurationState extends com.pulumi.resources.Re
 
         /**
          * @param threshold Detection threshold activity score.
-         * 
-         * The following attributes are exported:
          * 
          * @return builder
          * 

@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const insightsConfiguration = new sumologic.CseInsightsConfiguration("insightsConfiguration", {
+ *     globalSignalSuppressionWindow: 48,
  *     lookbackDays: 13,
  *     threshold: 12,
  * });
@@ -56,13 +57,17 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
     }
 
     /**
+     * Detection global signal suppression window expressed in hours.
+     *
+     * The following attributes are exported:
+     */
+    public readonly globalSignalSuppressionWindow!: pulumi.Output<number | undefined>;
+    /**
      * Detection window expressed in days.
      */
     public readonly lookbackDays!: pulumi.Output<number | undefined>;
     /**
      * Detection threshold activity score.
-     *
-     * The following attributes are exported:
      */
     public readonly threshold!: pulumi.Output<number | undefined>;
 
@@ -79,10 +84,12 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CseInsightsConfigurationState | undefined;
+            resourceInputs["globalSignalSuppressionWindow"] = state ? state.globalSignalSuppressionWindow : undefined;
             resourceInputs["lookbackDays"] = state ? state.lookbackDays : undefined;
             resourceInputs["threshold"] = state ? state.threshold : undefined;
         } else {
             const args = argsOrState as CseInsightsConfigurationArgs | undefined;
+            resourceInputs["globalSignalSuppressionWindow"] = args ? args.globalSignalSuppressionWindow : undefined;
             resourceInputs["lookbackDays"] = args ? args.lookbackDays : undefined;
             resourceInputs["threshold"] = args ? args.threshold : undefined;
         }
@@ -96,13 +103,17 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
  */
 export interface CseInsightsConfigurationState {
     /**
+     * Detection global signal suppression window expressed in hours.
+     *
+     * The following attributes are exported:
+     */
+    globalSignalSuppressionWindow?: pulumi.Input<number>;
+    /**
      * Detection window expressed in days.
      */
     lookbackDays?: pulumi.Input<number>;
     /**
      * Detection threshold activity score.
-     *
-     * The following attributes are exported:
      */
     threshold?: pulumi.Input<number>;
 }
@@ -112,13 +123,17 @@ export interface CseInsightsConfigurationState {
  */
 export interface CseInsightsConfigurationArgs {
     /**
+     * Detection global signal suppression window expressed in hours.
+     *
+     * The following attributes are exported:
+     */
+    globalSignalSuppressionWindow?: pulumi.Input<number>;
+    /**
      * Detection window expressed in days.
      */
     lookbackDays?: pulumi.Input<number>;
     /**
      * Detection threshold activity score.
-     *
-     * The following attributes are exported:
      */
     threshold?: pulumi.Input<number>;
 }

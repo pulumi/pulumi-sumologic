@@ -64,15 +64,15 @@ public final class KineisLogSourceAuthenticationArgs extends com.pulumi.resource
      * Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private KineisLogSourceAuthenticationArgs() {}
@@ -171,7 +171,7 @@ public final class KineisLogSourceAuthenticationArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
@@ -187,7 +187,6 @@ public final class KineisLogSourceAuthenticationArgs extends com.pulumi.resource
         }
 
         public KineisLogSourceAuthenticationArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

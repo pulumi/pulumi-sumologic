@@ -31,7 +31,7 @@ public final class KineisLogSourcePath {
      * @return Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private KineisLogSourcePath() {}
     /**
@@ -59,8 +59,8 @@ public final class KineisLogSourcePath {
      * @return Must be either `KinesisLogPath` or `NoPathExpression`
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -75,7 +75,7 @@ public final class KineisLogSourcePath {
         private @Nullable String bucketName;
         private @Nullable String pathExpression;
         private @Nullable Integer scanInterval;
-        private String type;
+        private @Nullable String type;
         public Builder() {}
         public Builder(KineisLogSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
@@ -101,8 +101,8 @@ public final class KineisLogSourcePath {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         public KineisLogSourcePath build() {

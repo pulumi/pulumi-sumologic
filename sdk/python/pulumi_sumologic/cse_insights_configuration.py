@@ -14,19 +14,37 @@ __all__ = ['CseInsightsConfigurationArgs', 'CseInsightsConfiguration']
 @pulumi.input_type
 class CseInsightsConfigurationArgs:
     def __init__(__self__, *,
+                 global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
                  lookback_days: Optional[pulumi.Input[float]] = None,
                  threshold: Optional[pulumi.Input[float]] = None):
         """
         The set of arguments for constructing a CseInsightsConfiguration resource.
-        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
-        :param pulumi.Input[float] threshold: Detection threshold activity score.
+        :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
+        :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
+        if global_signal_suppression_window is not None:
+            pulumi.set(__self__, "global_signal_suppression_window", global_signal_suppression_window)
         if lookback_days is not None:
             pulumi.set(__self__, "lookback_days", lookback_days)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="globalSignalSuppressionWindow")
+    def global_signal_suppression_window(self) -> Optional[pulumi.Input[float]]:
+        """
+        Detection global signal suppression window expressed in hours.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "global_signal_suppression_window")
+
+    @global_signal_suppression_window.setter
+    def global_signal_suppression_window(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "global_signal_suppression_window", value)
 
     @property
     @pulumi.getter(name="lookbackDays")
@@ -45,8 +63,6 @@ class CseInsightsConfigurationArgs:
     def threshold(self) -> Optional[pulumi.Input[float]]:
         """
         Detection threshold activity score.
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "threshold")
 
@@ -58,19 +74,37 @@ class CseInsightsConfigurationArgs:
 @pulumi.input_type
 class _CseInsightsConfigurationState:
     def __init__(__self__, *,
+                 global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
                  lookback_days: Optional[pulumi.Input[float]] = None,
                  threshold: Optional[pulumi.Input[float]] = None):
         """
         Input properties used for looking up and filtering CseInsightsConfiguration resources.
-        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
-        :param pulumi.Input[float] threshold: Detection threshold activity score.
+        :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
+        :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
+        if global_signal_suppression_window is not None:
+            pulumi.set(__self__, "global_signal_suppression_window", global_signal_suppression_window)
         if lookback_days is not None:
             pulumi.set(__self__, "lookback_days", lookback_days)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="globalSignalSuppressionWindow")
+    def global_signal_suppression_window(self) -> Optional[pulumi.Input[float]]:
+        """
+        Detection global signal suppression window expressed in hours.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "global_signal_suppression_window")
+
+    @global_signal_suppression_window.setter
+    def global_signal_suppression_window(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "global_signal_suppression_window", value)
 
     @property
     @pulumi.getter(name="lookbackDays")
@@ -89,8 +123,6 @@ class _CseInsightsConfigurationState:
     def threshold(self) -> Optional[pulumi.Input[float]]:
         """
         Detection threshold activity score.
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "threshold")
 
@@ -104,6 +136,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
                  lookback_days: Optional[pulumi.Input[float]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  __props__=None):
@@ -117,6 +150,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         insights_configuration = sumologic.CseInsightsConfiguration("insightsConfiguration",
+            global_signal_suppression_window=48,
             lookback_days=13,
             threshold=12)
         ```
@@ -131,10 +165,11 @@ class CseInsightsConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
-        :param pulumi.Input[float] threshold: Detection threshold activity score.
+        :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
+        :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
         ...
     @overload
@@ -152,6 +187,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         insights_configuration = sumologic.CseInsightsConfiguration("insightsConfiguration",
+            global_signal_suppression_window=48,
             lookback_days=13,
             threshold=12)
         ```
@@ -179,6 +215,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
                  lookback_days: Optional[pulumi.Input[float]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  __props__=None):
@@ -190,6 +227,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CseInsightsConfigurationArgs.__new__(CseInsightsConfigurationArgs)
 
+            __props__.__dict__["global_signal_suppression_window"] = global_signal_suppression_window
             __props__.__dict__["lookback_days"] = lookback_days
             __props__.__dict__["threshold"] = threshold
         super(CseInsightsConfiguration, __self__).__init__(
@@ -202,6 +240,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
             lookback_days: Optional[pulumi.Input[float]] = None,
             threshold: Optional[pulumi.Input[float]] = None) -> 'CseInsightsConfiguration':
         """
@@ -211,18 +250,30 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
-        :param pulumi.Input[float] threshold: Detection threshold activity score.
+        :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+        :param pulumi.Input[float] lookback_days: Detection window expressed in days.
+        :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CseInsightsConfigurationState.__new__(_CseInsightsConfigurationState)
 
+        __props__.__dict__["global_signal_suppression_window"] = global_signal_suppression_window
         __props__.__dict__["lookback_days"] = lookback_days
         __props__.__dict__["threshold"] = threshold
         return CseInsightsConfiguration(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="globalSignalSuppressionWindow")
+    def global_signal_suppression_window(self) -> pulumi.Output[Optional[float]]:
+        """
+        Detection global signal suppression window expressed in hours.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "global_signal_suppression_window")
 
     @property
     @pulumi.getter(name="lookbackDays")
@@ -237,8 +288,6 @@ class CseInsightsConfiguration(pulumi.CustomResource):
     def threshold(self) -> pulumi.Output[Optional[float]]:
         """
         Detection threshold activity score.
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "threshold")
 

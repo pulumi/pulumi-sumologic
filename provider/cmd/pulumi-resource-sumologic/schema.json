@@ -1584,6 +1584,47 @@
                 "type"
             ]
         },
+        "sumologic:index/CseOutlierRuleAggregationFunctions:CseOutlierRuleAggregationFunctions": {
+            "properties": {
+                "arguments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "One or more expressions to pass as arguments to the function\n"
+                },
+                "function": {
+                    "type": "string",
+                    "description": "The function to aggregate with\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Rule\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "arguments",
+                "function",
+                "name"
+            ]
+        },
+        "sumologic:index/CseOutlierRuleEntitySelector:CseOutlierRuleEntitySelector": {
+            "properties": {
+                "entityType": {
+                    "type": "string"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "The expression or field name to generate the Signal on\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "entityType",
+                "expression"
+            ]
+        },
         "sumologic:index/CseThresholdRuleEntitySelector:CseThresholdRuleEntitySelector": {
             "properties": {
                 "entityType": {
@@ -10326,10 +10367,7 @@
                     "description": "Must be either `KinesisLogPath` or `NoPathExpression`\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "type"
-            ]
+            "type": "object"
         },
         "sumologic:index/KineisLogSourceDefaultDateFormat:KineisLogSourceDefaultDateFormat": {
             "properties": {
@@ -10386,10 +10424,7 @@
                     "description": "Must be either `KinesisLogPath` or `NoPathExpression`\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "type"
-            ]
+            "type": "object"
         },
         "sumologic:index/KinesisMetricsSourceAuthentication:KinesisMetricsSourceAuthentication": {
             "properties": {
@@ -16531,37 +16566,49 @@
             }
         },
         "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration": {
-            "description": "Provides the Sumologic CSE Insights Configuration for the whole organization. There can be only one configuration per organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst insightsConfiguration = new sumologic.CseInsightsConfiguration(\"insightsConfiguration\", {\n    lookbackDays: 13,\n    threshold: 12,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ninsights_configuration = sumologic.CseInsightsConfiguration(\"insightsConfiguration\",\n    lookback_days=13,\n    threshold=12)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var insightsConfiguration = new SumoLogic.CseInsightsConfiguration(\"insightsConfiguration\", new()\n    {\n        LookbackDays = 13,\n        Threshold = 12,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseInsightsConfiguration(ctx, \"insightsConfiguration\", \u0026sumologic.CseInsightsConfigurationArgs{\n\t\t\tLookbackDays: pulumi.Float64(13),\n\t\t\tThreshold:    pulumi.Float64(12),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseInsightsConfiguration;\nimport com.pulumi.sumologic.CseInsightsConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var insightsConfiguration = new CseInsightsConfiguration(\"insightsConfiguration\", CseInsightsConfigurationArgs.builder()        \n            .lookbackDays(13)\n            .threshold(12)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  insightsConfiguration:\n    type: sumologic:CseInsightsConfiguration\n    properties:\n      lookbackDays: 13\n      threshold: 12\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInsights Configuration can be imported using the id `cse-insights-configuration`hcl\n\n```sh\n $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration\n```\n\n ",
+            "description": "Provides the Sumologic CSE Insights Configuration for the whole organization. There can be only one configuration per organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst insightsConfiguration = new sumologic.CseInsightsConfiguration(\"insightsConfiguration\", {\n    globalSignalSuppressionWindow: 48,\n    lookbackDays: 13,\n    threshold: 12,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ninsights_configuration = sumologic.CseInsightsConfiguration(\"insightsConfiguration\",\n    global_signal_suppression_window=48,\n    lookback_days=13,\n    threshold=12)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var insightsConfiguration = new SumoLogic.CseInsightsConfiguration(\"insightsConfiguration\", new()\n    {\n        GlobalSignalSuppressionWindow = 48,\n        LookbackDays = 13,\n        Threshold = 12,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseInsightsConfiguration(ctx, \"insightsConfiguration\", \u0026sumologic.CseInsightsConfigurationArgs{\n\t\t\tGlobalSignalSuppressionWindow: pulumi.Float64(48),\n\t\t\tLookbackDays:                  pulumi.Float64(13),\n\t\t\tThreshold:                     pulumi.Float64(12),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseInsightsConfiguration;\nimport com.pulumi.sumologic.CseInsightsConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var insightsConfiguration = new CseInsightsConfiguration(\"insightsConfiguration\", CseInsightsConfigurationArgs.builder()        \n            .globalSignalSuppressionWindow(48)\n            .lookbackDays(13)\n            .threshold(12)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  insightsConfiguration:\n    type: sumologic:CseInsightsConfiguration\n    properties:\n      globalSignalSuppressionWindow: 48\n      lookbackDays: 13\n      threshold: 12\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInsights Configuration can be imported using the id `cse-insights-configuration`hcl\n\n```sh\n $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration\n```\n\n ",
             "properties": {
+                "globalSignalSuppressionWindow": {
+                    "type": "number",
+                    "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n"
+                },
                 "lookbackDays": {
                     "type": "number",
                     "description": "Detection window expressed in days.\n"
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "Detection threshold activity score.\n\nThe following attributes are exported:\n"
+                    "description": "Detection threshold activity score.\n"
                 }
             },
             "inputProperties": {
+                "globalSignalSuppressionWindow": {
+                    "type": "number",
+                    "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n"
+                },
                 "lookbackDays": {
                     "type": "number",
                     "description": "Detection window expressed in days.\n"
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "Detection threshold activity score.\n\nThe following attributes are exported:\n"
+                    "description": "Detection threshold activity score.\n"
                 }
             },
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CseInsightsConfiguration resources.\n",
                 "properties": {
+                    "globalSignalSuppressionWindow": {
+                        "type": "number",
+                        "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n"
+                    },
                     "lookbackDays": {
                         "type": "number",
                         "description": "Detection window expressed in days.\n"
                     },
                     "threshold": {
                         "type": "number",
-                        "description": "Detection threshold activity score.\n\nThe following attributes are exported:\n"
+                        "description": "Detection threshold activity score.\n"
                     }
                 },
                 "type": "object"
@@ -17312,6 +17359,276 @@
                     "suppressesSignals": {
                         "type": "boolean",
                         "description": "Suppresses signal flag.\n\nThe following attributes are exported:\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/cseOutlierRule:CseOutlierRule": {
+            "description": "## ___\n\nlayout: \"sumologic\"\npage_title: \"SumoLogic: sumologic.CseOutlierRule\"\ndescription: |-\n  Provides a CSE Outlier Rule\n---\n\n# sumologic.CseOutlierRule\nProvides a Sumo Logic CSE [Outlier Rule](https://help.sumologic.com/docs/cse/rules/write-outlier-rule/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseFirstSeenRule;\nimport com.pulumi.sumologic.CseFirstSeenRuleArgs;\nimport com.pulumi.sumologic.inputs.CseFirstSeenRuleEntitySelectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var firstSeenRule = new CseFirstSeenRule(\"firstSeenRule\", CseFirstSeenRuleArgs.builder()        \n            .aggregationFunctions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .baselineWindowSize(\"1209600000\")\n            .descriptionExpression(\"Spike in Login Failures - {{ user_username }}\")\n            .deviationThreshold(3)\n            .enabled(true)\n            .entitySelectors(CseFirstSeenRuleEntitySelectorArgs.builder()\n                .entityType(\"_username\")\n                .expression(\"user_username\")\n                .build())\n            .floorValue(0)\n            .groupByFields(\"user_username\")\n            .isPrototype(false)\n            .matchExpression(\"objectType=\\\"Authentication\\\" AND success=false\")\n            .nameExpression(\"Spike in Login Failures - {{ user_username }}\")\n            .retentionWindowSize(\"7776000000\")\n            .severity(1)\n            .summaryExpression(\"Spike in Login Failures - {{ user_username }}\")\n            .windowSize(\"T24H\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  firstSeenRule:\n    type: sumologic:CseFirstSeenRule\n    properties:\n      aggregationFunctions:\n        - arguments:\n            - 'true'\n          function: count\n          name: total\n      baselineWindowSize: '1209600000'\n      # 14 days\n      descriptionExpression: Spike in Login Failures - {{ user_username }}\n      deviationThreshold: 3\n      enabled: true\n      entitySelectors:\n        - entityType: _username\n          expression: user_username\n      floorValue: 0\n      groupByFields:\n        - user_username\n      isPrototype: false\n      matchExpression: objectType=\"Authentication\" AND success=false\n      nameExpression: Spike in Login Failures - {{ user_username }}\n      retentionWindowSize: '7776000000'\n      # 90 days\n      severity: 1\n      summaryExpression: Spike in Login Failures - {{ user_username }}\n      windowSize: T24H\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nOutlier rules can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id\n```\n\n ",
+            "properties": {
+                "aggregationFunctions": {
+                    "$ref": "#/types/sumologic:index/CseOutlierRuleAggregationFunctions:CseOutlierRuleAggregationFunctions"
+                },
+                "baselineWindowSize": {
+                    "type": "string",
+                    "description": "The baseline window size in milliseconds\n"
+                },
+                "descriptionExpression": {
+                    "type": "string",
+                    "description": "The description of the generated Signals\n"
+                },
+                "deviationThreshold": {
+                    "type": "integer",
+                    "description": "The deviation threshold used to calculate the threshold to trigger signals\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the rule should generate Signals\n"
+                },
+                "entitySelectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseOutlierRuleEntitySelector:CseOutlierRuleEntitySelector"
+                    },
+                    "description": "The entities to generate Signals on\n"
+                },
+                "floorValue": {
+                    "type": "integer",
+                    "description": "The minimum threshold to trigger signals\n"
+                },
+                "groupByFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of fields to group records by\n"
+                },
+                "isPrototype": {
+                    "type": "boolean",
+                    "description": "Whether the generated Signals should be prototype Signals\n"
+                },
+                "matchExpression": {
+                    "type": "string",
+                    "description": "The expression for which records to match on\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Rule\n"
+                },
+                "nameExpression": {
+                    "type": "string",
+                    "description": "The name of the generated Signals\n"
+                },
+                "retentionWindowSize": {
+                    "type": "string",
+                    "description": "The retention window size in milliseconds\n"
+                },
+                "severity": {
+                    "type": "integer",
+                    "description": "The severity of the generated Signals\n"
+                },
+                "summaryExpression": {
+                    "type": "string",
+                    "description": "The summary of the generated Signals\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags of the generated Signals\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)\n\nThe following attributes are exported:\n"
+                }
+            },
+            "required": [
+                "aggregationFunctions",
+                "baselineWindowSize",
+                "descriptionExpression",
+                "deviationThreshold",
+                "enabled",
+                "entitySelectors",
+                "floorValue",
+                "matchExpression",
+                "name",
+                "nameExpression",
+                "retentionWindowSize",
+                "severity",
+                "windowSize"
+            ],
+            "inputProperties": {
+                "aggregationFunctions": {
+                    "$ref": "#/types/sumologic:index/CseOutlierRuleAggregationFunctions:CseOutlierRuleAggregationFunctions"
+                },
+                "baselineWindowSize": {
+                    "type": "string",
+                    "description": "The baseline window size in milliseconds\n"
+                },
+                "descriptionExpression": {
+                    "type": "string",
+                    "description": "The description of the generated Signals\n"
+                },
+                "deviationThreshold": {
+                    "type": "integer",
+                    "description": "The deviation threshold used to calculate the threshold to trigger signals\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the rule should generate Signals\n"
+                },
+                "entitySelectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseOutlierRuleEntitySelector:CseOutlierRuleEntitySelector"
+                    },
+                    "description": "The entities to generate Signals on\n"
+                },
+                "floorValue": {
+                    "type": "integer",
+                    "description": "The minimum threshold to trigger signals\n"
+                },
+                "groupByFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of fields to group records by\n"
+                },
+                "isPrototype": {
+                    "type": "boolean",
+                    "description": "Whether the generated Signals should be prototype Signals\n"
+                },
+                "matchExpression": {
+                    "type": "string",
+                    "description": "The expression for which records to match on\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Rule\n"
+                },
+                "nameExpression": {
+                    "type": "string",
+                    "description": "The name of the generated Signals\n"
+                },
+                "retentionWindowSize": {
+                    "type": "string",
+                    "description": "The retention window size in milliseconds\n"
+                },
+                "severity": {
+                    "type": "integer",
+                    "description": "The severity of the generated Signals\n"
+                },
+                "summaryExpression": {
+                    "type": "string",
+                    "description": "The summary of the generated Signals\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tags of the generated Signals\n"
+                },
+                "windowSize": {
+                    "type": "string",
+                    "description": "The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)\n\nThe following attributes are exported:\n"
+                }
+            },
+            "requiredInputs": [
+                "aggregationFunctions",
+                "baselineWindowSize",
+                "descriptionExpression",
+                "deviationThreshold",
+                "enabled",
+                "entitySelectors",
+                "floorValue",
+                "matchExpression",
+                "nameExpression",
+                "retentionWindowSize",
+                "severity",
+                "windowSize"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CseOutlierRule resources.\n",
+                "properties": {
+                    "aggregationFunctions": {
+                        "$ref": "#/types/sumologic:index/CseOutlierRuleAggregationFunctions:CseOutlierRuleAggregationFunctions"
+                    },
+                    "baselineWindowSize": {
+                        "type": "string",
+                        "description": "The baseline window size in milliseconds\n"
+                    },
+                    "descriptionExpression": {
+                        "type": "string",
+                        "description": "The description of the generated Signals\n"
+                    },
+                    "deviationThreshold": {
+                        "type": "integer",
+                        "description": "The deviation threshold used to calculate the threshold to trigger signals\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the rule should generate Signals\n"
+                    },
+                    "entitySelectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/CseOutlierRuleEntitySelector:CseOutlierRuleEntitySelector"
+                        },
+                        "description": "The entities to generate Signals on\n"
+                    },
+                    "floorValue": {
+                        "type": "integer",
+                        "description": "The minimum threshold to trigger signals\n"
+                    },
+                    "groupByFields": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of fields to group records by\n"
+                    },
+                    "isPrototype": {
+                        "type": "boolean",
+                        "description": "Whether the generated Signals should be prototype Signals\n"
+                    },
+                    "matchExpression": {
+                        "type": "string",
+                        "description": "The expression for which records to match on\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Rule\n"
+                    },
+                    "nameExpression": {
+                        "type": "string",
+                        "description": "The name of the generated Signals\n"
+                    },
+                    "retentionWindowSize": {
+                        "type": "string",
+                        "description": "The retention window size in milliseconds\n"
+                    },
+                    "severity": {
+                        "type": "integer",
+                        "description": "The severity of the generated Signals\n"
+                    },
+                    "summaryExpression": {
+                        "type": "string",
+                        "description": "The summary of the generated Signals\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The tags of the generated Signals\n"
+                    },
+                    "windowSize": {
+                        "type": "string",
+                        "description": "The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)\n\nThe following attributes are exported:\n"
                     }
                 },
                 "type": "object"
@@ -19632,11 +19949,9 @@
                 }
             },
             "required": [
-                "authentication",
                 "collectorId",
                 "contentType",
                 "name",
-                "path",
                 "url"
             ],
             "inputProperties": {
@@ -19716,10 +20031,8 @@
                 }
             },
             "requiredInputs": [
-                "authentication",
                 "collectorId",
-                "contentType",
-                "path"
+                "contentType"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering KineisLogSource resources.\n",
@@ -23482,7 +23795,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.\n"
+                    "description": "A map defining tag keys and tag values for the SLO.\n"
                 },
                 "version": {
                     "type": "integer"
@@ -23572,7 +23885,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.\n"
+                    "description": "A map defining tag keys and tag values for the SLO.\n"
                 },
                 "version": {
                     "type": "integer"
@@ -23653,7 +23966,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.\n"
+                        "description": "A map defining tag keys and tag values for the SLO.\n"
                     },
                     "version": {
                         "type": "integer"

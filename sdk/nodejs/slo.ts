@@ -85,7 +85,7 @@ export class Slo extends pulumi.CustomResource {
      */
     public readonly signalType!: pulumi.Output<string>;
     /**
-     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * A map defining tag keys and tag values for the SLO.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly version!: pulumi.Output<number>;
@@ -208,7 +208,7 @@ export interface SloState {
      */
     signalType?: pulumi.Input<string>;
     /**
-     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * A map defining tag keys and tag values for the SLO.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     version?: pulumi.Input<number>;
@@ -266,7 +266,7 @@ export interface SloArgs {
      */
     signalType: pulumi.Input<string>;
     /**
-     * A map defining tag keys and tag values for the SLO. This field is in closed preview and is not available until access is granted. Contact your Sumo Logic account representative to get early access.
+     * A map defining tag keys and tag values for the SLO.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     version?: pulumi.Input<number>;

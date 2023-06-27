@@ -24,6 +24,7 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var insightsConfiguration = new SumoLogic.CseInsightsConfiguration("insightsConfiguration", new()
     ///     {
+    ///         GlobalSignalSuppressionWindow = 48,
     ///         LookbackDays = 13,
     ///         Threshold = 12,
     ///     });
@@ -43,6 +44,14 @@ namespace Pulumi.SumoLogic
     public partial class CseInsightsConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Detection global signal suppression window expressed in hours.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Output("globalSignalSuppressionWindow")]
+        public Output<double?> GlobalSignalSuppressionWindow { get; private set; } = null!;
+
+        /// <summary>
         /// Detection window expressed in days.
         /// </summary>
         [Output("lookbackDays")]
@@ -50,8 +59,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Detection threshold activity score.
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         [Output("threshold")]
         public Output<double?> Threshold { get; private set; } = null!;
@@ -103,6 +110,14 @@ namespace Pulumi.SumoLogic
     public sealed class CseInsightsConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Detection global signal suppression window expressed in hours.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("globalSignalSuppressionWindow")]
+        public Input<double>? GlobalSignalSuppressionWindow { get; set; }
+
+        /// <summary>
         /// Detection window expressed in days.
         /// </summary>
         [Input("lookbackDays")]
@@ -110,8 +125,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Detection threshold activity score.
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }
@@ -125,6 +138,14 @@ namespace Pulumi.SumoLogic
     public sealed class CseInsightsConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Detection global signal suppression window expressed in hours.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("globalSignalSuppressionWindow")]
+        public Input<double>? GlobalSignalSuppressionWindow { get; set; }
+
+        /// <summary>
         /// Detection window expressed in days.
         /// </summary>
         [Input("lookbackDays")]
@@ -132,8 +153,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Detection threshold activity score.
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }

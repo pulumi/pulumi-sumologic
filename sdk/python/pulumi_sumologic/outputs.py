@@ -65,6 +65,8 @@ __all__ = [
     'CseMatchRuleEntitySelector',
     'CseMatchRuleSeverityMapping',
     'CseMatchRuleSeverityMappingMapping',
+    'CseOutlierRuleAggregationFunctions',
+    'CseOutlierRuleEntitySelector',
     'CseThresholdRuleEntitySelector',
     'DashboardColoringRule',
     'DashboardColoringRuleColorThreshold',
@@ -4193,6 +4195,88 @@ class CseMatchRuleSeverityMappingMapping(dict):
         Must be set to "eq" currently
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CseOutlierRuleAggregationFunctions(dict):
+    def __init__(__self__, *,
+                 arguments: Sequence[str],
+                 function: str,
+                 name: str):
+        """
+        :param Sequence[str] arguments: One or more expressions to pass as arguments to the function
+        :param str function: The function to aggregate with
+        :param str name: The name of the Rule
+        """
+        pulumi.set(__self__, "arguments", arguments)
+        pulumi.set(__self__, "function", function)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def arguments(self) -> Sequence[str]:
+        """
+        One or more expressions to pass as arguments to the function
+        """
+        return pulumi.get(self, "arguments")
+
+    @property
+    @pulumi.getter
+    def function(self) -> str:
+        """
+        The function to aggregate with
+        """
+        return pulumi.get(self, "function")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Rule
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class CseOutlierRuleEntitySelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseOutlierRuleEntitySelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseOutlierRuleEntitySelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseOutlierRuleEntitySelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_type: str,
+                 expression: str):
+        """
+        :param str expression: The expression or field name to generate the Signal on
+        """
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        The expression or field name to generate the Signal on
+        """
+        return pulumi.get(self, "expression")
 
 
 @pulumi.output_type
@@ -25310,31 +25394,24 @@ class KineisLogSourceAuthentication(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 type: str,
                  access_key: Optional[str] = None,
                  role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None):
+                 secret_key: Optional[str] = None,
+                 type: Optional[str] = None):
         """
-        :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
         :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
+        :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
         """
-        pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        return pulumi.get(self, "type")
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -25359,6 +25436,14 @@ class KineisLogSourceAuthentication(dict):
         Your AWS secret key if using type `S3BucketAuthentication`
         """
         return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -25456,31 +25541,24 @@ class KineisLogSourcePath(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 type: str,
                  bucket_name: Optional[str] = None,
                  path_expression: Optional[str] = None,
-                 scan_interval: Optional[int] = None):
+                 scan_interval: Optional[int] = None,
+                 type: Optional[str] = None):
         """
-        :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
         :param str bucket_name: The name of the bucket. This is needed if using type `KinesisLogPath`.
         :param str path_expression: The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
         :param int scan_interval: The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
         """
-        pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
         if scan_interval is not None:
             pulumi.set(__self__, "scan_interval", scan_interval)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        return pulumi.get(self, "type")
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -25505,6 +25583,14 @@ class KineisLogSourcePath(dict):
         The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
         return pulumi.get(self, "scan_interval")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
