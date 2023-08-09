@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,6 +75,7 @@ func NewField(ctx *pulumi.Context,
 	if args.FieldName == nil {
 		return nil, errors.New("invalid value for required argument 'FieldName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Field
 	err := ctx.RegisterResource("sumologic:index/field:Field", name, args, &resource, opts...)
 	if err != nil {

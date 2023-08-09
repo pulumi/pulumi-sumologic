@@ -283,7 +283,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
      */
     public readonly notificationGroupFields!: pulumi.Output<string[] | undefined>;
     /**
@@ -460,7 +460,7 @@ export interface MonitorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
      */
     notificationGroupFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -558,7 +558,7 @@ export interface MonitorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
      */
     notificationGroupFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**

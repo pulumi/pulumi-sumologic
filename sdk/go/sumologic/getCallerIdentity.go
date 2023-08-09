@@ -4,6 +4,7 @@
 package sumologic
 
 import (
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 // - `accessId` - Sumo Logic access ID.
 // - `environment` - API endpoint environment.
 func GetCallerIdentity(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCallerIdentityResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCallerIdentityResult
 	err := ctx.Invoke("sumologic:index/getCallerIdentity:getCallerIdentity", nil, &rv, opts...)
 	if err != nil {

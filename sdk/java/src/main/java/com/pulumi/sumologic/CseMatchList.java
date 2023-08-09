@@ -109,17 +109,9 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
-    /**
-     * List of match list items. See match_list_item schema for details.
-     * 
-     */
     @Export(name="items", type=List.class, parameters={CseMatchListItem.class})
     private Output</* @Nullable */ List<CseMatchListItem>> items;
 
-    /**
-     * @return List of match list items. See match_list_item schema for details.
-     * 
-     */
     public Output<Optional<List<CseMatchListItem>>> items() {
         return Codegen.optional(this.items);
     }

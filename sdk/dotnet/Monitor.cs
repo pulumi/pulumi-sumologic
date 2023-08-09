@@ -330,7 +330,7 @@ namespace Pulumi.SumoLogic
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         /// </summary>
         [Output("notificationGroupFields")]
         public Output<ImmutableArray<string>> NotificationGroupFields { get; private set; } = null!;
@@ -525,7 +525,7 @@ namespace Pulumi.SumoLogic
         private InputList<string>? _notificationGroupFields;
 
         /// <summary>
-        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         /// </summary>
         public InputList<string> NotificationGroupFields
         {
@@ -721,7 +721,7 @@ namespace Pulumi.SumoLogic
         private InputList<string>? _notificationGroupFields;
 
         /// <summary>
-        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+        /// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         /// </summary>
         public InputList<string> NotificationGroupFields
         {

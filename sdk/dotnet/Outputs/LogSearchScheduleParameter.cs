@@ -18,7 +18,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Value of scheduled search parameter.
+        /// The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         /// </summary>
         public readonly string Value;
 

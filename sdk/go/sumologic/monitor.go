@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -301,7 +302,7 @@ type Monitor struct {
 	MonitorType pulumi.StringOutput `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
 	NotificationGroupFields pulumi.StringArrayOutput `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayOutput `pulumi:"notifications"`
@@ -339,6 +340,7 @@ func NewMonitor(ctx *pulumi.Context,
 	if args.MonitorType == nil {
 		return nil, errors.New("invalid value for required argument 'MonitorType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Monitor
 	err := ctx.RegisterResource("sumologic:index/monitor:Monitor", name, args, &resource, opts...)
 	if err != nil {
@@ -389,7 +391,7 @@ type monitorState struct {
 	MonitorType *string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
-	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
 	NotificationGroupFields []string `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications []MonitorNotification `pulumi:"notifications"`
@@ -446,7 +448,7 @@ type MonitorState struct {
 	MonitorType pulumi.StringPtrInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
-	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
 	NotificationGroupFields pulumi.StringArrayInput
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayInput
@@ -507,7 +509,7 @@ type monitorArgs struct {
 	MonitorType string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
-	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
 	NotificationGroupFields []string `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications []MonitorNotification `pulumi:"notifications"`
@@ -565,7 +567,7 @@ type MonitorArgs struct {
 	MonitorType pulumi.StringInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
-	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+	// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
 	NotificationGroupFields pulumi.StringArrayInput
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayInput
@@ -753,7 +755,7 @@ func (o MonitorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true.
+// The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
 func (o MonitorOutput) NotificationGroupFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringArrayOutput { return v.NotificationGroupFields }).(pulumi.StringArrayOutput)
 }

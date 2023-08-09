@@ -86,9 +86,9 @@ def get_folder(path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult).value
 
     return AwaitableGetFolderResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        path=__ret__.path)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        path=pulumi.get(__ret__, 'path'))
 
 
 @_utilities.lift_output_func(get_folder)

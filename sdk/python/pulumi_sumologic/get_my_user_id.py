@@ -52,7 +52,7 @@ def get_my_user_id(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getMyUserId:getMyUserId', __args__, opts=opts, typ=GetMyUserIdResult).value
 
     return AwaitableGetMyUserIdResult(
-        id=__ret__.id)
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_my_user_id)

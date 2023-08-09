@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -143,6 +144,7 @@ func NewHttpSource(ctx *pulumi.Context,
 	if args.CollectorId == nil {
 		return nil, errors.New("invalid value for required argument 'CollectorId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HttpSource
 	err := ctx.RegisterResource("sumologic:index/httpSource:HttpSource", name, args, &resource, opts...)
 	if err != nil {

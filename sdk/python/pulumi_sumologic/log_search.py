@@ -38,6 +38,8 @@ class LogSearchArgs:
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
+        :param pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+               See query parameter schema.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
         :param pulumi.Input['LogSearchScheduleArgs'] schedule: Schedule of the log search. See schedule schema
@@ -138,6 +140,10 @@ class LogSearchArgs:
     @property
     @pulumi.getter(name="queryParameters")
     def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]]]:
+        """
+        Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        See query parameter schema.
+        """
         return pulumi.get(self, "query_parameters")
 
     @query_parameters.setter
@@ -193,6 +199,8 @@ class _LogSearchState:
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
+        :param pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+               See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
@@ -274,6 +282,10 @@ class _LogSearchState:
     @property
     @pulumi.getter(name="queryParameters")
     def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]]]:
+        """
+        Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        See query parameter schema.
+        """
         return pulumi.get(self, "query_parameters")
 
     @query_parameters.setter
@@ -358,7 +370,13 @@ class LogSearch(pulumi.CustomResource):
         example_log_search = sumologic.LogSearch("exampleLogSearch",
             description="Demo search description",
             parent_id=personal_folder.id,
-            query_string="_sourceCategory=api error | count by _sourceHost",
+            query_string=\"\"\"        _sourceCategory=api
+                | parse "parameter1=*," as parameter1
+                | parse "parameter2=*," as parameter2
+                | where parameter1 matches {{param1}}
+                | where parameter2 matches {{param2}}
+                | count by _sourceHost
+        \"\"\",
             parsing_mode="AutoParse",
             run_by_receipt_time=True,
             time_range=sumologic.LogSearchTimeRangeArgs(
@@ -370,6 +388,20 @@ class LogSearch(pulumi.CustomResource):
                     ),
                 ),
             ),
+            query_parameters=[
+                sumologic.LogSearchQueryParameterArgs(
+                    name="param1",
+                    description="Description for param1",
+                    data_type="STRING",
+                    value="*",
+                ),
+                sumologic.LogSearchQueryParameterArgs(
+                    name="param2",
+                    description="Description for param2",
+                    data_type="STRING",
+                    value="*",
+                ),
+            ],
             schedule=sumologic.LogSearchScheduleArgs(
                 cron_expression="0 0 * * * ? *",
                 mute_error_emails=False,
@@ -399,6 +431,16 @@ class LogSearch(pulumi.CustomResource):
                     threshold_type="group",
                 ),
                 time_zone="America/Los_Angeles",
+                parameters=[
+                    sumologic.LogSearchScheduleParameterArgs(
+                        name="param1",
+                        value="*",
+                    ),
+                    sumologic.LogSearchScheduleParameterArgs(
+                        name="param2",
+                        value="*",
+                    ),
+                ],
             ))
         ```
         ## Attributes reference
@@ -426,6 +468,8 @@ class LogSearch(pulumi.CustomResource):
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+               See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
@@ -451,7 +495,13 @@ class LogSearch(pulumi.CustomResource):
         example_log_search = sumologic.LogSearch("exampleLogSearch",
             description="Demo search description",
             parent_id=personal_folder.id,
-            query_string="_sourceCategory=api error | count by _sourceHost",
+            query_string=\"\"\"        _sourceCategory=api
+                | parse "parameter1=*," as parameter1
+                | parse "parameter2=*," as parameter2
+                | where parameter1 matches {{param1}}
+                | where parameter2 matches {{param2}}
+                | count by _sourceHost
+        \"\"\",
             parsing_mode="AutoParse",
             run_by_receipt_time=True,
             time_range=sumologic.LogSearchTimeRangeArgs(
@@ -463,6 +513,20 @@ class LogSearch(pulumi.CustomResource):
                     ),
                 ),
             ),
+            query_parameters=[
+                sumologic.LogSearchQueryParameterArgs(
+                    name="param1",
+                    description="Description for param1",
+                    data_type="STRING",
+                    value="*",
+                ),
+                sumologic.LogSearchQueryParameterArgs(
+                    name="param2",
+                    description="Description for param2",
+                    data_type="STRING",
+                    value="*",
+                ),
+            ],
             schedule=sumologic.LogSearchScheduleArgs(
                 cron_expression="0 0 * * * ? *",
                 mute_error_emails=False,
@@ -492,6 +556,16 @@ class LogSearch(pulumi.CustomResource):
                     threshold_type="group",
                 ),
                 time_zone="America/Los_Angeles",
+                parameters=[
+                    sumologic.LogSearchScheduleParameterArgs(
+                        name="param1",
+                        value="*",
+                    ),
+                    sumologic.LogSearchScheduleParameterArgs(
+                        name="param2",
+                        value="*",
+                    ),
+                ],
             ))
         ```
         ## Attributes reference
@@ -591,6 +665,8 @@ class LogSearch(pulumi.CustomResource):
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+               See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
@@ -652,6 +728,10 @@ class LogSearch(pulumi.CustomResource):
     @property
     @pulumi.getter(name="queryParameters")
     def query_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.LogSearchQueryParameter']]]:
+        """
+        Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        See query parameter schema.
+        """
         return pulumi.get(self, "query_parameters")
 
     @property

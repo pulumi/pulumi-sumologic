@@ -85,6 +85,6 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     __ret__ = pulumi.runtime.invoke('sumologic:index/getCallerIdentity:getCallerIdentity', __args__, opts=opts, typ=GetCallerIdentityResult).value
 
     return AwaitableGetCallerIdentityResult(
-        access_id=__ret__.access_id,
-        environment=__ret__.environment,
-        id=__ret__.id)
+        access_id=pulumi.get(__ret__, 'access_id'),
+        environment=pulumi.get(__ret__, 'environment'),
+        id=pulumi.get(__ret__, 'id'))

@@ -73,9 +73,6 @@ export class CseMatchList extends pulumi.CustomResource {
      * Match list description.
      */
     public readonly description!: pulumi.Output<string>;
-    /**
-     * List of match list items. See matchListItem schema for details.
-     */
     public readonly items!: pulumi.Output<outputs.CseMatchListItem[] | undefined>;
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     public /*out*/ readonly lastUpdatedBy!: pulumi.Output<string>;
@@ -147,9 +144,6 @@ export interface CseMatchListState {
      * Match list description.
      */
     description?: pulumi.Input<string>;
-    /**
-     * List of match list items. See matchListItem schema for details.
-     */
     items?: pulumi.Input<pulumi.Input<inputs.CseMatchListItem>[]>;
     lastUpdated?: pulumi.Input<string>;
     lastUpdatedBy?: pulumi.Input<string>;
@@ -175,9 +169,6 @@ export interface CseMatchListArgs {
      * Match list description.
      */
     description: pulumi.Input<string>;
-    /**
-     * List of match list items. See matchListItem schema for details.
-     */
     items?: pulumi.Input<pulumi.Input<inputs.CseMatchListItem>[]>;
     /**
      * Match list name.

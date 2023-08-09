@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,7 +147,15 @@ import (
 //							Title:                                  pulumi.String("Api Health"),
 //							VisualSettings:                         pulumi.String(json0),
 //							KeepVisualSettingsConsistentWithParent: pulumi.Bool(true),
-//							Text:                                   pulumi.String("## Api Health Monitoring\n\nUse this dashboard to monitor API service health. It contains following panels:\n\n1. API errors: Errors in last 12 hours\n3. API 5xx: Count of 5xx response\n3. CPU utilization: CPU utilization in last 60 mins\n"),
+//							Text: pulumi.String(`## Api Health Monitoring
+//
+// Use this dashboard to monitor API service health. It contains following panels:
+//
+// 1. API errors: Errors in last 12 hours
+// 3. API 5xx: Count of 5xx response
+// 3. CPU utilization: CPU utilization in last 60 mins
+// `),
+//
 //						},
 //					},
 //					&sumologic.DashboardPanelArgs{
@@ -497,6 +506,7 @@ func NewDashboard(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Dashboard
 	err := ctx.RegisterResource("sumologic:index/dashboard:Dashboard", name, args, &resource, opts...)
 	if err != nil {

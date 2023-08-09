@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,6 +87,7 @@ func NewCseEntityEntityGroupConfiguration(ctx *pulumi.Context,
 		args = &CseEntityEntityGroupConfigurationArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseEntityEntityGroupConfiguration
 	err := ctx.RegisterResource("sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration", name, args, &resource, opts...)
 	if err != nil {

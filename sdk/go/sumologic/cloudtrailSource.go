@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -139,6 +140,7 @@ func NewCloudtrailSource(ctx *pulumi.Context,
 	if args.ScanInterval == nil {
 		return nil, errors.New("invalid value for required argument 'ScanInterval'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudtrailSource
 	err := ctx.RegisterResource("sumologic:index/cloudtrailSource:CloudtrailSource", name, args, &resource, opts...)
 	if err != nil {

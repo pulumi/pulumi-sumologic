@@ -90,9 +90,9 @@ def get_personal_folder(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getPersonalFolder:getPersonalFolder', __args__, opts=opts, typ=GetPersonalFolderResult).value
 
     return AwaitableGetPersonalFolderResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_personal_folder)

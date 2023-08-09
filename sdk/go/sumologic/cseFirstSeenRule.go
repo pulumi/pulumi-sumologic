@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,6 +147,7 @@ func NewCseFirstSeenRule(ctx *pulumi.Context,
 	if args.ValueFields == nil {
 		return nil, errors.New("invalid value for required argument 'ValueFields'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseFirstSeenRule
 	err := ctx.RegisterResource("sumologic:index/cseFirstSeenRule:CseFirstSeenRule", name, args, &resource, opts...)
 	if err != nil {

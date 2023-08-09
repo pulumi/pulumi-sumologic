@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.sumologic.inputs.LogSearchTimeRangeBeginBoundedTimeRangeArgs;
  * import com.pulumi.sumologic.inputs.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs;
  * import com.pulumi.sumologic.inputs.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs;
+ * import com.pulumi.sumologic.inputs.LogSearchQueryParameterArgs;
  * import com.pulumi.sumologic.inputs.LogSearchScheduleArgs;
  * import com.pulumi.sumologic.inputs.LogSearchScheduleNotificationArgs;
  * import com.pulumi.sumologic.inputs.LogSearchScheduleNotificationEmailSearchNotificationArgs;
@@ -63,7 +64,14 @@ import javax.annotation.Nullable;
  *         var exampleLogSearch = new LogSearch(&#34;exampleLogSearch&#34;, LogSearchArgs.builder()        
  *             .description(&#34;Demo search description&#34;)
  *             .parentId(personalFolder.applyValue(getPersonalFolderResult -&gt; getPersonalFolderResult.id()))
- *             .queryString(&#34;_sourceCategory=api error | count by _sourceHost&#34;)
+ *             .queryString(&#34;&#34;&#34;
+ *         _sourceCategory=api
+ *         | parse &#34;parameter1=*,&#34; as parameter1
+ *         | parse &#34;parameter2=*,&#34; as parameter2
+ *         | where parameter1 matches {{param1}}
+ *         | where parameter2 matches {{param2}}
+ *         | count by _sourceHost
+ *             &#34;&#34;&#34;)
  *             .parsingMode(&#34;AutoParse&#34;)
  *             .runByReceiptTime(true)
  *             .timeRange(LogSearchTimeRangeArgs.builder()
@@ -75,6 +83,19 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .queryParameters(            
+ *                 LogSearchQueryParameterArgs.builder()
+ *                     .name(&#34;param1&#34;)
+ *                     .description(&#34;Description for param1&#34;)
+ *                     .dataType(&#34;STRING&#34;)
+ *                     .value(&#34;*&#34;)
+ *                     .build(),
+ *                 LogSearchQueryParameterArgs.builder()
+ *                     .name(&#34;param2&#34;)
+ *                     .description(&#34;Description for param2&#34;)
+ *                     .dataType(&#34;STRING&#34;)
+ *                     .value(&#34;*&#34;)
+ *                     .build())
  *             .schedule(LogSearchScheduleArgs.builder()
  *                 .cronExpression(&#34;0 0 * * * ? *&#34;)
  *                 .muteErrorEmails(false)
@@ -104,6 +125,15 @@ import javax.annotation.Nullable;
  *                     .thresholdType(&#34;group&#34;)
  *                     .build())
  *                 .timeZone(&#34;America/Los_Angeles&#34;)
+ *                 .parameters(                
+ *                     LogSearchScheduleParameterArgs.builder()
+ *                         .name(&#34;param1&#34;)
+ *                         .value(&#34;*&#34;)
+ *                         .build(),
+ *                     LogSearchScheduleParameterArgs.builder()
+ *                         .name(&#34;param2&#34;)
+ *                         .value(&#34;*&#34;)
+ *                         .build())
  *                 .build())
  *             .build());
  * 
@@ -193,9 +223,19 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> parsingMode() {
         return Codegen.optional(this.parsingMode);
     }
+    /**
+     * Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * See query parameter schema.
+     * 
+     */
     @Export(name="queryParameters", type=List.class, parameters={LogSearchQueryParameter.class})
     private Output</* @Nullable */ List<LogSearchQueryParameter>> queryParameters;
 
+    /**
+     * @return Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * See query parameter schema.
+     * 
+     */
     public Output<Optional<List<LogSearchQueryParameter>>> queryParameters() {
         return Codegen.optional(this.queryParameters);
     }

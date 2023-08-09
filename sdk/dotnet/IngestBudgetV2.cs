@@ -26,6 +26,7 @@ namespace Pulumi.SumoLogic
     ///     {
     ///         Action = "keepCollecting",
     ///         AuditThreshold = 85,
+    ///         BudgetType = "dailyVolume",
     ///         CapacityBytes = 30000000000,
     ///         Description = "For testing purposes",
     ///         ResetTime = "00:00",
@@ -38,10 +39,10 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Ingest budgets can be imported using the name, e.g.hcl
+    /// Ingest budgets can be imported using the budget ID, e.g.hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget budgetName
+    ///  $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
     /// ```
     /// 
     ///  [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
@@ -64,7 +65,13 @@ namespace Pulumi.SumoLogic
         public Output<int?> AuditThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Capacity of the ingest budget, in bytes.
+        /// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        /// </summary>
+        [Output("budgetType")]
+        public Output<string?> BudgetType { get; private set; } = null!;
+
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         /// </summary>
         [Output("capacityBytes")]
         public Output<int> CapacityBytes { get; private set; } = null!;
@@ -160,7 +167,13 @@ namespace Pulumi.SumoLogic
         public Input<int>? AuditThreshold { get; set; }
 
         /// <summary>
-        /// Capacity of the ingest budget, in bytes.
+        /// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        /// </summary>
+        [Input("budgetType")]
+        public Input<string>? BudgetType { get; set; }
+
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         /// </summary>
         [Input("capacityBytes", required: true)]
         public Input<int> CapacityBytes { get; set; } = null!;
@@ -218,7 +231,13 @@ namespace Pulumi.SumoLogic
         public Input<int>? AuditThreshold { get; set; }
 
         /// <summary>
-        /// Capacity of the ingest budget, in bytes.
+        /// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        /// </summary>
+        [Input("budgetType")]
+        public Input<string>? BudgetType { get; set; }
+
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         /// </summary>
         [Input("capacityBytes")]
         public Input<int>? CapacityBytes { get; set; }

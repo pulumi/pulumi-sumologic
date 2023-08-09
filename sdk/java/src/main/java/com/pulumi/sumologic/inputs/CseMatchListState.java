@@ -62,17 +62,9 @@ public final class CseMatchListState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * List of match list items. See match_list_item schema for details.
-     * 
-     */
     @Import(name="items")
     private @Nullable Output<List<CseMatchListItemArgs>> items;
 
-    /**
-     * @return List of match list items. See match_list_item schema for details.
-     * 
-     */
     public Optional<Output<List<CseMatchListItemArgs>>> items() {
         return Optional.ofNullable(this.items);
     }
@@ -213,33 +205,15 @@ public final class CseMatchListState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
-        /**
-         * @param items List of match list items. See match_list_item schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder items(@Nullable Output<List<CseMatchListItemArgs>> items) {
             $.items = items;
             return this;
         }
 
-        /**
-         * @param items List of match list items. See match_list_item schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder items(List<CseMatchListItemArgs> items) {
             return items(Output.of(items));
         }
 
-        /**
-         * @param items List of match list items. See match_list_item schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder items(CseMatchListItemArgs... items) {
             return items(List.of(items));
         }

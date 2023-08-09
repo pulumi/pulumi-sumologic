@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,9 +33,17 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewLogSearch(ctx, "exampleLogSearch", &sumologic.LogSearchArgs{
-//				Description:      pulumi.String("Demo search description"),
-//				ParentId:         *pulumi.String(personalFolder.Id),
-//				QueryString:      pulumi.String("_sourceCategory=api error | count by _sourceHost"),
+//				Description: pulumi.String("Demo search description"),
+//				ParentId:    *pulumi.String(personalFolder.Id),
+//				QueryString: pulumi.String(`        _sourceCategory=api
+//	        | parse "parameter1=*," as parameter1
+//	        | parse "parameter2=*," as parameter2
+//	        | where parameter1 matches {{param1}}
+//	        | where parameter2 matches {{param2}}
+//	        | count by _sourceHost
+//
+// `),
+//
 //				ParsingMode:      pulumi.String("AutoParse"),
 //				RunByReceiptTime: pulumi.Bool(true),
 //				TimeRange: &sumologic.LogSearchTimeRangeArgs{
@@ -44,6 +53,20 @@ import (
 //								RelativeTime: pulumi.String("-30m"),
 //							},
 //						},
+//					},
+//				},
+//				QueryParameters: sumologic.LogSearchQueryParameterArray{
+//					&sumologic.LogSearchQueryParameterArgs{
+//						Name:        pulumi.String("param1"),
+//						Description: pulumi.String("Description for param1"),
+//						DataType:    pulumi.String("STRING"),
+//						Value:       pulumi.String("*"),
+//					},
+//					&sumologic.LogSearchQueryParameterArgs{
+//						Name:        pulumi.String("param2"),
+//						Description: pulumi.String("Description for param2"),
+//						DataType:    pulumi.String("STRING"),
+//						Value:       pulumi.String("*"),
 //					},
 //				},
 //				Schedule: &sumologic.LogSearchScheduleArgs{
@@ -77,6 +100,16 @@ import (
 //						ThresholdType: pulumi.String("group"),
 //					},
 //					TimeZone: pulumi.String("America/Los_Angeles"),
+//					Parameters: sumologic.LogSearchScheduleParameterArray{
+//						&sumologic.LogSearchScheduleParameterArgs{
+//							Name:  pulumi.String("param1"),
+//							Value: pulumi.String("*"),
+//						},
+//						&sumologic.LogSearchScheduleParameterArgs{
+//							Name:  pulumi.String("param2"),
+//							Value: pulumi.String("*"),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -117,7 +150,9 @@ type LogSearch struct {
 	// In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-	ParsingMode     pulumi.StringPtrOutput             `pulumi:"parsingMode"`
+	ParsingMode pulumi.StringPtrOutput `pulumi:"parsingMode"`
+	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// See query parameter schema.
 	QueryParameters LogSearchQueryParameterArrayOutput `pulumi:"queryParameters"`
 	// Log query to perform.
 	QueryString pulumi.StringOutput `pulumi:"queryString"`
@@ -146,6 +181,7 @@ func NewLogSearch(ctx *pulumi.Context,
 	if args.TimeRange == nil {
 		return nil, errors.New("invalid value for required argument 'TimeRange'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LogSearch
 	err := ctx.RegisterResource("sumologic:index/logSearch:LogSearch", name, args, &resource, opts...)
 	if err != nil {
@@ -180,7 +216,9 @@ type logSearchState struct {
 	// In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-	ParsingMode     *string                   `pulumi:"parsingMode"`
+	ParsingMode *string `pulumi:"parsingMode"`
+	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// See query parameter schema.
 	QueryParameters []LogSearchQueryParameter `pulumi:"queryParameters"`
 	// Log query to perform.
 	QueryString *string `pulumi:"queryString"`
@@ -206,7 +244,9 @@ type LogSearchState struct {
 	// In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-	ParsingMode     pulumi.StringPtrInput
+	ParsingMode pulumi.StringPtrInput
+	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// See query parameter schema.
 	QueryParameters LogSearchQueryParameterArrayInput
 	// Log query to perform.
 	QueryString pulumi.StringPtrInput
@@ -236,7 +276,9 @@ type logSearchArgs struct {
 	// In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-	ParsingMode     *string                   `pulumi:"parsingMode"`
+	ParsingMode *string `pulumi:"parsingMode"`
+	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// See query parameter schema.
 	QueryParameters []LogSearchQueryParameter `pulumi:"queryParameters"`
 	// Log query to perform.
 	QueryString string `pulumi:"queryString"`
@@ -263,7 +305,9 @@ type LogSearchArgs struct {
 	// In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-	ParsingMode     pulumi.StringPtrInput
+	ParsingMode pulumi.StringPtrInput
+	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// See query parameter schema.
 	QueryParameters LogSearchQueryParameterArrayInput
 	// Log query to perform.
 	QueryString pulumi.StringInput
@@ -388,6 +432,8 @@ func (o LogSearchOutput) ParsingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearch) pulumi.StringPtrOutput { return v.ParsingMode }).(pulumi.StringPtrOutput)
 }
 
+// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+// See query parameter schema.
 func (o LogSearchOutput) QueryParameters() LogSearchQueryParameterArrayOutput {
 	return o.ApplyT(func(v *LogSearch) LogSearchQueryParameterArrayOutput { return v.QueryParameters }).(LogSearchQueryParameterArrayOutput)
 }

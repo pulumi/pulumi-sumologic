@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -142,6 +143,7 @@ func NewKineisLogSource(ctx *pulumi.Context,
 	if args.ContentType == nil {
 		return nil, errors.New("invalid value for required argument 'ContentType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KineisLogSource
 	err := ctx.RegisterResource("sumologic:index/kineisLogSource:KineisLogSource", name, args, &resource, opts...)
 	if err != nil {

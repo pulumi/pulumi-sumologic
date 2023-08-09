@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,6 +92,7 @@ func NewPasswordPolicy(ctx *pulumi.Context,
 		args = &PasswordPolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PasswordPolicy
 	err := ctx.RegisterResource("sumologic:index/passwordPolicy:PasswordPolicy", name, args, &resource, opts...)
 	if err != nil {

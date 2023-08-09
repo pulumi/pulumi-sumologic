@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -138,6 +139,7 @@ func NewSamlConfiguration(ctx *pulumi.Context,
 	if args.X509cert1 == nil {
 		return nil, errors.New("invalid value for required argument 'X509cert1'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SamlConfiguration
 	err := ctx.RegisterResource("sumologic:index/samlConfiguration:SamlConfiguration", name, args, &resource, opts...)
 	if err != nil {

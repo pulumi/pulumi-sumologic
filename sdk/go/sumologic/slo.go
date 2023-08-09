@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,7 @@ func NewSlo(ctx *pulumi.Context,
 	if args.SignalType == nil {
 		return nil, errors.New("invalid value for required argument 'SignalType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Slo
 	err := ctx.RegisterResource("sumologic:index/slo:Slo", name, args, &resource, opts...)
 	if err != nil {

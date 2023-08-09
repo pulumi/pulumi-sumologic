@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -118,6 +119,7 @@ func NewCseMatchRule(ctx *pulumi.Context,
 	if args.SeverityMapping == nil {
 		return nil, errors.New("invalid value for required argument 'SeverityMapping'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseMatchRule
 	err := ctx.RegisterResource("sumologic:index/cseMatchRule:CseMatchRule", name, args, &resource, opts...)
 	if err != nil {

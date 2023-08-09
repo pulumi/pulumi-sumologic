@@ -5991,6 +5991,13 @@ export interface LocalFileSourceFilter {
 }
 
 export interface LogSearchQueryParameter {
+    /**
+     * The data type of the parameter. Supported values are:
+     * 1. `NUMBER`
+     * 2. `STRING`
+     * 3. `ANY`
+     * 4. `KEYWORD`
+     */
     dataType: pulumi.Input<string>;
     /**
      * Description of the search.
@@ -6001,7 +6008,7 @@ export interface LogSearchQueryParameter {
      */
     name: pulumi.Input<string>;
     /**
-     * Value of scheduled search parameter.
+     * The default value for the parameter. It should be compatible with the type set in the `dataType` field.
      */
     value: pulumi.Input<string>;
 }
@@ -6209,7 +6216,7 @@ export interface LogSearchScheduleParameter {
      */
     name: pulumi.Input<string>;
     /**
-     * Value of scheduled search parameter.
+     * The default value for the parameter. It should be compatible with the type set in the `dataType` field.
      */
     value: pulumi.Input<string>;
 }
@@ -6571,6 +6578,163 @@ export interface MetadataSourcePath {
     type: pulumi.Input<string>;
 }
 
+export interface MetricsSearchMetricsQuery {
+    /**
+     * A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+     * Strictly speaking, both filters and operators are optional.
+     * Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+     * In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+     * For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+     */
+    query: pulumi.Input<string>;
+    /**
+     * Row id for the query row, A to Z letter.
+     */
+    rowId: pulumi.Input<string>;
+}
+
+export interface MetricsSearchTimeRange {
+    /**
+     * Bounded time range. See
+     * beginBoundedTimeRange schema schema for details.
+     */
+    beginBoundedTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRange>;
+    /**
+     * Literal time range. See
+     * completeLiteralTimeRange schema for details.
+     */
+    completeLiteralTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeCompleteLiteralTimeRange>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRange {
+    /**
+     * Start boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    from: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom>;
+    /**
+     * End boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    to?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeTo>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFrom {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange>;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange>;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange>;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: pulumi.Input<number>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: pulumi.Input<string>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: pulumi.Input<string>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: pulumi.Input<string>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeTo {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange>;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange>;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange>;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: pulumi.Input<inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: pulumi.Input<number>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: pulumi.Input<string>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: pulumi.Input<string>;
+}
+
+export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: pulumi.Input<string>;
+}
+
+export interface MetricsSearchTimeRangeCompleteLiteralTimeRange {
+    /**
+     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
+     * `previousMonth`.
+     */
+    rangeName: pulumi.Input<string>;
+}
+
 export interface MonitorFolderObjPermission {
     /**
      * A Set of Permissions. Valid Permission Values:
@@ -6909,6 +7073,53 @@ export interface PollingSourcePathTagFilter {
      * This value has to be set to `TagFilters`
      */
     type?: pulumi.Input<string>;
+}
+
+export interface RumSourceDefaultDateFormat {
+    format: pulumi.Input<string>;
+    locator?: pulumi.Input<string>;
+}
+
+export interface RumSourceFilter {
+    filterType: pulumi.Input<string>;
+    mask?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    regexp: pulumi.Input<string>;
+}
+
+export interface RumSourcePath {
+    /**
+     * (Recommended) Add an Application Name tag of a text string to show for the app name in spans (for example, bookings-app). This groups services in the Application Service View. If left blank, services will belong to a "default" application.
+     */
+    applicationName?: pulumi.Input<string>;
+    /**
+     * Defines custom tags attached to the spans. For example: "internal.version = 0.1.21"
+     */
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Your production, staging, or development environment name.
+     */
+    deploymentEnvironment?: pulumi.Input<string>;
+    /**
+     * Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: "/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;"
+     */
+    ignoreUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;" and "/^https:\/\/www.3rdparty.com\/.*&#47;".
+     */
+    propagateTraceHeaderCorsUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+     */
+    samplingRate?: pulumi.Input<number>;
+    /**
+     * Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
+     */
+    selectedCountry?: pulumi.Input<string>;
+    /**
+     * Add a Service Name of a text string to show for the service name in spans (for example, "bookings-web-app").
+     */
+    serviceName: pulumi.Input<string>;
 }
 
 export interface S3ArchiveSourceAuthentication {

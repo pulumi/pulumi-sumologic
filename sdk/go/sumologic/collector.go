@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,6 +83,7 @@ func NewCollector(ctx *pulumi.Context,
 		args = &CollectorArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Collector
 	err := ctx.RegisterResource("sumologic:index/collector:Collector", name, args, &resource, opts...)
 	if err != nil {

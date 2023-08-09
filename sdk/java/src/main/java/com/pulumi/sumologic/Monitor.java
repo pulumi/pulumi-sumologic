@@ -544,14 +544,14 @@ public class Monitor extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when &#39;groupNotifications&#39; is true.
+     * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when &#39;groupNotifications&#39; is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
      * 
      */
     @Export(name="notificationGroupFields", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> notificationGroupFields;
 
     /**
-     * @return The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when &#39;groupNotifications&#39; is true.
+     * @return The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when &#39;groupNotifications&#39; is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
      * 
      */
     public Output<Optional<List<String>>> notificationGroupFields() {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -139,6 +140,7 @@ func NewS3AuditSource(ctx *pulumi.Context,
 	if args.ScanInterval == nil {
 		return nil, errors.New("invalid value for required argument 'ScanInterval'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource S3AuditSource
 	err := ctx.RegisterResource("sumologic:index/s3AuditSource:S3AuditSource", name, args, &resource, opts...)
 	if err != nil {

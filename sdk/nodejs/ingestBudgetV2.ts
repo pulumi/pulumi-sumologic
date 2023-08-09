@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const budget = new sumologic.IngestBudgetV2("budget", {
  *     action: "keepCollecting",
  *     auditThreshold: 85,
+ *     budgetType: "dailyVolume",
  *     capacityBytes: 30000000000,
  *     description: "For testing purposes",
  *     resetTime: "00:00",
@@ -26,10 +27,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Ingest budgets can be imported using the name, e.g.hcl
+ * Ingest budgets can be imported using the budget ID, e.g.hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget budgetName
+ *  $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
  * ```
  *
  *  [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
@@ -73,7 +74,11 @@ export class IngestBudgetV2 extends pulumi.CustomResource {
      */
     public readonly auditThreshold!: pulumi.Output<number | undefined>;
     /**
-     * Capacity of the ingest budget, in bytes.
+     * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+     */
+    public readonly budgetType!: pulumi.Output<string | undefined>;
+    /**
+     * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      */
     public readonly capacityBytes!: pulumi.Output<number>;
     /**
@@ -112,6 +117,7 @@ export class IngestBudgetV2 extends pulumi.CustomResource {
             const state = argsOrState as IngestBudgetV2State | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
             resourceInputs["auditThreshold"] = state ? state.auditThreshold : undefined;
+            resourceInputs["budgetType"] = state ? state.budgetType : undefined;
             resourceInputs["capacityBytes"] = state ? state.capacityBytes : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -137,6 +143,7 @@ export class IngestBudgetV2 extends pulumi.CustomResource {
             }
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["auditThreshold"] = args ? args.auditThreshold : undefined;
+            resourceInputs["budgetType"] = args ? args.budgetType : undefined;
             resourceInputs["capacityBytes"] = args ? args.capacityBytes : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -164,7 +171,11 @@ export interface IngestBudgetV2State {
      */
     auditThreshold?: pulumi.Input<number>;
     /**
-     * Capacity of the ingest budget, in bytes.
+     * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+     */
+    budgetType?: pulumi.Input<string>;
+    /**
+     * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      */
     capacityBytes?: pulumi.Input<number>;
     /**
@@ -204,7 +215,11 @@ export interface IngestBudgetV2Args {
      */
     auditThreshold?: pulumi.Input<number>;
     /**
-     * Capacity of the ingest budget, in bytes.
+     * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+     */
+    budgetType?: pulumi.Input<string>;
+    /**
+     * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      */
     capacityBytes: pulumi.Input<number>;
     /**

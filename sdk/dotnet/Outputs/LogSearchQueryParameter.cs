@@ -13,6 +13,13 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchQueryParameter
     {
+        /// <summary>
+        /// The data type of the parameter. Supported values are:
+        /// 1. `NUMBER`
+        /// 2. `STRING`
+        /// 3. `ANY`
+        /// 4. `KEYWORD`
+        /// </summary>
         public readonly string DataType;
         /// <summary>
         /// Description of the search.
@@ -23,7 +30,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Value of scheduled search parameter.
+        /// The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         /// </summary>
         public readonly string Value;
 

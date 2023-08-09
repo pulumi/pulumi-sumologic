@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -138,6 +139,7 @@ func NewCseLogMapping(ctx *pulumi.Context,
 	if args.RecordType == nil {
 		return nil, errors.New("invalid value for required argument 'RecordType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseLogMapping
 	err := ctx.RegisterResource("sumologic:index/cseLogMapping:CseLogMapping", name, args, &resource, opts...)
 	if err != nil {

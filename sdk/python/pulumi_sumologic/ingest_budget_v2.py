@@ -20,18 +20,20 @@ class IngestBudgetV2Args:
                  scope: pulumi.Input[str],
                  timezone: pulumi.Input[str],
                  audit_threshold: Optional[pulumi.Input[int]] = None,
+                 budget_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IngestBudgetV2 resource.
         :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
+        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
         :param pulumi.Input[str] scope: A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
                
                The following attributes are exported:
+        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         """
@@ -42,6 +44,8 @@ class IngestBudgetV2Args:
         pulumi.set(__self__, "timezone", timezone)
         if audit_threshold is not None:
             pulumi.set(__self__, "audit_threshold", audit_threshold)
+        if budget_type is not None:
+            pulumi.set(__self__, "budget_type", budget_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -63,7 +67,7 @@ class IngestBudgetV2Args:
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> pulumi.Input[int]:
         """
-        Capacity of the ingest budget, in bytes.
+        Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         """
         return pulumi.get(self, "capacity_bytes")
 
@@ -122,6 +126,18 @@ class IngestBudgetV2Args:
         pulumi.set(self, "audit_threshold", value)
 
     @property
+    @pulumi.getter(name="budgetType")
+    def budget_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        """
+        return pulumi.get(self, "budget_type")
+
+    @budget_type.setter
+    def budget_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_type", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -151,6 +167,7 @@ class _IngestBudgetV2State:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  audit_threshold: Optional[pulumi.Input[int]] = None,
+                 budget_type: Optional[pulumi.Input[str]] = None,
                  capacity_bytes: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -163,7 +180,8 @@ class _IngestBudgetV2State:
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
                
                The following attributes are exported:
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
+        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
@@ -174,6 +192,8 @@ class _IngestBudgetV2State:
             pulumi.set(__self__, "action", action)
         if audit_threshold is not None:
             pulumi.set(__self__, "audit_threshold", audit_threshold)
+        if budget_type is not None:
+            pulumi.set(__self__, "budget_type", budget_type)
         if capacity_bytes is not None:
             pulumi.set(__self__, "capacity_bytes", capacity_bytes)
         if description is not None:
@@ -214,10 +234,22 @@ class _IngestBudgetV2State:
         pulumi.set(self, "audit_threshold", value)
 
     @property
+    @pulumi.getter(name="budgetType")
+    def budget_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        """
+        return pulumi.get(self, "budget_type")
+
+    @budget_type.setter
+    def budget_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_type", value)
+
+    @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Capacity of the ingest budget, in bytes.
+        Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         """
         return pulumi.get(self, "capacity_bytes")
 
@@ -293,6 +325,7 @@ class IngestBudgetV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  audit_threshold: Optional[pulumi.Input[int]] = None,
+                 budget_type: Optional[pulumi.Input[str]] = None,
                  capacity_bytes: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -312,6 +345,7 @@ class IngestBudgetV2(pulumi.CustomResource):
         budget = sumologic.IngestBudgetV2("budget",
             action="keepCollecting",
             audit_threshold=85,
+            budget_type="dailyVolume",
             capacity_bytes=30000000000,
             description="For testing purposes",
             reset_time="00:00",
@@ -321,10 +355,10 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Import
 
-        Ingest budgets can be imported using the name, e.g.hcl
+        Ingest budgets can be imported using the budget ID, e.g.hcl
 
         ```sh
-         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget budgetName
+         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
         ```
 
          [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
@@ -335,7 +369,8 @@ class IngestBudgetV2(pulumi.CustomResource):
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
                
                The following attributes are exported:
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
+        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
@@ -360,6 +395,7 @@ class IngestBudgetV2(pulumi.CustomResource):
         budget = sumologic.IngestBudgetV2("budget",
             action="keepCollecting",
             audit_threshold=85,
+            budget_type="dailyVolume",
             capacity_bytes=30000000000,
             description="For testing purposes",
             reset_time="00:00",
@@ -369,10 +405,10 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Import
 
-        Ingest budgets can be imported using the name, e.g.hcl
+        Ingest budgets can be imported using the budget ID, e.g.hcl
 
         ```sh
-         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget budgetName
+         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
         ```
 
          [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
@@ -394,6 +430,7 @@ class IngestBudgetV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  audit_threshold: Optional[pulumi.Input[int]] = None,
+                 budget_type: Optional[pulumi.Input[str]] = None,
                  capacity_bytes: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -413,6 +450,7 @@ class IngestBudgetV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
             __props__.__dict__["audit_threshold"] = audit_threshold
+            __props__.__dict__["budget_type"] = budget_type
             if capacity_bytes is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_bytes'")
             __props__.__dict__["capacity_bytes"] = capacity_bytes
@@ -439,6 +477,7 @@ class IngestBudgetV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
             audit_threshold: Optional[pulumi.Input[int]] = None,
+            budget_type: Optional[pulumi.Input[str]] = None,
             capacity_bytes: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -456,7 +495,8 @@ class IngestBudgetV2(pulumi.CustomResource):
         :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
                
                The following attributes are exported:
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
+        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
@@ -469,6 +509,7 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         __props__.__dict__["action"] = action
         __props__.__dict__["audit_threshold"] = audit_threshold
+        __props__.__dict__["budget_type"] = budget_type
         __props__.__dict__["capacity_bytes"] = capacity_bytes
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
@@ -496,10 +537,18 @@ class IngestBudgetV2(pulumi.CustomResource):
         return pulumi.get(self, "audit_threshold")
 
     @property
+    @pulumi.getter(name="budgetType")
+    def budget_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        """
+        return pulumi.get(self, "budget_type")
+
+    @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> pulumi.Output[int]:
         """
-        Capacity of the ingest budget, in bytes.
+        Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
         """
         return pulumi.get(self, "capacity_bytes")
 

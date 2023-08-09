@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,15 +39,16 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'AccessKey'")
 	}
 	if args.BaseUrl == nil {
-		if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_BASE_URL"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "SUMOLOGIC_BASE_URL"); d != nil {
 			args.BaseUrl = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.Environment == nil {
-		if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_ENVIRONMENT"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "SUMOLOGIC_ENVIRONMENT"); d != nil {
 			args.Environment = pulumi.StringPtr(d.(string))
 		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:sumologic", name, args, &resource, opts...)
 	if err != nil {

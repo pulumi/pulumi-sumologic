@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +24,7 @@ import (
 // - `name` - The name of the Admin Recommended Folder.
 // - `description` - The description of the Admin Recommended Folder.
 func GetAdminRecommendedFolder(ctx *pulumi.Context, args *GetAdminRecommendedFolderArgs, opts ...pulumi.InvokeOption) (*GetAdminRecommendedFolderResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAdminRecommendedFolderResult
 	err := ctx.Invoke("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args, &rv, opts...)
 	if err != nil {

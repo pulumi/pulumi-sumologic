@@ -309,6 +309,11 @@ export type MetadataSource = import("./metadataSource").MetadataSource;
 export const MetadataSource: typeof import("./metadataSource").MetadataSource = null as any;
 utilities.lazyLoad(exports, ["MetadataSource"], () => require("./metadataSource"));
 
+export { MetricsSearchArgs, MetricsSearchState } from "./metricsSearch";
+export type MetricsSearch = import("./metricsSearch").MetricsSearch;
+export const MetricsSearch: typeof import("./metricsSearch").MetricsSearch = null as any;
+utilities.lazyLoad(exports, ["MetricsSearch"], () => require("./metricsSearch"));
+
 export { MonitorArgs, MonitorState } from "./monitor";
 export type Monitor = import("./monitor").Monitor;
 export const Monitor: typeof import("./monitor").Monitor = null as any;
@@ -348,6 +353,11 @@ export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { RumSourceArgs, RumSourceState } from "./rumSource";
+export type RumSource = import("./rumSource").RumSource;
+export const RumSource: typeof import("./rumSource").RumSource = null as any;
+utilities.lazyLoad(exports, ["RumSource"], () => require("./rumSource"));
 
 export { S3ArchiveSourceArgs, S3ArchiveSourceState } from "./s3archiveSource";
 export type S3ArchiveSource = import("./s3archiveSource").S3ArchiveSource;
@@ -515,6 +525,8 @@ const _module = {
                 return new LookupTable(name, <any>undefined, { urn })
             case "sumologic:index/metadataSource:MetadataSource":
                 return new MetadataSource(name, <any>undefined, { urn })
+            case "sumologic:index/metricsSearch:MetricsSearch":
+                return new MetricsSearch(name, <any>undefined, { urn })
             case "sumologic:index/monitor:Monitor":
                 return new Monitor(name, <any>undefined, { urn })
             case "sumologic:index/monitorFolder:MonitorFolder":
@@ -529,6 +541,8 @@ const _module = {
                 return new PollingSource(name, <any>undefined, { urn })
             case "sumologic:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "sumologic:index/rumSource:RumSource":
+                return new RumSource(name, <any>undefined, { urn })
             case "sumologic:index/s3ArchiveSource:S3ArchiveSource":
                 return new S3ArchiveSource(name, <any>undefined, { urn })
             case "sumologic:index/s3AuditSource:S3AuditSource":
@@ -605,6 +619,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/localFileSource", _mod
 pulumi.runtime.registerResourceModule("sumologic", "index/logSearch", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/lookupTable", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/metadataSource", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/metricsSearch", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitor", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitorFolder", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/partition", _module)
@@ -612,6 +627,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/passwordPolicy", _modu
 pulumi.runtime.registerResourceModule("sumologic", "index/policies", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/pollingSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/role", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/rumSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3ArchiveSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3AuditSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3Source", _module)

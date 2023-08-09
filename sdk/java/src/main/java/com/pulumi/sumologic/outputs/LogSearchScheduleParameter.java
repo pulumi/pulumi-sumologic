@@ -15,7 +15,7 @@ public final class LogSearchScheduleParameter {
      */
     private String name;
     /**
-     * @return Value of scheduled search parameter.
+     * @return The default value for the parameter. It should be compatible with the type set in the `data_type` field.
      * 
      */
     private String value;
@@ -29,7 +29,7 @@ public final class LogSearchScheduleParameter {
         return this.name;
     }
     /**
-     * @return Value of scheduled search parameter.
+     * @return The default value for the parameter. It should be compatible with the type set in the `data_type` field.
      * 
      */
     public String value() {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,8 +66,7 @@ type CseMatchList struct {
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl pulumi.IntPtrOutput `pulumi:"defaultTtl"`
 	// Match list description.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// List of match list items. See matchListItem schema for details.
+	Description   pulumi.StringOutput         `pulumi:"description"`
 	Items         CseMatchListItemArrayOutput `pulumi:"items"`
 	LastUpdated   pulumi.StringOutput         `pulumi:"lastUpdated"`
 	LastUpdatedBy pulumi.StringOutput         `pulumi:"lastUpdatedBy"`
@@ -89,6 +89,7 @@ func NewCseMatchList(ctx *pulumi.Context,
 	if args.TargetColumn == nil {
 		return nil, errors.New("invalid value for required argument 'TargetColumn'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseMatchList
 	err := ctx.RegisterResource("sumologic:index/cseMatchList:CseMatchList", name, args, &resource, opts...)
 	if err != nil {
@@ -116,8 +117,7 @@ type cseMatchListState struct {
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl *int `pulumi:"defaultTtl"`
 	// Match list description.
-	Description *string `pulumi:"description"`
-	// List of match list items. See matchListItem schema for details.
+	Description   *string            `pulumi:"description"`
 	Items         []CseMatchListItem `pulumi:"items"`
 	LastUpdated   *string            `pulumi:"lastUpdated"`
 	LastUpdatedBy *string            `pulumi:"lastUpdatedBy"`
@@ -133,8 +133,7 @@ type CseMatchListState struct {
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl pulumi.IntPtrInput
 	// Match list description.
-	Description pulumi.StringPtrInput
-	// List of match list items. See matchListItem schema for details.
+	Description   pulumi.StringPtrInput
 	Items         CseMatchListItemArrayInput
 	LastUpdated   pulumi.StringPtrInput
 	LastUpdatedBy pulumi.StringPtrInput
@@ -152,9 +151,8 @@ type cseMatchListArgs struct {
 	// The default time to live for match list items added through the UI. Specified in seconds.
 	DefaultTtl *int `pulumi:"defaultTtl"`
 	// Match list description.
-	Description string `pulumi:"description"`
-	// List of match list items. See matchListItem schema for details.
-	Items []CseMatchListItem `pulumi:"items"`
+	Description string             `pulumi:"description"`
+	Items       []CseMatchListItem `pulumi:"items"`
 	// Match list name.
 	Name *string `pulumi:"name"`
 	// Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
@@ -167,8 +165,7 @@ type CseMatchListArgs struct {
 	DefaultTtl pulumi.IntPtrInput
 	// Match list description.
 	Description pulumi.StringInput
-	// List of match list items. See matchListItem schema for details.
-	Items CseMatchListItemArrayInput
+	Items       CseMatchListItemArrayInput
 	// Match list name.
 	Name pulumi.StringPtrInput
 	// Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
@@ -280,7 +277,6 @@ func (o CseMatchListOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseMatchList) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// List of match list items. See matchListItem schema for details.
 func (o CseMatchListOutput) Items() CseMatchListItemArrayOutput {
 	return o.ApplyT(func(v *CseMatchList) CseMatchListItemArrayOutput { return v.Items }).(CseMatchListItemArrayOutput)
 }

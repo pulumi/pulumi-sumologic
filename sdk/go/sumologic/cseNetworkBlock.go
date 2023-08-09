@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +77,7 @@ func NewCseNetworkBlock(ctx *pulumi.Context,
 	if args.AddressBlock == nil {
 		return nil, errors.New("invalid value for required argument 'AddressBlock'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseNetworkBlock
 	err := ctx.RegisterResource("sumologic:index/cseNetworkBlock:CseNetworkBlock", name, args, &resource, opts...)
 	if err != nil {

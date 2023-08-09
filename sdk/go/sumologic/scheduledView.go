@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,6 +62,7 @@ func NewScheduledView(ctx *pulumi.Context,
 	if args.StartTime == nil {
 		return nil, errors.New("invalid value for required argument 'StartTime'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ScheduledView
 	err := ctx.RegisterResource("sumologic:index/scheduledView:ScheduledView", name, args, &resource, opts...)
 	if err != nil {

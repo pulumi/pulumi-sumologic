@@ -28,7 +28,13 @@ namespace Pulumi.SumoLogic
     ///     {
     ///         Description = "Demo search description",
     ///         ParentId = personalFolder.Apply(getPersonalFolderResult =&gt; getPersonalFolderResult.Id),
-    ///         QueryString = "_sourceCategory=api error | count by _sourceHost",
+    ///         QueryString = @"        _sourceCategory=api
+    ///         | parse ""parameter1=*,"" as parameter1
+    ///         | parse ""parameter2=*,"" as parameter2
+    ///         | where parameter1 matches {{param1}}
+    ///         | where parameter2 matches {{param2}}
+    ///         | count by _sourceHost
+    /// ",
     ///         ParsingMode = "AutoParse",
     ///         RunByReceiptTime = true,
     ///         TimeRange = new SumoLogic.Inputs.LogSearchTimeRangeArgs
@@ -42,6 +48,23 @@ namespace Pulumi.SumoLogic
     ///                         RelativeTime = "-30m",
     ///                     },
     ///                 },
+    ///             },
+    ///         },
+    ///         QueryParameters = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.LogSearchQueryParameterArgs
+    ///             {
+    ///                 Name = "param1",
+    ///                 Description = "Description for param1",
+    ///                 DataType = "STRING",
+    ///                 Value = "*",
+    ///             },
+    ///             new SumoLogic.Inputs.LogSearchQueryParameterArgs
+    ///             {
+    ///                 Name = "param2",
+    ///                 Description = "Description for param2",
+    ///                 DataType = "STRING",
+    ///                 Value = "*",
     ///             },
     ///         },
     ///         Schedule = new SumoLogic.Inputs.LogSearchScheduleArgs
@@ -84,6 +107,19 @@ namespace Pulumi.SumoLogic
     ///                 ThresholdType = "group",
     ///             },
     ///             TimeZone = "America/Los_Angeles",
+    ///             Parameters = new[]
+    ///             {
+    ///                 new SumoLogic.Inputs.LogSearchScheduleParameterArgs
+    ///                 {
+    ///                     Name = "param1",
+    ///                     Value = "*",
+    ///                 },
+    ///                 new SumoLogic.Inputs.LogSearchScheduleParameterArgs
+    ///                 {
+    ///                     Name = "param2",
+    ///                     Value = "*",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -135,6 +171,10 @@ namespace Pulumi.SumoLogic
         [Output("parsingMode")]
         public Output<string?> ParsingMode { get; private set; } = null!;
 
+        /// <summary>
+        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// See query parameter schema.
+        /// </summary>
         [Output("queryParameters")]
         public Output<ImmutableArray<Outputs.LogSearchQueryParameter>> QueryParameters { get; private set; } = null!;
 
@@ -240,6 +280,11 @@ namespace Pulumi.SumoLogic
 
         [Input("queryParameters")]
         private InputList<Inputs.LogSearchQueryParameterArgs>? _queryParameters;
+
+        /// <summary>
+        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// See query parameter schema.
+        /// </summary>
         public InputList<Inputs.LogSearchQueryParameterArgs> QueryParameters
         {
             get => _queryParameters ?? (_queryParameters = new InputList<Inputs.LogSearchQueryParameterArgs>());
@@ -310,6 +355,11 @@ namespace Pulumi.SumoLogic
 
         [Input("queryParameters")]
         private InputList<Inputs.LogSearchQueryParameterGetArgs>? _queryParameters;
+
+        /// <summary>
+        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// See query parameter schema.
+        /// </summary>
         public InputList<Inputs.LogSearchQueryParameterGetArgs> QueryParameters
         {
             get => _queryParameters ?? (_queryParameters = new InputList<Inputs.LogSearchQueryParameterGetArgs>());
