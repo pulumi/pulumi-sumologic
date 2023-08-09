@@ -23,7 +23,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-sumologic/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -234,9 +234,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("sumologic_",
-		mainMod, x.MakeStandardToken(mainPkg)))
-	contract.AssertNoErrorf(err, "failed to compute defaults")
+	prov.MustComputeDefaults(tfbridgetokens.SingleModule("sumologic_",
+		mainMod, tfbridgetokens.MakeStandard(mainPkg)))
 
 	prov.SetAutonaming(255, "-")
 
