@@ -26,7 +26,6 @@ import (
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -234,7 +233,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	prov.MustComputeDefaults(tfbridgetokens.SingleModule("sumologic_",
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("sumologic_",
 		mainMod, tfbridgetokens.MakeStandard(mainPkg)))
 
 	prov.SetAutonaming(255, "-")
