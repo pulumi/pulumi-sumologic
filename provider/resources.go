@@ -19,6 +19,9 @@ import (
 	"path/filepath"
 	"unicode"
 
+	// embed package blank import
+	_ "embed"
+
 	"github.com/SumoLogic/terraform-provider-sumologic/sumologic"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-sumologic/provider/pkg/version"
@@ -81,6 +84,8 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-sumologic",
 		GitHubOrg:        "SumoLogic",
 		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
@@ -235,6 +240,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("sumologic_",
 		mainMod, tfbridgetokens.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 
@@ -246,3 +252,6 @@ func noUpstreamDocs() *tfbridge.DocInfo {
 		Markdown: []byte(" "),
 	}
 }
+
+//go:embed cmd/pulumi-resource-sumologic/bridge-metadata.json
+var metadata []byte
