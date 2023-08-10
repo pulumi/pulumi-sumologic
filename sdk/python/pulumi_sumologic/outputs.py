@@ -575,6 +575,20 @@ __all__ = [
     'MetadataSourceDefaultDateFormat',
     'MetadataSourceFilter',
     'MetadataSourcePath',
+    'MetricsSearchMetricsQuery',
+    'MetricsSearchTimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFrom',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeTo',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange',
+    'MetricsSearchTimeRangeCompleteLiteralTimeRange',
     'MonitorFolderObjPermission',
     'MonitorNotification',
     'MonitorNotificationNotification',
@@ -618,6 +632,9 @@ __all__ = [
     'PollingSourceFilter',
     'PollingSourcePath',
     'PollingSourcePathTagFilter',
+    'RumSourceDefaultDateFormat',
+    'RumSourceFilter',
+    'RumSourcePath',
     'S3ArchiveSourceAuthentication',
     'S3ArchiveSourceDefaultDateFormat',
     'S3ArchiveSourceFilter',
@@ -25931,8 +25948,13 @@ class LogSearchQueryParameter(dict):
                  value: str,
                  description: Optional[str] = None):
         """
+        :param str data_type: The data type of the parameter. Supported values are:
+               1. `NUMBER`
+               2. `STRING`
+               3. `ANY`
+               4. `KEYWORD`
         :param str name: Name of the search.
-        :param str value: Value of scheduled search parameter.
+        :param str value: The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         :param str description: Description of the search.
         """
         pulumi.set(__self__, "data_type", data_type)
@@ -25944,6 +25966,13 @@ class LogSearchQueryParameter(dict):
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> str:
+        """
+        The data type of the parameter. Supported values are:
+        1. `NUMBER`
+        2. `STRING`
+        3. `ANY`
+        4. `KEYWORD`
+        """
         return pulumi.get(self, "data_type")
 
     @property
@@ -25958,7 +25987,7 @@ class LogSearchQueryParameter(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Value of scheduled search parameter.
+        The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         """
         return pulumi.get(self, "value")
 
@@ -26722,7 +26751,7 @@ class LogSearchScheduleParameter(dict):
                  value: str):
         """
         :param str name: Name of the search.
-        :param str value: Value of scheduled search parameter.
+        :param str value: The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -26739,7 +26768,7 @@ class LogSearchScheduleParameter(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Value of scheduled search parameter.
+        The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         """
         return pulumi.get(self, "value")
 
@@ -28279,6 +28308,666 @@ class MetadataSourcePath(dict):
 
 
 @pulumi.output_type
+class MetricsSearchMetricsQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowId":
+            suggest = "row_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchMetricsQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchMetricsQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchMetricsQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query: str,
+                 row_id: str):
+        """
+        :param str query: A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+               Strictly speaking, both filters and operators are optional.
+               Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+               In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+               For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+        :param str row_id: Row id for the query row, A to Z letter.
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "row_id", row_id)
+
+    @property
+    @pulumi.getter
+    def query(self) -> str:
+        """
+        A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        Strictly speaking, both filters and operators are optional.
+        Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+        In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+        For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="rowId")
+    def row_id(self) -> str:
+        """
+        Row id for the query row, A to Z letter.
+        """
+        return pulumi.get(self, "row_id")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "beginBoundedTimeRange":
+            suggest = "begin_bounded_time_range"
+        elif key == "completeLiteralTimeRange":
+            suggest = "complete_literal_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRange'] = None,
+                 complete_literal_time_range: Optional['outputs.MetricsSearchTimeRangeCompleteLiteralTimeRange'] = None):
+        """
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeArgs' begin_bounded_time_range: Bounded time range. See
+               begin_bounded_time_range schema schema for details.
+        :param 'MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs' complete_literal_time_range: Literal time range. See
+               complete_literal_time_range schema for details.
+        """
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRange']:
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeCompleteLiteralTimeRange']:
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+        return pulumi.get(self, "complete_literal_time_range")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_: 'outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom',
+                 to: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeTo'] = None):
+        """
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs' from_: Start boundary of bounded time range. See
+               time_range_boundary schema for details.
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs' to: End boundary of bounded time range. See
+               time_range_boundary schema for details.
+        """
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> 'outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom':
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeTo']:
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochTimeRange":
+            suggest = "epoch_time_range"
+        elif key == "iso8601TimeRange":
+            suggest = "iso8601_time_range"
+        elif key == "literalTimeRange":
+            suggest = "literal_time_range"
+        elif key == "relativeTimeRange":
+            suggest = "relative_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+                 iso8601_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+                 literal_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+                 relative_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None):
+        """
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs' epoch_time_range: Time since the epoch.
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs' iso8601_time_range: Time in ISO 8601 format.
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs' literal_time_range: Time in literal format.
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs' relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange']:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange']:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange']:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange']:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochMillis":
+            suggest = "epoch_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_millis: int):
+        """
+        :param int epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> int:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iso8601Time":
+            suggest = "iso8601_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iso8601_time: str):
+        """
+        :param str iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> str:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        """
+        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeTime":
+            suggest = "relative_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 relative_time: str):
+        """
+        :param str relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> str:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochTimeRange":
+            suggest = "epoch_time_range"
+        elif key == "iso8601TimeRange":
+            suggest = "iso8601_time_range"
+        elif key == "literalTimeRange":
+            suggest = "literal_time_range"
+        elif key == "relativeTimeRange":
+            suggest = "relative_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeTo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+                 iso8601_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+                 literal_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+                 relative_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None):
+        """
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs' epoch_time_range: Time since the epoch.
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs' iso8601_time_range: Time in ISO 8601 format.
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs' literal_time_range: Time in literal format.
+        :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs' relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange']:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange']:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange']:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange']:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochMillis":
+            suggest = "epoch_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_millis: int):
+        """
+        :param int epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> int:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iso8601Time":
+            suggest = "iso8601_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iso8601_time: str):
+        """
+        :param str iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> str:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        """
+        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeTime":
+            suggest = "relative_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 relative_time: str):
+        """
+        :param str relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> str:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+
+@pulumi.output_type
+class MetricsSearchTimeRangeCompleteLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchTimeRangeCompleteLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchTimeRangeCompleteLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchTimeRangeCompleteLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        """
+        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
 class MonitorFolderObjPermission(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -28436,6 +29125,9 @@ class MonitorNotificationNotification(dict):
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[str]:
+        warnings.warn("""The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.""", DeprecationWarning)
+        pulumi.log.warn("""action_type is deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.""")
+
         return pulumi.get(self, "action_type")
 
     @property
@@ -30304,6 +30996,210 @@ class PollingSourcePathTagFilter(dict):
         This value has to be set to `TagFilters`
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RumSourceDefaultDateFormat(dict):
+    def __init__(__self__, *,
+                 format: str,
+                 locator: Optional[str] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[str]:
+        return pulumi.get(self, "locator")
+
+
+@pulumi.output_type
+class RumSourceFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterType":
+            suggest = "filter_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RumSourceFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RumSourceFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RumSourceFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_type: str,
+                 name: str,
+                 regexp: str,
+                 mask: Optional[str] = None):
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> str:
+        return pulumi.get(self, "filter_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> str:
+        return pulumi.get(self, "regexp")
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[str]:
+        return pulumi.get(self, "mask")
+
+
+@pulumi.output_type
+class RumSourcePath(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+        elif key == "applicationName":
+            suggest = "application_name"
+        elif key == "customTags":
+            suggest = "custom_tags"
+        elif key == "deploymentEnvironment":
+            suggest = "deployment_environment"
+        elif key == "ignoreUrls":
+            suggest = "ignore_urls"
+        elif key == "propagateTraceHeaderCorsUrls":
+            suggest = "propagate_trace_header_cors_urls"
+        elif key == "samplingRate":
+            suggest = "sampling_rate"
+        elif key == "selectedCountry":
+            suggest = "selected_country"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RumSourcePath. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RumSourcePath.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RumSourcePath.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: str,
+                 application_name: Optional[str] = None,
+                 custom_tags: Optional[Mapping[str, str]] = None,
+                 deployment_environment: Optional[str] = None,
+                 ignore_urls: Optional[Sequence[str]] = None,
+                 propagate_trace_header_cors_urls: Optional[Sequence[str]] = None,
+                 sampling_rate: Optional[float] = None,
+                 selected_country: Optional[str] = None):
+        """
+        :param str service_name: Add a Service Name of a text string to show for the service name in spans (for example, "bookings-web-app").
+        :param str application_name: (Recommended) Add an Application Name tag of a text string to show for the app name in spans (for example, bookings-app). This groups services in the Application Service View. If left blank, services will belong to a "default" application.
+        :param Mapping[str, str] custom_tags: Defines custom tags attached to the spans. For example: "internal.version = 0.1.21"
+        :param str deployment_environment: Your production, staging, or development environment name.
+        :param Sequence[str] ignore_urls: Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: "/^https:\\/\\/www.tracker.com\\/.*/, /^https:\\/\\/api.mydomain.com\\/log\\/.*/"
+        :param Sequence[str] propagate_trace_header_cors_urls: (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/" and "/^https:\\/\\/www.3rdparty.com\\/.*/".
+        :param float sampling_rate: Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        :param str selected_country: Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if application_name is not None:
+            pulumi.set(__self__, "application_name", application_name)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+        if deployment_environment is not None:
+            pulumi.set(__self__, "deployment_environment", deployment_environment)
+        if ignore_urls is not None:
+            pulumi.set(__self__, "ignore_urls", ignore_urls)
+        if propagate_trace_header_cors_urls is not None:
+            pulumi.set(__self__, "propagate_trace_header_cors_urls", propagate_trace_header_cors_urls)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+        if selected_country is not None:
+            pulumi.set(__self__, "selected_country", selected_country)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        Add a Service Name of a text string to show for the service name in spans (for example, "bookings-web-app").
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> Optional[str]:
+        """
+        (Recommended) Add an Application Name tag of a text string to show for the app name in spans (for example, bookings-app). This groups services in the Application Service View. If left blank, services will belong to a "default" application.
+        """
+        return pulumi.get(self, "application_name")
+
+    @property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Defines custom tags attached to the spans. For example: "internal.version = 0.1.21"
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @property
+    @pulumi.getter(name="deploymentEnvironment")
+    def deployment_environment(self) -> Optional[str]:
+        """
+        Your production, staging, or development environment name.
+        """
+        return pulumi.get(self, "deployment_environment")
+
+    @property
+    @pulumi.getter(name="ignoreUrls")
+    def ignore_urls(self) -> Optional[Sequence[str]]:
+        """
+        Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: "/^https:\\/\\/www.tracker.com\\/.*/, /^https:\\/\\/api.mydomain.com\\/log\\/.*/"
+        """
+        return pulumi.get(self, "ignore_urls")
+
+    @property
+    @pulumi.getter(name="propagateTraceHeaderCorsUrls")
+    def propagate_trace_header_cors_urls(self) -> Optional[Sequence[str]]:
+        """
+        (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/" and "/^https:\\/\\/www.3rdparty.com\\/.*/".
+        """
+        return pulumi.get(self, "propagate_trace_header_cors_urls")
+
+    @property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[float]:
+        """
+        Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        """
+        return pulumi.get(self, "sampling_rate")
+
+    @property
+    @pulumi.getter(name="selectedCountry")
+    def selected_country(self) -> Optional[str]:
+        """
+        Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
+        """
+        return pulumi.get(self, "selected_country")
 
 
 @pulumi.output_type

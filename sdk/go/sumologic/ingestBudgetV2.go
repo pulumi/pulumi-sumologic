@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,6 +31,7 @@ import (
 //			_, err := sumologic.NewIngestBudgetV2(ctx, "budget", &sumologic.IngestBudgetV2Args{
 //				Action:         pulumi.String("keepCollecting"),
 //				AuditThreshold: pulumi.Int(85),
+//				BudgetType:     pulumi.String("dailyVolume"),
 //				CapacityBytes:  pulumi.Int(30000000000),
 //				Description:    pulumi.String("For testing purposes"),
 //				ResetTime:      pulumi.String("00:00"),
@@ -47,11 +49,11 @@ import (
 //
 // ## Import
 //
-// # Ingest budgets can be imported using the name, e.g.hcl
+// # Ingest budgets can be imported using the budget ID, e.g.hcl
 //
 // ```sh
 //
-//	$ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget budgetName
+//	$ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
 //
 // ```
 //
@@ -65,7 +67,9 @@ type IngestBudgetV2 struct {
 	//
 	// The following attributes are exported:
 	AuditThreshold pulumi.IntPtrOutput `pulumi:"auditThreshold"`
-	// Capacity of the ingest budget, in bytes.
+	// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+	BudgetType pulumi.StringPtrOutput `pulumi:"budgetType"`
+	// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
 	CapacityBytes pulumi.IntOutput `pulumi:"capacityBytes"`
 	// The description of the collector.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -101,6 +105,7 @@ func NewIngestBudgetV2(ctx *pulumi.Context,
 	if args.Timezone == nil {
 		return nil, errors.New("invalid value for required argument 'Timezone'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IngestBudgetV2
 	err := ctx.RegisterResource("sumologic:index/ingestBudgetV2:IngestBudgetV2", name, args, &resource, opts...)
 	if err != nil {
@@ -129,7 +134,9 @@ type ingestBudgetV2State struct {
 	//
 	// The following attributes are exported:
 	AuditThreshold *int `pulumi:"auditThreshold"`
-	// Capacity of the ingest budget, in bytes.
+	// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+	BudgetType *string `pulumi:"budgetType"`
+	// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
 	CapacityBytes *int `pulumi:"capacityBytes"`
 	// The description of the collector.
 	Description *string `pulumi:"description"`
@@ -150,7 +157,9 @@ type IngestBudgetV2State struct {
 	//
 	// The following attributes are exported:
 	AuditThreshold pulumi.IntPtrInput
-	// Capacity of the ingest budget, in bytes.
+	// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+	BudgetType pulumi.StringPtrInput
+	// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
 	CapacityBytes pulumi.IntPtrInput
 	// The description of the collector.
 	Description pulumi.StringPtrInput
@@ -175,7 +184,9 @@ type ingestBudgetV2Args struct {
 	//
 	// The following attributes are exported:
 	AuditThreshold *int `pulumi:"auditThreshold"`
-	// Capacity of the ingest budget, in bytes.
+	// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+	BudgetType *string `pulumi:"budgetType"`
+	// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
 	CapacityBytes int `pulumi:"capacityBytes"`
 	// The description of the collector.
 	Description *string `pulumi:"description"`
@@ -197,7 +208,9 @@ type IngestBudgetV2Args struct {
 	//
 	// The following attributes are exported:
 	AuditThreshold pulumi.IntPtrInput
-	// Capacity of the ingest budget, in bytes.
+	// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+	BudgetType pulumi.StringPtrInput
+	// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
 	CapacityBytes pulumi.IntInput
 	// The description of the collector.
 	Description pulumi.StringPtrInput
@@ -310,7 +323,12 @@ func (o IngestBudgetV2Output) AuditThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IngestBudgetV2) pulumi.IntPtrOutput { return v.AuditThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Capacity of the ingest budget, in bytes.
+// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+func (o IngestBudgetV2Output) BudgetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IngestBudgetV2) pulumi.StringPtrOutput { return v.BudgetType }).(pulumi.StringPtrOutput)
+}
+
+// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
 func (o IngestBudgetV2Output) CapacityBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *IngestBudgetV2) pulumi.IntOutput { return v.CapacityBytes }).(pulumi.IntOutput)
 }

@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *         var budget = new IngestBudgetV2(&#34;budget&#34;, IngestBudgetV2Args.builder()        
  *             .action(&#34;keepCollecting&#34;)
  *             .auditThreshold(85)
+ *             .budgetType(&#34;dailyVolume&#34;)
  *             .capacityBytes(30000000000)
  *             .description(&#34;For testing purposes&#34;)
  *             .resetTime(&#34;00:00&#34;)
@@ -56,10 +57,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ingest budgets can be imported using the name, e.g.hcl
+ * Ingest budgets can be imported using the budget ID, e.g.hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget budgetName
+ *  $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
  * ```
  * 
  *  [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
@@ -100,14 +101,28 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.auditThreshold);
     }
     /**
-     * Capacity of the ingest budget, in bytes.
+     * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+     * 
+     */
+    @Export(name="budgetType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> budgetType;
+
+    /**
+     * @return The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+     * 
+     */
+    public Output<Optional<String>> budgetType() {
+        return Codegen.optional(this.budgetType);
+    }
+    /**
+     * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      * 
      */
     @Export(name="capacityBytes", type=Integer.class, parameters={})
     private Output<Integer> capacityBytes;
 
     /**
-     * @return Capacity of the ingest budget, in bytes.
+     * @return Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      * 
      */
     public Output<Integer> capacityBytes() {

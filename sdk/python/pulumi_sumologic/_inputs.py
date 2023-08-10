@@ -574,6 +574,20 @@ __all__ = [
     'MetadataSourceDefaultDateFormatArgs',
     'MetadataSourceFilterArgs',
     'MetadataSourcePathArgs',
+    'MetricsSearchMetricsQueryArgs',
+    'MetricsSearchTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs',
     'MonitorFolderObjPermissionArgs',
     'MonitorNotificationArgs',
     'MonitorNotificationNotificationArgs',
@@ -617,6 +631,9 @@ __all__ = [
     'PollingSourceFilterArgs',
     'PollingSourcePathArgs',
     'PollingSourcePathTagFilterArgs',
+    'RumSourceDefaultDateFormatArgs',
+    'RumSourceFilterArgs',
+    'RumSourcePathArgs',
     'S3ArchiveSourceAuthenticationArgs',
     'S3ArchiveSourceDefaultDateFormatArgs',
     'S3ArchiveSourceFilterArgs',
@@ -24360,8 +24377,13 @@ class LogSearchQueryParameterArgs:
                  value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] data_type: The data type of the parameter. Supported values are:
+               1. `NUMBER`
+               2. `STRING`
+               3. `ANY`
+               4. `KEYWORD`
         :param pulumi.Input[str] name: Name of the search.
-        :param pulumi.Input[str] value: Value of scheduled search parameter.
+        :param pulumi.Input[str] value: The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         :param pulumi.Input[str] description: Description of the search.
         """
         pulumi.set(__self__, "data_type", data_type)
@@ -24373,6 +24395,13 @@ class LogSearchQueryParameterArgs:
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Input[str]:
+        """
+        The data type of the parameter. Supported values are:
+        1. `NUMBER`
+        2. `STRING`
+        3. `ANY`
+        4. `KEYWORD`
+        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -24395,7 +24424,7 @@ class LogSearchQueryParameterArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Value of scheduled search parameter.
+        The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         """
         return pulumi.get(self, "value")
 
@@ -25105,7 +25134,7 @@ class LogSearchScheduleParameterArgs:
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: Name of the search.
-        :param pulumi.Input[str] value: Value of scheduled search parameter.
+        :param pulumi.Input[str] value: The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -25126,7 +25155,7 @@ class LogSearchScheduleParameterArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Value of scheduled search parameter.
+        The default value for the parameter. It should be compatible with the type set in the `data_type` field.
         """
         return pulumi.get(self, "value")
 
@@ -26349,6 +26378,506 @@ class MetadataSourcePathArgs:
 
 
 @pulumi.input_type
+class MetricsSearchMetricsQueryArgs:
+    def __init__(__self__, *,
+                 query: pulumi.Input[str],
+                 row_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] query: A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+               Strictly speaking, both filters and operators are optional.
+               Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+               In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+               For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+        :param pulumi.Input[str] row_id: Row id for the query row, A to Z letter.
+        """
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "row_id", row_id)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        Strictly speaking, both filters and operators are optional.
+        Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+        In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+        For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="rowId")
+    def row_id(self) -> pulumi.Input[str]:
+        """
+        Row id for the query row, A to Z letter.
+        """
+        return pulumi.get(self, "row_id")
+
+    @row_id.setter
+    def row_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "row_id", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeArgs:
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgs']] = None,
+                 complete_literal_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgs'] begin_bounded_time_range: Bounded time range. See
+               begin_bounded_time_range schema schema for details.
+        :param pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs'] complete_literal_time_range: Literal time range. See
+               complete_literal_time_range schema for details.
+        """
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgs']]:
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @begin_bounded_time_range.setter
+    def begin_bounded_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgs']]):
+        pulumi.set(self, "begin_bounded_time_range", value)
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs']]:
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+        return pulumi.get(self, "complete_literal_time_range")
+
+    @complete_literal_time_range.setter
+    def complete_literal_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs']]):
+        pulumi.set(self, "complete_literal_time_range", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs'],
+                 to: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs'] from_: Start boundary of bounded time range. See
+               time_range_boundary schema for details.
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs'] to: End boundary of bounded time range. See
+               time_range_boundary schema for details.
+        """
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs']:
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs']):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs']]:
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs']]):
+        pulumi.set(self, "to", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+               `previous_month`.
+        """
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        """
+        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
+        `previous_month`.
+        """
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
 class MonitorFolderObjPermissionArgs:
     def __init__(__self__, *,
                  permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -26464,6 +26993,9 @@ class MonitorNotificationNotificationArgs:
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.""", DeprecationWarning)
+        pulumi.log.warn("""action_type is deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.""")
+
         return pulumi.get(self, "action_type")
 
     @action_type.setter
@@ -28270,6 +28802,218 @@ class PollingSourcePathTagFilterArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class RumSourceDefaultDateFormatArgs:
+    def __init__(__self__, *,
+                 format: pulumi.Input[str],
+                 locator: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "locator")
+
+    @locator.setter
+    def locator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locator", value)
+
+
+@pulumi.input_type
+class RumSourceFilterArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 regexp: pulumi.Input[str],
+                 mask: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regexp")
+
+    @regexp.setter
+    def regexp(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regexp", value)
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mask")
+
+    @mask.setter
+    def mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mask", value)
+
+
+@pulumi.input_type
+class RumSourcePathArgs:
+    def __init__(__self__, *,
+                 service_name: pulumi.Input[str],
+                 application_name: Optional[pulumi.Input[str]] = None,
+                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 deployment_environment: Optional[pulumi.Input[str]] = None,
+                 ignore_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 propagate_trace_header_cors_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sampling_rate: Optional[pulumi.Input[float]] = None,
+                 selected_country: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_name: Add a Service Name of a text string to show for the service name in spans (for example, "bookings-web-app").
+        :param pulumi.Input[str] application_name: (Recommended) Add an Application Name tag of a text string to show for the app name in spans (for example, bookings-app). This groups services in the Application Service View. If left blank, services will belong to a "default" application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_tags: Defines custom tags attached to the spans. For example: "internal.version = 0.1.21"
+        :param pulumi.Input[str] deployment_environment: Your production, staging, or development environment name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_urls: Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: "/^https:\\/\\/www.tracker.com\\/.*/, /^https:\\/\\/api.mydomain.com\\/log\\/.*/"
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] propagate_trace_header_cors_urls: (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/" and "/^https:\\/\\/www.3rdparty.com\\/.*/".
+        :param pulumi.Input[float] sampling_rate: Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        :param pulumi.Input[str] selected_country: Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if application_name is not None:
+            pulumi.set(__self__, "application_name", application_name)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+        if deployment_environment is not None:
+            pulumi.set(__self__, "deployment_environment", deployment_environment)
+        if ignore_urls is not None:
+            pulumi.set(__self__, "ignore_urls", ignore_urls)
+        if propagate_trace_header_cors_urls is not None:
+            pulumi.set(__self__, "propagate_trace_header_cors_urls", propagate_trace_header_cors_urls)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+        if selected_country is not None:
+            pulumi.set(__self__, "selected_country", selected_country)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        Add a Service Name of a text string to show for the service name in spans (for example, "bookings-web-app").
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Recommended) Add an Application Name tag of a text string to show for the app name in spans (for example, bookings-app). This groups services in the Application Service View. If left blank, services will belong to a "default" application.
+        """
+        return pulumi.get(self, "application_name")
+
+    @application_name.setter
+    def application_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_name", value)
+
+    @property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Defines custom tags attached to the spans. For example: "internal.version = 0.1.21"
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @custom_tags.setter
+    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_tags", value)
+
+    @property
+    @pulumi.getter(name="deploymentEnvironment")
+    def deployment_environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your production, staging, or development environment name.
+        """
+        return pulumi.get(self, "deployment_environment")
+
+    @deployment_environment.setter
+    def deployment_environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_environment", value)
+
+    @property
+    @pulumi.getter(name="ignoreUrls")
+    def ignore_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: "/^https:\\/\\/www.tracker.com\\/.*/, /^https:\\/\\/api.mydomain.com\\/log\\/.*/"
+        """
+        return pulumi.get(self, "ignore_urls")
+
+    @ignore_urls.setter
+    def ignore_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ignore_urls", value)
+
+    @property
+    @pulumi.getter(name="propagateTraceHeaderCorsUrls")
+    def propagate_trace_header_cors_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/" and "/^https:\\/\\/www.3rdparty.com\\/.*/".
+        """
+        return pulumi.get(self, "propagate_trace_header_cors_urls")
+
+    @propagate_trace_header_cors_urls.setter
+    def propagate_trace_header_cors_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "propagate_trace_header_cors_urls", value)
+
+    @property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        """
+        return pulumi.get(self, "sampling_rate")
+
+    @sampling_rate.setter
+    def sampling_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sampling_rate", value)
+
+    @property
+    @pulumi.getter(name="selectedCountry")
+    def selected_country(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
+        """
+        return pulumi.get(self, "selected_country")
+
+    @selected_country.setter
+    def selected_country(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "selected_country", value)
 
 
 @pulumi.input_type

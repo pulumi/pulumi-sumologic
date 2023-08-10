@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,7 @@ func NewCseCustomMatchListColumn(ctx *pulumi.Context,
 	if args.Fields == nil {
 		return nil, errors.New("invalid value for required argument 'Fields'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseCustomMatchListColumn
 	err := ctx.RegisterResource("sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn", name, args, &resource, opts...)
 	if err != nil {

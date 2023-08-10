@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewCseEntityNormalizationConfiguration(ctx *pulumi.Context,
 	if args.WindowsNormalizationEnabled == nil {
 		return nil, errors.New("invalid value for required argument 'WindowsNormalizationEnabled'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseEntityNormalizationConfiguration
 	err := ctx.RegisterResource("sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration", name, args, &resource, opts...)
 	if err != nil {

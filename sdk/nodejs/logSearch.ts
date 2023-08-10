@@ -19,7 +19,13 @@ import * as utilities from "./utilities";
  * const exampleLogSearch = new sumologic.LogSearch("exampleLogSearch", {
  *     description: "Demo search description",
  *     parentId: personalFolder.then(personalFolder => personalFolder.id),
- *     queryString: "_sourceCategory=api error | count by _sourceHost",
+ *     queryString: `        _sourceCategory=api
+ *         | parse "parameter1=*," as parameter1
+ *         | parse "parameter2=*," as parameter2
+ *         | where parameter1 matches {{param1}}
+ *         | where parameter2 matches {{param2}}
+ *         | count by _sourceHost
+ * `,
  *     parsingMode: "AutoParse",
  *     runByReceiptTime: true,
  *     timeRange: {
@@ -31,6 +37,20 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     },
+ *     queryParameters: [
+ *         {
+ *             name: "param1",
+ *             description: "Description for param1",
+ *             dataType: "STRING",
+ *             value: "*",
+ *         },
+ *         {
+ *             name: "param2",
+ *             description: "Description for param2",
+ *             dataType: "STRING",
+ *             value: "*",
+ *         },
+ *     ],
  *     schedule: {
  *         cronExpression: "0 0 * * * ? *",
  *         muteErrorEmails: false,
@@ -60,6 +80,16 @@ import * as utilities from "./utilities";
  *             thresholdType: "group",
  *         },
  *         timeZone: "America/Los_Angeles",
+ *         parameters: [
+ *             {
+ *                 name: "param1",
+ *                 value: "*",
+ *             },
+ *             {
+ *                 name: "param2",
+ *                 value: "*",
+ *             },
+ *         ],
  *     },
  * });
  * ```
@@ -126,6 +156,10 @@ export class LogSearch extends pulumi.CustomResource {
      * [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
      */
     public readonly parsingMode!: pulumi.Output<string | undefined>;
+    /**
+     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * See query parameter schema.
+     */
     public readonly queryParameters!: pulumi.Output<outputs.LogSearchQueryParameter[] | undefined>;
     /**
      * Log query to perform.
@@ -218,6 +252,10 @@ export interface LogSearchState {
      * [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
      */
     parsingMode?: pulumi.Input<string>;
+    /**
+     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * See query parameter schema.
+     */
     queryParameters?: pulumi.Input<pulumi.Input<inputs.LogSearchQueryParameter>[]>;
     /**
      * Log query to perform.
@@ -263,6 +301,10 @@ export interface LogSearchArgs {
      * [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
      */
     parsingMode?: pulumi.Input<string>;
+    /**
+     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * See query parameter schema.
+     */
     queryParameters?: pulumi.Input<pulumi.Input<inputs.LogSearchQueryParameter>[]>;
     /**
      * Log query to perform.

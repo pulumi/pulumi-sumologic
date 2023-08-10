@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ import (
 // - `multiline` - Multiline processing enabled or not.
 // - `url` - The HTTP endpoint to use for sending data to this source.
 func LookupHttpSource(ctx *pulumi.Context, args *LookupHttpSourceArgs, opts ...pulumi.InvokeOption) (*LookupHttpSourceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHttpSourceResult
 	err := ctx.Invoke("sumologic:index/getHttpSource:getHttpSource", args, &rv, opts...)
 	if err != nil {

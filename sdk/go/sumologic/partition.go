@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ func NewPartition(ctx *pulumi.Context,
 		args = &PartitionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Partition
 	err := ctx.RegisterResource("sumologic:index/partition:Partition", name, args, &resource, opts...)
 	if err != nil {

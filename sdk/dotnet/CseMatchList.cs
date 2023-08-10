@@ -70,9 +70,6 @@ namespace Pulumi.SumoLogic
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// List of match list items. See match_list_item schema for details.
-        /// </summary>
         [Output("items")]
         public Output<ImmutableArray<Outputs.CseMatchListItem>> Items { get; private set; } = null!;
 
@@ -154,10 +151,6 @@ namespace Pulumi.SumoLogic
 
         [Input("items")]
         private InputList<Inputs.CseMatchListItemArgs>? _items;
-
-        /// <summary>
-        /// List of match list items. See match_list_item schema for details.
-        /// </summary>
         public InputList<Inputs.CseMatchListItemArgs> Items
         {
             get => _items ?? (_items = new InputList<Inputs.CseMatchListItemArgs>());
@@ -204,10 +197,6 @@ namespace Pulumi.SumoLogic
 
         [Input("items")]
         private InputList<Inputs.CseMatchListItemGetArgs>? _items;
-
-        /// <summary>
-        /// List of match list items. See match_list_item schema for details.
-        /// </summary>
         public InputList<Inputs.CseMatchListItemGetArgs> Items
         {
             get => _items ?? (_items = new InputList<Inputs.CseMatchListItemGetArgs>());

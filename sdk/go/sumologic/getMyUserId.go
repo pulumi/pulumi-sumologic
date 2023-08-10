@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetMyUserId(ctx *pulumi.Context, args *GetMyUserIdArgs, opts ...pulumi.InvokeOption) (*GetMyUserIdResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMyUserIdResult
 	err := ctx.Invoke("sumologic:index/getMyUserId:getMyUserId", args, &rv, opts...)
 	if err != nil {

@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 func GetAccessId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "sumologic:accessId")
@@ -23,7 +26,7 @@ func GetBaseUrl(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_BASE_URL"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "SUMOLOGIC_BASE_URL"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -34,7 +37,7 @@ func GetEnvironment(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "SUMOLOGIC_ENVIRONMENT"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "SUMOLOGIC_ENVIRONMENT"); d != nil {
 		value = d.(string)
 	}
 	return value

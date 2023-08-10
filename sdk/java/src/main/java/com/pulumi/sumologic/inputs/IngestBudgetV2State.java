@@ -51,14 +51,29 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Capacity of the ingest budget, in bytes.
+     * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+     * 
+     */
+    @Import(name="budgetType")
+    private @Nullable Output<String> budgetType;
+
+    /**
+     * @return The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+     * 
+     */
+    public Optional<Output<String>> budgetType() {
+        return Optional.ofNullable(this.budgetType);
+    }
+
+    /**
+     * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      * 
      */
     @Import(name="capacityBytes")
     private @Nullable Output<Integer> capacityBytes;
 
     /**
-     * @return Capacity of the ingest budget, in bytes.
+     * @return Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      * 
      */
     public Optional<Output<Integer>> capacityBytes() {
@@ -145,6 +160,7 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
     private IngestBudgetV2State(IngestBudgetV2State $) {
         this.action = $.action;
         this.auditThreshold = $.auditThreshold;
+        this.budgetType = $.budgetType;
         this.capacityBytes = $.capacityBytes;
         this.description = $.description;
         this.name = $.name;
@@ -218,7 +234,28 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param capacityBytes Capacity of the ingest budget, in bytes.
+         * @param budgetType The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetType(@Nullable Output<String> budgetType) {
+            $.budgetType = budgetType;
+            return this;
+        }
+
+        /**
+         * @param budgetType The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetType(String budgetType) {
+            return budgetType(Output.of(budgetType));
+        }
+
+        /**
+         * @param capacityBytes Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
          * 
          * @return builder
          * 
@@ -229,7 +266,7 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param capacityBytes Capacity of the ingest budget, in bytes.
+         * @param capacityBytes Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
          * 
          * @return builder
          * 

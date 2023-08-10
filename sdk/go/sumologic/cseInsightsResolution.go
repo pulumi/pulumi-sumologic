@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,6 +69,7 @@ func NewCseInsightsResolution(ctx *pulumi.Context,
 		args = &CseInsightsResolutionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseInsightsResolution
 	err := ctx.RegisterResource("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, args, &resource, opts...)
 	if err != nil {

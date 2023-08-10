@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,9 +38,27 @@ import (
 //				CustomHeaders: pulumi.StringMap{
 //					"X-custom": pulumi.String("my-custom-header"),
 //				},
-//				DefaultPayload:    pulumi.String("{\n  \"client\" : \"Sumo Logic\",\n  \"eventType\" : \"{{Name}}\",\n  \"description\" : \"{{Description}}\",\n  \"search_url\" : \"{{QueryUrl}}\",\n  \"num_records\" : \"{{NumRawResults}}\",\n  \"search_results\" : \"{{AggregateResultsJson}}\"\n}\n"),
-//				ResolutionPayload: pulumi.String("{\n  \"client\" : \"Sumo Logic\",\n  \"eventType\" : \"{{Name}}\",\n  \"description\" : \"{{Description}}\",\n  \"search_url\" : \"{{QueryUrl}}\",\n}\n"),
-//				WebhookType:       pulumi.String("Webhook"),
+//				DefaultPayload: pulumi.String(`{
+//	  "client" : "Sumo Logic",
+//	  "eventType" : "{{Name}}",
+//	  "description" : "{{Description}}",
+//	  "search_url" : "{{QueryUrl}}",
+//	  "num_records" : "{{NumRawResults}}",
+//	  "search_results" : "{{AggregateResultsJson}}"
+//	}
+//
+// `),
+//
+//				ResolutionPayload: pulumi.String(`{
+//	  "client" : "Sumo Logic",
+//	  "eventType" : "{{Name}}",
+//	  "description" : "{{Description}}",
+//	  "search_url" : "{{QueryUrl}}",
+//	}
+//
+// `),
+//
+//				WebhookType: pulumi.String("Webhook"),
 //			})
 //			if err != nil {
 //				return err
@@ -102,6 +121,7 @@ func NewConnection(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connection
 	err := ctx.RegisterResource("sumologic:index/connection:Connection", name, args, &resource, opts...)
 	if err != nil {

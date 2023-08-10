@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 // - `name` - The name of the Personal Folder.
 // - `description` - The description of the Personal Folder.
 func GetPersonalFolder(ctx *pulumi.Context, args *GetPersonalFolderArgs, opts ...pulumi.InvokeOption) (*GetPersonalFolderResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPersonalFolderResult
 	err := ctx.Invoke("sumologic:index/getPersonalFolder:getPersonalFolder", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -116,6 +117,7 @@ func NewCloudToCloudSource(ctx *pulumi.Context,
 	if args.SchemaRef == nil {
 		return nil, errors.New("invalid value for required argument 'SchemaRef'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudToCloudSource
 	err := ctx.RegisterResource("sumologic:index/cloudToCloudSource:CloudToCloudSource", name, args, &resource, opts...)
 	if err != nil {

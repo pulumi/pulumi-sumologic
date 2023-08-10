@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +131,7 @@ func NewCseChainRule(ctx *pulumi.Context,
 	if args.WindowSize == nil {
 		return nil, errors.New("invalid value for required argument 'WindowSize'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseChainRule
 	err := ctx.RegisterResource("sumologic:index/cseChainRule:CseChainRule", name, args, &resource, opts...)
 	if err != nil {

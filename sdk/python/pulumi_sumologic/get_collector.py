@@ -128,12 +128,12 @@ def get_collector(id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getCollector:getCollector', __args__, opts=opts, typ=GetCollectorResult).value
 
     return AwaitableGetCollectorResult(
-        category=__ret__.category,
-        description=__ret__.description,
-        fields=__ret__.fields,
-        id=__ret__.id,
-        name=__ret__.name,
-        timezone=__ret__.timezone)
+        category=pulumi.get(__ret__, 'category'),
+        description=pulumi.get(__ret__, 'description'),
+        fields=pulumi.get(__ret__, 'fields'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        timezone=pulumi.get(__ret__, 'timezone'))
 
 
 @_utilities.lift_output_func(get_collector)

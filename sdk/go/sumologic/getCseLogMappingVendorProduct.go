@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 // - `product` - The name of the product.
 // - `vendor` - The name of the vendor.
 func GetCseLogMappingVendorProduct(ctx *pulumi.Context, args *GetCseLogMappingVendorProductArgs, opts ...pulumi.InvokeOption) (*GetCseLogMappingVendorProductResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCseLogMappingVendorProductResult
 	err := ctx.Invoke("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args, &rv, opts...)
 	if err != nil {

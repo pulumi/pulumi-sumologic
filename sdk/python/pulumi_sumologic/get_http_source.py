@@ -141,14 +141,14 @@ def get_http_source(collector_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getHttpSource:getHttpSource', __args__, opts=opts, typ=GetHttpSourceResult).value
 
     return AwaitableGetHttpSourceResult(
-        category=__ret__.category,
-        collector_id=__ret__.collector_id,
-        description=__ret__.description,
-        id=__ret__.id,
-        multiline=__ret__.multiline,
-        name=__ret__.name,
-        timezone=__ret__.timezone,
-        url=__ret__.url)
+        category=pulumi.get(__ret__, 'category'),
+        collector_id=pulumi.get(__ret__, 'collector_id'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        multiline=pulumi.get(__ret__, 'multiline'),
+        name=pulumi.get(__ret__, 'name'),
+        timezone=pulumi.get(__ret__, 'timezone'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_http_source)

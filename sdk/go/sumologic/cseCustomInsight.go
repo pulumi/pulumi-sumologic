@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -107,6 +108,7 @@ func NewCseCustomInsight(ctx *pulumi.Context,
 	if args.Tags == nil {
 		return nil, errors.New("invalid value for required argument 'Tags'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseCustomInsight
 	err := ctx.RegisterResource("sumologic:index/cseCustomInsight:CseCustomInsight", name, args, &resource, opts...)
 	if err != nil {

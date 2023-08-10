@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -121,6 +122,7 @@ func NewContent(ctx *pulumi.Context,
 	if args.ParentId == nil {
 		return nil, errors.New("invalid value for required argument 'ParentId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Content
 	err := ctx.RegisterResource("sumologic:index/content:Content", name, args, &resource, opts...)
 	if err != nil {

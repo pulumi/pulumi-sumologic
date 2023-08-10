@@ -26,7 +26,6 @@ class CseMatchListArgs:
         :param pulumi.Input[str] description: Match list description.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
-        :param pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]] items: List of match list items. See match_list_item schema for details.
         :param pulumi.Input[str] name: Match list name.
         """
         pulumi.set(__self__, "description", description)
@@ -77,9 +76,6 @@ class CseMatchListArgs:
     @property
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]]]:
-        """
-        List of match list items. See match_list_item schema for details.
-        """
         return pulumi.get(self, "items")
 
     @items.setter
@@ -115,7 +111,6 @@ class _CseMatchListState:
         Input properties used for looking up and filtering CseMatchList resources.
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
         :param pulumi.Input[str] description: Match list description.
-        :param pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]] items: List of match list items. See match_list_item schema for details.
         :param pulumi.Input[str] name: Match list name.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
         """
@@ -183,9 +178,6 @@ class _CseMatchListState:
     @property
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]]]:
-        """
-        List of match list items. See match_list_item schema for details.
-        """
         return pulumi.get(self, "items")
 
     @items.setter
@@ -278,7 +270,6 @@ class CseMatchList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
         :param pulumi.Input[str] description: Match list description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchListItemArgs']]]] items: List of match list items. See match_list_item schema for details.
         :param pulumi.Input[str] name: Match list name.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
         """
@@ -386,7 +377,6 @@ class CseMatchList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
         :param pulumi.Input[str] description: Match list description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchListItemArgs']]]] items: List of match list items. See match_list_item schema for details.
         :param pulumi.Input[str] name: Match list name.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
         """
@@ -434,9 +424,6 @@ class CseMatchList(pulumi.CustomResource):
     @property
     @pulumi.getter
     def items(self) -> pulumi.Output[Optional[Sequence['outputs.CseMatchListItem']]]:
-        """
-        List of match list items. See match_list_item schema for details.
-        """
         return pulumi.get(self, "items")
 
     @property

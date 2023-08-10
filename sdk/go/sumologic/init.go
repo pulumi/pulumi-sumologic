@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +123,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LookupTable{}
 	case "sumologic:index/metadataSource:MetadataSource":
 		r = &MetadataSource{}
+	case "sumologic:index/metricsSearch:MetricsSearch":
+		r = &MetricsSearch{}
 	case "sumologic:index/monitor:Monitor":
 		r = &Monitor{}
 	case "sumologic:index/monitorFolder:MonitorFolder":
@@ -136,6 +139,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PollingSource{}
 	case "sumologic:index/role:Role":
 		r = &Role{}
+	case "sumologic:index/rumSource:RumSource":
+		r = &RumSource{}
 	case "sumologic:index/s3ArchiveSource:S3ArchiveSource":
 		r = &S3ArchiveSource{}
 	case "sumologic:index/s3AuditSource:S3AuditSource":
@@ -183,7 +188,10 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 }
 
 func init() {
-	version, _ := PkgVersion()
+	version, err := internal.PkgVersion()
+	if err != nil {
+		version = semver.Version{Major: 1}
+	}
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/awsInventorySource",
@@ -441,6 +449,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/metricsSearch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/monitor",
 		&module{version},
 	)
@@ -472,6 +485,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/role",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/rumSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

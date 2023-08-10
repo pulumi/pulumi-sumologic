@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ func NewCseEntityCriticalityConfig(ctx *pulumi.Context,
 	if args.SeverityExpression == nil {
 		return nil, errors.New("invalid value for required argument 'SeverityExpression'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseEntityCriticalityConfig
 	err := ctx.RegisterResource("sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig", name, args, &resource, opts...)
 	if err != nil {

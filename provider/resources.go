@@ -19,14 +19,16 @@ import (
 	"path/filepath"
 	"unicode"
 
+	// embed package blank import
+	_ "embed"
+
 	"github.com/SumoLogic/terraform-provider-sumologic/sumologic"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-sumologic/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -82,6 +84,8 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-sumologic",
 		GitHubOrg:        "SumoLogic",
 		UpstreamRepoPath: "./upstream",
+		Version:          version.Version,
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
@@ -234,9 +238,9 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("sumologic_",
-		mainMod, x.MakeStandardToken(mainPkg)))
-	contract.AssertNoErrorf(err, "failed to compute defaults")
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("sumologic_",
+		mainMod, tfbridgetokens.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 
@@ -248,3 +252,6 @@ func noUpstreamDocs() *tfbridge.DocInfo {
 		Markdown: []byte(" "),
 	}
 }
+
+//go:embed cmd/pulumi-resource-sumologic/bridge-metadata.json
+var metadata []byte

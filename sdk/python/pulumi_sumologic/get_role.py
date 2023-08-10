@@ -119,11 +119,11 @@ def get_role(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        capabilities=__ret__.capabilities,
-        description=__ret__.description,
-        filter_predicate=__ret__.filter_predicate,
-        id=__ret__.id,
-        name=__ret__.name)
+        capabilities=pulumi.get(__ret__, 'capabilities'),
+        description=pulumi.get(__ret__, 'description'),
+        filter_predicate=pulumi.get(__ret__, 'filter_predicate'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_role)

@@ -66,6 +66,7 @@ from .local_file_source import *
 from .log_search import *
 from .lookup_table import *
 from .metadata_source import *
+from .metrics_search import *
 from .monitor import *
 from .monitor_folder import *
 from .partition import *
@@ -74,6 +75,7 @@ from .policies import *
 from .polling_source import *
 from .provider import *
 from .role import *
+from .rum_source import *
 from .s3_archive_source import *
 from .s3_audit_source import *
 from .s3_source import *
@@ -507,6 +509,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/metricsSearch",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/metricsSearch:MetricsSearch": "MetricsSearch"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/monitor",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -559,6 +569,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/rumSource",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/rumSource:RumSource": "RumSource"
   }
  },
  {

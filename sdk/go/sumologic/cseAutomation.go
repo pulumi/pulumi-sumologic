@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -104,6 +105,7 @@ func NewCseAutomation(ctx *pulumi.Context,
 	if args.PlaybookId == nil {
 		return nil, errors.New("invalid value for required argument 'PlaybookId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CseAutomation
 	err := ctx.RegisterResource("sumologic:index/cseAutomation:CseAutomation", name, args, &resource, opts...)
 	if err != nil {

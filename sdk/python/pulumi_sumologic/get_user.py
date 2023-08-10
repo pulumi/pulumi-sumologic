@@ -127,12 +127,12 @@ def get_user(email: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        email=__ret__.email,
-        first_name=__ret__.first_name,
-        id=__ret__.id,
-        is_active=__ret__.is_active,
-        last_name=__ret__.last_name,
-        role_ids=__ret__.role_ids)
+        email=pulumi.get(__ret__, 'email'),
+        first_name=pulumi.get(__ret__, 'first_name'),
+        id=pulumi.get(__ret__, 'id'),
+        is_active=pulumi.get(__ret__, 'is_active'),
+        last_name=pulumi.get(__ret__, 'last_name'),
+        role_ids=pulumi.get(__ret__, 'role_ids'))
 
 
 @_utilities.lift_output_func(get_user)

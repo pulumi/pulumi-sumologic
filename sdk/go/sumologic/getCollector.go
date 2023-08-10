@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ import (
 // - `category` - The default source category for any source attached to this collector.
 // - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
 func LookupCollector(ctx *pulumi.Context, args *LookupCollectorArgs, opts ...pulumi.InvokeOption) (*LookupCollectorResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCollectorResult
 	err := ctx.Invoke("sumologic:index/getCollector:getCollector", args, &rv, opts...)
 	if err != nil {

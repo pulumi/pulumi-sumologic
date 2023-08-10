@@ -90,9 +90,19 @@ public final class LogSearchArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parsingMode);
     }
 
+    /**
+     * Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * See query parameter schema.
+     * 
+     */
     @Import(name="queryParameters")
     private @Nullable Output<List<LogSearchQueryParameterArgs>> queryParameters;
 
+    /**
+     * @return Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * See query parameter schema.
+     * 
+     */
     public Optional<Output<List<LogSearchQueryParameterArgs>>> queryParameters() {
         return Optional.ofNullable(this.queryParameters);
     }
@@ -285,15 +295,36 @@ public final class LogSearchArgs extends com.pulumi.resources.ResourceArgs {
             return parsingMode(Output.of(parsingMode));
         }
 
+        /**
+         * @param queryParameters Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+         * See query parameter schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryParameters(@Nullable Output<List<LogSearchQueryParameterArgs>> queryParameters) {
             $.queryParameters = queryParameters;
             return this;
         }
 
+        /**
+         * @param queryParameters Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+         * See query parameter schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryParameters(List<LogSearchQueryParameterArgs> queryParameters) {
             return queryParameters(Output.of(queryParameters));
         }
 
+        /**
+         * @param queryParameters Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+         * See query parameter schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryParameters(LogSearchQueryParameterArgs... queryParameters) {
             return queryParameters(List.of(queryParameters));
         }

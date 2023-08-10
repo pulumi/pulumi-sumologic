@@ -104,10 +104,10 @@ def get_cse_log_mapping_vendor_product(guid: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct', __args__, opts=opts, typ=GetCseLogMappingVendorProductResult).value
 
     return AwaitableGetCseLogMappingVendorProductResult(
-        guid=__ret__.guid,
-        id=__ret__.id,
-        product=__ret__.product,
-        vendor=__ret__.vendor)
+        guid=pulumi.get(__ret__, 'guid'),
+        id=pulumi.get(__ret__, 'id'),
+        product=pulumi.get(__ret__, 'product'),
+        vendor=pulumi.get(__ret__, 'vendor'))
 
 
 @_utilities.lift_output_func(get_cse_log_mapping_vendor_product)
