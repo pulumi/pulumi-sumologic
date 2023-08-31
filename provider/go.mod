@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-sumologic/provider
 
-go 1.20
+go 1.21
 
 require (
 	github.com/SumoLogic/terraform-provider-sumologic v0.0.0
