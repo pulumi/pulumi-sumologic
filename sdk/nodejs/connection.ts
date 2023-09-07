@@ -160,7 +160,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["customHeaders"] = args ? args.customHeaders : undefined;
             resourceInputs["defaultPayload"] = args ? args.defaultPayload : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["headers"] = args ? args.headers : undefined;
+            resourceInputs["headers"] = args?.headers ? pulumi.secret(args.headers) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resolutionPayload"] = args ? args.resolutionPayload : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -168,6 +168,8 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["webhookType"] = args ? args.webhookType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["headers"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }

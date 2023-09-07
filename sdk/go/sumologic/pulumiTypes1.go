@@ -17374,6 +17374,403 @@ func (o MonitorTriggerConditionsSloSliConditionWarningPtrOutput) SliThreshold() 
 	}).(pulumi.Float64PtrOutput)
 }
 
+type MutingScheduleMonitor struct {
+	// True if the schedule applies to all monitors
+	//
+	// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+	All *bool `pulumi:"all"`
+	// List of monitor Ids in hex. Must be empty if `all` is true.
+	Ids []string `pulumi:"ids"`
+}
+
+// MutingScheduleMonitorInput is an input type that accepts MutingScheduleMonitorArgs and MutingScheduleMonitorOutput values.
+// You can construct a concrete instance of `MutingScheduleMonitorInput` via:
+//
+//	MutingScheduleMonitorArgs{...}
+type MutingScheduleMonitorInput interface {
+	pulumi.Input
+
+	ToMutingScheduleMonitorOutput() MutingScheduleMonitorOutput
+	ToMutingScheduleMonitorOutputWithContext(context.Context) MutingScheduleMonitorOutput
+}
+
+type MutingScheduleMonitorArgs struct {
+	// True if the schedule applies to all monitors
+	//
+	// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// List of monitor Ids in hex. Must be empty if `all` is true.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (MutingScheduleMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutingScheduleMonitor)(nil)).Elem()
+}
+
+func (i MutingScheduleMonitorArgs) ToMutingScheduleMonitorOutput() MutingScheduleMonitorOutput {
+	return i.ToMutingScheduleMonitorOutputWithContext(context.Background())
+}
+
+func (i MutingScheduleMonitorArgs) ToMutingScheduleMonitorOutputWithContext(ctx context.Context) MutingScheduleMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleMonitorOutput)
+}
+
+func (i MutingScheduleMonitorArgs) ToMutingScheduleMonitorPtrOutput() MutingScheduleMonitorPtrOutput {
+	return i.ToMutingScheduleMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i MutingScheduleMonitorArgs) ToMutingScheduleMonitorPtrOutputWithContext(ctx context.Context) MutingScheduleMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleMonitorOutput).ToMutingScheduleMonitorPtrOutputWithContext(ctx)
+}
+
+// MutingScheduleMonitorPtrInput is an input type that accepts MutingScheduleMonitorArgs, MutingScheduleMonitorPtr and MutingScheduleMonitorPtrOutput values.
+// You can construct a concrete instance of `MutingScheduleMonitorPtrInput` via:
+//
+//	        MutingScheduleMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type MutingScheduleMonitorPtrInput interface {
+	pulumi.Input
+
+	ToMutingScheduleMonitorPtrOutput() MutingScheduleMonitorPtrOutput
+	ToMutingScheduleMonitorPtrOutputWithContext(context.Context) MutingScheduleMonitorPtrOutput
+}
+
+type mutingScheduleMonitorPtrType MutingScheduleMonitorArgs
+
+func MutingScheduleMonitorPtr(v *MutingScheduleMonitorArgs) MutingScheduleMonitorPtrInput {
+	return (*mutingScheduleMonitorPtrType)(v)
+}
+
+func (*mutingScheduleMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutingScheduleMonitor)(nil)).Elem()
+}
+
+func (i *mutingScheduleMonitorPtrType) ToMutingScheduleMonitorPtrOutput() MutingScheduleMonitorPtrOutput {
+	return i.ToMutingScheduleMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *mutingScheduleMonitorPtrType) ToMutingScheduleMonitorPtrOutputWithContext(ctx context.Context) MutingScheduleMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleMonitorPtrOutput)
+}
+
+type MutingScheduleMonitorOutput struct{ *pulumi.OutputState }
+
+func (MutingScheduleMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutingScheduleMonitor)(nil)).Elem()
+}
+
+func (o MutingScheduleMonitorOutput) ToMutingScheduleMonitorOutput() MutingScheduleMonitorOutput {
+	return o
+}
+
+func (o MutingScheduleMonitorOutput) ToMutingScheduleMonitorOutputWithContext(ctx context.Context) MutingScheduleMonitorOutput {
+	return o
+}
+
+func (o MutingScheduleMonitorOutput) ToMutingScheduleMonitorPtrOutput() MutingScheduleMonitorPtrOutput {
+	return o.ToMutingScheduleMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o MutingScheduleMonitorOutput) ToMutingScheduleMonitorPtrOutputWithContext(ctx context.Context) MutingScheduleMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MutingScheduleMonitor) *MutingScheduleMonitor {
+		return &v
+	}).(MutingScheduleMonitorPtrOutput)
+}
+
+// True if the schedule applies to all monitors
+//
+// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+func (o MutingScheduleMonitorOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MutingScheduleMonitor) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// List of monitor Ids in hex. Must be empty if `all` is true.
+func (o MutingScheduleMonitorOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MutingScheduleMonitor) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type MutingScheduleMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (MutingScheduleMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutingScheduleMonitor)(nil)).Elem()
+}
+
+func (o MutingScheduleMonitorPtrOutput) ToMutingScheduleMonitorPtrOutput() MutingScheduleMonitorPtrOutput {
+	return o
+}
+
+func (o MutingScheduleMonitorPtrOutput) ToMutingScheduleMonitorPtrOutputWithContext(ctx context.Context) MutingScheduleMonitorPtrOutput {
+	return o
+}
+
+func (o MutingScheduleMonitorPtrOutput) Elem() MutingScheduleMonitorOutput {
+	return o.ApplyT(func(v *MutingScheduleMonitor) MutingScheduleMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret MutingScheduleMonitor
+		return ret
+	}).(MutingScheduleMonitorOutput)
+}
+
+// True if the schedule applies to all monitors
+//
+// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+func (o MutingScheduleMonitorPtrOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MutingScheduleMonitor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.All
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of monitor Ids in hex. Must be empty if `all` is true.
+func (o MutingScheduleMonitorPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MutingScheduleMonitor) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type MutingScheduleSchedule struct {
+	// Duration of the muting in minutes
+	Duration int `pulumi:"duration"`
+	// RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+	// A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+	// An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+	// Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+	// (https://freetools.textmagic.com/rrule-generator)
+	Rrule *string `pulumi:"rrule"`
+	// Schedule start date in the format of `yyyy-mm-dd`
+	StartDate string `pulumi:"startDate"`
+	// Schedule start time in the format of `hh:mm`
+	StartTime string `pulumi:"startTime"`
+	// Time zone for the schedule per
+	// [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+	Timezone string `pulumi:"timezone"`
+}
+
+// MutingScheduleScheduleInput is an input type that accepts MutingScheduleScheduleArgs and MutingScheduleScheduleOutput values.
+// You can construct a concrete instance of `MutingScheduleScheduleInput` via:
+//
+//	MutingScheduleScheduleArgs{...}
+type MutingScheduleScheduleInput interface {
+	pulumi.Input
+
+	ToMutingScheduleScheduleOutput() MutingScheduleScheduleOutput
+	ToMutingScheduleScheduleOutputWithContext(context.Context) MutingScheduleScheduleOutput
+}
+
+type MutingScheduleScheduleArgs struct {
+	// Duration of the muting in minutes
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+	// A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+	// An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+	// Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+	// (https://freetools.textmagic.com/rrule-generator)
+	Rrule pulumi.StringPtrInput `pulumi:"rrule"`
+	// Schedule start date in the format of `yyyy-mm-dd`
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+	// Schedule start time in the format of `hh:mm`
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Time zone for the schedule per
+	// [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+	Timezone pulumi.StringInput `pulumi:"timezone"`
+}
+
+func (MutingScheduleScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutingScheduleSchedule)(nil)).Elem()
+}
+
+func (i MutingScheduleScheduleArgs) ToMutingScheduleScheduleOutput() MutingScheduleScheduleOutput {
+	return i.ToMutingScheduleScheduleOutputWithContext(context.Background())
+}
+
+func (i MutingScheduleScheduleArgs) ToMutingScheduleScheduleOutputWithContext(ctx context.Context) MutingScheduleScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleScheduleOutput)
+}
+
+func (i MutingScheduleScheduleArgs) ToMutingScheduleSchedulePtrOutput() MutingScheduleSchedulePtrOutput {
+	return i.ToMutingScheduleSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i MutingScheduleScheduleArgs) ToMutingScheduleSchedulePtrOutputWithContext(ctx context.Context) MutingScheduleSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleScheduleOutput).ToMutingScheduleSchedulePtrOutputWithContext(ctx)
+}
+
+// MutingScheduleSchedulePtrInput is an input type that accepts MutingScheduleScheduleArgs, MutingScheduleSchedulePtr and MutingScheduleSchedulePtrOutput values.
+// You can construct a concrete instance of `MutingScheduleSchedulePtrInput` via:
+//
+//	        MutingScheduleScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type MutingScheduleSchedulePtrInput interface {
+	pulumi.Input
+
+	ToMutingScheduleSchedulePtrOutput() MutingScheduleSchedulePtrOutput
+	ToMutingScheduleSchedulePtrOutputWithContext(context.Context) MutingScheduleSchedulePtrOutput
+}
+
+type mutingScheduleSchedulePtrType MutingScheduleScheduleArgs
+
+func MutingScheduleSchedulePtr(v *MutingScheduleScheduleArgs) MutingScheduleSchedulePtrInput {
+	return (*mutingScheduleSchedulePtrType)(v)
+}
+
+func (*mutingScheduleSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutingScheduleSchedule)(nil)).Elem()
+}
+
+func (i *mutingScheduleSchedulePtrType) ToMutingScheduleSchedulePtrOutput() MutingScheduleSchedulePtrOutput {
+	return i.ToMutingScheduleSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *mutingScheduleSchedulePtrType) ToMutingScheduleSchedulePtrOutputWithContext(ctx context.Context) MutingScheduleSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleSchedulePtrOutput)
+}
+
+type MutingScheduleScheduleOutput struct{ *pulumi.OutputState }
+
+func (MutingScheduleScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutingScheduleSchedule)(nil)).Elem()
+}
+
+func (o MutingScheduleScheduleOutput) ToMutingScheduleScheduleOutput() MutingScheduleScheduleOutput {
+	return o
+}
+
+func (o MutingScheduleScheduleOutput) ToMutingScheduleScheduleOutputWithContext(ctx context.Context) MutingScheduleScheduleOutput {
+	return o
+}
+
+func (o MutingScheduleScheduleOutput) ToMutingScheduleSchedulePtrOutput() MutingScheduleSchedulePtrOutput {
+	return o.ToMutingScheduleSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o MutingScheduleScheduleOutput) ToMutingScheduleSchedulePtrOutputWithContext(ctx context.Context) MutingScheduleSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MutingScheduleSchedule) *MutingScheduleSchedule {
+		return &v
+	}).(MutingScheduleSchedulePtrOutput)
+}
+
+// Duration of the muting in minutes
+func (o MutingScheduleScheduleOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v MutingScheduleSchedule) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+// RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+// A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+// An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+// Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+// (https://freetools.textmagic.com/rrule-generator)
+func (o MutingScheduleScheduleOutput) Rrule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MutingScheduleSchedule) *string { return v.Rrule }).(pulumi.StringPtrOutput)
+}
+
+// Schedule start date in the format of `yyyy-mm-dd`
+func (o MutingScheduleScheduleOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v MutingScheduleSchedule) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+// Schedule start time in the format of `hh:mm`
+func (o MutingScheduleScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MutingScheduleSchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Time zone for the schedule per
+// [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+func (o MutingScheduleScheduleOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v MutingScheduleSchedule) string { return v.Timezone }).(pulumi.StringOutput)
+}
+
+type MutingScheduleSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (MutingScheduleSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutingScheduleSchedule)(nil)).Elem()
+}
+
+func (o MutingScheduleSchedulePtrOutput) ToMutingScheduleSchedulePtrOutput() MutingScheduleSchedulePtrOutput {
+	return o
+}
+
+func (o MutingScheduleSchedulePtrOutput) ToMutingScheduleSchedulePtrOutputWithContext(ctx context.Context) MutingScheduleSchedulePtrOutput {
+	return o
+}
+
+func (o MutingScheduleSchedulePtrOutput) Elem() MutingScheduleScheduleOutput {
+	return o.ApplyT(func(v *MutingScheduleSchedule) MutingScheduleSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret MutingScheduleSchedule
+		return ret
+	}).(MutingScheduleScheduleOutput)
+}
+
+// Duration of the muting in minutes
+func (o MutingScheduleSchedulePtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MutingScheduleSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+// RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+// A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+// An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+// Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+// (https://freetools.textmagic.com/rrule-generator)
+func (o MutingScheduleSchedulePtrOutput) Rrule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MutingScheduleSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rrule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schedule start date in the format of `yyyy-mm-dd`
+func (o MutingScheduleSchedulePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MutingScheduleSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schedule start time in the format of `hh:mm`
+func (o MutingScheduleSchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MutingScheduleSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time zone for the schedule per
+// [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+func (o MutingScheduleSchedulePtrOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MutingScheduleSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timezone
+	}).(pulumi.StringPtrOutput)
+}
+
 type PoliciesUserConcurrentSessionsLimit struct {
 	// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -24199,6 +24596,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionCriticalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionWarningInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionWarningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsSloSliConditionWarningPtrInput)(nil)).Elem(), MonitorTriggerConditionsSloSliConditionWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutingScheduleMonitorInput)(nil)).Elem(), MutingScheduleMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutingScheduleMonitorPtrInput)(nil)).Elem(), MutingScheduleMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutingScheduleScheduleInput)(nil)).Elem(), MutingScheduleScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutingScheduleSchedulePtrInput)(nil)).Elem(), MutingScheduleScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesUserConcurrentSessionsLimitInput)(nil)).Elem(), PoliciesUserConcurrentSessionsLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoliciesUserConcurrentSessionsLimitPtrInput)(nil)).Elem(), PoliciesUserConcurrentSessionsLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PollingSourceAuthenticationInput)(nil)).Elem(), PollingSourceAuthenticationArgs{})
@@ -24507,6 +24908,10 @@ func init() {
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionCriticalPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionWarningOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsSloSliConditionWarningPtrOutput{})
+	pulumi.RegisterOutputType(MutingScheduleMonitorOutput{})
+	pulumi.RegisterOutputType(MutingScheduleMonitorPtrOutput{})
+	pulumi.RegisterOutputType(MutingScheduleScheduleOutput{})
+	pulumi.RegisterOutputType(MutingScheduleSchedulePtrOutput{})
 	pulumi.RegisterOutputType(PoliciesUserConcurrentSessionsLimitOutput{})
 	pulumi.RegisterOutputType(PoliciesUserConcurrentSessionsLimitPtrOutput{})
 	pulumi.RegisterOutputType(PollingSourceAuthenticationOutput{})

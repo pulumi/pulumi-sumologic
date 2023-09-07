@@ -316,6 +316,10 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly statuses!: pulumi.Output<string[]>;
     /**
+     * A map defining tag keys and tag values for the Monitor.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
      */
     public readonly triggerConditions!: pulumi.Output<outputs.MonitorTriggerConditions | undefined>;
@@ -368,6 +372,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["queries"] = state ? state.queries : undefined;
             resourceInputs["sloId"] = state ? state.sloId : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["triggerConditions"] = state ? state.triggerConditions : undefined;
             resourceInputs["triggers"] = state ? state.triggers : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -401,6 +406,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["queries"] = args ? args.queries : undefined;
             resourceInputs["sloId"] = args ? args.sloId : undefined;
             resourceInputs["statuses"] = args ? args.statuses : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["triggerConditions"] = args ? args.triggerConditions : undefined;
             resourceInputs["triggers"] = args ? args.triggers : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -492,6 +498,10 @@ export interface MonitorState {
      * The current status for this monitor. Values are:
      */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A map defining tag keys and tag values for the Monitor.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
      */
@@ -590,6 +600,10 @@ export interface MonitorArgs {
      * The current status for this monitor. Values are:
      */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A map defining tag keys and tag values for the Monitor.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
      */

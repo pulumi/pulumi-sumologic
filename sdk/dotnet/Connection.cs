@@ -153,6 +153,10 @@ namespace Pulumi.SumoLogic
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "headers",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -215,7 +219,11 @@ namespace Pulumi.SumoLogic
         public InputMap<string> Headers
         {
             get => _headers ?? (_headers = new InputMap<string>());
-            set => _headers = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _headers = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -297,7 +305,11 @@ namespace Pulumi.SumoLogic
         public InputMap<string> Headers
         {
             get => _headers ?? (_headers = new InputMap<string>());
-            set => _headers = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _headers = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

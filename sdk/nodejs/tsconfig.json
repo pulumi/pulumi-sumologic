@@ -80,6 +80,7 @@
         "metricsSearch.ts",
         "monitor.ts",
         "monitorFolder.ts",
+        "mutingSchedule.ts",
         "partition.ts",
         "passwordPolicy.ts",
         "policies.ts",

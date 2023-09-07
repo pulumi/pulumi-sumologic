@@ -121,6 +121,13 @@ func NewConnection(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.Headers != nil {
+		args.Headers = pulumi.ToSecret(args.Headers).(pulumi.StringMapInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"headers",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connection
 	err := ctx.RegisterResource("sumologic:index/connection:Connection", name, args, &resource, opts...)

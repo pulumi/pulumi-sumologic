@@ -626,6 +626,8 @@ __all__ = [
     'MonitorTriggerConditionsSloSliCondition',
     'MonitorTriggerConditionsSloSliConditionCritical',
     'MonitorTriggerConditionsSloSliConditionWarning',
+    'MutingScheduleMonitor',
+    'MutingScheduleSchedule',
     'PoliciesUserConcurrentSessionsLimit',
     'PollingSourceAuthentication',
     'PollingSourceDefaultDateFormat',
@@ -30657,6 +30659,133 @@ class MonitorTriggerConditionsSloSliConditionWarning(dict):
     @pulumi.getter(name="sliThreshold")
     def sli_threshold(self) -> float:
         return pulumi.get(self, "sli_threshold")
+
+
+@pulumi.output_type
+class MutingScheduleMonitor(dict):
+    def __init__(__self__, *,
+                 all: Optional[bool] = None,
+                 ids: Optional[Sequence[str]] = None):
+        """
+        :param bool all: True if the schedule applies to all monitors
+               
+               [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+        :param Sequence[str] ids: List of monitor Ids in hex. Must be empty if `all` is true.
+        """
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        True if the schedule applies to all monitors
+
+        [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+        """
+        return pulumi.get(self, "all")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[str]]:
+        """
+        List of monitor Ids in hex. Must be empty if `all` is true.
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class MutingScheduleSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startDate":
+            suggest = "start_date"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MutingScheduleSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MutingScheduleSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MutingScheduleSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: int,
+                 start_date: str,
+                 start_time: str,
+                 timezone: str,
+                 rrule: Optional[str] = None):
+        """
+        :param int duration: Duration of the muting in minutes
+        :param str start_date: Schedule start date in the format of `yyyy-mm-dd`
+        :param str start_time: Schedule start time in the format of `hh:mm`
+        :param str timezone: Time zone for the schedule per
+               [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        :param str rrule: RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+               A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+               An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+               Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+               (https://freetools.textmagic.com/rrule-generator)
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "timezone", timezone)
+        if rrule is not None:
+            pulumi.set(__self__, "rrule", rrule)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        """
+        Duration of the muting in minutes
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> str:
+        """
+        Schedule start date in the format of `yyyy-mm-dd`
+        """
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Schedule start time in the format of `hh:mm`
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> str:
+        """
+        Time zone for the schedule per
+        [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        """
+        return pulumi.get(self, "timezone")
+
+    @property
+    @pulumi.getter
+    def rrule(self) -> Optional[str]:
+        """
+        RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+        A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+        An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+        Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+        (https://freetools.textmagic.com/rrule-generator)
+        """
+        return pulumi.get(self, "rrule")
 
 
 @pulumi.output_type

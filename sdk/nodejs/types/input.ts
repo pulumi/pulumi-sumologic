@@ -6991,6 +6991,47 @@ export interface MonitorTriggerConditionsSloSliConditionWarning {
     sliThreshold: pulumi.Input<number>;
 }
 
+export interface MutingScheduleMonitor {
+    /**
+     * True if the schedule applies to all monitors
+     *
+     * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * List of monitor Ids in hex. Must be empty if `all` is true.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface MutingScheduleSchedule {
+    /**
+     * Duration of the muting in minutes
+     */
+    duration: pulumi.Input<number>;
+    /**
+     * RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+     * A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+     * An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+     * Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+     * (https://freetools.textmagic.com/rrule-generator)
+     */
+    rrule?: pulumi.Input<string>;
+    /**
+     * Schedule start date in the format of `yyyy-mm-dd`
+     */
+    startDate: pulumi.Input<string>;
+    /**
+     * Schedule start time in the format of `hh:mm`
+     */
+    startTime: pulumi.Input<string>;
+    /**
+     * Time zone for the schedule per
+     * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+     */
+    timezone: pulumi.Input<string>;
+}
+
 export interface PoliciesUserConcurrentSessionsLimit {
     /**
      * Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.

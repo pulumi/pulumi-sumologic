@@ -69,6 +69,7 @@ from .metadata_source import *
 from .metrics_search import *
 from .monitor import *
 from .monitor_folder import *
+from .muting_schedule import *
 from .partition import *
 from .password_policy import *
 from .policies import *
@@ -529,6 +530,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/monitorFolder:MonitorFolder": "MonitorFolder"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/mutingSchedule",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/mutingSchedule:MutingSchedule": "MutingSchedule"
   }
  },
  {

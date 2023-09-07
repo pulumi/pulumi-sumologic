@@ -319,6 +319,8 @@ type Monitor struct {
 	SloId pulumi.StringPtrOutput `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
 	Statuses pulumi.StringArrayOutput `pulumi:"statuses"`
+	// A map defining tag keys and tag values for the Monitor.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrOutput `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
@@ -408,6 +410,8 @@ type monitorState struct {
 	SloId *string `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
 	Statuses []string `pulumi:"statuses"`
+	// A map defining tag keys and tag values for the Monitor.
+	Tags map[string]string `pulumi:"tags"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
@@ -465,6 +469,8 @@ type MonitorState struct {
 	SloId pulumi.StringPtrInput
 	// The current status for this monitor. Values are:
 	Statuses pulumi.StringArrayInput
+	// A map defining tag keys and tag values for the Monitor.
+	Tags pulumi.StringMapInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
 	// Defines the conditions of when to send notifications.
@@ -526,6 +532,8 @@ type monitorArgs struct {
 	SloId *string `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
 	Statuses []string `pulumi:"statuses"`
+	// A map defining tag keys and tag values for the Monitor.
+	Tags map[string]string `pulumi:"tags"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
@@ -584,6 +592,8 @@ type MonitorArgs struct {
 	SloId pulumi.StringPtrInput
 	// The current status for this monitor. Values are:
 	Statuses pulumi.StringArrayInput
+	// A map defining tag keys and tag values for the Monitor.
+	Tags pulumi.StringMapInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
 	// Defines the conditions of when to send notifications.
@@ -797,6 +807,11 @@ func (o MonitorOutput) SloId() pulumi.StringPtrOutput {
 // The current status for this monitor. Values are:
 func (o MonitorOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringArrayOutput { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+// A map defining tag keys and tag values for the Monitor.
+func (o MonitorOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.

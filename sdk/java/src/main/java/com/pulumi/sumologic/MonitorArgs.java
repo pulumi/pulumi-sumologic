@@ -331,6 +331,21 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A map defining tag keys and tag values for the Monitor.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A map defining tag keys and tag values for the Monitor.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
      * 
      */
@@ -417,6 +432,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         this.queries = $.queries;
         this.sloId = $.sloId;
         this.statuses = $.statuses;
+        this.tags = $.tags;
         this.triggerConditions = $.triggerConditions;
         this.triggers = $.triggers;
         this.type = $.type;
@@ -907,6 +923,27 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder statuses(String... statuses) {
             return statuses(List.of(statuses));
+        }
+
+        /**
+         * @param tags A map defining tag keys and tag values for the Monitor.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A map defining tag keys and tag values for the Monitor.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
