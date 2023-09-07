@@ -625,6 +625,8 @@ __all__ = [
     'MonitorTriggerConditionsSloSliConditionArgs',
     'MonitorTriggerConditionsSloSliConditionCriticalArgs',
     'MonitorTriggerConditionsSloSliConditionWarningArgs',
+    'MutingScheduleMonitorArgs',
+    'MutingScheduleScheduleArgs',
     'PoliciesUserConcurrentSessionsLimitArgs',
     'PollingSourceAuthenticationArgs',
     'PollingSourceDefaultDateFormatArgs',
@@ -28459,6 +28461,142 @@ class MonitorTriggerConditionsSloSliConditionWarningArgs:
     @sli_threshold.setter
     def sli_threshold(self, value: pulumi.Input[float]):
         pulumi.set(self, "sli_threshold", value)
+
+
+@pulumi.input_type
+class MutingScheduleMonitorArgs:
+    def __init__(__self__, *,
+                 all: Optional[pulumi.Input[bool]] = None,
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] all: True if the schedule applies to all monitors
+               
+               [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: List of monitor Ids in hex. Must be empty if `all` is true.
+        """
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the schedule applies to all monitors
+
+        [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "all", value)
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of monitor Ids in hex. Must be empty if `all` is true.
+        """
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class MutingScheduleScheduleArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[int],
+                 start_date: pulumi.Input[str],
+                 start_time: pulumi.Input[str],
+                 timezone: pulumi.Input[str],
+                 rrule: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] duration: Duration of the muting in minutes
+        :param pulumi.Input[str] start_date: Schedule start date in the format of `yyyy-mm-dd`
+        :param pulumi.Input[str] start_time: Schedule start time in the format of `hh:mm`
+        :param pulumi.Input[str] timezone: Time zone for the schedule per
+               [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        :param pulumi.Input[str] rrule: RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+               A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+               An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+               Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+               (https://freetools.textmagic.com/rrule-generator)
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "timezone", timezone)
+        if rrule is not None:
+            pulumi.set(__self__, "rrule", rrule)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        """
+        Duration of the muting in minutes
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[str]:
+        """
+        Schedule start date in the format of `yyyy-mm-dd`
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_date", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        Schedule start time in the format of `hh:mm`
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> pulumi.Input[str]:
+        """
+        Time zone for the schedule per
+        [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter
+    def rrule(self) -> Optional[pulumi.Input[str]]:
+        """
+        RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
+        A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
+        An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
+        Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
+        (https://freetools.textmagic.com/rrule-generator)
+        """
+        return pulumi.get(self, "rrule")
+
+    @rrule.setter
+    def rrule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rrule", value)
 
 
 @pulumi.input_type

@@ -78,6 +78,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .playbook(&#34;test playbook&#34;)
  *             .sloId(&#34;0000000000000009&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;),
+ *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;)
+ *             ))
  *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
  *                 .sloSliCondition(MonitorTriggerConditionsSloSliConditionArgs.builder()
  *                     .critical(MonitorTriggerConditionsSloSliConditionCriticalArgs.builder()
@@ -97,6 +101,10 @@ import javax.annotation.Nullable;
  *             .isDisabled(false)
  *             .monitorType(&#34;Slo&#34;)
  *             .sloId(&#34;0000000000000009&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;),
+ *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;)
+ *             ))
  *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
  *                 .sloBurnRateCondition(MonitorTriggerConditionsSloBurnRateConditionArgs.builder()
  *                     .critical(MonitorTriggerConditionsSloBurnRateConditionCriticalArgs.builder()
@@ -660,6 +668,20 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> statuses() {
         return this.statuses;
+    }
+    /**
+     * A map defining tag keys and tag values for the Monitor.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map defining tag keys and tag values for the Monitor.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.

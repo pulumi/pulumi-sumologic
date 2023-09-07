@@ -521,7 +521,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'default_payload'")
             __props__.__dict__["default_payload"] = default_payload
             __props__.__dict__["description"] = description
-            __props__.__dict__["headers"] = headers
+            __props__.__dict__["headers"] = None if headers is None else pulumi.Output.secret(headers)
             __props__.__dict__["name"] = name
             __props__.__dict__["resolution_payload"] = resolution_payload
             if type is None and not opts.urn:
@@ -531,6 +531,8 @@ class Connection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
             __props__.__dict__["webhook_type"] = webhook_type
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["headers"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Connection, __self__).__init__(
             'sumologic:index/connection:Connection',
             resource_name,

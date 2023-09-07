@@ -129,6 +129,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Monitor{}
 	case "sumologic:index/monitorFolder:MonitorFolder":
 		r = &MonitorFolder{}
+	case "sumologic:index/mutingSchedule:MutingSchedule":
+		r = &MutingSchedule{}
 	case "sumologic:index/partition:Partition":
 		r = &Partition{}
 	case "sumologic:index/passwordPolicy:PasswordPolicy":
@@ -460,6 +462,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/monitorFolder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/mutingSchedule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -381,6 +381,12 @@ namespace Pulumi.SumoLogic
         public Output<ImmutableArray<string>> Statuses { get; private set; } = null!;
 
         /// <summary>
+        /// A map defining tag keys and tag values for the Monitor.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         /// </summary>
         [Output("triggerConditions")]
@@ -607,6 +613,18 @@ namespace Pulumi.SumoLogic
             set => _statuses = value;
         }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map defining tag keys and tag values for the Monitor.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         /// </summary>
@@ -801,6 +819,18 @@ namespace Pulumi.SumoLogic
         {
             get => _statuses ?? (_statuses = new InputList<string>());
             set => _statuses = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map defining tag keys and tag values for the Monitor.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
         }
 
         /// <summary>

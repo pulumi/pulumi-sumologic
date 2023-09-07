@@ -40,6 +40,7 @@ class MonitorArgs:
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -67,6 +68,7 @@ class MonitorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
@@ -118,6 +120,8 @@ class MonitorArgs:
             pulumi.set(__self__, "slo_id", slo_id)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if trigger_conditions is not None:
             pulumi.set(__self__, "trigger_conditions", trigger_conditions)
         if triggers is not None:
@@ -400,6 +404,18 @@ class MonitorArgs:
         pulumi.set(self, "statuses", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map defining tag keys and tag values for the Monitor.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="triggerConditions")
     def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
         """
@@ -475,6 +491,7 @@ class _MonitorState:
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -502,6 +519,7 @@ class _MonitorState:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
@@ -554,6 +572,8 @@ class _MonitorState:
             pulumi.set(__self__, "slo_id", slo_id)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if trigger_conditions is not None:
             pulumi.set(__self__, "trigger_conditions", trigger_conditions)
         if triggers is not None:
@@ -836,6 +856,18 @@ class _MonitorState:
         pulumi.set(self, "statuses", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map defining tag keys and tag values for the Monitor.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="triggerConditions")
     def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
         """
@@ -913,6 +945,7 @@ class Monitor(pulumi.CustomResource):
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1144,6 +1177,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
@@ -1396,6 +1430,7 @@ class Monitor(pulumi.CustomResource):
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1435,6 +1470,7 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["queries"] = queries
             __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["statuses"] = statuses
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["trigger_conditions"] = trigger_conditions
             if triggers is not None and not opts.urn:
                 warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
@@ -1476,6 +1512,7 @@ class Monitor(pulumi.CustomResource):
             queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
             slo_id: Optional[pulumi.Input[str]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
             triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1508,6 +1545,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
@@ -1540,6 +1578,7 @@ class Monitor(pulumi.CustomResource):
         __props__.__dict__["queries"] = queries
         __props__.__dict__["slo_id"] = slo_id
         __props__.__dict__["statuses"] = statuses
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["trigger_conditions"] = trigger_conditions
         __props__.__dict__["triggers"] = triggers
         __props__.__dict__["type"] = type
@@ -1718,6 +1757,14 @@ class Monitor(pulumi.CustomResource):
         The current status for this monitor. Values are:
         """
         return pulumi.get(self, "statuses")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map defining tag keys and tag values for the Monitor.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="triggerConditions")

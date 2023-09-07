@@ -324,6 +324,11 @@ export type MonitorFolder = import("./monitorFolder").MonitorFolder;
 export const MonitorFolder: typeof import("./monitorFolder").MonitorFolder = null as any;
 utilities.lazyLoad(exports, ["MonitorFolder"], () => require("./monitorFolder"));
 
+export { MutingScheduleArgs, MutingScheduleState } from "./mutingSchedule";
+export type MutingSchedule = import("./mutingSchedule").MutingSchedule;
+export const MutingSchedule: typeof import("./mutingSchedule").MutingSchedule = null as any;
+utilities.lazyLoad(exports, ["MutingSchedule"], () => require("./mutingSchedule"));
+
 export { PartitionArgs, PartitionState } from "./partition";
 export type Partition = import("./partition").Partition;
 export const Partition: typeof import("./partition").Partition = null as any;
@@ -531,6 +536,8 @@ const _module = {
                 return new Monitor(name, <any>undefined, { urn })
             case "sumologic:index/monitorFolder:MonitorFolder":
                 return new MonitorFolder(name, <any>undefined, { urn })
+            case "sumologic:index/mutingSchedule:MutingSchedule":
+                return new MutingSchedule(name, <any>undefined, { urn })
             case "sumologic:index/partition:Partition":
                 return new Partition(name, <any>undefined, { urn })
             case "sumologic:index/passwordPolicy:PasswordPolicy":
@@ -622,6 +629,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/metadataSource", _modu
 pulumi.runtime.registerResourceModule("sumologic", "index/metricsSearch", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitor", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitorFolder", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/mutingSchedule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/partition", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/passwordPolicy", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/policies", _module)
