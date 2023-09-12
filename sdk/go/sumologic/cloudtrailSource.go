@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic CloudTrail source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source).
@@ -310,6 +311,12 @@ func (i *CloudtrailSource) ToCloudtrailSourceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourceOutput)
 }
 
+func (i *CloudtrailSource) ToOutput(ctx context.Context) pulumix.Output[*CloudtrailSource] {
+	return pulumix.Output[*CloudtrailSource]{
+		OutputState: i.ToCloudtrailSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudtrailSourceArrayInput is an input type that accepts CloudtrailSourceArray and CloudtrailSourceArrayOutput values.
 // You can construct a concrete instance of `CloudtrailSourceArrayInput` via:
 //
@@ -333,6 +340,12 @@ func (i CloudtrailSourceArray) ToCloudtrailSourceArrayOutput() CloudtrailSourceA
 
 func (i CloudtrailSourceArray) ToCloudtrailSourceArrayOutputWithContext(ctx context.Context) CloudtrailSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourceArrayOutput)
+}
+
+func (i CloudtrailSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudtrailSource] {
+	return pulumix.Output[[]*CloudtrailSource]{
+		OutputState: i.ToCloudtrailSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CloudtrailSourceMapInput is an input type that accepts CloudtrailSourceMap and CloudtrailSourceMapOutput values.
@@ -360,6 +373,12 @@ func (i CloudtrailSourceMap) ToCloudtrailSourceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CloudtrailSourceMapOutput)
 }
 
+func (i CloudtrailSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudtrailSource] {
+	return pulumix.Output[map[string]*CloudtrailSource]{
+		OutputState: i.ToCloudtrailSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudtrailSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudtrailSourceOutput) ElementType() reflect.Type {
@@ -372,6 +391,12 @@ func (o CloudtrailSourceOutput) ToCloudtrailSourceOutput() CloudtrailSourceOutpu
 
 func (o CloudtrailSourceOutput) ToCloudtrailSourceOutputWithContext(ctx context.Context) CloudtrailSourceOutput {
 	return o
+}
+
+func (o CloudtrailSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudtrailSource] {
+	return pulumix.Output[*CloudtrailSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -482,6 +507,12 @@ func (o CloudtrailSourceArrayOutput) ToCloudtrailSourceArrayOutputWithContext(ct
 	return o
 }
 
+func (o CloudtrailSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudtrailSource] {
+	return pulumix.Output[[]*CloudtrailSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudtrailSourceArrayOutput) Index(i pulumi.IntInput) CloudtrailSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudtrailSource {
 		return vs[0].([]*CloudtrailSource)[vs[1].(int)]
@@ -500,6 +531,12 @@ func (o CloudtrailSourceMapOutput) ToCloudtrailSourceMapOutput() CloudtrailSourc
 
 func (o CloudtrailSourceMapOutput) ToCloudtrailSourceMapOutputWithContext(ctx context.Context) CloudtrailSourceMapOutput {
 	return o
+}
+
+func (o CloudtrailSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudtrailSource] {
+	return pulumix.Output[map[string]*CloudtrailSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudtrailSourceMapOutput) MapIndex(k pulumi.StringInput) CloudtrailSourceOutput {

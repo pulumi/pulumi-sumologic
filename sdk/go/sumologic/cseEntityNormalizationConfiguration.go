@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the Sumologic CSE Entity Normalization Configuration for the whole organization. There can be only one configuration per organization.
@@ -232,6 +233,12 @@ func (i *CseEntityNormalizationConfiguration) ToCseEntityNormalizationConfigurat
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityNormalizationConfigurationOutput)
 }
 
+func (i *CseEntityNormalizationConfiguration) ToOutput(ctx context.Context) pulumix.Output[*CseEntityNormalizationConfiguration] {
+	return pulumix.Output[*CseEntityNormalizationConfiguration]{
+		OutputState: i.ToCseEntityNormalizationConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseEntityNormalizationConfigurationArrayInput is an input type that accepts CseEntityNormalizationConfigurationArray and CseEntityNormalizationConfigurationArrayOutput values.
 // You can construct a concrete instance of `CseEntityNormalizationConfigurationArrayInput` via:
 //
@@ -255,6 +262,12 @@ func (i CseEntityNormalizationConfigurationArray) ToCseEntityNormalizationConfig
 
 func (i CseEntityNormalizationConfigurationArray) ToCseEntityNormalizationConfigurationArrayOutputWithContext(ctx context.Context) CseEntityNormalizationConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityNormalizationConfigurationArrayOutput)
+}
+
+func (i CseEntityNormalizationConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseEntityNormalizationConfiguration] {
+	return pulumix.Output[[]*CseEntityNormalizationConfiguration]{
+		OutputState: i.ToCseEntityNormalizationConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseEntityNormalizationConfigurationMapInput is an input type that accepts CseEntityNormalizationConfigurationMap and CseEntityNormalizationConfigurationMapOutput values.
@@ -282,6 +295,12 @@ func (i CseEntityNormalizationConfigurationMap) ToCseEntityNormalizationConfigur
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityNormalizationConfigurationMapOutput)
 }
 
+func (i CseEntityNormalizationConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseEntityNormalizationConfiguration] {
+	return pulumix.Output[map[string]*CseEntityNormalizationConfiguration]{
+		OutputState: i.ToCseEntityNormalizationConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseEntityNormalizationConfigurationOutput struct{ *pulumi.OutputState }
 
 func (CseEntityNormalizationConfigurationOutput) ElementType() reflect.Type {
@@ -294,6 +313,12 @@ func (o CseEntityNormalizationConfigurationOutput) ToCseEntityNormalizationConfi
 
 func (o CseEntityNormalizationConfigurationOutput) ToCseEntityNormalizationConfigurationOutputWithContext(ctx context.Context) CseEntityNormalizationConfigurationOutput {
 	return o
+}
+
+func (o CseEntityNormalizationConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*CseEntityNormalizationConfiguration] {
+	return pulumix.Output[*CseEntityNormalizationConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Normalize AWS ARN and Usernames.
@@ -349,6 +374,12 @@ func (o CseEntityNormalizationConfigurationArrayOutput) ToCseEntityNormalization
 	return o
 }
 
+func (o CseEntityNormalizationConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseEntityNormalizationConfiguration] {
+	return pulumix.Output[[]*CseEntityNormalizationConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseEntityNormalizationConfigurationArrayOutput) Index(i pulumi.IntInput) CseEntityNormalizationConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseEntityNormalizationConfiguration {
 		return vs[0].([]*CseEntityNormalizationConfiguration)[vs[1].(int)]
@@ -367,6 +398,12 @@ func (o CseEntityNormalizationConfigurationMapOutput) ToCseEntityNormalizationCo
 
 func (o CseEntityNormalizationConfigurationMapOutput) ToCseEntityNormalizationConfigurationMapOutputWithContext(ctx context.Context) CseEntityNormalizationConfigurationMapOutput {
 	return o
+}
+
+func (o CseEntityNormalizationConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseEntityNormalizationConfiguration] {
+	return pulumix.Output[map[string]*CseEntityNormalizationConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseEntityNormalizationConfigurationMapOutput) MapIndex(k pulumi.StringInput) CseEntityNormalizationConfigurationOutput {

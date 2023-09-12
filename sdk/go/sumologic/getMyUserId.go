@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetMyUserId(ctx *pulumi.Context, args *GetMyUserIdArgs, opts ...pulumi.InvokeOption) (*GetMyUserIdResult, error) {
@@ -66,6 +67,12 @@ func (o GetMyUserIdResultOutput) ToGetMyUserIdResultOutput() GetMyUserIdResultOu
 
 func (o GetMyUserIdResultOutput) ToGetMyUserIdResultOutputWithContext(ctx context.Context) GetMyUserIdResultOutput {
 	return o
+}
+
+func (o GetMyUserIdResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMyUserIdResult] {
+	return pulumix.Output[GetMyUserIdResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMyUserIdResultOutput) Id() pulumi.StringOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic Metadata (Tag) source. This source allows you to collect tags from EC2 instances running on AWS.
@@ -263,6 +264,12 @@ func (i *MetadataSource) ToMetadataSourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataSourceOutput)
 }
 
+func (i *MetadataSource) ToOutput(ctx context.Context) pulumix.Output[*MetadataSource] {
+	return pulumix.Output[*MetadataSource]{
+		OutputState: i.ToMetadataSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetadataSourceArrayInput is an input type that accepts MetadataSourceArray and MetadataSourceArrayOutput values.
 // You can construct a concrete instance of `MetadataSourceArrayInput` via:
 //
@@ -286,6 +293,12 @@ func (i MetadataSourceArray) ToMetadataSourceArrayOutput() MetadataSourceArrayOu
 
 func (i MetadataSourceArray) ToMetadataSourceArrayOutputWithContext(ctx context.Context) MetadataSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataSourceArrayOutput)
+}
+
+func (i MetadataSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetadataSource] {
+	return pulumix.Output[[]*MetadataSource]{
+		OutputState: i.ToMetadataSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MetadataSourceMapInput is an input type that accepts MetadataSourceMap and MetadataSourceMapOutput values.
@@ -313,6 +326,12 @@ func (i MetadataSourceMap) ToMetadataSourceMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataSourceMapOutput)
 }
 
+func (i MetadataSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetadataSource] {
+	return pulumix.Output[map[string]*MetadataSource]{
+		OutputState: i.ToMetadataSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetadataSourceOutput struct{ *pulumi.OutputState }
 
 func (MetadataSourceOutput) ElementType() reflect.Type {
@@ -325,6 +344,12 @@ func (o MetadataSourceOutput) ToMetadataSourceOutput() MetadataSourceOutput {
 
 func (o MetadataSourceOutput) ToMetadataSourceOutputWithContext(ctx context.Context) MetadataSourceOutput {
 	return o
+}
+
+func (o MetadataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataSource] {
+	return pulumix.Output[*MetadataSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for AWS access.
@@ -435,6 +460,12 @@ func (o MetadataSourceArrayOutput) ToMetadataSourceArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o MetadataSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetadataSource] {
+	return pulumix.Output[[]*MetadataSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetadataSourceArrayOutput) Index(i pulumi.IntInput) MetadataSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetadataSource {
 		return vs[0].([]*MetadataSource)[vs[1].(int)]
@@ -453,6 +484,12 @@ func (o MetadataSourceMapOutput) ToMetadataSourceMapOutput() MetadataSourceMapOu
 
 func (o MetadataSourceMapOutput) ToMetadataSourceMapOutputWithContext(ctx context.Context) MetadataSourceMapOutput {
 	return o
+}
+
+func (o MetadataSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetadataSource] {
+	return pulumix.Output[map[string]*MetadataSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetadataSourceMapOutput) MapIndex(k pulumi.StringInput) MetadataSourceOutput {

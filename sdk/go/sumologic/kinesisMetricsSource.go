@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -236,6 +237,12 @@ func (i *KinesisMetricsSource) ToKinesisMetricsSourceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(KinesisMetricsSourceOutput)
 }
 
+func (i *KinesisMetricsSource) ToOutput(ctx context.Context) pulumix.Output[*KinesisMetricsSource] {
+	return pulumix.Output[*KinesisMetricsSource]{
+		OutputState: i.ToKinesisMetricsSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KinesisMetricsSourceArrayInput is an input type that accepts KinesisMetricsSourceArray and KinesisMetricsSourceArrayOutput values.
 // You can construct a concrete instance of `KinesisMetricsSourceArrayInput` via:
 //
@@ -259,6 +266,12 @@ func (i KinesisMetricsSourceArray) ToKinesisMetricsSourceArrayOutput() KinesisMe
 
 func (i KinesisMetricsSourceArray) ToKinesisMetricsSourceArrayOutputWithContext(ctx context.Context) KinesisMetricsSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KinesisMetricsSourceArrayOutput)
+}
+
+func (i KinesisMetricsSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*KinesisMetricsSource] {
+	return pulumix.Output[[]*KinesisMetricsSource]{
+		OutputState: i.ToKinesisMetricsSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KinesisMetricsSourceMapInput is an input type that accepts KinesisMetricsSourceMap and KinesisMetricsSourceMapOutput values.
@@ -286,6 +299,12 @@ func (i KinesisMetricsSourceMap) ToKinesisMetricsSourceMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(KinesisMetricsSourceMapOutput)
 }
 
+func (i KinesisMetricsSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KinesisMetricsSource] {
+	return pulumix.Output[map[string]*KinesisMetricsSource]{
+		OutputState: i.ToKinesisMetricsSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KinesisMetricsSourceOutput struct{ *pulumi.OutputState }
 
 func (KinesisMetricsSourceOutput) ElementType() reflect.Type {
@@ -298,6 +317,12 @@ func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourceOutput() KinesisMetric
 
 func (o KinesisMetricsSourceOutput) ToKinesisMetricsSourceOutputWithContext(ctx context.Context) KinesisMetricsSourceOutput {
 	return o
+}
+
+func (o KinesisMetricsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*KinesisMetricsSource] {
+	return pulumix.Output[*KinesisMetricsSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -404,6 +429,12 @@ func (o KinesisMetricsSourceArrayOutput) ToKinesisMetricsSourceArrayOutputWithCo
 	return o
 }
 
+func (o KinesisMetricsSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KinesisMetricsSource] {
+	return pulumix.Output[[]*KinesisMetricsSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KinesisMetricsSourceArrayOutput) Index(i pulumi.IntInput) KinesisMetricsSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KinesisMetricsSource {
 		return vs[0].([]*KinesisMetricsSource)[vs[1].(int)]
@@ -422,6 +453,12 @@ func (o KinesisMetricsSourceMapOutput) ToKinesisMetricsSourceMapOutput() Kinesis
 
 func (o KinesisMetricsSourceMapOutput) ToKinesisMetricsSourceMapOutputWithContext(ctx context.Context) KinesisMetricsSourceMapOutput {
 	return o
+}
+
+func (o KinesisMetricsSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KinesisMetricsSource] {
+	return pulumix.Output[map[string]*KinesisMetricsSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KinesisMetricsSourceMapOutput) MapIndex(k pulumi.StringInput) KinesisMetricsSourceOutput {

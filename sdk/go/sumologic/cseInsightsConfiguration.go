@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the Sumologic CSE Insights Configuration for the whole organization. There can be only one configuration per organization.
@@ -164,6 +165,12 @@ func (i *CseInsightsConfiguration) ToCseInsightsConfigurationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsConfigurationOutput)
 }
 
+func (i *CseInsightsConfiguration) ToOutput(ctx context.Context) pulumix.Output[*CseInsightsConfiguration] {
+	return pulumix.Output[*CseInsightsConfiguration]{
+		OutputState: i.ToCseInsightsConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseInsightsConfigurationArrayInput is an input type that accepts CseInsightsConfigurationArray and CseInsightsConfigurationArrayOutput values.
 // You can construct a concrete instance of `CseInsightsConfigurationArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i CseInsightsConfigurationArray) ToCseInsightsConfigurationArrayOutput() C
 
 func (i CseInsightsConfigurationArray) ToCseInsightsConfigurationArrayOutputWithContext(ctx context.Context) CseInsightsConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsConfigurationArrayOutput)
+}
+
+func (i CseInsightsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseInsightsConfiguration] {
+	return pulumix.Output[[]*CseInsightsConfiguration]{
+		OutputState: i.ToCseInsightsConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseInsightsConfigurationMapInput is an input type that accepts CseInsightsConfigurationMap and CseInsightsConfigurationMapOutput values.
@@ -214,6 +227,12 @@ func (i CseInsightsConfigurationMap) ToCseInsightsConfigurationMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsConfigurationMapOutput)
 }
 
+func (i CseInsightsConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInsightsConfiguration] {
+	return pulumix.Output[map[string]*CseInsightsConfiguration]{
+		OutputState: i.ToCseInsightsConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseInsightsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsConfigurationOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationOutput() CseIn
 
 func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationOutputWithContext(ctx context.Context) CseInsightsConfigurationOutput {
 	return o
+}
+
+func (o CseInsightsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*CseInsightsConfiguration] {
+	return pulumix.Output[*CseInsightsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Detection global signal suppression window expressed in hours.
@@ -259,6 +284,12 @@ func (o CseInsightsConfigurationArrayOutput) ToCseInsightsConfigurationArrayOutp
 	return o
 }
 
+func (o CseInsightsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseInsightsConfiguration] {
+	return pulumix.Output[[]*CseInsightsConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseInsightsConfigurationArrayOutput) Index(i pulumi.IntInput) CseInsightsConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseInsightsConfiguration {
 		return vs[0].([]*CseInsightsConfiguration)[vs[1].(int)]
@@ -277,6 +308,12 @@ func (o CseInsightsConfigurationMapOutput) ToCseInsightsConfigurationMapOutput()
 
 func (o CseInsightsConfigurationMapOutput) ToCseInsightsConfigurationMapOutputWithContext(ctx context.Context) CseInsightsConfigurationMapOutput {
 	return o
+}
+
+func (o CseInsightsConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInsightsConfiguration] {
+	return pulumix.Output[map[string]*CseInsightsConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseInsightsConfigurationMapOutput) MapIndex(k pulumi.StringInput) CseInsightsConfigurationOutput {

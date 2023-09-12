@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Insights Resolution. When an insight gets closed, a resolution indicates why it got closed.
@@ -163,6 +164,12 @@ func (i *CseInsightsResolution) ToCseInsightsResolutionOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsResolutionOutput)
 }
 
+func (i *CseInsightsResolution) ToOutput(ctx context.Context) pulumix.Output[*CseInsightsResolution] {
+	return pulumix.Output[*CseInsightsResolution]{
+		OutputState: i.ToCseInsightsResolutionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseInsightsResolutionArrayInput is an input type that accepts CseInsightsResolutionArray and CseInsightsResolutionArrayOutput values.
 // You can construct a concrete instance of `CseInsightsResolutionArrayInput` via:
 //
@@ -186,6 +193,12 @@ func (i CseInsightsResolutionArray) ToCseInsightsResolutionArrayOutput() CseInsi
 
 func (i CseInsightsResolutionArray) ToCseInsightsResolutionArrayOutputWithContext(ctx context.Context) CseInsightsResolutionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsResolutionArrayOutput)
+}
+
+func (i CseInsightsResolutionArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseInsightsResolution] {
+	return pulumix.Output[[]*CseInsightsResolution]{
+		OutputState: i.ToCseInsightsResolutionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseInsightsResolutionMapInput is an input type that accepts CseInsightsResolutionMap and CseInsightsResolutionMapOutput values.
@@ -213,6 +226,12 @@ func (i CseInsightsResolutionMap) ToCseInsightsResolutionMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsResolutionMapOutput)
 }
 
+func (i CseInsightsResolutionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInsightsResolution] {
+	return pulumix.Output[map[string]*CseInsightsResolution]{
+		OutputState: i.ToCseInsightsResolutionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseInsightsResolutionOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsResolutionOutput) ElementType() reflect.Type {
@@ -225,6 +244,12 @@ func (o CseInsightsResolutionOutput) ToCseInsightsResolutionOutput() CseInsights
 
 func (o CseInsightsResolutionOutput) ToCseInsightsResolutionOutputWithContext(ctx context.Context) CseInsightsResolutionOutput {
 	return o
+}
+
+func (o CseInsightsResolutionOutput) ToOutput(ctx context.Context) pulumix.Output[*CseInsightsResolution] {
+	return pulumix.Output[*CseInsightsResolution]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the insights resolution.
@@ -258,6 +283,12 @@ func (o CseInsightsResolutionArrayOutput) ToCseInsightsResolutionArrayOutputWith
 	return o
 }
 
+func (o CseInsightsResolutionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseInsightsResolution] {
+	return pulumix.Output[[]*CseInsightsResolution]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseInsightsResolutionArrayOutput) Index(i pulumi.IntInput) CseInsightsResolutionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseInsightsResolution {
 		return vs[0].([]*CseInsightsResolution)[vs[1].(int)]
@@ -276,6 +307,12 @@ func (o CseInsightsResolutionMapOutput) ToCseInsightsResolutionMapOutput() CseIn
 
 func (o CseInsightsResolutionMapOutput) ToCseInsightsResolutionMapOutputWithContext(ctx context.Context) CseInsightsResolutionMapOutput {
 	return o
+}
+
+func (o CseInsightsResolutionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInsightsResolution] {
+	return pulumix.Output[map[string]*CseInsightsResolution]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseInsightsResolutionMapOutput) MapIndex(k pulumi.StringInput) CseInsightsResolutionOutput {

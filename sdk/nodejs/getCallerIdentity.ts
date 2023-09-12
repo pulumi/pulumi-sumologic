@@ -40,3 +40,24 @@ export interface GetCallerIdentityResult {
      */
     readonly id: string;
 }
+/**
+ * Provides an easy way to retrieve Sumo Logic auth details.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const current = sumologic.getCallerIdentity({});
+ * ```
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `accessId` - Sumo Logic access ID.
+ * - `environment` - API endpoint environment.
+ */
+export function getCallerIdentityOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
+    return pulumi.output(getCallerIdentity(opts))
+}

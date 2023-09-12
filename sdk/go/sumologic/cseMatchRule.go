@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumo Logic CSE [Match Rule](https://help.sumologic.com/Cloud_SIEM_Enterprise/CSE_Rules/03_Write_a_Match_Rule).
@@ -269,6 +270,12 @@ func (i *CseMatchRule) ToCseMatchRuleOutputWithContext(ctx context.Context) CseM
 	return pulumi.ToOutputWithContext(ctx, i).(CseMatchRuleOutput)
 }
 
+func (i *CseMatchRule) ToOutput(ctx context.Context) pulumix.Output[*CseMatchRule] {
+	return pulumix.Output[*CseMatchRule]{
+		OutputState: i.ToCseMatchRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseMatchRuleArrayInput is an input type that accepts CseMatchRuleArray and CseMatchRuleArrayOutput values.
 // You can construct a concrete instance of `CseMatchRuleArrayInput` via:
 //
@@ -292,6 +299,12 @@ func (i CseMatchRuleArray) ToCseMatchRuleArrayOutput() CseMatchRuleArrayOutput {
 
 func (i CseMatchRuleArray) ToCseMatchRuleArrayOutputWithContext(ctx context.Context) CseMatchRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseMatchRuleArrayOutput)
+}
+
+func (i CseMatchRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseMatchRule] {
+	return pulumix.Output[[]*CseMatchRule]{
+		OutputState: i.ToCseMatchRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseMatchRuleMapInput is an input type that accepts CseMatchRuleMap and CseMatchRuleMapOutput values.
@@ -319,6 +332,12 @@ func (i CseMatchRuleMap) ToCseMatchRuleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CseMatchRuleMapOutput)
 }
 
+func (i CseMatchRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseMatchRule] {
+	return pulumix.Output[map[string]*CseMatchRule]{
+		OutputState: i.ToCseMatchRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseMatchRuleOutput struct{ *pulumi.OutputState }
 
 func (CseMatchRuleOutput) ElementType() reflect.Type {
@@ -331,6 +350,12 @@ func (o CseMatchRuleOutput) ToCseMatchRuleOutput() CseMatchRuleOutput {
 
 func (o CseMatchRuleOutput) ToCseMatchRuleOutputWithContext(ctx context.Context) CseMatchRuleOutput {
 	return o
+}
+
+func (o CseMatchRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CseMatchRule] {
+	return pulumix.Output[*CseMatchRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the generated Signals
@@ -399,6 +424,12 @@ func (o CseMatchRuleArrayOutput) ToCseMatchRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o CseMatchRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseMatchRule] {
+	return pulumix.Output[[]*CseMatchRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseMatchRuleArrayOutput) Index(i pulumi.IntInput) CseMatchRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseMatchRule {
 		return vs[0].([]*CseMatchRule)[vs[1].(int)]
@@ -417,6 +448,12 @@ func (o CseMatchRuleMapOutput) ToCseMatchRuleMapOutput() CseMatchRuleMapOutput {
 
 func (o CseMatchRuleMapOutput) ToCseMatchRuleMapOutputWithContext(ctx context.Context) CseMatchRuleMapOutput {
 	return o
+}
+
+func (o CseMatchRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseMatchRule] {
+	return pulumix.Output[map[string]*CseMatchRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseMatchRuleMapOutput) MapIndex(k pulumi.StringInput) CseMatchRuleOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Hierarchy](https://help.sumologic.com/Visualizations-and-Alerts/Explore).
@@ -172,6 +173,12 @@ func (i *Hierarchy) ToHierarchyOutputWithContext(ctx context.Context) HierarchyO
 	return pulumi.ToOutputWithContext(ctx, i).(HierarchyOutput)
 }
 
+func (i *Hierarchy) ToOutput(ctx context.Context) pulumix.Output[*Hierarchy] {
+	return pulumix.Output[*Hierarchy]{
+		OutputState: i.ToHierarchyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HierarchyArrayInput is an input type that accepts HierarchyArray and HierarchyArrayOutput values.
 // You can construct a concrete instance of `HierarchyArrayInput` via:
 //
@@ -195,6 +202,12 @@ func (i HierarchyArray) ToHierarchyArrayOutput() HierarchyArrayOutput {
 
 func (i HierarchyArray) ToHierarchyArrayOutputWithContext(ctx context.Context) HierarchyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HierarchyArrayOutput)
+}
+
+func (i HierarchyArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hierarchy] {
+	return pulumix.Output[[]*Hierarchy]{
+		OutputState: i.ToHierarchyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HierarchyMapInput is an input type that accepts HierarchyMap and HierarchyMapOutput values.
@@ -222,6 +235,12 @@ func (i HierarchyMap) ToHierarchyMapOutputWithContext(ctx context.Context) Hiera
 	return pulumi.ToOutputWithContext(ctx, i).(HierarchyMapOutput)
 }
 
+func (i HierarchyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hierarchy] {
+	return pulumix.Output[map[string]*Hierarchy]{
+		OutputState: i.ToHierarchyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HierarchyOutput struct{ *pulumi.OutputState }
 
 func (HierarchyOutput) ElementType() reflect.Type {
@@ -234,6 +253,12 @@ func (o HierarchyOutput) ToHierarchyOutput() HierarchyOutput {
 
 func (o HierarchyOutput) ToHierarchyOutputWithContext(ctx context.Context) HierarchyOutput {
 	return o
+}
+
+func (o HierarchyOutput) ToOutput(ctx context.Context) pulumix.Output[*Hierarchy] {
+	return pulumix.Output[*Hierarchy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional clause that a hierarchy requires to be matched.
@@ -264,6 +289,12 @@ func (o HierarchyArrayOutput) ToHierarchyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o HierarchyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hierarchy] {
+	return pulumix.Output[[]*Hierarchy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HierarchyArrayOutput) Index(i pulumi.IntInput) HierarchyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hierarchy {
 		return vs[0].([]*Hierarchy)[vs[1].(int)]
@@ -282,6 +313,12 @@ func (o HierarchyMapOutput) ToHierarchyMapOutput() HierarchyMapOutput {
 
 func (o HierarchyMapOutput) ToHierarchyMapOutputWithContext(ctx context.Context) HierarchyMapOutput {
 	return o
+}
+
+func (o HierarchyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hierarchy] {
+	return pulumix.Output[map[string]*Hierarchy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HierarchyMapOutput) MapIndex(k pulumi.StringInput) HierarchyOutput {

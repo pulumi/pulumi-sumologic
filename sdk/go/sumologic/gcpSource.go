@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumo Logic Google Cloud Platform Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source).
@@ -252,6 +253,12 @@ func (i *GcpSource) ToGcpSourceOutputWithContext(ctx context.Context) GcpSourceO
 	return pulumi.ToOutputWithContext(ctx, i).(GcpSourceOutput)
 }
 
+func (i *GcpSource) ToOutput(ctx context.Context) pulumix.Output[*GcpSource] {
+	return pulumix.Output[*GcpSource]{
+		OutputState: i.ToGcpSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GcpSourceArrayInput is an input type that accepts GcpSourceArray and GcpSourceArrayOutput values.
 // You can construct a concrete instance of `GcpSourceArrayInput` via:
 //
@@ -275,6 +282,12 @@ func (i GcpSourceArray) ToGcpSourceArrayOutput() GcpSourceArrayOutput {
 
 func (i GcpSourceArray) ToGcpSourceArrayOutputWithContext(ctx context.Context) GcpSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpSourceArrayOutput)
+}
+
+func (i GcpSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*GcpSource] {
+	return pulumix.Output[[]*GcpSource]{
+		OutputState: i.ToGcpSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GcpSourceMapInput is an input type that accepts GcpSourceMap and GcpSourceMapOutput values.
@@ -302,6 +315,12 @@ func (i GcpSourceMap) ToGcpSourceMapOutputWithContext(ctx context.Context) GcpSo
 	return pulumi.ToOutputWithContext(ctx, i).(GcpSourceMapOutput)
 }
 
+func (i GcpSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpSource] {
+	return pulumix.Output[map[string]*GcpSource]{
+		OutputState: i.ToGcpSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GcpSourceOutput struct{ *pulumi.OutputState }
 
 func (GcpSourceOutput) ElementType() reflect.Type {
@@ -314,6 +333,12 @@ func (o GcpSourceOutput) ToGcpSourceOutput() GcpSourceOutput {
 
 func (o GcpSourceOutput) ToGcpSourceOutputWithContext(ctx context.Context) GcpSourceOutput {
 	return o
+}
+
+func (o GcpSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*GcpSource] {
+	return pulumix.Output[*GcpSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GcpSourceOutput) Authentication() GcpSourceAuthenticationPtrOutput {
@@ -415,6 +440,12 @@ func (o GcpSourceArrayOutput) ToGcpSourceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GcpSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GcpSource] {
+	return pulumix.Output[[]*GcpSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GcpSourceArrayOutput) Index(i pulumi.IntInput) GcpSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GcpSource {
 		return vs[0].([]*GcpSource)[vs[1].(int)]
@@ -433,6 +464,12 @@ func (o GcpSourceMapOutput) ToGcpSourceMapOutput() GcpSourceMapOutput {
 
 func (o GcpSourceMapOutput) ToGcpSourceMapOutputWithContext(ctx context.Context) GcpSourceMapOutput {
 	return o
+}
+
+func (o GcpSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpSource] {
+	return pulumix.Output[map[string]*GcpSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GcpSourceMapOutput) MapIndex(k pulumi.StringInput) GcpSourceOutput {

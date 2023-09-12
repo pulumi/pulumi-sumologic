@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic HTTP source](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics), [Sumologic HTTP Traces source](https://help.sumologic.com/docs/apm/traces/get-started-transaction-tracing/http-traces-source/), [Sumologic Kinesis Log source](https://help.sumologic.com/docs/send-data/hosted-collectors/amazon-aws/aws-kinesis-firehose-logs-source/), [Sumologic HTTP_OTLP_source][4] and [Sumologic RUM source](https://help.sumologic.com/docs/apm/real-user-monitoring/#step-1-create-a-rum-http-traces-source). To start using Traces contact your Sumo account representative to activate.
@@ -306,6 +307,12 @@ func (i *HttpSource) ToHttpSourceOutputWithContext(ctx context.Context) HttpSour
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSourceOutput)
 }
 
+func (i *HttpSource) ToOutput(ctx context.Context) pulumix.Output[*HttpSource] {
+	return pulumix.Output[*HttpSource]{
+		OutputState: i.ToHttpSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpSourceArrayInput is an input type that accepts HttpSourceArray and HttpSourceArrayOutput values.
 // You can construct a concrete instance of `HttpSourceArrayInput` via:
 //
@@ -329,6 +336,12 @@ func (i HttpSourceArray) ToHttpSourceArrayOutput() HttpSourceArrayOutput {
 
 func (i HttpSourceArray) ToHttpSourceArrayOutputWithContext(ctx context.Context) HttpSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSourceArrayOutput)
+}
+
+func (i HttpSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*HttpSource] {
+	return pulumix.Output[[]*HttpSource]{
+		OutputState: i.ToHttpSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HttpSourceMapInput is an input type that accepts HttpSourceMap and HttpSourceMapOutput values.
@@ -356,6 +369,12 @@ func (i HttpSourceMap) ToHttpSourceMapOutputWithContext(ctx context.Context) Htt
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSourceMapOutput)
 }
 
+func (i HttpSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpSource] {
+	return pulumix.Output[map[string]*HttpSource]{
+		OutputState: i.ToHttpSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpSourceOutput struct{ *pulumi.OutputState }
 
 func (HttpSourceOutput) ElementType() reflect.Type {
@@ -368,6 +387,12 @@ func (o HttpSourceOutput) ToHttpSourceOutput() HttpSourceOutput {
 
 func (o HttpSourceOutput) ToHttpSourceOutputWithContext(ctx context.Context) HttpSourceOutput {
 	return o
+}
+
+func (o HttpSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpSource] {
+	return pulumix.Output[*HttpSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
@@ -467,6 +492,12 @@ func (o HttpSourceArrayOutput) ToHttpSourceArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o HttpSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HttpSource] {
+	return pulumix.Output[[]*HttpSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpSourceArrayOutput) Index(i pulumi.IntInput) HttpSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HttpSource {
 		return vs[0].([]*HttpSource)[vs[1].(int)]
@@ -485,6 +516,12 @@ func (o HttpSourceMapOutput) ToHttpSourceMapOutput() HttpSourceMapOutput {
 
 func (o HttpSourceMapOutput) ToHttpSourceMapOutputWithContext(ctx context.Context) HttpSourceMapOutput {
 	return o
+}
+
+func (o HttpSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HttpSource] {
+	return pulumix.Output[map[string]*HttpSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpSourceMapOutput) MapIndex(k pulumi.StringInput) HttpSourceOutput {

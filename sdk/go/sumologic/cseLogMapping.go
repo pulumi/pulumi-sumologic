@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Log Mapping.
@@ -281,6 +282,12 @@ func (i *CseLogMapping) ToCseLogMappingOutputWithContext(ctx context.Context) Cs
 	return pulumi.ToOutputWithContext(ctx, i).(CseLogMappingOutput)
 }
 
+func (i *CseLogMapping) ToOutput(ctx context.Context) pulumix.Output[*CseLogMapping] {
+	return pulumix.Output[*CseLogMapping]{
+		OutputState: i.ToCseLogMappingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseLogMappingArrayInput is an input type that accepts CseLogMappingArray and CseLogMappingArrayOutput values.
 // You can construct a concrete instance of `CseLogMappingArrayInput` via:
 //
@@ -304,6 +311,12 @@ func (i CseLogMappingArray) ToCseLogMappingArrayOutput() CseLogMappingArrayOutpu
 
 func (i CseLogMappingArray) ToCseLogMappingArrayOutputWithContext(ctx context.Context) CseLogMappingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseLogMappingArrayOutput)
+}
+
+func (i CseLogMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseLogMapping] {
+	return pulumix.Output[[]*CseLogMapping]{
+		OutputState: i.ToCseLogMappingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseLogMappingMapInput is an input type that accepts CseLogMappingMap and CseLogMappingMapOutput values.
@@ -331,6 +344,12 @@ func (i CseLogMappingMap) ToCseLogMappingMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CseLogMappingMapOutput)
 }
 
+func (i CseLogMappingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseLogMapping] {
+	return pulumix.Output[map[string]*CseLogMapping]{
+		OutputState: i.ToCseLogMappingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseLogMappingOutput struct{ *pulumi.OutputState }
 
 func (CseLogMappingOutput) ElementType() reflect.Type {
@@ -343,6 +362,12 @@ func (o CseLogMappingOutput) ToCseLogMappingOutput() CseLogMappingOutput {
 
 func (o CseLogMappingOutput) ToCseLogMappingOutputWithContext(ctx context.Context) CseLogMappingOutput {
 	return o
+}
+
+func (o CseLogMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*CseLogMapping] {
+	return pulumix.Output[*CseLogMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enabled flag.
@@ -409,6 +434,12 @@ func (o CseLogMappingArrayOutput) ToCseLogMappingArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o CseLogMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseLogMapping] {
+	return pulumix.Output[[]*CseLogMapping]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseLogMappingArrayOutput) Index(i pulumi.IntInput) CseLogMappingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseLogMapping {
 		return vs[0].([]*CseLogMapping)[vs[1].(int)]
@@ -427,6 +458,12 @@ func (o CseLogMappingMapOutput) ToCseLogMappingMapOutput() CseLogMappingMapOutpu
 
 func (o CseLogMappingMapOutput) ToCseLogMappingMapOutputWithContext(ctx context.Context) CseLogMappingMapOutput {
 	return o
+}
+
+func (o CseLogMappingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseLogMapping] {
+	return pulumix.Output[map[string]*CseLogMapping]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseLogMappingMapOutput) MapIndex(k pulumi.StringInput) CseLogMappingOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Automation.
@@ -215,6 +216,12 @@ func (i *CseAutomation) ToCseAutomationOutputWithContext(ctx context.Context) Cs
 	return pulumi.ToOutputWithContext(ctx, i).(CseAutomationOutput)
 }
 
+func (i *CseAutomation) ToOutput(ctx context.Context) pulumix.Output[*CseAutomation] {
+	return pulumix.Output[*CseAutomation]{
+		OutputState: i.ToCseAutomationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseAutomationArrayInput is an input type that accepts CseAutomationArray and CseAutomationArrayOutput values.
 // You can construct a concrete instance of `CseAutomationArrayInput` via:
 //
@@ -238,6 +245,12 @@ func (i CseAutomationArray) ToCseAutomationArrayOutput() CseAutomationArrayOutpu
 
 func (i CseAutomationArray) ToCseAutomationArrayOutputWithContext(ctx context.Context) CseAutomationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseAutomationArrayOutput)
+}
+
+func (i CseAutomationArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseAutomation] {
+	return pulumix.Output[[]*CseAutomation]{
+		OutputState: i.ToCseAutomationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseAutomationMapInput is an input type that accepts CseAutomationMap and CseAutomationMapOutput values.
@@ -265,6 +278,12 @@ func (i CseAutomationMap) ToCseAutomationMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CseAutomationMapOutput)
 }
 
+func (i CseAutomationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseAutomation] {
+	return pulumix.Output[map[string]*CseAutomation]{
+		OutputState: i.ToCseAutomationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseAutomationOutput struct{ *pulumi.OutputState }
 
 func (CseAutomationOutput) ElementType() reflect.Type {
@@ -277,6 +296,12 @@ func (o CseAutomationOutput) ToCseAutomationOutput() CseAutomationOutput {
 
 func (o CseAutomationOutput) ToCseAutomationOutputWithContext(ctx context.Context) CseAutomationOutput {
 	return o
+}
+
+func (o CseAutomationOutput) ToOutput(ctx context.Context) pulumix.Output[*CseAutomation] {
+	return pulumix.Output[*CseAutomation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CSE Resource sub-type when cseResourceType is specified as "ENTITY". Examples: "_ip", "_mac".
@@ -328,6 +353,12 @@ func (o CseAutomationArrayOutput) ToCseAutomationArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o CseAutomationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseAutomation] {
+	return pulumix.Output[[]*CseAutomation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseAutomationArrayOutput) Index(i pulumi.IntInput) CseAutomationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseAutomation {
 		return vs[0].([]*CseAutomation)[vs[1].(int)]
@@ -346,6 +377,12 @@ func (o CseAutomationMapOutput) ToCseAutomationMapOutput() CseAutomationMapOutpu
 
 func (o CseAutomationMapOutput) ToCseAutomationMapOutputWithContext(ctx context.Context) CseAutomationMapOutput {
 	return o
+}
+
+func (o CseAutomationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseAutomation] {
+	return pulumix.Output[map[string]*CseAutomation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseAutomationMapOutput) MapIndex(k pulumi.StringInput) CseAutomationOutput {

@@ -212,7 +212,8 @@ utilities.lazyLoad(exports, ["getAdminRecommendedFolder","getAdminRecommendedFol
 
 export { GetCallerIdentityResult } from "./getCallerIdentity";
 export const getCallerIdentity: typeof import("./getCallerIdentity").getCallerIdentity = null as any;
-utilities.lazyLoad(exports, ["getCallerIdentity"], () => require("./getCallerIdentity"));
+export const getCallerIdentityOutput: typeof import("./getCallerIdentity").getCallerIdentityOutput = null as any;
+utilities.lazyLoad(exports, ["getCallerIdentity","getCallerIdentityOutput"], () => require("./getCallerIdentity"));
 
 export { GetCollectorArgs, GetCollectorResult, GetCollectorOutputArgs } from "./getCollector";
 export const getCollector: typeof import("./getCollector").getCollector = null as any;

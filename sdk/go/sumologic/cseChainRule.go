@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumo Logic CSE [Chain Rule](https://help.sumologic.com/Cloud_SIEM_Enterprise/CSE_Rules/07_Write_a_Chain_Rule).
@@ -297,6 +298,12 @@ func (i *CseChainRule) ToCseChainRuleOutputWithContext(ctx context.Context) CseC
 	return pulumi.ToOutputWithContext(ctx, i).(CseChainRuleOutput)
 }
 
+func (i *CseChainRule) ToOutput(ctx context.Context) pulumix.Output[*CseChainRule] {
+	return pulumix.Output[*CseChainRule]{
+		OutputState: i.ToCseChainRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseChainRuleArrayInput is an input type that accepts CseChainRuleArray and CseChainRuleArrayOutput values.
 // You can construct a concrete instance of `CseChainRuleArrayInput` via:
 //
@@ -320,6 +327,12 @@ func (i CseChainRuleArray) ToCseChainRuleArrayOutput() CseChainRuleArrayOutput {
 
 func (i CseChainRuleArray) ToCseChainRuleArrayOutputWithContext(ctx context.Context) CseChainRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseChainRuleArrayOutput)
+}
+
+func (i CseChainRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseChainRule] {
+	return pulumix.Output[[]*CseChainRule]{
+		OutputState: i.ToCseChainRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseChainRuleMapInput is an input type that accepts CseChainRuleMap and CseChainRuleMapOutput values.
@@ -347,6 +360,12 @@ func (i CseChainRuleMap) ToCseChainRuleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CseChainRuleMapOutput)
 }
 
+func (i CseChainRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseChainRule] {
+	return pulumix.Output[map[string]*CseChainRule]{
+		OutputState: i.ToCseChainRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseChainRuleOutput struct{ *pulumi.OutputState }
 
 func (CseChainRuleOutput) ElementType() reflect.Type {
@@ -359,6 +378,12 @@ func (o CseChainRuleOutput) ToCseChainRuleOutput() CseChainRuleOutput {
 
 func (o CseChainRuleOutput) ToCseChainRuleOutputWithContext(ctx context.Context) CseChainRuleOutput {
 	return o
+}
+
+func (o CseChainRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CseChainRule] {
+	return pulumix.Output[*CseChainRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the generated Signals
@@ -437,6 +462,12 @@ func (o CseChainRuleArrayOutput) ToCseChainRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o CseChainRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseChainRule] {
+	return pulumix.Output[[]*CseChainRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseChainRuleArrayOutput) Index(i pulumi.IntInput) CseChainRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseChainRule {
 		return vs[0].([]*CseChainRule)[vs[1].(int)]
@@ -455,6 +486,12 @@ func (o CseChainRuleMapOutput) ToCseChainRuleMapOutput() CseChainRuleMapOutput {
 
 func (o CseChainRuleMapOutput) ToCseChainRuleMapOutputWithContext(ctx context.Context) CseChainRuleMapOutput {
 	return o
+}
+
+func (o CseChainRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseChainRule] {
+	return pulumix.Output[map[string]*CseChainRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseChainRuleMapOutput) MapIndex(k pulumi.StringInput) CseChainRuleOutput {

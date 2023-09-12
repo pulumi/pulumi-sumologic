@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic AWS S3 Source][2].
@@ -310,6 +311,12 @@ func (i *S3Source) ToS3SourceOutputWithContext(ctx context.Context) S3SourceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(S3SourceOutput)
 }
 
+func (i *S3Source) ToOutput(ctx context.Context) pulumix.Output[*S3Source] {
+	return pulumix.Output[*S3Source]{
+		OutputState: i.ToS3SourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // S3SourceArrayInput is an input type that accepts S3SourceArray and S3SourceArrayOutput values.
 // You can construct a concrete instance of `S3SourceArrayInput` via:
 //
@@ -333,6 +340,12 @@ func (i S3SourceArray) ToS3SourceArrayOutput() S3SourceArrayOutput {
 
 func (i S3SourceArray) ToS3SourceArrayOutputWithContext(ctx context.Context) S3SourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3SourceArrayOutput)
+}
+
+func (i S3SourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3Source] {
+	return pulumix.Output[[]*S3Source]{
+		OutputState: i.ToS3SourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // S3SourceMapInput is an input type that accepts S3SourceMap and S3SourceMapOutput values.
@@ -360,6 +373,12 @@ func (i S3SourceMap) ToS3SourceMapOutputWithContext(ctx context.Context) S3Sourc
 	return pulumi.ToOutputWithContext(ctx, i).(S3SourceMapOutput)
 }
 
+func (i S3SourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Source] {
+	return pulumix.Output[map[string]*S3Source]{
+		OutputState: i.ToS3SourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type S3SourceOutput struct{ *pulumi.OutputState }
 
 func (S3SourceOutput) ElementType() reflect.Type {
@@ -372,6 +391,12 @@ func (o S3SourceOutput) ToS3SourceOutput() S3SourceOutput {
 
 func (o S3SourceOutput) ToS3SourceOutputWithContext(ctx context.Context) S3SourceOutput {
 	return o
+}
+
+func (o S3SourceOutput) ToOutput(ctx context.Context) pulumix.Output[*S3Source] {
+	return pulumix.Output[*S3Source]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -482,6 +507,12 @@ func (o S3SourceArrayOutput) ToS3SourceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o S3SourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3Source] {
+	return pulumix.Output[[]*S3Source]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o S3SourceArrayOutput) Index(i pulumi.IntInput) S3SourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3Source {
 		return vs[0].([]*S3Source)[vs[1].(int)]
@@ -500,6 +531,12 @@ func (o S3SourceMapOutput) ToS3SourceMapOutput() S3SourceMapOutput {
 
 func (o S3SourceMapOutput) ToS3SourceMapOutputWithContext(ctx context.Context) S3SourceMapOutput {
 	return o
+}
+
+func (o S3SourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Source] {
+	return pulumix.Output[map[string]*S3Source]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3SourceMapOutput) MapIndex(k pulumi.StringInput) S3SourceOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).
@@ -237,6 +238,12 @@ func (i *MetricsSearch) ToMetricsSearchOutputWithContext(ctx context.Context) Me
 	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchOutput)
 }
 
+func (i *MetricsSearch) ToOutput(ctx context.Context) pulumix.Output[*MetricsSearch] {
+	return pulumix.Output[*MetricsSearch]{
+		OutputState: i.ToMetricsSearchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricsSearchArrayInput is an input type that accepts MetricsSearchArray and MetricsSearchArrayOutput values.
 // You can construct a concrete instance of `MetricsSearchArrayInput` via:
 //
@@ -260,6 +267,12 @@ func (i MetricsSearchArray) ToMetricsSearchArrayOutput() MetricsSearchArrayOutpu
 
 func (i MetricsSearchArray) ToMetricsSearchArrayOutputWithContext(ctx context.Context) MetricsSearchArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchArrayOutput)
+}
+
+func (i MetricsSearchArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetricsSearch] {
+	return pulumix.Output[[]*MetricsSearch]{
+		OutputState: i.ToMetricsSearchArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MetricsSearchMapInput is an input type that accepts MetricsSearchMap and MetricsSearchMapOutput values.
@@ -287,6 +300,12 @@ func (i MetricsSearchMap) ToMetricsSearchMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchMapOutput)
 }
 
+func (i MetricsSearchMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricsSearch] {
+	return pulumix.Output[map[string]*MetricsSearch]{
+		OutputState: i.ToMetricsSearchMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricsSearchOutput struct{ *pulumi.OutputState }
 
 func (MetricsSearchOutput) ElementType() reflect.Type {
@@ -299,6 +318,12 @@ func (o MetricsSearchOutput) ToMetricsSearchOutput() MetricsSearchOutput {
 
 func (o MetricsSearchOutput) ToMetricsSearchOutputWithContext(ctx context.Context) MetricsSearchOutput {
 	return o
+}
+
+func (o MetricsSearchOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricsSearch] {
+	return pulumix.Output[*MetricsSearch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the search.
@@ -350,6 +375,12 @@ func (o MetricsSearchArrayOutput) ToMetricsSearchArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o MetricsSearchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetricsSearch] {
+	return pulumix.Output[[]*MetricsSearch]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricsSearchArrayOutput) Index(i pulumi.IntInput) MetricsSearchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetricsSearch {
 		return vs[0].([]*MetricsSearch)[vs[1].(int)]
@@ -368,6 +399,12 @@ func (o MetricsSearchMapOutput) ToMetricsSearchMapOutput() MetricsSearchMapOutpu
 
 func (o MetricsSearchMapOutput) ToMetricsSearchMapOutputWithContext(ctx context.Context) MetricsSearchMapOutput {
 	return o
+}
+
+func (o MetricsSearchMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricsSearch] {
+	return pulumix.Output[map[string]*MetricsSearch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricsSearchMapOutput) MapIndex(k pulumi.StringInput) MetricsSearchOutput {

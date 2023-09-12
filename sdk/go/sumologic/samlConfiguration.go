@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic SAML Configuration](https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On).
@@ -343,6 +344,12 @@ func (i *SamlConfiguration) ToSamlConfigurationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SamlConfigurationOutput)
 }
 
+func (i *SamlConfiguration) ToOutput(ctx context.Context) pulumix.Output[*SamlConfiguration] {
+	return pulumix.Output[*SamlConfiguration]{
+		OutputState: i.ToSamlConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SamlConfigurationArrayInput is an input type that accepts SamlConfigurationArray and SamlConfigurationArrayOutput values.
 // You can construct a concrete instance of `SamlConfigurationArrayInput` via:
 //
@@ -366,6 +373,12 @@ func (i SamlConfigurationArray) ToSamlConfigurationArrayOutput() SamlConfigurati
 
 func (i SamlConfigurationArray) ToSamlConfigurationArrayOutputWithContext(ctx context.Context) SamlConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SamlConfigurationArrayOutput)
+}
+
+func (i SamlConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*SamlConfiguration] {
+	return pulumix.Output[[]*SamlConfiguration]{
+		OutputState: i.ToSamlConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SamlConfigurationMapInput is an input type that accepts SamlConfigurationMap and SamlConfigurationMapOutput values.
@@ -393,6 +406,12 @@ func (i SamlConfigurationMap) ToSamlConfigurationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SamlConfigurationMapOutput)
 }
 
+func (i SamlConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SamlConfiguration] {
+	return pulumix.Output[map[string]*SamlConfiguration]{
+		OutputState: i.ToSamlConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SamlConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SamlConfigurationOutput) ElementType() reflect.Type {
@@ -405,6 +424,12 @@ func (o SamlConfigurationOutput) ToSamlConfigurationOutput() SamlConfigurationOu
 
 func (o SamlConfigurationOutput) ToSamlConfigurationOutputWithContext(ctx context.Context) SamlConfigurationOutput {
 	return o
+}
+
+func (o SamlConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*SamlConfiguration] {
+	return pulumix.Output[*SamlConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SamlConfigurationOutput) AssertionConsumerUrl() pulumi.StringOutput {
@@ -520,6 +545,12 @@ func (o SamlConfigurationArrayOutput) ToSamlConfigurationArrayOutputWithContext(
 	return o
 }
 
+func (o SamlConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SamlConfiguration] {
+	return pulumix.Output[[]*SamlConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SamlConfigurationArrayOutput) Index(i pulumi.IntInput) SamlConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SamlConfiguration {
 		return vs[0].([]*SamlConfiguration)[vs[1].(int)]
@@ -538,6 +569,12 @@ func (o SamlConfigurationMapOutput) ToSamlConfigurationMapOutput() SamlConfigura
 
 func (o SamlConfigurationMapOutput) ToSamlConfigurationMapOutputWithContext(ctx context.Context) SamlConfigurationMapOutput {
 	return o
+}
+
+func (o SamlConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SamlConfiguration] {
+	return pulumix.Output[map[string]*SamlConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SamlConfigurationMapOutput) MapIndex(k pulumi.StringInput) SamlConfigurationOutput {
