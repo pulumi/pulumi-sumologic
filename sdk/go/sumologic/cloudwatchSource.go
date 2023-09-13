@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic CloudWatch source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics).
@@ -263,6 +264,12 @@ func (i *CloudwatchSource) ToCloudwatchSourceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourceOutput)
 }
 
+func (i *CloudwatchSource) ToOutput(ctx context.Context) pulumix.Output[*CloudwatchSource] {
+	return pulumix.Output[*CloudwatchSource]{
+		OutputState: i.ToCloudwatchSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudwatchSourceArrayInput is an input type that accepts CloudwatchSourceArray and CloudwatchSourceArrayOutput values.
 // You can construct a concrete instance of `CloudwatchSourceArrayInput` via:
 //
@@ -286,6 +293,12 @@ func (i CloudwatchSourceArray) ToCloudwatchSourceArrayOutput() CloudwatchSourceA
 
 func (i CloudwatchSourceArray) ToCloudwatchSourceArrayOutputWithContext(ctx context.Context) CloudwatchSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourceArrayOutput)
+}
+
+func (i CloudwatchSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudwatchSource] {
+	return pulumix.Output[[]*CloudwatchSource]{
+		OutputState: i.ToCloudwatchSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CloudwatchSourceMapInput is an input type that accepts CloudwatchSourceMap and CloudwatchSourceMapOutput values.
@@ -313,6 +326,12 @@ func (i CloudwatchSourceMap) ToCloudwatchSourceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CloudwatchSourceMapOutput)
 }
 
+func (i CloudwatchSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudwatchSource] {
+	return pulumix.Output[map[string]*CloudwatchSource]{
+		OutputState: i.ToCloudwatchSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudwatchSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudwatchSourceOutput) ElementType() reflect.Type {
@@ -325,6 +344,12 @@ func (o CloudwatchSourceOutput) ToCloudwatchSourceOutput() CloudwatchSourceOutpu
 
 func (o CloudwatchSourceOutput) ToCloudwatchSourceOutputWithContext(ctx context.Context) CloudwatchSourceOutput {
 	return o
+}
+
+func (o CloudwatchSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudwatchSource] {
+	return pulumix.Output[*CloudwatchSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -435,6 +460,12 @@ func (o CloudwatchSourceArrayOutput) ToCloudwatchSourceArrayOutputWithContext(ct
 	return o
 }
 
+func (o CloudwatchSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudwatchSource] {
+	return pulumix.Output[[]*CloudwatchSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudwatchSourceArrayOutput) Index(i pulumi.IntInput) CloudwatchSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudwatchSource {
 		return vs[0].([]*CloudwatchSource)[vs[1].(int)]
@@ -453,6 +484,12 @@ func (o CloudwatchSourceMapOutput) ToCloudwatchSourceMapOutput() CloudwatchSourc
 
 func (o CloudwatchSourceMapOutput) ToCloudwatchSourceMapOutputWithContext(ctx context.Context) CloudwatchSourceMapOutput {
 	return o
+}
+
+func (o CloudwatchSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudwatchSource] {
+	return pulumix.Output[map[string]*CloudwatchSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudwatchSourceMapOutput) MapIndex(k pulumi.StringInput) CloudwatchSourceOutput {

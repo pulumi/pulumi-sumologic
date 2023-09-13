@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
@@ -240,6 +241,12 @@ func (i *CloudSyslogSource) ToCloudSyslogSourceOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSyslogSourceOutput)
 }
 
+func (i *CloudSyslogSource) ToOutput(ctx context.Context) pulumix.Output[*CloudSyslogSource] {
+	return pulumix.Output[*CloudSyslogSource]{
+		OutputState: i.ToCloudSyslogSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudSyslogSourceArrayInput is an input type that accepts CloudSyslogSourceArray and CloudSyslogSourceArrayOutput values.
 // You can construct a concrete instance of `CloudSyslogSourceArrayInput` via:
 //
@@ -263,6 +270,12 @@ func (i CloudSyslogSourceArray) ToCloudSyslogSourceArrayOutput() CloudSyslogSour
 
 func (i CloudSyslogSourceArray) ToCloudSyslogSourceArrayOutputWithContext(ctx context.Context) CloudSyslogSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSyslogSourceArrayOutput)
+}
+
+func (i CloudSyslogSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudSyslogSource] {
+	return pulumix.Output[[]*CloudSyslogSource]{
+		OutputState: i.ToCloudSyslogSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CloudSyslogSourceMapInput is an input type that accepts CloudSyslogSourceMap and CloudSyslogSourceMapOutput values.
@@ -290,6 +303,12 @@ func (i CloudSyslogSourceMap) ToCloudSyslogSourceMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CloudSyslogSourceMapOutput)
 }
 
+func (i CloudSyslogSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudSyslogSource] {
+	return pulumix.Output[map[string]*CloudSyslogSource]{
+		OutputState: i.ToCloudSyslogSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudSyslogSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudSyslogSourceOutput) ElementType() reflect.Type {
@@ -302,6 +321,12 @@ func (o CloudSyslogSourceOutput) ToCloudSyslogSourceOutput() CloudSyslogSourceOu
 
 func (o CloudSyslogSourceOutput) ToCloudSyslogSourceOutputWithContext(ctx context.Context) CloudSyslogSourceOutput {
 	return o
+}
+
+func (o CloudSyslogSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudSyslogSource] {
+	return pulumix.Output[*CloudSyslogSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSyslogSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
@@ -390,6 +415,12 @@ func (o CloudSyslogSourceArrayOutput) ToCloudSyslogSourceArrayOutputWithContext(
 	return o
 }
 
+func (o CloudSyslogSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudSyslogSource] {
+	return pulumix.Output[[]*CloudSyslogSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudSyslogSourceArrayOutput) Index(i pulumi.IntInput) CloudSyslogSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudSyslogSource {
 		return vs[0].([]*CloudSyslogSource)[vs[1].(int)]
@@ -408,6 +439,12 @@ func (o CloudSyslogSourceMapOutput) ToCloudSyslogSourceMapOutput() CloudSyslogSo
 
 func (o CloudSyslogSourceMapOutput) ToCloudSyslogSourceMapOutputWithContext(ctx context.Context) CloudSyslogSourceMapOutput {
 	return o
+}
+
+func (o CloudSyslogSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudSyslogSource] {
+	return pulumix.Output[map[string]*CloudSyslogSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudSyslogSourceMapOutput) MapIndex(k pulumi.StringInput) CloudSyslogSourceOutput {

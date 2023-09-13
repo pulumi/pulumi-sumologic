@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a CSE Rule Tuning Expression.
@@ -228,6 +229,12 @@ func (i *CseRuleTuningExpression) ToCseRuleTuningExpressionOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CseRuleTuningExpressionOutput)
 }
 
+func (i *CseRuleTuningExpression) ToOutput(ctx context.Context) pulumix.Output[*CseRuleTuningExpression] {
+	return pulumix.Output[*CseRuleTuningExpression]{
+		OutputState: i.ToCseRuleTuningExpressionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseRuleTuningExpressionArrayInput is an input type that accepts CseRuleTuningExpressionArray and CseRuleTuningExpressionArrayOutput values.
 // You can construct a concrete instance of `CseRuleTuningExpressionArrayInput` via:
 //
@@ -251,6 +258,12 @@ func (i CseRuleTuningExpressionArray) ToCseRuleTuningExpressionArrayOutput() Cse
 
 func (i CseRuleTuningExpressionArray) ToCseRuleTuningExpressionArrayOutputWithContext(ctx context.Context) CseRuleTuningExpressionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseRuleTuningExpressionArrayOutput)
+}
+
+func (i CseRuleTuningExpressionArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseRuleTuningExpression] {
+	return pulumix.Output[[]*CseRuleTuningExpression]{
+		OutputState: i.ToCseRuleTuningExpressionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseRuleTuningExpressionMapInput is an input type that accepts CseRuleTuningExpressionMap and CseRuleTuningExpressionMapOutput values.
@@ -278,6 +291,12 @@ func (i CseRuleTuningExpressionMap) ToCseRuleTuningExpressionMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CseRuleTuningExpressionMapOutput)
 }
 
+func (i CseRuleTuningExpressionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseRuleTuningExpression] {
+	return pulumix.Output[map[string]*CseRuleTuningExpression]{
+		OutputState: i.ToCseRuleTuningExpressionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseRuleTuningExpressionOutput struct{ *pulumi.OutputState }
 
 func (CseRuleTuningExpressionOutput) ElementType() reflect.Type {
@@ -290,6 +309,12 @@ func (o CseRuleTuningExpressionOutput) ToCseRuleTuningExpressionOutput() CseRule
 
 func (o CseRuleTuningExpressionOutput) ToCseRuleTuningExpressionOutputWithContext(ctx context.Context) CseRuleTuningExpressionOutput {
 	return o
+}
+
+func (o CseRuleTuningExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[*CseRuleTuningExpression] {
+	return pulumix.Output[*CseRuleTuningExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the rule tuning expression.
@@ -343,6 +368,12 @@ func (o CseRuleTuningExpressionArrayOutput) ToCseRuleTuningExpressionArrayOutput
 	return o
 }
 
+func (o CseRuleTuningExpressionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseRuleTuningExpression] {
+	return pulumix.Output[[]*CseRuleTuningExpression]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseRuleTuningExpressionArrayOutput) Index(i pulumi.IntInput) CseRuleTuningExpressionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseRuleTuningExpression {
 		return vs[0].([]*CseRuleTuningExpression)[vs[1].(int)]
@@ -361,6 +392,12 @@ func (o CseRuleTuningExpressionMapOutput) ToCseRuleTuningExpressionMapOutput() C
 
 func (o CseRuleTuningExpressionMapOutput) ToCseRuleTuningExpressionMapOutputWithContext(ctx context.Context) CseRuleTuningExpressionMapOutput {
 	return o
+}
+
+func (o CseRuleTuningExpressionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseRuleTuningExpression] {
+	return pulumix.Output[map[string]*CseRuleTuningExpression]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseRuleTuningExpressionMapOutput) MapIndex(k pulumi.StringInput) CseRuleTuningExpressionOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). This source is used to ingest log via Kinesis Firehose from AWS.
@@ -301,6 +302,12 @@ func (i *KineisLogSource) ToKineisLogSourceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceOutput)
 }
 
+func (i *KineisLogSource) ToOutput(ctx context.Context) pulumix.Output[*KineisLogSource] {
+	return pulumix.Output[*KineisLogSource]{
+		OutputState: i.ToKineisLogSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KineisLogSourceArrayInput is an input type that accepts KineisLogSourceArray and KineisLogSourceArrayOutput values.
 // You can construct a concrete instance of `KineisLogSourceArrayInput` via:
 //
@@ -324,6 +331,12 @@ func (i KineisLogSourceArray) ToKineisLogSourceArrayOutput() KineisLogSourceArra
 
 func (i KineisLogSourceArray) ToKineisLogSourceArrayOutputWithContext(ctx context.Context) KineisLogSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceArrayOutput)
+}
+
+func (i KineisLogSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*KineisLogSource] {
+	return pulumix.Output[[]*KineisLogSource]{
+		OutputState: i.ToKineisLogSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KineisLogSourceMapInput is an input type that accepts KineisLogSourceMap and KineisLogSourceMapOutput values.
@@ -351,6 +364,12 @@ func (i KineisLogSourceMap) ToKineisLogSourceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceMapOutput)
 }
 
+func (i KineisLogSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KineisLogSource] {
+	return pulumix.Output[map[string]*KineisLogSource]{
+		OutputState: i.ToKineisLogSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KineisLogSourceOutput struct{ *pulumi.OutputState }
 
 func (KineisLogSourceOutput) ElementType() reflect.Type {
@@ -363,6 +382,12 @@ func (o KineisLogSourceOutput) ToKineisLogSourceOutput() KineisLogSourceOutput {
 
 func (o KineisLogSourceOutput) ToKineisLogSourceOutputWithContext(ctx context.Context) KineisLogSourceOutput {
 	return o
+}
+
+func (o KineisLogSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*KineisLogSource] {
+	return pulumix.Output[*KineisLogSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -467,6 +492,12 @@ func (o KineisLogSourceArrayOutput) ToKineisLogSourceArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o KineisLogSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KineisLogSource] {
+	return pulumix.Output[[]*KineisLogSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KineisLogSourceArrayOutput) Index(i pulumi.IntInput) KineisLogSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KineisLogSource {
 		return vs[0].([]*KineisLogSource)[vs[1].(int)]
@@ -485,6 +516,12 @@ func (o KineisLogSourceMapOutput) ToKineisLogSourceMapOutput() KineisLogSourceMa
 
 func (o KineisLogSourceMapOutput) ToKineisLogSourceMapOutputWithContext(ctx context.Context) KineisLogSourceMapOutput {
 	return o
+}
+
+func (o KineisLogSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KineisLogSource] {
+	return pulumix.Output[map[string]*KineisLogSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KineisLogSourceMapOutput) MapIndex(k pulumi.StringInput) KineisLogSourceOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -220,6 +221,12 @@ func (i *CseInventoryEntityGroupConfiguration) ToCseInventoryEntityGroupConfigur
 	return pulumi.ToOutputWithContext(ctx, i).(CseInventoryEntityGroupConfigurationOutput)
 }
 
+func (i *CseInventoryEntityGroupConfiguration) ToOutput(ctx context.Context) pulumix.Output[*CseInventoryEntityGroupConfiguration] {
+	return pulumix.Output[*CseInventoryEntityGroupConfiguration]{
+		OutputState: i.ToCseInventoryEntityGroupConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseInventoryEntityGroupConfigurationArrayInput is an input type that accepts CseInventoryEntityGroupConfigurationArray and CseInventoryEntityGroupConfigurationArrayOutput values.
 // You can construct a concrete instance of `CseInventoryEntityGroupConfigurationArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i CseInventoryEntityGroupConfigurationArray) ToCseInventoryEntityGroupConf
 
 func (i CseInventoryEntityGroupConfigurationArray) ToCseInventoryEntityGroupConfigurationArrayOutputWithContext(ctx context.Context) CseInventoryEntityGroupConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseInventoryEntityGroupConfigurationArrayOutput)
+}
+
+func (i CseInventoryEntityGroupConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseInventoryEntityGroupConfiguration] {
+	return pulumix.Output[[]*CseInventoryEntityGroupConfiguration]{
+		OutputState: i.ToCseInventoryEntityGroupConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseInventoryEntityGroupConfigurationMapInput is an input type that accepts CseInventoryEntityGroupConfigurationMap and CseInventoryEntityGroupConfigurationMapOutput values.
@@ -270,6 +283,12 @@ func (i CseInventoryEntityGroupConfigurationMap) ToCseInventoryEntityGroupConfig
 	return pulumi.ToOutputWithContext(ctx, i).(CseInventoryEntityGroupConfigurationMapOutput)
 }
 
+func (i CseInventoryEntityGroupConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInventoryEntityGroupConfiguration] {
+	return pulumix.Output[map[string]*CseInventoryEntityGroupConfiguration]{
+		OutputState: i.ToCseInventoryEntityGroupConfigurationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseInventoryEntityGroupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (CseInventoryEntityGroupConfigurationOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o CseInventoryEntityGroupConfigurationOutput) ToCseInventoryEntityGroupCon
 
 func (o CseInventoryEntityGroupConfigurationOutput) ToCseInventoryEntityGroupConfigurationOutputWithContext(ctx context.Context) CseInventoryEntityGroupConfigurationOutput {
 	return o
+}
+
+func (o CseInventoryEntityGroupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*CseInventoryEntityGroupConfiguration] {
+	return pulumix.Output[*CseInventoryEntityGroupConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -339,6 +364,12 @@ func (o CseInventoryEntityGroupConfigurationArrayOutput) ToCseInventoryEntityGro
 	return o
 }
 
+func (o CseInventoryEntityGroupConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseInventoryEntityGroupConfiguration] {
+	return pulumix.Output[[]*CseInventoryEntityGroupConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseInventoryEntityGroupConfigurationArrayOutput) Index(i pulumi.IntInput) CseInventoryEntityGroupConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseInventoryEntityGroupConfiguration {
 		return vs[0].([]*CseInventoryEntityGroupConfiguration)[vs[1].(int)]
@@ -357,6 +388,12 @@ func (o CseInventoryEntityGroupConfigurationMapOutput) ToCseInventoryEntityGroup
 
 func (o CseInventoryEntityGroupConfigurationMapOutput) ToCseInventoryEntityGroupConfigurationMapOutputWithContext(ctx context.Context) CseInventoryEntityGroupConfigurationMapOutput {
 	return o
+}
+
+func (o CseInventoryEntityGroupConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInventoryEntityGroupConfiguration] {
+	return pulumix.Output[map[string]*CseInventoryEntityGroupConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseInventoryEntityGroupConfigurationMapOutput) MapIndex(k pulumi.StringInput) CseInventoryEntityGroupConfigurationOutput {

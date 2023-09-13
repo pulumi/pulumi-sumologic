@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic CloudFront source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudFront-Source).
@@ -310,6 +311,12 @@ func (i *CloudfrontSource) ToCloudfrontSourceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourceOutput)
 }
 
+func (i *CloudfrontSource) ToOutput(ctx context.Context) pulumix.Output[*CloudfrontSource] {
+	return pulumix.Output[*CloudfrontSource]{
+		OutputState: i.ToCloudfrontSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudfrontSourceArrayInput is an input type that accepts CloudfrontSourceArray and CloudfrontSourceArrayOutput values.
 // You can construct a concrete instance of `CloudfrontSourceArrayInput` via:
 //
@@ -333,6 +340,12 @@ func (i CloudfrontSourceArray) ToCloudfrontSourceArrayOutput() CloudfrontSourceA
 
 func (i CloudfrontSourceArray) ToCloudfrontSourceArrayOutputWithContext(ctx context.Context) CloudfrontSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourceArrayOutput)
+}
+
+func (i CloudfrontSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudfrontSource] {
+	return pulumix.Output[[]*CloudfrontSource]{
+		OutputState: i.ToCloudfrontSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CloudfrontSourceMapInput is an input type that accepts CloudfrontSourceMap and CloudfrontSourceMapOutput values.
@@ -360,6 +373,12 @@ func (i CloudfrontSourceMap) ToCloudfrontSourceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CloudfrontSourceMapOutput)
 }
 
+func (i CloudfrontSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudfrontSource] {
+	return pulumix.Output[map[string]*CloudfrontSource]{
+		OutputState: i.ToCloudfrontSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudfrontSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudfrontSourceOutput) ElementType() reflect.Type {
@@ -372,6 +391,12 @@ func (o CloudfrontSourceOutput) ToCloudfrontSourceOutput() CloudfrontSourceOutpu
 
 func (o CloudfrontSourceOutput) ToCloudfrontSourceOutputWithContext(ctx context.Context) CloudfrontSourceOutput {
 	return o
+}
+
+func (o CloudfrontSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudfrontSource] {
+	return pulumix.Output[*CloudfrontSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -482,6 +507,12 @@ func (o CloudfrontSourceArrayOutput) ToCloudfrontSourceArrayOutputWithContext(ct
 	return o
 }
 
+func (o CloudfrontSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudfrontSource] {
+	return pulumix.Output[[]*CloudfrontSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudfrontSourceArrayOutput) Index(i pulumi.IntInput) CloudfrontSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudfrontSource {
 		return vs[0].([]*CloudfrontSource)[vs[1].(int)]
@@ -500,6 +531,12 @@ func (o CloudfrontSourceMapOutput) ToCloudfrontSourceMapOutput() CloudfrontSourc
 
 func (o CloudfrontSourceMapOutput) ToCloudfrontSourceMapOutputWithContext(ctx context.Context) CloudfrontSourceMapOutput {
 	return o
+}
+
+func (o CloudfrontSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudfrontSource] {
+	return pulumix.Output[map[string]*CloudfrontSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudfrontSourceMapOutput) MapIndex(k pulumi.StringInput) CloudfrontSourceOutput {

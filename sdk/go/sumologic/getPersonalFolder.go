@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an easy way to retrieve the Personal Folder.
@@ -104,6 +105,12 @@ func (o GetPersonalFolderResultOutput) ToGetPersonalFolderResultOutput() GetPers
 
 func (o GetPersonalFolderResultOutput) ToGetPersonalFolderResultOutputWithContext(ctx context.Context) GetPersonalFolderResultOutput {
 	return o
+}
+
+func (o GetPersonalFolderResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPersonalFolderResult] {
+	return pulumix.Output[GetPersonalFolderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPersonalFolderResultOutput) Description() pulumi.StringOutput {

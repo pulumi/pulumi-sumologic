@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Cloud-to-Cloud source][1].
@@ -199,6 +200,12 @@ func (i *CloudToCloudSource) ToCloudToCloudSourceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CloudToCloudSourceOutput)
 }
 
+func (i *CloudToCloudSource) ToOutput(ctx context.Context) pulumix.Output[*CloudToCloudSource] {
+	return pulumix.Output[*CloudToCloudSource]{
+		OutputState: i.ToCloudToCloudSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CloudToCloudSourceArrayInput is an input type that accepts CloudToCloudSourceArray and CloudToCloudSourceArrayOutput values.
 // You can construct a concrete instance of `CloudToCloudSourceArrayInput` via:
 //
@@ -222,6 +229,12 @@ func (i CloudToCloudSourceArray) ToCloudToCloudSourceArrayOutput() CloudToCloudS
 
 func (i CloudToCloudSourceArray) ToCloudToCloudSourceArrayOutputWithContext(ctx context.Context) CloudToCloudSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudToCloudSourceArrayOutput)
+}
+
+func (i CloudToCloudSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudToCloudSource] {
+	return pulumix.Output[[]*CloudToCloudSource]{
+		OutputState: i.ToCloudToCloudSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CloudToCloudSourceMapInput is an input type that accepts CloudToCloudSourceMap and CloudToCloudSourceMapOutput values.
@@ -249,6 +262,12 @@ func (i CloudToCloudSourceMap) ToCloudToCloudSourceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CloudToCloudSourceMapOutput)
 }
 
+func (i CloudToCloudSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudToCloudSource] {
+	return pulumix.Output[map[string]*CloudToCloudSource]{
+		OutputState: i.ToCloudToCloudSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CloudToCloudSourceOutput struct{ *pulumi.OutputState }
 
 func (CloudToCloudSourceOutput) ElementType() reflect.Type {
@@ -261,6 +280,12 @@ func (o CloudToCloudSourceOutput) ToCloudToCloudSourceOutput() CloudToCloudSourc
 
 func (o CloudToCloudSourceOutput) ToCloudToCloudSourceOutputWithContext(ctx context.Context) CloudToCloudSourceOutput {
 	return o
+}
+
+func (o CloudToCloudSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudToCloudSource] {
+	return pulumix.Output[*CloudToCloudSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudToCloudSourceOutput) CollectorId() pulumi.IntOutput {
@@ -291,6 +316,12 @@ func (o CloudToCloudSourceArrayOutput) ToCloudToCloudSourceArrayOutputWithContex
 	return o
 }
 
+func (o CloudToCloudSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudToCloudSource] {
+	return pulumix.Output[[]*CloudToCloudSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CloudToCloudSourceArrayOutput) Index(i pulumi.IntInput) CloudToCloudSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudToCloudSource {
 		return vs[0].([]*CloudToCloudSource)[vs[1].(int)]
@@ -309,6 +340,12 @@ func (o CloudToCloudSourceMapOutput) ToCloudToCloudSourceMapOutput() CloudToClou
 
 func (o CloudToCloudSourceMapOutput) ToCloudToCloudSourceMapOutputWithContext(ctx context.Context) CloudToCloudSourceMapOutput {
 	return o
+}
+
+func (o CloudToCloudSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudToCloudSource] {
+	return pulumix.Output[map[string]*CloudToCloudSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CloudToCloudSourceMapOutput) MapIndex(k pulumi.StringInput) CloudToCloudSourceOutput {

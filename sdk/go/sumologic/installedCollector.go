@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -242,6 +243,12 @@ func (i *InstalledCollector) ToInstalledCollectorOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstalledCollectorOutput)
 }
 
+func (i *InstalledCollector) ToOutput(ctx context.Context) pulumix.Output[*InstalledCollector] {
+	return pulumix.Output[*InstalledCollector]{
+		OutputState: i.ToInstalledCollectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstalledCollectorArrayInput is an input type that accepts InstalledCollectorArray and InstalledCollectorArrayOutput values.
 // You can construct a concrete instance of `InstalledCollectorArrayInput` via:
 //
@@ -265,6 +272,12 @@ func (i InstalledCollectorArray) ToInstalledCollectorArrayOutput() InstalledColl
 
 func (i InstalledCollectorArray) ToInstalledCollectorArrayOutputWithContext(ctx context.Context) InstalledCollectorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstalledCollectorArrayOutput)
+}
+
+func (i InstalledCollectorArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstalledCollector] {
+	return pulumix.Output[[]*InstalledCollector]{
+		OutputState: i.ToInstalledCollectorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstalledCollectorMapInput is an input type that accepts InstalledCollectorMap and InstalledCollectorMapOutput values.
@@ -292,6 +305,12 @@ func (i InstalledCollectorMap) ToInstalledCollectorMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstalledCollectorMapOutput)
 }
 
+func (i InstalledCollectorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstalledCollector] {
+	return pulumix.Output[map[string]*InstalledCollector]{
+		OutputState: i.ToInstalledCollectorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstalledCollectorOutput struct{ *pulumi.OutputState }
 
 func (InstalledCollectorOutput) ElementType() reflect.Type {
@@ -304,6 +323,12 @@ func (o InstalledCollectorOutput) ToInstalledCollectorOutput() InstalledCollecto
 
 func (o InstalledCollectorOutput) ToInstalledCollectorOutputWithContext(ctx context.Context) InstalledCollectorOutput {
 	return o
+}
+
+func (o InstalledCollectorOutput) ToOutput(ctx context.Context) pulumix.Output[*InstalledCollector] {
+	return pulumix.Output[*InstalledCollector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstalledCollectorOutput) Alive() pulumi.BoolOutput {
@@ -381,6 +406,12 @@ func (o InstalledCollectorArrayOutput) ToInstalledCollectorArrayOutputWithContex
 	return o
 }
 
+func (o InstalledCollectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstalledCollector] {
+	return pulumix.Output[[]*InstalledCollector]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstalledCollectorArrayOutput) Index(i pulumi.IntInput) InstalledCollectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstalledCollector {
 		return vs[0].([]*InstalledCollector)[vs[1].(int)]
@@ -399,6 +430,12 @@ func (o InstalledCollectorMapOutput) ToInstalledCollectorMapOutput() InstalledCo
 
 func (o InstalledCollectorMapOutput) ToInstalledCollectorMapOutputWithContext(ctx context.Context) InstalledCollectorMapOutput {
 	return o
+}
+
+func (o InstalledCollectorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstalledCollector] {
+	return pulumix.Output[map[string]*InstalledCollector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstalledCollectorMapOutput) MapIndex(k pulumi.StringInput) InstalledCollectorOutput {

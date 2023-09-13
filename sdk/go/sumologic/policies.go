@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the Sumologic Policies. Since each policy is global for the entire organization, please ensure that only a single
@@ -220,6 +221,12 @@ func (i *Policies) ToPoliciesOutputWithContext(ctx context.Context) PoliciesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PoliciesOutput)
 }
 
+func (i *Policies) ToOutput(ctx context.Context) pulumix.Output[*Policies] {
+	return pulumix.Output[*Policies]{
+		OutputState: i.ToPoliciesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PoliciesArrayInput is an input type that accepts PoliciesArray and PoliciesArrayOutput values.
 // You can construct a concrete instance of `PoliciesArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i PoliciesArray) ToPoliciesArrayOutput() PoliciesArrayOutput {
 
 func (i PoliciesArray) ToPoliciesArrayOutputWithContext(ctx context.Context) PoliciesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoliciesArrayOutput)
+}
+
+func (i PoliciesArray) ToOutput(ctx context.Context) pulumix.Output[[]*Policies] {
+	return pulumix.Output[[]*Policies]{
+		OutputState: i.ToPoliciesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PoliciesMapInput is an input type that accepts PoliciesMap and PoliciesMapOutput values.
@@ -270,6 +283,12 @@ func (i PoliciesMap) ToPoliciesMapOutputWithContext(ctx context.Context) Policie
 	return pulumi.ToOutputWithContext(ctx, i).(PoliciesMapOutput)
 }
 
+func (i PoliciesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Policies] {
+	return pulumix.Output[map[string]*Policies]{
+		OutputState: i.ToPoliciesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PoliciesOutput struct{ *pulumi.OutputState }
 
 func (PoliciesOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o PoliciesOutput) ToPoliciesOutput() PoliciesOutput {
 
 func (o PoliciesOutput) ToPoliciesOutputWithContext(ctx context.Context) PoliciesOutput {
 	return o
+}
+
+func (o PoliciesOutput) ToOutput(ctx context.Context) pulumix.Output[*Policies] {
+	return pulumix.Output[*Policies]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
@@ -328,6 +353,12 @@ func (o PoliciesArrayOutput) ToPoliciesArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o PoliciesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Policies] {
+	return pulumix.Output[[]*Policies]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PoliciesArrayOutput) Index(i pulumi.IntInput) PoliciesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Policies {
 		return vs[0].([]*Policies)[vs[1].(int)]
@@ -346,6 +377,12 @@ func (o PoliciesMapOutput) ToPoliciesMapOutput() PoliciesMapOutput {
 
 func (o PoliciesMapOutput) ToPoliciesMapOutputWithContext(ctx context.Context) PoliciesMapOutput {
 	return o
+}
+
+func (o PoliciesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Policies] {
+	return pulumix.Output[map[string]*Policies]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoliciesMapOutput) MapIndex(k pulumi.StringInput) PoliciesOutput {

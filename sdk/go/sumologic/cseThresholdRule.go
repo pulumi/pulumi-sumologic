@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumo Logic CSE [Threshold Rule](https://help.sumologic.com/Cloud_SIEM_Enterprise/CSE_Rules/05_Write_a_Threshold_Rule).
@@ -315,6 +316,12 @@ func (i *CseThresholdRule) ToCseThresholdRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CseThresholdRuleOutput)
 }
 
+func (i *CseThresholdRule) ToOutput(ctx context.Context) pulumix.Output[*CseThresholdRule] {
+	return pulumix.Output[*CseThresholdRule]{
+		OutputState: i.ToCseThresholdRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CseThresholdRuleArrayInput is an input type that accepts CseThresholdRuleArray and CseThresholdRuleArrayOutput values.
 // You can construct a concrete instance of `CseThresholdRuleArrayInput` via:
 //
@@ -338,6 +345,12 @@ func (i CseThresholdRuleArray) ToCseThresholdRuleArrayOutput() CseThresholdRuleA
 
 func (i CseThresholdRuleArray) ToCseThresholdRuleArrayOutputWithContext(ctx context.Context) CseThresholdRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseThresholdRuleArrayOutput)
+}
+
+func (i CseThresholdRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseThresholdRule] {
+	return pulumix.Output[[]*CseThresholdRule]{
+		OutputState: i.ToCseThresholdRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CseThresholdRuleMapInput is an input type that accepts CseThresholdRuleMap and CseThresholdRuleMapOutput values.
@@ -365,6 +378,12 @@ func (i CseThresholdRuleMap) ToCseThresholdRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CseThresholdRuleMapOutput)
 }
 
+func (i CseThresholdRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseThresholdRule] {
+	return pulumix.Output[map[string]*CseThresholdRule]{
+		OutputState: i.ToCseThresholdRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CseThresholdRuleOutput struct{ *pulumi.OutputState }
 
 func (CseThresholdRuleOutput) ElementType() reflect.Type {
@@ -377,6 +396,12 @@ func (o CseThresholdRuleOutput) ToCseThresholdRuleOutput() CseThresholdRuleOutpu
 
 func (o CseThresholdRuleOutput) ToCseThresholdRuleOutputWithContext(ctx context.Context) CseThresholdRuleOutput {
 	return o
+}
+
+func (o CseThresholdRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CseThresholdRule] {
+	return pulumix.Output[*CseThresholdRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to count distinct values of a field, as opposed to just counting the number of records
@@ -465,6 +490,12 @@ func (o CseThresholdRuleArrayOutput) ToCseThresholdRuleArrayOutputWithContext(ct
 	return o
 }
 
+func (o CseThresholdRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseThresholdRule] {
+	return pulumix.Output[[]*CseThresholdRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CseThresholdRuleArrayOutput) Index(i pulumi.IntInput) CseThresholdRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseThresholdRule {
 		return vs[0].([]*CseThresholdRule)[vs[1].(int)]
@@ -483,6 +514,12 @@ func (o CseThresholdRuleMapOutput) ToCseThresholdRuleMapOutput() CseThresholdRul
 
 func (o CseThresholdRuleMapOutput) ToCseThresholdRuleMapOutputWithContext(ctx context.Context) CseThresholdRuleMapOutput {
 	return o
+}
+
+func (o CseThresholdRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseThresholdRule] {
+	return pulumix.Output[map[string]*CseThresholdRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CseThresholdRuleMapOutput) MapIndex(k pulumi.StringInput) CseThresholdRuleOutput {

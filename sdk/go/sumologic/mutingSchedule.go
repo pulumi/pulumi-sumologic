@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).
@@ -344,6 +345,12 @@ func (i *MutingSchedule) ToMutingScheduleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleOutput)
 }
 
+func (i *MutingSchedule) ToOutput(ctx context.Context) pulumix.Output[*MutingSchedule] {
+	return pulumix.Output[*MutingSchedule]{
+		OutputState: i.ToMutingScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MutingScheduleArrayInput is an input type that accepts MutingScheduleArray and MutingScheduleArrayOutput values.
 // You can construct a concrete instance of `MutingScheduleArrayInput` via:
 //
@@ -367,6 +374,12 @@ func (i MutingScheduleArray) ToMutingScheduleArrayOutput() MutingScheduleArrayOu
 
 func (i MutingScheduleArray) ToMutingScheduleArrayOutputWithContext(ctx context.Context) MutingScheduleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleArrayOutput)
+}
+
+func (i MutingScheduleArray) ToOutput(ctx context.Context) pulumix.Output[[]*MutingSchedule] {
+	return pulumix.Output[[]*MutingSchedule]{
+		OutputState: i.ToMutingScheduleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MutingScheduleMapInput is an input type that accepts MutingScheduleMap and MutingScheduleMapOutput values.
@@ -394,6 +407,12 @@ func (i MutingScheduleMap) ToMutingScheduleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MutingScheduleMapOutput)
 }
 
+func (i MutingScheduleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MutingSchedule] {
+	return pulumix.Output[map[string]*MutingSchedule]{
+		OutputState: i.ToMutingScheduleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MutingScheduleOutput struct{ *pulumi.OutputState }
 
 func (MutingScheduleOutput) ElementType() reflect.Type {
@@ -406,6 +425,12 @@ func (o MutingScheduleOutput) ToMutingScheduleOutput() MutingScheduleOutput {
 
 func (o MutingScheduleOutput) ToMutingScheduleOutputWithContext(ctx context.Context) MutingScheduleOutput {
 	return o
+}
+
+func (o MutingScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*MutingSchedule] {
+	return pulumix.Output[*MutingSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the content object. Valid value:
@@ -484,6 +509,12 @@ func (o MutingScheduleArrayOutput) ToMutingScheduleArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o MutingScheduleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MutingSchedule] {
+	return pulumix.Output[[]*MutingSchedule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MutingScheduleArrayOutput) Index(i pulumi.IntInput) MutingScheduleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MutingSchedule {
 		return vs[0].([]*MutingSchedule)[vs[1].(int)]
@@ -502,6 +533,12 @@ func (o MutingScheduleMapOutput) ToMutingScheduleMapOutput() MutingScheduleMapOu
 
 func (o MutingScheduleMapOutput) ToMutingScheduleMapOutputWithContext(ctx context.Context) MutingScheduleMapOutput {
 	return o
+}
+
+func (o MutingScheduleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MutingSchedule] {
+	return pulumix.Output[map[string]*MutingSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MutingScheduleMapOutput) MapIndex(k pulumi.StringInput) MutingScheduleOutput {

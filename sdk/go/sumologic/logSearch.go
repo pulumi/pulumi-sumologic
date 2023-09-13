@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic Log Search.
@@ -343,6 +344,12 @@ func (i *LogSearch) ToLogSearchOutputWithContext(ctx context.Context) LogSearchO
 	return pulumi.ToOutputWithContext(ctx, i).(LogSearchOutput)
 }
 
+func (i *LogSearch) ToOutput(ctx context.Context) pulumix.Output[*LogSearch] {
+	return pulumix.Output[*LogSearch]{
+		OutputState: i.ToLogSearchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogSearchArrayInput is an input type that accepts LogSearchArray and LogSearchArrayOutput values.
 // You can construct a concrete instance of `LogSearchArrayInput` via:
 //
@@ -366,6 +373,12 @@ func (i LogSearchArray) ToLogSearchArrayOutput() LogSearchArrayOutput {
 
 func (i LogSearchArray) ToLogSearchArrayOutputWithContext(ctx context.Context) LogSearchArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogSearchArrayOutput)
+}
+
+func (i LogSearchArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogSearch] {
+	return pulumix.Output[[]*LogSearch]{
+		OutputState: i.ToLogSearchArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogSearchMapInput is an input type that accepts LogSearchMap and LogSearchMapOutput values.
@@ -393,6 +406,12 @@ func (i LogSearchMap) ToLogSearchMapOutputWithContext(ctx context.Context) LogSe
 	return pulumi.ToOutputWithContext(ctx, i).(LogSearchMapOutput)
 }
 
+func (i LogSearchMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogSearch] {
+	return pulumix.Output[map[string]*LogSearch]{
+		OutputState: i.ToLogSearchMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogSearchOutput struct{ *pulumi.OutputState }
 
 func (LogSearchOutput) ElementType() reflect.Type {
@@ -405,6 +424,12 @@ func (o LogSearchOutput) ToLogSearchOutput() LogSearchOutput {
 
 func (o LogSearchOutput) ToLogSearchOutputWithContext(ctx context.Context) LogSearchOutput {
 	return o
+}
+
+func (o LogSearchOutput) ToOutput(ctx context.Context) pulumix.Output[*LogSearch] {
+	return pulumix.Output[*LogSearch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the search.
@@ -473,6 +498,12 @@ func (o LogSearchArrayOutput) ToLogSearchArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o LogSearchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogSearch] {
+	return pulumix.Output[[]*LogSearch]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogSearchArrayOutput) Index(i pulumi.IntInput) LogSearchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogSearch {
 		return vs[0].([]*LogSearch)[vs[1].(int)]
@@ -491,6 +522,12 @@ func (o LogSearchMapOutput) ToLogSearchMapOutput() LogSearchMapOutput {
 
 func (o LogSearchMapOutput) ToLogSearchMapOutputWithContext(ctx context.Context) LogSearchMapOutput {
 	return o
+}
+
+func (o LogSearchMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogSearch] {
+	return pulumix.Output[map[string]*LogSearch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogSearchMapOutput) MapIndex(k pulumi.StringInput) LogSearchOutput {

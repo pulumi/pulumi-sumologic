@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic ELB source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Elastic-Load-Balancing-Source).
@@ -310,6 +311,12 @@ func (i *ElbSource) ToElbSourceOutputWithContext(ctx context.Context) ElbSourceO
 	return pulumi.ToOutputWithContext(ctx, i).(ElbSourceOutput)
 }
 
+func (i *ElbSource) ToOutput(ctx context.Context) pulumix.Output[*ElbSource] {
+	return pulumix.Output[*ElbSource]{
+		OutputState: i.ToElbSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElbSourceArrayInput is an input type that accepts ElbSourceArray and ElbSourceArrayOutput values.
 // You can construct a concrete instance of `ElbSourceArrayInput` via:
 //
@@ -333,6 +340,12 @@ func (i ElbSourceArray) ToElbSourceArrayOutput() ElbSourceArrayOutput {
 
 func (i ElbSourceArray) ToElbSourceArrayOutputWithContext(ctx context.Context) ElbSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElbSourceArrayOutput)
+}
+
+func (i ElbSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*ElbSource] {
+	return pulumix.Output[[]*ElbSource]{
+		OutputState: i.ToElbSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ElbSourceMapInput is an input type that accepts ElbSourceMap and ElbSourceMapOutput values.
@@ -360,6 +373,12 @@ func (i ElbSourceMap) ToElbSourceMapOutputWithContext(ctx context.Context) ElbSo
 	return pulumi.ToOutputWithContext(ctx, i).(ElbSourceMapOutput)
 }
 
+func (i ElbSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElbSource] {
+	return pulumix.Output[map[string]*ElbSource]{
+		OutputState: i.ToElbSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElbSourceOutput struct{ *pulumi.OutputState }
 
 func (ElbSourceOutput) ElementType() reflect.Type {
@@ -372,6 +391,12 @@ func (o ElbSourceOutput) ToElbSourceOutput() ElbSourceOutput {
 
 func (o ElbSourceOutput) ToElbSourceOutputWithContext(ctx context.Context) ElbSourceOutput {
 	return o
+}
+
+func (o ElbSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*ElbSource] {
+	return pulumix.Output[*ElbSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -482,6 +507,12 @@ func (o ElbSourceArrayOutput) ToElbSourceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ElbSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ElbSource] {
+	return pulumix.Output[[]*ElbSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElbSourceArrayOutput) Index(i pulumi.IntInput) ElbSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElbSource {
 		return vs[0].([]*ElbSource)[vs[1].(int)]
@@ -500,6 +531,12 @@ func (o ElbSourceMapOutput) ToElbSourceMapOutput() ElbSourceMapOutput {
 
 func (o ElbSourceMapOutput) ToElbSourceMapOutputWithContext(ctx context.Context) ElbSourceMapOutput {
 	return o
+}
+
+func (o ElbSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElbSource] {
+	return pulumix.Output[map[string]*ElbSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElbSourceMapOutput) MapIndex(k pulumi.StringInput) ElbSourceOutput {

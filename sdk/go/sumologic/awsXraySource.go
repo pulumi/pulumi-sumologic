@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
@@ -305,6 +306,12 @@ func (i *AwsXraySource) ToAwsXraySourceOutputWithContext(ctx context.Context) Aw
 	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourceOutput)
 }
 
+func (i *AwsXraySource) ToOutput(ctx context.Context) pulumix.Output[*AwsXraySource] {
+	return pulumix.Output[*AwsXraySource]{
+		OutputState: i.ToAwsXraySourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AwsXraySourceArrayInput is an input type that accepts AwsXraySourceArray and AwsXraySourceArrayOutput values.
 // You can construct a concrete instance of `AwsXraySourceArrayInput` via:
 //
@@ -328,6 +335,12 @@ func (i AwsXraySourceArray) ToAwsXraySourceArrayOutput() AwsXraySourceArrayOutpu
 
 func (i AwsXraySourceArray) ToAwsXraySourceArrayOutputWithContext(ctx context.Context) AwsXraySourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourceArrayOutput)
+}
+
+func (i AwsXraySourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*AwsXraySource] {
+	return pulumix.Output[[]*AwsXraySource]{
+		OutputState: i.ToAwsXraySourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AwsXraySourceMapInput is an input type that accepts AwsXraySourceMap and AwsXraySourceMapOutput values.
@@ -355,6 +368,12 @@ func (i AwsXraySourceMap) ToAwsXraySourceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AwsXraySourceMapOutput)
 }
 
+func (i AwsXraySourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsXraySource] {
+	return pulumix.Output[map[string]*AwsXraySource]{
+		OutputState: i.ToAwsXraySourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AwsXraySourceOutput struct{ *pulumi.OutputState }
 
 func (AwsXraySourceOutput) ElementType() reflect.Type {
@@ -367,6 +386,12 @@ func (o AwsXraySourceOutput) ToAwsXraySourceOutput() AwsXraySourceOutput {
 
 func (o AwsXraySourceOutput) ToAwsXraySourceOutputWithContext(ctx context.Context) AwsXraySourceOutput {
 	return o
+}
+
+func (o AwsXraySourceOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsXraySource] {
+	return pulumix.Output[*AwsXraySource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Authentication details for making `xray:Get*` calls.
@@ -476,6 +501,12 @@ func (o AwsXraySourceArrayOutput) ToAwsXraySourceArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o AwsXraySourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AwsXraySource] {
+	return pulumix.Output[[]*AwsXraySource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AwsXraySourceArrayOutput) Index(i pulumi.IntInput) AwsXraySourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsXraySource {
 		return vs[0].([]*AwsXraySource)[vs[1].(int)]
@@ -494,6 +525,12 @@ func (o AwsXraySourceMapOutput) ToAwsXraySourceMapOutput() AwsXraySourceMapOutpu
 
 func (o AwsXraySourceMapOutput) ToAwsXraySourceMapOutputWithContext(ctx context.Context) AwsXraySourceMapOutput {
 	return o
+}
+
+func (o AwsXraySourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsXraySource] {
+	return pulumix.Output[map[string]*AwsXraySource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsXraySourceMapOutput) MapIndex(k pulumi.StringInput) AwsXraySourceOutput {

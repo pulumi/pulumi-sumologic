@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic (Hosted) Collector][1].
@@ -185,6 +186,12 @@ func (i *Collector) ToCollectorOutputWithContext(ctx context.Context) CollectorO
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorOutput)
 }
 
+func (i *Collector) ToOutput(ctx context.Context) pulumix.Output[*Collector] {
+	return pulumix.Output[*Collector]{
+		OutputState: i.ToCollectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CollectorArrayInput is an input type that accepts CollectorArray and CollectorArrayOutput values.
 // You can construct a concrete instance of `CollectorArrayInput` via:
 //
@@ -208,6 +215,12 @@ func (i CollectorArray) ToCollectorArrayOutput() CollectorArrayOutput {
 
 func (i CollectorArray) ToCollectorArrayOutputWithContext(ctx context.Context) CollectorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorArrayOutput)
+}
+
+func (i CollectorArray) ToOutput(ctx context.Context) pulumix.Output[[]*Collector] {
+	return pulumix.Output[[]*Collector]{
+		OutputState: i.ToCollectorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CollectorMapInput is an input type that accepts CollectorMap and CollectorMapOutput values.
@@ -235,6 +248,12 @@ func (i CollectorMap) ToCollectorMapOutputWithContext(ctx context.Context) Colle
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorMapOutput)
 }
 
+func (i CollectorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Collector] {
+	return pulumix.Output[map[string]*Collector]{
+		OutputState: i.ToCollectorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CollectorOutput struct{ *pulumi.OutputState }
 
 func (CollectorOutput) ElementType() reflect.Type {
@@ -247,6 +266,12 @@ func (o CollectorOutput) ToCollectorOutput() CollectorOutput {
 
 func (o CollectorOutput) ToCollectorOutputWithContext(ctx context.Context) CollectorOutput {
 	return o
+}
+
+func (o CollectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Collector] {
+	return pulumix.Output[*Collector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
@@ -288,6 +313,12 @@ func (o CollectorArrayOutput) ToCollectorArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o CollectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Collector] {
+	return pulumix.Output[[]*Collector]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CollectorArrayOutput) Index(i pulumi.IntInput) CollectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Collector {
 		return vs[0].([]*Collector)[vs[1].(int)]
@@ -306,6 +337,12 @@ func (o CollectorMapOutput) ToCollectorMapOutput() CollectorMapOutput {
 
 func (o CollectorMapOutput) ToCollectorMapOutputWithContext(ctx context.Context) CollectorMapOutput {
 	return o
+}
+
+func (o CollectorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Collector] {
+	return pulumix.Output[map[string]*Collector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CollectorMapOutput) MapIndex(k pulumi.StringInput) CollectorOutput {

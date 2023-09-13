@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an easy way to retrieve the Admin Recommended Folder.
@@ -84,6 +85,12 @@ func (o GetAdminRecommendedFolderResultOutput) ToGetAdminRecommendedFolderResult
 
 func (o GetAdminRecommendedFolderResultOutput) ToGetAdminRecommendedFolderResultOutputWithContext(ctx context.Context) GetAdminRecommendedFolderResultOutput {
 	return o
+}
+
+func (o GetAdminRecommendedFolderResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAdminRecommendedFolderResult] {
+	return pulumix.Output[GetAdminRecommendedFolderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAdminRecommendedFolderResultOutput) Description() pulumi.StringOutput {
