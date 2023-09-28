@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CseAutomation{}
 	case "sumologic:index/cseChainRule:CseChainRule":
 		r = &CseChainRule{}
+	case "sumologic:index/cseContextAction:CseContextAction":
+		r = &CseContextAction{}
 	case "sumologic:index/cseCustomEntityType:CseCustomEntityType":
 		r = &CseCustomEntityType{}
 	case "sumologic:index/cseCustomInsight:CseCustomInsight":
@@ -85,6 +87,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CseOutlierRule{}
 	case "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression":
 		r = &CseRuleTuningExpression{}
+	case "sumologic:index/cseTagSchema:CseTagSchema":
+		r = &CseTagSchema{}
 	case "sumologic:index/cseThresholdRule:CseThresholdRule":
 		r = &CseThresholdRule{}
 	case "sumologic:index/dashboard:Dashboard":
@@ -271,6 +275,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/cseContextAction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/cseCustomEntityType",
 		&module{version},
 	)
@@ -352,6 +361,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/cseRuleTuningExpression",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/cseTagSchema",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

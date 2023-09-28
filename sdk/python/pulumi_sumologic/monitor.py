@@ -60,7 +60,7 @@ class MonitorArgs:
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
@@ -302,7 +302,7 @@ class MonitorArgs:
     @pulumi.getter(name="notificationGroupFields")
     def notification_group_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
+        The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         """
         return pulumi.get(self, "notification_group_fields")
 
@@ -511,7 +511,7 @@ class _MonitorState:
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
@@ -754,7 +754,7 @@ class _MonitorState:
     @pulumi.getter(name="notificationGroupFields")
     def notification_group_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
+        The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         """
         return pulumi.get(self, "notification_group_fields")
 
@@ -1169,7 +1169,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
@@ -1537,7 +1537,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
@@ -1693,7 +1693,7 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter(name="notificationGroupFields")
     def notification_group_fields(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
+        The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         """
         return pulumi.get(self, "notification_group_fields")
 

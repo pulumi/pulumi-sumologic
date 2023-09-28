@@ -84,7 +84,7 @@ export class CloudToCloudSource extends pulumi.CustomResource {
 
     public readonly collectorId!: pulumi.Output<number>;
     /**
-     * This is a JSON object which contains the configuration parameters for the Source.
+     * This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      */
     public readonly config!: pulumi.Output<string>;
     /**
@@ -134,7 +134,7 @@ export class CloudToCloudSource extends pulumi.CustomResource {
 export interface CloudToCloudSourceState {
     collectorId?: pulumi.Input<number>;
     /**
-     * This is a JSON object which contains the configuration parameters for the Source.
+     * This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      */
     config?: pulumi.Input<string>;
     /**
@@ -149,7 +149,7 @@ export interface CloudToCloudSourceState {
 export interface CloudToCloudSourceArgs {
     collectorId: pulumi.Input<number>;
     /**
-     * This is a JSON object which contains the configuration parameters for the Source.
+     * This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      */
     config: pulumi.Input<string>;
     /**

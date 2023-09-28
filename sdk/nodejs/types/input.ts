@@ -759,6 +759,25 @@ export interface CseOutlierRuleEntitySelector {
     expression: pulumi.Input<string>;
 }
 
+export interface CseTagSchemaValueOption {
+    /**
+     * Value option label.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * Value option link.
+     *
+     *
+     *
+     * The following attributes are exported:
+     */
+    link?: pulumi.Input<string>;
+    /**
+     * Value option value.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface CseThresholdRuleEntitySelector {
     entityType: pulumi.Input<string>;
     /**

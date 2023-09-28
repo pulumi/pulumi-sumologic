@@ -80,6 +80,11 @@ export type CseChainRule = import("./cseChainRule").CseChainRule;
 export const CseChainRule: typeof import("./cseChainRule").CseChainRule = null as any;
 utilities.lazyLoad(exports, ["CseChainRule"], () => require("./cseChainRule"));
 
+export { CseContextActionArgs, CseContextActionState } from "./cseContextAction";
+export type CseContextAction = import("./cseContextAction").CseContextAction;
+export const CseContextAction: typeof import("./cseContextAction").CseContextAction = null as any;
+utilities.lazyLoad(exports, ["CseContextAction"], () => require("./cseContextAction"));
+
 export { CseCustomEntityTypeArgs, CseCustomEntityTypeState } from "./cseCustomEntityType";
 export type CseCustomEntityType = import("./cseCustomEntityType").CseCustomEntityType;
 export const CseCustomEntityType: typeof import("./cseCustomEntityType").CseCustomEntityType = null as any;
@@ -164,6 +169,11 @@ export { CseRuleTuningExpressionArgs, CseRuleTuningExpressionState } from "./cse
 export type CseRuleTuningExpression = import("./cseRuleTuningExpression").CseRuleTuningExpression;
 export const CseRuleTuningExpression: typeof import("./cseRuleTuningExpression").CseRuleTuningExpression = null as any;
 utilities.lazyLoad(exports, ["CseRuleTuningExpression"], () => require("./cseRuleTuningExpression"));
+
+export { CseTagSchemaArgs, CseTagSchemaState } from "./cseTagSchema";
+export type CseTagSchema = import("./cseTagSchema").CseTagSchema;
+export const CseTagSchema: typeof import("./cseTagSchema").CseTagSchema = null as any;
+utilities.lazyLoad(exports, ["CseTagSchema"], () => require("./cseTagSchema"));
 
 export { CseThresholdRuleArgs, CseThresholdRuleState } from "./cseThresholdRule";
 export type CseThresholdRule = import("./cseThresholdRule").CseThresholdRule;
@@ -459,6 +469,8 @@ const _module = {
                 return new CseAutomation(name, <any>undefined, { urn })
             case "sumologic:index/cseChainRule:CseChainRule":
                 return new CseChainRule(name, <any>undefined, { urn })
+            case "sumologic:index/cseContextAction:CseContextAction":
+                return new CseContextAction(name, <any>undefined, { urn })
             case "sumologic:index/cseCustomEntityType:CseCustomEntityType":
                 return new CseCustomEntityType(name, <any>undefined, { urn })
             case "sumologic:index/cseCustomInsight:CseCustomInsight":
@@ -493,6 +505,8 @@ const _module = {
                 return new CseOutlierRule(name, <any>undefined, { urn })
             case "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression":
                 return new CseRuleTuningExpression(name, <any>undefined, { urn })
+            case "sumologic:index/cseTagSchema:CseTagSchema":
+                return new CseTagSchema(name, <any>undefined, { urn })
             case "sumologic:index/cseThresholdRule:CseThresholdRule":
                 return new CseThresholdRule(name, <any>undefined, { urn })
             case "sumologic:index/dashboard:Dashboard":
@@ -591,6 +605,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/contentPermission", _m
 pulumi.runtime.registerResourceModule("sumologic", "index/cseAggregationRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseAutomation", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseChainRule", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseContextAction", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomEntityType", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomInsight", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseCustomMatchListColumn", _module)
@@ -608,6 +623,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cseMatchRule", _module
 pulumi.runtime.registerResourceModule("sumologic", "index/cseNetworkBlock", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseOutlierRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseRuleTuningExpression", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/cseTagSchema", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseThresholdRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/elbSource", _module)

@@ -14,9 +14,10 @@ import * as utilities from "./utilities";
  * const inventoryEntityGroupConfiguration = new sumologic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration", {
  *     criticality: "HIGH",
  *     description: "Inventory entity group description",
- *     group: "admin",
+ *     inventoryKey: "groups",
  *     inventorySource: "Active Directory",
- *     inventoryType: "user",
+ *     inventoryType: "username",
+ *     inventoryValue: "http_servers",
  *     suppressed: false,
  *     tags: ["tag"],
  * });
@@ -67,22 +68,40 @@ export class CseInventoryEntityGroupConfiguration extends pulumi.CustomResource 
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The entity group configuration inventory group.
+     * If dynamic tags are enabled for configuration.
+     */
+    public readonly dynamicTags!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+     *
+     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
      */
     public readonly group!: pulumi.Output<string | undefined>;
+    /**
+     * The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+     */
+    public readonly inventoryKey!: pulumi.Output<string | undefined>;
     /**
      * The inventory source Examples: "Active Directory", "Okta".
      */
     public readonly inventorySource!: pulumi.Output<string>;
     /**
-     * The inventory type Examples: "computer", "user".
+     * The inventory type Examples: "computer", "username".
      */
     public readonly inventoryType!: pulumi.Output<string>;
+    /**
+     * The inventory value to match.
+     */
+    public readonly inventoryValue!: pulumi.Output<string | undefined>;
     /**
      * The entity group configuration name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly suppressed!: pulumi.Output<boolean | undefined>;
+    /**
+     * The tag schema to be used for dynamic tags.
+     */
+    public readonly tagSchema!: pulumi.Output<string | undefined>;
     /**
      * The entity group configuration tags list.
      *
@@ -105,11 +124,15 @@ export class CseInventoryEntityGroupConfiguration extends pulumi.CustomResource 
             const state = argsOrState as CseInventoryEntityGroupConfigurationState | undefined;
             resourceInputs["criticality"] = state ? state.criticality : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dynamicTags"] = state ? state.dynamicTags : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["inventoryKey"] = state ? state.inventoryKey : undefined;
             resourceInputs["inventorySource"] = state ? state.inventorySource : undefined;
             resourceInputs["inventoryType"] = state ? state.inventoryType : undefined;
+            resourceInputs["inventoryValue"] = state ? state.inventoryValue : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["suppressed"] = state ? state.suppressed : undefined;
+            resourceInputs["tagSchema"] = state ? state.tagSchema : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CseInventoryEntityGroupConfigurationArgs | undefined;
@@ -121,11 +144,15 @@ export class CseInventoryEntityGroupConfiguration extends pulumi.CustomResource 
             }
             resourceInputs["criticality"] = args ? args.criticality : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dynamicTags"] = args ? args.dynamicTags : undefined;
             resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["inventoryKey"] = args ? args.inventoryKey : undefined;
             resourceInputs["inventorySource"] = args ? args.inventorySource : undefined;
             resourceInputs["inventoryType"] = args ? args.inventoryType : undefined;
+            resourceInputs["inventoryValue"] = args ? args.inventoryValue : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["suppressed"] = args ? args.suppressed : undefined;
+            resourceInputs["tagSchema"] = args ? args.tagSchema : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,22 +173,40 @@ export interface CseInventoryEntityGroupConfigurationState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The entity group configuration inventory group.
+     * If dynamic tags are enabled for configuration.
+     */
+    dynamicTags?: pulumi.Input<boolean>;
+    /**
+     * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+     *
+     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
      */
     group?: pulumi.Input<string>;
+    /**
+     * The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+     */
+    inventoryKey?: pulumi.Input<string>;
     /**
      * The inventory source Examples: "Active Directory", "Okta".
      */
     inventorySource?: pulumi.Input<string>;
     /**
-     * The inventory type Examples: "computer", "user".
+     * The inventory type Examples: "computer", "username".
      */
     inventoryType?: pulumi.Input<string>;
+    /**
+     * The inventory value to match.
+     */
+    inventoryValue?: pulumi.Input<string>;
     /**
      * The entity group configuration name.
      */
     name?: pulumi.Input<string>;
     suppressed?: pulumi.Input<boolean>;
+    /**
+     * The tag schema to be used for dynamic tags.
+     */
+    tagSchema?: pulumi.Input<string>;
     /**
      * The entity group configuration tags list.
      *
@@ -183,22 +228,40 @@ export interface CseInventoryEntityGroupConfigurationArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The entity group configuration inventory group.
+     * If dynamic tags are enabled for configuration.
+     */
+    dynamicTags?: pulumi.Input<boolean>;
+    /**
+     * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+     *
+     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
      */
     group?: pulumi.Input<string>;
+    /**
+     * The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+     */
+    inventoryKey?: pulumi.Input<string>;
     /**
      * The inventory source Examples: "Active Directory", "Okta".
      */
     inventorySource: pulumi.Input<string>;
     /**
-     * The inventory type Examples: "computer", "user".
+     * The inventory type Examples: "computer", "username".
      */
     inventoryType: pulumi.Input<string>;
+    /**
+     * The inventory value to match.
+     */
+    inventoryValue?: pulumi.Input<string>;
     /**
      * The entity group configuration name.
      */
     name?: pulumi.Input<string>;
     suppressed?: pulumi.Input<boolean>;
+    /**
+     * The tag schema to be used for dynamic tags.
+     */
+    tagSchema?: pulumi.Input<string>;
     /**
      * The entity group configuration tags list.
      *

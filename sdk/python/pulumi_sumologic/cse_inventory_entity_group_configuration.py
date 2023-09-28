@@ -18,18 +18,26 @@ class CseInventoryEntityGroupConfigurationArgs:
                  inventory_type: pulumi.Input[str],
                  criticality: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_tags: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 inventory_key: Optional[pulumi.Input[str]] = None,
+                 inventory_value: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  suppressed: Optional[pulumi.Input[bool]] = None,
+                 tag_schema: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseInventoryEntityGroupConfiguration resource.
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
         :param pulumi.Input[str] criticality: The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
         :param pulumi.Input[str] description: The entity group configuration description.
-        :param pulumi.Input[str] group: The entity group configuration inventory group.
+        :param pulumi.Input[bool] dynamic_tags: If dynamic tags are enabled for configuration.
+        :param pulumi.Input[str] group: (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+        :param pulumi.Input[str] inventory_key: The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+        :param pulumi.Input[str] inventory_value: The inventory value to match.
         :param pulumi.Input[str] name: The entity group configuration name.
+        :param pulumi.Input[str] tag_schema: The tag schema to be used for dynamic tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
                
                The following attributes are exported:
@@ -40,12 +48,23 @@ class CseInventoryEntityGroupConfigurationArgs:
             pulumi.set(__self__, "criticality", criticality)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_tags is not None:
+            pulumi.set(__self__, "dynamic_tags", dynamic_tags)
+        if group is not None:
+            warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
+            pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
         if group is not None:
             pulumi.set(__self__, "group", group)
+        if inventory_key is not None:
+            pulumi.set(__self__, "inventory_key", inventory_key)
+        if inventory_value is not None:
+            pulumi.set(__self__, "inventory_value", inventory_value)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if suppressed is not None:
             pulumi.set(__self__, "suppressed", suppressed)
+        if tag_schema is not None:
+            pulumi.set(__self__, "tag_schema", tag_schema)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -65,7 +84,7 @@ class CseInventoryEntityGroupConfigurationArgs:
     @pulumi.getter(name="inventoryType")
     def inventory_type(self) -> pulumi.Input[str]:
         """
-        The inventory type Examples: "computer", "user".
+        The inventory type Examples: "computer", "username".
         """
         return pulumi.get(self, "inventory_type")
 
@@ -98,16 +117,55 @@ class CseInventoryEntityGroupConfigurationArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="dynamicTags")
+    def dynamic_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If dynamic tags are enabled for configuration.
+        """
+        return pulumi.get(self, "dynamic_tags")
+
+    @dynamic_tags.setter
+    def dynamic_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dynamic_tags", value)
+
+    @property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        The entity group configuration inventory group.
+        (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         """
+        warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
+        pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
+
         return pulumi.get(self, "group")
 
     @group.setter
     def group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter(name="inventoryKey")
+    def inventory_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+        """
+        return pulumi.get(self, "inventory_key")
+
+    @inventory_key.setter
+    def inventory_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inventory_key", value)
+
+    @property
+    @pulumi.getter(name="inventoryValue")
+    def inventory_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The inventory value to match.
+        """
+        return pulumi.get(self, "inventory_value")
+
+    @inventory_value.setter
+    def inventory_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inventory_value", value)
 
     @property
     @pulumi.getter
@@ -131,6 +189,18 @@ class CseInventoryEntityGroupConfigurationArgs:
         pulumi.set(self, "suppressed", value)
 
     @property
+    @pulumi.getter(name="tagSchema")
+    def tag_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag schema to be used for dynamic tags.
+        """
+        return pulumi.get(self, "tag_schema")
+
+    @tag_schema.setter
+    def tag_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_schema", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -150,20 +220,28 @@ class _CseInventoryEntityGroupConfigurationState:
     def __init__(__self__, *,
                  criticality: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_tags: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 inventory_key: Optional[pulumi.Input[str]] = None,
                  inventory_source: Optional[pulumi.Input[str]] = None,
                  inventory_type: Optional[pulumi.Input[str]] = None,
+                 inventory_value: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  suppressed: Optional[pulumi.Input[bool]] = None,
+                 tag_schema: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CseInventoryEntityGroupConfiguration resources.
         :param pulumi.Input[str] criticality: The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
         :param pulumi.Input[str] description: The entity group configuration description.
-        :param pulumi.Input[str] group: The entity group configuration inventory group.
+        :param pulumi.Input[bool] dynamic_tags: If dynamic tags are enabled for configuration.
+        :param pulumi.Input[str] group: (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+        :param pulumi.Input[str] inventory_key: The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
+        :param pulumi.Input[str] inventory_value: The inventory value to match.
         :param pulumi.Input[str] name: The entity group configuration name.
+        :param pulumi.Input[str] tag_schema: The tag schema to be used for dynamic tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
                
                The following attributes are exported:
@@ -172,16 +250,27 @@ class _CseInventoryEntityGroupConfigurationState:
             pulumi.set(__self__, "criticality", criticality)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_tags is not None:
+            pulumi.set(__self__, "dynamic_tags", dynamic_tags)
+        if group is not None:
+            warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
+            pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
         if group is not None:
             pulumi.set(__self__, "group", group)
+        if inventory_key is not None:
+            pulumi.set(__self__, "inventory_key", inventory_key)
         if inventory_source is not None:
             pulumi.set(__self__, "inventory_source", inventory_source)
         if inventory_type is not None:
             pulumi.set(__self__, "inventory_type", inventory_type)
+        if inventory_value is not None:
+            pulumi.set(__self__, "inventory_value", inventory_value)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if suppressed is not None:
             pulumi.set(__self__, "suppressed", suppressed)
+        if tag_schema is not None:
+            pulumi.set(__self__, "tag_schema", tag_schema)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -210,16 +299,43 @@ class _CseInventoryEntityGroupConfigurationState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="dynamicTags")
+    def dynamic_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If dynamic tags are enabled for configuration.
+        """
+        return pulumi.get(self, "dynamic_tags")
+
+    @dynamic_tags.setter
+    def dynamic_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dynamic_tags", value)
+
+    @property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        The entity group configuration inventory group.
+        (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         """
+        warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
+        pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
+
         return pulumi.get(self, "group")
 
     @group.setter
     def group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter(name="inventoryKey")
+    def inventory_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+        """
+        return pulumi.get(self, "inventory_key")
+
+    @inventory_key.setter
+    def inventory_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inventory_key", value)
 
     @property
     @pulumi.getter(name="inventorySource")
@@ -237,13 +353,25 @@ class _CseInventoryEntityGroupConfigurationState:
     @pulumi.getter(name="inventoryType")
     def inventory_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The inventory type Examples: "computer", "user".
+        The inventory type Examples: "computer", "username".
         """
         return pulumi.get(self, "inventory_type")
 
     @inventory_type.setter
     def inventory_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "inventory_type", value)
+
+    @property
+    @pulumi.getter(name="inventoryValue")
+    def inventory_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The inventory value to match.
+        """
+        return pulumi.get(self, "inventory_value")
+
+    @inventory_value.setter
+    def inventory_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inventory_value", value)
 
     @property
     @pulumi.getter
@@ -267,6 +395,18 @@ class _CseInventoryEntityGroupConfigurationState:
         pulumi.set(self, "suppressed", value)
 
     @property
+    @pulumi.getter(name="tagSchema")
+    def tag_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag schema to be used for dynamic tags.
+        """
+        return pulumi.get(self, "tag_schema")
+
+    @tag_schema.setter
+    def tag_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_schema", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -288,11 +428,15 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  criticality: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_tags: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 inventory_key: Optional[pulumi.Input[str]] = None,
                  inventory_source: Optional[pulumi.Input[str]] = None,
                  inventory_type: Optional[pulumi.Input[str]] = None,
+                 inventory_value: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  suppressed: Optional[pulumi.Input[bool]] = None,
+                 tag_schema: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -305,9 +449,10 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         inventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration",
             criticality="HIGH",
             description="Inventory entity group description",
-            group="admin",
+            inventory_key="groups",
             inventory_source="Active Directory",
-            inventory_type="user",
+            inventory_type="username",
+            inventory_value="http_servers",
             suppressed=False,
             tags=["tag"])
         ```
@@ -324,10 +469,14 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] criticality: The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
         :param pulumi.Input[str] description: The entity group configuration description.
-        :param pulumi.Input[str] group: The entity group configuration inventory group.
+        :param pulumi.Input[bool] dynamic_tags: If dynamic tags are enabled for configuration.
+        :param pulumi.Input[str] group: (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+        :param pulumi.Input[str] inventory_key: The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
+        :param pulumi.Input[str] inventory_value: The inventory value to match.
         :param pulumi.Input[str] name: The entity group configuration name.
+        :param pulumi.Input[str] tag_schema: The tag schema to be used for dynamic tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
                
                The following attributes are exported:
@@ -348,9 +497,10 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         inventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration",
             criticality="HIGH",
             description="Inventory entity group description",
-            group="admin",
+            inventory_key="groups",
             inventory_source="Active Directory",
-            inventory_type="user",
+            inventory_type="username",
+            inventory_value="http_servers",
             suppressed=False,
             tags=["tag"])
         ```
@@ -380,11 +530,15 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  criticality: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_tags: Optional[pulumi.Input[bool]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 inventory_key: Optional[pulumi.Input[str]] = None,
                  inventory_source: Optional[pulumi.Input[str]] = None,
                  inventory_type: Optional[pulumi.Input[str]] = None,
+                 inventory_value: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  suppressed: Optional[pulumi.Input[bool]] = None,
+                 tag_schema: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -397,15 +551,22 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
 
             __props__.__dict__["criticality"] = criticality
             __props__.__dict__["description"] = description
+            __props__.__dict__["dynamic_tags"] = dynamic_tags
+            if group is not None and not opts.urn:
+                warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
+                pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
             __props__.__dict__["group"] = group
+            __props__.__dict__["inventory_key"] = inventory_key
             if inventory_source is None and not opts.urn:
                 raise TypeError("Missing required property 'inventory_source'")
             __props__.__dict__["inventory_source"] = inventory_source
             if inventory_type is None and not opts.urn:
                 raise TypeError("Missing required property 'inventory_type'")
             __props__.__dict__["inventory_type"] = inventory_type
+            __props__.__dict__["inventory_value"] = inventory_value
             __props__.__dict__["name"] = name
             __props__.__dict__["suppressed"] = suppressed
+            __props__.__dict__["tag_schema"] = tag_schema
             __props__.__dict__["tags"] = tags
         super(CseInventoryEntityGroupConfiguration, __self__).__init__(
             'sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration',
@@ -419,11 +580,15 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             criticality: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dynamic_tags: Optional[pulumi.Input[bool]] = None,
             group: Optional[pulumi.Input[str]] = None,
+            inventory_key: Optional[pulumi.Input[str]] = None,
             inventory_source: Optional[pulumi.Input[str]] = None,
             inventory_type: Optional[pulumi.Input[str]] = None,
+            inventory_value: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             suppressed: Optional[pulumi.Input[bool]] = None,
+            tag_schema: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'CseInventoryEntityGroupConfiguration':
         """
         Get an existing CseInventoryEntityGroupConfiguration resource's state with the given name, id, and optional extra
@@ -434,10 +599,14 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] criticality: The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
         :param pulumi.Input[str] description: The entity group configuration description.
-        :param pulumi.Input[str] group: The entity group configuration inventory group.
+        :param pulumi.Input[bool] dynamic_tags: If dynamic tags are enabled for configuration.
+        :param pulumi.Input[str] group: (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+        :param pulumi.Input[str] inventory_key: The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
         :param pulumi.Input[str] inventory_source: The inventory source Examples: "Active Directory", "Okta".
-        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "user".
+        :param pulumi.Input[str] inventory_type: The inventory type Examples: "computer", "username".
+        :param pulumi.Input[str] inventory_value: The inventory value to match.
         :param pulumi.Input[str] name: The entity group configuration name.
+        :param pulumi.Input[str] tag_schema: The tag schema to be used for dynamic tags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The entity group configuration tags list.
                
                The following attributes are exported:
@@ -448,11 +617,15 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
 
         __props__.__dict__["criticality"] = criticality
         __props__.__dict__["description"] = description
+        __props__.__dict__["dynamic_tags"] = dynamic_tags
         __props__.__dict__["group"] = group
+        __props__.__dict__["inventory_key"] = inventory_key
         __props__.__dict__["inventory_source"] = inventory_source
         __props__.__dict__["inventory_type"] = inventory_type
+        __props__.__dict__["inventory_value"] = inventory_value
         __props__.__dict__["name"] = name
         __props__.__dict__["suppressed"] = suppressed
+        __props__.__dict__["tag_schema"] = tag_schema
         __props__.__dict__["tags"] = tags
         return CseInventoryEntityGroupConfiguration(resource_name, opts=opts, __props__=__props__)
 
@@ -473,12 +646,31 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="dynamicTags")
+    def dynamic_tags(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If dynamic tags are enabled for configuration.
+        """
+        return pulumi.get(self, "dynamic_tags")
+
+    @property
     @pulumi.getter
     def group(self) -> pulumi.Output[Optional[str]]:
         """
-        The entity group configuration inventory group.
+        (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         """
+        warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
+        pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
+
         return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter(name="inventoryKey")
+    def inventory_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+        """
+        return pulumi.get(self, "inventory_key")
 
     @property
     @pulumi.getter(name="inventorySource")
@@ -492,9 +684,17 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="inventoryType")
     def inventory_type(self) -> pulumi.Output[str]:
         """
-        The inventory type Examples: "computer", "user".
+        The inventory type Examples: "computer", "username".
         """
         return pulumi.get(self, "inventory_type")
+
+    @property
+    @pulumi.getter(name="inventoryValue")
+    def inventory_value(self) -> pulumi.Output[Optional[str]]:
+        """
+        The inventory value to match.
+        """
+        return pulumi.get(self, "inventory_value")
 
     @property
     @pulumi.getter
@@ -508,6 +708,14 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def suppressed(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "suppressed")
+
+    @property
+    @pulumi.getter(name="tagSchema")
+    def tag_schema(self) -> pulumi.Output[Optional[str]]:
+        """
+        The tag schema to be used for dynamic tags.
+        """
+        return pulumi.get(self, "tag_schema")
 
     @property
     @pulumi.getter

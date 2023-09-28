@@ -66,6 +66,7 @@ __all__ = [
     'CseMatchRuleSeverityMappingMappingArgs',
     'CseOutlierRuleAggregationFunctionsArgs',
     'CseOutlierRuleEntitySelectorArgs',
+    'CseTagSchemaValueOptionArgs',
     'CseThresholdRuleEntitySelectorArgs',
     'DashboardColoringRuleArgs',
     'DashboardColoringRuleColorThresholdArgs',
@@ -4447,6 +4448,68 @@ class CseOutlierRuleEntitySelectorArgs:
     @expression.setter
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
+
+
+@pulumi.input_type
+class CseTagSchemaValueOptionArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[str],
+                 label: Optional[pulumi.Input[str]] = None,
+                 link: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: Value option value.
+        :param pulumi.Input[str] label: Value option label.
+        :param pulumi.Input[str] link: Value option link.
+               
+               
+               
+               The following attributes are exported:
+        """
+        pulumi.set(__self__, "value", value)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value option value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value option label.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def link(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value option link.
+
+
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "link")
+
+    @link.setter
+    def link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link", value)
 
 
 @pulumi.input_type
