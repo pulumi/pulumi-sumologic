@@ -362,6 +362,20 @@
                     }
                 }
             },
+            "sumologic_cse_context_action": {
+                "current": "sumologic:index/cseContextAction:CseContextAction",
+                "fields": {
+                    "entity_types": {
+                        "maxItemsOne": false
+                    },
+                    "ioc_types": {
+                        "maxItemsOne": false
+                    },
+                    "record_fields": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "sumologic_cse_custom_entity_type": {
                 "current": "sumologic:index/cseCustomEntityType:CseCustomEntityType",
                 "fields": {
@@ -548,6 +562,17 @@
                 "current": "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression",
                 "fields": {
                     "rule_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sumologic_cse_tag_schema": {
+                "current": "sumologic:index/cseTagSchema:CseTagSchema",
+                "fields": {
+                    "content_types": {
+                        "maxItemsOne": false
+                    },
+                    "value_options": {
                         "maxItemsOne": false
                     }
                 }
@@ -4991,6 +5016,7 @@
             "sumologic:index/cseAggregationRule:CseAggregationRule": "sumologic_cse_aggregation_rule",
             "sumologic:index/cseAutomation:CseAutomation": "sumologic_cse_automation",
             "sumologic:index/cseChainRule:CseChainRule": "sumologic_cse_chain_rule",
+            "sumologic:index/cseContextAction:CseContextAction": "sumologic_cse_context_action",
             "sumologic:index/cseCustomEntityType:CseCustomEntityType": "sumologic_cse_custom_entity_type",
             "sumologic:index/cseCustomInsight:CseCustomInsight": "sumologic_cse_custom_insight",
             "sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn": "sumologic_cse_custom_match_list_column",
@@ -5008,6 +5034,7 @@
             "sumologic:index/cseNetworkBlock:CseNetworkBlock": "sumologic_cse_network_block",
             "sumologic:index/cseOutlierRule:CseOutlierRule": "sumologic_cse_outlier_rule",
             "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression": "sumologic_cse_rule_tuning_expression",
+            "sumologic:index/cseTagSchema:CseTagSchema": "sumologic_cse_tag_schema",
             "sumologic:index/cseThresholdRule:CseThresholdRule": "sumologic_cse_threshold_rule",
             "sumologic:index/dashboard:Dashboard": "sumologic_dashboard",
             "sumologic:index/elbSource:ElbSource": "sumologic_elb_source",
@@ -7334,6 +7361,12 @@
                 "summaryExpression": "summary_expression",
                 "windowSize": "window_size"
             },
+            "sumologic:index/cseContextAction:CseContextAction": {
+                "allRecordFields": "all_record_fields",
+                "entityTypes": "entity_types",
+                "iocTypes": "ioc_types",
+                "recordFields": "record_fields"
+            },
             "sumologic:index/cseCustomInsight:CseCustomInsight": {
                 "ruleIds": "rule_ids",
                 "signalNames": "signal_names"
@@ -7376,8 +7409,12 @@
                 "displayName": "display_name"
             },
             "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration": {
+                "dynamicTags": "dynamic_tags",
+                "inventoryKey": "inventory_key",
                 "inventorySource": "inventory_source",
-                "inventoryType": "inventory_type"
+                "inventoryType": "inventory_type",
+                "inventoryValue": "inventory_value",
+                "tagSchema": "tag_schema"
             },
             "sumologic:index/cseLogMapping:CseLogMapping": {
                 "parentId": "parent_id",
@@ -7425,6 +7462,11 @@
             "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression": {
                 "isGlobal": "is_global",
                 "ruleIds": "rule_ids"
+            },
+            "sumologic:index/cseTagSchema:CseTagSchema": {
+                "contentTypes": "content_types",
+                "freeForm": "free_form",
+                "valueOptions": "value_options"
             },
             "sumologic:index/cseThresholdRule:CseThresholdRule": {
                 "countDistinct": "count_distinct",

@@ -1626,6 +1626,26 @@
                 "expression"
             ]
         },
+        "sumologic:index/CseTagSchemaValueOption:CseTagSchemaValueOption": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Value option label.\n"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "Value option link.\n\n\n\nThe following attributes are exported:\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value option value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
         "sumologic:index/CseThresholdRuleEntitySelector:CseThresholdRuleEntitySelector": {
             "properties": {
                 "entityType": {
@@ -14166,7 +14186,7 @@
                 },
                 "config": {
                     "type": "string",
-                    "description": "This is a JSON object which contains the configuration parameters for the Source.\n"
+                    "description": "This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.\n"
                 },
                 "schemaRef": {
                     "type": "object",
@@ -14188,7 +14208,7 @@
                 },
                 "config": {
                     "type": "string",
-                    "description": "This is a JSON object which contains the configuration parameters for the Source.\n"
+                    "description": "This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.\n"
                 },
                 "schemaRef": {
                     "type": "object",
@@ -14212,7 +14232,7 @@
                     },
                     "config": {
                         "type": "string",
-                        "description": "This is a JSON object which contains the configuration parameters for the Source.\n"
+                        "description": "This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.\n"
                     },
                     "schemaRef": {
                         "type": "object",
@@ -16065,6 +16085,149 @@
                 "type": "object"
             }
         },
+        "sumologic:index/cseContextAction:CseContextAction": {
+            "description": "Provides a Sumologic CSE Context Action.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst contextAction = new sumologic.CseContextAction(\"contextAction\", {\n    allRecordFields: false,\n    enabled: true,\n    entityTypes: [\"_hostname\"],\n    iocTypes: [\"IP_ADDRESS\"],\n    recordFields: [\"request_url\"],\n    template: \"https://bar.com/?q={{value}}\",\n    type: \"URL\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncontext_action = sumologic.CseContextAction(\"contextAction\",\n    all_record_fields=False,\n    enabled=True,\n    entity_types=[\"_hostname\"],\n    ioc_types=[\"IP_ADDRESS\"],\n    record_fields=[\"request_url\"],\n    template=\"https://bar.com/?q={{value}}\",\n    type=\"URL\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var contextAction = new SumoLogic.CseContextAction(\"contextAction\", new()\n    {\n        AllRecordFields = false,\n        Enabled = true,\n        EntityTypes = new[]\n        {\n            \"_hostname\",\n        },\n        IocTypes = new[]\n        {\n            \"IP_ADDRESS\",\n        },\n        RecordFields = new[]\n        {\n            \"request_url\",\n        },\n        Template = \"https://bar.com/?q={{value}}\",\n        Type = \"URL\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseContextAction(ctx, \"contextAction\", \u0026sumologic.CseContextActionArgs{\n\t\t\tAllRecordFields: pulumi.Bool(false),\n\t\t\tEnabled:         pulumi.Bool(true),\n\t\t\tEntityTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"_hostname\"),\n\t\t\t},\n\t\t\tIocTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"IP_ADDRESS\"),\n\t\t\t},\n\t\t\tRecordFields: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"request_url\"),\n\t\t\t},\n\t\t\tTemplate: pulumi.String(\"https://bar.com/?q={{value}}\"),\n\t\t\tType:     pulumi.String(\"URL\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseContextAction;\nimport com.pulumi.sumologic.CseContextActionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var contextAction = new CseContextAction(\"contextAction\", CseContextActionArgs.builder()        \n            .allRecordFields(false)\n            .enabled(true)\n            .entityTypes(\"_hostname\")\n            .iocTypes(\"IP_ADDRESS\")\n            .recordFields(\"request_url\")\n            .template(\"https://bar.com/?q={{value}}\")\n            .type(\"URL\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  contextAction:\n    type: sumologic:CseContextAction\n    properties:\n      allRecordFields: false\n      enabled: true\n      entityTypes:\n        - _hostname\n      iocTypes:\n        - IP_ADDRESS\n      recordFields:\n        - request_url\n      template: https://bar.com/?q={{value}}\n      type: URL\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nContext Action can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id\n```\n\n ",
+            "properties": {
+                "allRecordFields": {
+                    "type": "boolean",
+                    "description": "Use all record fields.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the context action is enabled.\n\nThe following attributes are exported:\n"
+                },
+                "entityTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Applicable to given entity types.\n"
+                },
+                "iocTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IOC Data types. Valid values: \"ASN\", \"DOMAIN\", \"HASH\", \"IP_ADDRESS\", \"MAC_ADDRESS\", \"PORT\", \"RECORD_PROPERTY\", \"URL\".\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Context Action name.\n"
+                },
+                "recordFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specific record fields.\n"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "The URL/QUERY template.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Context Action type. Valid values: \"URL\", \"QUERY\".\n"
+                }
+            },
+            "required": [
+                "iocTypes",
+                "name"
+            ],
+            "inputProperties": {
+                "allRecordFields": {
+                    "type": "boolean",
+                    "description": "Use all record fields.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the context action is enabled.\n\nThe following attributes are exported:\n"
+                },
+                "entityTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Applicable to given entity types.\n"
+                },
+                "iocTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "IOC Data types. Valid values: \"ASN\", \"DOMAIN\", \"HASH\", \"IP_ADDRESS\", \"MAC_ADDRESS\", \"PORT\", \"RECORD_PROPERTY\", \"URL\".\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Context Action name.\n"
+                },
+                "recordFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specific record fields.\n"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "The URL/QUERY template.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Context Action type. Valid values: \"URL\", \"QUERY\".\n"
+                }
+            },
+            "requiredInputs": [
+                "iocTypes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CseContextAction resources.\n",
+                "properties": {
+                    "allRecordFields": {
+                        "type": "boolean",
+                        "description": "Use all record fields.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the context action is enabled.\n\nThe following attributes are exported:\n"
+                    },
+                    "entityTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Applicable to given entity types.\n"
+                    },
+                    "iocTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IOC Data types. Valid values: \"ASN\", \"DOMAIN\", \"HASH\", \"IP_ADDRESS\", \"MAC_ADDRESS\", \"PORT\", \"RECORD_PROPERTY\", \"URL\".\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Context Action name.\n"
+                    },
+                    "recordFields": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Specific record fields.\n"
+                    },
+                    "template": {
+                        "type": "string",
+                        "description": "The URL/QUERY template.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Context Action type. Valid values: \"URL\", \"QUERY\".\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sumologic:index/cseCustomEntityType:CseCustomEntityType": {
             "description": "Provides a Sumologic CSE Custom Entity Type.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst customEntityType = new sumologic.CseCustomEntityType(\"customEntityType\", {\n    fields: [\n        \"file_hash_md5\",\n        \"file_hash_sha1\",\n    ],\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncustom_entity_type = sumologic.CseCustomEntityType(\"customEntityType\",\n    fields=[\n        \"file_hash_md5\",\n        \"file_hash_sha1\",\n    ],\n    identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var customEntityType = new SumoLogic.CseCustomEntityType(\"customEntityType\", new()\n    {\n        Fields = new[]\n        {\n            \"file_hash_md5\",\n            \"file_hash_sha1\",\n        },\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseCustomEntityType(ctx, \"customEntityType\", \u0026sumologic.CseCustomEntityTypeArgs{\n\t\t\tFields: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"file_hash_md5\"),\n\t\t\t\tpulumi.String(\"file_hash_sha1\"),\n\t\t\t},\n\t\t\tIdentifier: pulumi.String(\"identifier\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseCustomEntityType;\nimport com.pulumi.sumologic.CseCustomEntityTypeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var customEntityType = new CseCustomEntityType(\"customEntityType\", CseCustomEntityTypeArgs.builder()        \n            .fields(            \n                \"file_hash_md5\",\n                \"file_hash_sha1\")\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  customEntityType:\n    type: sumologic:CseCustomEntityType\n    properties:\n      fields:\n        - file_hash_md5\n        - file_hash_sha1\n      identifier: identifier\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCustom entity type can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseCustomEntityType:CseCustomEntityType custom_entity_type id\n```\n\n ",
             "properties": {
@@ -17047,7 +17210,7 @@
             }
         },
         "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst inventoryEntityGroupConfiguration = new sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", {\n    criticality: \"HIGH\",\n    description: \"Inventory entity group description\",\n    group: \"admin\",\n    inventorySource: \"Active Directory\",\n    inventoryType: \"user\",\n    suppressed: false,\n    tags: [\"tag\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ninventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\",\n    criticality=\"HIGH\",\n    description=\"Inventory entity group description\",\n    group=\"admin\",\n    inventory_source=\"Active Directory\",\n    inventory_type=\"user\",\n    suppressed=False,\n    tags=[\"tag\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", new()\n    {\n        Criticality = \"HIGH\",\n        Description = \"Inventory entity group description\",\n        Group = \"admin\",\n        InventorySource = \"Active Directory\",\n        InventoryType = \"user\",\n        Suppressed = false,\n        Tags = new[]\n        {\n            \"tag\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, \"inventoryEntityGroupConfiguration\", \u0026sumologic.CseInventoryEntityGroupConfigurationArgs{\n\t\t\tCriticality:     pulumi.String(\"HIGH\"),\n\t\t\tDescription:     pulumi.String(\"Inventory entity group description\"),\n\t\t\tGroup:           pulumi.String(\"admin\"),\n\t\t\tInventorySource: pulumi.String(\"Active Directory\"),\n\t\t\tInventoryType:   pulumi.String(\"user\"),\n\t\t\tSuppressed:      pulumi.Bool(false),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfiguration;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", CseInventoryEntityGroupConfigurationArgs.builder()        \n            .criticality(\"HIGH\")\n            .description(\"Inventory entity group description\")\n            .group(\"admin\")\n            .inventorySource(\"Active Directory\")\n            .inventoryType(\"user\")\n            .suppressed(false)\n            .tags(\"tag\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inventoryEntityGroupConfiguration:\n    type: sumologic:CseInventoryEntityGroupConfiguration\n    properties:\n      criticality: HIGH\n      description: Inventory entity group description\n      group: admin\n      inventorySource: Active Directory\n      inventoryType: user\n      suppressed: false\n      tags:\n        - tag\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInventory Entity Group Configuration can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst inventoryEntityGroupConfiguration = new sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", {\n    criticality: \"HIGH\",\n    description: \"Inventory entity group description\",\n    inventoryKey: \"groups\",\n    inventorySource: \"Active Directory\",\n    inventoryType: \"username\",\n    inventoryValue: \"http_servers\",\n    suppressed: false,\n    tags: [\"tag\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ninventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\",\n    criticality=\"HIGH\",\n    description=\"Inventory entity group description\",\n    inventory_key=\"groups\",\n    inventory_source=\"Active Directory\",\n    inventory_type=\"username\",\n    inventory_value=\"http_servers\",\n    suppressed=False,\n    tags=[\"tag\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", new()\n    {\n        Criticality = \"HIGH\",\n        Description = \"Inventory entity group description\",\n        InventoryKey = \"groups\",\n        InventorySource = \"Active Directory\",\n        InventoryType = \"username\",\n        InventoryValue = \"http_servers\",\n        Suppressed = false,\n        Tags = new[]\n        {\n            \"tag\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, \"inventoryEntityGroupConfiguration\", \u0026sumologic.CseInventoryEntityGroupConfigurationArgs{\n\t\t\tCriticality:     pulumi.String(\"HIGH\"),\n\t\t\tDescription:     pulumi.String(\"Inventory entity group description\"),\n\t\t\tInventoryKey:    pulumi.String(\"groups\"),\n\t\t\tInventorySource: pulumi.String(\"Active Directory\"),\n\t\t\tInventoryType:   pulumi.String(\"username\"),\n\t\t\tInventoryValue:  pulumi.String(\"http_servers\"),\n\t\t\tSuppressed:      pulumi.Bool(false),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfiguration;\nimport com.pulumi.sumologic.CseInventoryEntityGroupConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration(\"inventoryEntityGroupConfiguration\", CseInventoryEntityGroupConfigurationArgs.builder()        \n            .criticality(\"HIGH\")\n            .description(\"Inventory entity group description\")\n            .inventoryKey(\"groups\")\n            .inventorySource(\"Active Directory\")\n            .inventoryType(\"username\")\n            .inventoryValue(\"http_servers\")\n            .suppressed(false)\n            .tags(\"tag\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inventoryEntityGroupConfiguration:\n    type: sumologic:CseInventoryEntityGroupConfiguration\n    properties:\n      criticality: HIGH\n      description: Inventory entity group description\n      inventoryKey: groups\n      inventorySource: Active Directory\n      inventoryType: username\n      inventoryValue: http_servers\n      suppressed: false\n      tags:\n        - tag\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nInventory Entity Group Configuration can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id\n```\n\n ",
             "properties": {
                 "criticality": {
                     "type": "string",
@@ -17057,9 +17220,18 @@
                     "type": "string",
                     "description": "The entity group configuration description.\n"
                 },
+                "dynamicTags": {
+                    "type": "boolean",
+                    "description": "If dynamic tags are enabled for configuration.\n"
+                },
                 "group": {
                     "type": "string",
-                    "description": "The entity group configuration inventory group.\n"
+                    "description": "(Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.\n",
+                    "deprecationMessage": "The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead."
+                },
+                "inventoryKey": {
+                    "type": "string",
+                    "description": "The inventory key to apply configuration Examples: \"groups\", \"normalizedHostname\", \"normalizedComputerName\".\n"
                 },
                 "inventorySource": {
                     "type": "string",
@@ -17067,7 +17239,11 @@
                 },
                 "inventoryType": {
                     "type": "string",
-                    "description": "The inventory type Examples: \"computer\", \"user\".\n"
+                    "description": "The inventory type Examples: \"computer\", \"username\".\n"
+                },
+                "inventoryValue": {
+                    "type": "string",
+                    "description": "The inventory value to match.\n"
                 },
                 "name": {
                     "type": "string",
@@ -17075,6 +17251,10 @@
                 },
                 "suppressed": {
                     "type": "boolean"
+                },
+                "tagSchema": {
+                    "type": "string",
+                    "description": "The tag schema to be used for dynamic tags.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -17098,9 +17278,18 @@
                     "type": "string",
                     "description": "The entity group configuration description.\n"
                 },
+                "dynamicTags": {
+                    "type": "boolean",
+                    "description": "If dynamic tags are enabled for configuration.\n"
+                },
                 "group": {
                     "type": "string",
-                    "description": "The entity group configuration inventory group.\n"
+                    "description": "(Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.\n",
+                    "deprecationMessage": "The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead."
+                },
+                "inventoryKey": {
+                    "type": "string",
+                    "description": "The inventory key to apply configuration Examples: \"groups\", \"normalizedHostname\", \"normalizedComputerName\".\n"
                 },
                 "inventorySource": {
                     "type": "string",
@@ -17108,7 +17297,11 @@
                 },
                 "inventoryType": {
                     "type": "string",
-                    "description": "The inventory type Examples: \"computer\", \"user\".\n"
+                    "description": "The inventory type Examples: \"computer\", \"username\".\n"
+                },
+                "inventoryValue": {
+                    "type": "string",
+                    "description": "The inventory value to match.\n"
                 },
                 "name": {
                     "type": "string",
@@ -17116,6 +17309,10 @@
                 },
                 "suppressed": {
                     "type": "boolean"
+                },
+                "tagSchema": {
+                    "type": "string",
+                    "description": "The tag schema to be used for dynamic tags.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -17140,9 +17337,18 @@
                         "type": "string",
                         "description": "The entity group configuration description.\n"
                     },
+                    "dynamicTags": {
+                        "type": "boolean",
+                        "description": "If dynamic tags are enabled for configuration.\n"
+                    },
                     "group": {
                         "type": "string",
-                        "description": "The entity group configuration inventory group.\n"
+                        "description": "(Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.\n",
+                        "deprecationMessage": "The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead."
+                    },
+                    "inventoryKey": {
+                        "type": "string",
+                        "description": "The inventory key to apply configuration Examples: \"groups\", \"normalizedHostname\", \"normalizedComputerName\".\n"
                     },
                     "inventorySource": {
                         "type": "string",
@@ -17150,7 +17356,11 @@
                     },
                     "inventoryType": {
                         "type": "string",
-                        "description": "The inventory type Examples: \"computer\", \"user\".\n"
+                        "description": "The inventory type Examples: \"computer\", \"username\".\n"
+                    },
+                    "inventoryValue": {
+                        "type": "string",
+                        "description": "The inventory value to match.\n"
                     },
                     "name": {
                         "type": "string",
@@ -17158,6 +17368,10 @@
                     },
                     "suppressed": {
                         "type": "boolean"
+                    },
+                    "tagSchema": {
+                        "type": "string",
+                        "description": "The tag schema to be used for dynamic tags.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -18082,6 +18296,104 @@
                             "type": "string"
                         },
                         "description": "List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)\n\n\nThe following attributes are exported:\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/cseTagSchema:CseTagSchema": {
+            "description": "Provides a Sumologic CSE Tag Schema.\n\n\n## Import\n\nTag Schema can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id\n```\n\n ",
+            "properties": {
+                "contentTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Applicable content types. Valid values: \"customInsight\", \"entity\", \"rule\", \"threatIntelligence\".\n"
+                },
+                "freeForm": {
+                    "type": "boolean",
+                    "description": "Whether the tag schema accepts free form custom values.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Tag Schema key.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Value option label.\n"
+                },
+                "valueOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseTagSchemaValueOption:CseTagSchemaValueOption"
+                    }
+                }
+            },
+            "required": [
+                "freeForm",
+                "key",
+                "label"
+            ],
+            "inputProperties": {
+                "contentTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Applicable content types. Valid values: \"customInsight\", \"entity\", \"rule\", \"threatIntelligence\".\n"
+                },
+                "freeForm": {
+                    "type": "boolean",
+                    "description": "Whether the tag schema accepts free form custom values.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Tag Schema key.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Value option label.\n"
+                },
+                "valueOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseTagSchemaValueOption:CseTagSchemaValueOption"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "freeForm",
+                "key",
+                "label"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CseTagSchema resources.\n",
+                "properties": {
+                    "contentTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Applicable content types. Valid values: \"customInsight\", \"entity\", \"rule\", \"threatIntelligence\".\n"
+                    },
+                    "freeForm": {
+                        "type": "boolean",
+                        "description": "Whether the tag schema accepts free form custom values.\n"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "Tag Schema key.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "Value option label.\n"
+                    },
+                    "valueOptions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/CseTagSchemaValueOption:CseTagSchemaValueOption"
+                        }
                     }
                 },
                 "type": "object"
@@ -21705,7 +22017,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.\n"
+                    "description": "The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.\n"
                 },
                 "notifications": {
                     "type": "array",
@@ -21854,7 +22166,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.\n"
+                    "description": "The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.\n"
                 },
                 "notifications": {
                     "type": "array",
@@ -21993,7 +22305,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.\n"
+                        "description": "The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.\n"
                     },
                     "notifications": {
                         "type": "array",
