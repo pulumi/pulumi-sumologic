@@ -99,14 +99,14 @@ public class CloudToCloudSource extends com.pulumi.resources.CustomResource {
         return this.collectorId;
     }
     /**
-     * This is a JSON object which contains the configuration parameters for the Source.
+     * This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      * 
      */
     @Export(name="config", type=String.class, parameters={})
     private Output<String> config;
 
     /**
-     * @return This is a JSON object which contains the configuration parameters for the Source.
+     * @return This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      * 
      */
     public Output<String> config() {

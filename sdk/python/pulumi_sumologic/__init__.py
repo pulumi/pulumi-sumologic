@@ -20,6 +20,7 @@ from .content_permission import *
 from .cse_aggregation_rule import *
 from .cse_automation import *
 from .cse_chain_rule import *
+from .cse_context_action import *
 from .cse_custom_entity_type import *
 from .cse_custom_insight import *
 from .cse_custom_match_list_column import *
@@ -37,6 +38,7 @@ from .cse_match_rule import *
 from .cse_network_block import *
 from .cse_outlier_rule import *
 from .cse_rule_tuning_expression import *
+from .cse_tag_schema import *
 from .cse_threshold_rule import *
 from .dashboard import *
 from .elb_source import *
@@ -222,6 +224,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/cseContextAction",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseContextAction:CseContextAction": "CseContextAction"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/cseCustomEntityType",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -354,6 +364,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression": "CseRuleTuningExpression"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/cseTagSchema",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/cseTagSchema:CseTagSchema": "CseTagSchema"
   }
  },
  {

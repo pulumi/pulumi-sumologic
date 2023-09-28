@@ -24,9 +24,10 @@ namespace Pulumi.SumoLogic
     ///     {
     ///         Criticality = "HIGH",
     ///         Description = "Inventory entity group description",
-    ///         Group = "admin",
+    ///         InventoryKey = "groups",
     ///         InventorySource = "Active Directory",
-    ///         InventoryType = "user",
+    ///         InventoryType = "username",
+    ///         InventoryValue = "http_servers",
     ///         Suppressed = false,
     ///         Tags = new[]
     ///         {
@@ -61,10 +62,22 @@ namespace Pulumi.SumoLogic
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The entity group configuration inventory group.
+        /// If dynamic tags are enabled for configuration.
+        /// </summary>
+        [Output("dynamicTags")]
+        public Output<bool?> DynamicTags { get; private set; } = null!;
+
+        /// <summary>
+        /// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
+
+        /// <summary>
+        /// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+        /// </summary>
+        [Output("inventoryKey")]
+        public Output<string?> InventoryKey { get; private set; } = null!;
 
         /// <summary>
         /// The inventory source Examples: "Active Directory", "Okta".
@@ -73,10 +86,16 @@ namespace Pulumi.SumoLogic
         public Output<string> InventorySource { get; private set; } = null!;
 
         /// <summary>
-        /// The inventory type Examples: "computer", "user".
+        /// The inventory type Examples: "computer", "username".
         /// </summary>
         [Output("inventoryType")]
         public Output<string> InventoryType { get; private set; } = null!;
+
+        /// <summary>
+        /// The inventory value to match.
+        /// </summary>
+        [Output("inventoryValue")]
+        public Output<string?> InventoryValue { get; private set; } = null!;
 
         /// <summary>
         /// The entity group configuration name.
@@ -86,6 +105,12 @@ namespace Pulumi.SumoLogic
 
         [Output("suppressed")]
         public Output<bool?> Suppressed { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag schema to be used for dynamic tags.
+        /// </summary>
+        [Output("tagSchema")]
+        public Output<string?> TagSchema { get; private set; } = null!;
 
         /// <summary>
         /// The entity group configuration tags list.
@@ -154,10 +179,22 @@ namespace Pulumi.SumoLogic
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The entity group configuration inventory group.
+        /// If dynamic tags are enabled for configuration.
+        /// </summary>
+        [Input("dynamicTags")]
+        public Input<bool>? DynamicTags { get; set; }
+
+        /// <summary>
+        /// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
+
+        /// <summary>
+        /// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+        /// </summary>
+        [Input("inventoryKey")]
+        public Input<string>? InventoryKey { get; set; }
 
         /// <summary>
         /// The inventory source Examples: "Active Directory", "Okta".
@@ -166,10 +203,16 @@ namespace Pulumi.SumoLogic
         public Input<string> InventorySource { get; set; } = null!;
 
         /// <summary>
-        /// The inventory type Examples: "computer", "user".
+        /// The inventory type Examples: "computer", "username".
         /// </summary>
         [Input("inventoryType", required: true)]
         public Input<string> InventoryType { get; set; } = null!;
+
+        /// <summary>
+        /// The inventory value to match.
+        /// </summary>
+        [Input("inventoryValue")]
+        public Input<string>? InventoryValue { get; set; }
 
         /// <summary>
         /// The entity group configuration name.
@@ -179,6 +222,12 @@ namespace Pulumi.SumoLogic
 
         [Input("suppressed")]
         public Input<bool>? Suppressed { get; set; }
+
+        /// <summary>
+        /// The tag schema to be used for dynamic tags.
+        /// </summary>
+        [Input("tagSchema")]
+        public Input<string>? TagSchema { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -215,10 +264,22 @@ namespace Pulumi.SumoLogic
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The entity group configuration inventory group.
+        /// If dynamic tags are enabled for configuration.
+        /// </summary>
+        [Input("dynamicTags")]
+        public Input<bool>? DynamicTags { get; set; }
+
+        /// <summary>
+        /// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
+
+        /// <summary>
+        /// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+        /// </summary>
+        [Input("inventoryKey")]
+        public Input<string>? InventoryKey { get; set; }
 
         /// <summary>
         /// The inventory source Examples: "Active Directory", "Okta".
@@ -227,10 +288,16 @@ namespace Pulumi.SumoLogic
         public Input<string>? InventorySource { get; set; }
 
         /// <summary>
-        /// The inventory type Examples: "computer", "user".
+        /// The inventory type Examples: "computer", "username".
         /// </summary>
         [Input("inventoryType")]
         public Input<string>? InventoryType { get; set; }
+
+        /// <summary>
+        /// The inventory value to match.
+        /// </summary>
+        [Input("inventoryValue")]
+        public Input<string>? InventoryValue { get; set; }
 
         /// <summary>
         /// The entity group configuration name.
@@ -240,6 +307,12 @@ namespace Pulumi.SumoLogic
 
         [Input("suppressed")]
         public Input<bool>? Suppressed { get; set; }
+
+        /// <summary>
+        /// The tag schema to be used for dynamic tags.
+        /// </summary>
+        [Input("tagSchema")]
+        public Input<string>? TagSchema { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

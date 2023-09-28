@@ -67,6 +67,7 @@ __all__ = [
     'CseMatchRuleSeverityMappingMapping',
     'CseOutlierRuleAggregationFunctions',
     'CseOutlierRuleEntitySelector',
+    'CseTagSchemaValueOption',
     'CseThresholdRuleEntitySelector',
     'DashboardColoringRule',
     'DashboardColoringRuleColorThreshold',
@@ -4296,6 +4297,56 @@ class CseOutlierRuleEntitySelector(dict):
         The expression or field name to generate the Signal on
         """
         return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class CseTagSchemaValueOption(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 label: Optional[str] = None,
+                 link: Optional[str] = None):
+        """
+        :param str value: Value option value.
+        :param str label: Value option label.
+        :param str link: Value option link.
+               
+               
+               
+               The following attributes are exported:
+        """
+        pulumi.set(__self__, "value", value)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value option value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[str]:
+        """
+        Value option label.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def link(self) -> Optional[str]:
+        """
+        Value option link.
+
+
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "link")
 
 
 @pulumi.output_type

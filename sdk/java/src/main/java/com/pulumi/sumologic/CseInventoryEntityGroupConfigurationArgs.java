@@ -48,18 +48,56 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
     }
 
     /**
-     * The entity group configuration inventory group.
+     * If dynamic tags are enabled for configuration.
      * 
      */
+    @Import(name="dynamicTags")
+    private @Nullable Output<Boolean> dynamicTags;
+
+    /**
+     * @return If dynamic tags are enabled for configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> dynamicTags() {
+        return Optional.ofNullable(this.dynamicTags);
+    }
+
+    /**
+     * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+     * 
+     * @deprecated
+     * The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
+     * 
+     */
+    @Deprecated /* The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead. */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return The entity group configuration inventory group.
+     * @return (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+     * 
+     * @deprecated
+     * The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
      * 
      */
+    @Deprecated /* The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead. */
     public Optional<Output<String>> group() {
         return Optional.ofNullable(this.group);
+    }
+
+    /**
+     * The inventory key to apply configuration Examples: &#34;groups&#34;, &#34;normalizedHostname&#34;, &#34;normalizedComputerName&#34;.
+     * 
+     */
+    @Import(name="inventoryKey")
+    private @Nullable Output<String> inventoryKey;
+
+    /**
+     * @return The inventory key to apply configuration Examples: &#34;groups&#34;, &#34;normalizedHostname&#34;, &#34;normalizedComputerName&#34;.
+     * 
+     */
+    public Optional<Output<String>> inventoryKey() {
+        return Optional.ofNullable(this.inventoryKey);
     }
 
     /**
@@ -78,18 +116,33 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
     }
 
     /**
-     * The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
+     * The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
      * 
      */
     @Import(name="inventoryType", required=true)
     private Output<String> inventoryType;
 
     /**
-     * @return The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
+     * @return The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
      * 
      */
     public Output<String> inventoryType() {
         return this.inventoryType;
+    }
+
+    /**
+     * The inventory value to match.
+     * 
+     */
+    @Import(name="inventoryValue")
+    private @Nullable Output<String> inventoryValue;
+
+    /**
+     * @return The inventory value to match.
+     * 
+     */
+    public Optional<Output<String>> inventoryValue() {
+        return Optional.ofNullable(this.inventoryValue);
     }
 
     /**
@@ -112,6 +165,21 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
 
     public Optional<Output<Boolean>> suppressed() {
         return Optional.ofNullable(this.suppressed);
+    }
+
+    /**
+     * The tag schema to be used for dynamic tags.
+     * 
+     */
+    @Import(name="tagSchema")
+    private @Nullable Output<String> tagSchema;
+
+    /**
+     * @return The tag schema to be used for dynamic tags.
+     * 
+     */
+    public Optional<Output<String>> tagSchema() {
+        return Optional.ofNullable(this.tagSchema);
     }
 
     /**
@@ -138,11 +206,15 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
     private CseInventoryEntityGroupConfigurationArgs(CseInventoryEntityGroupConfigurationArgs $) {
         this.criticality = $.criticality;
         this.description = $.description;
+        this.dynamicTags = $.dynamicTags;
         this.group = $.group;
+        this.inventoryKey = $.inventoryKey;
         this.inventorySource = $.inventorySource;
         this.inventoryType = $.inventoryType;
+        this.inventoryValue = $.inventoryValue;
         this.name = $.name;
         this.suppressed = $.suppressed;
+        this.tagSchema = $.tagSchema;
         this.tags = $.tags;
     }
 
@@ -207,24 +279,74 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
         }
 
         /**
-         * @param group The entity group configuration inventory group.
+         * @param dynamicTags If dynamic tags are enabled for configuration.
          * 
          * @return builder
          * 
          */
+        public Builder dynamicTags(@Nullable Output<Boolean> dynamicTags) {
+            $.dynamicTags = dynamicTags;
+            return this;
+        }
+
+        /**
+         * @param dynamicTags If dynamic tags are enabled for configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicTags(Boolean dynamicTags) {
+            return dynamicTags(Output.of(dynamicTags));
+        }
+
+        /**
+         * @param group (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
+         * 
+         */
+        @Deprecated /* The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead. */
         public Builder group(@Nullable Output<String> group) {
             $.group = group;
             return this;
         }
 
         /**
-         * @param group The entity group configuration inventory group.
+         * @param group (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
+         * 
+         */
+        @Deprecated /* The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead. */
+        public Builder group(String group) {
+            return group(Output.of(group));
+        }
+
+        /**
+         * @param inventoryKey The inventory key to apply configuration Examples: &#34;groups&#34;, &#34;normalizedHostname&#34;, &#34;normalizedComputerName&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder group(String group) {
-            return group(Output.of(group));
+        public Builder inventoryKey(@Nullable Output<String> inventoryKey) {
+            $.inventoryKey = inventoryKey;
+            return this;
+        }
+
+        /**
+         * @param inventoryKey The inventory key to apply configuration Examples: &#34;groups&#34;, &#34;normalizedHostname&#34;, &#34;normalizedComputerName&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inventoryKey(String inventoryKey) {
+            return inventoryKey(Output.of(inventoryKey));
         }
 
         /**
@@ -249,7 +371,7 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
         }
 
         /**
-         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
+         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
          * 
          * @return builder
          * 
@@ -260,13 +382,34 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
         }
 
         /**
-         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
+         * @param inventoryType The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
          * 
          * @return builder
          * 
          */
         public Builder inventoryType(String inventoryType) {
             return inventoryType(Output.of(inventoryType));
+        }
+
+        /**
+         * @param inventoryValue The inventory value to match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inventoryValue(@Nullable Output<String> inventoryValue) {
+            $.inventoryValue = inventoryValue;
+            return this;
+        }
+
+        /**
+         * @param inventoryValue The inventory value to match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inventoryValue(String inventoryValue) {
+            return inventoryValue(Output.of(inventoryValue));
         }
 
         /**
@@ -297,6 +440,27 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
 
         public Builder suppressed(Boolean suppressed) {
             return suppressed(Output.of(suppressed));
+        }
+
+        /**
+         * @param tagSchema The tag schema to be used for dynamic tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagSchema(@Nullable Output<String> tagSchema) {
+            $.tagSchema = tagSchema;
+            return this;
+        }
+
+        /**
+         * @param tagSchema The tag schema to be used for dynamic tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagSchema(String tagSchema) {
+            return tagSchema(Output.of(tagSchema));
         }
 
         /**

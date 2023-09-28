@@ -81,7 +81,7 @@ namespace Pulumi.SumoLogic
         public Output<int> CollectorId { get; private set; } = null!;
 
         /// <summary>
-        /// This is a JSON object which contains the configuration parameters for the Source.
+        /// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.SumoLogic
         public Input<int> CollectorId { get; set; } = null!;
 
         /// <summary>
-        /// This is a JSON object which contains the configuration parameters for the Source.
+        /// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         /// </summary>
         [Input("config", required: true)]
         public Input<string> Config { get; set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.SumoLogic
         public Input<int>? CollectorId { get; set; }
 
         /// <summary>
-        /// This is a JSON object which contains the configuration parameters for the Source.
+        /// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }

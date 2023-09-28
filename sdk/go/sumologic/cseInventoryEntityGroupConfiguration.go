@@ -30,9 +30,10 @@ import (
 //			_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, "inventoryEntityGroupConfiguration", &sumologic.CseInventoryEntityGroupConfigurationArgs{
 //				Criticality:     pulumi.String("HIGH"),
 //				Description:     pulumi.String("Inventory entity group description"),
-//				Group:           pulumi.String("admin"),
+//				InventoryKey:    pulumi.String("groups"),
 //				InventorySource: pulumi.String("Active Directory"),
-//				InventoryType:   pulumi.String("user"),
+//				InventoryType:   pulumi.String("username"),
+//				InventoryValue:  pulumi.String("http_servers"),
 //				Suppressed:      pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("tag"),
@@ -63,15 +64,25 @@ type CseInventoryEntityGroupConfiguration struct {
 	Criticality pulumi.StringPtrOutput `pulumi:"criticality"`
 	// The entity group configuration description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The entity group configuration inventory group.
+	// If dynamic tags are enabled for configuration.
+	DynamicTags pulumi.BoolPtrOutput `pulumi:"dynamicTags"`
+	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+	//
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
+	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+	InventoryKey pulumi.StringPtrOutput `pulumi:"inventoryKey"`
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource pulumi.StringOutput `pulumi:"inventorySource"`
-	// The inventory type Examples: "computer", "user".
+	// The inventory type Examples: "computer", "username".
 	InventoryType pulumi.StringOutput `pulumi:"inventoryType"`
+	// The inventory value to match.
+	InventoryValue pulumi.StringPtrOutput `pulumi:"inventoryValue"`
 	// The entity group configuration name.
 	Name       pulumi.StringOutput  `pulumi:"name"`
 	Suppressed pulumi.BoolPtrOutput `pulumi:"suppressed"`
+	// The tag schema to be used for dynamic tags.
+	TagSchema pulumi.StringPtrOutput `pulumi:"tagSchema"`
 	// The entity group configuration tags list.
 	//
 	// The following attributes are exported:
@@ -118,15 +129,25 @@ type cseInventoryEntityGroupConfigurationState struct {
 	Criticality *string `pulumi:"criticality"`
 	// The entity group configuration description.
 	Description *string `pulumi:"description"`
-	// The entity group configuration inventory group.
+	// If dynamic tags are enabled for configuration.
+	DynamicTags *bool `pulumi:"dynamicTags"`
+	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+	//
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group *string `pulumi:"group"`
+	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+	InventoryKey *string `pulumi:"inventoryKey"`
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource *string `pulumi:"inventorySource"`
-	// The inventory type Examples: "computer", "user".
+	// The inventory type Examples: "computer", "username".
 	InventoryType *string `pulumi:"inventoryType"`
+	// The inventory value to match.
+	InventoryValue *string `pulumi:"inventoryValue"`
 	// The entity group configuration name.
 	Name       *string `pulumi:"name"`
 	Suppressed *bool   `pulumi:"suppressed"`
+	// The tag schema to be used for dynamic tags.
+	TagSchema *string `pulumi:"tagSchema"`
 	// The entity group configuration tags list.
 	//
 	// The following attributes are exported:
@@ -138,15 +159,25 @@ type CseInventoryEntityGroupConfigurationState struct {
 	Criticality pulumi.StringPtrInput
 	// The entity group configuration description.
 	Description pulumi.StringPtrInput
-	// The entity group configuration inventory group.
+	// If dynamic tags are enabled for configuration.
+	DynamicTags pulumi.BoolPtrInput
+	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+	//
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group pulumi.StringPtrInput
+	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+	InventoryKey pulumi.StringPtrInput
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource pulumi.StringPtrInput
-	// The inventory type Examples: "computer", "user".
+	// The inventory type Examples: "computer", "username".
 	InventoryType pulumi.StringPtrInput
+	// The inventory value to match.
+	InventoryValue pulumi.StringPtrInput
 	// The entity group configuration name.
 	Name       pulumi.StringPtrInput
 	Suppressed pulumi.BoolPtrInput
+	// The tag schema to be used for dynamic tags.
+	TagSchema pulumi.StringPtrInput
 	// The entity group configuration tags list.
 	//
 	// The following attributes are exported:
@@ -162,15 +193,25 @@ type cseInventoryEntityGroupConfigurationArgs struct {
 	Criticality *string `pulumi:"criticality"`
 	// The entity group configuration description.
 	Description *string `pulumi:"description"`
-	// The entity group configuration inventory group.
+	// If dynamic tags are enabled for configuration.
+	DynamicTags *bool `pulumi:"dynamicTags"`
+	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+	//
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group *string `pulumi:"group"`
+	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+	InventoryKey *string `pulumi:"inventoryKey"`
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource string `pulumi:"inventorySource"`
-	// The inventory type Examples: "computer", "user".
+	// The inventory type Examples: "computer", "username".
 	InventoryType string `pulumi:"inventoryType"`
+	// The inventory value to match.
+	InventoryValue *string `pulumi:"inventoryValue"`
 	// The entity group configuration name.
 	Name       *string `pulumi:"name"`
 	Suppressed *bool   `pulumi:"suppressed"`
+	// The tag schema to be used for dynamic tags.
+	TagSchema *string `pulumi:"tagSchema"`
 	// The entity group configuration tags list.
 	//
 	// The following attributes are exported:
@@ -183,15 +224,25 @@ type CseInventoryEntityGroupConfigurationArgs struct {
 	Criticality pulumi.StringPtrInput
 	// The entity group configuration description.
 	Description pulumi.StringPtrInput
-	// The entity group configuration inventory group.
+	// If dynamic tags are enabled for configuration.
+	DynamicTags pulumi.BoolPtrInput
+	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+	//
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group pulumi.StringPtrInput
+	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+	InventoryKey pulumi.StringPtrInput
 	// The inventory source Examples: "Active Directory", "Okta".
 	InventorySource pulumi.StringInput
-	// The inventory type Examples: "computer", "user".
+	// The inventory type Examples: "computer", "username".
 	InventoryType pulumi.StringInput
+	// The inventory value to match.
+	InventoryValue pulumi.StringPtrInput
 	// The entity group configuration name.
 	Name       pulumi.StringPtrInput
 	Suppressed pulumi.BoolPtrInput
+	// The tag schema to be used for dynamic tags.
+	TagSchema pulumi.StringPtrInput
 	// The entity group configuration tags list.
 	//
 	// The following attributes are exported:
@@ -319,9 +370,21 @@ func (o CseInventoryEntityGroupConfigurationOutput) Description() pulumi.StringP
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The entity group configuration inventory group.
+// If dynamic tags are enabled for configuration.
+func (o CseInventoryEntityGroupConfigurationOutput) DynamicTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.BoolPtrOutput { return v.DynamicTags }).(pulumi.BoolPtrOutput)
+}
+
+// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
+//
+// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 func (o CseInventoryEntityGroupConfigurationOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
+func (o CseInventoryEntityGroupConfigurationOutput) InventoryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringPtrOutput { return v.InventoryKey }).(pulumi.StringPtrOutput)
 }
 
 // The inventory source Examples: "Active Directory", "Okta".
@@ -329,9 +392,14 @@ func (o CseInventoryEntityGroupConfigurationOutput) InventorySource() pulumi.Str
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringOutput { return v.InventorySource }).(pulumi.StringOutput)
 }
 
-// The inventory type Examples: "computer", "user".
+// The inventory type Examples: "computer", "username".
 func (o CseInventoryEntityGroupConfigurationOutput) InventoryType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringOutput { return v.InventoryType }).(pulumi.StringOutput)
+}
+
+// The inventory value to match.
+func (o CseInventoryEntityGroupConfigurationOutput) InventoryValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringPtrOutput { return v.InventoryValue }).(pulumi.StringPtrOutput)
 }
 
 // The entity group configuration name.
@@ -341,6 +409,11 @@ func (o CseInventoryEntityGroupConfigurationOutput) Name() pulumi.StringOutput {
 
 func (o CseInventoryEntityGroupConfigurationOutput) Suppressed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.BoolPtrOutput { return v.Suppressed }).(pulumi.BoolPtrOutput)
+}
+
+// The tag schema to be used for dynamic tags.
+func (o CseInventoryEntityGroupConfigurationOutput) TagSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringPtrOutput { return v.TagSchema }).(pulumi.StringPtrOutput)
 }
 
 // The entity group configuration tags list.

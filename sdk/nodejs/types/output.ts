@@ -759,6 +759,25 @@ export interface CseOutlierRuleEntitySelector {
     expression: string;
 }
 
+export interface CseTagSchemaValueOption {
+    /**
+     * Value option label.
+     */
+    label?: string;
+    /**
+     * Value option link.
+     *
+     *
+     *
+     * The following attributes are exported:
+     */
+    link?: string;
+    /**
+     * Value option value.
+     */
+    value: string;
+}
+
 export interface CseThresholdRuleEntitySelector {
     entityType: string;
     /**

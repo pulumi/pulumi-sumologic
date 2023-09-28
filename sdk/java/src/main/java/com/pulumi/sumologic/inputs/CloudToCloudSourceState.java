@@ -25,14 +25,14 @@ public final class CloudToCloudSourceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * This is a JSON object which contains the configuration parameters for the Source.
+     * This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return This is a JSON object which contains the configuration parameters for the Source.
+     * @return This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      * 
      */
     public Optional<Output<String>> config() {
@@ -90,7 +90,7 @@ public final class CloudToCloudSourceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param config This is a JSON object which contains the configuration parameters for the Source.
+         * @param config This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class CloudToCloudSourceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param config This is a JSON object which contains the configuration parameters for the Source.
+         * @param config This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
          * 
          * @return builder
          * 

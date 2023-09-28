@@ -96,7 +96,7 @@ type CloudToCloudSource struct {
 	pulumi.CustomResourceState
 
 	CollectorId pulumi.IntOutput `pulumi:"collectorId"`
-	// This is a JSON object which contains the configuration parameters for the Source.
+	// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
 	Config pulumi.StringOutput `pulumi:"config"`
 	// Source schema details.
 	SchemaRef pulumi.StringMapOutput `pulumi:"schemaRef"`
@@ -142,7 +142,7 @@ func GetCloudToCloudSource(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CloudToCloudSource resources.
 type cloudToCloudSourceState struct {
 	CollectorId *int `pulumi:"collectorId"`
-	// This is a JSON object which contains the configuration parameters for the Source.
+	// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
 	Config *string `pulumi:"config"`
 	// Source schema details.
 	SchemaRef map[string]string `pulumi:"schemaRef"`
@@ -150,7 +150,7 @@ type cloudToCloudSourceState struct {
 
 type CloudToCloudSourceState struct {
 	CollectorId pulumi.IntPtrInput
-	// This is a JSON object which contains the configuration parameters for the Source.
+	// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
 	Config pulumi.StringPtrInput
 	// Source schema details.
 	SchemaRef pulumi.StringMapInput
@@ -162,7 +162,7 @@ func (CloudToCloudSourceState) ElementType() reflect.Type {
 
 type cloudToCloudSourceArgs struct {
 	CollectorId int `pulumi:"collectorId"`
-	// This is a JSON object which contains the configuration parameters for the Source.
+	// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
 	Config string `pulumi:"config"`
 	// Source schema details.
 	SchemaRef map[string]string `pulumi:"schemaRef"`
@@ -171,7 +171,7 @@ type cloudToCloudSourceArgs struct {
 // The set of arguments for constructing a CloudToCloudSource resource.
 type CloudToCloudSourceArgs struct {
 	CollectorId pulumi.IntInput
-	// This is a JSON object which contains the configuration parameters for the Source.
+	// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
 	Config pulumi.StringInput
 	// Source schema details.
 	SchemaRef pulumi.StringMapInput
@@ -292,7 +292,7 @@ func (o CloudToCloudSourceOutput) CollectorId() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudToCloudSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
 }
 
-// This is a JSON object which contains the configuration parameters for the Source.
+// This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
 func (o CloudToCloudSourceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudToCloudSource) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }

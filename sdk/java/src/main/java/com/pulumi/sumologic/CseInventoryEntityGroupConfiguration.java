@@ -42,9 +42,10 @@ import javax.annotation.Nullable;
  *         var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration(&#34;inventoryEntityGroupConfiguration&#34;, CseInventoryEntityGroupConfigurationArgs.builder()        
  *             .criticality(&#34;HIGH&#34;)
  *             .description(&#34;Inventory entity group description&#34;)
- *             .group(&#34;admin&#34;)
+ *             .inventoryKey(&#34;groups&#34;)
  *             .inventorySource(&#34;Active Directory&#34;)
- *             .inventoryType(&#34;user&#34;)
+ *             .inventoryType(&#34;username&#34;)
+ *             .inventoryValue(&#34;http_servers&#34;)
  *             .suppressed(false)
  *             .tags(&#34;tag&#34;)
  *             .build());
@@ -93,18 +94,50 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
         return Codegen.optional(this.description);
     }
     /**
-     * The entity group configuration inventory group.
+     * If dynamic tags are enabled for configuration.
      * 
      */
+    @Export(name="dynamicTags", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> dynamicTags;
+
+    /**
+     * @return If dynamic tags are enabled for configuration.
+     * 
+     */
+    public Output<Optional<Boolean>> dynamicTags() {
+        return Codegen.optional(this.dynamicTags);
+    }
+    /**
+     * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
+     * 
+     * @deprecated
+     * The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
+     * 
+     */
+    @Deprecated /* The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead. */
     @Export(name="group", type=String.class, parameters={})
     private Output</* @Nullable */ String> group;
 
     /**
-     * @return The entity group configuration inventory group.
+     * @return (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
      * 
      */
     public Output<Optional<String>> group() {
         return Codegen.optional(this.group);
+    }
+    /**
+     * The inventory key to apply configuration Examples: &#34;groups&#34;, &#34;normalizedHostname&#34;, &#34;normalizedComputerName&#34;.
+     * 
+     */
+    @Export(name="inventoryKey", type=String.class, parameters={})
+    private Output</* @Nullable */ String> inventoryKey;
+
+    /**
+     * @return The inventory key to apply configuration Examples: &#34;groups&#34;, &#34;normalizedHostname&#34;, &#34;normalizedComputerName&#34;.
+     * 
+     */
+    public Output<Optional<String>> inventoryKey() {
+        return Codegen.optional(this.inventoryKey);
     }
     /**
      * The inventory source Examples: &#34;Active Directory&#34;, &#34;Okta&#34;.
@@ -121,18 +154,32 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
         return this.inventorySource;
     }
     /**
-     * The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
+     * The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
      * 
      */
     @Export(name="inventoryType", type=String.class, parameters={})
     private Output<String> inventoryType;
 
     /**
-     * @return The inventory type Examples: &#34;computer&#34;, &#34;user&#34;.
+     * @return The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
      * 
      */
     public Output<String> inventoryType() {
         return this.inventoryType;
+    }
+    /**
+     * The inventory value to match.
+     * 
+     */
+    @Export(name="inventoryValue", type=String.class, parameters={})
+    private Output</* @Nullable */ String> inventoryValue;
+
+    /**
+     * @return The inventory value to match.
+     * 
+     */
+    public Output<Optional<String>> inventoryValue() {
+        return Codegen.optional(this.inventoryValue);
     }
     /**
      * The entity group configuration name.
@@ -153,6 +200,20 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
 
     public Output<Optional<Boolean>> suppressed() {
         return Codegen.optional(this.suppressed);
+    }
+    /**
+     * The tag schema to be used for dynamic tags.
+     * 
+     */
+    @Export(name="tagSchema", type=String.class, parameters={})
+    private Output</* @Nullable */ String> tagSchema;
+
+    /**
+     * @return The tag schema to be used for dynamic tags.
+     * 
+     */
+    public Output<Optional<String>> tagSchema() {
+        return Codegen.optional(this.tagSchema);
     }
     /**
      * The entity group configuration tags list.

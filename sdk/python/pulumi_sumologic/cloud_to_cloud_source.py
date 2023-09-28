@@ -19,7 +19,7 @@ class CloudToCloudSourceArgs:
                  schema_ref: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
         The set of arguments for constructing a CloudToCloudSource resource.
-        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source.
+        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] schema_ref: Source schema details.
         """
         pulumi.set(__self__, "collector_id", collector_id)
@@ -39,7 +39,7 @@ class CloudToCloudSourceArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input[str]:
         """
-        This is a JSON object which contains the configuration parameters for the Source.
+        This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         """
         return pulumi.get(self, "config")
 
@@ -68,7 +68,7 @@ class _CloudToCloudSourceState:
                  schema_ref: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CloudToCloudSource resources.
-        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source.
+        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] schema_ref: Source schema details.
         """
         if collector_id is not None:
@@ -91,7 +91,7 @@ class _CloudToCloudSourceState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        This is a JSON object which contains the configuration parameters for the Source.
+        This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         """
         return pulumi.get(self, "config")
 
@@ -173,7 +173,7 @@ class CloudToCloudSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source.
+        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] schema_ref: Source schema details.
         """
         ...
@@ -288,7 +288,7 @@ class CloudToCloudSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source.
+        :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] schema_ref: Source schema details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -309,7 +309,7 @@ class CloudToCloudSource(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[str]:
         """
-        This is a JSON object which contains the configuration parameters for the Source.
+        This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         """
         return pulumi.get(self, "config")
 
