@@ -19,7 +19,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+        /// Default value of scheduled search parameter.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

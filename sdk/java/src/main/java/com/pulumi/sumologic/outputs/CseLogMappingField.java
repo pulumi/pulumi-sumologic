@@ -81,7 +81,7 @@ public final class CseLogMappingField {
      */
     private @Nullable String timeZone;
     /**
-     * @return Value of the field.
+     * @return Lookup value.
      * 
      */
     private @Nullable String value;
@@ -184,7 +184,7 @@ public final class CseLogMappingField {
         return Optional.ofNullable(this.timeZone);
     }
     /**
-     * @return Value of the field.
+     * @return Lookup value.
      * 
      */
     public Optional<String> value() {

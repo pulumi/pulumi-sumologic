@@ -14,8 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
     {
         /// <summary>
-        /// Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        /// `previous_month`.
+        /// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         /// </summary>
         public readonly string RangeName;
 

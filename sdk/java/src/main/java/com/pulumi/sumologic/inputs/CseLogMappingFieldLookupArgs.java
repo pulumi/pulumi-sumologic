@@ -29,14 +29,14 @@ public final class CseLogMappingFieldLookupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Value of the field.
+     * Lookup value.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Value of the field.
+     * @return Lookup value.
      * 
      */
     public Output<String> value() {
@@ -90,7 +90,7 @@ public final class CseLogMappingFieldLookupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param value Value of the field.
+         * @param value Lookup value.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class CseLogMappingFieldLookupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param value Value of the field.
+         * @param value Lookup value.
          * 
          * @return builder
          * 

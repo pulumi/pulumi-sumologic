@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetCallerIdentityResult',
     'AwaitableGetCallerIdentityResult',
     'get_caller_identity',
+    'get_caller_identity_output',
 ]
 
 @pulumi.output_type
@@ -88,3 +89,26 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         access_id=pulumi.get(__ret__, 'access_id'),
         environment=pulumi.get(__ret__, 'environment'),
         id=pulumi.get(__ret__, 'id'))
+
+
+@_utilities.lift_output_func(get_caller_identity)
+def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCallerIdentityResult]:
+    """
+    Provides an easy way to retrieve Sumo Logic auth details.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_sumologic as sumologic
+
+    current = sumologic.get_caller_identity()
+    ```
+    ## Attributes reference
+
+    The following attributes are exported:
+
+    - `access_id` - Sumo Logic access ID.
+    - `environment` - API endpoint environment.
+    """
+    ...

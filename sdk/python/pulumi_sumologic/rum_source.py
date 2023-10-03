@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,41 +37,84 @@ class RumSourceArgs:
         """
         The set of arguments for constructing a RumSource resource.
         """
-        pulumi.set(__self__, "collector_id", collector_id)
+        RumSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collector_id=collector_id,
+            automatic_date_parsing=automatic_date_parsing,
+            category=category,
+            content_type=content_type,
+            cutoff_relative_time=cutoff_relative_time,
+            cutoff_timestamp=cutoff_timestamp,
+            default_date_formats=default_date_formats,
+            description=description,
+            fields=fields,
+            filters=filters,
+            force_timezone=force_timezone,
+            host_name=host_name,
+            manual_prefix_regexp=manual_prefix_regexp,
+            multiline_processing_enabled=multiline_processing_enabled,
+            name=name,
+            path=path,
+            timezone=timezone,
+            use_autoline_matching=use_autoline_matching,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collector_id: pulumi.Input[int],
+             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
+             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
+             default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['RumSourceDefaultDateFormatArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['RumSourceFilterArgs']]]] = None,
+             force_timezone: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
+             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input['RumSourcePathArgs']] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             use_autoline_matching: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("collector_id", collector_id)
         if automatic_date_parsing is not None:
-            pulumi.set(__self__, "automatic_date_parsing", automatic_date_parsing)
+            _setter("automatic_date_parsing", automatic_date_parsing)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if cutoff_relative_time is not None:
-            pulumi.set(__self__, "cutoff_relative_time", cutoff_relative_time)
+            _setter("cutoff_relative_time", cutoff_relative_time)
         if cutoff_timestamp is not None:
-            pulumi.set(__self__, "cutoff_timestamp", cutoff_timestamp)
+            _setter("cutoff_timestamp", cutoff_timestamp)
         if default_date_formats is not None:
-            pulumi.set(__self__, "default_date_formats", default_date_formats)
+            _setter("default_date_formats", default_date_formats)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if force_timezone is not None:
-            pulumi.set(__self__, "force_timezone", force_timezone)
+            _setter("force_timezone", force_timezone)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if manual_prefix_regexp is not None:
-            pulumi.set(__self__, "manual_prefix_regexp", manual_prefix_regexp)
+            _setter("manual_prefix_regexp", manual_prefix_regexp)
         if multiline_processing_enabled is not None:
-            pulumi.set(__self__, "multiline_processing_enabled", multiline_processing_enabled)
+            _setter("multiline_processing_enabled", multiline_processing_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if use_autoline_matching is not None:
-            pulumi.set(__self__, "use_autoline_matching", use_autoline_matching)
+            _setter("use_autoline_matching", use_autoline_matching)
 
     @property
     @pulumi.getter(name="collectorId")
@@ -260,42 +303,85 @@ class _RumSourceState:
         """
         Input properties used for looking up and filtering RumSource resources.
         """
+        _RumSourceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            automatic_date_parsing=automatic_date_parsing,
+            category=category,
+            collector_id=collector_id,
+            content_type=content_type,
+            cutoff_relative_time=cutoff_relative_time,
+            cutoff_timestamp=cutoff_timestamp,
+            default_date_formats=default_date_formats,
+            description=description,
+            fields=fields,
+            filters=filters,
+            force_timezone=force_timezone,
+            host_name=host_name,
+            manual_prefix_regexp=manual_prefix_regexp,
+            multiline_processing_enabled=multiline_processing_enabled,
+            name=name,
+            path=path,
+            timezone=timezone,
+            use_autoline_matching=use_autoline_matching,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             collector_id: Optional[pulumi.Input[int]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
+             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
+             default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['RumSourceDefaultDateFormatArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['RumSourceFilterArgs']]]] = None,
+             force_timezone: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
+             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input['RumSourcePathArgs']] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             use_autoline_matching: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if automatic_date_parsing is not None:
-            pulumi.set(__self__, "automatic_date_parsing", automatic_date_parsing)
+            _setter("automatic_date_parsing", automatic_date_parsing)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if collector_id is not None:
-            pulumi.set(__self__, "collector_id", collector_id)
+            _setter("collector_id", collector_id)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if cutoff_relative_time is not None:
-            pulumi.set(__self__, "cutoff_relative_time", cutoff_relative_time)
+            _setter("cutoff_relative_time", cutoff_relative_time)
         if cutoff_timestamp is not None:
-            pulumi.set(__self__, "cutoff_timestamp", cutoff_timestamp)
+            _setter("cutoff_timestamp", cutoff_timestamp)
         if default_date_formats is not None:
-            pulumi.set(__self__, "default_date_formats", default_date_formats)
+            _setter("default_date_formats", default_date_formats)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if force_timezone is not None:
-            pulumi.set(__self__, "force_timezone", force_timezone)
+            _setter("force_timezone", force_timezone)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if manual_prefix_regexp is not None:
-            pulumi.set(__self__, "manual_prefix_regexp", manual_prefix_regexp)
+            _setter("manual_prefix_regexp", manual_prefix_regexp)
         if multiline_processing_enabled is not None:
-            pulumi.set(__self__, "multiline_processing_enabled", multiline_processing_enabled)
+            _setter("multiline_processing_enabled", multiline_processing_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if use_autoline_matching is not None:
-            pulumi.set(__self__, "use_autoline_matching", use_autoline_matching)
+            _setter("use_autoline_matching", use_autoline_matching)
 
     @property
     @pulumi.getter(name="automaticDateParsing")
@@ -537,6 +623,10 @@ class RumSource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RumSourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -586,6 +676,11 @@ class RumSource(pulumi.CustomResource):
             __props__.__dict__["manual_prefix_regexp"] = manual_prefix_regexp
             __props__.__dict__["multiline_processing_enabled"] = multiline_processing_enabled
             __props__.__dict__["name"] = name
+            if path is not None and not isinstance(path, RumSourcePathArgs):
+                path = path or {}
+                def _setter(key, value):
+                    path[key] = value
+                RumSourcePathArgs._configure(_setter, **path)
             __props__.__dict__["path"] = path
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["use_autoline_matching"] = use_autoline_matching

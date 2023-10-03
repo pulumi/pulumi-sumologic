@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
     /**
-     * @return Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-     * `previous_month`.
+     * @return One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      * 
      */
     private String rangeName;
 
     private LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange() {}
     /**
-     * @return Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-     * `previous_month`.
+     * @return One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      * 
      */
     public String rangeName() {

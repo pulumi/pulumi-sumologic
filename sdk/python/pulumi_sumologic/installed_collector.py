@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['InstalledCollectorArgs', 'InstalledCollector']
@@ -36,25 +36,52 @@ class InstalledCollectorArgs:
         :param pulumi.Input[int] target_cpu: When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
-        pulumi.set(__self__, "ephemeral", ephemeral)
+        InstalledCollectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ephemeral=ephemeral,
+            category=category,
+            cutoff_timestamp=cutoff_timestamp,
+            description=description,
+            fields=fields,
+            host_name=host_name,
+            name=name,
+            source_sync_mode=source_sync_mode,
+            target_cpu=target_cpu,
+            timezone=timezone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ephemeral: pulumi.Input[bool],
+             category: Optional[pulumi.Input[str]] = None,
+             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             source_sync_mode: Optional[pulumi.Input[str]] = None,
+             target_cpu: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ephemeral", ephemeral)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if cutoff_timestamp is not None:
-            pulumi.set(__self__, "cutoff_timestamp", cutoff_timestamp)
+            _setter("cutoff_timestamp", cutoff_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if source_sync_mode is not None:
-            pulumi.set(__self__, "source_sync_mode", source_sync_mode)
+            _setter("source_sync_mode", source_sync_mode)
         if target_cpu is not None:
-            pulumi.set(__self__, "target_cpu", target_cpu)
+            _setter("target_cpu", target_cpu)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
 
     @property
     @pulumi.getter
@@ -202,32 +229,65 @@ class _InstalledCollectorState:
         :param pulumi.Input[int] target_cpu: When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
+        _InstalledCollectorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alive=alive,
+            category=category,
+            collector_version=collector_version,
+            cutoff_timestamp=cutoff_timestamp,
+            description=description,
+            ephemeral=ephemeral,
+            fields=fields,
+            host_name=host_name,
+            last_seen_alive=last_seen_alive,
+            name=name,
+            source_sync_mode=source_sync_mode,
+            target_cpu=target_cpu,
+            timezone=timezone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alive: Optional[pulumi.Input[bool]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             collector_version: Optional[pulumi.Input[str]] = None,
+             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ephemeral: Optional[pulumi.Input[bool]] = None,
+             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             last_seen_alive: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             source_sync_mode: Optional[pulumi.Input[str]] = None,
+             target_cpu: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alive is not None:
-            pulumi.set(__self__, "alive", alive)
+            _setter("alive", alive)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if collector_version is not None:
-            pulumi.set(__self__, "collector_version", collector_version)
+            _setter("collector_version", collector_version)
         if cutoff_timestamp is not None:
-            pulumi.set(__self__, "cutoff_timestamp", cutoff_timestamp)
+            _setter("cutoff_timestamp", cutoff_timestamp)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ephemeral is not None:
-            pulumi.set(__self__, "ephemeral", ephemeral)
+            _setter("ephemeral", ephemeral)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if last_seen_alive is not None:
-            pulumi.set(__self__, "last_seen_alive", last_seen_alive)
+            _setter("last_seen_alive", last_seen_alive)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if source_sync_mode is not None:
-            pulumi.set(__self__, "source_sync_mode", source_sync_mode)
+            _setter("source_sync_mode", source_sync_mode)
         if target_cpu is not None:
-            pulumi.set(__self__, "target_cpu", target_cpu)
+            _setter("target_cpu", target_cpu)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
 
     @property
     @pulumi.getter
@@ -480,6 +540,10 @@ class InstalledCollector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstalledCollectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

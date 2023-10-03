@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ScheduledViewArgs', 'ScheduledView']
@@ -33,17 +33,38 @@ class ScheduledViewArgs:
                The following attributes are exported:
         :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
         """
-        pulumi.set(__self__, "index_name", index_name)
-        pulumi.set(__self__, "query", query)
-        pulumi.set(__self__, "start_time", start_time)
+        ScheduledViewArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            index_name=index_name,
+            query=query,
+            start_time=start_time,
+            data_forwarding_id=data_forwarding_id,
+            parsing_mode=parsing_mode,
+            reduce_retention_period_immediately=reduce_retention_period_immediately,
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             index_name: pulumi.Input[str],
+             query: pulumi.Input[str],
+             start_time: pulumi.Input[str],
+             data_forwarding_id: Optional[pulumi.Input[str]] = None,
+             parsing_mode: Optional[pulumi.Input[str]] = None,
+             reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
+             retention_period: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("index_name", index_name)
+        _setter("query", query)
+        _setter("start_time", start_time)
         if data_forwarding_id is not None:
-            pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
+            _setter("data_forwarding_id", data_forwarding_id)
         if parsing_mode is not None:
-            pulumi.set(__self__, "parsing_mode", parsing_mode)
+            _setter("parsing_mode", parsing_mode)
         if reduce_retention_period_immediately is not None:
-            pulumi.set(__self__, "reduce_retention_period_immediately", reduce_retention_period_immediately)
+            _setter("reduce_retention_period_immediately", reduce_retention_period_immediately)
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter(name="indexName")
@@ -154,20 +175,41 @@ class _ScheduledViewState:
         :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
         :param pulumi.Input[str] start_time: Start timestamp in UTC in RFC3339 format.
         """
+        _ScheduledViewState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_forwarding_id=data_forwarding_id,
+            index_name=index_name,
+            parsing_mode=parsing_mode,
+            query=query,
+            reduce_retention_period_immediately=reduce_retention_period_immediately,
+            retention_period=retention_period,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_forwarding_id: Optional[pulumi.Input[str]] = None,
+             index_name: Optional[pulumi.Input[str]] = None,
+             parsing_mode: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
+             retention_period: Optional[pulumi.Input[int]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if data_forwarding_id is not None:
-            pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
+            _setter("data_forwarding_id", data_forwarding_id)
         if index_name is not None:
-            pulumi.set(__self__, "index_name", index_name)
+            _setter("index_name", index_name)
         if parsing_mode is not None:
-            pulumi.set(__self__, "parsing_mode", parsing_mode)
+            _setter("parsing_mode", parsing_mode)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
         if reduce_retention_period_immediately is not None:
-            pulumi.set(__self__, "reduce_retention_period_immediately", reduce_retention_period_immediately)
+            _setter("reduce_retention_period_immediately", reduce_retention_period_immediately)
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="dataForwardingId")
@@ -323,6 +365,10 @@ class ScheduledView(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ScheduledViewArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

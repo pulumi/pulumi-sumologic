@@ -69,14 +69,14 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+     * Default value of scheduled search parameter.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+     * @return Default value of scheduled search parameter.
      * 
      */
     public Output<String> value() {
@@ -182,7 +182,7 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+         * @param value Default value of scheduled search parameter.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+         * @param value Default value of scheduled search parameter.
          * 
          * @return builder
          * 

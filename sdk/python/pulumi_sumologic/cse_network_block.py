@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseNetworkBlockArgs', 'CseNetworkBlock']
@@ -27,13 +27,28 @@ class CseNetworkBlockArgs:
                
                The following attributes are exported:
         """
-        pulumi.set(__self__, "address_block", address_block)
+        CseNetworkBlockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_block=address_block,
+            internal=internal,
+            label=label,
+            suppresses_signals=suppresses_signals,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_block: pulumi.Input[str],
+             internal: Optional[pulumi.Input[bool]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             suppresses_signals: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_block", address_block)
         if internal is not None:
-            pulumi.set(__self__, "internal", internal)
+            _setter("internal", internal)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if suppresses_signals is not None:
-            pulumi.set(__self__, "suppresses_signals", suppresses_signals)
+            _setter("suppresses_signals", suppresses_signals)
 
     @property
     @pulumi.getter(name="addressBlock")
@@ -102,14 +117,29 @@ class _CseNetworkBlockState:
                
                The following attributes are exported:
         """
+        _CseNetworkBlockState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_block=address_block,
+            internal=internal,
+            label=label,
+            suppresses_signals=suppresses_signals,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_block: Optional[pulumi.Input[str]] = None,
+             internal: Optional[pulumi.Input[bool]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             suppresses_signals: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address_block is not None:
-            pulumi.set(__self__, "address_block", address_block)
+            _setter("address_block", address_block)
         if internal is not None:
-            pulumi.set(__self__, "internal", internal)
+            _setter("internal", internal)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if suppresses_signals is not None:
-            pulumi.set(__self__, "suppresses_signals", suppresses_signals)
+            _setter("suppresses_signals", suppresses_signals)
 
     @property
     @pulumi.getter(name="addressBlock")
@@ -245,6 +275,10 @@ class CseNetworkBlock(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseNetworkBlockArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

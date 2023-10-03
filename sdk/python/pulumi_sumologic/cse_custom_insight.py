@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseCustomInsightArgs', 'CseCustomInsight']
@@ -35,17 +35,40 @@ class CseCustomInsightArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "ordered", ordered)
-        pulumi.set(__self__, "severity", severity)
-        pulumi.set(__self__, "tags", tags)
+        CseCustomInsightArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            enabled=enabled,
+            ordered=ordered,
+            severity=severity,
+            tags=tags,
+            name=name,
+            rule_ids=rule_ids,
+            signal_names=signal_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             enabled: pulumi.Input[bool],
+             ordered: pulumi.Input[bool],
+             severity: pulumi.Input[str],
+             tags: pulumi.Input[Sequence[pulumi.Input[str]]],
+             name: Optional[pulumi.Input[str]] = None,
+             rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("enabled", enabled)
+        _setter("ordered", ordered)
+        _setter("severity", severity)
+        _setter("tags", tags)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rule_ids is not None:
-            pulumi.set(__self__, "rule_ids", rule_ids)
+            _setter("rule_ids", rule_ids)
         if signal_names is not None:
-            pulumi.set(__self__, "signal_names", signal_names)
+            _setter("signal_names", signal_names)
 
     @property
     @pulumi.getter
@@ -170,22 +193,45 @@ class _CseCustomInsightState:
                
                The following attributes are exported:
         """
+        _CseCustomInsightState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            enabled=enabled,
+            name=name,
+            ordered=ordered,
+            rule_ids=rule_ids,
+            severity=severity,
+            signal_names=signal_names,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ordered: Optional[pulumi.Input[bool]] = None,
+             rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             severity: Optional[pulumi.Input[str]] = None,
+             signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ordered is not None:
-            pulumi.set(__self__, "ordered", ordered)
+            _setter("ordered", ordered)
         if rule_ids is not None:
-            pulumi.set(__self__, "rule_ids", rule_ids)
+            _setter("rule_ids", rule_ids)
         if severity is not None:
-            pulumi.set(__self__, "severity", severity)
+            _setter("severity", severity)
         if signal_names is not None:
-            pulumi.set(__self__, "signal_names", signal_names)
+            _setter("signal_names", signal_names)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -395,6 +441,10 @@ class CseCustomInsight(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseCustomInsightArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

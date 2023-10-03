@@ -19,7 +19,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Value of the field.
+        /// Lookup value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -22,18 +22,35 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "access_id", access_id)
-        pulumi.set(__self__, "access_key", access_key)
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_id=access_id,
+            access_key=access_key,
+            admin_mode=admin_mode,
+            base_url=base_url,
+            environment=environment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_id: pulumi.Input[str],
+             access_key: pulumi.Input[str],
+             admin_mode: Optional[pulumi.Input[bool]] = None,
+             base_url: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_id", access_id)
+        _setter("access_key", access_key)
         if admin_mode is not None:
-            pulumi.set(__self__, "admin_mode", admin_mode)
+            _setter("admin_mode", admin_mode)
         if base_url is None:
             base_url = _utilities.get_env('SUMOLOGIC_BASE_URL')
         if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
+            _setter("base_url", base_url)
         if environment is None:
             environment = _utilities.get_env('SUMOLOGIC_ENVIRONMENT')
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
 
     @property
     @pulumi.getter(name="accessId")
@@ -123,6 +140,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

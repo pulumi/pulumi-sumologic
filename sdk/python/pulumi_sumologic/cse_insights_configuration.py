@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseInsightsConfigurationArgs', 'CseInsightsConfiguration']
@@ -25,12 +25,25 @@ class CseInsightsConfigurationArgs:
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
+        CseInsightsConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            global_signal_suppression_window=global_signal_suppression_window,
+            lookback_days=lookback_days,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
+             lookback_days: Optional[pulumi.Input[float]] = None,
+             threshold: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if global_signal_suppression_window is not None:
-            pulumi.set(__self__, "global_signal_suppression_window", global_signal_suppression_window)
+            _setter("global_signal_suppression_window", global_signal_suppression_window)
         if lookback_days is not None:
-            pulumi.set(__self__, "lookback_days", lookback_days)
+            _setter("lookback_days", lookback_days)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter(name="globalSignalSuppressionWindow")
@@ -85,12 +98,25 @@ class _CseInsightsConfigurationState:
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
+        _CseInsightsConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            global_signal_suppression_window=global_signal_suppression_window,
+            lookback_days=lookback_days,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
+             lookback_days: Optional[pulumi.Input[float]] = None,
+             threshold: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if global_signal_suppression_window is not None:
-            pulumi.set(__self__, "global_signal_suppression_window", global_signal_suppression_window)
+            _setter("global_signal_suppression_window", global_signal_suppression_window)
         if lookback_days is not None:
-            pulumi.set(__self__, "lookback_days", lookback_days)
+            _setter("lookback_days", lookback_days)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter(name="globalSignalSuppressionWindow")
@@ -210,6 +236,10 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseInsightsConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,21 +44,46 @@ class LogSearchArgs:
                `false` if it is to be run by message time. Default value is `false`.
         :param pulumi.Input['LogSearchScheduleArgs'] schedule: Schedule of the log search. See schedule schema
         """
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "query_string", query_string)
-        pulumi.set(__self__, "time_range", time_range)
+        LogSearchArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent_id=parent_id,
+            query_string=query_string,
+            time_range=time_range,
+            description=description,
+            name=name,
+            parsing_mode=parsing_mode,
+            query_parameters=query_parameters,
+            run_by_receipt_time=run_by_receipt_time,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent_id: pulumi.Input[str],
+             query_string: pulumi.Input[str],
+             time_range: pulumi.Input['LogSearchTimeRangeArgs'],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parsing_mode: Optional[pulumi.Input[str]] = None,
+             query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]]] = None,
+             run_by_receipt_time: Optional[pulumi.Input[bool]] = None,
+             schedule: Optional[pulumi.Input['LogSearchScheduleArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parent_id", parent_id)
+        _setter("query_string", query_string)
+        _setter("time_range", time_range)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parsing_mode is not None:
-            pulumi.set(__self__, "parsing_mode", parsing_mode)
+            _setter("parsing_mode", parsing_mode)
         if query_parameters is not None:
-            pulumi.set(__self__, "query_parameters", query_parameters)
+            _setter("query_parameters", query_parameters)
         if run_by_receipt_time is not None:
-            pulumi.set(__self__, "run_by_receipt_time", run_by_receipt_time)
+            _setter("run_by_receipt_time", run_by_receipt_time)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
 
     @property
     @pulumi.getter(name="parentId")
@@ -207,24 +232,49 @@ class _LogSearchState:
         :param pulumi.Input['LogSearchScheduleArgs'] schedule: Schedule of the log search. See schedule schema
         :param pulumi.Input['LogSearchTimeRangeArgs'] time_range: Time range of the log search. See time range schema
         """
+        _LogSearchState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            parent_id=parent_id,
+            parsing_mode=parsing_mode,
+            query_parameters=query_parameters,
+            query_string=query_string,
+            run_by_receipt_time=run_by_receipt_time,
+            schedule=schedule,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             parsing_mode: Optional[pulumi.Input[str]] = None,
+             query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]]] = None,
+             query_string: Optional[pulumi.Input[str]] = None,
+             run_by_receipt_time: Optional[pulumi.Input[bool]] = None,
+             schedule: Optional[pulumi.Input['LogSearchScheduleArgs']] = None,
+             time_range: Optional[pulumi.Input['LogSearchTimeRangeArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if parsing_mode is not None:
-            pulumi.set(__self__, "parsing_mode", parsing_mode)
+            _setter("parsing_mode", parsing_mode)
         if query_parameters is not None:
-            pulumi.set(__self__, "query_parameters", query_parameters)
+            _setter("query_parameters", query_parameters)
         if query_string is not None:
-            pulumi.set(__self__, "query_string", query_string)
+            _setter("query_string", query_string)
         if run_by_receipt_time is not None:
-            pulumi.set(__self__, "run_by_receipt_time", run_by_receipt_time)
+            _setter("run_by_receipt_time", run_by_receipt_time)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
 
     @property
     @pulumi.getter
@@ -592,6 +642,10 @@ class LogSearch(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LogSearchArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -626,7 +680,17 @@ class LogSearch(pulumi.CustomResource):
                 raise TypeError("Missing required property 'query_string'")
             __props__.__dict__["query_string"] = query_string
             __props__.__dict__["run_by_receipt_time"] = run_by_receipt_time
+            if schedule is not None and not isinstance(schedule, LogSearchScheduleArgs):
+                schedule = schedule or {}
+                def _setter(key, value):
+                    schedule[key] = value
+                LogSearchScheduleArgs._configure(_setter, **schedule)
             __props__.__dict__["schedule"] = schedule
+            if time_range is not None and not isinstance(time_range, LogSearchTimeRangeArgs):
+                time_range = time_range or {}
+                def _setter(key, value):
+                    time_range[key] = value
+                LogSearchTimeRangeArgs._configure(_setter, **time_range)
             if time_range is None and not opts.urn:
                 raise TypeError("Missing required property 'time_range'")
             __props__.__dict__["time_range"] = time_range

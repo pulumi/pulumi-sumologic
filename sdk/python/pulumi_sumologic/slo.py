@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,39 +53,82 @@ class SloArgs:
         :param pulumi.Input[str] service: Name of the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO.
         """
-        pulumi.set(__self__, "compliances", compliances)
-        pulumi.set(__self__, "indicator", indicator)
-        pulumi.set(__self__, "signal_type", signal_type)
+        SloArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliances=compliances,
+            indicator=indicator,
+            signal_type=signal_type,
+            application=application,
+            created_at=created_at,
+            created_by=created_by,
+            description=description,
+            is_locked=is_locked,
+            is_mutable=is_mutable,
+            is_system=is_system,
+            modified_at=modified_at,
+            modified_by=modified_by,
+            name=name,
+            parent_id=parent_id,
+            post_request_map=post_request_map,
+            service=service,
+            tags=tags,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliances: pulumi.Input[Sequence[pulumi.Input['SloComplianceArgs']]],
+             indicator: pulumi.Input['SloIndicatorArgs'],
+             signal_type: pulumi.Input[str],
+             application: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             is_locked: Optional[pulumi.Input[bool]] = None,
+             is_mutable: Optional[pulumi.Input[bool]] = None,
+             is_system: Optional[pulumi.Input[bool]] = None,
+             modified_at: Optional[pulumi.Input[str]] = None,
+             modified_by: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compliances", compliances)
+        _setter("indicator", indicator)
+        _setter("signal_type", signal_type)
         if application is not None:
-            pulumi.set(__self__, "application", application)
+            _setter("application", application)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_locked is not None:
-            pulumi.set(__self__, "is_locked", is_locked)
+            _setter("is_locked", is_locked)
         if is_mutable is not None:
-            pulumi.set(__self__, "is_mutable", is_mutable)
+            _setter("is_mutable", is_mutable)
         if is_system is not None:
-            pulumi.set(__self__, "is_system", is_system)
+            _setter("is_system", is_system)
         if modified_at is not None:
-            pulumi.set(__self__, "modified_at", modified_at)
+            _setter("modified_at", modified_at)
         if modified_by is not None:
-            pulumi.set(__self__, "modified_by", modified_by)
+            _setter("modified_by", modified_by)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if post_request_map is not None:
-            pulumi.set(__self__, "post_request_map", post_request_map)
+            _setter("post_request_map", post_request_map)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -324,42 +367,85 @@ class _SloState:
                , `Other`. Defaults to `Latency`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the SLO.
         """
+        _SloState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application=application,
+            compliances=compliances,
+            created_at=created_at,
+            created_by=created_by,
+            description=description,
+            indicator=indicator,
+            is_locked=is_locked,
+            is_mutable=is_mutable,
+            is_system=is_system,
+            modified_at=modified_at,
+            modified_by=modified_by,
+            name=name,
+            parent_id=parent_id,
+            post_request_map=post_request_map,
+            service=service,
+            signal_type=signal_type,
+            tags=tags,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application: Optional[pulumi.Input[str]] = None,
+             compliances: Optional[pulumi.Input[Sequence[pulumi.Input['SloComplianceArgs']]]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             indicator: Optional[pulumi.Input['SloIndicatorArgs']] = None,
+             is_locked: Optional[pulumi.Input[bool]] = None,
+             is_mutable: Optional[pulumi.Input[bool]] = None,
+             is_system: Optional[pulumi.Input[bool]] = None,
+             modified_at: Optional[pulumi.Input[str]] = None,
+             modified_by: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             signal_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application is not None:
-            pulumi.set(__self__, "application", application)
+            _setter("application", application)
         if compliances is not None:
-            pulumi.set(__self__, "compliances", compliances)
+            _setter("compliances", compliances)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if indicator is not None:
-            pulumi.set(__self__, "indicator", indicator)
+            _setter("indicator", indicator)
         if is_locked is not None:
-            pulumi.set(__self__, "is_locked", is_locked)
+            _setter("is_locked", is_locked)
         if is_mutable is not None:
-            pulumi.set(__self__, "is_mutable", is_mutable)
+            _setter("is_mutable", is_mutable)
         if is_system is not None:
-            pulumi.set(__self__, "is_system", is_system)
+            _setter("is_system", is_system)
         if modified_at is not None:
-            pulumi.set(__self__, "modified_at", modified_at)
+            _setter("modified_at", modified_at)
         if modified_by is not None:
-            pulumi.set(__self__, "modified_by", modified_by)
+            _setter("modified_by", modified_by)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if post_request_map is not None:
-            pulumi.set(__self__, "post_request_map", post_request_map)
+            _setter("post_request_map", post_request_map)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if signal_type is not None:
-            pulumi.set(__self__, "signal_type", signal_type)
+            _setter("signal_type", signal_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -623,6 +709,10 @@ class Slo(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SloArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -662,6 +752,11 @@ class Slo(pulumi.CustomResource):
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["created_by"] = created_by
             __props__.__dict__["description"] = description
+            if indicator is not None and not isinstance(indicator, SloIndicatorArgs):
+                indicator = indicator or {}
+                def _setter(key, value):
+                    indicator[key] = value
+                SloIndicatorArgs._configure(_setter, **indicator)
             if indicator is None and not opts.urn:
                 raise TypeError("Missing required property 'indicator'")
             __props__.__dict__["indicator"] = indicator

@@ -14,16 +14,14 @@ public final class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs extends co
     public static final MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs Empty = new MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs();
 
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-     * `previous_month`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      * 
      */
     @Import(name="rangeName", required=true)
     private Output<String> rangeName;
 
     /**
-     * @return Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-     * `previous_month`.
+     * @return One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      * 
      */
     public Output<String> rangeName() {
@@ -55,8 +53,7 @@ public final class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs extends co
         }
 
         /**
-         * @param rangeName Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-         * `previous_month`.
+         * @param rangeName One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs extends co
         }
 
         /**
-         * @param rangeName Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-         * `previous_month`.
+         * @param rangeName One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
          * 
          * @return builder
          * 

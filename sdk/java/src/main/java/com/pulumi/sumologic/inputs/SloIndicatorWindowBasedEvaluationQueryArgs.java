@@ -18,7 +18,6 @@ public final class SloIndicatorWindowBasedEvaluationQueryArgs extends com.pulumi
     /**
      * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
      * , `Threshold`.
-     * , `Threshold`.
      * 
      */
     @Import(name="queryGroupType", required=true)
@@ -26,7 +25,6 @@ public final class SloIndicatorWindowBasedEvaluationQueryArgs extends com.pulumi
 
     /**
      * @return The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
-     * , `Threshold`.
      * , `Threshold`.
      * 
      */
@@ -77,7 +75,6 @@ public final class SloIndicatorWindowBasedEvaluationQueryArgs extends com.pulumi
         /**
          * @param queryGroupType The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
          * , `Threshold`.
-         * , `Threshold`.
          * 
          * @return builder
          * 
@@ -89,7 +86,6 @@ public final class SloIndicatorWindowBasedEvaluationQueryArgs extends com.pulumi
 
         /**
          * @param queryGroupType The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
-         * , `Threshold`.
          * , `Threshold`.
          * 
          * @return builder

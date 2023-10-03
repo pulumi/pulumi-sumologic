@@ -16,8 +16,6 @@ namespace Pulumi.SumoLogic.Outputs
         /// <summary>
         /// Field of log query output to compare against. To be used only for logs based data
         /// type when `use_row_count` is false.
-        /// 
-        /// type when `use_row_count` is false.
         /// </summary>
         public readonly string? Field;
         /// <summary>

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseContextActionArgs', 'CseContextAction']
@@ -35,21 +35,44 @@ class CseContextActionArgs:
         :param pulumi.Input[str] template: The URL/QUERY template.
         :param pulumi.Input[str] type: Context Action type. Valid values: "URL", "QUERY".
         """
-        pulumi.set(__self__, "ioc_types", ioc_types)
+        CseContextActionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ioc_types=ioc_types,
+            all_record_fields=all_record_fields,
+            enabled=enabled,
+            entity_types=entity_types,
+            name=name,
+            record_fields=record_fields,
+            template=template,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ioc_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             all_record_fields: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             record_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ioc_types", ioc_types)
         if all_record_fields is not None:
-            pulumi.set(__self__, "all_record_fields", all_record_fields)
+            _setter("all_record_fields", all_record_fields)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if entity_types is not None:
-            pulumi.set(__self__, "entity_types", entity_types)
+            _setter("entity_types", entity_types)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if record_fields is not None:
-            pulumi.set(__self__, "record_fields", record_fields)
+            _setter("record_fields", record_fields)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="iocTypes")
@@ -174,22 +197,45 @@ class _CseContextActionState:
         :param pulumi.Input[str] template: The URL/QUERY template.
         :param pulumi.Input[str] type: Context Action type. Valid values: "URL", "QUERY".
         """
+        _CseContextActionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_record_fields=all_record_fields,
+            enabled=enabled,
+            entity_types=entity_types,
+            ioc_types=ioc_types,
+            name=name,
+            record_fields=record_fields,
+            template=template,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_record_fields: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ioc_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             record_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all_record_fields is not None:
-            pulumi.set(__self__, "all_record_fields", all_record_fields)
+            _setter("all_record_fields", all_record_fields)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if entity_types is not None:
-            pulumi.set(__self__, "entity_types", entity_types)
+            _setter("entity_types", entity_types)
         if ioc_types is not None:
-            pulumi.set(__self__, "ioc_types", ioc_types)
+            _setter("ioc_types", ioc_types)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if record_fields is not None:
-            pulumi.set(__self__, "record_fields", record_fields)
+            _setter("record_fields", record_fields)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="allRecordFields")
@@ -387,6 +433,10 @@ class CseContextAction(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseContextActionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
