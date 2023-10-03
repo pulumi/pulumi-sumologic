@@ -1415,7 +1415,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Value of the field.\n"
+                    "description": "Lookup value.\n"
                 },
                 "valueType": {
                     "type": "string",
@@ -1435,7 +1435,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Value of the field.\n"
+                    "description": "Lookup value.\n"
                 }
             },
             "type": "object",
@@ -10599,7 +10599,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The default value for the parameter. It should be compatible with the type set in the `data_type` field.\n"
+                    "description": "Default value of scheduled search parameter.\n"
                 }
             },
             "type": "object",
@@ -10844,7 +10844,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The default value for the parameter. It should be compatible with the type set in the `data_type` field.\n"
+                    "description": "Default value of scheduled search parameter.\n"
                 }
             },
             "type": "object",
@@ -10931,7 +10931,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11000,7 +11000,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11024,7 +11024,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11132,7 +11132,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11201,7 +11201,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11225,7 +11225,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11436,7 +11436,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11505,7 +11505,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -11529,7 +11529,7 @@
             "properties": {
                 "rangeName": {
                     "type": "string",
-                    "description": "Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and\n`previous_month`.\n"
+                    "description": "One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.\n"
                 }
             },
             "type": "object",
@@ -13227,7 +13227,7 @@
             "properties": {
                 "queryGroupType": {
                     "type": "string",
-                    "description": "The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`\n, `Threshold`.\n, `Threshold`.\n"
+                    "description": "The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`\n, `Threshold`.\n"
                 },
                 "queryGroups": {
                     "type": "array",
@@ -13247,7 +13247,7 @@
             "properties": {
                 "field": {
                     "type": "string",
-                    "description": "Field of log query output to compare against. To be used only for logs based data\ntype when `use_row_count` is false.\n\ntype when `use_row_count` is false.\n"
+                    "description": "Field of log query output to compare against. To be used only for logs based data\ntype when `use_row_count` is false.\n"
                 },
                 "query": {
                     "type": "string",
@@ -13312,7 +13312,7 @@
             "properties": {
                 "queryGroupType": {
                     "type": "string",
-                    "description": "The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`\n, `Threshold`.\n, `Threshold`.\n"
+                    "description": "The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`\n, `Threshold`.\n"
                 },
                 "queryGroups": {
                     "type": "array",
@@ -13332,7 +13332,7 @@
             "properties": {
                 "field": {
                     "type": "string",
-                    "description": "Field of log query output to compare against. To be used only for logs based data\ntype when `use_row_count` is false.\n\ntype when `use_row_count` is false.\n"
+                    "description": "Field of log query output to compare against. To be used only for logs based data\ntype when `use_row_count` is false.\n"
                 },
                 "query": {
                     "type": "string",
