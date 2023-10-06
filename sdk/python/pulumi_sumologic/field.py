@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FieldArgs', 'Field']
@@ -23,11 +23,24 @@ class FieldArgs:
         :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
         :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
-        pulumi.set(__self__, "field_name", field_name)
+        FieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_name=field_name,
+            data_type=data_type,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_name: pulumi.Input[str],
+             data_type: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field_name", field_name)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="fieldName")
@@ -80,14 +93,29 @@ class _FieldState:
         :param pulumi.Input[str] field_name: Name of the field.
         :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
+        _FieldState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_type=data_type,
+            field_id=field_id,
+            field_name=field_name,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_type: Optional[pulumi.Input[str]] = None,
+             field_id: Optional[pulumi.Input[str]] = None,
+             field_name: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if field_id is not None:
-            pulumi.set(__self__, "field_id", field_id)
+            _setter("field_id", field_id)
         if field_name is not None:
-            pulumi.set(__self__, "field_name", field_name)
+            _setter("field_name", field_name)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="dataType")
@@ -217,6 +245,10 @@ class Field(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FieldArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

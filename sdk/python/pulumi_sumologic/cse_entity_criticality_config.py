@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseEntityCriticalityConfigArgs', 'CseEntityCriticalityConfig']
@@ -24,9 +24,20 @@ class CseEntityCriticalityConfigArgs:
                The following attributes are exported:
         :param pulumi.Input[str] name: Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
         """
-        pulumi.set(__self__, "severity_expression", severity_expression)
+        CseEntityCriticalityConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            severity_expression=severity_expression,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             severity_expression: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("severity_expression", severity_expression)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="severityExpression")
@@ -69,10 +80,21 @@ class _CseEntityCriticalityConfigState:
                
                The following attributes are exported:
         """
+        _CseEntityCriticalityConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            severity_expression=severity_expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             severity_expression: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if severity_expression is not None:
-            pulumi.set(__self__, "severity_expression", severity_expression)
+            _setter("severity_expression", severity_expression)
 
     @property
     @pulumi.getter
@@ -174,6 +196,10 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseEntityCriticalityConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

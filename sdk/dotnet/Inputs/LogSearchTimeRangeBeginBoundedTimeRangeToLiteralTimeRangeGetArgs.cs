@@ -13,8 +13,7 @@ namespace Pulumi.SumoLogic.Inputs
     public sealed class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        /// `previous_month`.
+        /// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         /// </summary>
         [Input("rangeName", required: true)]
         public Input<string> RangeName { get; set; } = null!;

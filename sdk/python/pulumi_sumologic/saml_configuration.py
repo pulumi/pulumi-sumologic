@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,37 +53,78 @@ class SamlConfigurationArgs:
         :param pulumi.Input[str] x509cert2: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
         :param pulumi.Input[str] x509cert3: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
         """
-        pulumi.set(__self__, "configuration_name", configuration_name)
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "x509cert1", x509cert1)
+        SamlConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configuration_name=configuration_name,
+            issuer=issuer,
+            x509cert1=x509cert1,
+            authn_request_url=authn_request_url,
+            debug_mode=debug_mode,
+            disable_requested_authn_context=disable_requested_authn_context,
+            email_attribute=email_attribute,
+            is_redirect_binding=is_redirect_binding,
+            logout_enabled=logout_enabled,
+            logout_url=logout_url,
+            on_demand_provisioning_enabled=on_demand_provisioning_enabled,
+            roles_attribute=roles_attribute,
+            sign_authn_request=sign_authn_request,
+            sp_initiated_login_enabled=sp_initiated_login_enabled,
+            sp_initiated_login_path=sp_initiated_login_path,
+            x509cert2=x509cert2,
+            x509cert3=x509cert3,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configuration_name: pulumi.Input[str],
+             issuer: pulumi.Input[str],
+             x509cert1: pulumi.Input[str],
+             authn_request_url: Optional[pulumi.Input[str]] = None,
+             debug_mode: Optional[pulumi.Input[bool]] = None,
+             disable_requested_authn_context: Optional[pulumi.Input[bool]] = None,
+             email_attribute: Optional[pulumi.Input[str]] = None,
+             is_redirect_binding: Optional[pulumi.Input[bool]] = None,
+             logout_enabled: Optional[pulumi.Input[bool]] = None,
+             logout_url: Optional[pulumi.Input[str]] = None,
+             on_demand_provisioning_enabled: Optional[pulumi.Input['SamlConfigurationOnDemandProvisioningEnabledArgs']] = None,
+             roles_attribute: Optional[pulumi.Input[str]] = None,
+             sign_authn_request: Optional[pulumi.Input[bool]] = None,
+             sp_initiated_login_enabled: Optional[pulumi.Input[bool]] = None,
+             sp_initiated_login_path: Optional[pulumi.Input[str]] = None,
+             x509cert2: Optional[pulumi.Input[str]] = None,
+             x509cert3: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("configuration_name", configuration_name)
+        _setter("issuer", issuer)
+        _setter("x509cert1", x509cert1)
         if authn_request_url is not None:
-            pulumi.set(__self__, "authn_request_url", authn_request_url)
+            _setter("authn_request_url", authn_request_url)
         if debug_mode is not None:
-            pulumi.set(__self__, "debug_mode", debug_mode)
+            _setter("debug_mode", debug_mode)
         if disable_requested_authn_context is not None:
-            pulumi.set(__self__, "disable_requested_authn_context", disable_requested_authn_context)
+            _setter("disable_requested_authn_context", disable_requested_authn_context)
         if email_attribute is not None:
-            pulumi.set(__self__, "email_attribute", email_attribute)
+            _setter("email_attribute", email_attribute)
         if is_redirect_binding is not None:
-            pulumi.set(__self__, "is_redirect_binding", is_redirect_binding)
+            _setter("is_redirect_binding", is_redirect_binding)
         if logout_enabled is not None:
-            pulumi.set(__self__, "logout_enabled", logout_enabled)
+            _setter("logout_enabled", logout_enabled)
         if logout_url is not None:
-            pulumi.set(__self__, "logout_url", logout_url)
+            _setter("logout_url", logout_url)
         if on_demand_provisioning_enabled is not None:
-            pulumi.set(__self__, "on_demand_provisioning_enabled", on_demand_provisioning_enabled)
+            _setter("on_demand_provisioning_enabled", on_demand_provisioning_enabled)
         if roles_attribute is not None:
-            pulumi.set(__self__, "roles_attribute", roles_attribute)
+            _setter("roles_attribute", roles_attribute)
         if sign_authn_request is not None:
-            pulumi.set(__self__, "sign_authn_request", sign_authn_request)
+            _setter("sign_authn_request", sign_authn_request)
         if sp_initiated_login_enabled is not None:
-            pulumi.set(__self__, "sp_initiated_login_enabled", sp_initiated_login_enabled)
+            _setter("sp_initiated_login_enabled", sp_initiated_login_enabled)
         if sp_initiated_login_path is not None:
-            pulumi.set(__self__, "sp_initiated_login_path", sp_initiated_login_path)
+            _setter("sp_initiated_login_path", sp_initiated_login_path)
         if x509cert2 is not None:
-            pulumi.set(__self__, "x509cert2", x509cert2)
+            _setter("x509cert2", x509cert2)
         if x509cert3 is not None:
-            pulumi.set(__self__, "x509cert3", x509cert3)
+            _setter("x509cert3", x509cert3)
 
     @property
     @pulumi.getter(name="configurationName")
@@ -333,46 +374,93 @@ class _SamlConfigurationState:
         :param pulumi.Input[str] x509cert2: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to "".
         :param pulumi.Input[str] x509cert3: The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to "".
         """
+        _SamlConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assertion_consumer_url=assertion_consumer_url,
+            authn_request_url=authn_request_url,
+            certificate=certificate,
+            configuration_name=configuration_name,
+            debug_mode=debug_mode,
+            disable_requested_authn_context=disable_requested_authn_context,
+            email_attribute=email_attribute,
+            entity_id=entity_id,
+            is_redirect_binding=is_redirect_binding,
+            issuer=issuer,
+            logout_enabled=logout_enabled,
+            logout_url=logout_url,
+            on_demand_provisioning_enabled=on_demand_provisioning_enabled,
+            roles_attribute=roles_attribute,
+            sign_authn_request=sign_authn_request,
+            sp_initiated_login_enabled=sp_initiated_login_enabled,
+            sp_initiated_login_path=sp_initiated_login_path,
+            x509cert1=x509cert1,
+            x509cert2=x509cert2,
+            x509cert3=x509cert3,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assertion_consumer_url: Optional[pulumi.Input[str]] = None,
+             authn_request_url: Optional[pulumi.Input[str]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             configuration_name: Optional[pulumi.Input[str]] = None,
+             debug_mode: Optional[pulumi.Input[bool]] = None,
+             disable_requested_authn_context: Optional[pulumi.Input[bool]] = None,
+             email_attribute: Optional[pulumi.Input[str]] = None,
+             entity_id: Optional[pulumi.Input[str]] = None,
+             is_redirect_binding: Optional[pulumi.Input[bool]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             logout_enabled: Optional[pulumi.Input[bool]] = None,
+             logout_url: Optional[pulumi.Input[str]] = None,
+             on_demand_provisioning_enabled: Optional[pulumi.Input['SamlConfigurationOnDemandProvisioningEnabledArgs']] = None,
+             roles_attribute: Optional[pulumi.Input[str]] = None,
+             sign_authn_request: Optional[pulumi.Input[bool]] = None,
+             sp_initiated_login_enabled: Optional[pulumi.Input[bool]] = None,
+             sp_initiated_login_path: Optional[pulumi.Input[str]] = None,
+             x509cert1: Optional[pulumi.Input[str]] = None,
+             x509cert2: Optional[pulumi.Input[str]] = None,
+             x509cert3: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if assertion_consumer_url is not None:
-            pulumi.set(__self__, "assertion_consumer_url", assertion_consumer_url)
+            _setter("assertion_consumer_url", assertion_consumer_url)
         if authn_request_url is not None:
-            pulumi.set(__self__, "authn_request_url", authn_request_url)
+            _setter("authn_request_url", authn_request_url)
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if configuration_name is not None:
-            pulumi.set(__self__, "configuration_name", configuration_name)
+            _setter("configuration_name", configuration_name)
         if debug_mode is not None:
-            pulumi.set(__self__, "debug_mode", debug_mode)
+            _setter("debug_mode", debug_mode)
         if disable_requested_authn_context is not None:
-            pulumi.set(__self__, "disable_requested_authn_context", disable_requested_authn_context)
+            _setter("disable_requested_authn_context", disable_requested_authn_context)
         if email_attribute is not None:
-            pulumi.set(__self__, "email_attribute", email_attribute)
+            _setter("email_attribute", email_attribute)
         if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
+            _setter("entity_id", entity_id)
         if is_redirect_binding is not None:
-            pulumi.set(__self__, "is_redirect_binding", is_redirect_binding)
+            _setter("is_redirect_binding", is_redirect_binding)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if logout_enabled is not None:
-            pulumi.set(__self__, "logout_enabled", logout_enabled)
+            _setter("logout_enabled", logout_enabled)
         if logout_url is not None:
-            pulumi.set(__self__, "logout_url", logout_url)
+            _setter("logout_url", logout_url)
         if on_demand_provisioning_enabled is not None:
-            pulumi.set(__self__, "on_demand_provisioning_enabled", on_demand_provisioning_enabled)
+            _setter("on_demand_provisioning_enabled", on_demand_provisioning_enabled)
         if roles_attribute is not None:
-            pulumi.set(__self__, "roles_attribute", roles_attribute)
+            _setter("roles_attribute", roles_attribute)
         if sign_authn_request is not None:
-            pulumi.set(__self__, "sign_authn_request", sign_authn_request)
+            _setter("sign_authn_request", sign_authn_request)
         if sp_initiated_login_enabled is not None:
-            pulumi.set(__self__, "sp_initiated_login_enabled", sp_initiated_login_enabled)
+            _setter("sp_initiated_login_enabled", sp_initiated_login_enabled)
         if sp_initiated_login_path is not None:
-            pulumi.set(__self__, "sp_initiated_login_path", sp_initiated_login_path)
+            _setter("sp_initiated_login_path", sp_initiated_login_path)
         if x509cert1 is not None:
-            pulumi.set(__self__, "x509cert1", x509cert1)
+            _setter("x509cert1", x509cert1)
         if x509cert2 is not None:
-            pulumi.set(__self__, "x509cert2", x509cert2)
+            _setter("x509cert2", x509cert2)
         if x509cert3 is not None:
-            pulumi.set(__self__, "x509cert3", x509cert3)
+            _setter("x509cert3", x509cert3)
 
     @property
     @pulumi.getter(name="assertionConsumerUrl")
@@ -767,6 +855,10 @@ class SamlConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SamlConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -811,6 +903,11 @@ class SamlConfiguration(pulumi.CustomResource):
             __props__.__dict__["issuer"] = issuer
             __props__.__dict__["logout_enabled"] = logout_enabled
             __props__.__dict__["logout_url"] = logout_url
+            if on_demand_provisioning_enabled is not None and not isinstance(on_demand_provisioning_enabled, SamlConfigurationOnDemandProvisioningEnabledArgs):
+                on_demand_provisioning_enabled = on_demand_provisioning_enabled or {}
+                def _setter(key, value):
+                    on_demand_provisioning_enabled[key] = value
+                SamlConfigurationOnDemandProvisioningEnabledArgs._configure(_setter, **on_demand_provisioning_enabled)
             __props__.__dict__["on_demand_provisioning_enabled"] = on_demand_provisioning_enabled
             __props__.__dict__["roles_attribute"] = roles_attribute
             __props__.__dict__["sign_authn_request"] = sign_authn_request

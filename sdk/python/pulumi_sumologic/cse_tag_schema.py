@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,13 +28,30 @@ class CseTagSchemaArgs:
         :param pulumi.Input[str] label: Value option label.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: Applicable content types. Valid values: "customInsight", "entity", "rule", "threatIntelligence".
         """
-        pulumi.set(__self__, "free_form", free_form)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "label", label)
+        CseTagSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            free_form=free_form,
+            key=key,
+            label=label,
+            content_types=content_types,
+            value_options=value_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             free_form: pulumi.Input[bool],
+             key: pulumi.Input[str],
+             label: pulumi.Input[str],
+             content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             value_options: Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("free_form", free_form)
+        _setter("key", key)
+        _setter("label", label)
         if content_types is not None:
-            pulumi.set(__self__, "content_types", content_types)
+            _setter("content_types", content_types)
         if value_options is not None:
-            pulumi.set(__self__, "value_options", value_options)
+            _setter("value_options", value_options)
 
     @property
     @pulumi.getter(name="freeForm")
@@ -109,16 +126,33 @@ class _CseTagSchemaState:
         :param pulumi.Input[str] key: Tag Schema key.
         :param pulumi.Input[str] label: Value option label.
         """
+        _CseTagSchemaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_types=content_types,
+            free_form=free_form,
+            key=key,
+            label=label,
+            value_options=value_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             free_form: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             value_options: Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if content_types is not None:
-            pulumi.set(__self__, "content_types", content_types)
+            _setter("content_types", content_types)
         if free_form is not None:
-            pulumi.set(__self__, "free_form", free_form)
+            _setter("free_form", free_form)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if value_options is not None:
-            pulumi.set(__self__, "value_options", value_options)
+            _setter("value_options", value_options)
 
     @property
     @pulumi.getter(name="contentTypes")
@@ -234,6 +268,10 @@ class CseTagSchema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseTagSchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -624,7 +624,7 @@ export interface CseLogMappingField {
      */
     timeZone?: string;
     /**
-     * Value of the field.
+     * Lookup value.
      */
     value?: string;
     /**
@@ -639,7 +639,7 @@ export interface CseLogMappingFieldLookup {
      */
     key: string;
     /**
-     * Value of the field.
+     * Lookup value.
      */
     value: string;
 }
@@ -6027,7 +6027,7 @@ export interface LogSearchQueryParameter {
      */
     name: string;
     /**
-     * The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+     * Default value of scheduled search parameter.
      */
     value: string;
 }
@@ -6235,7 +6235,7 @@ export interface LogSearchScheduleParameter {
      */
     name: string;
     /**
-     * The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+     * Default value of scheduled search parameter.
      */
     value: string;
 }
@@ -6301,8 +6301,7 @@ export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso
 
 export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6355,8 +6354,7 @@ export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso86
 
 export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6376,8 +6374,7 @@ export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelat
 
 export interface LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6461,8 +6458,7 @@ export interface LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 
 export interface LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6515,8 +6511,7 @@ export interface LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 
 export interface LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6536,8 +6531,7 @@ export interface LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 
 export interface LogSearchTimeRangeCompleteLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6673,8 +6667,7 @@ export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange
 
 export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6727,8 +6720,7 @@ export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 
 export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -6748,8 +6740,7 @@ export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange 
 
 export interface MetricsSearchTimeRangeCompleteLiteralTimeRange {
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-     * `previousMonth`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      */
     rangeName: string;
 }
@@ -7543,7 +7534,6 @@ export interface SloIndicatorRequestBasedEvaluationQuery {
     /**
      * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
      * , `Threshold`.
-     * , `Threshold`.
      */
     queryGroupType: string;
     /**
@@ -7555,8 +7545,6 @@ export interface SloIndicatorRequestBasedEvaluationQuery {
 export interface SloIndicatorRequestBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
-     * type when `useRowCount` is false.
-     *
      * type when `useRowCount` is false.
      */
     field?: string;
@@ -7609,7 +7597,6 @@ export interface SloIndicatorWindowBasedEvaluationQuery {
     /**
      * The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
      * , `Threshold`.
-     * , `Threshold`.
      */
     queryGroupType: string;
     /**
@@ -7621,8 +7608,6 @@ export interface SloIndicatorWindowBasedEvaluationQuery {
 export interface SloIndicatorWindowBasedEvaluationQueryQueryGroup {
     /**
      * Field of log query output to compare against. To be used only for logs based data
-     * type when `useRowCount` is false.
-     *
      * type when `useRowCount` is false.
      */
     field?: string;

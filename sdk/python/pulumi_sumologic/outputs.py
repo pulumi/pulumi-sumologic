@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -732,33 +732,68 @@ class AwsInventorySourceAuthentication(dict):
         :param str type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
         :param str role_arn: Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
         """
-        pulumi.set(__self__, "type", type)
+        AwsInventorySourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -842,9 +877,20 @@ class AwsInventorySourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        AwsInventorySourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -881,11 +927,26 @@ class AwsInventorySourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        AwsInventorySourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -972,25 +1033,52 @@ class AwsInventorySourcePath(dict):
                + AWS/Kinesis
         :param Sequence[str] limit_to_regions: List of Amazon regions.
         """
-        pulumi.set(__self__, "type", type)
+        AwsInventorySourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.AwsInventorySourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.AwsInventorySourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -1087,10 +1175,21 @@ class AwsInventorySourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        AwsInventorySourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -1125,10 +1224,21 @@ class AwsInventorySourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        AwsInventorySourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -1150,12 +1260,25 @@ class AwsInventorySourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
         """
+        AwsInventorySourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1238,33 +1361,68 @@ class AwsXraySourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         """
-        pulumi.set(__self__, "type", type)
+        AwsXraySourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -1354,9 +1512,20 @@ class AwsXraySourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        AwsXraySourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -1393,11 +1562,26 @@ class AwsXraySourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        AwsXraySourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -1470,25 +1654,52 @@ class AwsXraySourcePath(dict):
         :param str type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
         :param Sequence[str] limit_to_regions: List of Amazon regions.
         """
-        pulumi.set(__self__, "type", type)
+        AwsXraySourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.AwsXraySourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.AwsXraySourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -1569,10 +1780,21 @@ class AwsXraySourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        AwsXraySourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -1607,10 +1829,21 @@ class AwsXraySourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        AwsXraySourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -1632,12 +1865,25 @@ class AwsXraySourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
         """
+        AwsXraySourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1663,9 +1909,20 @@ class CloudSyslogSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        CloudSyslogSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -1702,11 +1959,26 @@ class CloudSyslogSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        CloudSyslogSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -1792,33 +2064,68 @@ class CloudfrontSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         """
-        pulumi.set(__self__, "type", type)
+        CloudfrontSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -1911,9 +2218,20 @@ class CloudfrontSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        CloudfrontSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -1950,11 +2268,26 @@ class CloudfrontSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        CloudfrontSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -2029,25 +2362,52 @@ class CloudfrontSourcePath(dict):
         :param str path_expression: The path to the data. This is needed if using type `S3BucketPathExpression`.
         :param Sequence['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
-        pulumi.set(__self__, "type", type)
+        CloudfrontSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.CloudfrontSourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.CloudfrontSourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -2134,10 +2494,21 @@ class CloudfrontSourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        CloudfrontSourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -2172,10 +2543,21 @@ class CloudfrontSourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        CloudfrontSourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -2197,12 +2579,25 @@ class CloudfrontSourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
         """
+        CloudfrontSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -2286,33 +2681,68 @@ class CloudtrailSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         """
-        pulumi.set(__self__, "type", type)
+        CloudtrailSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -2405,9 +2835,20 @@ class CloudtrailSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        CloudtrailSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -2444,11 +2885,26 @@ class CloudtrailSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        CloudtrailSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -2523,25 +2979,52 @@ class CloudtrailSourcePath(dict):
         :param str path_expression: The path to the data.
         :param Sequence['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
-        pulumi.set(__self__, "type", type)
+        CloudtrailSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.CloudtrailSourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.CloudtrailSourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -2628,10 +3111,21 @@ class CloudtrailSourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        CloudtrailSourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -2666,10 +3160,21 @@ class CloudtrailSourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        CloudtrailSourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -2691,12 +3196,25 @@ class CloudtrailSourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
         """
+        CloudtrailSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -2780,33 +3298,68 @@ class CloudwatchSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         """
-        pulumi.set(__self__, "type", type)
+        CloudwatchSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -2899,9 +3452,20 @@ class CloudwatchSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        CloudwatchSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -2938,11 +3502,26 @@ class CloudwatchSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        CloudwatchSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -3017,25 +3596,52 @@ class CloudwatchSourcePath(dict):
         :param Sequence[str] limit_to_regions: List of Amazon regions.
         :param Sequence['CloudwatchSourcePathTagFilterArgs'] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
         """
-        pulumi.set(__self__, "type", type)
+        CloudwatchSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.CloudwatchSourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.CloudwatchSourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -3122,10 +3728,21 @@ class CloudwatchSourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        CloudwatchSourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -3160,10 +3777,21 @@ class CloudwatchSourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        CloudwatchSourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -3187,12 +3815,25 @@ class CloudwatchSourcePathTagFilter(dict):
         :param Sequence[str] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
         :param str type: This value has to be set to `TagFilters`
         """
+        CloudwatchSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -3256,9 +3897,22 @@ class ContentPermissionPermission(dict):
         :param str source_type: Type of source for the permission. Valid values are `user`, `role`,
                and `org`.
         """
-        pulumi.set(__self__, "permission_name", permission_name)
-        pulumi.set(__self__, "source_id", source_id)
-        pulumi.set(__self__, "source_type", source_type)
+        ContentPermissionPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission_name=permission_name,
+            source_id=source_id,
+            source_type=source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission_name: str,
+             source_id: str,
+             source_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission_name", permission_name)
+        _setter("source_id", source_id)
+        _setter("source_type", source_type)
 
     @property
     @pulumi.getter(name="permissionName")
@@ -3301,9 +3955,22 @@ class CseAggregationRuleAggregationFunction(dict):
         :param str function: The function to aggregate with
         :param str name: The name of the Rule
         """
-        pulumi.set(__self__, "arguments", arguments)
-        pulumi.set(__self__, "function", function)
-        pulumi.set(__self__, "name", name)
+        CseAggregationRuleAggregationFunction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arguments=arguments,
+            function=function,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arguments: Sequence[str],
+             function: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arguments", arguments)
+        _setter("function", function)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -3355,8 +4022,19 @@ class CseAggregationRuleEntitySelector(dict):
         """
         :param str expression: The expression or field name to generate the Signal on.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
-        pulumi.set(__self__, "expression", expression)
+        CseAggregationRuleEntitySelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            expression=expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             expression: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
+        _setter("expression", expression)
 
     @property
     @pulumi.getter(name="entityType")
@@ -3385,13 +4063,28 @@ class CseAggregationRuleSeverityMapping(dict):
         :param str field: The field to use in the "fieldValue"/"fieldValueMapping" cases.
         :param Sequence['CseAggregationRuleSeverityMappingMappingArgs'] mappings: The map of record values to severities to use in the "fieldValueMapping" case
         """
-        pulumi.set(__self__, "type", type)
+        CseAggregationRuleSeverityMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            default=default,
+            field=field,
+            mappings=mappings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             default: Optional[int] = None,
+             field: Optional[str] = None,
+             mappings: Optional[Sequence['outputs.CseAggregationRuleSeverityMappingMapping']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if default is not None:
-            pulumi.set(__self__, "default", default)
+            _setter("default", default)
         if field is not None:
-            pulumi.set(__self__, "field", field)
+            _setter("field", field)
         if mappings is not None:
-            pulumi.set(__self__, "mappings", mappings)
+            _setter("mappings", mappings)
 
     @property
     @pulumi.getter
@@ -3454,9 +4147,22 @@ class CseAggregationRuleSeverityMappingMapping(dict):
         :param int to: The severity value to map to
         :param str type: Must be set to "eq" currently
         """
-        pulumi.set(__self__, "from_", from_)
-        pulumi.set(__self__, "to", to)
-        pulumi.set(__self__, "type", type)
+        CseAggregationRuleSeverityMappingMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: str,
+             to: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
+        _setter("to", to)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="from")
@@ -3508,8 +4214,19 @@ class CseChainRuleEntitySelector(dict):
         """
         :param str expression: The expression for which records to match on
         """
-        pulumi.set(__self__, "entity_type", entity_type)
-        pulumi.set(__self__, "expression", expression)
+        CseChainRuleEntitySelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            expression=expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             expression: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
+        _setter("expression", expression)
 
     @property
     @pulumi.getter(name="entityType")
@@ -3534,8 +4251,19 @@ class CseChainRuleExpressionsAndLimit(dict):
         :param str expression: The expression for which records to match on
         :param int limit: How many times this expression must match for the Signal to fire
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "limit", limit)
+        CseChainRuleExpressionsAndLimit._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            limit=limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: str,
+             limit: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expression", expression)
+        _setter("limit", limit)
 
     @property
     @pulumi.getter
@@ -3582,8 +4310,19 @@ class CseEntityNormalizationConfigurationDomainMapping(dict):
         :param str normalized_domain: The normalized domain.
         :param str raw_domain: The raw domain to be normalized.
         """
-        pulumi.set(__self__, "normalized_domain", normalized_domain)
-        pulumi.set(__self__, "raw_domain", raw_domain)
+        CseEntityNormalizationConfigurationDomainMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            normalized_domain=normalized_domain,
+            raw_domain=raw_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             normalized_domain: str,
+             raw_domain: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("normalized_domain", normalized_domain)
+        _setter("raw_domain", raw_domain)
 
     @property
     @pulumi.getter(name="normalizedDomain")
@@ -3627,8 +4366,19 @@ class CseFirstSeenRuleEntitySelector(dict):
         """
         :param str expression: The expression or field name to generate the Signal on
         """
-        pulumi.set(__self__, "entity_type", entity_type)
-        pulumi.set(__self__, "expression", expression)
+        CseFirstSeenRuleEntitySelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            expression=expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             expression: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
+        _setter("expression", expression)
 
     @property
     @pulumi.getter(name="entityType")
@@ -3713,38 +4463,75 @@ class CseLogMappingField(dict):
         :param str split_delimiter: Split delimiter to be used. (some example: ",", "-", "|")
         :param int split_index: The index value to select (starting at zero)
         :param str time_zone: Time zone.
-        :param str value: Value of the field.
+        :param str value: Lookup value.
         :param str value_type: The value type.
         """
-        pulumi.set(__self__, "name", name)
+        CseLogMappingField._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            alternate_values=alternate_values,
+            case_insensitive=case_insensitive,
+            default_value=default_value,
+            field_joins=field_joins,
+            format=format,
+            format_parameters=format_parameters,
+            join_delimiter=join_delimiter,
+            lookups=lookups,
+            skipped_values=skipped_values,
+            split_delimiter=split_delimiter,
+            split_index=split_index,
+            time_zone=time_zone,
+            value=value,
+            value_type=value_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             alternate_values: Optional[Sequence[str]] = None,
+             case_insensitive: Optional[bool] = None,
+             default_value: Optional[str] = None,
+             field_joins: Optional[Sequence[str]] = None,
+             format: Optional[str] = None,
+             format_parameters: Optional[Sequence[str]] = None,
+             join_delimiter: Optional[str] = None,
+             lookups: Optional[Sequence['outputs.CseLogMappingFieldLookup']] = None,
+             skipped_values: Optional[Sequence[str]] = None,
+             split_delimiter: Optional[str] = None,
+             split_index: Optional[int] = None,
+             time_zone: Optional[str] = None,
+             value: Optional[str] = None,
+             value_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if alternate_values is not None:
-            pulumi.set(__self__, "alternate_values", alternate_values)
+            _setter("alternate_values", alternate_values)
         if case_insensitive is not None:
-            pulumi.set(__self__, "case_insensitive", case_insensitive)
+            _setter("case_insensitive", case_insensitive)
         if default_value is not None:
-            pulumi.set(__self__, "default_value", default_value)
+            _setter("default_value", default_value)
         if field_joins is not None:
-            pulumi.set(__self__, "field_joins", field_joins)
+            _setter("field_joins", field_joins)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
         if format_parameters is not None:
-            pulumi.set(__self__, "format_parameters", format_parameters)
+            _setter("format_parameters", format_parameters)
         if join_delimiter is not None:
-            pulumi.set(__self__, "join_delimiter", join_delimiter)
+            _setter("join_delimiter", join_delimiter)
         if lookups is not None:
-            pulumi.set(__self__, "lookups", lookups)
+            _setter("lookups", lookups)
         if skipped_values is not None:
-            pulumi.set(__self__, "skipped_values", skipped_values)
+            _setter("skipped_values", skipped_values)
         if split_delimiter is not None:
-            pulumi.set(__self__, "split_delimiter", split_delimiter)
+            _setter("split_delimiter", split_delimiter)
         if split_index is not None:
-            pulumi.set(__self__, "split_index", split_index)
+            _setter("split_index", split_index)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
+            _setter("value_type", value_type)
 
     @property
     @pulumi.getter
@@ -3854,7 +4641,7 @@ class CseLogMappingField(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Value of the field.
+        Lookup value.
         """
         return pulumi.get(self, "value")
 
@@ -3874,10 +4661,21 @@ class CseLogMappingFieldLookup(dict):
                  value: str):
         """
         :param str key: Lookup key.
-        :param str value: Value of the field.
+        :param str value: Lookup value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        CseLogMappingFieldLookup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3891,7 +4689,7 @@ class CseLogMappingFieldLookup(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Value of the field.
+        Lookup value.
         """
         return pulumi.get(self, "value")
 
@@ -3928,10 +4726,25 @@ class CseLogMappingStructuredInput(dict):
         :param str product: Product name.
         :param str vendor: Vendor name.
         """
-        pulumi.set(__self__, "event_id_pattern", event_id_pattern)
-        pulumi.set(__self__, "log_format", log_format)
-        pulumi.set(__self__, "product", product)
-        pulumi.set(__self__, "vendor", vendor)
+        CseLogMappingStructuredInput._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_id_pattern=event_id_pattern,
+            log_format=log_format,
+            product=product,
+            vendor=vendor,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_id_pattern: str,
+             log_format: str,
+             product: str,
+             vendor: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_id_pattern", event_id_pattern)
+        _setter("log_format", log_format)
+        _setter("product", product)
+        _setter("vendor", vendor)
 
     @property
     @pulumi.getter(name="eventIdPattern")
@@ -3993,7 +4806,16 @@ class CseLogMappingUnstructuredFields(dict):
                
                The following attributes are exported:
         """
-        pulumi.set(__self__, "pattern_names", pattern_names)
+        CseLogMappingUnstructuredFields._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pattern_names=pattern_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pattern_names: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pattern_names", pattern_names)
 
     @property
     @pulumi.getter(name="patternNames")
@@ -4022,12 +4844,27 @@ class CseMatchListItem(dict):
                The following attributes are exported:
         :param str id: The internal ID of the match list.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "value", value)
+        CseMatchListItem._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            value=value,
+            expiration=expiration,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             value: str,
+             expiration: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("value", value)
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -4089,8 +4926,19 @@ class CseMatchRuleEntitySelector(dict):
         """
         :param str expression: The expression for which records to match on
         """
-        pulumi.set(__self__, "entity_type", entity_type)
-        pulumi.set(__self__, "expression", expression)
+        CseMatchRuleEntitySelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            expression=expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             expression: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
+        _setter("expression", expression)
 
     @property
     @pulumi.getter(name="entityType")
@@ -4119,13 +4967,28 @@ class CseMatchRuleSeverityMapping(dict):
         :param str field: The field to use in the "fieldValue"/"fieldValueMapping" cases.
         :param Sequence['CseMatchRuleSeverityMappingMappingArgs'] mappings: The map of record values to severities to use in the "fieldValueMapping" case
         """
-        pulumi.set(__self__, "type", type)
+        CseMatchRuleSeverityMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            default=default,
+            field=field,
+            mappings=mappings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             default: Optional[int] = None,
+             field: Optional[str] = None,
+             mappings: Optional[Sequence['outputs.CseMatchRuleSeverityMappingMapping']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if default is not None:
-            pulumi.set(__self__, "default", default)
+            _setter("default", default)
         if field is not None:
-            pulumi.set(__self__, "field", field)
+            _setter("field", field)
         if mappings is not None:
-            pulumi.set(__self__, "mappings", mappings)
+            _setter("mappings", mappings)
 
     @property
     @pulumi.getter
@@ -4188,9 +5051,22 @@ class CseMatchRuleSeverityMappingMapping(dict):
         :param int to: The severity value to map to
         :param str type: Must be set to "eq" currently
         """
-        pulumi.set(__self__, "from_", from_)
-        pulumi.set(__self__, "to", to)
-        pulumi.set(__self__, "type", type)
+        CseMatchRuleSeverityMappingMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: str,
+             to: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
+        _setter("to", to)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="from")
@@ -4228,9 +5104,22 @@ class CseOutlierRuleAggregationFunctions(dict):
         :param str function: The function to aggregate with
         :param str name: The name of the Rule
         """
-        pulumi.set(__self__, "arguments", arguments)
-        pulumi.set(__self__, "function", function)
-        pulumi.set(__self__, "name", name)
+        CseOutlierRuleAggregationFunctions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arguments=arguments,
+            function=function,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arguments: Sequence[str],
+             function: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arguments", arguments)
+        _setter("function", function)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -4282,8 +5171,19 @@ class CseOutlierRuleEntitySelector(dict):
         """
         :param str expression: The expression or field name to generate the Signal on
         """
-        pulumi.set(__self__, "entity_type", entity_type)
-        pulumi.set(__self__, "expression", expression)
+        CseOutlierRuleEntitySelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            expression=expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             expression: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
+        _setter("expression", expression)
 
     @property
     @pulumi.getter(name="entityType")
@@ -4314,11 +5214,24 @@ class CseTagSchemaValueOption(dict):
                
                The following attributes are exported:
         """
-        pulumi.set(__self__, "value", value)
+        CseTagSchemaValueOption._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            label=label,
+            link=link,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: str,
+             label: Optional[str] = None,
+             link: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if link is not None:
-            pulumi.set(__self__, "link", link)
+            _setter("link", link)
 
     @property
     @pulumi.getter
@@ -4374,8 +5287,19 @@ class CseThresholdRuleEntitySelector(dict):
         """
         :param str expression: The expression for which records to match on
         """
-        pulumi.set(__self__, "entity_type", entity_type)
-        pulumi.set(__self__, "expression", expression)
+        CseThresholdRuleEntitySelector._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            expression=expression,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             expression: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
+        _setter("expression", expression)
 
     @property
     @pulumi.getter(name="entityType")
@@ -4419,11 +5343,26 @@ class DashboardColoringRule(dict):
                  scope: str,
                  single_series_aggregate_function: str,
                  color_thresholds: Optional[Sequence['outputs.DashboardColoringRuleColorThreshold']] = None):
-        pulumi.set(__self__, "multiple_series_aggregate_function", multiple_series_aggregate_function)
-        pulumi.set(__self__, "scope", scope)
-        pulumi.set(__self__, "single_series_aggregate_function", single_series_aggregate_function)
+        DashboardColoringRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            multiple_series_aggregate_function=multiple_series_aggregate_function,
+            scope=scope,
+            single_series_aggregate_function=single_series_aggregate_function,
+            color_thresholds=color_thresholds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             multiple_series_aggregate_function: str,
+             scope: str,
+             single_series_aggregate_function: str,
+             color_thresholds: Optional[Sequence['outputs.DashboardColoringRuleColorThreshold']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("multiple_series_aggregate_function", multiple_series_aggregate_function)
+        _setter("scope", scope)
+        _setter("single_series_aggregate_function", single_series_aggregate_function)
         if color_thresholds is not None:
-            pulumi.set(__self__, "color_thresholds", color_thresholds)
+            _setter("color_thresholds", color_thresholds)
 
     @property
     @pulumi.getter(name="multipleSeriesAggregateFunction")
@@ -4452,11 +5391,24 @@ class DashboardColoringRuleColorThreshold(dict):
                  color: str,
                  max: Optional[float] = None,
                  min: Optional[float] = None):
-        pulumi.set(__self__, "color", color)
+        DashboardColoringRuleColorThreshold._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color=color,
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color: str,
+             max: Optional[float] = None,
+             min: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("color", color)
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter
@@ -4478,8 +5430,17 @@ class DashboardColoringRuleColorThreshold(dict):
 class DashboardLayout(dict):
     def __init__(__self__, *,
                  grid: Optional['outputs.DashboardLayoutGrid'] = None):
+        DashboardLayout._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            grid=grid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             grid: Optional['outputs.DashboardLayoutGrid'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if grid is not None:
-            pulumi.set(__self__, "grid", grid)
+            _setter("grid", grid)
 
     @property
     @pulumi.getter
@@ -4508,7 +5469,16 @@ class DashboardLayoutGrid(dict):
 
     def __init__(__self__, *,
                  layout_structures: Sequence['outputs.DashboardLayoutGridLayoutStructure']):
-        pulumi.set(__self__, "layout_structures", layout_structures)
+        DashboardLayoutGrid._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            layout_structures=layout_structures,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             layout_structures: Sequence['outputs.DashboardLayoutGridLayoutStructure'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("layout_structures", layout_structures)
 
     @property
     @pulumi.getter(name="layoutStructures")
@@ -4521,8 +5491,19 @@ class DashboardLayoutGridLayoutStructure(dict):
     def __init__(__self__, *,
                  key: str,
                  structure: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "structure", structure)
+        DashboardLayoutGridLayoutStructure._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            structure=structure,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             structure: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("structure", structure)
 
     @property
     @pulumi.getter
@@ -4559,10 +5540,21 @@ class DashboardPanel(dict):
     def __init__(__self__, *,
                  sumo_search_panel: Optional['outputs.DashboardPanelSumoSearchPanel'] = None,
                  text_panel: Optional['outputs.DashboardPanelTextPanel'] = None):
+        DashboardPanel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sumo_search_panel=sumo_search_panel,
+            text_panel=text_panel,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sumo_search_panel: Optional['outputs.DashboardPanelSumoSearchPanel'] = None,
+             text_panel: Optional['outputs.DashboardPanelTextPanel'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if sumo_search_panel is not None:
-            pulumi.set(__self__, "sumo_search_panel", sumo_search_panel)
+            _setter("sumo_search_panel", sumo_search_panel)
         if text_panel is not None:
-            pulumi.set(__self__, "text_panel", text_panel)
+            _setter("text_panel", text_panel)
 
     @property
     @pulumi.getter(name="sumoSearchPanel")
@@ -4619,25 +5611,52 @@ class DashboardPanelSumoSearchPanel(dict):
                for details.
         :param str title: Title of the dashboard.
         """
-        pulumi.set(__self__, "key", key)
+        DashboardPanelSumoSearchPanel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            coloring_rule=coloring_rule,
+            description=description,
+            id=id,
+            keep_visual_settings_consistent_with_parent=keep_visual_settings_consistent_with_parent,
+            linked_dashboard=linked_dashboard,
+            queries=queries,
+            time_range=time_range,
+            title=title,
+            visual_settings=visual_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             coloring_rule: Optional['outputs.DashboardPanelSumoSearchPanelColoringRule'] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             keep_visual_settings_consistent_with_parent: Optional[bool] = None,
+             linked_dashboard: Optional['outputs.DashboardPanelSumoSearchPanelLinkedDashboard'] = None,
+             queries: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelQuery']] = None,
+             time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRange'] = None,
+             title: Optional[str] = None,
+             visual_settings: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if coloring_rule is not None:
-            pulumi.set(__self__, "coloring_rule", coloring_rule)
+            _setter("coloring_rule", coloring_rule)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if keep_visual_settings_consistent_with_parent is not None:
-            pulumi.set(__self__, "keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
+            _setter("keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
         if linked_dashboard is not None:
-            pulumi.set(__self__, "linked_dashboard", linked_dashboard)
+            _setter("linked_dashboard", linked_dashboard)
         if queries is not None:
-            pulumi.set(__self__, "queries", queries)
+            _setter("queries", queries)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if visual_settings is not None:
-            pulumi.set(__self__, "visual_settings", visual_settings)
+            _setter("visual_settings", visual_settings)
 
     @property
     @pulumi.getter
@@ -4728,11 +5747,26 @@ class DashboardPanelSumoSearchPanelColoringRule(dict):
                  scope: str,
                  single_series_aggregate_function: str,
                  color_thresholds: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelColoringRuleColorThreshold']] = None):
-        pulumi.set(__self__, "multiple_series_aggregate_function", multiple_series_aggregate_function)
-        pulumi.set(__self__, "scope", scope)
-        pulumi.set(__self__, "single_series_aggregate_function", single_series_aggregate_function)
+        DashboardPanelSumoSearchPanelColoringRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            multiple_series_aggregate_function=multiple_series_aggregate_function,
+            scope=scope,
+            single_series_aggregate_function=single_series_aggregate_function,
+            color_thresholds=color_thresholds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             multiple_series_aggregate_function: str,
+             scope: str,
+             single_series_aggregate_function: str,
+             color_thresholds: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelColoringRuleColorThreshold']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("multiple_series_aggregate_function", multiple_series_aggregate_function)
+        _setter("scope", scope)
+        _setter("single_series_aggregate_function", single_series_aggregate_function)
         if color_thresholds is not None:
-            pulumi.set(__self__, "color_thresholds", color_thresholds)
+            _setter("color_thresholds", color_thresholds)
 
     @property
     @pulumi.getter(name="multipleSeriesAggregateFunction")
@@ -4761,11 +5795,24 @@ class DashboardPanelSumoSearchPanelColoringRuleColorThreshold(dict):
                  color: str,
                  max: Optional[float] = None,
                  min: Optional[float] = None):
-        pulumi.set(__self__, "color", color)
+        DashboardPanelSumoSearchPanelColoringRuleColorThreshold._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color=color,
+            max=max,
+            min=min,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color: str,
+             max: Optional[float] = None,
+             min: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("color", color)
         if max is not None:
-            pulumi.set(__self__, "max", max)
+            _setter("max", max)
         if min is not None:
-            pulumi.set(__self__, "min", min)
+            _setter("min", min)
 
     @property
     @pulumi.getter
@@ -4811,13 +5858,28 @@ class DashboardPanelSumoSearchPanelLinkedDashboard(dict):
                  include_time_range: Optional[bool] = None,
                  include_variables: Optional[bool] = None,
                  relative_path: Optional[str] = None):
-        pulumi.set(__self__, "id", id)
+        DashboardPanelSumoSearchPanelLinkedDashboard._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            include_time_range=include_time_range,
+            include_variables=include_variables,
+            relative_path=relative_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             include_time_range: Optional[bool] = None,
+             include_variables: Optional[bool] = None,
+             relative_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
         if include_time_range is not None:
-            pulumi.set(__self__, "include_time_range", include_time_range)
+            _setter("include_time_range", include_time_range)
         if include_variables is not None:
-            pulumi.set(__self__, "include_variables", include_variables)
+            _setter("include_variables", include_variables)
         if relative_path is not None:
-            pulumi.set(__self__, "relative_path", relative_path)
+            _setter("relative_path", relative_path)
 
     @property
     @pulumi.getter
@@ -4873,13 +5935,30 @@ class DashboardPanelSumoSearchPanelQuery(dict):
                  query_type: str,
                  metrics_query_data: Optional['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryData'] = None,
                  metrics_query_mode: Optional[str] = None):
-        pulumi.set(__self__, "query_key", query_key)
-        pulumi.set(__self__, "query_string", query_string)
-        pulumi.set(__self__, "query_type", query_type)
+        DashboardPanelSumoSearchPanelQuery._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query_key=query_key,
+            query_string=query_string,
+            query_type=query_type,
+            metrics_query_data=metrics_query_data,
+            metrics_query_mode=metrics_query_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query_key: str,
+             query_string: str,
+             query_type: str,
+             metrics_query_data: Optional['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryData'] = None,
+             metrics_query_mode: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query_key", query_key)
+        _setter("query_string", query_string)
+        _setter("query_type", query_type)
         if metrics_query_data is not None:
-            pulumi.set(__self__, "metrics_query_data", metrics_query_data)
+            _setter("metrics_query_data", metrics_query_data)
         if metrics_query_mode is not None:
-            pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+            _setter("metrics_query_mode", metrics_query_mode)
 
     @property
     @pulumi.getter(name="queryKey")
@@ -4934,14 +6013,31 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryData(dict):
                  aggregation_type: Optional[str] = None,
                  group_by: Optional[str] = None,
                  operators: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator']] = None):
-        pulumi.set(__self__, "filters", filters)
-        pulumi.set(__self__, "metric", metric)
+        DashboardPanelSumoSearchPanelQueryMetricsQueryData._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filters=filters,
+            metric=metric,
+            aggregation_type=aggregation_type,
+            group_by=group_by,
+            operators=operators,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filters: Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter'],
+             metric: str,
+             aggregation_type: Optional[str] = None,
+             group_by: Optional[str] = None,
+             operators: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filters", filters)
+        _setter("metric", metric)
         if aggregation_type is not None:
-            pulumi.set(__self__, "aggregation_type", aggregation_type)
+            _setter("aggregation_type", aggregation_type)
         if group_by is not None:
-            pulumi.set(__self__, "group_by", group_by)
+            _setter("group_by", group_by)
         if operators is not None:
-            pulumi.set(__self__, "operators", operators)
+            _setter("operators", operators)
 
     @property
     @pulumi.getter
@@ -4975,10 +6071,23 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter(dict):
                  key: str,
                  value: str,
                  negation: Optional[bool] = None):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+            negation=negation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             negation: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
         if negation is not None:
-            pulumi.set(__self__, "negation", negation)
+            _setter("negation", negation)
 
     @property
     @pulumi.getter
@@ -5018,8 +6127,19 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator(dict):
     def __init__(__self__, *,
                  operator_name: str,
                  parameters: Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter']):
-        pulumi.set(__self__, "operator_name", operator_name)
-        pulumi.set(__self__, "parameters", parameters)
+        DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator_name=operator_name,
+            parameters=parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator_name: str,
+             parameters: Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("operator_name", operator_name)
+        _setter("parameters", parameters)
 
     @property
     @pulumi.getter(name="operatorName")
@@ -5037,8 +6157,19 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -5075,10 +6206,21 @@ class DashboardPanelSumoSearchPanelTimeRange(dict):
     def __init__(__self__, *,
                  begin_bounded_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange'] = None,
                  complete_literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange'] = None):
+        DashboardPanelSumoSearchPanelTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            begin_bounded_time_range=begin_bounded_time_range,
+            complete_literal_time_range=complete_literal_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             begin_bounded_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange'] = None,
+             complete_literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if begin_bounded_time_range is not None:
-            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+            _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
-            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+            _setter("complete_literal_time_range", complete_literal_time_range)
 
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
@@ -5113,9 +6255,20 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange(dict):
     def __init__(__self__, *,
                  from_: 'outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom',
                  to: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo'] = None):
-        pulumi.set(__self__, "from_", from_)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: 'outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom',
+             to: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
         if to is not None:
-            pulumi.set(__self__, "to", to)
+            _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -5158,14 +6311,29 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom(dict):
                  iso8601_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
                  literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
                  relative_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None):
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -5209,7 +6377,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRa
 
     def __init__(__self__, *,
                  epoch_millis: int):
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -5238,7 +6415,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601Time
 
     def __init__(__self__, *,
                  iso8601_time: str):
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -5267,7 +6453,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTime
 
     def __init__(__self__, *,
                  range_name: str):
-        pulumi.set(__self__, "range_name", range_name)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
@@ -5296,7 +6491,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTim
 
     def __init__(__self__, *,
                  relative_time: str):
-        pulumi.set(__self__, "relative_time", relative_time)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -5334,14 +6538,29 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo(dict):
                  iso8601_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
                  literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
                  relative_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None):
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -5385,7 +6604,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRang
 
     def __init__(__self__, *,
                  epoch_millis: int):
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -5414,7 +6642,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRa
 
     def __init__(__self__, *,
                  iso8601_time: str):
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -5443,7 +6680,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRa
 
     def __init__(__self__, *,
                  range_name: str):
-        pulumi.set(__self__, "range_name", range_name)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
@@ -5472,7 +6718,16 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeR
 
     def __init__(__self__, *,
                  relative_time: str):
-        pulumi.set(__self__, "relative_time", relative_time)
+        DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -5501,7 +6756,16 @@ class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange(dict):
 
     def __init__(__self__, *,
                  range_name: str):
-        pulumi.set(__self__, "range_name", range_name)
+        DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
@@ -5540,17 +6804,36 @@ class DashboardPanelTextPanel(dict):
         """
         :param str title: Title of the dashboard.
         """
-        pulumi.set(__self__, "key", key)
+        DashboardPanelTextPanel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            id=id,
+            keep_visual_settings_consistent_with_parent=keep_visual_settings_consistent_with_parent,
+            text=text,
+            title=title,
+            visual_settings=visual_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             id: Optional[str] = None,
+             keep_visual_settings_consistent_with_parent: Optional[bool] = None,
+             text: Optional[str] = None,
+             title: Optional[str] = None,
+             visual_settings: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if keep_visual_settings_consistent_with_parent is not None:
-            pulumi.set(__self__, "keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
+            _setter("keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
         if text is not None:
-            pulumi.set(__self__, "text", text)
+            _setter("text", text)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if visual_settings is not None:
-            pulumi.set(__self__, "visual_settings", visual_settings)
+            _setter("visual_settings", visual_settings)
 
     @property
     @pulumi.getter
@@ -5610,10 +6893,21 @@ class DashboardTimeRange(dict):
     def __init__(__self__, *,
                  begin_bounded_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRange'] = None,
                  complete_literal_time_range: Optional['outputs.DashboardTimeRangeCompleteLiteralTimeRange'] = None):
+        DashboardTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            begin_bounded_time_range=begin_bounded_time_range,
+            complete_literal_time_range=complete_literal_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             begin_bounded_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRange'] = None,
+             complete_literal_time_range: Optional['outputs.DashboardTimeRangeCompleteLiteralTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if begin_bounded_time_range is not None:
-            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+            _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
-            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+            _setter("complete_literal_time_range", complete_literal_time_range)
 
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
@@ -5648,9 +6942,20 @@ class DashboardTimeRangeBeginBoundedTimeRange(dict):
     def __init__(__self__, *,
                  from_: 'outputs.DashboardTimeRangeBeginBoundedTimeRangeFrom',
                  to: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeTo'] = None):
-        pulumi.set(__self__, "from_", from_)
+        DashboardTimeRangeBeginBoundedTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: 'outputs.DashboardTimeRangeBeginBoundedTimeRangeFrom',
+             to: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeTo'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
         if to is not None:
-            pulumi.set(__self__, "to", to)
+            _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -5693,14 +6998,29 @@ class DashboardTimeRangeBeginBoundedTimeRangeFrom(dict):
                  iso8601_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
                  literal_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
                  relative_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None):
+        DashboardTimeRangeBeginBoundedTimeRangeFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -5744,7 +7064,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
 
     def __init__(__self__, *,
                  epoch_millis: int):
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -5773,7 +7102,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
 
     def __init__(__self__, *,
                  iso8601_time: str):
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -5802,7 +7140,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
 
     def __init__(__self__, *,
                  range_name: str):
-        pulumi.set(__self__, "range_name", range_name)
+        DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
@@ -5831,7 +7178,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
 
     def __init__(__self__, *,
                  relative_time: str):
-        pulumi.set(__self__, "relative_time", relative_time)
+        DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -5869,14 +7225,29 @@ class DashboardTimeRangeBeginBoundedTimeRangeTo(dict):
                  iso8601_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
                  literal_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
                  relative_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None):
+        DashboardTimeRangeBeginBoundedTimeRangeTo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -5920,7 +7291,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
 
     def __init__(__self__, *,
                  epoch_millis: int):
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -5949,7 +7329,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
 
     def __init__(__self__, *,
                  iso8601_time: str):
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -5978,7 +7367,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
 
     def __init__(__self__, *,
                  range_name: str):
-        pulumi.set(__self__, "range_name", range_name)
+        DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
@@ -6007,7 +7405,16 @@ class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
 
     def __init__(__self__, *,
                  relative_time: str):
-        pulumi.set(__self__, "relative_time", relative_time)
+        DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -6036,7 +7443,16 @@ class DashboardTimeRangeCompleteLiteralTimeRange(dict):
 
     def __init__(__self__, *,
                  range_name: str):
-        pulumi.set(__self__, "range_name", range_name)
+        DashboardTimeRangeCompleteLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
@@ -6048,7 +7464,16 @@ class DashboardTimeRangeCompleteLiteralTimeRange(dict):
 class DashboardTopologyLabelMap(dict):
     def __init__(__self__, *,
                  datas: Sequence['outputs.DashboardTopologyLabelMapData']):
-        pulumi.set(__self__, "datas", datas)
+        DashboardTopologyLabelMap._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datas=datas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datas: Sequence['outputs.DashboardTopologyLabelMapData'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datas", datas)
 
     @property
     @pulumi.getter
@@ -6061,8 +7486,19 @@ class DashboardTopologyLabelMapData(dict):
     def __init__(__self__, *,
                  label: str,
                  values: Sequence[str]):
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "values", values)
+        DashboardTopologyLabelMapData._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -6113,20 +7549,43 @@ class DashboardVariable(dict):
                  hide_from_ui: Optional[bool] = None,
                  id: Optional[str] = None,
                  include_all_option: Optional[bool] = None):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "source_definition", source_definition)
+        DashboardVariable._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            source_definition=source_definition,
+            allow_multi_select=allow_multi_select,
+            default_value=default_value,
+            display_name=display_name,
+            hide_from_ui=hide_from_ui,
+            id=id,
+            include_all_option=include_all_option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             source_definition: 'outputs.DashboardVariableSourceDefinition',
+             allow_multi_select: Optional[bool] = None,
+             default_value: Optional[str] = None,
+             display_name: Optional[str] = None,
+             hide_from_ui: Optional[bool] = None,
+             id: Optional[str] = None,
+             include_all_option: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("source_definition", source_definition)
         if allow_multi_select is not None:
-            pulumi.set(__self__, "allow_multi_select", allow_multi_select)
+            _setter("allow_multi_select", allow_multi_select)
         if default_value is not None:
-            pulumi.set(__self__, "default_value", default_value)
+            _setter("default_value", default_value)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if hide_from_ui is not None:
-            pulumi.set(__self__, "hide_from_ui", hide_from_ui)
+            _setter("hide_from_ui", hide_from_ui)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if include_all_option is not None:
-            pulumi.set(__self__, "include_all_option", include_all_option)
+            _setter("include_all_option", include_all_option)
 
     @property
     @pulumi.getter
@@ -6196,12 +7655,25 @@ class DashboardVariableSourceDefinition(dict):
                  csv_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionCsvVariableSourceDefinition'] = None,
                  log_query_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition'] = None,
                  metadata_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionMetadataVariableSourceDefinition'] = None):
+        DashboardVariableSourceDefinition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            csv_variable_source_definition=csv_variable_source_definition,
+            log_query_variable_source_definition=log_query_variable_source_definition,
+            metadata_variable_source_definition=metadata_variable_source_definition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             csv_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionCsvVariableSourceDefinition'] = None,
+             log_query_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition'] = None,
+             metadata_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionMetadataVariableSourceDefinition'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if csv_variable_source_definition is not None:
-            pulumi.set(__self__, "csv_variable_source_definition", csv_variable_source_definition)
+            _setter("csv_variable_source_definition", csv_variable_source_definition)
         if log_query_variable_source_definition is not None:
-            pulumi.set(__self__, "log_query_variable_source_definition", log_query_variable_source_definition)
+            _setter("log_query_variable_source_definition", log_query_variable_source_definition)
         if metadata_variable_source_definition is not None:
-            pulumi.set(__self__, "metadata_variable_source_definition", metadata_variable_source_definition)
+            _setter("metadata_variable_source_definition", metadata_variable_source_definition)
 
     @property
     @pulumi.getter(name="csvVariableSourceDefinition")
@@ -6223,7 +7695,16 @@ class DashboardVariableSourceDefinition(dict):
 class DashboardVariableSourceDefinitionCsvVariableSourceDefinition(dict):
     def __init__(__self__, *,
                  values: str):
-        pulumi.set(__self__, "values", values)
+        DashboardVariableSourceDefinitionCsvVariableSourceDefinition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -6236,8 +7717,19 @@ class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition(dict):
     def __init__(__self__, *,
                  field: str,
                  query: str):
-        pulumi.set(__self__, "field", field)
-        pulumi.set(__self__, "query", query)
+        DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field=field,
+            query=query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field: str,
+             query: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field", field)
+        _setter("query", query)
 
     @property
     @pulumi.getter
@@ -6255,8 +7747,19 @@ class DashboardVariableSourceDefinitionMetadataVariableSourceDefinition(dict):
     def __init__(__self__, *,
                  filter: str,
                  key: str):
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "key", key)
+        DashboardVariableSourceDefinitionMetadataVariableSourceDefinition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter=filter,
+            key=key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter: str,
+             key: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter", filter)
+        _setter("key", key)
 
     @property
     @pulumi.getter
@@ -6332,33 +7835,68 @@ class ElbSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
         """
-        pulumi.set(__self__, "type", type)
+        ElbSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -6451,9 +7989,20 @@ class ElbSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        ElbSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -6490,11 +8039,26 @@ class ElbSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        ElbSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -6569,25 +8133,52 @@ class ElbSourcePath(dict):
         :param str path_expression: The path to the data.
         :param Sequence['ElbSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
-        pulumi.set(__self__, "type", type)
+        ElbSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.ElbSourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.ElbSourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.ElbSourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -6674,10 +8265,21 @@ class ElbSourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        ElbSourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -6712,10 +8314,21 @@ class ElbSourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        ElbSourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -6737,12 +8350,25 @@ class ElbSourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
         """
+        ElbSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -6831,33 +8457,68 @@ class GcpMetricsSourceAuthentication(dict):
         :param str project_id: As per the service_account.json downloaded from GCP
         :param str token_uri: As per the service_account.json downloaded from GCP
         """
-        pulumi.set(__self__, "type", type)
+        GcpMetricsSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -6965,9 +8626,20 @@ class GcpMetricsSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        GcpMetricsSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -7004,11 +8676,26 @@ class GcpMetricsSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        GcpMetricsSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -7083,25 +8770,52 @@ class GcpMetricsSourcePath(dict):
         :param Sequence[str] limit_to_regions: List of regions for which metrics would be collected (Empty to collect from all regions)
         :param Sequence[str] limit_to_services: List of services from which metrics would be collected
         """
-        pulumi.set(__self__, "type", type)
+        GcpMetricsSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.GcpMetricsSourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.GcpMetricsSourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -7192,10 +8906,21 @@ class GcpMetricsSourcePathCustomService(dict):
         :param Sequence[str] prefixes: List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
         :param str service_name: Name of the custom service you want to define.
         """
+        GcpMetricsSourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -7236,10 +8961,21 @@ class GcpMetricsSourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        GcpMetricsSourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -7261,12 +8997,25 @@ class GcpMetricsSourcePathTagFilter(dict):
         """
         :param str type: Type of polling source. This has to be `GcpMetricsPath`.
         """
+        GcpMetricsSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -7291,8 +9040,17 @@ class GcpMetricsSourcePathTagFilter(dict):
 class GcpSourceAuthentication(dict):
     def __init__(__self__, *,
                  type: Optional[str] = None):
+        GcpSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -7305,9 +9063,20 @@ class GcpSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        GcpSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -7344,11 +9113,26 @@ class GcpSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        GcpSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -7375,8 +9159,17 @@ class GcpSourceFilter(dict):
 class GcpSourcePath(dict):
     def __init__(__self__, *,
                  type: Optional[str] = None):
+        GcpSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -7393,8 +9186,19 @@ class HierarchyFilter(dict):
         :param str key: Filtering key.
         :param str value: Value required for the filtering key.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        HierarchyFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -7447,11 +9251,24 @@ class HierarchyLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7514,11 +9331,24 @@ class HierarchyLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7581,11 +9411,24 @@ class HierarchyLevelNextLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7648,11 +9491,24 @@ class HierarchyLevelNextLevelNextLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7715,11 +9571,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7782,11 +9651,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7849,11 +9731,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict)
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7910,9 +9805,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -7939,8 +9845,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -7984,9 +9901,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8013,8 +9941,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -8064,11 +10003,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8125,9 +10077,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8154,8 +10117,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -8199,9 +10173,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8228,8 +10213,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -8279,11 +10275,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8346,11 +10355,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8407,9 +10429,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8436,8 +10469,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -8481,9 +10525,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8510,8 +10565,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -8561,11 +10627,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8622,9 +10701,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8651,8 +10741,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -8696,9 +10797,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8725,8 +10837,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(dict):
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -8776,11 +10899,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8843,11 +10979,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8910,11 +11059,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -8971,9 +11133,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9000,8 +11173,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9045,9 +11229,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9074,8 +11269,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9125,11 +11331,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9186,9 +11405,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9215,8 +11445,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9260,9 +11501,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9289,8 +11541,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9340,11 +11603,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9407,11 +11683,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9468,9 +11757,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9497,8 +11797,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9542,9 +11853,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9571,8 +11893,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9622,11 +11955,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9683,9 +12029,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9712,8 +12069,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9757,9 +12125,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9786,8 +12165,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithCondition(dict):
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -9837,11 +12227,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9904,11 +12307,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -9971,11 +12387,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10038,11 +12467,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10099,9 +12541,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10128,8 +12581,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10173,9 +12637,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10202,8 +12677,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10253,11 +12739,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10314,9 +12813,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10343,8 +12853,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10388,9 +12909,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10417,8 +12949,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10468,11 +13011,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10535,11 +13091,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10596,9 +13165,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10625,8 +13205,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10670,9 +13261,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10699,8 +13301,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10750,11 +13363,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10811,9 +13437,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10840,8 +13477,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10885,9 +13533,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -10914,8 +13573,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -10965,11 +13635,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11032,11 +13715,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11099,11 +13795,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11160,9 +13869,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11189,8 +13909,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -11234,9 +13965,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11263,8 +14005,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -11314,11 +14067,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11375,9 +14141,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11404,8 +14181,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -11449,9 +14237,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11478,8 +14277,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -11529,11 +14339,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11596,11 +14419,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11657,9 +14493,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11686,8 +14533,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -11731,9 +14589,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11760,8 +14629,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -11811,11 +14691,24 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11872,9 +14765,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11901,8 +14805,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -11946,9 +14861,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -11975,8 +14901,19 @@ class HierarchyLevelNextLevelNextLevelsWithCondition(dict):
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -12026,11 +14963,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12093,11 +15043,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12160,11 +15123,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12227,11 +15203,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12294,11 +15283,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12355,9 +15357,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12384,8 +15397,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -12429,9 +15453,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12458,8 +15493,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -12509,11 +15555,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12570,9 +15629,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12599,8 +15669,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -12644,9 +15725,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12673,8 +15765,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -12724,11 +15827,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12791,11 +15907,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12852,9 +15981,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12881,8 +16021,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -12926,9 +16077,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -12955,8 +16117,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13006,11 +16179,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13067,9 +16253,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13096,8 +16293,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13141,9 +16349,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13170,8 +16389,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13221,11 +16451,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13288,11 +16531,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13355,11 +16611,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13416,9 +16685,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13445,8 +16725,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13490,9 +16781,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13519,8 +16821,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13570,11 +16883,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13631,9 +16957,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13660,8 +16997,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13705,9 +17053,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13734,8 +17093,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13785,11 +17155,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13852,11 +17235,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13913,9 +17309,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -13942,8 +17349,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -13987,9 +17405,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14016,8 +17445,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -14067,11 +17507,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14128,9 +17581,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14157,8 +17621,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -14202,9 +17677,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14231,8 +17717,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -14282,11 +17779,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14349,11 +17859,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14416,11 +17939,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14483,11 +18019,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14544,9 +18093,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14573,8 +18133,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -14618,9 +18189,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14647,8 +18229,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -14698,11 +18291,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14759,9 +18365,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14788,8 +18405,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -14833,9 +18461,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14862,8 +18501,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -14913,11 +18563,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -14980,11 +18643,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15041,9 +18717,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15070,8 +18757,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15115,9 +18813,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15144,8 +18853,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15195,11 +18915,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15256,9 +18989,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15285,8 +19029,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15330,9 +19085,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15359,8 +19125,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15410,11 +19187,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15477,11 +19267,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15544,11 +19347,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15605,9 +19421,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15634,8 +19461,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15679,9 +19517,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15708,8 +19557,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15759,11 +19619,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15820,9 +19693,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15849,8 +19733,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15894,9 +19789,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -15923,8 +19829,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -15974,11 +19891,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16041,11 +19971,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16102,9 +20045,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16131,8 +20085,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -16176,9 +20141,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16205,8 +20181,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -16256,11 +20243,24 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16317,9 +20317,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16346,8 +20357,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -16391,9 +20413,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16420,8 +20453,19 @@ class HierarchyLevelNextLevelsWithCondition(dict):
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -16471,11 +20515,24 @@ class HierarchyLevelNextLevelsWithConditionLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16538,11 +20595,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16605,11 +20675,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16672,11 +20755,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel(dict
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16739,11 +20835,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16806,11 +20915,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16867,9 +20989,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16896,8 +21029,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -16941,9 +21085,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -16970,8 +21125,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -17021,11 +21187,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17082,9 +21261,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17111,8 +21301,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -17156,9 +21357,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17185,8 +21397,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -17236,11 +21459,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17303,11 +21539,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17364,9 +21613,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17393,8 +21653,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -17438,9 +21709,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17467,8 +21749,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -17518,11 +21811,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17579,9 +21885,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17608,8 +21925,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -17653,9 +21981,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17682,8 +22021,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -17733,11 +22083,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17800,11 +22163,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17867,11 +22243,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17928,9 +22317,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -17957,8 +22357,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18002,9 +22413,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18031,8 +22453,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18082,11 +22515,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18143,9 +22589,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18172,8 +22629,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18217,9 +22685,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18246,8 +22725,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18297,11 +22787,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18364,11 +22867,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18425,9 +22941,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18454,8 +22981,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18499,9 +23037,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18528,8 +23077,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18579,11 +23139,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18640,9 +23213,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18669,8 +23253,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18714,9 +23309,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18743,8 +23349,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -18794,11 +23411,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18861,11 +23491,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18928,11 +23571,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -18995,11 +23651,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19056,9 +23725,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19085,8 +23765,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19130,9 +23821,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19159,8 +23861,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19210,11 +23923,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19271,9 +23997,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19300,8 +24037,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19345,9 +24093,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19374,8 +24133,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19425,11 +24195,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19492,11 +24275,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19553,9 +24349,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19582,8 +24389,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19627,9 +24445,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19656,8 +24485,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19707,11 +24547,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19768,9 +24621,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19797,8 +24661,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19842,9 +24717,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19871,8 +24757,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -19922,11 +24819,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -19989,11 +24899,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20056,11 +24979,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20117,9 +25053,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20146,8 +25093,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20191,9 +25149,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20220,8 +25189,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20271,11 +25251,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20332,9 +25325,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20361,8 +25365,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20406,9 +25421,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20435,8 +25461,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20486,11 +25523,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20553,11 +25603,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20614,9 +25677,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20643,8 +25717,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20688,9 +25773,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20717,8 +25813,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20768,11 +25875,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20829,9 +25949,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20858,8 +25989,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20903,9 +26045,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -20932,8 +26085,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -20983,11 +26147,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dic
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21050,11 +26227,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21117,11 +26307,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21184,11 +26387,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21251,11 +26467,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21312,9 +26541,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21341,8 +26581,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -21386,9 +26637,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21415,8 +26677,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -21466,11 +26739,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21527,9 +26813,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21556,8 +26853,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -21601,9 +26909,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21630,8 +26949,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -21681,11 +27011,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21748,11 +27091,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21809,9 +27165,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21838,8 +27205,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -21883,9 +27261,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -21912,8 +27301,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -21963,11 +27363,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22024,9 +27437,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22053,8 +27477,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -22098,9 +27533,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22127,8 +27573,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -22178,11 +27635,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22245,11 +27715,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22312,11 +27795,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22373,9 +27869,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22402,8 +27909,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -22447,9 +27965,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22476,8 +28005,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -22527,11 +28067,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22588,9 +28141,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22617,8 +28181,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -22662,9 +28237,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22691,8 +28277,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -22742,11 +28339,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22809,11 +28419,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22870,9 +28493,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22899,8 +28533,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -22944,9 +28589,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -22973,8 +28629,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -23024,11 +28691,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23085,9 +28765,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23114,8 +28805,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -23159,9 +28861,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23188,8 +28901,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -23239,11 +28963,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23306,11 +29043,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23373,11 +29123,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23440,11 +29203,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23501,9 +29277,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23530,8 +29317,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -23575,9 +29373,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23604,8 +29413,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -23655,11 +29475,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23716,9 +29549,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23745,8 +29589,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -23790,9 +29645,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23819,8 +29685,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -23870,11 +29747,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23937,11 +29827,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -23998,9 +29901,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24027,8 +29941,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24072,9 +29997,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24101,8 +30037,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24152,11 +30099,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24213,9 +30173,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24242,8 +30213,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24287,9 +30269,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24316,8 +30309,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24367,11 +30371,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24434,11 +30451,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24501,11 +30531,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24562,9 +30605,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24591,8 +30645,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24636,9 +30701,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24665,8 +30741,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24716,11 +30803,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24777,9 +30877,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24806,8 +30917,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24851,9 +30973,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24880,8 +31013,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -24931,11 +31075,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -24998,11 +31155,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -25059,9 +31229,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -25088,8 +31269,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -25133,9 +31325,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -25162,8 +31365,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -25213,11 +31427,24 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                The following attributes are exported:
         :param Sequence['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs'] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_level=next_level,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
+             next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_level is not None:
-            pulumi.set(__self__, "next_level", next_level)
+            _setter("next_level", next_level)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -25274,9 +31501,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -25303,8 +31541,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         """
         :param str condition: Condition to be checked against for level.entityType value, for now full string match.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "level", level)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("level", level)
 
     @property
     @pulumi.getter
@@ -25348,9 +31597,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         :param str entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
         :param Sequence[str] next_levels_with_conditions: Zero or more next levels with conditions.
         """
-        pulumi.set(__self__, "entity_type", entity_type)
+        HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_type=entity_type,
+            next_levels_with_conditions=next_levels_with_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_type: str,
+             next_levels_with_conditions: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
-            pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
+            _setter("next_levels_with_conditions", next_levels_with_conditions)
 
     @property
     @pulumi.getter(name="entityType")
@@ -25374,9 +31634,20 @@ class HttpSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        HttpSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -25413,11 +31684,26 @@ class HttpSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        HttpSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -25474,14 +31760,29 @@ class KineisLogSourceAuthentication(dict):
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
         """
+        KineisLogSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -25521,9 +31822,20 @@ class KineisLogSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        KineisLogSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -25560,11 +31872,26 @@ class KineisLogSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        KineisLogSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -25621,14 +31948,29 @@ class KineisLogSourcePath(dict):
         :param int scan_interval: The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
         """
+        KineisLogSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            path_expression=path_expression,
+            scan_interval=scan_interval,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: Optional[str] = None,
+             path_expression: Optional[str] = None,
+             scan_interval: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if scan_interval is not None:
-            pulumi.set(__self__, "scan_interval", scan_interval)
+            _setter("scan_interval", scan_interval)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -25697,13 +32039,28 @@ class KinesisMetricsSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         """
-        pulumi.set(__self__, "type", type)
+        KinesisMetricsSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            role_arn=role_arn,
+            secret_key=secret_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
 
     @property
     @pulumi.getter
@@ -25743,9 +32100,20 @@ class KinesisMetricsSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        KinesisMetricsSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -25782,11 +32150,26 @@ class KinesisMetricsSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        KinesisMetricsSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -25835,9 +32218,20 @@ class KinesisMetricsSourcePath(dict):
         :param str type: This value has to be set to `TagFilters`
         :param Sequence['KinesisMetricsSourcePathTagFilterArgs'] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
         """
-        pulumi.set(__self__, "type", type)
+        KinesisMetricsSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            tag_filters=tag_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             tag_filters: Optional[Sequence['outputs.KinesisMetricsSourcePathTagFilter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
 
     @property
     @pulumi.getter
@@ -25867,12 +32261,25 @@ class KinesisMetricsSourcePathTagFilter(dict):
         :param Sequence[str] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
         :param str type: This value has to be set to `TagFilters`
         """
+        KinesisMetricsSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -25904,9 +32311,20 @@ class LocalFileSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        LocalFileSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -25946,11 +32364,26 @@ class LocalFileSourceFilter(dict):
         """
         :param str name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
         """
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        LocalFileSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -26007,14 +32440,29 @@ class LogSearchQueryParameter(dict):
                3. `ANY`
                4. `KEYWORD`
         :param str name: Name of the search.
-        :param str value: The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+        :param str value: Default value of scheduled search parameter.
         :param str description: Description of the search.
         """
-        pulumi.set(__self__, "data_type", data_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        LogSearchQueryParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_type=data_type,
+            name=name,
+            value=value,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_type: str,
+             name: str,
+             value: str,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_type", data_type)
+        _setter("name", name)
+        _setter("value", value)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="dataType")
@@ -26040,7 +32488,7 @@ class LogSearchQueryParameter(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+        Default value of scheduled search parameter.
         """
         return pulumi.get(self, "value")
 
@@ -26109,18 +32557,41 @@ class LogSearchSchedule(dict):
         :param 'LogSearchScheduleThresholdArgs' threshold: Threshold for when to send notification. See
                threshold schema
         """
-        pulumi.set(__self__, "notification", notification)
-        pulumi.set(__self__, "parseable_time_range", parseable_time_range)
-        pulumi.set(__self__, "schedule_type", schedule_type)
-        pulumi.set(__self__, "time_zone", time_zone)
+        LogSearchSchedule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notification=notification,
+            parseable_time_range=parseable_time_range,
+            schedule_type=schedule_type,
+            time_zone=time_zone,
+            cron_expression=cron_expression,
+            mute_error_emails=mute_error_emails,
+            parameters=parameters,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notification: 'outputs.LogSearchScheduleNotification',
+             parseable_time_range: 'outputs.LogSearchScheduleParseableTimeRange',
+             schedule_type: str,
+             time_zone: str,
+             cron_expression: Optional[str] = None,
+             mute_error_emails: Optional[bool] = None,
+             parameters: Optional[Sequence['outputs.LogSearchScheduleParameter']] = None,
+             threshold: Optional['outputs.LogSearchScheduleThreshold'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("notification", notification)
+        _setter("parseable_time_range", parseable_time_range)
+        _setter("schedule_type", schedule_type)
+        _setter("time_zone", time_zone)
         if cron_expression is not None:
-            pulumi.set(__self__, "cron_expression", cron_expression)
+            _setter("cron_expression", cron_expression)
         if mute_error_emails is not None:
-            pulumi.set(__self__, "mute_error_emails", mute_error_emails)
+            _setter("mute_error_emails", mute_error_emails)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter
@@ -26250,20 +32721,41 @@ class LogSearchScheduleNotification(dict):
         :param 'LogSearchScheduleNotificationWebhookSearchNotificationArgs' webhook_search_notification: Send an alert via Webhook. See
                webhook_search_notification schema schema for details.
         """
+        LogSearchScheduleNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_search_notification=alert_search_notification,
+            cse_signal_notification=cse_signal_notification,
+            email_search_notification=email_search_notification,
+            save_to_lookup_notification=save_to_lookup_notification,
+            save_to_view_notification=save_to_view_notification,
+            service_now_search_notification=service_now_search_notification,
+            webhook_search_notification=webhook_search_notification,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_search_notification: Optional['outputs.LogSearchScheduleNotificationAlertSearchNotification'] = None,
+             cse_signal_notification: Optional['outputs.LogSearchScheduleNotificationCseSignalNotification'] = None,
+             email_search_notification: Optional['outputs.LogSearchScheduleNotificationEmailSearchNotification'] = None,
+             save_to_lookup_notification: Optional['outputs.LogSearchScheduleNotificationSaveToLookupNotification'] = None,
+             save_to_view_notification: Optional['outputs.LogSearchScheduleNotificationSaveToViewNotification'] = None,
+             service_now_search_notification: Optional['outputs.LogSearchScheduleNotificationServiceNowSearchNotification'] = None,
+             webhook_search_notification: Optional['outputs.LogSearchScheduleNotificationWebhookSearchNotification'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alert_search_notification is not None:
-            pulumi.set(__self__, "alert_search_notification", alert_search_notification)
+            _setter("alert_search_notification", alert_search_notification)
         if cse_signal_notification is not None:
-            pulumi.set(__self__, "cse_signal_notification", cse_signal_notification)
+            _setter("cse_signal_notification", cse_signal_notification)
         if email_search_notification is not None:
-            pulumi.set(__self__, "email_search_notification", email_search_notification)
+            _setter("email_search_notification", email_search_notification)
         if save_to_lookup_notification is not None:
-            pulumi.set(__self__, "save_to_lookup_notification", save_to_lookup_notification)
+            _setter("save_to_lookup_notification", save_to_lookup_notification)
         if save_to_view_notification is not None:
-            pulumi.set(__self__, "save_to_view_notification", save_to_view_notification)
+            _setter("save_to_view_notification", save_to_view_notification)
         if service_now_search_notification is not None:
-            pulumi.set(__self__, "service_now_search_notification", service_now_search_notification)
+            _setter("service_now_search_notification", service_now_search_notification)
         if webhook_search_notification is not None:
-            pulumi.set(__self__, "webhook_search_notification", webhook_search_notification)
+            _setter("webhook_search_notification", webhook_search_notification)
 
     @property
     @pulumi.getter(name="alertSearchNotification")
@@ -26353,7 +32845,16 @@ class LogSearchScheduleNotificationAlertSearchNotification(dict):
         """
         :param str source_id: Identifier of the collector's source.
         """
-        pulumi.set(__self__, "source_id", source_id)
+        LogSearchScheduleNotificationAlertSearchNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_id=source_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_id", source_id)
 
     @property
     @pulumi.getter(name="sourceId")
@@ -26388,7 +32889,16 @@ class LogSearchScheduleNotificationCseSignalNotification(dict):
         """
         :param str record_type: Name of the Cloud SIEM Enterprise Record to be created.
         """
-        pulumi.set(__self__, "record_type", record_type)
+        LogSearchScheduleNotificationCseSignalNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            record_type=record_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             record_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("record_type", record_type)
 
     @property
     @pulumi.getter(name="recordType")
@@ -26446,17 +32956,36 @@ class LogSearchScheduleNotificationEmailSearchNotification(dict):
                the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
                For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
         """
-        pulumi.set(__self__, "to_lists", to_lists)
+        LogSearchScheduleNotificationEmailSearchNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            to_lists=to_lists,
+            include_csv_attachment=include_csv_attachment,
+            include_histogram=include_histogram,
+            include_query=include_query,
+            include_result_set=include_result_set,
+            subject_template=subject_template,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             to_lists: Sequence[str],
+             include_csv_attachment: Optional[bool] = None,
+             include_histogram: Optional[bool] = None,
+             include_query: Optional[bool] = None,
+             include_result_set: Optional[bool] = None,
+             subject_template: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("to_lists", to_lists)
         if include_csv_attachment is not None:
-            pulumi.set(__self__, "include_csv_attachment", include_csv_attachment)
+            _setter("include_csv_attachment", include_csv_attachment)
         if include_histogram is not None:
-            pulumi.set(__self__, "include_histogram", include_histogram)
+            _setter("include_histogram", include_histogram)
         if include_query is not None:
-            pulumi.set(__self__, "include_query", include_query)
+            _setter("include_query", include_query)
         if include_result_set is not None:
-            pulumi.set(__self__, "include_result_set", include_result_set)
+            _setter("include_result_set", include_result_set)
         if subject_template is not None:
-            pulumi.set(__self__, "subject_template", subject_template)
+            _setter("subject_template", subject_template)
 
     @property
     @pulumi.getter(name="toLists")
@@ -26538,8 +33067,19 @@ class LogSearchScheduleNotificationSaveToLookupNotification(dict):
         :param bool is_lookup_merge_operation: Whether to merge the file contents with existing data in the lookup table.
         :param str lookup_file_path: Path of the lookup table to save the results to.
         """
-        pulumi.set(__self__, "is_lookup_merge_operation", is_lookup_merge_operation)
-        pulumi.set(__self__, "lookup_file_path", lookup_file_path)
+        LogSearchScheduleNotificationSaveToLookupNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_lookup_merge_operation=is_lookup_merge_operation,
+            lookup_file_path=lookup_file_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_lookup_merge_operation: bool,
+             lookup_file_path: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("is_lookup_merge_operation", is_lookup_merge_operation)
+        _setter("lookup_file_path", lookup_file_path)
 
     @property
     @pulumi.getter(name="isLookupMergeOperation")
@@ -26582,7 +33122,16 @@ class LogSearchScheduleNotificationSaveToViewNotification(dict):
         """
         :param str view_name: Name of the View(Index) to save the results to.
         """
-        pulumi.set(__self__, "view_name", view_name)
+        LogSearchScheduleNotificationSaveToViewNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            view_name=view_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             view_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("view_name", view_name)
 
     @property
     @pulumi.getter(name="viewName")
@@ -26619,9 +33168,20 @@ class LogSearchScheduleNotificationServiceNowSearchNotification(dict):
         :param str external_id: Service Now Identifier.
         :param 'LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs' fields: Service Now fields.
         """
-        pulumi.set(__self__, "external_id", external_id)
+        LogSearchScheduleNotificationServiceNowSearchNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_id=external_id,
+            fields=fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_id: str,
+             fields: Optional['outputs.LogSearchScheduleNotificationServiceNowSearchNotificationFields'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("external_id", external_id)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
 
     @property
     @pulumi.getter(name="externalId")
@@ -26675,14 +33235,29 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFields(dict):
                * 3 for Minor
                * 4 for Warning
         """
+        LogSearchScheduleNotificationServiceNowSearchNotificationFields._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_type=event_type,
+            node=node,
+            resource=resource,
+            severity=severity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_type: Optional[str] = None,
+             node: Optional[str] = None,
+             resource: Optional[str] = None,
+             severity: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if event_type is not None:
-            pulumi.set(__self__, "event_type", event_type)
+            _setter("event_type", event_type)
         if node is not None:
-            pulumi.set(__self__, "node", node)
+            _setter("node", node)
         if resource is not None:
-            pulumi.set(__self__, "resource", resource)
+            _setter("resource", resource)
         if severity is not None:
-            pulumi.set(__self__, "severity", severity)
+            _setter("severity", severity)
 
     @property
     @pulumi.getter(name="eventType")
@@ -26756,13 +33331,28 @@ class LogSearchScheduleNotificationWebhookSearchNotification(dict):
         :param int max_itemized_alerts: The maximum number of results for which we send separate alerts.
         :param str payload: A JSON object in the format required by the target WebHook URL.
         """
-        pulumi.set(__self__, "webhook_id", webhook_id)
+        LogSearchScheduleNotificationWebhookSearchNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            webhook_id=webhook_id,
+            itemize_alerts=itemize_alerts,
+            max_itemized_alerts=max_itemized_alerts,
+            payload=payload,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             webhook_id: str,
+             itemize_alerts: Optional[bool] = None,
+             max_itemized_alerts: Optional[int] = None,
+             payload: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("webhook_id", webhook_id)
         if itemize_alerts is not None:
-            pulumi.set(__self__, "itemize_alerts", itemize_alerts)
+            _setter("itemize_alerts", itemize_alerts)
         if max_itemized_alerts is not None:
-            pulumi.set(__self__, "max_itemized_alerts", max_itemized_alerts)
+            _setter("max_itemized_alerts", max_itemized_alerts)
         if payload is not None:
-            pulumi.set(__self__, "payload", payload)
+            _setter("payload", payload)
 
     @property
     @pulumi.getter(name="webhookId")
@@ -26804,10 +33394,21 @@ class LogSearchScheduleParameter(dict):
                  value: str):
         """
         :param str name: Name of the search.
-        :param str value: The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+        :param str value: Default value of scheduled search parameter.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        LogSearchScheduleParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -26821,7 +33422,7 @@ class LogSearchScheduleParameter(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The default value for the parameter. It should be compatible with the type set in the `data_type` field.
+        Default value of scheduled search parameter.
         """
         return pulumi.get(self, "value")
 
@@ -26856,10 +33457,21 @@ class LogSearchScheduleParseableTimeRange(dict):
         :param 'LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs' complete_literal_time_range: Literal time range. See
                complete_literal_time_range schema for details.
         """
+        LogSearchScheduleParseableTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            begin_bounded_time_range=begin_bounded_time_range,
+            complete_literal_time_range=complete_literal_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             begin_bounded_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange'] = None,
+             complete_literal_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if begin_bounded_time_range is not None:
-            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+            _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
-            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+            _setter("complete_literal_time_range", complete_literal_time_range)
 
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
@@ -26908,9 +33520,20 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange(dict):
         :param 'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs' to: End boundary of bounded time range. See
                time_range_boundary schema for details.
         """
-        pulumi.set(__self__, "from_", from_)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: 'outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom',
+             to: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
         if to is not None:
-            pulumi.set(__self__, "to", to)
+            _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -26967,14 +33590,29 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom(dict):
         :param 'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs' literal_time_range: Time in literal format.
         :param 'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs' relative_time_range: Time in relative format.
         """
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -27033,7 +33671,16 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
         """
         :param int epoch_millis: Time as a number of milliseconds since the epoch.
         """
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -27068,7 +33715,16 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRan
         """
         :param str iso8601_time: Time as a string in ISO 8601 format.
         """
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -27101,17 +33757,24 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRan
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -27146,7 +33809,16 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
                Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
                `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
         """
-        pulumi.set(__self__, "relative_time", relative_time)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -27199,14 +33871,29 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo(dict):
         :param 'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs' literal_time_range: Time in literal format.
         :param 'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs' relative_time_range: Time in relative format.
         """
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -27265,7 +33952,16 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange(d
         """
         :param int epoch_millis: Time as a number of milliseconds since the epoch.
         """
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -27300,7 +33996,16 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
         """
         :param str iso8601_time: Time as a string in ISO 8601 format.
         """
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -27333,17 +34038,24 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -27378,7 +34090,16 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRang
                Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
                `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
         """
-        pulumi.set(__self__, "relative_time", relative_time)
+        LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -27417,17 +34138,24 @@ class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange(dict):
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -27463,9 +34191,22 @@ class LogSearchScheduleThreshold(dict):
                Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
                to `message`.
         """
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "threshold_type", threshold_type)
+        LogSearchScheduleThreshold._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+            operator=operator,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: int,
+             operator: str,
+             threshold_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("count", count)
+        _setter("operator", operator)
+        _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter
@@ -27525,10 +34266,21 @@ class LogSearchTimeRange(dict):
         :param 'LogSearchTimeRangeCompleteLiteralTimeRangeArgs' complete_literal_time_range: Literal time range. See
                complete_literal_time_range schema for details.
         """
+        LogSearchTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            begin_bounded_time_range=begin_bounded_time_range,
+            complete_literal_time_range=complete_literal_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             begin_bounded_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRange'] = None,
+             complete_literal_time_range: Optional['outputs.LogSearchTimeRangeCompleteLiteralTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if begin_bounded_time_range is not None:
-            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+            _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
-            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+            _setter("complete_literal_time_range", complete_literal_time_range)
 
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
@@ -27577,9 +34329,20 @@ class LogSearchTimeRangeBeginBoundedTimeRange(dict):
         :param 'LogSearchTimeRangeBeginBoundedTimeRangeToArgs' to: End boundary of bounded time range. See
                time_range_boundary schema for details.
         """
-        pulumi.set(__self__, "from_", from_)
+        LogSearchTimeRangeBeginBoundedTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: 'outputs.LogSearchTimeRangeBeginBoundedTimeRangeFrom',
+             to: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeTo'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
         if to is not None:
-            pulumi.set(__self__, "to", to)
+            _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -27636,14 +34399,29 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFrom(dict):
         :param 'LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs' literal_time_range: Time in literal format.
         :param 'LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs' relative_time_range: Time in relative format.
         """
+        LogSearchTimeRangeBeginBoundedTimeRangeFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -27702,7 +34480,16 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
         """
         :param int epoch_millis: Time as a number of milliseconds since the epoch.
         """
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -27737,7 +34524,16 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
         """
         :param str iso8601_time: Time as a string in ISO 8601 format.
         """
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -27770,17 +34566,24 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -27815,7 +34618,16 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
                Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
                `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
         """
-        pulumi.set(__self__, "relative_time", relative_time)
+        LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -27868,14 +34680,29 @@ class LogSearchTimeRangeBeginBoundedTimeRangeTo(dict):
         :param 'LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs' literal_time_range: Time in literal format.
         :param 'LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs' relative_time_range: Time in relative format.
         """
+        LogSearchTimeRangeBeginBoundedTimeRangeTo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -27934,7 +34761,16 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
         """
         :param int epoch_millis: Time as a number of milliseconds since the epoch.
         """
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -27969,7 +34805,16 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
         """
         :param str iso8601_time: Time as a string in ISO 8601 format.
         """
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -28002,17 +34847,24 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -28047,7 +34899,16 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
                Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
                `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
         """
-        pulumi.set(__self__, "relative_time", relative_time)
+        LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -28086,17 +34947,24 @@ class LogSearchTimeRangeCompleteLiteralTimeRange(dict):
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        LogSearchTimeRangeCompleteLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -28125,8 +34993,19 @@ class LookupTableField(dict):
     def __init__(__self__, *,
                  field_name: str,
                  field_type: str):
-        pulumi.set(__self__, "field_name", field_name)
-        pulumi.set(__self__, "field_type", field_type)
+        LookupTableField._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_name=field_name,
+            field_type=field_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_name: str,
+             field_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field_name", field_name)
+        _setter("field_type", field_type)
 
     @property
     @pulumi.getter(name="fieldName")
@@ -28173,13 +35052,28 @@ class MetadataSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         """
-        pulumi.set(__self__, "type", type)
+        MetadataSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            role_arn=role_arn,
+            secret_key=secret_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
 
     @property
     @pulumi.getter
@@ -28219,9 +35113,20 @@ class MetadataSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        MetadataSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -28258,11 +35163,26 @@ class MetadataSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        MetadataSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -28319,13 +35239,28 @@ class MetadataSourcePath(dict):
         :param Sequence[str] limit_to_regions: List of Amazon regions.
         :param Sequence[str] tag_filters: Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
         """
-        pulumi.set(__self__, "type", type)
+        MetadataSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            tag_filters=tag_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             tag_filters: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
 
     @property
     @pulumi.getter
@@ -28390,8 +35325,19 @@ class MetricsSearchMetricsQuery(dict):
                For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
         :param str row_id: Row id for the query row, A to Z letter.
         """
-        pulumi.set(__self__, "query", query)
-        pulumi.set(__self__, "row_id", row_id)
+        MetricsSearchMetricsQuery._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+            row_id=row_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: str,
+             row_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
+        _setter("row_id", row_id)
 
     @property
     @pulumi.getter
@@ -28444,10 +35390,21 @@ class MetricsSearchTimeRange(dict):
         :param 'MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs' complete_literal_time_range: Literal time range. See
                complete_literal_time_range schema for details.
         """
+        MetricsSearchTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            begin_bounded_time_range=begin_bounded_time_range,
+            complete_literal_time_range=complete_literal_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             begin_bounded_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRange'] = None,
+             complete_literal_time_range: Optional['outputs.MetricsSearchTimeRangeCompleteLiteralTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if begin_bounded_time_range is not None:
-            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+            _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
-            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+            _setter("complete_literal_time_range", complete_literal_time_range)
 
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
@@ -28496,9 +35453,20 @@ class MetricsSearchTimeRangeBeginBoundedTimeRange(dict):
         :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs' to: End boundary of bounded time range. See
                time_range_boundary schema for details.
         """
-        pulumi.set(__self__, "from_", from_)
+        MetricsSearchTimeRangeBeginBoundedTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_=from_,
+            to=to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_: 'outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom',
+             to: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeTo'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_", from_)
         if to is not None:
-            pulumi.set(__self__, "to", to)
+            _setter("to", to)
 
     @property
     @pulumi.getter(name="from")
@@ -28555,14 +35523,29 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFrom(dict):
         :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs' literal_time_range: Time in literal format.
         :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs' relative_time_range: Time in relative format.
         """
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -28621,7 +35604,16 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
         """
         :param int epoch_millis: Time as a number of milliseconds since the epoch.
         """
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -28656,7 +35648,16 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
         """
         :param str iso8601_time: Time as a string in ISO 8601 format.
         """
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -28689,17 +35690,24 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -28734,7 +35742,16 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
                Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
                `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
         """
-        pulumi.set(__self__, "relative_time", relative_time)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -28787,14 +35804,29 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeTo(dict):
         :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs' literal_time_range: Time in literal format.
         :param 'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs' relative_time_range: Time in relative format.
         """
+        MetricsSearchTimeRangeBeginBoundedTimeRangeTo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_time_range=epoch_time_range,
+            iso8601_time_range=iso8601_time_range,
+            literal_time_range=literal_time_range,
+            relative_time_range=relative_time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+             iso8601_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+             literal_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+             relative_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if epoch_time_range is not None:
-            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+            _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
-            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+            _setter("iso8601_time_range", iso8601_time_range)
         if literal_time_range is not None:
-            pulumi.set(__self__, "literal_time_range", literal_time_range)
+            _setter("literal_time_range", literal_time_range)
         if relative_time_range is not None:
-            pulumi.set(__self__, "relative_time_range", relative_time_range)
+            _setter("relative_time_range", relative_time_range)
 
     @property
     @pulumi.getter(name="epochTimeRange")
@@ -28853,7 +35885,16 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
         """
         :param int epoch_millis: Time as a number of milliseconds since the epoch.
         """
-        pulumi.set(__self__, "epoch_millis", epoch_millis)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            epoch_millis=epoch_millis,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             epoch_millis: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
@@ -28888,7 +35929,16 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
         """
         :param str iso8601_time: Time as a string in ISO 8601 format.
         """
-        pulumi.set(__self__, "iso8601_time", iso8601_time)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iso8601_time=iso8601_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iso8601_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
@@ -28921,17 +35971,24 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -28966,7 +36023,16 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
                Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
                `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
         """
-        pulumi.set(__self__, "relative_time", relative_time)
+        MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            relative_time=relative_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             relative_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
@@ -29005,17 +36071,24 @@ class MetricsSearchTimeRangeCompleteLiteralTimeRange(dict):
     def __init__(__self__, *,
                  range_name: str):
         """
-        :param str range_name: Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-               `previous_month`.
+        :param str range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
-        pulumi.set(__self__, "range_name", range_name)
+        MetricsSearchTimeRangeCompleteLiteralTimeRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            range_name=range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> str:
         """
-        Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-        `previous_month`.
+        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
         """
         return pulumi.get(self, "range_name")
 
@@ -29050,9 +36123,22 @@ class MonitorFolderObjPermission(dict):
         :param str subject_id: A Role ID or the Org ID of the account
         :param str subject_type: Valid values:
         """
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "subject_id", subject_id)
-        pulumi.set(__self__, "subject_type", subject_type)
+        MonitorFolderObjPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            subject_id=subject_id,
+            subject_type=subject_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: Sequence[str],
+             subject_id: str,
+             subject_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permissions", permissions)
+        _setter("subject_id", subject_id)
+        _setter("subject_type", subject_type)
 
     @property
     @pulumi.getter
@@ -29101,8 +36187,19 @@ class MonitorNotification(dict):
     def __init__(__self__, *,
                  notification: 'outputs.MonitorNotificationNotification',
                  run_for_trigger_types: Sequence[str]):
-        pulumi.set(__self__, "notification", notification)
-        pulumi.set(__self__, "run_for_trigger_types", run_for_trigger_types)
+        MonitorNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notification=notification,
+            run_for_trigger_types=run_for_trigger_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notification: 'outputs.MonitorNotificationNotification',
+             run_for_trigger_types: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("notification", notification)
+        _setter("run_for_trigger_types", run_for_trigger_types)
 
     @property
     @pulumi.getter
@@ -29156,24 +36253,49 @@ class MonitorNotificationNotification(dict):
                  resolution_payload_override: Optional[str] = None,
                  subject: Optional[str] = None,
                  time_zone: Optional[str] = None):
+        MonitorNotificationNotification._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action_type=action_type,
+            connection_id=connection_id,
+            connection_type=connection_type,
+            message_body=message_body,
+            payload_override=payload_override,
+            recipients=recipients,
+            resolution_payload_override=resolution_payload_override,
+            subject=subject,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action_type: Optional[str] = None,
+             connection_id: Optional[str] = None,
+             connection_type: Optional[str] = None,
+             message_body: Optional[str] = None,
+             payload_override: Optional[str] = None,
+             recipients: Optional[Sequence[str]] = None,
+             resolution_payload_override: Optional[str] = None,
+             subject: Optional[str] = None,
+             time_zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
+            _setter("action_type", action_type)
         if connection_id is not None:
-            pulumi.set(__self__, "connection_id", connection_id)
+            _setter("connection_id", connection_id)
         if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
+            _setter("connection_type", connection_type)
         if message_body is not None:
-            pulumi.set(__self__, "message_body", message_body)
+            _setter("message_body", message_body)
         if payload_override is not None:
-            pulumi.set(__self__, "payload_override", payload_override)
+            _setter("payload_override", payload_override)
         if recipients is not None:
-            pulumi.set(__self__, "recipients", recipients)
+            _setter("recipients", recipients)
         if resolution_payload_override is not None:
-            pulumi.set(__self__, "resolution_payload_override", resolution_payload_override)
+            _setter("resolution_payload_override", resolution_payload_override)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="actionType")
@@ -29254,9 +36376,22 @@ class MonitorObjPermission(dict):
         :param str subject_id: A Role ID or the Org ID of the account
         :param str subject_type: Valid values:
         """
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "subject_id", subject_id)
-        pulumi.set(__self__, "subject_type", subject_type)
+        MonitorObjPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            subject_id=subject_id,
+            subject_type=subject_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: Sequence[str],
+             subject_id: str,
+             subject_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permissions", permissions)
+        _setter("subject_id", subject_id)
+        _setter("subject_type", subject_type)
 
     @property
     @pulumi.getter
@@ -29305,8 +36440,19 @@ class MonitorQuery(dict):
     def __init__(__self__, *,
                  query: str,
                  row_id: str):
-        pulumi.set(__self__, "query", query)
-        pulumi.set(__self__, "row_id", row_id)
+        MonitorQuery._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+            row_id=row_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: str,
+             row_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
+        _setter("row_id", row_id)
 
     @property
     @pulumi.getter
@@ -29365,24 +36511,49 @@ class MonitorTrigger(dict):
         """
         :param str resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
         """
+        MonitorTrigger._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            detection_method=detection_method,
+            min_data_points=min_data_points,
+            occurrence_type=occurrence_type,
+            resolution_window=resolution_window,
+            threshold=threshold,
+            threshold_type=threshold_type,
+            time_range=time_range,
+            trigger_source=trigger_source,
+            trigger_type=trigger_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             detection_method: Optional[str] = None,
+             min_data_points: Optional[int] = None,
+             occurrence_type: Optional[str] = None,
+             resolution_window: Optional[str] = None,
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             time_range: Optional[str] = None,
+             trigger_source: Optional[str] = None,
+             trigger_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if detection_method is not None:
-            pulumi.set(__self__, "detection_method", detection_method)
+            _setter("detection_method", detection_method)
         if min_data_points is not None:
-            pulumi.set(__self__, "min_data_points", min_data_points)
+            _setter("min_data_points", min_data_points)
         if occurrence_type is not None:
-            pulumi.set(__self__, "occurrence_type", occurrence_type)
+            _setter("occurrence_type", occurrence_type)
         if resolution_window is not None:
-            pulumi.set(__self__, "resolution_window", resolution_window)
+            _setter("resolution_window", resolution_window)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if trigger_source is not None:
-            pulumi.set(__self__, "trigger_source", trigger_source)
+            _setter("trigger_source", trigger_source)
         if trigger_type is not None:
-            pulumi.set(__self__, "trigger_type", trigger_type)
+            _setter("trigger_type", trigger_type)
 
     @property
     @pulumi.getter(name="detectionMethod")
@@ -29475,22 +36646,45 @@ class MonitorTriggerConditions(dict):
                  metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None,
                  slo_burn_rate_condition: Optional['outputs.MonitorTriggerConditionsSloBurnRateCondition'] = None,
                  slo_sli_condition: Optional['outputs.MonitorTriggerConditionsSloSliCondition'] = None):
+        MonitorTriggerConditions._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logs_missing_data_condition=logs_missing_data_condition,
+            logs_outlier_condition=logs_outlier_condition,
+            logs_static_condition=logs_static_condition,
+            metrics_missing_data_condition=metrics_missing_data_condition,
+            metrics_outlier_condition=metrics_outlier_condition,
+            metrics_static_condition=metrics_static_condition,
+            slo_burn_rate_condition=slo_burn_rate_condition,
+            slo_sli_condition=slo_sli_condition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logs_missing_data_condition: Optional['outputs.MonitorTriggerConditionsLogsMissingDataCondition'] = None,
+             logs_outlier_condition: Optional['outputs.MonitorTriggerConditionsLogsOutlierCondition'] = None,
+             logs_static_condition: Optional['outputs.MonitorTriggerConditionsLogsStaticCondition'] = None,
+             metrics_missing_data_condition: Optional['outputs.MonitorTriggerConditionsMetricsMissingDataCondition'] = None,
+             metrics_outlier_condition: Optional['outputs.MonitorTriggerConditionsMetricsOutlierCondition'] = None,
+             metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None,
+             slo_burn_rate_condition: Optional['outputs.MonitorTriggerConditionsSloBurnRateCondition'] = None,
+             slo_sli_condition: Optional['outputs.MonitorTriggerConditionsSloSliCondition'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if logs_missing_data_condition is not None:
-            pulumi.set(__self__, "logs_missing_data_condition", logs_missing_data_condition)
+            _setter("logs_missing_data_condition", logs_missing_data_condition)
         if logs_outlier_condition is not None:
-            pulumi.set(__self__, "logs_outlier_condition", logs_outlier_condition)
+            _setter("logs_outlier_condition", logs_outlier_condition)
         if logs_static_condition is not None:
-            pulumi.set(__self__, "logs_static_condition", logs_static_condition)
+            _setter("logs_static_condition", logs_static_condition)
         if metrics_missing_data_condition is not None:
-            pulumi.set(__self__, "metrics_missing_data_condition", metrics_missing_data_condition)
+            _setter("metrics_missing_data_condition", metrics_missing_data_condition)
         if metrics_outlier_condition is not None:
-            pulumi.set(__self__, "metrics_outlier_condition", metrics_outlier_condition)
+            _setter("metrics_outlier_condition", metrics_outlier_condition)
         if metrics_static_condition is not None:
-            pulumi.set(__self__, "metrics_static_condition", metrics_static_condition)
+            _setter("metrics_static_condition", metrics_static_condition)
         if slo_burn_rate_condition is not None:
-            pulumi.set(__self__, "slo_burn_rate_condition", slo_burn_rate_condition)
+            _setter("slo_burn_rate_condition", slo_burn_rate_condition)
         if slo_sli_condition is not None:
-            pulumi.set(__self__, "slo_sli_condition", slo_sli_condition)
+            _setter("slo_sli_condition", slo_sli_condition)
 
     @property
     @pulumi.getter(name="logsMissingDataCondition")
@@ -29554,7 +36748,16 @@ class MonitorTriggerConditionsLogsMissingDataCondition(dict):
 
     def __init__(__self__, *,
                  time_range: str):
-        pulumi.set(__self__, "time_range", time_range)
+        MonitorTriggerConditionsLogsMissingDataCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             time_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("time_range", time_range)
 
     @property
     @pulumi.getter(name="timeRange")
@@ -29569,14 +36772,29 @@ class MonitorTriggerConditionsLogsOutlierCondition(dict):
                  direction: Optional[str] = None,
                  field: Optional[str] = None,
                  warning: Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionWarning'] = None):
+        MonitorTriggerConditionsLogsOutlierCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            direction=direction,
+            field=field,
+            warning=warning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionCritical'] = None,
+             direction: Optional[str] = None,
+             field: Optional[str] = None,
+             warning: Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionWarning'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if field is not None:
-            pulumi.set(__self__, "field", field)
+            _setter("field", field)
         if warning is not None:
-            pulumi.set(__self__, "warning", warning)
+            _setter("warning", warning)
 
     @property
     @pulumi.getter
@@ -29605,12 +36823,25 @@ class MonitorTriggerConditionsLogsOutlierConditionCritical(dict):
                  consecutive: Optional[int] = None,
                  threshold: Optional[float] = None,
                  window: Optional[int] = None):
+        MonitorTriggerConditionsLogsOutlierConditionCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consecutive=consecutive,
+            threshold=threshold,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consecutive: Optional[int] = None,
+             threshold: Optional[float] = None,
+             window: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if consecutive is not None:
-            pulumi.set(__self__, "consecutive", consecutive)
+            _setter("consecutive", consecutive)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if window is not None:
-            pulumi.set(__self__, "window", window)
+            _setter("window", window)
 
     @property
     @pulumi.getter
@@ -29634,12 +36865,25 @@ class MonitorTriggerConditionsLogsOutlierConditionWarning(dict):
                  consecutive: Optional[int] = None,
                  threshold: Optional[float] = None,
                  window: Optional[int] = None):
+        MonitorTriggerConditionsLogsOutlierConditionWarning._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consecutive=consecutive,
+            threshold=threshold,
+            window=window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consecutive: Optional[int] = None,
+             threshold: Optional[float] = None,
+             window: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if consecutive is not None:
-            pulumi.set(__self__, "consecutive", consecutive)
+            _setter("consecutive", consecutive)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if window is not None:
-            pulumi.set(__self__, "window", window)
+            _setter("window", window)
 
     @property
     @pulumi.getter
@@ -29663,12 +36907,25 @@ class MonitorTriggerConditionsLogsStaticCondition(dict):
                  critical: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionCritical'] = None,
                  field: Optional[str] = None,
                  warning: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionWarning'] = None):
+        MonitorTriggerConditionsLogsStaticCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            field=field,
+            warning=warning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionCritical'] = None,
+             field: Optional[str] = None,
+             warning: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionWarning'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if field is not None:
-            pulumi.set(__self__, "field", field)
+            _setter("field", field)
         if warning is not None:
-            pulumi.set(__self__, "warning", warning)
+            _setter("warning", warning)
 
     @property
     @pulumi.getter
@@ -29709,9 +36966,22 @@ class MonitorTriggerConditionsLogsStaticConditionCritical(dict):
                  alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert',
                  resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution',
                  time_range: str):
-        pulumi.set(__self__, "alert", alert)
-        pulumi.set(__self__, "resolution", resolution)
-        pulumi.set(__self__, "time_range", time_range)
+        MonitorTriggerConditionsLogsStaticConditionCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert=alert,
+            resolution=resolution,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert',
+             resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution',
+             time_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert", alert)
+        _setter("resolution", resolution)
+        _setter("time_range", time_range)
 
     @property
     @pulumi.getter
@@ -29751,10 +37021,21 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalAlert(dict):
     def __init__(__self__, *,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        MonitorTriggerConditionsLogsStaticConditionCriticalAlert._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter
@@ -29795,12 +37076,25 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalResolution(dict):
         """
         :param str resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
         """
+        MonitorTriggerConditionsLogsStaticConditionCriticalResolution._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resolution_window=resolution_window,
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resolution_window: Optional[str] = None,
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if resolution_window is not None:
-            pulumi.set(__self__, "resolution_window", resolution_window)
+            _setter("resolution_window", resolution_window)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter(name="resolutionWindow")
@@ -29844,9 +37138,22 @@ class MonitorTriggerConditionsLogsStaticConditionWarning(dict):
                  alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert',
                  resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution',
                  time_range: str):
-        pulumi.set(__self__, "alert", alert)
-        pulumi.set(__self__, "resolution", resolution)
-        pulumi.set(__self__, "time_range", time_range)
+        MonitorTriggerConditionsLogsStaticConditionWarning._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert=alert,
+            resolution=resolution,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert',
+             resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution',
+             time_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert", alert)
+        _setter("resolution", resolution)
+        _setter("time_range", time_range)
 
     @property
     @pulumi.getter
@@ -29886,10 +37193,21 @@ class MonitorTriggerConditionsLogsStaticConditionWarningAlert(dict):
     def __init__(__self__, *,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        MonitorTriggerConditionsLogsStaticConditionWarningAlert._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter
@@ -29930,12 +37248,25 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolution(dict):
         """
         :param str resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
         """
+        MonitorTriggerConditionsLogsStaticConditionWarningResolution._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resolution_window=resolution_window,
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resolution_window: Optional[str] = None,
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if resolution_window is not None:
-            pulumi.set(__self__, "resolution_window", resolution_window)
+            _setter("resolution_window", resolution_window)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter(name="resolutionWindow")
@@ -29980,8 +37311,19 @@ class MonitorTriggerConditionsMetricsMissingDataCondition(dict):
     def __init__(__self__, *,
                  time_range: str,
                  trigger_source: str):
-        pulumi.set(__self__, "time_range", time_range)
-        pulumi.set(__self__, "trigger_source", trigger_source)
+        MonitorTriggerConditionsMetricsMissingDataCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            time_range=time_range,
+            trigger_source=trigger_source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             time_range: str,
+             trigger_source: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("time_range", time_range)
+        _setter("trigger_source", trigger_source)
 
     @property
     @pulumi.getter(name="timeRange")
@@ -30000,12 +37342,25 @@ class MonitorTriggerConditionsMetricsOutlierCondition(dict):
                  critical: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionCritical'] = None,
                  direction: Optional[str] = None,
                  warning: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionWarning'] = None):
+        MonitorTriggerConditionsMetricsOutlierCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            direction=direction,
+            warning=warning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionCritical'] = None,
+             direction: Optional[str] = None,
+             warning: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionWarning'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if warning is not None:
-            pulumi.set(__self__, "warning", warning)
+            _setter("warning", warning)
 
     @property
     @pulumi.getter
@@ -30045,10 +37400,21 @@ class MonitorTriggerConditionsMetricsOutlierConditionCritical(dict):
     def __init__(__self__, *,
                  baseline_window: Optional[str] = None,
                  threshold: Optional[float] = None):
+        MonitorTriggerConditionsMetricsOutlierConditionCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            baseline_window=baseline_window,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             baseline_window: Optional[str] = None,
+             threshold: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if baseline_window is not None:
-            pulumi.set(__self__, "baseline_window", baseline_window)
+            _setter("baseline_window", baseline_window)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter(name="baselineWindow")
@@ -30083,10 +37449,21 @@ class MonitorTriggerConditionsMetricsOutlierConditionWarning(dict):
     def __init__(__self__, *,
                  baseline_window: Optional[str] = None,
                  threshold: Optional[float] = None):
+        MonitorTriggerConditionsMetricsOutlierConditionWarning._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            baseline_window=baseline_window,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             baseline_window: Optional[str] = None,
+             threshold: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if baseline_window is not None:
-            pulumi.set(__self__, "baseline_window", baseline_window)
+            _setter("baseline_window", baseline_window)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter(name="baselineWindow")
@@ -30104,10 +37481,21 @@ class MonitorTriggerConditionsMetricsStaticCondition(dict):
     def __init__(__self__, *,
                  critical: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionCritical'] = None,
                  warning: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionWarning'] = None):
+        MonitorTriggerConditionsMetricsStaticCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            warning=warning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionCritical'] = None,
+             warning: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionWarning'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if warning is not None:
-            pulumi.set(__self__, "warning", warning)
+            _setter("warning", warning)
 
     @property
     @pulumi.getter
@@ -30146,10 +37534,25 @@ class MonitorTriggerConditionsMetricsStaticConditionCritical(dict):
                  occurrence_type: str,
                  resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution',
                  time_range: str):
-        pulumi.set(__self__, "alert", alert)
-        pulumi.set(__self__, "occurrence_type", occurrence_type)
-        pulumi.set(__self__, "resolution", resolution)
-        pulumi.set(__self__, "time_range", time_range)
+        MonitorTriggerConditionsMetricsStaticConditionCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert=alert,
+            occurrence_type=occurrence_type,
+            resolution=resolution,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert: 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalAlert',
+             occurrence_type: str,
+             resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution',
+             time_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert", alert)
+        _setter("occurrence_type", occurrence_type)
+        _setter("resolution", resolution)
+        _setter("time_range", time_range)
 
     @property
     @pulumi.getter
@@ -30197,12 +37600,25 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalAlert(dict):
                  min_data_points: Optional[int] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        MonitorTriggerConditionsMetricsStaticConditionCriticalAlert._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            min_data_points=min_data_points,
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             min_data_points: Optional[int] = None,
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if min_data_points is not None:
-            pulumi.set(__self__, "min_data_points", min_data_points)
+            _setter("min_data_points", min_data_points)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter(name="minDataPoints")
@@ -30248,14 +37664,29 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(dict):
                  occurrence_type: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        MonitorTriggerConditionsMetricsStaticConditionCriticalResolution._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            min_data_points=min_data_points,
+            occurrence_type=occurrence_type,
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             min_data_points: Optional[int] = None,
+             occurrence_type: Optional[str] = None,
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if min_data_points is not None:
-            pulumi.set(__self__, "min_data_points", min_data_points)
+            _setter("min_data_points", min_data_points)
         if occurrence_type is not None:
-            pulumi.set(__self__, "occurrence_type", occurrence_type)
+            _setter("occurrence_type", occurrence_type)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter(name="minDataPoints")
@@ -30304,10 +37735,25 @@ class MonitorTriggerConditionsMetricsStaticConditionWarning(dict):
                  occurrence_type: str,
                  resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolution',
                  time_range: str):
-        pulumi.set(__self__, "alert", alert)
-        pulumi.set(__self__, "occurrence_type", occurrence_type)
-        pulumi.set(__self__, "resolution", resolution)
-        pulumi.set(__self__, "time_range", time_range)
+        MonitorTriggerConditionsMetricsStaticConditionWarning._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert=alert,
+            occurrence_type=occurrence_type,
+            resolution=resolution,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert: 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningAlert',
+             occurrence_type: str,
+             resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolution',
+             time_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert", alert)
+        _setter("occurrence_type", occurrence_type)
+        _setter("resolution", resolution)
+        _setter("time_range", time_range)
 
     @property
     @pulumi.getter
@@ -30355,12 +37801,25 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningAlert(dict):
                  min_data_points: Optional[int] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        MonitorTriggerConditionsMetricsStaticConditionWarningAlert._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            min_data_points=min_data_points,
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             min_data_points: Optional[int] = None,
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if min_data_points is not None:
-            pulumi.set(__self__, "min_data_points", min_data_points)
+            _setter("min_data_points", min_data_points)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter(name="minDataPoints")
@@ -30406,14 +37865,29 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningResolution(dict):
                  occurrence_type: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None):
+        MonitorTriggerConditionsMetricsStaticConditionWarningResolution._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            min_data_points=min_data_points,
+            occurrence_type=occurrence_type,
+            threshold=threshold,
+            threshold_type=threshold_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             min_data_points: Optional[int] = None,
+             occurrence_type: Optional[str] = None,
+             threshold: Optional[float] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if min_data_points is not None:
-            pulumi.set(__self__, "min_data_points", min_data_points)
+            _setter("min_data_points", min_data_points)
         if occurrence_type is not None:
-            pulumi.set(__self__, "occurrence_type", occurrence_type)
+            _setter("occurrence_type", occurrence_type)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if threshold_type is not None:
-            pulumi.set(__self__, "threshold_type", threshold_type)
+            _setter("threshold_type", threshold_type)
 
     @property
     @pulumi.getter(name="minDataPoints")
@@ -30441,10 +37915,21 @@ class MonitorTriggerConditionsSloBurnRateCondition(dict):
     def __init__(__self__, *,
                  critical: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionCritical'] = None,
                  warning: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionWarning'] = None):
+        MonitorTriggerConditionsSloBurnRateCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            warning=warning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionCritical'] = None,
+             warning: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionWarning'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if warning is not None:
-            pulumi.set(__self__, "warning", warning)
+            _setter("warning", warning)
 
     @property
     @pulumi.getter
@@ -30484,12 +37969,25 @@ class MonitorTriggerConditionsSloBurnRateConditionCritical(dict):
                  burn_rate_threshold: Optional[float] = None,
                  burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate']] = None,
                  time_range: Optional[str] = None):
+        MonitorTriggerConditionsSloBurnRateConditionCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burn_rate_threshold=burn_rate_threshold,
+            burn_rates=burn_rates,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burn_rate_threshold: Optional[float] = None,
+             burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate']] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if burn_rate_threshold is not None:
-            pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+            _setter("burn_rate_threshold", burn_rate_threshold)
         if burn_rates is not None:
-            pulumi.set(__self__, "burn_rates", burn_rates)
+            _setter("burn_rates", burn_rates)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
 
     @property
     @pulumi.getter(name="burnRateThreshold")
@@ -30531,8 +38029,19 @@ class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate(dict):
     def __init__(__self__, *,
                  burn_rate_threshold: float,
                  time_range: str):
-        pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
-        pulumi.set(__self__, "time_range", time_range)
+        MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burn_rate_threshold=burn_rate_threshold,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burn_rate_threshold: float,
+             time_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("burn_rate_threshold", burn_rate_threshold)
+        _setter("time_range", time_range)
 
     @property
     @pulumi.getter(name="burnRateThreshold")
@@ -30572,12 +38081,25 @@ class MonitorTriggerConditionsSloBurnRateConditionWarning(dict):
                  burn_rate_threshold: Optional[float] = None,
                  burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate']] = None,
                  time_range: Optional[str] = None):
+        MonitorTriggerConditionsSloBurnRateConditionWarning._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burn_rate_threshold=burn_rate_threshold,
+            burn_rates=burn_rates,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burn_rate_threshold: Optional[float] = None,
+             burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate']] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if burn_rate_threshold is not None:
-            pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
+            _setter("burn_rate_threshold", burn_rate_threshold)
         if burn_rates is not None:
-            pulumi.set(__self__, "burn_rates", burn_rates)
+            _setter("burn_rates", burn_rates)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
 
     @property
     @pulumi.getter(name="burnRateThreshold")
@@ -30619,8 +38141,19 @@ class MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate(dict):
     def __init__(__self__, *,
                  burn_rate_threshold: float,
                  time_range: str):
-        pulumi.set(__self__, "burn_rate_threshold", burn_rate_threshold)
-        pulumi.set(__self__, "time_range", time_range)
+        MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burn_rate_threshold=burn_rate_threshold,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burn_rate_threshold: float,
+             time_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("burn_rate_threshold", burn_rate_threshold)
+        _setter("time_range", time_range)
 
     @property
     @pulumi.getter(name="burnRateThreshold")
@@ -30638,10 +38171,21 @@ class MonitorTriggerConditionsSloSliCondition(dict):
     def __init__(__self__, *,
                  critical: Optional['outputs.MonitorTriggerConditionsSloSliConditionCritical'] = None,
                  warning: Optional['outputs.MonitorTriggerConditionsSloSliConditionWarning'] = None):
+        MonitorTriggerConditionsSloSliCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            warning=warning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.MonitorTriggerConditionsSloSliConditionCritical'] = None,
+             warning: Optional['outputs.MonitorTriggerConditionsSloSliConditionWarning'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if warning is not None:
-            pulumi.set(__self__, "warning", warning)
+            _setter("warning", warning)
 
     @property
     @pulumi.getter
@@ -30675,7 +38219,16 @@ class MonitorTriggerConditionsSloSliConditionCritical(dict):
 
     def __init__(__self__, *,
                  sli_threshold: float):
-        pulumi.set(__self__, "sli_threshold", sli_threshold)
+        MonitorTriggerConditionsSloSliConditionCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sli_threshold=sli_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sli_threshold: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sli_threshold", sli_threshold)
 
     @property
     @pulumi.getter(name="sliThreshold")
@@ -30704,7 +38257,16 @@ class MonitorTriggerConditionsSloSliConditionWarning(dict):
 
     def __init__(__self__, *,
                  sli_threshold: float):
-        pulumi.set(__self__, "sli_threshold", sli_threshold)
+        MonitorTriggerConditionsSloSliConditionWarning._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sli_threshold=sli_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sli_threshold: float,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sli_threshold", sli_threshold)
 
     @property
     @pulumi.getter(name="sliThreshold")
@@ -30723,10 +38285,21 @@ class MutingScheduleMonitor(dict):
                [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
         :param Sequence[str] ids: List of monitor Ids in hex. Must be empty if `all` is true.
         """
+        MutingScheduleMonitor._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all=all,
+            ids=ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all: Optional[bool] = None,
+             ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if ids is not None:
-            pulumi.set(__self__, "ids", ids)
+            _setter("ids", ids)
 
     @property
     @pulumi.getter
@@ -30786,12 +38359,29 @@ class MutingScheduleSchedule(dict):
                Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
                (https://freetools.textmagic.com/rrule-generator)
         """
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "start_date", start_date)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "timezone", timezone)
+        MutingScheduleSchedule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            duration=duration,
+            start_date=start_date,
+            start_time=start_time,
+            timezone=timezone,
+            rrule=rrule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             duration: int,
+             start_date: str,
+             start_time: str,
+             timezone: str,
+             rrule: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("duration", duration)
+        _setter("start_date", start_date)
+        _setter("start_time", start_time)
+        _setter("timezone", timezone)
         if rrule is not None:
-            pulumi.set(__self__, "rrule", rrule)
+            _setter("rrule", rrule)
 
     @property
     @pulumi.getter
@@ -30865,9 +38455,20 @@ class PoliciesUserConcurrentSessionsLimit(dict):
         :param bool enabled: Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
         :param int max_concurrent_sessions: Maximum number of concurrent sessions a user may have. Defaults to `100`.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        PoliciesUserConcurrentSessionsLimit._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            max_concurrent_sessions=max_concurrent_sessions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             max_concurrent_sessions: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
         if max_concurrent_sessions is not None:
-            pulumi.set(__self__, "max_concurrent_sessions", max_concurrent_sessions)
+            _setter("max_concurrent_sessions", max_concurrent_sessions)
 
     @property
     @pulumi.getter
@@ -30920,13 +38521,28 @@ class PollingSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
         """
-        pulumi.set(__self__, "type", type)
+        PollingSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            role_arn=role_arn,
+            secret_key=secret_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
 
     @property
     @pulumi.getter
@@ -30966,9 +38582,20 @@ class PollingSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        PollingSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -31005,11 +38632,26 @@ class PollingSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        PollingSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -31074,17 +38716,36 @@ class PollingSourcePath(dict):
         :param str path_expression: The path to the data. This is needed if using type `S3BucketPathExpression`.
         :param Sequence['PollingSourcePathTagFilterArgs'] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
         """
-        pulumi.set(__self__, "type", type)
+        PollingSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            path_expression=path_expression,
+            tag_filters=tag_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             tag_filters: Optional[Sequence['outputs.PollingSourcePathTagFilter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
 
     @property
     @pulumi.getter
@@ -31146,12 +38807,25 @@ class PollingSourcePathTagFilter(dict):
         :param Sequence[str] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
         :param str type: This value has to be set to `TagFilters`
         """
+        PollingSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -31183,9 +38857,20 @@ class RumSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        RumSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -31222,11 +38907,26 @@ class RumSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        RumSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -31301,21 +39001,44 @@ class RumSourcePath(dict):
         :param float sampling_rate: Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
         :param str selected_country: Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
         """
-        pulumi.set(__self__, "service_name", service_name)
+        RumSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            application_name=application_name,
+            custom_tags=custom_tags,
+            deployment_environment=deployment_environment,
+            ignore_urls=ignore_urls,
+            propagate_trace_header_cors_urls=propagate_trace_header_cors_urls,
+            sampling_rate=sampling_rate,
+            selected_country=selected_country,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: str,
+             application_name: Optional[str] = None,
+             custom_tags: Optional[Mapping[str, str]] = None,
+             deployment_environment: Optional[str] = None,
+             ignore_urls: Optional[Sequence[str]] = None,
+             propagate_trace_header_cors_urls: Optional[Sequence[str]] = None,
+             sampling_rate: Optional[float] = None,
+             selected_country: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_name", service_name)
         if application_name is not None:
-            pulumi.set(__self__, "application_name", application_name)
+            _setter("application_name", application_name)
         if custom_tags is not None:
-            pulumi.set(__self__, "custom_tags", custom_tags)
+            _setter("custom_tags", custom_tags)
         if deployment_environment is not None:
-            pulumi.set(__self__, "deployment_environment", deployment_environment)
+            _setter("deployment_environment", deployment_environment)
         if ignore_urls is not None:
-            pulumi.set(__self__, "ignore_urls", ignore_urls)
+            _setter("ignore_urls", ignore_urls)
         if propagate_trace_header_cors_urls is not None:
-            pulumi.set(__self__, "propagate_trace_header_cors_urls", propagate_trace_header_cors_urls)
+            _setter("propagate_trace_header_cors_urls", propagate_trace_header_cors_urls)
         if sampling_rate is not None:
-            pulumi.set(__self__, "sampling_rate", sampling_rate)
+            _setter("sampling_rate", sampling_rate)
         if selected_country is not None:
-            pulumi.set(__self__, "selected_country", selected_country)
+            _setter("selected_country", selected_country)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -31445,33 +39168,68 @@ class S3ArchiveSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
         """
-        pulumi.set(__self__, "type", type)
+        S3ArchiveSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -31564,9 +39322,20 @@ class S3ArchiveSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        S3ArchiveSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -31603,11 +39372,26 @@ class S3ArchiveSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        S3ArchiveSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -31681,25 +39465,52 @@ class S3ArchiveSourcePath(dict):
         :param str bucket_name: The name of the bucket.
         :param str path_expression: The path to the data.
         """
-        pulumi.set(__self__, "type", type)
+        S3ArchiveSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.S3ArchiveSourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3ArchiveSourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.S3ArchiveSourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -31783,10 +39594,21 @@ class S3ArchiveSourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        S3ArchiveSourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -31821,10 +39643,21 @@ class S3ArchiveSourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        S3ArchiveSourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -31846,12 +39679,25 @@ class S3ArchiveSourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
         """
+        S3ArchiveSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -31935,33 +39781,68 @@ class S3AuditSourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
         """
-        pulumi.set(__self__, "type", type)
+        S3AuditSourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -32054,9 +39935,20 @@ class S3AuditSourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        S3AuditSourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -32093,11 +39985,26 @@ class S3AuditSourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        S3AuditSourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -32172,25 +40079,52 @@ class S3AuditSourcePath(dict):
         :param str path_expression: The path to the data.
         :param Sequence['S3AuditSourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
-        pulumi.set(__self__, "type", type)
+        S3AuditSourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.S3AuditSourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.S3AuditSourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -32277,10 +40211,21 @@ class S3AuditSourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        S3AuditSourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -32315,10 +40260,21 @@ class S3AuditSourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        S3AuditSourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -32340,12 +40296,25 @@ class S3AuditSourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
         """
+        S3AuditSourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -32429,33 +40398,68 @@ class S3SourceAuthentication(dict):
         :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
         :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`.
         """
-        pulumi.set(__self__, "type", type)
+        S3SourceAuthentication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            access_key=access_key,
+            auth_provider_x509_cert_url=auth_provider_x509_cert_url,
+            auth_uri=auth_uri,
+            client_email=client_email,
+            client_id=client_id,
+            client_x509_cert_url=client_x509_cert_url,
+            private_key=private_key,
+            private_key_id=private_key_id,
+            project_id=project_id,
+            region=region,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            token_uri=token_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             access_key: Optional[str] = None,
+             auth_provider_x509_cert_url: Optional[str] = None,
+             auth_uri: Optional[str] = None,
+             client_email: Optional[str] = None,
+             client_id: Optional[str] = None,
+             client_x509_cert_url: Optional[str] = None,
+             private_key: Optional[str] = None,
+             private_key_id: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             token_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if auth_provider_x509_cert_url is not None:
-            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+            _setter("auth_provider_x509_cert_url", auth_provider_x509_cert_url)
         if auth_uri is not None:
-            pulumi.set(__self__, "auth_uri", auth_uri)
+            _setter("auth_uri", auth_uri)
         if client_email is not None:
-            pulumi.set(__self__, "client_email", client_email)
+            _setter("client_email", client_email)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_x509_cert_url is not None:
-            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+            _setter("client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_id is not None:
-            pulumi.set(__self__, "private_key_id", private_key_id)
+            _setter("private_key_id", private_key_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if token_uri is not None:
-            pulumi.set(__self__, "token_uri", token_uri)
+            _setter("token_uri", token_uri)
 
     @property
     @pulumi.getter
@@ -32548,9 +40552,20 @@ class S3SourceDefaultDateFormat(dict):
     def __init__(__self__, *,
                  format: str,
                  locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
+        S3SourceDefaultDateFormat._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            format=format,
+            locator=locator,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             format: str,
+             locator: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("format", format)
         if locator is not None:
-            pulumi.set(__self__, "locator", locator)
+            _setter("locator", locator)
 
     @property
     @pulumi.getter
@@ -32587,11 +40602,26 @@ class S3SourceFilter(dict):
                  name: str,
                  regexp: str,
                  mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
+        S3SourceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_type=filter_type,
+            name=name,
+            regexp=regexp,
+            mask=mask,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_type: str,
+             name: str,
+             regexp: str,
+             mask: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_type", filter_type)
+        _setter("name", name)
+        _setter("regexp", regexp)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
 
     @property
     @pulumi.getter(name="filterType")
@@ -32667,25 +40697,52 @@ class S3SourcePath(dict):
         :param Sequence['S3SourcePathSnsTopicOrSubscriptionArnArgs'] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         :param bool use_versioned_api: Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
         """
-        pulumi.set(__self__, "type", type)
+        S3SourcePath._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            bucket_name=bucket_name,
+            custom_services=custom_services,
+            limit_to_namespaces=limit_to_namespaces,
+            limit_to_regions=limit_to_regions,
+            limit_to_services=limit_to_services,
+            path_expression=path_expression,
+            sns_topic_or_subscription_arns=sns_topic_or_subscription_arns,
+            tag_filters=tag_filters,
+            use_versioned_api=use_versioned_api,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             bucket_name: Optional[str] = None,
+             custom_services: Optional[Sequence['outputs.S3SourcePathCustomService']] = None,
+             limit_to_namespaces: Optional[Sequence[str]] = None,
+             limit_to_regions: Optional[Sequence[str]] = None,
+             limit_to_services: Optional[Sequence[str]] = None,
+             path_expression: Optional[str] = None,
+             sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3SourcePathSnsTopicOrSubscriptionArn']] = None,
+             tag_filters: Optional[Sequence['outputs.S3SourcePathTagFilter']] = None,
+             use_versioned_api: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if custom_services is not None:
-            pulumi.set(__self__, "custom_services", custom_services)
+            _setter("custom_services", custom_services)
         if limit_to_namespaces is not None:
-            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+            _setter("limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
-            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+            _setter("limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
-            pulumi.set(__self__, "limit_to_services", limit_to_services)
+            _setter("limit_to_services", limit_to_services)
         if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
+            _setter("path_expression", path_expression)
         if sns_topic_or_subscription_arns is not None:
-            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+            _setter("sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
-            pulumi.set(__self__, "tag_filters", tag_filters)
+            _setter("tag_filters", tag_filters)
         if use_versioned_api is not None:
-            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+            _setter("use_versioned_api", use_versioned_api)
 
     @property
     @pulumi.getter
@@ -32775,10 +40832,21 @@ class S3SourcePathCustomService(dict):
     def __init__(__self__, *,
                  prefixes: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        S3SourcePathCustomService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            prefixes=prefixes,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             prefixes: Optional[Sequence[str]] = None,
+             service_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+            _setter("prefixes", prefixes)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
 
     @property
     @pulumi.getter
@@ -32813,10 +40881,21 @@ class S3SourcePathSnsTopicOrSubscriptionArn(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None,
                  is_success: Optional[bool] = None):
+        S3SourcePathSnsTopicOrSubscriptionArn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            is_success=is_success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             is_success: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if is_success is not None:
-            pulumi.set(__self__, "is_success", is_success)
+            _setter("is_success", is_success)
 
     @property
     @pulumi.getter
@@ -32838,12 +40917,25 @@ class S3SourcePathTagFilter(dict):
         """
         :param str type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
         """
+        S3SourcePathTagFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -32896,11 +40988,24 @@ class SamlConfigurationOnDemandProvisioningEnabled(dict):
         :param str first_name_attribute: First name attribute of the new user account. Defaults to "".
         :param str last_name_attribute: Last name attribute of the new user account. Defaults to "".
         """
-        pulumi.set(__self__, "on_demand_provisioning_roles", on_demand_provisioning_roles)
+        SamlConfigurationOnDemandProvisioningEnabled._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            on_demand_provisioning_roles=on_demand_provisioning_roles,
+            first_name_attribute=first_name_attribute,
+            last_name_attribute=last_name_attribute,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             on_demand_provisioning_roles: Sequence[str],
+             first_name_attribute: Optional[str] = None,
+             last_name_attribute: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("on_demand_provisioning_roles", on_demand_provisioning_roles)
         if first_name_attribute is not None:
-            pulumi.set(__self__, "first_name_attribute", first_name_attribute)
+            _setter("first_name_attribute", first_name_attribute)
         if last_name_attribute is not None:
-            pulumi.set(__self__, "last_name_attribute", last_name_attribute)
+            _setter("last_name_attribute", last_name_attribute)
 
     @property
     @pulumi.getter(name="onDemandProvisioningRoles")
@@ -32965,12 +41070,29 @@ class SloCompliance(dict):
                Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
                For `Month` it's not required and is set to first day of the month.
         """
-        pulumi.set(__self__, "compliance_type", compliance_type)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "timezone", timezone)
+        SloCompliance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            size=size,
+            target=target,
+            timezone=timezone,
+            start_from=start_from,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: str,
+             size: str,
+             target: float,
+             timezone: str,
+             start_from: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compliance_type", compliance_type)
+        _setter("size", size)
+        _setter("target", target)
+        _setter("timezone", timezone)
         if start_from is not None:
-            pulumi.set(__self__, "start_from", start_from)
+            _setter("start_from", start_from)
 
     @property
     @pulumi.getter(name="complianceType")
@@ -33044,12 +41166,25 @@ class SloIndicator(dict):
                  monitor_based_evaluation: Optional['outputs.SloIndicatorMonitorBasedEvaluation'] = None,
                  request_based_evaluation: Optional['outputs.SloIndicatorRequestBasedEvaluation'] = None,
                  window_based_evaluation: Optional['outputs.SloIndicatorWindowBasedEvaluation'] = None):
+        SloIndicator._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            monitor_based_evaluation=monitor_based_evaluation,
+            request_based_evaluation=request_based_evaluation,
+            window_based_evaluation=window_based_evaluation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             monitor_based_evaluation: Optional['outputs.SloIndicatorMonitorBasedEvaluation'] = None,
+             request_based_evaluation: Optional['outputs.SloIndicatorRequestBasedEvaluation'] = None,
+             window_based_evaluation: Optional['outputs.SloIndicatorWindowBasedEvaluation'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if monitor_based_evaluation is not None:
-            pulumi.set(__self__, "monitor_based_evaluation", monitor_based_evaluation)
+            _setter("monitor_based_evaluation", monitor_based_evaluation)
         if request_based_evaluation is not None:
-            pulumi.set(__self__, "request_based_evaluation", request_based_evaluation)
+            _setter("request_based_evaluation", request_based_evaluation)
         if window_based_evaluation is not None:
-            pulumi.set(__self__, "window_based_evaluation", window_based_evaluation)
+            _setter("window_based_evaluation", window_based_evaluation)
 
     @property
     @pulumi.getter(name="monitorBasedEvaluation")
@@ -33091,7 +41226,16 @@ class SloIndicatorMonitorBasedEvaluation(dict):
         """
         :param 'SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs' monitor_triggers: Monitor details on which SLO will be based. Only single monitor is supported here.
         """
-        pulumi.set(__self__, "monitor_triggers", monitor_triggers)
+        SloIndicatorMonitorBasedEvaluation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            monitor_triggers=monitor_triggers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             monitor_triggers: 'outputs.SloIndicatorMonitorBasedEvaluationMonitorTriggers',
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("monitor_triggers", monitor_triggers)
 
     @property
     @pulumi.getter(name="monitorTriggers")
@@ -33137,8 +41281,19 @@ class SloIndicatorMonitorBasedEvaluationMonitorTriggers(dict):
                
                [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
         """
-        pulumi.set(__self__, "monitor_id", monitor_id)
-        pulumi.set(__self__, "trigger_types", trigger_types)
+        SloIndicatorMonitorBasedEvaluationMonitorTriggers._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            monitor_id=monitor_id,
+            trigger_types=trigger_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             monitor_id: str,
+             trigger_types: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("monitor_id", monitor_id)
+        _setter("trigger_types", trigger_types)
 
     @property
     @pulumi.getter(name="monitorId")
@@ -33195,12 +41350,27 @@ class SloIndicatorRequestBasedEvaluation(dict):
                , `GreaterThanOrEqual`.
         :param float threshold: Compared against threshold query's raw data points to determine success criteria.
         """
-        pulumi.set(__self__, "queries", queries)
-        pulumi.set(__self__, "query_type", query_type)
+        SloIndicatorRequestBasedEvaluation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            queries=queries,
+            query_type=query_type,
+            op=op,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             queries: Sequence['outputs.SloIndicatorRequestBasedEvaluationQuery'],
+             query_type: str,
+             op: Optional[str] = None,
+             threshold: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("queries", queries)
+        _setter("query_type", query_type)
         if op is not None:
-            pulumi.set(__self__, "op", op)
+            _setter("op", op)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter
@@ -33263,18 +41433,27 @@ class SloIndicatorRequestBasedEvaluationQuery(dict):
         """
         :param str query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
                , `Threshold`.
-               , `Threshold`.
         :param Sequence['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs'] query_groups: List of queries to use.
         """
-        pulumi.set(__self__, "query_group_type", query_group_type)
-        pulumi.set(__self__, "query_groups", query_groups)
+        SloIndicatorRequestBasedEvaluationQuery._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query_group_type=query_group_type,
+            query_groups=query_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query_group_type: str,
+             query_groups: Sequence['outputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query_group_type", query_group_type)
+        _setter("query_groups", query_groups)
 
     @property
     @pulumi.getter(name="queryGroupType")
     def query_group_type(self) -> str:
         """
         The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
-        , `Threshold`.
         , `Threshold`.
         """
         return pulumi.get(self, "query_group_type")
@@ -33320,14 +41499,27 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
         :param bool use_row_count: Whether to use the row count. Defaults to false.
         :param str field: Field of log query output to compare against. To be used only for logs based data
                type when `use_row_count` is false.
-               
-               type when `use_row_count` is false.
         """
-        pulumi.set(__self__, "query", query)
-        pulumi.set(__self__, "row_id", row_id)
-        pulumi.set(__self__, "use_row_count", use_row_count)
+        SloIndicatorRequestBasedEvaluationQueryQueryGroup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+            row_id=row_id,
+            use_row_count=use_row_count,
+            field=field,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: str,
+             row_id: str,
+             use_row_count: bool,
+             field: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
+        _setter("row_id", row_id)
+        _setter("use_row_count", use_row_count)
         if field is not None:
-            pulumi.set(__self__, "field", field)
+            _setter("field", field)
 
     @property
     @pulumi.getter
@@ -33358,8 +41550,6 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
     def field(self) -> Optional[str]:
         """
         Field of log query output to compare against. To be used only for logs based data
-        type when `use_row_count` is false.
-
         type when `use_row_count` is false.
         """
         return pulumi.get(self, "field")
@@ -33403,13 +41593,32 @@ class SloIndicatorWindowBasedEvaluation(dict):
         :param str aggregation: Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
                , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
         """
-        pulumi.set(__self__, "op", op)
-        pulumi.set(__self__, "queries", queries)
-        pulumi.set(__self__, "query_type", query_type)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "threshold", threshold)
+        SloIndicatorWindowBasedEvaluation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            op=op,
+            queries=queries,
+            query_type=query_type,
+            size=size,
+            threshold=threshold,
+            aggregation=aggregation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             op: str,
+             queries: Sequence['outputs.SloIndicatorWindowBasedEvaluationQuery'],
+             query_type: str,
+             size: str,
+             threshold: float,
+             aggregation: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("op", op)
+        _setter("queries", queries)
+        _setter("query_type", query_type)
+        _setter("size", size)
+        _setter("threshold", threshold)
         if aggregation is not None:
-            pulumi.set(__self__, "aggregation", aggregation)
+            _setter("aggregation", aggregation)
 
     @property
     @pulumi.getter
@@ -33491,18 +41700,27 @@ class SloIndicatorWindowBasedEvaluationQuery(dict):
         """
         :param str query_group_type: The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
                , `Threshold`.
-               , `Threshold`.
         :param Sequence['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs'] query_groups: List of queries to use.
         """
-        pulumi.set(__self__, "query_group_type", query_group_type)
-        pulumi.set(__self__, "query_groups", query_groups)
+        SloIndicatorWindowBasedEvaluationQuery._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query_group_type=query_group_type,
+            query_groups=query_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query_group_type: str,
+             query_groups: Sequence['outputs.SloIndicatorWindowBasedEvaluationQueryQueryGroup'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query_group_type", query_group_type)
+        _setter("query_groups", query_groups)
 
     @property
     @pulumi.getter(name="queryGroupType")
     def query_group_type(self) -> str:
         """
         The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
-        , `Threshold`.
         , `Threshold`.
         """
         return pulumi.get(self, "query_group_type")
@@ -33548,14 +41766,27 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
         :param bool use_row_count: Whether to use the row count. Defaults to false.
         :param str field: Field of log query output to compare against. To be used only for logs based data
                type when `use_row_count` is false.
-               
-               type when `use_row_count` is false.
         """
-        pulumi.set(__self__, "query", query)
-        pulumi.set(__self__, "row_id", row_id)
-        pulumi.set(__self__, "use_row_count", use_row_count)
+        SloIndicatorWindowBasedEvaluationQueryQueryGroup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query=query,
+            row_id=row_id,
+            use_row_count=use_row_count,
+            field=field,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query: str,
+             row_id: str,
+             use_row_count: bool,
+             field: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("query", query)
+        _setter("row_id", row_id)
+        _setter("use_row_count", use_row_count)
         if field is not None:
-            pulumi.set(__self__, "field", field)
+            _setter("field", field)
 
     @property
     @pulumi.getter
@@ -33586,8 +41817,6 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
     def field(self) -> Optional[str]:
         """
         Field of log query output to compare against. To be used only for logs based data
-        type when `use_row_count` is false.
-
         type when `use_row_count` is false.
         """
         return pulumi.get(self, "field")

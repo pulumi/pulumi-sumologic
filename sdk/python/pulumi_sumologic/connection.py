@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
@@ -39,23 +39,50 @@ class ConnectionArgs:
                
                Additional data provided in state
         """
-        pulumi.set(__self__, "default_payload", default_payload)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "url", url)
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_payload=default_payload,
+            type=type,
+            url=url,
+            connection_subtype=connection_subtype,
+            custom_headers=custom_headers,
+            description=description,
+            headers=headers,
+            name=name,
+            resolution_payload=resolution_payload,
+            webhook_type=webhook_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_payload: pulumi.Input[str],
+             type: pulumi.Input[str],
+             url: pulumi.Input[str],
+             connection_subtype: Optional[pulumi.Input[str]] = None,
+             custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resolution_payload: Optional[pulumi.Input[str]] = None,
+             webhook_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default_payload", default_payload)
+        _setter("type", type)
+        _setter("url", url)
         if connection_subtype is not None:
-            pulumi.set(__self__, "connection_subtype", connection_subtype)
+            _setter("connection_subtype", connection_subtype)
         if custom_headers is not None:
-            pulumi.set(__self__, "custom_headers", custom_headers)
+            _setter("custom_headers", custom_headers)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resolution_payload is not None:
-            pulumi.set(__self__, "resolution_payload", resolution_payload)
+            _setter("resolution_payload", resolution_payload)
         if webhook_type is not None:
-            pulumi.set(__self__, "webhook_type", webhook_type)
+            _setter("webhook_type", webhook_type)
 
     @property
     @pulumi.getter(name="defaultPayload")
@@ -208,26 +235,53 @@ class _ConnectionState:
                
                Additional data provided in state
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_subtype=connection_subtype,
+            custom_headers=custom_headers,
+            default_payload=default_payload,
+            description=description,
+            headers=headers,
+            name=name,
+            resolution_payload=resolution_payload,
+            type=type,
+            url=url,
+            webhook_type=webhook_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_subtype: Optional[pulumi.Input[str]] = None,
+             custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             default_payload: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resolution_payload: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             webhook_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_subtype is not None:
-            pulumi.set(__self__, "connection_subtype", connection_subtype)
+            _setter("connection_subtype", connection_subtype)
         if custom_headers is not None:
-            pulumi.set(__self__, "custom_headers", custom_headers)
+            _setter("custom_headers", custom_headers)
         if default_payload is not None:
-            pulumi.set(__self__, "default_payload", default_payload)
+            _setter("default_payload", default_payload)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resolution_payload is not None:
-            pulumi.set(__self__, "resolution_payload", resolution_payload)
+            _setter("resolution_payload", resolution_payload)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if webhook_type is not None:
-            pulumi.set(__self__, "webhook_type", webhook_type)
+            _setter("webhook_type", webhook_type)
 
     @property
     @pulumi.getter(name="connectionSubtype")
@@ -491,6 +545,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

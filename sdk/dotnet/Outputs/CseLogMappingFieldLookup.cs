@@ -18,7 +18,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Value of the field.
+        /// Lookup value.
         /// </summary>
         public readonly string Value;
 

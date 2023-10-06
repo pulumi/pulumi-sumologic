@@ -14,7 +14,6 @@ public final class SloIndicatorRequestBasedEvaluationQuery {
     /**
      * @return The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
      * , `Threshold`.
-     * , `Threshold`.
      * 
      */
     private String queryGroupType;
@@ -27,7 +26,6 @@ public final class SloIndicatorRequestBasedEvaluationQuery {
     private SloIndicatorRequestBasedEvaluationQuery() {}
     /**
      * @return The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
-     * , `Threshold`.
      * , `Threshold`.
      * 
      */

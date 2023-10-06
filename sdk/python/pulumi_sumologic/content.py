@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ContentArgs', 'Content']
@@ -21,8 +21,19 @@ class ContentArgs:
         :param pulumi.Input[str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
         :param pulumi.Input[str] parent_id: The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
         """
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "parent_id", parent_id)
+        ContentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            parent_id=parent_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: pulumi.Input[str],
+             parent_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config", config)
+        _setter("parent_id", parent_id)
 
     @property
     @pulumi.getter
@@ -59,10 +70,21 @@ class _ContentState:
         :param pulumi.Input[str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
         :param pulumi.Input[str] parent_id: The identifier of the folder to import into. Identifiers from the Library in the Sumo user interface are provided in decimal format which is incompatible with this provider. The identifier needs to be in hexadecimal format.
         """
+        _ContentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            parent_id=parent_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
 
     @property
     @pulumi.getter
@@ -244,6 +266,10 @@ class Content(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

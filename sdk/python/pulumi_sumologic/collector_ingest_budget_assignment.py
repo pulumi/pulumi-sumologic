@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CollectorIngestBudgetAssignmentArgs', 'CollectorIngestBudgetAssignment']
@@ -19,8 +19,19 @@ class CollectorIngestBudgetAssignmentArgs:
         """
         The set of arguments for constructing a CollectorIngestBudgetAssignment resource.
         """
-        pulumi.set(__self__, "collector_id", collector_id)
-        pulumi.set(__self__, "ingest_budget_id", ingest_budget_id)
+        CollectorIngestBudgetAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collector_id=collector_id,
+            ingest_budget_id=ingest_budget_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collector_id: pulumi.Input[str],
+             ingest_budget_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("collector_id", collector_id)
+        _setter("ingest_budget_id", ingest_budget_id)
 
     @property
     @pulumi.getter(name="collectorId")
@@ -49,10 +60,21 @@ class _CollectorIngestBudgetAssignmentState:
         """
         Input properties used for looking up and filtering CollectorIngestBudgetAssignment resources.
         """
+        _CollectorIngestBudgetAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collector_id=collector_id,
+            ingest_budget_id=ingest_budget_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collector_id: Optional[pulumi.Input[str]] = None,
+             ingest_budget_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if collector_id is not None:
-            pulumi.set(__self__, "collector_id", collector_id)
+            _setter("collector_id", collector_id)
         if ingest_budget_id is not None:
-            pulumi.set(__self__, "ingest_budget_id", ingest_budget_id)
+            _setter("ingest_budget_id", ingest_budget_id)
 
     @property
     @pulumi.getter(name="collectorId")
@@ -109,6 +131,10 @@ class CollectorIngestBudgetAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CollectorIngestBudgetAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

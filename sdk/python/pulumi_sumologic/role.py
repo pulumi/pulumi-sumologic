@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RoleArgs', 'Role']
@@ -27,14 +27,29 @@ class RoleArgs:
         :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
         :param pulumi.Input[str] name: The name of the role.
         """
+        RoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capabilities=capabilities,
+            description=description,
+            filter_predicate=filter_predicate,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             filter_predicate: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if capabilities is not None:
-            pulumi.set(__self__, "capabilities", capabilities)
+            _setter("capabilities", capabilities)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if filter_predicate is not None:
-            pulumi.set(__self__, "filter_predicate", filter_predicate)
+            _setter("filter_predicate", filter_predicate)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -103,14 +118,29 @@ class _RoleState:
         :param pulumi.Input[str] filter_predicate: A search filter to restrict access to specific logs.
         :param pulumi.Input[str] name: The name of the role.
         """
+        _RoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capabilities=capabilities,
+            description=description,
+            filter_predicate=filter_predicate,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             filter_predicate: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if capabilities is not None:
-            pulumi.set(__self__, "capabilities", capabilities)
+            _setter("capabilities", capabilities)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if filter_predicate is not None:
-            pulumi.set(__self__, "filter_predicate", filter_predicate)
+            _setter("filter_predicate", filter_predicate)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -248,6 +278,10 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

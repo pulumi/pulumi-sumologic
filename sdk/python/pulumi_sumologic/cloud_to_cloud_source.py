@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CloudToCloudSourceArgs', 'CloudToCloudSource']
@@ -22,9 +22,22 @@ class CloudToCloudSourceArgs:
         :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] schema_ref: Source schema details.
         """
-        pulumi.set(__self__, "collector_id", collector_id)
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "schema_ref", schema_ref)
+        CloudToCloudSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collector_id=collector_id,
+            config=config,
+            schema_ref=schema_ref,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collector_id: pulumi.Input[int],
+             config: pulumi.Input[str],
+             schema_ref: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("collector_id", collector_id)
+        _setter("config", config)
+        _setter("schema_ref", schema_ref)
 
     @property
     @pulumi.getter(name="collectorId")
@@ -71,12 +84,25 @@ class _CloudToCloudSourceState:
         :param pulumi.Input[str] config: This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] schema_ref: Source schema details.
         """
+        _CloudToCloudSourceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            collector_id=collector_id,
+            config=config,
+            schema_ref=schema_ref,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             collector_id: Optional[pulumi.Input[int]] = None,
+             config: Optional[pulumi.Input[str]] = None,
+             schema_ref: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if collector_id is not None:
-            pulumi.set(__self__, "collector_id", collector_id)
+            _setter("collector_id", collector_id)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if schema_ref is not None:
-            pulumi.set(__self__, "schema_ref", schema_ref)
+            _setter("schema_ref", schema_ref)
 
     @property
     @pulumi.getter(name="collectorId")
@@ -242,6 +268,10 @@ class CloudToCloudSource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CloudToCloudSourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

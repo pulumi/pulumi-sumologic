@@ -16,8 +16,6 @@ public final class SloIndicatorRequestBasedEvaluationQueryQueryGroup {
      * @return Field of log query output to compare against. To be used only for logs based data
      * type when `use_row_count` is false.
      * 
-     * type when `use_row_count` is false.
-     * 
      */
     private @Nullable String field;
     /**
@@ -39,8 +37,6 @@ public final class SloIndicatorRequestBasedEvaluationQueryQueryGroup {
     private SloIndicatorRequestBasedEvaluationQueryQueryGroup() {}
     /**
      * @return Field of log query output to compare against. To be used only for logs based data
-     * type when `use_row_count` is false.
-     * 
      * type when `use_row_count` is false.
      * 
      */

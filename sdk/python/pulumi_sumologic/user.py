@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -31,12 +31,31 @@ class UserArgs:
                
                The following attributes are exported:
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "first_name", first_name)
-        pulumi.set(__self__, "is_active", is_active)
-        pulumi.set(__self__, "last_name", last_name)
-        pulumi.set(__self__, "role_ids", role_ids)
-        pulumi.set(__self__, "transfer_to", transfer_to)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            first_name=first_name,
+            is_active=is_active,
+            last_name=last_name,
+            role_ids=role_ids,
+            transfer_to=transfer_to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             first_name: pulumi.Input[str],
+             is_active: pulumi.Input[bool],
+             last_name: pulumi.Input[str],
+             role_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             transfer_to: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("email", email)
+        _setter("first_name", first_name)
+        _setter("is_active", is_active)
+        _setter("last_name", last_name)
+        _setter("role_ids", role_ids)
+        _setter("transfer_to", transfer_to)
 
     @property
     @pulumi.getter
@@ -133,18 +152,37 @@ class _UserState:
                
                The following attributes are exported:
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            first_name=first_name,
+            is_active=is_active,
+            last_name=last_name,
+            role_ids=role_ids,
+            transfer_to=transfer_to,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[pulumi.Input[str]] = None,
+             first_name: Optional[pulumi.Input[str]] = None,
+             is_active: Optional[pulumi.Input[bool]] = None,
+             last_name: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transfer_to: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if first_name is not None:
-            pulumi.set(__self__, "first_name", first_name)
+            _setter("first_name", first_name)
         if is_active is not None:
-            pulumi.set(__self__, "is_active", is_active)
+            _setter("is_active", is_active)
         if last_name is not None:
-            pulumi.set(__self__, "last_name", last_name)
+            _setter("last_name", last_name)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if transfer_to is not None:
-            pulumi.set(__self__, "transfer_to", transfer_to)
+            _setter("transfer_to", transfer_to)
 
     @property
     @pulumi.getter
@@ -330,6 +368,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

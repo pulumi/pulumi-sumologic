@@ -14,16 +14,14 @@ public final class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeAr
     public static final LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs Empty = new LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs();
 
     /**
-     * Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-     * `previous_month`.
+     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      * 
      */
     @Import(name="rangeName", required=true)
     private Output<String> rangeName;
 
     /**
-     * @return Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-     * `previous_month`.
+     * @return One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
      * 
      */
     public Output<String> rangeName() {
@@ -55,8 +53,7 @@ public final class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeAr
         }
 
         /**
-         * @param rangeName Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-         * `previous_month`.
+         * @param rangeName One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeAr
         }
 
         /**
-         * @param rangeName Name of complete literal time range. One of `today`, `yesterday`, `previous_week`, and
-         * `previous_month`.
+         * @param rangeName One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
          * 
          * @return builder
          * 

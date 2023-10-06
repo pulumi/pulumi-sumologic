@@ -20,16 +20,12 @@ public final class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs extends
      * Field of log query output to compare against. To be used only for logs based data
      * type when `use_row_count` is false.
      * 
-     * type when `use_row_count` is false.
-     * 
      */
     @Import(name="field")
     private @Nullable Output<String> field;
 
     /**
      * @return Field of log query output to compare against. To be used only for logs based data
-     * type when `use_row_count` is false.
-     * 
      * type when `use_row_count` is false.
      * 
      */
@@ -113,8 +109,6 @@ public final class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs extends
          * @param field Field of log query output to compare against. To be used only for logs based data
          * type when `use_row_count` is false.
          * 
-         * type when `use_row_count` is false.
-         * 
          * @return builder
          * 
          */
@@ -125,8 +119,6 @@ public final class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs extends
 
         /**
          * @param field Field of log query output to compare against. To be used only for logs based data
-         * type when `use_row_count` is false.
-         * 
          * type when `use_row_count` is false.
          * 
          * @return builder

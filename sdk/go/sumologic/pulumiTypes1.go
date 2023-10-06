@@ -3050,7 +3050,7 @@ type LogSearchQueryParameter struct {
 	Description *string `pulumi:"description"`
 	// Name of the search.
 	Name string `pulumi:"name"`
-	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+	// Default value of scheduled search parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -3076,7 +3076,7 @@ type LogSearchQueryParameterArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Name of the search.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+	// Default value of scheduled search parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3168,7 +3168,7 @@ func (o LogSearchQueryParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+// Default value of scheduled search parameter.
 func (o LogSearchQueryParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5422,7 +5422,7 @@ func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) Webhook
 type LogSearchScheduleParameter struct {
 	// Name of the search.
 	Name string `pulumi:"name"`
-	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+	// Default value of scheduled search parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -5440,7 +5440,7 @@ type LogSearchScheduleParameterInput interface {
 type LogSearchScheduleParameterArgs struct {
 	// Name of the search.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+	// Default value of scheduled search parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5518,7 +5518,7 @@ func (o LogSearchScheduleParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
+// Default value of scheduled search parameter.
 func (o LogSearchScheduleParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6486,8 +6486,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeR
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -6503,8 +6502,7 @@ type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRang
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -6603,8 +6601,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeR
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string {
 		return v.RangeName
@@ -6641,8 +6638,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeR
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *string {
 		if v == nil {
@@ -7392,8 +7388,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRan
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -7409,8 +7404,7 @@ type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeI
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -7509,8 +7503,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRan
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string {
 		return v.RangeName
@@ -7547,8 +7540,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRan
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *string {
 		if v == nil {
@@ -7746,8 +7738,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRa
 }
 
 type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -7763,8 +7754,7 @@ type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeInput interface 
 }
 
 type LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -7863,8 +7853,7 @@ func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) ToOut
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -7899,8 +7888,7 @@ func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput) El
 	}).(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange) *string {
 		if v == nil {
@@ -9052,8 +9040,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Is
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -9069,8 +9056,7 @@ type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput interface 
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -9169,8 +9155,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToOut
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -9205,8 +9190,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) El
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *string {
 		if v == nil {
@@ -9950,8 +9934,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Iso8
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -9967,8 +9950,7 @@ type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput interface {
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -10067,8 +10049,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToOutpu
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -10103,8 +10084,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) Elem
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *string {
 		if v == nil {
@@ -10300,8 +10280,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) Rel
 }
 
 type LogSearchTimeRangeCompleteLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -10317,8 +10296,7 @@ type LogSearchTimeRangeCompleteLiteralTimeRangeInput interface {
 }
 
 type LogSearchTimeRangeCompleteLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -10417,8 +10395,7 @@ func (o LogSearchTimeRangeCompleteLiteralTimeRangeOutput) ToOutput(ctx context.C
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchTimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -10453,8 +10430,7 @@ func (o LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput) Elem() LogSearchTim
 	}).(LogSearchTimeRangeCompleteLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeCompleteLiteralTimeRange) *string {
 		if v == nil {
@@ -12359,8 +12335,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -12376,8 +12351,7 @@ type MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput interf
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -12476,8 +12450,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) T
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -12512,8 +12485,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *string {
 		if v == nil {
@@ -13257,8 +13229,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) 
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -13274,8 +13245,7 @@ type MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput interfac
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -13374,8 +13344,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToO
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -13410,8 +13379,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) 
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *string {
 		if v == nil {
@@ -13607,8 +13575,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
 }
 
 type MetricsSearchTimeRangeCompleteLiteralTimeRange struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName string `pulumi:"rangeName"`
 }
 
@@ -13624,8 +13591,7 @@ type MetricsSearchTimeRangeCompleteLiteralTimeRangeInput interface {
 }
 
 type MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs struct {
-	// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-	// `previousMonth`.
+	// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 	RangeName pulumi.StringInput `pulumi:"rangeName"`
 }
 
@@ -13724,8 +13690,7 @@ func (o MetricsSearchTimeRangeCompleteLiteralTimeRangeOutput) ToOutput(ctx conte
 	}
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o MetricsSearchTimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
 }
@@ -13760,8 +13725,7 @@ func (o MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput) Elem() MetricsS
 	}).(MetricsSearchTimeRangeCompleteLiteralTimeRangeOutput)
 }
 
-// Name of complete literal time range. One of `today`, `yesterday`, `previousWeek`, and
-// `previousMonth`.
+// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 func (o MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeCompleteLiteralTimeRange) *string {
 		if v == nil {
@@ -27439,7 +27403,6 @@ func (o SloIndicatorRequestBasedEvaluationPtrOutput) Threshold() pulumi.Float64P
 type SloIndicatorRequestBasedEvaluationQuery struct {
 	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
 	// , `Threshold`.
-	// , `Threshold`.
 	QueryGroupType string `pulumi:"queryGroupType"`
 	// List of queries to use.
 	QueryGroups []SloIndicatorRequestBasedEvaluationQueryQueryGroup `pulumi:"queryGroups"`
@@ -27458,7 +27421,6 @@ type SloIndicatorRequestBasedEvaluationQueryInput interface {
 
 type SloIndicatorRequestBasedEvaluationQueryArgs struct {
 	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
-	// , `Threshold`.
 	// , `Threshold`.
 	QueryGroupType pulumi.StringInput `pulumi:"queryGroupType"`
 	// List of queries to use.
@@ -27536,7 +27498,6 @@ func (o SloIndicatorRequestBasedEvaluationQueryOutput) ToOutput(ctx context.Cont
 
 // The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
 // , `Threshold`.
-// , `Threshold`.
 func (o SloIndicatorRequestBasedEvaluationQueryOutput) QueryGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQuery) string { return v.QueryGroupType }).(pulumi.StringOutput)
 }
@@ -27577,8 +27538,6 @@ func (o SloIndicatorRequestBasedEvaluationQueryArrayOutput) Index(i pulumi.IntIn
 type SloIndicatorRequestBasedEvaluationQueryQueryGroup struct {
 	// Field of log query output to compare against. To be used only for logs based data
 	// type when `useRowCount` is false.
-	//
-	// type when `useRowCount` is false.
 	Field *string `pulumi:"field"`
 	// The query string to use.
 	Query string `pulumi:"query"`
@@ -27601,8 +27560,6 @@ type SloIndicatorRequestBasedEvaluationQueryQueryGroupInput interface {
 
 type SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs struct {
 	// Field of log query output to compare against. To be used only for logs based data
-	// type when `useRowCount` is false.
-	//
 	// type when `useRowCount` is false.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// The query string to use.
@@ -27683,8 +27640,6 @@ func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) ToOutput(ctx co
 }
 
 // Field of log query output to compare against. To be used only for logs based data
-// type when `useRowCount` is false.
-//
 // type when `useRowCount` is false.
 func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)
@@ -28006,7 +27961,6 @@ func (o SloIndicatorWindowBasedEvaluationPtrOutput) Threshold() pulumi.Float64Pt
 type SloIndicatorWindowBasedEvaluationQuery struct {
 	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
 	// , `Threshold`.
-	// , `Threshold`.
 	QueryGroupType string `pulumi:"queryGroupType"`
 	// List of queries to use.
 	QueryGroups []SloIndicatorWindowBasedEvaluationQueryQueryGroup `pulumi:"queryGroups"`
@@ -28025,7 +27979,6 @@ type SloIndicatorWindowBasedEvaluationQueryInput interface {
 
 type SloIndicatorWindowBasedEvaluationQueryArgs struct {
 	// The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
-	// , `Threshold`.
 	// , `Threshold`.
 	QueryGroupType pulumi.StringInput `pulumi:"queryGroupType"`
 	// List of queries to use.
@@ -28103,7 +28056,6 @@ func (o SloIndicatorWindowBasedEvaluationQueryOutput) ToOutput(ctx context.Conte
 
 // The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
 // , `Threshold`.
-// , `Threshold`.
 func (o SloIndicatorWindowBasedEvaluationQueryOutput) QueryGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQuery) string { return v.QueryGroupType }).(pulumi.StringOutput)
 }
@@ -28144,8 +28096,6 @@ func (o SloIndicatorWindowBasedEvaluationQueryArrayOutput) Index(i pulumi.IntInp
 type SloIndicatorWindowBasedEvaluationQueryQueryGroup struct {
 	// Field of log query output to compare against. To be used only for logs based data
 	// type when `useRowCount` is false.
-	//
-	// type when `useRowCount` is false.
 	Field *string `pulumi:"field"`
 	// The query string to use.
 	Query string `pulumi:"query"`
@@ -28168,8 +28118,6 @@ type SloIndicatorWindowBasedEvaluationQueryQueryGroupInput interface {
 
 type SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs struct {
 	// Field of log query output to compare against. To be used only for logs based data
-	// type when `useRowCount` is false.
-	//
 	// type when `useRowCount` is false.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// The query string to use.
@@ -28250,8 +28198,6 @@ func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) ToOutput(ctx con
 }
 
 // Field of log query output to compare against. To be used only for logs based data
-// type when `useRowCount` is false.
-//
 // type when `useRowCount` is false.
 func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)
